@@ -1,0 +1,104 @@
+[
+    {
+        "title": "type",
+        "type": "carusel",
+        "items": [
+            {
+                "title": "quiet",
+                "imageName": null
+            },
+            {
+                "title": "sparkling",
+                "imageName": null
+            }
+        ]
+    },
+    {
+        "title": "color",
+        "type": "carusel",
+        "items": [
+            {
+                "title": "red",
+                "imageName": null
+            },
+            {
+                "title": "white",
+                "imageName": null
+            }
+        ]
+    },
+    {
+        "title": "country",
+        "type": "carusel",
+        "items": [
+            {
+                "title": "France",
+                "imageName": "france"
+            }
+        ]
+    },
+    {
+        "title": "sugar",
+        "type": "carusel",
+        "items": [
+            {
+                "title": "dry",
+                "imageName": null
+            },
+            {
+                "title": "semi-dry",
+                "imageName": null
+            },
+            {
+                "title": "semi-sweet",
+                "imageName": null
+            },
+            {
+                "title": "sweet",
+                "imageName": null
+            }
+        ]
+    },
+    {
+        "title": "compatibility",
+        "type": "carusel",
+        "items": [
+            {
+                "title": "meat",
+                "imageName": "meat"
+            },
+            {
+                "title": "fish",
+                "imageName": "fish"
+            },
+            {
+                "title": "seafood",
+                "imageName": "shrimp"
+            },
+            {
+                "title": "wildfowl",
+                "imageName": "rabbit"
+            },
+            {
+                "title": "chicken",
+                "imageName": "chicken"
+            },
+            {
+                "title": "dessert",
+                "imageName": "cake"
+            },
+            {
+                "title": "bakery",
+                "imageName": "bread"
+            },
+            {
+                "title": "cheese",
+                "imageName": "cheese"
+            },
+            {
+                "title": "fruits",
+                "imageName": "fruit"
+            }
+        ]
+    },
+]

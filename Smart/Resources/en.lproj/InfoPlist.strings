@@ -1,0 +1,10 @@
+/* 
+  InfoPlist.strings
+  Smart
+
+  Created by Aleksei Smirnov on 15.07.2020.
+  Copyright © 2020 Aleksei Smirnov. All rights reserved.
+*/
+NSLocationWhenInUseUsageDescription = "Allow access to geolocation to determine the delivery address";
+NSCameraUsageDescription = "Allow access to the camera for scanning";
+CFBundleDisplayName = "Vinchy";

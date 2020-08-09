@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "container:"
+      name = "submodules">
+      <FileRef
+         location = "group:submodules/EmailService/EmailService.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:submodules/LocationUI/LocationUI.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:submodules/CommonUI/CommonUI.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:submodules/StringFormatting/StringFormatting.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:submodules/Core/Core.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:submodules/Database/Database.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:submodules/Display/Display.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
+      location = "container:"
+      name = "Smart">
+      <Group
+         location = "container:"
+         name = "Smart-iOS">
+         <FileRef
+            location = "group:Smart.xcodeproj">
+         </FileRef>
+      </Group>
+   </Group>
+   <Group
+      location = "group:tools"
+      name = "tools">
+      <FileRef
+         location = "group:podInstall.command">
+      </FileRef>
+      <FileRef
+         location = "group:podUpdate.command">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "group:Pods/Pods.xcodeproj">
+   </FileRef>
+</Workspace>

@@ -1,0 +1,6 @@
+framework module Pods_LocationUI {
+  umbrella header "Pods-LocationUI-umbrella.h"
+
+  export *
+  module * { export * }
+}

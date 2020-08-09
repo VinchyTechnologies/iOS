@@ -1,0 +1,72 @@
+/* 
+  Localizable.strings
+  Smart
+
+  Created by Aleksei Smirnov on 17.06.2020.
+  Copyright © 2020 Aleksei Smirnov. All rights reserved.
+*/
+// MARK: - Common
+"rate_our_app" = "Rate our App";
+"error" = "error";
+"what_is_your_name" = "What's your name?";
+"profile" = "profile";
+"looking_for_partners" = "looking for partenrs";
+"become_a_part_of_a_wine_startup" = "Become a part of a wine startup";
+"email_us" = "email us";
+"for_any_questions" = "for any questions";
+"always_available" = "always available";
+"we_are_in_social_networks" = "we are in social networks";
+"legal_documents" = "legal documents";
+"about_the_app" = "about the app";
+"version" = "vesrsion";
+"advanced_search" = "Advanced Search";
+"cancel" = "Cancel";
+"delete" = "Delete";
+"delete_note" = "Delete Note?";
+"this_action_cannot_to_be_undone" = "This action cannot to be undone";
+"country" = "country";
+"you_can_also_like" = "you can also like";
+"search" = "search";
+
+// MARK: - Sugar
+"sugar" = "sugar";
+"dry" = "dry";
+"semi-dry" = "semi-dry";
+"semi-sweet" = "semi-sweet";
+"sweet" = "sweet";
+
+// MARK: - WineStyle
+"style" = "style";
+"red" = "red";
+"white" = "white";
+"sparkling" = "sparkling";
+
+// MARK: - Compatibility
+"compatibility" = "compatibility"; // ???
+"meat" = "meat";
+"fish" = "fish";
+"seafood" = "seafood";
+"wildfowl" = "wildfowl";
+"chicken" = "chicken";
+"dessert" = "dessert";
+"bakery" = "bakery";
+"cheese" = "cheese";
+"fruits" = "fruits";
+
+// MARK: - Tabs
+"explore" = "explore";
+"favourites" = "favourites";
+"notes" = "notes";
+"info" = "info";
+
+// MARK: - Favourites
+"you_liked" = "you liked";
+"you_disliked" = "disliked";
+
+// MARK: - Info
+"contact_email" = "alekseiismirnovv@gmail.com";
+"contact_phone_url" = "tel://+79102433638";
+"contact_phone" = "+ 7 (910) 243-36-38";
+
+// MARK: - Subscriptions
+"subscriptions" = "subscriptions";

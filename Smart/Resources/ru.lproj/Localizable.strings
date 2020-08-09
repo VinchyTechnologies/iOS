@@ -1,0 +1,72 @@
+/* 
+  Localizable.strings
+  Smart
+
+  Created by Aleksei Smirnov on 17.06.2020.
+  Copyright © 2020 Aleksei Smirnov. All rights reserved.
+*/
+// MARK: - Common
+"rate_our_app" = "Оцените наше приложение";
+"error" = "ошибка";
+"what_is_your_name" = "Как Вас зовут?";
+"profile" = "Профиль";
+"looking_for_partners" = "ищем партнёров";
+"become_a_part_of_a_wine_startup" = "Стань частью винного стартапа";
+"email_us" = "пишите нам на почту";
+"for_any_questions" = "По любым возникающим вопросам";
+"always_available" = "Всегда на связи";
+"we_are_in_social_networks" = "мы в соцсетях";
+"legal_documents" = "правовые документы";
+"about_the_app" = "о приложении";
+"version" = "Версия";
+"advanced_search" = "Найти по параметрам";
+"cancel" = "Отмена";
+"delete" = "Удалить";
+"delete_note" = "Удалить заметку?";
+"this_action_cannot_to_be_undone" = "Эта операция не может быть отменена";
+"country" = "страна";
+"you_can_also_like" = "вам также может понравится";
+"search" = "найти";
+
+// MARK: - Sugar
+"sugar" = "сахар";
+"dry" = "сухое";
+"semi-dry" = "полусухое";
+"semi-sweet" = "полусладкое";
+"sweet" = "сладкое";
+
+// MARK: - WineStyle
+"style" = "тип";
+"red" = "красное";
+"white" = "белое";
+"sparkling" = "игристое";
+
+// MARK: - Compatibility
+"compatibility" = "сочетаемость"; // ???
+"meat" = "мясо";
+"fish" = "рыба";
+"seafood" = "морепродукты";
+"wildfowl" = "дичь";
+"chicken" = "птица";
+"dessert" = "десерт";
+"bakery" = "выпечка";
+"cheese" = "сыр";
+"fruits" = "фрукты";
+
+// MARK: - Tabs
+"explore" = "главная";
+"favourites" = "сохраненные";
+"notes" = "заметки";
+"info" = "инфо";
+
+// MARK: - Favourites
+"you_liked" = "хорошие";
+"you_disliked" = "плохие";
+
+// MARK: - Info
+"contact_email" = "alekseiismirnovv@gmail.com";
+"contact_phone_url" = "tel://+79102433638";
+"contact_phone" = "+ 7 (910) 243-36-38";
+
+// MARK: - Subscriptions
+"subscriptions" = "Подписки";
