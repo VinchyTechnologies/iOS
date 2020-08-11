@@ -11,13 +11,15 @@ import RealmSwift
 import Core
 import StringFormatting
 import CommonUI
+import Database
 
-final class NotesViewController: UIViewController, RealmNotes {
+final class NotesViewController: UIViewController {
 
     // MARK: - Private Properties
 
     private let tableView = UITableView()
     private lazy var notesRealm = realm(path: .notes)
+    let dataBase = Database<Note>()
     private var notesNotificationToken: NotificationToken?
 
     private var notes: [Note] = [] {
@@ -41,7 +43,7 @@ final class NotesViewController: UIViewController, RealmNotes {
         super.init(nibName: nil, bundle: nil)
 
         notesNotificationToken = notesRealm.observe { notification, realm in
-            self.notes = self.allNotes()
+            self.notes = self.dataBase.all(type: Note.self, at: .notes)
         }
     }
 
@@ -62,7 +64,7 @@ final class NotesViewController: UIViewController, RealmNotes {
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         tableView.register(WineTableCell.self, forCellReuseIdentifier: WineTableCell.reuseId)
 
-        notes = allNotes()
+        notes = dataBase.all(type: Note.self, at: .notes)
     }
 
     deinit {
@@ -109,8 +111,8 @@ extension NotesViewController: UITableViewDataSource {
 
             alert.addAction(UIAlertAction(title: localized("delete"), style: .destructive , handler:{ [weak self] _ in
                 guard let self = self else { return }
-                self.removeToNote(note: note)
-                self.notes = self.allNotes()
+                self.dataBase.remove(object: note, type: Note.self, at: .notes)
+                self.notes = self.dataBase.all(type: Note.self, at: .notes)
             }))
 
             alert.addAction(UIAlertAction(title: localized("cancel"), style: .cancel, handler: nil))

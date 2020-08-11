@@ -9,16 +9,15 @@
 import UIKit
 import Display
 import Core
+import Database
 
-final class WriteMessageController: UIViewController, RealmNotes {
-
-    // MARK: - Public Properties
+final class WriteMessageController: UIViewController {
 
     var product: Wine?
     var subject: String?
     var body: String?
 
-    // MARK: - Private Properties
+    private let dataBase = Database<Note>()
 
     private lazy var tableView: UITableView = {
         let tableView = UITableView()
@@ -80,7 +79,7 @@ final class WriteMessageController: UIViewController, RealmNotes {
 
         } else {
             let note = Note(product: product, title: title, fullReview: body ?? "")
-            addToNote(note: note)
+            dataBase.add(object: note, type: Note.self, at: .notes)
         }
         
         navigationController?.popViewController(animated: true)

@@ -345,6 +345,7 @@
 		CA4D18072492B2AC00B49BD4 /* MockUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockUser.swift; sourceTree = "<group>"; };
 		CA4D18082492B2AC00B49BD4 /* MockSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockSocket.swift; sourceTree = "<group>"; };
 		CA4EA6BA24BE3ACD00E6F0C4 /* currencies.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = currencies.json; sourceTree = "<group>"; };
+		CA53B12724E327D1009A0F85 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		CA63A125249A22E500144320 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		CA63A12A249A23C100144320 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA63A12C249A244300144320 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -1466,6 +1467,7 @@
 			children = (
 				CA472ACB245EDE30009149FF /* Base */,
 				CA63A125249A22E500144320 /* ru */,
+				CA53B12724E327D1009A0F85 /* en */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
