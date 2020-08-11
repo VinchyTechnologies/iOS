@@ -8,7 +8,7 @@
 
 import RealmSwift
 
-public final class Note: Object {
+public final class Note: Object, HasPrimaryKeyID {
 
     @objc public dynamic var id: Int64 = 0
     @objc public dynamic var product: Wine!
@@ -16,7 +16,7 @@ public final class Note: Object {
     @objc public dynamic var fullReview: String = ""
 
     override public class func primaryKey() -> String? {
-        return "id"
+        return myPrimaryKey()
     }
 
     public convenience init(id: String? = nil, product: Wine, title: String, fullReview: String) {

@@ -11,17 +11,20 @@ import RealmSwift
 import Core
 import CommonUI
 import StringFormatting
+import Database
 
 private enum LoveViewControllerState {
     case like, dislike
 }
 
-final class LoveViewController: UIViewController, RealmLikeDislikeProtocol {
+final class LoveViewController: UIViewController {
 
     private enum Constants {
         static let inset: CGFloat = 10
         static let rowCount = 2
     }
+
+    private let dataBase = Database<Wine>()
 
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
 
@@ -44,11 +47,11 @@ final class LoveViewController: UIViewController, RealmLikeDislikeProtocol {
             if currentState == .like {
                 navigationItem.title = localized("you_liked").firstLetterUppercased()
                 navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart.slash"), style: .plain, target: self, action: #selector(switchToUnfavourite))
-                wines = allLiked()
+                wines = dataBase.all(type: Wine.self, at: .like)
             } else if currentState == .dislike {
                 navigationItem.title = localized("you_disliked").firstLetterUppercased()
                 navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .plain, target: self, action: #selector(switchToUnfavourite))
-                wines = allDisliked()
+                wines = dataBase.all(type: Wine.self, at: .dislike)
             }
         }
     }
@@ -84,13 +87,13 @@ final class LoveViewController: UIViewController, RealmLikeDislikeProtocol {
 
         likeNotificationToken = likeRealm.observe { notification, realm in
             if self.currentState == .like {
-                self.wines = self.allLiked()
+                self.wines = self.dataBase.all(type: Wine.self, at: .like)
             }
         }
 
         dislikeNotificationToken = dislikeRealm.observe { notification, realm in
             if self.currentState == .dislike {
-                self.wines = self.allDisliked()
+                self.wines = self.dataBase.all(type: Wine.self, at: .dislike)
             }
         }
     }

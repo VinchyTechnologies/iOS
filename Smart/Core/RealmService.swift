@@ -8,8 +8,9 @@
 
 import RealmSwift
 import Core
+import Database
 
-protocol RealmProductProtocol {
+//protocol RealmProductProtocol {
 //    func isFafourite(product: Wine) -> Bool
 //    func toOrUnFafourite(product: Wine)
 //    func save(product: Wine)
@@ -26,7 +27,7 @@ protocol RealmProductProtocol {
 //    func hasAddress() -> Bool
 //    func saveAddress(address: Address)
 //    func deleteAddress(address: Address)
-}
+//}
 
 //extension RealmProductProtocol {
 //
@@ -138,173 +139,163 @@ protocol RealmProductProtocol {
 //    }
 //}
 
-protocol RealmPathable {
-    func realm(path: RealmType) -> Realm
-}
+//protocol RealmPathable {
+//    func realm(path: RealmType) -> Realm
+//}
 
-extension RealmPathable {
+//extension RealmPathable {
+//
+//    func realm(path: RealmType) -> Realm {
+//        var config = Realm.Configuration()
+//        config.fileURL = config.fileURL!.deletingLastPathComponent().appendingPathComponent("\(path).realm")
+//        return try! Realm(configuration: config)
+//    }
+//
+//}
 
-    func realm(path: RealmType) -> Realm {
-        var config = Realm.Configuration()
-        config.fileURL = config.fileURL!.deletingLastPathComponent().appendingPathComponent("\(path).realm")
-        return try! Realm(configuration: config)
-    }
+//protocol RealmLikeDislikeProtocol: RealmPathable {
+//
+//    func isLiked(product: Wine) -> Bool
+//    func toOrUnLike(product: Wine)
+//    func addToLike(wine: Wine)
+//    func removeToLike(product: Wine)
+//    func allLiked() -> [Wine]
+//    func hasLiked() -> Bool
+//
+//
+//    func isDisliked(product: Wine) -> Bool
+//    func toOrUnDislike(product: Wine)
+//    func addToDislike(product: Wine)
+//    func removeToDislike(product: Wine)
+//    func allDisliked() -> [Wine]
+//    func hasDisliked() -> Bool
+//
+//}
 
-}
-
-protocol RealmLikeDislikeProtocol: RealmPathable {
-
-    func isLiked(product: Wine) -> Bool
-    func toOrUnLike(product: Wine)
-    func addToLike(wine: Wine)
-    func removeToLike(product: Wine)
-    func allLiked() -> [Wine]
-    func hasLiked() -> Bool
-
-
-    func isDisliked(product: Wine) -> Bool
-    func toOrUnDislike(product: Wine)
-    func addToDislike(product: Wine)
-    func removeToDislike(product: Wine)
-    func allDisliked() -> [Wine]
-    func hasDisliked() -> Bool
-
-}
-
-enum RealmType: String {
-    case like, dislike, notes
-}
-
-extension RealmLikeDislikeProtocol {
-
-    func isLiked(product: Wine) -> Bool { // db
-        return realm(path: .like).object(ofType: Wine.self, forPrimaryKey: product.id) != nil
-    }
-
-    func toOrUnLike(product: Wine) {
-        if isLiked(product: product) {
-            removeToLike(product: product)
-        } else {
-            addToLike(wine: product)
-        }
-    }
-
-    func addToLike(wine: Wine) {
-        let savingProduct = Wine()
-        savingProduct.id = wine.id
-        savingProduct.title = wine.title
-        savingProduct.desc = wine.desc
-        savingProduct.mainImageUrl = wine.mainImageUrl
-        savingProduct.price = wine.price
-        savingProduct.dishCompatibility = wine.dishCompatibility
-
-        try! realm(path: .like).write {
-            realm(path: .like).create(Wine.self, value: savingProduct, update: .all)
-        }
-    }
-
-    func removeToLike(product: Wine) {
-        let deletingProduct = realm(path: .like).objects(Wine.self).filter("id = %@", product.id)
-        try! realm(path: .like).write {
-            realm(path: .like).delete(deletingProduct)
-        }
-    }
-
-    func allLiked() -> [Wine] { // db
-        let objs = realm(path: .like).objects(Wine.self)
-        return Array<Wine>(objs)
-    }
-
-    func hasLiked() -> Bool { // db
-        return !realm(path: .like).objects(Wine.self).isEmpty
-    }
-
-    ////////////////
-
-    func isDisliked(product: Wine) -> Bool {
-        return realm(path: .dislike).object(ofType: Wine.self, forPrimaryKey: product.id) != nil
-    }
-
-    func toOrUnDislike(product: Wine) {
-        if isDisliked(product: product) {
-            removeToDislike(product: product)
-        } else {
-            addToDislike(product: product)
-        }
-    }
-
-    func addToDislike(product: Wine) {
-        let savingProduct = Wine()
-        savingProduct.id = product.id
-        savingProduct.title = product.title
-        savingProduct.desc = product.desc
-        savingProduct.mainImageUrl = product.mainImageUrl
-        savingProduct.price = product.price
-
-        try! realm(path: .dislike).write {
-            realm(path: .dislike).create(Wine.self, value: savingProduct, update: .all)
-        }
-    }
-
-    func removeToDislike(product: Wine) {
-        let deletingProduct = realm(path: .dislike).objects(Wine.self).filter("id = %@", product.id)
-        try! realm(path: .dislike).write {
-            realm(path: .dislike).delete(deletingProduct)
-        }
-    }
-
-    func allDisliked() -> [Wine] {
-        let objs = realm(path: .dislike).objects(Wine.self)
-        return Array<Wine>(objs)
-    }
-
-    func hasDisliked() -> Bool {
-        return !realm(path: .dislike).objects(Wine.self).isEmpty
-    }
-}
+//enum RealmType: String {
+//    case like, dislike, notes
+//}
+//
+//extension RealmLikeDislikeProtocol {
+//
+//    func isLiked(product: Wine) -> Bool { // db
+//        return realm(path: .like).object(ofType: Wine.self, forPrimaryKey: product.id) != nil
+//    }
+//
+//    func toOrUnLike(product: Wine) {
+//        if isLiked(product: product) {
+//            removeToLike(product: product)
+//        } else {
+//            addToLike(wine: product)
+//        }
+//    }
+//
+//    func addToLike(wine: Wine) {
+//        let savingProduct = Wine()
+//        savingProduct.id = wine.id
+//        savingProduct.title = wine.title
+//        savingProduct.desc = wine.desc
+//        savingProduct.mainImageUrl = wine.mainImageUrl
+//        savingProduct.price = wine.price
+//        savingProduct.dishCompatibility = wine.dishCompatibility
+//
+//        try! realm(path: .like).write {
+//            realm(path: .like).create(Wine.self, value: savingProduct, update: .all)
+//        }
+//    }
+//
+//    func removeToLike(product: Wine) {
+//        let deletingProduct = realm(path: .like).objects(Wine.self).filter("id = %@", product.id)
+//        try! realm(path: .like).write {
+//            realm(path: .like).delete(deletingProduct)
+//        }
+//    }
+//
+//    func allLiked() -> [Wine] { // db
+//        let objs = realm(path: .like).objects(Wine.self)
+//        return Array<Wine>(objs)
+//    }
+//
+//    func hasLiked() -> Bool { // db
+//        return !realm(path: .like).objects(Wine.self).isEmpty
+//    }
+//
+//    ////////////////
+//
+//    func isDisliked(product: Wine) -> Bool {
+//        return realm(path: .dislike).object(ofType: Wine.self, forPrimaryKey: product.id) != nil
+//    }
+//
+//    func toOrUnDislike(product: Wine) {
+//        if isDisliked(product: product) {
+//            removeToDislike(product: product)
+//        } else {
+//            addToDislike(product: product)
+//        }
+//    }
+//
+//    func addToDislike(product: Wine) {
+//        let savingProduct = Wine()
+//        savingProduct.id = product.id
+//        savingProduct.title = product.title
+//        savingProduct.desc = product.desc
+//        savingProduct.mainImageUrl = product.mainImageUrl
+//        savingProduct.price = product.price
+//
+//        try! realm(path: .dislike).write {
+//            realm(path: .dislike).create(Wine.self, value: savingProduct, update: .all)
+//        }
+//    }
+//
+//    func removeToDislike(product: Wine) {
+//        let deletingProduct = realm(path: .dislike).objects(Wine.self).filter("id = %@", product.id)
+//        try! realm(path: .dislike).write {
+//            realm(path: .dislike).delete(deletingProduct)
+//        }
+//    }
+//
+//    func allDisliked() -> [Wine] {
+//        let objs = realm(path: .dislike).objects(Wine.self)
+//        return Array<Wine>(objs)
+//    }
+//
+//    func hasDisliked() -> Bool {
+//        return !realm(path: .dislike).objects(Wine.self).isEmpty
+//    }
+//}
 
 
-protocol RealmNotes: RealmPathable {
-
-    func isNoted(product: Wine) -> Bool
-    func addToNote(note: Note)
-    func removeToNote(note: Note)
-    func allNotes() -> [Note]
-    func hasNotes() -> Bool
-}
-
-extension RealmNotes {
 
     func isNoted(product: Wine) -> Bool {
         return realm(path: .notes).object(ofType: Note.self, forPrimaryKey: product.id) != nil
     }
-
-    func addToNote(note: Note) {
-        let savingNote = Note()
-        savingNote.id = note.id
-        savingNote.title = note.title
-        savingNote.product = note.product
-        savingNote.fullReview = note.fullReview
-
-        try! realm(path: .notes).write {
-            realm(path: .notes).create(Note.self, value: savingNote, update: .all)
-        }
-    }
-
-    func removeToNote(note: Note) {
-        let deletingNote = realm(path: .notes).objects(Note.self).filter("id = %@", note.id)
-        try! realm(path: .notes).write {
-            realm(path: .notes).delete(deletingNote)
-        }
-    }
-
-    func allNotes() -> [Note] {
-        let objs = realm(path: .notes).objects(Note.self)
-        return Array<Note>(objs)
-    }
-
-    func hasNotes() -> Bool {
-        return !realm(path: .notes).objects(Note.self).isEmpty
-    }
-
-}
+//
+//    func addToNote(note: Note) {
+//        let savingNote = Note()
+//        savingNote.id = note.id
+//        savingNote.title = note.title
+//        savingNote.product = note.product
+//        savingNote.fullReview = note.fullReview
+//
+//        try! realm(path: .notes).write {
+//            realm(path: .notes).create(Note.self, value: savingNote, update: .all)
+//        }
+//    }
+//
+//    func removeToNote(note: Note) {
+//        let deletingNote = realm(path: .notes).objects(Note.self).filter("id = %@", note.id)
+//        try! realm(path: .notes).write {
+//            realm(path: .notes).delete(deletingNote)
+//        }
+//    }
+//
+//    func allNotes() -> [Note] {
+//        let objs = realm(path: .notes).objects(Note.self)
+//        return Array<Note>(objs)
+//    }
+//
+//    func hasNotes() -> Bool {
+//        return !realm(path: .notes).objects(Note.self).isEmpty
+//    }
+//
+//}

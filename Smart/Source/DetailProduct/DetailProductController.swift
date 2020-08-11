@@ -11,13 +11,15 @@ import Core
 import EmailService
 import StringFormatting
 import Display
+import Database
 
-final class DetailProductController: ASDKViewController<DetailProductNode>, RealmLikeDislikeProtocol, RealmNotes, Alertable {
+final class DetailProductController: ASDKViewController<DetailProductNode>, Alertable {
 
     // MARK: - Private Properties
 
     private let wine: Wine
     private let emailService = EmailService()
+    private let dataBase = Database<Wine>()
 
     // MARK: - Initializers
 
@@ -57,8 +59,8 @@ final class DetailProductController: ASDKViewController<DetailProductNode>, Real
         node.decorate(model: .init(imageURLs: imageURLs.compactMap({ $0 }),
                                    title: wine.title,
                                    description: wine.desc,
-                                   isFavourite: isLiked(product: wine),
-                                   isDisliked: isDisliked(product: wine),
+                                   isFavourite: dataBase.isSaved(object: wine, type: Wine.self, at: .like),
+                                   isDisliked: dataBase.isSaved(object: wine, type: Wine.self, at: .dislike),
                                    price: wine.price.toPrice(), // TODO: - Price
             options:options,
             dishCompatibility: dishCompatibility, place: wine.place))
@@ -100,11 +102,19 @@ extension DetailProductController: UIScrollViewDelegate {
 extension DetailProductController: DetailProductNodeDelegate {
 
     func didTapDislikeNode() {
-        toOrUnDislike(product: wine)
+        if dataBase.isSaved(object: wine, type: Wine.self, at: .dislike) {
+            dataBase.remove(object: wine, type: Wine.self, at: .dislike)
+        } else {
+            dataBase.add(object: wine, type: Wine.self, at: .dislike)
+        }
     }
 
     func didTapLikeNode() {
-        toOrUnLike(product: wine)
+        if dataBase.isSaved(object: wine, type: Wine.self, at: .like) {
+            dataBase.remove(object: wine, type: Wine.self, at: .like)
+        } else {
+            dataBase.add(object: wine, type: Wine.self, at: .like)
+        }
     }
 
     func didTapShareNode() {
