@@ -19,23 +19,19 @@ private enum LoveViewControllerState {
 
 final class LoveViewController: UIViewController {
 
-    private enum Constants {
-        static let inset: CGFloat = 10
-        static let rowCount = 2
-    }
-
-    private let dataBase = Database<Wine>()
+    private let dataBase = Database<DBWine>()
 
     private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
 
     private static let collectionViewLayout: UICollectionViewLayout = {
-        let rowCount = Constants.rowCount
-        let itemWidth = Int((UIScreen.main.bounds.width - Constants.inset * CGFloat(rowCount + 1)) / CGFloat(rowCount))
+        let rowCount = 2
+        let inset: CGFloat = 10
+        let itemWidth = Int((UIScreen.main.bounds.width - inset * CGFloat(rowCount + 1)) / CGFloat(rowCount))
         let itemHeight = Int(Double(itemWidth)*1.4)
 
         let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 0, left: Constants.inset, bottom: 0, right: Constants.inset)
-        layout.minimumLineSpacing = Constants.inset
+        layout.sectionInset = UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
+        layout.minimumLineSpacing = inset
         layout.minimumInteritemSpacing = 0
         layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
 
@@ -47,11 +43,11 @@ final class LoveViewController: UIViewController {
             if currentState == .like {
                 navigationItem.title = localized("you_liked").firstLetterUppercased()
                 navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart.slash"), style: .plain, target: self, action: #selector(switchToUnfavourite))
-                wines = dataBase.all(type: Wine.self, at: .like)
+                wines = dataBase.all(at: .like)
             } else if currentState == .dislike {
                 navigationItem.title = localized("you_disliked").firstLetterUppercased()
                 navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .plain, target: self, action: #selector(switchToUnfavourite))
-                wines = dataBase.all(type: Wine.self, at: .dislike)
+                wines = dataBase.all(at: .dislike)
             }
         }
     }
@@ -62,7 +58,7 @@ final class LoveViewController: UIViewController {
     private lazy var dislikeRealm = realm(path: .dislike)
     private var dislikeNotificationToken: NotificationToken?
 
-    private var wines: [Wine] = [] {
+    private var wines: [DBWine] = [] {
         didSet {
 
             if wines.isEmpty {
@@ -87,13 +83,13 @@ final class LoveViewController: UIViewController {
 
         likeNotificationToken = likeRealm.observe { notification, realm in
             if self.currentState == .like {
-                self.wines = self.dataBase.all(type: Wine.self, at: .like)
+                self.wines = self.dataBase.all(at: .like)
             }
         }
 
         dislikeNotificationToken = dislikeRealm.observe { notification, realm in
             if self.currentState == .dislike {
-                self.wines = self.dataBase.all(type: Wine.self, at: .dislike)
+                self.wines = self.dataBase.all(at: .dislike)
             }
         }
     }
@@ -146,7 +142,7 @@ extension LoveViewController: UICollectionViewDataSource {
         guard let wine = wines[safe: indexPath.row] else { return .init() }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.description(), for: indexPath) as! WineCollectionViewCell
         cell.background.backgroundColor = .option
-        cell.decorate(model: .init(imageURL: wine.mainImageUrl, title: wine.title, subtitle: String(wine.year)))
+        cell.decorate(model: .init(imageURL: wine.mainImageUrl, title: wine.title, subtitle: String("wine.year")))
         return cell
     }
 }
@@ -154,7 +150,7 @@ extension LoveViewController: UICollectionViewDataSource {
 extension LoveViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let wine = wines[safe: indexPath.row] else { return }
-        navigationController?.pushViewController(Assembly.buildDetailModule(wine: wine), animated: true)
+//        navigationController?.pushViewController(Assembly.buildDetailModule(wine: wine), animated: true)
     }
 }
 

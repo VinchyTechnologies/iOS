@@ -20,8 +20,6 @@ struct ASFiltersHeaderViewModel: ViewModelProtocol {
 
 final class ASFiltersHeaderView: ASDisplayNode {
 
-    // MARK: - Private Properties
-
     private let layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .horizontal
@@ -46,8 +44,6 @@ final class ASFiltersHeaderView: ASDisplayNode {
 
     private weak var filterDelegate: FiltersHeaderViewDelegate?
 
-    // MARK: - Initializers
-
     override init() {
         super.init()
         addSubnode(collectionNode)
@@ -60,7 +56,6 @@ final class ASFiltersHeaderView: ASDisplayNode {
     override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
         ASInsetLayoutSpec(insets: .zero, child: collectionNode)
     }
-
 
     public func hilightFirst() {
         if let cell = collectionNode.nodeForItem(at: IndexPath(item: 0, section: 0)) as? ASTextCellNode {
@@ -85,7 +80,6 @@ final class ASFiltersHeaderView: ASDisplayNode {
         }
     }
 
-
     func addSoftUIEffectForView(themeColor: UIColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)) {
         clipsToBounds = false
         self.layer.masksToBounds = false
@@ -107,8 +101,6 @@ final class ASFiltersHeaderView: ASDisplayNode {
     func removeSoftUIEffectForView() {
         self.clipsToBounds = true
     }
-
-
 }
 
 extension ASFiltersHeaderView: Decoratable {

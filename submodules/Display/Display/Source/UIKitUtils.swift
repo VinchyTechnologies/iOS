@@ -15,7 +15,7 @@ extension UIColor {
     }
 }
 
-public protocol Reusable: class {
+public protocol Reusable: AnyObject {
     static var reuseId: String { get }
 }
 
@@ -54,7 +54,7 @@ public protocol Decoratable {
 public extension UIApplication {
 
     var asKeyWindow: UIWindow? {
-        return UIApplication.shared.connectedScenes
+        UIApplication.shared.connectedScenes
             .filter({$0.activationState == .foregroundActive})
             .map({$0 as? UIWindowScene})
             .compactMap({$0})

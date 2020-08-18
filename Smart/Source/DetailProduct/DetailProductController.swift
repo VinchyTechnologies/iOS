@@ -15,24 +15,66 @@ import Database
 
 final class DetailProductController: ASDKViewController<DetailProductNode>, Alertable {
 
-    // MARK: - Private Properties
+    private var wine: Wine? {
+        didSet {
+            guard let wine = wine else { return }
+            decorate(wine: wine)
+        }
+    }
 
-    private let wine: Wine
     private let emailService = EmailService()
-    private let dataBase = Database<Wine>()
+    private let dataBase = Database<DBWine>()
 
-    // MARK: - Initializers
-
-    init(wine: Wine) {
+    init(wineID: Int64) {
         let node = DetailProductNode()
-        self.wine = wine
         super.init(node: node)
+        loadWineInfo(wineID: wineID)
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(didTapNotes))
 
         node.delegate = self
         node.view.delegate = self
 
+        node.view.setContentOffset(.zero, animated: true)
+        edgesForExtendedLayout = []
+    }
+
+    required init?(coder: NSCoder) { fatalError() }
+
+    override func loadView() {
+        super.loadView()
+        view.backgroundColor = .mainBackground
+    }
+
+    @objc private func didTapNotes() {
+
+        guard let wine = wine else { return }
+        let controller = WriteMessageController()
+        
+        if let note = realm(path: .notes).objects(Note.self).first(where: { $0.wineID == wine.id }) {
+            controller.note = note
+            controller.subject = note.title
+            controller.body = note.fullReview
+        } else {
+            controller.wine = wine
+        }
+
+        controller.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(controller, animated: true)
+    }
+
+    private func loadWineInfo(wineID: Int64) {
+        Wines.shared.getDetailWine(wineID: wineID) { [weak self] result in
+            switch result {
+            case .success(let wine):
+                self?.wine = wine
+            case .failure(let error):
+                self?.showAlert(message: error.localizedDescription)
+            }
+        }
+    }
+
+    private func decorate(wine: Wine) {
         let arg1 = [String(wine.mainImageUrl)]
         let arg2 = [String(wine.labelImageUrl)]
         let imageURLs = (arg1 + arg2 + Array(wine.imageURLs)).map { (str) -> String? in
@@ -52,47 +94,24 @@ final class DetailProductController: ASDKViewController<DetailProductNode>, Aler
         }
 
         let dishCompatibility = Array(wine.dishCompatibility).map { (dish) -> CaruselFilterNodeViewModel.CaruselFilterItem in
-            return .init(title: dish, imageName: DishCompatibility(rawValue: dish)?.imageName)
+            return .init(title: dish.rawValue, imageName: DishCompatibility(rawValue: dish.rawValue)?.imageName)
         }
-
 
         node.decorate(model: .init(imageURLs: imageURLs.compactMap({ $0 }),
                                    title: wine.title,
                                    description: wine.desc,
-                                   isFavourite: dataBase.isSaved(object: wine, type: Wine.self, at: .like),
-                                   isDisliked: dataBase.isSaved(object: wine, type: Wine.self, at: .dislike),
-                                   price: wine.price.toPrice(), // TODO: - Price
+                                   isFavourite: true,/*dataBase.isSaved(object: wine, type: Wine.self, at: .like)*/
+                                   isDisliked: true,/*dataBase.isSaved(object: wine, type: Wine.self, at: .dislike)*/
+                                   price: /*wine.price.toPrice()*/"123 p", // TODO: - Price
             options:options,
             dishCompatibility: dishCompatibility, place: wine.place))
-
-        node.view.setContentOffset(.zero, animated: true)
-        edgesForExtendedLayout = []
-    }
-
-    required init?(coder: NSCoder) { fatalError() }
-
-    // MARK: - Lifecycle
-
-    override func loadView() {
-        super.loadView()
-        view.backgroundColor = .mainBackground
-    }
-
-    @objc private func didTapNotes() {
-        let controller = WriteMessageController()
-        controller.product = wine
-        let note = realm(path: .notes).object(ofType: Note.self, forPrimaryKey: wine.id)
-        controller.subject = note?.title
-        controller.body = note?.fullReview
-        controller.hidesBottomBarWhenPushed = true
-        navigationController?.pushViewController(controller, animated: true)
     }
 }
 
 extension DetailProductController: UIScrollViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y > 300 {
-            self.navigationItem.title = self.wine.title
+            self.navigationItem.title = self.wine?.title
         } else {
             self.navigationItem.title = nil
         }
@@ -102,38 +121,37 @@ extension DetailProductController: UIScrollViewDelegate {
 extension DetailProductController: DetailProductNodeDelegate {
 
     func didTapDislikeNode() {
-        if dataBase.isSaved(object: wine, type: Wine.self, at: .dislike) {
-            dataBase.remove(object: wine, type: Wine.self, at: .dislike)
-        } else {
-            dataBase.add(object: wine, type: Wine.self, at: .dislike)
-        }
+        guard let wine = wine else { return }
+//        if dataBase.isSaved(object: wine, type: Wine.self, at: .dislike) {
+//            dataBase.remove(object: wine, type: Wine.self, at: .dislike)
+//        } else {
+//            dataBase.add(object: wine, type: Wine.self, at: .dislike)
+//        }
     }
 
     func didTapLikeNode() {
-        if dataBase.isSaved(object: wine, type: Wine.self, at: .like) {
-            dataBase.remove(object: wine, type: Wine.self, at: .like)
-        } else {
-            dataBase.add(object: wine, type: Wine.self, at: .like)
-        }
+        guard let wine = wine else { return }
+//        if dataBase.isSaved(object: wine, type: Wine.self, at: .like) {
+//            dataBase.remove(object: wine, type: Wine.self, at: .like)
+//        } else {
+//            dataBase.add(object: wine, type: Wine.self, at: .like)
+//        }
     }
 
     func didTapShareNode() {
+        guard let wine = wine else { return }
         let items = [wine.title]
         let controller = UIActivityViewController(activityItems: items, applicationActivities: nil)
         present(controller, animated: true)
     }
 
-    func didTapPriceNode() {
-//        dismiss(animated: true) {
-//            self.saveToCart(product: self.product)
-//        }
-    }
+    func didTapPriceNode() { }
 
 
     func didTapReportError() {
+        guard let wine = wine else { return }
         if emailService.canSend {
-            let vc = emailService.getEmailController(HTMLText: wine.title,
-                                                     recipients: [localized("contact_email")])
+            let vc = emailService.getEmailController(HTMLText: wine.title, recipients: [localized("contact_email")])
             navigationController?.present(vc, animated: true, completion: nil)
         } else {
             showAlert(message: "Возникла ошибка при открытии почты") // TODO: - Localize

@@ -11,6 +11,7 @@ import Foundation
 private enum WinesEndpoint: EndpointProtocol {
 
     case random(count: Int)
+    case detail(wineID: Int64)
     case filter(param: [(String, String)])
 
     var host: String {
@@ -19,22 +20,27 @@ private enum WinesEndpoint: EndpointProtocol {
 
     var path: String {
         switch self {
+        case .detail(let wineID):
+            return "/wines/" + String(wineID)
         case .random:
             return "/random_wines"
         case .filter:
             return "/wines"
+
         }
     }
 
     var method: HTTPMethod {
         switch self {
-        case .random, .filter:
+        case .detail, .random, .filter:
             return .get
         }
     }
 
     var parameters: Parameters? {
         switch self {
+        case .detail:
+            return nil
         case .random(let count):
             return [("count", String(count))]
         case .filter(let params):
@@ -51,6 +57,10 @@ public final class Wines {
     public static let shared = Wines()
 
     public init() { }
+
+    public func getDetailWine(wineID: Int64, completion: @escaping (Result<Core.Wine, APIError>) -> Void) {
+        api.request(endpoint: WinesEndpoint.detail(wineID: wineID), completion: completion)
+    }
 
     public func getRandomWines(count: Int, completion: @escaping (Result<[Core.Wine], APIError>) -> Void) {
         api.request(endpoint: WinesEndpoint.random(count: count), completion: completion)

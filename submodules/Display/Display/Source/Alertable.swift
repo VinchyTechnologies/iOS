@@ -15,10 +15,10 @@ public protocol Alertable: UIViewController {
 
 extension Alertable {
     public func showAlert(title: String = localized("error").firstLetterUppercased(), message: String) {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.view.tintColor = .accent
-        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
         DispatchQueue.main.async {
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+            alertController.view.tintColor = .accent
+            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
             self.present(alertController, animated: true, completion: nil)
         }
     }

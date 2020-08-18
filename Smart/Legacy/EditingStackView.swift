@@ -57,18 +57,12 @@ public struct EditingStackViewModel : ViewModelProtocol {
 
 final public class EditingStackView: UIView {
 
-    // MARK: - Public Properties
-
     public lazy var textField = UITextField()
     public lazy var bottomButton = UIButton()
     public lazy var forgotButton = UIButton()
 
-    // MARK: - Private Properties
-
     private let stackView = UIStackView()
     private let topLabel = UILabel()
-
-    // MARK: - Initializers
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -91,8 +85,6 @@ final public class EditingStackView: UIView {
     }
 
     required init?(coder: NSCoder) { fatalError() }
-
-    // MARK: - Private Methods
 
     private func buildPhoneViews() {
         stackView.addArrangedSubview(UIView())

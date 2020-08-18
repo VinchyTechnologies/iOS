@@ -25,6 +25,7 @@ public struct FilterItem: Decodable {
 }
 
 public func loadFilters() -> [Filter] {
+    
     guard let filePath = Bundle.main.path(forResource: "filters", ofType: "json") else {
         return []
     }

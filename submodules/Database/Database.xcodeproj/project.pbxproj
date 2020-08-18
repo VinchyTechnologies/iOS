@@ -11,6 +11,8 @@
 		CA015C1E24C57E03008DF01D /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA015C1D24C57E03008DF01D /* Database.swift */; };
 		CA1821F624C0F48600280DD4 /* Database.h in Headers */ = {isa = PBXBuildFile; fileRef = CA1821F424C0F48600280DD4 /* Database.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CA18220224C0F71600280DD4 /* FilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18220124C0F71600280DD4 /* FilePath.swift */; };
+		CA57581424E58DDC00907A33 /* Wine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA57581324E58DDC00907A33 /* Wine.swift */; };
+		CA57581624E5C78900907A33 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA57581524E5C78900907A33 /* Note.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +23,8 @@
 		CA1821F424C0F48600280DD4 /* Database.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
 		CA1821F524C0F48600280DD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA18220124C0F71600280DD4 /* FilePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePath.swift; sourceTree = "<group>"; };
+		CA57581324E58DDC00907A33 /* Wine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wine.swift; sourceTree = "<group>"; };
+		CA57581524E5C78900907A33 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		E97CC42C2210AA0AF2B6824B /* Pods-Database.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Database.debug.xcconfig"; path = "Target Support Files/Pods-Database/Pods-Database.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,6 +91,8 @@
 			children = (
 				CA18220124C0F71600280DD4 /* FilePath.swift */,
 				CA015C1D24C57E03008DF01D /* Database.swift */,
+				CA57581324E58DDC00907A33 /* Wine.swift */,
+				CA57581524E5C78900907A33 /* Note.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -199,6 +205,8 @@
 			files = (
 				CA015C1E24C57E03008DF01D /* Database.swift in Sources */,
 				CA18220224C0F71600280DD4 /* FilePath.swift in Sources */,
+				CA57581424E58DDC00907A33 /* Wine.swift in Sources */,
+				CA57581624E5C78900907A33 /* Note.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

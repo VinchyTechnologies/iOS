@@ -125,7 +125,9 @@ final class MainViewController: ASDKViewController<MainNode>, Alertable {
     private func fetchData() {
         Compilations.shared.getCompilations { [weak self] result in
             self?.dispatchWorkItemHud.cancel()
-            self?.hud.dismiss(animated: false)
+            DispatchQueue.main.async {
+                self?.hud.dismiss(animated: false)
+            }
             switch result {
             case .success(let model):
                 self?.compilations = model
@@ -292,7 +294,7 @@ extension MainViewController: ASTableDelegate, UITableViewDelegate {
             return
         }
 
-        navigationController?.pushViewController(Assembly.buildDetailModule(wine: product), animated: true)
+        navigationController?.pushViewController(Assembly.buildDetailModule(wineID: product.id), animated: true)
 
         tableNode.deselectRow(at: indexPath, animated: false)
     }
@@ -310,7 +312,7 @@ extension MainViewController: ASTableDelegate, UITableViewDelegate {
             return
         }
 
-        self.navigationController?.pushViewController(Assembly.buildDetailModule(wine: product), animated: true)
+        self.navigationController?.pushViewController(Assembly.buildDetailModule(wineID: product.id), animated: true)
         tableView.deselectRow(at: indexPath, animated: false)
     }
 }
@@ -323,7 +325,7 @@ extension MainViewController: MainViewControllerCellDelegate {
             navigationController?.pushViewController(Assembly.buildShowcaseModule(navTitle: collection?.title, wines: collection?.wineList ?? [], fromFilter: false), animated: true)
         } else if collection?.transition == "detail_wine" {
             guard let wine = collection?.wineList[safe: itemIndexPath.row] else { return }
-            self.navigationController?.pushViewController(Assembly.buildDetailModule(wine: wine), animated: true)
+            self.navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wine.id), animated: true)
         }
     }
 }

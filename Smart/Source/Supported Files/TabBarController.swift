@@ -42,8 +42,8 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
         let profile = Assembly.buildProfileModule()
         profile.tabBarItem = UITabBarItem(title: localized("info"), image: /*UIImage(systemName: "person")*/ UIImage(systemName: "circle.grid.3x3", withConfiguration: imageConfig), selectedImage: nil)
 
-        let somelier = Assembly.buildSomelierModule()
-        somelier.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "rectangle.stack"), selectedImage: nil)
+//        let somelier = Assembly.buildSomelierModule()
+//        somelier.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "rectangle.stack"), selectedImage: nil)
 
         [main, love, notes, profile].forEach { (controller) in
             controller.tabBarItem.titlePositionAdjustment = .init(horizontal: 0, vertical: -3)

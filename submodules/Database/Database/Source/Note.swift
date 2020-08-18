@@ -1,8 +1,8 @@
 //
 //  Note.swift
-//  Core
+//  Database
 //
-//  Created by Aleksei Smirnov on 18.07.2020.
+//  Created by Aleksei Smirnov on 13.08.2020.
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
@@ -11,7 +11,9 @@ import RealmSwift
 public final class Note: Object, HasPrimaryKeyID {
 
     @objc public dynamic var id: Int64 = 0
-    @objc public dynamic var product: Wine!
+    @objc public dynamic var wineID: Int64 = 0
+    @objc public dynamic var wineTitle: String = ""
+    @objc public dynamic var wineMainImageURL: String = ""
     @objc public dynamic var title: String = ""
     @objc public dynamic var fullReview: String = ""
 
@@ -19,10 +21,12 @@ public final class Note: Object, HasPrimaryKeyID {
         return myPrimaryKey()
     }
 
-    public convenience init(id: String? = nil, product: Wine, title: String, fullReview: String) {
+    public convenience init(id: Int64, wineID: Int64, wineTitle: String, wineMainImageURL: String, title: String, fullReview: String) {
         self.init()
-        self.id = product.id
-        self.product = product
+        self.id = id
+        self.wineID = wineID
+        self.wineTitle = wineTitle
+        self.wineMainImageURL = wineMainImageURL
         self.title = title
         self.fullReview = fullReview
     }

@@ -13,8 +13,8 @@ import Core
 
 final class Assembly {
 
-    static func buildDetailModule(wine: Wine) -> UIViewController {
-        let controller = DetailProductController(wine: wine)
+    static func buildDetailModule(wineID: Int64) -> UIViewController {
+        let controller = DetailProductController(wineID: wineID)
         controller.hidesBottomBarWhenPushed = true
         controller.extendedLayoutIncludesOpaqueBars = true
         return controller
@@ -73,10 +73,10 @@ final class Assembly {
         UIApplication.topViewController()?.present(navController, animated: true, completion: nil)
     }
 
-    static func buildSomelierModule() -> NavigationController {
-        let controller = SomeliersViewController()
-        let navController = NavigationController(rootViewController: controller)
-        controller.title = "Experts" // TODO: - Localize
-        return navController
-    }
+//    static func buildSomelierModule() -> NavigationController {
+//        let controller = SomeliersViewController()
+//        let navController = NavigationController(rootViewController: controller)
+//        controller.title = "Experts" // TODO: - Localize
+//        return navController
+//    }
 }

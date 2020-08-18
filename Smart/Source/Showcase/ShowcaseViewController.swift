@@ -84,17 +84,14 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate {
         if let collectionView = collectionView {
             view.addSubview(collectionView)
 
-//            collectionView.contentInset = .init(top: /*Constants.filtersHeaderViewHeight*/0, left: 0, bottom: 0, right: 0)
-//            collectionView.scrollIndicatorInsets = .init(top: /*Constants.filtersHeaderViewHeight*/0, left: 0, bottom: 0, right: 0)
             collectionView.dataSource = self
             collectionView.delegate = self
             collectionView.backgroundColor = .clear
             collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
             collectionView.register(WineCollectionViewCell.self,
-                                    forCellWithReuseIdentifier: WineCollectionViewCell.description())
+                                    forCellWithReuseIdentifier: WineCollectionViewCell.reuseId)
             collectionView.register(HeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderReusableView.description())
             collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: UICollectionReusableView.description())
-
 
             filtersHeaderView.view.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: Constants.filtersHeaderViewHeight)
             view.addSubview(filtersHeaderView.view)
@@ -113,7 +110,7 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate {
     private func showErrorView() {
         let errorView = ErrorView(frame: view.frame)
         errorView.delegate = self
-        errorView.configure(title: "Что-то пошло не так :(", description: "Нет сети", buttonText: "Обновить")
+        errorView.configure(title: "Что-то пошло не так :(", description: "Нет сети", buttonText: "Обновить") // TODO: - localize
         collectionView?.backgroundView = errorView
     }
 
@@ -132,8 +129,6 @@ extension ShowcaseViewController: ErrorViewDelegate {
 
 }
 
-// MARK: - UICollectionViewDataSource
-
 extension ShowcaseViewController: UICollectionViewDataSource {
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -145,7 +140,7 @@ extension ShowcaseViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.description(), for: indexPath) as? WineCollectionViewCell,
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as? WineCollectionViewCell,
             let wine = categoryItems[safe: indexPath.section]?.wines[safe: indexPath.row] {
             cell.decorate(model: .init(imageURL: wine.mainImageUrl, title: wine.title, subtitle: wine.desc))
             return cell
@@ -219,13 +214,11 @@ extension ShowcaseViewController: UICollectionViewDataSource {
 
 }
 
-// MARK: - UICollectionViewDelegateFlowLayout
-
 extension ShowcaseViewController: UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let wine = categoryItems[safe: indexPath.section]?.wines[safe: indexPath.row] else { return }
-        navigationController?.pushViewController(Assembly.buildDetailModule(wine: wine), animated: true)
+        navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wine.id), animated: true)
     }
 
 }

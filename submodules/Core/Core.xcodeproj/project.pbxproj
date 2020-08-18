@@ -16,7 +16,6 @@
 		CA4AED9F24CED4AC00035922 /* AppBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4AED9E24CED4AC00035922 /* AppBundle.swift */; };
 		CABDBA7F24C2F7A800AD96D6 /* Core.h in Headers */ = {isa = PBXBuildFile; fileRef = CABDBA7D24C2F7A800AD96D6 /* Core.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CABDBA8E24C2FC9B00AD96D6 /* Wine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABDBA8D24C2FC9B00AD96D6 /* Wine.swift */; };
-		CABDBA9124C30E7A00AD96D6 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABDBA9024C30E7A00AD96D6 /* Note.swift */; };
 		CABDBA9424C31E4E00AD96D6 /* CollectionExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABDBA9324C31E4E00AD96D6 /* CollectionExt.swift */; };
 		CACC1DC424C5F6C80082BD01 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACC1DC324C5F6C80082BD01 /* Filter.swift */; };
 		CACC1DE624C74F780082BD01 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACC1DE524C74F780082BD01 /* Collection.swift */; };
@@ -43,7 +42,6 @@
 		CABDBA7D24C2F7A800AD96D6 /* Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Core.h; sourceTree = "<group>"; };
 		CABDBA7E24C2F7A800AD96D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CABDBA8D24C2FC9B00AD96D6 /* Wine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wine.swift; sourceTree = "<group>"; };
-		CABDBA9024C30E7A00AD96D6 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		CABDBA9324C31E4E00AD96D6 /* CollectionExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionExt.swift; sourceTree = "<group>"; };
 		CACC1DC324C5F6C80082BD01 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		CACC1DE524C74F780082BD01 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
@@ -88,6 +86,29 @@
 			path = ../../Pods;
 			sourceTree = "<group>";
 		};
+		CA57581724E5CF6400907A33 /* ServiceModels */ = {
+			isa = PBXGroup;
+			children = (
+				CABDBA8D24C2FC9B00AD96D6 /* Wine.swift */,
+				CACC1DE524C74F780082BD01 /* Collection.swift */,
+				CAEA19BC24C9F19E00EF0871 /* WinePlace.swift */,
+				CAEA19C024C9F52D00EF0871 /* WineColor.swift */,
+				CA27087724CF5CA6007580D8 /* Compilation.swift */,
+				CAEA19BE24C9F37E00EF0871 /* Sugar.swift */,
+				CAEA19BA24C9EFA000EF0871 /* DishCompatibility.swift */,
+			);
+			path = ServiceModels;
+			sourceTree = "<group>";
+		};
+		CA57581824E5CFCE00907A33 /* APIService */ = {
+			isa = PBXGroup;
+			children = (
+				CAEA19B324C980A400EF0871 /* API.swift */,
+				CAEA19B824C9810500EF0871 /* EndpointProtocol.swift */,
+			);
+			path = APIService;
+			sourceTree = "<group>";
+		};
 		CABDBA7024C2F7A800AD96D6 = {
 			isa = PBXGroup;
 			children = (
@@ -119,21 +140,13 @@
 		CABDBA8524C2F7EF00AD96D6 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				CA57581824E5CFCE00907A33 /* APIService */,
+				CA57581724E5CF6400907A33 /* ServiceModels */,
 				CAEA19B524C980CE00EF0871 /* Endpoints */,
-				CABDBA8D24C2FC9B00AD96D6 /* Wine.swift */,
-				CABDBA9024C30E7A00AD96D6 /* Note.swift */,
 				CABDBA9324C31E4E00AD96D6 /* CollectionExt.swift */,
 				CAF24AF624C32E470057547F /* OpenURLProtocol.swift */,
 				CACC1DC324C5F6C80082BD01 /* Filter.swift */,
-				CACC1DE524C74F780082BD01 /* Collection.swift */,
-				CAEA19B324C980A400EF0871 /* API.swift */,
-				CAEA19B824C9810500EF0871 /* EndpointProtocol.swift */,
-				CAEA19BA24C9EFA000EF0871 /* DishCompatibility.swift */,
-				CAEA19BC24C9F19E00EF0871 /* WinePlace.swift */,
-				CAEA19BE24C9F37E00EF0871 /* Sugar.swift */,
-				CAEA19C024C9F52D00EF0871 /* WineColor.swift */,
 				CA4AED9E24CED4AC00035922 /* AppBundle.swift */,
-				CA27087724CF5CA6007580D8 /* Compilation.swift */,
 				CA27087B24CFF39B007580D8 /* Array.swift */,
 				CA2E796224D5ECAC00F17725 /* UserDefaults.swift */,
 			);
@@ -258,7 +271,6 @@
 			files = (
 				CABDBA8E24C2FC9B00AD96D6 /* Wine.swift in Sources */,
 				CACC1DC424C5F6C80082BD01 /* Filter.swift in Sources */,
-				CABDBA9124C30E7A00AD96D6 /* Note.swift in Sources */,
 				CA4AED9F24CED4AC00035922 /* AppBundle.swift in Sources */,
 				CAEA19B924C9810500EF0871 /* EndpointProtocol.swift in Sources */,
 				CA27087A24CF6E37007580D8 /* Wines.swift in Sources */,

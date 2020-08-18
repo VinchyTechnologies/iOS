@@ -15,8 +15,6 @@ import Database
 
 final class NotesViewController: UIViewController {
 
-    // MARK: - Private Properties
-
     private let tableView = UITableView()
     private lazy var notesRealm = realm(path: .notes)
     let dataBase = Database<Note>()
@@ -37,19 +35,15 @@ final class NotesViewController: UIViewController {
         }
     }
 
-    // MARK: - Initializers
-
     init() {
         super.init(nibName: nil, bundle: nil)
 
         notesNotificationToken = notesRealm.observe { notification, realm in
-            self.notes = self.dataBase.all(type: Note.self, at: .notes)
+            self.notes = self.dataBase.all(at: .notes)
         }
     }
 
     required init?(coder: NSCoder) { fatalError() }
-
-    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,14 +58,12 @@ final class NotesViewController: UIViewController {
         tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
         tableView.register(WineTableCell.self, forCellReuseIdentifier: WineTableCell.reuseId)
 
-        notes = dataBase.all(type: Note.self, at: .notes)
+        notes = dataBase.all(at: .notes)
     }
 
     deinit {
         notesNotificationToken?.invalidate()
     }
-
-    // MARK: - Private Methods
 
     private func hideEmptyView() {
         tableView.backgroundView = nil
@@ -96,7 +88,7 @@ extension NotesViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: WineTableCell.reuseId) as? WineTableCell,
             let note = notes[safe: indexPath.row] {
-            cell.decorate(model: .init(imageURL: note.product.mainImageUrl, title: note.product.title, subtitle: note.title))
+            cell.decorate(model: .init(imageURL: note.wineMainImageURL, title: note.wineTitle, subtitle: note.title))
             return cell
         }
         return UITableViewCell()
@@ -111,8 +103,8 @@ extension NotesViewController: UITableViewDataSource {
 
             alert.addAction(UIAlertAction(title: localized("delete"), style: .destructive , handler:{ [weak self] _ in
                 guard let self = self else { return }
-                self.dataBase.remove(object: note, type: Note.self, at: .notes)
-                self.notes = self.dataBase.all(type: Note.self, at: .notes)
+                self.dataBase.remove(object: note, at: .notes)
+                self.notes = self.dataBase.all(at: .notes)
             }))
 
             alert.addAction(UIAlertAction(title: localized("cancel"), style: .cancel, handler: nil))
@@ -133,7 +125,7 @@ extension NotesViewController: UITableViewDelegate {
         guard let note = notes[safe: indexPath.row] else { return }
         let writeMessageController = WriteMessageController()
         writeMessageController.hidesBottomBarWhenPushed = true
-        writeMessageController.product = note.product
+        writeMessageController.note = note
         writeMessageController.subject = note.title
         writeMessageController.body = note.fullReview
         navigationController?.pushViewController(writeMessageController, animated: true)

@@ -18,11 +18,11 @@ struct TopSecretPreferences: Decodable {
 }
 
 func getTopSecretPreferences() -> TopSecretPreferences? {
-    if  let path        = Bundle.main.path(forResource: "TopSecret", ofType: "plist"),
-        let xml         = FileManager.default.contents(atPath: path),
+    if let path = Bundle.main.path(forResource: "TopSecret", ofType: "plist"),
+        let xml = FileManager.default.contents(atPath: path),
         let preferences = try? PropertyListDecoder().decode(TopSecretPreferences.self, from: xml) {
         return preferences
     }
-
+    
     return nil
 }

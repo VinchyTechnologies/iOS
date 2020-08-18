@@ -10,10 +10,12 @@ import UIKit
 import Display
 import Core
 import Database
+import RealmSwift
 
 final class WriteMessageController: UIViewController {
 
-    var product: Wine?
+    var note: Note?
+    var wine: Wine?
     var subject: String?
     var body: String?
 
@@ -42,7 +44,7 @@ final class WriteMessageController: UIViewController {
         super.viewDidLoad()
 
         navigationItem.title = "Заметка" // TODO: - localize
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(sentMessage))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
 
         view.addSubview(tableView)
         NSLayoutConstraint.activate([
@@ -64,22 +66,20 @@ final class WriteMessageController: UIViewController {
         })
     }
 
-    @objc private func sentMessage() {
+    @objc private func save() {
 
         guard let title = subject, !title.isEmpty else { return }
-        guard let product = product else { return }
 
-        if isNoted(product: product) {
-
+        if let note = note {
             try! realm(path: .notes).write {
-                let note = realm(path: .notes).object(ofType: Note.self, forPrimaryKey: product.id)
-                note?.title = title
-                note?.fullReview = body ?? ""
+                note.title = title
+                note.fullReview = body ?? ""
             }
+        }
 
-        } else {
-            let note = Note(product: product, title: title, fullReview: body ?? "")
-            dataBase.add(object: note, type: Note.self, at: .notes)
+        if let wine = wine {
+            let note = Note(id: dataBase.incrementID(path: .notes), wineID: wine.id, wineTitle: wine.title, wineMainImageURL: wine.mainImageUrl, title: title, fullReview: body ?? "")
+            dataBase.add(object: note, at: .notes)
         }
         
         navigationController?.popViewController(animated: true)

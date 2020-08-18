@@ -19,41 +19,41 @@ public final class Database<T: Object> {
 
     public init() { }
 
-    public func incrementID(object: HasPrimaryKeyID, type: T.Type, path: RealmType) -> Int64 {
-        return (realm(path: path).objects(type).max(ofProperty: "id") as Int64? ?? 0) + 1
+    public func incrementID(path: RealmType) -> Int64 {
+        return (realm(path: path).objects(T.self).max(ofProperty: "id") as Int64? ?? 0) + 1
     }
 
-    public func isSaved(object: HasPrimaryKeyID, type: T.Type, at path: RealmType) -> Bool {
-        return realm(path: path).object(ofType: type, forPrimaryKey: object.id) != nil
+    public func isSaved(object: HasPrimaryKeyID, at path: RealmType) -> Bool {
+        return realm(path: path).object(ofType: T.self, forPrimaryKey: object.id) != nil
     }
 
-    public func isEmpty(type: T.Type, at path: RealmType) -> Bool {
-        return !realm(path: path).objects(type).isEmpty
+    public func isEmpty(at path: RealmType) -> Bool {
+        return !realm(path: path).objects(T.self).isEmpty
     }
 
-    public func all(type: T.Type, at path: RealmType) -> [T] {
-        let objs = realm(path: path).objects(type)
+    public func all(at path: RealmType) -> [T] {
+        let objs = realm(path: path).objects(T.self)
         return Array<T>(objs)
     }
 
-    public func add(object: HasPrimaryKeyID, type: T.Type, at path: RealmType) {
+    public func add(object: HasPrimaryKeyID, at path: RealmType) {
         try! realm(path: path).write {
             realm(path: path).add(object, update: .all)
         }
     }
 
-    public func remove(object: HasPrimaryKeyID, type: T.Type, at path: RealmType) {
-        let deletingObject = realm(path: path).objects(type).filter("id = %@", object.id)
+    public func remove(object: HasPrimaryKeyID, at path: RealmType) {
+        let deletingObject = realm(path: path).objects(T.self).filter("id = %@", object.id)
         try! realm(path: path).write {
             realm(path: path).delete(deletingObject)
         }
     }
 
-    public func addOrDelete(object: HasPrimaryKeyID, type: T.Type, at path: RealmType) {
-        if isSaved(object: object, type: type, at: path) {
-            remove(object: object, type: type, at: path)
+    public func addOrRemove(object: HasPrimaryKeyID, at path: RealmType) {
+        if isSaved(object: object, at: path) {
+            remove(object: object, at: path)
         } else {
-            add(object: object, type: type, at: path)
+            add(object: object, at: path)
         }
     }
 

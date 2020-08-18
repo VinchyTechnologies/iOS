@@ -34,22 +34,17 @@ final class MainMiniNode: ASCellNode {
         static let titleInset: CGFloat = 12
     }
 
-    // MARK: - Private Properties
-
     private let model: MainMiniNodeViewModel
     private let imageNode = ASNetworkImageNode()
     private let titleLabel = UILabel()
-
-    // MARK: - Initializers
 
     init(_ model: MainMiniNodeViewModel) {
         self.model = model
         super.init()
 
-
         layer.cornerRadius = Constants.cornerRadius
         clipsToBounds = true
-        backgroundColor = .mainColor
+        backgroundColor = .option
         style.width = .init(unit: .points, value: Constants.width)
 
         addSubnode(imageNode)

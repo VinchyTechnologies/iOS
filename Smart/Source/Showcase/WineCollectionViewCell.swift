@@ -16,7 +16,7 @@ struct WineCollectionViewCellViewModel: ViewModelProtocol {
     let subtitle: String?
 }
 
-final class WineCollectionViewCell: UICollectionViewCell {
+final class WineCollectionViewCell: UICollectionViewCell, Reusable {
 
     public let background = UIView()
 
