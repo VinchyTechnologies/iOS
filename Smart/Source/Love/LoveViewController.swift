@@ -73,8 +73,6 @@ final class LoveViewController: UIViewController {
         }
     }
 
-    // MARK: - Initializers
-
     init() {
         super.init(nibName: nil, bundle: nil)
         collectionView.dataSource = self
@@ -95,8 +93,6 @@ final class LoveViewController: UIViewController {
     }
 
     required init?(coder: NSCoder) { fatalError() }
-
-    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -150,7 +146,7 @@ extension LoveViewController: UICollectionViewDataSource {
 extension LoveViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let wine = wines[safe: indexPath.row] else { return }
-//        navigationController?.pushViewController(Assembly.buildDetailModule(wine: wine), animated: true)
+        navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wine.wineID), animated: true)
     }
 }
 

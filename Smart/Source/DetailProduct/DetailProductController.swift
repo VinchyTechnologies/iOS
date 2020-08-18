@@ -97,12 +97,15 @@ final class DetailProductController: ASDKViewController<DetailProductNode>, Aler
             return .init(title: dish.rawValue, imageName: DishCompatibility(rawValue: dish.rawValue)?.imageName)
         }
 
+        let isFavourite = realm(path: .like).objects(DBWine.self).first(where: { $0.wineID == wine.id }) != nil
+        let isDisliked = realm(path: .dislike).objects(DBWine.self).first(where: { $0.wineID == wine.id }) != nil
+
         node.decorate(model: .init(imageURLs: imageURLs.compactMap({ $0 }),
                                    title: wine.title,
                                    description: wine.desc,
-                                   isFavourite: true,/*dataBase.isSaved(object: wine, type: Wine.self, at: .like)*/
-                                   isDisliked: true,/*dataBase.isSaved(object: wine, type: Wine.self, at: .dislike)*/
-                                   price: /*wine.price.toPrice()*/"123 p", // TODO: - Price
+                                   isFavourite: isFavourite,
+                                   isDisliked: isDisliked,
+                                   price: formatCurrencyAmount(wine.price, currency: "USD"), // TODO: - Price
             options:options,
             dishCompatibility: dishCompatibility, place: wine.place))
     }
@@ -122,20 +125,20 @@ extension DetailProductController: DetailProductNodeDelegate {
 
     func didTapDislikeNode() {
         guard let wine = wine else { return }
-//        if dataBase.isSaved(object: wine, type: Wine.self, at: .dislike) {
-//            dataBase.remove(object: wine, type: Wine.self, at: .dislike)
-//        } else {
-//            dataBase.add(object: wine, type: Wine.self, at: .dislike)
-//        }
+        if let dbWine = realm(path: .dislike).objects(DBWine.self).first(where: { $0.wineID == wine.id }) {
+            dataBase.remove(object: dbWine, at: .dislike)
+        } else {
+            dataBase.add(object: DBWine(id: dataBase.incrementID(path: .dislike), wineID: wine.id, mainImageUrl: wine.mainImageUrl, title: wine.title), at: .dislike)
+        }
     }
 
     func didTapLikeNode() {
         guard let wine = wine else { return }
-//        if dataBase.isSaved(object: wine, type: Wine.self, at: .like) {
-//            dataBase.remove(object: wine, type: Wine.self, at: .like)
-//        } else {
-//            dataBase.add(object: wine, type: Wine.self, at: .like)
-//        }
+        if let dbWine = realm(path: .like).objects(DBWine.self).first(where: { $0.wineID == wine.id }) {
+            dataBase.remove(object: dbWine, at: .like)
+        } else {
+            dataBase.add(object: DBWine(id: dataBase.incrementID(path: .like), wineID: wine.id, mainImageUrl: wine.mainImageUrl, title: wine.title), at: .like)
+        }
     }
 
     func didTapShareNode() {
@@ -146,7 +149,6 @@ extension DetailProductController: DetailProductNodeDelegate {
     }
 
     func didTapPriceNode() { }
-
 
     func didTapReportError() {
         guard let wine = wine else { return }

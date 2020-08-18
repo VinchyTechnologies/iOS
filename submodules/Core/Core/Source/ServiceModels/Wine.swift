@@ -14,7 +14,7 @@ public final class Wine: Decodable {
     public let imageURLs: [String]
     public let title: String
     public let desc: String
-    public let price: Int
+    public let price: Int64
     public let alcoholPercent: Double
     public let servingTemperature: Double
     public let dishCompatibility: [DishCompatibility]
@@ -51,7 +51,7 @@ public final class Wine: Decodable {
         let imageURLs = (try? container.decodeIfPresent([String].self, forKey: .imageURLs)) ?? []
         let title = (try? container.decodeIfPresent(String.self, forKey: .title)) ?? ""
         let desc = (try? container.decodeIfPresent(String.self, forKey: .desc)) ?? ""
-        let price = (try? container.decodeIfPresent(Int.self, forKey: .price)) ?? 0
+        let price = (try? container.decodeIfPresent(Int64.self, forKey: .price)) ?? 0
         let alcoholPercent = (try? container.decodeIfPresent(Double.self, forKey: .alcoholPercent)) ?? 0.0
         let servingTemperature = (try? container.decodeIfPresent(Double.self, forKey: .servingTemperature)) ?? 0.0
         let dishCompatibility = (try? container.decodeIfPresent([DishCompatibility].self, forKey: .dishCompatibility)) ?? []
