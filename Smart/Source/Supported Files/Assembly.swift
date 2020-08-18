@@ -9,7 +9,7 @@
 import SwiftUI
 import StringFormatting
 import Display
-import Core
+import VinchyCore
 
 final class Assembly {
 
@@ -72,11 +72,4 @@ final class Assembly {
         navController.modalPresentationStyle = .fullScreen
         UIApplication.topViewController()?.present(navController, animated: true, completion: nil)
     }
-
-//    static func buildSomelierModule() -> NavigationController {
-//        let controller = SomeliersViewController()
-//        let navController = NavigationController(rootViewController: controller)
-//        controller.title = "Experts" // TODO: - Localize
-//        return navController
-//    }
 }

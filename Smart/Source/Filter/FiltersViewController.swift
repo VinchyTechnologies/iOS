@@ -11,6 +11,7 @@ import StringFormatting
 import Core
 import CommonUI
 import Display
+import VinchyCore
 
 final class FiltersViewController: ASDKViewController<FiltersNode>, Alertable {
 

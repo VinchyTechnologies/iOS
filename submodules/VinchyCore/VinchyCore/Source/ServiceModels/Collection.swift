@@ -1,8 +1,8 @@
 //
 //  Collection.swift
-//  Core
+//  VinchyCore
 //
-//  Created by Aleksei Smirnov on 21.07.2020.
+//  Created by Aleksei Smirnov on 18.08.2020.
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
@@ -11,7 +11,7 @@ public enum CollectionType: String, Decodable {
 }
 
 public struct Collection: Decodable {
-    
+
     public let id: Int
     public let title: String?
     public let type: CollectionType

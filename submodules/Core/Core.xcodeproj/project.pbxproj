@@ -8,50 +8,26 @@
 
 /* Begin PBXBuildFile section */
 		5FFB4DF1C25BB618C8519B44 /* Pods_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F36A03A8E0CC5435C60647 /* Pods_Core.framework */; };
-		CA27087624CF5C40007580D8 /* Compilations.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27087524CF5C40007580D8 /* Compilations.swift */; };
-		CA27087824CF5CA6007580D8 /* Compilation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27087724CF5CA6007580D8 /* Compilation.swift */; };
-		CA27087A24CF6E37007580D8 /* Wines.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27087924CF6E37007580D8 /* Wines.swift */; };
 		CA27087C24CFF39B007580D8 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27087B24CFF39B007580D8 /* Array.swift */; };
 		CA2E796324D5ECAC00F17725 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2E796224D5ECAC00F17725 /* UserDefaults.swift */; };
 		CA4AED9F24CED4AC00035922 /* AppBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4AED9E24CED4AC00035922 /* AppBundle.swift */; };
 		CABDBA7F24C2F7A800AD96D6 /* Core.h in Headers */ = {isa = PBXBuildFile; fileRef = CABDBA7D24C2F7A800AD96D6 /* Core.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CABDBA8E24C2FC9B00AD96D6 /* Wine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABDBA8D24C2FC9B00AD96D6 /* Wine.swift */; };
 		CABDBA9424C31E4E00AD96D6 /* CollectionExt.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABDBA9324C31E4E00AD96D6 /* CollectionExt.swift */; };
 		CACC1DC424C5F6C80082BD01 /* Filter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACC1DC324C5F6C80082BD01 /* Filter.swift */; };
-		CACC1DE624C74F780082BD01 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACC1DE524C74F780082BD01 /* Collection.swift */; };
-		CAEA19B424C980A400EF0871 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA19B324C980A400EF0871 /* API.swift */; };
-		CAEA19B724C980E000EF0871 /* Collections.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA19B624C980E000EF0871 /* Collections.swift */; };
-		CAEA19B924C9810500EF0871 /* EndpointProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA19B824C9810500EF0871 /* EndpointProtocol.swift */; };
-		CAEA19BB24C9EFA000EF0871 /* DishCompatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA19BA24C9EFA000EF0871 /* DishCompatibility.swift */; };
-		CAEA19BD24C9F19E00EF0871 /* WinePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA19BC24C9F19E00EF0871 /* WinePlace.swift */; };
-		CAEA19BF24C9F37E00EF0871 /* Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA19BE24C9F37E00EF0871 /* Sugar.swift */; };
-		CAEA19C124C9F52D00EF0871 /* WineColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEA19C024C9F52D00EF0871 /* WineColor.swift */; };
 		CAF24AF724C32E470057547F /* OpenURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF24AF624C32E470057547F /* OpenURLProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		697BF7A2F7EED885735CDEA9 /* Pods-Core.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.debug.xcconfig"; path = "Target Support Files/Pods-Core/Pods-Core.debug.xcconfig"; sourceTree = "<group>"; };
 		7B9A38AAE808F29C35EC006F /* Pods-Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.release.xcconfig"; path = "Target Support Files/Pods-Core/Pods-Core.release.xcconfig"; sourceTree = "<group>"; };
-		CA27087524CF5C40007580D8 /* Compilations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Compilations.swift; sourceTree = "<group>"; };
-		CA27087724CF5CA6007580D8 /* Compilation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Compilation.swift; sourceTree = "<group>"; };
-		CA27087924CF6E37007580D8 /* Wines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wines.swift; sourceTree = "<group>"; };
 		CA27087B24CFF39B007580D8 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		CA2E796224D5ECAC00F17725 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		CA4AED9E24CED4AC00035922 /* AppBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBundle.swift; sourceTree = "<group>"; };
 		CABDBA7A24C2F7A800AD96D6 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CABDBA7D24C2F7A800AD96D6 /* Core.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Core.h; sourceTree = "<group>"; };
 		CABDBA7E24C2F7A800AD96D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CABDBA8D24C2FC9B00AD96D6 /* Wine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wine.swift; sourceTree = "<group>"; };
 		CABDBA9324C31E4E00AD96D6 /* CollectionExt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionExt.swift; sourceTree = "<group>"; };
 		CACC1DC324C5F6C80082BD01 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
-		CACC1DE524C74F780082BD01 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
-		CAEA19B324C980A400EF0871 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
-		CAEA19B624C980E000EF0871 /* Collections.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collections.swift; sourceTree = "<group>"; };
-		CAEA19B824C9810500EF0871 /* EndpointProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointProtocol.swift; sourceTree = "<group>"; };
-		CAEA19BA24C9EFA000EF0871 /* DishCompatibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCompatibility.swift; sourceTree = "<group>"; };
-		CAEA19BC24C9F19E00EF0871 /* WinePlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinePlace.swift; sourceTree = "<group>"; };
-		CAEA19BE24C9F37E00EF0871 /* Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sugar.swift; sourceTree = "<group>"; };
-		CAEA19C024C9F52D00EF0871 /* WineColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineColor.swift; sourceTree = "<group>"; };
 		CAF24AF624C32E470057547F /* OpenURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenURLProtocol.swift; sourceTree = "<group>"; };
 		D0F36A03A8E0CC5435C60647 /* Pods_Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -86,29 +62,6 @@
 			path = ../../Pods;
 			sourceTree = "<group>";
 		};
-		CA57581724E5CF6400907A33 /* ServiceModels */ = {
-			isa = PBXGroup;
-			children = (
-				CABDBA8D24C2FC9B00AD96D6 /* Wine.swift */,
-				CACC1DE524C74F780082BD01 /* Collection.swift */,
-				CAEA19BC24C9F19E00EF0871 /* WinePlace.swift */,
-				CAEA19C024C9F52D00EF0871 /* WineColor.swift */,
-				CA27087724CF5CA6007580D8 /* Compilation.swift */,
-				CAEA19BE24C9F37E00EF0871 /* Sugar.swift */,
-				CAEA19BA24C9EFA000EF0871 /* DishCompatibility.swift */,
-			);
-			path = ServiceModels;
-			sourceTree = "<group>";
-		};
-		CA57581824E5CFCE00907A33 /* APIService */ = {
-			isa = PBXGroup;
-			children = (
-				CAEA19B324C980A400EF0871 /* API.swift */,
-				CAEA19B824C9810500EF0871 /* EndpointProtocol.swift */,
-			);
-			path = APIService;
-			sourceTree = "<group>";
-		};
 		CABDBA7024C2F7A800AD96D6 = {
 			isa = PBXGroup;
 			children = (
@@ -140,9 +93,6 @@
 		CABDBA8524C2F7EF00AD96D6 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				CA57581824E5CFCE00907A33 /* APIService */,
-				CA57581724E5CF6400907A33 /* ServiceModels */,
-				CAEA19B524C980CE00EF0871 /* Endpoints */,
 				CABDBA9324C31E4E00AD96D6 /* CollectionExt.swift */,
 				CAF24AF624C32E470057547F /* OpenURLProtocol.swift */,
 				CACC1DC324C5F6C80082BD01 /* Filter.swift */,
@@ -151,16 +101,6 @@
 				CA2E796224D5ECAC00F17725 /* UserDefaults.swift */,
 			);
 			path = Source;
-			sourceTree = "<group>";
-		};
-		CAEA19B524C980CE00EF0871 /* Endpoints */ = {
-			isa = PBXGroup;
-			children = (
-				CAEA19B624C980E000EF0871 /* Collections.swift */,
-				CA27087524CF5C40007580D8 /* Compilations.swift */,
-				CA27087924CF6E37007580D8 /* Wines.swift */,
-			);
-			path = Endpoints;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -269,24 +209,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CABDBA8E24C2FC9B00AD96D6 /* Wine.swift in Sources */,
 				CACC1DC424C5F6C80082BD01 /* Filter.swift in Sources */,
 				CA4AED9F24CED4AC00035922 /* AppBundle.swift in Sources */,
-				CAEA19B924C9810500EF0871 /* EndpointProtocol.swift in Sources */,
-				CA27087A24CF6E37007580D8 /* Wines.swift in Sources */,
-				CAEA19B724C980E000EF0871 /* Collections.swift in Sources */,
-				CACC1DE624C74F780082BD01 /* Collection.swift in Sources */,
-				CA27087624CF5C40007580D8 /* Compilations.swift in Sources */,
 				CA27087C24CFF39B007580D8 /* Array.swift in Sources */,
-				CAEA19BF24C9F37E00EF0871 /* Sugar.swift in Sources */,
-				CAEA19C124C9F52D00EF0871 /* WineColor.swift in Sources */,
 				CABDBA9424C31E4E00AD96D6 /* CollectionExt.swift in Sources */,
 				CA2E796324D5ECAC00F17725 /* UserDefaults.swift in Sources */,
-				CA27087824CF5CA6007580D8 /* Compilation.swift in Sources */,
 				CAF24AF724C32E470057547F /* OpenURLProtocol.swift in Sources */,
-				CAEA19BD24C9F19E00EF0871 /* WinePlace.swift in Sources */,
-				CAEA19BB24C9EFA000EF0871 /* DishCompatibility.swift in Sources */,
-				CAEA19B424C980A400EF0871 /* API.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

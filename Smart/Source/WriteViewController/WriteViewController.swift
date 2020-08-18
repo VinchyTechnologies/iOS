@@ -11,6 +11,7 @@ import Display
 import Core
 import Database
 import RealmSwift
+import VinchyCore
 
 final class WriteMessageController: UIViewController {
 

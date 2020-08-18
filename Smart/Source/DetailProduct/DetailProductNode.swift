@@ -10,7 +10,7 @@ import AsyncDisplayKit
 import Display
 import LocationUI
 import StringFormatting
-import Core
+import VinchyCore
 
 protocol DetailProductNodeDelegate: AnyObject {
     func didTapLikeNode()

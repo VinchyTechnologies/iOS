@@ -11,10 +11,10 @@ import SwiftUI
 import GoogleMobileAds
 import Vision
 import VisionKit
-import Core
 import Display
 import CommonUI
 import JGProgressHUD
+import VinchyCore
 
 protocol MainViewControllerCellDelegate: AnyObject {
     func didSelectCell(indexPath: IndexPath, itemIndexPath: IndexPath)

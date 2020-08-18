@@ -8,8 +8,8 @@
 
 import UIKit
 import RealmSwift
-import Core
 import CommonUI
+import VinchyCore
 
 final class ShowcaseViewController: UIViewController, UICollectionViewDelegate {
 

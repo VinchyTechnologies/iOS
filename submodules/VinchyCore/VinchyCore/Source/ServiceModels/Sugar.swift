@@ -1,8 +1,8 @@
 //
 //  Sugar.swift
-//  Core
+//  VinchyCore
 //
-//  Created by Aleksei Smirnov on 23.07.2020.
+//  Created by Aleksei Smirnov on 18.08.2020.
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 

@@ -6,7 +6,7 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import Core
+import VinchyCore
 
 struct CategoryItem: Decodable {
 

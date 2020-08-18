@@ -70,3 +70,7 @@ target 'EmailService' do
   project 'submodules/EmailService/EmailService'
 end
 
+target 'VinchyCore' do
+  project 'submodules/VinchyCore/VinchyCore'
+end
+

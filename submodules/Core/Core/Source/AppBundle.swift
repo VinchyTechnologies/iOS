@@ -8,16 +8,16 @@
 
 import Foundation
 
-struct TopSecretPreferences: Decodable {
+public struct TopSecretPreferences: Decodable {
 
-    let apiKey: String
+    public let apiKey: String
 
     private enum CodingKeys: String, CodingKey {
         case apiKey = "API_KEY"
     }
 }
 
-func getTopSecretPreferences() -> TopSecretPreferences? {
+public func getTopSecretPreferences() -> TopSecretPreferences? {
     if let path = Bundle.main.path(forResource: "TopSecret", ofType: "plist"),
         let xml = FileManager.default.contents(atPath: path),
         let preferences = try? PropertyListDecoder().decode(TopSecretPreferences.self, from: xml) {

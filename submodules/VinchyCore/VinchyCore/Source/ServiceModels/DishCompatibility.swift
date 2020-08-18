@@ -1,14 +1,13 @@
 //
 //  DishCompatibility.swift
-//  Core
+//  VinchyCore
 //
-//  Created by Aleksei Smirnov on 23.07.2020.
+//  Created by Aleksei Smirnov on 18.08.2020.
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import RealmSwift
-
-public enum DishCompatibility: String, Decodable, RealmCollectionValue {
+public enum DishCompatibility: String, Decodable {
+    
     case meat, fish, seafood, wildfowl, chicken, dessert, bakery, cheese, fruits
 
     public var imageName: String {

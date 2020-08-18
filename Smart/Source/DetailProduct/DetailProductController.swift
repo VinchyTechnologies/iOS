@@ -7,11 +7,11 @@
 //
 
 import AsyncDisplayKit
-import Core
 import EmailService
 import StringFormatting
 import Display
 import Database
+import VinchyCore
 
 final class DetailProductController: ASDKViewController<DetailProductNode>, Alertable {
 

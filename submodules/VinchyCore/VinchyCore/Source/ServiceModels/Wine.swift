@@ -1,8 +1,8 @@
 //
 //  Wine.swift
-//  Core
+//  VinchyCore
 //
-//  Created by Aleksei Smirnov on 18.07.2020.
+//  Created by Aleksei Smirnov on 18.08.2020.
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
@@ -81,4 +81,8 @@ public final class Wine: Decodable {
 
 public enum WineType: String, Decodable {
     case sparkling, quiet, none
+}
+
+public enum WineColor: String, Decodable {
+    case red, white, pink
 }

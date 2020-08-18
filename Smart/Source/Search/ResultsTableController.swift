@@ -8,7 +8,7 @@
 
 import UIKit
 import CommonUI
-import Core
+import VinchyCore
 
 final class ResultsTableController: UIViewController {
 

@@ -127,6 +127,8 @@
 		CA4EA6BB24BE3ACD00E6F0C4 /* currencies.json in Resources */ = {isa = PBXBuildFile; fileRef = CA4EA6BA24BE3ACD00E6F0C4 /* currencies.json */; };
 		CA63A12B249A23C100144320 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA63A129249A23C100144320 /* Localizable.strings */; };
 		CA63A133249BEF2100144320 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A132249BEF2100144320 /* WriteViewController.swift */; };
+		CA7B825D24EC750300991F24 /* VinchyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; };
+		CA7B825E24EC750300991F24 /* VinchyCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CAA07CA724A2A43300FE285A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CAA07CA624A2A43300FE285A /* GoogleService-Info.plist */; };
 		CAA07CAC24A34A3C00FE285A /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA07CAB24A34A3C00FE285A /* SubscriptionViewController.swift */; };
 		CAAD023A245EE7C500EDF245 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAD0239245EE7C500EDF245 /* EmailViewController.swift */; };
@@ -189,6 +191,7 @@
 			files = (
 				CAF24ACE24C323C90057547F /* StringFormatting.framework in Embed Frameworks */,
 				CA1821A524C0E83900280DD4 /* Display.framework in Embed Frameworks */,
+				CA7B825E24EC750300991F24 /* VinchyCore.framework in Embed Frameworks */,
 				CAF24AEC24C32AE90057547F /* CommonUI.framework in Embed Frameworks */,
 				CAF24B0F24C3311F0057547F /* LocationUI.framework in Embed Frameworks */,
 				CABDBA8824C2FAB800AD96D6 /* Core.framework in Embed Frameworks */,
@@ -335,6 +338,7 @@
 		CA63A12C249A244300144320 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA63A12D249A249300144320 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA63A132249BEF2100144320 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
+		CA7B825C24EC750300991F24 /* VinchyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAA07CA624A2A43300FE285A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CAA07CAB24A34A3C00FE285A /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
 		CAAD0239245EE7C500EDF245 /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
@@ -377,6 +381,7 @@
 				CA015C3624C582B2008DF01D /* EmailService.framework in Frameworks */,
 				CAF24AEB24C32AE90057547F /* CommonUI.framework in Frameworks */,
 				CAF24B0E24C3311F0057547F /* LocationUI.framework in Frameworks */,
+				CA7B825D24EC750300991F24 /* VinchyCore.framework in Frameworks */,
 				CA4AED9924CC380A00035922 /* Database.framework in Frameworks */,
 				CA1821A424C0E83900280DD4 /* Display.framework in Frameworks */,
 				CABDBA8724C2FAB800AD96D6 /* Core.framework in Frameworks */,
@@ -405,6 +410,7 @@
 		46483F371463D95E22014241 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CA7B825C24EC750300991F24 /* VinchyCore.framework */,
 				CA015C3524C582B2008DF01D /* EmailService.framework */,
 				CAF24B0D24C3311F0057547F /* LocationUI.framework */,
 				CAF24AEA24C32AE90057547F /* CommonUI.framework */,

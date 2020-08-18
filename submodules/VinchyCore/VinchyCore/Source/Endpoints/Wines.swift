@@ -1,12 +1,10 @@
 //
 //  Wines.swift
-//  Core
+//  VinchyCore
 //
-//  Created by Aleksei Smirnov on 27.07.2020.
+//  Created by Aleksei Smirnov on 18.08.2020.
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
-
-import Foundation
 
 private enum WinesEndpoint: EndpointProtocol {
 
@@ -58,15 +56,15 @@ public final class Wines {
 
     public init() { }
 
-    public func getDetailWine(wineID: Int64, completion: @escaping (Result<Core.Wine, APIError>) -> Void) {
+    public func getDetailWine(wineID: Int64, completion: @escaping (Result<Wine, APIError>) -> Void) {
         api.request(endpoint: WinesEndpoint.detail(wineID: wineID), completion: completion)
     }
 
-    public func getRandomWines(count: Int, completion: @escaping (Result<[Core.Wine], APIError>) -> Void) {
+    public func getRandomWines(count: Int, completion: @escaping (Result<[Wine], APIError>) -> Void) {
         api.request(endpoint: WinesEndpoint.random(count: count), completion: completion)
     }
 
-    public func getFilteredWines(params: [(String, String)], completion: @escaping (Result<[Core.Wine], APIError>) -> Void) {
+    public func getFilteredWines(params: [(String, String)], completion: @escaping (Result<[Wine], APIError>) -> Void) {
         api.request(endpoint: WinesEndpoint.filter(param: params), completion: completion)
     }
 

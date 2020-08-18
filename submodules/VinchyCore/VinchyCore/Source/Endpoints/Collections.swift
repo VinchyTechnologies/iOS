@@ -1,8 +1,8 @@
 //
 //  Collections.swift
-//  Core
+//  VinchyCore
 //
-//  Created by Aleksei Smirnov on 23.07.2020.
+//  Created by Aleksei Smirnov on 18.08.2020.
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
@@ -45,7 +45,7 @@ public final class Collections {
 
     public init() { }
 
-    public func getCollections(completion: @escaping (Result<[Core.Collection], APIError>) -> Void) {
+    public func getCollections(completion: @escaping (Result<[Collection], APIError>) -> Void) {
         api.request(endpoint: CollectionEndpoint.all, completion: completion)
     }
 

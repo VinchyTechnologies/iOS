@@ -8,7 +8,6 @@
 
 import UIKit
 import RealmSwift
-import Core
 import CommonUI
 import StringFormatting
 import Database
