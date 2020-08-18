@@ -76,7 +76,7 @@ final class LoveViewController: UIViewController {
         super.init(nibName: nil, bundle: nil)
         collectionView.dataSource = self
         collectionView.delegate = self
-        collectionView.register(WineCollectionViewCell.self, forCellWithReuseIdentifier: WineCollectionViewCell.description())
+        collectionView.register(WineCollectionViewCell.self, forCellWithReuseIdentifier: WineCollectionViewCell.reuseId)
 
         likeNotificationToken = likeRealm.observe { notification, realm in
             if self.currentState == .like {
@@ -135,7 +135,7 @@ extension LoveViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let wine = wines[safe: indexPath.row] else { return .init() }
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.description(), for: indexPath) as! WineCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as! WineCollectionViewCell
         cell.background.backgroundColor = .option
         cell.decorate(model: .init(imageURL: wine.mainImageUrl, title: wine.title, subtitle: String("wine.year")))
         return cell

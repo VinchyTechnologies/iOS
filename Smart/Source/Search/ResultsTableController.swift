@@ -12,8 +12,6 @@ import VinchyCore
 
 final class ResultsTableController: UIViewController {
 
-    // MARK: - Public Properties
-
     var didFoundProducts: [Wine] = [] {
         didSet {
             DispatchQueue.main.async {
@@ -23,8 +21,6 @@ final class ResultsTableController: UIViewController {
     }
 
     let tableView = UITableView()
-
-    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,7 +33,6 @@ final class ResultsTableController: UIViewController {
 
         tableView.register(WineTableCell.self, forCellReuseIdentifier: WineTableCell.reuseId)
         tableView.tableFooterView = UIView()
-
     }
 }
 

@@ -105,7 +105,7 @@ final class DetailProductController: ASDKViewController<DetailProductNode>, Aler
                                    description: wine.desc,
                                    isFavourite: isFavourite,
                                    isDisliked: isDisliked,
-                                   price: formatCurrencyAmount(wine.price, currency: "USD"), // TODO: - Price
+                                   price: formatCurrencyAmount(wine.price, currency: "RUB"), // TODO: - Price
             options:options,
             dishCompatibility: dishCompatibility, place: wine.place))
     }
