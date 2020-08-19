@@ -9,8 +9,11 @@
 import UIKit
 import CommonUI
 import VinchyCore
+import EmailService
 
 final class ResultsTableController: UIViewController {
+
+    weak var didnotFindTheWineTableCellDelegate: DidnotFindTheWineTableCellProtocol?
 
     var didFoundProducts: [Wine] = [] {
         didSet {
@@ -32,6 +35,7 @@ final class ResultsTableController: UIViewController {
         tableView.dataSource = self
 
         tableView.register(WineTableCell.self, forCellReuseIdentifier: WineTableCell.reuseId)
+        tableView.register(DidnotFindTheWineTableCell.self, forCellReuseIdentifier: DidnotFindTheWineTableCell.reuseId)
         tableView.tableFooterView = UIView()
     }
 }
@@ -39,10 +43,19 @@ final class ResultsTableController: UIViewController {
 extension ResultsTableController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        didFoundProducts.count
+        didFoundProducts.count == 0 ? 1 : didFoundProducts.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+
+        guard !didFoundProducts.isEmpty else {
+            if let cell = tableView.dequeueReusableCell(withIdentifier: DidnotFindTheWineTableCell.reuseId) as? DidnotFindTheWineTableCell {
+                cell.delegate = didnotFindTheWineTableCellDelegate
+                return cell
+            }
+            return .init()
+        }
+
         if let cell = tableView.dequeueReusableCell(withIdentifier: WineTableCell.reuseId) as? WineTableCell,
             let wine = didFoundProducts[safe: indexPath.row] {
             cell.decorate(model: .init(imageURL: wine.mainImageUrl, title: wine.title, subtitle: wine.desc))

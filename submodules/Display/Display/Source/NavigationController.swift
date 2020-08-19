@@ -6,9 +6,9 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
+import AsyncDisplayKit
 
-public final class NavigationController: UINavigationController {
+public final class NavigationController: ASNavigationController {
 
     // MARK: - Initializers
 

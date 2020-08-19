@@ -9,8 +9,9 @@
 import UIKit
 import Display
 import StringFormatting
+import AsyncDisplayKit
 
-final class TabBarController: UITabBarController, UITabBarControllerDelegate {
+final class TabBarController: ASTabBarController, UITabBarControllerDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -15,6 +15,9 @@ import Display
 import CommonUI
 import JGProgressHUD
 import VinchyCore
+import Core
+import EmailService
+import StringFormatting
 
 protocol MainViewControllerCellDelegate: AnyObject {
     func didSelectCell(indexPath: IndexPath, itemIndexPath: IndexPath)
@@ -27,7 +30,11 @@ final class MainViewController: ASDKViewController<MainNode>, Alertable {
         self.hud.show(in: self.node.view, animated: true)
     }
 
+    private let emailService = EmailService()
     private let hud = JGProgressHUD(style: .dark)
+
+    private lazy var searchWorkItem = WorkItem()
+    private var searchText: String?
 
     private var isSearchingMode: Bool = false {
         didSet {
@@ -72,32 +79,23 @@ final class MainViewController: ASDKViewController<MainNode>, Alertable {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .regular, scale: .default)
-
-//        let cameraBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "camera", withConfiguration: imageConfig), style: .plain, target: self, action: #selector(didTapCamera))
-
         let filterBarButtonItem = UIBarButtonItem(image: UIImage(named: "edit")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(didTapFilter))
 
         navigationItem.rightBarButtonItems = [filterBarButtonItem]
-//        navigationItem.leftBarButtonItems = [cameraBarButtonItem]
-
 
         searchController = UISearchController(searchResultsController: resultsTableController)
         searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchResultsUpdater = self
         searchController.searchBar.autocapitalizationType = .none
         searchController.searchBar.delegate = self
         searchController.searchBar.searchTextField.font = Font.medium(20)
-//        searchController.searchBar.searchTextField.attributedPlaceholder =
-//            NSAttributedString(string: "Search", attributes: [NSAttributedString.Key.foregroundColor: UIColor.blueGray])
+
         // TODO: - localize
-//        searchController.searchBar.searchTextField.leftView?.tintColor = .blueGray
         searchController.searchBar.searchTextField.layer.cornerRadius = 20
         searchController.searchBar.searchTextField.layer.masksToBounds = true
         searchController.searchBar.searchTextField.layer.cornerCurve = .continuous
 
-
         resultsTableController.tableView.delegate = self
+        resultsTableController.didnotFindTheWineTableCellDelegate = self
 
         navigationItem.searchController = searchController
 
@@ -120,6 +118,16 @@ final class MainViewController: ASDKViewController<MainNode>, Alertable {
         positionBannerViewFullWidthAtBottomOfSafeArea(adBanner)
 
         configureOCR()
+    }
+
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.hidesSearchBarWhenScrolling = false
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationItem.hidesSearchBarWhenScrolling = true
     }
 
     private func fetchData() {
@@ -320,7 +328,7 @@ extension MainViewController: ASTableDelegate, UITableViewDelegate {
 extension MainViewController: MainViewControllerCellDelegate {
     func didSelectCell(indexPath: IndexPath, itemIndexPath: IndexPath) {
         let collection = compilations[safe: indexPath.row]?.collectionList[safe: itemIndexPath.row]
-        searchController.isActive = false
+//        searchController.isActive = false
         if collection?.transition == "detail_collection" {
             navigationController?.pushViewController(Assembly.buildShowcaseModule(navTitle: collection?.title, wines: collection?.wineList ?? [], fromFilter: false), animated: true)
         } else if collection?.transition == "detail_wine" {
@@ -366,11 +374,23 @@ extension MainViewController: VNDocumentCameraViewControllerDelegate {
     }
 }
 
-extension MainViewController: UISearchBarDelegate, UISearchResultsUpdating {
+extension MainViewController: UISearchBarDelegate/*, UISearchResultsUpdating*/ {
 
-    func updateSearchResults(for searchController: UISearchController) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if let resultsController = searchController.searchResultsController as? ResultsTableController {
-            resultsController.didFoundProducts = []
+            searchWorkItem.perform(after: 0.65) {
+                guard searchText != "" else { return }
+                Wines.shared.getWineBy(title: searchText) { result in
+                    switch result {
+                    case .success(let wines):
+                        resultsController.didFoundProducts = wines
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                        // TODO: - error show may be???
+                        break
+                    }
+                }
+            }
         }
     }
 
@@ -384,5 +404,18 @@ extension MainViewController: UISearchBarDelegate, UISearchResultsUpdating {
 
     func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isSearchingMode = false
+    }
+}
+
+extension MainViewController: DidnotFindTheWineTableCellProtocol {
+
+    func didTapWriteUsButton(_ button: UIButton) {
+        // TODO: - localize
+        if emailService.canSend && searchText != nil {
+            let emailController = emailService.getEmailController(HTMLText: "Привет я не нашел вино с названием " + (searchText ?? ""), recipients: [localized("contact_email")])
+            present(emailController, animated: true, completion: nil)
+        } else {
+            showAlert(message: "Возникла ошибка при открытии почты")
+        }
     }
 }
