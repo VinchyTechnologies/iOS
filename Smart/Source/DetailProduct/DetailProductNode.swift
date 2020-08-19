@@ -20,7 +20,7 @@ protocol DetailProductNodeDelegate: AnyObject {
     func didTapDislikeNode()
 }
 
-struct DetailProductNodeViewModel : ViewModelProtocol {
+struct DetailProductNodeViewModel: ViewModelProtocol {
     let imageURLs: [String]
     let title: String?
     let description: String?
@@ -213,7 +213,7 @@ final class DetailProductNode: ASScrollNode {
     }
 }
 
-extension DetailProductNode : Decoratable {
+extension DetailProductNode: Decoratable {
 
     typealias ViewModel = DetailProductNodeViewModel
 
@@ -238,7 +238,7 @@ extension DetailProductNode : Decoratable {
 
         foodNode.decorate(model: .init(items: model.dishCompatibility))
 
-        layout()
+//        layout()
     }
 
 }

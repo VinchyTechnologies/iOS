@@ -74,3 +74,7 @@ target 'VinchyCore' do
   project 'submodules/VinchyCore/VinchyCore'
 end
 
+target 'VinchyUI' do
+  project 'submodules/VinchyUI/VinchyUI'
+end
+
