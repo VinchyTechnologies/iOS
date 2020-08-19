@@ -52,8 +52,6 @@ final class DetailProductNode: ASScrollNode {
 
     var viewModel: DetailProductNodeViewModel?
 
-    // MARK: - Initializers
-
     override init() {
         super.init()
 
