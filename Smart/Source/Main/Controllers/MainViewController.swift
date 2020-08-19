@@ -25,7 +25,7 @@ protocol MainViewControllerCellDelegate: AnyObject {
 
 final class MainViewController: ASDKViewController<MainNode>, Alertable {
 
-    lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
+    private lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
         guard let self = self else { return }
         self.hud.show(in: self.node.view, animated: true)
     }
@@ -61,8 +61,6 @@ final class MainViewController: ASDKViewController<MainNode>, Alertable {
     private var ocrRequest = VNRecognizeTextRequest(completionHandler: nil)
     private let textRecognitionWorkQueue = DispatchQueue(label: "MyVisionScannerQueue", qos: .userInitiated, attributes: [], autoreleaseFrequency: .workItem)
 
-    // MARK: - Initializers
-
     override init() {
         let node = MainNode()
         super.init(node: node)
@@ -73,8 +71,6 @@ final class MainViewController: ASDKViewController<MainNode>, Alertable {
     }
 
     required init?(coder: NSCoder) { fatalError() }
-
-    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -312,7 +308,6 @@ extension MainViewController: ASTableDelegate, UITableViewDelegate {
 
         let selectedProduct: Wine?
 
-        // Check to see which table view cell was selected.
         selectedProduct = resultsTableController.didFoundProducts[safe: indexPath.row]
 
         guard let product = selectedProduct else {
@@ -328,7 +323,6 @@ extension MainViewController: ASTableDelegate, UITableViewDelegate {
 extension MainViewController: MainViewControllerCellDelegate {
     func didSelectCell(indexPath: IndexPath, itemIndexPath: IndexPath) {
         let collection = compilations[safe: indexPath.row]?.collectionList[safe: itemIndexPath.row]
-//        searchController.isActive = false
         if collection?.transition == "detail_collection" {
             navigationController?.pushViewController(Assembly.buildShowcaseModule(navTitle: collection?.title, wines: collection?.wineList ?? [], fromFilter: false), animated: true)
         } else if collection?.transition == "detail_wine" {
