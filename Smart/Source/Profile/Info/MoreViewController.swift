@@ -127,8 +127,6 @@ extension MoreViewController: UITableViewDelegate {
     }
 }
 
-// MARK: - MoreViewProtocol
-
 extension MoreViewController: MoreViewProtocol {
     func presentAlert(message: String) {
         showAlert(message: message)
