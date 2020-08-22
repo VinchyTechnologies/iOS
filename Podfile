@@ -11,6 +11,7 @@ def commonPods
   pod 'Firebase/Analytics'
   pod 'Firebase/Firestore'
   pod 'JGProgressHUD'
+  pod 'FittedSheets'
 end
 
 def ads

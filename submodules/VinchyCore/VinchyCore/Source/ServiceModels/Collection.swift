@@ -15,7 +15,7 @@ public struct Collection: Decodable {
     public let id: Int
     public let title: String?
     public let type: CollectionType
-    public let transition: String
+    public let transition: CollectionTransitionType
     public let imageURL: String?
     public let wineList: [Wine]
 
@@ -27,4 +27,9 @@ public struct Collection: Decodable {
         case imageURL = "image_url"
         case wineList = "wine_list"
     }
+}
+
+public enum CollectionTransitionType: String, Decodable {
+    case detailCollection = "detail_collection"
+    case detailWine = "detail_wine"
 }

@@ -108,8 +108,6 @@ final class LoveViewController: UIViewController {
         dislikeNotificationToken?.invalidate()
     }
 
-    // MARK: - Private Methods
-
     private func hideEmptyView() {
         collectionView.backgroundView = nil
     }
@@ -125,7 +123,6 @@ final class LoveViewController: UIViewController {
     @objc private func switchToUnfavourite() {
         currentState = currentState == .like ? .dislike : .like
     }
-
 }
 
 extension LoveViewController: UICollectionViewDataSource {
@@ -137,7 +134,7 @@ extension LoveViewController: UICollectionViewDataSource {
         guard let wine = wines[safe: indexPath.row] else { return .init() }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as! WineCollectionViewCell
         cell.background.backgroundColor = .option
-        cell.decorate(model: .init(imageURL: wine.mainImageUrl, title: wine.title, subtitle: String("wine.year")))
+        cell.decorate(model: .init(imageURL: wine.mainImageUrl, title: wine.title, subtitle: nil))
         return cell
     }
 }

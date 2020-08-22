@@ -18,7 +18,7 @@ struct OptionsCollectionNodeViewModel: ViewModelProtocol {
     let options: [DetailOption]
 }
 
-final class OptionsCollectionNode : ASDisplayNode {
+final class OptionsCollectionNode: ASDisplayNode {
 
     var options: [DetailOption] = [] {
         didSet {

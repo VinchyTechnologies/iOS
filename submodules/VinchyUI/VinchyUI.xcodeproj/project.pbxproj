@@ -10,6 +10,7 @@
 		436D95B89069D13FA2518E17 /* Pods_VinchyUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCF416779C73875121645F1 /* Pods_VinchyUI.framework */; };
 		CA7B827424ED0B0400991F24 /* VinchyUI.h in Headers */ = {isa = PBXBuildFile; fileRef = CA7B827224ED0B0400991F24 /* VinchyUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CA7B827C24ED0D5800991F24 /* ViewSpecificController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B827B24ED0D5800991F24 /* ViewSpecificController.swift */; };
+		CA7B835E24EF00AA00991F24 /* VinchyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B835D24EF00AA00991F24 /* VinchyView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -20,6 +21,7 @@
 		CA7B827224ED0B0400991F24 /* VinchyUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VinchyUI.h; sourceTree = "<group>"; };
 		CA7B827324ED0B0400991F24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA7B827B24ED0D5800991F24 /* ViewSpecificController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSpecificController.swift; sourceTree = "<group>"; };
+		CA7B835D24EF00AA00991F24 /* VinchyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,9 +85,18 @@
 		CA7B827A24ED0B1500991F24 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				CA7B835C24EF007F00991F24 /* Vinchy */,
 				CA7B827B24ED0D5800991F24 /* ViewSpecificController.swift */,
 			);
 			path = Source;
+			sourceTree = "<group>";
+		};
+		CA7B835C24EF007F00991F24 /* Vinchy */ = {
+			isa = PBXGroup;
+			children = (
+				CA7B835D24EF00AA00991F24 /* VinchyView.swift */,
+			);
+			path = Vinchy;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -195,6 +206,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA7B827C24ED0D5800991F24 /* ViewSpecificController.swift in Sources */,
+				CA7B835E24EF00AA00991F24 /* VinchyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

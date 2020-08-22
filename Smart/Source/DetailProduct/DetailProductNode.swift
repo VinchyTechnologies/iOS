@@ -46,7 +46,7 @@ final class DetailProductNode: ASScrollNode {
     private let mapNode = URLImageNode()
     private let dislikeNode = ASButtonNode()
     private let tellAboutErrorNode = ASButtonNode()
-    private var bottlesNode: MainWineCellNode?
+//    private var bottlesNode: MainWineCellNode?
     private let tipsNode = ASTextNode()
     private let foodNode = CaruselFilterNode()
 
@@ -103,8 +103,6 @@ final class DetailProductNode: ASScrollNode {
         mapNode.decorate(model: .init(url: buildURL(55.7522200, 37.6155600,
                                              size: CGSize(width: UIScreen.main.bounds.width - 40, height: 100))))
 
-
-//        dislikeNode.style.spacingBefore = 20
         dislikeNode.borderColor = UIColor.dark.cgColor
         dislikeNode.borderWidth = 2
         dislikeNode.cornerRadius = 24
@@ -174,9 +172,9 @@ final class DetailProductNode: ASScrollNode {
 
         children += [dislikeNode, tellAboutErrorNode]
 
-        if let bottlesNode = bottlesNode {
-            children.append(bottlesNode)
-        }
+//        if let bottlesNode = bottlesNode {
+//            children.append(bottlesNode)
+//        }
 
         let vStack = ASStackLayoutSpec(direction: .vertical, spacing: 10, justifyContent: .start, alignItems: .stretch, children: children)
 
@@ -235,8 +233,6 @@ extension DetailProductNode: Decoratable {
         }
 
         foodNode.decorate(model: .init(items: model.dishCompatibility))
-
-//        layout()
     }
 
 }

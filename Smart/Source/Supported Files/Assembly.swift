@@ -27,7 +27,7 @@ final class Assembly {
     }
 
     static func buildMainModule() -> NavigationController {
-        let controller = MainViewController()
+        let controller = VinchyViewController()//MainViewController()
         controller.title = localized("explore").firstLetterUppercased()
         controller.extendedLayoutIncludesOpaqueBars = true
         let navController = NavigationController(rootViewController: controller)

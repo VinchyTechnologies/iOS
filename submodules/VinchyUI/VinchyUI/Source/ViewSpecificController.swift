@@ -8,11 +8,21 @@
 
 import UIKit
 
-public class ViewSpecificController<V: UIView>: UIViewController {
+//open class ViewSpecificController<V: UIView>: UIViewController {
+//
+//    public var rootView: V! { return (self.view as! V) }
+//
+//    override open func loadView() {
+//        self.view = V()
+//    }
+//}
 
-    public var rootView: V! { return (self.view as! V) }
+public protocol ViewSpecificController {
+    associatedtype RootView: UIView
+}
 
-    override open func loadView() {
-        self.view = V()
+public extension ViewSpecificController where Self: UIViewController {
+    func view() -> RootView {
+        return self.view as! RootView
     }
 }
