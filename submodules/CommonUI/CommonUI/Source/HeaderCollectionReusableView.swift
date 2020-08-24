@@ -20,8 +20,6 @@ public struct HeaderCollectionReusableViewModel: ViewModelProtocol {
 
 public final class HeaderCollectionReusableView: UICollectionReusableView, Reusable {
 
-    public static var reuseId: String = description()
-
     private let label = UILabel()
 
     public override init(frame: CGRect) {

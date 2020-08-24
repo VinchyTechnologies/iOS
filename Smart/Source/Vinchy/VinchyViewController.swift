@@ -164,8 +164,6 @@ final class VinchyViewController: UIViewController, Alertable {
         view.addSubview(adBanner)
         positionBannerViewFullWidthAtBottomOfSafeArea(adBanner)
 
-//        configureOCR()
-
         collectionView.backgroundColor = .mainBackground
         collectionView.register(StoryCollectionCell.self, WineCollectionViewCell.self, MainSubtitleCollectionCell.self, SuggestionCollectionCell.self)
 
@@ -284,7 +282,6 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
             case .bottles:
                 guard let collection = row.collectionList.first, let wine = collection.wineList[safe: indexPath.row] else { return .init()
                 }
-
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as! WineCollectionViewCell
                 cell.decorate(model: .init(imageURL: wine.mainImageUrl, title: wine.title, subtitle: nil))
                 cell.background.backgroundColor = .option

@@ -31,6 +31,12 @@ public extension Reusable where Self: UICollectionViewCell {
     }
 }
 
+public extension Reusable where Self: UICollectionReusableView {
+    static var reuseId: String {
+        return String(describing: self)
+    }
+}
+
 public extension UICollectionView {
 
     typealias ReusableCollectionViewCell = Reusable & UICollectionViewCell

@@ -14,7 +14,7 @@ import VinchyCore
 final class Assembly {
 
     static func buildDetailModule(wineID: Int64) -> UIViewController {
-        let controller = DetailProductController(wineID: wineID)
+        let controller = WineDetailViewController(wineID: wineID) //DetailProductController(wineID: wineID)
         controller.hidesBottomBarWhenPushed = true
         controller.extendedLayoutIncludesOpaqueBars = true
         return controller
@@ -27,7 +27,7 @@ final class Assembly {
     }
 
     static func buildMainModule() -> NavigationController {
-        let controller = VinchyViewController()//MainViewController()
+        let controller = VinchyViewController()
         controller.title = localized("explore").firstLetterUppercased()
         controller.extendedLayoutIncludesOpaqueBars = true
         let navController = NavigationController(rootViewController: controller)

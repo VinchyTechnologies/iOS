@@ -19,9 +19,7 @@ public struct VinchyFooterCollectionReusableViewModel: ViewModelProtocol {
 }
 
 public final class VinchyFooterCollectionReusableView: UICollectionReusableView, Reusable {
-
-    public static var reuseId: String = description()
-
+    
     private let label = UILabel()
 
     public override init(frame: CGRect) {

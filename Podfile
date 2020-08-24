@@ -12,6 +12,7 @@ def commonPods
   pod 'Firebase/Firestore'
   pod 'JGProgressHUD'
   pod 'FittedSheets'
+  pod 'FSPagerView'
 end
 
 def ads

@@ -129,6 +129,8 @@
 		CA7B836024EF109200991F24 /* MainSubtitleCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B835F24EF109200991F24 /* MainSubtitleCollectionCell.swift */; };
 		CA7B836224F0237100991F24 /* SuggestionCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B836124F0237100991F24 /* SuggestionCollectionCell.swift */; };
 		CA7B836624F13FFB00991F24 /* VinchyFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B836524F13FFB00991F24 /* VinchyFooterCollectionReusableView.swift */; };
+		CA7B838924F451FA00991F24 /* WineDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B838824F451FA00991F24 /* WineDetailViewController.swift */; };
+		CA7B838C24F4547B00991F24 /* GalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B838B24F4547B00991F24 /* GalleryCell.swift */; };
 		CAA07CA724A2A43300FE285A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CAA07CA624A2A43300FE285A /* GoogleService-Info.plist */; };
 		CAA07CAC24A34A3C00FE285A /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA07CAB24A34A3C00FE285A /* SubscriptionViewController.swift */; };
 		CAAD023A245EE7C500EDF245 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAD0239245EE7C500EDF245 /* EmailViewController.swift */; };
@@ -335,6 +337,8 @@
 		CA7B835F24EF109200991F24 /* MainSubtitleCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSubtitleCollectionCell.swift; sourceTree = "<group>"; };
 		CA7B836124F0237100991F24 /* SuggestionCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionCollectionCell.swift; sourceTree = "<group>"; };
 		CA7B836524F13FFB00991F24 /* VinchyFooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyFooterCollectionReusableView.swift; sourceTree = "<group>"; };
+		CA7B838824F451FA00991F24 /* WineDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineDetailViewController.swift; sourceTree = "<group>"; };
+		CA7B838B24F4547B00991F24 /* GalleryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCell.swift; sourceTree = "<group>"; };
 		CAA07CA624A2A43300FE285A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CAA07CAB24A34A3C00FE285A /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
 		CAAD0239245EE7C500EDF245 /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
@@ -701,6 +705,7 @@
 		CA472B2D245EDEC7009149FF /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				CA7B838724F451C700991F24 /* WineDetail */,
 				CA7B835624EED18500991F24 /* Vinchy */,
 				CA472B3F245EDEDB009149FF /* Supported Files */,
 				CA472B39245EDEDB009149FF /* Profile */,
@@ -823,6 +828,23 @@
 				CA7B835F24EF109200991F24 /* MainSubtitleCollectionCell.swift */,
 				CA7B836124F0237100991F24 /* SuggestionCollectionCell.swift */,
 				CA7B836524F13FFB00991F24 /* VinchyFooterCollectionReusableView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CA7B838724F451C700991F24 /* WineDetail */ = {
+			isa = PBXGroup;
+			children = (
+				CA7B838A24F4545A00991F24 /* Views */,
+				CA7B838824F451FA00991F24 /* WineDetailViewController.swift */,
+			);
+			path = WineDetail;
+			sourceTree = "<group>";
+		};
+		CA7B838A24F4545A00991F24 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CA7B838B24F4547B00991F24 /* GalleryCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1199,6 +1221,7 @@
 				CABB4C922497ECB7003E446D /* OptionsCollectionNode.swift in Sources */,
 				CA154E012494EA2B00696436 /* SenderType.swift in Sources */,
 				CA7B836624F13FFB00991F24 /* VinchyFooterCollectionReusableView.swift in Sources */,
+				CA7B838924F451FA00991F24 /* WineDetailViewController.swift in Sources */,
 				CA073FD824796D850067080C /* Stepper.swift in Sources */,
 				CA154DF02494EA2B00696436 /* MessageContentCell.swift in Sources */,
 				CA154DDD2494EA2B00696436 /* NSConstraintLayoutSet.swift in Sources */,
@@ -1293,6 +1316,7 @@
 				CA472B51245EDEDB009149FF /* NameLine.swift in Sources */,
 				CA154DE82494EA2B00696436 /* MessagesViewController+Keyboard.swift in Sources */,
 				CAF514272461C52400667ED0 /* SocialMediaCell.swift in Sources */,
+				CA7B838C24F4547B00991F24 /* GalleryCell.swift in Sources */,
 				CA154DCC2494EA2B00696436 /* MediaMessageSizeCalculator.swift in Sources */,
 				CA154D77249415A000696436 /* ChatViewController.swift in Sources */,
 				CA154DDE2494EA2B00696436 /* UIView+Extensions.swift in Sources */,
