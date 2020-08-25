@@ -131,6 +131,7 @@
 		CA7B836624F13FFB00991F24 /* VinchyFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B836524F13FFB00991F24 /* VinchyFooterCollectionReusableView.swift */; };
 		CA7B838924F451FA00991F24 /* WineDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B838824F451FA00991F24 /* WineDetailViewController.swift */; };
 		CA7B838C24F4547B00991F24 /* GalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B838B24F4547B00991F24 /* GalleryCell.swift */; };
+		CA99E65124F58A6000C36BEE /* ToolCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA99E65024F58A6000C36BEE /* ToolCollectionCell.swift */; };
 		CAA07CA724A2A43300FE285A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CAA07CA624A2A43300FE285A /* GoogleService-Info.plist */; };
 		CAA07CAC24A34A3C00FE285A /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA07CAB24A34A3C00FE285A /* SubscriptionViewController.swift */; };
 		CAAD023A245EE7C500EDF245 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAD0239245EE7C500EDF245 /* EmailViewController.swift */; };
@@ -339,6 +340,7 @@
 		CA7B836524F13FFB00991F24 /* VinchyFooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyFooterCollectionReusableView.swift; sourceTree = "<group>"; };
 		CA7B838824F451FA00991F24 /* WineDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineDetailViewController.swift; sourceTree = "<group>"; };
 		CA7B838B24F4547B00991F24 /* GalleryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCell.swift; sourceTree = "<group>"; };
+		CA99E65024F58A6000C36BEE /* ToolCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolCollectionCell.swift; sourceTree = "<group>"; };
 		CAA07CA624A2A43300FE285A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CAA07CAB24A34A3C00FE285A /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
 		CAAD0239245EE7C500EDF245 /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
@@ -845,6 +847,7 @@
 			isa = PBXGroup;
 			children = (
 				CA7B838B24F4547B00991F24 /* GalleryCell.swift */,
+				CA99E65024F58A6000C36BEE /* ToolCollectionCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1294,6 +1297,7 @@
 				CA4BDAAB2471892800CC59A8 /* DetailProductNode.swift in Sources */,
 				CA154DD02494EA2B00696436 /* MessageSizeCalculator.swift in Sources */,
 				CA154DD82494EA2B00696436 /* MessageKitError.swift in Sources */,
+				CA99E65124F58A6000C36BEE /* ToolCollectionCell.swift in Sources */,
 				CA154DEC2494EA2B00696436 /* LocationMessageCell.swift in Sources */,
 				CA154DDF2494EA2B00696436 /* UIEdgeInsets+Extensions.swift in Sources */,
 				CA154DCD2494EA2B00696436 /* AudioMessageSizeCalculator.swift in Sources */,

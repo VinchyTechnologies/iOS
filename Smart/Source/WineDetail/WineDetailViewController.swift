@@ -11,10 +11,13 @@ import Display
 import VinchyCore
 import Database
 import CommonUI
+import StringFormatting
 
 fileprivate enum Section {
     case gallery(urls: [String?])
     case title(text: String)
+    case tool(price: String?, isLiked: Bool)
+    case description(text: String)
 }
 
 final class WineDetailViewController: UIViewController, Alertable {
@@ -33,6 +36,12 @@ final class WineDetailViewController: UIViewController, Alertable {
 
             sections.append(.gallery(urls: imageURLs))
             sections.append(.title(text: wine.title))
+            // TODO: - isLiked, currency
+            sections.append(.tool(price: formatCurrencyAmount(wine.price, currency: "USD"), isLiked: true))
+
+            if wine.desc != "" {
+                sections.append(.description(text: wine.desc))
+            }
 
             self.sections = sections
         }
@@ -54,9 +63,15 @@ final class WineDetailViewController: UIViewController, Alertable {
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(300)), subitems: [item])
             let section = NSCollectionLayoutSection(group: group)
             return section
-        case .title(text: let text):
+        case .title, .description:
+            let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(44)))
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(44)), subitems: [item])
+            let section = NSCollectionLayoutSection(group: group)
+            section.contentInsets = .init(top: 15, leading: 20, bottom: 0, trailing: 20)
+            return section
+        case .tool:
             let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-            let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(20)), subitems: [item])
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50)), subitems: [item])
             let section = NSCollectionLayoutSection(group: group)
             section.contentInsets = .init(top: 15, leading: 20, bottom: 0, trailing: 20)
             return section
@@ -69,7 +84,7 @@ final class WineDetailViewController: UIViewController, Alertable {
         collectionView.backgroundColor = .mainBackground
         collectionView.dataSource = self
 
-        collectionView.register(GalleryCell.self, TextCollectionCell.self)
+        collectionView.register(GalleryCell.self, TextCollectionCell.self, ToolCollectionCell.self)
         return collectionView
     }()
 
@@ -138,6 +153,14 @@ extension WineDetailViewController: UICollectionViewDataSource {
         case .title(let text):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseId, for: indexPath) as! TextCollectionCell
             cell.decorate(model: .init(title: NSAttributedString(string: text, font: Font.heavy(20), textColor: .dark)))
+            return cell
+        case .tool(let price, let isLiked):
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ToolCollectionCell.reuseId, for: indexPath) as! ToolCollectionCell
+            cell.decorate(model: .init(price: price, isLiked: isLiked))
+            return cell
+        case .description(let text):
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseId, for: indexPath) as! TextCollectionCell
+            cell.decorate(model: .init(title: NSAttributedString(string: text, font: Font.light(18), textColor: .dark)))
             return cell
         }
     }
