@@ -13,11 +13,17 @@ import Database
 import CommonUI
 import StringFormatting
 
+fileprivate struct ShortInfoModel {
+    let title: String?
+    let subtitle: String?
+}
+
 fileprivate enum Section {
     case gallery(urls: [String?])
     case title(text: String)
     case tool(price: String?, isLiked: Bool)
     case description(text: String)
+    case shortInfo(info: [ShortInfoModel])
 }
 
 final class WineDetailViewController: UIViewController, Alertable {
@@ -41,6 +47,18 @@ final class WineDetailViewController: UIViewController, Alertable {
 
             if wine.desc != "" {
                 sections.append(.description(text: wine.desc))
+            }
+
+
+            var shortDescriptions: [ShortInfoModel] = []
+
+            // TODO: - All options
+            if wine.year != 0 {
+                shortDescriptions.append(.init(title: String(wine.year), subtitle: "Year"))
+            }
+
+            if !shortDescriptions.isEmpty {
+                sections.append(.shortInfo(info: shortDescriptions))
             }
 
             self.sections = sections
@@ -75,6 +93,13 @@ final class WineDetailViewController: UIViewController, Alertable {
             let section = NSCollectionLayoutSection(group: group)
             section.contentInsets = .init(top: 15, leading: 20, bottom: 0, trailing: 20)
             return section
+        case .shortInfo:
+            let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .estimated(180), heightDimension: .fractionalHeight(1)))
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .estimated(180), heightDimension: .absolute(100)), subitems: [item])
+            let section = NSCollectionLayoutSection(group: group)
+            section.orthogonalScrollingBehavior = .continuous
+            section.contentInsets = .init(top: 15, leading: 20, bottom: 0, trailing: 20)
+            return section
         }
         
     }
@@ -84,7 +109,7 @@ final class WineDetailViewController: UIViewController, Alertable {
         collectionView.backgroundColor = .mainBackground
         collectionView.dataSource = self
 
-        collectionView.register(GalleryCell.self, TextCollectionCell.self, ToolCollectionCell.self)
+        collectionView.register(GalleryCell.self, TextCollectionCell.self, ToolCollectionCell.self, ShortInfoCollectionCell.self)
         return collectionView
     }()
 
@@ -93,7 +118,8 @@ final class WineDetailViewController: UIViewController, Alertable {
 
         loadWineInfo(wineID: wineID)
 
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(didTapNotes))
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 22, weight: .medium, scale: .default)
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil", withConfiguration: imageConfig), style: .plain, target: self, action: #selector(didTapNotes))
         
     }
 
@@ -141,7 +167,12 @@ extension WineDetailViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        1
+        switch sections[section] {
+        case .gallery, .title, .tool, .description:
+            return 1
+        case .shortInfo(let info):
+            return info.count
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -161,6 +192,13 @@ extension WineDetailViewController: UICollectionViewDataSource {
         case .description(let text):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseId, for: indexPath) as! TextCollectionCell
             cell.decorate(model: .init(title: NSAttributedString(string: text, font: Font.light(18), textColor: .dark)))
+            return cell
+        case .shortInfo(let info):
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShortInfoCollectionCell.reuseId, for: indexPath) as! ShortInfoCollectionCell
+            let item = info[indexPath.row]
+            let title = NSAttributedString(string: item.title ?? "", font: Font.with(size: 24, design: .round, traits: .bold), textColor: .dark)
+            let subtitle = NSAttributedString(string: item.subtitle ?? "", font: Font.with(size: 18, design: .round, traits: .bold), textColor: .blueGray)
+            cell.decorate(model: .init(title: title, subtitle: subtitle))
             return cell
         }
     }
