@@ -9,9 +9,12 @@
 import UIKit
 import Display
 import VinchyCore
+import Database
+import CommonUI
 
 fileprivate enum Section {
     case gallery(urls: [String?])
+    case title(text: String)
 }
 
 final class WineDetailViewController: UIViewController, Alertable {
@@ -29,6 +32,7 @@ final class WineDetailViewController: UIViewController, Alertable {
             }
 
             sections.append(.gallery(urls: imageURLs))
+            sections.append(.title(text: wine.title))
 
             self.sections = sections
         }
@@ -50,6 +54,12 @@ final class WineDetailViewController: UIViewController, Alertable {
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(300)), subitems: [item])
             let section = NSCollectionLayoutSection(group: group)
             return section
+        case .title(text: let text):
+            let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(20)), subitems: [item])
+            let section = NSCollectionLayoutSection(group: group)
+            section.contentInsets = .init(top: 15, leading: 20, bottom: 0, trailing: 20)
+            return section
         }
         
     }
@@ -59,7 +69,7 @@ final class WineDetailViewController: UIViewController, Alertable {
         collectionView.backgroundColor = .mainBackground
         collectionView.dataSource = self
 
-        collectionView.register(GalleryCell.self)
+        collectionView.register(GalleryCell.self, TextCollectionCell.self)
         return collectionView
     }()
 
@@ -67,6 +77,8 @@ final class WineDetailViewController: UIViewController, Alertable {
         super.init(nibName: nil, bundle: nil)
 
         loadWineInfo(wineID: wineID)
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil"), style: .plain, target: self, action: #selector(didTapNotes))
         
     }
 
@@ -74,7 +86,6 @@ final class WineDetailViewController: UIViewController, Alertable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
         view.addSubview(collectionView)
         collectionView.frame = view.frame
     }
@@ -88,6 +99,23 @@ final class WineDetailViewController: UIViewController, Alertable {
                 self?.showAlert(message: error.localizedDescription)
             }
         }
+    }
+
+    @objc private func didTapNotes() {
+
+        guard let wine = wine else { return }
+        let controller = WriteMessageController()
+
+        if let note = realm(path: .notes).objects(Note.self).first(where: { $0.wineID == wine.id }) {
+            controller.note = note
+            controller.subject = note.title
+            controller.body = note.fullReview
+        } else {
+            controller.wine = wine
+        }
+
+        controller.hidesBottomBarWhenPushed = true
+        navigationController?.pushViewController(controller, animated: true)
     }
 }
 
@@ -106,6 +134,10 @@ extension WineDetailViewController: UICollectionViewDataSource {
         case .gallery(let urls):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GalleryCell.reuseId, for: indexPath) as! GalleryCell
             cell.decorate(model: .init(urls: urls))
+            return cell
+        case .title(let text):
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseId, for: indexPath) as! TextCollectionCell
+            cell.decorate(model: .init(title: NSAttributedString(string: text, font: Font.heavy(20), textColor: .dark)))
             return cell
         }
     }
