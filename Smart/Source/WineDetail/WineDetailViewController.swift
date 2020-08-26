@@ -12,11 +12,16 @@ import VinchyCore
 import Database
 import CommonUI
 import StringFormatting
+import EmailService
 
 fileprivate struct ShortInfoModel {
     let title: String?
     let subtitle: String?
 }
+
+//fileprivate struct TipsModel {
+//    let
+//}
 
 fileprivate enum Section {
     case gallery(urls: [String?])
@@ -24,9 +29,15 @@ fileprivate enum Section {
     case tool(price: String?, isLiked: Bool)
     case description(text: String)
     case shortInfo(info: [ShortInfoModel])
+    case button(ButtonCollectionCellViewModel)
 }
 
 final class WineDetailViewController: UIViewController, Alertable {
+
+    private let imageConfig = UIImage.SymbolConfiguration(pointSize: 22, weight: .medium, scale: .default)
+
+    private let dataBase = Database<DBWine>()
+    private let emailService = EmailService()
 
     private var wine: Wine? {
         didSet {
@@ -49,7 +60,6 @@ final class WineDetailViewController: UIViewController, Alertable {
                 sections.append(.description(text: wine.desc))
             }
 
-
             var shortDescriptions: [ShortInfoModel] = []
 
             // TODO: - All options
@@ -60,6 +70,10 @@ final class WineDetailViewController: UIViewController, Alertable {
             if !shortDescriptions.isEmpty {
                 sections.append(.shortInfo(info: shortDescriptions))
             }
+
+            sections.append(.button(.init(normalImage: UIImage(systemName: "heart.slash", withConfiguration: imageConfig), selectedImage: UIImage(systemName: "heart.slash.fill", withConfiguration: imageConfig), title: NSAttributedString(string: "Dislike", font: .boldSystemFont(ofSize: 18), textColor: .dark), type: .dislike)))
+
+            sections.append(.button(.init(normalImage: nil, selectedImage: nil, title: NSAttributedString(string: "Tell about error", font: .boldSystemFont(ofSize: 18), textColor: .dark), type: .reportAnError)))
 
             self.sections = sections
         }
@@ -100,6 +114,12 @@ final class WineDetailViewController: UIViewController, Alertable {
             section.orthogonalScrollingBehavior = .continuous
             section.contentInsets = .init(top: 15, leading: 20, bottom: 0, trailing: 20)
             return section
+        case .button:
+            let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(48)), subitems: [item])
+            let section = NSCollectionLayoutSection(group: group)
+            section.contentInsets = .init(top: 15, leading: 20, bottom: 0, trailing: 20)
+            return section
         }
         
     }
@@ -108,8 +128,9 @@ final class WineDetailViewController: UIViewController, Alertable {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
         collectionView.backgroundColor = .mainBackground
         collectionView.dataSource = self
+//        collectionView.delegate = self
 
-        collectionView.register(GalleryCell.self, TextCollectionCell.self, ToolCollectionCell.self, ShortInfoCollectionCell.self)
+        collectionView.register(GalleryCell.self, TextCollectionCell.self, ToolCollectionCell.self, ShortInfoCollectionCell.self, ButtonCollectionCell.self)
         return collectionView
     }()
 
@@ -117,8 +138,6 @@ final class WineDetailViewController: UIViewController, Alertable {
         super.init(nibName: nil, bundle: nil)
 
         loadWineInfo(wineID: wineID)
-
-        let imageConfig = UIImage.SymbolConfiguration(pointSize: 22, weight: .medium, scale: .default)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil", withConfiguration: imageConfig), style: .plain, target: self, action: #selector(didTapNotes))
         
     }
@@ -158,6 +177,26 @@ final class WineDetailViewController: UIViewController, Alertable {
         controller.hidesBottomBarWhenPushed = true
         navigationController?.pushViewController(controller, animated: true)
     }
+
+    private func didTapDislikeButton(_ button: UIButton) {
+        button.isSelected.toggle()
+        guard let wine = wine else { return }
+        if let dbWine = realm(path: .dislike).objects(DBWine.self).first(where: { $0.wineID == wine.id }) {
+            dataBase.remove(object: dbWine, at: .dislike)
+        } else {
+            dataBase.add(object: DBWine(id: dataBase.incrementID(path: .dislike), wineID: wine.id, mainImageUrl: wine.mainImageUrl, title: wine.title), at: .dislike)
+        }
+    }
+
+    private func didTapReportError() {
+        guard let wine = wine else { return }
+        if emailService.canSend {
+            let vc = emailService.getEmailController(HTMLText: wine.title, recipients: [localized("contact_email")])
+            navigationController?.present(vc, animated: true, completion: nil)
+        } else {
+            showAlert(message: "Возникла ошибка при открытии почты") // TODO: - Localize
+        }
+    }
 }
 
 extension WineDetailViewController: UICollectionViewDataSource {
@@ -168,7 +207,7 @@ extension WineDetailViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch sections[section] {
-        case .gallery, .title, .tool, .description:
+        case .gallery, .title, .tool, .description, .button:
             return 1
         case .shortInfo(let info):
             return info.count
@@ -200,6 +239,24 @@ extension WineDetailViewController: UICollectionViewDataSource {
             let subtitle = NSAttributedString(string: item.subtitle ?? "", font: Font.with(size: 18, design: .round, traits: .bold), textColor: .blueGray)
             cell.decorate(model: .init(title: title, subtitle: subtitle))
             return cell
+        case .button(let viewModel):
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ButtonCollectionCell.reuseId, for: indexPath) as! ButtonCollectionCell
+            cell.decorate(model: .init(normalImage: viewModel.normalImage, selectedImage: viewModel.selectedImage, title: viewModel.title, type: viewModel.type))
+            // TODO: - isSaved
+            cell.delegate = self
+            return cell
+        }
+    }
+
+}
+
+extension WineDetailViewController: ButtonCollectionCellDelegate {
+    func didTapButtonCollectionCell(_ button: UIButton, type: ButtonCollectionCellType) {
+        switch type {
+        case .dislike:
+            didTapDislikeButton(button)
+        case .reportAnError:
+            didTapReportError()
         }
     }
 }

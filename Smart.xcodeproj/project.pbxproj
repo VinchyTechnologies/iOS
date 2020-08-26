@@ -133,6 +133,7 @@
 		CA7B838C24F4547B00991F24 /* GalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B838B24F4547B00991F24 /* GalleryCell.swift */; };
 		CA99E65124F58A6000C36BEE /* ToolCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA99E65024F58A6000C36BEE /* ToolCollectionCell.swift */; };
 		CA99E65324F59CAA00C36BEE /* ShortInfoCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA99E65224F59CAA00C36BEE /* ShortInfoCollectionCell.swift */; };
+		CA99E65724F6EDDD00C36BEE /* ButtonCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA99E65624F6EDDD00C36BEE /* ButtonCollectionCell.swift */; };
 		CAA07CA724A2A43300FE285A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CAA07CA624A2A43300FE285A /* GoogleService-Info.plist */; };
 		CAA07CAC24A34A3C00FE285A /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA07CAB24A34A3C00FE285A /* SubscriptionViewController.swift */; };
 		CAAD023A245EE7C500EDF245 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAD0239245EE7C500EDF245 /* EmailViewController.swift */; };
@@ -343,6 +344,7 @@
 		CA7B838B24F4547B00991F24 /* GalleryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCell.swift; sourceTree = "<group>"; };
 		CA99E65024F58A6000C36BEE /* ToolCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolCollectionCell.swift; sourceTree = "<group>"; };
 		CA99E65224F59CAA00C36BEE /* ShortInfoCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortInfoCollectionCell.swift; sourceTree = "<group>"; };
+		CA99E65624F6EDDD00C36BEE /* ButtonCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCollectionCell.swift; sourceTree = "<group>"; };
 		CAA07CA624A2A43300FE285A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CAA07CAB24A34A3C00FE285A /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
 		CAAD0239245EE7C500EDF245 /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
@@ -851,6 +853,7 @@
 				CA7B838B24F4547B00991F24 /* GalleryCell.swift */,
 				CA99E65024F58A6000C36BEE /* ToolCollectionCell.swift */,
 				CA99E65224F59CAA00C36BEE /* ShortInfoCollectionCell.swift */,
+				CA99E65624F6EDDD00C36BEE /* ButtonCollectionCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1238,6 +1241,7 @@
 				CA154DC72494EA2B00696436 /* CellSizeCalculator.swift in Sources */,
 				CA154DFF2494EA2B00696436 /* AudioItem.swift in Sources */,
 				CA154D752494156C00696436 /* BasicExampleViewController.swift in Sources */,
+				CA99E65724F6EDDD00C36BEE /* ButtonCollectionCell.swift in Sources */,
 				CA154E072494EA2B00696436 /* MessagesDataSource.swift in Sources */,
 				CA154E062494EA2B00696436 /* MessagesDisplayDelegate.swift in Sources */,
 				CAF514282461C52400667ED0 /* DocCell.swift in Sources */,
