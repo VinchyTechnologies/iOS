@@ -14,3 +14,26 @@ public extension Array {
         return dict.values.map { Array<Element>($0) }
     }
 }
+
+public extension Array where Element == String? {
+
+    func toURLs() -> [URL]? {
+
+        var urls: [URL?] = []
+
+        self.forEach { (string) in
+            if string != nil && string != "" {
+                urls.append(URL(string: string!))
+            }
+        }
+
+        var urlArray: [URL] = []
+        urlArray = urls.compactMap({ $0 })
+
+        if urlArray.isEmpty {
+            return nil
+        }
+
+        return urlArray
+    }
+}
