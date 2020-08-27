@@ -297,7 +297,7 @@
 		CA3B1D5324A0A36300FAA08A /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		CA445F6C24BFA3C20023A09F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CA445F6E24BFA3CD0023A09F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		CA472ABC245EDE2F009149FF /* WineStyle.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WineStyle.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA472ABC245EDE2F009149FF /* Vinchy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Vinchy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA472ABF245EDE2F009149FF /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		CA472AC1245EDE2F009149FF /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		CA472AC8245EDE30009149FF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -672,7 +672,7 @@
 		CA472ABD245EDE2F009149FF /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				CA472ABC245EDE2F009149FF /* WineStyle.app */,
+				CA472ABC245EDE2F009149FF /* Vinchy.app */,
 				CA472AD2245EDE30009149FF /* SmartTests.xctest */,
 				CA472ADD245EDE30009149FF /* SmartUITests.xctest */,
 			);
@@ -987,7 +987,7 @@
 			);
 			name = Smart;
 			productName = Smart;
-			productReference = CA472ABC245EDE2F009149FF /* WineStyle.app */;
+			productReference = CA472ABC245EDE2F009149FF /* Vinchy.app */;
 			productType = "com.apple.product-type.application";
 		};
 		CA472AD1245EDE30009149FF /* SmartTests */ = {
@@ -1536,7 +1536,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.smirnov-development.Smart";
-				PRODUCT_NAME = WineStyle;
+				PRODUCT_NAME = Vinchy;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1555,7 +1555,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.smirnov-development.Smart";
-				PRODUCT_NAME = WineStyle;
+				PRODUCT_NAME = Vinchy;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

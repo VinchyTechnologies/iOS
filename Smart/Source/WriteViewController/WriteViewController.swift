@@ -79,7 +79,7 @@ final class WriteMessageController: UIViewController {
         }
 
         if let wine = wine {
-            let note = Note(id: dataBase.incrementID(path: .notes), wineID: wine.id, wineTitle: wine.title, wineMainImageURL: wine.mainImageUrl, title: title, fullReview: body ?? "")
+            let note = Note(id: dataBase.incrementID(path: .notes), wineID: wine.id, wineTitle: wine.title, wineMainImageURL: wine.mainImageUrl ?? "", title: title, fullReview: body ?? "")
             dataBase.add(object: note, at: .notes)
         }
         

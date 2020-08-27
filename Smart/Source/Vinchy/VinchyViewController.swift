@@ -287,7 +287,7 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
                 guard let collection = row.collectionList.first, let wine = collection.wineList[safe: indexPath.row] else { return .init()
                 }
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as! WineCollectionViewCell
-                cell.decorate(model: .init(imageURL: wine.mainImageUrl, title: wine.title, subtitle: nil))
+                cell.decorate(model: .init(imageURL: wine.mainImageUrl ?? "", title: wine.title, subtitle: nil))
                 cell.background.backgroundColor = .option
                 return cell
             }

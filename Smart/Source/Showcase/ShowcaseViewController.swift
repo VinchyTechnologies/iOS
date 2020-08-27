@@ -48,7 +48,7 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate {
         }
         navigationItem.title = navTitle
 
-        let groupedWines = wines.grouped(map: { $0.place.country ?? "" })
+        let groupedWines = wines.grouped(map: { $0.place?.country ?? "" })
 
         if groupedWines.isEmpty {
             categoryItems = [.init(title: "Ничего не найдено", wines: [])]
@@ -142,7 +142,7 @@ extension ShowcaseViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as? WineCollectionViewCell,
             let wine = categoryItems[safe: indexPath.section]?.wines[safe: indexPath.row] {
-            cell.decorate(model: .init(imageURL: wine.mainImageUrl, title: wine.title, subtitle: wine.desc))
+            cell.decorate(model: .init(imageURL: wine.mainImageUrl ?? "", title: wine.title, subtitle: wine.desc))
             return cell
         }
         return .init()
