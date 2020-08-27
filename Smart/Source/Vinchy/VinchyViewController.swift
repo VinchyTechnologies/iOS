@@ -386,8 +386,8 @@ extension VinchyViewController: DidnotFindTheWineTableCellProtocol {
 extension VinchyViewController: GADBannerViewDelegate {
 
     func adViewDidReceiveAd(_ bannerView: GADBannerView) {
-//        bannerView.isHidden = false
-//        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50 /*banner height*/, right: 0)
+        bannerView.isHidden = false
+        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50 /*banner height*/, right: 0)
     }
 
     func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
