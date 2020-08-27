@@ -6,8 +6,9 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import AsyncDisplayKit
+import UIKit
 import Display
+import CommonUI
 
 public protocol FiltersHeaderViewDelegate: AnyObject {
     func didTapFilter(index: Int)
@@ -18,7 +19,7 @@ struct ASFiltersHeaderViewModel: ViewModelProtocol {
     let filterDelegate: FiltersHeaderViewDelegate?
 }
 
-final class ASFiltersHeaderView: ASDisplayNode {
+final class ASFiltersHeaderView: UIView {
 
     private let layout: UICollectionViewFlowLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -26,7 +27,7 @@ final class ASFiltersHeaderView: ASDisplayNode {
         return layout
     }()
 
-    private lazy var collectionNode = ASCollectionNode(collectionViewLayout: layout)
+    private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
 
     private var categoryTitles: [String] = [] {
         didSet {
@@ -36,7 +37,7 @@ final class ASFiltersHeaderView: ASDisplayNode {
                 CATransaction.setCompletionBlock({
                     self.hilightFirst()
                 })
-                self.collectionNode.reloadData()
+                self.collectionView.reloadData()
                 CATransaction.commit()
             }
         }
@@ -44,22 +45,24 @@ final class ASFiltersHeaderView: ASDisplayNode {
 
     private weak var filterDelegate: FiltersHeaderViewDelegate?
 
-    override init() {
-        super.init()
-        addSubnode(collectionNode)
-        collectionNode.dataSource = self
-        collectionNode.delegate = self
-        collectionNode.showsHorizontalScrollIndicator = false
-        collectionNode.backgroundColor = .mainBackground
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        addSubview(collectionView)
+        collectionView.register(TextCollectionCell.self)
+        collectionView.frame = frame
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.backgroundColor = .mainBackground
     }
 
-    override func layoutSpecThatFits(_ constrainedSize: ASSizeRange) -> ASLayoutSpec {
-        ASInsetLayoutSpec(insets: .zero, child: collectionNode)
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
     }
 
     public func hilightFirst() {
-        if let cell = collectionNode.nodeForItem(at: IndexPath(item: 0, section: 0)) as? ASTextCellNode {
-            cell.textAttributes = ASTextNodeAttributes.common(size: 16, textColor: .accent)
+        if let cell = collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as? TextCollectionCell {
+            cell.decorate(model: .init(title: NSAttributedString(string: cell.getCurrentText() ?? "", attributes: ASTextNodeAttributes.common(size: 16, textColor: .accent))))
         }
     }
 
@@ -68,13 +71,13 @@ final class ASFiltersHeaderView: ASDisplayNode {
     }
 
     public func scrollTo(section: Int) {
-        collectionNode.scrollToItem(at: IndexPath(item: section, section: 0), at: .centeredHorizontally, animated: true)
-        collectionNode.visibleNodes.forEach { (cell) in
-            if let cell = cell as? ASTextCellNode {
-                if cell == self.collectionNode.nodeForItem(at: IndexPath(item: section, section: 0)) {
-                    cell.textAttributes = ASTextNodeAttributes.common(size: 16, textColor: .dark)
+        collectionView.scrollToItem(at: IndexPath(item: section, section: 0), at: .centeredHorizontally, animated: true)
+        collectionView.visibleCells.forEach { (cell) in
+            if let cell = cell as? TextCollectionCell {
+                if cell == self.collectionView.cellForItem(at: IndexPath(item: section, section: 0)) {
+                    cell.decorate(model: .init(title: NSAttributedString(string: cell.getCurrentText() ?? "", attributes: ASTextNodeAttributes.common(size: 16, textColor: .dark))))
                 } else {
-                    cell.textAttributes = ASTextNodeAttributes.common(size: 16, textColor: .secondaryLabel)
+                    cell.decorate(model: .init(title: NSAttributedString(string: cell.getCurrentText() ?? "", attributes: ASTextNodeAttributes.common(size: 16, textColor: .blueGray))))
                 }
             }
         }
@@ -113,35 +116,35 @@ extension ASFiltersHeaderView: Decoratable {
     }
 }
 
-extension ASFiltersHeaderView: ASCollectionDataSource {
-
-    func collectionNode(_ collectionNode: ASCollectionNode, numberOfItemsInSection section: Int) -> Int {
-        return categoryTitles.count
+extension ASFiltersHeaderView: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        categoryTitles.count
     }
 
-    func collectionNode(_ collectionNode: ASCollectionNode, nodeForItemAt indexPath: IndexPath) -> ASCellNode {
-        let cell = ASTextCellNode()
-        cell.text = categoryTitles[safe: indexPath.row]
-        cell.textAttributes = ASTextNodeAttributes.common(size: 16, textColor: .secondaryLabel)
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseId, for: indexPath) as! TextCollectionCell
+        cell.decorate(model: .init(title: NSAttributedString(string: categoryTitles[safe: indexPath.row] ?? "",
+                                                             attributes: ASTextNodeAttributes.common(size: 16, textColor: .secondaryLabel))))
         return cell
     }
 }
 
-extension ASFiltersHeaderView: ASCollectionDelegate {
+extension ASFiltersHeaderView: UICollectionViewDelegate {
 
-    func collectionNode(_ collectionNode: ASCollectionNode, didSelectItemAt indexPath: IndexPath) {
-        collectionNode.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        collectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
 
-        collectionNode.visibleNodes.forEach { (cell) in
-            if let cell = cell as? ASTextCellNode {
-                if cell == collectionNode.nodeForItem(at: indexPath) {
-                    cell.textAttributes = ASTextNodeAttributes.common(size: 16, textColor: .accent)
+        collectionView.visibleCells.forEach { (cell) in
+            if let cell = cell as? TextCollectionCell {
+                if cell == collectionView.cellForItem(at: indexPath) {
+                    cell.decorate(model: .init(title: NSAttributedString(string: cell.getCurrentText() ?? "", attributes: ASTextNodeAttributes.common(size: 16, textColor: .accent))))
                 } else {
-                    cell.textAttributes = ASTextNodeAttributes.common(size: 16, textColor: .secondaryLabel)
+                    cell.decorate(model: .init(title: NSAttributedString(string: cell.getCurrentText() ?? "",
+                                                                         attributes: ASTextNodeAttributes.common(size: 16, textColor: .blueGray))))
                 }
             }
         }
-        
+
         filterDelegate?.didTapFilter(index: indexPath.row)
     }
 }

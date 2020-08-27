@@ -93,8 +93,8 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate {
             collectionView.register(HeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderReusableView.description())
             collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: UICollectionReusableView.description())
 
-            filtersHeaderView.view.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: Constants.filtersHeaderViewHeight)
-            view.addSubview(filtersHeaderView.view)
+            filtersHeaderView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: Constants.filtersHeaderViewHeight)
+            view.addSubview(filtersHeaderView)
 
         }
 

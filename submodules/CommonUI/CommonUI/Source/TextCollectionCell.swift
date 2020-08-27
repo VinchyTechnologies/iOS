@@ -34,6 +34,10 @@ public final class TextCollectionCell: UICollectionViewCell, Reusable {
     }
 
     required init?(coder: NSCoder) { fatalError() }
+
+    public func getCurrentText() -> String? {
+        return label.attributedText?.string
+    }
 }
 
 extension TextCollectionCell: Decoratable {
