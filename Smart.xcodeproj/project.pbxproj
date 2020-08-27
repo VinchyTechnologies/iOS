@@ -112,8 +112,6 @@
 		CA472B69245EDEF9009149FF /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA472B62245EDEF9009149FF /* CategoryItem.swift */; };
 		CA4AED9924CC380A00035922 /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA1821FE24C0F6F000280DD4 /* Database.framework */; };
 		CA4AED9B24CE204900035922 /* TopSecret.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA4AED9A24CE204900035922 /* TopSecret.plist */; };
-		CA4BDAAB2471892800CC59A8 /* DetailProductNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4BDAAA2471892800CC59A8 /* DetailProductNode.swift */; };
-		CA4BDAAD24718ACE00CC59A8 /* DetailProductController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4BDAAC24718ACE00CC59A8 /* DetailProductController.swift */; };
 		CA4D18032492B27400B49BD4 /* Lorem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D18012492B27400B49BD4 /* Lorem.swift */; };
 		CA4D18042492B27400B49BD4 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D18022492B27400B49BD4 /* SampleData.swift */; };
 		CA4D18092492B2AC00B49BD4 /* MockMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D18062492B2AC00B49BD4 /* MockMessage.swift */; };
@@ -138,8 +136,6 @@
 		CAA07CAC24A34A3C00FE285A /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA07CAB24A34A3C00FE285A /* SubscriptionViewController.swift */; };
 		CAAD023A245EE7C500EDF245 /* EmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAD0239245EE7C500EDF245 /* EmailViewController.swift */; };
 		CAAD023C245EEA0700EDF245 /* PasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAAD023B245EEA0700EDF245 /* PasswordViewController.swift */; };
-		CABB4C902497EC43003E446D /* ProductImagesPagerNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABB4C8F2497EC43003E446D /* ProductImagesPagerNode.swift */; };
-		CABB4C922497ECB7003E446D /* OptionsCollectionNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABB4C912497ECB7003E446D /* OptionsCollectionNode.swift */; };
 		CABDBA8724C2FAB800AD96D6 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CABDBA8624C2FAB800AD96D6 /* Core.framework */; };
 		CABDBA8824C2FAB800AD96D6 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CABDBA8624C2FAB800AD96D6 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CACC1DC224C5F2980082BD01 /* filters.json in Resources */ = {isa = PBXBuildFile; fileRef = CACC1DC124C5F2980082BD01 /* filters.json */; };
@@ -320,8 +316,6 @@
 		CA472B49245EDEDB009149FF /* ShowcaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowcaseViewController.swift; sourceTree = "<group>"; };
 		CA472B62245EDEF9009149FF /* CategoryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryItem.swift; sourceTree = "<group>"; };
 		CA4AED9A24CE204900035922 /* TopSecret.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TopSecret.plist; sourceTree = "<group>"; };
-		CA4BDAAA2471892800CC59A8 /* DetailProductNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProductNode.swift; sourceTree = "<group>"; };
-		CA4BDAAC24718ACE00CC59A8 /* DetailProductController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailProductController.swift; sourceTree = "<group>"; };
 		CA4D18012492B27400B49BD4 /* Lorem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lorem.swift; sourceTree = "<group>"; };
 		CA4D18022492B27400B49BD4 /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
 		CA4D18062492B2AC00B49BD4 /* MockMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockMessage.swift; sourceTree = "<group>"; };
@@ -349,8 +343,6 @@
 		CAA07CAB24A34A3C00FE285A /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
 		CAAD0239245EE7C500EDF245 /* EmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailViewController.swift; sourceTree = "<group>"; };
 		CAAD023B245EEA0700EDF245 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
-		CABB4C8F2497EC43003E446D /* ProductImagesPagerNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProductImagesPagerNode.swift; sourceTree = "<group>"; };
-		CABB4C912497ECB7003E446D /* OptionsCollectionNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsCollectionNode.swift; sourceTree = "<group>"; };
 		CABDBA8624C2FAB800AD96D6 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CACC1DC124C5F2980082BD01 /* filters.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = filters.json; sourceTree = "<group>"; };
 		CAF24ACC24C323C90057547F /* StringFormatting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StringFormatting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -715,7 +707,6 @@
 				CA7B835624EED18500991F24 /* Vinchy */,
 				CA472B3F245EDEDB009149FF /* Supported Files */,
 				CA472B39245EDEDB009149FF /* Profile */,
-				CA472B2F245EDEDB009149FF /* DetailProduct */,
 				CAF514692468171500667ED0 /* Love */,
 				CA3B1D3E249E3EAC00FAA08A /* Search */,
 				CA3B1D4B249F5A4100FAA08A /* Filter */,
@@ -724,17 +715,6 @@
 				CA0A352324785A0900C400F5 /* Showcase */,
 			);
 			path = Source;
-			sourceTree = "<group>";
-		};
-		CA472B2F245EDEDB009149FF /* DetailProduct */ = {
-			isa = PBXGroup;
-			children = (
-				CABB4C912497ECB7003E446D /* OptionsCollectionNode.swift */,
-				CABB4C8F2497EC43003E446D /* ProductImagesPagerNode.swift */,
-				CA4BDAAA2471892800CC59A8 /* DetailProductNode.swift */,
-				CA4BDAAC24718ACE00CC59A8 /* DetailProductController.swift */,
-			);
-			path = DetailProduct;
 			sourceTree = "<group>";
 		};
 		CA472B35245EDEDB009149FF /* Auth */ = {
@@ -1227,7 +1207,6 @@
 				CAF514232461C52400667ED0 /* MoreInteractor.swift in Sources */,
 				CA3B1D4A249E5DD700FAA08A /* DefaultTitleTableCell.swift in Sources */,
 				CAAD023A245EE7C500EDF245 /* EmailViewController.swift in Sources */,
-				CABB4C922497ECB7003E446D /* OptionsCollectionNode.swift in Sources */,
 				CA154E012494EA2B00696436 /* SenderType.swift in Sources */,
 				CA7B836624F13FFB00991F24 /* VinchyFooterCollectionReusableView.swift in Sources */,
 				CA7B838924F451FA00991F24 /* WineDetailViewController.swift in Sources */,
@@ -1267,7 +1246,6 @@
 				CA3B1D42249E3FE100FAA08A /* ResultsTableController.swift in Sources */,
 				CA7B836024EF109200991F24 /* MainSubtitleCollectionCell.swift in Sources */,
 				CA154D79249415F200696436 /* BasicAudioController.swift in Sources */,
-				CA4BDAAD24718ACE00CC59A8 /* DetailProductController.swift in Sources */,
 				CA4D180A2492B2AC00B49BD4 /* MockUser.swift in Sources */,
 				CA154DFC2494EA2B00696436 /* BubbleCircle.swift in Sources */,
 				CA154DE02494EA2B00696436 /* UIImage+Extension.swift in Sources */,
@@ -1302,7 +1280,6 @@
 				CA154DCB2494EA2B00696436 /* MessagesCollectionViewFlowLayout.swift in Sources */,
 				CA154DF42494EA2B00696436 /* MessageReusableView.swift in Sources */,
 				CA154DD22494EA2B00696436 /* LabelAlignment.swift in Sources */,
-				CA4BDAAB2471892800CC59A8 /* DetailProductNode.swift in Sources */,
 				CA154DD02494EA2B00696436 /* MessageSizeCalculator.swift in Sources */,
 				CA154DD82494EA2B00696436 /* MessageKitError.swift in Sources */,
 				CA99E65124F58A6000C36BEE /* ToolCollectionCell.swift in Sources */,
@@ -1317,7 +1294,6 @@
 				CA154E002494EA2B00696436 /* MessagesLayoutDelegate.swift in Sources */,
 				CA2F479224AF407D00B4D53D /* EnterMessageCell.swift in Sources */,
 				CAAD023C245EEA0700EDF245 /* PasswordViewController.swift in Sources */,
-				CABB4C902497EC43003E446D /* ProductImagesPagerNode.swift in Sources */,
 				CAF5146B2468172900667ED0 /* LoveViewController.swift in Sources */,
 				CA154DE42494EA2B00696436 /* CGRect+Extensions.swift in Sources */,
 				CA3B1D4D249F5A5A00FAA08A /* FiltersViewController.swift in Sources */,
