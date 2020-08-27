@@ -9,7 +9,6 @@
 import UIKit
 import VinchyCore
 import Display
-import JGProgressHUD
 import CommonUI
 import VinchyUI
 import Core
@@ -26,7 +25,7 @@ final class VinchyViewController: UIViewController, Alertable {
     private let refreshControl = UIRefreshControl()
     private var searchController: UISearchController!
     private let resultsTableController = ResultsTableController()
-    private let hud = JGProgressHUD(style: .dark)
+    private let activityIndicator = ActivityIndicatorView(frame: .init(x: 0, y: 0, width: 36, height: 36))
 
     private let emailService = EmailService()
     private let adBanner = GADBannerView(adSize: kGADAdSizeSmartBannerPortrait)
@@ -34,7 +33,10 @@ final class VinchyViewController: UIViewController, Alertable {
 
     private lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
         guard let self = self else { return }
-        self.hud.show(in: self.view, animated: true)
+        self.collectionView.backgroundView = UIView(frame: self.view.frame)
+        self.collectionView.backgroundView?.addSubview(self.activityIndicator)
+        self.activityIndicator.isAnimating = true
+        self.activityIndicator.center = self.collectionView.center
     }
 
     private var isSearchingMode: Bool = false {
@@ -181,16 +183,18 @@ final class VinchyViewController: UIViewController, Alertable {
     }
 
     private func fetchData() {
-        Compilations.shared.getCompilations { [weak self] result in
-            self?.dispatchWorkItemHud.cancel()
-            DispatchQueue.main.async {
-                self?.hud.dismiss(animated: false)
-            }
-            switch result {
-            case .success(let model):
-                self?.compilations = model
-            case .failure(let error):
-                self?.showAlert(message: error.message ?? "")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 10) {
+            Compilations.shared.getCompilations { [weak self] result in
+                self?.dispatchWorkItemHud.cancel()
+                DispatchQueue.main.async {
+                    self?.activityIndicator.isAnimating = false
+                }
+                switch result {
+                case .success(let model):
+                    self?.compilations = model
+                case .failure(let error):
+                    self?.showAlert(message: error.message ?? "")
+                }
             }
         }
 
@@ -382,8 +386,8 @@ extension VinchyViewController: DidnotFindTheWineTableCellProtocol {
 extension VinchyViewController: GADBannerViewDelegate {
 
     func adViewDidReceiveAd(_ bannerView: GADBannerView) {
-        bannerView.isHidden = false
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50 /*banner height*/, right: 0)
+//        bannerView.isHidden = false
+//        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 50 /*banner height*/, right: 0)
     }
 
     func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {

@@ -15,6 +15,7 @@ import StringFormatting
 import EmailService
 
 fileprivate struct ShortInfoModel {
+    let imageName: String?
     let title: String?
     let subtitle: String?
 }
@@ -51,10 +52,12 @@ final class WineDetailViewController: UIViewController, Alertable {
                 str == "" ? nil : str
             }
 
+            let isFavourite = realm(path: .like).objects(DBWine.self).first(where: { $0.wineID == wine.id }) != nil
+
             sections.append(.gallery(urls: imageURLs))
             sections.append(.title(text: wine.title))
             // TODO: - isLiked, currency
-            sections.append(.tool(price: formatCurrencyAmount(wine.price, currency: "USD"), isLiked: true))
+            sections.append(.tool(price: formatCurrencyAmount(wine.price, currency: "USD"), isLiked: isFavourite))
 
             if wine.desc != "" {
                 sections.append(.description(text: wine.desc))
@@ -64,7 +67,7 @@ final class WineDetailViewController: UIViewController, Alertable {
 
             // TODO: - All options
             if wine.year != 0 {
-                shortDescriptions.append(.init(title: String(wine.year), subtitle: "Year"))
+                shortDescriptions.append(.init(imageName: nil, title: String(wine.year), subtitle: "Year"))
             }
 
             if !shortDescriptions.isEmpty {
@@ -124,6 +127,16 @@ final class WineDetailViewController: UIViewController, Alertable {
         
     }
 
+    private lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
+        guard let self = self else { return }
+        self.collectionView.backgroundView = UIView(frame: self.view.frame)
+        self.collectionView.backgroundView?.addSubview(self.activityIndicator)
+        self.activityIndicator.isAnimating = true
+        self.activityIndicator.center = self.collectionView.center
+    }
+
+    private let activityIndicator = ActivityIndicatorView(frame: .init(x: 0, y: 0, width: 36, height: 36))
+
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
         collectionView.backgroundColor = .mainBackground
@@ -138,6 +151,11 @@ final class WineDetailViewController: UIViewController, Alertable {
         super.init(nibName: nil, bundle: nil)
 
         loadWineInfo(wineID: wineID)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            self.dispatchWorkItemHud.perform()
+        }
+
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "square.and.pencil", withConfiguration: imageConfig), style: .plain, target: self, action: #selector(didTapNotes))
         
     }
@@ -152,6 +170,10 @@ final class WineDetailViewController: UIViewController, Alertable {
 
     private func loadWineInfo(wineID: Int64) {
         Wines.shared.getDetailWine(wineID: wineID) { [weak self] result in
+            self?.dispatchWorkItemHud.cancel()
+            DispatchQueue.main.async {
+                self?.activityIndicator.isAnimating = false
+            }
             switch result {
             case .success(let wine):
                 self?.wine = wine
@@ -242,7 +264,15 @@ extension WineDetailViewController: UICollectionViewDataSource {
         case .button(let viewModel):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ButtonCollectionCell.reuseId, for: indexPath) as! ButtonCollectionCell
             cell.decorate(model: .init(normalImage: viewModel.normalImage, selectedImage: viewModel.selectedImage, title: viewModel.title, type: viewModel.type))
-            // TODO: - isSaved
+
+            let isDisliked = realm(path: .dislike).objects(DBWine.self).first(where: { $0.wineID == wine?.id }) != nil
+
+            if isDisliked {
+                cell.button.isSelected = true
+            } else {
+                cell.button.isSelected = false
+            }
+
             cell.delegate = self
             return cell
         }

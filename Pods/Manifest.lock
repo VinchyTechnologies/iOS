@@ -321,7 +321,6 @@ PODS:
   - InputBarAccessoryView (4.3.2):
     - InputBarAccessoryView/Core (= 4.3.2)
   - InputBarAccessoryView/Core (4.3.2)
-  - JGProgressHUD (2.1)
   - leveldb-library (1.22)
   - nanopb (1.30905.0):
     - nanopb/decode (= 1.30905.0)
@@ -380,7 +379,6 @@ DEPENDENCIES:
   - FSPagerView
   - Google-Mobile-Ads-SDK
   - InputBarAccessoryView
-  - JGProgressHUD
   - RealmSwift
   - SDWebImage
   - Texture (~> 3.0.0)
@@ -404,7 +402,6 @@ SPEC REPOS:
     - "gRPC-C++"
     - gRPC-Core
     - InputBarAccessoryView
-    - JGProgressHUD
     - leveldb-library
     - nanopb
     - PINCache
@@ -434,7 +431,6 @@ SPEC CHECKSUMS:
   "gRPC-C++": 13d8ccef97d5c3c441b7e3c529ef28ebee86fad2
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   InputBarAccessoryView: 7985d418040a05fe894bd4b8328dd43ab35517c3
-  JGProgressHUD: aa403e9a5b45cae98903c4600cccdd98c0c3ec90
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PINCache: 534fd41d358d828dfdf227a0d327f3673a65e20b
@@ -446,6 +442,6 @@ SPEC CHECKSUMS:
   SDWebImage: cf6922231e95550934da2ada0f20f2becf2ceba9
   Texture: 2f109e937850d94d1d07232041c9c7313ccddb81
 
-PODFILE CHECKSUM: 96519966c97ae8aaab5b3e9ebbc27c020b95f3e7
+PODFILE CHECKSUM: b164b0acf674147a1cd1122ca6636c5d157086e9
 
 COCOAPODS: 1.9.3

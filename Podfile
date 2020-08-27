@@ -10,7 +10,6 @@ def commonPods
   pod 'SDWebImage'
   pod 'Firebase/Analytics'
   pod 'Firebase/Firestore'
-  pod 'JGProgressHUD'
   pod 'FittedSheets'
   pod 'FSPagerView'
 end
