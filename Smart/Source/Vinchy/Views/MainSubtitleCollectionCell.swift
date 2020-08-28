@@ -58,6 +58,6 @@ extension MainSubtitleCollectionCell: Decoratable {
 
     func decorate(model: ViewModel) {
         subtitleLabel.text = model.subtitle
-        imageView.sd_setImage(with: URL(string: model.imageURL ?? ""))
+        imageView.sd_setImage(with: URL(string: model.imageURL ?? ""), placeholderImage: nil, options: .progressiveLoad, completed: nil)
     }
 }

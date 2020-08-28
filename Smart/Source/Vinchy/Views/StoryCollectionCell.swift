@@ -68,6 +68,6 @@ extension StoryCollectionCell: Decoratable {
 
     func decorate(model: ViewModel) {
         setAttributedText(string: model.title ?? "")
-        imageView.sd_setImage(with: URL(string: model.imageURL ?? ""))
+        imageView.sd_setImage(with: URL(string: model.imageURL ?? ""), placeholderImage: nil, options: .progressiveLoad, completed: nil)
     }
 }
