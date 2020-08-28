@@ -76,17 +76,3 @@ public final class NavigationController: UINavigationController {
 
 }
 
-public extension UINavigationBar {
-
-    func transparentNavigationBar() {
-        self.setBackgroundImage(UIImage(), for: .default)
-        self.isTranslucent = true
-    }
-
-    func disTransparentNavigationBar() {
-        self.setBackgroundImage(nil, for: .default)
-        self.isTranslucent = false
-    }
-}
-
-
