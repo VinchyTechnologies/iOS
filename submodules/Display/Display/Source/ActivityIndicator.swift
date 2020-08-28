@@ -53,6 +53,7 @@ public final class ActivityIndicatorView: UIView {
         rotateAnimation.toValue = 2.0 * .pi
         rotateAnimation.duration = 0.9
         rotateAnimation.repeatCount = .infinity
+        rotateAnimation.isRemovedOnCompletion = false
 
         spinnerImageView.layer.add(
             rotateAnimation,
