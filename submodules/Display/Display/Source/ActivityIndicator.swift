@@ -84,10 +84,6 @@ public final class ActivityIndicatorView: UIView {
         })
     }
 
-
-
-    // MARK: - Public
-
     func prepareImageView() -> UIImageView {
         alpha = 0.0
         let imageView = UIImageView(image: UIImage(named: "zero-modal-spinner"))

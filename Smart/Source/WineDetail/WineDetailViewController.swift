@@ -130,9 +130,19 @@ final class WineDetailViewController: UIViewController, Alertable {
         collectionView.frame = view.frame
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.navigationBar.transparentNavigationBar()
+    }
+
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
         collectionView.contentInset = .init(top: 0, left: 0, bottom: 15 + view.safeAreaInsets.bottom, right: 0)
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        navigationController?.navigationBar.disTransparentNavigationBar()
     }
 
     private func loadWineInfo(wineID: Int64) {
@@ -338,8 +348,10 @@ extension WineDetailViewController: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y > 300 {
             self.navigationItem.title = self.wine?.title
+            navigationController?.navigationBar.disTransparentNavigationBar()
         } else {
             self.navigationItem.title = nil
+            navigationController?.navigationBar.transparentNavigationBar()
         }
     }
 }
