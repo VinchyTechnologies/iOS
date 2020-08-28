@@ -10,16 +10,27 @@ import UIKit
 import Display
 
 public struct ImageOptionCollectionCellViewModel: ViewModelProtocol {
-    public let imageName: String
+    public let imageName: String?
     public let title: String?
 
-    public init(imageName: String, title: String?) {
+    public init(imageName: String?, title: String?) {
         self.imageName = imageName
         self.title = title
     }
 }
 
 public final class ImageOptionCollectionCell: UICollectionViewCell, Reusable {
+
+    public var didSelected: Bool = false {
+        didSet {
+            if didSelected {
+                layer.borderWidth = 2
+                layer.borderColor = UIColor.dark.cgColor
+            } else {
+                layer.borderWidth = 0
+            }
+        }
+    }
 
     private let imageView = UIImageView()
     private let titleLabel = UILabel()
@@ -63,7 +74,11 @@ extension ImageOptionCollectionCell: Decoratable {
     public typealias ViewModel = ImageOptionCollectionCellViewModel
 
     public func decorate(model: ViewModel) {
-        imageView.image = UIImage(named: model.imageName)
+        if let named = model.imageName {
+            imageView.image = UIImage(named: named)
+        } else {
+            imageView.image = nil
+        }
         titleLabel.text = model.title
     }
 }

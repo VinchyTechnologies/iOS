@@ -14,7 +14,15 @@ struct ToolCollectionCellViewModel: ViewModelProtocol {
     let isLiked: Bool
 }
 
+protocol ToolCollectionCellDelegate: AnyObject {
+    func didTapShare(_ button: UIButton)
+    func didTapLike(_ button: UIButton)
+    func didTapPrice(_ button: UIButton)
+}
+
 final class ToolCollectionCell: UICollectionViewCell, Reusable {
+
+    weak var delegate: ToolCollectionCellDelegate?
 
     private let shareButton = UIButton()
     private let likeButton = UIButton()
@@ -34,8 +42,11 @@ final class ToolCollectionCell: UICollectionViewCell, Reusable {
         let imageConfig = UIImage.SymbolConfiguration(pointSize: 18, weight: .medium, scale: .default)
         shareButton.setImage(UIImage(systemName: "square.and.arrow.up", withConfiguration: imageConfig), for: .normal)
         shareButton.tintColor = .dark
+        shareButton.addTarget(self, action: #selector(didTapShareButton(_:)), for: .touchUpInside)
+
         addSubview(priceButton)
         priceButton.contentEdgeInsets = .init(top: 0, left: 18, bottom: 0, right: 18)
+        priceButton.addTarget(self, action: #selector(didTapPriceButton(_:)), for: .touchUpInside)
 
         let spaceBetweenShareAndPrice = UILayoutGuide()
         addLayoutGuide(spaceBetweenShareAndPrice)
@@ -44,6 +55,7 @@ final class ToolCollectionCell: UICollectionViewCell, Reusable {
         likeButton.tintColor = .dark
         likeButton.setImage(UIImage(systemName: "heart", withConfiguration: imageConfig), for: .normal)
         likeButton.setImage(UIImage(systemName: "heart.fill", withConfiguration: imageConfig), for: .selected)
+        likeButton.addTarget(self, action: #selector(didTapLikeButton(_:)), for: .touchUpInside)
 
         NSLayoutConstraint.activate([
             shareButton.leadingAnchor.constraint(equalTo: leadingAnchor),
@@ -67,6 +79,22 @@ final class ToolCollectionCell: UICollectionViewCell, Reusable {
     }
 
     required init?(coder: NSCoder) { fatalError() }
+
+    @objc
+    private func didTapShareButton(_ button: UIButton) {
+        delegate?.didTapShare(button)
+    }
+
+    @objc
+    private func didTapPriceButton(_ button: UIButton) {
+        delegate?.didTapShare(button)
+    }
+
+    @objc
+    private func didTapLikeButton(_ button: UIButton) {
+        button.isSelected = !button.isSelected
+        delegate?.didTapLike(button)
+    }
 
 }
 

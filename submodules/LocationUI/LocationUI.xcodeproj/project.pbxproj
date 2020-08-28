@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		CAF24B0724C330780057547F /* LocationUI.h in Headers */ = {isa = PBXBuildFile; fileRef = CAF24B0524C330780057547F /* LocationUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CAF24B1224C333970057547F /* URLImageNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF24B1124C333970057547F /* URLImageNode.swift */; };
 		CAF24B1424C333AE0057547F /* URLImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF24B1324C333AE0057547F /* URLImageView.swift */; };
 		CAF24B1624C333CA0057547F /* MapURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF24B1524C333CA0057547F /* MapURLProtocol.swift */; };
 		D7425E5940C2E0667E87A8EA /* Pods_LocationUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AACE0FEB8FFC911B1D2886F /* Pods_LocationUI.framework */; };
@@ -20,7 +19,6 @@
 		CAF24B0224C330780057547F /* LocationUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LocationUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF24B0524C330780057547F /* LocationUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationUI.h; sourceTree = "<group>"; };
 		CAF24B0624C330780057547F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CAF24B1124C333970057547F /* URLImageNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImageNode.swift; sourceTree = "<group>"; };
 		CAF24B1324C333AE0057547F /* URLImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImageView.swift; sourceTree = "<group>"; };
 		CAF24B1524C333CA0057547F /* MapURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapURLProtocol.swift; sourceTree = "<group>"; };
 		E4120230FC9DD39E41A7FDAE /* Pods-LocationUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocationUI.debug.xcconfig"; path = "Target Support Files/Pods-LocationUI/Pods-LocationUI.debug.xcconfig"; sourceTree = "<group>"; };
@@ -79,7 +77,6 @@
 		CAF24B1024C331260057547F /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				CAF24B1124C333970057547F /* URLImageNode.swift */,
 				CAF24B1324C333AE0057547F /* URLImageView.swift */,
 				CAF24B1524C333CA0057547F /* MapURLProtocol.swift */,
 			);
@@ -202,7 +199,6 @@
 			files = (
 				CAF24B1624C333CA0057547F /* MapURLProtocol.swift in Sources */,
 				CAF24B1424C333AE0057547F /* URLImageView.swift in Sources */,
-				CAF24B1224C333970057547F /* URLImageNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

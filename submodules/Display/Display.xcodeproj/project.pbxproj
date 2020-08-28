@@ -13,7 +13,6 @@
 		CA18220624C0F8CE00280DD4 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18220524C0F8CE00280DD4 /* UIColor.swift */; };
 		CA18220824C0FE2300280DD4 /* UIKitUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18220724C0FE2300280DD4 /* UIKitUtils.swift */; };
 		CA18220A24C0FF8C00280DD4 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18220924C0FF8C00280DD4 /* Keyboard.swift */; };
-		CA27089224D08EEF007580D8 /* SmartImageNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27089124D08EEF007580D8 /* SmartImageNode.swift */; };
 		CA53B12524E039F1009A0F85 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA53B12424E039F1009A0F85 /* Alertable.swift */; };
 		CA7B826424ED07DB00991F24 /* ViewSpecificController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B826324ED07DB00991F24 /* ViewSpecificController.swift */; };
 		CA99E65B24F7D79B00C36BEE /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA99E65A24F7D79B00C36BEE /* ActivityIndicator.swift */; };
@@ -31,7 +30,6 @@
 		CA18220524C0F8CE00280DD4 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		CA18220724C0FE2300280DD4 /* UIKitUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitUtils.swift; sourceTree = "<group>"; };
 		CA18220924C0FF8C00280DD4 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
-		CA27089124D08EEF007580D8 /* SmartImageNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartImageNode.swift; sourceTree = "<group>"; };
 		CA53B12424E039F1009A0F85 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		CA7B826324ED07DB00991F24 /* ViewSpecificController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSpecificController.swift; sourceTree = "<group>"; };
 		CA99E65A24F7D79B00C36BEE /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
@@ -110,7 +108,6 @@
 				CA18220924C0FF8C00280DD4 /* Keyboard.swift */,
 				CABDBA9524C31FAC00AD96D6 /* ASPageControl.swift */,
 				CAF24ACF24C324DB0057547F /* ASTextNodeAttributes.swift */,
-				CA27089124D08EEF007580D8 /* SmartImageNode.swift */,
 				CA53B12424E039F1009A0F85 /* Alertable.swift */,
 				CA7B826324ED07DB00991F24 /* ViewSpecificController.swift */,
 				CA99E65A24F7D79B00C36BEE /* ActivityIndicator.swift */,
@@ -234,7 +231,6 @@
 				CAF24AD024C324DB0057547F /* ASTextNodeAttributes.swift in Sources */,
 				CA18220824C0FE2300280DD4 /* UIKitUtils.swift in Sources */,
 				CA1821A224C0E72A00280DD4 /* Font.swift in Sources */,
-				CA27089224D08EEF007580D8 /* SmartImageNode.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

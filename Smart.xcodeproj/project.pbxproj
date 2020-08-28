@@ -89,9 +89,6 @@
 		CA3837CC246FCF3C00AD5FCC /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3837CB246FCF3C00AD5FCC /* TabBarController.swift */; };
 		CA3B1D42249E3FE100FAA08A /* ResultsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B1D41249E3FE100FAA08A /* ResultsTableController.swift */; };
 		CA3B1D4A249E5DD700FAA08A /* DefaultTitleTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B1D49249E5DD700FAA08A /* DefaultTitleTableCell.swift */; };
-		CA3B1D4D249F5A5A00FAA08A /* FiltersViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B1D4C249F5A5A00FAA08A /* FiltersViewController.swift */; };
-		CA3B1D4F249F5BC700FAA08A /* FiltersNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B1D4E249F5BC700FAA08A /* FiltersNode.swift */; };
-		CA3B1D51249F5EA800FAA08A /* CaruselFilterNode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B1D50249F5EA800FAA08A /* CaruselFilterNode.swift */; };
 		CA3B1D5424A0A36300FAA08A /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B1D5324A0A36300FAA08A /* NotesViewController.swift */; };
 		CA445F6B24BFA3C20023A09F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA445F6D24BFA3C20023A09F /* InfoPlist.strings */; };
 		CA472AC0245EDE2F009149FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA472ABF245EDE2F009149FF /* AppDelegate.swift */; };
@@ -120,6 +117,7 @@
 		CA4EA6BB24BE3ACD00E6F0C4 /* currencies.json in Resources */ = {isa = PBXBuildFile; fileRef = CA4EA6BA24BE3ACD00E6F0C4 /* currencies.json */; };
 		CA63A12B249A23C100144320 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA63A129249A23C100144320 /* Localizable.strings */; };
 		CA63A133249BEF2100144320 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A132249BEF2100144320 /* WriteViewController.swift */; };
+		CA79545224F92EC20040224C /* AdvancedSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA79545124F92EC20040224C /* AdvancedSearchViewController.swift */; };
 		CA7B825D24EC750300991F24 /* VinchyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; };
 		CA7B825E24EC750300991F24 /* VinchyCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA7B835824EED1B100991F24 /* VinchyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B835724EED1B100991F24 /* VinchyViewController.swift */; };
@@ -287,9 +285,6 @@
 		CA3837CB246FCF3C00AD5FCC /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		CA3B1D41249E3FE100FAA08A /* ResultsTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableController.swift; sourceTree = "<group>"; };
 		CA3B1D49249E5DD700FAA08A /* DefaultTitleTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTitleTableCell.swift; sourceTree = "<group>"; };
-		CA3B1D4C249F5A5A00FAA08A /* FiltersViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersViewController.swift; sourceTree = "<group>"; };
-		CA3B1D4E249F5BC700FAA08A /* FiltersNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersNode.swift; sourceTree = "<group>"; };
-		CA3B1D50249F5EA800FAA08A /* CaruselFilterNode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaruselFilterNode.swift; sourceTree = "<group>"; };
 		CA3B1D5324A0A36300FAA08A /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		CA445F6C24BFA3C20023A09F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CA445F6E24BFA3CD0023A09F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -328,6 +323,7 @@
 		CA63A12C249A244300144320 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA63A12D249A249300144320 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA63A132249BEF2100144320 /* WriteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteViewController.swift; sourceTree = "<group>"; };
+		CA79545124F92EC20040224C /* AdvancedSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSearchViewController.swift; sourceTree = "<group>"; };
 		CA7B825C24EC750300991F24 /* VinchyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7B835724EED1B100991F24 /* VinchyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyViewController.swift; sourceTree = "<group>"; };
 		CA7B835A24EED6E600991F24 /* StoryCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCollectionCell.swift; sourceTree = "<group>"; };
@@ -631,16 +627,6 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
-		CA3B1D4B249F5A4100FAA08A /* Filter */ = {
-			isa = PBXGroup;
-			children = (
-				CA3B1D4C249F5A5A00FAA08A /* FiltersViewController.swift */,
-				CA3B1D4E249F5BC700FAA08A /* FiltersNode.swift */,
-				CA3B1D50249F5EA800FAA08A /* CaruselFilterNode.swift */,
-			);
-			path = Filter;
-			sourceTree = "<group>";
-		};
 		CA3B1D5224A0A34700FAA08A /* Notes */ = {
 			isa = PBXGroup;
 			children = (
@@ -703,13 +689,13 @@
 		CA472B2D245EDEC7009149FF /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				CA79545024F92E930040224C /* AdvancedSearch */,
 				CA7B838724F451C700991F24 /* WineDetail */,
 				CA7B835624EED18500991F24 /* Vinchy */,
 				CA472B3F245EDEDB009149FF /* Supported Files */,
 				CA472B39245EDEDB009149FF /* Profile */,
 				CAF514692468171500667ED0 /* Love */,
 				CA3B1D3E249E3EAC00FAA08A /* Search */,
-				CA3B1D4B249F5A4100FAA08A /* Filter */,
 				CA3B1D5224A0A34700FAA08A /* Notes */,
 				CABDBA8F24C2FDF800AD96D6 /* WriteViewController */,
 				CA0A352324785A0900C400F5 /* Showcase */,
@@ -796,6 +782,14 @@
 				CA4D18082492B2AC00B49BD4 /* MockSocket.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		CA79545024F92E930040224C /* AdvancedSearch */ = {
+			isa = PBXGroup;
+			children = (
+				CA79545124F92EC20040224C /* AdvancedSearchViewController.swift */,
+			);
+			path = AdvancedSearch;
 			sourceTree = "<group>";
 		};
 		CA7B835624EED18500991F24 /* Vinchy */ = {
@@ -1205,6 +1199,7 @@
 				CA154DD62494EA2B00696436 /* MessageKind.swift in Sources */,
 				CA472B54245EDEDB009149FF /* Assembly.swift in Sources */,
 				CAF514232461C52400667ED0 /* MoreInteractor.swift in Sources */,
+				CA79545224F92EC20040224C /* AdvancedSearchViewController.swift in Sources */,
 				CA3B1D4A249E5DD700FAA08A /* DefaultTitleTableCell.swift in Sources */,
 				CAAD023A245EE7C500EDF245 /* EmailViewController.swift in Sources */,
 				CA154E012494EA2B00696436 /* SenderType.swift in Sources */,
@@ -1269,10 +1264,8 @@
 				CA154DCE2494EA2B00696436 /* TextMessageSizeCalculator.swift in Sources */,
 				CA472AC2245EDE2F009149FF /* SceneDelegate.swift in Sources */,
 				CA3837CC246FCF3C00AD5FCC /* TabBarController.swift in Sources */,
-				CA3B1D4F249F5BC700FAA08A /* FiltersNode.swift in Sources */,
 				CA154DED2494EA2B00696436 /* MediaMessageCell.swift in Sources */,
 				CA154DEE2494EA2B00696436 /* TextMessageCell.swift in Sources */,
-				CA3B1D51249F5EA800FAA08A /* CaruselFilterNode.swift in Sources */,
 				CA154DE22494EA2B00696436 /* NSAttributedString+Extensions.swift in Sources */,
 				CA63A133249BEF2100144320 /* WriteViewController.swift in Sources */,
 				CA154DF62494EA2B00696436 /* MessageContainerView.swift in Sources */,
@@ -1296,7 +1289,6 @@
 				CAAD023C245EEA0700EDF245 /* PasswordViewController.swift in Sources */,
 				CAF5146B2468172900667ED0 /* LoveViewController.swift in Sources */,
 				CA154DE42494EA2B00696436 /* CGRect+Extensions.swift in Sources */,
-				CA3B1D4D249F5A5A00FAA08A /* FiltersViewController.swift in Sources */,
 				CA4D18042492B27400B49BD4 /* SampleData.swift in Sources */,
 				CA7B836224F0237100991F24 /* SuggestionCollectionCell.swift in Sources */,
 				CAF514202461C52400667ED0 /* MoreConfigurator.swift in Sources */,

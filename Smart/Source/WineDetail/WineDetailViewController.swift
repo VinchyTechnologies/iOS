@@ -104,6 +104,7 @@ final class WineDetailViewController: UIViewController, Alertable {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
         collectionView.backgroundColor = .mainBackground
         collectionView.dataSource = self
+        collectionView.delegate = self
 
         collectionView.register(GalleryCell.self, TextCollectionCell.self, ToolCollectionCell.self, ShortInfoCollectionCell.self, ButtonCollectionCell.self, ImageOptionCollectionCell.self)
         return collectionView
@@ -127,6 +128,11 @@ final class WineDetailViewController: UIViewController, Alertable {
         super.viewDidLoad()
         view.addSubview(collectionView)
         collectionView.frame = view.frame
+    }
+
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        collectionView.contentInset = .init(top: 0, left: 0, bottom: 15 + view.safeAreaInsets.bottom, right: 0)
     }
 
     private func loadWineInfo(wineID: Int64) {
@@ -162,7 +168,7 @@ final class WineDetailViewController: UIViewController, Alertable {
     }
 
     private func didTapDislikeButton(_ button: UIButton) {
-        button.isSelected.toggle()
+        button.isSelected = !button.isSelected
         guard let wine = wine else { return }
         if let dbWine = realm(path: .dislike).objects(DBWine.self).first(where: { $0.wineID == wine.id }) {
             dataBase.remove(object: dbWine, at: .dislike)
@@ -287,6 +293,7 @@ extension WineDetailViewController: UICollectionViewDataSource {
         case .tool(let price, let isLiked):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ToolCollectionCell.reuseId, for: indexPath) as! ToolCollectionCell
             cell.decorate(model: .init(price: price, isLiked: isLiked))
+            cell.delegate = self
             return cell
         case .description(let text):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseId, for: indexPath) as! TextCollectionCell
@@ -327,6 +334,16 @@ extension WineDetailViewController: UICollectionViewDataSource {
     }
 }
 
+extension WineDetailViewController: UICollectionViewDelegate {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if scrollView.contentOffset.y > 300 {
+            self.navigationItem.title = self.wine?.title
+        } else {
+            self.navigationItem.title = nil
+        }
+    }
+}
+
 extension WineDetailViewController: ButtonCollectionCellDelegate {
 
     func didTapButtonCollectionCell(_ button: UIButton, type: ButtonCollectionCellType) {
@@ -337,4 +354,26 @@ extension WineDetailViewController: ButtonCollectionCellDelegate {
             didTapReportError()
         }
     }
+}
+
+extension WineDetailViewController: ToolCollectionCellDelegate {
+
+    func didTapShare(_ button: UIButton) {
+        guard let wine = wine else { return }
+        let items = [wine.title]
+        let controller = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        present(controller, animated: true)
+    }
+
+    func didTapLike(_ button: UIButton) {
+        guard let wine = wine else { return }
+        if let dbWine = realm(path: .like).objects(DBWine.self).first(where: { $0.wineID == wine.id }) {
+            dataBase.remove(object: dbWine, at: .like)
+        } else {
+            dataBase.add(object: DBWine(id: dataBase.incrementID(path: .like), wineID: wine.id, mainImageUrl: wine.mainImageUrl ?? "", title: wine.title), at: .like)
+        }
+    }
+
+    func didTapPrice(_ button: UIButton) { }
+
 }

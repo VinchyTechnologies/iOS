@@ -21,7 +21,7 @@ final class Assembly {
     }
 
     static func buildFiltersModule() -> UIViewController {
-        let controller = FiltersViewController()
+        let controller = AdvancedSearchViewController() //FiltersViewController()
         controller.hidesBottomBarWhenPushed = true
         return controller
     }

@@ -18,16 +18,11 @@ def ads
   pod 'Google-Mobile-Ads-SDK'
 end
 
-def texture
-  pod 'Texture', '~> 3.0.0'
-end
-
 target 'Smart' do
   project 'Smart'
 
   commonPods
   ads
-  texture
 
   target 'SmartTests' do
     inherit! :search_paths
@@ -40,7 +35,6 @@ end
 
 target 'Display' do
   project 'submodules/Display/Display'
-  texture
   pod 'SDWebImage'
 end
 
@@ -51,7 +45,6 @@ end
 
 target 'Core' do
   project 'submodules/Core/Core'
-  pod 'RealmSwift'
 end
 
 target 'StringFormatting' do
@@ -64,7 +57,6 @@ end
 
 target 'LocationUI' do
   project 'submodules/LocationUI/LocationUI'
-  texture
 end
 
 target 'EmailService' do

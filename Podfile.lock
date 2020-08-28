@@ -327,21 +327,6 @@ PODS:
     - nanopb/encode (= 1.30905.0)
   - nanopb/decode (1.30905.0)
   - nanopb/encode (1.30905.0)
-  - PINCache (3.0.1-beta.8):
-    - PINCache/Arc-exception-safe (= 3.0.1-beta.8)
-    - PINCache/Core (= 3.0.1-beta.8)
-  - PINCache/Arc-exception-safe (3.0.1-beta.8):
-    - PINCache/Core
-  - PINCache/Core (3.0.1-beta.8):
-    - PINOperation (~> 1.1.1)
-  - PINOperation (1.1.2)
-  - PINRemoteImage/Core (3.0.0):
-    - PINOperation
-  - PINRemoteImage/iOS (3.0.0):
-    - PINRemoteImage/Core
-  - PINRemoteImage/PINCache (3.0.0):
-    - PINCache (= 3.0.1-beta.8)
-    - PINRemoteImage/Core
   - PromisesObjC (1.2.9)
   - Realm (5.3.1):
     - Realm/Headers (= 5.3.1)
@@ -351,26 +336,6 @@ PODS:
   - SDWebImage (5.8.4):
     - SDWebImage/Core (= 5.8.4)
   - SDWebImage/Core (5.8.4)
-  - Texture (3.0.0):
-    - Texture/AssetsLibrary (= 3.0.0)
-    - Texture/Core (= 3.0.0)
-    - Texture/MapKit (= 3.0.0)
-    - Texture/Photos (= 3.0.0)
-    - Texture/PINRemoteImage (= 3.0.0)
-    - Texture/Video (= 3.0.0)
-  - Texture/AssetsLibrary (3.0.0):
-    - Texture/Core
-  - Texture/Core (3.0.0)
-  - Texture/MapKit (3.0.0):
-    - Texture/Core
-  - Texture/Photos (3.0.0):
-    - Texture/Core
-  - Texture/PINRemoteImage (3.0.0):
-    - PINRemoteImage/iOS (~> 3.0.0)
-    - PINRemoteImage/PINCache
-    - Texture/Core
-  - Texture/Video (3.0.0):
-    - Texture/Core
 
 DEPENDENCIES:
   - Firebase/Analytics
@@ -381,7 +346,6 @@ DEPENDENCIES:
   - InputBarAccessoryView
   - RealmSwift
   - SDWebImage
-  - Texture (~> 3.0.0)
 
 SPEC REPOS:
   trunk:
@@ -404,14 +368,10 @@ SPEC REPOS:
     - InputBarAccessoryView
     - leveldb-library
     - nanopb
-    - PINCache
-    - PINOperation
-    - PINRemoteImage
     - PromisesObjC
     - Realm
     - RealmSwift
     - SDWebImage
-    - Texture
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -433,15 +393,11 @@ SPEC CHECKSUMS:
   InputBarAccessoryView: 7985d418040a05fe894bd4b8328dd43ab35517c3
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
-  PINCache: 534fd41d358d828dfdf227a0d327f3673a65e20b
-  PINOperation: 24b774353ca248fcf87d67b2d61eef42087c125a
-  PINRemoteImage: e2b89e19fb6e77ffc099f9d9f3b3fe1745e3f9f9
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
   Realm: 8ec860dc0c3079f7cab1085d95661a06f162d487
   RealmSwift: ca9d0df752157befb8c28034301f988a56ce91eb
   SDWebImage: cf6922231e95550934da2ada0f20f2becf2ceba9
-  Texture: 2f109e937850d94d1d07232041c9c7313ccddb81
 
-PODFILE CHECKSUM: b164b0acf674147a1cd1122ca6636c5d157086e9
+PODFILE CHECKSUM: a4426139f0c600de5799e137b75e96f2694a2256
 
 COCOAPODS: 1.9.3
