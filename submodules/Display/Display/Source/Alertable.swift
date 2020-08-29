@@ -7,19 +7,31 @@
 //
 
 import UIKit
+import Combine
 import StringFormatting
 
 public protocol Alertable: UIViewController {
-    func showAlert(title: String, message: String)
+    func showAlert(title: String, message: String?) -> AnyPublisher<Void, Never>
 }
 
 extension Alertable {
-    public func showAlert(title: String = localized("error").firstLetterUppercased(), message: String) {
-        DispatchQueue.main.async {
-            let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-            alertController.view.tintColor = .accent
-            alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
-            self.present(alertController, animated: true, completion: nil)
+
+    @discardableResult
+    public func showAlert(title: String = localized("error").firstLetterUppercased(), message: String?) -> AnyPublisher<Void, Never> {
+
+        return Future { resolve in
+            DispatchQueue.main.async {
+                let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+                alertController.view.tintColor = .accent
+                alertController.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+                    resolve(.success(()))
+                })
+                self.present(alertController, animated: true, completion: nil)
+            }
         }
+        .handleEvents(receiveCancel: {
+            self.dismiss(animated: true)
+        })
+        .eraseToAnyPublisher()
     }
 }

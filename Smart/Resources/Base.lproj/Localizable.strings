@@ -60,8 +60,8 @@
 "info" = "info";
 
 // MARK: - Favourites
-"you_liked" = "you liked";
-"you_disliked" = "disliked";
+"you_liked" = "Good";
+"you_disliked" = "Bad";
 
 // MARK: - Info
 "contact_email" = "alekseiismirnovv@gmail.com";

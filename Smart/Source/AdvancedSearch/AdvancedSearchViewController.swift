@@ -78,7 +78,7 @@ final class AdvancedSearchViewController: UIViewController, Alertable {
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        collectionView.contentInset = .init(top: 0, left: 0, bottom: 48 + view.safeAreaInsets.bottom, right: 0)
+        collectionView.contentInset = .init(top: 0, left: 0, bottom: 48 + 20, right: 0)
     }
 
     @objc
