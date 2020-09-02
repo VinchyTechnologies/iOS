@@ -322,6 +322,7 @@ PODS:
     - InputBarAccessoryView/Core (= 4.3.2)
   - InputBarAccessoryView/Core (4.3.2)
   - leveldb-library (1.22)
+  - MagazineLayout (1.6.2)
   - nanopb (1.30905.0):
     - nanopb/decode (= 1.30905.0)
     - nanopb/encode (= 1.30905.0)
@@ -344,6 +345,7 @@ DEPENDENCIES:
   - FSPagerView
   - Google-Mobile-Ads-SDK
   - InputBarAccessoryView
+  - MagazineLayout
   - RealmSwift
   - SDWebImage
 
@@ -367,6 +369,7 @@ SPEC REPOS:
     - gRPC-Core
     - InputBarAccessoryView
     - leveldb-library
+    - MagazineLayout
     - nanopb
     - PromisesObjC
     - Realm
@@ -392,12 +395,13 @@ SPEC CHECKSUMS:
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   InputBarAccessoryView: 7985d418040a05fe894bd4b8328dd43ab35517c3
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
+  MagazineLayout: 8e995730bc2b1ff8f11f44cb7d7926ab9640892f
   nanopb: c43f40fadfe79e8b8db116583945847910cbabc9
   PromisesObjC: b48e0338dbbac2207e611750777895f7a5811b75
   Realm: 8ec860dc0c3079f7cab1085d95661a06f162d487
   RealmSwift: ca9d0df752157befb8c28034301f988a56ce91eb
   SDWebImage: cf6922231e95550934da2ada0f20f2becf2ceba9
 
-PODFILE CHECKSUM: 4b32ac4e247c0294251e9d465b6212fcfa577e37
+PODFILE CHECKSUM: 7671a2e288d32a5549a9b7f617a400bbbaad6185
 
 COCOAPODS: 1.9.3

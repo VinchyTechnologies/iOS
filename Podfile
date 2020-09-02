@@ -13,6 +13,7 @@ def commonPods
   pod 'FittedSheets'
   pod 'FSPagerView'
   pod 'Google-Mobile-Ads-SDK'
+  pod 'MagazineLayout'
 end
 
 target 'Smart' do
