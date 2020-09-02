@@ -303,10 +303,17 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
             guard let row = compilations[safe: indexPath.section] else { return }
             switch row.collectionList.first?.transition {
             case .detailCollection:
-                navigationController?.pushViewController(Assembly.buildShowcaseModule(navTitle: row.collectionList[safe: indexPath.row]?.title, wines: row.collectionList[safe: indexPath.row]?.wineList ?? [], fromFilter: false), animated: true)
+                let wines = row.collectionList[safe: indexPath.row]?.wineList ?? []
+                guard !wines.isEmpty else {
+                    showAlert(message: "Пустая коллекция") // TODO: - localize
+                    return
+                }
+                navigationController?.pushViewController(Assembly.buildShowcaseModule(navTitle: row.collectionList[safe: indexPath.row]?.title, mode: .normal(wines: wines)), animated: true)
+
             case .detailWine:
                 guard let wine = row.collectionList.first?.wineList[safe: indexPath.row] else { return }
                 navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wine.id), animated: true)
+                
             default:
                 break
             }
@@ -319,7 +326,7 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
             // TODO: - localize
             let title = "Чрезмерное употребление алкоголя\nвредит вашему здоровью"
             let footer = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: VinchyFooterCollectionReusableView.reuseId, for: indexPath) as! VinchyFooterCollectionReusableView
-            footer.decorate(model: .init(title: NSAttributedString(string: title, font: Font.light(15), textColor: .blueGray, paragraphAlignment: .left)))
+            footer.decorate(model: .init(title: NSAttributedString(string: title, font: Font.light(15), textColor: .blueGray, paragraphAlignment: .justified)))
             return footer
         } else {
             let title = compilations[safe: indexPath.section]?.title
@@ -336,7 +343,7 @@ extension VinchyViewController: UISearchBarDelegate {
         if let resultsController = searchController.searchResultsController as? ResultsTableController {
             searchWorkItem.perform(after: 0.65) {
                 guard searchText != "" else { return }
-                Wines.shared.getWineBy(title: searchText) { result in
+                Wines.shared.getWineBy(title: searchText, offset: 0, limit: 40) { result in
                     switch result {
                     case .success(let wines):
                         resultsController.didFoundProducts = wines
@@ -352,6 +359,12 @@ extension VinchyViewController: UISearchBarDelegate {
 
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         searchBar.resignFirstResponder()
+
+        guard let searchString = searchBar.text else {
+            return
+        }
+
+        navigationController?.pushViewController(Assembly.buildShowcaseModule(navTitle: nil, mode: .searchByTitle(searchString: searchString)), animated: true)
     }
 
     func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {

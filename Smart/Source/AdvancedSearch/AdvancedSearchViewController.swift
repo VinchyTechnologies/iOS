@@ -11,7 +11,6 @@ import Display
 import CommonUI
 import Core
 import StringFormatting
-import VinchyCore
 
 fileprivate let categoryHeaderID = "categoryHeaderID"
 
@@ -83,14 +82,7 @@ final class AdvancedSearchViewController: UIViewController, Alertable {
 
     @objc
     private func didTapSearch(_ button: UIButton) {
-        Wines.shared.getFilteredWines(params: selectedFilters) { [weak self] result in
-            switch result {
-            case .success(let wines):
-                self?.navigationController?.pushViewController(Assembly.buildShowcaseModule(navTitle: nil, wines: wines, fromFilter: true), animated: true)
-            case .failure(let error):
-                self?.showAlert(message: error.message ?? error.localizedDescription)
-            }
-        }
+        self.navigationController?.pushViewController(Assembly.buildShowcaseModule(navTitle: nil, mode: .advancedSearch(params: selectedFilters)), animated: true)
     }
 
     private func showButton() {
