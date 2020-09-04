@@ -6,7 +6,6 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-//import Darwin
 import UIKit
 
 public final class ActivityIndicatorView: UIView {
@@ -84,10 +83,6 @@ public final class ActivityIndicatorView: UIView {
         })
     }
 
-
-
-    // MARK: - Public
-
     func prepareImageView() -> UIImageView {
         alpha = 0.0
         let imageView = UIImageView(image: UIImage(named: "zero-modal-spinner"))
@@ -112,26 +107,9 @@ public final class ActivityIndicatorView: UIView {
 
 fileprivate extension UIView {
 
-    // MARK: - Объявление типов
-
     private enum Axis: String {
-
         case vertical = "V"
         case horizontal = "H"
-
-    }
-
-
-
-    // MARK: - Публичные функции
-
-    func fillView(
-        _ viewToFill: UIView? = nil,
-        padding: CGFloat,
-        priority: UILayoutPriority = UILayoutPriority.required) {
-        let edgeInsets = UIEdgeInsets(top: padding, left: padding, bottom: padding, right: padding)
-
-        fillView(viewToFill, insets: edgeInsets)
     }
 
     func fillView(
@@ -155,138 +133,6 @@ fileprivate extension UIView {
                               priority: priority))
     }
 
-    func makeCenter(_ toView: UIView? = nil, constant: CGFloat = 0.0) {
-        makeCenterX(toView, constant: constant)
-        makeCenterY(toView, constant: constant)
-    }
-
-    func makeCenterX(_ toView: UIView? = nil, constant: CGFloat = 0.0) {
-        makeEqual(toView ?? superview, attribute: .centerX, constant: constant)
-    }
-
-    func makeCenterY(_ toView: UIView? = nil, constant: CGFloat = 0.0) {
-        makeEqual(toView ?? superview, attribute: .centerY, constant: constant)
-    }
-
-    @discardableResult
-    func makeLeadingTo(_ toView: UIView? = nil,
-                       relatedBy: NSLayoutConstraint.Relation = .equal,
-                       constant: CGFloat = 0.0,
-                       priority: UILayoutPriority = UILayoutPriority.required) -> NSLayoutConstraint {
-        return make(
-            toView ?? superview,
-            attribute: .leading,
-            relatedBy: relatedBy,
-            constant: constant,
-            priority: priority)
-    }
-
-    @discardableResult
-    func makeTrailingTo(_ toView: UIView? = nil,
-                        relatedBy: NSLayoutConstraint.Relation = .equal,
-                        constant: CGFloat = 0.0,
-                        priority: UILayoutPriority = UILayoutPriority.required) -> NSLayoutConstraint {
-        return make(toView ?? superview,
-                    attribute: .trailing,
-                    relatedBy: relatedBy,
-                    constant: constant,
-                    priority: priority)
-    }
-
-    @discardableResult
-    func makeTopTo(_ toView: UIView? = nil,
-                   relatedBy: NSLayoutConstraint.Relation = .equal,
-                   constant: CGFloat = 0.0,
-                   priority: UILayoutPriority = UILayoutPriority.required) -> NSLayoutConstraint {
-        return make(toView ?? superview,
-                    attribute: .top,
-                    relatedBy: relatedBy,
-                    constant: constant,
-                    priority: priority)
-    }
-
-    @discardableResult
-    func makeBottomTo(_ toView: UIView? = nil,
-                      relatedBy: NSLayoutConstraint.Relation = .equal,
-                      constant: CGFloat = 0.0,
-                      priority: UILayoutPriority = UILayoutPriority.required) -> NSLayoutConstraint {
-        return make(toView ?? superview,
-                    attribute: .bottom,
-                    relatedBy: relatedBy,
-                    constant: constant,
-                    priority: priority)
-    }
-
-    @discardableResult
-    func makeHeight(
-        _ toView: UIView? = nil,
-        relatedBy: NSLayoutConstraint.Relation = .equal,
-        constant: CGFloat = 0.0) -> NSLayoutConstraint {
-        return make(toView,
-                    attribute: .height,
-                    toAttribute: toView == .none ? .notAnAttribute : .height,
-                    relatedBy: relatedBy,
-                    constant: constant)
-    }
-
-    func makeWidth(
-        _ toView: UIView? = nil,
-        relatedBy: NSLayoutConstraint.Relation = .equal,
-        constant: CGFloat = 0.0) {
-        make(toView,
-             attribute: .width,
-             toAttribute: toView == .none ? .notAnAttribute : .width,
-             relatedBy: relatedBy,
-             constant: constant)
-    }
-
-    func makeEqual(
-        _ toView: UIView? = nil,
-        attribute: NSLayoutConstraint.Attribute,
-        toAttribute: NSLayoutConstraint.Attribute? = nil,
-        constant: CGFloat = 0.0) {
-        let toAttribute = toAttribute ?? attribute
-
-        make(toView ?? superview,
-             attribute: attribute,
-             toAttribute: toAttribute,
-             relatedBy: .equal,
-             constant: constant)
-    }
-
-    func makeGreaterThanOrEqual(
-        _ toView: UIView? = nil,
-        attribute: NSLayoutConstraint.Attribute,
-        toAttribute: NSLayoutConstraint.Attribute? = nil,
-        constant: CGFloat = 0.0) {
-        let toAttribute = toAttribute ?? attribute
-
-        make(toView ?? superview,
-             attribute: attribute,
-             toAttribute: toAttribute,
-             relatedBy: .greaterThanOrEqual,
-             constant: constant)
-    }
-
-
-    func makeLessThanOrEqual(
-        _ toView: UIView? = nil,
-        attribute: NSLayoutConstraint.Attribute,
-        toAttribute: NSLayoutConstraint.Attribute? = nil,
-        constant: CGFloat = 0.0) {
-        let toAttribute = toAttribute ?? attribute
-
-        make(toView ?? superview,
-             attribute: attribute,
-             toAttribute: toAttribute,
-             relatedBy: .lessThanOrEqual,
-             constant: constant)
-    }
-
-
-
-    // MARK: - Приватные функции
-
     private func constructPaddings(
         _ axis: Axis,
         values: CGPoint,
@@ -296,35 +142,5 @@ fileprivate extension UIView {
             options: NSLayoutConstraint.FormatOptions(rawValue: 0),
             metrics: ["left": values.x, "right": values.y, "priority": priority],
             views: ["view": self])
-    }
-
-    @discardableResult
-    private func make(
-        _ toView: UIView? = nil,
-        attribute: NSLayoutConstraint.Attribute,
-        toAttribute: NSLayoutConstraint.Attribute? = nil,
-        relatedBy: NSLayoutConstraint.Relation,
-        constant: CGFloat = 0.0,
-        priority: UILayoutPriority = UILayoutPriority.required) -> NSLayoutConstraint {
-        translatesAutoresizingMaskIntoConstraints = false
-
-        let toAttribute = toAttribute ?? attribute
-
-        let ownerView = toView ?? self
-
-        let constraint = NSLayoutConstraint(
-            item: self,
-            attribute: attribute,
-            relatedBy: relatedBy,
-            toItem: toView,
-            attribute: toAttribute,
-            multiplier: 1.0,
-            constant: constant)
-
-        constraint.priority = priority
-
-        ownerView.addConstraint(constraint)
-
-        return constraint
     }
 }

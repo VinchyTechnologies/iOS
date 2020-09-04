@@ -7,22 +7,65 @@
 //
 
 import UIKit
-import RealmSwift
 import CommonUI
 import VinchyCore
+import Display
+import StringFormatting
 
-final class ShowcaseViewController: UIViewController, UICollectionViewDelegate {
+enum ShowcaseMode {
+    case normal(wines: [Wine])
+    case advancedSearch(params: [(String, String)])
+}
 
-    private enum Constants {
-        static let filtersHeaderViewHeight: CGFloat = 50
-        static let bottomCartHeight: CGFloat = 40
-        static let inset: CGFloat = 10
-        static let rowCount = 2
+final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, Loadable {
+
+    private enum C {
+        static let limit: Int = 40
     }
 
-    private var categoryItems: [CategoryItem] = []
+    private(set) var loadingIndicator = ActivityIndicatorView()
+
+    private var categoryItems: [CategoryItem] = [] {
+        didSet {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
+
     private var filtersHeaderView = ASFiltersHeaderView()
-    private var collectionView: UICollectionView?
+
+    private lazy var collectionView: UICollectionView = {
+        let rowCount = 2
+        let inset: CGFloat = 10
+        let itemWidth = Int((UIScreen.main.bounds.width - inset * CGFloat(rowCount + 1)) / CGFloat(rowCount))
+        let itemHeight = Int(Double(itemWidth)*1.5)
+
+        let layout = UICollectionViewFlowLayout()
+        layout.sectionInset = UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
+        layout.minimumLineSpacing = inset
+        layout.minimumInteritemSpacing = 0
+        layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
+
+        let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        collectionView.backgroundColor = .clear
+        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+
+        collectionView.register(WineCollectionViewCell.self)
+        collectionView.register(HeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderReusableView.reuseId)
+        collectionView.register(LoadingCollectionFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: LoadingCollectionFooter.reuseId)
+
+        return collectionView
+    }()
+
+    private lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
+        guard let self = self else { return }
+        self.startLoadingAnimation()
+        self.addLoader()
+    }
+
     private var didAddShadow = false
     private var isAnimating = false
     private var currentSection: Int = 0 {
@@ -30,36 +73,42 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate {
             filtersHeaderView.scrollTo(section: newValue)
         }
     }
+    private var currentPage: Int = -1
+    private var shouldLoadMore = false
 
-    init(navTitle: String?, wines: [Wine], fromFilter: Bool) {
+    private let mode: ShowcaseMode
+
+    init(navTitle: String?, mode: ShowcaseMode) {
+        self.mode = mode
         super.init(nibName: nil, bundle: nil)
 
-        if fromFilter {
-            navigationItem.title = "Результаты поиска" // TODO: - localized
-
-            if wines.isEmpty {
-                categoryItems = [.init(title: "Ничего не найдено", wines: [])]
+        switch mode {
+        case .normal(let wines):
+            navigationItem.title = navTitle
+            let groupedWines = wines.grouped(map: { $0.place?.country ?? "Другие" }) // TODO: - localized
+            if groupedWines.count == 1 {
+                filtersHeaderView.isHidden = true
+                categoryItems = [.init(title: "", wines: wines)]
                 return
             }
+            categoryItems = groupedWines.map({ (arrayWine) -> CategoryItem in
+                // TODO: - localized
+                return CategoryItem(title: arrayWine.first?.place?.country ?? "Другие", wines: arrayWine)
+            })
 
-            categoryItems = [.init(title: "Все", wines: wines)] // TODO: - add quotes
+        case .advancedSearch(let param):
 
-            return
+            navigationItem.title = "Результаты поиска" // TODO: - localized
+            if param.first?.0 == "title" && param.count == 1 {
+                categoryItems = [.init(title: param.first?.1.quoted ?? "", wines: [])]
+            } else {
+                categoryItems = [.init(title: "Все", wines: [])] // TODO: - localize
+            }
+
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                self.dispatchWorkItemHud.perform()
+            }
         }
-        navigationItem.title = navTitle
-
-        let groupedWines = wines.grouped(map: { $0.place?.country ?? "" })
-
-        if groupedWines.isEmpty {
-            categoryItems = [.init(title: "Ничего не найдено", wines: [])]
-            return
-        }
-
-        if groupedWines.count == 1 {
-            categoryItems = [.init(title: "Все", wines: wines)] // TODO: - localize
-            return
-        }
-
     }
 
     required init?(coder: NSCoder) { fatalError() }
@@ -69,37 +118,9 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate {
 
         view.backgroundColor = .mainBackground
 
-        let rowCount = Constants.rowCount
-        let itemWidth = Int((UIScreen.main.bounds.width - Constants.inset * CGFloat(rowCount + 1)) / CGFloat(rowCount))
-        let itemHeight = Int(Double(itemWidth)*1.5)
-
-        let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 0, left: Constants.inset, bottom: 0, right: Constants.inset)
-        layout.minimumLineSpacing = Constants.inset
-        layout.minimumInteritemSpacing = 0
-        layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
-
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
-
-        if let collectionView = collectionView {
-            view.addSubview(collectionView)
-
-            collectionView.dataSource = self
-            collectionView.delegate = self
-            collectionView.backgroundColor = .clear
-            collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            collectionView.register(WineCollectionViewCell.self,
-                                    forCellWithReuseIdentifier: WineCollectionViewCell.reuseId)
-            collectionView.register(HeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderReusableView.description())
-            collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: UICollectionReusableView.description())
-
-            filtersHeaderView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: Constants.filtersHeaderViewHeight)
-            view.addSubview(filtersHeaderView)
-
-        }
-
-        fetchCategoryItems()
-
+        view.addSubview(collectionView)
+        filtersHeaderView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
+        view.addSubview(filtersHeaderView)
     }
 
     private func fetchCategoryItems() {
@@ -107,26 +128,57 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate {
         filtersHeaderView.decorate(model: .init(categoryTitles: categoryTitles, filterDelegate: self))
     }
 
-    private func showErrorView() {
+    private func showErrorView(title: String?, description: String?, buttonText: String) {
         let errorView = ErrorView(frame: view.frame)
         errorView.delegate = self
-        errorView.configure(title: "Что-то пошло не так :(", description: "Нет сети", buttonText: "Обновить") // TODO: - localize
-        collectionView?.backgroundView = errorView
+        errorView.configure(title: title, description: description, buttonText: buttonText) // TODO: - localize
+        collectionView.backgroundView = errorView
     }
 
     private func hideErrorView() {
-        collectionView?.backgroundView = nil
+        collectionView.backgroundView = nil
+    }
+
+    private func loadMoreWines() {
+        guard shouldLoadMore else { return }
+        currentPage += 1
+        DispatchQueue.global(qos: .userInteractive).async {
+            switch self.mode {
+            case .normal:
+                return
+
+            case .advancedSearch(var params):
+                params += [("offset", String(self.currentPage)), ("limit", String(C.limit))]
+                Wines.shared.getFilteredWines(params: params) { [weak self] result in
+                    guard let self = self else { return }
+                    self.dispatchWorkItemHud.cancel()
+                    self.stopLoadingAnimation()
+                    switch result {
+                    case .success(let wines):
+                        self.shouldLoadMore = wines.count == C.limit
+                        self.categoryItems[0].wines += wines
+                        if self.currentPage == 0 && wines.isEmpty {
+                            self.showErrorView(title: "Ничего не найдено", description: nil, buttonText: "Назад")
+                            return
+                        }
+
+                    case .failure(let error):
+                        if self.currentPage == 0 {
+                            self.hideErrorView()
+                            self.showErrorView(title: error.title, description: error.message, buttonText: "Обновить")
+                        }
+                    }
+                }
+            }
+        }
     }
 }
-
-// MARK: - ErrorViewDelegate
 
 extension ShowcaseViewController: ErrorViewDelegate {
 
     func didTapErrorButton(_ button: UIButton) {
-        print("refresh")
+        loadMoreWines()
     }
-
 }
 
 extension ShowcaseViewController: UICollectionViewDataSource {
@@ -149,34 +201,34 @@ extension ShowcaseViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-
-        if
-            kind == UICollectionView.elementKindSectionHeader,
-
-            let reusableview = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderReusableView.description(), for: indexPath) as? HeaderReusableView,
-
-            let categoryItem = categoryItems[safe: indexPath.section] {
-
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
+            let reusableview = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderReusableView.reuseId, for: indexPath) as! HeaderReusableView
+            let categoryItem = categoryItems[indexPath.section]
             reusableview.decorate(model: .init(title: categoryItem.title))
-
             return reusableview
-        }
 
-        let reusableview = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: UICollectionReusableView.description(), for: indexPath)
-        return reusableview
+        case UICollectionView.elementKindSectionFooter:
+            let reusableview = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: LoadingCollectionFooter.reuseId, for: indexPath) as! LoadingCollectionFooter
+            switch mode {
+            case .normal:
+                reusableview.loadingIndicator.isAnimating = false
+            case .advancedSearch:
+                reusableview.loadingIndicator.isAnimating = shouldLoadMore
+            }
+            return reusableview
+
+        default:
+            return .init()
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-        return .init(width: collectionView.frame.width, height: 50)
+        return .init(width: collectionView.frame.width, height: filtersHeaderView.isHidden ? 0 : 50)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-
-        if section == categoryItems.count - 1 {
-            return .init(width: collectionView.frame.width, height: 10)
-        }
-
-        return .init(width: 1, height: 0.1)
+        return .init(width: collectionView.bounds.width, height: shouldLoadMore ? 50 : 0)
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -197,9 +249,20 @@ extension ShowcaseViewController: UICollectionViewDataSource {
             }
         }
 
+        let offset = scrollView.contentOffset
+        let bounds = scrollView.bounds
+        let inset = scrollView.contentInset
+        let y = offset.y + bounds.size.height - inset.bottom
+        let h = scrollView.contentSize.height
+        let reload_distance: CGFloat = 100.0
+        if y > (h + reload_distance) {
+            shouldLoadMore = true
+            loadMoreWines()
+        }
+
         if isAnimating { return }
 
-        if let section = collectionView?.indexPathsForVisibleSupplementaryElements(ofKind: UICollectionView.elementKindSectionFooter).min()?.section {
+        if let section = collectionView.indexPathsForVisibleSupplementaryElements(ofKind: UICollectionView.elementKindSectionFooter).min()?.section {
             isAnimating = false
             if section != currentSection {
                 currentSection = section
@@ -215,12 +278,10 @@ extension ShowcaseViewController: UICollectionViewDataSource {
 }
 
 extension ShowcaseViewController: UICollectionViewDelegateFlowLayout {
-
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let wine = categoryItems[safe: indexPath.section]?.wines[safe: indexPath.row] else { return }
         navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wine.id), animated: true)
     }
-
 }
 
 extension ShowcaseViewController: FiltersHeaderViewDelegate {
@@ -230,8 +291,7 @@ extension ShowcaseViewController: FiltersHeaderViewDelegate {
 
         let indexPath = IndexPath(item: 0, section: index)
 
-        if let collectionView = collectionView,
-            let attributes = collectionView.layoutAttributesForSupplementaryElement(ofKind: UICollectionView.elementKindSectionHeader, at: indexPath) {
+        if let attributes = collectionView.layoutAttributesForSupplementaryElement(ofKind: UICollectionView.elementKindSectionHeader, at: indexPath) {
             let topOfHeader = CGPoint(x: 0, y: attributes.frame.origin.y - collectionView.contentInset.top)
             collectionView.setContentOffset(topOfHeader, animated: true)
         }

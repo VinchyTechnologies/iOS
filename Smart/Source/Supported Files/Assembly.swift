@@ -34,8 +34,8 @@ final class Assembly {
         return navController
     }
 
-    static func buildShowcaseModule(navTitle: String?, wines: [Wine], fromFilter: Bool) -> UIViewController {
-        let controller = ShowcaseViewController(navTitle: navTitle, wines: wines, fromFilter: fromFilter)
+    static func buildShowcaseModule(navTitle: String?, mode: ShowcaseMode) -> UIViewController {
+        let controller = ShowcaseViewController(navTitle: navTitle, mode: mode)
         controller.extendedLayoutIncludesOpaqueBars = true
         controller.hidesBottomBarWhenPushed = true
         return controller

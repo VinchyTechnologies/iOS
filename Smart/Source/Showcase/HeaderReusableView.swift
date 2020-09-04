@@ -18,18 +18,14 @@ public struct HeaderReusableViewModel: ViewModelProtocol {
     }
 }
 
-public final class HeaderReusableView : UICollectionReusableView {
-
-    // MARK: - Private Properties
+public final class HeaderReusableView: UICollectionReusableView, Reusable {
 
     private let label = UILabel()
-
-    // MARK: - Initializers
 
     override public init(frame: CGRect) {
         super.init(frame: frame)
 
-        label.textColor = .accent//.dark
+        label.textColor = .accent
         label.font = Font.bold(25)
         label.frame = CGRect(x: 20, y: 0, width: frame.width, height: frame.height)
         addSubview(label)

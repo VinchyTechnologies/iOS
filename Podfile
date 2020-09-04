@@ -12,17 +12,14 @@ def commonPods
   pod 'Firebase/Firestore'
   pod 'FittedSheets'
   pod 'FSPagerView'
-end
-
-def ads
   pod 'Google-Mobile-Ads-SDK'
+  pod 'MagazineLayout'
 end
 
 target 'Smart' do
   project 'Smart'
 
   commonPods
-  ads
 
   target 'SmartTests' do
     inherit! :search_paths

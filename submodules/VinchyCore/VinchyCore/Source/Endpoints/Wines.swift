@@ -11,7 +11,7 @@ private enum WinesEndpoint: EndpointProtocol {
     case random(count: Int)
     case detail(wineID: Int64)
     case filter(param: [(String, String)])
-    case search(title: String)
+    case search(title: String, offset: Int, limit: Int)
 
     var host: String {
         return "wineappp.herokuapp.com"
@@ -45,8 +45,8 @@ private enum WinesEndpoint: EndpointProtocol {
             return [("count", String(count))]
         case .filter(let params):
             return params
-        case .search(let title):
-            return [("title", title)]
+        case .search(let title, let offset, let limit):
+            return [("title", title), ("offset", String(offset)), ("limit", String(limit))]
         }
     }
 
@@ -72,8 +72,8 @@ public final class Wines {
         api.request(endpoint: WinesEndpoint.filter(param: params), completion: completion)
     }
 
-    public func getWineBy(title: String, completion: @escaping (Result<[Wine], APIError>) -> Void) {
-        api.request(endpoint: WinesEndpoint.search(title: title), completion: completion)
+    public func getWineBy(title: String, offset: Int, limit: Int, completion: @escaping (Result<[Wine], APIError>) -> Void) {
+        api.request(endpoint: WinesEndpoint.search(title: title, offset: offset, limit: limit), completion: completion)
     }
 
 }

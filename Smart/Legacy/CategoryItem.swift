@@ -11,5 +11,5 @@ import VinchyCore
 struct CategoryItem: Decodable {
 
     let title: String
-    let wines: [Wine]
+    var wines: [Wine]
 }

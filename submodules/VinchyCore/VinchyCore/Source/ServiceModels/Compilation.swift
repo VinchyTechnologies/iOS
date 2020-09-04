@@ -7,13 +7,19 @@
 //
 
 public struct Compilation: Decodable {
-    public let id: Int64
+    public let id: Int64?
     public let title: String?
-    public let collectionList: [Collection]
+    public var collectionList: [Collection]
 
     private enum CodingKeys: String, CodingKey {
         case id = "compilation_id"
         case title
         case collectionList = "collection_list"
+    }
+
+    public init(title: String?, collectionList: [Collection]) {
+        self.id = nil
+        self.title = title
+        self.collectionList = collectionList
     }
 }

@@ -95,7 +95,7 @@ extension WineCollectionViewCell: Decoratable {
 
     func decorate(model: ViewModel) {
 
-        bottleImageView.sd_setImage(with: URL(string: model.imageURL), placeholderImage: nil, options: .progressiveLoad) { [weak self] (image, _, _, _) in
+        bottleImageView.sd_setImage(with: URL(string: model.imageURL), placeholderImage: nil, options: .retryFailed) { [weak self] (image, _, _, _) in
             self?.bottleImageView.image = image?.imageByMakingWhiteBackgroundTransparent()
         }
 

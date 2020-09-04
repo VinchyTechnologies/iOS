@@ -45,6 +45,7 @@ final class ToolCollectionCell: UICollectionViewCell, Reusable {
         shareButton.addTarget(self, action: #selector(didTapShareButton(_:)), for: .touchUpInside)
 
         addSubview(priceButton)
+        priceButton.backgroundColor = .accent
         priceButton.contentEdgeInsets = .init(top: 0, left: 18, bottom: 0, right: 18)
         priceButton.addTarget(self, action: #selector(didTapPriceButton(_:)), for: .touchUpInside)
 
@@ -87,7 +88,7 @@ final class ToolCollectionCell: UICollectionViewCell, Reusable {
 
     @objc
     private func didTapPriceButton(_ button: UIButton) {
-        delegate?.didTapShare(button)
+        delegate?.didTapPrice(button)
     }
 
     @objc
@@ -103,7 +104,7 @@ extension ToolCollectionCell: Decoratable {
     typealias ViewModel = ToolCollectionCellViewModel
 
     func decorate(model: ViewModel) {
-        let title = NSAttributedString(string: model.price ?? "", font: Font.with(size: 20, design: .round, traits: .bold), textColor: .dark, paragraphAlignment: .center)
+        let title = NSAttributedString(string: model.price ?? "", font: Font.with(size: 20, design: .round, traits: .bold), textColor: .white, paragraphAlignment: .center)
         priceButton.setAttributedTitle(title, for: .normal)
         likeButton.isSelected = model.isLiked
     }

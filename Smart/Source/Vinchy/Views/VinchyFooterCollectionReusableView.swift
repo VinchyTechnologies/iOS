@@ -20,11 +20,12 @@ public struct VinchyFooterCollectionReusableViewModel: ViewModelProtocol {
 
 public final class VinchyFooterCollectionReusableView: UICollectionReusableView, Reusable {
     
-    private let label = UILabel()
+    private let label = PaddingLabel()
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
         label.numberOfLines = 2
+        label.insets = .init(top: 0, left: 15, bottom: 0, right: 15)
         addSubview(label)
     }
 

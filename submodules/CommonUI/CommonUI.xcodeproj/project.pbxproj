@@ -95,13 +95,13 @@
 		CAF24AEF24C32C580057547F /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				CAF24AED24C32B0D0057547F /* WineTableCell.swift */,
 				CAF24AF224C32CF50057547F /* ErrorView.swift */,
-				CAF24AF424C32DA30057547F /* TableViewHeader.swift */,
-				CA4EF46024D1E7450094C222 /* WineViewCell.swift */,
 				CA7B836324F12F2C00991F24 /* HeaderCollectionReusableView.swift */,
-				CA99E64E24F56B6300C36BEE /* TextCollectionCell.swift */,
 				CA99E65824F79E4A00C36BEE /* ImageOptionCollectionCell.swift */,
+				CAF24AF424C32DA30057547F /* TableViewHeader.swift */,
+				CA99E64E24F56B6300C36BEE /* TextCollectionCell.swift */,
+				CAF24AED24C32B0D0057547F /* WineTableCell.swift */,
+				CA4EF46024D1E7450094C222 /* WineViewCell.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";

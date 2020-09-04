@@ -14,7 +14,10 @@
 		CA18220824C0FE2300280DD4 /* UIKitUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18220724C0FE2300280DD4 /* UIKitUtils.swift */; };
 		CA18220A24C0FF8C00280DD4 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18220924C0FF8C00280DD4 /* Keyboard.swift */; };
 		CA53B12524E039F1009A0F85 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA53B12424E039F1009A0F85 /* Alertable.swift */; };
-		CA7B826424ED07DB00991F24 /* ViewSpecificController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B826324ED07DB00991F24 /* ViewSpecificController.swift */; };
+		CA7A87E324FEE1B200AAD10F /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87E224FEE1B200AAD10F /* Loadable.swift */; };
+		CA7A87E82501106800AAD10F /* VinchySize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87E72501106800AAD10F /* VinchySize.swift */; };
+		CA7A87EA2502582C00AAD10F /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87E92502582C00AAD10F /* PaddingLabel.swift */; };
+		CA7A87EC25026FA700AAD10F /* LoadingCollectionFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87EB25026FA700AAD10F /* LoadingCollectionFooter.swift */; };
 		CA99E65B24F7D79B00C36BEE /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA99E65A24F7D79B00C36BEE /* ActivityIndicator.swift */; };
 		CABDBA9624C31FAC00AD96D6 /* ASPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABDBA9524C31FAC00AD96D6 /* ASPageControl.swift */; };
 		CAE8869D24C0E5F800E33E16 /* Display.h in Headers */ = {isa = PBXBuildFile; fileRef = CAE8869B24C0E5F800E33E16 /* Display.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -31,7 +34,10 @@
 		CA18220724C0FE2300280DD4 /* UIKitUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitUtils.swift; sourceTree = "<group>"; };
 		CA18220924C0FF8C00280DD4 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		CA53B12424E039F1009A0F85 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
-		CA7B826324ED07DB00991F24 /* ViewSpecificController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewSpecificController.swift; sourceTree = "<group>"; };
+		CA7A87E224FEE1B200AAD10F /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
+		CA7A87E72501106800AAD10F /* VinchySize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchySize.swift; sourceTree = "<group>"; };
+		CA7A87E92502582C00AAD10F /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		CA7A87EB25026FA700AAD10F /* LoadingCollectionFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCollectionFooter.swift; sourceTree = "<group>"; };
 		CA99E65A24F7D79B00C36BEE /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		CABDBA9524C31FAC00AD96D6 /* ASPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASPageControl.swift; sourceTree = "<group>"; };
 		CAE8869824C0E5F800E33E16 /* Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -101,16 +107,19 @@
 		CAE886A524C0E6D000E33E16 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				CA1821A124C0E72A00280DD4 /* Font.swift */,
-				CA18220324C0F88B00280DD4 /* NavigationController.swift */,
-				CA18220524C0F8CE00280DD4 /* UIColor.swift */,
-				CA18220724C0FE2300280DD4 /* UIKitUtils.swift */,
-				CA18220924C0FF8C00280DD4 /* Keyboard.swift */,
+				CA99E65A24F7D79B00C36BEE /* ActivityIndicator.swift */,
+				CA53B12424E039F1009A0F85 /* Alertable.swift */,
 				CABDBA9524C31FAC00AD96D6 /* ASPageControl.swift */,
 				CAF24ACF24C324DB0057547F /* ASTextNodeAttributes.swift */,
-				CA53B12424E039F1009A0F85 /* Alertable.swift */,
-				CA7B826324ED07DB00991F24 /* ViewSpecificController.swift */,
-				CA99E65A24F7D79B00C36BEE /* ActivityIndicator.swift */,
+				CA1821A124C0E72A00280DD4 /* Font.swift */,
+				CA18220924C0FF8C00280DD4 /* Keyboard.swift */,
+				CA7A87E224FEE1B200AAD10F /* Loadable.swift */,
+				CA18220324C0F88B00280DD4 /* NavigationController.swift */,
+				CA7A87E92502582C00AAD10F /* PaddingLabel.swift */,
+				CA18220524C0F8CE00280DD4 /* UIColor.swift */,
+				CA18220724C0FE2300280DD4 /* UIKitUtils.swift */,
+				CA7A87E72501106800AAD10F /* VinchySize.swift */,
+				CA7A87EB25026FA700AAD10F /* LoadingCollectionFooter.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -221,14 +230,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA7A87EA2502582C00AAD10F /* PaddingLabel.swift in Sources */,
 				CA53B12524E039F1009A0F85 /* Alertable.swift in Sources */,
 				CA18220424C0F88B00280DD4 /* NavigationController.swift in Sources */,
-				CA7B826424ED07DB00991F24 /* ViewSpecificController.swift in Sources */,
+				CA7A87E82501106800AAD10F /* VinchySize.swift in Sources */,
 				CA18220624C0F8CE00280DD4 /* UIColor.swift in Sources */,
 				CABDBA9624C31FAC00AD96D6 /* ASPageControl.swift in Sources */,
 				CA99E65B24F7D79B00C36BEE /* ActivityIndicator.swift in Sources */,
+				CA7A87EC25026FA700AAD10F /* LoadingCollectionFooter.swift in Sources */,
 				CA18220A24C0FF8C00280DD4 /* Keyboard.swift in Sources */,
 				CAF24AD024C324DB0057547F /* ASTextNodeAttributes.swift in Sources */,
+				CA7A87E324FEE1B200AAD10F /* Loadable.swift in Sources */,
 				CA18220824C0FE2300280DD4 /* UIKitUtils.swift in Sources */,
 				CA1821A224C0E72A00280DD4 /* Font.swift in Sources */,
 			);
