@@ -276,6 +276,12 @@ final class WineDetailViewController: UIViewController, Alertable {
             servingTips.append(.init(imageName: nil, title: servingTemperature, subtitle: "Serving Temperature"))
         }
 
+        if let dishes = wine.dishCompatibility, !dishes.isEmpty {
+            dishes.forEach { (dish) in
+                servingTips.append(.init(imageName: dish.imageName, title: localized(dish.rawValue).firstLetterUppercased(), subtitle: nil))
+            }
+        }
+
         if !servingTips.isEmpty {
             return [.shortInfo(info: servingTips)]
         } else {
