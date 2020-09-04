@@ -10,7 +10,7 @@ import UIKit
 import Display
 
 struct StoryCollectionCellViewModel: ViewModelProtocol {
-    let imageURL: String?
+    let imageURL: URL?
     let title: String?
 }
 
@@ -68,6 +68,6 @@ extension StoryCollectionCell: Decoratable {
 
     func decorate(model: ViewModel) {
         setAttributedText(string: model.title ?? "")
-        imageView.sd_setImage(with: URL(string: model.imageURL ?? ""), placeholderImage: nil, options: .progressiveLoad, completed: nil)
+        imageView.sd_setImage(with: model.imageURL, placeholderImage: nil, options: .progressiveLoad, completed: nil)
     }
 }

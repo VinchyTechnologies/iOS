@@ -11,7 +11,7 @@ import SDWebImage
 import Display
 
 struct WineCollectionViewCellViewModel: ViewModelProtocol {
-    let imageURL: String
+    let imageURL: URL?
     let title: String?
     let subtitle: String?
 }
@@ -76,6 +76,8 @@ final class WineCollectionViewCell: UICollectionViewCell, Reusable {
         stackView.addArrangedSubview(subtitleLabel)
         stackView.addArrangedSubview(UIView())
 
+        stackView.setCustomSpacing(2, after: titleLabel)
+
         addSubview(stackView)
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: bottleImageView.bottomAnchor, constant: 0),
@@ -95,7 +97,7 @@ extension WineCollectionViewCell: Decoratable {
 
     func decorate(model: ViewModel) {
 
-        bottleImageView.sd_setImage(with: URL(string: model.imageURL), placeholderImage: nil, options: .retryFailed) { [weak self] (image, _, _, _) in
+        bottleImageView.sd_setImage(with: model.imageURL, placeholderImage: nil, options: .retryFailed) { [weak self] (image, _, _, _) in
             self?.bottleImageView.image = image?.imageByMakingWhiteBackgroundTransparent()
         }
 
@@ -106,7 +108,7 @@ extension WineCollectionViewCell: Decoratable {
             titleLabel.isHidden = true
         }
 
-        if let subtitle = model.subtitle, model.subtitle != "0" { // TODO: - if number of line text is equal to 2
+        if let subtitle = model.subtitle {
             subtitleLabel.isHidden = false
             subtitleLabel.text = subtitle
         } else {

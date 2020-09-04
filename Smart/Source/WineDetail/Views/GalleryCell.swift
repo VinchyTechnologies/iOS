@@ -72,9 +72,7 @@ extension GalleryCell: Decoratable {
     typealias ViewModel = GalleryCellViewModel
 
     func decorate(model: ViewModel) {
-        self.urls = model.urls.compactMap({ (urlString) -> URL? in
-            URL(string: urlString ?? "")
-        })
+        self.urls = model.urls.compactMap({ $0?.toURL })
     }
 }
 

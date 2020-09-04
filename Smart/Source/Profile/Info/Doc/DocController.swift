@@ -40,7 +40,7 @@ final class DocController: UITableViewController, OpenURLProtocol, Alertable {
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if let cell = tableView.dequeueReusableCell(withIdentifier: StandartCell.reuseId) as? StandartCell {
-            cell.configure(text: titles[safe: indexPath.row] ?? "")
+            cell.configure(text: titles[safe: indexPath.row])
             return cell
         }
         return .init()
@@ -94,7 +94,7 @@ final fileprivate class StandartCell: UITableViewCell, Reusable {
     
     required init?(coder aDecoder: NSCoder) { fatalError() }
         
-    func configure(text: String) {
+    func configure(text: String?) {
         label.text = text
     }
 }

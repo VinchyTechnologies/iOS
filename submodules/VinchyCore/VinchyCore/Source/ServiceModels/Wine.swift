@@ -20,7 +20,7 @@ public final class Wine: Decodable {
     public let dishCompatibility: [DishCompatibility]?
     public let year: Int?
     public let grapes: [String]?
-    public let place: WinePlace?
+    public let winery: Winery?
     public let type: WineType?
     public let sugar: Sugar?
 
@@ -37,7 +37,7 @@ public final class Wine: Decodable {
         case dishCompatibility = "dish_list"
         case year = "year"
         case grapes = "grape_list"
-        case place
+        case winery
         case type = "carbon_dioxide"
         case sugar = "sugar"
     }
@@ -57,7 +57,7 @@ public final class Wine: Decodable {
         let dishCompatibility = try? container.decodeIfPresent([DishCompatibility].self, forKey: .dishCompatibility)
         let year = try? container.decodeIfPresent(Int.self, forKey: .year)
         let grapes = try? container.decodeIfPresent([String].self, forKey: .grapes)
-        let place = try? container.decodeIfPresent(WinePlace.self, forKey: .place)
+        let winery = try? container.decodeIfPresent(Winery.self, forKey: .winery)
         let type = try? container.decodeIfPresent(WineType.self, forKey: .type)
         let sugar = try? container.decodeIfPresent(Sugar.self, forKey: .sugar)
 
@@ -73,7 +73,7 @@ public final class Wine: Decodable {
         self.dishCompatibility = dishCompatibility
         self.year = year
         self.grapes = grapes
-        self.place = place
+        self.winery = winery
         self.type = type
         self.sugar = sugar
     }

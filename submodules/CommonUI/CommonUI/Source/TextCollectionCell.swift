@@ -24,13 +24,17 @@ public final class TextCollectionCell: UICollectionViewCell, Reusable {
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
+        
         addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-    }
 
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        label.frame = bounds
+        NSLayoutConstraint.activate([
+            label.leadingAnchor.constraint(equalTo: leadingAnchor),
+            label.topAnchor.constraint(equalTo: topAnchor),
+            label.trailingAnchor.constraint(equalTo: trailingAnchor),
+            label.bottomAnchor.constraint(equalTo: bottomAnchor),
+        ])
     }
 
     required init?(coder: NSCoder) { fatalError() }

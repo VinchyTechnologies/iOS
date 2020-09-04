@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		2B369E35275D8A0E73843EBC /* Pods_VinchyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D29A7E3032685F4CCEE243 /* Pods_VinchyCore.framework */; };
+		CA7A87F0250287BB00AAD10F /* Winery.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87EF250287BB00AAD10F /* Winery.swift */; };
 		CA7B823C24EC71F300991F24 /* VinchyCore.h in Headers */ = {isa = PBXBuildFile; fileRef = CA7B823A24EC71F300991F24 /* VinchyCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CA7B824424EC72CA00991F24 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B824324EC72CA00991F24 /* API.swift */; };
 		CA7B824624EC72F500991F24 /* EndpointProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B824524EC72F500991F24 /* EndpointProtocol.swift */; };
@@ -26,6 +27,7 @@
 /* Begin PBXFileReference section */
 		12366A038800E697D8B222D2 /* Pods-VinchyCore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyCore.debug.xcconfig"; path = "Target Support Files/Pods-VinchyCore/Pods-VinchyCore.debug.xcconfig"; sourceTree = "<group>"; };
 		16D29A7E3032685F4CCEE243 /* Pods_VinchyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinchyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA7A87EF250287BB00AAD10F /* Winery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Winery.swift; sourceTree = "<group>"; };
 		CA7B823724EC71F300991F24 /* VinchyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VinchyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7B823A24EC71F300991F24 /* VinchyCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VinchyCore.h; sourceTree = "<group>"; };
 		CA7B823B24EC71F300991F24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -98,8 +100,8 @@
 			isa = PBXGroup;
 			children = (
 				CA7B824A24EC739B00991F24 /* APIService */,
-				CA7B824724EC736A00991F24 /* ServiceModels */,
 				CA7B825524EC746100991F24 /* Endpoints */,
+				CA7B824724EC736A00991F24 /* ServiceModels */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -107,12 +109,13 @@
 		CA7B824724EC736A00991F24 /* ServiceModels */ = {
 			isa = PBXGroup;
 			children = (
-				CA7B824824EC738500991F24 /* Wine.swift */,
 				CA7B824B24EC73B500991F24 /* Collection.swift */,
-				CA7B824D24EC73CD00991F24 /* WinePlace.swift */,
 				CA7B824F24EC73FE00991F24 /* Compilation.swift */,
-				CA7B825124EC742600991F24 /* Sugar.swift */,
 				CA7B825324EC744900991F24 /* DishCompatibility.swift */,
+				CA7B825124EC742600991F24 /* Sugar.swift */,
+				CA7B824824EC738500991F24 /* Wine.swift */,
+				CA7B824D24EC73CD00991F24 /* WinePlace.swift */,
+				CA7A87EF250287BB00AAD10F /* Winery.swift */,
 			);
 			path = ServiceModels;
 			sourceTree = "<group>";
@@ -253,6 +256,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA7B825B24EC74B200991F24 /* Wines.swift in Sources */,
+				CA7A87F0250287BB00AAD10F /* Winery.swift in Sources */,
 				CA7B825224EC742600991F24 /* Sugar.swift in Sources */,
 				CA7B824624EC72F500991F24 /* EndpointProtocol.swift in Sources */,
 				CA7B824E24EC73CD00991F24 /* WinePlace.swift in Sources */,

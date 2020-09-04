@@ -10,17 +10,15 @@ import Foundation
 
 public extension String {
 
-    private static var quotes: (String, String) {
+    var quoted: String {
+
         guard
             let bQuote = Locale.current.quotationBeginDelimiter,
             let eQuote = Locale.current.quotationEndDelimiter
-        else { return ("\"", "\"") }
+        else {
+            return "\"" + self + "\""
+        }
 
-        return (bQuote, eQuote)
-    }
-
-    public var quoted: String {
-        let (bQuote, eQuote) = String.quotes
         return bQuote + self + eQuote
     }
 }

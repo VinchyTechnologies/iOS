@@ -12,7 +12,7 @@ import Display
 
 struct MainSubtitleCollectionCellViewModel: ViewModelProtocol {
     let subtitle: String?
-    let imageURL: String?
+    let imageURL: URL?
 }
 
 final class MainSubtitleCollectionCell: UICollectionViewCell, Reusable {
@@ -58,6 +58,6 @@ extension MainSubtitleCollectionCell: Decoratable {
 
     func decorate(model: ViewModel) {
         subtitleLabel.text = model.subtitle
-        imageView.sd_setImage(with: URL(string: model.imageURL ?? ""), placeholderImage: nil, options: [.progressiveLoad, .continueInBackground], completed: nil)
+        imageView.sd_setImage(with: model.imageURL, placeholderImage: nil, options: [.progressiveLoad, .continueInBackground], completed: nil)
     }
 }

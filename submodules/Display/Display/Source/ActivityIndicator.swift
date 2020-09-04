@@ -21,7 +21,11 @@ public final class ActivityIndicatorView: UIView {
     */
     public var isAnimating = false {
         didSet {
-            if isAnimating { startSpinnerAnimation() } else { stopSpinnerAnimation() }
+            if isAnimating {
+                startSpinnerAnimation()
+            } else {
+                stopSpinnerAnimation()
+            }
         }
     }
 
@@ -73,7 +77,6 @@ public final class ActivityIndicatorView: UIView {
             withDuration: ActivityIndicatorView.animationTiming,
             animations: { self.alpha = 0.0 },
             completion: { _ in
-
                 self.spinnerImageView.layer.removeAnimation(
                     forKey: ActivityIndicatorView.rotateAnimationKey)
 

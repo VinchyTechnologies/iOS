@@ -85,7 +85,7 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
         switch mode {
         case .normal(let wines):
             navigationItem.title = navTitle
-            let groupedWines = wines.grouped(map: { $0.place?.country ?? "Другие" }) // TODO: - localized
+            let groupedWines = wines.grouped(map: { $0.winery?.countryCode ?? "Другие" }) // TODO: - localized
             if groupedWines.count == 1 {
                 filtersHeaderView.isHidden = true
                 categoryItems = [.init(title: "", wines: wines)]
@@ -93,7 +93,7 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
             }
             categoryItems = groupedWines.map({ (arrayWine) -> CategoryItem in
                 // TODO: - localized
-                return CategoryItem(title: arrayWine.first?.place?.country ?? "Другие", wines: arrayWine)
+                return CategoryItem(title: arrayWine.first?.winery?.countryCode ?? "Другие", wines: arrayWine)
             })
 
         case .advancedSearch(let param):
@@ -194,7 +194,8 @@ extension ShowcaseViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as? WineCollectionViewCell,
             let wine = categoryItems[safe: indexPath.section]?.wines[safe: indexPath.row] {
-            cell.decorate(model: .init(imageURL: wine.mainImageUrl ?? "", title: wine.title, subtitle: wine.desc))
+            cell.decorate(model: .init(imageURL: wine.mainImageUrl?.toURL, title: wine.title,
+                                       subtitle: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode)))
             return cell
         }
         return .init()

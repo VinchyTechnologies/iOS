@@ -10,6 +10,8 @@
 		5BDC73D0D84407576157E3A1 /* Pods_StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEFE0093A63286B07E13A180 /* Pods_StringFormatting.framework */; };
 		CA015C1C24C47BC4008DF01D /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA015C1B24C47BC4008DF01D /* Localized.swift */; };
 		CA7A87EE25027D3F00AAD10F /* Quotes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87ED25027D3F00AAD10F /* Quotes.swift */; };
+		CA7A87F22502896C00AAD10F /* CountryCodeFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87F12502896C00AAD10F /* CountryCodeFormatter.swift */; };
+		CA7A87F62502915C00AAD10F /* Temperature.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87F52502915C00AAD10F /* Temperature.swift */; };
 		CABDBAA724C3222C00AD96D6 /* StringFormatting.h in Headers */ = {isa = PBXBuildFile; fileRef = CABDBAA524C3222C00AD96D6 /* StringFormatting.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CAF24AC924C322990057547F /* CurrencyFormatterEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF24AC824C322990057547F /* CurrencyFormatterEntry.swift */; };
 		CAF24ACB24C322C10057547F /* FirstLetterUppercased.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF24ACA24C322C10057547F /* FirstLetterUppercased.swift */; };
@@ -21,6 +23,8 @@
 		BEFE0093A63286B07E13A180 /* Pods_StringFormatting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StringFormatting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA015C1B24C47BC4008DF01D /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		CA7A87ED25027D3F00AAD10F /* Quotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quotes.swift; sourceTree = "<group>"; };
+		CA7A87F12502896C00AAD10F /* CountryCodeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeFormatter.swift; sourceTree = "<group>"; };
+		CA7A87F52502915C00AAD10F /* Temperature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Temperature.swift; sourceTree = "<group>"; };
 		CABDBAA224C3222C00AD96D6 /* StringFormatting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = StringFormatting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CABDBAA524C3222C00AD96D6 /* StringFormatting.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = StringFormatting.h; sourceTree = "<group>"; };
 		CABDBAA624C3222C00AD96D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -93,6 +97,8 @@
 				CAF24ACA24C322C10057547F /* FirstLetterUppercased.swift */,
 				CA015C1B24C47BC4008DF01D /* Localized.swift */,
 				CA7A87ED25027D3F00AAD10F /* Quotes.swift */,
+				CA7A87F12502896C00AAD10F /* CountryCodeFormatter.swift */,
+				CA7A87F52502915C00AAD10F /* Temperature.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -204,6 +210,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA7A87EE25027D3F00AAD10F /* Quotes.swift in Sources */,
+				CA7A87F22502896C00AAD10F /* CountryCodeFormatter.swift in Sources */,
+				CA7A87F62502915C00AAD10F /* Temperature.swift in Sources */,
 				CAF24ACB24C322C10057547F /* FirstLetterUppercased.swift in Sources */,
 				CA015C1C24C47BC4008DF01D /* Localized.swift in Sources */,
 				CAF24AC924C322990057547F /* CurrencyFormatterEntry.swift in Sources */,

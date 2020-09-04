@@ -61,8 +61,8 @@ final class WineDetailViewController: UIViewController, Alertable {
             let section = NSCollectionLayoutSection(group: group)
             return section
         case .title, .description:
-            let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(44)))
-            let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(44)), subitems: [item])
+            let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(30)))
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(30)), subitems: [item])
             let section = NSCollectionLayoutSection(group: group)
             section.contentInsets = .init(top: 15, leading: 20, bottom: 0, trailing: 20)
             return section
@@ -196,6 +196,12 @@ final class WineDetailViewController: UIViewController, Alertable {
         sections += buildDescription(wine: wine)
         sections +=  buildGeneralInfo(wine: wine)
 
+        let servingTipsSection = buildServingTips(wine: wine)
+        if !servingTipsSection.isEmpty {
+            sections += [.title(text: "Serving Tips")]
+            sections += servingTipsSection
+        }
+
 //        if !wine.dishCompatibility?.isEmpty {
 //            wine.dishCompatibility?.forEach { (dish) in
 //                shortDescriptions.append(.init(imageName: dish.imageName, title: localized(dish.rawValue), subtitle: nil))
@@ -243,8 +249,17 @@ final class WineDetailViewController: UIViewController, Alertable {
         var shortDescriptions: [ShortInfoModel] = []
 
         // TODO: - All options
+
+        if let country = countryNameFromLocaleCode(countryCode: wine.winery?.countryCode) {
+            shortDescriptions.append(.init(imageName: nil, title: country, subtitle: "Country"))
+        }
+
         if let year = wine.year, year != 0 {
             shortDescriptions.append(.init(imageName: nil, title: String(year), subtitle: "Year"))
+        }
+
+        if let alcoholPercent = wine.alcoholPercent, alcoholPercent > 1.0 {
+            shortDescriptions.append(.init(imageName: nil, title: String(alcoholPercent) + "%", subtitle: "Alcohol"))
         }
 
         if !shortDescriptions.isEmpty {
@@ -255,10 +270,14 @@ final class WineDetailViewController: UIViewController, Alertable {
     }
 
     private func buildServingTips(wine: Wine) -> [Section] {
-        let servingTips = [ShortInfoModel]()
+        var servingTips = [ShortInfoModel]()
+
+        if let servingTemperature = localizedTemperature(wine.servingTemperature) {
+            servingTips.append(.init(imageName: nil, title: servingTemperature, subtitle: "Serving Temperature"))
+        }
 
         if !servingTips.isEmpty {
-            return []
+            return [.shortInfo(info: servingTips)]
         } else {
             return []
         }

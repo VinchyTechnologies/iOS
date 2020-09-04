@@ -134,7 +134,7 @@ extension LoveViewController: UICollectionViewDataSource {
         guard let wine = wines[safe: indexPath.row] else { return .init() }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as! WineCollectionViewCell
         cell.background.backgroundColor = .option
-        cell.decorate(model: .init(imageURL: wine.mainImageUrl, title: wine.title, subtitle: nil))
+        cell.decorate(model: .init(imageURL: wine.mainImageUrl.toURL, title: wine.title, subtitle: nil))
         return cell
     }
 }
