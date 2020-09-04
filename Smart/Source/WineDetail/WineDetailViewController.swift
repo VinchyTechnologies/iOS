@@ -250,6 +250,14 @@ final class WineDetailViewController: UIViewController, Alertable {
 
         // TODO: - All options
 
+        if let color = wine.color {
+            shortDescriptions.append(.init(imageName: nil, title: localized(color.rawValue).firstLetterUppercased(), subtitle: "Color"))
+        }
+
+        if let sugar = wine.sugar {
+            shortDescriptions.append(.init(imageName: nil, title: localized(sugar.rawValue).firstLetterUppercased(), subtitle: "Sugar"))
+        }
+
         if let country = countryNameFromLocaleCode(countryCode: wine.winery?.countryCode) {
             shortDescriptions.append(.init(imageName: nil, title: country, subtitle: "Country"))
         }
@@ -331,7 +339,18 @@ extension WineDetailViewController: UICollectionViewDataSource {
             switch item.imageName {
             case .none:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShortInfoCollectionCell.reuseId, for: indexPath) as! ShortInfoCollectionCell
-                let title = NSAttributedString(string: item.title ?? "", font: Font.with(size: 24, design: .round, traits: .bold), textColor: .dark)
+                var title = NSAttributedString(string: item.title ?? "", font: Font.with(size: 24, design: .round, traits: .bold), textColor: .dark)
+                if item.subtitle == localized("color").firstLetterUppercased() {
+
+//                    if item.title == "Pink" {
+//                        title = NSAttributedString(string: item.title ?? "", font: Font.with(size: 24, design: .round, traits: .bold), textColor: .systemPink)
+//                    } else if item.title == "Red" {
+//                        title = NSAttributedString(string: item.title ?? "", font: Font.with(size: 24, design: .round, traits: .bold), textColor: .accent)
+//                    } else if item.title == "White" {
+//                        title = NSAttributedString(string: item.title ?? "", font: Font.with(size: 24, design: .round, traits: .bold), textColor: .white)
+//                    }
+
+                }
                 let subtitle = NSAttributedString(string: item.subtitle ?? "", font: Font.with(size: 18, design: .round, traits: .bold), textColor: .blueGray)
                 cell.decorate(model: .init(title: title, subtitle: subtitle))
                 return cell

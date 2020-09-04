@@ -10,6 +10,7 @@ public final class Wine: Decodable {
 
     public let id: Int64
     public let title: String
+    public let color: WineColor?
     public let mainImageUrl: String?
     public let labelImageUrl: String?
     public let imageURLs: [String]?
@@ -27,6 +28,7 @@ public final class Wine: Decodable {
     private enum CodingKeys: String, CodingKey {
         case id = "wine_id"
         case title
+        case color
         case mainImageURL = "bottle_image_url"
         case labelImageUrl = "label_image_url"
         case imageURLs = "image_url_list"
@@ -46,6 +48,7 @@ public final class Wine: Decodable {
 
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let id = try container.decode(Int64.self, forKey: .id)
+        let color = try? container.decodeIfPresent(WineColor.self, forKey: .color)
         let mainImageURL = try? container.decodeIfPresent(String.self, forKey: .mainImageURL)
         let labelImageURL = try? container.decodeIfPresent(String.self, forKey: .labelImageUrl)
         let imageURLs = try? container.decodeIfPresent([String].self, forKey: .imageURLs)
@@ -62,6 +65,7 @@ public final class Wine: Decodable {
         let sugar = try? container.decodeIfPresent(Sugar.self, forKey: .sugar)
 
         self.id = id
+        self.color = color
         self.mainImageUrl = mainImageURL
         self.labelImageUrl = labelImageURL
         self.imageURLs = imageURLs
@@ -83,6 +87,6 @@ public enum WineType: String, Decodable {
     case sparkling, quiet, none
 }
 
-public enum WineColor: String, Decodable {
+public enum WineColor: String, Decodable { // TODO: - localize
     case red, white, pink
 }
