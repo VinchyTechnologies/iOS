@@ -95,11 +95,11 @@
 		CABDBA8524C2F7EF00AD96D6 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				CABDBA9324C31E4E00AD96D6 /* CollectionExt.swift */,
-				CAF24AF624C32E470057547F /* OpenURLProtocol.swift */,
-				CACC1DC324C5F6C80082BD01 /* Filter.swift */,
 				CA4AED9E24CED4AC00035922 /* AppBundle.swift */,
 				CA27087B24CFF39B007580D8 /* Array.swift */,
+				CABDBA9324C31E4E00AD96D6 /* CollectionExt.swift */,
+				CACC1DC324C5F6C80082BD01 /* Filter.swift */,
+				CAF24AF624C32E470057547F /* OpenURLProtocol.swift */,
 				CA2E796224D5ECAC00F17725 /* UserDefaults.swift */,
 				CA7B835024ED9AE000991F24 /* WorkItem.swift */,
 			);

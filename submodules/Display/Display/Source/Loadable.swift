@@ -40,3 +40,26 @@ extension Loadable where Self: UIViewController {
     }
 
 }
+
+extension Loadable where Self: UIView {
+
+    public func addLoader() {
+        addSubview(loadingIndicator)
+        loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            loadingIndicator.widthAnchor.constraint(equalToConstant: 36),
+            loadingIndicator.heightAnchor.constraint(equalToConstant: 36),
+            loadingIndicator.centerYAnchor.constraint(equalTo: centerYAnchor),
+            loadingIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),
+        ])
+    }
+
+    public func startLoadingAnimation() {
+        loadingIndicator.isAnimating = true
+    }
+
+    public func stopLoadingAnimation() {
+        loadingIndicator.isAnimating = false
+    }
+
+}

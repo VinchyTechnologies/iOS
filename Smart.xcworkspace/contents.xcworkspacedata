@@ -5,22 +5,7 @@
       location = "container:"
       name = "submodules">
       <FileRef
-         location = "group:submodules/VinchyUI/VinchyUI.xcodeproj">
-      </FileRef>
-      <FileRef
-         location = "group:submodules/VinchyCore/VinchyCore.xcodeproj">
-      </FileRef>
-      <FileRef
-         location = "group:submodules/EmailService/EmailService.xcodeproj">
-      </FileRef>
-      <FileRef
-         location = "group:submodules/LocationUI/LocationUI.xcodeproj">
-      </FileRef>
-      <FileRef
          location = "group:submodules/CommonUI/CommonUI.xcodeproj">
-      </FileRef>
-      <FileRef
-         location = "group:submodules/StringFormatting/StringFormatting.xcodeproj">
       </FileRef>
       <FileRef
          location = "group:submodules/Core/Core.xcodeproj">
@@ -30,6 +15,21 @@
       </FileRef>
       <FileRef
          location = "group:submodules/Display/Display.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:submodules/EmailService/EmailService.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:submodules/LocationUI/LocationUI.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:submodules/StringFormatting/StringFormatting.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:submodules/VinchyCore/VinchyCore.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:submodules/VinchyUI/VinchyUI.xcodeproj">
       </FileRef>
    </Group>
    <Group

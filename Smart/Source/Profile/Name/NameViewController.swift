@@ -46,7 +46,8 @@ final class NameViewController: UIViewController {
         showKeyboard()
     }
 
-    @objc func showKeyboard() {
+    @objc
+    func showKeyboard() {
         editingView.textField.becomeFirstResponder()
     }
 
@@ -64,7 +65,8 @@ final class NameViewController: UIViewController {
         view.layoutSubviews()
     }
 
-    @objc private func saveName() {
+    @objc
+    private func saveName() {
         view.endEditing(true)
         navigationController?.popViewController(animated: true)
     }

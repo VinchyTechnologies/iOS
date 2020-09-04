@@ -1,0 +1,26 @@
+//
+//  Quotes.swift
+//  StringFormatting
+//
+//  Created by Aleksei Smirnov on 04.09.2020.
+//  Copyright © 2020 Aleksei Smirnov. All rights reserved.
+//
+
+import Foundation
+
+public extension String {
+
+    private static var quotes: (String, String) {
+        guard
+            let bQuote = Locale.current.quotationBeginDelimiter,
+            let eQuote = Locale.current.quotationEndDelimiter
+        else { return ("\"", "\"") }
+
+        return (bQuote, eQuote)
+    }
+
+    public var quoted: String {
+        let (bQuote, eQuote) = String.quotes
+        return bQuote + self + eQuote
+    }
+}

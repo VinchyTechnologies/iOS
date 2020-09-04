@@ -10,16 +10,20 @@ import UIKit
 import CommonUI
 import VinchyCore
 import Display
+import StringFormatting
 
 enum ShowcaseMode {
     case normal(wines: [Wine])
     case advancedSearch(params: [(String, String)])
-    case searchByTitle(searchString: String)
 }
 
 final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, Loadable {
 
-    private(set) var loadingIndicator: ActivityIndicatorView = ActivityIndicatorView()
+    private enum C {
+        static let limit: Int = 40
+    }
+
+    private(set) var loadingIndicator = ActivityIndicatorView()
 
     private var categoryItems: [CategoryItem] = [] {
         didSet {
@@ -50,8 +54,8 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
         collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
 
         collectionView.register(WineCollectionViewCell.self)
-        collectionView.register(HeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderReusableView.description())
-        collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: UICollectionReusableView.description())
+        collectionView.register(HeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderReusableView.reuseId)
+        collectionView.register(LoadingCollectionFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: LoadingCollectionFooter.reuseId)
 
         return collectionView
     }()
@@ -70,7 +74,7 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
         }
     }
     private var currentPage: Int = -1
-    private var shouldLoadMore = true
+    private var shouldLoadMore = false
 
     private let mode: ShowcaseMode
 
@@ -81,28 +85,26 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
         switch mode {
         case .normal(let wines):
             navigationItem.title = navTitle
-            let groupedWines = wines.grouped(map: { $0.place?.country ?? "Другие" })
+            let groupedWines = wines.grouped(map: { $0.place?.country ?? "Другие" }) // TODO: - localized
             if groupedWines.count == 1 {
                 filtersHeaderView.isHidden = true
                 categoryItems = [.init(title: "", wines: wines)]
                 return
             }
             categoryItems = groupedWines.map({ (arrayWine) -> CategoryItem in
+                // TODO: - localized
                 return CategoryItem(title: arrayWine.first?.place?.country ?? "Другие", wines: arrayWine)
             })
 
-        case .advancedSearch:
+        case .advancedSearch(let param):
+
             navigationItem.title = "Результаты поиска" // TODO: - localized
-            categoryItems = [.init(title: "Все", wines: [])] // TODO: - add quotes
-            loadMoreWines()
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.0) {
-                self.dispatchWorkItemHud.perform()
+            if param.first?.0 == "title" && param.count == 1 {
+                categoryItems = [.init(title: param.first?.1.quoted ?? "", wines: [])]
+            } else {
+                categoryItems = [.init(title: "Все", wines: [])] // TODO: - localize
             }
 
-        case .searchByTitle(let searchString):
-            navigationItem.title = "Результаты поиска" // TODO: - localized
-            categoryItems = [.init(title: searchString, wines: [])] // TODO: - add quotes
-            loadMoreWines()
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.dispatchWorkItemHud.perform()
             }
@@ -138,35 +140,27 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
     }
 
     private func loadMoreWines() {
-
+        guard shouldLoadMore else { return }
+        currentPage += 1
         DispatchQueue.global(qos: .userInteractive).async {
-            guard self.shouldLoadMore else { return }
-
-            self.currentPage += 1
-
             switch self.mode {
-
             case .normal:
-                break
+                return
 
             case .advancedSearch(var params):
-                params += [("offset", String(self.currentPage)), ("limit", String(40))]
+                params += [("offset", String(self.currentPage)), ("limit", String(C.limit))]
                 Wines.shared.getFilteredWines(params: params) { [weak self] result in
                     guard let self = self else { return }
                     self.dispatchWorkItemHud.cancel()
                     self.stopLoadingAnimation()
                     switch result {
-                    case .success(let winess):
-
-                        var wines = [Wine]()
-
+                    case .success(let wines):
+                        self.shouldLoadMore = wines.count == C.limit
+                        self.categoryItems[0].wines += wines
                         if self.currentPage == 0 && wines.isEmpty {
                             self.showErrorView(title: "Ничего не найдено", description: nil, buttonText: "Назад")
                             return
                         }
-
-                        self.shouldLoadMore = !wines.isEmpty
-                        self.categoryItems[0].wines += wines
 
                     case .failure(let error):
                         if self.currentPage == 0 {
@@ -175,20 +169,8 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
                         }
                     }
                 }
-
-            case .searchByTitle(let searchString):
-                Wines.shared.getWineBy(title: searchString, offset: self.currentPage, limit: 40) { [weak self] result in
-                    switch result {
-                    case .success(let wines):
-                        self?.shouldLoadMore = !wines.isEmpty
-                        self?.categoryItems[0].wines += wines
-                    case .failure:
-                        break
-                    }
-                }
             }
         }
-
     }
 }
 
@@ -219,18 +201,26 @@ extension ShowcaseViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-
-        if kind == UICollectionView.elementKindSectionHeader,
-            let reusableview = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderReusableView.description(), for: indexPath) as? HeaderReusableView,
-            let categoryItem = categoryItems[safe: indexPath.section] {
-
+        switch kind {
+        case UICollectionView.elementKindSectionHeader:
+            let reusableview = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderReusableView.reuseId, for: indexPath) as! HeaderReusableView
+            let categoryItem = categoryItems[indexPath.section]
             reusableview.decorate(model: .init(title: categoryItem.title))
-
             return reusableview
-        }
 
-        let reusableview = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: UICollectionReusableView.description(), for: indexPath)
-        return reusableview
+        case UICollectionView.elementKindSectionFooter:
+            let reusableview = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: LoadingCollectionFooter.reuseId, for: indexPath) as! LoadingCollectionFooter
+            switch mode {
+            case .normal:
+                reusableview.loadingIndicator.isAnimating = false
+            case .advancedSearch:
+                reusableview.loadingIndicator.isAnimating = shouldLoadMore
+            }
+            return reusableview
+
+        default:
+            return .init()
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
@@ -238,28 +228,7 @@ extension ShowcaseViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-
-        if section == categoryItems.count - 1 {
-            return .init(width: collectionView.frame.width, height: 10)
-        }
-
-        return .init(width: 1, height: 0.1)
-    }
-
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        switch mode {
-        case .normal:
-            break
-        case .advancedSearch, .searchByTitle:
-            guard shouldLoadMore else { return }
-            guard let count = categoryItems.first?.wines.count, count > 2 else {
-                return
-            }
-
-            if indexPath.row == count - 1 {
-                loadMoreWines()
-            }
-        }
+        return .init(width: collectionView.bounds.width, height: shouldLoadMore ? 50 : 0)
     }
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
@@ -280,6 +249,17 @@ extension ShowcaseViewController: UICollectionViewDataSource {
             }
         }
 
+        let offset = scrollView.contentOffset
+        let bounds = scrollView.bounds
+        let inset = scrollView.contentInset
+        let y = offset.y + bounds.size.height - inset.bottom
+        let h = scrollView.contentSize.height
+        let reload_distance: CGFloat = 100.0
+        if y > (h + reload_distance) {
+            shouldLoadMore = true
+            loadMoreWines()
+        }
+
         if isAnimating { return }
 
         if let section = collectionView.indexPathsForVisibleSupplementaryElements(ofKind: UICollectionView.elementKindSectionFooter).min()?.section {
@@ -298,12 +278,10 @@ extension ShowcaseViewController: UICollectionViewDataSource {
 }
 
 extension ShowcaseViewController: UICollectionViewDelegateFlowLayout {
-
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard let wine = categoryItems[safe: indexPath.section]?.wines[safe: indexPath.row] else { return }
         navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wine.id), animated: true)
     }
-
 }
 
 extension ShowcaseViewController: FiltersHeaderViewDelegate {

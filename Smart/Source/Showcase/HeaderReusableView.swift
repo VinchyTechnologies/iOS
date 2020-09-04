@@ -18,7 +18,7 @@ public struct HeaderReusableViewModel: ViewModelProtocol {
     }
 }
 
-public final class HeaderReusableView : UICollectionReusableView {
+public final class HeaderReusableView: UICollectionReusableView, Reusable {
 
     private let label = UILabel()
 
