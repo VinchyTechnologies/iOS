@@ -1,6 +1,6 @@
 # Smart
 ## Modules
-![alt text](https://github.com/VinchyTechnologies/iOS/blob/master/ProjectInfo/modules.jpg)
+![alt text](https://github.com/VinchyTechnologies/iOS/blob/master/Docs/modules.jpg)
 
 ## Pods
 If you want to run pod install, just open file ../tools/podInstall.command <br/>
