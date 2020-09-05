@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import StringFormatting
 
 public enum FilterType: String, Decodable {
     case carusel

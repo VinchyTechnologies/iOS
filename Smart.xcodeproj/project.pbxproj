@@ -11,7 +11,6 @@
 		CA015C1A24C44925008DF01D /* DidnotFindTheWineTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA015C1924C44925008DF01D /* DidnotFindTheWineTableCell.swift */; };
 		CA015C3624C582B2008DF01D /* EmailService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA015C3524C582B2008DF01D /* EmailService.framework */; };
 		CA015C3724C582B2008DF01D /* EmailService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA015C3524C582B2008DF01D /* EmailService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CA073FD824796D850067080C /* Stepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA073FD724796D850067080C /* Stepper.swift */; };
 		CA154D752494156C00696436 /* BasicExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D742494156C00696436 /* BasicExampleViewController.swift */; };
 		CA154D77249415A000696436 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D76249415A000696436 /* ChatViewController.swift */; };
 		CA154D79249415F200696436 /* BasicAudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D78249415F200696436 /* BasicAudioController.swift */; };
@@ -88,7 +87,6 @@
 		CA2F479224AF407D00B4D53D /* EnterMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2F479124AF407D00B4D53D /* EnterMessageCell.swift */; };
 		CA3837CC246FCF3C00AD5FCC /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3837CB246FCF3C00AD5FCC /* TabBarController.swift */; };
 		CA3B1D42249E3FE100FAA08A /* ResultsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B1D41249E3FE100FAA08A /* ResultsTableController.swift */; };
-		CA3B1D4A249E5DD700FAA08A /* DefaultTitleTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B1D49249E5DD700FAA08A /* DefaultTitleTableCell.swift */; };
 		CA3B1D5424A0A36300FAA08A /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B1D5324A0A36300FAA08A /* NotesViewController.swift */; };
 		CA445F6B24BFA3C20023A09F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA445F6D24BFA3C20023A09F /* InfoPlist.strings */; };
 		CA472AC0245EDE2F009149FF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA472ABF245EDE2F009149FF /* AppDelegate.swift */; };
@@ -210,7 +208,6 @@
 		C0370D878089C464336C5FAE /* Pods-SmartTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartTests.debug.xcconfig"; path = "Target Support Files/Pods-SmartTests/Pods-SmartTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CA015C1924C44925008DF01D /* DidnotFindTheWineTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DidnotFindTheWineTableCell.swift; sourceTree = "<group>"; };
 		CA015C3524C582B2008DF01D /* EmailService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EmailService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA073FD724796D850067080C /* Stepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stepper.swift; sourceTree = "<group>"; };
 		CA154D742494156C00696436 /* BasicExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicExampleViewController.swift; sourceTree = "<group>"; };
 		CA154D76249415A000696436 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		CA154D78249415F200696436 /* BasicAudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAudioController.swift; sourceTree = "<group>"; };
@@ -285,7 +282,6 @@
 		CA2F479124AF407D00B4D53D /* EnterMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterMessageCell.swift; sourceTree = "<group>"; };
 		CA3837CB246FCF3C00AD5FCC /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		CA3B1D41249E3FE100FAA08A /* ResultsTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableController.swift; sourceTree = "<group>"; };
-		CA3B1D49249E5DD700FAA08A /* DefaultTitleTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultTitleTableCell.swift; sourceTree = "<group>"; };
 		CA3B1D5324A0A36300FAA08A /* NotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesViewController.swift; sourceTree = "<group>"; };
 		CA445F6C24BFA3C20023A09F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CA445F6E24BFA3CD0023A09F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -420,6 +416,7 @@
 		CA0A352324785A0900C400F5 /* Showcase */ = {
 			isa = PBXGroup;
 			children = (
+				CA472B62245EDEF9009149FF /* CategoryItem.swift */,
 				CA472B26245EDEA0009149FF /* FiltersHeaderView.swift */,
 				CA472B27245EDEA0009149FF /* HeaderReusableView.swift */,
 				CA472B49245EDEDB009149FF /* ShowcaseViewController.swift */,
@@ -662,7 +659,6 @@
 		CA472ABE245EDE2F009149FF /* Smart */ = {
 			isa = PBXGroup;
 			children = (
-				CABDBA9224C31D9B00AD96D6 /* Legacy */,
 				CACC1DE724C87B870082BD01 /* NewModules */,
 				CA0A3527247860EB00C400F5 /* Resources */,
 				CA472B2D245EDEC7009149FF /* Source */,
@@ -852,21 +848,11 @@
 			path = WriteViewController;
 			sourceTree = "<group>";
 		};
-		CABDBA9224C31D9B00AD96D6 /* Legacy */ = {
-			isa = PBXGroup;
-			children = (
-				CA472B6D245EDF0D009149FF /* Libraries */,
-				CA472AF6245EDE73009149FF /* EditingStackView.swift */,
-				CA472B62245EDEF9009149FF /* CategoryItem.swift */,
-				CA3B1D49249E5DD700FAA08A /* DefaultTitleTableCell.swift */,
-				CA073FD724796D850067080C /* Stepper.swift */,
-			);
-			path = Legacy;
-			sourceTree = "<group>";
-		};
 		CACC1DE724C87B870082BD01 /* NewModules */ = {
 			isa = PBXGroup;
 			children = (
+				CA472AF6245EDE73009149FF /* EditingStackView.swift */,
+				CA472B6D245EDF0D009149FF /* Libraries */,
 				CA472B35245EDEDB009149FF /* Auth */,
 				CAA07CAA24A34A1A00FE285A /* Subscribtion */,
 			);
@@ -1203,12 +1189,10 @@
 				CA472B54245EDEDB009149FF /* Assembly.swift in Sources */,
 				CAF514232461C52400667ED0 /* MoreInteractor.swift in Sources */,
 				CA79545224F92EC20040224C /* AdvancedSearchViewController.swift in Sources */,
-				CA3B1D4A249E5DD700FAA08A /* DefaultTitleTableCell.swift in Sources */,
 				CAAD023A245EE7C500EDF245 /* EmailViewController.swift in Sources */,
 				CA154E012494EA2B00696436 /* SenderType.swift in Sources */,
 				CA7B836624F13FFB00991F24 /* VinchyFooterCollectionReusableView.swift in Sources */,
 				CA7B838924F451FA00991F24 /* WineDetailViewController.swift in Sources */,
-				CA073FD824796D850067080C /* Stepper.swift in Sources */,
 				CA154DF02494EA2B00696436 /* MessageContentCell.swift in Sources */,
 				CA154DDD2494EA2B00696436 /* NSConstraintLayoutSet.swift in Sources */,
 				CAF514212461C52400667ED0 /* MorePresenter.swift in Sources */,
