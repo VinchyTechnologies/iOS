@@ -11,7 +11,7 @@ import Display
 
 public struct VinchyFooterCollectionReusableViewModel: ViewModelProtocol {
 
-    let title: NSAttributedString?
+    fileprivate let title: NSAttributedString?
 
     public init(title: NSAttributedString?) {
         self.title = title

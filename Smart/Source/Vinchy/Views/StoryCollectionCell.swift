@@ -10,8 +10,13 @@ import UIKit
 import Display
 
 struct StoryCollectionCellViewModel: ViewModelProtocol {
-    let imageURL: URL?
-    let title: String?
+    fileprivate let imageURL: URL?
+    fileprivate let title: String?
+
+    public init(imageURL: URL?, title: String?) {
+        self.imageURL = imageURL
+        self.title = title
+    }
 }
 
 final class StoryCollectionCell: UICollectionViewCell, Reusable  {

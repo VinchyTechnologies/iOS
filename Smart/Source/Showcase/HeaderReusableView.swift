@@ -11,7 +11,7 @@ import Display
 
 public struct HeaderReusableViewModel: ViewModelProtocol {
 
-    let title: String?
+    fileprivate let title: String?
 
     public init(title: String?) {
         self.title = title
@@ -34,7 +34,7 @@ public final class HeaderReusableView: UICollectionReusableView, Reusable {
     required init?(coder: NSCoder) { fatalError() }
 }
 
-extension HeaderReusableView : Decoratable {
+extension HeaderReusableView: Decoratable {
 
     public typealias ViewModel = HeaderReusableViewModel
 

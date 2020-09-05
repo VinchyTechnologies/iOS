@@ -11,6 +11,7 @@ import VinchyCore
 import Display
 import MagazineLayout
 import StringFormatting
+import CommonUI
 
 
 protocol VinchySimpleConiniousCaruselCollectionCellDelegate: AnyObject {
@@ -19,7 +20,11 @@ protocol VinchySimpleConiniousCaruselCollectionCellDelegate: AnyObject {
 }
 
 struct VinchySimpleConiniousCaruselCollectionCellViewModel: ViewModelProtocol {
-    let collections: [Collection]
+    fileprivate let collections: [Collection]
+
+    public init(collections: [Collection]) {
+        self.collections = collections
+    }
 }
 
 final class VinchySimpleConiniousCaruselCollectionCell: MagazineLayoutCollectionViewCell, Reusable {
@@ -91,7 +96,7 @@ final class VinchySimpleConiniousCaruselCollectionCell: MagazineLayoutCollection
 
     override init(frame: CGRect) {
         super.init(frame: frame)
-        contentView.addSubview(collectionView)
+        addSubview(collectionView)
         NSLayoutConstraint.activate([
             collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
             collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),

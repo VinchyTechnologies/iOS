@@ -10,8 +10,14 @@ import UIKit
 import Display
 
 struct ToolCollectionCellViewModel: ViewModelProtocol {
-    let price: String?
-    let isLiked: Bool
+
+    fileprivate let price: String?
+    fileprivate let isLiked: Bool
+
+    public init(price: String?, isLiked: Bool) {
+        self.price = price
+        self.isLiked = isLiked
+    }
 }
 
 protocol ToolCollectionCellDelegate: AnyObject {

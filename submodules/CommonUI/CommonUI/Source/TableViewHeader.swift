@@ -11,7 +11,7 @@ import Display
 
 public struct TableViewHeaderViewModel: ViewModelProtocol {
     
-    let title: String?
+    fileprivate let title: String?
 
     public init(title: String?) {
         self.title = title

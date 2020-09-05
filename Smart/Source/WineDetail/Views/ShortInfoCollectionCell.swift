@@ -10,8 +10,14 @@ import UIKit
 import Display
 
 struct ShortInfoCollectionCellViewModel: ViewModelProtocol {
-    let title: NSAttributedString?
-    let subtitle: NSAttributedString?
+
+    fileprivate let title: NSAttributedString?
+    fileprivate let subtitle: NSAttributedString?
+
+    public init(title: NSAttributedString?, subtitle: NSAttributedString?) {
+        self.title = title
+        self.subtitle = subtitle
+    }
 }
 
 final class ShortInfoCollectionCell: UICollectionViewCell, Reusable {

@@ -11,7 +11,12 @@ import Display
 import FSPagerView
 
 struct GalleryCellViewModel: ViewModelProtocol {
-    let urls: [String?]
+
+    fileprivate let urls: [String?]
+
+    public init(urls: [String?]) {
+        self.urls = urls
+    }
 }
 
 final class GalleryCell: UICollectionViewCell, Reusable {

@@ -11,8 +11,8 @@ import Display
 
 public struct HeaderCollectionReusableViewModel: ViewModelProtocol {
 
-    let title: NSAttributedString?
-    let insets: UIEdgeInsets
+    fileprivate let title: NSAttributedString?
+    fileprivate let insets: UIEdgeInsets
 
     public init(title: NSAttributedString?, insets: UIEdgeInsets = .zero) {
         self.title = title

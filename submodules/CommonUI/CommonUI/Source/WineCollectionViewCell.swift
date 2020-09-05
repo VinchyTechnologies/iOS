@@ -1,8 +1,8 @@
 //
-//  WineCollectionViewCell.swift
-//  Smart
+//  WineCollectionCell.swift
+//  CommonUI
 //
-//  Created by Aleksei Smirnov on 14.06.2020.
+//  Created by Aleksei Smirnov on 05.09.2020.
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
@@ -10,13 +10,20 @@ import UIKit
 import SDWebImage
 import Display
 
-struct WineCollectionViewCellViewModel: ViewModelProtocol {
-    let imageURL: URL?
-    let title: String?
-    let subtitle: String?
+public struct WineCollectionViewCellViewModel: ViewModelProtocol {
+    
+    fileprivate let imageURL: URL?
+    fileprivate let title: String?
+    fileprivate let subtitle: String?
+
+    public init(imageURL: URL?, title: String?, subtitle: String?) {
+        self.imageURL = imageURL
+        self.title = title
+        self.subtitle = subtitle
+    }
 }
 
-final class WineCollectionViewCell: UICollectionViewCell, Reusable {
+public final class WineCollectionViewCell: UICollectionViewCell, Reusable {
 
     public let background = UIView()
 
@@ -93,9 +100,9 @@ final class WineCollectionViewCell: UICollectionViewCell, Reusable {
 
 extension WineCollectionViewCell: Decoratable {
 
-    typealias ViewModel = WineCollectionViewCellViewModel
+    public typealias ViewModel = WineCollectionViewCellViewModel
 
-    func decorate(model: ViewModel) {
+    public func decorate(model: ViewModel) {
 
         bottleImageView.sd_setImage(with: model.imageURL, placeholderImage: nil, options: .retryFailed) { [weak self] (image, _, _, _) in
             self?.bottleImageView.image = image?.imageByMakingWhiteBackgroundTransparent()

@@ -11,9 +11,9 @@ import Display
 
 public struct WineTableCellViewModel: ViewModelProtocol {
 
-    public let imageURL: String
-    public let title: String
-    public let subtitle: String?
+    fileprivate let imageURL: String
+    fileprivate let title: String
+    fileprivate let subtitle: String?
 
     public init(imageURL: String, title: String, subtitle: String?) {
         self.imageURL = imageURL

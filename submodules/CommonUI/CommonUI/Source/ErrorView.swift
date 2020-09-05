@@ -15,8 +15,6 @@ public protocol ErrorViewDelegate: AnyObject {
 
 public final class ErrorView: UIView {
 
-    // MARK: - Public Properties
-
     public weak var delegate: ErrorViewDelegate?
     public var isButtonHidden: Bool = false {
         didSet {
@@ -24,13 +22,9 @@ public final class ErrorView: UIView {
         }
     }
 
-    // MARK: - Private Properties
-
     private let titleLabel = UILabel()
     private let subtitleLabel = UILabel()
     private let refreshButton = UIButton()
-
-    // MARK: - Initializers
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
@@ -74,17 +68,14 @@ public final class ErrorView: UIView {
 
     required init?(coder: NSCoder) { fatalError() }
 
-    // MARK: - Public Methods
-
     public func configure(title: String?, description: String?, buttonText: String) {
         titleLabel.text = title
         subtitleLabel.text = description
         refreshButton.setTitle(buttonText, for: .normal)
     }
 
-    // MARK: - Private Properties
-
-    @objc private func didTapErrorButton(_ button: UIButton) {
+    @objc
+    private func didTapErrorButton(_ button: UIButton) {
         delegate?.didTapErrorButton(button)
     }
 

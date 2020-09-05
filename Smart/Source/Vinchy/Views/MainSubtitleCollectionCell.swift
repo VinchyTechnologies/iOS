@@ -11,8 +11,14 @@ import SDWebImage
 import Display
 
 struct MainSubtitleCollectionCellViewModel: ViewModelProtocol {
-    let subtitle: String?
-    let imageURL: URL?
+    
+    fileprivate let subtitle: String?
+    fileprivate let imageURL: URL?
+
+    public init(subtitle: String?, imageURL: URL?) {
+        self.subtitle = subtitle
+        self.imageURL = imageURL
+    }
 }
 
 final class MainSubtitleCollectionCell: UICollectionViewCell, Reusable {

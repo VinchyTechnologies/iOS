@@ -10,10 +10,18 @@ import UIKit
 import Display
 
 struct ButtonCollectionCellViewModel: ViewModelProtocol {
-    let normalImage: UIImage?
-    let selectedImage: UIImage?
-    let title: NSAttributedString?
-    let type: ButtonCollectionCellType
+
+    fileprivate let normalImage: UIImage?
+    fileprivate let selectedImage: UIImage?
+    fileprivate let title: NSAttributedString?
+    fileprivate let type: ButtonCollectionCellType
+
+    public init(normalImage: UIImage?, selectedImage: UIImage?, title: NSAttributedString?, type: ButtonCollectionCellType) {
+        self.normalImage = normalImage
+        self.selectedImage = selectedImage
+        self.title = title
+        self.type = type
+    }
 }
 
 enum ButtonCollectionCellType {

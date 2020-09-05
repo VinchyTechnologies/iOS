@@ -10,7 +10,12 @@ import UIKit
 import Display
 
 struct SuggestionCollectionCellViewModel: ViewModelProtocol {
-    let title: String?
+
+    fileprivate let title: String?
+
+    public init(title: String?) {
+        self.title = title
+    }
 }
 
 final class SuggestionCollectionCell: UICollectionViewCell, Reusable {

@@ -362,7 +362,7 @@ extension WineDetailViewController: UICollectionViewDataSource {
             
         case .button(let viewModel):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ButtonCollectionCell.reuseId, for: indexPath) as! ButtonCollectionCell
-            cell.decorate(model: .init(normalImage: viewModel.normalImage, selectedImage: viewModel.selectedImage, title: viewModel.title, type: viewModel.type))
+            cell.decorate(model: viewModel)
 
             let isDisliked = realm(path: .dislike).objects(DBWine.self).first(where: { $0.wineID == wine?.id }) != nil
 

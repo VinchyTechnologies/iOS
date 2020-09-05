@@ -13,11 +13,8 @@ public func countryNameFromLocaleCode(countryCode: String?) -> String? {
     guard let countryCode = countryCode else { return nil }
 
     if let name = (Locale.current as NSLocale).displayName(forKey: .countryCode, value: countryCode) {
-        // Country name was found
         return name
     }
     
-    // Country name cannot be found
     return nil
-
 }

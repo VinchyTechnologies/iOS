@@ -79,7 +79,6 @@
 		CA154E062494EA2B00696436 /* MessagesDisplayDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DC52494EA2B00696436 /* MessagesDisplayDelegate.swift */; };
 		CA154E072494EA2B00696436 /* MessagesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DC62494EA2B00696436 /* MessagesDataSource.swift */; };
 		CA154E152494EDCA00696436 /* MessageKitAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CA154E0C2494EDCA00696436 /* MessageKitAssets.bundle */; };
-		CA154E3C249639F300696436 /* WineCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154E3B249639F300696436 /* WineCollectionViewCell.swift */; };
 		CA1821A424C0E83900280DD4 /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA1821A324C0E83900280DD4 /* Display.framework */; };
 		CA1821A524C0E83900280DD4 /* Display.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA1821A324C0E83900280DD4 /* Display.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA1821FF24C0F6F000280DD4 /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA1821FE24C0F6F000280DD4 /* Database.framework */; };
@@ -276,7 +275,6 @@
 		CA154DC52494EA2B00696436 /* MessagesDisplayDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesDisplayDelegate.swift; sourceTree = "<group>"; };
 		CA154DC62494EA2B00696436 /* MessagesDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesDataSource.swift; sourceTree = "<group>"; };
 		CA154E0C2494EDCA00696436 /* MessageKitAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MessageKitAssets.bundle; sourceTree = "<group>"; };
-		CA154E3B249639F300696436 /* WineCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineCollectionViewCell.swift; sourceTree = "<group>"; };
 		CA1821A324C0E83900280DD4 /* Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA1821FE24C0F6F000280DD4 /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA2F479124AF407D00B4D53D /* EnterMessageCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EnterMessageCell.swift; sourceTree = "<group>"; };
@@ -420,7 +418,6 @@
 				CA472B26245EDEA0009149FF /* FiltersHeaderView.swift */,
 				CA472B27245EDEA0009149FF /* HeaderReusableView.swift */,
 				CA472B49245EDEDB009149FF /* ShowcaseViewController.swift */,
-				CA154E3B249639F300696436 /* WineCollectionViewCell.swift */,
 			);
 			path = Showcase;
 			sourceTree = "<group>";
@@ -1238,7 +1235,6 @@
 				CA472B2C245EDEA0009149FF /* HeaderReusableView.swift in Sources */,
 				CA154DFB2494EA2B00696436 /* PlayButtonView.swift in Sources */,
 				CA154DEF2494EA2B00696436 /* TypingIndicatorCell.swift in Sources */,
-				CA154E3C249639F300696436 /* WineCollectionViewCell.swift in Sources */,
 				CA154DE62494EA2B00696436 /* MessageKit+Availability.swift in Sources */,
 				CA472AC0245EDE2F009149FF /* AppDelegate.swift in Sources */,
 				CA4D180B2492B2AC00B49BD4 /* MockSocket.swift in Sources */,

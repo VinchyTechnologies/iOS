@@ -10,8 +10,9 @@ import UIKit
 import Display
 
 public struct ImageOptionCollectionCellViewModel: ViewModelProtocol {
-    public let imageName: String?
-    public let title: String?
+    
+    fileprivate let imageName: String?
+    fileprivate let title: String?
 
     public init(imageName: String?, title: String?) {
         self.imageName = imageName
