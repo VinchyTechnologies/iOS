@@ -16,7 +16,9 @@ import EmailService
 import StringFormatting
 import GoogleMobileAds
 
-final class VinchyViewController: UIViewController, Alertable {
+final class VinchyViewController: UIViewController, Alertable, Loadable {
+
+    private(set) var loadingIndicator = ActivityIndicatorView()
 
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: MagazineLayout())
@@ -48,17 +50,14 @@ final class VinchyViewController: UIViewController, Alertable {
         searchController.searchBar.searchTextField.layer.cornerCurve = .continuous
         return searchController
     }()
-    private let activityIndicator = ActivityIndicatorView(frame: .init(x: 0, y: 0, width: 36, height: 36))
 
     private let emailService = EmailService()
     private var searchText: String?
 
     private lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
         guard let self = self else { return }
-        self.collectionView.backgroundView = UIView(frame: self.view.frame)
-        self.collectionView.backgroundView?.addSubview(self.activityIndicator)
-        self.activityIndicator.isAnimating = true
-        self.activityIndicator.center = self.collectionView.center
+        self.addLoader()
+        self.startLoadingAnimation()
     }
 
     private var isSearchingMode: Bool = false {
@@ -113,7 +112,7 @@ final class VinchyViewController: UIViewController, Alertable {
         Compilations.shared.getCompilations { [weak self] result in
             self?.dispatchWorkItemHud.cancel()
             DispatchQueue.main.async {
-                self?.activityIndicator.isAnimating = false
+                self?.stopLoadingAnimation()
             }
             switch result {
             case .success(let model):
