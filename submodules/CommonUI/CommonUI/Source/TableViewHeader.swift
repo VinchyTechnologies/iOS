@@ -11,10 +11,10 @@ import Display
 
 public struct TableViewHeaderViewModel: ViewModelProtocol {
     
-    fileprivate let title: String?
+    fileprivate let titleText: String?
 
-    public init(title: String?) {
-        self.title = title
+    public init(titleText: String?) {
+        self.titleText = titleText
     }
 }
 
@@ -43,6 +43,6 @@ extension TableViewHeader: Decoratable {
     public typealias ViewModel = TableViewHeaderViewModel
 
     public func decorate(model: ViewModel) {
-        titleLabel.text = model.title
+        titleLabel.text = model.titleText
     }
 }

@@ -10,12 +10,13 @@ import UIKit
 import Display
 
 struct StoryCollectionCellViewModel: ViewModelProtocol {
-    fileprivate let imageURL: URL?
-    fileprivate let title: String?
 
-    public init(imageURL: URL?, title: String?) {
+    fileprivate let imageURL: URL?
+    fileprivate let titleText: String?
+
+    public init(imageURL: URL?, titleText: String?) {
         self.imageURL = imageURL
-        self.title = title
+        self.titleText = titleText
     }
 }
 
@@ -35,15 +36,15 @@ final class StoryCollectionCell: UICollectionViewCell, Reusable  {
         addSubview(imageView)
 
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.numberOfLines = 2
-        titleLabel.textColor = .white
         titleLabel.font = Font.bold(14)
+        titleLabel.textColor = .white
+        titleLabel.numberOfLines = 2
 
         addSubview(titleLabel)
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
-            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12)
+            titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12),
         ])
     }
 
@@ -54,7 +55,8 @@ final class StoryCollectionCell: UICollectionViewCell, Reusable  {
         imageView.frame = bounds
     }
 
-    private func setAttributedText(string: String) {
+    private func setAttributedText(string: String?) {
+        guard let string = string else { return }
         let attributedString = NSMutableAttributedString(string: string)
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineHeightMultiple = 1.22
@@ -72,7 +74,7 @@ extension StoryCollectionCell: Decoratable {
     typealias ViewModel = StoryCollectionCellViewModel
 
     func decorate(model: ViewModel) {
-        setAttributedText(string: model.title ?? "")
+        setAttributedText(string: model.titleText)
         imageView.sd_setImage(with: model.imageURL, placeholderImage: nil, options: .progressiveLoad, completed: nil)
     }
 }

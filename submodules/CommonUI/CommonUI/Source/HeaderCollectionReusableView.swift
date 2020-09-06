@@ -11,11 +11,11 @@ import Display
 
 public struct HeaderCollectionReusableViewModel: ViewModelProtocol {
 
-    fileprivate let title: NSAttributedString?
+    fileprivate let titleText: NSAttributedString?
     fileprivate let insets: UIEdgeInsets
 
-    public init(title: NSAttributedString?, insets: UIEdgeInsets = .zero) {
-        self.title = title
+    public init(titleText: NSAttributedString?, insets: UIEdgeInsets = .zero) {
+        self.titleText = titleText
         self.insets = insets
     }
 }
@@ -44,6 +44,6 @@ extension HeaderCollectionReusableView: Decoratable {
 
     public func decorate(model: HeaderCollectionReusableViewModel) {
         label.insets = model.insets
-        label.attributedText = model.title
+        label.attributedText = model.titleText
     }
 }

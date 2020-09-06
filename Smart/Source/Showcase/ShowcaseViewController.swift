@@ -194,8 +194,8 @@ extension ShowcaseViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as? WineCollectionViewCell,
             let wine = categoryItems[safe: indexPath.section]?.wines[safe: indexPath.row] {
-            cell.decorate(model: .init(imageURL: wine.mainImageUrl?.toURL, title: wine.title,
-                                       subtitle: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode)))
+            cell.decorate(model: .init(imageURL: wine.mainImageUrl?.toURL, titleText: wine.title,
+                                       subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode)))
             return cell
         }
         return .init()

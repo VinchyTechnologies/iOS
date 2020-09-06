@@ -10,10 +10,9 @@ import UIKit
 import Core
 import StringFormatting
 
-let vkURL = "https://vk.com/shuler_alex"
+let vkURL = "https://vk.com"
 let instagramURL = "https://www.instagram.com"
 let openAppStoreURL = "itms-apps://itunes.apple.com/app/id1147613120" // TODO: -
-let jobText = "job" // TODO: -
 
 protocol MorePresenterProtocol: AnyObject {
     func rateApp()
@@ -53,8 +52,6 @@ final class MorePresenter: OpenURLProtocol {
     }
 }
 
-// MARK: - MorePresenterProtocol
-
 extension MorePresenter: MorePresenterProtocol {
     
     func goToAboutController() {
@@ -66,7 +63,7 @@ extension MorePresenter: MorePresenterProtocol {
     }
     
     func workWithUs() {
-        sendEmail(with: jobText)
+        sendEmail(with: nil)
     }
     
     func emailUs() {

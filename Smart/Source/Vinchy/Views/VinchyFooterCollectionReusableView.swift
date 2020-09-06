@@ -11,10 +11,10 @@ import Display
 
 public struct VinchyFooterCollectionReusableViewModel: ViewModelProtocol {
 
-    fileprivate let title: NSAttributedString?
+    fileprivate let titleText: NSAttributedString?
 
-    public init(title: NSAttributedString?) {
-        self.title = title
+    public init(titleText: NSAttributedString?) {
+        self.titleText = titleText
     }
 }
 
@@ -42,7 +42,7 @@ extension VinchyFooterCollectionReusableView: Decoratable {
     public typealias ViewModel = VinchyFooterCollectionReusableViewModel
 
     public func decorate(model: VinchyFooterCollectionReusableViewModel) {
-        label.attributedText = model.title
+        label.attributedText = model.titleText
     }
 }
 

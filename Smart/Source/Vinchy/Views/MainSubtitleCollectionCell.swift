@@ -12,11 +12,11 @@ import Display
 
 struct MainSubtitleCollectionCellViewModel: ViewModelProtocol {
     
-    fileprivate let subtitle: String?
+    fileprivate let subtitleText: String?
     fileprivate let imageURL: URL?
 
-    public init(subtitle: String?, imageURL: URL?) {
-        self.subtitle = subtitle
+    public init(subtitleText: String?, imageURL: URL?) {
+        self.subtitleText = subtitleText
         self.imageURL = imageURL
     }
 }
@@ -29,28 +29,26 @@ final class MainSubtitleCollectionCell: UICollectionViewCell, Reusable {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
+        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .option
+        imageView.contentMode = .scaleToFill
         imageView.layer.cornerRadius = 15
         imageView.clipsToBounds = true
-        imageView.contentMode = .scaleToFill
 
         subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
         subtitleLabel.font = Font.semibold(15)
         subtitleLabel.textColor = .blueGray
+
+        addSubview(imageView)
         addSubview(subtitleLabel)
         NSLayoutConstraint.activate([
             subtitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
             subtitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            subtitleLabel.bottomAnchor.constraint(equalTo: bottomAnchor)
-        ])
-
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        addSubview(imageView)
-        NSLayoutConstraint.activate([
+            subtitleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
             imageView.topAnchor.constraint(equalTo: topAnchor),
             imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
             imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            imageView.bottomAnchor.constraint(equalTo: subtitleLabel.topAnchor, constant: -3)
+            imageView.bottomAnchor.constraint(equalTo: subtitleLabel.topAnchor, constant: -3),
         ])
     }
 
@@ -63,7 +61,7 @@ extension MainSubtitleCollectionCell: Decoratable {
     typealias ViewModel = MainSubtitleCollectionCellViewModel
 
     func decorate(model: ViewModel) {
-        subtitleLabel.text = model.subtitle
+        subtitleLabel.text = model.subtitleText
         imageView.sd_setImage(with: model.imageURL, placeholderImage: nil, options: [.progressiveLoad, .continueInBackground], completed: nil)
     }
 }

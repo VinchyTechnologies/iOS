@@ -81,7 +81,7 @@ final class ToolCollectionCell: UICollectionViewCell, Reusable {
             likeButton.widthAnchor.constraint(equalToConstant: 50),
             likeButton.heightAnchor.constraint(equalToConstant: 50),
             likeButton.centerXAnchor.constraint(equalTo: spaceBetweenShareAndPrice.centerXAnchor),
-            likeButton.centerYAnchor.constraint(equalTo: spaceBetweenShareAndPrice.centerYAnchor)
+            likeButton.centerYAnchor.constraint(equalTo: spaceBetweenShareAndPrice.centerYAnchor),
         ])
     }
 

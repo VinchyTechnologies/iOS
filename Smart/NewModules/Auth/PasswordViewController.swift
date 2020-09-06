@@ -11,13 +11,9 @@ import Display
 
 final class PasswordViewController: UIViewController {
 
-    // MARK: - Private Properties
-
     private let editingView = EditingStackView()
     private let keyboardHelper = KeyboardHelper()
     private lazy var bottomConstraint = NSLayoutConstraint(item: editingView, attribute: .bottom, relatedBy: .equal, toItem: view, attribute: .bottom, multiplier: 1, constant: 0)
-
-    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -42,8 +38,6 @@ final class PasswordViewController: UIViewController {
         editingView.textField.becomeFirstResponder()
     }
 
-    // MARK: - Private Methods
-
     private func configureKeyboardHelper() {
         keyboardHelper.bindBottomToKeyboardFrame(
             animated: true,
@@ -58,7 +52,8 @@ final class PasswordViewController: UIViewController {
         view.layoutSubviews()
     }
 
-    @objc private func backStep() {
+    @objc
+    private func backStep() {
         navigationController?.popViewController(animated: true)
     }
 

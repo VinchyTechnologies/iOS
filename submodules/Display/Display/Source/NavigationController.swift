@@ -10,8 +10,6 @@ import UIKit
 
 public final class NavigationController: UINavigationController {
 
-    // MARK: - Initializers
-
     public override init(rootViewController: UIViewController) {
         super.init(rootViewController: rootViewController)
         rootViewController.extendedLayoutIncludesOpaqueBars = true
@@ -19,8 +17,6 @@ public final class NavigationController: UINavigationController {
     }
 
     required init?(coder aDecoder: NSCoder) { fatalError() }
-
-    // MARK: - Lifecycle
 
     public override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,18 +42,18 @@ public final class NavigationController: UINavigationController {
         ]
 
         UIBarButtonItem.appearance().setTitleTextAttributes([
-            NSAttributedString.Key.font : Font.bold(18),
-            NSAttributedString.Key.foregroundColor : UIColor.blueGray,
+            NSAttributedString.Key.font: Font.bold(18),
+            NSAttributedString.Key.foregroundColor: UIColor.blueGray,
         ], for: .normal)
 
         UIBarButtonItem.appearance().setTitleTextAttributes([
-            NSAttributedString.Key.font : Font.bold(18),
-            NSAttributedString.Key.foregroundColor : UIColor.blueGray,
+            NSAttributedString.Key.font: Font.bold(18),
+            NSAttributedString.Key.foregroundColor: UIColor.blueGray,
         ], for: .selected)
 
         UIBarButtonItem.appearance().setTitleTextAttributes([
-            NSAttributedString.Key.font : Font.bold(18),
-            NSAttributedString.Key.foregroundColor : UIColor.blueGray,
+            NSAttributedString.Key.font: Font.bold(18),
+            NSAttributedString.Key.foregroundColor: UIColor.blueGray,
         ], for: .highlighted)
 
     }
@@ -69,7 +65,7 @@ public final class NavigationController: UINavigationController {
         let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
         navigationBar.backIndicatorImage = UIImage(systemName: "chevron.left", withConfiguration: imageConfig)
         navigationBar.backIndicatorTransitionMaskImage = UIImage(systemName: "chevron.left", withConfiguration: imageConfig)
-        viewController.navigationItem.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: nil, action: nil)
+        viewController.navigationItem.backBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: nil, action: nil)
 
         super.pushViewController(viewController, animated: animated)
     }

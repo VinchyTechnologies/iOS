@@ -11,18 +11,18 @@ import Display
 
 public struct WineTableCellViewModel: ViewModelProtocol {
 
-    fileprivate let imageURL: String
-    fileprivate let title: String
-    fileprivate let subtitle: String?
+    fileprivate let imageURL: URL?
+    fileprivate let titleText: String
+    fileprivate let subtitleText: String?
 
-    public init(imageURL: String, title: String, subtitle: String?) {
+    public init(imageURL: URL?, titleText: String, subtitleText: String?) {
         self.imageURL = imageURL
-        self.title = title
-        self.subtitle = subtitle
+        self.titleText = titleText
+        self.subtitleText = subtitleText
     }
 }
 
-public final class WineTableCell: UITableViewCell {
+public final class WineTableCell: UITableViewCell, Reusable {
 
     private let bottleImageView = UIImageView()
     private let titleLabel = UILabel()
@@ -40,27 +40,27 @@ public final class WineTableCell: UITableViewCell {
             bottleImageView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -15),
             bottleImageView.heightAnchor.constraint(equalToConstant: 100),
             bottleImageView.widthAnchor.constraint(equalToConstant: 40),
-            bottleImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30)
+            bottleImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
         ])
 
-        addSubview(titleLabel)
-        titleLabel.numberOfLines = 2
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.font = Font.bold(24)
+        titleLabel.numberOfLines = 2
+        addSubview(titleLabel)
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: bottleImageView.trailingAnchor, constant: 27),
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10)
+            titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
         ])
 
-        addSubview(subtitleLabel)
-        subtitleLabel.textColor = .blueGray
         subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
         subtitleLabel.font = Font.medium(16)
+        subtitleLabel.textColor = .blueGray
+        addSubview(subtitleLabel)
         NSLayoutConstraint.activate([
             subtitleLabel.leadingAnchor.constraint(equalTo: bottleImageView.trailingAnchor, constant: 27),
             subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
-            subtitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10)
+            subtitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
         ])
     }
 
@@ -68,17 +68,15 @@ public final class WineTableCell: UITableViewCell {
 
 }
 
-extension WineTableCell: Reusable { }
-
 extension WineTableCell: Decoratable {
 
     public typealias ViewModel = WineTableCellViewModel
 
     public func decorate(model: ViewModel) {
-        bottleImageView.sd_setImage(with: URL(string: model.imageURL)) { [weak self] (image, _, _, _) in
+        bottleImageView.sd_setImage(with: model.imageURL) { [weak self] (image, _, _, _) in
             self?.bottleImageView.image = image?.imageByMakingWhiteBackgroundTransparent()
         }
-        titleLabel.text = model.title
-        subtitleLabel.text = model.subtitle
+        titleLabel.text = model.titleText
+        subtitleLabel.text = model.subtitleText
     }
 }

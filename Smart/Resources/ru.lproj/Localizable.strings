@@ -70,3 +70,6 @@
 
 // MARK: - Subscriptions
 "subscriptions" = "Подписки";
+
+// MARK: - EmptyView
+"nothing_here" = "пока пусто";

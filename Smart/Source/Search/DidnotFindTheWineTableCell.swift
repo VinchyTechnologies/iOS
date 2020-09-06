@@ -56,7 +56,8 @@ final class DidnotFindTheWineTableCell: UITableViewCell, Reusable {
 
     required init?(coder: NSCoder) { fatalError() }
 
-    @objc private func didTapWriteUsButton(_ button: UIButton) {
+    @objc
+    private func didTapWriteUsButton(_ button: UIButton) {
         delegate?.didTapWriteUsButton(button)
     }
 }

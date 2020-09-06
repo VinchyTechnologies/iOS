@@ -32,7 +32,6 @@ final class ASFiltersHeaderView: UIView {
     private var categoryTitles: [String] = [] {
         didSet {
             DispatchQueue.main.async {
-
                 CATransaction.begin()
                 CATransaction.setCompletionBlock({
                     self.hilightFirst()
@@ -56,13 +55,12 @@ final class ASFiltersHeaderView: UIView {
         collectionView.backgroundColor = .mainBackground
     }
 
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    required init?(coder: NSCoder) { fatalError() }
 
     public func hilightFirst() {
         if let cell = collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) as? TextCollectionCell {
-            cell.decorate(model: .init(title: NSAttributedString(string: cell.getCurrentText() ?? "", attributes: ASTextNodeAttributes.common(size: 16, textColor: .accent))))
+            let titleText = NSAttributedString(string: cell.getCurrentText() ?? "", font: Font.bold(16), textColor: .accent)
+            cell.decorate(model: .init(titleText: titleText))
         }
     }
 
@@ -75,9 +73,11 @@ final class ASFiltersHeaderView: UIView {
         collectionView.visibleCells.forEach { (cell) in
             if let cell = cell as? TextCollectionCell {
                 if cell == self.collectionView.cellForItem(at: IndexPath(item: section, section: 0)) {
-                    cell.decorate(model: .init(title: NSAttributedString(string: cell.getCurrentText() ?? "", attributes: ASTextNodeAttributes.common(size: 16, textColor: .dark))))
+                    let titleText = NSAttributedString(string: cell.getCurrentText() ?? "", font: Font.bold(16), textColor: .accent)
+                    cell.decorate(model: .init(titleText: titleText))
                 } else {
-                    cell.decorate(model: .init(title: NSAttributedString(string: cell.getCurrentText() ?? "", attributes: ASTextNodeAttributes.common(size: 16, textColor: .blueGray))))
+                    let titleText = NSAttributedString(string: cell.getCurrentText() ?? "", font: Font.bold(16), textColor: .blueGray)
+                    cell.decorate(model: .init(titleText: titleText))
                 }
             }
         }
@@ -123,8 +123,8 @@ extension ASFiltersHeaderView: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseId, for: indexPath) as! TextCollectionCell
-        cell.decorate(model: .init(title: NSAttributedString(string: categoryTitles[safe: indexPath.row] ?? "",
-                                                             attributes: ASTextNodeAttributes.common(size: 16, textColor: .secondaryLabel))))
+        let titleText = NSAttributedString(string: categoryTitles[safe: indexPath.row] ?? "", font: Font.bold(16), textColor: .blueGray)
+        cell.decorate(model: .init(titleText: titleText))
         return cell
     }
 }
@@ -137,10 +137,11 @@ extension ASFiltersHeaderView: UICollectionViewDelegate {
         collectionView.visibleCells.forEach { (cell) in
             if let cell = cell as? TextCollectionCell {
                 if cell == collectionView.cellForItem(at: indexPath) {
-                    cell.decorate(model: .init(title: NSAttributedString(string: cell.getCurrentText() ?? "", attributes: ASTextNodeAttributes.common(size: 16, textColor: .accent))))
+                    let titleText = NSAttributedString(string: cell.getCurrentText() ?? "", font: Font.bold(16), textColor: .accent)
+                    cell.decorate(model: .init(titleText:titleText))
                 } else {
-                    cell.decorate(model: .init(title: NSAttributedString(string: cell.getCurrentText() ?? "",
-                                                                         attributes: ASTextNodeAttributes.common(size: 16, textColor: .blueGray))))
+                    let titleText = NSAttributedString(string: cell.getCurrentText() ?? "", font: Font.bold(16), textColor: .blueGray)
+                    cell.decorate(model: .init(titleText: titleText))
                 }
             }
         }

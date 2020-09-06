@@ -14,14 +14,14 @@ import VinchyCore
 final class Assembly {
 
     static func buildDetailModule(wineID: Int64) -> UIViewController {
-        let controller = WineDetailViewController(wineID: wineID) //DetailProductController(wineID: wineID)
+        let controller = WineDetailViewController(wineID: wineID)
         controller.hidesBottomBarWhenPushed = true
         controller.extendedLayoutIncludesOpaqueBars = true
         return controller
     }
 
     static func buildFiltersModule() -> UIViewController {
-        let controller = AdvancedSearchViewController() //FiltersViewController()
+        let controller = AdvancedSearchViewController()
         controller.hidesBottomBarWhenPushed = true
         return controller
     }

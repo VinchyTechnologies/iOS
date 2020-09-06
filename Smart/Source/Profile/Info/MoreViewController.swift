@@ -93,7 +93,7 @@ extension MoreViewController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let header = TableViewHeader()
-        header.decorate(model: .init(title: localized("always_available").firstLetterUppercased()))
+        header.decorate(model: .init(titleText: localized("always_available").firstLetterUppercased()))
         return header
     }
 

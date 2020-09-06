@@ -12,11 +12,11 @@ import Display
 public struct ImageOptionCollectionCellViewModel: ViewModelProtocol {
     
     fileprivate let imageName: String?
-    fileprivate let title: String?
+    fileprivate let titleText: String?
 
-    public init(imageName: String?, title: String?) {
+    public init(imageName: String?, titleText: String?) {
         self.imageName = imageName
-        self.title = title
+        self.titleText = titleText
     }
 }
 
@@ -58,11 +58,10 @@ public final class ImageOptionCollectionCell: UICollectionViewCell, Reusable {
             imageView.widthAnchor.constraint(equalToConstant: 50),
             imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
             imageView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
             titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
-            titleLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 130)
+            titleLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 130),
         ])
     }
 
@@ -80,6 +79,6 @@ extension ImageOptionCollectionCell: Decoratable {
         } else {
             imageView.image = nil
         }
-        titleLabel.text = model.title
+        titleLabel.text = model.titleText
     }
 }

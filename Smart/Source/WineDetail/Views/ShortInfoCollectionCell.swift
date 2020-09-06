@@ -47,7 +47,7 @@ final class ShortInfoCollectionCell: UICollectionViewCell, Reusable {
 
             subtitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
             subtitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
-            subtitleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
+            subtitleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
         ])
 
     }

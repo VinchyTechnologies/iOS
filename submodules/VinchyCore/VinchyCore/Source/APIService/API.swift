@@ -55,8 +55,9 @@ final class API {
         if endpoint.method == .get && endpoint.parameters != nil {
             var queryItems = [URLQueryItem]()
             endpoint.parameters?.forEach({ (key, value) in
-                let stringValue = value as? String ?? ""
-                queryItems.append(URLQueryItem(name: key, value: stringValue))
+                if let stringValue = value as? String {
+                    queryItems.append(URLQueryItem(name: key, value: stringValue))
+                }
             })
             urlComponents.queryItems = queryItems
         } else {

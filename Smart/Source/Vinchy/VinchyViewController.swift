@@ -241,7 +241,7 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
 
         if isSearchingMode {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SuggestionCollectionCell.reuseId, for: indexPath) as! SuggestionCollectionCell
-            cell.decorate(model: .init(title: suggestions[indexPath.row].title))
+            cell.decorate(model: .init(titleText: suggestions[indexPath.row].title))
             return cell
 
         } else {
@@ -261,7 +261,7 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
                 withReuseIdentifier: HeaderCollectionReusableView.reuseId,
                 for: indexPath) as! HeaderCollectionReusableView
             let title = compilations[safe: indexPath.section]?.title ?? ""
-            header.decorate(model: .init(title: NSAttributedString(string: title, font: Font.heavy(20), textColor: .dark, paragraphAlignment: .left), insets: .init(top: 0, left: 10, bottom: 0, right: 10)))
+            header.decorate(model: .init(titleText: NSAttributedString(string: title, font: Font.heavy(20), textColor: .dark, paragraphAlignment: .left), insets: .init(top: 0, left: 10, bottom: 0, right: 10)))
             return header
         case MagazineLayout.SupplementaryViewKind.sectionFooter:
             let footer = collectionView.dequeueReusableSupplementaryView(
@@ -270,7 +270,7 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
                 for: indexPath) as! VinchyFooterCollectionReusableView
             // TODO: - localize
             let title = "Чрезмерное употребление алкоголя\nвредит вашему здоровью"
-            footer.decorate(model: .init(title: NSAttributedString(string: title, font: Font.light(15), textColor: .blueGray, paragraphAlignment: .justified)))
+            footer.decorate(model: .init(titleText: NSAttributedString(string: title, font: Font.light(15), textColor: .blueGray, paragraphAlignment: .justified)))
             return footer
         default:
             fatalError()

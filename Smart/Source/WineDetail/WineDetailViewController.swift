@@ -14,10 +14,9 @@ import CommonUI
 import StringFormatting
 import EmailService
 
-fileprivate struct ShortInfoModel { // TODO: - refactoring
-    let imageName: String?
-    let title: String?
-    let subtitle: String?
+fileprivate enum ShortInfoModel {
+    case titleTextAndImage(imageName: String, titleText: String?)
+    case titleTextAndSubtitleText(titleText: String?, subtitleText: String?)
 }
 
 fileprivate enum Section {
@@ -251,23 +250,23 @@ final class WineDetailViewController: UIViewController, Alertable {
         // TODO: - All options
 
         if let color = wine.color {
-            shortDescriptions.append(.init(imageName: nil, title: localized(color.rawValue).firstLetterUppercased(), subtitle: "Color"))
+            shortDescriptions.append(.titleTextAndSubtitleText(titleText: localized(color.rawValue).firstLetterUppercased(), subtitleText: "Color"))
         }
 
         if let sugar = wine.sugar {
-            shortDescriptions.append(.init(imageName: nil, title: localized(sugar.rawValue).firstLetterUppercased(), subtitle: "Sugar"))
+            shortDescriptions.append(.titleTextAndSubtitleText(titleText: localized(sugar.rawValue).firstLetterUppercased(), subtitleText: "Sugar"))
         }
 
         if let country = countryNameFromLocaleCode(countryCode: wine.winery?.countryCode) {
-            shortDescriptions.append(.init(imageName: nil, title: country, subtitle: "Country"))
+            shortDescriptions.append(.titleTextAndSubtitleText(titleText: country, subtitleText: "Country"))
         }
 
         if let year = wine.year, year != 0 {
-            shortDescriptions.append(.init(imageName: nil, title: String(year), subtitle: "Year"))
+            shortDescriptions.append(.titleTextAndSubtitleText(titleText: String(year), subtitleText: "Year"))
         }
 
-        if let alcoholPercent = wine.alcoholPercent, alcoholPercent > 1.0 {
-            shortDescriptions.append(.init(imageName: nil, title: String(alcoholPercent) + "%", subtitle: "Alcohol"))
+        if let alcoholPercent = wine.alcoholPercent {
+            shortDescriptions.append(.titleTextAndSubtitleText(titleText: String(alcoholPercent) + "%", subtitleText: "Alcohol"))
         }
 
         if !shortDescriptions.isEmpty {
@@ -281,12 +280,12 @@ final class WineDetailViewController: UIViewController, Alertable {
         var servingTips = [ShortInfoModel]()
 
         if let servingTemperature = localizedTemperature(wine.servingTemperature) {
-            servingTips.append(.init(imageName: nil, title: servingTemperature, subtitle: "Serving Temperature"))
+            servingTips.append(.titleTextAndSubtitleText(titleText: servingTemperature, subtitleText: "Serving Temperature"))
         }
 
         if let dishes = wine.dishCompatibility, !dishes.isEmpty {
             dishes.forEach { (dish) in
-                servingTips.append(.init(imageName: dish.imageName, title: localized(dish.rawValue).firstLetterUppercased(), subtitle: nil))
+                servingTips.append(.titleTextAndImage(imageName: dish.imageName, titleText: localized(dish.rawValue).firstLetterUppercased()))
             }
         }
 
@@ -321,7 +320,7 @@ extension WineDetailViewController: UICollectionViewDataSource {
             return cell
         case .title(let text):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseId, for: indexPath) as! TextCollectionCell
-            cell.decorate(model: .init(title: NSAttributedString(string: text, font: Font.heavy(20), textColor: .dark)))
+            cell.decorate(model: .init(titleText: NSAttributedString(string: text, font: Font.heavy(20), textColor: .dark)))
             return cell
         case .tool(let price, let isLiked):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ToolCollectionCell.reuseId, for: indexPath) as! ToolCollectionCell
@@ -330,36 +329,35 @@ extension WineDetailViewController: UICollectionViewDataSource {
             return cell
         case .description(let text):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseId, for: indexPath) as! TextCollectionCell
-            cell.decorate(model: .init(title: NSAttributedString(string: text, font: Font.light(18), textColor: .dark)))
+            cell.decorate(model: .init(titleText: NSAttributedString(string: text, font: Font.light(18), textColor: .dark)))
             return cell
         case .shortInfo(let info):
             let item = info[indexPath.row]
+            switch item {
+            case .titleTextAndImage(let imageName, let titleText):
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageOptionCollectionCell.reuseId, for: indexPath) as! ImageOptionCollectionCell
+                cell.decorate(model: .init(imageName: imageName, titleText: titleText))
+                return cell
 
-            // TODO: - refactor
-            switch item.imageName {
-            case .none:
+            case .titleTextAndSubtitleText(let titleText, let subtitleText):
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShortInfoCollectionCell.reuseId, for: indexPath) as! ShortInfoCollectionCell
-                var title = NSAttributedString(string: item.title ?? "", font: Font.with(size: 24, design: .round, traits: .bold), textColor: .dark)
-                if item.subtitle == localized("color").firstLetterUppercased() {
+                var title = NSAttributedString(string: titleText ?? "", font: Font.with(size: 24, design: .round, traits: .bold), textColor: .dark)
+                if subtitleText == localized("color").firstLetterUppercased() {
 
-//                    if item.title == "Pink" {
-//                        title = NSAttributedString(string: item.title ?? "", font: Font.with(size: 24, design: .round, traits: .bold), textColor: .systemPink)
-//                    } else if item.title == "Red" {
-//                        title = NSAttributedString(string: item.title ?? "", font: Font.with(size: 24, design: .round, traits: .bold), textColor: .accent)
-//                    } else if item.title == "White" {
-//                        title = NSAttributedString(string: item.title ?? "", font: Font.with(size: 24, design: .round, traits: .bold), textColor: .white)
-//                    }
+                    //                    if item.title == "Pink" {
+                    //                        title = NSAttributedString(string: item.title ?? "", font: Font.with(size: 24, design: .round, traits: .bold), textColor: .systemPink)
+                    //                    } else if item.title == "Red" {
+                    //                        title = NSAttributedString(string: item.title ?? "", font: Font.with(size: 24, design: .round, traits: .bold), textColor: .accent)
+                    //                    } else if item.title == "White" {
+                    //                        title = NSAttributedString(string: item.title ?? "", font: Font.with(size: 24, design: .round, traits: .bold), textColor: .white)
+                    //                    }
 
                 }
-                let subtitle = NSAttributedString(string: item.subtitle ?? "", font: Font.with(size: 18, design: .round, traits: .bold), textColor: .blueGray)
+                let subtitle = NSAttributedString(string: subtitleText ?? "", font: Font.with(size: 18, design: .round, traits: .bold), textColor: .blueGray)
                 cell.decorate(model: .init(title: title, subtitle: subtitle))
                 return cell
-            case .some:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageOptionCollectionCell.reuseId, for: indexPath) as! ImageOptionCollectionCell
-                cell.decorate(model: .init(imageName: item.imageName!, title: item.title))
-                return cell
             }
-            
+
         case .button(let viewModel):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ButtonCollectionCell.reuseId, for: indexPath) as! ButtonCollectionCell
             cell.decorate(model: viewModel)

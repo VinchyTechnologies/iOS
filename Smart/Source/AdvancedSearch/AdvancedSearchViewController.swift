@@ -17,7 +17,7 @@ fileprivate let categoryHeaderID = "categoryHeaderID"
 final class AdvancedSearchViewController: UIViewController, Alertable {
 
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-    private lazy var searchButton = UIButton(frame: CGRect(x: 20, y: UIScreen.main.bounds.height, width: UIScreen.main.bounds.width - 40, height: 48))
+    private lazy var searchButton = UIButton(frame: CGRect(x: 20, y: view.bounds.height, width: view.bounds.width - 40, height: 48))
 
     private var isButtonShown = false
 
@@ -148,16 +148,15 @@ extension AdvancedSearchViewController: UICollectionViewDataSource {
         switch filters[indexPath.section].type {
         case .carusel:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageOptionCollectionCell.reuseId, for: indexPath) as! ImageOptionCollectionCell
-            cell.decorate(model: .init(imageName: filters[indexPath.section].items[indexPath.row].imageName, title: filters[indexPath.section].items[indexPath.row].title.firstLetterUppercased()))
+            cell.decorate(model: .init(imageName: filters[indexPath.section].items[indexPath.row].imageName, titleText: filters[indexPath.section].items[indexPath.row].title.firstLetterUppercased()))
             return cell
         }
     }
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-
         let title = filters[safe: indexPath.section]?.title ?? ""
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderCollectionReusableView.reuseId, for: indexPath) as! HeaderCollectionReusableView
-        header.decorate(model: .init(title: NSAttributedString(string: localized(title).firstLetterUppercased(), font: Font.medium(20), textColor: .blueGray)))
+        header.decorate(model: .init(titleText: NSAttributedString(string: localized(title).firstLetterUppercased(), font: Font.medium(20), textColor: .blueGray)))
         return header
     }
 }

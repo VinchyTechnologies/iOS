@@ -20,6 +20,7 @@ protocol VinchySimpleConiniousCaruselCollectionCellDelegate: AnyObject {
 }
 
 struct VinchySimpleConiniousCaruselCollectionCellViewModel: ViewModelProtocol {
+    
     fileprivate let collections: [Collection]
 
     public init(collections: [Collection]) {
@@ -120,17 +121,17 @@ extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDataSource
         switch collections.first!.type {
         case .mini:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StoryCollectionCell.reuseId, for: indexPath) as! StoryCollectionCell
-            cell.decorate(model: .init(imageURL: collections[safe: indexPath.row]?.imageURL?.toURL, title: collections[safe: indexPath.row]?.title))
+            cell.decorate(model: .init(imageURL: collections[safe: indexPath.row]?.imageURL?.toURL, titleText: collections[safe: indexPath.row]?.title))
             return cell
 
         case .big:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainSubtitleCollectionCell.reuseId, for: indexPath) as! MainSubtitleCollectionCell
-            cell.decorate(model: .init(subtitle: collections[safe: indexPath.row]?.title, imageURL: collections[safe: indexPath.row]?.imageURL?.toURL))
+            cell.decorate(model: .init(subtitleText: collections[safe: indexPath.row]?.title, imageURL: collections[safe: indexPath.row]?.imageURL?.toURL))
             return cell
 
         case .promo:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainSubtitleCollectionCell.reuseId, for: indexPath) as! MainSubtitleCollectionCell
-            cell.decorate(model: .init(subtitle: collections[safe: indexPath.row]?.title, imageURL: collections[safe: indexPath.row]?.imageURL?.toURL))
+            cell.decorate(model: .init(subtitleText: collections[safe: indexPath.row]?.title, imageURL: collections[safe: indexPath.row]?.imageURL?.toURL))
             return cell
 
         case .bottles:
@@ -138,7 +139,7 @@ extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDataSource
                 return .init()
             }
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as! WineCollectionViewCell
-            cell.decorate(model: .init(imageURL: wine.mainImageUrl?.toURL, title: wine.title, subtitle: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode)))
+            cell.decorate(model: .init(imageURL: wine.mainImageUrl?.toURL, titleText: wine.title, subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode)))
             cell.background.backgroundColor = .option
             return cell
         }

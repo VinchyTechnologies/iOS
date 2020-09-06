@@ -58,7 +58,7 @@ extension ResultsTableController: UITableViewDataSource {
 
         if let cell = tableView.dequeueReusableCell(withIdentifier: WineTableCell.reuseId) as? WineTableCell,
             let wine = didFoundProducts[safe: indexPath.row] {
-            cell.decorate(model: .init(imageURL: wine.mainImageUrl ?? "", title: wine.title, subtitle: wine.desc))
+            cell.decorate(model: .init(imageURL: wine.mainImageUrl?.toURL, titleText: wine.title, subtitleText: wine.desc))
             return cell
         }
         return .init()

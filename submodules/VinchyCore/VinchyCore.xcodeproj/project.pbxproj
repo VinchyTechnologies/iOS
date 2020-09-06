@@ -14,7 +14,6 @@
 		CA7B824624EC72F500991F24 /* EndpointProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B824524EC72F500991F24 /* EndpointProtocol.swift */; };
 		CA7B824924EC738500991F24 /* Wine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B824824EC738500991F24 /* Wine.swift */; };
 		CA7B824C24EC73B500991F24 /* Collection.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B824B24EC73B500991F24 /* Collection.swift */; };
-		CA7B824E24EC73CD00991F24 /* WinePlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B824D24EC73CD00991F24 /* WinePlace.swift */; };
 		CA7B825024EC73FE00991F24 /* Compilation.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B824F24EC73FE00991F24 /* Compilation.swift */; };
 		CA7B825224EC742600991F24 /* Sugar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B825124EC742600991F24 /* Sugar.swift */; };
 		CA7B825424EC744900991F24 /* DishCompatibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B825324EC744900991F24 /* DishCompatibility.swift */; };
@@ -35,7 +34,6 @@
 		CA7B824524EC72F500991F24 /* EndpointProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EndpointProtocol.swift; sourceTree = "<group>"; };
 		CA7B824824EC738500991F24 /* Wine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wine.swift; sourceTree = "<group>"; };
 		CA7B824B24EC73B500991F24 /* Collection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Collection.swift; sourceTree = "<group>"; };
-		CA7B824D24EC73CD00991F24 /* WinePlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinePlace.swift; sourceTree = "<group>"; };
 		CA7B824F24EC73FE00991F24 /* Compilation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Compilation.swift; sourceTree = "<group>"; };
 		CA7B825124EC742600991F24 /* Sugar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sugar.swift; sourceTree = "<group>"; };
 		CA7B825324EC744900991F24 /* DishCompatibility.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DishCompatibility.swift; sourceTree = "<group>"; };
@@ -114,7 +112,6 @@
 				CA7B825324EC744900991F24 /* DishCompatibility.swift */,
 				CA7B825124EC742600991F24 /* Sugar.swift */,
 				CA7B824824EC738500991F24 /* Wine.swift */,
-				CA7B824D24EC73CD00991F24 /* WinePlace.swift */,
 				CA7A87EF250287BB00AAD10F /* Winery.swift */,
 			);
 			path = ServiceModels;
@@ -259,7 +256,6 @@
 				CA7A87F0250287BB00AAD10F /* Winery.swift in Sources */,
 				CA7B825224EC742600991F24 /* Sugar.swift in Sources */,
 				CA7B824624EC72F500991F24 /* EndpointProtocol.swift in Sources */,
-				CA7B824E24EC73CD00991F24 /* WinePlace.swift in Sources */,
 				CA7B824424EC72CA00991F24 /* API.swift in Sources */,
 				CA7B825424EC744900991F24 /* DishCompatibility.swift in Sources */,
 				CA7B825024EC73FE00991F24 /* Compilation.swift in Sources */,

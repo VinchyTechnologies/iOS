@@ -11,10 +11,10 @@ import Display
 
 public struct TextCollectionCellViewModel: ViewModelProtocol {
     
-    fileprivate let title: NSAttributedString?
+    fileprivate let titleText: NSAttributedString?
 
-    public init(title: NSAttributedString?) {
-        self.title = title
+    public init(titleText: NSAttributedString?) {
+        self.titleText = titleText
     }
 }
 
@@ -25,10 +25,10 @@ public final class TextCollectionCell: UICollectionViewCell, Reusable {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         
-        addSubview(label)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
 
+        addSubview(label)
         NSLayoutConstraint.activate([
             label.leadingAnchor.constraint(equalTo: leadingAnchor),
             label.topAnchor.constraint(equalTo: topAnchor),
@@ -40,7 +40,7 @@ public final class TextCollectionCell: UICollectionViewCell, Reusable {
     required init?(coder: NSCoder) { fatalError() }
 
     public func getCurrentText() -> String? {
-        return label.attributedText?.string
+        label.attributedText?.string
     }
 }
 
@@ -49,7 +49,7 @@ extension TextCollectionCell: Decoratable {
     public typealias ViewModel = TextCollectionCellViewModel
 
     public func decorate(model: TextCollectionCellViewModel) {
-        label.attributedText = model.title
+        label.attributedText = model.titleText
     }
 }
 

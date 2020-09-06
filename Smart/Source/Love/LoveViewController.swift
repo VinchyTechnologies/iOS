@@ -115,12 +115,13 @@ final class LoveViewController: UIViewController {
     private func showEmptyView() {
         let errorView = ErrorView(frame: view.frame)
         errorView.delegate = self
-        errorView.configure(title: "Пока пусто", description: "Нет сохраненных адресов", buttonText: "Добавить")
+        errorView.configure(title: localized("nothing_here").firstLetterUppercased(), description: nil, buttonText: "Добавить")
         // TODO: - Localize
         collectionView.backgroundView = errorView
     }
 
-    @objc private func switchToUnfavourite() {
+    @objc
+    private func switchToUnfavourite() {
         currentState = currentState == .like ? .dislike : .like
     }
 }
@@ -134,7 +135,7 @@ extension LoveViewController: UICollectionViewDataSource {
         guard let wine = wines[safe: indexPath.row] else { return .init() }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as! WineCollectionViewCell
         cell.background.backgroundColor = .option
-        cell.decorate(model: .init(imageURL: wine.mainImageUrl.toURL, title: wine.title, subtitle: nil))
+        cell.decorate(model: .init(imageURL: wine.mainImageUrl.toURL, titleText: wine.title, subtitleText: nil))
         return cell
     }
 }

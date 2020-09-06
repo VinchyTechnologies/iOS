@@ -13,13 +13,13 @@ import Display
 public struct WineCollectionViewCellViewModel: ViewModelProtocol {
     
     fileprivate let imageURL: URL?
-    fileprivate let title: String?
-    fileprivate let subtitle: String?
+    fileprivate let titleText: String?
+    fileprivate let subtitleText: String?
 
-    public init(imageURL: URL?, title: String?, subtitle: String?) {
+    public init(imageURL: URL?, titleText: String?, subtitleText: String?) {
         self.imageURL = imageURL
-        self.title = title
-        self.subtitle = subtitle
+        self.titleText = titleText
+        self.subtitleText = subtitleText
     }
 }
 
@@ -108,14 +108,14 @@ extension WineCollectionViewCell: Decoratable {
             self?.bottleImageView.image = image?.imageByMakingWhiteBackgroundTransparent()
         }
 
-        if let title = model.title {
+        if let title = model.titleText {
             titleLabel.isHidden = false
             titleLabel.text = title
         } else {
             titleLabel.isHidden = true
         }
 
-        if let subtitle = model.subtitle {
+        if let subtitle = model.subtitleText {
             subtitleLabel.isHidden = false
             subtitleLabel.text = subtitle
         } else {

@@ -11,10 +11,10 @@ import Display
 
 struct SuggestionCollectionCellViewModel: ViewModelProtocol {
 
-    fileprivate let title: String?
+    fileprivate let titleText: String?
 
-    public init(title: String?) {
-        self.title = title
+    public init(titleText: String?) {
+        self.titleText = titleText
     }
 }
 
@@ -44,7 +44,7 @@ extension SuggestionCollectionCell: Decoratable {
     typealias ViewModel = SuggestionCollectionCellViewModel
 
     func decorate(model: ViewModel) {
-        label.text = model.title
+        label.text = model.titleText
     }
 
 }

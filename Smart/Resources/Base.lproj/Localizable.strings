@@ -70,3 +70,6 @@
 
 // MARK: - Subscriptions
 "subscriptions" = "subscriptions";
+
+// MARK: - EmptyView
+"nothing_here" = "nothing here";
