@@ -23,7 +23,7 @@ final class VinchyViewController: UIViewController, Alertable, Loadable {
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: MagazineLayout())
         collectionView.backgroundColor = .mainBackground
-        collectionView.register(SuggestionCollectionCell.self, VinchySimpleConiniousCaruselCollectionCell.self)
+        collectionView.register(SuggestionCollectionCell.self, VinchySimpleConiniousCaruselCollectionCell.self, ShareUsCollectionCell.self)
         collectionView.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: MagazineLayout.SupplementaryViewKind.sectionHeader, withReuseIdentifier: HeaderCollectionReusableView.reuseId)
         collectionView.register(VinchyFooterCollectionReusableView.self, forSupplementaryViewOfKind: MagazineLayout.SupplementaryViewKind.sectionFooter, withReuseIdentifier: VinchyFooterCollectionReusableView.reuseId)
         collectionView.dataSource = self
@@ -39,6 +39,7 @@ final class VinchyViewController: UIViewController, Alertable, Loadable {
         resultsTableController.didnotFindTheWineTableCellDelegate = self
         return resultsTableController
     }()
+
     private lazy var searchController: UISearchController = {
         let searchController = UISearchController(searchResultsController: resultsTableController)
         searchController.obscuresBackgroundDuringPresentation = false
@@ -155,7 +156,12 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetsForSectionAtIndex index: Int) -> UIEdgeInsets {
-        .zero
+
+        if index == 0 {
+            return .init(top: 10, left: 30, bottom: 100, right: 30)
+        }
+
+        return .zero
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetsForItemsInSectionAtIndex index: Int) -> UIEdgeInsets {
@@ -183,7 +189,12 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, visibilityModeForHeaderInSectionAtIndex index: Int) -> MagazineLayoutHeaderVisibilityMode {
-        if compilations[index].title == nil || compilations[index].title == "" {
+
+        if index == 0 {
+            return .hidden
+        }
+
+        if compilations[index - 1].title == nil || compilations[index - 1].title == "" {
             return .hidden
         } else {
             return .visible(heightMode: .dynamic, pinToVisibleBounds: false)
@@ -194,6 +205,10 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
         if isSearchingMode {
             return .init(widthMode: .fullWidth(respectsHorizontalInsets: true), heightMode: .static(height: 50))
         } else {
+
+            if indexPath.section == 0 {
+                return .init(widthMode: .fullWidth(respectsHorizontalInsets: true), heightMode: .static(height: 160))
+            }
 
             guard let row = compilations[safe: indexPath.section], let type = row.collectionList.first?.type else {
                 return .init(widthMode: .fullWidth(respectsHorizontalInsets: true), heightMode: .static(height: 0))
@@ -224,7 +239,7 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
         if isSearchingMode {
             return 1
         } else {
-            return compilations.count
+            return compilations.count + 1
         }
     }
 
@@ -244,6 +259,12 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
             return cell
 
         } else {
+
+            if indexPath.row == 0  {
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShareUsCollectionCell.reuseId, for: indexPath) as! ShareUsCollectionCell
+                return cell
+            }
+
             guard let row = compilations[safe: indexPath.section] else { return .init() }
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VinchySimpleConiniousCaruselCollectionCell.reuseId, for: indexPath) as! VinchySimpleConiniousCaruselCollectionCell
             cell.decorate(model: .init(collections: row.collectionList))
