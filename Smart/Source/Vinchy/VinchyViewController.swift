@@ -116,7 +116,10 @@ final class VinchyViewController: UIViewController, Alertable, Loadable {
                 self?.stopLoadingAnimation()
             }
             switch result {
-            case .success(let model):
+            case .success:
+                var model: [Compilation] = (try? result.get()) ?? []
+                let shareUs = Compilation(type: .shareUs, title: nil, collectionList: [])
+                model.insert(shareUs, at: model.isEmpty ? 0 : model.count - 1)
                 self?.compilations = model
             case .failure(let error):
                 self?.showAlert(message: error.message ?? "")
@@ -156,12 +159,12 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetsForSectionAtIndex index: Int) -> UIEdgeInsets {
-
-        if index == 0 {
-            return .init(top: 10, left: 30, bottom: 100, right: 30)
+        switch compilations[index].type {
+        case .mini, .big, .promo, .bottles:
+            return .zero
+        case .shareUs:
+            return .init(top: 15, left: 20, bottom: 15, right: 20)
         }
-
-        return .zero
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetsForItemsInSectionAtIndex index: Int) -> UIEdgeInsets {
@@ -181,7 +184,7 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, visibilityModeForFooterInSectionAtIndex index: Int) -> MagazineLayoutFooterVisibilityMode {
-        if index % 3 == 0 && index != 0 { // TODO: - do we need that???
+        if index == compilations.count - 1 { // TODO: - do we need that???
             return .visible(heightMode: .dynamic, pinToVisibleBounds: false)
         } else {
             return .hidden
@@ -190,11 +193,11 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, visibilityModeForHeaderInSectionAtIndex index: Int) -> MagazineLayoutHeaderVisibilityMode {
 
-        if index == 0 {
+        if isSearchingMode {
             return .hidden
         }
-
-        if compilations[index - 1].title == nil || compilations[index - 1].title == "" {
+        
+        if compilations[index].title == nil || compilations[index].title == "" {
             return .hidden
         } else {
             return .visible(heightMode: .dynamic, pinToVisibleBounds: false)
@@ -206,23 +209,19 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
             return .init(widthMode: .fullWidth(respectsHorizontalInsets: true), heightMode: .static(height: 50))
         } else {
 
-            if indexPath.section == 0 {
-                return .init(widthMode: .fullWidth(respectsHorizontalInsets: true), heightMode: .static(height: 160))
-            }
-
-            guard let row = compilations[safe: indexPath.section], let type = row.collectionList.first?.type else {
+            guard let row = compilations[safe: indexPath.section] else {
                 return .init(widthMode: .fullWidth(respectsHorizontalInsets: true), heightMode: .static(height: 0))
             }
 
             let heightMode: MagazineLayoutItemHeightMode
-            switch type.itemSize.height {
+            switch row.type.itemSize.height {
             case .absolute(let height):
                 heightMode = .static(height: height + 5)
             case .dimension:
                 heightMode = .dynamic
             }
 
-            switch type {
+            switch row.type {
             case .mini:
                 return .init(widthMode: .fullWidth(respectsHorizontalInsets: false), heightMode: heightMode)
             case .big:
@@ -231,24 +230,18 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
                 return .init(widthMode: .fullWidth(respectsHorizontalInsets: false), heightMode: heightMode)
             case .bottles:
                 return .init(widthMode: .fullWidth(respectsHorizontalInsets: false), heightMode: heightMode)
+            case .shareUs:
+                return .init(widthMode: .fullWidth(respectsHorizontalInsets: false), heightMode: heightMode)
             }
         }
     }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
-        if isSearchingMode {
-            return 1
-        } else {
-            return compilations.count + 1
-        }
+        isSearchingMode ? 1 : compilations.count
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if isSearchingMode {
-            return suggestions.count
-        } else {
-            return 1
-        }
+        isSearchingMode ? suggestions.count : 1
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -259,17 +252,17 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
             return cell
 
         } else {
-
-            if indexPath.row == 0  {
+            guard let row = compilations[safe: indexPath.section] else { return .init() }
+            switch row.type {
+            case .mini, .big, .promo, .bottles:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VinchySimpleConiniousCaruselCollectionCell.reuseId, for: indexPath) as! VinchySimpleConiniousCaruselCollectionCell
+                cell.decorate(model: .init(type: row.type, collections: row.collectionList))
+                cell.delegate = self
+                return cell
+            case .shareUs:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShareUsCollectionCell.reuseId, for: indexPath) as! ShareUsCollectionCell
                 return cell
             }
-
-            guard let row = compilations[safe: indexPath.section] else { return .init() }
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: VinchySimpleConiniousCaruselCollectionCell.reuseId, for: indexPath) as! VinchySimpleConiniousCaruselCollectionCell
-            cell.decorate(model: .init(collections: row.collectionList))
-            cell.delegate = self
-            return cell
         }
     }
 

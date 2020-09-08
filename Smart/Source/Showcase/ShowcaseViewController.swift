@@ -74,7 +74,7 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
         }
     }
     private var currentPage: Int = -1
-    private var shouldLoadMore = false
+    private var shouldLoadMore = true
 
     private let mode: ShowcaseMode
 
@@ -96,18 +96,14 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
                 return CategoryItem(title: arrayWine.first?.winery?.countryCode ?? "Другие", wines: arrayWine)
             })
 
-        case .advancedSearch(let param):
+        case .advancedSearch:
 
             navigationItem.title = "Результаты поиска" // TODO: - localized
-            if param.first?.0 == "title" && param.count == 1 {
-                categoryItems = [.init(title: param.first?.1.quoted ?? "", wines: [])]
-            } else {
-                categoryItems = [.init(title: "Все", wines: [])] // TODO: - localize
-            }
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.dispatchWorkItemHud.perform()
             }
+            loadMoreWines()
         }
     }
 
@@ -129,14 +125,18 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
     }
 
     private func showErrorView(title: String?, description: String?, buttonText: String) {
-        let errorView = ErrorView(frame: view.frame)
-        errorView.delegate = self
-        errorView.configure(title: title, description: description, buttonText: buttonText) // TODO: - localize
-        collectionView.backgroundView = errorView
+        DispatchQueue.main.async {
+            let errorView = ErrorView(frame: self.view.frame)
+            errorView.delegate = self
+            errorView.configure(title: title, description: description, buttonText: buttonText) // TODO: - localize
+            self.collectionView.backgroundView = errorView
+        }
     }
 
     private func hideErrorView() {
-        collectionView.backgroundView = nil
+        DispatchQueue.main.async {
+            self.collectionView.backgroundView = nil
+        }
     }
 
     private func loadMoreWines() {
@@ -151,21 +151,39 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
                 params += [("offset", String(self.currentPage)), ("limit", String(C.limit))]
                 Wines.shared.getFilteredWines(params: params) { [weak self] result in
                     guard let self = self else { return }
-                    self.dispatchWorkItemHud.cancel()
-                    self.stopLoadingAnimation()
-                    switch result {
-                    case .success(let wines):
-                        self.shouldLoadMore = wines.count == C.limit
-                        self.categoryItems[0].wines += wines
-                        if self.currentPage == 0 && wines.isEmpty {
-                            self.showErrorView(title: "Ничего не найдено", description: nil, buttonText: "Назад")
-                            return
-                        }
+                    DispatchQueue.main.async {
+                        self.dispatchWorkItemHud.cancel()
+                        self.stopLoadingAnimation()
 
-                    case .failure(let error):
-                        if self.currentPage == 0 {
-                            self.hideErrorView()
-                            self.showErrorView(title: error.title, description: error.message, buttonText: "Обновить")
+                        switch result {
+                        case .success(let wines):
+
+                            if wines.isEmpty {
+                                self.shouldLoadMore = false
+                            } else {
+                                self.shouldLoadMore = wines.count == C.limit
+                            }
+
+                            if self.currentPage == 0 && self.categoryItems.first == nil {
+                                if params.first?.0 == "title" && params.count == 3 {
+                                    self.categoryItems = [.init(title: params.first?.1.quoted ?? "", wines: wines)]
+                                } else {
+                                    self.categoryItems = [.init(title: "Все", wines: wines)] // TODO: - localize
+                                }
+                            } else {
+                                self.categoryItems[0].wines += wines
+                            }
+
+                            if self.currentPage == 0 && wines.isEmpty {
+                                self.showErrorView(title: "Ничего не найдено", description: nil, buttonText: "Назад")
+                                return
+                            }
+
+                        case .failure(let error):
+                            if self.currentPage == 0 {
+                                self.hideErrorView()
+                                self.showErrorView(title: error.title, description: error.message, buttonText: "Обновить")
+                            }
                         }
                     }
                 }
@@ -199,6 +217,17 @@ extension ShowcaseViewController: UICollectionViewDataSource {
             return cell
         }
         return .init()
+    }
+
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        switch mode {
+        case .normal:
+            break
+        case .advancedSearch:
+            if indexPath.section == categoryItems.count - 1 && indexPath.row == categoryItems[indexPath.section].wines.count - 2 {
+                loadMoreWines()
+            }
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
@@ -248,17 +277,6 @@ extension ShowcaseViewController: UICollectionViewDataSource {
                     self.didAddShadow = false
                 }
             }
-        }
-
-        let offset = scrollView.contentOffset
-        let bounds = scrollView.bounds
-        let inset = scrollView.contentInset
-        let y = offset.y + bounds.size.height - inset.bottom
-        let h = scrollView.contentSize.height
-        let reload_distance: CGFloat = 100.0
-        if y > (h + reload_distance) {
-            shouldLoadMore = true
-            loadMoreWines()
         }
 
         if isAnimating { return }

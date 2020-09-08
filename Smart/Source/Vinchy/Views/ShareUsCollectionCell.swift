@@ -27,7 +27,7 @@ final class ShareUsCollectionCell: UICollectionViewCell, Reusable {
         layer.shadowColor = UIColor.black.cgColor
         layer.shadowOffset = CGSize(width: 1, height: 1)
         layer.shadowOpacity = 0.4
-        layer.shadowRadius = 10.0
+        layer.shadowRadius = 5
 
         let stackView = UIStackView()
         stackView.alignment = .center

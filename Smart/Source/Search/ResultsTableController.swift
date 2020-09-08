@@ -10,6 +10,7 @@ import UIKit
 import CommonUI
 import VinchyCore
 import EmailService
+import StringFormatting
 
 final class ResultsTableController: UIViewController {
 
@@ -58,7 +59,7 @@ extension ResultsTableController: UITableViewDataSource {
 
         if let cell = tableView.dequeueReusableCell(withIdentifier: WineTableCell.reuseId) as? WineTableCell,
             let wine = didFoundProducts[safe: indexPath.row] {
-            cell.decorate(model: .init(imageURL: wine.mainImageUrl?.toURL, titleText: wine.title, subtitleText: wine.desc))
+            cell.decorate(model: .init(imageURL: wine.mainImageUrl?.toURL, titleText: wine.title, subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode)))
             return cell
         }
         return .init()

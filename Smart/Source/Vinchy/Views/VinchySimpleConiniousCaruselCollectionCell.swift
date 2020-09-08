@@ -20,10 +20,12 @@ protocol VinchySimpleConiniousCaruselCollectionCellDelegate: AnyObject {
 }
 
 struct VinchySimpleConiniousCaruselCollectionCellViewModel: ViewModelProtocol {
-    
+
+    fileprivate let type: CollectionType
     fileprivate let collections: [Collection]
 
-    public init(collections: [Collection]) {
+    public init(type: CollectionType, collections: [Collection]) {
+        self.type = type
         self.collections = collections
     }
 }
@@ -31,6 +33,8 @@ struct VinchySimpleConiniousCaruselCollectionCellViewModel: ViewModelProtocol {
 final class VinchySimpleConiniousCaruselCollectionCell: MagazineLayoutCollectionViewCell, Reusable {
 
     weak var delegate: VinchySimpleConiniousCaruselCollectionCellDelegate?
+
+    private var type: CollectionType!
 
     private var collections: [Collection] = [] {
         didSet {
@@ -46,17 +50,16 @@ final class VinchySimpleConiniousCaruselCollectionCell: MagazineLayoutCollection
 
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
 
-        let type = self.collections.first!.type
         let width: NSCollectionLayoutDimension
 
-        switch type.itemSize.width {
+        switch self.type.itemSize.width {
         case .absolute(let _width):
             width = .absolute(_width)
         case .dimension(let _width):
             width = .fractionalWidth(_width)
         }
 
-        switch type {
+        switch self.type {
         case .mini:
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: width, heightDimension: .fractionalHeight(1)), subitems: [item])
             section = NSCollectionLayoutSection(group: group)
@@ -79,6 +82,8 @@ final class VinchySimpleConiniousCaruselCollectionCell: MagazineLayoutCollection
             section = NSCollectionLayoutSection(group: group)
             section.contentInsets = .init(top: 10, leading: 10, bottom: 10, trailing: 10)
             section.orthogonalScrollingBehavior = .continuous
+        case .none, .shareUs:
+            return nil
         }
 
         section.contentInsets = .init(top: 0, leading: 10, bottom: 5, trailing: 0)
@@ -118,7 +123,7 @@ extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDataSource
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
 
-        switch collections.first!.type {
+        switch self.type {
         case .mini:
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StoryCollectionCell.reuseId, for: indexPath) as! StoryCollectionCell
             cell.decorate(model: .init(imageURL: collections[safe: indexPath.row]?.imageURL?.toURL, titleText: collections[safe: indexPath.row]?.title))
@@ -142,13 +147,15 @@ extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDataSource
             cell.decorate(model: .init(imageURL: wine.mainImageUrl?.toURL, titleText: wine.title, subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode)))
             cell.background.backgroundColor = .option
             return cell
+        case .none, .shareUs:
+            return .init()
         }
     }
 }
 
 extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        switch collections.first?.type {
+        switch type {
         case .mini, .big, .promo:
             delegate?.didTapCompilationCell(wines: collections[indexPath.row].wineList, title: collections[indexPath.row].title)
         case .bottles:
@@ -156,7 +163,7 @@ extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDelegate {
                 return
             }
             delegate?.didTapBootleCell(wineID: wine.id)
-        case .none:
+        case .none, .shareUs:
             break
         }
     }
@@ -167,6 +174,7 @@ extension VinchySimpleConiniousCaruselCollectionCell: Decoratable {
     typealias ViewModel = VinchySimpleConiniousCaruselCollectionCellViewModel
 
     func decorate(model: ViewModel) {
+        self.type = model.type
         self.collections = model.collections
     }
 }
