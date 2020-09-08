@@ -219,10 +219,22 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
     }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard isSearchingMode, let wineID = suggestions[safe: indexPath.row]?.id else {
-            return
+        if isSearchingMode {
+            guard let wineID = suggestions[safe: indexPath.row]?.id else { return }
+            navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wineID), animated: true)
+        } else {
+            switch compilations[safe: indexPath.section]?.type {
+            case .mini, .big, .promo, .bottles, .shareUs, .none:
+                return
+            case .infinity:
+                switch collectionList[safe: indexPath.row] {
+                case .wine(let wine):
+                    navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wine.id), animated: true)
+                case .ads, .none:
+                    return
+                }
+            }
         }
-        navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wineID), animated: true)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetsForSectionAtIndex index: Int) -> UIEdgeInsets {
