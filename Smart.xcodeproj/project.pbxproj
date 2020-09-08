@@ -117,6 +117,7 @@
 		CA79545224F92EC20040224C /* AdvancedSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA79545124F92EC20040224C /* AdvancedSearchViewController.swift */; };
 		CA7A87E62500169100AAD10F /* VinchySimpleConiniousCaruselCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87E52500169100AAD10F /* VinchySimpleConiniousCaruselCollectionCell.swift */; };
 		CA7A87FA2506B9D600AAD10F /* ShareUsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87F92506B9D600AAD10F /* ShareUsCollectionCell.swift */; };
+		CA7A87FC2507ED7800AAD10F /* AdsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87FB2507ED7800AAD10F /* AdsCollectionViewCell.swift */; };
 		CA7B825D24EC750300991F24 /* VinchyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; };
 		CA7B825E24EC750300991F24 /* VinchyCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA7B835824EED1B100991F24 /* VinchyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B835724EED1B100991F24 /* VinchyViewController.swift */; };
@@ -322,6 +323,7 @@
 		CA79545124F92EC20040224C /* AdvancedSearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSearchViewController.swift; sourceTree = "<group>"; };
 		CA7A87E52500169100AAD10F /* VinchySimpleConiniousCaruselCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchySimpleConiniousCaruselCollectionCell.swift; sourceTree = "<group>"; };
 		CA7A87F92506B9D600AAD10F /* ShareUsCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareUsCollectionCell.swift; sourceTree = "<group>"; };
+		CA7A87FB2507ED7800AAD10F /* AdsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsCollectionViewCell.swift; sourceTree = "<group>"; };
 		CA7B825C24EC750300991F24 /* VinchyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7B835724EED1B100991F24 /* VinchyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyViewController.swift; sourceTree = "<group>"; };
 		CA7B835A24EED6E600991F24 /* StoryCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryCollectionCell.swift; sourceTree = "<group>"; };
@@ -807,6 +809,7 @@
 				CA7B836524F13FFB00991F24 /* VinchyFooterCollectionReusableView.swift */,
 				CA7A87E52500169100AAD10F /* VinchySimpleConiniousCaruselCollectionCell.swift */,
 				CA7A87F92506B9D600AAD10F /* ShareUsCollectionCell.swift */,
+				CA7A87FB2507ED7800AAD10F /* AdsCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1290,6 +1293,7 @@
 				CA154DDE2494EA2B00696436 /* UIView+Extensions.swift in Sources */,
 				CA154DE92494EA2B00696436 /* MessagesViewController.swift in Sources */,
 				CA154DF52494EA2B00696436 /* TypingIndicator.swift in Sources */,
+				CA7A87FC2507ED7800AAD10F /* AdsCollectionViewCell.swift in Sources */,
 				CAF514252461C52400667ED0 /* ContactCell.swift in Sources */,
 				CAF514262461C52400667ED0 /* RateAppCell.swift in Sources */,
 				CA154DD42494EA2B00696436 /* AccessoryPosition.swift in Sources */,

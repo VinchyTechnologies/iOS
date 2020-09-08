@@ -29,7 +29,6 @@ public final class WineCollectionViewCell: UICollectionViewCell, Reusable {
 
     private let bottleImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.contentMode = .scaleAspectFill
         return imageView
     }()
@@ -65,6 +64,7 @@ public final class WineCollectionViewCell: UICollectionViewCell, Reusable {
         ])
 
         addSubview(bottleImageView)
+        bottleImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             bottleImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             bottleImageView.topAnchor.constraint(equalTo: topAnchor),
@@ -75,7 +75,6 @@ public final class WineCollectionViewCell: UICollectionViewCell, Reusable {
         let stackView = UIStackView()
         stackView.axis = .vertical
         stackView.distribution = .equalCentering
-        stackView.translatesAutoresizingMaskIntoConstraints = false
         stackView.alignment = .center
 
         stackView.addArrangedSubview(UIView())
@@ -86,6 +85,7 @@ public final class WineCollectionViewCell: UICollectionViewCell, Reusable {
         stackView.setCustomSpacing(2, after: titleLabel)
 
         addSubview(stackView)
+        stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: bottleImageView.bottomAnchor, constant: 0),
             stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),

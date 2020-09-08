@@ -9,7 +9,7 @@
 import Display
 
 public enum CollectionType: String, Decodable {
-    case mini, big, promo, bottles, shareUs
+    case mini, big, promo, bottles, shareUs, infinity
 
     public var itemSize: VinchySize {
         switch self {
@@ -23,21 +23,54 @@ public enum CollectionType: String, Decodable {
             return .init(width: .absolute(150), height: .absolute(250))
         case .shareUs:
             return .init(width: .dimension(1), height: .absolute(160))
+        case .infinity:
+            return .init(width: .dimension(2), height: .absolute(250))
         }
     }
 }
 
+public enum CollectionItem {
+    case wine(wine: Wine)
+    case ads
+}
+
 public struct Collection: Decodable {
 
-    public let id: Int
+    public let id: Int64?
     public let title: String?
     public let imageURL: String?
-    public let wineList: [Wine]
+    public var wineList: [CollectionItem]
 
     private enum CodingKeys: String, CodingKey {
         case id = "collection_id"
         case title
         case imageURL = "image_url"
         case wineList = "wine_list"
+    }
+
+    public init(from decoder: Decoder) throws {
+
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        let id = try container.decode(Int64.self, forKey: .id)
+        let title = try container.decode(String.self, forKey: .title)
+        let imageURL = try container.decodeIfPresent(String.self, forKey: .imageURL)
+        let wineList = try? container.decode([Wine].self, forKey: .wineList)
+
+        let wines = wineList?.compactMap({ (wine) -> CollectionItem in
+            return .wine(wine: wine)
+        })
+
+        self.id = id
+        self.title = title
+        self.imageURL = imageURL
+        self.wineList = wines ?? []
+
+    }
+
+    public init(wineList: [CollectionItem]) {
+        self.id = nil
+        self.title = nil
+        self.imageURL = nil
+        self.wineList = wineList
     }
 }

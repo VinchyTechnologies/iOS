@@ -23,15 +23,24 @@ final class VinchyViewController: UIViewController, Alertable, Loadable {
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: MagazineLayout())
         collectionView.backgroundColor = .mainBackground
-        collectionView.register(SuggestionCollectionCell.self, VinchySimpleConiniousCaruselCollectionCell.self, ShareUsCollectionCell.self)
+
+        collectionView.register(SuggestionCollectionCell.self,
+                                VinchySimpleConiniousCaruselCollectionCell.self,
+                                ShareUsCollectionCell.self,
+                                WineCollectionViewCell.self,
+                                AdsCollectionViewCell.self)
+
         collectionView.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: MagazineLayout.SupplementaryViewKind.sectionHeader, withReuseIdentifier: HeaderCollectionReusableView.reuseId)
+
         collectionView.register(VinchyFooterCollectionReusableView.self, forSupplementaryViewOfKind: MagazineLayout.SupplementaryViewKind.sectionFooter, withReuseIdentifier: VinchyFooterCollectionReusableView.reuseId)
+
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.refreshControl = refreshControl
         return collectionView
     }()
 
+    private let dispatchGroup = DispatchGroup()
     private let refreshControl = UIRefreshControl()
     private lazy var resultsTableController: ResultsTableController = {
         let resultsTableController = ResultsTableController()
@@ -73,6 +82,8 @@ final class VinchyViewController: UIViewController, Alertable, Loadable {
 
     private var suggestions: [Wine] = []
 
+    var collectionList: [CollectionItem] = []
+
     private var compilations: [Compilation] = [] {
         didSet {
             loadViewIfNeeded()
@@ -108,21 +119,64 @@ final class VinchyViewController: UIViewController, Alertable, Loadable {
         navigationController?.pushViewController(Assembly.buildFiltersModule(), animated: true)
     }
 
-    private func fetchData() {
-        
-        Compilations.shared.getCompilations { [weak self] result in
-            self?.dispatchWorkItemHud.cancel()
-            DispatchQueue.main.async {
-                self?.stopLoadingAnimation()
-            }
+    private func loadMoreInfinity() {
+        Wines.shared.getRandomWines(count: 10) { [weak self] result in
+            guard let self = self else { return }
             switch result {
-            case .success:
-                var model: [Compilation] = (try? result.get()) ?? []
-                let shareUs = Compilation(type: .shareUs, title: nil, collectionList: [])
-                model.insert(shareUs, at: model.isEmpty ? 0 : model.count - 1)
-                self?.compilations = model
-            case .failure(let error):
-                self?.showAlert(message: error.message ?? "")
+            case .success(let model):
+                let collectionList: [CollectionItem] = model.map({ .wine(wine: $0) }) + [.ads]
+                self.collectionList += collectionList
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+
+            case .failure:
+                break
+            }
+        }
+    }
+
+    private func fetchData() {
+
+        dispatchGroup.enter()
+        var compilations: [Compilation] = []
+        Compilations.shared.getCompilations { [weak self] result in
+            switch result {
+            case .success(let model):
+                compilations = model
+            case .failure:
+                break
+            }
+            self?.dispatchGroup.leave()
+        }
+
+        var infinityWines: [Wine] = []
+        dispatchGroup.enter()
+        Wines.shared.getRandomWines(count: 10) { [weak self] result in
+            switch result {
+            case .success(let model):
+                infinityWines = model
+            case .failure:
+                break
+            }
+            self?.dispatchGroup.leave()
+        }
+
+        dispatchGroup.notify(queue: .main) { [weak self] in
+            guard let self = self else { return }
+            self.dispatchWorkItemHud.cancel()
+            self.stopLoadingAnimation()
+
+            let shareUs = Compilation(type: .shareUs, title: nil, collectionList: [])
+            compilations.insert(shareUs, at: compilations.isEmpty ? 0 : compilations.count - 1)
+
+            if infinityWines.isEmpty {
+                self.compilations = compilations
+            } else {
+                self.collectionList = infinityWines.map({ .wine(wine: $0) }) + [.ads]
+                let collection = Collection(wineList: self.collectionList)
+                compilations.append(Compilation(type: .infinity, title: "You can like", collectionList: [collection]))
+                self.compilations = compilations
             }
         }
 
@@ -151,6 +205,19 @@ final class VinchyViewController: UIViewController, Alertable, Loadable {
 
 extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDelegateMagazineLayout {
 
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if !isSearchingMode {
+            switch compilations[indexPath.section].type {
+            case .mini, .big, .promo, .bottles, .shareUs:
+                break
+            case .infinity:
+                if indexPath.row == collectionList.count - 2 {
+                    loadMoreInfinity()
+                }
+            }
+        }
+    }
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         guard isSearchingMode, let wineID = suggestions[safe: indexPath.row]?.id else {
             return
@@ -164,19 +231,21 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
             return .zero
         case .shareUs:
             return .init(top: 15, left: 20, bottom: 15, right: 20)
+        case .infinity:
+            return .init(top: 0, left: 0, bottom: 0, right: 0)
         }
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetsForItemsInSectionAtIndex index: Int) -> UIEdgeInsets {
-        .zero
+        .init(top: 10, left: 10, bottom: 10, right: 10)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, verticalSpacingForElementsInSectionAtIndex index: Int) -> CGFloat {
-        0
+        10
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, horizontalSpacingForItemsInSectionAtIndex index: Int) -> CGFloat {
-        0
+        10
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, visibilityModeForBackgroundInSectionAtIndex index: Int) -> MagazineLayoutBackgroundVisibilityMode {
@@ -184,7 +253,7 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, visibilityModeForFooterInSectionAtIndex index: Int) -> MagazineLayoutFooterVisibilityMode {
-        if index == compilations.count - 1 { // TODO: - do we need that???
+        if index == compilations.count - 2 {
             return .visible(heightMode: .dynamic, pinToVisibleBounds: false)
         } else {
             return .hidden
@@ -200,7 +269,7 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
         if compilations[index].title == nil || compilations[index].title == "" {
             return .hidden
         } else {
-            return .visible(heightMode: .dynamic, pinToVisibleBounds: false)
+            return .visible(heightMode: .dynamic, pinToVisibleBounds: compilations[index].type == .infinity)
         }
     }
 
@@ -232,6 +301,13 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
                 return .init(widthMode: .fullWidth(respectsHorizontalInsets: false), heightMode: heightMode)
             case .shareUs:
                 return .init(widthMode: .fullWidth(respectsHorizontalInsets: false), heightMode: heightMode)
+            case .infinity:
+                switch collectionList[indexPath.row] {
+                case .wine:
+                    return .init(widthMode: .halfWidth, heightMode: heightMode)
+                case .ads:
+                    return .init(widthMode: .fullWidth(respectsHorizontalInsets: false), heightMode: .static(height: 100))
+                }
             }
         }
     }
@@ -241,7 +317,17 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        isSearchingMode ? suggestions.count : 1
+
+        if isSearchingMode {
+            return suggestions.count
+        } else {
+            switch compilations[section].type {
+            case .mini, .big, .promo, .bottles, .shareUs:
+                return 1
+            case .infinity:
+                return collectionList.count
+            }
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -262,6 +348,18 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
             case .shareUs:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShareUsCollectionCell.reuseId, for: indexPath) as! ShareUsCollectionCell
                 return cell
+            case .infinity:
+                switch collectionList[indexPath.row] {
+                case .wine(let wine):
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as! WineCollectionViewCell
+                    cell.background.backgroundColor = .option
+                    cell.decorate(model: .init(imageURL: wine.mainImageUrl?.toURL, titleText: wine.title, subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode)))
+                    return cell
+
+                case .ads:
+                    let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AdsCollectionViewCell.reuseId, for: indexPath) as! AdsCollectionViewCell
+                    return cell
+                }
             }
         }
     }
@@ -331,6 +429,7 @@ extension VinchyViewController: UISearchBarDelegate {
 }
 
 extension VinchyViewController: UITableViewDelegate {
+
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let wineID = suggestions[safe: indexPath.row]?.id else { return }
@@ -351,6 +450,7 @@ extension VinchyViewController: DidnotFindTheWineTableCellProtocol {
 }
 
 extension VinchyViewController: VinchySimpleConiniousCaruselCollectionCellDelegate {
+
     func didTapBootleCell(wineID: Int64) {
         navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wineID), animated: true)
     }

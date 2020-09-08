@@ -82,7 +82,8 @@ final class VinchySimpleConiniousCaruselCollectionCell: MagazineLayoutCollection
             section = NSCollectionLayoutSection(group: group)
             section.contentInsets = .init(top: 10, leading: 10, bottom: 10, trailing: 10)
             section.orthogonalScrollingBehavior = .continuous
-        case .none, .shareUs:
+
+        case .none, .shareUs, .infinity:
             return nil
         }
 
@@ -140,14 +141,22 @@ extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDataSource
             return cell
 
         case .bottles:
-            guard let collection = collections.first, let wine = collection.wineList[safe: indexPath.row] else {
+            
+            guard let collection = collections.first, let collectionItem = collection.wineList[safe: indexPath.row] else {
                 return .init()
             }
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as! WineCollectionViewCell
-            cell.decorate(model: .init(imageURL: wine.mainImageUrl?.toURL, titleText: wine.title, subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode)))
-            cell.background.backgroundColor = .option
-            return cell
-        case .none, .shareUs:
+
+            switch collectionItem {
+            case .wine(let wine):
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as! WineCollectionViewCell
+                cell.decorate(model: .init(imageURL: wine.mainImageUrl?.toURL, titleText: wine.title, subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode)))
+                cell.background.backgroundColor = .option
+                return cell
+            case .ads:
+                return .init()
+            }
+
+        case .none, .shareUs, .infinity:
             return .init()
         }
     }
@@ -157,13 +166,27 @@ extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch type {
         case .mini, .big, .promo:
-            delegate?.didTapCompilationCell(wines: collections[indexPath.row].wineList, title: collections[indexPath.row].title)
+            delegate?.didTapCompilationCell(wines: collections[indexPath.row].wineList.compactMap({ (collectionItem) -> Wine? in
+                switch collectionItem {
+                case .wine(let wine):
+                    return wine
+                case .ads:
+                    return nil
+                }
+            }), title: collections[indexPath.row].title)
+
         case .bottles:
-            guard let collection = collections.first, let wine = collection.wineList[safe: indexPath.row] else {
+            guard let collection = collections.first, let collectionItem = collection.wineList[safe: indexPath.row] else {
                 return
             }
-            delegate?.didTapBootleCell(wineID: wine.id)
-        case .none, .shareUs:
+            switch collectionItem {
+            case .wine(let wine):
+                delegate?.didTapBootleCell(wineID: wine.id)
+            case .ads:
+                break
+            }
+
+        case .none, .shareUs, .infinity:
             break
         }
     }

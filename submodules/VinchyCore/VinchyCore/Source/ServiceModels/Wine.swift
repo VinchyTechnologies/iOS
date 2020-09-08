@@ -6,7 +6,7 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-public final class Wine: Decodable {
+public struct Wine: Decodable {
 
     public let id: Int64
     public let title: String
@@ -44,7 +44,7 @@ public final class Wine: Decodable {
         case sugar = "sugar"
     }
 
-    required public init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
 
         let container = try decoder.container(keyedBy: CodingKeys.self)
         let id = try container.decode(Int64.self, forKey: .id)
