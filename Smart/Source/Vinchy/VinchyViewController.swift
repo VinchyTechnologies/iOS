@@ -129,7 +129,6 @@ final class VinchyViewController: UIViewController, Alertable, Loadable {
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
                 }
-
             case .failure:
                 break
             }
@@ -211,7 +210,7 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
             case .mini, .big, .promo, .bottles, .shareUs:
                 break
             case .infinity:
-                if indexPath.row == collectionList.count - 2 {
+                if indexPath.row == collectionList.count - 4 {
                     loadMoreInfinity()
                 }
             }

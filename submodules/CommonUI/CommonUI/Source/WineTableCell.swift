@@ -31,9 +31,10 @@ public final class WineTableCell: UITableViewCell, Reusable {
     public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
-        bottleImageView.translatesAutoresizingMaskIntoConstraints = false
         bottleImageView.contentMode = .scaleAspectFit
+
         addSubview(bottleImageView)
+        bottleImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             bottleImageView.topAnchor.constraint(greaterThanOrEqualTo: topAnchor, constant: 15),
             bottleImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
@@ -43,20 +44,22 @@ public final class WineTableCell: UITableViewCell, Reusable {
             bottleImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
         ])
 
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.font = Font.bold(24)
         titleLabel.numberOfLines = 2
+
         addSubview(titleLabel)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: bottleImageView.trailingAnchor, constant: 27),
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
         ])
 
-        subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
         subtitleLabel.font = Font.medium(16)
         subtitleLabel.textColor = .blueGray
+
         addSubview(subtitleLabel)
+        subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             subtitleLabel.leadingAnchor.constraint(equalTo: bottleImageView.trailingAnchor, constant: 27),
             subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),

@@ -52,15 +52,16 @@ public final class WineCollectionViewCell: UICollectionViewCell, Reusable {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
-        background.translatesAutoresizingMaskIntoConstraints = false
         background.backgroundColor = .white
         background.layer.cornerRadius = 40
+
         addSubview(background)
+        background.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             background.leadingAnchor.constraint(equalTo: leadingAnchor),
             background.trailingAnchor.constraint(equalTo: trailingAnchor),
             background.bottomAnchor.constraint(equalTo: bottomAnchor),
-            background.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.9)
+            background.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.9),
         ])
 
         addSubview(bottleImageView)
@@ -69,7 +70,7 @@ public final class WineCollectionViewCell: UICollectionViewCell, Reusable {
             bottleImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
             bottleImageView.topAnchor.constraint(equalTo: topAnchor),
             bottleImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 2/3),
-            bottleImageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/4)
+            bottleImageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/4),
         ])
 
         let stackView = UIStackView()

@@ -35,12 +35,12 @@ final class StoryCollectionCell: UICollectionViewCell, Reusable  {
         imageView.contentMode = .scaleAspectFill
         addSubview(imageView)
 
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.font = Font.bold(14)
         titleLabel.textColor = .white
         titleLabel.numberOfLines = 2
 
         addSubview(titleLabel)
+        titleLabel.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
             titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),

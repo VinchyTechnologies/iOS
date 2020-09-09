@@ -25,10 +25,10 @@ public final class TextCollectionCell: UICollectionViewCell, Reusable {
     public override init(frame: CGRect) {
         super.init(frame: frame)
         
-        label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
 
         addSubview(label)
+        label.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             label.leadingAnchor.constraint(equalTo: leadingAnchor),
             label.topAnchor.constraint(equalTo: topAnchor),
@@ -48,7 +48,7 @@ extension TextCollectionCell: Decoratable {
 
     public typealias ViewModel = TextCollectionCellViewModel
 
-    public func decorate(model: TextCollectionCellViewModel) {
+    public func decorate(model: ViewModel) {
         label.attributedText = model.titleText
     }
 }

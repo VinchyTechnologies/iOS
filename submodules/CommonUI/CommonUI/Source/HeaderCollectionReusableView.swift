@@ -42,7 +42,7 @@ extension HeaderCollectionReusableView: Decoratable {
 
     public typealias ViewModel = HeaderCollectionReusableViewModel
 
-    public func decorate(model: HeaderCollectionReusableViewModel) {
+    public func decorate(model: ViewModel) {
         label.insets = model.insets
         label.attributedText = model.titleText
     }

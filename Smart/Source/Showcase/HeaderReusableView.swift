@@ -25,8 +25,9 @@ public final class HeaderReusableView: UICollectionReusableView, Reusable {
     override public init(frame: CGRect) {
         super.init(frame: frame)
 
-        label.textColor = .accent
         label.font = Font.bold(25)
+        label.textColor = .accent
+        
         label.frame = CGRect(x: 20, y: 0, width: frame.width, height: frame.height)
         addSubview(label)
     }

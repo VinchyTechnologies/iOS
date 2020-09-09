@@ -106,20 +106,20 @@ final class SubscriptionTableCell: UITableViewCell, Reusable {
             iconImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
             iconImageView.widthAnchor.constraint(equalToConstant: 80),
             iconImageView.heightAnchor.constraint(equalToConstant: 80),
-            iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor)
+            iconImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
         ])
 
         addSubview(priceButton)
         NSLayoutConstraint.activate([
             priceButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            priceButton.centerYAnchor.constraint(equalTo: centerYAnchor)
+            priceButton.centerYAnchor.constraint(equalTo: centerYAnchor),
         ])
 
         addSubview(titleLabel)
         NSLayoutConstraint.activate([
             titleLabel.leadingAnchor.constraint(equalTo: iconImageView.trailingAnchor, constant: 15),
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            titleLabel.trailingAnchor.constraint(equalTo: priceButton.leadingAnchor, constant: -10)
+            titleLabel.trailingAnchor.constraint(equalTo: priceButton.leadingAnchor, constant: -10),
         ])
     }
 
