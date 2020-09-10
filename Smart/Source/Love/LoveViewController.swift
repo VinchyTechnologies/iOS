@@ -77,6 +77,7 @@ final class LoveViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(WineCollectionViewCell.self, forCellWithReuseIdentifier: WineCollectionViewCell.reuseId)
+        collectionView.delaysContentTouches = false
 
         likeNotificationToken = likeRealm.observe { notification, realm in
             if self.currentState == .like {
@@ -99,7 +100,8 @@ final class LoveViewController: UIViewController {
         
         view.addSubview(collectionView)
         collectionView.backgroundColor = .mainBackground
-        collectionView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 0)
+        collectionView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
+        collectionView.delaysContentTouches = false
         collectionView.frame = view.bounds
     }
 
@@ -134,8 +136,7 @@ extension LoveViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let wine = wines[safe: indexPath.row] else { return .init() }
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as! WineCollectionViewCell
-        cell.background.backgroundColor = .option
-        cell.decorate(model: .init(imageURL: wine.mainImageUrl.toURL, titleText: wine.title, subtitleText: nil))
+        cell.decorate(model: .init(imageURL: wine.mainImageUrl.toURL, titleText: wine.title, subtitleText: nil, backgroundColor: .randomColor))
         return cell
     }
 }

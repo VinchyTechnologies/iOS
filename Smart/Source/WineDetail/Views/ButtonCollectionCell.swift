@@ -37,7 +37,7 @@ final class ButtonCollectionCell: UICollectionViewCell, Reusable {
     weak var delegate: ButtonCollectionCellDelegate?
 
     private var type: ButtonCollectionCellType?
-    private let button = UIButton()
+    internal let button = UIButton()
 
     override init(frame: CGRect) {
         super.init(frame: frame)

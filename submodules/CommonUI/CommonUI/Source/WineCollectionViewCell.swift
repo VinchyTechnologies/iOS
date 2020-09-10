@@ -15,17 +15,19 @@ public struct WineCollectionViewCellViewModel: ViewModelProtocol {
     fileprivate let imageURL: URL?
     fileprivate let titleText: String?
     fileprivate let subtitleText: String?
+    fileprivate let backgroundColor: UIColor
 
-    public init(imageURL: URL?, titleText: String?, subtitleText: String?) {
+    public init(imageURL: URL?, titleText: String?, subtitleText: String?, backgroundColor: UIColor) {
         self.imageURL = imageURL
         self.titleText = titleText
         self.subtitleText = subtitleText
+        self.backgroundColor = backgroundColor
     }
 }
 
-public final class WineCollectionViewCell: UICollectionViewCell, Reusable {
+public final class WineCollectionViewCell: HighlightCollectionCell, Reusable {
 
-    public let background = UIView()
+    private let background = UIView()
 
     private let bottleImageView: UIImageView = {
         let imageView = UIImageView()
@@ -52,25 +54,27 @@ public final class WineCollectionViewCell: UICollectionViewCell, Reusable {
     override init(frame: CGRect) {
         super.init(frame: frame)
 
+        highlightStyle = .scale
+        
         background.backgroundColor = .white
         background.layer.cornerRadius = 40
 
-        addSubview(background)
+        contentView.addSubview(background)
         background.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            background.leadingAnchor.constraint(equalTo: leadingAnchor),
-            background.trailingAnchor.constraint(equalTo: trailingAnchor),
-            background.bottomAnchor.constraint(equalTo: bottomAnchor),
-            background.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 0.9),
+            background.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+            background.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+            background.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+            background.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 0.9),
         ])
 
-        addSubview(bottleImageView)
+        contentView.addSubview(bottleImageView)
         bottleImageView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            bottleImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
-            bottleImageView.topAnchor.constraint(equalTo: topAnchor),
-            bottleImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 2/3),
-            bottleImageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1/4),
+            bottleImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
+            bottleImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
+            bottleImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 2/3),
+            bottleImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1/4),
         ])
 
         let stackView = UIStackView()
@@ -85,13 +89,13 @@ public final class WineCollectionViewCell: UICollectionViewCell, Reusable {
 
         stackView.setCustomSpacing(2, after: titleLabel)
 
-        addSubview(stackView)
+        contentView.addSubview(stackView)
         stackView.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
             stackView.topAnchor.constraint(equalTo: bottleImageView.bottomAnchor, constant: 0),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5)
+            stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
+            stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5)
         ])
     }
 
@@ -122,5 +126,7 @@ extension WineCollectionViewCell: Decoratable {
         } else {
             subtitleLabel.isHidden = true
         }
+
+        background.backgroundColor = .option //model.backgroundColor
     }
 }

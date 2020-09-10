@@ -98,6 +98,7 @@ final class VinchySimpleConiniousCaruselCollectionCell: MagazineLayoutCollection
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.register(StoryCollectionCell.self, WineCollectionViewCell.self, MainSubtitleCollectionCell.self)
+        collectionView.delaysContentTouches = false
         return collectionView
     }()
 
@@ -149,8 +150,7 @@ extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDataSource
             switch collectionItem {
             case .wine(let wine):
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as! WineCollectionViewCell
-                cell.decorate(model: .init(imageURL: wine.mainImageUrl?.toURL, titleText: wine.title, subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode)))
-                cell.background.backgroundColor = .option
+                cell.decorate(model: .init(imageURL: wine.mainImageUrl?.toURL, titleText: wine.title, subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode), backgroundColor: .randomColor))
                 return cell
             case .ads:
                 return .init()

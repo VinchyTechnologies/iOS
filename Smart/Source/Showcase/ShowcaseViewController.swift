@@ -56,6 +56,7 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
         collectionView.register(WineCollectionViewCell.self)
         collectionView.register(HeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderReusableView.reuseId)
         collectionView.register(LoadingCollectionFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: LoadingCollectionFooter.reuseId)
+        collectionView.delaysContentTouches = false
 
         return collectionView
     }()
@@ -213,7 +214,7 @@ extension ShowcaseViewController: UICollectionViewDataSource {
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as? WineCollectionViewCell,
             let wine = categoryItems[safe: indexPath.section]?.wines[safe: indexPath.row] {
             cell.decorate(model: .init(imageURL: wine.mainImageUrl?.toURL, titleText: wine.title,
-                                       subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode)))
+                                       subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode), backgroundColor: .randomColor))
             return cell
         }
         return .init()

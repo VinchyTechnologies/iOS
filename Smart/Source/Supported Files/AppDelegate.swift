@@ -14,8 +14,12 @@ import GoogleMobileAds
 final class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        FirebaseConfiguration.shared.setLoggerLevel(.min)
         FirebaseApp.configure()
         GADMobileAds.sharedInstance().start(completionHandler: nil)
+        #if targetEnvironment(simulator)
+        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [kGADSimulatorID as! String]
+        #endif
         return true
     }
 

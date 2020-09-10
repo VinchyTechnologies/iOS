@@ -18,6 +18,18 @@ import GoogleMobileAds
 
 final class VinchyViewController: UIViewController, Alertable, Loadable {
 
+    private let adUnitID = "ca-app-pub-6194258101406763/5059597902"
+
+    lazy var adLoader: GADAdLoader =  {
+        let options = GADMultipleAdsAdLoaderOptions()
+        let l = GADAdLoader(adUnitID: adUnitID,
+                            rootViewController: UIApplication.topViewController(),
+                            adTypes: [.unifiedNative],
+                            options: [options])
+        l.delegate = self
+        return l
+    }()
+
     private(set) var loadingIndicator = ActivityIndicatorView()
 
     private lazy var collectionView: UICollectionView = {
@@ -37,6 +49,7 @@ final class VinchyViewController: UIViewController, Alertable, Loadable {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.refreshControl = refreshControl
+        collectionView.delaysContentTouches = false
         return collectionView
     }()
 
@@ -120,6 +133,8 @@ final class VinchyViewController: UIViewController, Alertable, Loadable {
     }
 
     private func loadMoreInfinity() {
+        adLoader.load(GADRequest())
+
         Wines.shared.getRandomWines(count: 10) { [weak self] result in
             guard let self = self else { return }
             switch result {
@@ -237,6 +252,11 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetsForSectionAtIndex index: Int) -> UIEdgeInsets {
+
+        if isSearchingMode {
+            return .zero
+        }
+
         switch compilations[index].type {
         case .mini, .big, .promo, .bottles:
             return .zero
@@ -248,15 +268,24 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetsForItemsInSectionAtIndex index: Int) -> UIEdgeInsets {
-        .init(top: 10, left: 10, bottom: 10, right: 10)
+        if isSearchingMode {
+            return .zero
+        }
+        return .init(top: 10, left: 10, bottom: 10, right: 10)
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, verticalSpacingForElementsInSectionAtIndex index: Int) -> CGFloat {
-        10
+        if isSearchingMode {
+            return 0
+        }
+        return 10
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, horizontalSpacingForItemsInSectionAtIndex index: Int) -> CGFloat {
-        10
+        if isSearchingMode {
+            return 0
+        }
+        return 10
     }
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, visibilityModeForBackgroundInSectionAtIndex index: Int) -> MagazineLayoutBackgroundVisibilityMode {
@@ -317,7 +346,7 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
                 case .wine:
                     return .init(widthMode: .halfWidth, heightMode: heightMode)
                 case .ads:
-                    return .init(widthMode: .fullWidth(respectsHorizontalInsets: false), heightMode: .static(height: 100))
+                    return .init(widthMode: .fullWidth(respectsHorizontalInsets: false), heightMode: .static(height: 120))
                 }
             }
         }
@@ -363,8 +392,8 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
                 switch collectionList[indexPath.row] {
                 case .wine(let wine):
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as! WineCollectionViewCell
-                    cell.background.backgroundColor = .option
-                    cell.decorate(model: .init(imageURL: wine.mainImageUrl?.toURL, titleText: wine.title, subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode)))
+                    cell.highlightStyle = .scale
+                    cell.decorate(model: .init(imageURL: wine.mainImageUrl?.toURL, titleText: wine.title, subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode), backgroundColor: .randomColor))
                     return cell
 
                 case .ads:
@@ -475,6 +504,18 @@ extension VinchyViewController: VinchySimpleConiniousCaruselCollectionCellDelega
             Assembly.buildShowcaseModule(navTitle: title, mode: .normal(wines: wines)), animated: true)
     }
 }
+
+extension VinchyViewController: GADUnifiedNativeAdLoaderDelegate {
+
+    func adLoader(_ adLoader: GADAdLoader, didFailToReceiveAdWithError error: GADRequestError) {
+        print(error)
+    }
+
+    func adLoader(_ adLoader: GADAdLoader, didReceive nativeAd: GADUnifiedNativeAd) {
+//        adView.nativeAd = nativeAd
+    }
+}
+
 
 //extension VinchyViewController: GADBannerViewDelegate {
 //

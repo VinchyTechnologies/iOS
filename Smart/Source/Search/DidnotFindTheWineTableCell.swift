@@ -27,6 +27,8 @@ final class DidnotFindTheWineTableCell: UITableViewCell, Reusable {
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.text = "Didn't find the wine?" // TODO: - localize
         titleLabel.font = Font.bold(20)
+        titleLabel.adjustsFontSizeToFitWidth = true
+        titleLabel.minimumScaleFactor = 0.8
 
         writeUsButton.translatesAutoresizingMaskIntoConstraints = false
         writeUsButton.backgroundColor = .accent
@@ -38,20 +40,23 @@ final class DidnotFindTheWineTableCell: UITableViewCell, Reusable {
         writeUsButton.titleLabel?.font = Font.bold(16)
         writeUsButton.addTarget(self, action: #selector(didTapWriteUsButton(_:)), for: .touchUpInside)
 
-        addSubview(titleLabel)
-        NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor)
-        ])
-
         addSubview(writeUsButton)
         NSLayoutConstraint.activate([
             writeUsButton.topAnchor.constraint(equalTo: topAnchor, constant: 10),
             writeUsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
             writeUsButton.centerYAnchor.constraint(equalTo: centerYAnchor),
             writeUsButton.heightAnchor.constraint(equalToConstant: 44),
-            writeUsButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10)
+            writeUsButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
         ])
+
+        addSubview(titleLabel)
+        NSLayoutConstraint.activate([
+            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            titleLabel.trailingAnchor.constraint(equalTo: writeUsButton.leadingAnchor, constant: -10),
+        ])
+
+
     }
 
     required init?(coder: NSCoder) { fatalError() }

@@ -127,6 +127,11 @@
 		CA7B836624F13FFB00991F24 /* VinchyFooterCollectionReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B836524F13FFB00991F24 /* VinchyFooterCollectionReusableView.swift */; };
 		CA7B838924F451FA00991F24 /* WineDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B838824F451FA00991F24 /* WineDetailViewController.swift */; };
 		CA7B838C24F4547B00991F24 /* GalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B838B24F4547B00991F24 /* GalleryCell.swift */; };
+		CA8CD67725096EC200FDB7AF /* GADTSmallTemplateView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8CD67625096EC200FDB7AF /* GADTSmallTemplateView.m */; };
+		CA8CD67A25096EDA00FDB7AF /* GADTSmallTemplateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA8CD67925096EDA00FDB7AF /* GADTSmallTemplateView.xib */; };
+		CA8CD67C25096EE100FDB7AF /* GADTTemplateView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8CD67B25096EE100FDB7AF /* GADTTemplateView.m */; };
+		CA8CD68225097AD500FDB7AF /* GADTMediumTemplateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA8CD67F25097AD500FDB7AF /* GADTMediumTemplateView.xib */; };
+		CA8CD68325097AD500FDB7AF /* GADTMediumTemplateView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8CD68025097AD500FDB7AF /* GADTMediumTemplateView.m */; };
 		CA99E65124F58A6000C36BEE /* ToolCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA99E65024F58A6000C36BEE /* ToolCollectionCell.swift */; };
 		CA99E65324F59CAA00C36BEE /* ShortInfoCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA99E65224F59CAA00C36BEE /* ShortInfoCollectionCell.swift */; };
 		CA99E65724F6EDDD00C36BEE /* ButtonCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA99E65624F6EDDD00C36BEE /* ButtonCollectionCell.swift */; };
@@ -332,6 +337,15 @@
 		CA7B836524F13FFB00991F24 /* VinchyFooterCollectionReusableView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyFooterCollectionReusableView.swift; sourceTree = "<group>"; };
 		CA7B838824F451FA00991F24 /* WineDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineDetailViewController.swift; sourceTree = "<group>"; };
 		CA7B838B24F4547B00991F24 /* GalleryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCell.swift; sourceTree = "<group>"; };
+		CA8CD67525096EC100FDB7AF /* Smart-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smart-Bridging-Header.h"; sourceTree = "<group>"; };
+		CA8CD67625096EC200FDB7AF /* GADTSmallTemplateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADTSmallTemplateView.m; sourceTree = "<group>"; };
+		CA8CD67825096ECD00FDB7AF /* GADTSmallTemplateView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADTSmallTemplateView.h; sourceTree = "<group>"; };
+		CA8CD67925096EDA00FDB7AF /* GADTSmallTemplateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GADTSmallTemplateView.xib; sourceTree = "<group>"; };
+		CA8CD67B25096EE100FDB7AF /* GADTTemplateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADTTemplateView.m; sourceTree = "<group>"; };
+		CA8CD67D25096EEC00FDB7AF /* GADTTemplateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADTTemplateView.h; sourceTree = "<group>"; };
+		CA8CD67F25097AD500FDB7AF /* GADTMediumTemplateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GADTMediumTemplateView.xib; sourceTree = "<group>"; };
+		CA8CD68025097AD500FDB7AF /* GADTMediumTemplateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADTMediumTemplateView.m; sourceTree = "<group>"; };
+		CA8CD68125097AD500FDB7AF /* GADTMediumTemplateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADTMediumTemplateView.h; sourceTree = "<group>"; };
 		CA99E65024F58A6000C36BEE /* ToolCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolCollectionCell.swift; sourceTree = "<group>"; };
 		CA99E65224F59CAA00C36BEE /* ShortInfoCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortInfoCollectionCell.swift; sourceTree = "<group>"; };
 		CA99E65624F6EDDD00C36BEE /* ButtonCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCollectionCell.swift; sourceTree = "<group>"; };
@@ -803,6 +817,7 @@
 		CA7B835924EED6BA00991F24 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				CA8CD67E25097A9A00FDB7AF /* Ads */,
 				CA7B835A24EED6E600991F24 /* StoryCollectionCell.swift */,
 				CA7B835F24EF109200991F24 /* MainSubtitleCollectionCell.swift */,
 				CA7B836124F0237100991F24 /* SuggestionCollectionCell.swift */,
@@ -810,6 +825,7 @@
 				CA7A87E52500169100AAD10F /* VinchySimpleConiniousCaruselCollectionCell.swift */,
 				CA7A87F92506B9D600AAD10F /* ShareUsCollectionCell.swift */,
 				CA7A87FB2507ED7800AAD10F /* AdsCollectionViewCell.swift */,
+				CA8CD67525096EC100FDB7AF /* Smart-Bridging-Header.h */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -832,6 +848,21 @@
 				CA99E65624F6EDDD00C36BEE /* ButtonCollectionCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		CA8CD67E25097A9A00FDB7AF /* Ads */ = {
+			isa = PBXGroup;
+			children = (
+				CA8CD68125097AD500FDB7AF /* GADTMediumTemplateView.h */,
+				CA8CD68025097AD500FDB7AF /* GADTMediumTemplateView.m */,
+				CA8CD67F25097AD500FDB7AF /* GADTMediumTemplateView.xib */,
+				CA8CD67625096EC200FDB7AF /* GADTSmallTemplateView.m */,
+				CA8CD67825096ECD00FDB7AF /* GADTSmallTemplateView.h */,
+				CA8CD67925096EDA00FDB7AF /* GADTSmallTemplateView.xib */,
+				CA8CD67B25096EE100FDB7AF /* GADTTemplateView.m */,
+				CA8CD67D25096EEC00FDB7AF /* GADTTemplateView.h */,
+			);
+			path = Ads;
 			sourceTree = "<group>";
 		};
 		CAA07CAA24A34A1A00FE285A /* Subscribtion */ = {
@@ -1007,6 +1038,7 @@
 				TargetAttributes = {
 					CA472ABB245EDE2F009149FF = {
 						CreatedOnToolsVersion = 11.4;
+						LastSwiftMigration = 1150;
 					};
 					CA472AD1245EDE30009149FF = {
 						CreatedOnToolsVersion = 11.4;
@@ -1044,12 +1076,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA8CD67A25096EDA00FDB7AF /* GADTSmallTemplateView.xib in Resources */,
 				CA472ACC245EDE30009149FF /* LaunchScreen.storyboard in Resources */,
 				CA445F6B24BFA3C20023A09F /* InfoPlist.strings in Resources */,
 				CA63A12B249A23C100144320 /* Localizable.strings in Resources */,
 				CA4EA6BB24BE3ACD00E6F0C4 /* currencies.json in Resources */,
 				CA4AED9B24CE204900035922 /* TopSecret.plist in Resources */,
 				CAA07CA724A2A43300FE285A /* GoogleService-Info.plist in Resources */,
+				CA8CD68225097AD500FDB7AF /* GADTMediumTemplateView.xib in Resources */,
 				CACC1DC224C5F2980082BD01 /* filters.json in Resources */,
 				CA154E152494EDCA00696436 /* MessageKitAssets.bundle in Resources */,
 				CA472AC9245EDE30009149FF /* Assets.xcassets in Resources */,
@@ -1196,6 +1230,7 @@
 				CA154E012494EA2B00696436 /* SenderType.swift in Sources */,
 				CA7B836624F13FFB00991F24 /* VinchyFooterCollectionReusableView.swift in Sources */,
 				CA7A87FA2506B9D600AAD10F /* ShareUsCollectionCell.swift in Sources */,
+				CA8CD67725096EC200FDB7AF /* GADTSmallTemplateView.m in Sources */,
 				CA7B838924F451FA00991F24 /* WineDetailViewController.swift in Sources */,
 				CA154DF02494EA2B00696436 /* MessageContentCell.swift in Sources */,
 				CA154DDD2494EA2B00696436 /* NSConstraintLayoutSet.swift in Sources */,
@@ -1217,6 +1252,7 @@
 				CA472B59245EDEDB009149FF /* ShowcaseViewController.swift in Sources */,
 				CAF514222461C52400667ED0 /* MoreViewController.swift in Sources */,
 				CA7B835B24EED6E600991F24 /* StoryCollectionCell.swift in Sources */,
+				CA8CD67C25096EE100FDB7AF /* GADTTemplateView.m in Sources */,
 				CA154DFE2494EA2B00696436 /* MediaItem.swift in Sources */,
 				CA7B835824EED1B100991F24 /* VinchyViewController.swift in Sources */,
 				CA154DD72494EA2B00696436 /* MessageStyle.swift in Sources */,
@@ -1277,6 +1313,7 @@
 				CA154DD52494EA2B00696436 /* Sender.swift in Sources */,
 				CA154E002494EA2B00696436 /* MessagesLayoutDelegate.swift in Sources */,
 				CA2F479224AF407D00B4D53D /* EnterMessageCell.swift in Sources */,
+				CA8CD68325097AD500FDB7AF /* GADTMediumTemplateView.m in Sources */,
 				CAAD023C245EEA0700EDF245 /* PasswordViewController.swift in Sources */,
 				CAF5146B2468172900667ED0 /* LoveViewController.swift in Sources */,
 				CA154DE42494EA2B00696436 /* CGRect+Extensions.swift in Sources */,
@@ -1488,6 +1525,7 @@
 			baseConfigurationReference = 356D7CD37446A6F72FDB6021 /* Pods-Smart.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				INFOPLIST_FILE = Smart/Resources/Info.plist;
@@ -1497,6 +1535,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.smirnov-development.Smart";
 				PRODUCT_NAME = Vinchy;
+				SWIFT_OBJC_BRIDGING_HEADER = "Smart/Source/Vinchy/Views/Smart-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1507,6 +1547,7 @@
 			baseConfigurationReference = 4EE549E3882830814D6F0987 /* Pods-Smart.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				INFOPLIST_FILE = Smart/Resources/Info.plist;
@@ -1516,6 +1557,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "com.smirnov-development.Smart";
 				PRODUCT_NAME = Vinchy;
+				SWIFT_OBJC_BRIDGING_HEADER = "Smart/Source/Vinchy/Views/Smart-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
