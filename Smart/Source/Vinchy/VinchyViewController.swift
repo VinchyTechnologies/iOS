@@ -516,7 +516,14 @@ extension VinchyViewController: GADUnifiedNativeAdLoaderDelegate {
     }
 
     func adLoader(_ adLoader: GADAdLoader, didReceive nativeAd: GADUnifiedNativeAd) {
-        collectionList.append(.ads(ad: nativeAd))
+        if let lastObj = collectionList.last {
+            switch lastObj {
+            case .wine:
+                collectionList.append(.ads(ad: nativeAd))
+            case .ads:
+                break
+            }
+        }
     }
 }
 
