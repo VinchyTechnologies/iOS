@@ -22,12 +22,12 @@ final class VinchyViewController: UIViewController, Alertable, Loadable {
 
     lazy var adLoader: GADAdLoader =  {
         let options = GADMultipleAdsAdLoaderOptions()
-        let l = GADAdLoader(adUnitID: adUnitID,
-                            rootViewController: UIApplication.topViewController(),
+        let loader = GADAdLoader(adUnitID: adUnitID,
+                            rootViewController: self,
                             adTypes: [.unifiedNative],
                             options: [options])
-        l.delegate = self
-        return l
+        loader.delegate = self
+        return loader
     }()
 
     private(set) var loadingIndicator = ActivityIndicatorView()
@@ -115,6 +115,12 @@ final class VinchyViewController: UIViewController, Alertable, Loadable {
     }
 
     required init?(coder: NSCoder) { fatalError() }
+
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        let index = collectionList.count / 4
+        collectionList.removeSubrange(index...index*2)
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
