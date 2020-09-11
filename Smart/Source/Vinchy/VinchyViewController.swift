@@ -139,7 +139,7 @@ final class VinchyViewController: UIViewController, Alertable, Loadable {
             guard let self = self else { return }
             switch result {
             case .success(let model):
-                let collectionList: [CollectionItem] = model.map({ .wine(wine: $0) }) + [.ads]
+                let collectionList: [CollectionItem] = model.map({ .wine(wine: $0) })
                 self.collectionList += collectionList
                 DispatchQueue.main.async {
                     self.collectionView.reloadData()
@@ -187,7 +187,8 @@ final class VinchyViewController: UIViewController, Alertable, Loadable {
             if infinityWines.isEmpty {
                 self.compilations = compilations
             } else {
-                self.collectionList = infinityWines.map({ .wine(wine: $0) }) + [.ads]
+                self.adLoader.load(GADRequest())
+                self.collectionList = infinityWines.map({ .wine(wine: $0) })
                 let collection = Collection(wineList: self.collectionList)
                 compilations.append(Compilation(type: .infinity, title: "You can like", collectionList: [collection]))
                 self.compilations = compilations
@@ -396,8 +397,11 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
                     cell.decorate(model: .init(imageURL: wine.mainImageUrl?.toURL, titleText: wine.title, subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode), backgroundColor: .randomColor))
                     return cell
 
-                case .ads:
+                case .ads(let ad):
                     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AdsCollectionViewCell.reuseId, for: indexPath) as! AdsCollectionViewCell
+                    if let ad = ad as? GADUnifiedNativeAd {
+                        cell.adView.nativeAd = ad
+                    }
                     return cell
                 }
             }
@@ -512,9 +516,11 @@ extension VinchyViewController: GADUnifiedNativeAdLoaderDelegate {
     }
 
     func adLoader(_ adLoader: GADAdLoader, didReceive nativeAd: GADUnifiedNativeAd) {
-//        adView.nativeAd = nativeAd
+        collectionList.append(.ads(ad: nativeAd))
     }
 }
+
+extension GADUnifiedNativeAd: AdsProtocol { }
 
 
 //extension VinchyViewController: GADBannerViewDelegate {

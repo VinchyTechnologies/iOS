@@ -47,5 +47,10 @@ final class AdsCollectionViewCell: UICollectionViewCell, Reusable {
     }
 
     required init?(coder: NSCoder) { fatalError() }
+
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        adView.nativeAd = nil
+    }
     
 }

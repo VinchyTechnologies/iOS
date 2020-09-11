@@ -8,6 +8,8 @@
 
 import Display
 
+public protocol AdsProtocol: AnyObject { }
+
 public enum CollectionType: String, Decodable {
     case mini, big, promo, bottles, shareUs, infinity
 
@@ -31,7 +33,7 @@ public enum CollectionType: String, Decodable {
 
 public enum CollectionItem {
     case wine(wine: Wine)
-    case ads
+    case ads(ad: AdsProtocol)
 }
 
 public struct Collection: Decodable {
