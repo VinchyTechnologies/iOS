@@ -37,7 +37,7 @@ public final class NavigationController: UINavigationController {
         ]
 
         navigationBar.largeTitleTextAttributes = [
-            NSAttributedString.Key.font: Font.bold(30),
+            NSAttributedString.Key.font: Font.semibold(35),
             NSAttributedString.Key.foregroundColor: UIColor.dark
         ]
 
@@ -69,6 +69,4 @@ public final class NavigationController: UINavigationController {
 
         super.pushViewController(viewController, animated: animated)
     }
-
 }
-

@@ -14,6 +14,7 @@
 		CA18220824C0FE2300280DD4 /* UIKitUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18220724C0FE2300280DD4 /* UIKitUtils.swift */; };
 		CA18220A24C0FF8C00280DD4 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18220924C0FF8C00280DD4 /* Keyboard.swift */; };
 		CA53B12524E039F1009A0F85 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA53B12424E039F1009A0F85 /* Alertable.swift */; };
+		CA5B9019250FEF51006BC638 /* ScrollViewBounceDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5B9018250FEF51006BC638 /* ScrollViewBounceDecorator.swift */; };
 		CA7A87E324FEE1B200AAD10F /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87E224FEE1B200AAD10F /* Loadable.swift */; };
 		CA7A87E82501106800AAD10F /* VinchySize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87E72501106800AAD10F /* VinchySize.swift */; };
 		CA7A87EA2502582C00AAD10F /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87E92502582C00AAD10F /* PaddingLabel.swift */; };
@@ -21,6 +22,7 @@
 		CA99E65B24F7D79B00C36BEE /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA99E65A24F7D79B00C36BEE /* ActivityIndicator.swift */; };
 		CAA8918B250AA8D200ADBFF9 /* HighlightableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA8918A250AA8D200ADBFF9 /* HighlightableViewProtocol.swift */; };
 		CAA8918D250AB69400ADBFF9 /* HighlightCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA8918C250AB69400ADBFF9 /* HighlightCollectionCell.swift */; };
+		CAA9DC69250EA24900F996A8 /* DecoratorFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA9DC68250EA24900F996A8 /* DecoratorFlowLayout.swift */; };
 		CABDBA9624C31FAC00AD96D6 /* ASPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABDBA9524C31FAC00AD96D6 /* ASPageControl.swift */; };
 		CAE8869D24C0E5F800E33E16 /* Display.h in Headers */ = {isa = PBXBuildFile; fileRef = CAE8869B24C0E5F800E33E16 /* Display.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
@@ -35,6 +37,7 @@
 		CA18220724C0FE2300280DD4 /* UIKitUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitUtils.swift; sourceTree = "<group>"; };
 		CA18220924C0FF8C00280DD4 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		CA53B12424E039F1009A0F85 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
+		CA5B9018250FEF51006BC638 /* ScrollViewBounceDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewBounceDecorator.swift; sourceTree = "<group>"; };
 		CA7A87E224FEE1B200AAD10F /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
 		CA7A87E72501106800AAD10F /* VinchySize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchySize.swift; sourceTree = "<group>"; };
 		CA7A87E92502582C00AAD10F /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
@@ -42,6 +45,7 @@
 		CA99E65A24F7D79B00C36BEE /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		CAA8918A250AA8D200ADBFF9 /* HighlightableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightableViewProtocol.swift; sourceTree = "<group>"; };
 		CAA8918C250AB69400ADBFF9 /* HighlightCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightCollectionCell.swift; sourceTree = "<group>"; };
+		CAA9DC68250EA24900F996A8 /* DecoratorFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoratorFlowLayout.swift; sourceTree = "<group>"; };
 		CABDBA9524C31FAC00AD96D6 /* ASPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASPageControl.swift; sourceTree = "<group>"; };
 		CAE8869824C0E5F800E33E16 /* Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAE8869B24C0E5F800E33E16 /* Display.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Display.h; sourceTree = "<group>"; };
@@ -123,6 +127,8 @@
 				CA7A87EB25026FA700AAD10F /* LoadingCollectionFooter.swift */,
 				CAA8918A250AA8D200ADBFF9 /* HighlightableViewProtocol.swift */,
 				CAA8918C250AB69400ADBFF9 /* HighlightCollectionCell.swift */,
+				CAA9DC68250EA24900F996A8 /* DecoratorFlowLayout.swift */,
+				CA5B9018250FEF51006BC638 /* ScrollViewBounceDecorator.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -166,7 +172,7 @@
 		CAE8868F24C0E5F800E33E16 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Aleksei Smirnov";
 				TargetAttributes = {
 					CAE8869724C0E5F800E33E16 = {
@@ -236,6 +242,7 @@
 				CA7A87EA2502582C00AAD10F /* PaddingLabel.swift in Sources */,
 				CA53B12524E039F1009A0F85 /* Alertable.swift in Sources */,
 				CA18220424C0F88B00280DD4 /* NavigationController.swift in Sources */,
+				CA5B9019250FEF51006BC638 /* ScrollViewBounceDecorator.swift in Sources */,
 				CA7A87E82501106800AAD10F /* VinchySize.swift in Sources */,
 				CA18220624C0F8CE00280DD4 /* UIColor.swift in Sources */,
 				CABDBA9624C31FAC00AD96D6 /* ASPageControl.swift in Sources */,
@@ -243,6 +250,7 @@
 				CAA8918B250AA8D200ADBFF9 /* HighlightableViewProtocol.swift in Sources */,
 				CAA8918D250AB69400ADBFF9 /* HighlightCollectionCell.swift in Sources */,
 				CA7A87EC25026FA700AAD10F /* LoadingCollectionFooter.swift in Sources */,
+				CAA9DC69250EA24900F996A8 /* DecoratorFlowLayout.swift in Sources */,
 				CA18220A24C0FF8C00280DD4 /* Keyboard.swift in Sources */,
 				CA7A87E324FEE1B200AAD10F /* Loadable.swift in Sources */,
 				CA18220824C0FE2300280DD4 /* UIKitUtils.swift in Sources */,
@@ -279,6 +287,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -304,7 +313,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -342,6 +351,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -361,7 +371,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;

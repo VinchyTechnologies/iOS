@@ -2,6 +2,7 @@
     {
         "title": "type",
         "type": "carusel",
+        "category": "common",
         "items": [
             {
                 "title": "quiet",
@@ -16,6 +17,7 @@
     {
         "title": "color",
         "type": "carusel",
+        "category": "common",
         "items": [
             {
                 "title": "red",
@@ -30,16 +32,34 @@
     {
         "title": "country",
         "type": "carusel",
+        "category": "countries",
         "items": [
             {
                 "title": "France",
-                "imageName": "france"
+                "imageName": "FR"
+            },
+            {
+                "title": "Spain",
+                "imageName": "ES"
+            },
+            {
+                "title": "Italy",
+                "imageName": "IT"
+            },
+            {
+                "title": "Austria",
+                "imageName": "AT"
+            },
+            {
+                "title": "Germany",
+                "imageName": "DE"
             }
         ]
     },
     {
         "title": "sugar",
         "type": "carusel",
+        "category": "common",
         "items": [
             {
                 "title": "dry",
@@ -62,6 +82,7 @@
     {
         "title": "compatibility",
         "type": "carusel",
+        "category": "common",
         "items": [
             {
                 "title": "meat",
@@ -100,5 +121,5 @@
                 "imageName": "fruit"
             }
         ]
-    },
+    }
 ]

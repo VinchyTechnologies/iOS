@@ -20,24 +20,18 @@ public struct ImageOptionCollectionCellViewModel: ViewModelProtocol {
     }
 }
 
-public final class ImageOptionCollectionCell: UICollectionViewCell, Reusable {
-
-    public var didSelected: Bool = false {
-        didSet {
-            if didSelected {
-                layer.borderWidth = 2
-                layer.borderColor = UIColor.dark.cgColor
-            } else {
-                layer.borderWidth = 0
-            }
-        }
-    }
+public final class ImageOptionCollectionCell: HighlightCollectionCell, Reusable {
 
     private let imageView = UIImageView()
     private let titleLabel = UILabel()
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
+
+        translatesAutoresizingMaskIntoConstraints = false
+        heightAnchor.constraint(greaterThanOrEqualToConstant: 100).isActive = true
+
+        highlightStyle = .scale
 
         backgroundColor = .option
         layer.cornerRadius = 15
@@ -66,6 +60,21 @@ public final class ImageOptionCollectionCell: UICollectionViewCell, Reusable {
     }
 
     required init?(coder: NSCoder) { fatalError() }
+
+    public func setSelected(flag: Bool, animated: Bool) {
+        if animated {
+            UIView.animate(withDuration: 0.1, delay: 0, options: .transitionCrossDissolve, animations: {
+                self.backgroundColor = flag ? .accent : .option
+                self.titleLabel.textColor =  flag ? .white : .dark
+                self.imageView.alpha = flag ? 0 : 1
+
+            }, completion: nil)
+        } else {
+            self.backgroundColor = flag ? .accent : .option
+            self.titleLabel.textColor =  flag ? .white : .dark
+            self.imageView.alpha = flag ? 0 : 1
+        }
+    }
 
 }
 

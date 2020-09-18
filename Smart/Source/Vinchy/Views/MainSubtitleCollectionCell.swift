@@ -10,10 +10,12 @@ import UIKit
 import SDWebImage
 import Display
 
-struct MainSubtitleCollectionCellViewModel: ViewModelProtocol {
+struct MainSubtitleCollectionCellViewModel: ViewModelProtocol, Hashable {
     
     fileprivate let subtitleText: String?
     fileprivate let imageURL: URL?
+
+    private let identifier = UUID()
 
     public init(subtitleText: String?, imageURL: URL?) {
         self.subtitleText = subtitleText
@@ -21,13 +23,15 @@ struct MainSubtitleCollectionCellViewModel: ViewModelProtocol {
     }
 }
 
-final class MainSubtitleCollectionCell: UICollectionViewCell, Reusable {
+final class MainSubtitleCollectionCell: HighlightCollectionCell, Reusable {
 
     private let subtitleLabel = UILabel()
     private let imageView = UIImageView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+
+        highlightStyle = .scale
 
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.backgroundColor = .option

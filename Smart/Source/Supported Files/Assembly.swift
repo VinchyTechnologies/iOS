@@ -10,6 +10,7 @@ import SwiftUI
 import StringFormatting
 import Display
 import VinchyCore
+import CommonUI
 
 final class Assembly {
 
@@ -27,7 +28,7 @@ final class Assembly {
     }
 
     static func buildMainModule() -> NavigationController {
-        let controller = VinchyViewController()
+        let controller = NewVinchyViewController()
         controller.title = localized("explore").firstLetterUppercased()
         controller.extendedLayoutIncludesOpaqueBars = true
         let navController = NavigationController(rootViewController: controller)
@@ -62,6 +63,13 @@ final class Assembly {
         let navController = NavigationController(rootViewController: controller)
         navController.navigationBar.prefersLargeTitles = true
         navController.navigationItem.title = localized("subscriptions")
+        return navController
+    }
+
+    static func buildChooseCountiesModule(preSelectedCountryCodes: [String], delegate: CountriesViewControllerDelegate) -> NavigationController {
+        let controller = CountriesViewController(preSelectedCountryCodes: preSelectedCountryCodes, delegate: delegate)
+        let navController = NavigationController(rootViewController: controller)
+        navController.modalPresentationCapturesStatusBarAppearance = true
         return navController
     }
 

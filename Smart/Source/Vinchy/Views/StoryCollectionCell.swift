@@ -9,10 +9,12 @@
 import UIKit
 import Display
 
-struct StoryCollectionCellViewModel: ViewModelProtocol {
+struct StoryCollectionCellViewModel: ViewModelProtocol, Hashable {
 
     fileprivate let imageURL: URL?
     fileprivate let titleText: String?
+
+    private let identifier = UUID()
 
     public init(imageURL: URL?, titleText: String?) {
         self.imageURL = imageURL

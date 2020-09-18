@@ -12,7 +12,7 @@ import GoogleMobileAds
 
 final class AdsCollectionViewCell: UICollectionViewCell, Reusable {
 
-    let adView = GADTSmallTemplateView()
+    let adView = GADTMediumTemplateView()
 
     override init(frame: CGRect) {
         super.init(frame: frame)

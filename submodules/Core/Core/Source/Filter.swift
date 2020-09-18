@@ -15,12 +15,22 @@ public enum FilterType: String, Decodable {
 public struct Filter: Decodable {
     public let title: String
     public let type: FilterType
-    public let items: [FilterItem]
+    public let category: FilterCategory
+    public var items: [FilterItem]
+}
+
+public enum FilterCategory: String, Decodable {
+    case common, countries
 }
 
 public struct FilterItem: Decodable {
     public let title: String
     public let imageName: String?
+
+    public init(title: String, imageName: String?) {
+        self.title = title
+        self.imageName = imageName
+    }
 }
 
 public func loadFilters() -> [Filter] {

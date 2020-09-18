@@ -18,14 +18,16 @@ import GoogleMobileAds
 
 final class VinchyViewController: UIViewController, Alertable, Loadable {
 
-    private let adUnitID = "ca-app-pub-6194258101406763/5059597902"
-
-    lazy var adLoader: GADAdLoader =  {
+    private lazy var adLoader: GADAdLoader =  {
         let options = GADMultipleAdsAdLoaderOptions()
-        let loader = GADAdLoader(adUnitID: adUnitID,
+
+        let op = GADNativeAdMediaAdLoaderOptions()
+        op.mediaAspectRatio = .landscape
+
+        let loader = GADAdLoader(adUnitID: "ca-app-pub-6194258101406763/5059597902",
                             rootViewController: self,
                             adTypes: [.unifiedNative],
-                            options: [options])
+                            options: [options, op])
         loader.delegate = self
         return loader
     }()
@@ -42,9 +44,13 @@ final class VinchyViewController: UIViewController, Alertable, Loadable {
                                 WineCollectionViewCell.self,
                                 AdsCollectionViewCell.self)
 
-        collectionView.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: MagazineLayout.SupplementaryViewKind.sectionHeader, withReuseIdentifier: HeaderCollectionReusableView.reuseId)
+        collectionView.register(HeaderCollectionReusableView.self,
+                                forSupplementaryViewOfKind: MagazineLayout.SupplementaryViewKind.sectionHeader,
+                                withReuseIdentifier: HeaderCollectionReusableView.reuseId)
 
-        collectionView.register(VinchyFooterCollectionReusableView.self, forSupplementaryViewOfKind: MagazineLayout.SupplementaryViewKind.sectionFooter, withReuseIdentifier: VinchyFooterCollectionReusableView.reuseId)
+        collectionView.register(VinchyFooterCollectionReusableView.self,
+                                forSupplementaryViewOfKind: MagazineLayout.SupplementaryViewKind.sectionFooter,
+                                withReuseIdentifier: VinchyFooterCollectionReusableView.reuseId)
 
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -106,7 +112,7 @@ final class VinchyViewController: UIViewController, Alertable, Loadable {
         }
     }
 
-    init() {
+    init() { //
         super.init(nibName: nil, bundle: nil)
         fetchData()
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -114,15 +120,9 @@ final class VinchyViewController: UIViewController, Alertable, Loadable {
         }
     }
 
-    required init?(coder: NSCoder) { fatalError() }
+    required init?(coder: NSCoder) { fatalError() } //
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        let index = collectionList.count / 4
-        collectionList.removeSubrange(index...index*2)
-    }
-
-    override func viewDidLoad() {
+    override func viewDidLoad() { //
         super.viewDidLoad()
         view.addSubview(collectionView)
         collectionView.frame = view.frame
@@ -139,7 +139,7 @@ final class VinchyViewController: UIViewController, Alertable, Loadable {
     }
 
     private func loadMoreInfinity() {
-        adLoader.load(GADRequest())
+        adLoader.load(DFPRequest())
 
         Wines.shared.getRandomWines(count: 10) { [weak self] result in
             guard let self = self else { return }
@@ -156,7 +156,7 @@ final class VinchyViewController: UIViewController, Alertable, Loadable {
         }
     }
 
-    private func fetchData() {
+    private func fetchData() {//
 
         dispatchGroup.enter()
         var compilations: [Compilation] = []
@@ -193,7 +193,7 @@ final class VinchyViewController: UIViewController, Alertable, Loadable {
             if infinityWines.isEmpty {
                 self.compilations = compilations
             } else {
-                self.adLoader.load(GADRequest())
+                self.adLoader.load(DFPRequest())
                 self.collectionList = infinityWines.map({ .wine(wine: $0) })
                 let collection = Collection(wineList: self.collectionList)
                 compilations.append(Compilation(type: .infinity, title: "You can like", collectionList: [collection]))
@@ -212,7 +212,7 @@ final class VinchyViewController: UIViewController, Alertable, Loadable {
     }
 
     @objc
-    private func refresh() {
+    private func refresh() {//
         CATransaction.begin()
         CATransaction.setCompletionBlock {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -353,7 +353,7 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
                 case .wine:
                     return .init(widthMode: .halfWidth, heightMode: heightMode)
                 case .ads:
-                    return .init(widthMode: .fullWidth(respectsHorizontalInsets: false), heightMode: .static(height: 120))
+                    return .init(widthMode: .fullWidth(respectsHorizontalInsets: false), heightMode: .dynamic)
                 }
             }
         }
@@ -525,7 +525,8 @@ extension VinchyViewController: GADUnifiedNativeAdLoaderDelegate {
         if let lastObj = collectionList.last {
             switch lastObj {
             case .wine:
-                collectionList.append(.ads(ad: nativeAd))
+                //collectionList.append(.ads(ad: nativeAd))
+                break
             case .ads:
                 break
             }

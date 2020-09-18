@@ -10,7 +10,7 @@ import UIKit
 import SDWebImage
 import Display
 
-public struct WineCollectionViewCellViewModel: ViewModelProtocol {
+public struct WineCollectionViewCellViewModel: ViewModelProtocol, Hashable {
     
     fileprivate let imageURL: URL?
     fileprivate let titleText: String?

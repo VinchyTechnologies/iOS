@@ -13,15 +13,20 @@ import Core
 import StringFormatting
 
 fileprivate let categoryHeaderID = "categoryHeaderID"
+fileprivate let categorySeparatorID = "categorySeparatorID"
 
 final class AdvancedSearchViewController: UIViewController, Alertable {
+
+    private enum C {
+        static let maxNumberItems: Int = 5
+    }
 
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     private lazy var searchButton = UIButton(frame: CGRect(x: 20, y: view.bounds.height, width: view.bounds.width - 40, height: 48))
 
     private var isButtonShown = false
 
-    private var selectedFilters: [(String, String)] = [] {
+    private(set) var selectedFilters: [(String, String)] = [] {
         didSet {
             if !selectedFilters.isEmpty {
                 if !isButtonShown {
@@ -35,21 +40,34 @@ final class AdvancedSearchViewController: UIViewController, Alertable {
         }
     }
 
+    private var selectedIndexPathes: [IndexPath] = []
+
     private lazy var layout = UICollectionViewCompositionalLayout { (sectionNumber, env) -> NSCollectionLayoutSection? in
         switch self.filters[sectionNumber].type {
         case .carusel:
-            let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .estimated(180), heightDimension: .fractionalHeight(1)))
-            let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .estimated(180), heightDimension: .absolute(100)), subitems: [item])
+            let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1),
+                                                                             heightDimension: .absolute(100)),
+                                                           subitems: [item])
             let section = NSCollectionLayoutSection(group: group)
-            section.orthogonalScrollingBehavior = .continuous
-            section.contentInsets = .init(top: 0, leading: 15, bottom: 0, trailing: 15)
-            section.interGroupSpacing = 10
-            section.boundarySupplementaryItems = [.init(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50)), elementKind: categoryHeaderID, alignment: .topLeading)]
+            section.boundarySupplementaryItems = [.init(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50)), elementKind: categoryHeaderID, alignment: .topLeading),
+            .init(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(20)), elementKind: categorySeparatorID, alignment: .bottom)]
+
+            if self.filters.count - 1 == sectionNumber {
+                section.boundarySupplementaryItems.removeLast()
+            }
+
             return section
         }
     }
 
-    private lazy var filters: [Filter] = loadFilters()
+    private(set) lazy var filters: [Filter] = loadFilters() {
+        didSet {
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+            }
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -57,12 +75,13 @@ final class AdvancedSearchViewController: UIViewController, Alertable {
         navigationItem.title = localized("advanced_search")
 
         view.addSubview(collectionView)
+        collectionView.delaysContentTouches = false
         collectionView.frame = view.frame
         collectionView.backgroundColor = .mainBackground
         collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.register(ImageOptionCollectionCell.self)
-        collectionView.register(HeaderCollectionReusableView.self, forSupplementaryViewOfKind: categoryHeaderID, withReuseIdentifier: HeaderCollectionReusableView.reuseId)
+        collectionView.register(AdvancedSearchCaruselCollectionCell.self)
+        collectionView.register(AdvancedHeader.self, forSupplementaryViewOfKind: categoryHeaderID, withReuseIdentifier: AdvancedHeader.reuseId)
+        collectionView.register(SeparatorFooter.self, forSupplementaryViewOfKind: categorySeparatorID, withReuseIdentifier: SeparatorFooter.reuseId)
 
         searchButton.setTitle(localized("search").firstLetterUppercased(), for: .normal)
         searchButton.titleLabel?.font = Font.bold(18)
@@ -72,7 +91,6 @@ final class AdvancedSearchViewController: UIViewController, Alertable {
         searchButton.addTarget(self, action: #selector(didTapSearch(_:)), for: .touchUpInside)
 
         view.addSubview(searchButton)
-
     }
 
     override func viewWillLayoutSubviews() {
@@ -106,31 +124,82 @@ final class AdvancedSearchViewController: UIViewController, Alertable {
     }
 
     private func selectFilter(at indexPath: IndexPath) {
+        switch filters[indexPath.section].category {
+        case .common:
+            let secName = filters[indexPath.section].title
+            let title = filters[indexPath.section].items[indexPath.row].title
 
-        let secName = filters[indexPath.section].title
-        let title = filters[indexPath.section].items[indexPath.row].title
+            if secName == "type" {
+                selectedFilters.append(("carbon_dioxide", title))
+                return
+            }
 
-        if secName == "type" {
-            selectedFilters.append(("carbon_dioxide", title))
-            return
+            selectedFilters.append((secName, title))
+
+        case .countries:
+            let secName = filters[indexPath.section].title
+            let title = filters[indexPath.section].items[indexPath.row].imageName ?? ""
+            selectedFilters.append((secName, title))
         }
-
-        selectedFilters.append((secName, title))
     }
 
     private func deselectFilter(at indexPath: IndexPath) {
 
-        let secName = filters[indexPath.section].title
-        let title = filters[indexPath.section].items[indexPath.row].title
+        switch filters[indexPath.section].category {
+        case .common:
+            let secName = filters[indexPath.section].title
+            let title = filters[indexPath.section].items[indexPath.row].title
 
-        selectedFilters.removeAll { (arg1, arg2) -> Bool in
-            var _secName = secName
-            if _secName == "type" {
-                _secName = "carbon_dioxide"
+            selectedFilters.removeAll { (arg1, arg2) -> Bool in
+                var _secName = secName
+                if _secName == "type" {
+                    _secName = "carbon_dioxide"
+                }
+                return arg1 == _secName && arg2 == title
             }
-            return arg1 == _secName && arg2 == title
+
+        case .countries:
+            let secName = filters[indexPath.section].title
+            let title = filters[indexPath.section].items[indexPath.row].imageName ?? ""
+
+            selectedFilters.removeAll { (arg1, arg2) -> Bool in
+                return arg1 == secName && arg2 == title
+            }
+        }
+    }
+
+    private func showAll(at section: Int) {
+        if filters[section].title == "country" {
+            let preSelectedCountryCodes = selectedFilters.filter({ $0.0 == "country" }).map({ $0.1 })
+            print(preSelectedCountryCodes)
+            present(Assembly.buildChooseCountiesModule(preSelectedCountryCodes: preSelectedCountryCodes, delegate: self), animated: true) {
+            }
+        }
+    }
+}
+
+extension AdvancedSearchViewController: CountriesViewControllerDelegate {
+    func didChoose(countryCodes: [String]) {
+        
+        let newFilterItems: [FilterItem] = countryCodes.compactMap { (code) -> FilterItem? in
+            return FilterItem(title: countryNameFromLocaleCode(countryCode: code) ?? "unknown", imageName: code)
         }
 
+        if let index = filters.firstIndex(where: { $0.title == "country" }) {
+
+            selectedFilters.removeAll(where: { $0.0 == "country" })
+            countryCodes.forEach { (code) in
+                selectedFilters.append(("country", code))
+            }
+            selectedIndexPathes.removeAll(where: { $0.section == index })
+            newFilterItems.enumerated().forEach { (i, _) in
+                selectedIndexPathes.append(IndexPath(row: i, section: index))
+            }
+            let previousunSelctedItems = loadFilters()[index].items.filter { (filterItem) -> Bool in
+                !countryCodes.contains(where: { $0 == filterItem.imageName })
+            }
+            filters[index].items = (newFilterItems + previousunSelctedItems)
+        }
     }
 }
 
@@ -141,35 +210,101 @@ extension AdvancedSearchViewController: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        filters[section].items.count
+        1
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        switch filters[indexPath.section].type {
-        case .carusel:
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageOptionCollectionCell.reuseId, for: indexPath) as! ImageOptionCollectionCell
-            cell.decorate(model: .init(imageName: filters[indexPath.section].items[indexPath.row].imageName, titleText: filters[indexPath.section].items[indexPath.row].title.firstLetterUppercased()))
-            return cell
+
+        switch filters[indexPath.section].category {
+        case .common:
+            switch filters[indexPath.section].type {
+            case .carusel:
+
+                let items = filters[indexPath.section].items.enumerated().prefix(C.maxNumberItems).map { (index, filterItem) -> ImageOptionCollectionCellViewModel in
+                    return .init(imageName: filterItem.imageName,
+                                 titleText: localized(filterItem.title).firstLetterUppercased())
+                }
+
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AdvancedSearchCaruselCollectionCell.reuseId, for: indexPath) as! AdvancedSearchCaruselCollectionCell
+
+                let selectedIndexs = selectedIndexPathes
+                    .filter({ $0.section == indexPath.section })
+                    .compactMap { (indexPath) -> Int? in
+                        indexPath.row
+                    }
+
+                cell.decorate(model: .init(items: items,
+                                           selectedIndexs: selectedIndexs,
+                                           section: indexPath.section,
+                                           shouldLoadMore: filters[indexPath.section].items.count >= C.maxNumberItems))
+                cell.delegate = self
+                return cell
+            }
+
+        case .countries:
+            switch filters[indexPath.section].type {
+            case .carusel:
+
+                let prefix = selectedFilters.filter{ $0.0 == "country" }.count + C.maxNumberItems
+
+                let items = filters[indexPath.section].items.enumerated().prefix(prefix).map { (index, filterItem) -> ImageOptionCollectionCellViewModel in
+                    return .init(imageName: filterItem.imageName,
+                                 titleText: countryNameFromLocaleCode(countryCode: filterItem.imageName))
+                }
+
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AdvancedSearchCaruselCollectionCell.reuseId, for: indexPath) as! AdvancedSearchCaruselCollectionCell
+
+                let selectedIndexs = selectedIndexPathes
+                    .filter({ $0.section == indexPath.section })
+                    .compactMap { (indexPath) -> Int? in
+                        indexPath.row
+                    }
+
+                cell.decorate(model: .init(items: items,
+                                           selectedIndexs: selectedIndexs,
+                                           section: indexPath.section,
+                                           shouldLoadMore: filters[indexPath.section].items.count >= C.maxNumberItems))
+                cell.delegate = self
+                return cell
+            }
         }
     }
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        let title = filters[safe: indexPath.section]?.title ?? ""
-        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderCollectionReusableView.reuseId, for: indexPath) as! HeaderCollectionReusableView
-        header.decorate(model: .init(titleText: NSAttributedString(string: localized(title).firstLetterUppercased(), font: Font.medium(20), textColor: .blueGray)))
-        return header
+        if kind == categoryHeaderID {
+            let title = filters[safe: indexPath.section]?.title ?? ""
+            let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AdvancedHeader.reuseId, for: indexPath) as! AdvancedHeader
+            header.decorate(model: .init(titleText: localized(title).firstLetterUppercased(), moreText: "Show All", shouldShowMore: filters[indexPath.section].items.count >= C.maxNumberItems))
+            header.section = indexPath.section
+            header.delegate = self
+            return header
+        } else {
+            let separator = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SeparatorFooter.reuseId, for: indexPath) as! SeparatorFooter
+            return separator
+        }
     }
 }
 
-extension AdvancedSearchViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        if let cell = collectionView.cellForItem(at: indexPath) as? ImageOptionCollectionCell {
-            cell.didSelected = !cell.didSelected
-            if cell.didSelected {
-                selectFilter(at: indexPath)
-            } else {
-                deselectFilter(at: indexPath)
-            }
-        }
+extension AdvancedSearchViewController: AdvancedSearchCaruselCollectionCellDelegate {
+
+    func showMore(at section: Int) {
+        showAll(at: section)
+    }
+
+    func didSelectItem(at indexPath: IndexPath) {
+        selectedIndexPathes.append(indexPath)
+        selectFilter(at: indexPath)
+    }
+
+    func didDeselectItem(at indexPath: IndexPath) {
+        selectedIndexPathes.removeAll(where: { $0 == indexPath })
+        deselectFilter(at: indexPath)
+    }
+}
+
+extension AdvancedSearchViewController: AdvancedHeaderDelegate {
+
+    func didTapHeader(at section: Int) {
+        showAll(at: section)
     }
 }

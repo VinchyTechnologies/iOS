@@ -10,6 +10,8 @@
 		5FFB4DF1C25BB618C8519B44 /* Pods_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F36A03A8E0CC5435C60647 /* Pods_Core.framework */; };
 		CA27087C24CFF39B007580D8 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27087B24CFF39B007580D8 /* Array.swift */; };
 		CA2E796324D5ECAC00F17725 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2E796224D5ECAC00F17725 /* UserDefaults.swift */; };
+		CA3CEFAC25115D0000AAA692 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3CEFAB25115D0000AAA692 /* Emoji.swift */; };
+		CA3CEFB225128EDA00AAA692 /* CountryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3CEFB125128EDA00AAA692 /* CountryCode.swift */; };
 		CA4AED9F24CED4AC00035922 /* AppBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4AED9E24CED4AC00035922 /* AppBundle.swift */; };
 		CA7A87F425028C0F00AAD10F /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87F325028C0F00AAD10F /* URL.swift */; };
 		CA7B835124ED9AE000991F24 /* WorkItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B835024ED9AE000991F24 /* WorkItem.swift */; };
@@ -24,6 +26,8 @@
 		7B9A38AAE808F29C35EC006F /* Pods-Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.release.xcconfig"; path = "Target Support Files/Pods-Core/Pods-Core.release.xcconfig"; sourceTree = "<group>"; };
 		CA27087B24CFF39B007580D8 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		CA2E796224D5ECAC00F17725 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
+		CA3CEFAB25115D0000AAA692 /* Emoji.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
+		CA3CEFB125128EDA00AAA692 /* CountryCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCode.swift; sourceTree = "<group>"; };
 		CA4AED9E24CED4AC00035922 /* AppBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppBundle.swift; sourceTree = "<group>"; };
 		CA7A87F325028C0F00AAD10F /* URL.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
 		CA7B835024ED9AE000991F24 /* WorkItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkItem.swift; sourceTree = "<group>"; };
@@ -105,6 +109,8 @@
 				CA2E796224D5ECAC00F17725 /* UserDefaults.swift */,
 				CA7B835024ED9AE000991F24 /* WorkItem.swift */,
 				CA7A87F325028C0F00AAD10F /* URL.swift */,
+				CA3CEFAB25115D0000AAA692 /* Emoji.swift */,
+				CA3CEFB125128EDA00AAA692 /* CountryCode.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -148,7 +154,7 @@
 		CABDBA7124C2F7A800AD96D6 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 1150;
+				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Aleksei Smirnov";
 				TargetAttributes = {
 					CABDBA7924C2F7A800AD96D6 = {
@@ -218,6 +224,8 @@
 				CACC1DC424C5F6C80082BD01 /* Filter.swift in Sources */,
 				CA7B835124ED9AE000991F24 /* WorkItem.swift in Sources */,
 				CA4AED9F24CED4AC00035922 /* AppBundle.swift in Sources */,
+				CA3CEFB225128EDA00AAA692 /* CountryCode.swift in Sources */,
+				CA3CEFAC25115D0000AAA692 /* Emoji.swift in Sources */,
 				CA27087C24CFF39B007580D8 /* Array.swift in Sources */,
 				CABDBA9424C31E4E00AD96D6 /* CollectionExt.swift in Sources */,
 				CA2E796324D5ECAC00F17725 /* UserDefaults.swift in Sources */,
@@ -255,6 +263,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -280,7 +289,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -318,6 +327,7 @@
 				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
 				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
 				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
 				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
@@ -337,7 +347,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
