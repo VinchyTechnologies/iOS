@@ -5,7 +5,7 @@ inhibit_all_warnings!
 workspace 'Smart'
 
 def commonPods
-  pod 'RealmSwift'
+  pod 'RealmSwift', :inhibit_warnings => true
   pod 'InputBarAccessoryView'
   pod 'SDWebImage'
   pod 'Firebase/Analytics'
@@ -37,7 +37,7 @@ end
 
 target 'Database' do
   project 'submodules/Database/Database'
-  pod 'RealmSwift'
+  pod 'RealmSwift', :inhibit_warnings => true
 end
 
 target 'Core' do
