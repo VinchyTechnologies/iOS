@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		CA103AD92516903B00B0324F /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA103AD82516903B00B0324F /* Display.framework */; };
 		CAF24B0724C330780057547F /* LocationUI.h in Headers */ = {isa = PBXBuildFile; fileRef = CAF24B0524C330780057547F /* LocationUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CAF24B1424C333AE0057547F /* URLImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF24B1324C333AE0057547F /* URLImageView.swift */; };
 		CAF24B1624C333CA0057547F /* MapURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF24B1524C333CA0057547F /* MapURLProtocol.swift */; };
@@ -16,6 +17,7 @@
 /* Begin PBXFileReference section */
 		6AACE0FEB8FFC911B1D2886F /* Pods_LocationUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LocationUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EA039A03D4D4ACFE3B2FD64 /* Pods-LocationUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocationUI.release.xcconfig"; path = "Target Support Files/Pods-LocationUI/Pods-LocationUI.release.xcconfig"; sourceTree = "<group>"; };
+		CA103AD82516903B00B0324F /* Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF24B0224C330780057547F /* LocationUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LocationUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF24B0524C330780057547F /* LocationUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationUI.h; sourceTree = "<group>"; };
 		CAF24B0624C330780057547F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -30,6 +32,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D7425E5940C2E0667E87A8EA /* Pods_LocationUI.framework in Frameworks */,
+				CA103AD92516903B00B0324F /* Display.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -86,6 +89,7 @@
 		FA6BE27CC42322CDFE304475 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CA103AD82516903B00B0324F /* Display.framework */,
 				6AACE0FEB8FFC911B1D2886F /* Pods_LocationUI.framework */,
 			);
 			name = Frameworks;
