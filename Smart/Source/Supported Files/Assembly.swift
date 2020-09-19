@@ -49,10 +49,6 @@ final class Assembly {
     }
 
     static func buildProfileModule() -> NavigationController {
-//        let view = ProfileView()
-//        let controller = UIHostingController(rootView: view)
-//        controller.title = localized("profile").firstLetterUppercased()
-
         let controller = MoreViewController()
         let navController = NavigationController(rootViewController: controller)
         return navController

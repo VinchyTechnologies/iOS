@@ -20,7 +20,7 @@ extension UIColor {
     }
 
     public final class var mainBackground: UIColor {
-        .white //UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
+        .systemBackground //.white //UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
     }
 
     public final class var blueGray: UIColor {

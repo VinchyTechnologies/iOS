@@ -9,7 +9,7 @@
 import UIKit
 import Display
 
-struct SuggestionCollectionCellViewModel: ViewModelProtocol {
+struct SuggestionCollectionCellViewModel: ViewModelProtocol, Hashable {
 
     fileprivate let titleText: String?
 
@@ -32,7 +32,7 @@ final class SuggestionCollectionCell: UICollectionViewCell, Reusable {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        label.frame = CGRect(20, 0, bounds.width - 40, bounds.height)
+        label.frame = bounds
     }
 
     required init?(coder: NSCoder) { fatalError() }

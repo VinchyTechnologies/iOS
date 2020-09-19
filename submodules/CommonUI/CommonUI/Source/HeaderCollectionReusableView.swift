@@ -27,6 +27,7 @@ public final class HeaderCollectionReusableView: UICollectionReusableView, Reusa
     public override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .mainBackground
+        label.numberOfLines = 0
         addSubview(label)
     }
 

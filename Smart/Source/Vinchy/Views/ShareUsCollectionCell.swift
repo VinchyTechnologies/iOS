@@ -9,6 +9,16 @@
 import UIKit
 import Display
 
+public struct ShareUsCollectionCellViewModel: ViewModelProtocol, Hashable {
+
+    fileprivate let titleText: String?
+
+    public init(titleText: String?) {
+        self.titleText = titleText
+    }
+    
+}
+
 final class ShareUsCollectionCell: UICollectionViewCell, Reusable {
 
     private let titleLabel = UILabel()
@@ -35,7 +45,6 @@ final class ShareUsCollectionCell: UICollectionViewCell, Reusable {
         stackView.distribution = .equalSpacing
     
 
-        titleLabel.text = "Like the app?"
         titleLabel.font = Font.with(size: 24, design: .round, traits: .bold)
         titleLabel.textColor = .dark
 
@@ -70,5 +79,16 @@ final class ShareUsCollectionCell: UICollectionViewCell, Reusable {
     }
 
     required init?(coder: NSCoder) { fatalError() }
+
+}
+
+extension ShareUsCollectionCell: Decoratable {
+
+    typealias ViewModel = ShareUsCollectionCellViewModel
+
+    func decorate(model: ViewModel) {
+        self.titleLabel.text = model.titleText
+    }
+
 
 }

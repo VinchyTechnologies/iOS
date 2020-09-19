@@ -20,12 +20,21 @@ fileprivate enum SectionType: Hashable {
     case story(model: StoryCollectionCellViewModel)
     case subtitle(model: MainSubtitleCollectionCellViewModel)
     case bottles(model: [WineCollectionViewCellViewModel])
+    case shareUs(model: ShareUsCollectionCellViewModel)
+}
+
+fileprivate enum SearchSectionType: Hashable {
+    case suggestion(model: SuggestionCollectionCellViewModel)
 }
 
 fileprivate let sectionHeaderElementKind = "section-header-element-kind"
 fileprivate let sectionFooterElementKind = "section-footer-element-kind"
 
 final class NewVinchyViewController: UIViewController, Loadable, Alertable {
+
+    private enum C {
+        static let numberNoBackendSections: Int = 0
+    }
 
     private lazy var adLoader: GADAdLoader =  {
         let options = GADMultipleAdsAdLoaderOptions()
@@ -44,10 +53,10 @@ final class NewVinchyViewController: UIViewController, Loadable, Alertable {
     private(set) var loadingIndicator = ActivityIndicatorView()
 
     private lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: MagazineLayout())
+        let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
+        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         collectionView.backgroundColor = .mainBackground
-//        collectionView.dataSource = self
-//        collectionView.delegate = self
+        collectionView.delegate = self
         collectionView.refreshControl = refreshControl
         collectionView.delaysContentTouches = false
         return collectionView
@@ -55,24 +64,24 @@ final class NewVinchyViewController: UIViewController, Loadable, Alertable {
 
     private let dispatchGroup = DispatchGroup()
     private let refreshControl = UIRefreshControl()
-//    private lazy var resultsTableController: ResultsTableController = {
-//        let resultsTableController = ResultsTableController()
-//        resultsTableController.tableView.delegate = self
-//        resultsTableController.didnotFindTheWineTableCellDelegate = self
-//        return resultsTableController
-//    }()
+    private lazy var resultsTableController: ResultsTableController = {
+        let resultsTableController = ResultsTableController()
+        resultsTableController.tableView.delegate = self
+        resultsTableController.didnotFindTheWineTableCellDelegate = self
+        return resultsTableController
+    }()
 
-//    private lazy var searchController: UISearchController = {
-//        let searchController = UISearchController(searchResultsController: resultsTableController)
-//        searchController.obscuresBackgroundDuringPresentation = false
-//        searchController.searchBar.autocapitalizationType = .none
-////        searchController.searchBar.delegate = self
-//        searchController.searchBar.searchTextField.font = Font.medium(20)
-//        searchController.searchBar.searchTextField.layer.cornerRadius = 20
-//        searchController.searchBar.searchTextField.layer.masksToBounds = true
-//        searchController.searchBar.searchTextField.layer.cornerCurve = .continuous
-//        return searchController
-//    }()
+    private lazy var searchController: UISearchController = {
+        let searchController = UISearchController(searchResultsController: resultsTableController)
+        searchController.obscuresBackgroundDuringPresentation = false
+        searchController.searchBar.autocapitalizationType = .none
+        searchController.searchBar.delegate = self
+        searchController.searchBar.searchTextField.font = Font.medium(20)
+        searchController.searchBar.searchTextField.layer.cornerRadius = 20
+        searchController.searchBar.searchTextField.layer.masksToBounds = true
+        searchController.searchBar.searchTextField.layer.cornerCurve = .continuous
+        return searchController
+    }()
 
     private let emailService = EmailService()
     private var searchText: String?
@@ -85,8 +94,10 @@ final class NewVinchyViewController: UIViewController, Loadable, Alertable {
 
     private var isSearchingMode: Bool = false {
         didSet {
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
+            if isSearchingMode {
+                configureDataSource(suggestions: suggestions)
+            } else {
+                configureDataSource(compilations: compilations)
             }
         }
     }
@@ -105,6 +116,7 @@ final class NewVinchyViewController: UIViewController, Loadable, Alertable {
     }
 
     fileprivate var dataSource: UICollectionViewDiffableDataSource<Int, SectionType>! = nil
+    fileprivate var searchDataSource: UICollectionViewDiffableDataSource<Int, SearchSectionType>! = nil
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -118,10 +130,11 @@ final class NewVinchyViewController: UIViewController, Loadable, Alertable {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        configureHierarchy()
+
+        view.addSubview(collectionView)
         let filterBarButtonItem = UIBarButtonItem(image: UIImage(named: "edit")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(didTapFilter))
         navigationItem.rightBarButtonItems = [filterBarButtonItem]
-//        navigationItem.searchController = searchController
+        navigationItem.searchController = searchController
         refreshControl.tintColor = .dark
         refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
     }
@@ -157,7 +170,7 @@ final class NewVinchyViewController: UIViewController, Loadable, Alertable {
             self.dispatchWorkItemHud.cancel()
             self.stopLoadingAnimation()
 
-            let shareUs = Compilation(type: .shareUs, title: nil, collectionList: [])
+            let shareUs = Compilation(type: .shareUs, title: nil, collectionList: [Collection(wineList: [])])
             compilations.insert(shareUs, at: compilations.isEmpty ? 0 : compilations.count - 1)
 
             if infinityWines.isEmpty {
@@ -166,7 +179,7 @@ final class NewVinchyViewController: UIViewController, Loadable, Alertable {
                 self.adLoader.load(DFPRequest())
                 self.collectionList = infinityWines.map({ .wine(wine: $0) })
                 let collection = Collection(wineList: self.collectionList)
-                compilations.append(Compilation(type: .infinity, title: "You can like", collectionList: [collection]))
+//                compilations.append(Compilation(type: .infinity, title: "You can like", collectionList: [collection]))
                 self.compilations = compilations
             }
         }
@@ -182,6 +195,18 @@ final class NewVinchyViewController: UIViewController, Loadable, Alertable {
     }
 
     private lazy var layout = UICollectionViewCompositionalLayout(sectionProvider: { (sectionInt, env) -> NSCollectionLayoutSection? in
+
+        if self.isSearchingMode {
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                  heightDimension: .fractionalHeight(1.0))
+            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+            item.contentInsets = .init(top: 0, leading: 20, bottom: 0, trailing: 20)
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                   heightDimension: .absolute(44))
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+            let section = NSCollectionLayoutSection(group: group)
+            return section
+        }
 
         let section: NSCollectionLayoutSection
         let width: NSCollectionLayoutDimension
@@ -217,6 +242,12 @@ final class NewVinchyViewController: UIViewController, Loadable, Alertable {
             elementKind: sectionHeaderElementKind,
             alignment: .top)
 
+        let sectionFooter = NSCollectionLayoutBoundarySupplementaryItem(
+            layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                              heightDimension: .absolute(44)),
+            elementKind: sectionFooterElementKind,
+            alignment: .bottom)
+
         switch self.compilations[safe: sectionInt]?.type {
         case .mini:
             section.orthogonalScrollingBehavior = .continuous
@@ -233,8 +264,23 @@ final class NewVinchyViewController: UIViewController, Loadable, Alertable {
             section.boundarySupplementaryItems = [sectionHeader]
             section.orthogonalScrollingBehavior = .continuous
 
-        case .none, .shareUs, .infinity:
+        case .shareUs:
+            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                  heightDimension: .fractionalHeight(1.0))
+            let item = NSCollectionLayoutItem(layoutSize: itemSize)
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                   heightDimension: .estimated(160))
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
+            let section = NSCollectionLayoutSection(group: group)
+            section.contentInsets = .init(top: 15, leading: 15, bottom: 15, trailing: 15)
+            return section
+
+        case .none, .infinity:
             return nil
+        }
+
+        if sectionInt == self.compilations.endIndex - 1 - C.numberNoBackendSections {
+            section.boundarySupplementaryItems.append(sectionFooter)
         }
 
         section.contentInsets = .init(top: 0, leading: 10, bottom: 10, trailing: 10)
@@ -260,14 +306,72 @@ final class NewVinchyViewController: UIViewController, Loadable, Alertable {
     }
 }
 
+extension NewVinchyViewController: UISearchBarDelegate {
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if let resultsController = searchController.searchResultsController as? ResultsTableController {
+            searchWorkItem.perform(after: 0.65) {
+                guard searchText != "" else { return }
+                Wines.shared.getWineBy(title: searchText, offset: 0, limit: 40) { result in
+                    switch result {
+                    case .success(let wines):
+                        resultsController.didFoundProducts = wines
+                    case .failure(let error):
+                        print(error.localizedDescription)
+                        // TODO: - error show may be???
+                        break
+                    }
+                }
+            }
+        }
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+
+        guard let searchString = searchBar.text else {
+            return
+        }
+
+        navigationController?.pushViewController(Assembly.buildShowcaseModule(navTitle: nil, mode: .advancedSearch(params: [("title", searchString)])), animated: true)
+    }
+
+    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+        isSearchingMode = true
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        isSearchingMode = false
+    }
+}
+
+
 extension NewVinchyViewController {
 
-    func configureHierarchy() {
-        collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
-        collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        collectionView.backgroundColor = .systemBackground
-        view.addSubview(collectionView)
-        collectionView.delegate = self
+    func configureDataSource(suggestions: [Wine]) {
+
+        let suggestCellRegistration = UICollectionView.CellRegistration<SuggestionCollectionCell, SuggestionCollectionCellViewModel> { (cell, indexPath, model) in
+            cell.decorate(model: model)
+        }
+
+        searchDataSource = UICollectionViewDiffableDataSource<Int, SearchSectionType>(collectionView: collectionView, cellProvider: { (collectionView, indexPath, searchType) -> UICollectionViewCell? in
+            switch searchType {
+            case .suggestion(let model):
+                return collectionView.dequeueConfiguredReusableCell(using: suggestCellRegistration, for: indexPath, item: model)
+            }
+        })
+
+        let sections = Array(0..<1)
+        var snapshot = NSDiffableDataSourceSnapshot<Int, SearchSectionType>()
+        sections.enumerated().forEach {
+            snapshot.appendSections([$1])
+            let suggestionViewModels = suggestions.compactMap { (wine) -> SearchSectionType? in
+                return  .suggestion(model: .init(titleText: wine.title))
+            }
+            snapshot.appendItems(suggestionViewModels)
+        }
+
+        searchDataSource.apply(snapshot, animatingDifferences: false)
     }
 
     func configureDataSource(compilations: [Compilation]) {
@@ -284,9 +388,20 @@ extension NewVinchyViewController {
             cell.decorate(model: model[indexPath.row])
         }
 
+
+        let shareUsCollectionCellRegistration = UICollectionView.CellRegistration<ShareUsCollectionCell, ShareUsCollectionCellViewModel> { (cell, indexPath, model) in
+            cell.decorate(model: model)
+        }
+
         let headerRegistration = UICollectionView.SupplementaryRegistration<HeaderCollectionReusableView>(elementKind: sectionHeaderElementKind) { (supplementaryView, string, indexPath) in
             let title = compilations[safe: indexPath.section]?.title ?? ""
             let model = HeaderCollectionReusableViewModel(titleText: .init(string: title, font: Font.heavy(20), textColor: .dark))
+            supplementaryView.decorate(model: model)
+        }
+
+        let footerRegistration = UICollectionView.SupplementaryRegistration<HeaderCollectionReusableView>(elementKind: sectionHeaderElementKind) { (supplementaryView, string, indexPath) in
+            let title = "Чрезмерное употребление алкоголя\nвредит вашему здоровью"
+            let model = HeaderCollectionReusableViewModel(titleText: .init(NSAttributedString(string: title, font: Font.light(15), textColor: .blueGray, paragraphAlignment: .justified)))
             supplementaryView.decorate(model: model)
         }
 
@@ -301,19 +416,27 @@ extension NewVinchyViewController {
 
             case .bottles(let model):
                 return collectionView.dequeueConfiguredReusableCell(using: bottlesCollectionCellRegistration, for: indexPath, item: model)
+
+            case .shareUs(let model):
+                return collectionView.dequeueConfiguredReusableCell(using: shareUsCollectionCellRegistration, for: indexPath, item: model)
             }
         })
 
         dataSource.supplementaryViewProvider = { (view, kind, index) in
             return self.collectionView.dequeueConfiguredReusableSupplementary(
-                using: /*kind == sectionHeaderElementKind ? headerRegistration : footerRegistration*/headerRegistration, for: index)
+                using: kind == sectionHeaderElementKind ? headerRegistration : footerRegistration, for: index)
         }
 
         let sections = Array(0..<compilations.count)
+
+        compilations.forEach { (c) in
+            print(c.type)
+        }
+
         var snapshot = NSDiffableDataSourceSnapshot<Int, SectionType>()
         sections.enumerated().forEach {
             snapshot.appendSections([$1])
-            let compilation = compilations[$1]
+            let compilation = compilations[$0]
             let storyCollectionCellViewModels = compilation.collectionList.compactMap { (collection) -> SectionType? in
                 switch compilation.type {
                 case .mini:
@@ -340,7 +463,7 @@ extension NewVinchyViewController {
                     }))
 
                 case .shareUs:
-                    return nil
+                    return .shareUs(model: .init(titleText: "Like the app?"))
 
                 case .infinity:
                     return nil
@@ -355,8 +478,66 @@ extension NewVinchyViewController {
 }
 
 extension NewVinchyViewController: UICollectionViewDelegate {
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
-        print(indexPath)
+
+        if isSearchingMode {
+            guard let wineID = suggestions[safe: indexPath.row]?.id else {
+                return
+            }
+            navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wineID), animated: true)
+            return
+        }
+
+        switch compilations[indexPath.section].type {
+        case .mini, .big, .promo:
+            let wines = compilations[indexPath.section].collectionList[indexPath.row].wineList.compactMap { (collectionItem) -> Wine? in
+                switch collectionItem {
+                case .wine(let wine):
+                    return wine
+                case .ads:
+                    return nil
+                }
+            }
+            
+            navigationController?.pushViewController(Assembly.buildShowcaseModule(navTitle: compilations[indexPath.section].title, mode: .normal(wines: wines)), animated: true)
+
+        case .bottles:
+            if let wine = compilations[indexPath.section].collectionList.first?.wineList[indexPath.row] {
+                switch wine {
+                case .wine(let wine):
+                    navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wine.id), animated: true)
+                case .ads:
+                    break
+                }
+            }
+        case .shareUs:
+            break
+
+        case .infinity:
+            break
+        }
+    }
+}
+
+extension NewVinchyViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        guard let wineID = suggestions[safe: indexPath.row]?.id else { return }
+        navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wineID), animated: true)
+    }
+}
+
+extension NewVinchyViewController: DidnotFindTheWineTableCellProtocol {
+    func didTapWriteUsButton(_ button: UIButton) {
+        // TODO: - localize
+        if emailService.canSend && searchText != nil {
+            let emailController = emailService.getEmailController(HTMLText: "Привет я не нашел вино с названием " + (searchText ?? ""), recipients: [localized("contact_email")])
+            present(emailController, animated: true, completion: nil)
+        } else {
+            showAlert(message: "Возникла ошибка при открытии почты")
+        }
     }
 }
