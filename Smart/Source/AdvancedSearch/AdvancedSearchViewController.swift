@@ -18,7 +18,7 @@ fileprivate let categorySeparatorID = "categorySeparatorID"
 final class AdvancedSearchViewController: UIViewController, Alertable {
 
     private enum C {
-        static let maxNumberItems: Int = 5
+        static let maxNumberItems: Int = 9
     }
 
     private lazy var collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -220,7 +220,7 @@ extension AdvancedSearchViewController: UICollectionViewDataSource {
             switch filters[indexPath.section].type {
             case .carusel:
 
-                let items = filters[indexPath.section].items.enumerated().prefix(C.maxNumberItems).map { (index, filterItem) -> ImageOptionCollectionCellViewModel in
+                let items = filters[indexPath.section].items.enumerated().map { (index, filterItem) -> ImageOptionCollectionCellViewModel in
                     return .init(imageName: filterItem.imageName,
                                  titleText: localized(filterItem.title).firstLetterUppercased())
                 }
@@ -236,7 +236,7 @@ extension AdvancedSearchViewController: UICollectionViewDataSource {
                 cell.decorate(model: .init(items: items,
                                            selectedIndexs: selectedIndexs,
                                            section: indexPath.section,
-                                           shouldLoadMore: filters[indexPath.section].items.count >= C.maxNumberItems))
+                                           shouldLoadMore: false))
                 cell.delegate = self
                 return cell
             }
@@ -274,7 +274,7 @@ extension AdvancedSearchViewController: UICollectionViewDataSource {
         if kind == categoryHeaderID {
             let title = filters[safe: indexPath.section]?.title ?? ""
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AdvancedHeader.reuseId, for: indexPath) as! AdvancedHeader
-            header.decorate(model: .init(titleText: localized(title).firstLetterUppercased(), moreText: "Show All", shouldShowMore: filters[indexPath.section].items.count >= C.maxNumberItems))
+            header.decorate(model: .init(titleText: localized(title).firstLetterUppercased(), moreText: "Show All", shouldShowMore: filters[indexPath.section].category == .countries))
             header.section = indexPath.section
             header.delegate = self
             return header

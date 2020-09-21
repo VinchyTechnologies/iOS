@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MagazineLayout
 import VinchyCore
 import Display
 import CommonUI
@@ -18,24 +17,24 @@ import GoogleMobileAds
 
 final class VinchyViewController: UIViewController, Alertable, Loadable {
 
-    private lazy var adLoader: GADAdLoader =  {
-        let options = GADMultipleAdsAdLoaderOptions()
+    // MARK: - Public Properties
 
-        let op = GADNativeAdMediaAdLoaderOptions()
-        op.mediaAspectRatio = .landscape
+    var interactor: VinchyInteractorProtocol?
 
-        let loader = GADAdLoader(adUnitID: "ca-app-pub-6194258101406763/5059597902",
-                            rootViewController: self,
-                            adTypes: [.unifiedNative],
-                            options: [options, op])
-        loader.delegate = self
-        return loader
-    }()
+    // MARK: - Private Properties
 
     private(set) var loadingIndicator = ActivityIndicatorView()
 
     private lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: MagazineLayout())
+
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumLineSpacing = 0
+//        layout.minimumInteritemSpacing = 2.5
+        layout.minimumLineSpacing = 10
+//        layout.sectionHeadersPinToVisibleBounds = true
+        layout.scrollDirection = .vertical
+
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .mainBackground
 
         collectionView.register(SuggestionCollectionCell.self,
@@ -45,11 +44,11 @@ final class VinchyViewController: UIViewController, Alertable, Loadable {
                                 AdsCollectionViewCell.self)
 
         collectionView.register(HeaderCollectionReusableView.self,
-                                forSupplementaryViewOfKind: MagazineLayout.SupplementaryViewKind.sectionHeader,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
                                 withReuseIdentifier: HeaderCollectionReusableView.reuseId)
 
         collectionView.register(VinchyFooterCollectionReusableView.self,
-                                forSupplementaryViewOfKind: MagazineLayout.SupplementaryViewKind.sectionFooter,
+                                forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter,
                                 withReuseIdentifier: VinchyFooterCollectionReusableView.reuseId)
 
         collectionView.dataSource = self
@@ -66,6 +65,20 @@ final class VinchyViewController: UIViewController, Alertable, Loadable {
         resultsTableController.tableView.delegate = self
         resultsTableController.didnotFindTheWineTableCellDelegate = self
         return resultsTableController
+    }()
+
+    private lazy var adLoader: GADAdLoader =  {
+        let options = GADMultipleAdsAdLoaderOptions()
+
+        let op = GADNativeAdMediaAdLoaderOptions()
+        op.mediaAspectRatio = .landscape
+
+        let loader = GADAdLoader(adUnitID: "ca-app-pub-6194258101406763/5059597902",
+                            rootViewController: self,
+                            adTypes: [.unifiedNative],
+                            options: [options, op])
+        loader.delegate = self
+        return loader
     }()
 
     private lazy var searchController: UISearchController = {
@@ -112,18 +125,16 @@ final class VinchyViewController: UIViewController, Alertable, Loadable {
         }
     }
 
-    init() { //
-        super.init(nibName: nil, bundle: nil)
+    override func viewDidLoad() {
+        super.viewDidLoad()
         fetchData()
+
+        interactor?.viewDidLoad()
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
             self.dispatchWorkItemHud.perform()
         }
-    }
 
-    required init?(coder: NSCoder) { fatalError() } //
-
-    override func viewDidLoad() { //
-        super.viewDidLoad()
         view.addSubview(collectionView)
         collectionView.frame = view.frame
         let filterBarButtonItem = UIBarButtonItem(image: UIImage(named: "edit")?.withRenderingMode(.alwaysTemplate), style: .plain, target: self, action: #selector(didTapFilter))
@@ -156,7 +167,7 @@ final class VinchyViewController: UIViewController, Alertable, Loadable {
         }
     }
 
-    private func fetchData() {//
+    private func fetchData() {
 
         dispatchGroup.enter()
         var compilations: [Compilation] = []
@@ -212,7 +223,7 @@ final class VinchyViewController: UIViewController, Alertable, Loadable {
     }
 
     @objc
-    private func refresh() {//
+    private func refresh() {
         CATransaction.begin()
         CATransaction.setCompletionBlock {
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -224,7 +235,7 @@ final class VinchyViewController: UIViewController, Alertable, Loadable {
     }
 }
 
-extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDelegateMagazineLayout {
+extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if !isSearchingMode {
@@ -258,104 +269,81 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
         }
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetsForSectionAtIndex index: Int) -> UIEdgeInsets {
-
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if isSearchingMode {
-            return .zero
+            return .init(width: collectionView.frame.width, height: 50)
         }
 
-        switch compilations[index].type {
+        guard let row = compilations[safe: indexPath.section] else {
+            return .init(width: collectionView.frame.width, height: 0)
+        }
+
+        let height: CGFloat
+        switch row.type.itemSize.height {
+        case .absolute(let _height):
+            height =  _height + 5
+        case .dimension:
+            height = 0
+        }
+
+        switch row.type {
         case .mini, .big, .promo, .bottles:
-            return .zero
+            return .init(width: collectionView.frame.width, height: height)
         case .shareUs:
-            return .init(top: 15, left: 20, bottom: 15, right: 20)
+            return .init(width: collectionView.frame.width - 40, height: height)
         case .infinity:
-            return .init(top: 0, left: 0, bottom: 0, right: 0)
+            switch collectionList[indexPath.row] {
+            case .wine:
+                return .init(width: collectionView.frame.width / 2 - 10*2, height: height)
+            case .ads:
+                return .init(width: collectionView.frame.width, height: 100)
+            }
         }
     }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetsForItemsInSectionAtIndex index: Int) -> UIEdgeInsets {
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
+
+        if isSearchingMode {
+            return .init(top: 0, left: 20, bottom: 0, right: 20)
+        }
+
+        guard let row = compilations[safe: section] else {
+            return .zero
+        }
+
+        switch row.type {
+        case .mini, .big, .promo, .bottles:
+            return .init(top: 0, left: 0, bottom: 0, right: 0)
+        case .shareUs:
+            return .init(top: 20, left: 20, bottom: 10, right: 20)
+        case .infinity:
+            return .init(top: 0, left: 10, bottom: 0, right: 10)
+        }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
+
         if isSearchingMode {
             return .zero
         }
-        return .init(top: 10, left: 10, bottom: 10, right: 10)
-    }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, verticalSpacingForElementsInSectionAtIndex index: Int) -> CGFloat {
-        if isSearchingMode {
-            return 0
+        guard let row = compilations[safe: section] else {
+            return .zero
         }
-        return 10
-    }
 
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, horizontalSpacingForItemsInSectionAtIndex index: Int) -> CGFloat {
-        if isSearchingMode {
-            return 0
-        }
-        return 10
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, visibilityModeForBackgroundInSectionAtIndex index: Int) -> MagazineLayoutBackgroundVisibilityMode {
-        .hidden
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, visibilityModeForFooterInSectionAtIndex index: Int) -> MagazineLayoutFooterVisibilityMode {
-        if index == compilations.count - 2 {
-            return .visible(heightMode: .dynamic, pinToVisibleBounds: false)
-        } else {
-            return .hidden
-        }
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, visibilityModeForHeaderInSectionAtIndex index: Int) -> MagazineLayoutHeaderVisibilityMode {
-
-        if isSearchingMode {
-            return .hidden
-        }
-        
-        if compilations[index].title == nil || compilations[index].title == "" {
-            return .hidden
-        } else {
-            return .visible(heightMode: .dynamic, pinToVisibleBounds: compilations[index].type == .infinity)
-        }
-    }
-
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeModeForItemAt indexPath: IndexPath) -> MagazineLayoutItemSizeMode {
-        if isSearchingMode {
-            return .init(widthMode: .fullWidth(respectsHorizontalInsets: true), heightMode: .static(height: 50))
-        } else {
-
-            guard let row = compilations[safe: indexPath.section] else {
-                return .init(widthMode: .fullWidth(respectsHorizontalInsets: true), heightMode: .static(height: 0))
-            }
-
-            let heightMode: MagazineLayoutItemHeightMode
-            switch row.type.itemSize.height {
-            case .absolute(let height):
-                heightMode = .static(height: height + 5)
-            case .dimension:
-                heightMode = .dynamic
-            }
-
-            switch row.type {
-            case .mini:
-                return .init(widthMode: .fullWidth(respectsHorizontalInsets: false), heightMode: heightMode)
-            case .big:
-                return .init(widthMode: .fullWidth(respectsHorizontalInsets: false), heightMode: heightMode)
-            case .promo:
-                return .init(widthMode: .fullWidth(respectsHorizontalInsets: false), heightMode: heightMode)
-            case .bottles:
-                return .init(widthMode: .fullWidth(respectsHorizontalInsets: false), heightMode: heightMode)
-            case .shareUs:
-                return .init(widthMode: .fullWidth(respectsHorizontalInsets: false), heightMode: heightMode)
-            case .infinity:
-                switch collectionList[indexPath.row] {
-                case .wine:
-                    return .init(widthMode: .halfWidth, heightMode: heightMode)
-                case .ads:
-                    return .init(widthMode: .fullWidth(respectsHorizontalInsets: false), heightMode: .dynamic)
-                }
-            }
+        switch row.type {
+        case .mini:
+            return . zero
+        case .big:
+            return .init(width: collectionView.frame.width, height: 50)
+        case .promo:
+            return .init(width: collectionView.frame.width, height: 50)
+        case .bottles:
+            return .init(width: collectionView.frame.width, height: 50)
+        case .shareUs:
+            return .zero
+        case .infinity:
+            return .init(width: collectionView.frame.width, height: 50)
         }
     }
 
@@ -394,6 +382,7 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
                 return cell
             case .shareUs:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShareUsCollectionCell.reuseId, for: indexPath) as! ShareUsCollectionCell
+                cell.decorate(model: .init(titleText: "Like the App?"))
                 return cell
             case .infinity:
                 switch collectionList[indexPath.row] {
@@ -416,17 +405,17 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
-        case MagazineLayout.SupplementaryViewKind.sectionHeader:
+        case UICollectionView.elementKindSectionHeader:
             let header = collectionView.dequeueReusableSupplementaryView(
-                ofKind: MagazineLayout.SupplementaryViewKind.sectionHeader,
+                ofKind: kind,
                 withReuseIdentifier: HeaderCollectionReusableView.reuseId,
                 for: indexPath) as! HeaderCollectionReusableView
             let title = compilations[safe: indexPath.section]?.title ?? ""
             header.decorate(model: .init(titleText: NSAttributedString(string: title, font: Font.heavy(20), textColor: .dark, paragraphAlignment: .left), insets: .init(top: 0, left: 10, bottom: 0, right: 10)))
             return header
-        case MagazineLayout.SupplementaryViewKind.sectionFooter:
+        case UICollectionView.elementKindSectionFooter:
             let footer = collectionView.dequeueReusableSupplementaryView(
-                ofKind: MagazineLayout.SupplementaryViewKind.sectionFooter,
+                ofKind: kind,
                 withReuseIdentifier: VinchyFooterCollectionReusableView.reuseId,
                 for: indexPath) as! VinchyFooterCollectionReusableView
             // TODO: - localize
@@ -532,6 +521,10 @@ extension VinchyViewController: GADUnifiedNativeAdLoaderDelegate {
             }
         }
     }
+}
+
+extension VinchyViewController: VinchyViewControllerProtocol {
+    
 }
 
 extension GADUnifiedNativeAd: AdsProtocol { }

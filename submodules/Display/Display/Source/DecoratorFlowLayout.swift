@@ -235,3 +235,46 @@ public class DecoratorFlowLayout: UICollectionViewFlowLayout {
     }
 
 }
+
+
+public class StickyHeaderLayout: UICollectionViewFlowLayout {
+
+//    public override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+//
+//        if elementKind == UICollectionView.elementKindSectionHeader && indexPath.section == 0 {
+//
+//            let l = super.layoutAttributesForSupplementaryView(ofKind: elementKind, at: indexPath)
+//            l?.zIndex = 2
+//            l?.frame = CGRect(x: collectionView!.frame.minX, y: collectionView!.frame.minY, width: collectionView!.frame.width, height: 44)
+//            return l
+//
+//        } else {
+//            return super.layoutAttributesForSupplementaryView(ofKind: elementKind, at: indexPath)
+//        }
+//    }
+//
+//    public override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+//        let attrs = super.layoutAttributesForElements(in: rect)
+//
+//        if ((attrs?.contains(layoutAttributesForSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, at: IndexPath(row: 0, section: 0)) ?? nil)) != nil) {
+//            print(123)
+//        }
+//
+//        return attrs
+//    }
+//    public override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+//
+//        var layoutAttributes = [UICollectionViewLayoutAttributes]()
+//
+//        guard super.layoutAttributesForElements(in: rect) != nil else { return nil }
+//
+//        // add the sticky header's layout attribute to the attributes array if they are not there
+//        let stickyHeaderIndexPath = IndexPath(row: 0, section: 3)
+//            if let stickyAttribute = layoutAttributesForSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, at: stickyHeaderIndexPath),
+//            !layoutAttributes.contains(stickyAttribute) {
+//            layoutAttributes.append(stickyAttribute)
+//        }
+//
+//        return layoutAttributes
+//    }
+}

@@ -30,7 +30,7 @@ struct VinchySimpleConiniousCaruselCollectionCellViewModel: ViewModelProtocol {
     }
 }
 
-final class VinchySimpleConiniousCaruselCollectionCell: MagazineLayoutCollectionViewCell, Reusable {
+final class VinchySimpleConiniousCaruselCollectionCell: UICollectionViewCell, Reusable {
 
     weak var delegate: VinchySimpleConiniousCaruselCollectionCellDelegate?
 
@@ -38,62 +38,21 @@ final class VinchySimpleConiniousCaruselCollectionCell: MagazineLayoutCollection
 
     private var collections: [Collection] = [] {
         didSet {
-            collectionView.collectionViewLayout = layout
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
         }
     }
 
-    private lazy var layout = UICollectionViewCompositionalLayout(sectionProvider: { (section, env) -> NSCollectionLayoutSection? in
-        var section: NSCollectionLayoutSection
-
-        let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-
-        let width: NSCollectionLayoutDimension
-
-        switch self.type.itemSize.width {
-        case .absolute(let _width):
-            width = .absolute(_width)
-        case .dimension(let _width):
-            width = .fractionalWidth(_width)
-        }
-
-        switch self.type {
-        case .mini:
-            let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: width, heightDimension: .fractionalHeight(1)), subitems: [item])
-            section = NSCollectionLayoutSection(group: group)
-            section.orthogonalScrollingBehavior = .continuous
-
-        case .big:
-            item.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 10)
-            let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: width, heightDimension: .fractionalHeight(1)), subitems: [item])
-            section = NSCollectionLayoutSection(group: group)
-            section.orthogonalScrollingBehavior = .continuous
-
-        case .promo:
-            item.contentInsets = .init(top: 0, leading: 0, bottom: 0, trailing: 10)
-            let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: width, heightDimension: .fractionalHeight(1)), subitems: [item])
-            section = NSCollectionLayoutSection(group: group)
-            section.orthogonalScrollingBehavior = .paging
-
-        case .bottles:
-            let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: width, heightDimension: .fractionalHeight(1)), subitems: [item])
-            section = NSCollectionLayoutSection(group: group)
-            section.contentInsets = .init(top: 10, leading: 10, bottom: 10, trailing: 10)
-            section.orthogonalScrollingBehavior = .continuous
-
-        case .none, .shareUs, .infinity:
-            return nil
-        }
-
-        section.contentInsets = .init(top: 0, leading: 10, bottom: 5, trailing: 0)
-        return section
-    }, configuration: UICollectionViewCompositionalLayoutConfiguration())
-
     private lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
+
+        let layout = UICollectionViewFlowLayout()
+        layout.scrollDirection = .horizontal
+
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
+        collectionView.showsHorizontalScrollIndicator = false
+        collectionView.contentInset = .init(top: 0, left: 10, bottom: 0, right: 10)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -162,7 +121,7 @@ extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDataSource
     }
 }
 
-extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDelegate {
+extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         switch type {
         case .mini, .big, .promo:
@@ -189,6 +148,20 @@ extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDelegate {
         case .none, .shareUs, .infinity:
             break
         }
+    }
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+
+        let width: CGFloat
+
+        switch self.type.itemSize.width {
+        case .absolute(let _width):
+            width = _width
+        case .dimension(let _width):
+            width = collectionView.frame.width * _width
+        }
+
+        return .init(width: width, height: collectionView.frame.height)
     }
 }
 

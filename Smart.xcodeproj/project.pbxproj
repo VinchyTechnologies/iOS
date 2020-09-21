@@ -106,6 +106,14 @@
 		CA472B54245EDEDB009149FF /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA472B40245EDEDB009149FF /* Assembly.swift */; };
 		CA472B59245EDEDB009149FF /* ShowcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA472B49245EDEDB009149FF /* ShowcaseViewController.swift */; };
 		CA472B69245EDEF9009149FF /* CategoryItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA472B62245EDEF9009149FF /* CategoryItem.swift */; };
+		CA4857742517BE8E00EDA4CE /* VinchyInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4857732517BE8E00EDA4CE /* VinchyInteractor.swift */; };
+		CA4857782517BEA000EDA4CE /* VinchyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4857772517BEA000EDA4CE /* VinchyPresenter.swift */; };
+		CA48577C2517BEAB00EDA4CE /* VinchyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA48577B2517BEAB00EDA4CE /* VinchyRouter.swift */; };
+		CA4857832517C67700EDA4CE /* VinchyInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4857822517C67700EDA4CE /* VinchyInteractorProtocol.swift */; };
+		CA4857892517C71200EDA4CE /* VinchyPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4857882517C71200EDA4CE /* VinchyPresenterProtocol.swift */; };
+		CA48578F2517C74700EDA4CE /* VinchyRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA48578E2517C74700EDA4CE /* VinchyRouterProtocol.swift */; };
+		CA4857942517C77E00EDA4CE /* VinchyAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4857932517C77E00EDA4CE /* VinchyAssembly.swift */; };
+		CA48579B2517CA5200EDA4CE /* VinchyViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA48579A2517CA5200EDA4CE /* VinchyViewControllerProtocol.swift */; };
 		CA4AED9B24CE204900035922 /* TopSecret.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA4AED9A24CE204900035922 /* TopSecret.plist */; };
 		CA4D18032492B27400B49BD4 /* Lorem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D18012492B27400B49BD4 /* Lorem.swift */; };
 		CA4D18042492B27400B49BD4 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D18022492B27400B49BD4 /* SampleData.swift */; };
@@ -320,6 +328,14 @@
 		CA472B40245EDEDB009149FF /* Assembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
 		CA472B49245EDEDB009149FF /* ShowcaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowcaseViewController.swift; sourceTree = "<group>"; };
 		CA472B62245EDEF9009149FF /* CategoryItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryItem.swift; sourceTree = "<group>"; };
+		CA4857732517BE8E00EDA4CE /* VinchyInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyInteractor.swift; sourceTree = "<group>"; };
+		CA4857772517BEA000EDA4CE /* VinchyPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyPresenter.swift; sourceTree = "<group>"; };
+		CA48577B2517BEAB00EDA4CE /* VinchyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyRouter.swift; sourceTree = "<group>"; };
+		CA4857822517C67700EDA4CE /* VinchyInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyInteractorProtocol.swift; sourceTree = "<group>"; };
+		CA4857882517C71200EDA4CE /* VinchyPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyPresenterProtocol.swift; sourceTree = "<group>"; };
+		CA48578E2517C74700EDA4CE /* VinchyRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyRouterProtocol.swift; sourceTree = "<group>"; };
+		CA4857932517C77E00EDA4CE /* VinchyAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyAssembly.swift; sourceTree = "<group>"; };
+		CA48579A2517CA5200EDA4CE /* VinchyViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyViewControllerProtocol.swift; sourceTree = "<group>"; };
 		CA4AED9A24CE204900035922 /* TopSecret.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TopSecret.plist; sourceTree = "<group>"; };
 		CA4D18012492B27400B49BD4 /* Lorem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lorem.swift; sourceTree = "<group>"; };
 		CA4D18022492B27400B49BD4 /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
@@ -787,6 +803,62 @@
 			path = Libraries;
 			sourceTree = "<group>";
 		};
+		CA4857722517BE7700EDA4CE /* VIP */ = {
+			isa = PBXGroup;
+			children = (
+				CA4857992517CA3900EDA4CE /* ViewController */,
+				CA4857922517C76C00EDA4CE /* Assembly */,
+				CA48578C2517C72100EDA4CE /* Router */,
+				CA4857872517C6FF00EDA4CE /* Presenter */,
+				CA4857862517C6EF00EDA4CE /* Interactor */,
+			);
+			path = VIP;
+			sourceTree = "<group>";
+		};
+		CA4857862517C6EF00EDA4CE /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				CA4857822517C67700EDA4CE /* VinchyInteractorProtocol.swift */,
+				CA4857732517BE8E00EDA4CE /* VinchyInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		CA4857872517C6FF00EDA4CE /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CA4857772517BEA000EDA4CE /* VinchyPresenter.swift */,
+				CA4857882517C71200EDA4CE /* VinchyPresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CA48578C2517C72100EDA4CE /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				CA48577B2517BEAB00EDA4CE /* VinchyRouter.swift */,
+				CA48578E2517C74700EDA4CE /* VinchyRouterProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		CA4857922517C76C00EDA4CE /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				CA4857932517C77E00EDA4CE /* VinchyAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		CA4857992517CA3900EDA4CE /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CA7B835724EED1B100991F24 /* VinchyViewController.swift */,
+				CA48579A2517CA5200EDA4CE /* VinchyViewControllerProtocol.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
 		CA4D17FD2492B1BE00B49BD4 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
@@ -831,9 +903,9 @@
 		CA7B835624EED18500991F24 /* Vinchy */ = {
 			isa = PBXGroup;
 			children = (
+				CA4857722517BE7700EDA4CE /* VIP */,
 				CA1038042513C65900B0324F /* New */,
 				CA7B835924EED6BA00991F24 /* Views */,
-				CA7B835724EED1B100991F24 /* VinchyViewController.swift */,
 			);
 			path = Vinchy;
 			sourceTree = "<group>";
@@ -1253,9 +1325,11 @@
 				CAA07CAC24A34A3C00FE285A /* SubscriptionViewController.swift in Sources */,
 				CA472B52245EDEDB009149FF /* PhoneLine.swift in Sources */,
 				CA154DE52494EA2B00696436 /* MessageInputBar.swift in Sources */,
+				CA4857892517C71200EDA4CE /* VinchyPresenterProtocol.swift in Sources */,
 				CA4D18032492B27400B49BD4 /* Lorem.swift in Sources */,
 				CA015C1A24C44925008DF01D /* DidnotFindTheWineTableCell.swift in Sources */,
 				CA154E022494EA2B00696436 /* MessageType.swift in Sources */,
+				CA4857782517BEA000EDA4CE /* VinchyPresenter.swift in Sources */,
 				CA154DEB2494EA2B00696436 /* ContactMessageCell.swift in Sources */,
 				CA154DDB2494EA2B00696436 /* AvatarPosition.swift in Sources */,
 				CA1038062513C67600B0324F /* NewVinchyViewController.swift in Sources */,
@@ -1284,6 +1358,7 @@
 				CAF514282461C52400667ED0 /* DocCell.swift in Sources */,
 				CA472B69245EDEF9009149FF /* CategoryItem.swift in Sources */,
 				CA154DFD2494EA2B00696436 /* ContactItem.swift in Sources */,
+				CA48577C2517BEAB00EDA4CE /* VinchyRouter.swift in Sources */,
 				CAF51434246339F500667ED0 /* NameViewController.swift in Sources */,
 				CA154DF22494EA2B00696436 /* AudioMessageCell.swift in Sources */,
 				CA472B59245EDEDB009149FF /* ShowcaseViewController.swift in Sources */,
@@ -1295,6 +1370,7 @@
 				CA154DFE2494EA2B00696436 /* MediaItem.swift in Sources */,
 				CA7B835824EED1B100991F24 /* VinchyViewController.swift in Sources */,
 				CA154DD72494EA2B00696436 /* MessageStyle.swift in Sources */,
+				CA4857942517C77E00EDA4CE /* VinchyAssembly.swift in Sources */,
 				CA154DDC2494EA2B00696436 /* HorizontalEdgeInsets.swift in Sources */,
 				CA154DE12494EA2B00696436 /* UIColor+Extensions.swift in Sources */,
 				CA154DF12494EA2B00696436 /* MessageCollectionViewCell.swift in Sources */,
@@ -1302,6 +1378,7 @@
 				CA154DE32494EA2B00696436 /* Bundle+Extensions.swift in Sources */,
 				CA154E032494EA2B00696436 /* MessageCellDelegate.swift in Sources */,
 				CA154DCF2494EA2B00696436 /* LocationMessageSizeCalculator.swift in Sources */,
+				CA48579B2517CA5200EDA4CE /* VinchyViewControllerProtocol.swift in Sources */,
 				CA472B2B245EDEA0009149FF /* FiltersHeaderView.swift in Sources */,
 				CA99E65324F59CAA00C36BEE /* ShortInfoCollectionCell.swift in Sources */,
 				CA3B1D42249E3FE100FAA08A /* ResultsTableController.swift in Sources */,
@@ -1314,8 +1391,11 @@
 				CA154DF82494EA2B00696436 /* InsetLabel.swift in Sources */,
 				CAF514102461C51400667ED0 /* AboutController.swift in Sources */,
 				CA3B1D5424A0A36300FAA08A /* NotesViewController.swift in Sources */,
+				CA48578F2517C74700EDA4CE /* VinchyRouterProtocol.swift in Sources */,
 				CA472B2C245EDEA0009149FF /* HeaderReusableView.swift in Sources */,
+				CA4857742517BE8E00EDA4CE /* VinchyInteractor.swift in Sources */,
 				CAA9DC3C250BD20400F996A8 /* AdvancedHeader.swift in Sources */,
+				CA4857832517C67700EDA4CE /* VinchyInteractorProtocol.swift in Sources */,
 				CA154DFB2494EA2B00696436 /* PlayButtonView.swift in Sources */,
 				CA154DEF2494EA2B00696436 /* TypingIndicatorCell.swift in Sources */,
 				CA154DE62494EA2B00696436 /* MessageKit+Availability.swift in Sources */,

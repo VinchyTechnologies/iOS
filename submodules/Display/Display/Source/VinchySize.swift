@@ -8,7 +8,7 @@
 
 import CoreGraphics
 
-public struct VinchySize {
+public struct VinchySize { // TODO: - delete
     
     public enum VinchySizeItem {
         case absolute(CGFloat)

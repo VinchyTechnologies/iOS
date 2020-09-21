@@ -53,6 +53,22 @@
             {
                 "title": "Germany",
                 "imageName": "DE"
+            },
+            {
+                "title": "USA",
+                "imageName": "US"
+            },
+            {
+                "title": "Argentina",
+                "imageName": "AR"
+            },
+            {
+                "title": "Chile",
+                "imageName": "CL"
+            },
+            {
+                "title": "Australia",
+                "imageName": "AU"
             }
         ]
     },

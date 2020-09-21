@@ -32,7 +32,7 @@ final class SuggestionCollectionCell: UICollectionViewCell, Reusable {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        label.frame = bounds
+        label.frame = CGRect(x: 20, y: 0, width: bounds.width - 40, height: bounds.height)
     }
 
     required init?(coder: NSCoder) { fatalError() }

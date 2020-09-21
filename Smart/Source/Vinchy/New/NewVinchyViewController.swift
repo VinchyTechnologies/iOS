@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import MagazineLayout
 import VinchyCore
 import Display
 import CommonUI
@@ -21,6 +20,7 @@ fileprivate enum SectionType: Hashable {
     case subtitle(model: MainSubtitleCollectionCellViewModel)
     case bottles(model: [WineCollectionViewCellViewModel])
     case shareUs(model: ShareUsCollectionCellViewModel)
+    case infinity(model: WineCollectionViewCellViewModel)
 }
 
 fileprivate enum SearchSectionType: Hashable {
@@ -33,7 +33,7 @@ fileprivate let sectionFooterElementKind = "section-footer-element-kind"
 final class NewVinchyViewController: UIViewController, Loadable, Alertable {
 
     private enum C {
-        static let numberNoBackendSections: Int = 0
+        static let numberNoBackendSections: Int = 1
     }
 
     private lazy var adLoader: GADAdLoader =  {
@@ -179,7 +179,9 @@ final class NewVinchyViewController: UIViewController, Loadable, Alertable {
                 self.adLoader.load(DFPRequest())
                 self.collectionList = infinityWines.map({ .wine(wine: $0) })
                 let collection = Collection(wineList: self.collectionList)
-//                compilations.append(Compilation(type: .infinity, title: "You can like", collectionList: [collection]))
+                let compilation = Compilation(type: .infinity, title: "You can like", collectionList: [collection])
+
+                compilations.append(compilation)
                 self.compilations = compilations
             }
         }
@@ -238,9 +240,9 @@ final class NewVinchyViewController: UIViewController, Loadable, Alertable {
 
         let sectionHeader = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                              heightDimension: .absolute(44)),
+                                              heightDimension: .estimated(44)),
             elementKind: sectionHeaderElementKind,
-            alignment: .top)
+            alignment: .topLeading)
 
         let sectionFooter = NSCollectionLayoutBoundarySupplementaryItem(
             layoutSize: NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
@@ -265,9 +267,6 @@ final class NewVinchyViewController: UIViewController, Loadable, Alertable {
             section.orthogonalScrollingBehavior = .continuous
 
         case .shareUs:
-            let itemSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
-                                                  heightDimension: .fractionalHeight(1.0))
-            let item = NSCollectionLayoutItem(layoutSize: itemSize)
             let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
                                                    heightDimension: .estimated(160))
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitems: [item])
@@ -275,7 +274,23 @@ final class NewVinchyViewController: UIViewController, Loadable, Alertable {
             section.contentInsets = .init(top: 15, leading: 15, bottom: 15, trailing: 15)
             return section
 
-        case .none, .infinity:
+        case .infinity:
+            let groupSize = NSCollectionLayoutSize(widthDimension: .fractionalWidth(1.0),
+                                                   heightDimension: .absolute(255))
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: groupSize, subitem: item, count: 2)
+//            let spacing = CGFloat(10)
+//            group.interItemSpacing = .fixed(spacing)
+//            group.edgeSpacing = .init(leading: .fixed(0), top: .fixed(0), trailing: .fixed(0), bottom: .fixed(10))
+            let section = NSCollectionLayoutSection(group: group)
+
+            sectionHeader.pinToVisibleBounds = true
+            sectionHeader.zIndex = 2
+//            section.contentInsets = .init(top: 15, leading: 15, bottom: 15, trailing: 15)
+            section.boundarySupplementaryItems = [sectionHeader]
+
+            return section
+
+        case .none:
             return nil
         }
 
@@ -303,6 +318,24 @@ final class NewVinchyViewController: UIViewController, Loadable, Alertable {
     @objc
     private func didTapFilter() {
         navigationController?.pushViewController(Assembly.buildFiltersModule(), animated: true)
+    }
+
+    private func loadMoreInfinity() {
+        adLoader.load(DFPRequest())
+
+        Wines.shared.getRandomWines(count: 10) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let model):
+                let collectionList: [CollectionItem] = model.map({ .wine(wine: $0) })
+                self.collectionList += collectionList
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
+            case .failure:
+                break
+            }
+        }
     }
 }
 
@@ -388,6 +421,9 @@ extension NewVinchyViewController {
             cell.decorate(model: model[indexPath.row])
         }
 
+        let infinityCollectionCellRegistration = UICollectionView.CellRegistration<WineCollectionViewCell, WineCollectionViewCellViewModel> { (cell, indexPath, model) in
+            cell.decorate(model: model)
+        }
 
         let shareUsCollectionCellRegistration = UICollectionView.CellRegistration<ShareUsCollectionCell, ShareUsCollectionCellViewModel> { (cell, indexPath, model) in
             cell.decorate(model: model)
@@ -396,6 +432,7 @@ extension NewVinchyViewController {
         let headerRegistration = UICollectionView.SupplementaryRegistration<HeaderCollectionReusableView>(elementKind: sectionHeaderElementKind) { (supplementaryView, string, indexPath) in
             let title = compilations[safe: indexPath.section]?.title ?? ""
             let model = HeaderCollectionReusableViewModel(titleText: .init(string: title, font: Font.heavy(20), textColor: .dark))
+            supplementaryView.backgroundColor = .red
             supplementaryView.decorate(model: model)
         }
 
@@ -419,6 +456,9 @@ extension NewVinchyViewController {
 
             case .shareUs(let model):
                 return collectionView.dequeueConfiguredReusableCell(using: shareUsCollectionCellRegistration, for: indexPath, item: model)
+
+            case .infinity(let model):
+                return collectionView.dequeueConfiguredReusableCell(using: infinityCollectionCellRegistration, for: indexPath, item: model)
             }
         })
 
@@ -428,10 +468,6 @@ extension NewVinchyViewController {
         }
 
         let sections = Array(0..<compilations.count)
-
-        compilations.forEach { (c) in
-            print(c.type)
-        }
 
         var snapshot = NSDiffableDataSourceSnapshot<Int, SectionType>()
         sections.enumerated().forEach {
@@ -473,11 +509,36 @@ extension NewVinchyViewController {
             snapshot.appendItems(storyCollectionCellViewModels)
         }
 
+        if let infinityItems = compilations.last?.collectionList.first?.wineList.compactMap({ (collectionItem) -> SectionType? in
+            switch collectionItem {
+            case .wine(let wine):
+                return .infinity(model: .init(imageURL: wine.mainImageUrl?.toURL, titleText: wine.title, subtitleText: wine.winery?.countryCode, backgroundColor: .option))
+            case .ads:
+                return nil
+            }
+        }) {
+            snapshot.appendItems(infinityItems)
+//            snapshot.appendItems(infinityItems, toSection: sections.count - 1)
+        }
+
         dataSource.apply(snapshot, animatingDifferences: false)
     }
 }
 
 extension NewVinchyViewController: UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if !isSearchingMode {
+            switch compilations[indexPath.section].type {
+            case .mini, .big, .promo, .bottles, .shareUs:
+                break
+            case .infinity:
+                if indexPath.row == collectionList.count - 4 {
+                    loadMoreInfinity()
+                }
+            }
+        }
+    }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
