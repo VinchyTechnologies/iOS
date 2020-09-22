@@ -8,23 +8,27 @@
 
 import Foundation
 
-struct UserDefaultsConfig {
+public struct UserDefaultsConfig {
+
     @UserDefault("isAdult", defaultValue: false)
-    static var isAdult: Bool
+    static public var isAdult: Bool
+
+    @UserDefault("agreeToTermsAndConditions", defaultValue: false)
+    static public var isAgreedToTermsAndConditions: Bool
 }
 
 
 @propertyWrapper
-struct UserDefault<T> {
-    let key: String
-    let defaultValue: T
+public struct UserDefault<T> {
+    public let key: String
+    public let defaultValue: T
 
-    init(_ key: String, defaultValue: T) {
+    public init(_ key: String, defaultValue: T) {
         self.key = key
         self.defaultValue = defaultValue
     }
 
-    var wrappedValue: T {
+    public var wrappedValue: T {
         get {
             return UserDefaults.standard.object(forKey: key) as? T ?? defaultValue
         }

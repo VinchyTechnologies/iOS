@@ -73,3 +73,9 @@
 
 // MARK: - EmptyView
 "nothing_here" = "nothing here";
+
+// MARK: - ConfirmToStartViewController
+"legal_age" = "You are older than minimum legal drinking age in your country.";
+"terms_of_use_agreement" = "You agree to the Terms & Conditions.";
+"terms_of_use" = "Terms & Conditions.";
+"before_we_start" = "Before we start...";

@@ -114,6 +114,7 @@
 		CA48578F2517C74700EDA4CE /* VinchyRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA48578E2517C74700EDA4CE /* VinchyRouterProtocol.swift */; };
 		CA4857942517C77E00EDA4CE /* VinchyAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4857932517C77E00EDA4CE /* VinchyAssembly.swift */; };
 		CA48579B2517CA5200EDA4CE /* VinchyViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA48579A2517CA5200EDA4CE /* VinchyViewControllerProtocol.swift */; };
+		CA4858512519446800EDA4CE /* ForceUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4858502519446800EDA4CE /* ForceUpdate.swift */; };
 		CA4AED9B24CE204900035922 /* TopSecret.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA4AED9A24CE204900035922 /* TopSecret.plist */; };
 		CA4D18032492B27400B49BD4 /* Lorem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D18012492B27400B49BD4 /* Lorem.swift */; };
 		CA4D18042492B27400B49BD4 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D18022492B27400B49BD4 /* SampleData.swift */; };
@@ -156,6 +157,8 @@
 		CABDBA8724C2FAB800AD96D6 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CABDBA8624C2FAB800AD96D6 /* Core.framework */; };
 		CABDBA8824C2FAB800AD96D6 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CABDBA8624C2FAB800AD96D6 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CACC1DC224C5F2980082BD01 /* filters.json in Resources */ = {isa = PBXBuildFile; fileRef = CACC1DC124C5F2980082BD01 /* filters.json */; };
+		CAEBD788251A6D6200210F3B /* ConfirmToStartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEBD787251A6D6200210F3B /* ConfirmToStartViewController.swift */; };
+		CAEBD7F3251A7F5000210F3B /* SwitcherWithText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEBD7F2251A7F5000210F3B /* SwitcherWithText.swift */; };
 		CAF24ACD24C323C90057547F /* StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24ACC24C323C90057547F /* StringFormatting.framework */; };
 		CAF24ACE24C323C90057547F /* StringFormatting.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24ACC24C323C90057547F /* StringFormatting.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CAF24AEB24C32AE90057547F /* CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24AEA24C32AE90057547F /* CommonUI.framework */; };
@@ -336,6 +339,7 @@
 		CA48578E2517C74700EDA4CE /* VinchyRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyRouterProtocol.swift; sourceTree = "<group>"; };
 		CA4857932517C77E00EDA4CE /* VinchyAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyAssembly.swift; sourceTree = "<group>"; };
 		CA48579A2517CA5200EDA4CE /* VinchyViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyViewControllerProtocol.swift; sourceTree = "<group>"; };
+		CA4858502519446800EDA4CE /* ForceUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceUpdate.swift; sourceTree = "<group>"; };
 		CA4AED9A24CE204900035922 /* TopSecret.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TopSecret.plist; sourceTree = "<group>"; };
 		CA4D18012492B27400B49BD4 /* Lorem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lorem.swift; sourceTree = "<group>"; };
 		CA4D18022492B27400B49BD4 /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
@@ -384,6 +388,8 @@
 		CAAD023B245EEA0700EDF245 /* PasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordViewController.swift; sourceTree = "<group>"; };
 		CABDBA8624C2FAB800AD96D6 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CACC1DC124C5F2980082BD01 /* filters.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = filters.json; sourceTree = "<group>"; };
+		CAEBD787251A6D6200210F3B /* ConfirmToStartViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfirmToStartViewController.swift; sourceTree = "<group>"; };
+		CAEBD7F2251A7F5000210F3B /* SwitcherWithText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitcherWithText.swift; sourceTree = "<group>"; };
 		CAF24ACC24C323C90057547F /* StringFormatting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StringFormatting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF24AEA24C32AE90057547F /* CommonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF24B0D24C3311F0057547F /* LocationUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LocationUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -739,6 +745,8 @@
 		CA472B2D245EDEC7009149FF /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				CA4858542519E95100EDA4CE /* ForceUpdate */,
+				CA485847251940FB00EDA4CE /* ConfirmToStart */,
 				CA79545024F92E930040224C /* AdvancedSearch */,
 				CAF514692468171500667ED0 /* Love */,
 				CA3B1D5224A0A34700FAA08A /* Notes */,
@@ -857,6 +865,23 @@
 				CA48579A2517CA5200EDA4CE /* VinchyViewControllerProtocol.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CA485847251940FB00EDA4CE /* ConfirmToStart */ = {
+			isa = PBXGroup;
+			children = (
+				CAEBD787251A6D6200210F3B /* ConfirmToStartViewController.swift */,
+				CAEBD7F2251A7F5000210F3B /* SwitcherWithText.swift */,
+			);
+			path = ConfirmToStart;
+			sourceTree = "<group>";
+		};
+		CA4858542519E95100EDA4CE /* ForceUpdate */ = {
+			isa = PBXGroup;
+			children = (
+				CA4858502519446800EDA4CE /* ForceUpdate.swift */,
+			);
+			path = ForceUpdate;
 			sourceTree = "<group>";
 		};
 		CA4D17FD2492B1BE00B49BD4 /* Chat */ = {
@@ -1425,6 +1450,7 @@
 				CA154DD82494EA2B00696436 /* MessageKitError.swift in Sources */,
 				CA99E65124F58A6000C36BEE /* ToolCollectionCell.swift in Sources */,
 				CA154DEC2494EA2B00696436 /* LocationMessageCell.swift in Sources */,
+				CAEBD788251A6D6200210F3B /* ConfirmToStartViewController.swift in Sources */,
 				CA7A87E62500169100AAD10F /* VinchySimpleConiniousCaruselCollectionCell.swift in Sources */,
 				CA154DDF2494EA2B00696436 /* UIEdgeInsets+Extensions.swift in Sources */,
 				CA154DCD2494EA2B00696436 /* AudioMessageSizeCalculator.swift in Sources */,
@@ -1440,6 +1466,8 @@
 				CAF5146B2468172900667ED0 /* LoveViewController.swift in Sources */,
 				CA154DE42494EA2B00696436 /* CGRect+Extensions.swift in Sources */,
 				CA4D18042492B27400B49BD4 /* SampleData.swift in Sources */,
+				CAEBD7F3251A7F5000210F3B /* SwitcherWithText.swift in Sources */,
+				CA4858512519446800EDA4CE /* ForceUpdate.swift in Sources */,
 				CA7B836224F0237100991F24 /* SuggestionCollectionCell.swift in Sources */,
 				CAF514202461C52400667ED0 /* MoreConfigurator.swift in Sources */,
 				CA472B0F245EDE73009149FF /* EditingStackView.swift in Sources */,

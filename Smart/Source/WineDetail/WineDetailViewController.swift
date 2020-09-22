@@ -25,6 +25,7 @@ fileprivate enum Section {
     case tool(price: String?, isLiked: Bool)
     case description(text: String)
     case shortInfo(info: [ShortInfoModel])
+    case list(info: [ShortInfoModel])
     case button(ButtonCollectionCellViewModel)
 }
 
@@ -61,31 +62,41 @@ final class WineDetailViewController: UIViewController, Alertable, Loadable {
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(300)), subitems: [item])
             let section = NSCollectionLayoutSection(group: group)
             return section
+
         case .title, .description:
             let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(30)))
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(30)), subitems: [item])
             let section = NSCollectionLayoutSection(group: group)
-            section.contentInsets = .init(top: 15, leading: 20, bottom: 0, trailing: 20)
+            section.contentInsets = .init(top: 15, leading: 15, bottom: 0, trailing: 15)
             return section
+
         case .tool:
             let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50)), subitems: [item])
             let section = NSCollectionLayoutSection(group: group)
-            section.contentInsets = .init(top: 15, leading: 20, bottom: 0, trailing: 20)
+            section.contentInsets = .init(top: 15, leading: 15, bottom: 0, trailing: 15)
             return section
+
+        case .list:
+            var ap = UICollectionLayoutListConfiguration(appearance: .plain)
+            ap.backgroundColor = .mainBackground
+            let section = NSCollectionLayoutSection.list(using: ap, layoutEnvironment: env)
+            return section
+
         case .shortInfo:
             let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .estimated(180), heightDimension: .fractionalHeight(1)))
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .estimated(180), heightDimension: .absolute(100)), subitems: [item])
             let section = NSCollectionLayoutSection(group: group)
             section.orthogonalScrollingBehavior = .continuous
-            section.contentInsets = .init(top: 15, leading: 20, bottom: 0, trailing: 20)
+            section.contentInsets = .init(top: 15, leading: 15, bottom: 0, trailing: 15)
             section.interGroupSpacing = 10
             return section
+
         case .button:
             let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(48)), subitems: [item])
             let section = NSCollectionLayoutSection(group: group)
-            section.contentInsets = .init(top: 15, leading: 20, bottom: 0, trailing: 20)
+            section.contentInsets = .init(top: 20, leading: 20, bottom: 0, trailing: 20)
             return section
         }
         
@@ -267,7 +278,7 @@ final class WineDetailViewController: UIViewController, Alertable, Loadable {
         }
 
         if !shortDescriptions.isEmpty {
-            return [.shortInfo(info: shortDescriptions)]
+            return [.list(info: shortDescriptions)]
         } else {
             return []
         }
@@ -292,6 +303,52 @@ final class WineDetailViewController: UIViewController, Alertable, Loadable {
             return []
         }
     }
+
+    private func configuredListCell() -> UICollectionView.CellRegistration<UICollectionViewListCell, ShortInfoModel> {
+        return UICollectionView.CellRegistration<UICollectionViewListCell, ShortInfoModel> { (cell, indexPath, item) in
+
+            var content: UIListContentConfiguration
+            switch item {
+            case .titleTextAndImage(let imageName, let titleText):
+                content = UIListContentConfiguration.valueCell()
+                content.attributedText = NSAttributedString(string: imageName, font: Font.regular(16), textColor: .blueGray)
+                content.secondaryAttributedText = NSAttributedString(string: titleText ?? "", font: Font.with(size: 18, design: .round, traits: .bold), textColor: .dark)
+
+            case .titleTextAndSubtitleText(let titleText, let subtitleText):
+                content = UIListContentConfiguration.subtitleCell()
+
+//                switch subtitleText {
+//                case "Country":
+//                    content.image = UIImage(named: "FR")
+//                    content.imageProperties.maximumSize = .init(width: 50, height: 50 * 2 / 3)
+//                case "Sugar":
+//                    break
+////                    content.image = UIImage(named: "sugar")
+////                    content.imageProperties.maximumSize = .init(width: 50 * 2 / 3, height: 50 * 2 / 3)
+//                case "Year":
+//                    content.image = UIImage(systemName: "clock")
+//                    content.imageProperties.maximumSize = .init(width: 50 * 2 / 3, height: 50 * 2 / 3)
+//                    content.imageProperties.tintColor = .dark
+//
+//                default:
+//                    content.image = nil
+//                }
+
+                content.attributedText = NSAttributedString(string: subtitleText ?? "", font: Font.regular(12), textColor: .blueGray)
+                content.textToSecondaryTextVerticalPadding = 2
+                content.secondaryAttributedText = NSAttributedString(string: titleText ?? "", font: Font.medium(20), textColor: .dark)
+
+            }
+
+            cell.contentConfiguration = content
+//            cell.accessories = [.disclosureIndicator()]
+
+            var backgroud = UIBackgroundConfiguration.listGroupedCell()
+
+            backgroud.backgroundColor = !indexPath.row.isMultiple(of: 2) ? .option : .mainBackground
+            cell.backgroundConfiguration = backgroud
+        }
+    }
 }
 
 extension WineDetailViewController: UICollectionViewDataSource {
@@ -304,7 +361,7 @@ extension WineDetailViewController: UICollectionViewDataSource {
         switch sections[section] {
         case .gallery, .title, .tool, .description, .button:
             return 1
-        case .shortInfo(let info):
+        case .shortInfo(let info), .list(let info):
             return info.count
         }
     }
@@ -315,19 +372,27 @@ extension WineDetailViewController: UICollectionViewDataSource {
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GalleryCell.reuseId, for: indexPath) as! GalleryCell
             cell.decorate(model: .init(urls: urls))
             return cell
+
         case .title(let text):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseId, for: indexPath) as! TextCollectionCell
             cell.decorate(model: .init(titleText: NSAttributedString(string: text, font: Font.heavy(20), textColor: .dark)))
             return cell
+
         case .tool(let price, let isLiked):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ToolCollectionCell.reuseId, for: indexPath) as! ToolCollectionCell
             cell.decorate(model: .init(price: price, isLiked: isLiked))
             cell.delegate = self
             return cell
+
         case .description(let text):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseId, for: indexPath) as! TextCollectionCell
             cell.decorate(model: .init(titleText: NSAttributedString(string: text, font: Font.light(18), textColor: .dark)))
             return cell
+
+        case .list(let info):
+            let item = info[indexPath.row]
+            return collectionView.dequeueConfiguredReusableCell(using: self.configuredListCell(), for: indexPath, item: item)
+
         case .shortInfo(let info):
             let item = info[indexPath.row]
             switch item {
@@ -338,18 +403,7 @@ extension WineDetailViewController: UICollectionViewDataSource {
 
             case .titleTextAndSubtitleText(let titleText, let subtitleText):
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShortInfoCollectionCell.reuseId, for: indexPath) as! ShortInfoCollectionCell
-                var title = NSAttributedString(string: titleText ?? "", font: Font.with(size: 24, design: .round, traits: .bold), textColor: .dark)
-                if subtitleText == localized("color").firstLetterUppercased() {
-
-                    //                    if item.title == "Pink" {
-                    //                        title = NSAttributedString(string: item.title ?? "", font: Font.with(size: 24, design: .round, traits: .bold), textColor: .systemPink)
-                    //                    } else if item.title == "Red" {
-                    //                        title = NSAttributedString(string: item.title ?? "", font: Font.with(size: 24, design: .round, traits: .bold), textColor: .accent)
-                    //                    } else if item.title == "White" {
-                    //                        title = NSAttributedString(string: item.title ?? "", font: Font.with(size: 24, design: .round, traits: .bold), textColor: .white)
-                    //                    }
-
-                }
+                let title = NSAttributedString(string: titleText ?? "", font: Font.with(size: 24, design: .round, traits: .bold), textColor: .dark)
                 let subtitle = NSAttributedString(string: subtitleText ?? "", font: Font.with(size: 18, design: .round, traits: .bold), textColor: .blueGray)
                 cell.decorate(model: .init(title: title, subtitle: subtitle))
                 return cell
@@ -358,15 +412,8 @@ extension WineDetailViewController: UICollectionViewDataSource {
         case .button(let viewModel):
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ButtonCollectionCell.reuseId, for: indexPath) as! ButtonCollectionCell
             cell.decorate(model: viewModel)
-
             let isDisliked = realm(path: .dislike).objects(DBWine.self).first(where: { $0.wineID == wine?.id }) != nil
-
-            if isDisliked {
-                cell.button.isSelected = true
-            } else {
-                cell.button.isSelected = false
-            }
-
+            cell.button.isSelected = isDisliked
             cell.delegate = self
             return cell
         }
