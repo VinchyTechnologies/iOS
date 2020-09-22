@@ -18,6 +18,8 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window = UIWindow(windowScene: windowScence)
         window?.windowScene = windowScence
         window?.backgroundColor = .mainBackground
+//        UserDefaultsConfig.isAdult = false
+//        UserDefaultsConfig.isAgreedToTermsAndConditions = false
 
         if !(UserDefaultsConfig.isAdult && UserDefaultsConfig.isAgreedToTermsAndConditions) {
             let confirmToStartViewController = ConfirmToStartViewController()
@@ -197,8 +199,16 @@ public extension UIWindow {
             transitionWnd?.makeKeyAndVisible()
         }
 
+
+        let transition = CATransition()
+        transition.duration = 0.5
+        transition.type = .push
+        transition.subtype = .fromBottom
+        transition.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+        layer.add(transition, forKey: kCATransition)
+
         // Make animation
-        self.layer.add(options.animation, forKey: kCATransition)
+//        self.layer.add(options.animation, forKey: kCATransition)
         self.rootViewController = controller
         self.makeKeyAndVisible()
 
