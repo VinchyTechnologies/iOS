@@ -201,9 +201,9 @@ public extension UIWindow {
 
 
         let transition = CATransition()
-        transition.duration = 0.5
-        transition.type = .push
-        transition.subtype = .fromBottom
+        transition.duration = 0.25
+        transition.type = .fade//.push
+//        transition.subtype = .fromBottom
         transition.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
         layer.add(transition, forKey: kCATransition)
 
