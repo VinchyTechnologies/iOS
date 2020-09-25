@@ -48,7 +48,7 @@ final class WineDetailViewController: UIViewController, Alertable, Loadable {
 
     private var sections: [Section] = [] {
         didSet {
-            collectionView.collectionViewLayout = layout
+//            collectionView.collectionViewLayout = layout
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
@@ -78,9 +78,10 @@ final class WineDetailViewController: UIViewController, Alertable, Loadable {
             return section
 
         case .list:
-            var ap = UICollectionLayoutListConfiguration(appearance: .plain)
-            ap.backgroundColor = .mainBackground
-            let section = NSCollectionLayoutSection.list(using: ap, layoutEnvironment: env)
+            let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)))
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)), subitems: [item])
+            let section = NSCollectionLayoutSection(group: group)
+            section.contentInsets = .init(top: 15, leading: 0, bottom: 0, trailing: 0)
             return section
 
         case .shortInfo:
@@ -108,12 +109,12 @@ final class WineDetailViewController: UIViewController, Alertable, Loadable {
     }
 
     private lazy var collectionView: UICollectionView = {
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: .init())
+        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .mainBackground
         collectionView.dataSource = self
         collectionView.delegate = self
 
-        collectionView.register(GalleryCell.self, TextCollectionCell.self, ToolCollectionCell.self, ShortInfoCollectionCell.self, ButtonCollectionCell.self, ImageOptionCollectionCell.self)
+        collectionView.register(GalleryCell.self, TextCollectionCell.self, ToolCollectionCell.self, ShortInfoCollectionCell.self, ButtonCollectionCell.self, ImageOptionCollectionCell.self, TitleWithSubtitleInfoCollectionViewCell.self)
         return collectionView
     }()
 
@@ -304,51 +305,51 @@ final class WineDetailViewController: UIViewController, Alertable, Loadable {
         }
     }
 
-    private func configuredListCell() -> UICollectionView.CellRegistration<UICollectionViewListCell, ShortInfoModel> {
-        return UICollectionView.CellRegistration<UICollectionViewListCell, ShortInfoModel> { (cell, indexPath, item) in
-
-            var content: UIListContentConfiguration
-            switch item {
-            case .titleTextAndImage(let imageName, let titleText):
-                content = UIListContentConfiguration.valueCell()
-                content.attributedText = NSAttributedString(string: imageName, font: Font.regular(16), textColor: .blueGray)
-                content.secondaryAttributedText = NSAttributedString(string: titleText ?? "", font: Font.with(size: 18, design: .round, traits: .bold), textColor: .dark)
-
-            case .titleTextAndSubtitleText(let titleText, let subtitleText):
-                content = UIListContentConfiguration.subtitleCell()
-
-//                switch subtitleText {
-//                case "Country":
-//                    content.image = UIImage(named: "FR")
-//                    content.imageProperties.maximumSize = .init(width: 50, height: 50 * 2 / 3)
-//                case "Sugar":
-//                    break
-////                    content.image = UIImage(named: "sugar")
-////                    content.imageProperties.maximumSize = .init(width: 50 * 2 / 3, height: 50 * 2 / 3)
-//                case "Year":
-//                    content.image = UIImage(systemName: "clock")
-//                    content.imageProperties.maximumSize = .init(width: 50 * 2 / 3, height: 50 * 2 / 3)
-//                    content.imageProperties.tintColor = .dark
+//    private func configuredListCell() -> UICollectionView.CellRegistration<UICollectionViewListCell, ShortInfoModel> {
+//        return UICollectionView.CellRegistration<UICollectionViewListCell, ShortInfoModel> { (cell, indexPath, item) in
 //
-//                default:
-//                    content.image = nil
-//                }
-
-                content.attributedText = NSAttributedString(string: subtitleText ?? "", font: Font.regular(12), textColor: .blueGray)
-                content.textToSecondaryTextVerticalPadding = 2
-                content.secondaryAttributedText = NSAttributedString(string: titleText ?? "", font: Font.medium(20), textColor: .dark)
-
-            }
-
-            cell.contentConfiguration = content
-//            cell.accessories = [.disclosureIndicator()]
-
-            var backgroud = UIBackgroundConfiguration.listGroupedCell()
-
-            backgroud.backgroundColor = !indexPath.row.isMultiple(of: 2) ? .option : .mainBackground
-            cell.backgroundConfiguration = backgroud
-        }
-    }
+//            var content: UIListContentConfiguration
+//            switch item {
+//            case .titleTextAndImage(let imageName, let titleText):
+//                content = UIListContentConfiguration.valueCell()
+//                content.attributedText = NSAttributedString(string: imageName, font: Font.regular(16), textColor: .blueGray)
+//                content.secondaryAttributedText = NSAttributedString(string: titleText ?? "", font: Font.with(size: 18, design: .round, traits: .bold), textColor: .dark)
+//
+//            case .titleTextAndSubtitleText(let titleText, let subtitleText):
+//                content = UIListContentConfiguration.subtitleCell()
+//
+////                switch subtitleText {
+////                case "Country":
+////                    content.image = UIImage(named: "FR")
+////                    content.imageProperties.maximumSize = .init(width: 50, height: 50 * 2 / 3)
+////                case "Sugar":
+////                    break
+//////                    content.image = UIImage(named: "sugar")
+//////                    content.imageProperties.maximumSize = .init(width: 50 * 2 / 3, height: 50 * 2 / 3)
+////                case "Year":
+////                    content.image = UIImage(systemName: "clock")
+////                    content.imageProperties.maximumSize = .init(width: 50 * 2 / 3, height: 50 * 2 / 3)
+////                    content.imageProperties.tintColor = .dark
+////
+////                default:
+////                    content.image = nil
+////                }
+//
+//                content.attributedText = NSAttributedString(string: subtitleText ?? "", font: Font.regular(12), textColor: .blueGray)
+//                content.textToSecondaryTextVerticalPadding = 2
+//                content.secondaryAttributedText = NSAttributedString(string: titleText ?? "", font: Font.medium(20), textColor: .dark)
+//
+//            }
+//
+//            cell.contentConfiguration = content
+////            cell.accessories = [.disclosureIndicator()]
+//
+//            var backgroud = UIBackgroundConfiguration.listGroupedCell()
+//
+//            backgroud.backgroundColor = !indexPath.row.isMultiple(of: 2) ? .option : .mainBackground
+//            cell.backgroundConfiguration = backgroud
+//        }
+//    }
 }
 
 extension WineDetailViewController: UICollectionViewDataSource {
@@ -391,7 +392,17 @@ extension WineDetailViewController: UICollectionViewDataSource {
 
         case .list(let info):
             let item = info[indexPath.row]
-            return collectionView.dequeueConfiguredReusableCell(using: self.configuredListCell(), for: indexPath, item: item)
+
+            switch item {
+            case .titleTextAndImage:
+                return .init()
+
+            case .titleTextAndSubtitleText(let titleText, let subtitleText):
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TitleWithSubtitleInfoCollectionViewCell.reuseId, for: indexPath) as! TitleWithSubtitleInfoCollectionViewCell
+                cell.decorate(model: .init(titleText: titleText, subtitleText: subtitleText))
+                cell.backgroundColor = indexPath.row.isMultiple(of: 2) ? .option : .mainBackground
+                return cell
+            }
 
         case .shortInfo(let info):
             let item = info[indexPath.row]
