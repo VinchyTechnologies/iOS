@@ -13,7 +13,7 @@ import CommonUI
 import Core
 import EmailService
 import StringFormatting
-import GoogleMobileAds
+//import GoogleMobileAds
 
 fileprivate enum SectionType: Hashable {
     case story(model: StoryCollectionCellViewModel)
@@ -33,22 +33,22 @@ fileprivate let sectionFooterElementKind = "section-footer-element-kind"
 final class NewVinchyViewController: UIViewController, Loadable, Alertable {
 
     private enum C {
-        static let numberNoBackendSections: Int = 1
+        static let numberNoBackendSections: Int = 0
     }
 
-    private lazy var adLoader: GADAdLoader =  {
-        let options = GADMultipleAdsAdLoaderOptions()
-
-        let op = GADNativeAdMediaAdLoaderOptions()
-        op.mediaAspectRatio = .landscape
-
-        let loader = GADAdLoader(adUnitID: "ca-app-pub-6194258101406763/5059597902",
-                            rootViewController: self,
-                            adTypes: [.unifiedNative],
-                            options: [options, op])
-//        loader.delegate = self
-        return loader
-    }()
+//    private lazy var adLoader: GADAdLoader =  {
+//        let options = GADMultipleAdsAdLoaderOptions()
+//
+//        let op = GADNativeAdMediaAdLoaderOptions()
+//        op.mediaAspectRatio = .landscape
+//
+//        let loader = GADAdLoader(adUnitID: "ca-app-pub-6194258101406763/5059597902",
+//                            rootViewController: self,
+//                            adTypes: [.unifiedNative],
+//                            options: [options, op])
+////        loader.delegate = self
+//        return loader
+//    }()
 
     private(set) var loadingIndicator = ActivityIndicatorView()
 
@@ -153,17 +153,17 @@ final class NewVinchyViewController: UIViewController, Loadable, Alertable {
             self?.dispatchGroup.leave()
         }
 
-        var infinityWines: [Wine] = []
-        dispatchGroup.enter()
-        Wines.shared.getRandomWines(count: 10) { [weak self] result in
-            switch result {
-            case .success(let model):
-                infinityWines = model
-            case .failure:
-                break
-            }
-            self?.dispatchGroup.leave()
-        }
+//        var infinityWines: [Wine] = []
+//        dispatchGroup.enter()
+//        Wines.shared.getRandomWines(count: 10) { [weak self] result in
+//            switch result {
+//            case .success(let model):
+//                infinityWines = model
+//            case .failure:
+//                break
+//            }
+//            self?.dispatchGroup.leave()
+//        }
 
         dispatchGroup.notify(queue: .main) { [weak self] in
             guard let self = self else { return }
@@ -173,17 +173,17 @@ final class NewVinchyViewController: UIViewController, Loadable, Alertable {
             let shareUs = Compilation(type: .shareUs, title: nil, collectionList: [Collection(wineList: [])])
             compilations.insert(shareUs, at: compilations.isEmpty ? 0 : compilations.count - 1)
 
-            if infinityWines.isEmpty {
-                self.compilations = compilations
-            } else {
-                self.adLoader.load(DFPRequest())
-                self.collectionList = infinityWines.map({ .wine(wine: $0) })
-                let collection = Collection(wineList: self.collectionList)
-                let compilation = Compilation(type: .infinity, title: "You can like", collectionList: [collection])
-
-                compilations.append(compilation)
-                self.compilations = compilations
-            }
+//            if infinityWines.isEmpty {
+//                self.compilations = compilations
+//            } else {
+//                self.adLoader.load(DFPRequest())
+//                self.collectionList = infinityWines.map({ .wine(wine: $0) })
+//                let collection = Collection(wineList: self.collectionList)
+//                let compilation = Compilation(type: .infinity, title: "You can like", collectionList: [collection])
+//
+//                compilations.append(compilation)
+//                self.compilations = compilations
+//            }
         }
 
         Wines.shared.getRandomWines(count: 10) { [weak self] result in
@@ -320,23 +320,23 @@ final class NewVinchyViewController: UIViewController, Loadable, Alertable {
         navigationController?.pushViewController(Assembly.buildFiltersModule(), animated: true)
     }
 
-    private func loadMoreInfinity() {
-        adLoader.load(DFPRequest())
-
-        Wines.shared.getRandomWines(count: 10) { [weak self] result in
-            guard let self = self else { return }
-            switch result {
-            case .success(let model):
-                let collectionList: [CollectionItem] = model.map({ .wine(wine: $0) })
-                self.collectionList += collectionList
-                DispatchQueue.main.async {
-                    self.collectionView.reloadData()
-                }
-            case .failure:
-                break
-            }
-        }
-    }
+//    private func loadMoreInfinity() {
+//        adLoader.load(DFPRequest())
+//
+//        Wines.shared.getRandomWines(count: 10) { [weak self] result in
+//            guard let self = self else { return }
+//            switch result {
+//            case .success(let model):
+//                let collectionList: [CollectionItem] = model.map({ .wine(wine: $0) })
+//                self.collectionList += collectionList
+//                DispatchQueue.main.async {
+//                    self.collectionView.reloadData()
+//                }
+//            case .failure:
+//                break
+//            }
+//        }
+//    }
 }
 
 extension NewVinchyViewController: UISearchBarDelegate {
@@ -527,18 +527,18 @@ extension NewVinchyViewController {
 
 extension NewVinchyViewController: UICollectionViewDelegate {
 
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if !isSearchingMode {
-            switch compilations[indexPath.section].type {
-            case .mini, .big, .promo, .bottles, .shareUs:
-                break
-            case .infinity:
-                if indexPath.row == collectionList.count - 4 {
-                    loadMoreInfinity()
-                }
-            }
-        }
-    }
+//    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+//        if !isSearchingMode {
+//            switch compilations[indexPath.section].type {
+//            case .mini, .big, .promo, .bottles, .shareUs:
+//                break
+//            case .infinity:
+//                if indexPath.row == collectionList.count - 4 {
+//                    loadMoreInfinity()
+//                }
+//            }
+//        }
+//    }
 
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         collectionView.deselectItem(at: indexPath, animated: true)
