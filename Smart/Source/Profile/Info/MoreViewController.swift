@@ -33,7 +33,7 @@ final class MoreViewController: UIViewController, Alertable {
 
         var arr: [UITableViewCell] = []
 
-        if Locale.current == .init(identifier: "ru_RU") {
+        if Locale.current.languageCode == "ru" {
             arr += [ContactCell(icon: UIImage(named: "phone")!,
                         text: localized("contact_phone"),
                         detailText: localized("for_any_questions").firstLetterUppercased())]
@@ -119,7 +119,7 @@ extension MoreViewController: UITableViewDataSource {
 extension MoreViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        if Locale.current == .init(identifier: "ru_RU") {
+        if Locale.current.languageCode == "ru" {
 
             switch indexPath.row {
             case 0:
