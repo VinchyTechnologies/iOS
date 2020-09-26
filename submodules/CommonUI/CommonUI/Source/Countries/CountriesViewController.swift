@@ -132,8 +132,10 @@ public final class CountriesViewController: UIViewController {
 
     @objc
     private func didTapChoose() {
-        delegate?.didChoose(countryCodes: self.selectedCountryCodes)
-        dismiss(animated: true)
+        dismiss(animated: true) { [weak self] in
+            guard let self = self else { return }
+            self.delegate?.didChoose(countryCodes: self.selectedCountryCodes)
+        }
     }
 
     private func showButton(animated: Bool) {

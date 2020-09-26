@@ -226,5 +226,37 @@
    {
       "code":"EG",
       "country":"Egypt"
+   },
+   {
+       "code": "BR",
+       "country": "Brazil"
+   },
+   {
+       "code": "DK",
+       "country": "Denmark"
+   },
+   {
+       "code": "BE",
+       "country": "Belgium"
+   },
+   {
+       "code": "MX",
+       "country": "Mexico"
+   },
+   {
+       "code": "TH",
+       "country": "Thailand"
+   },
+   {
+       "code": "NL",
+       "country": "Netherlands"
+   },
+   {
+       "code": "PE",
+       "country": "Peru"
+   },
+   {
+       "code": "PS",
+       "country": "Palestinian Territory"
    }
 ]

@@ -68,7 +68,7 @@ final class AdvancedSearchCaruselCollectionCell: UICollectionViewCell, Reusable 
             delegate: self)
     }()
 
-    private let collectionView: UICollectionView = {
+    let collectionView: UICollectionView = {
         let layout = DecoratorFlowLayout()
         layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
         layout.scrollDirection = .horizontal
@@ -104,7 +104,7 @@ extension AdvancedSearchCaruselCollectionCell: Decoratable {
         self.selectedIndexs = model.selectedIndexs
         self.items = model.items
         self.section = model.section
-        bounceDecorator.isEnabled = false//model.shouldLoadMore
+        bounceDecorator.isEnabled = false
     }
 }
 

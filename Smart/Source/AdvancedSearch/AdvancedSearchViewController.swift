@@ -79,6 +79,7 @@ final class AdvancedSearchViewController: UIViewController, Alertable {
         collectionView.frame = view.frame
         collectionView.backgroundColor = .mainBackground
         collectionView.dataSource = self
+        collectionView.delegate = self
         collectionView.register(AdvancedSearchCaruselCollectionCell.self)
         collectionView.register(AdvancedHeader.self, forSupplementaryViewOfKind: categoryHeaderID, withReuseIdentifier: AdvancedHeader.reuseId)
         collectionView.register(SeparatorFooter.self, forSupplementaryViewOfKind: categorySeparatorID, withReuseIdentifier: SeparatorFooter.reuseId)
@@ -203,7 +204,13 @@ extension AdvancedSearchViewController: CountriesViewControllerDelegate {
     }
 }
 
-extension AdvancedSearchViewController: UICollectionViewDataSource {
+extension AdvancedSearchViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+
+    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let cell = cell as? AdvancedSearchCaruselCollectionCell {
+            cell.collectionView.reloadData()
+        }
+    }
 
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         filters.count
