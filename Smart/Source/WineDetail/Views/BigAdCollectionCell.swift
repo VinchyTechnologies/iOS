@@ -22,10 +22,10 @@ final class BigAdCollectionCell: UICollectionViewCell, Reusable {
         addSubview(adBanner)
         adBanner.translatesAutoresizingMaskIntoConstraints = false
         NSLayoutConstraint.activate([
-            adBanner.topAnchor.constraint(equalTo: topAnchor, constant: 15),
+            adBanner.topAnchor.constraint(equalTo: topAnchor, constant: 20),
             adBanner.leadingAnchor.constraint(equalTo: leadingAnchor),
             adBanner.trailingAnchor.constraint(equalTo: trailingAnchor),
-            adBanner.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -15),
+            adBanner.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
         ])
     }
 

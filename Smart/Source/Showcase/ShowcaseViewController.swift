@@ -85,8 +85,18 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
 
         switch mode {
         case .normal(let wines):
+            shouldLoadMore = false
             navigationItem.title = navTitle
-            let groupedWines = wines.grouped(map: { $0.winery?.countryCode ?? "Другие" }) // TODO: - localized
+            var groupedWines = wines.grouped(map: { $0.winery?.countryCode ?? "Unknown country" }) // TODO: - localized
+
+            groupedWines.sort { (arr1, arr2) -> Bool in
+                if let w1 = countryNameFromLocaleCode(countryCode: arr1.first?.winery?.countryCode),
+                   let w2 = countryNameFromLocaleCode(countryCode: arr2.first?.winery?.countryCode) {
+                    return w1 > w2
+                }
+                return false
+            }
+
             if groupedWines.count == 1 {
                 filtersHeaderView.isHidden = true
                 categoryItems = [.init(title: "", wines: wines)]
@@ -94,7 +104,7 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
             }
             categoryItems = groupedWines.map({ (arrayWine) -> CategoryItem in
                 // TODO: - localized
-                return CategoryItem(title: arrayWine.first?.winery?.countryCode ?? "Другие", wines: arrayWine)
+                return CategoryItem(title: countryNameFromLocaleCode(countryCode: arrayWine.first?.winery?.countryCode)  ?? "Unknown country", wines: arrayWine)
             })
 
         case .advancedSearch:

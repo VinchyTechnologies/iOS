@@ -30,7 +30,6 @@ final class VinchyViewController: UIViewController, Alertable, Loadable {
         let layout = UICollectionViewFlowLayout()
         layout.minimumLineSpacing = 0
 //        layout.minimumInteritemSpacing = 2.5
-        layout.minimumLineSpacing = 10
 //        layout.sectionHeadersPinToVisibleBounds = true
         layout.scrollDirection = .vertical
 
@@ -250,6 +249,14 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
 //        }
 //    }
 
+
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
+        if isSearchingMode {
+            return 0
+        }
+        return 10
+    }
+
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if isSearchingMode {
             guard let wineID = suggestions[safe: indexPath.row]?.id else { return }
@@ -271,7 +278,7 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         if isSearchingMode {
-            return .init(width: collectionView.frame.width, height: 50)
+            return .init(width: collectionView.frame.width, height: 44)
         }
 
         guard let row = compilations[safe: indexPath.section] else {
@@ -312,10 +319,15 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
         }
 
         switch row.type {
-        case .mini, .big, .promo, .bottles:
+        case .mini:
+            return .init(top: 15, left: 0, bottom: 0, right: 0)
+
+        case .big, .promo, .bottles:
             return .init(top: 0, left: 0, bottom: 0, right: 0)
+
         case .shareUs:
             return .init(top: 20, left: 20, bottom: 10, right: 20)
+
         case .infinity:
             return .init(top: 0, left: 10, bottom: 0, right: 10)
         }
@@ -347,12 +359,18 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
         }
     }
 
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        if section == compilations.count - 1 {
+            return .init(width: collectionView.frame.width, height: 60)
+        }
+        return .zero
+    }
+
     func numberOfSections(in collectionView: UICollectionView) -> Int {
         isSearchingMode ? 1 : compilations.count
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-
         if isSearchingMode {
             return suggestions.count
         } else {
@@ -414,14 +432,17 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
             header.decorate(model: .init(titleText: NSAttributedString(string: title, font: Font.heavy(20), textColor: .dark, paragraphAlignment: .left), insets: .init(top: 0, left: 10, bottom: 0, right: 10)))
             return header
         case UICollectionView.elementKindSectionFooter:
-            let footer = collectionView.dequeueReusableSupplementaryView(
-                ofKind: kind,
-                withReuseIdentifier: VinchyFooterCollectionReusableView.reuseId,
-                for: indexPath) as! VinchyFooterCollectionReusableView
-            // TODO: - localize
-            let title = "Чрезмерное употребление алкоголя\nвредит вашему здоровью"
-            footer.decorate(model: .init(titleText: NSAttributedString(string: title, font: Font.light(15), textColor: .blueGray, paragraphAlignment: .justified)))
-            return footer
+            if indexPath.section == compilations.count - 1 {
+                let footer = collectionView.dequeueReusableSupplementaryView(
+                    ofKind: kind,
+                    withReuseIdentifier: VinchyFooterCollectionReusableView.reuseId,
+                    for: indexPath) as! VinchyFooterCollectionReusableView
+                // TODO: - localize
+                let title = "Чрезмерное употребление алкоголя\nвредит вашему здоровью"
+                footer.decorate(model: .init(titleText: NSAttributedString(string: title, font: Font.light(15), textColor: .blueGray, paragraphAlignment: .justified)))
+                return footer
+            }
+            return .init()
         default:
             fatalError()
         }

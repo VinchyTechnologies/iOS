@@ -29,29 +29,39 @@ final class MoreViewController: UIViewController, Alertable {
         return tableView
     }()
     
-    private lazy var cells = [
-        ContactCell(icon: UIImage(named: "phone")!,
-                    text: localized("contact_phone"),
-                    detailText: localized("for_any_questions").firstLetterUppercased()),
+    private lazy var cells: [UITableViewCell] = {
 
-        ContactCell(icon: UIImage(systemName: "envelope.fill")!,
-                    text: localized("contact_email"),
-                    detailText: localized("email_us").firstLetterUppercased()),
+        var arr: [UITableViewCell] = []
 
-        ContactCell(icon: UIImage(named: "job")!,
-                    text: localized("looking_for_partners").firstLetterUppercased(),
-                    detailText: localized("become_a_part_of_a_wine_startup").firstLetterUppercased()),
+        if Locale.current == .init(identifier: "ru_RU") {
+            arr += [ContactCell(icon: UIImage(named: "phone")!,
+                        text: localized("contact_phone"),
+                        detailText: localized("for_any_questions").firstLetterUppercased())]
+        }
 
-        SocialMediaCell(delegate: self),
 
-        RateAppCell(),
+        arr += [
+            ContactCell(icon: UIImage(systemName: "envelope.fill")!,
+                        text: localized("contact_email"),
+                        detailText: localized("email_us").firstLetterUppercased()),
 
-        DocCell(icon: UIImage(named: "document")!,
-                text: localized("legal_documents").firstLetterUppercased()),
+            ContactCell(icon: UIImage(named: "job")!,
+                        text: localized("looking_for_partners").firstLetterUppercased(),
+                        detailText: localized("become_a_part_of_a_wine_startup").firstLetterUppercased()),
 
-        DocCell(icon: UIImage(named: "info")!.withRenderingMode(.alwaysTemplate),
-                text: localized("about_the_app").firstLetterUppercased())
-    ]
+            SocialMediaCell(delegate: self),
+
+            RateAppCell(),
+
+            DocCell(icon: UIImage(named: "document")!,
+                    text: localized("legal_documents").firstLetterUppercased()),
+
+            DocCell(icon: UIImage(named: "info")!.withRenderingMode(.alwaysTemplate),
+                    text: localized("about_the_app").firstLetterUppercased())
+        ]
+
+        return arr
+    }()
 
     var presenter: MorePresenterProtocol!
     private let configurator = MoreConfigurator()
@@ -108,21 +118,40 @@ extension MoreViewController: UITableViewDataSource {
 
 extension MoreViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        switch indexPath.row {
-        case 0:
-            presenter.callUs()
-        case 1:
-            presenter.emailUs()
-        case 2:
-            presenter.workWithUs()
-        case 4:
-            presenter.rateApp()
-        case 5:
-            presenter.goToDocController()
-        case 6:
-            presenter.goToAboutController()
-        default:
-            break
+
+        if Locale.current == .init(identifier: "ru_RU") {
+
+            switch indexPath.row {
+            case 0:
+                presenter.callUs()
+            case 1:
+                presenter.emailUs()
+            case 2:
+                presenter.workWithUs()
+            case 4:
+                presenter.rateApp()
+            case 5:
+                presenter.goToDocController()
+            case 6:
+                presenter.goToAboutController()
+            default:
+                break
+            }
+        } else {
+            switch indexPath.row {
+            case 0:
+                presenter.emailUs()
+            case 1:
+                presenter.workWithUs()
+            case 2:
+                presenter.rateApp()
+            case 4:
+                presenter.goToDocController()
+            case 5:
+                presenter.goToAboutController()
+            default:
+                break
+            }
         }
     }
 }

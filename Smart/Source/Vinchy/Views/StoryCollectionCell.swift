@@ -22,13 +22,15 @@ struct StoryCollectionCellViewModel: ViewModelProtocol, Hashable {
     }
 }
 
-final class StoryCollectionCell: UICollectionViewCell, Reusable  {
+final class StoryCollectionCell: HighlightCollectionCell, Reusable  {
 
     private let imageView = UIImageView()
     private let titleLabel = UILabel()
 
     override init(frame: CGRect) {
         super.init(frame: frame)
+
+        highlightStyle = .scale
 
         backgroundColor = .option
         layer.cornerRadius = 12
