@@ -13,6 +13,7 @@ import Database
 import CommonUI
 import StringFormatting
 import EmailService
+import GoogleMobileAds
 
 fileprivate enum ShortInfoModel {
     case titleTextAndImage(imageName: String, titleText: String?)
@@ -27,6 +28,7 @@ fileprivate enum Section {
     case shortInfo(info: [ShortInfoModel])
     case list(info: [ShortInfoModel])
     case button(ButtonCollectionCellViewModel)
+    case ad
 }
 
 final class WineDetailViewController: UIViewController, Alertable, Loadable {
@@ -48,7 +50,6 @@ final class WineDetailViewController: UIViewController, Alertable, Loadable {
 
     private var sections: [Section] = [] {
         didSet {
-//            collectionView.collectionViewLayout = layout
             DispatchQueue.main.async {
                 self.collectionView.reloadData()
             }
@@ -99,6 +100,12 @@ final class WineDetailViewController: UIViewController, Alertable, Loadable {
             let section = NSCollectionLayoutSection(group: group)
             section.contentInsets = .init(top: 20, leading: 20, bottom: 0, trailing: 20)
             return section
+        case .ad:
+            let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)))
+            let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)), subitems: [item])
+            let section = NSCollectionLayoutSection(group: group)
+            section.contentInsets = .init(top: 15, leading: 0, bottom: 0, trailing: 0)
+            return section
         }
         
     }
@@ -114,7 +121,7 @@ final class WineDetailViewController: UIViewController, Alertable, Loadable {
         collectionView.dataSource = self
         collectionView.delegate = self
 
-        collectionView.register(GalleryCell.self, TextCollectionCell.self, ToolCollectionCell.self, ShortInfoCollectionCell.self, ButtonCollectionCell.self, ImageOptionCollectionCell.self, TitleWithSubtitleInfoCollectionViewCell.self)
+        collectionView.register(GalleryCell.self, TextCollectionCell.self, ToolCollectionCell.self, ShortInfoCollectionCell.self, ButtonCollectionCell.self, ImageOptionCollectionCell.self, TitleWithSubtitleInfoCollectionViewCell.self, BigAdCollectionCell.self)
         return collectionView
     }()
 
@@ -140,7 +147,7 @@ final class WineDetailViewController: UIViewController, Alertable, Loadable {
 
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        collectionView.contentInset = .init(top: 0, left: 0, bottom: 15 + view.safeAreaInsets.bottom, right: 0)
+        collectionView.contentInset = .init(top: 0, left: 0, bottom: 15, right: 0)
     }
 
     private func loadWineInfo(wineID: Int64) {
@@ -219,6 +226,8 @@ final class WineDetailViewController: UIViewController, Alertable, Loadable {
         sections.append(.button(.init(normalImage: UIImage(systemName: "heart.slash", withConfiguration: imageConfig), selectedImage: UIImage(systemName: "heart.slash.fill", withConfiguration: imageConfig), title: NSAttributedString(string: "Dislike", font: .boldSystemFont(ofSize: 18), textColor: .dark), type: .dislike)))
 
         sections.append(.button(.init(normalImage: nil, selectedImage: nil, title: NSAttributedString(string: "Tell about error", font: .boldSystemFont(ofSize: 18), textColor: .dark), type: .reportAnError)))
+
+        sections += [.ad]
 
         self.sections = sections
     }
@@ -360,7 +369,7 @@ extension WineDetailViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         switch sections[section] {
-        case .gallery, .title, .tool, .description, .button:
+        case .gallery, .title, .tool, .description, .button, .ad:
             return 1
         case .shortInfo(let info), .list(let info):
             return info.count
@@ -427,6 +436,14 @@ extension WineDetailViewController: UICollectionViewDataSource {
             cell.button.isSelected = isDisliked
             cell.delegate = self
             return cell
+            
+        case .ad:
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BigAdCollectionCell.reuseId, for: indexPath) as! BigAdCollectionCell
+            cell.adBanner.delegate = self
+            cell.adBanner.adUnitID = "ca-app-pub-6194258101406763/5750190016"
+            cell.adBanner.rootViewController = self
+            cell.adBanner.load(GADRequest())
+            return cell
         }
     }
 }
@@ -434,9 +451,9 @@ extension WineDetailViewController: UICollectionViewDataSource {
 extension WineDetailViewController: UICollectionViewDelegate {
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if scrollView.contentOffset.y > 300 {
-            self.navigationItem.title = self.wine?.title
+            navigationItem.title = wine?.title
         } else {
-            self.navigationItem.title = nil
+            navigationItem.title = nil
         }
     }
 }
@@ -472,5 +489,9 @@ extension WineDetailViewController: ToolCollectionCellDelegate {
     }
 
     func didTapPrice(_ button: UIButton) { }
+
+}
+
+extension WineDetailViewController: GADBannerViewDelegate {
 
 }

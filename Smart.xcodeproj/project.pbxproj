@@ -116,6 +116,7 @@
 		CA48579B2517CA5200EDA4CE /* VinchyViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA48579A2517CA5200EDA4CE /* VinchyViewControllerProtocol.swift */; };
 		CA4858512519446800EDA4CE /* ForceUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4858502519446800EDA4CE /* ForceUpdate.swift */; };
 		CA49A219251E8CFE00FBE269 /* TitleWithSubtitleInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49A218251E8CFE00FBE269 /* TitleWithSubtitleInfoCollectionViewCell.swift */; };
+		CA49A25B251F2C4600FBE269 /* BigAdCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49A25A251F2C4600FBE269 /* BigAdCollectionCell.swift */; };
 		CA4AED9B24CE204900035922 /* TopSecret.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA4AED9A24CE204900035922 /* TopSecret.plist */; };
 		CA4D18032492B27400B49BD4 /* Lorem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D18012492B27400B49BD4 /* Lorem.swift */; };
 		CA4D18042492B27400B49BD4 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D18022492B27400B49BD4 /* SampleData.swift */; };
@@ -342,6 +343,7 @@
 		CA48579A2517CA5200EDA4CE /* VinchyViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyViewControllerProtocol.swift; sourceTree = "<group>"; };
 		CA4858502519446800EDA4CE /* ForceUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceUpdate.swift; sourceTree = "<group>"; };
 		CA49A218251E8CFE00FBE269 /* TitleWithSubtitleInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleWithSubtitleInfoCollectionViewCell.swift; sourceTree = "<group>"; };
+		CA49A25A251F2C4600FBE269 /* BigAdCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigAdCollectionCell.swift; sourceTree = "<group>"; };
 		CA4AED9A24CE204900035922 /* TopSecret.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TopSecret.plist; sourceTree = "<group>"; };
 		CA4D18012492B27400B49BD4 /* Lorem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lorem.swift; sourceTree = "<group>"; };
 		CA4D18022492B27400B49BD4 /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
@@ -970,6 +972,7 @@
 				CA99E65224F59CAA00C36BEE /* ShortInfoCollectionCell.swift */,
 				CA99E65624F6EDDD00C36BEE /* ButtonCollectionCell.swift */,
 				CA49A218251E8CFE00FBE269 /* TitleWithSubtitleInfoCollectionViewCell.swift */,
+				CA49A25A251F2C4600FBE269 /* BigAdCollectionCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1395,6 +1398,7 @@
 				CA7B835B24EED6E600991F24 /* StoryCollectionCell.swift in Sources */,
 				CA8CD67C25096EE100FDB7AF /* GADTTemplateView.m in Sources */,
 				CAA9DC67250EA05F00F996A8 /* AdvancedSearchCaruselCollectionCell.swift in Sources */,
+				CA49A25B251F2C4600FBE269 /* BigAdCollectionCell.swift in Sources */,
 				CA154DFE2494EA2B00696436 /* MediaItem.swift in Sources */,
 				CA7B835824EED1B100991F24 /* VinchyViewController.swift in Sources */,
 				CA154DD72494EA2B00696436 /* MessageStyle.swift in Sources */,
