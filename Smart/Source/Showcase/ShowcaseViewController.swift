@@ -92,7 +92,7 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
             groupedWines.sort { (arr1, arr2) -> Bool in
                 if let w1 = countryNameFromLocaleCode(countryCode: arr1.first?.winery?.countryCode),
                    let w2 = countryNameFromLocaleCode(countryCode: arr2.first?.winery?.countryCode) {
-                    return w1 > w2
+                    return w1 < w2
                 }
                 return false
             }

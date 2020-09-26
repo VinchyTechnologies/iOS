@@ -5,7 +5,7 @@ inhibit_all_warnings!
 workspace 'Smart'
 
 def commonPods
-  pod 'RealmSwift', :inhibit_warnings => true
+  pod 'RealmSwift'
   pod 'InputBarAccessoryView'
   pod 'SDWebImage'
   pod 'Firebase/Analytics'
@@ -13,7 +13,6 @@ def commonPods
   pod 'FittedSheets'
   pod 'FSPagerView'
   pod 'Google-Mobile-Ads-SDK'
-  pod 'MagazineLayout'
 end
 
 target 'Smart' do
@@ -37,7 +36,7 @@ end
 
 target 'Database' do
   project 'submodules/Database/Database'
-  pod 'RealmSwift', :inhibit_warnings => true
+  pod 'RealmSwift'
 end
 
 target 'Core' do
