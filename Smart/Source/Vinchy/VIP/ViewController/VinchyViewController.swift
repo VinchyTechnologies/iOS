@@ -400,7 +400,7 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
                 return cell
             case .shareUs:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShareUsCollectionCell.reuseId, for: indexPath) as! ShareUsCollectionCell
-                cell.decorate(model: .init(titleText: "Like the App?"))
+                cell.decorate(model: .init(titleText: localized("like_vinchy")))
                 return cell
             case .infinity:
                 switch collectionList[indexPath.row] {
@@ -437,8 +437,7 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
                     ofKind: kind,
                     withReuseIdentifier: VinchyFooterCollectionReusableView.reuseId,
                     for: indexPath) as! VinchyFooterCollectionReusableView
-                // TODO: - localize
-                let title = "Чрезмерное употребление алкоголя\nвредит вашему здоровью"
+                let title = localized("harmful_to_your_health")
                 footer.decorate(model: .init(titleText: NSAttributedString(string: title, font: Font.light(15), textColor: .blueGray, paragraphAlignment: .justified)))
                 return footer
             }
@@ -461,8 +460,6 @@ extension VinchyViewController: UISearchBarDelegate {
                         resultsController.didFoundProducts = wines
                     case .failure(let error):
                         print(error.localizedDescription)
-                        // TODO: - error show may be???
-                        break
                     }
                 }
             }
@@ -499,12 +496,11 @@ extension VinchyViewController: UITableViewDelegate {
 
 extension VinchyViewController: DidnotFindTheWineTableCellProtocol {
     func didTapWriteUsButton(_ button: UIButton) {
-        // TODO: - localize
         if emailService.canSend && searchText != nil {
-            let emailController = emailService.getEmailController(HTMLText: "Привет я не нашел вино с названием " + (searchText ?? ""), recipients: [localized("contact_email")])
+            let emailController = emailService.getEmailController(HTMLText: localized("email_did_not_find_wine") + (searchText ?? ""), recipients: [localized("contact_email")])
             present(emailController, animated: true, completion: nil)
         } else {
-            showAlert(message: "Возникла ошибка при открытии почты")
+            showAlert(message: localized("open_mail_error"))
         }
     }
 }
@@ -517,7 +513,7 @@ extension VinchyViewController: VinchySimpleConiniousCaruselCollectionCellDelega
 
     func didTapCompilationCell(wines: [Wine], title: String?) {
         guard !wines.isEmpty else {
-            showAlert(message: "Пустая коллекция") // TODO: - localize
+            showAlert(message: localized("empty_collection"))
             return
         }
         navigationController?.pushViewController(

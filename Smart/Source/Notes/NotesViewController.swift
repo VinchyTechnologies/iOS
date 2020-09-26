@@ -65,8 +65,7 @@ final class NotesViewController: UIViewController {
     private func showEmptyView() {
         let errorView = ErrorView(frame: view.frame)
         errorView.isButtonHidden = true
-        // TODO - localized
-        errorView.configure(title: localized("nothing_here").firstLetterUppercased(), description: "Нет сохраненных адресов", buttonText: "")
+        errorView.configure(title: localized("nothing_here").firstLetterUppercased(), description: localized("you_have_not_written_any_notes_yet").firstLetterUppercased(), buttonText: "")
         tableView.backgroundView = errorView
     }
 

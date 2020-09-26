@@ -15,7 +15,7 @@ protocol ConfirmToStartViewControllerDelegate: AnyObject {
     func didConfirmAgeAndAgreement()
 }
 
-final class ConfirmToStartViewController: UIViewController {
+final class ConfirmToStartViewController: UIViewController, OpenURLProtocol, Alertable {
 
     weak var delegate: ConfirmToStartViewControllerDelegate?
 
@@ -97,8 +97,9 @@ final class ConfirmToStartViewController: UIViewController {
     }
 
     private func openTerms() {
-        print("go")
-        // TODO: - Terms
+        open(urlString: localized("terms_of_use_url"), errorCompletion: {
+            showAlert(message: localized("open_url_error"))
+        })
     }
 }
 

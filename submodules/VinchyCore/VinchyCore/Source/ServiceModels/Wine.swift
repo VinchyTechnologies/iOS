@@ -84,9 +84,9 @@ public struct Wine: Decodable {
 }
 
 public enum WineType: String, Decodable {
-    case sparkling, quiet, none
+    case sparkling, quiet
 }
 
-public enum WineColor: String, Decodable { // TODO: - localize
+public enum WineColor: String, Decodable {
     case red, white, pink
 }

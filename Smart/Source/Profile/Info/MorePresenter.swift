@@ -12,7 +12,7 @@ import StringFormatting
 
 let vkURL = "https://vk.com"
 let instagramURL = "https://www.instagram.com"
-let openAppStoreURL = "itms-apps://itunes.apple.com/app/id1147613120" // TODO: -
+let openAppStoreURL = localized("appstore_link")
 
 protocol MorePresenterProtocol: AnyObject {
     func rateApp()
@@ -43,7 +43,7 @@ final class MorePresenter: OpenURLProtocol {
     
     private func openUrl(urlString: String) {
         open(urlString: urlString) {
-            view.presentAlert(message: "Возникла ошибка загрузки URL") // TODO - Localize
+            view.presentAlert(message: localized("open_url_error"))
         }
     }
     

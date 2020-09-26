@@ -117,8 +117,7 @@ final class LoveViewController: UIViewController {
     private func showEmptyView() {
         let errorView = ErrorView(frame: view.frame)
         errorView.delegate = self
-        errorView.configure(title: localized("nothing_here").firstLetterUppercased(), description: nil, buttonText: "Добавить")
-        // TODO: - Localize
+        errorView.configure(title: localized("nothing_here").firstLetterUppercased(), description: nil, buttonText: localized("add").firstLetterUppercased())
         collectionView.backgroundView = errorView
     }
 

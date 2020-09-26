@@ -252,7 +252,7 @@ extension AdvancedSearchViewController: UICollectionViewDataSource, UICollection
             switch filters[indexPath.section].type {
             case .carusel:
 
-                let prefix = selectedFilters.filter{ $0.0 == "country" }.count + C.maxNumberItems
+                let prefix = selectedFilters.filter { $0.0 == "country" }.count + C.maxNumberItems
 
                 let items = filters[indexPath.section].items.enumerated().prefix(prefix).map { (index, filterItem) -> ImageOptionCollectionCellViewModel in
                     return .init(imageName: filterItem.imageName,
@@ -281,7 +281,7 @@ extension AdvancedSearchViewController: UICollectionViewDataSource, UICollection
         if kind == categoryHeaderID {
             let title = filters[safe: indexPath.section]?.title ?? ""
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AdvancedHeader.reuseId, for: indexPath) as! AdvancedHeader
-            header.decorate(model: .init(titleText: localized(title).firstLetterUppercased(), moreText: "Show All", shouldShowMore: filters[indexPath.section].category == .countries))
+            header.decorate(model: .init(titleText: localized(title).firstLetterUppercased(), moreText: localized("show_all").firstLetterUppercased(), shouldShowMore: filters[indexPath.section].category == .countries))
             header.section = indexPath.section
             header.delegate = self
             return header

@@ -29,7 +29,7 @@ extension MoreInteractor: MoreInteractorProtocol {
             let mail = emailService.getEmailController(HTMLText: HTMLText, recipients: [localized("contact_email")])
             presenter.present(controller: mail, completion: nil)
         } else {
-            presenter.showAlert(message: "Возникла ошибка при открытии почты") // TODO: - localized
+            presenter.showAlert(message: localized("open_mail_error"))
         }
     }
 }

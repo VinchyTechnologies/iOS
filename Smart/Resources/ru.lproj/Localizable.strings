@@ -6,6 +6,8 @@
   Copyright © 2020 Aleksei Smirnov. All rights reserved.
 */
 // MARK: - Common
+"appstore_link" = "itms-apps://itunes.apple.com/app/id1147613120"; // TODO: - fix me
+"add" = "добавить";
 "rate_our_app" = "Оцените наше приложение";
 "error" = "ошибка";
 "what_is_your_name" = "Как Вас зовут?";
@@ -27,6 +29,28 @@
 "country" = "страна";
 "you_can_also_like" = "вам также может понравится";
 "search" = "найти";
+"did_not_find_the_wine" = "Не нашли вино?";
+"write_us" = "напишите нам";
+"search_results" = "результаты поиска";
+"all" = "все";
+"back" = "назад";
+"reload" = "обновить";
+"serving_temperature" = "температура подачи";
+"vintage" = "год";
+"alcohol" = "алкоголь";
+"color" = "цвет";
+"unlike" = "не нравится";
+"serving_tips" = "советы по сервировке";
+"tell_about_error" = "Сообщить об ошибке";
+"harmful_to_your_health" = "Чрезмерное употребление алкоголя вредит вашему здоровью";
+"email_did_not_find_wine" = "Привет! Не могу найти вино с названием ";
+"like_vinchy" = "Нравится Vinchy?";
+"tell_the_whole_world_about_us" = "Расскажите о нас всему миру!";
+"share_link" = "поделиться ссылкой";
+"type" = "тип";
+"show_all" = "все";
+"choose" = "выбрать";
+"сhoose_countries" = "выберете страны";
 
 // MARK: - Sugar
 "sugar" = "сахар";
@@ -39,7 +63,9 @@
 "style" = "тип";
 "red" = "красное";
 "white" = "белое";
+"pink" = "розовое";
 "sparkling" = "игристое";
+"quiet" = "тихое";
 
 // MARK: - Compatibility
 "compatibility" = "сочетаемость"; // ???
@@ -79,3 +105,20 @@
 "terms_of_use_agreement" = "Вы согласны с Условиями использования сервиса.";
 "terms_of_use" = "Условиями использования сервиса.";
 "before_we_start" = "В начале было слово...";
+
+// MARK: - Error
+"open_url_error" = "Возникла ошибка при открытии URL";
+"open_mail_error" = "Возникла ошибка при открытии почты";
+"unknown_country_code" = "Неизвестный код страны";
+"nothing_found" = "ничего не найдено";
+"empty_collection" = "Пустая коллекция";
+
+// MARK: - Notes
+"general_impression" = "общее впечатление";
+"description" = "Описание";
+"you_have_not_written_any_notes_yet" = "Вы не написали ещё ни одной заметки";
+
+// MARK: - Docs
+// TODO: - fix me
+"terms_of_use_url" = "https://docs.google.com/document/d/e/2PACX-1vTkCv8A3tU3hK4nuHySyqu8IBYdsb-WzmbiNpLJl4HrPUWB3NhyhjOTStWKs8UeXGADi8S0toIxLtU-/pub";
+"terms_of_use_doc" = "Пользовательское соглашение";

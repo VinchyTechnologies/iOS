@@ -8,6 +8,7 @@
 
 import UIKit
 import Display
+import StringFormatting
 
 protocol DidnotFindTheWineTableCellProtocol: AnyObject {
     func didTapWriteUsButton(_ button: UIButton)
@@ -25,14 +26,14 @@ final class DidnotFindTheWineTableCell: UITableViewCell, Reusable {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = "Didn't find the wine?" // TODO: - localize
+        titleLabel.text = localized("did_not_find_the_wine")
         titleLabel.font = Font.bold(20)
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.minimumScaleFactor = 0.8
 
         writeUsButton.translatesAutoresizingMaskIntoConstraints = false
         writeUsButton.backgroundColor = .accent
-        writeUsButton.setTitle("Write us", for: .normal)
+        writeUsButton.setTitle(localized("write_us").firstLetterUppercased(), for: .normal)
         writeUsButton.setTitleColor(.white, for: .normal)
         writeUsButton.contentEdgeInsets = .init(top: 12, left: 16, bottom: 12, right: 16)
         writeUsButton.layer.cornerRadius = 10

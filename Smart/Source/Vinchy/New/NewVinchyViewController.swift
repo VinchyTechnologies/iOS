@@ -351,7 +351,6 @@
 //                        resultsController.didFoundProducts = wines
 //                    case .failure(let error):
 //                        print(error.localizedDescription)
-//                        // TODO: - error show may be???
 //                        break
 //                    }
 //                }
@@ -561,7 +560,7 @@
 //                    return nil
 //                }
 //            }
-//            
+//
 //            navigationController?.pushViewController(Assembly.buildShowcaseModule(navTitle: compilations[indexPath.section].title, mode: .normal(wines: wines)), animated: true)
 //
 //        case .bottles:
@@ -593,7 +592,6 @@
 //
 //extension NewVinchyViewController: DidnotFindTheWineTableCellProtocol {
 //    func didTapWriteUsButton(_ button: UIButton) {
-//        // TODO: - localize
 //        if emailService.canSend && searchText != nil {
 //            let emailController = emailService.getEmailController(HTMLText: "Привет я не нашел вино с названием " + (searchText ?? ""), recipients: [localized("contact_email")])
 //            present(emailController, animated: true, completion: nil)

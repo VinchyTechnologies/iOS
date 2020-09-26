@@ -12,6 +12,7 @@ import Core
 import Database
 import RealmSwift
 import VinchyCore
+import StringFormatting
 
 final class WriteMessageController: UIViewController {
 
@@ -44,7 +45,12 @@ final class WriteMessageController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = "Заметка" // TODO: - localize
+        if let wine = wine {
+            navigationItem.title = wine.title
+        } else if let note = note {
+            navigationItem.title = note.wineTitle
+        }
+
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(save))
 
         view.addSubview(tableView)
@@ -52,7 +58,7 @@ final class WriteMessageController: UIViewController {
             tableView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
             tableView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
             tableView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
-            bottomConstraint
+            bottomConstraint,
         ])
 
         configureKeyboardHelper()
@@ -103,15 +109,15 @@ extension WriteMessageController: UITableViewDataSource {
         cell.delegate = self
 
         if indexPath.row == 0 {
-            cell.labelPlaceholder.text = "Общее впечатление" // TODO - Localize
-            cell.textFieldTitle.text = "Общее впечатление"
+            cell.labelPlaceholder.text = localized("general_impression").firstLetterUppercased()
+            cell.textFieldTitle.text = localized("general_impression").firstLetterUppercased()
             if subject != nil {
                 cell.textField.text = subject
                 cell.cell(isSelected: true)
             }
         } else {
-            cell.labelPlaceholder.text = "Описание" // TODO - Localize
-            cell.textFieldTitle.text = "Описание"
+            cell.labelPlaceholder.text = localized("description").firstLetterUppercased()
+            cell.textFieldTitle.text = localized("description").firstLetterUppercased()
 
 
             if body != nil {

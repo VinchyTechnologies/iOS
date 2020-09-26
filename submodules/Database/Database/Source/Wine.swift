@@ -23,7 +23,7 @@ public final class DBWine: Object, HasPrimaryKeyID {
 
     @objc public dynamic var id: Int64 = 0
     @objc public dynamic var wineID: Int64 = 0
-    @objc public dynamic var mainImageUrl: String = "" // TODO: - Delete May be ???
+    @objc public dynamic var mainImageUrl: String = ""
     @objc public dynamic var title: String = ""
 
     public override class func primaryKey() -> String {

@@ -6,6 +6,8 @@
   Copyright © 2020 Aleksei Smirnov. All rights reserved.
 */
 // MARK: - Common
+"appstore_link" = "itms-apps://itunes.apple.com/app/id1147613120"; // TODO: - fix me
+"add" = "add";
 "rate_our_app" = "Rate our App";
 "error" = "error";
 "what_is_your_name" = "What's your name?";
@@ -27,6 +29,28 @@
 "country" = "country";
 "you_can_also_like" = "you can also like";
 "search" = "search";
+"did_not_find_the_wine" = "Did not find the wine?";
+"write_us" = "write us";
+"search_results" = "search results";
+"all" = "all";
+"back" = "back";
+"reload" = "reload";
+"serving_temperature" = "serving temperature";
+"vintage" = "vintage";
+"alcohol" = "alcohol";
+"color" = "color";
+"unlike" = "unlike";
+"serving_tips" = "serving tips";
+"tell_about_error" = "tell about the error";
+"harmful_to_your_health" = "Excessive alcohol consumption is harmful to your health";
+"email_did_not_find_wine" = "Hi! I can't find the wine named ";
+"like_vinchy" = "Do you enjoy Vinchy?";
+"tell_the_whole_world_about_us" = "Tell the whole world about us!";
+"share_link" = "share link";
+"type" = "type";
+"show_all" = "show all";
+"choose" = "choose";
+"сhoose_countries" = "choose countries";
 
 // MARK: - Sugar
 "sugar" = "sugar";
@@ -39,7 +63,9 @@
 "style" = "style";
 "red" = "red";
 "white" = "white";
+"pink" = "pink";
 "sparkling" = "sparkling";
+"quiet" = "quiet";
 
 // MARK: - Compatibility
 "compatibility" = "compatibility"; // ???
@@ -79,3 +105,20 @@
 "terms_of_use_agreement" = "You agree to the Terms & Conditions.";
 "terms_of_use" = "Terms & Conditions.";
 "before_we_start" = "Before we start...";
+
+// MARK: - Error
+"open_url_error" = "An error occured while opening the URL";
+"open_mail_error" = "An error occured while opening the mail";
+"unknown_country_code" = "Unknown country code";
+"nothing_found" = "nothing found";
+"empty_collection" = "Empty collection";
+
+// MARK: - Notes
+"general_impression" = "general impression";
+"description" = "description";
+"you_have_not_written_any_notes_yet" = "you have not written any notes yet";
+
+// MARK: - Docs
+// TODO: - fix me
+"terms_of_use_url" = "https://docs.google.com/document/d/e/2PACX-1vTkCv8A3tU3hK4nuHySyqu8IBYdsb-WzmbiNpLJl4HrPUWB3NhyhjOTStWKs8UeXGADi8S0toIxLtU-/pub";
+"terms_of_use_doc" = "Terms & Conditions";

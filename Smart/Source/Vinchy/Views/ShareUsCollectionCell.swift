@@ -8,6 +8,7 @@
 
 import UIKit
 import Display
+import StringFormatting
 
 public struct ShareUsCollectionCellViewModel: ViewModelProtocol, Hashable {
 
@@ -48,7 +49,7 @@ final class ShareUsCollectionCell: UICollectionViewCell, Reusable {
         titleLabel.font = Font.with(size: 24, design: .round, traits: .bold)
         titleLabel.textColor = .dark
 
-        subtitleLabel.text = "Tell us all over the world!"
+        subtitleLabel.text = localized("tell_the_whole_world_about_us") 
         subtitleLabel.font = Font.bold(18)
         subtitleLabel.textColor = .blueGray
 
@@ -56,7 +57,7 @@ final class ShareUsCollectionCell: UICollectionViewCell, Reusable {
         button.translatesAutoresizingMaskIntoConstraints = false
         button.heightAnchor.constraint(equalToConstant: 48).isActive = true
         button.widthAnchor.constraint(equalToConstant: frame.width - 40).isActive = true
-        button.setTitle("Share link", for: .normal)
+        button.setTitle(localized("share_link").firstLetterUppercased(), for: .normal)
         button.titleLabel?.font = Font.bold(20)
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 24

@@ -13,11 +13,13 @@ import Core
 
 final class DocController: UITableViewController, OpenURLProtocol, Alertable {
     
-    private let titles = ["Оферта", "Пользовательское соглашение", "Бонусная программа", "Полные условия акций", "Условия обработки персональных данных"] // TODO - Localize
-    private let urls = ["https://docs.google.com/document/d/e/2PACX-1vQFW5KKa_rDnP7xkap_VOsr16yg9IGxIz7667wQ87icJiUQLOGvSqIemE527NZWKXBxKG1by2AM_hRq/pub",
-                "https://docs.google.com/document/d/e/2PACX-1vTkCv8A3tU3hK4nuHySyqu8IBYdsb-WzmbiNpLJl4HrPUWB3NhyhjOTStWKs8UeXGADi8S0toIxLtU-/pub",
-                "https://docs.google.com/document/d/e/2PACX-1vTIiQTNJNXc2J6OUL-dKxStBR4ywVi0ULc2SwrvunlN7quuTNau22V902A6vuUSX5KraboaRRh1W9Xb/pub", "https://docs.google.com/document/d/e/2PACX-1vTdI1KFFm1PIqGQuLV3d9GBRWxgsrkpzyGvUe3rIKCCpUh4Np3V5tbUvpR4ExCsgbiybzyg3-zULvIL/pub",
-                "https://docs.google.com/document/d/e/2PACX-1vTW8xYT6sAahqITMtvmOGvSHaX5huoHomLjAqFapTZ2N1OIiUjb9K06DPcii1cueCeM0ROCS2ZZP96E/pub"]
+    private let titles = [
+        localized("terms_of_use_doc"),
+    ]
+
+    private let urls = [
+        localized("terms_of_use_url"),
+    ]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,7 +32,7 @@ final class DocController: UITableViewController, OpenURLProtocol, Alertable {
     
     func actionOpenUrl(urlString: String) {
         open(urlString: urlString) {
-            showAlert(message: "Возникла ошибка загрузки URL") // TODO - Localize
+            showAlert(message: localized("open_url_error"))
         }
     }
 

@@ -18,7 +18,6 @@ final class AboutController: UIViewController, OpenURLProtocol, Alertable {
         label.translatesAutoresizingMaskIntoConstraints = false
         label.text = Bundle.main.infoDictionary![kCFBundleNameKey as String] as? String
         label.font = Font.bold(45)
-        
         return label
     }()
     
@@ -28,7 +27,6 @@ final class AboutController: UIViewController, OpenURLProtocol, Alertable {
         label.text = localized("version") + " " + String(describing: Bundle.main.infoDictionary!["CFBundleShortVersionString"]!)
         label.font = Font.regular(18)
         label.textColor = .dark
-
         return label
     }()
     
@@ -39,7 +37,6 @@ final class AboutController: UIViewController, OpenURLProtocol, Alertable {
         button.setTitleColor(.accent, for: .normal)
         button.titleLabel?.font = Font.bold(15)
         button.addTarget(self, action: #selector(actionOpenWebSite), for: .touchUpInside)
-        
         return button
     }()
     
@@ -52,25 +49,25 @@ final class AboutController: UIViewController, OpenURLProtocol, Alertable {
         view.addSubview(logoLabel)
         NSLayoutConstraint.activate([
             logoLabel.centerYAnchor.constraint(equalTo: view.centerYAnchor, constant: -50),
-            logoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            logoLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
 
         view.addSubview(versionLabel)
         NSLayoutConstraint.activate([
             versionLabel.topAnchor.constraint(equalTo: logoLabel.bottomAnchor, constant: 20),
-            versionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            versionLabel.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
 
         view.addSubview(webButton)
         NSLayoutConstraint.activate([
             webButton.topAnchor.constraint(equalTo: versionLabel.bottomAnchor, constant: 15),
-            webButton.centerXAnchor.constraint(equalTo: view.centerXAnchor)
+            webButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
         ])
     }
     
     @objc private func actionOpenWebSite() {
         open(urlString: instagramURL) {
-            showAlert(message: "Возникла ошибка загрузки URL") // TODO - Localize
+            showAlert(message: localized("open_url_error"))
         }
     }
 }

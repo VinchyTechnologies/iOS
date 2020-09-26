@@ -89,7 +89,7 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
         case .normal(let wines):
             shouldLoadMore = false
             navigationItem.title = navTitle
-            var groupedWines = wines.grouped(map: { $0.winery?.countryCode ?? "Unknown country" }) // TODO: - localized
+            var groupedWines = wines.grouped(map: { $0.winery?.countryCode ?? localized("unknown_country_code") })
 
             groupedWines.sort { (arr1, arr2) -> Bool in
                 if let w1 = countryNameFromLocaleCode(countryCode: arr1.first?.winery?.countryCode),
@@ -105,13 +105,12 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
                 return
             }
             categoryItems = groupedWines.map({ (arrayWine) -> CategoryItem in
-                // TODO: - localized
-                return CategoryItem(title: countryNameFromLocaleCode(countryCode: arrayWine.first?.winery?.countryCode)  ?? "Unknown country", wines: arrayWine)
+                return CategoryItem(title: countryNameFromLocaleCode(countryCode: arrayWine.first?.winery?.countryCode)  ?? localized("unknown_country_code"), wines: arrayWine)
             })
 
         case .advancedSearch:
 
-            navigationItem.title = "Результаты поиска" // TODO: - localized
+            navigationItem.title = localized("search_results").firstLetterUppercased()
 
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
                 self.dispatchWorkItemHud.perform()
@@ -141,7 +140,7 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
         DispatchQueue.main.async {
             let errorView = ErrorView(frame: self.view.frame)
             errorView.delegate = self
-            errorView.configure(title: title, description: description, buttonText: buttonText) // TODO: - localize
+            errorView.configure(title: title, description: description, buttonText: buttonText)
             self.collectionView.backgroundView = errorView
         }
     }
@@ -181,21 +180,21 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
                                 if params.first?.0 == "title" && params.count == 3 {
                                     self.categoryItems = [.init(title: params.first?.1.quoted ?? "", wines: wines)]
                                 } else {
-                                    self.categoryItems = [.init(title: "Все", wines: wines)] // TODO: - localize
+                                    self.categoryItems = [.init(title: localized("all").firstLetterUppercased(), wines: wines)]
                                 }
                             } else {
                                 self.categoryItems[0].wines += wines
                             }
 
                             if self.currentPage == 0 && wines.isEmpty {
-                                self.showErrorView(title: "Ничего не найдено", description: nil, buttonText: "Назад")
+                                self.showErrorView(title: localized("nothing_found").firstLetterUppercased(), description: nil, buttonText: localized("back").firstLetterUppercased())
                                 return
                             }
 
                         case .failure(let error):
                             if self.currentPage == 0 {
                                 self.hideErrorView()
-                                self.showErrorView(title: error.title, description: error.message, buttonText: "Обновить")
+                                self.showErrorView(title: error.title, description: error.message, buttonText: localized("reload").firstLetterUppercased())
                             }
                         }
                     }

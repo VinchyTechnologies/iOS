@@ -80,7 +80,7 @@ public final class CountriesViewController: UIViewController {
     public override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.title = "Choose countries"
+        navigationItem.title = localized("сhoose_countries").firstLetterUppercased()
         view.backgroundColor = .mainBackground
 
         view.addSubview(tableView)
@@ -90,7 +90,7 @@ public final class CountriesViewController: UIViewController {
         let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
         navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark", withConfiguration: imageConfig), style: .plain, target: self, action: #selector(closeSelf))
 
-        searchButton.setTitle(localized("choose").firstLetterUppercased(), for: .normal) // TODO: - localize
+        searchButton.setTitle(localized("choose").firstLetterUppercased(), for: .normal)
         searchButton.titleLabel?.font = Font.bold(18)
         searchButton.backgroundColor = .accent
         searchButton.layer.cornerRadius = 24

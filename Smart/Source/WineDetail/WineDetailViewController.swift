@@ -100,6 +100,7 @@ final class WineDetailViewController: UIViewController, Alertable, Loadable {
             let section = NSCollectionLayoutSection(group: group)
             section.contentInsets = .init(top: 20, leading: 20, bottom: 0, trailing: 20)
             return section
+            
         case .ad:
             let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)))
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)), subitems: [item])
@@ -159,6 +160,7 @@ final class WineDetailViewController: UIViewController, Alertable, Loadable {
             switch result {
             case .success(let wine):
                 self?.wine = wine
+                
             case .failure(let error):
                 self?.showAlert(message: error.localizedDescription)
             }
@@ -198,7 +200,7 @@ final class WineDetailViewController: UIViewController, Alertable, Loadable {
             let vc = emailService.getEmailController(HTMLText: wine.title, recipients: [localized("contact_email")])
             navigationController?.present(vc, animated: true, completion: nil)
         } else {
-            showAlert(message: "Возникла ошибка при открытии почты") // TODO: - Localize
+            showAlert(message: localized("open_mail_error"))
         }
     }
 
@@ -213,19 +215,13 @@ final class WineDetailViewController: UIViewController, Alertable, Loadable {
 
         let servingTipsSection = buildServingTips(wine: wine)
         if !servingTipsSection.isEmpty {
-            sections += [.title(text: "Serving Tips")]
+            sections += [.title(text: localized("serving_tips").firstLetterUppercased())] 
             sections += servingTipsSection
         }
 
-//        if !wine.dishCompatibility?.isEmpty {
-//            wine.dishCompatibility?.forEach { (dish) in
-//                shortDescriptions.append(.init(imageName: dish.imageName, title: localized(dish.rawValue), subtitle: nil))
-//            }
-//        }
+        sections.append(.button(.init(normalImage: UIImage(systemName: "heart.slash", withConfiguration: imageConfig), selectedImage: UIImage(systemName: "heart.slash.fill", withConfiguration: imageConfig), title: NSAttributedString(string: localized("unlike").firstLetterUppercased(), font: .boldSystemFont(ofSize: 18), textColor: .dark), type: .dislike)))
 
-        sections.append(.button(.init(normalImage: UIImage(systemName: "heart.slash", withConfiguration: imageConfig), selectedImage: UIImage(systemName: "heart.slash.fill", withConfiguration: imageConfig), title: NSAttributedString(string: "Dislike", font: .boldSystemFont(ofSize: 18), textColor: .dark), type: .dislike)))
-
-        sections.append(.button(.init(normalImage: nil, selectedImage: nil, title: NSAttributedString(string: "Tell about error", font: .boldSystemFont(ofSize: 18), textColor: .dark), type: .reportAnError)))
+        sections.append(.button(.init(normalImage: nil, selectedImage: nil, title: NSAttributedString(string: localized("tell_about_error").firstLetterUppercased(), font: .boldSystemFont(ofSize: 18), textColor: .dark), type: .reportAnError)))
 
         sections += [.ad]
 
@@ -249,7 +245,7 @@ final class WineDetailViewController: UIViewController, Alertable, Loadable {
 
     private func buildTool(wine: Wine) -> [Section] {
         let isFavourite = realm(path: .like).objects(DBWine.self).first(where: { $0.wineID == wine.id }) != nil
-        // TODO: - isLiked, currency
+        // TODO: - currency
         return [.tool(price: formatCurrencyAmount(wine.price ?? 0, currency: "USD"), isLiked: isFavourite)]
     }
 
@@ -268,23 +264,23 @@ final class WineDetailViewController: UIViewController, Alertable, Loadable {
         // TODO: - All options
 
         if let color = wine.color {
-            shortDescriptions.append(.titleTextAndSubtitleText(titleText: localized(color.rawValue).firstLetterUppercased(), subtitleText: "Color"))
+            shortDescriptions.append(.titleTextAndSubtitleText(titleText: localized(color.rawValue).firstLetterUppercased(), subtitleText: localized("color").firstLetterUppercased()))
         }
 
         if let sugar = wine.sugar {
-            shortDescriptions.append(.titleTextAndSubtitleText(titleText: localized(sugar.rawValue).firstLetterUppercased(), subtitleText: "Sugar"))
+            shortDescriptions.append(.titleTextAndSubtitleText(titleText: localized(sugar.rawValue).firstLetterUppercased(), subtitleText: localized("sugar").firstLetterUppercased()))
         }
 
         if let country = countryNameFromLocaleCode(countryCode: wine.winery?.countryCode) {
-            shortDescriptions.append(.titleTextAndSubtitleText(titleText: country, subtitleText: "Country"))
+            shortDescriptions.append(.titleTextAndSubtitleText(titleText: country, subtitleText: localized("country").firstLetterUppercased()))
         }
 
         if let year = wine.year, year != 0 {
-            shortDescriptions.append(.titleTextAndSubtitleText(titleText: String(year), subtitleText: "Year"))
+            shortDescriptions.append(.titleTextAndSubtitleText(titleText: String(year), subtitleText: localized("vintage").firstLetterUppercased()))
         }
 
         if let alcoholPercent = wine.alcoholPercent {
-            shortDescriptions.append(.titleTextAndSubtitleText(titleText: String(alcoholPercent) + "%", subtitleText: "Alcohol"))
+            shortDescriptions.append(.titleTextAndSubtitleText(titleText: String(alcoholPercent) + "%", subtitleText: localized("alcohol").firstLetterUppercased()))
         }
 
         if !shortDescriptions.isEmpty {
@@ -298,7 +294,7 @@ final class WineDetailViewController: UIViewController, Alertable, Loadable {
         var servingTips = [ShortInfoModel]()
 
         if let servingTemperature = localizedTemperature(wine.servingTemperature) {
-            servingTips.append(.titleTextAndSubtitleText(titleText: servingTemperature, subtitleText: "Serving Temperature"))
+            servingTips.append(.titleTextAndSubtitleText(titleText: servingTemperature, subtitleText: localized("serving_temperature").firstLetterUppercased()))
         }
 
         if let dishes = wine.dishCompatibility, !dishes.isEmpty {
@@ -313,52 +309,6 @@ final class WineDetailViewController: UIViewController, Alertable, Loadable {
             return []
         }
     }
-
-//    private func configuredListCell() -> UICollectionView.CellRegistration<UICollectionViewListCell, ShortInfoModel> {
-//        return UICollectionView.CellRegistration<UICollectionViewListCell, ShortInfoModel> { (cell, indexPath, item) in
-//
-//            var content: UIListContentConfiguration
-//            switch item {
-//            case .titleTextAndImage(let imageName, let titleText):
-//                content = UIListContentConfiguration.valueCell()
-//                content.attributedText = NSAttributedString(string: imageName, font: Font.regular(16), textColor: .blueGray)
-//                content.secondaryAttributedText = NSAttributedString(string: titleText ?? "", font: Font.with(size: 18, design: .round, traits: .bold), textColor: .dark)
-//
-//            case .titleTextAndSubtitleText(let titleText, let subtitleText):
-//                content = UIListContentConfiguration.subtitleCell()
-//
-////                switch subtitleText {
-////                case "Country":
-////                    content.image = UIImage(named: "FR")
-////                    content.imageProperties.maximumSize = .init(width: 50, height: 50 * 2 / 3)
-////                case "Sugar":
-////                    break
-//////                    content.image = UIImage(named: "sugar")
-//////                    content.imageProperties.maximumSize = .init(width: 50 * 2 / 3, height: 50 * 2 / 3)
-////                case "Year":
-////                    content.image = UIImage(systemName: "clock")
-////                    content.imageProperties.maximumSize = .init(width: 50 * 2 / 3, height: 50 * 2 / 3)
-////                    content.imageProperties.tintColor = .dark
-////
-////                default:
-////                    content.image = nil
-////                }
-//
-//                content.attributedText = NSAttributedString(string: subtitleText ?? "", font: Font.regular(12), textColor: .blueGray)
-//                content.textToSecondaryTextVerticalPadding = 2
-//                content.secondaryAttributedText = NSAttributedString(string: titleText ?? "", font: Font.medium(20), textColor: .dark)
-//
-//            }
-//
-//            cell.contentConfiguration = content
-////            cell.accessories = [.disclosureIndicator()]
-//
-//            var backgroud = UIBackgroundConfiguration.listGroupedCell()
-//
-//            backgroud.backgroundColor = !indexPath.row.isMultiple(of: 2) ? .option : .mainBackground
-//            cell.backgroundConfiguration = backgroud
-//        }
-//    }
 }
 
 extension WineDetailViewController: UICollectionViewDataSource {

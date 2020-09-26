@@ -59,7 +59,7 @@ final class AdvancedSearchCaruselCollectionCell: UICollectionViewCell, Reusable 
     private lazy var bounceDecorator: ScrollViewBounceDecorator = {
         let left = decorationBounceViewInsets.left - collectionView.contentInset.left
         let right = decorationBounceViewInsets.right
-        let direction: ScrollViewBounceDecorator.ScrollDirection = .horizontal(.right(.init(top: 0, left: left, bottom: 0, right: left))) // TODO: - Arabic
+        let direction: ScrollViewBounceDecorator.ScrollDirection = .horizontal(.right(.init(top: 0, left: left, bottom: 0, right: left))) // TODO: - fix Arabic
 
         return ScrollViewBounceDecorator(
             decorationView: bounceDecorationView,
