@@ -42,6 +42,7 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
         let itemHeight = Int(Double(itemWidth)*1.5)
 
         let layout = UICollectionViewFlowLayout()
+        layout.sectionHeadersPinToVisibleBounds = true
         layout.sectionInset = UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
         layout.minimumLineSpacing = inset
         layout.minimumInteritemSpacing = 0
@@ -57,6 +58,7 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
         collectionView.register(HeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderReusableView.reuseId)
         collectionView.register(LoadingCollectionFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: LoadingCollectionFooter.reuseId)
         collectionView.delaysContentTouches = false
+        collectionView.contentInset = .init(top: 0, left: 0, bottom: 10, right: 0)
 
         return collectionView
     }()

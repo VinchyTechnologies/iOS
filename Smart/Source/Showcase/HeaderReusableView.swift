@@ -25,6 +25,8 @@ public final class HeaderReusableView: UICollectionReusableView, Reusable {
     override public init(frame: CGRect) {
         super.init(frame: frame)
 
+        backgroundColor = .mainBackground
+
         label.font = Font.bold(25)
         label.textColor = .accent
         

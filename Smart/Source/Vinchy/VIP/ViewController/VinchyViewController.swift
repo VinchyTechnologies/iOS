@@ -297,7 +297,7 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
         case .mini, .big, .promo, .bottles:
             return .init(width: collectionView.frame.width, height: height)
         case .shareUs:
-            return .init(width: collectionView.frame.width - 40, height: height)
+            return .init(width: collectionView.frame.width - 20, height: height)
         case .infinity:
             switch collectionList[indexPath.row] {
             case .wine:
@@ -326,7 +326,7 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
             return .init(top: 0, left: 0, bottom: 0, right: 0)
 
         case .shareUs:
-            return .init(top: 20, left: 20, bottom: 10, right: 20)
+            return .init(top: 20, left: 10, bottom: 10, right: 10)
 
         case .infinity:
             return .init(top: 0, left: 10, bottom: 0, right: 10)
