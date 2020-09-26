@@ -401,6 +401,7 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
             case .shareUs:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShareUsCollectionCell.reuseId, for: indexPath) as! ShareUsCollectionCell
                 cell.decorate(model: .init(titleText: localized("like_vinchy")))
+                cell.delegate = self
                 return cell
             case .infinity:
                 switch collectionList[indexPath.row] {
@@ -545,6 +546,14 @@ extension VinchyViewController: VinchyViewControllerProtocol {
 }
 
 extension GADUnifiedNativeAd: AdsProtocol { }
+
+extension VinchyViewController: ShareUsCollectionCellDelegate {
+    func didTapShareUs(_ button: UIButton) {
+        let items = [localized("i_use_vinchy"), openAppStoreURL]
+        let controller = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        present(controller, animated: true)
+    }
+}
 
 
 //extension VinchyViewController: GADBannerViewDelegate {

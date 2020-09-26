@@ -20,11 +20,17 @@ public struct ShareUsCollectionCellViewModel: ViewModelProtocol, Hashable {
     
 }
 
+protocol ShareUsCollectionCellDelegate: AnyObject {
+    func didTapShareUs(_ button: UIButton)
+}
+
 final class ShareUsCollectionCell: UICollectionViewCell, Reusable {
 
     private let titleLabel = UILabel()
     private let subtitleLabel = UILabel()
     private let button = UIButton()
+
+    weak var delegate: ShareUsCollectionCellDelegate?
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -62,6 +68,7 @@ final class ShareUsCollectionCell: UICollectionViewCell, Reusable {
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 24
         button.clipsToBounds = true
+        button.addTarget(self, action: #selector(didTapShareUs(_:)), for: .touchUpInside)
 
         [titleLabel, subtitleLabel].forEach({ $0.numberOfLines = 0 })
 
@@ -80,6 +87,11 @@ final class ShareUsCollectionCell: UICollectionViewCell, Reusable {
     }
 
     required init?(coder: NSCoder) { fatalError() }
+
+    @objc
+    func didTapShareUs(_ button: UIButton) {
+        delegate?.didTapShareUs(button)
+    }
 
 }
 

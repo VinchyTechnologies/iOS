@@ -51,6 +51,7 @@
 "show_all" = "все";
 "choose" = "выбрать";
 "сhoose_countries" = "выберете страны";
+"i_use_vinchy" = "Я пользуюсь Vinchy чтобы выбрать вино, всем рекомендую";
 
 // MARK: - Sugar
 "sugar" = "сахар";
