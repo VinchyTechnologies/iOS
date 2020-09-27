@@ -32,7 +32,7 @@ final class ConfirmToStartViewController: UIViewController, OpenURLProtocol, Ale
 
         let text = localized("terms_of_use_agreement")
         view.label.text = text
-        view.label.textColor =  UIColor.dark
+        view.label.textColor =  .dark
         view.label.font = Font.medium(18)
         let underlineAttriString = NSMutableAttributedString(string: text)
         let range1 = (text as NSString).range(of: localized("terms_of_use"))

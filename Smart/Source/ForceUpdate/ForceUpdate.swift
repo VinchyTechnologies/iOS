@@ -12,14 +12,14 @@ struct ForceUpdateView: View {
     var body: some View {
         VStack {
             Spacer()
-            Text("Sorry, this version doesn't support anymore. Please, update the app")
+            Text("Sorry, this version doesn't support anymore. Please, update the app") // TODO: - localizze
                 .bold()
             Spacer()
             Button(action: {
                 openAppStore()
             }, label: {
-                Text("Go to Appstore")
-                    .foregroundColor(Color.white)
+                Text("Go to Appstore") // TODO: - localizze
+                    .foregroundColor(Color(.mainBackground))
                     .bold()
             })
             .frame(width: UIScreen.main.bounds.width - 40, height: 48, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
@@ -29,8 +29,7 @@ struct ForceUpdateView: View {
     }
 
     private func openAppStore() {
-        UIApplication.shared.open(URL(string: "itms://itunes.apple.com/app/id1166632935")!, options: [:])
-
+        UIApplication.shared.open(URL(string: openAppStoreURL)!, options: [:])
     }
 }
 
