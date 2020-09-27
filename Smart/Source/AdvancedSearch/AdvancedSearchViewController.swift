@@ -172,7 +172,6 @@ final class AdvancedSearchViewController: UIViewController, Alertable {
     private func showAll(at section: Int) {
         if filters[section].title == "country_code" {
             let preSelectedCountryCodes = selectedFilters.filter({ $0.0 == "country_code" }).map({ $0.1 })
-            print(preSelectedCountryCodes)
             present(Assembly.buildChooseCountiesModule(preSelectedCountryCodes: preSelectedCountryCodes, delegate: self), animated: true) {
             }
         }
@@ -240,6 +239,7 @@ extension AdvancedSearchViewController: UICollectionViewDataSource, UICollection
                         indexPath.row
                     }
 
+                cell.collectionView.reloadData()
                 cell.decorate(model: .init(items: items,
                                            selectedIndexs: selectedIndexs,
                                            section: indexPath.section,

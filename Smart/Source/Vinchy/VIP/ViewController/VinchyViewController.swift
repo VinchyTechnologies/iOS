@@ -229,7 +229,7 @@ final class VinchyViewController: UIViewController, Alertable, Loadable {
                 self.refreshControl.endRefreshing()
             }
         }
-        collectionView.reloadData()
+        fetchData()
         CATransaction.commit()
     }
 }

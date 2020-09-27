@@ -49,7 +49,7 @@ final class MoreViewController: UIViewController, Alertable {
                         text: localized("looking_for_partners").firstLetterUppercased(),
                         detailText: localized("become_a_part_of_a_wine_startup").firstLetterUppercased()),
 
-            SocialMediaCell(delegate: self),
+//            SocialMediaCell(delegate: self),
 
             RateAppCell(),
 
@@ -128,11 +128,11 @@ extension MoreViewController: UITableViewDelegate {
                 presenter.emailUs()
             case 2:
                 presenter.workWithUs()
-            case 4:
+            case 3:
                 presenter.rateApp()
-            case 5:
+            case 4:
                 presenter.goToDocController()
-            case 6:
+            case 5:
                 presenter.goToAboutController()
             default:
                 break
@@ -145,9 +145,9 @@ extension MoreViewController: UITableViewDelegate {
                 presenter.workWithUs()
             case 2:
                 presenter.rateApp()
-            case 4:
+            case 3:
                 presenter.goToDocController()
-            case 5:
+            case 4:
                 presenter.goToAboutController()
             default:
                 break
