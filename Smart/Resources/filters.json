@@ -30,7 +30,7 @@
         ]
     },
     {
-        "title": "country",
+        "title": "country_code",
         "type": "carusel",
         "category": "countries",
         "items": [

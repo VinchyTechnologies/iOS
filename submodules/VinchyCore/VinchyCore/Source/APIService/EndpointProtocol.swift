@@ -63,7 +63,8 @@ public extension EndpointProtocol {
     var headers: HTTPHeaders? {
         return [
             "Authorization": getTopSecretPreferences()?.apiKey ?? "",
-            "accept-language": Locale.current.languageCode ?? "en"
+            "accept-language": Locale.current.languageCode ?? "en",
+            "x-currency": Locale.current.currencyCode ?? "USD"
         ]
     }
 

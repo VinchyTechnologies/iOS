@@ -246,7 +246,7 @@ final class WineDetailViewController: UIViewController, Alertable, Loadable {
     private func buildTool(wine: Wine) -> [Section] {
         let isFavourite = realm(path: .like).objects(DBWine.self).first(where: { $0.wineID == wine.id }) != nil
         // TODO: - currency
-        return [.tool(price: formatCurrencyAmount(wine.price ?? 0, currency: "USD"), isLiked: isFavourite)]
+        return [.tool(price: formatCurrencyAmount(wine.price ?? 0, currency: Locale.current.currencyCode ?? "USD"), isLiked: isFavourite)]
     }
 
     private func buildDescription(wine: Wine) -> [Section] {

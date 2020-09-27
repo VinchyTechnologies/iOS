@@ -170,8 +170,8 @@ final class AdvancedSearchViewController: UIViewController, Alertable {
     }
 
     private func showAll(at section: Int) {
-        if filters[section].title == "country" {
-            let preSelectedCountryCodes = selectedFilters.filter({ $0.0 == "country" }).map({ $0.1 })
+        if filters[section].title == "country_code" {
+            let preSelectedCountryCodes = selectedFilters.filter({ $0.0 == "country_code" }).map({ $0.1 })
             print(preSelectedCountryCodes)
             present(Assembly.buildChooseCountiesModule(preSelectedCountryCodes: preSelectedCountryCodes, delegate: self), animated: true) {
             }
@@ -186,11 +186,11 @@ extension AdvancedSearchViewController: CountriesViewControllerDelegate {
             return FilterItem(title: countryNameFromLocaleCode(countryCode: code) ?? "unknown", imageName: code)
         }
 
-        if let index = filters.firstIndex(where: { $0.title == "country" }) {
+        if let index = filters.firstIndex(where: { $0.title == "country_code" }) {
 
-            selectedFilters.removeAll(where: { $0.0 == "country" })
+            selectedFilters.removeAll(where: { $0.0 == "country_code" })
             countryCodes.forEach { (code) in
-                selectedFilters.append(("country", code))
+                selectedFilters.append(("country_code", code))
             }
             selectedIndexPathes.removeAll(where: { $0.section == index })
             newFilterItems.enumerated().forEach { (i, _) in
@@ -252,7 +252,7 @@ extension AdvancedSearchViewController: UICollectionViewDataSource, UICollection
             switch filters[indexPath.section].type {
             case .carusel:
 
-                let prefix = selectedFilters.filter { $0.0 == "country" }.count + C.maxNumberItems
+                let prefix = selectedFilters.filter { $0.0 == "country_code" }.count + C.maxNumberItems
 
                 let items = filters[indexPath.section].items.enumerated().prefix(prefix).map { (index, filterItem) -> ImageOptionCollectionCellViewModel in
                     return .init(imageName: filterItem.imageName,
@@ -279,7 +279,10 @@ extension AdvancedSearchViewController: UICollectionViewDataSource, UICollection
 
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         if kind == categoryHeaderID {
-            let title = filters[safe: indexPath.section]?.title ?? ""
+            var title = filters[safe: indexPath.section]?.title ?? ""
+            if title == "country_code" {
+                title = "country"
+            }
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AdvancedHeader.reuseId, for: indexPath) as! AdvancedHeader
             header.decorate(model: .init(titleText: localized(title).firstLetterUppercased(), moreText: localized("show_all").firstLetterUppercased(), shouldShowMore: filters[indexPath.section].category == .countries))
             header.section = indexPath.section
