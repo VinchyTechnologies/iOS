@@ -63,7 +63,7 @@ final fileprivate class StandartCell: UITableViewCell, Reusable {
     private let label: UILabel = {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
-        label.font = Font.bold(18)
+        label.font = Font.bold(16)
         label.textColor = .dark
         
         return label

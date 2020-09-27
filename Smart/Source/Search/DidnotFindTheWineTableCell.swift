@@ -27,7 +27,7 @@ final class DidnotFindTheWineTableCell: UITableViewCell, Reusable {
 
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.text = localized("did_not_find_the_wine")
-        titleLabel.font = Font.bold(20)
+        titleLabel.font = Font.bold(16)
         titleLabel.adjustsFontSizeToFitWidth = true
         titleLabel.minimumScaleFactor = 0.8
 
@@ -38,7 +38,7 @@ final class DidnotFindTheWineTableCell: UITableViewCell, Reusable {
         writeUsButton.contentEdgeInsets = .init(top: 12, left: 16, bottom: 12, right: 16)
         writeUsButton.layer.cornerRadius = 10
         writeUsButton.clipsToBounds = true
-        writeUsButton.titleLabel?.font = Font.bold(16)
+        writeUsButton.titleLabel?.font = Font.bold(14)
         writeUsButton.addTarget(self, action: #selector(didTapWriteUsButton(_:)), for: .touchUpInside)
 
         addSubview(writeUsButton)
