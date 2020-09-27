@@ -283,6 +283,9 @@ extension AdvancedSearchViewController: UICollectionViewDataSource, UICollection
             if title == "country_code" {
                 title = "country"
             }
+            if title == "dish_list" {
+                title = "compatibility"
+            }
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AdvancedHeader.reuseId, for: indexPath) as! AdvancedHeader
             header.decorate(model: .init(titleText: localized(title).firstLetterUppercased(), moreText: localized("show_all").firstLetterUppercased(), shouldShowMore: filters[indexPath.section].category == .countries))
             header.section = indexPath.section
