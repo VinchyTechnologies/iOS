@@ -324,7 +324,6 @@ PODS:
     - InputBarAccessoryView/Core (= 5.2.0)
   - InputBarAccessoryView/Core (5.2.0)
   - leveldb-library (1.22)
-  - MagazineLayout (1.6.2)
   - nanopb (1.30906.0):
     - nanopb/decode (= 1.30906.0)
     - nanopb/encode (= 1.30906.0)
@@ -339,6 +338,7 @@ PODS:
   - SDWebImage (5.9.1):
     - SDWebImage/Core (= 5.9.1)
   - SDWebImage/Core (5.9.1)
+  - SwiftLint (0.40.2)
 
 DEPENDENCIES:
   - Firebase/Analytics
@@ -347,9 +347,9 @@ DEPENDENCIES:
   - FSPagerView
   - Google-Mobile-Ads-SDK
   - InputBarAccessoryView
-  - MagazineLayout
   - RealmSwift
   - SDWebImage
+  - SwiftLint
 
 SPEC REPOS:
   trunk:
@@ -372,12 +372,12 @@ SPEC REPOS:
     - gRPC-Core
     - InputBarAccessoryView
     - leveldb-library
-    - MagazineLayout
     - nanopb
     - PromisesObjC
     - Realm
     - RealmSwift
     - SDWebImage
+    - SwiftLint
 
 SPEC CHECKSUMS:
   abseil: 6c8eb7892aefa08d929b39f9bb108e5367e3228f
@@ -399,13 +399,13 @@ SPEC CHECKSUMS:
   gRPC-Core: 4afa11bfbedf7cdecd04de535a9e046893404ed5
   InputBarAccessoryView: ac1bc2a11508fc2490c2322beb1d4c9f05c8e634
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
-  MagazineLayout: 8e995730bc2b1ff8f11f44cb7d7926ab9640892f
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: b14b1c6b68e306650688599de8a45e49fae81151
   Realm: ced868eb0254f8d33a21c06981355e5aa33bc005
   RealmSwift: aedc4363150f3c61f91ae0537ed116d2d080a4dd
   SDWebImage: a990c053fff71e388a10f3357edb0be17929c9c5
+  SwiftLint: 1216c910d27c2633ade33b4f071bb6b930982e62
 
-PODFILE CHECKSUM: be56fe5019737b3e8eadc6e529152a773fdbbd7a
+PODFILE CHECKSUM: 54dce85924610a7db72a2fe5608abe65fd17d647
 
 COCOAPODS: 1.9.3

@@ -115,6 +115,7 @@ extension AdvancedSearchCaruselCollectionCell: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        // swiftlint:disable:next force_cast
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageOptionCollectionCell.reuseId, for: indexPath) as! ImageOptionCollectionCell
         cell.decorate(model: items[indexPath.row])
         cell.setSelected(flag: selectedIndexs.contains(indexPath.row), animated: false)
@@ -153,4 +154,3 @@ extension AdvancedSearchCaruselCollectionCell: ScrollViewBounceDecoratorDelegate
         delegate?.showMore(at: section)
     }
 }
-

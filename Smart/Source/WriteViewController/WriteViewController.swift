@@ -78,7 +78,7 @@ final class WriteMessageController: UIViewController {
         guard let title = subject, !title.isEmpty else { return }
 
         if let note = note {
-            try! realm(path: .notes).write {
+            try! realm(path: .notes).write {// swiftlint:disable:this force_try
                 note.title = title
                 note.fullReview = body ?? ""
             }
@@ -118,7 +118,6 @@ extension WriteMessageController: UITableViewDataSource {
         } else {
             cell.labelPlaceholder.text = localized("description").firstLetterUppercased()
             cell.textFieldTitle.text = localized("description").firstLetterUppercased()
-
 
             if body != nil {
                 cell.textField.text = body

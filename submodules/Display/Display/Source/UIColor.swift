@@ -36,7 +36,7 @@ extension UIColor {
     }
 
     public final class var option: UIColor {
-        UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
+        UIColor(red: 241 / 255, green: 243 / 255, blue: 246 / 255, alpha: 1.0)
     }
 
     public final class var randomColor: UIColor {

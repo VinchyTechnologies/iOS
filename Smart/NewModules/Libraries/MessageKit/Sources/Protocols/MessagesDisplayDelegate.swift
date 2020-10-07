@@ -21,6 +21,7 @@
  OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  SOFTWARE.
  */
+// swiftlint:disable all
 
 import Foundation
 import MapKit
@@ -304,7 +305,7 @@ public extension MessagesDisplayDelegate {
         } else if duration < 3600 {
             retunValue = String(format: "%.02d:%.02d", Int(duration/60), Int(duration) % 60)
         } else {
-            let hours = Int(duration/3600)
+            let hours = Int(duration / 3600)
             let remainingMinutsInSeconds = Int(duration) - hours*3600
             retunValue = String(format: "%.02d:%.02d:%.02d", hours, Int(remainingMinutsInSeconds/60), Int(remainingMinutsInSeconds) % 60)
         }

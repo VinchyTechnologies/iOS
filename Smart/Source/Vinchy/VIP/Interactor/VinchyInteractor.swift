@@ -17,7 +17,6 @@ final class VinchyInteractor {
 
     private let dispatchGroup = DispatchGroup()
 
-
     private let router: VinchyRouterProtocol
     private let presenter: VinchyPresenterProtocol
 
@@ -82,7 +81,6 @@ final class VinchyInteractor {
 //        }
 //    }
 }
-
 
 extension VinchyInteractor: VinchyInteractorProtocol {
     func viewDidLoad() {

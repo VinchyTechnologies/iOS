@@ -15,8 +15,10 @@ public struct UserDefaultsConfig {
 
     @UserDefault("agreeToTermsAndConditions", defaultValue: false)
     static public var isAgreedToTermsAndConditions: Bool
-}
 
+    @UserDefault("lastSeenOnboardingVersion", defaultValue: 0)
+    static public var lastSeenOnboardingVersion: Int
+}
 
 @propertyWrapper
 public struct UserDefault<T> {

@@ -52,5 +52,3 @@ extension TextCollectionCell: Decoratable {
         label.attributedText = model.titleText
     }
 }
-
-

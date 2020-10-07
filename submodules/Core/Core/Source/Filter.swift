@@ -43,5 +43,5 @@ public func loadFilters() -> [Filter] {
         return []
     }
 
-    return try! JSONDecoder().decode([Filter].self, from: data)
+    return try! JSONDecoder().decode([Filter].self, from: data)// swiftlint:disable:this force_try
 }

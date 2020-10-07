@@ -5,6 +5,7 @@
 //  Created by Aleksei Smirnov on 12.06.2020.
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
+// swiftlint:disable all
 
 import UIKit
 import MapKit

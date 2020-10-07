@@ -5,6 +5,7 @@
 //  Created by Алексей Смирнов on 12/04/2019.
 //  Copyright © 2019 Алексей Смирнов. All rights reserved.
 //
+// swiftlint:disable all
 
 import UIKit
 import Display

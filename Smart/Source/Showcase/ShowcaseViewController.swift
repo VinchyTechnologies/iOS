@@ -39,7 +39,7 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
         let rowCount = 2
         let inset: CGFloat = 10
         let itemWidth = Int((UIScreen.main.bounds.width - inset * CGFloat(rowCount + 1)) / CGFloat(rowCount))
-        let itemHeight = Int(Double(itemWidth)*1.5)
+        let itemHeight = Int(Double(itemWidth) * 1.5)
 
         let layout = UICollectionViewFlowLayout()
         layout.sectionHeadersPinToVisibleBounds = true
@@ -245,12 +245,14 @@ extension ShowcaseViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         switch kind {
         case UICollectionView.elementKindSectionHeader:
+            // swiftlint:disable:next force_cast
             let reusableview = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderReusableView.reuseId, for: indexPath) as! HeaderReusableView
             let categoryItem = categoryItems[indexPath.section]
             reusableview.decorate(model: .init(title: categoryItem.title))
             return reusableview
 
         case UICollectionView.elementKindSectionFooter:
+            // swiftlint:disable:next force_cast
             let reusableview = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: LoadingCollectionFooter.reuseId, for: indexPath) as! LoadingCollectionFooter
             switch mode {
             case .normal:

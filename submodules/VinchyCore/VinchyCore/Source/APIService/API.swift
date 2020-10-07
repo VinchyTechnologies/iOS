@@ -109,7 +109,6 @@ final class API {
     }
 }
 
-
 extension Dictionary {
 
     func percentEncoded() -> Data? {

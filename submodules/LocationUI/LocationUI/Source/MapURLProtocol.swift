@@ -211,7 +211,6 @@ final class MapURLBuilder {
     }
 }
 
-
 fileprivate let builder = MapURLBuilder()
 
 public func buildURL(_ latitude: CLLocationDegrees, _ longitude: CLLocationDegrees, size: CGSize) -> String {

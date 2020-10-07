@@ -42,6 +42,7 @@ private func loadCurrencyFormatterEntries() -> [String: CurrencyFormatterEntry] 
 
     for (code, contents) in dict {
         if let contentsDict = contents as? [String: AnyObject] {
+            // swiftlint:disable:next force_cast
             let entry = CurrencyFormatterEntry(symbol: contentsDict["symbol"] as! String, thousandsSeparator: contentsDict["thousandsSeparator"] as! String, decimalSeparator: contentsDict["decimalSeparator"] as! String, symbolOnLeft: (contentsDict["symbolOnLeft"] as! NSNumber).boolValue, spaceBetweenAmountAndSymbol: (contentsDict["spaceBetweenAmountAndSymbol"] as! NSNumber).boolValue, decimalDigits: (contentsDict["decimalDigits"] as! NSNumber).intValue)
             result[code] = entry
             result[code.lowercased()] = entry

@@ -25,7 +25,7 @@ public final class VinchyFooterCollectionReusableView: UICollectionReusableView,
     public override init(frame: CGRect) {
         super.init(frame: frame)
         label.numberOfLines = 2
-        label.insets = .init(top: 0, left: 15, bottom: 0, right: 15)
+        label.insets = .init(top: 0, left: 20, bottom: 0, right: 20)
         addSubview(label)
     }
 
@@ -41,8 +41,7 @@ extension VinchyFooterCollectionReusableView: Decoratable {
 
     public typealias ViewModel = VinchyFooterCollectionReusableViewModel
 
-    public func decorate(model: VinchyFooterCollectionReusableViewModel) {
+    public func decorate(model: ViewModel) {
         label.attributedText = model.titleText
     }
 }
-

@@ -73,8 +73,8 @@ public final class WineCollectionViewCell: HighlightCollectionCell, Reusable {
         NSLayoutConstraint.activate([
             bottleImageView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor),
             bottleImageView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            bottleImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 2/3),
-            bottleImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1/4),
+            bottleImageView.heightAnchor.constraint(equalTo: contentView.heightAnchor, multiplier: 2 / 3),
+            bottleImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor, multiplier: 1 / 4),
         ])
 
         let stackView = UIStackView()

@@ -65,7 +65,7 @@ public final class ImageOptionCollectionCell: HighlightCollectionCell, Reusable 
         if animated {
             UIView.animate(withDuration: 0.1, delay: 0, options: .transitionCrossDissolve, animations: {
                 self.backgroundColor = flag ? .accent : .option
-                self.titleLabel.textColor =  flag ? .white : .dark
+                self.titleLabel.textColor = flag ? .white : .dark
                 self.imageView.alpha = flag ? 0 : 1
 
             }, completion: nil)

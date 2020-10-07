@@ -26,7 +26,7 @@ final class LoveViewController: UIViewController {
         let rowCount = 2
         let inset: CGFloat = 10
         let itemWidth = Int((UIScreen.main.bounds.width - inset * CGFloat(rowCount + 1)) / CGFloat(rowCount))
-        let itemHeight = Int(Double(itemWidth)*1.4)
+        let itemHeight = Int(Double(itemWidth) * 1.4)
 
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
@@ -79,13 +79,13 @@ final class LoveViewController: UIViewController {
         collectionView.register(WineCollectionViewCell.self, forCellWithReuseIdentifier: WineCollectionViewCell.reuseId)
         collectionView.delaysContentTouches = false
 
-        likeNotificationToken = likeRealm.observe { notification, realm in
+        likeNotificationToken = likeRealm.observe { _, _ in
             if self.currentState == .like {
                 self.wines = self.dataBase.all(at: .like)
             }
         }
 
-        dislikeNotificationToken = dislikeRealm.observe { notification, realm in
+        dislikeNotificationToken = dislikeRealm.observe { _, _ in
             if self.currentState == .dislike {
                 self.wines = self.dataBase.all(at: .dislike)
             }
@@ -128,12 +128,14 @@ final class LoveViewController: UIViewController {
 }
 
 extension LoveViewController: UICollectionViewDataSource {
+
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         wines.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let wine = wines[safe: indexPath.row] else { return .init() }
+        // swiftlint:disable:next force_cast
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as! WineCollectionViewCell
         cell.decorate(model: .init(imageURL: wine.mainImageUrl.toURL, titleText: wine.title, subtitleText: nil, backgroundColor: .randomColor))
         return cell

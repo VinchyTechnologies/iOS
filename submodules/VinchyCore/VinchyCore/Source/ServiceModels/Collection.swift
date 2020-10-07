@@ -7,26 +7,29 @@
 //
 
 import Display // TODO: - Delete
+import UIKit
 
 public protocol AdsProtocol: AnyObject { }
 
 public enum CollectionType: String, Decodable {
-    case mini, big, promo, bottles, shareUs, infinity
+    case mini, big, promo, bottles, shareUs, infinity, smartFilter
 
     public var itemSize: VinchySize {
         switch self {
         case .mini:
             return .init(width: .absolute(135), height: .absolute(135))
         case .big:
-            return .init(width: .dimension(2/3), height: .absolute(155))
+            return .init(width: .dimension(2 / 3), height: .absolute(155))
         case .promo:
-            return .init(width: .dimension(5/6), height: .absolute(120))
+            return .init(width: .dimension(5 / 6), height: .absolute(120))
         case .bottles:
             return .init(width: .absolute(150), height: .absolute(250))
         case .shareUs:
             return .init(width: .dimension(1), height: .absolute(160))
         case .infinity:
             return .init(width: .dimension(2), height: .absolute(250))
+        case .smartFilter:
+            return .init(width: .absolute(UIScreen.main.bounds.width - 40), height: .absolute(250))
         }
     }
 }

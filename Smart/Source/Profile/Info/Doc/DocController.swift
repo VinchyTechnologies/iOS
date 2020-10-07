@@ -57,7 +57,6 @@ final class DocController: UITableViewController, OpenURLProtocol, Alertable {
     }
 }
 
-
 final fileprivate class StandartCell: UITableViewCell, Reusable {
 
     private let label: UILabel = {

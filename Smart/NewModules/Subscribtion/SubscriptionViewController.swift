@@ -60,7 +60,6 @@ extension SubscriptionViewController: UITableViewDelegate {
     }
 }
 
-
 struct SubscriptionTableCellViewModel: ViewModelProtocol {
     let imageName: String
     let title: String
