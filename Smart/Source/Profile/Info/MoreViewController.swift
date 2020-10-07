@@ -10,6 +10,7 @@ import UIKit
 import CommonUI
 import StringFormatting
 import Display
+// swiftlint:disable all
 
 protocol MoreViewProtocol: AnyObject {
     func presentAlert(message: String)
@@ -38,7 +39,6 @@ final class MoreViewController: UIViewController, Alertable {
                         text: localized("contact_phone"),
                         detailText: localized("for_any_questions").firstLetterUppercased())]
         }
-
 
         arr += [
             ContactCell(icon: UIImage(systemName: "envelope.fill")!,

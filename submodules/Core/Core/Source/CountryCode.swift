@@ -23,5 +23,5 @@ public func loadCountryCodes() -> [Country] {
         return []
     }
 
-    return try! JSONDecoder().decode([Country].self, from: data)
+    return try! JSONDecoder().decode([Country].self, from: data) // swiftlint:disable:this force_try
 }

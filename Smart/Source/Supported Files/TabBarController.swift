@@ -21,12 +21,12 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
         let attributesNormal = [
             NSAttributedString.Key.foregroundColor: colorNormal,
-            NSAttributedString.Key.font: titleFontAll
+            NSAttributedString.Key.font: titleFontAll,
         ]
 
         let attributesSelected = [
             NSAttributedString.Key.foregroundColor: colorSelected,
-            NSAttributedString.Key.font: titleFontAll
+            NSAttributedString.Key.font: titleFontAll,
         ]
 
         UITabBar.appearance().barTintColor = .white
@@ -59,23 +59,23 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
                                           image: UIImage(systemName: "circle.grid.3x3", withConfiguration: imageConfig)?.withTintColor(.blueGray, renderingMode: .alwaysOriginal),
                                           selectedImage: UIImage(systemName: "circle.grid.3x3", withConfiguration: imageConfig)?.withTintColor(.accent, renderingMode: .alwaysOriginal))
 
+        /*
+        let chat = NavigationController(rootViewController: BasicExampleViewController())
+        chat.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "bubble.left"), selectedImage: nil)
 
-//        let chat = NavigationController(rootViewController: BasicExampleViewController())
-//        chat.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "bubble.left"), selectedImage: nil)
+        let cart = NavigationController(rootViewController: CartViewController())
+        cart.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "cart"), selectedImage: nil)
 
-//        let cart = NavigationController(rootViewController: CartViewController())
-//        cart.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "cart"), selectedImage: nil)
-
-
-//        let somelier = Assembly.buildSomelierModule()
-//        somelier.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "rectangle.stack"), selectedImage: nil)
+        let somelier = Assembly.buildSomelierModule()
+        somelier.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "rectangle.stack"), selectedImage: nil)
+         */
 
         [main, love, notes, profile].forEach { (controller) in
             controller.tabBarItem.titlePositionAdjustment = .init(horizontal: 0, vertical: -3)
             controller.tabBarItem.imageInsets = .init(top: 10, left: 0, bottom: 0, right: 0)
         }
 
-        viewControllers = [main, love, /*somelier,*/ notes, /*chat, cart,*/ profile]
+        viewControllers = [main, love, notes, profile]
 
     }
 

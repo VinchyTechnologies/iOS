@@ -56,8 +56,6 @@ final class DidnotFindTheWineTableCell: UITableViewCell, Reusable {
             titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
             titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: writeUsButton.leadingAnchor, constant: -10),
         ])
-
-
     }
 
     required init?(coder: NSCoder) { fatalError() }

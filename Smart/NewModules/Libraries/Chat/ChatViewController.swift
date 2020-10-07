@@ -6,6 +6,7 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 //import MessageKit
+// swiftlint:disable all
 
 import UIKit
 import InputBarAccessoryView

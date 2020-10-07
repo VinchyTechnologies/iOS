@@ -56,7 +56,7 @@ final class WineDetailViewController: UIViewController, Alertable, Loadable {
         }
     }
 
-    private lazy var layout = UICollectionViewCompositionalLayout { (sectionNumber, env) -> NSCollectionLayoutSection? in
+    private lazy var layout = UICollectionViewCompositionalLayout { (sectionNumber, _) -> NSCollectionLayoutSection? in
         switch self.sections[sectionNumber] {
         case .gallery:
             let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
@@ -211,7 +211,7 @@ final class WineDetailViewController: UIViewController, Alertable, Loadable {
         sections += [.title(text: wine.title)]
         sections += buildTool(wine: wine)
         sections += buildDescription(wine: wine)
-        sections +=  buildGeneralInfo(wine: wine)
+        sections += buildGeneralInfo(wine: wine)
 
         let servingTipsSection = buildServingTips(wine: wine)
         if !servingTipsSection.isEmpty {
@@ -329,22 +329,26 @@ extension WineDetailViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         switch sections[indexPath.section] {
         case .gallery(let urls):
+            // swiftlint:disable:next force_cast
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GalleryCell.reuseId, for: indexPath) as! GalleryCell
             cell.decorate(model: .init(urls: urls))
             return cell
 
         case .title(let text):
+            // swiftlint:disable:next force_cast
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseId, for: indexPath) as! TextCollectionCell
             cell.decorate(model: .init(titleText: NSAttributedString(string: text, font: Font.heavy(20), textColor: .dark)))
             return cell
 
         case .tool(let price, let isLiked):
+            // swiftlint:disable:next force_cast
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ToolCollectionCell.reuseId, for: indexPath) as! ToolCollectionCell
             cell.decorate(model: .init(price: price, isLiked: isLiked))
             cell.delegate = self
             return cell
 
         case .description(let text):
+            // swiftlint:disable:next force_cast
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseId, for: indexPath) as! TextCollectionCell
             cell.decorate(model: .init(titleText: NSAttributedString(string: text, font: Font.light(18), textColor: .dark)))
             return cell
@@ -357,6 +361,7 @@ extension WineDetailViewController: UICollectionViewDataSource {
                 return .init()
 
             case .titleTextAndSubtitleText(let titleText, let subtitleText):
+                // swiftlint:disable:next force_cast
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TitleWithSubtitleInfoCollectionViewCell.reuseId, for: indexPath) as! TitleWithSubtitleInfoCollectionViewCell
                 cell.decorate(model: .init(titleText: titleText, subtitleText: subtitleText))
                 cell.backgroundColor = indexPath.row.isMultiple(of: 2) ? .option : .mainBackground
@@ -367,11 +372,13 @@ extension WineDetailViewController: UICollectionViewDataSource {
             let item = info[indexPath.row]
             switch item {
             case .titleTextAndImage(let imageName, let titleText):
+                // swiftlint:disable:next force_cast
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageOptionCollectionCell.reuseId, for: indexPath) as! ImageOptionCollectionCell
                 cell.decorate(model: .init(imageName: imageName, titleText: titleText))
                 return cell
 
             case .titleTextAndSubtitleText(let titleText, let subtitleText):
+                // swiftlint:disable:next force_cast
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShortInfoCollectionCell.reuseId, for: indexPath) as! ShortInfoCollectionCell
                 let title = NSAttributedString(string: titleText ?? "", font: Font.with(size: 24, design: .round, traits: .bold), textColor: .dark)
                 let subtitle = NSAttributedString(string: subtitleText ?? "", font: Font.with(size: 18, design: .round, traits: .bold), textColor: .blueGray)
@@ -380,6 +387,7 @@ extension WineDetailViewController: UICollectionViewDataSource {
             }
 
         case .button(let viewModel):
+            // swiftlint:disable:next force_cast
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ButtonCollectionCell.reuseId, for: indexPath) as! ButtonCollectionCell
             cell.decorate(model: viewModel)
             let isDisliked = realm(path: .dislike).objects(DBWine.self).first(where: { $0.wineID == wine?.id }) != nil
@@ -388,6 +396,7 @@ extension WineDetailViewController: UICollectionViewDataSource {
             return cell
             
         case .ad:
+            // swiftlint:disable:next force_cast
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BigAdCollectionCell.reuseId, for: indexPath) as! BigAdCollectionCell
             cell.adBanner.delegate = self
             cell.adBanner.adUnitID = "ca-app-pub-6194258101406763/5750190016"

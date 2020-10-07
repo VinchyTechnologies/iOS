@@ -9,6 +9,7 @@
 import UIKit
 import Display
 import StringFormatting
+// swiftlint:disable all
 
 final class StandartImageView: UIImageView {
     
@@ -106,4 +107,3 @@ final class SocialMediaCell: UITableViewCell {
         delegate?.didClickInstagram()
     }
 }
-

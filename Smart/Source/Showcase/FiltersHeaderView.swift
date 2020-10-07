@@ -83,13 +83,13 @@ final class ASFiltersHeaderView: UIView {
         }
     }
 
-    func addSoftUIEffectForView(themeColor: UIColor = UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)) {
+    func addSoftUIEffectForView(themeColor: UIColor = UIColor(red: 241 / 255, green: 243 / 255, blue: 246 / 255, alpha: 1.0)) {
         clipsToBounds = false
         self.layer.masksToBounds = false
         self.layer.shadowRadius = 2
         self.layer.shadowOpacity = 1
         self.layer.shadowOffset = CGSize(width: 2, height: 2)
-        self.layer.shadowColor = UIColor(red: 223/255, green: 228/255, blue: 238/255, alpha: 1.0).cgColor
+        self.layer.shadowColor = UIColor(red: 223 / 255, green: 228 / 255, blue: 238 / 255, alpha: 1.0).cgColor
 
         let shadowLayer = CAShapeLayer()
         shadowLayer.frame = bounds
@@ -122,6 +122,7 @@ extension ASFiltersHeaderView: UICollectionViewDataSource {
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        // swiftlint:disable:next force_cast
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseId, for: indexPath) as! TextCollectionCell
         let titleText = NSAttributedString(string: categoryTitles[safe: indexPath.row] ?? "", font: Font.bold(16), textColor: .blueGray)
         cell.decorate(model: .init(titleText: titleText))

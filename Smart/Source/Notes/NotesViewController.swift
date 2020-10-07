@@ -31,7 +31,7 @@ final class NotesViewController: UIViewController {
 
     init() {
         super.init(nibName: nil, bundle: nil)
-        notesNotificationToken = notesRealm.observe { notification, realm in
+        notesNotificationToken = notesRealm.observe { _, _ in
             self.notes = self.dataBase.all(at: .notes)
         }
     }

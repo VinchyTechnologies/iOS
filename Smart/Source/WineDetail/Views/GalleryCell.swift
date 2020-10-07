@@ -80,5 +80,3 @@ extension GalleryCell: Decoratable {
         self.urls = model.urls.compactMap({ $0?.toURL })
     }
 }
-
-

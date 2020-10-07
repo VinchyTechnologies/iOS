@@ -5,6 +5,7 @@
 //  Created by Aleksei Smirnov on 03.07.2020.
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
+// swiftlint:disable all
 
 import UIKit
 import Display
@@ -60,8 +61,8 @@ final class EnterMessageCell: UITableViewCell, UITextViewDelegate, Reusable {
         return view
     }()
 
-    func cell(isSelected : Bool) {
-        guard let text = textField.text else {return}
+    func cell(isSelected: Bool) {
+        guard let text = textField.text else { return }
         if isSelected {
             UIView.animate(withDuration: 0.45) {
                 self.labelPlaceholder.alpha = 0
@@ -71,7 +72,7 @@ final class EnterMessageCell: UITableViewCell, UITextViewDelegate, Reusable {
                 self.textField.alpha = 1
             }
         } else {
-            if text.count ==  0 {
+            if text.count == 0 {
                 UIView.animate(withDuration: 0.45) {
                     self.labelPlaceholder.alpha = 1
                     self.removeConstraint(self.textFieldBottomAnchor!)
@@ -155,13 +156,12 @@ final class EnterMessageCell: UITableViewCell, UITextViewDelegate, Reusable {
         handleEditing()
     }
 
-    @objc private func handleEditing() {
+    @objc
+    private func handleEditing() {
         guard
             let cell1 = tableView?.cellForRow(at: IndexPath(row: 0, section: 0)) as? EnterMessageCell,
             let cell2 = tableView?.cellForRow(at: IndexPath(row: 1, section: 0)) as? EnterMessageCell
-        else {
-            return
-        }
+        else { return }
 
         delegate?.handleEditing(title: cell1.textField.text, fullReview: cell2.textField.text)
     }

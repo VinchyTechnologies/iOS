@@ -54,4 +54,3 @@ extension MoreBounceDecoratorView: Decoratable {
         label.text = model.titleText
     }
 }
-

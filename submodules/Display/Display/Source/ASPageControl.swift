@@ -5,6 +5,7 @@
 //  Created by Aleksei Smirnov on 18.07.2020.
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
+// swiftlint:disable all
 
 import UIKit
 
@@ -108,7 +109,7 @@ public final class ASPageControl: UIControl {
                 let amplitude = CGFloat(self.numberOfPages/2) * diameter + spacing*CGFloat((self.numberOfPages-1)/2)
                 return midX - amplitude
             case .right, .trailing:
-                let contentWidth = diameter*CGFloat(self.numberOfPages) + CGFloat(self.numberOfPages-1)*spacing
+                let contentWidth = diameter * CGFloat(self.numberOfPages) + CGFloat(self.numberOfPages-1)*spacing
                 return contentView.frame.width - contentWidth
             default:
                 return 0
@@ -119,7 +120,8 @@ public final class ASPageControl: UIControl {
             let state: UIControl.State = (index == self.currentPage) ? .selected : .normal
             let image = self.images[state]
             let size = image?.size ?? CGSize(width: diameter, height: diameter)
-            let origin = CGPoint(x: x - (size.width-diameter)*0.5, y: self.contentView.bounds.midY-size.height*0.5)
+            let origin = CGPoint(x: x - (size.width - diameter) * 0.5,
+                                 y: self.contentView.bounds.midY-size.height*0.5)
             value.frame = CGRect(origin: origin, size: size)
             x = x + spacing + diameter
         }
@@ -295,7 +297,6 @@ public final class ASPageControl: UIControl {
 
 extension UIControl.State: Hashable {
     public var hashValue: Int {
-        return Int((6777*self.rawValue+3777)%UInt(UInt16.max))
+        return Int((6777 * self.rawValue + 3777) % UInt(UInt16.max))
     }
 }
-

@@ -9,10 +9,8 @@
 import UIKit
 import VinchyCore
 import Display
-import MagazineLayout
 import StringFormatting
 import CommonUI
-
 
 protocol VinchySimpleConiniousCaruselCollectionCellDelegate: AnyObject {
     func didTapBootleCell(wineID: Int64)
@@ -52,7 +50,7 @@ final class VinchySimpleConiniousCaruselCollectionCell: UICollectionViewCell, Re
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.contentInset = .init(top: 0, left: 10, bottom: 0, right: 10)
+        collectionView.contentInset = .init(top: 0, left: 20, bottom: 0, right: 20)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -86,16 +84,19 @@ extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDataSource
 
         switch self.type {
         case .mini:
+            // swiftlint:disable:next force_cast
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StoryCollectionCell.reuseId, for: indexPath) as! StoryCollectionCell
             cell.decorate(model: .init(imageURL: collections[safe: indexPath.row]?.imageURL?.toURL, titleText: collections[safe: indexPath.row]?.title))
             return cell
 
         case .big:
+            // swiftlint:disable:next force_cast
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainSubtitleCollectionCell.reuseId, for: indexPath) as! MainSubtitleCollectionCell
             cell.decorate(model: .init(subtitleText: collections[safe: indexPath.row]?.title, imageURL: collections[safe: indexPath.row]?.imageURL?.toURL))
             return cell
 
         case .promo:
+            // swiftlint:disable:next force_cast
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MainSubtitleCollectionCell.reuseId, for: indexPath) as! MainSubtitleCollectionCell
             cell.decorate(model: .init(subtitleText: collections[safe: indexPath.row]?.title, imageURL: collections[safe: indexPath.row]?.imageURL?.toURL))
             return cell
@@ -108,6 +109,7 @@ extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDataSource
 
             switch collectionItem {
             case .wine(let wine):
+                // swiftlint:disable:next force_cast
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as! WineCollectionViewCell
                 cell.decorate(model: .init(imageURL: wine.mainImageUrl?.toURL, titleText: wine.title, subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode), backgroundColor: .randomColor))
                 return cell
@@ -115,7 +117,7 @@ extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDataSource
                 return .init()
             }
 
-        case .none, .shareUs, .infinity:
+        case .none, .shareUs, .infinity, .smartFilter:
             return .init()
         }
     }
@@ -145,7 +147,7 @@ extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDelegateFl
                 break
             }
 
-        case .none, .shareUs, .infinity:
+        case .none, .shareUs, .infinity, .smartFilter:
             break
         }
     }

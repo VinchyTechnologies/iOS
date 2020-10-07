@@ -230,7 +230,7 @@ extension AdvancedSearchViewController: UICollectionViewDataSource, UICollection
                     return .init(imageName: filterItem.imageName,
                                  titleText: localized(filterItem.title).firstLetterUppercased())
                 }
-
+                // swiftlint:disable:next force_cast
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AdvancedSearchCaruselCollectionCell.reuseId, for: indexPath) as! AdvancedSearchCaruselCollectionCell
 
                 let selectedIndexs = selectedIndexPathes
@@ -254,12 +254,12 @@ extension AdvancedSearchViewController: UICollectionViewDataSource, UICollection
 
                 let prefix = selectedFilters.filter { $0.0 == "country_code" }.count + C.maxNumberItems
 
-                let items = filters[indexPath.section].items.enumerated().prefix(prefix).map { (index, filterItem) -> ImageOptionCollectionCellViewModel in
+                let items = filters[indexPath.section].items.enumerated().prefix(prefix).map { (_, filterItem) -> ImageOptionCollectionCellViewModel in
                     return .init(imageName: filterItem.imageName,
                                  titleText: countryNameFromLocaleCode(countryCode: filterItem.imageName))
                 }
 
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AdvancedSearchCaruselCollectionCell.reuseId, for: indexPath) as! AdvancedSearchCaruselCollectionCell
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AdvancedSearchCaruselCollectionCell.reuseId, for: indexPath) as! AdvancedSearchCaruselCollectionCell // swiftlint:disable:this force_cast
 
                 let selectedIndexs = selectedIndexPathes
                     .filter({ $0.section == indexPath.section })
@@ -286,12 +286,14 @@ extension AdvancedSearchViewController: UICollectionViewDataSource, UICollection
             if title == "dish_list" {
                 title = "compatibility"
             }
+            // swiftlint:disable:next force_cast
             let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AdvancedHeader.reuseId, for: indexPath) as! AdvancedHeader
             header.decorate(model: .init(titleText: localized(title).firstLetterUppercased(), moreText: localized("show_all").firstLetterUppercased(), shouldShowMore: filters[indexPath.section].category == .countries))
             header.section = indexPath.section
             header.delegate = self
             return header
         } else {
+            // swiftlint:disable:next force_cast
             let separator = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SeparatorFooter.reuseId, for: indexPath) as! SeparatorFooter
             return separator
         }

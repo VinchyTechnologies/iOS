@@ -142,7 +142,6 @@ public extension CALayer {
     }
 }
 
-
 public class DecoratorFlowLayout: UICollectionViewFlowLayout {
 
     public var alignment: LayoutAlignment?

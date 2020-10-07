@@ -47,7 +47,7 @@ public enum EditingStackViewConfiguration {
     }
 }
 
-public struct EditingStackViewModel : ViewModelProtocol {
+public struct EditingStackViewModel: ViewModelProtocol {
     let config: EditingStackViewConfiguration
 
     public init(config: EditingStackViewConfiguration) {
@@ -123,7 +123,7 @@ final public class EditingStackView: UIView {
 
 }
 
-extension EditingStackView : Decoratable {
+extension EditingStackView: Decoratable {
 
     public typealias ViewModel = EditingStackViewModel
 

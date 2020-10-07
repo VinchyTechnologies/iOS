@@ -10,7 +10,7 @@ import UIKit
 
 extension UIColor {
     public static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat = 1.0) -> UIColor {
-        return UIColor(red: red/255, green: green/255, blue: blue/255, alpha: alpha)
+        return UIColor(red: red / 255, green: green / 255, blue: blue / 255, alpha: alpha)
     }
 }
 
@@ -60,11 +60,11 @@ public extension UIApplication {
 
     var asKeyWindow: UIWindow? {
         UIApplication.shared.connectedScenes
-            .filter({$0.activationState == .foregroundActive})
+            .filter({ $0.activationState == .foregroundActive })
             .map({$0 as? UIWindowScene})
-            .compactMap({$0})
+            .compactMap({ $0 })
             .first?.windows
-            .filter({$0.isKeyWindow}).first
+            .filter({ $0.isKeyWindow }).first
     }
 
     static func topViewController(base: UIViewController? = UIApplication.shared.asKeyWindow?.rootViewController) -> UIViewController? {

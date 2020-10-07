@@ -160,6 +160,7 @@ extension CountriesViewController: UITableViewDataSource {
     }
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // swiftlint:disable:next force_cast
         let cell = tableView.dequeueReusableCell(withIdentifier: CountryTableViewCell.reuseId) as! CountryTableViewCell
         let country = countriesModels[indexPath.section].countries[indexPath.row]
         cell.decorate(model: .init(flagImage: UIImage(named: country.countryCode),

@@ -51,7 +51,6 @@ final class ShareUsCollectionCell: UICollectionViewCell, Reusable {
         stackView.axis = .vertical
         stackView.distribution = .equalSpacing
     
-
         titleLabel.font = Font.with(size: 24, design: .round, traits: .bold)
         titleLabel.textColor = .dark
 

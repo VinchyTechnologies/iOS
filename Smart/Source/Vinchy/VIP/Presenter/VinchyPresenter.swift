@@ -26,5 +26,4 @@ final class VinchyPresenter {
 
 extension VinchyPresenter: VinchyPresenterProtocol {
 
-
 }
