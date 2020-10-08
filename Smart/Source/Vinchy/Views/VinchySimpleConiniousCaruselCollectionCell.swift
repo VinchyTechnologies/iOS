@@ -72,6 +72,16 @@ final class VinchySimpleConiniousCaruselCollectionCell: UICollectionViewCell, Re
 
     required init?(coder: NSCoder) { fatalError() }
 
+    static func height(viewModel: ViewModel) -> CGFloat {
+        switch viewModel.type.itemSize.height {
+        case .absolute(let itemHeight):
+            return itemHeight
+
+        case .dimension(let ratio):
+            return UIScreen.main.bounds.height * ratio
+        }
+    }
+
 }
 
 extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDataSource {

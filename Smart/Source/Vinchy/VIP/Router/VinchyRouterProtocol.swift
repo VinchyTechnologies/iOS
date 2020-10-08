@@ -7,5 +7,5 @@
 //
 
 protocol VinchyRouterProtocol: AnyObject {
-
+    func pushToAdvancedFilterViewController()
 }

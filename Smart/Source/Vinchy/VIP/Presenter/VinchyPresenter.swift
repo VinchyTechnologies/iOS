@@ -7,14 +7,15 @@
 //
 
 import UIKit
+import Display
+import VinchyCore
+import StringFormatting
 
 final class VinchyPresenter {
 
     private enum C {
-
+        static let harmfulToYourHealthText = localized("harmful_to_your_health")
     }
-
-//    typealias ViewModel = SlotsViewModel
 
     weak var viewController: VinchyViewControllerProtocol?
 
@@ -26,4 +27,78 @@ final class VinchyPresenter {
 
 extension VinchyPresenter: VinchyPresenterProtocol {
 
+    func update(sections: [VinchyViewControllerViewModel.Section]) {
+        viewController?.updateUI(sections: sections)
+    }
+
+    func startLoading() {
+        viewController?.addLoader()
+        viewController?.startLoadingAnimation()
+    }
+
+    func update(compilations: [Compilation]) {
+        viewController?.stopLoadingAnimation()
+
+        var sections: [VinchyViewControllerViewModel.Section] = []
+
+        for compilation in compilations {
+
+            if let title = compilation.title {
+                sections.append(.title([
+                    .init(titleText: NSAttributedString(string: title,
+                                                        font: Font.heavy(20),
+                                                        textColor: .dark))
+                ]))
+            }
+
+            switch compilation.type {
+            case .mini:
+                sections.append(.stories([
+                    .init(type: compilation.type,
+                          collections: compilation.collectionList)
+                ]))
+
+            case .big:
+                sections.append(.big([
+                    .init(type: compilation.type,
+                          collections: compilation.collectionList)
+                ]))
+
+            case .promo:
+                sections.append(.promo([
+                    .init(type: compilation.type,
+                          collections: compilation.collectionList)
+                ]))
+
+            case .bottles:
+                sections.append(.bottles([
+                    .init(type: compilation.type,
+                          collections: compilation.collectionList)
+                ]))
+
+            case .shareUs:
+                break
+
+            case .infinity:
+                break
+
+            case .smartFilter:
+                break
+            }
+        }
+
+        sections.append(.title([
+            .init(titleText:
+                    NSAttributedString(string: C.harmfulToYourHealthText,
+                                       font: Font.light(15),
+                                       textColor: .blueGray,
+                                       paragraphAlignment: .justified))
+        ]))
+
+        viewController?.updateUI(sections: sections)
+    }
+
+    func update(suggestions: [Wine]) {
+        viewController?.updateSearchSuggestions(suggestions: suggestions)
+    }
 }

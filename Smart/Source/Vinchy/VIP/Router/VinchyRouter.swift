@@ -19,5 +19,8 @@ final class VinchyRouter {
 }
 
 extension VinchyRouter: VinchyRouterProtocol {
-
+    
+    func pushToAdvancedFilterViewController() {
+        viewController?.navigationController?.pushViewController(Assembly.buildFiltersModule(), animated: true)
+    }
 }

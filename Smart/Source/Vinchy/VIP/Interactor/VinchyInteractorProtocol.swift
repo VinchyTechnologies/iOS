@@ -10,4 +10,6 @@ import Foundation
 
 protocol VinchyInteractorProtocol: AnyObject {
     func viewDidLoad()
+    func didPullToRefresh()
+    func didTapFilter()
 }
