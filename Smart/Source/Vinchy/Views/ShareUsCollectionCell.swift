@@ -101,6 +101,4 @@ extension ShareUsCollectionCell: Decoratable {
     func decorate(model: ViewModel) {
         self.titleLabel.text = model.titleText
     }
-
-
 }

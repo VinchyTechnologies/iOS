@@ -235,7 +235,6 @@ public class DecoratorFlowLayout: UICollectionViewFlowLayout {
 
 }
 
-
 public class StickyHeaderLayout: UICollectionViewFlowLayout {
 
 //    public override func layoutAttributesForSupplementaryView(ofKind elementKind: String, at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {

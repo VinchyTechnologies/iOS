@@ -28,7 +28,6 @@ import CoreLocation
 import AVFoundation
 import UIKit
 
-
 private struct CoordinateItem: LocationItem {
 
     var location: CLLocation
