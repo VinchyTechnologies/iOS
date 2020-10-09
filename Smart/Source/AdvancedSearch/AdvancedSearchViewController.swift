@@ -42,7 +42,7 @@ final class AdvancedSearchViewController: UIViewController, Alertable {
 
     private var selectedIndexPathes: [IndexPath] = []
 
-    private lazy var layout = UICollectionViewCompositionalLayout { (sectionNumber, env) -> NSCollectionLayoutSection? in
+    private lazy var layout = UICollectionViewCompositionalLayout { (sectionNumber, _) -> NSCollectionLayoutSection? in
         switch self.filters[sectionNumber].type {
         case .carusel:
             let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
@@ -226,7 +226,7 @@ extension AdvancedSearchViewController: UICollectionViewDataSource, UICollection
             switch filters[indexPath.section].type {
             case .carusel:
 
-                let items = filters[indexPath.section].items.enumerated().map { (index, filterItem) -> ImageOptionCollectionCellViewModel in
+                let items = filters[indexPath.section].items.enumerated().map { (_, filterItem) -> ImageOptionCollectionCellViewModel in
                     return .init(imageName: filterItem.imageName,
                                  titleText: localized(filterItem.title).firstLetterUppercased())
                 }

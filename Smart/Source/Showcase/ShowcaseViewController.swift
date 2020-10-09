@@ -105,7 +105,7 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
                 return
             }
             categoryItems = groupedWines.map({ (arrayWine) -> CategoryItem in
-                return CategoryItem(title: countryNameFromLocaleCode(countryCode: arrayWine.first?.winery?.countryCode)  ?? localized("unknown_country_code"), wines: arrayWine)
+                return CategoryItem(title: countryNameFromLocaleCode(countryCode: arrayWine.first?.winery?.countryCode) ?? localized("unknown_country_code"), wines: arrayWine)
             })
 
         case .advancedSearch:

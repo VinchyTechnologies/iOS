@@ -40,6 +40,6 @@ extension UIColor {
     }
 
     public final class var randomColor: UIColor {
-        colors.randomElement()!
+        colors.randomElement() ?? .option
     }
 }

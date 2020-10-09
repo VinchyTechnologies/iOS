@@ -71,7 +71,7 @@ public final class ImageOptionCollectionCell: HighlightCollectionCell, Reusable 
             }, completion: nil)
         } else {
             self.backgroundColor = flag ? .accent : .option
-            self.titleLabel.textColor =  flag ? .white : .dark
+            self.titleLabel.textColor = flag ? .white : .dark
             self.imageView.alpha = flag ? 0 : 1
         }
     }
