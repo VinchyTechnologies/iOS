@@ -10,22 +10,19 @@
 import UIKit
 
 public class SheetTransition: NSObject, UIViewControllerAnimatedTransitioning {
-    public static var transitionDuration: TimeInterval = 0.3
-    
     var presenting = true
     weak var presenter: UIViewController?
     var options: SheetOptions
-    var duration = SheetTransition.transitionDuration
     
     init(options: SheetOptions) {
         self.options = options
         super.init()
     }
-    
+
     public func transitionDuration(using transitionContext: UIViewControllerContextTransitioning?) -> TimeInterval {
-        return self.duration
+        return self.options.transitionDuration
     }
-    
+
     public func animateTransition(using transitionContext: UIViewControllerContextTransitioning) {
         let containerView = transitionContext.containerView
         if self.presenting {
@@ -45,19 +42,30 @@ public class SheetTransition: NSObject, UIViewControllerAnimatedTransitioning {
             contentView.transform = CGAffineTransform(translationX: 0, y: contentView.bounds.height)
             sheet.overlayView.alpha = 0
             
-            UIView.animate(
-                withDuration: self.duration,
-                animations: {
-                    if self.options.shrinkPresentingViewController {
+            let heightPercent = contentView.bounds.height / UIScreen.main.bounds.height
+            
+            // Use a normal animation to animate the shadown and background view
+            UIView.animate(withDuration: self.options.transitionDuration * 0.6, delay: 0, options: [.curveEaseOut]) {
+                if self.options.shrinkPresentingViewController {
 
-                        let topSafeArea = UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.safeAreaInsets.top ?? 0
-                        
-                        presenter.view.layer.transform = CATransform3DConcat(CATransform3DMakeTranslation(0, topSafeArea/2, 0), CATransform3DMakeScale(0.92, 0.92, 1))
-                        presenter.view.layer.cornerRadius = self.options.presentingViewCornerRadius
-                        presenter.view.layer.masksToBounds = true
-                    }
+                    let topSafeArea = UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.safeAreaInsets.top ?? 0
+                    
+                    presenter.view.layer.transform = CATransform3DConcat(CATransform3DMakeTranslation(0, topSafeArea/2, 0), CATransform3DMakeScale(0.92, 0.92, 1))
+                    presenter.view.layer.cornerRadius = self.options.presentingViewCornerRadius
+                    presenter.view.layer.masksToBounds = true
+                }
+                sheet.overlayView.alpha = 1
+            } completion: { _ in }
+
+            // Use a bounce effect to animate the view in
+            UIView.animate(
+                withDuration: self.options.transitionDuration,
+                delay: 0,
+                usingSpringWithDamping: self.options.transitionDampening + ((heightPercent - 0.2) * 1.25 * 0.17),
+                initialSpringVelocity: self.options.transitionVelocity * heightPercent,
+                options: self.options.transitionAnimationOptions,
+                animations: {
                     contentView.transform = .identity
-                    sheet.overlayView.alpha = 1
                 },
                 completion: { _ in
                     transitionContext.completeTransition(!transitionContext.transitionWasCancelled)
@@ -69,10 +77,10 @@ public class SheetTransition: NSObject, UIViewControllerAnimatedTransitioning {
                 transitionContext.completeTransition(true)
                 return
             }
-            
+
             containerView.addSubview(sheet.view)
             let contentView = sheet.contentViewController.contentView
-            
+
             self.restorePresentor(
                 presenter,
                 animations: {
@@ -84,10 +92,10 @@ public class SheetTransition: NSObject, UIViewControllerAnimatedTransitioning {
             )
         }
     }
-    
+
     func restorePresentor(_ presenter: UIViewController, animated: Bool = true, animations: (() -> Void)? = nil, completion: ((Bool) -> Void)? = nil) {
         UIView.animate(
-            withDuration: self.duration,
+            withDuration: self.options.transitionDuration,
             animations: {
                 if self.options.shrinkPresentingViewController {
                     presenter.view.layer.transform = CATransform3DMakeScale(1, 1, 1)
@@ -100,13 +108,13 @@ public class SheetTransition: NSObject, UIViewControllerAnimatedTransitioning {
             }
         )
     }
-    
+
     func setPresentor(percentComplete: CGFloat) {
         guard self.options.shrinkPresentingViewController, let presenter = self.presenter else { return }
         let scale: CGFloat = min(1, 0.92 + (0.08 * percentComplete))
-        
+
         let topSafeArea = UIApplication.shared.windows.filter {$0.isKeyWindow}.first?.safeAreaInsets.top ?? 0
-        
+
         presenter.view.layer.transform = CATransform3DConcat(CATransform3DMakeTranslation(0, (1 - percentComplete) * topSafeArea/2, 0), CATransform3DMakeScale(scale, scale, 1))
         presenter.view.layer.cornerRadius = self.options.presentingViewCornerRadius * (1 - percentComplete)
     }

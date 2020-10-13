@@ -12,15 +12,20 @@ import UIKit
 public class SheetViewController: UIViewController {
     public private(set) var options: SheetOptions
     
-    /// Default value for autoAdjustToKeyboard. Defaults to false.
-    public static var autoAdjustToKeyboard = false
+    /// Default value for autoAdjustToKeyboard. Defaults to true.
+    public static var autoAdjustToKeyboard = true
     /// Automatically grow/move the sheet to accomidate the keyboard. Defaults to false.
     public var autoAdjustToKeyboard = SheetViewController.autoAdjustToKeyboard
     
-    /// Default value for allowPullingPastMaxHeight. Defaults to true.
-    public static var allowPullingPastMaxHeight = true
+	/// Default value for allowPullingPastMaxHeight. Defaults to true.
+	public static var allowPullingPastMaxHeight = true
     /// Allow pulling past the maximum height and bounce back. Defaults to true.
     public var allowPullingPastMaxHeight = SheetViewController.allowPullingPastMaxHeight
+    
+	/// Default value for allowPullingPastMinHeight. Defaults to true.
+	public static var allowPullingPastMinHeight = true
+	/// Allow pulling below the minimum height and bounce back. Defaults to true.
+	public var allowPullingPastMinHeight = SheetViewController.allowPullingPastMinHeight
     
     /// The sizes that the sheet will attempt to pin to. Defaults to intrensic only.
     public var sizes: [SheetSize] = [.intrinsic] {
@@ -147,6 +152,7 @@ public class SheetViewController: UIViewController {
     var overlayView = UIView()
     var blurView = UIVisualEffectView()
     var overlayTapView = UIView()
+    var overflowView = UIView()
     var overlayTapGesture: UITapGestureRecognizer?
     private var contentViewHeightConstraint: NSLayoutConstraint!
     
@@ -369,7 +375,9 @@ public class SheetViewController: UIViewController {
         var newHeight = max(0, self.prePanHeight + (self.firstPanPoint.y - point.y))
         var offset: CGFloat = 0
         if newHeight < minHeight {
-            offset = minHeight - newHeight
+            if self.allowPullingPastMinHeight {
+                offset = minHeight - newHeight
+            }
             newHeight = minHeight
         }
         if newHeight > maxHeight {
@@ -410,7 +418,13 @@ public class SheetViewController: UIViewController {
                 
                 guard finalHeight > 0 || !self.dismissOnPull else {
                     // Dismiss
-                    UIView.animate(withDuration: animationDuration, delay: 0, options: [.curveEaseOut], animations: {
+                    UIView.animate(
+                        withDuration: animationDuration,
+                        delay: 0,
+                        usingSpringWithDamping: self.options.transitionDampening,
+                        initialSpringVelocity: self.options.transitionVelocity,
+                        options: self.options.transitionAnimationOptions,
+                        animations: {
                         self.contentViewController.view.transform = CGAffineTransform(translationX: 0, y: self.contentViewController.view.bounds.height)
                         self.view.backgroundColor = UIColor.clear
                         self.transition.setPresentor(percentComplete: 1)
@@ -447,7 +461,13 @@ public class SheetViewController: UIViewController {
                 self.currentSize = newSize
                 
                 let newContentHeight = self.height(for: newSize)
-                UIView.animate(withDuration: animationDuration, delay: 0, options: [.curveEaseOut], animations: {
+                UIView.animate(
+                    withDuration: animationDuration,
+                    delay: 0,
+                    usingSpringWithDamping: self.options.transitionDampening,
+                    initialSpringVelocity: self.options.transitionVelocity,
+                    options: self.options.transitionAnimationOptions,
+                    animations: {
                     self.contentViewController.view.transform = CGAffineTransform.identity
                     self.contentViewHeightConstraint.constant = newContentHeight
                     self.transition.setPresentor(percentComplete: 0)
@@ -484,7 +504,7 @@ public class SheetViewController: UIViewController {
     }
     
     private func adjustForKeyboard(height: CGFloat, from notification: Notification) {
-        guard let info:[AnyHashable: Any] = notification.userInfo else { return }
+        guard self.autoAdjustToKeyboard, let info:[AnyHashable: Any] = notification.userInfo else { return }
         self.keyboardHeight = height
         
         let duration:TimeInterval = (info[UIResponder.keyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0

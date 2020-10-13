@@ -95,8 +95,8 @@ sheetController.dismissOnPull = false
 /// Allow pulling past the maximum height and bounce back. Defaults to true.
 sheetController.allowPullingPastMaxHeight = false
 
-/// Automatically grow/move the sheet to accomidate the keyboard. Defaults to false.
-sheetController.autoAdjustToKeyboard = false
+/// Automatically grow/move the sheet to accomidate the keyboard. Defaults to true.
+sheetController.autoAdjustToKeyboard = true
 
 // Color of the sheet anywhere the child view controller may not show (or is transparent), such as behind the keyboard currently
 sheetController.contentBackgroundColor
@@ -110,7 +110,7 @@ self.present(sheetController, animated: false, completion: nil)
 **Handling dismiss events**
 ```swift
 let sheet = SheetViewController(controller: controller, sizes: [.fixed(420), .fullScreen])
-sheet.willDismiss = { _ in
+sheet.shouldDismiss = { _ in
 // This is called just before the sheet is dismissed. Return false to prevent the build in dismiss events
     return true
 }
