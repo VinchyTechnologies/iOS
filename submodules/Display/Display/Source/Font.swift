@@ -142,7 +142,7 @@ public extension NSAttributedString {
 
 public extension String {
 
-    public func height(forWidth width: CGFloat, font: UIFont) -> CGFloat {
+    func height(forWidth width: CGFloat, font: UIFont) -> CGFloat {
         let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
         let boundingBox = self.boundingRect(with: constraintRect,
                                             options: .usesLineFragmentOrigin,
@@ -151,7 +151,7 @@ public extension String {
         return ceil(boundingBox.height)
     }
 
-    public func height(forWidth width: CGFloat, font: UIFont, numberOfLines: Int) -> CGFloat {
+    func height(forWidth width: CGFloat, font: UIFont, numberOfLines: Int) -> CGFloat {
         let result = height(forWidth: width, font: font)
         let maxHeight = font.lineHeight * CGFloat(numberOfLines)
         return min(result, maxHeight)
