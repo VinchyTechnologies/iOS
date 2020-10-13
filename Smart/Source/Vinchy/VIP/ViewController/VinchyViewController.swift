@@ -149,25 +149,6 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath) {
 
-//        if isSearchingMode {
-//            guard let wineID = suggestions[safe: indexPath.row]?.id else { return }
-//            navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wineID), animated: true)
-//        } else {
-//            switch compilations[safe: indexPath.section]?.type {
-//            case .mini, .big, .promo, .bottles, .shareUs, .none:
-//                return
-//            case .smartFilter:
-//                // TODO: - show pager
-//                break
-//            case .infinity:
-//                switch collectionList[safe: indexPath.row] {
-//                case .wine(let wine):
-//                    navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wine.id), animated: true)
-//                case .ads, .none:
-//                    return
-//                }
-//            }
-//        }
     }
 
     func collectionView(

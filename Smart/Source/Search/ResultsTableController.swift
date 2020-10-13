@@ -34,9 +34,11 @@ final class ResultsTableController: UIViewController {
         view.addSubview(tableView)
         tableView.frame = view.frame
         tableView.dataSource = self
+        tableView.estimatedRowHeight = 65
 
         tableView.register(WineTableCell.self, forCellReuseIdentifier: WineTableCell.reuseId)
-        tableView.register(DidnotFindTheWineTableCell.self, forCellReuseIdentifier: DidnotFindTheWineTableCell.reuseId)
+        tableView.register(DidnotFindTheWineTableCell.self,
+                           forCellReuseIdentifier: DidnotFindTheWineTableCell.reuseId)
         tableView.tableFooterView = UIView()
     }
 }

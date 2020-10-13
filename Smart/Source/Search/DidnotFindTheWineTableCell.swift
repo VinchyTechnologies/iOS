@@ -18,7 +18,6 @@ final class DidnotFindTheWineTableCell: UITableViewCell, Reusable {
 
     weak var delegate: DidnotFindTheWineTableCellProtocol?
 
-    private let stackView = UIStackView()
     private let titleLabel = UILabel()
     private let writeUsButton = UIButton()
 
@@ -43,19 +42,18 @@ final class DidnotFindTheWineTableCell: UITableViewCell, Reusable {
         writeUsButton.titleLabel?.font = Font.bold(14)
         writeUsButton.addTarget(self, action: #selector(didTapWriteUsButton(_:)), for: .touchUpInside)
 
-        addSubview(writeUsButton)
+        contentView.addSubview(writeUsButton)
         NSLayoutConstraint.activate([
-            writeUsButton.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-            writeUsButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-            writeUsButton.centerYAnchor.constraint(equalTo: centerYAnchor),
+            writeUsButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+            writeUsButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
             writeUsButton.heightAnchor.constraint(equalToConstant: 44),
-            writeUsButton.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
+            writeUsButton.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -10),
         ])
 
-        addSubview(titleLabel)
+        contentView.addSubview(titleLabel)
         NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+            titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
             titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: writeUsButton.leadingAnchor, constant: -10),
         ])
     }
