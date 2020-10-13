@@ -11,6 +11,7 @@ import Combine
 import StringFormatting
 
 public protocol Alertable: UIViewController {
+    @discardableResult
     func showAlert(title: String, message: String?) -> AnyPublisher<Void, Never>
 }
 

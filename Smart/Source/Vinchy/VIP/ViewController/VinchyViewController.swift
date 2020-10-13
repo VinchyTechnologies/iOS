@@ -19,7 +19,7 @@ fileprivate enum C {
     static let horizontalInset: CGFloat = 20
 }
 
-final class VinchyViewController: UIViewController, Alertable {
+final class VinchyViewController: UIViewController {
 
     // MARK: - Public Properties
 

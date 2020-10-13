@@ -25,6 +25,8 @@ final class DidnotFindTheWineTableCell: UITableViewCell, Reusable {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
 
+        selectionStyle = .none
+
         titleLabel.translatesAutoresizingMaskIntoConstraints = false
         titleLabel.text = localized("did_not_find_the_wine")
         titleLabel.font = Font.bold(16)

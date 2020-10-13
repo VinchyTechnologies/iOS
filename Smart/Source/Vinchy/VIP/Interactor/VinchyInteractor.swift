@@ -147,11 +147,11 @@ extension VinchyInteractor: VinchyInteractorProtocol {
         }
 
         if emailService.canSend {
-//            let emailController = emailService.getEmailController(HTMLText: localized("email_did_not_find_wine") + (searchText ?? ""),
-//                                                                  recipients: [localized("contact_email")])
-//            present(emailController, animated: true, completion: nil)
+            router.presentEmailController(
+                HTMLText: presenter.cantFindWineText + searchText,
+                recipients: presenter.cantFindWineRecipients)
         } else {
-//            showAlert(message: localized("open_mail_error"))
+            presenter.showAlertCantOpenEmail()
         }
     }
 }
