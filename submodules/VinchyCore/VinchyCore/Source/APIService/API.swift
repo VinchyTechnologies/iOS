@@ -9,6 +9,8 @@
 import Foundation
 import StringFormatting
 
+let domain = "vinchy.tech" //"wineappp.herokuapp.com"
+
 public enum APIError: Error {
 
     case invalidURL
@@ -73,7 +75,7 @@ final class API {
 
         var request = URLRequest(url: url)
 
-        print(url)
+//        print(url)
 
         if endpoint.headers != nil {
             endpoint.headers?.forEach({ (key, value) in
@@ -82,6 +84,8 @@ final class API {
         }
 
         request.httpMethod = endpoint.method.rawValue
+
+        print(request)
 
         URLSession.shared.dataTask(with: request) { data, response, error in
 

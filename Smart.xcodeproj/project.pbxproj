@@ -131,6 +131,7 @@
 		CA4857942517C77E00EDA4CE /* VinchyAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4857932517C77E00EDA4CE /* VinchyAssembly.swift */; };
 		CA48579B2517CA5200EDA4CE /* VinchyViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA48579A2517CA5200EDA4CE /* VinchyViewControllerProtocol.swift */; };
 		CA4858512519446800EDA4CE /* ForceUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4858502519446800EDA4CE /* ForceUpdate.swift */; };
+		CA490141252F7EDC00066A98 /* VinchyViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA490140252F7EDC00066A98 /* VinchyViewControllerViewModel.swift */; };
 		CA49A219251E8CFE00FBE269 /* TitleWithSubtitleInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49A218251E8CFE00FBE269 /* TitleWithSubtitleInfoCollectionViewCell.swift */; };
 		CA49A25B251F2C4600FBE269 /* BigAdCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49A25A251F2C4600FBE269 /* BigAdCollectionCell.swift */; };
 		CA4AED9B24CE204900035922 /* TopSecret.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA4AED9A24CE204900035922 /* TopSecret.plist */; };
@@ -375,6 +376,7 @@
 		CA4857932517C77E00EDA4CE /* VinchyAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyAssembly.swift; sourceTree = "<group>"; };
 		CA48579A2517CA5200EDA4CE /* VinchyViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyViewControllerProtocol.swift; sourceTree = "<group>"; };
 		CA4858502519446800EDA4CE /* ForceUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceUpdate.swift; sourceTree = "<group>"; };
+		CA490140252F7EDC00066A98 /* VinchyViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyViewControllerViewModel.swift; sourceTree = "<group>"; };
 		CA49A218251E8CFE00FBE269 /* TitleWithSubtitleInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleWithSubtitleInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		CA49A25A251F2C4600FBE269 /* BigAdCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigAdCollectionCell.swift; sourceTree = "<group>"; };
 		CA4AED9A24CE204900035922 /* TopSecret.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TopSecret.plist; sourceTree = "<group>"; };
@@ -933,6 +935,7 @@
 		CA4857722517BE7700EDA4CE /* VIP */ = {
 			isa = PBXGroup;
 			children = (
+				CA490146252F817200066A98 /* ViewModel */,
 				CA4857992517CA3900EDA4CE /* ViewController */,
 				CA4857922517C76C00EDA4CE /* Assembly */,
 				CA48578C2517C72100EDA4CE /* Router */,
@@ -992,6 +995,14 @@
 				CA4858502519446800EDA4CE /* ForceUpdate.swift */,
 			);
 			path = ForceUpdate;
+			sourceTree = "<group>";
+		};
+		CA490146252F817200066A98 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CA490140252F7EDC00066A98 /* VinchyViewControllerViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		CA4D17FD2492B1BE00B49BD4 /* Chat */ = {
@@ -1543,6 +1554,7 @@
 				CA154DF12494EA2B00696436 /* MessageCollectionViewCell.swift in Sources */,
 				CA472B53245EDEDB009149FF /* MenuLine.swift in Sources */,
 				CA154DE32494EA2B00696436 /* Bundle+Extensions.swift in Sources */,
+				CA490141252F7EDC00066A98 /* VinchyViewControllerViewModel.swift in Sources */,
 				CA154E032494EA2B00696436 /* MessageCellDelegate.swift in Sources */,
 				CA154DCF2494EA2B00696436 /* LocationMessageSizeCalculator.swift in Sources */,
 				CA48579B2517CA5200EDA4CE /* VinchyViewControllerProtocol.swift in Sources */,
