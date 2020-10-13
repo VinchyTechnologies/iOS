@@ -8,4 +8,5 @@
 
 protocol VinchyRouterProtocol: AnyObject {
     func pushToAdvancedFilterViewController()
+    func pushToDetailCollection(searchText: String)
 }

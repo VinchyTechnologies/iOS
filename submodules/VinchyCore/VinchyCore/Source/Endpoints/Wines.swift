@@ -14,7 +14,7 @@ private enum WinesEndpoint: EndpointProtocol {
     case search(title: String, offset: Int, limit: Int)
 
     var host: String {
-        return "wineappp.herokuapp.com"
+        return domain
     }
 
     var path: String {

@@ -8,6 +8,7 @@
 
 import EmailService
 import VinchyCore
+import Core
 
 final class VinchyInteractor {
 
@@ -23,11 +24,15 @@ final class VinchyInteractor {
         self.presenter.startLoading()
     }
 
+    private lazy var searchWorkItem = WorkItem()
+
     private let router: VinchyRouterProtocol
     private let presenter: VinchyPresenterProtocol
 
-    init(router: VinchyRouterProtocol,
-         presenter: VinchyPresenterProtocol) {
+    init(
+        router: VinchyRouterProtocol,
+        presenter: VinchyPresenterProtocol)
+    {
         self.router = router
         self.presenter = presenter
     }
@@ -46,6 +51,7 @@ final class VinchyInteractor {
             case .failure(let error):
                 print(error.localizedDescription)
             }
+
             self?.dispatchGroup.leave()
         }
 
@@ -85,7 +91,38 @@ final class VinchyInteractor {
 }
 
 extension VinchyInteractor: VinchyInteractorProtocol {
-    
+
+    func didTapSearchButton(searchText: String?) {
+
+        guard let searchText = searchText else {
+            return
+        }
+
+        router.pushToDetailCollection(searchText: searchText)
+    }
+
+    func didEnterSearchText(_ searchText: String?) {
+
+        guard
+            let searchText = searchText,
+            !searchText.isEmpty
+        else {
+            return
+        }
+
+        searchWorkItem.perform(after: 0.65) {
+            Wines.shared.getWineBy(title: searchText, offset: 0, limit: 40) { [weak self] result in
+                switch result {
+                case .success(let wines):
+                    self?.presenter.update(didFindWines: wines)
+
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        }
+    }
+
     func viewDidLoad() {
         fetchData()
         fetchSearchSuggestions()
@@ -101,5 +138,20 @@ extension VinchyInteractor: VinchyInteractorProtocol {
 
     func didTapFilter() {
         router.pushToAdvancedFilterViewController()
+    }
+
+    func didTapDidnotFindWineFromSearch(searchText: String?) {
+
+        guard let searchText = searchText else {
+            return
+        }
+
+        if emailService.canSend {
+//            let emailController = emailService.getEmailController(HTMLText: localized("email_did_not_find_wine") + (searchText ?? ""),
+//                                                                  recipients: [localized("contact_email")])
+//            present(emailController, animated: true, completion: nil)
+        } else {
+//            showAlert(message: localized("open_mail_error"))
+        }
     }
 }

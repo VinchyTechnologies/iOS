@@ -113,8 +113,11 @@ extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDataSource
 
         case .bottles:
             
-            guard let collection = collections.first, let collectionItem = collection.wineList[safe: indexPath.row] else {
-                return .init()
+            guard
+                let collection = collections.first,
+                let collectionItem = collection.wineList[safe: indexPath.row]
+            else {
+                fatalError()
             }
 
             switch collectionItem {
@@ -128,7 +131,7 @@ extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDataSource
             }
 
         case .none, .shareUs, .infinity, .smartFilter:
-            return .init()
+            fatalError()
         }
     }
 }

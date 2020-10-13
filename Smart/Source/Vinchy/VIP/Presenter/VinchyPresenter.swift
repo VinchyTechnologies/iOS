@@ -23,6 +23,10 @@ final class VinchyPresenter {
         self.viewController = viewController
     }
 
+    private func addTitle(_ title: String?) {
+
+    }
+
 }
 
 extension VinchyPresenter: VinchyPresenterProtocol {
@@ -43,41 +47,67 @@ extension VinchyPresenter: VinchyPresenterProtocol {
 
         for compilation in compilations {
 
-            if let title = compilation.title {
-                sections.append(.title([
-                    .init(titleText: NSAttributedString(string: title,
-                                                        font: Font.heavy(20),
-                                                        textColor: .dark))
-                ]))
-            }
-
             switch compilation.type {
             case .mini:
+                if let title = compilation.title {
+                    sections.append(.title([
+                        .init(titleText: NSAttributedString(string: title,
+                                                            font: Font.heavy(20),
+                                                            textColor: .dark))
+                    ]))
+                }
                 sections.append(.stories([
                     .init(type: compilation.type,
                           collections: compilation.collectionList)
                 ]))
 
             case .big:
+                if let title = compilation.title {
+                    sections.append(.title([
+                        .init(titleText: NSAttributedString(string: title,
+                                                            font: Font.heavy(20),
+                                                            textColor: .dark))
+                    ]))
+                }
                 sections.append(.big([
                     .init(type: compilation.type,
                           collections: compilation.collectionList)
                 ]))
 
             case .promo:
+                if let title = compilation.title {
+                    sections.append(.title([
+                        .init(titleText: NSAttributedString(string: title,
+                                                            font: Font.heavy(20),
+                                                            textColor: .dark))
+                    ]))
+                }
                 sections.append(.promo([
                     .init(type: compilation.type,
                           collections: compilation.collectionList)
                 ]))
 
             case .bottles:
-                sections.append(.bottles([
-                    .init(type: compilation.type,
-                          collections: compilation.collectionList)
-                ]))
+                if compilation.collectionList.first?.wineList != nil && !(compilation.collectionList.first?.wineList.isEmpty == true) {
+
+                    if let title = compilation.title {
+                        sections.append(.title([
+                            .init(titleText: NSAttributedString(string: title,
+                                                                font: Font.heavy(20),
+                                                                textColor: .dark))
+                        ]))
+                    }
+
+                    sections.append(.bottles([
+                        .init(type: compilation.type,
+                              collections: compilation.collectionList)
+                    ]))
+                }
 
             case .shareUs:
-                break
+                sections.append(.shareUs([
+                    .init(titleText: localized("like_vinchy"))
+                ]))
 
             case .infinity:
                 break
@@ -100,5 +130,9 @@ extension VinchyPresenter: VinchyPresenterProtocol {
 
     func update(suggestions: [Wine]) {
         viewController?.updateSearchSuggestions(suggestions: suggestions)
+    }
+
+    func update(didFindWines: [Wine]) {
+        viewController?.updateUI(didFindWines: didFindWines)
     }
 }

@@ -11,7 +11,7 @@ private enum CompilationsEndpoint: EndpointProtocol {
     case all
 
     var host: String {
-        return "wineappp.herokuapp.com"
+        return domain
     }
 
     var path: String {

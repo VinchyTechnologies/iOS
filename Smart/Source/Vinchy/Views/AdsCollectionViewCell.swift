@@ -9,6 +9,9 @@
 import UIKit
 import Display
 import GoogleMobileAds
+import VinchyCore
+
+extension GADUnifiedNativeAd: AdsProtocol { }
 
 final class AdsCollectionViewCell: UICollectionViewCell, Reusable {
 

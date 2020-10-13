@@ -12,4 +12,7 @@ protocol VinchyInteractorProtocol: AnyObject {
     func viewDidLoad()
     func didPullToRefresh()
     func didTapFilter()
+    func didTapDidnotFindWineFromSearch(searchText: String?)
+    func didTapSearchButton(searchText: String?)
+    func didEnterSearchText(_ searchText: String?)
 }

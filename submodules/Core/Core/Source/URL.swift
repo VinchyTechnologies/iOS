@@ -21,6 +21,7 @@ public extension String {
 }
 
 extension Optional where Wrapped == String {
+
     var toURL: URL? {
 
         if self == nil || self == "" {
