@@ -14,20 +14,28 @@ public enum DishCompatibility: String, Decodable {
         switch self {
         case .meat:
             return "meat"
+
         case .fish:
             return "fish"
+
         case .seafood:
             return "shrimp"
+
         case .wildfowl:
             return "rabbit"
+
         case .chicken:
             return "chicken"
+
         case .dessert:
             return "cake"
+
         case .bakery:
             return "bread"
+
         case .cheese:
             return "cheese"
+            
         case .fruits:
             return "fruit"
         }

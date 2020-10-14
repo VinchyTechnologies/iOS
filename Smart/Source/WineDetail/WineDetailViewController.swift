@@ -167,7 +167,8 @@ final class WineDetailViewController: UIViewController, Alertable, Loadable {
         }
     }
 
-    @objc private func didTapNotes() {
+    @objc
+    private func didTapNotes() {
 
         guard let wine = wine else { return }
         let controller = WriteMessageController()

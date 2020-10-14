@@ -25,8 +25,9 @@ final public class OnboardViewController: UIViewController {
 
     // MARK: - Initializers
 
-    public init(pageItems: [OnboardPage],
-                appearanceConfiguration: AppearanceConfiguration = AppearanceConfiguration())
+    public init(
+        pageItems: [OnboardPage],
+        appearanceConfiguration: AppearanceConfiguration = AppearanceConfiguration())
     {
         self.pageItems = pageItems
         self.appearanceConfiguration = appearanceConfiguration

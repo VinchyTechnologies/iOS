@@ -27,14 +27,19 @@ private final class CurrencyFormatterEntry {
 }
 
 private func loadCurrencyFormatterEntries() -> [String: CurrencyFormatterEntry] {
+
     guard let filePath = Bundle.main.path(forResource: "currencies", ofType: "json") else {
         return [:]
     }
+    
     guard let data = try? Data(contentsOf: URL(fileURLWithPath: filePath)) else {
         return [:]
     }
 
-    guard let object = try? JSONSerialization.jsonObject(with: data, options: []), let dict = object as? [String: AnyObject] else {
+    guard
+        let object = try? JSONSerialization.jsonObject(with: data, options: []),
+        let dict = object as? [String: AnyObject]
+    else {
         return [:]
     }
 

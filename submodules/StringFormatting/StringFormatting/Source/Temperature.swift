@@ -9,6 +9,7 @@
 import Foundation
 
 public func localizedTemperature(_ value: Double?) -> String? {
+    
     guard let value = value else { return nil }
     
     let formatter = MeasurementFormatter()

@@ -122,7 +122,8 @@ fileprivate extension UITapGestureRecognizer {
     func didTapAttributedTextInLabel(
         label: UILabel,
         inRange targetRange: NSRange)
-    -> Bool {
+        -> Bool
+    {
 
         guard let attributedText = label.attributedText else {
             return false

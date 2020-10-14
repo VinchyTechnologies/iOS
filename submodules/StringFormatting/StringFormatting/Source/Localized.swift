@@ -9,5 +9,5 @@
 import Foundation
 
 public func localized(_ string: String) -> String {
-    return NSLocalizedString(string, comment: "")
+    NSLocalizedString(string, comment: "")
 }

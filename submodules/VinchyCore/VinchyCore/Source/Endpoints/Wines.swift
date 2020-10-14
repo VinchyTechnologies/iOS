@@ -41,12 +41,19 @@ private enum WinesEndpoint: EndpointProtocol {
         switch self {
         case .detail:
             return nil
+
         case .random(let count):
             return [("count", String(count))]
+
         case .filter(let params):
             return params
+
         case .search(let title, let offset, let limit):
-            return [("title", title), ("offset", String(offset)), ("limit", String(limit))]
+            return [
+                ("title", title),
+                ("offset", String(offset)),
+                ("limit", String(limit))
+            ]
         }
     }
 
@@ -75,5 +82,4 @@ public final class Wines {
     public func getWineBy(title: String, offset: Int, limit: Int, completion: @escaping (Result<[Wine], APIError>) -> Void) {
         api.request(endpoint: WinesEndpoint.search(title: title, offset: offset, limit: limit), completion: completion)
     }
-
 }

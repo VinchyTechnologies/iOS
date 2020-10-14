@@ -10,7 +10,9 @@ import Foundation
 
 public func countryNameFromLocaleCode(countryCode: String?) -> String? {
 
-    guard let countryCode = countryCode else { return nil }
+    guard let countryCode = countryCode else {
+        return nil
+    }
 
     if let name = (Locale.current as NSLocale).displayName(forKey: .countryCode, value: countryCode) {
         return name

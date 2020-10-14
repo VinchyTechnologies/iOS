@@ -7,6 +7,7 @@
 //
 
 public enum Sugar: String, Decodable {
+    
     case dry
     case semiDry = "semi-dry"
     case semiSweet = "semi-sweet"

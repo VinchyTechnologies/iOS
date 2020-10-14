@@ -7,6 +7,7 @@
 //
 
 public struct Compilation: Decodable {
+    
     public let id: Int64?
     public let type: CollectionType
     public let title: String?
