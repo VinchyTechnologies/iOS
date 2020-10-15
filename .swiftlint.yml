@@ -25,6 +25,7 @@ whitelist_rules:
 excluded:
   - Carthage
   - Pods
+  - tools
 
 colon:
   apply_to_dictionaries: false
