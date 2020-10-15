@@ -8,6 +8,6 @@
 
 import Foundation
 
-final class WineDetailAssembly: Assembly {
+final class WineDetailAssembly {
 
 }
