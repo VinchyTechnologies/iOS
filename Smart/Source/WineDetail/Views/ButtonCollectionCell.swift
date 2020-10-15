@@ -71,6 +71,7 @@ extension ButtonCollectionCell: Decoratable {
     typealias ViewModel = ButtonCollectionCellViewModel
 
     func decorate(model: ButtonCollectionCellViewModel) {
+        
         if let normalImage = model.normalImage {
             button.setImage(normalImage, for: .normal)
         } else {

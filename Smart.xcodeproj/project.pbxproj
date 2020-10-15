@@ -155,6 +155,16 @@
 		CA7B836224F0237100991F24 /* SuggestionCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B836124F0237100991F24 /* SuggestionCollectionCell.swift */; };
 		CA7B838924F451FA00991F24 /* WineDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B838824F451FA00991F24 /* WineDetailViewController.swift */; };
 		CA7B838C24F4547B00991F24 /* GalleryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B838B24F4547B00991F24 /* GalleryCell.swift */; };
+		CA819844253864080056A1C6 /* WineDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA819833253864080056A1C6 /* WineDetailViewModel.swift */; };
+		CA819845253864080056A1C6 /* WineDetailInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA819835253864080056A1C6 /* WineDetailInput.swift */; };
+		CA819846253864080056A1C6 /* WineDetailAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA819837253864080056A1C6 /* WineDetailAssembly.swift */; };
+		CA819847253864080056A1C6 /* WineDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA819839253864080056A1C6 /* WineDetailPresenter.swift */; };
+		CA819848253864080056A1C6 /* WineDetailPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81983A253864080056A1C6 /* WineDetailPresenterProtocol.swift */; };
+		CA81984A253864080056A1C6 /* WineDetailViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81983D253864080056A1C6 /* WineDetailViewControllerProtocol.swift */; };
+		CA81984B253864080056A1C6 /* WineDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81983F253864080056A1C6 /* WineDetailInteractor.swift */; };
+		CA81984C253864080056A1C6 /* WineDetailInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA819840253864080056A1C6 /* WineDetailInteractorProtocol.swift */; };
+		CA81984D253864080056A1C6 /* WineDetailRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA819842253864080056A1C6 /* WineDetailRouterProtocol.swift */; };
+		CA81984E253864080056A1C6 /* WineDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA819843253864080056A1C6 /* WineDetailRouter.swift */; };
 		CA8CD67725096EC200FDB7AF /* GADTSmallTemplateView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8CD67625096EC200FDB7AF /* GADTSmallTemplateView.m */; };
 		CA8CD67A25096EDA00FDB7AF /* GADTSmallTemplateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA8CD67925096EDA00FDB7AF /* GADTSmallTemplateView.xib */; };
 		CA8CD67C25096EE100FDB7AF /* GADTTemplateView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8CD67B25096EE100FDB7AF /* GADTTemplateView.m */; };
@@ -401,6 +411,16 @@
 		CA7B836124F0237100991F24 /* SuggestionCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestionCollectionCell.swift; sourceTree = "<group>"; };
 		CA7B838824F451FA00991F24 /* WineDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineDetailViewController.swift; sourceTree = "<group>"; };
 		CA7B838B24F4547B00991F24 /* GalleryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GalleryCell.swift; sourceTree = "<group>"; };
+		CA819833253864080056A1C6 /* WineDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineDetailViewModel.swift; sourceTree = "<group>"; };
+		CA819835253864080056A1C6 /* WineDetailInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineDetailInput.swift; sourceTree = "<group>"; };
+		CA819837253864080056A1C6 /* WineDetailAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineDetailAssembly.swift; sourceTree = "<group>"; };
+		CA819839253864080056A1C6 /* WineDetailPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineDetailPresenter.swift; sourceTree = "<group>"; };
+		CA81983A253864080056A1C6 /* WineDetailPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineDetailPresenterProtocol.swift; sourceTree = "<group>"; };
+		CA81983D253864080056A1C6 /* WineDetailViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineDetailViewControllerProtocol.swift; sourceTree = "<group>"; };
+		CA81983F253864080056A1C6 /* WineDetailInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineDetailInteractor.swift; sourceTree = "<group>"; };
+		CA819840253864080056A1C6 /* WineDetailInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineDetailInteractorProtocol.swift; sourceTree = "<group>"; };
+		CA819842253864080056A1C6 /* WineDetailRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineDetailRouterProtocol.swift; sourceTree = "<group>"; };
+		CA819843253864080056A1C6 /* WineDetailRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineDetailRouter.swift; sourceTree = "<group>"; };
 		CA8CD67525096EC100FDB7AF /* Smart-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smart-Bridging-Header.h"; sourceTree = "<group>"; };
 		CA8CD67625096EC200FDB7AF /* GADTSmallTemplateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADTSmallTemplateView.m; sourceTree = "<group>"; };
 		CA8CD67825096ECD00FDB7AF /* GADTSmallTemplateView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADTSmallTemplateView.h; sourceTree = "<group>"; };
@@ -1024,10 +1044,10 @@
 		CA7B835624EED18500991F24 /* Vinchy */ = {
 			isa = PBXGroup;
 			children = (
+				CA4857922517C76C00EDA4CE /* Assembly */,
 				CA4857862517C6EF00EDA4CE /* Interactor */,
 				CA4857872517C6FF00EDA4CE /* Presenter */,
 				CA48578C2517C72100EDA4CE /* Router */,
-				CA4857922517C76C00EDA4CE /* Assembly */,
 				CA4857992517CA3900EDA4CE /* ViewController */,
 				CA490146252F817200066A98 /* ViewModel */,
 				CA7B835924EED6BA00991F24 /* Views */,
@@ -1053,8 +1073,14 @@
 		CA7B838724F451C700991F24 /* WineDetail */ = {
 			isa = PBXGroup;
 			children = (
+				CA819836253864080056A1C6 /* Assembly */,
+				CA819834253864080056A1C6 /* Input */,
+				CA81983E253864080056A1C6 /* Interactor */,
+				CA819838253864080056A1C6 /* Presenter */,
+				CA819841253864080056A1C6 /* Router */,
+				CA81983B253864080056A1C6 /* ViewController */,
+				CA819832253864080056A1C6 /* ViewModel */,
 				CA7B838A24F4545A00991F24 /* Views */,
-				CA7B838824F451FA00991F24 /* WineDetailViewController.swift */,
 			);
 			path = WineDetail;
 			sourceTree = "<group>";
@@ -1070,6 +1096,67 @@
 				CA49A25A251F2C4600FBE269 /* BigAdCollectionCell.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		CA819832253864080056A1C6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CA819833253864080056A1C6 /* WineDetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CA819834253864080056A1C6 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				CA819835253864080056A1C6 /* WineDetailInput.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		CA819836253864080056A1C6 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				CA819837253864080056A1C6 /* WineDetailAssembly.swift */,
+			);
+			name = Assembly;
+			path = WineDetail/Assembly;
+			sourceTree = "<group>";
+		};
+		CA819838253864080056A1C6 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CA819839253864080056A1C6 /* WineDetailPresenter.swift */,
+				CA81983A253864080056A1C6 /* WineDetailPresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CA81983B253864080056A1C6 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CA7B838824F451FA00991F24 /* WineDetailViewController.swift */,
+				CA81983D253864080056A1C6 /* WineDetailViewControllerProtocol.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CA81983E253864080056A1C6 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				CA81983F253864080056A1C6 /* WineDetailInteractor.swift */,
+				CA819840253864080056A1C6 /* WineDetailInteractorProtocol.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		CA819841253864080056A1C6 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				CA819842253864080056A1C6 /* WineDetailRouterProtocol.swift */,
+				CA819843253864080056A1C6 /* WineDetailRouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		CA8CD67E25097A9A00FDB7AF /* Ads */ = {
@@ -1482,6 +1569,7 @@
 				CA070C1725250AEC00C3D9EC /* OnboardPageViewController.swift in Sources */,
 				CA154DD62494EA2B00696436 /* MessageKind.swift in Sources */,
 				CA46DBEF252518460007819E /* OnboardingCache.swift in Sources */,
+				CA81984A253864080056A1C6 /* WineDetailViewControllerProtocol.swift in Sources */,
 				CA472B54245EDEDB009149FF /* Assembly.swift in Sources */,
 				CAF514232461C52400667ED0 /* MoreInteractor.swift in Sources */,
 				CA79545224F92EC20040224C /* AdvancedSearchViewController.swift in Sources */,
@@ -1489,8 +1577,11 @@
 				CAAD023A245EE7C500EDF245 /* EmailViewController.swift in Sources */,
 				CA154E012494EA2B00696436 /* SenderType.swift in Sources */,
 				CA7A87FA2506B9D600AAD10F /* ShareUsCollectionCell.swift in Sources */,
+				CA819846253864080056A1C6 /* WineDetailAssembly.swift in Sources */,
 				CA8CD67725096EC200FDB7AF /* GADTSmallTemplateView.m in Sources */,
 				CA7B838924F451FA00991F24 /* WineDetailViewController.swift in Sources */,
+				CA819848253864080056A1C6 /* WineDetailPresenterProtocol.swift in Sources */,
+				CA819847253864080056A1C6 /* WineDetailPresenter.swift in Sources */,
 				CA154DF02494EA2B00696436 /* MessageContentCell.swift in Sources */,
 				CA154DDD2494EA2B00696436 /* NSConstraintLayoutSet.swift in Sources */,
 				CAF514212461C52400667ED0 /* MorePresenter.swift in Sources */,
@@ -1506,6 +1597,7 @@
 				CA070981252314B900C3D9EC /* ApplicationCoordinatorBuilder.swift in Sources */,
 				CAF514282461C52400667ED0 /* DocCell.swift in Sources */,
 				CA472B69245EDEF9009149FF /* CategoryItem.swift in Sources */,
+				CA81984E253864080056A1C6 /* WineDetailRouter.swift in Sources */,
 				CA154DFD2494EA2B00696436 /* ContactItem.swift in Sources */,
 				CA48577C2517BEAB00EDA4CE /* VinchyRouter.swift in Sources */,
 				CA07099B2523173400C3D9EC /* MainModuleFactory.swift in Sources */,
@@ -1538,6 +1630,7 @@
 				CA99E65324F59CAA00C36BEE /* ShortInfoCollectionCell.swift in Sources */,
 				CA3B1D42249E3FE100FAA08A /* ResultsTableController.swift in Sources */,
 				CA7B836024EF109200991F24 /* MainSubtitleCollectionCell.swift in Sources */,
+				CA819844253864080056A1C6 /* WineDetailViewModel.swift in Sources */,
 				CA154D79249415F200696436 /* BasicAudioController.swift in Sources */,
 				CA4D180A2492B2AC00B49BD4 /* MockUser.swift in Sources */,
 				CA154DFC2494EA2B00696436 /* BubbleCircle.swift in Sources */,
@@ -1545,9 +1638,11 @@
 				CA154DF92494EA2B00696436 /* AvatarView.swift in Sources */,
 				CA154DF82494EA2B00696436 /* InsetLabel.swift in Sources */,
 				CAF514102461C51400667ED0 /* AboutController.swift in Sources */,
+				CA81984D253864080056A1C6 /* WineDetailRouterProtocol.swift in Sources */,
 				CA3B1D5424A0A36300FAA08A /* NotesViewController.swift in Sources */,
 				CA48578F2517C74700EDA4CE /* VinchyRouterProtocol.swift in Sources */,
 				CA472B2C245EDEA0009149FF /* HeaderReusableView.swift in Sources */,
+				CA81984B253864080056A1C6 /* WineDetailInteractor.swift in Sources */,
 				CA4857742517BE8E00EDA4CE /* VinchyInteractor.swift in Sources */,
 				CAA9DC3C250BD20400F996A8 /* AdvancedHeader.swift in Sources */,
 				CA4857832517C67700EDA4CE /* VinchyInteractorProtocol.swift in Sources */,
@@ -1558,6 +1653,7 @@
 				CA0709792523140700C3D9EC /* Coordinator.swift in Sources */,
 				CA4D180B2492B2AC00B49BD4 /* MockSocket.swift in Sources */,
 				CA154E042494EA2B00696436 /* MessageLabelDelegate.swift in Sources */,
+				CA81984C253864080056A1C6 /* WineDetailInteractorProtocol.swift in Sources */,
 				CA154DC92494EA2B00696436 /* ContactMessageSizeCalculator.swift in Sources */,
 				CA154DD92494EA2B00696436 /* Avatar.swift in Sources */,
 				CA154DF72494EA2B00696436 /* TypingBubble.swift in Sources */,
@@ -1595,6 +1691,7 @@
 				CA154E002494EA2B00696436 /* MessagesLayoutDelegate.swift in Sources */,
 				CA2F479224AF407D00B4D53D /* EnterMessageCell.swift in Sources */,
 				CA8CD68325097AD500FDB7AF /* GADTMediumTemplateView.m in Sources */,
+				CA819845253864080056A1C6 /* WineDetailInput.swift in Sources */,
 				CAAD023C245EEA0700EDF245 /* PasswordViewController.swift in Sources */,
 				CAF5146B2468172900667ED0 /* LoveViewController.swift in Sources */,
 				CA46DBE7252518230007819E /* OnboardingRepository.swift in Sources */,

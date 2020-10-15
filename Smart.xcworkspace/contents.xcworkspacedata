@@ -46,6 +46,88 @@
    <Group
       location = "group:tools"
       name = "tools">
+      <Group
+         location = "group:VinchyTemplates"
+         name = "VinchyTemplates">
+         <Group
+            location = "group:VinchyVIP.xctemplate"
+            name = "VinchyVIP.xctemplate">
+            <FileRef
+               location = "group:TemplateIcon@2x.png">
+            </FileRef>
+            <Group
+               location = "group:___VARIABLE_productName___"
+               name = "___VARIABLE_productName___">
+               <Group
+                  location = "group:ViewModel"
+                  name = "ViewModel">
+                  <FileRef
+                     location = "group:___VARIABLE_productName___ViewModel.swift">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:Input"
+                  name = "Input">
+                  <FileRef
+                     location = "group:___VARIABLE_productName___Input.swift">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:Assembly"
+                  name = "Assembly">
+                  <FileRef
+                     location = "group:___VARIABLE_productName___Assembly.swift">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:Presenter"
+                  name = "Presenter">
+                  <FileRef
+                     location = "group:___VARIABLE_productName___Presenter.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:___VARIABLE_productName___PresenterProtocol.swift">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:ViewController"
+                  name = "ViewController">
+                  <FileRef
+                     location = "group:___VARIABLE_productName___ViewControllerProtocol.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:___VARIABLE_productName___ViewController.swift">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:Interactor"
+                  name = "Interactor">
+                  <FileRef
+                     location = "group:___VARIABLE_productName___Interactor.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:___VARIABLE_productName___InteractorProtocol.swift">
+                  </FileRef>
+               </Group>
+               <Group
+                  location = "group:Router"
+                  name = "Router">
+                  <FileRef
+                     location = "group:___VARIABLE_productName___RouterProtocol.swift">
+                  </FileRef>
+                  <FileRef
+                     location = "group:___VARIABLE_productName___Router.swift">
+                  </FileRef>
+               </Group>
+            </Group>
+            <FileRef
+               location = "group:TemplateIcon.png">
+            </FileRef>
+            <FileRef
+               location = "group:TemplateInfo.plist">
+            </FileRef>
+         </Group>
+      </Group>
       <FileRef
          location = "group:podInstall.command">
       </FileRef>
