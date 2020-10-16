@@ -57,6 +57,8 @@ public final class ErrorView: UIView {
 
             subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
             subtitleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
+            subtitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
+            subtitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
 
             refreshButton.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 30),
             refreshButton.centerXAnchor.constraint(equalTo: centerXAnchor),
