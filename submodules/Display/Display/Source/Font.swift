@@ -160,7 +160,7 @@ public extension String {
 
 public extension UILabel {
 
-    public func applyGradientWith(startColor: UIColor, endColor: UIColor) -> Bool {
+    func applyGradientWith(startColor: UIColor, endColor: UIColor) -> Bool {
 
         var startColorRed: CGFloat = 0
         var startColorGreen: CGFloat = 0
@@ -196,10 +196,10 @@ public extension UILabel {
         UIGraphicsPushContext(context)
 
         let glossGradient: CGGradient?
-        let rgbColorspace:  CGColorSpace?
+        let rgbColorspace: CGColorSpace?
         let num_locations: size_t = 2
-        let locations:[CGFloat] = [0.0, 1.0]
-        let components:[CGFloat] = [startColorRed, startColorGreen, startColorBlue, startAlpha, endColorRed, endColorGreen, endColorBlue, endAlpha]
+        let locations: [CGFloat] = [0.0, 1.0]
+        let components: [CGFloat] = [startColorRed, startColorGreen, startColorBlue, startAlpha, endColorRed, endColorGreen, endColorBlue, endAlpha]
         rgbColorspace = CGColorSpaceCreateDeviceRGB()
         glossGradient = CGGradient(colorSpace: rgbColorspace!, colorComponents: components, locations: locations, count: num_locations)
         let topCenter = CGPoint.zero
