@@ -10,4 +10,9 @@ import Foundation
 
 struct WineDetailInput {
 
+    let wineID: Int64
+
+    init(wineID: Int64) {
+        self.wineID = wineID
+    }
 }
