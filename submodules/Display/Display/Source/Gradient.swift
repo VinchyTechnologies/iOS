@@ -16,15 +16,15 @@ public enum GradientOrientation {
     case horizontal
     case vertical
 
-    var startPoint : CGPoint {
+    var startPoint: CGPoint {
         return points.startPoint
     }
 
-    var endPoint : CGPoint {
+    var endPoint: CGPoint {
         return points.endPoint
     }
 
-    var points : GradientPoints {
+    var points: GradientPoints {
         switch self {
         case .topRightBottomLeft:
             return (CGPoint(x: 0.0,y: 1.0), CGPoint(x: 1.0,y: 0.0))
