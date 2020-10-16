@@ -9,35 +9,37 @@
 import UIKit
 import Display
 
+protocol ButtonCollectionCellDelegate: AnyObject {
+    func didTapDislikeButton(_ button: UIButton)
+    func didTapReportAnErrorButton(_ button: UIButton)
+}
+
 struct ButtonCollectionCellViewModel: ViewModelProtocol {
 
-    fileprivate let normalImage: UIImage?
-    fileprivate let selectedImage: UIImage?
-    fileprivate let title: NSAttributedString?
-    fileprivate let type: ButtonCollectionCellType
-
-    public init(normalImage: UIImage?, selectedImage: UIImage?, title: NSAttributedString?, type: ButtonCollectionCellType) {
-        self.normalImage = normalImage
-        self.selectedImage = selectedImage
-        self.title = title
-        self.type = type
+    enum Button {
+        case dislike(title: NSAttributedString?, image: UIImage?, selectedImage: UIImage?, isDisliked: Bool)
+        case reportError(title: NSAttributedString?)
     }
-}
 
-enum ButtonCollectionCellType {
-    case dislike, reportAnError
-}
+    fileprivate let buttonModel: Button
 
-protocol ButtonCollectionCellDelegate: AnyObject {
-    func didTapButtonCollectionCell(_ button: UIButton, type: ButtonCollectionCellType)
+    public init(buttonModel: Button) {
+        self.buttonModel = buttonModel
+    }
 }
 
 final class ButtonCollectionCell: UICollectionViewCell, Reusable {
 
+    // MARK: - Internal Properties
+
     weak var delegate: ButtonCollectionCellDelegate?
 
-    private var type: ButtonCollectionCellType?
-    internal let button = UIButton()
+    // MARK: - Private Properties
+
+    private var type: ButtonCollectionCellViewModel.Button?
+    private let button = UIButton()
+
+    // MARK: - Initializers
 
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -59,33 +61,53 @@ final class ButtonCollectionCell: UICollectionViewCell, Reusable {
         button.clipsToBounds = true
     }
 
+    // MARK: - Private Methhods
+
     @objc
     private func didTap(_ button: UIButton) {
+
         guard let type = type else { return }
-        delegate?.didTapButtonCollectionCell(button, type: type)
+
+        switch type {
+        case .dislike:
+            delegate?.didTapDislikeButton(button)
+
+        case .reportError:
+            delegate?.didTapReportAnErrorButton(button)
+        }
     }
 }
+
+// MARK: - Decoratable
 
 extension ButtonCollectionCell: Decoratable {
 
     typealias ViewModel = ButtonCollectionCellViewModel
 
-    func decorate(model: ButtonCollectionCellViewModel) {
-        
-        if let normalImage = model.normalImage {
-            button.setImage(normalImage, for: .normal)
-        } else {
-            button.setImage(nil, for: .normal)
+    func decorate(model: ViewModel) {
+
+        type = model.buttonModel
+
+        switch model.buttonModel {
+        case .dislike(let title, let image, let selectedImage, let isDisliked):
+            button.isSelected = isDisliked
+
+            button.setAttributedTitle(title, for: .normal)
+
+            if let selectedImage = selectedImage {
+                button.setImage(selectedImage, for: .selected)
+            } else {
+                button.setImage(nil, for: .selected)
+            }
+
+            if let normalImage = image {
+                button.setImage(normalImage, for: .normal)
+            } else {
+                button.setImage(nil, for: .normal)
+            }
+
+        case .reportError(let title):
+            button.setAttributedTitle(title, for: .normal)
         }
-
-        if let selectedImage = model.selectedImage {
-            button.setImage(selectedImage, for: .selected)
-        } else {
-            button.setImage(nil, for: .selected)
-        }
-
-        button.setAttributedTitle(model.title, for: .normal)
-
-        self.type = model.type
     }
 }

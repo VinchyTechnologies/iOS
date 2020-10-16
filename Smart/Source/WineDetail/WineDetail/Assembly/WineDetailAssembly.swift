@@ -10,4 +10,18 @@ import Foundation
 
 final class WineDetailAssembly {
 
+    static func assemblyModule(input: WineDetailInput) -> WineDetailViewController {
+
+        let viewController = WineDetailViewController()
+
+        let router = WineDetailRouter(input: input, viewController: viewController)
+        let presenter = WineDetailPresenter(viewController: viewController)
+        let interactor = WineDetailInteractor(input: input, router: router, presenter: presenter)
+
+        router.interactor = interactor
+        viewController.interactor = interactor
+
+        return viewController
+    }
+
 }

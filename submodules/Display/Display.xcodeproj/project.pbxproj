@@ -20,6 +20,7 @@
 		CA7A87E82501106800AAD10F /* VinchySize.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87E72501106800AAD10F /* VinchySize.swift */; };
 		CA7A87EA2502582C00AAD10F /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87E92502582C00AAD10F /* PaddingLabel.swift */; };
 		CA7A87EC25026FA700AAD10F /* LoadingCollectionFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87EB25026FA700AAD10F /* LoadingCollectionFooter.swift */; };
+		CA81987B25387CA80056A1C6 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81987A25387CA80056A1C6 /* Gradient.swift */; };
 		CA99E65B24F7D79B00C36BEE /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA99E65A24F7D79B00C36BEE /* ActivityIndicator.swift */; };
 		CAA8918B250AA8D200ADBFF9 /* HighlightableViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA8918A250AA8D200ADBFF9 /* HighlightableViewProtocol.swift */; };
 		CAA8918D250AB69400ADBFF9 /* HighlightCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA8918C250AB69400ADBFF9 /* HighlightCollectionCell.swift */; };
@@ -44,6 +45,7 @@
 		CA7A87E72501106800AAD10F /* VinchySize.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchySize.swift; sourceTree = "<group>"; };
 		CA7A87E92502582C00AAD10F /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
 		CA7A87EB25026FA700AAD10F /* LoadingCollectionFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCollectionFooter.swift; sourceTree = "<group>"; };
+		CA81987A25387CA80056A1C6 /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		CA99E65A24F7D79B00C36BEE /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
 		CAA8918A250AA8D200ADBFF9 /* HighlightableViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightableViewProtocol.swift; sourceTree = "<group>"; };
 		CAA8918C250AB69400ADBFF9 /* HighlightCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightCollectionCell.swift; sourceTree = "<group>"; };
@@ -133,6 +135,7 @@
 				CAA8918C250AB69400ADBFF9 /* HighlightCollectionCell.swift */,
 				CAA9DC68250EA24900F996A8 /* DecoratorFlowLayout.swift */,
 				CA5B9018250FEF51006BC638 /* ScrollViewBounceDecorator.swift */,
+				CA81987A25387CA80056A1C6 /* Gradient.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -247,6 +250,7 @@
 				CA53B12524E039F1009A0F85 /* Alertable.swift in Sources */,
 				CA18220424C0F88B00280DD4 /* NavigationController.swift in Sources */,
 				CA5B9019250FEF51006BC638 /* ScrollViewBounceDecorator.swift in Sources */,
+				CA81987B25387CA80056A1C6 /* Gradient.swift in Sources */,
 				CA7A87E82501106800AAD10F /* VinchySize.swift in Sources */,
 				CA18220624C0F8CE00280DD4 /* UIColor.swift in Sources */,
 				CABDBA9624C31FAC00AD96D6 /* ASPageControl.swift in Sources */,

@@ -6,8 +6,8 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import Display
 
-protocol WineDetailViewControllerProtocol: AnyObject {
-    
+protocol WineDetailViewControllerProtocol: Alertable, Loadable {
+    func updateUI(viewModel: WineDetailViewModel)
 }

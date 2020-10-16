@@ -15,7 +15,7 @@ import CommonUI
 final class Assembly {
 
     static func buildDetailModule(wineID: Int64) -> UIViewController {
-        let controller = WineDetailViewController(wineID: wineID)
+        let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID))
         controller.hidesBottomBarWhenPushed = true
         controller.extendedLayoutIncludesOpaqueBars = true
         return controller
