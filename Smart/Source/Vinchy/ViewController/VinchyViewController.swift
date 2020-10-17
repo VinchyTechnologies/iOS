@@ -16,7 +16,7 @@ import StringFormatting
 // swiftlint:disable:force_cast
 
 fileprivate enum C {
-    static let horizontalInset: CGFloat = 20
+    static let horizontalInset: CGFloat = 16
 }
 
 final class VinchyViewController: UIViewController {

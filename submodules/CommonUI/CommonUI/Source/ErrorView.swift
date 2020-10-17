@@ -13,7 +13,13 @@ public protocol ErrorViewDelegate: AnyObject {
     func didTapErrorButton(_ button: UIButton)
 }
 
+public struct ErrorViewModel: ViewModelProtocol {
+
+}
+
 public final class ErrorView: UIView {
+
+    // MARK: - Public Properties
 
     public weak var delegate: ErrorViewDelegate?
     public var isButtonHidden: Bool = false {
@@ -22,14 +28,26 @@ public final class ErrorView: UIView {
         }
     }
 
+    // MARK: - Private Properties
+
     private let titleLabel = UILabel()
     private let subtitleLabel = UILabel()
     private let refreshButton = UIButton()
 
+    // MARK: - Initializers
+
     public override init(frame: CGRect) {
         super.init(frame: frame)
 
-        [titleLabel, subtitleLabel, refreshButton].forEach({ $0.translatesAutoresizingMaskIntoConstraints = false })
+        let views = [
+            titleLabel,
+            subtitleLabel,
+            refreshButton,
+        ]
+
+        views.forEach({
+            $0.translatesAutoresizingMaskIntoConstraints = false
+        })
 
         titleLabel.font = Font.bold(24)
         titleLabel.textAlignment = .center
@@ -65,7 +83,6 @@ public final class ErrorView: UIView {
             refreshButton.widthAnchor.constraint(equalToConstant: 250),
             refreshButton.heightAnchor.constraint(equalToConstant: 52)
         ])
-
     }
 
     required init?(coder: NSCoder) { fatalError() }
@@ -76,9 +93,19 @@ public final class ErrorView: UIView {
         refreshButton.setTitle(buttonText, for: .normal)
     }
 
+    // MARK: - Private Methods
+
     @objc
     private func didTapErrorButton(_ button: UIButton) {
         delegate?.didTapErrorButton(button)
     }
+}
 
+extension ErrorView: Decoratable {
+
+    public typealias ViewModel = ErrorViewModel
+
+    public func decorate(model: ViewModel) {
+        
+    }
 }
