@@ -93,7 +93,7 @@ final class VinchyViewController: UIViewController {
 
     private var suggestions: [Wine] = []
 
-    var collectionList: [CollectionItem] = []
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -116,6 +116,8 @@ final class VinchyViewController: UIViewController {
 
     }
 
+    // MARK: - Private Methods
+
     @objc
     private func didTapFilter() {
         interactor?.didTapFilter()
@@ -133,6 +135,8 @@ final class VinchyViewController: UIViewController {
         CATransaction.commit()
     }
 }
+
+// MARK: - UICollectionViewDataSource
 
 extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 

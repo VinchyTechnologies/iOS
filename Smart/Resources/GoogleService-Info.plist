@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>860558958195-vqpmdg24lqipl2f31lj5c5jn4b9j7im4.apps.googleusercontent.com</string>
+	<string>404216268547-4ovevfsm24g5enhf7vuqp6e0o1vp62er.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.860558958195-vqpmdg24lqipl2f31lj5c5jn4b9j7im4</string>
+	<string>com.googleusercontent.apps.404216268547-4ovevfsm24g5enhf7vuqp6e0o1vp62er</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAYAEomHF_4JeeDHG42U8rdhyANi9NK5DI</string>
+	<string>AIzaSyAj7oyr6KPhJT9DALZbdUzu0ETEk6KI4ao</string>
 	<key>GCM_SENDER_ID</key>
-	<string>860558958195</string>
+	<string>404216268547</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>com.smirnov-development.Smart</string>
+	<string>tech.vinchy</string>
 	<key>PROJECT_ID</key>
-	<string>smart-5c167</string>
+	<string>vinchy-ecc9b</string>
 	<key>STORAGE_BUCKET</key>
-	<string>smart-5c167.appspot.com</string>
+	<string>vinchy-ecc9b.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,8 +29,8 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:860558958195:ios:868ce8028b25c005ba1406</string>
+	<string>1:404216268547:ios:e215df55a3f47da40d4b36</string>
 	<key>DATABASE_URL</key>
-	<string>https://smart-5c167.firebaseio.com</string>
+	<string>https://vinchy-ecc9b.firebaseio.com</string>
 </dict>
 </plist>

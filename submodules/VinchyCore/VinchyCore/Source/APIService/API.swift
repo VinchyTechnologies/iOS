@@ -7,7 +7,6 @@
 //
 
 import Foundation
-import StringFormatting
 
 let domain = "vinchy.tech" //"wineappp.herokuapp.com"
 
@@ -15,30 +14,8 @@ public enum APIError: Error {
 
     case invalidURL
     case decodingError
-    case custom(title: String, description: String)
+    case incorrectStatusCode(Int)
     case noData
-
-    public var title: String {
-        switch self {
-        case .custom(let title, _):
-            return title
-        default:
-            return localized("error").firstLetterUppercased()
-        }
-    }
-
-    public var message: String? {
-        switch self {
-        case .invalidURL:
-            return "Invalid URL"
-        case .decodingError:
-            return "Incorrect model"
-        case .custom(_, let description):
-            return description
-        case .noData:
-            return "No Data"
-        }
-    }
 }
 
 final class API {
@@ -75,8 +52,6 @@ final class API {
 
         var request = URLRequest(url: url)
 
-//        print(url)
-
         if endpoint.headers != nil {
             endpoint.headers?.forEach({ (key, value) in
                 request.setValue(value, forHTTPHeaderField: key)
@@ -90,12 +65,16 @@ final class API {
         URLSession.shared.dataTask(with: request) { data, response, error in
 
             guard let data = data, let response = response as? HTTPURLResponse, error == nil else {
-                completion(.failure(.noData))
+                DispatchQueue.main.async {
+                    completion(.failure(.noData))
+                }
                 return
             }
 
             guard (200 ... 299) ~= response.statusCode else {
-                completion(.failure(.custom(title: "Server error", description: "statusCode should be 2xx, but is \(response.statusCode)")))
+                DispatchQueue.main.async {
+                    completion(.failure(.incorrectStatusCode(response.statusCode)))
+                }
                 return
             }
 

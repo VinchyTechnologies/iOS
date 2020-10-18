@@ -15,6 +15,16 @@ public protocol ErrorViewDelegate: AnyObject {
 
 public struct ErrorViewModel: ViewModelProtocol {
 
+    fileprivate let titleText: String?
+    fileprivate let subtitleText: String?
+    fileprivate let buttonText: String?
+
+    public init(titleText: String?, subtitleText: String?, buttonText: String?) {
+
+        self.titleText = titleText
+        self.subtitleText = subtitleText
+        self.buttonText = buttonText
+    }
 }
 
 public final class ErrorView: UIView {
@@ -22,27 +32,25 @@ public final class ErrorView: UIView {
     // MARK: - Public Properties
 
     public weak var delegate: ErrorViewDelegate?
-    public var isButtonHidden: Bool = false {
-        didSet {
-            refreshButton.isHidden = isButtonHidden
-        }
-    }
 
     // MARK: - Private Properties
 
     private let titleLabel = UILabel()
     private let subtitleLabel = UILabel()
-    private let refreshButton = UIButton()
+    private let button = UIButton()
 
     // MARK: - Initializers
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
 
+        let spacer1 = UIView()
+
         let views = [
             titleLabel,
             subtitleLabel,
-            refreshButton,
+            spacer1,
+            button,
         ]
 
         views.forEach({
@@ -57,41 +65,34 @@ public final class ErrorView: UIView {
         subtitleLabel.textAlignment = .center
         subtitleLabel.numberOfLines = 3
 
-        refreshButton.setTitleColor(.white, for: .normal)
-        refreshButton.titleLabel?.font = Font.bold(18)
-        refreshButton.backgroundColor = .accent
-        refreshButton.layer.cornerRadius = 26
-        refreshButton.clipsToBounds = true
+        button.setTitleColor(.white, for: .normal)
+        button.titleLabel?.font = Font.bold(18)
+        button.backgroundColor = .accent
+        button.layer.cornerRadius = 24
+        button.clipsToBounds = true
+        button.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        button.widthAnchor.constraint(greaterThanOrEqualToConstant: 150).isActive = true
+        button.addTarget(self, action: #selector(didTapErrorButton(_:)), for: .touchUpInside)
 
-        refreshButton.addTarget(self, action: #selector(didTapErrorButton(_:)), for: .touchUpInside)
+        spacer1.heightAnchor.constraint(equalToConstant: 5).isActive = true
 
-        addSubview(titleLabel)
-        addSubview(subtitleLabel)
-        addSubview(refreshButton)
+        let stackView = UIStackView(arrangedSubviews: views)
+        stackView.axis = .vertical
 
+        stackView.distribution = .equalSpacing
+        stackView.spacing = 8
+        stackView.alignment = .center
+        stackView.translatesAutoresizingMaskIntoConstraints = false
+        addSubview(stackView)
         NSLayoutConstraint.activate([
-            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -150),
-            titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-
-            subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 20),
-            subtitleLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
-            subtitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 20),
-            subtitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -20),
-
-            refreshButton.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 30),
-            refreshButton.centerXAnchor.constraint(equalTo: centerXAnchor),
-            refreshButton.widthAnchor.constraint(equalToConstant: 250),
-            refreshButton.heightAnchor.constraint(equalToConstant: 52)
+            stackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+            stackView.centerYAnchor.constraint(equalTo: centerYAnchor),
+            stackView.widthAnchor.constraint(lessThanOrEqualTo: widthAnchor, constant: -40),
+            stackView.heightAnchor.constraint(lessThanOrEqualTo: heightAnchor),
         ])
     }
 
     required init?(coder: NSCoder) { fatalError() }
-
-    public func configure(title: String?, description: String?, buttonText: String) {
-        titleLabel.text = title
-        subtitleLabel.text = description
-        refreshButton.setTitle(buttonText, for: .normal)
-    }
 
     // MARK: - Private Methods
 
@@ -106,6 +107,14 @@ extension ErrorView: Decoratable {
     public typealias ViewModel = ErrorViewModel
 
     public func decorate(model: ViewModel) {
-        
+
+        titleLabel.text = model.titleText
+        titleLabel.isHidden = model.titleText == nil
+
+        subtitleLabel.text = model.subtitleText
+        subtitleLabel.isHidden = model.subtitleText == nil
+
+        button.setTitle(model.buttonText, for: .normal)
+        button.isHidden = model.buttonText == nil
     }
 }

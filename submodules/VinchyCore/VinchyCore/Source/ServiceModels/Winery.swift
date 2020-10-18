@@ -6,8 +6,6 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
-
 public final class Winery: Decodable {
 
     public let id: Int64

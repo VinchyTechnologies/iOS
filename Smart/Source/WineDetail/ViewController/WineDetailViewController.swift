@@ -82,7 +82,7 @@ final class WineDetailViewController: UIViewController {
             let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
             let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(48)), subitems: [item])
             let section = NSCollectionLayoutSection(group: group)
-            section.contentInsets = .init(top: 20, leading: 20, bottom: 0, trailing: 20)
+            section.contentInsets = .init(top: 20, leading: 16, bottom: 0, trailing: 16)
             return section
 
         case .ad:

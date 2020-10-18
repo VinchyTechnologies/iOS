@@ -50,7 +50,7 @@ final class VinchySimpleConiniousCaruselCollectionCell: UICollectionViewCell, Re
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .clear
         collectionView.showsHorizontalScrollIndicator = false
-        collectionView.contentInset = .init(top: 0, left: 20, bottom: 0, right: 20)
+        collectionView.contentInset = .init(top: 0, left: 16, bottom: 0, right: 16)
         collectionView.translatesAutoresizingMaskIntoConstraints = false
         collectionView.dataSource = self
         collectionView.delegate = self
@@ -81,7 +81,6 @@ final class VinchySimpleConiniousCaruselCollectionCell: UICollectionViewCell, Re
             return UIScreen.main.bounds.height * ratio
         }
     }
-
 }
 
 extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDataSource {
@@ -112,7 +111,6 @@ extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDataSource
             return cell
 
         case .bottles:
-            
             guard
                 let collection = collections.first,
                 let collectionItem = collection.wineList[safe: indexPath.row]

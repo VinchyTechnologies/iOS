@@ -34,7 +34,7 @@ public enum CollectionType: String, Decodable {
 
         case .infinity:
             return .init(width: .dimension(2), height: .absolute(250))
-            
+
         case .smartFilter:
             return .init(width: .absolute(UIScreen.main.bounds.width - 40), height: .absolute(250))
         }

@@ -19,15 +19,16 @@ public typealias Parameters = [(String, Any)]
 public typealias HTTPHeaders = [String: String]
 
 public enum HTTPMethod: String {
-    case get = "GET"
-    case head = "HEAD"
-    case post = "POST"
-    case put = "PUT"
-    case delete = "DELETE"
+
+    case get     = "GET"
+    case head    = "HEAD"
+    case post    = "POST"
+    case put     = "PUT"
+    case delete  = "DELETE"
     case connect = "CONNECT"
     case options = "OPTIONS"
-    case trace = "TRACE"
-    case patch = "PATCH"
+    case trace   = "TRACE"
+    case patch   = "PATCH"
 }
 
 public protocol EndpointProtocol {
@@ -55,8 +56,11 @@ public extension EndpointProtocol {
 
     var encoding: ParameterEncoding {
         switch method {
-        case .get:      return .queryString
-        default:        return .httpBody
+        case .get:
+            return .queryString
+            
+        default:
+            return .httpBody
         }
     }
 

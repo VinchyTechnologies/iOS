@@ -136,11 +136,11 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
         filtersHeaderView.decorate(model: .init(categoryTitles: categoryTitles, filterDelegate: self))
     }
 
-    private func showErrorView(title: String?, description: String?, buttonText: String) {
+    private func showErrorView(title: String?, description: String?, buttonText: String?) {
         DispatchQueue.main.async {
             let errorView = ErrorView(frame: self.view.frame)
+            errorView.decorate(model: .init(titleText: title, subtitleText: description, buttonText: buttonText))
             errorView.delegate = self
-            errorView.configure(title: title, description: description, buttonText: buttonText)
             self.collectionView.backgroundView = errorView
         }
     }
@@ -187,14 +187,14 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
                             }
 
                             if self.currentPage == 0 && wines.isEmpty {
-                                self.showErrorView(title: localized("nothing_found").firstLetterUppercased(), description: nil, buttonText: localized("back").firstLetterUppercased())
+                                self.showErrorView(title: localized("nothing_found").firstLetterUppercased(), description: nil, buttonText: nil)
                                 return
                             }
 
                         case .failure(let error):
                             if self.currentPage == 0 {
                                 self.hideErrorView()
-                                self.showErrorView(title: error.title, description: error.message, buttonText: localized("reload").firstLetterUppercased())
+                                self.showErrorView(title: error.title, description: error.description, buttonText: localized("reload").firstLetterUppercased())
                             }
                         }
                     }

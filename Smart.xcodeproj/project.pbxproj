@@ -165,6 +165,8 @@
 		CA81984C253864080056A1C6 /* WineDetailInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA819840253864080056A1C6 /* WineDetailInteractorProtocol.swift */; };
 		CA81984D253864080056A1C6 /* WineDetailRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA819842253864080056A1C6 /* WineDetailRouterProtocol.swift */; };
 		CA81984E253864080056A1C6 /* WineDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA819843253864080056A1C6 /* WineDetailRouter.swift */; };
+		CA819893253B5B5E0056A1C6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA819892253B5B5E0056A1C6 /* GoogleService-Info.plist */; };
+		CA8198C0253CB0490056A1C6 /* ErrorDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8198BF253CB0490056A1C6 /* ErrorDescription.swift */; };
 		CA8CD67725096EC200FDB7AF /* GADTSmallTemplateView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8CD67625096EC200FDB7AF /* GADTSmallTemplateView.m */; };
 		CA8CD67A25096EDA00FDB7AF /* GADTSmallTemplateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA8CD67925096EDA00FDB7AF /* GADTSmallTemplateView.xib */; };
 		CA8CD67C25096EE100FDB7AF /* GADTTemplateView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8CD67B25096EE100FDB7AF /* GADTTemplateView.m */; };
@@ -174,7 +176,6 @@
 		CA99E65324F59CAA00C36BEE /* ShortInfoCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA99E65224F59CAA00C36BEE /* ShortInfoCollectionCell.swift */; };
 		CA99E65724F6EDDD00C36BEE /* ButtonCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA99E65624F6EDDD00C36BEE /* ButtonCollectionCell.swift */; };
 		CAA060D2252BC05C002C15B5 /* DeveloperFeatureToggles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA060D1252BC05C002C15B5 /* DeveloperFeatureToggles.swift */; };
-		CAA07CA724A2A43300FE285A /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CAA07CA624A2A43300FE285A /* GoogleService-Info.plist */; };
 		CAA07CAC24A34A3C00FE285A /* SubscriptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA07CAB24A34A3C00FE285A /* SubscriptionViewController.swift */; };
 		CAA9DC3C250BD20400F996A8 /* AdvancedHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA9DC3B250BD20400F996A8 /* AdvancedHeader.swift */; };
 		CAA9DC3E250C088500F996A8 /* DetailFilterController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA9DC3D250C088500F996A8 /* DetailFilterController.swift */; };
@@ -421,6 +422,9 @@
 		CA819840253864080056A1C6 /* WineDetailInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineDetailInteractorProtocol.swift; sourceTree = "<group>"; };
 		CA819842253864080056A1C6 /* WineDetailRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineDetailRouterProtocol.swift; sourceTree = "<group>"; };
 		CA819843253864080056A1C6 /* WineDetailRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineDetailRouter.swift; sourceTree = "<group>"; };
+		CA819892253B5B5E0056A1C6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		CA81989A253B897B0056A1C6 /* VinchyRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VinchyRelease.entitlements; sourceTree = "<group>"; };
+		CA8198BF253CB0490056A1C6 /* ErrorDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDescription.swift; sourceTree = "<group>"; };
 		CA8CD67525096EC100FDB7AF /* Smart-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smart-Bridging-Header.h"; sourceTree = "<group>"; };
 		CA8CD67625096EC200FDB7AF /* GADTSmallTemplateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADTSmallTemplateView.m; sourceTree = "<group>"; };
 		CA8CD67825096ECD00FDB7AF /* GADTSmallTemplateView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADTSmallTemplateView.h; sourceTree = "<group>"; };
@@ -434,7 +438,6 @@
 		CA99E65224F59CAA00C36BEE /* ShortInfoCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortInfoCollectionCell.swift; sourceTree = "<group>"; };
 		CA99E65624F6EDDD00C36BEE /* ButtonCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonCollectionCell.swift; sourceTree = "<group>"; };
 		CAA060D1252BC05C002C15B5 /* DeveloperFeatureToggles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperFeatureToggles.swift; sourceTree = "<group>"; };
-		CAA07CA624A2A43300FE285A /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CAA07CAB24A34A3C00FE285A /* SubscriptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SubscriptionViewController.swift; sourceTree = "<group>"; };
 		CAA9DC3B250BD20400F996A8 /* AdvancedHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedHeader.swift; sourceTree = "<group>"; };
 		CAA9DC3D250C088500F996A8 /* DetailFilterController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DetailFilterController.swift; sourceTree = "<group>"; };
@@ -599,11 +602,11 @@
 		CA0A3527247860EB00C400F5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CA819892253B5B5E0056A1C6 /* GoogleService-Info.plist */,
 				CA472AC8245EDE30009149FF /* Assets.xcassets */,
 				CA4EA6BA24BE3ACD00E6F0C4 /* currencies.json */,
 				CA3CEFAF251288F000AAA692 /* country_codes.json */,
 				CACC1DC124C5F2980082BD01 /* filters.json */,
-				CAA07CA624A2A43300FE285A /* GoogleService-Info.plist */,
 				CA472ACD245EDE30009149FF /* Info.plist */,
 				CA445F6D24BFA3C20023A09F /* InfoPlist.strings */,
 				CA472ACA245EDE30009149FF /* LaunchScreen.storyboard */,
@@ -840,6 +843,7 @@
 		CA472ABE245EDE2F009149FF /* Smart */ = {
 			isa = PBXGroup;
 			children = (
+				CA81989A253B897B0056A1C6 /* VinchyRelease.entitlements */,
 				CACC1DE724C87B870082BD01 /* NewModules */,
 				CA0A3527247860EB00C400F5 /* Resources */,
 				CA472B2D245EDEC7009149FF /* Source */,
@@ -927,6 +931,7 @@
 				CA070980252314B900C3D9EC /* ApplicationCoordinatorBuilder.swift */,
 				CA0709862523151500C3D9EC /* ApplicationModulesFactory.swift */,
 				CAA060D1252BC05C002C15B5 /* DeveloperFeatureToggles.swift */,
+				CA8198BF253CB0490056A1C6 /* ErrorDescription.swift */,
 			);
 			path = "Supported Files";
 			sourceTree = "<group>";
@@ -1400,11 +1405,11 @@
 			files = (
 				CA8CD67A25096EDA00FDB7AF /* GADTSmallTemplateView.xib in Resources */,
 				CA472ACC245EDE30009149FF /* LaunchScreen.storyboard in Resources */,
+				CA819893253B5B5E0056A1C6 /* GoogleService-Info.plist in Resources */,
 				CA445F6B24BFA3C20023A09F /* InfoPlist.strings in Resources */,
 				CA63A12B249A23C100144320 /* Localizable.strings in Resources */,
 				CA4EA6BB24BE3ACD00E6F0C4 /* currencies.json in Resources */,
 				CA4AED9B24CE204900035922 /* TopSecret.plist in Resources */,
-				CAA07CA724A2A43300FE285A /* GoogleService-Info.plist in Resources */,
 				CA8CD68225097AD500FDB7AF /* GADTMediumTemplateView.xib in Resources */,
 				CACC1DC224C5F2980082BD01 /* filters.json in Resources */,
 				CA154E152494EDCA00696436 /* MessageKitAssets.bundle in Resources */,
@@ -1611,6 +1616,7 @@
 				CAA9DC67250EA05F00F996A8 /* AdvancedSearchCaruselCollectionCell.swift in Sources */,
 				CA49A25B251F2C4600FBE269 /* BigAdCollectionCell.swift in Sources */,
 				CA154DFE2494EA2B00696436 /* MediaItem.swift in Sources */,
+				CA8198C0253CB0490056A1C6 /* ErrorDescription.swift in Sources */,
 				CA7B835824EED1B100991F24 /* VinchyViewController.swift in Sources */,
 				CA154DD72494EA2B00696436 /* MessageStyle.swift in Sources */,
 				CA4857942517C77E00EDA4CE /* VinchyAssembly.swift in Sources */,
@@ -1922,7 +1928,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vinchy;
+				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy;
 				PRODUCT_NAME = Vinchy;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Smart/Source/Vinchy/Views/Smart-Bridging-Header.h";
@@ -1938,6 +1944,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Smart/VinchyRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
@@ -1946,7 +1953,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.vinchy;
+				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy;
 				PRODUCT_NAME = Vinchy;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Smart/Source/Vinchy/Views/Smart-Bridging-Header.h";
