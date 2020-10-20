@@ -15,6 +15,8 @@ import Database
 
 final class NotesViewController: UIViewController {
 
+    // MARK: - Private Properties
+
     private let tableView = UITableView()
     private lazy var notesRealm = realm(path: .notes)
     private let dataBase = Database<Note>()
@@ -28,6 +30,8 @@ final class NotesViewController: UIViewController {
             }
         }
     }
+
+    // MARK: - Lifecycle
 
     init() {
         super.init(nibName: nil, bundle: nil)
@@ -58,6 +62,8 @@ final class NotesViewController: UIViewController {
         notesNotificationToken?.invalidate()
     }
 
+    // MARK: - Private Methods
+
     private func hideEmptyView() {
         tableView.backgroundView = nil
     }
@@ -69,16 +75,25 @@ final class NotesViewController: UIViewController {
                                         buttonText: nil))
         tableView.backgroundView = errorView
     }
-
 }
+
+// MARK: - UITableViewDataSource
 
 extension NotesViewController: UITableViewDataSource {
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(
+        _ tableView: UITableView,
+        numberOfRowsInSection section: Int)
+        -> Int
+    {
         notes.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    func tableView(
+        _ tableView: UITableView,
+        cellForRowAt indexPath: IndexPath)
+    -> UITableViewCell
+    {
         if let cell = tableView.dequeueReusableCell(withIdentifier: WineTableCell.reuseId) as? WineTableCell,
             let note = notes[safe: indexPath.row] {
             cell.decorate(model: .init(imageURL: note.wineMainImageURL.toURL, titleText: note.wineTitle, subtitleText: note.title))
@@ -87,7 +102,11 @@ extension NotesViewController: UITableViewDataSource {
         return .init()
     }
 
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+    func tableView(
+        _ tableView: UITableView,
+        commit editingStyle: UITableViewCell.EditingStyle,
+        forRowAt indexPath: IndexPath)
+    {
         if editingStyle == .delete, let note = notes[safe: indexPath.row] {
 
             let alert = UIAlertController(title: localized("delete_note"),
@@ -104,14 +123,23 @@ extension NotesViewController: UITableViewDataSource {
         }
     }
 
-    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+    func tableView(
+        _ tableView: UITableView,
+        titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath)
+        -> String?
+    {
         localized("delete")
     }
 }
 
+// MARK: - UITableViewDelegate
+
 extension NotesViewController: UITableViewDelegate {
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    func tableView(
+        _ tableView: UITableView,
+        didSelectRowAt indexPath: IndexPath)
+    {
         tableView.deselectRow(at: indexPath, animated: true)
         guard let note = notes[safe: indexPath.row] else { return }
         let writeMessageController = WriteMessageController()

@@ -13,7 +13,7 @@ public protocol OnboardingRepositoryProtocol {
 
 final public class OnboardingRepository: OnboardingRepositoryProtocol {
 
-    // MAARK: - Private Properties
+    // MARK: - Private Properties
 
     private enum C {
         static let onboardingVersion: Int = 1

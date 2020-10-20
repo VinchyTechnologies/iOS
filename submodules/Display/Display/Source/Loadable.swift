@@ -61,5 +61,4 @@ extension Loadable where Self: UIView {
     public func stopLoadingAnimation() {
         loadingIndicator.isAnimating = false
     }
-
 }

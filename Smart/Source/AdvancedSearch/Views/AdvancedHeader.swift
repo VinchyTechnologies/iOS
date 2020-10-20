@@ -71,7 +71,6 @@ final class AdvancedHeader: UICollectionReusableView, Reusable {
             delegate?.didTapHeader(at: section)
         }
     }
-
 }
 
 extension AdvancedHeader: Decoratable {

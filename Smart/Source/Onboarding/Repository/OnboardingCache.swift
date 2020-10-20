@@ -31,5 +31,4 @@ final class OnboardingCacheImplementation: OnboardingCache {
         }
         return UserDefaultsConfig.lastSeenOnboardingVersion
     }
-
 }

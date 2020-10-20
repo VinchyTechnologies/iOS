@@ -73,7 +73,8 @@ final class WriteMessageController: UIViewController {
         })
     }
 
-    @objc private func save() {
+    @objc
+    private func save() {
 
         guard let title = subject, !title.isEmpty else { return }
 
@@ -96,7 +97,7 @@ final class WriteMessageController: UIViewController {
 extension WriteMessageController: UITableViewDataSource {
 
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 2
+        2
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -135,7 +136,7 @@ extension WriteMessageController: UITableViewDataSource {
 extension WriteMessageController: UITableViewDelegate {
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
-        return UITableView.automaticDimension
+        UITableView.automaticDimension
     }
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -144,10 +145,10 @@ extension WriteMessageController: UITableViewDelegate {
         tableView.beginUpdates()
         tableView.endUpdates()
     }
-
 }
 
 extension WriteMessageController: EnterMessageCellDelegate {
+
     func handleEditing(title: String, fullReview: String?) {
         subject = title
         body = fullReview

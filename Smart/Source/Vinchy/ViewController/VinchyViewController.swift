@@ -153,6 +153,10 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
         _ collectionView: UICollectionView,
         didSelectItemAt indexPath: IndexPath) {
 
+        if isSearchingMode {
+            let wineID = suggestions[indexPath.row].id
+            navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wineID), animated: true)
+        }
     }
 
     func collectionView(
@@ -161,6 +165,10 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
         sizeForItemAt indexPath: IndexPath)
         -> CGSize
     {
+        if isSearchingMode {
+            return .init(width: collectionView.frame.width, height: 44)
+        }
+
         switch sections[indexPath.section] {
         case .title(let model):
             let width = collectionView.frame.width - 2 * C.horizontalInset
@@ -187,6 +195,10 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
         insetForSectionAt section: Int)
         -> UIEdgeInsets
     {
+        if isSearchingMode {
+            return .init(top: 0, left: C.horizontalInset, bottom: 0, right: C.horizontalInset)
+        }
+
         switch sections[section] {
         case .title:
             return .init(top: 10, left: C.horizontalInset, bottom: 5, right: C.horizontalInset)
@@ -231,6 +243,14 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
         cellForItemAt indexPath: IndexPath)
         -> UICollectionViewCell
     {
+
+        if isSearchingMode {
+            // swiftlint:disable:next force_cast
+            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SuggestionCollectionCell.reuseId, for: indexPath) as! SuggestionCollectionCell
+            cell.decorate(model: .init(titleText: suggestions[indexPath.row].title))
+            return cell
+        }
+
         switch sections[indexPath.section] {
         case .title(let model):
             // swiftlint:disable:next force_cast

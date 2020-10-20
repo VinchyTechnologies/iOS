@@ -102,7 +102,6 @@ final class ToolCollectionCell: UICollectionViewCell, Reusable {
         button.isSelected = !button.isSelected
         delegate?.didTapLike(button)
     }
-
 }
 
 extension ToolCollectionCell: Decoratable {

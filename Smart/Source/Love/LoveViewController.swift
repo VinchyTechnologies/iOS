@@ -96,6 +96,7 @@ final class LoveViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         currentState = .like
         
         view.addSubview(collectionView)
@@ -129,7 +130,11 @@ final class LoveViewController: UIViewController {
 
 extension LoveViewController: UICollectionViewDataSource {
 
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        numberOfItemsInSection section: Int)
+        -> Int
+    {
         wines.count
     }
 
@@ -147,13 +152,17 @@ extension LoveViewController: UICollectionViewDataSource {
 }
 
 extension LoveViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    func collectionView(
+        _ collectionView: UICollectionView,
+        didSelectItemAt indexPath: IndexPath) {
+
         guard let wine = wines[safe: indexPath.row] else { return }
         navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wine.wineID), animated: true)
     }
 }
 
 extension LoveViewController: ErrorViewDelegate {
+
     func didTapErrorButton(_ button: UIButton) {
         tabBarController?.selectedIndex = 0
     }
