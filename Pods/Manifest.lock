@@ -263,7 +263,7 @@ PODS:
     - GoogleUtilities/Environment (~> 6.7)
     - GoogleUtilities/UserDefaults (~> 6.7)
     - PromisesObjC (~> 1.2)
-  - FittedSheets (2.2.0)
+  - FittedSheets (2.2.2)
   - FSPagerView (0.8.3)
   - Google-Mobile-Ads-SDK (7.66.0):
     - GoogleAppMeasurement (~> 6.0)
@@ -330,11 +330,11 @@ PODS:
   - nanopb/decode (1.30906.0)
   - nanopb/encode (1.30906.0)
   - PromisesObjC (1.2.11)
-  - Realm (5.5.0):
-    - Realm/Headers (= 5.5.0)
-  - Realm/Headers (5.5.0)
-  - RealmSwift (5.5.0):
-    - Realm (= 5.5.0)
+  - Realm (10.0.0):
+    - Realm/Headers (= 10.0.0)
+  - Realm/Headers (10.0.0)
+  - RealmSwift (10.0.0):
+    - Realm (= 10.0.0)
   - SDWebImage (5.9.3):
     - SDWebImage/Core (= 5.9.3)
   - SDWebImage/Core (5.9.3)
@@ -388,7 +388,7 @@ SPEC CHECKSUMS:
   FirebaseCoreDiagnostics: 770ac5958e1372ce67959ae4b4f31d8e127c3ac1
   FirebaseFirestore: 9b2f1b9b9a6f2f0b6fb7484b9e32ab7e39243554
   FirebaseInstallations: 466c7b4d1f58fe16707693091da253726a731ed2
-  FittedSheets: 51021a5caab6c2fbc35e1be8b5c57177edfa0326
+  FittedSheets: e76647375838b856b7e7916021deb7e7e1527ecc
   FSPagerView: 670405b2f18e2a87fa37f20b00de783e562c25a8
   Google-Mobile-Ads-SDK: 7d7074359c040f5add4e0963bf860e14690060d0
   GoogleAppMeasurement: a6a3a066369828db64eda428cb2856dc1cdc7c4e
@@ -401,8 +401,8 @@ SPEC CHECKSUMS:
   leveldb-library: 55d93ee664b4007aac644a782d11da33fba316f7
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
-  Realm: fb399d76f44042e5cdfc630f33828fdb4d077345
-  RealmSwift: 3b7e62356207ef16d34de4e55d475163bd2062bb
+  Realm: 5654b8e5e45034d07b219e089034be2ef7d1e7bf
+  RealmSwift: 5b4c8c85be4c14ff52054a4d80a8d338167dd79c
   SDWebImage: a31ee8e90a97303529e03fb0c333eae0eacb88e9
   SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
 

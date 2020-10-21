@@ -248,7 +248,7 @@ extension WineDetailViewController: UICollectionViewDataSource {
             // swiftlint:disable:next force_cast
             let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BigAdCollectionCell.reuseId, for: indexPath) as! BigAdCollectionCell
             cell.adBanner.delegate = self
-            cell.adBanner.adUnitID = "ca-app-pub-6194258101406763/5750190016"
+            cell.adBanner.adUnitID = "ca-app-pub-6194258101406763/2762026025"
             cell.adBanner.rootViewController = self
             cell.adBanner.load(GADRequest())
             return cell
@@ -290,7 +290,11 @@ extension WineDetailViewController: ToolCollectionCellDelegate {
     }
 }
 
-extension WineDetailViewController: GADBannerViewDelegate { }
+extension WineDetailViewController: GADBannerViewDelegate {
+    func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
+        print(error)
+    }
+}
 
 extension WineDetailViewController: WineDetailViewControllerProtocol {
 

@@ -79,6 +79,7 @@ final class API {
             }
 
             do {
+//                print(String(data: data, encoding: .utf8))
                 let obj = try JSONDecoder().decode(T.self, from: data)
                 DispatchQueue.main.async {
                     completion(.success(obj))

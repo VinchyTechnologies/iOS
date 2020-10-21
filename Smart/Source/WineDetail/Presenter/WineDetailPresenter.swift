@@ -179,7 +179,9 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
 
         sections += buildReportAnErrorButton()
 
-        sections += [.ad([1])] // TODO: - Add Real Model
+        if isAdAvailable {
+            sections += [.ad([1])] // TODO: - Add Real Model
+        }
 
         viewController?.updateUI(viewModel: WineDetailViewModel(navigationTitle: wine.title, sections: sections))
 

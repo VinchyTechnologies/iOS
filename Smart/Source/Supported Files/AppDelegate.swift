@@ -24,7 +24,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         GADMobileAds.sharedInstance().start(completionHandler: nil)
         #if targetEnvironment(simulator)
         // swiftlint:disable:next force_cast
-        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [kGADSimulatorID as! String]
+//        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [kGADSimulatorID as! String]
         #endif
         return true
     }
