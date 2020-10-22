@@ -72,7 +72,12 @@ final class VinchySimpleConiniousCaruselCollectionCell: UICollectionViewCell, Re
 
     required init?(coder: NSCoder) { fatalError() }
 
-    static func height(viewModel: ViewModel) -> CGFloat {
+    static func height(viewModel: ViewModel?) -> CGFloat {
+
+        guard let viewModel = viewModel else {
+            return 0
+        }
+        
         switch viewModel.type.itemSize.height {
         case .absolute(let itemHeight):
             return itemHeight

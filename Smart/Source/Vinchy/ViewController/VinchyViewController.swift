@@ -37,6 +37,8 @@ final class VinchyViewController: UIViewController {
 
     private(set) var loadingIndicator = ActivityIndicatorView()
 
+    private let keyboardHelper = KeyboardHelper()
+
     private lazy var collectionView: UICollectionView = {
 
         let layout = UICollectionViewFlowLayout()
@@ -112,8 +114,27 @@ final class VinchyViewController: UIViewController {
         refreshControl.tintColor = .dark
         refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
 
+        configureKeyboardHelper()
+
         interactor?.viewDidLoad()
 
+    }
+
+    private func configureKeyboardHelper() {
+        keyboardHelper.bindBottomToKeyboardFrame(
+            animated: true,
+            animate: { [weak self] height in
+                self?.updateNextButtonBottomConstraint(with: height)
+        })
+    }
+
+    public func updateNextButtonBottomConstraint(with keyboardHeight: CGFloat) {
+        if keyboardHeight == 0 {
+            resultsTableController.tableView.contentInset = .zero
+            return
+        }
+        resultsTableController.tableView.contentInset = .init(top: 0, left: 0, bottom: keyboardHeight, right: 0)
+        view.layoutSubviews()
     }
 
     // MARK: - Private Methods
@@ -177,7 +198,7 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
 
         case .stories(let model), .promo(let model), .big(let model), .bottles(let model):
             return .init(width: collectionView.frame.width,
-                         height: VinchySimpleConiniousCaruselCollectionCell.height(viewModel: model[indexPath.row]))
+                         height: VinchySimpleConiniousCaruselCollectionCell.height(viewModel: model[safe: indexPath.row]))
             
         case .suggestions(_):
             return .init(width: collectionView.frame.width, height: 44)
