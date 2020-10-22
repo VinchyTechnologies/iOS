@@ -50,6 +50,7 @@ end
 
 target 'CommonUI' do
   project 'submodules/CommonUI/CommonUI'
+  pod 'SDWebImage'
 end
 
 target 'LocationUI' do

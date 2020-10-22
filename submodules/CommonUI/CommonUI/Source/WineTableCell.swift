@@ -76,8 +76,12 @@ extension WineTableCell: Decoratable {
     public typealias ViewModel = WineTableCellViewModel
 
     public func decorate(model: ViewModel) {
-        bottleImageView.sd_setImage(with: model.imageURL) { [weak self] (image, _, _, _) in
-            self?.bottleImageView.image = image?.imageByMakingWhiteBackgroundTransparent()
+        bottleImageView.sd_imageTransition = .fade
+
+        bottleImageView.sd_setImage(with: model.imageURL, placeholderImage: nil, options: [.allowInvalidSSLCertificates, .continueInBackground, .retryFailed]) { [weak self] (image, _, _, _) in
+            if image == nil {
+                self?.bottleImageView.image = UIImage(named: "empty_image_bottle")?.withTintColor(.blueGray)
+            }
         }
         titleLabel.text = model.titleText
         subtitleLabel.text = model.subtitleText

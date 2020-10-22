@@ -7,8 +7,16 @@
 //
 
 import UIKit
-import Firebase
+//import Firebase
 import GoogleMobileAds
+
+#if canImport(AppTrackingTransparency)
+import AppTrackingTransparency
+#endif
+
+#if canImport(AdSupport)
+import AdSupport
+#endif
 
 @main
 final class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -19,9 +27,19 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
             launchOptions: [UIApplication.LaunchOptionsKey: Any]?)
     -> Bool
     {
-        FirebaseConfiguration.shared.setLoggerLevel(.min)
-        FirebaseApp.configure()
-        GADMobileAds.sharedInstance().start(completionHandler: nil)
+        
+//        FirebaseConfiguration.shared.setLoggerLevel(.min)
+//        FirebaseApp.configure()
+
+//        if #available(iOS 14, *) {
+//            ATTrackingManager.requestTrackingAuthorization(completionHandler: { _ in
+//                GADMobileAds.sharedInstance().start(completionHandler: nil)
+//            })
+//        } else {
+            GADMobileAds.sharedInstance().start(completionHandler: nil)
+//        }
+
+//        GADMobileAds.sharedInstance().start(completionHandler: nil)
         #if targetEnvironment(simulator)
         // swiftlint:disable:next force_cast
 //        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [kGADSimulatorID as! String]
