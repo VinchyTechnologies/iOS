@@ -177,7 +177,7 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
 
         case .stories(let model), .promo(let model), .big(let model), .bottles(let model):
             return .init(width: collectionView.frame.width,
-                         height: VinchySimpleConiniousCaruselCollectionCell.height(viewModel: model[indexPath.row]))
+                         height: VinchySimpleConiniousCaruselCollectionCell.height(viewModel: model[safe: indexPath.row]))
             
         case .suggestions(_):
             return .init(width: collectionView.frame.width, height: 44)
