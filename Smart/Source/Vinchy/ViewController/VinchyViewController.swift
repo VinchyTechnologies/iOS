@@ -319,7 +319,7 @@ extension VinchyViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
         tableView.deselectRow(at: indexPath, animated: true)
-        guard let wineID = suggestions[safe: indexPath.row]?.id else { return }
+        guard let wineID = resultsTableController.didFoundProducts[safe: indexPath.row]?.id else { return }
         navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wineID), animated: true)
     }
 }

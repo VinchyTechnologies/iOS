@@ -8,9 +8,6 @@ def commonPods
   pod 'RealmSwift'
   pod 'InputBarAccessoryView'
   pod 'SDWebImage'
-  pod 'Firebase/Analytics'
-  pod 'Firebase/Firestore'
-  pod 'FittedSheets'
   pod 'FSPagerView'
   pod 'Google-Mobile-Ads-SDK'
   pod 'SwiftLint'
@@ -50,6 +47,7 @@ end
 
 target 'CommonUI' do
   project 'submodules/CommonUI/CommonUI'
+  pod 'SDWebImage'
 end
 
 target 'LocationUI' do

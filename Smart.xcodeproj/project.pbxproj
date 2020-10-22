@@ -140,6 +140,8 @@
 		CA4D180A2492B2AC00B49BD4 /* MockUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D18072492B2AC00B49BD4 /* MockUser.swift */; };
 		CA4D180B2492B2AC00B49BD4 /* MockSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D18082492B2AC00B49BD4 /* MockSocket.swift */; };
 		CA4EA6BB24BE3ACD00E6F0C4 /* currencies.json in Resources */ = {isa = PBXBuildFile; fileRef = CA4EA6BA24BE3ACD00E6F0C4 /* currencies.json */; };
+		CA51BBED254094A100208F71 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA51BBEC254094A100208F71 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
+		CA51BBEF254094B000208F71 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA51BBEE254094B000208F71 /* AppTrackingTransparency.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		CA5B901B250FF22E006BC638 /* MoreBounceDecoratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5B901A250FF22E006BC638 /* MoreBounceDecoratorView.swift */; };
 		CA63A12B249A23C100144320 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA63A129249A23C100144320 /* Localizable.strings */; };
 		CA63A133249BEF2100144320 /* WriteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA63A132249BEF2100144320 /* WriteViewController.swift */; };
@@ -165,7 +167,6 @@
 		CA81984C253864080056A1C6 /* WineDetailInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA819840253864080056A1C6 /* WineDetailInteractorProtocol.swift */; };
 		CA81984D253864080056A1C6 /* WineDetailRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA819842253864080056A1C6 /* WineDetailRouterProtocol.swift */; };
 		CA81984E253864080056A1C6 /* WineDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA819843253864080056A1C6 /* WineDetailRouter.swift */; };
-		CA819893253B5B5E0056A1C6 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA819892253B5B5E0056A1C6 /* GoogleService-Info.plist */; };
 		CA8198C0253CB0490056A1C6 /* ErrorDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8198BF253CB0490056A1C6 /* ErrorDescription.swift */; };
 		CA8CD67725096EC200FDB7AF /* GADTSmallTemplateView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8CD67625096EC200FDB7AF /* GADTSmallTemplateView.m */; };
 		CA8CD67A25096EDA00FDB7AF /* GADTSmallTemplateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA8CD67925096EDA00FDB7AF /* GADTSmallTemplateView.xib */; };
@@ -394,6 +395,8 @@
 		CA4D18072492B2AC00B49BD4 /* MockUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockUser.swift; sourceTree = "<group>"; };
 		CA4D18082492B2AC00B49BD4 /* MockSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockSocket.swift; sourceTree = "<group>"; };
 		CA4EA6BA24BE3ACD00E6F0C4 /* currencies.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = currencies.json; sourceTree = "<group>"; };
+		CA51BBEC254094A100208F71 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		CA51BBEE254094B000208F71 /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
 		CA53B12724E327D1009A0F85 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		CA5B901A250FF22E006BC638 /* MoreBounceDecoratorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreBounceDecoratorView.swift; sourceTree = "<group>"; };
 		CA63A125249A22E500144320 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
@@ -422,7 +425,6 @@
 		CA819840253864080056A1C6 /* WineDetailInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineDetailInteractorProtocol.swift; sourceTree = "<group>"; };
 		CA819842253864080056A1C6 /* WineDetailRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineDetailRouterProtocol.swift; sourceTree = "<group>"; };
 		CA819843253864080056A1C6 /* WineDetailRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineDetailRouter.swift; sourceTree = "<group>"; };
-		CA819892253B5B5E0056A1C6 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CA81989A253B897B0056A1C6 /* VinchyRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VinchyRelease.entitlements; sourceTree = "<group>"; };
 		CA8198BF253CB0490056A1C6 /* ErrorDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDescription.swift; sourceTree = "<group>"; };
 		CA8CD67525096EC100FDB7AF /* Smart-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smart-Bridging-Header.h"; sourceTree = "<group>"; };
@@ -473,6 +475,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CA51BBEF254094B000208F71 /* AppTrackingTransparency.framework in Frameworks */,
+				CA51BBED254094A100208F71 /* AdSupport.framework in Frameworks */,
 				CA1821FF24C0F6F000280DD4 /* Database.framework in Frameworks */,
 				CAF24ACD24C323C90057547F /* StringFormatting.framework in Frameworks */,
 				F19FB5488BC7F81712DA031F /* Pods_Smart.framework in Frameworks */,
@@ -507,6 +511,8 @@
 		46483F371463D95E22014241 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CA51BBEE254094B000208F71 /* AppTrackingTransparency.framework */,
+				CA51BBEC254094A100208F71 /* AdSupport.framework */,
 				CA7B825C24EC750300991F24 /* VinchyCore.framework */,
 				CA015C3524C582B2008DF01D /* EmailService.framework */,
 				CAF24B0D24C3311F0057547F /* LocationUI.framework */,
@@ -602,7 +608,6 @@
 		CA0A3527247860EB00C400F5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				CA819892253B5B5E0056A1C6 /* GoogleService-Info.plist */,
 				CA472AC8245EDE30009149FF /* Assets.xcassets */,
 				CA4EA6BA24BE3ACD00E6F0C4 /* currencies.json */,
 				CA3CEFAF251288F000AAA692 /* country_codes.json */,
@@ -1298,6 +1303,7 @@
 			buildConfigurationList = CA472AE6245EDE30009149FF /* Build configuration list for PBXNativeTarget "Smart" */;
 			buildPhases = (
 				60B24D557CE2A159E6C42245 /* [CP] Check Pods Manifest.lock */,
+				2D5BD51BB17B6F0AE9B3F014 /* [CP] Prepare Artifacts */,
 				CA472AB8245EDE2F009149FF /* Sources */,
 				CA472AB9245EDE2F009149FF /* Frameworks */,
 				CA472ABA245EDE2F009149FF /* Resources */,
@@ -1338,6 +1344,7 @@
 			buildConfigurationList = CA472AEC245EDE30009149FF /* Build configuration list for PBXNativeTarget "SmartUITests" */;
 			buildPhases = (
 				B2271F10DFEE2E199FBE4F84 /* [CP] Check Pods Manifest.lock */,
+				63EB8547D69BE8AAC7E30516 /* [CP] Prepare Artifacts */,
 				CA472AD9245EDE30009149FF /* Sources */,
 				CA472ADA245EDE30009149FF /* Frameworks */,
 				CA472ADB245EDE30009149FF /* Resources */,
@@ -1405,7 +1412,6 @@
 			files = (
 				CA8CD67A25096EDA00FDB7AF /* GADTSmallTemplateView.xib in Resources */,
 				CA472ACC245EDE30009149FF /* LaunchScreen.storyboard in Resources */,
-				CA819893253B5B5E0056A1C6 /* GoogleService-Info.plist in Resources */,
 				CA445F6B24BFA3C20023A09F /* InfoPlist.strings in Resources */,
 				CA63A12B249A23C100144320 /* Localizable.strings in Resources */,
 				CA4EA6BB24BE3ACD00E6F0C4 /* currencies.json in Resources */,
@@ -1452,6 +1458,23 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Smart-SmartUITests/Pods-Smart-SmartUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		2D5BD51BB17B6F0AE9B3F014 /* [CP] Prepare Artifacts */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Smart/Pods-Smart-artifacts-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Prepare Artifacts";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Smart/Pods-Smart-artifacts-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Smart/Pods-Smart-artifacts.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		5922264A4527E1191159066F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1494,6 +1517,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		63EB8547D69BE8AAC7E30516 /* [CP] Prepare Artifacts */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Smart-SmartUITests/Pods-Smart-SmartUITests-artifacts-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Prepare Artifacts";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Smart-SmartUITests/Pods-Smart-SmartUITests-artifacts-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Smart-SmartUITests/Pods-Smart-SmartUITests-artifacts.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B2271F10DFEE2E199FBE4F84 /* [CP] Check Pods Manifest.lock */ = {
@@ -1922,6 +1962,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				INFOPLIST_FILE = Smart/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1947,6 +1988,7 @@
 				CODE_SIGN_ENTITLEMENTS = Smart/VinchyRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 3;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				INFOPLIST_FILE = Smart/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

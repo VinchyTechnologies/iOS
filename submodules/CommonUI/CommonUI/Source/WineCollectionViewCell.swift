@@ -109,8 +109,11 @@ extension WineCollectionViewCell: Decoratable {
 
     public func decorate(model: ViewModel) {
 
-        bottleImageView.sd_setImage(with: model.imageURL, placeholderImage: nil, options: .retryFailed) { [weak self] (image, _, _, _) in
-            self?.bottleImageView.image = image?.imageByMakingWhiteBackgroundTransparent()
+        bottleImageView.sd_imageTransition = .fade
+        bottleImageView.sd_setImage(with: model.imageURL, placeholderImage: nil, options: [.allowInvalidSSLCertificates, .continueInBackground, .retryFailed]) { [weak self] (image, _, _, _) in
+            if image == nil {
+                self?.bottleImageView.image = UIImage(named: "empty_image_bottle")?.withTintColor(.blueGray)
+            }
         }
 
         if let title = model.titleText {

@@ -12,3 +12,4 @@ let isOnboardingAvailable = false
 let isSmartFilterAvailable = false
 let isShareUsEnabled = true
 let isDescriptionInWineDetailEnabled = false
+let isAdAvailable = true

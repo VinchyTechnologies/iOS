@@ -6,7 +6,7 @@
   Copyright © 2020 Aleksei Smirnov. All rights reserved.
 */
 // MARK: - Common
-"appstore_link" = "itms-apps://itunes.apple.com/app/id1147613120"; // TODO: - fix me
+"appstore_link" = "itms-apps://itunes.apple.com/app/id1536720416";
 "add" = "add";
 "rate_our_app" = "Rate our App";
 "error" = "error";
@@ -91,7 +91,7 @@
 "you_disliked" = "Bad";
 
 // MARK: - Info
-"contact_email" = "alekseiismirnovv@gmail.com";
+"contact_email" = "vinchy.tech@gmail.com";
 "contact_phone_url" = "tel://+79102433638";
 "contact_phone" = "+ 7 (910) 243-36-38";
 
@@ -120,6 +120,5 @@
 "you_have_not_written_any_notes_yet" = "you have not written any notes yet";
 
 // MARK: - Docs
-// TODO: - fix me
-"terms_of_use_url" = "https://docs.google.com/document/d/e/2PACX-1vTkCv8A3tU3hK4nuHySyqu8IBYdsb-WzmbiNpLJl4HrPUWB3NhyhjOTStWKs8UeXGADi8S0toIxLtU-/pub";
+"terms_of_use_url" = "https://drive.google.com/file/d/1-HTyQsjLbLgHrfJm-R9lJSRMKjFEeJfg/view";
 "terms_of_use_doc" = "Terms & Conditions";
