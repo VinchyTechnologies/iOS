@@ -34,7 +34,7 @@ final class AboutController: UIViewController, OpenURLProtocol, Alertable {
     lazy var webButton: UIButton = {
         let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.setTitle(instagramURL, for: .normal)
+//        button.setTitle(instagramURL, for: .normal)
         button.setTitleColor(.accent, for: .normal)
         button.titleLabel?.font = Font.bold(15)
         button.addTarget(self, action: #selector(actionOpenWebSite), for: .touchUpInside)
