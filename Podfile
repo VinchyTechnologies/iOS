@@ -5,7 +5,7 @@ inhibit_all_warnings!
 workspace 'Smart'
 
 def commonPods
-  pod 'RealmSwift'
+  pod 'RealmSwift', '~> 10.0.0'
   pod 'InputBarAccessoryView'
   pod 'SDWebImage'
   pod 'FSPagerView'

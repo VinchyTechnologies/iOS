@@ -1,6 +1,6 @@
 PODS:
   - FSPagerView (0.8.3)
-  - Google-Mobile-Ads-SDK (7.66.0):
+  - Google-Mobile-Ads-SDK (7.67.0):
     - GoogleAppMeasurement (~> 6.0)
     - GoogleUserMessagingPlatform (~> 1.1)
   - GoogleAppMeasurement (6.9.0):
@@ -41,9 +41,9 @@ PODS:
   - Realm/Headers (10.0.0)
   - RealmSwift (10.0.0):
     - Realm (= 10.0.0)
-  - SDWebImage (5.9.3):
-    - SDWebImage/Core (= 5.9.3)
-  - SDWebImage/Core (5.9.3)
+  - SDWebImage (5.9.4):
+    - SDWebImage/Core (= 5.9.4)
+  - SDWebImage/Core (5.9.4)
   - SwiftLint (0.40.3)
 
 DEPENDENCIES:
@@ -51,6 +51,7 @@ DEPENDENCIES:
   - Google-Mobile-Ads-SDK
   - InputBarAccessoryView
   - RealmSwift
+  - RealmSwift (~> 10.0.0)
   - SDWebImage
   - SwiftLint
 
@@ -71,7 +72,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   FSPagerView: 670405b2f18e2a87fa37f20b00de783e562c25a8
-  Google-Mobile-Ads-SDK: 7d7074359c040f5add4e0963bf860e14690060d0
+  Google-Mobile-Ads-SDK: 8b58584890539de4527c47ef01e4da941a10bc8a
   GoogleAppMeasurement: a6a3a066369828db64eda428cb2856dc1cdc7c4e
   GoogleUserMessagingPlatform: 1d4b6946710d18cec34742054092e2c2bddae61f
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
@@ -80,9 +81,9 @@ SPEC CHECKSUMS:
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   Realm: 5654b8e5e45034d07b219e089034be2ef7d1e7bf
   RealmSwift: 5b4c8c85be4c14ff52054a4d80a8d338167dd79c
-  SDWebImage: a31ee8e90a97303529e03fb0c333eae0eacb88e9
+  SDWebImage: b69257f4ab14e9b6a2ef53e910fdf914d8f757c1
   SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
 
-PODFILE CHECKSUM: b6d4b0144b6e87faa8c4de337af9efb9df6bc157
+PODFILE CHECKSUM: 0e80edab47969de0d765e456d9cf0c7b74d89a0e
 
 COCOAPODS: 1.9.3
