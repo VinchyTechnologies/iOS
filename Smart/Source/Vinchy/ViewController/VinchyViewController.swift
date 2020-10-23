@@ -131,9 +131,12 @@ final class VinchyViewController: UIViewController {
     public func updateNextButtonBottomConstraint(with keyboardHeight: CGFloat) {
         if keyboardHeight == 0 {
             resultsTableController.tableView.contentInset = .zero
+            collectionView.contentInset = .zero
             return
         }
         resultsTableController.tableView.contentInset = .init(top: 0, left: 0, bottom: keyboardHeight, right: 0)
+        collectionView.contentInset = .init(top: 0, left: 0, bottom: keyboardHeight, right: 0)
+
         view.layoutSubviews()
     }
 
