@@ -50,7 +50,6 @@ DEPENDENCIES:
   - FSPagerView
   - Google-Mobile-Ads-SDK
   - InputBarAccessoryView
-  - RealmSwift
   - RealmSwift (~> 10.0.0)
   - SDWebImage
   - SwiftLint
@@ -84,6 +83,6 @@ SPEC CHECKSUMS:
   SDWebImage: b69257f4ab14e9b6a2ef53e910fdf914d8f757c1
   SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
 
-PODFILE CHECKSUM: 0e80edab47969de0d765e456d9cf0c7b74d89a0e
+PODFILE CHECKSUM: e887b2b0ab0874cec672a9fa9b457e1534915a20
 
 COCOAPODS: 1.9.3

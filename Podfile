@@ -34,7 +34,7 @@ end
 
 target 'Database' do
   project 'submodules/Database/Database'
-  pod 'RealmSwift'
+  pod 'RealmSwift', '~> 10.0.0'
 end
 
 target 'Core' do
