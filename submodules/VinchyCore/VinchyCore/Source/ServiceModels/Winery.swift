@@ -19,4 +19,11 @@ public final class Winery: Decodable {
         case countryCode = "country_code"
         case region
     }
+
+    public init(countryCode: String) {
+        self.id = 0
+        self.title = ""
+        self.countryCode = countryCode
+        self.region = ""
+    }
 }

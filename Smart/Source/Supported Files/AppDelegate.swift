@@ -25,19 +25,21 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         _ application: UIApplication,
         didFinishLaunchingWithOptions
             launchOptions: [UIApplication.LaunchOptionsKey: Any]?)
-    -> Bool
+        -> Bool
     {
         
 //        FirebaseConfiguration.shared.setLoggerLevel(.min)
 //        FirebaseApp.configure()
 
-//        if #available(iOS 14, *) {
-//            ATTrackingManager.requestTrackingAuthorization(completionHandler: { _ in
-//                GADMobileAds.sharedInstance().start(completionHandler: nil)
-//            })
-//        } else {
+        if #available(iOS 14, *) {
+            ATTrackingManager.requestTrackingAuthorization(completionHandler: { _ in
+                GADMobileAds.sharedInstance().start(completionHandler: nil)
+            })
+        } else {
             GADMobileAds.sharedInstance().start(completionHandler: nil)
-//        }
+        }
+
+//        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "7d99d4164fe23a45e4802010db93f214" ];
 
 //        GADMobileAds.sharedInstance().start(completionHandler: nil)
         #if targetEnvironment(simulator)
@@ -54,7 +56,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
         configurationForConnecting
             connectingSceneSession: UISceneSession,
         options: UIScene.ConnectionOptions)
-    -> UISceneConfiguration
+        -> UISceneConfiguration
     {
         UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
     }

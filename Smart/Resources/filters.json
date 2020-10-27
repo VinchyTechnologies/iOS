@@ -94,48 +94,5 @@
                 "imageName": null
             }
         ]
-    },
-    {
-        "title": "dish_list",
-        "type": "carusel",
-        "category": "common",
-        "items": [
-            {
-                "title": "meat",
-                "imageName": "meat"
-            },
-            {
-                "title": "fish",
-                "imageName": "fish"
-            },
-            {
-                "title": "seafood",
-                "imageName": "shrimp"
-            },
-            {
-                "title": "wildfowl",
-                "imageName": "rabbit"
-            },
-            {
-                "title": "chicken",
-                "imageName": "chicken"
-            },
-            {
-                "title": "dessert",
-                "imageName": "cake"
-            },
-            {
-                "title": "bakery",
-                "imageName": "bread"
-            },
-            {
-                "title": "cheese",
-                "imageName": "cheese"
-            },
-            {
-                "title": "fruits",
-                "imageName": "fruit"
-            }
-        ]
     }
 ]

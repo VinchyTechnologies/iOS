@@ -76,7 +76,6 @@ public struct Collection: Decodable {
         self.title = title
         self.imageURL = imageURL
         self.wineList = wines ?? []
-
     }
 
     public init(wineList: [CollectionItem]) {
@@ -84,5 +83,12 @@ public struct Collection: Decodable {
         self.title = nil
         self.imageURL = nil
         self.wineList = wineList
+    }
+
+    public init(title: String?, imageURL: String) {
+        self.id = nil
+        self.title = title
+        self.imageURL = imageURL
+        self.wineList = []
     }
 }

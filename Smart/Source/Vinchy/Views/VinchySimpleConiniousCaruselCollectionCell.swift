@@ -91,7 +91,12 @@ final class VinchySimpleConiniousCaruselCollectionCell: UICollectionViewCell, Re
 extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        collections.count
+
+        if self.type == .bottles {
+            return collections.first?.wineList.count ?? 0
+        }
+
+        return collections.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
