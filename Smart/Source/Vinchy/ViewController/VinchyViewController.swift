@@ -29,9 +29,7 @@ final class VinchyViewController: UIViewController {
 
   private var sections = [VinchyViewControllerViewModel.Section]() {
     didSet {
-      DispatchQueue.main.async {
-        self.collectionView.reloadData()
-      }
+      collectionView.reloadData()
     }
   }
 
