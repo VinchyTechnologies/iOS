@@ -115,8 +115,7 @@ final class VinchyInteractor {
 
             switch result {
             case .success(let model):
-              break
-//                self.presenter.update(suggestions: model)
+                self.presenter.update(suggestions: model)
 
             case .failure:
                 break
