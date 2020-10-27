@@ -21,43 +21,43 @@ import AdSupport
 @main
 final class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    func application(
-        _ application: UIApplication,
-        didFinishLaunchingWithOptions
-            launchOptions: [UIApplication.LaunchOptionsKey: Any]?)
-        -> Bool
-    {
-        
-//        FirebaseConfiguration.shared.setLoggerLevel(.min)
-//        FirebaseApp.configure()
+  func application(
+    _ application: UIApplication,
+    didFinishLaunchingWithOptions
+    launchOptions: [UIApplication.LaunchOptionsKey: Any]?)
+    -> Bool
+  {
 
-        if #available(iOS 14, *) {
-            ATTrackingManager.requestTrackingAuthorization(completionHandler: { _ in
-                GADMobileAds.sharedInstance().start(completionHandler: nil)
-            })
-        } else {
-            GADMobileAds.sharedInstance().start(completionHandler: nil)
-        }
+    //        FirebaseConfiguration.shared.setLoggerLevel(.min)
+    //        FirebaseApp.configure()
 
-//        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "7d99d4164fe23a45e4802010db93f214" ];
-
-//        GADMobileAds.sharedInstance().start(completionHandler: nil)
-        #if targetEnvironment(simulator)
-        // swiftlint:disable:next force_cast
-//        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [kGADSimulatorID as! String]
-        #endif
-        return true
+    if #available(iOS 14, *) {
+      ATTrackingManager.requestTrackingAuthorization(completionHandler: { _ in
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
+      })
+    } else {
+      GADMobileAds.sharedInstance().start(completionHandler: nil)
     }
 
-    // MARK: - UISceneSession Lifecycle
+    //        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "7d99d4164fe23a45e4802010db93f214" ];
 
-    func application(
-        _ application: UIApplication,
-        configurationForConnecting
-            connectingSceneSession: UISceneSession,
-        options: UIScene.ConnectionOptions)
-        -> UISceneConfiguration
-    {
-        UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
-    }
+    //        GADMobileAds.sharedInstance().start(completionHandler: nil)
+    #if targetEnvironment(simulator)
+    // swiftlint:disable:next force_cast
+    //        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [kGADSimulatorID as! String]
+    #endif
+    return true
+  }
+
+  // MARK: - UISceneSession Lifecycle
+
+  func application(
+    _ application: UIApplication,
+    configurationForConnecting
+      connectingSceneSession: UISceneSession,
+    options: UIScene.ConnectionOptions)
+    -> UISceneConfiguration
+  {
+    UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+  }
 }

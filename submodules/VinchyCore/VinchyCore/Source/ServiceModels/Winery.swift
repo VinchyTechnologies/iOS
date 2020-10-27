@@ -8,22 +8,32 @@
 
 public final class Winery: Decodable {
 
-    public let id: Int64
-    public let title: String
-    public let countryCode: String
-    public let region: String
+  /// Winery ID
+  public let id: Int64
 
-    private enum CodingKeys: String, CodingKey {
-        case id = "winery_id"
-        case title
-        case countryCode = "country_code"
-        case region
-    }
+  /// Name of the winery
+  public let title: String
 
-    public init(countryCode: String) {
-        self.id = 0
-        self.title = ""
-        self.countryCode = countryCode
-        self.region = ""
-    }
+  /// Country code the winery locates in
+  public let countryCode: String
+
+  /// Name of the region the winery locates in
+  public let region: String
+
+  private enum CodingKeys: String, CodingKey {
+    case id = "winery_id"
+    case title
+    case countryCode = "country_code"
+    case region
+  }
+
+  /// For tests only
+  /*
+  public init(countryCode: String) {
+    self.id = 0
+    self.title = ""
+    self.countryCode = countryCode
+    self.region = ""
+  }
+ */
 }

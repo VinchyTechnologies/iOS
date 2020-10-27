@@ -7,23 +7,23 @@
 //
 
 public struct Compilation: Decodable {
-    
-    public let id: Int64?
-    public let type: CollectionType
-    public let title: String?
-    public var collectionList: [Collection]
 
-    private enum CodingKeys: String, CodingKey {
-        case id = "compilation_id"
-        case type = "compilation_type"
-        case title
-        case collectionList = "collection_list"
-    }
+  public let id: Int64?
+  public let type: CollectionType
+  public let title: String?
+  public var collectionList: [Collection]
 
-    public init(type: CollectionType, title: String?, collectionList: [Collection]) {
-        self.id = nil
-        self.type = type
-        self.title = title
-        self.collectionList = collectionList
-    }
+  private enum CodingKeys: String, CodingKey {
+    case id = "compilation_id"
+    case type = "compilation_type"
+    case title
+    case collectionList = "collection_list"
+  }
+
+  public init(type: CollectionType, title: String?, collectionList: [Collection]) {
+    self.id = nil
+    self.type = type
+    self.title = title
+    self.collectionList = collectionList
+  }
 }

@@ -9,7 +9,7 @@
 import Core
 
 public enum Scheme: String {
-    case http, https
+  case http, https
 }
 
 /// A dictionary of parameters to apply to a `URLRequest`
@@ -20,59 +20,59 @@ public typealias HTTPHeaders = [String: String]
 
 public enum HTTPMethod: String {
 
-    case get     = "GET"
-    case head    = "HEAD"
-    case post    = "POST"
-    case put     = "PUT"
-    case delete  = "DELETE"
-    case connect = "CONNECT"
-    case options = "OPTIONS"
-    case trace   = "TRACE"
-    case patch   = "PATCH"
+  case get     = "GET"
+  case head    = "HEAD"
+  case post    = "POST"
+  case put     = "PUT"
+  case delete  = "DELETE"
+  case connect = "CONNECT"
+  case options = "OPTIONS"
+  case trace   = "TRACE"
+  case patch   = "PATCH"
 }
 
 public protocol EndpointProtocol {
 
-    var scheme: Scheme { get }
-    var host: String { get }
-    var path: String { get }
-    var method: HTTPMethod { get }
-    var parameters: Parameters? { get }
-    var encoding: ParameterEncoding { get }
-    var headers: HTTPHeaders? { get }
-    var cacheKey: String? { get }
+  var scheme: Scheme { get }
+  var host: String { get }
+  var path: String { get }
+  var method: HTTPMethod { get }
+  var parameters: Parameters? { get }
+  var encoding: ParameterEncoding { get }
+  var headers: HTTPHeaders? { get }
+  var cacheKey: String? { get }
 }
 
 public enum ParameterEncoding {
-    case httpBody
-    case queryString
+  case httpBody
+  case queryString
 }
 
 public extension EndpointProtocol {
 
-    var scheme: Scheme {
-        return .https
-    }
+  var scheme: Scheme {
+    return .https
+  }
 
-    var encoding: ParameterEncoding {
-        switch method {
-        case .get:
-            return .queryString
-            
-        default:
-            return .httpBody
-        }
-    }
+  var encoding: ParameterEncoding {
+    switch method {
+    case .get:
+      return .queryString
 
-    var headers: HTTPHeaders? {
-        return [
-            "Authorization": getTopSecretPreferences()?.apiKey ?? "",
-            "accept-language": Locale.current.languageCode ?? "en",
-            "x-currency": Locale.current.currencyCode ?? "USD"
-        ]
+    default:
+      return .httpBody
     }
+  }
 
-    var cacheKey: String? {
-        return nil
-    }
+  var headers: HTTPHeaders? {
+    return [
+      "Authorization": getTopSecretPreferences()?.apiKey ?? "",
+      "accept-language": Locale.current.languageCode ?? "en",
+      "x-currency": Locale.current.currencyCode ?? "USD"
+    ]
+  }
+
+  var cacheKey: String? {
+    return nil
+  }
 }
