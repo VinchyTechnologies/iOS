@@ -34,7 +34,6 @@ final class ApplicationModulesFactoryImplementation {
     init(window: UIWindow) {
         self.window = window
     }
-
 }
 
 extension ApplicationModulesFactoryImplementation: ApplicationModulesFactory {
@@ -57,5 +56,4 @@ extension ApplicationModulesFactoryImplementation: ApplicationModulesFactory {
     func buildMainCoordinator() -> MainCoordinator {
         MainCoordinator(window: window)
     }
-
 }

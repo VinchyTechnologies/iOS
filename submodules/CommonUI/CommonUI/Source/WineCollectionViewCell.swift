@@ -95,7 +95,7 @@ public final class WineCollectionViewCell: HighlightCollectionCell, Reusable {
             stackView.topAnchor.constraint(equalTo: bottleImageView.bottomAnchor, constant: 0),
             stackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10),
             stackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -10),
-            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5)
+            stackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
         ])
     }
 
@@ -110,7 +110,8 @@ extension WineCollectionViewCell: Decoratable {
     public func decorate(model: ViewModel) {
 
         bottleImageView.sd_imageTransition = .fade
-        bottleImageView.sd_setImage(with: model.imageURL, placeholderImage: nil, options: [.allowInvalidSSLCertificates, .continueInBackground, .retryFailed]) { [weak self] (image, _, _, _) in
+        bottleImageView.sd_setImage(with: model.imageURL, placeholderImage: nil, options: [.allowInvalidSSLCertificates, .continueInBackground, .retryFailed, .highPriority, .refreshCached, .handleCookies, .queryDiskDataSync]) { [weak self] (image, error, _, _) in
+            print(error as Any)
             if image == nil {
                 self?.bottleImageView.image = UIImage(named: "empty_image_bottle")?.withTintColor(.blueGray)
             }

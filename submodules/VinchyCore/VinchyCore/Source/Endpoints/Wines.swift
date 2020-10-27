@@ -21,10 +21,13 @@ private enum WinesEndpoint: EndpointProtocol {
         switch self {
         case .detail(let wineID):
             return "/wines/" + String(wineID)
+
         case .random:
             return "/random_wines"
+
         case .filter:
             return "/wines"
+            
         case .search:
             return "/wines"
         }

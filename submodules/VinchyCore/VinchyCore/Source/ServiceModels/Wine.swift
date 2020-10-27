@@ -81,6 +81,25 @@ public struct Wine: Decodable {
         self.type = type
         self.sugar = sugar
     }
+
+    public init(title: String, imageURL: String?, winery: Winery) {
+        self.id = 0
+        self.color = nil
+        self.mainImageUrl = imageURL
+        self.labelImageUrl = nil
+        self.imageURLs = nil
+        self.title = title
+        self.desc = nil
+        self.price = nil
+        self.alcoholPercent = nil
+        self.servingTemperature = nil
+        self.dishCompatibility = nil
+        self.year = nil
+        self.grapes = nil
+        self.winery = winery
+        self.type = nil
+        self.sugar = nil
+    }
 }
 
 public enum WineType: String, Decodable {
