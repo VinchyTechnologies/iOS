@@ -1,4 +1,45 @@
 PODS:
+  - Firebase/Analytics (6.34.0):
+    - Firebase/Core
+  - Firebase/Core (6.34.0):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (= 6.9.0)
+  - Firebase/CoreOnly (6.34.0):
+    - FirebaseCore (= 6.10.4)
+  - Firebase/RemoteConfig (6.34.0):
+    - Firebase/CoreOnly
+    - FirebaseRemoteConfig (~> 4.9.1)
+  - FirebaseABTesting (4.2.0):
+    - FirebaseCore (~> 6.10)
+  - FirebaseAnalytics (6.9.0):
+    - FirebaseCore (~> 6.10)
+    - FirebaseInstallations (~> 1.7)
+    - GoogleAppMeasurement (= 6.9.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 6.7)
+    - GoogleUtilities/MethodSwizzler (~> 6.7)
+    - GoogleUtilities/Network (~> 6.7)
+    - "GoogleUtilities/NSData+zlib (~> 6.7)"
+    - nanopb (~> 1.30906.0)
+  - FirebaseCore (6.10.4):
+    - FirebaseCoreDiagnostics (~> 1.6)
+    - GoogleUtilities/Environment (~> 6.7)
+    - GoogleUtilities/Logger (~> 6.7)
+  - FirebaseCoreDiagnostics (1.7.0):
+    - GoogleDataTransport (~> 7.4)
+    - GoogleUtilities/Environment (~> 6.7)
+    - GoogleUtilities/Logger (~> 6.7)
+    - nanopb (~> 1.30906.0)
+  - FirebaseInstallations (1.7.0):
+    - FirebaseCore (~> 6.10)
+    - GoogleUtilities/Environment (~> 6.7)
+    - GoogleUtilities/UserDefaults (~> 6.7)
+    - PromisesObjC (~> 1.2)
+  - FirebaseRemoteConfig (4.9.1):
+    - FirebaseABTesting (~> 4.2)
+    - FirebaseCore (~> 6.10)
+    - FirebaseInstallations (~> 1.6)
+    - GoogleUtilities/Environment (~> 6.7)
+    - "GoogleUtilities/NSData+zlib (~> 6.7)"
   - FSPagerView (0.8.3)
   - Google-Mobile-Ads-SDK (7.67.0):
     - GoogleAppMeasurement (~> 6.0)
@@ -8,6 +49,8 @@ PODS:
     - GoogleUtilities/MethodSwizzler (~> 6.7)
     - GoogleUtilities/Network (~> 6.7)
     - "GoogleUtilities/NSData+zlib (~> 6.7)"
+    - nanopb (~> 1.30906.0)
+  - GoogleDataTransport (7.5.1):
     - nanopb (~> 1.30906.0)
   - GoogleUserMessagingPlatform (1.3.0)
   - GoogleUtilities/AppDelegateSwizzler (6.7.2):
@@ -26,6 +69,8 @@ PODS:
     - GoogleUtilities/Reachability
   - "GoogleUtilities/NSData+zlib (6.7.2)"
   - GoogleUtilities/Reachability (6.7.2):
+    - GoogleUtilities/Logger
+  - GoogleUtilities/UserDefaults (6.7.2):
     - GoogleUtilities/Logger
   - InputBarAccessoryView (5.2.1):
     - InputBarAccessoryView/Core (= 5.2.1)
@@ -47,6 +92,8 @@ PODS:
   - SwiftLint (0.40.3)
 
 DEPENDENCIES:
+  - Firebase/Analytics
+  - Firebase/RemoteConfig
   - FSPagerView
   - Google-Mobile-Ads-SDK
   - InputBarAccessoryView
@@ -56,9 +103,17 @@ DEPENDENCIES:
 
 SPEC REPOS:
   trunk:
+    - Firebase
+    - FirebaseABTesting
+    - FirebaseAnalytics
+    - FirebaseCore
+    - FirebaseCoreDiagnostics
+    - FirebaseInstallations
+    - FirebaseRemoteConfig
     - FSPagerView
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
+    - GoogleDataTransport
     - GoogleUserMessagingPlatform
     - GoogleUtilities
     - InputBarAccessoryView
@@ -70,9 +125,17 @@ SPEC REPOS:
     - SwiftLint
 
 SPEC CHECKSUMS:
+  Firebase: c23a36d9e4cdf7877dfcba8dd0c58add66358999
+  FirebaseABTesting: 8a9d8df3acc2b43f4a22014ddf9f601bca6af699
+  FirebaseAnalytics: 3bb096873ee0d7fa4b6c70f5e9166b6da413cc7f
+  FirebaseCore: d3a978a3cfa3240bf7e4ba7d137fdf5b22b628ec
+  FirebaseCoreDiagnostics: 770ac5958e1372ce67959ae4b4f31d8e127c3ac1
+  FirebaseInstallations: 466c7b4d1f58fe16707693091da253726a731ed2
+  FirebaseRemoteConfig: 35a729305f254fb15a2e541d4b36f3a379da7fdc
   FSPagerView: 670405b2f18e2a87fa37f20b00de783e562c25a8
   Google-Mobile-Ads-SDK: 8b58584890539de4527c47ef01e4da941a10bc8a
   GoogleAppMeasurement: a6a3a066369828db64eda428cb2856dc1cdc7c4e
+  GoogleDataTransport: f56af7caa4ed338dc8e138a5d7c5973e66440833
   GoogleUserMessagingPlatform: 1d4b6946710d18cec34742054092e2c2bddae61f
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
   InputBarAccessoryView: 39a7ed22727baf3b8550ecdf6c8a4d28b2c6aa91
@@ -83,6 +146,6 @@ SPEC CHECKSUMS:
   SDWebImage: b69257f4ab14e9b6a2ef53e910fdf914d8f757c1
   SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
 
-PODFILE CHECKSUM: e887b2b0ab0874cec672a9fa9b457e1534915a20
+PODFILE CHECKSUM: 13bea7bfdecff68cdd033e7a81ad0e621d123225
 
 COCOAPODS: 1.9.3

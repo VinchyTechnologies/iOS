@@ -7,7 +7,7 @@
 //
 
 protocol VinchyRouterProtocol: AnyObject {
-    func pushToAdvancedFilterViewController()
-    func pushToDetailCollection(searchText: String)
-    func presentEmailController(HTMLText: String?, recipients: [String])
+  func pushToAdvancedFilterViewController()
+  func pushToDetailCollection(searchText: String)
+  func presentEmailController(HTMLText: String?, recipients: [String])
 }

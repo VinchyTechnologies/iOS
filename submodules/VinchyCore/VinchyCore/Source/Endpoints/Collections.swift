@@ -7,46 +7,46 @@
 //
 
 private enum CollectionEndpoint: EndpointProtocol {
-
-    case all
-
-    var host: String {
-        return domain
+  
+  case all
+  
+  var host: String {
+    return domain
+  }
+  
+  var path: String {
+    switch self {
+    case .all:
+      return "/collections"
     }
-
-    var path: String {
-        switch self {
-        case .all:
-            return "/collections"
-        }
+  }
+  
+  var method: HTTPMethod {
+    switch self {
+    case .all:
+      return .get
     }
-
-    var method: HTTPMethod {
-        switch self {
-        case .all:
-            return .get
-        }
+  }
+  
+  var parameters: Parameters? {
+    switch self {
+    case .all:
+      return nil
     }
-
-    var parameters: Parameters? {
-        switch self {
-        case .all:
-            return nil
-        }
-    }
-
+  }
+  
 }
 
 public final class Collections {
-
-    let api = API.shared
-
-    public static let shared = Collections()
-
-    public init() { }
-
-    public func getCollections(completion: @escaping (Result<[Collection], APIError>) -> Void) {
-        api.request(endpoint: CollectionEndpoint.all, completion: completion)
-    }
-
+  
+  let api = API.shared
+  
+  public static let shared = Collections()
+  
+  public init() { }
+  
+  public func getCollections(completion: @escaping (Result<[Collection], APIError>) -> Void) {
+    api.request(endpoint: CollectionEndpoint.all, completion: completion)
+  }
+  
 }

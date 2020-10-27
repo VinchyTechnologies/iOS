@@ -7,37 +7,37 @@
 //
 
 public enum DishCompatibility: String, Decodable {
-    
-    case meat, fish, seafood, wildfowl, chicken, dessert, bakery, cheese, fruits
 
-    public var imageName: String {
-        switch self {
-        case .meat:
-            return "meat"
+  case meat, fish, seafood, wildfowl, chicken, dessert, bakery, cheese, fruits
 
-        case .fish:
-            return "fish"
+  public var imageName: String {
+    switch self {
+    case .meat:
+      return "meat"
 
-        case .seafood:
-            return "shrimp"
+    case .fish:
+      return "fish"
 
-        case .wildfowl:
-            return "rabbit"
+    case .seafood:
+      return "shrimp"
 
-        case .chicken:
-            return "chicken"
+    case .wildfowl:
+      return "rabbit"
 
-        case .dessert:
-            return "cake"
+    case .chicken:
+      return "chicken"
 
-        case .bakery:
-            return "bread"
+    case .dessert:
+      return "cake"
 
-        case .cheese:
-            return "cheese"
-            
-        case .fruits:
-            return "fruit"
-        }
+    case .bakery:
+      return "bread"
+
+    case .cheese:
+      return "cheese"
+
+    case .fruits:
+      return "fruit"
     }
+  }
 }

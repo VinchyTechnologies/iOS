@@ -7,46 +7,46 @@
 //
 
 private enum CompilationsEndpoint: EndpointProtocol {
-
-    case all
-
-    var host: String {
-        return domain
+  
+  case all
+  
+  var host: String {
+    return domain
+  }
+  
+  var path: String {
+    switch self {
+    case .all:
+      return "/compilations"
     }
-
-    var path: String {
-        switch self {
-        case .all:
-            return "/compilations"
-        }
+  }
+  
+  var method: HTTPMethod {
+    switch self {
+    case .all:
+      return .get
     }
-
-    var method: HTTPMethod {
-        switch self {
-        case .all:
-            return .get
-        }
+  }
+  
+  var parameters: Parameters? {
+    switch self {
+    case .all:
+      return nil
     }
-
-    var parameters: Parameters? {
-        switch self {
-        case .all:
-            return nil
-        }
-    }
-
+  }
+  
 }
 
 public final class Compilations {
-
-    let api = API.shared
-
-    public static let shared = Compilations()
-
-    public init() { }
-
-    public func getCompilations(completion: @escaping (Result<[Compilation], APIError>) -> Void) {
-        api.request(endpoint: CompilationsEndpoint.all, completion: completion)
-    }
-
+  
+  let api = API.shared
+  
+  public static let shared = Compilations()
+  
+  public init() { }
+  
+  public func getCompilations(completion: @escaping (Result<[Compilation], APIError>) -> Void) {
+    api.request(endpoint: CompilationsEndpoint.all, completion: completion)
+  }
+  
 }

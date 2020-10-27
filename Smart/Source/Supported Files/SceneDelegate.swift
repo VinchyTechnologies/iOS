@@ -10,193 +10,193 @@ import UIKit
 
 final class SceneDelegate: UIResponder {
 
-    // MARK: - Interanl Properties
+  // MARK: - Interanl Properties
 
-    var window: UIWindow?
+  var window: UIWindow?
 
-    // MARK: - Private Properties
+  // MARK: - Private Properties
 
-    private var appCoordinator: ApplicationCoordinator?
+  private var appCoordinator: ApplicationCoordinator?
 
 }
 
 extension SceneDelegate: UIWindowSceneDelegate {
 
-    func scene(
-        _ scene: UIScene,
-        willConnectTo session: UISceneSession,
-        options connectionOptions: UIScene.ConnectionOptions) {
+  func scene(
+    _ scene: UIScene,
+    willConnectTo session: UISceneSession,
+    options connectionOptions: UIScene.ConnectionOptions) {
 
-        guard let windowScence = scene as? UIWindowScene else { return }
-        let appWindow = UIWindow(frame: windowScence.coordinateSpace.bounds)
-        appWindow.windowScene = windowScence
-        window = appWindow
-        appCoordinator = ApplicationCoordinatorBuilder.make(window: window)
-        appCoordinator?.start()
-    }
+    guard let windowScence = scene as? UIWindowScene else { return }
+    let appWindow = UIWindow(frame: windowScence.coordinateSpace.bounds)
+    appWindow.windowScene = windowScence
+    window = appWindow
+    appCoordinator = ApplicationCoordinatorBuilder.make(window: window)
+    appCoordinator?.start()
+  }
 }
 
 public extension UIWindow {
 
-    /// Transition Options
-    struct TransitionOptions {
+  /// Transition Options
+  struct TransitionOptions {
 
-        /// Curve of animation
-        ///
-        /// - linear: linear
-        /// - easeIn: ease in
-        /// - easeOut: ease out
-        /// - easeInOut: ease in - ease out
-        public enum Curve {
-            case linear
-            case easeIn
-            case easeOut
-            case easeInOut
+    /// Curve of animation
+    ///
+    /// - linear: linear
+    /// - easeIn: ease in
+    /// - easeOut: ease out
+    /// - easeInOut: ease in - ease out
+    public enum Curve {
+      case linear
+      case easeIn
+      case easeOut
+      case easeInOut
 
-            /// Return the media timing function associated with curve
-            internal var function: CAMediaTimingFunction {
-                let key: String
-                switch self {
-                case .linear:        key = CAMediaTimingFunctionName.linear.rawValue
-                case .easeIn:        key = CAMediaTimingFunctionName.easeIn.rawValue
-                case .easeOut:        key = CAMediaTimingFunctionName.easeOut.rawValue
-                case .easeInOut:    key = CAMediaTimingFunctionName.easeInEaseOut.rawValue
-                }
-                return CAMediaTimingFunction(name: CAMediaTimingFunctionName(rawValue: key))
-            }
+      /// Return the media timing function associated with curve
+      internal var function: CAMediaTimingFunction {
+        let key: String
+        switch self {
+        case .linear:        key = CAMediaTimingFunctionName.linear.rawValue
+        case .easeIn:        key = CAMediaTimingFunctionName.easeIn.rawValue
+        case .easeOut:        key = CAMediaTimingFunctionName.easeOut.rawValue
+        case .easeInOut:    key = CAMediaTimingFunctionName.easeInEaseOut.rawValue
         }
-
-        /// Direction of the animation
-        ///
-        /// - fade: fade to new controller
-        /// - toTop: slide from bottom to top
-        /// - toBottom: slide from top to bottom
-        /// - toLeft: pop to left
-        /// - toRight: push to right
-        public enum Direction {
-            case fade
-            case toTop
-            case toBottom
-            case toLeft
-            case toRight
-
-            /// Return the associated transition
-            ///
-            /// - Returns: transition
-            internal func transition() -> CATransition {
-                let transition = CATransition()
-                transition.type = CATransitionType.push
-                switch self {
-                case .fade:
-                    transition.type = CATransitionType.fade
-                    transition.subtype = nil
-                case .toLeft:
-                    transition.subtype = CATransitionSubtype.fromLeft
-                case .toRight:
-                    transition.subtype = CATransitionSubtype.fromRight
-                case .toTop:
-                    transition.subtype = CATransitionSubtype.fromTop
-                case .toBottom:
-                    transition.subtype = CATransitionSubtype.fromBottom
-                }
-                return transition
-            }
-        }
-
-        /// Background of the transition
-        ///
-        /// - solidColor: solid color
-        /// - customView: custom view
-        public enum Background {
-            case solidColor(_: UIColor)
-            case customView(_: UIView)
-        }
-
-        /// Duration of the animation (default is 0.60s)
-        public var duration: TimeInterval = 0.6
-
-        /// Direction of the transition (default is `toRight`)
-        public var direction: TransitionOptions.Direction = .toRight
-
-        /// Style of the transition (default is `linear`)
-        public var style: TransitionOptions.Curve = .linear
-
-        /// Background of the transition (default is `nil`)
-        public var background: TransitionOptions.Background? = .solidColor(.mainBackground)
-
-        /// Initialize a new options object with given direction and curve
-        ///
-        /// - Parameters:
-        ///   - direction: direction
-        ///   - style: style
-        public init(direction: TransitionOptions.Direction = .toRight, style: TransitionOptions.Curve = .linear) {
-            self.direction = direction
-            self.style = style
-        }
-
-        public init() { }
-
-        /// Return the animation to perform for given options object
-        internal var animation: CATransition {
-            let transition = self.direction.transition()
-            transition.duration = self.duration
-            transition.timingFunction = self.style.function
-            return transition
-        }
+        return CAMediaTimingFunction(name: CAMediaTimingFunctionName(rawValue: key))
+      }
     }
 
-    /// Change the root view controller of the window
+    /// Direction of the animation
+    ///
+    /// - fade: fade to new controller
+    /// - toTop: slide from bottom to top
+    /// - toBottom: slide from top to bottom
+    /// - toLeft: pop to left
+    /// - toRight: push to right
+    public enum Direction {
+      case fade
+      case toTop
+      case toBottom
+      case toLeft
+      case toRight
+
+      /// Return the associated transition
+      ///
+      /// - Returns: transition
+      internal func transition() -> CATransition {
+        let transition = CATransition()
+        transition.type = CATransitionType.push
+        switch self {
+        case .fade:
+          transition.type = CATransitionType.fade
+          transition.subtype = nil
+        case .toLeft:
+          transition.subtype = CATransitionSubtype.fromLeft
+        case .toRight:
+          transition.subtype = CATransitionSubtype.fromRight
+        case .toTop:
+          transition.subtype = CATransitionSubtype.fromTop
+        case .toBottom:
+          transition.subtype = CATransitionSubtype.fromBottom
+        }
+        return transition
+      }
+    }
+
+    /// Background of the transition
+    ///
+    /// - solidColor: solid color
+    /// - customView: custom view
+    public enum Background {
+      case solidColor(_: UIColor)
+      case customView(_: UIView)
+    }
+
+    /// Duration of the animation (default is 0.60s)
+    public var duration: TimeInterval = 0.6
+
+    /// Direction of the transition (default is `toRight`)
+    public var direction: TransitionOptions.Direction = .toRight
+
+    /// Style of the transition (default is `linear`)
+    public var style: TransitionOptions.Curve = .linear
+
+    /// Background of the transition (default is `nil`)
+    public var background: TransitionOptions.Background? = .solidColor(.mainBackground)
+
+    /// Initialize a new options object with given direction and curve
     ///
     /// - Parameters:
-    ///   - controller: controller to set
-    ///   - options: options of the transition
-    func setRootViewController(_ controller: UIViewController, options: TransitionOptions = TransitionOptions()) {
-
-        var transitionWnd: UIWindow? = nil
-        if let background = options.background {
-            transitionWnd = UIWindow(frame: UIScreen.main.bounds)
-            switch background {
-            case .customView(let view):
-                transitionWnd?.rootViewController = UIViewController.newController(withView: view, frame: transitionWnd!.bounds)
-            case .solidColor(let color):
-                transitionWnd?.backgroundColor = color
-            }
-            transitionWnd?.makeKeyAndVisible()
-        }
-
-        let transition = CATransition()
-        transition.duration = 0.25
-        transition.type = .fade//.push
-//        transition.subtype = .fromBottom
-        transition.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
-        layer.add(transition, forKey: kCATransition)
-
-        // Make animation
-//        self.layer.add(options.animation, forKey: kCATransition)
-        self.rootViewController = controller
-        self.makeKeyAndVisible()
-
-        if let wnd = transitionWnd {
-            DispatchQueue.main.asyncAfter(deadline: (.now() + 1 + options.duration), execute: {
-                wnd.removeFromSuperview()
-            })
-        }
+    ///   - direction: direction
+    ///   - style: style
+    public init(direction: TransitionOptions.Direction = .toRight, style: TransitionOptions.Curve = .linear) {
+      self.direction = direction
+      self.style = style
     }
+
+    public init() { }
+
+    /// Return the animation to perform for given options object
+    internal var animation: CATransition {
+      let transition = self.direction.transition()
+      transition.duration = self.duration
+      transition.timingFunction = self.style.function
+      return transition
+    }
+  }
+
+  /// Change the root view controller of the window
+  ///
+  /// - Parameters:
+  ///   - controller: controller to set
+  ///   - options: options of the transition
+  func setRootViewController(_ controller: UIViewController, options: TransitionOptions = TransitionOptions()) {
+
+    var transitionWnd: UIWindow? = nil
+    if let background = options.background {
+      transitionWnd = UIWindow(frame: UIScreen.main.bounds)
+      switch background {
+      case .customView(let view):
+        transitionWnd?.rootViewController = UIViewController.newController(withView: view, frame: transitionWnd!.bounds)
+      case .solidColor(let color):
+        transitionWnd?.backgroundColor = color
+      }
+      transitionWnd?.makeKeyAndVisible()
+    }
+
+    let transition = CATransition()
+    transition.duration = 0.25
+    transition.type = .fade//.push
+    //        transition.subtype = .fromBottom
+    transition.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
+    layer.add(transition, forKey: kCATransition)
+
+    // Make animation
+    //        self.layer.add(options.animation, forKey: kCATransition)
+    self.rootViewController = controller
+    self.makeKeyAndVisible()
+
+    if let wnd = transitionWnd {
+      DispatchQueue.main.asyncAfter(deadline: (.now() + 1 + options.duration), execute: {
+        wnd.removeFromSuperview()
+      })
+    }
+  }
 }
 
 internal extension UIViewController {
 
-    /// Create a new empty controller instance with given view
-    ///
-    /// - Parameters:
-    ///   - view: view
-    ///   - frame: frame
-    /// - Returns: instance
-    static func newController(withView view: UIView, frame: CGRect) -> UIViewController {
-        view.frame = frame
-        let controller = UIViewController()
-        controller.view = view
-        return controller
-    }
+  /// Create a new empty controller instance with given view
+  ///
+  /// - Parameters:
+  ///   - view: view
+  ///   - frame: frame
+  /// - Returns: instance
+  static func newController(withView view: UIView, frame: CGRect) -> UIViewController {
+    view.frame = frame
+    let controller = UIViewController()
+    controller.view = view
+    return controller
+  }
 
 }

@@ -10,13 +10,13 @@ import CommonUI
 
 struct VinchyViewControllerViewModel {
 
-    enum Section {
-        case title([TextCollectionCellViewModel])
-        case stories([VinchySimpleConiniousCaruselCollectionCellViewModel])
-        case promo([VinchySimpleConiniousCaruselCollectionCellViewModel])
-        case big([VinchySimpleConiniousCaruselCollectionCellViewModel])
-        case bottles([VinchySimpleConiniousCaruselCollectionCellViewModel])
-        case suggestions([SuggestionCollectionCellViewModel])
-        case shareUs([ShareUsCollectionCellViewModel])
-    }
+  enum Section {
+    case title([TextCollectionCellViewModel])
+    case stories([VinchySimpleConiniousCaruselCollectionCellViewModel])
+    case promo([VinchySimpleConiniousCaruselCollectionCellViewModel])
+    case big([VinchySimpleConiniousCaruselCollectionCellViewModel])
+    case bottles([VinchySimpleConiniousCaruselCollectionCellViewModel])
+    case suggestions([SuggestionCollectionCellViewModel])
+    case shareUs([ShareUsCollectionCellViewModel])
+  }
 }

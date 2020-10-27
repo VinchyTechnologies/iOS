@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import Firebase
+import Firebase
 import GoogleMobileAds
 
 #if canImport(AppTrackingTransparency)
@@ -21,43 +21,53 @@ import AdSupport
 @main
 final class AppDelegate: UIResponder, UIApplicationDelegate {
 
-    func application(
-        _ application: UIApplication,
-        didFinishLaunchingWithOptions
-            launchOptions: [UIApplication.LaunchOptionsKey: Any]?)
-        -> Bool
-    {
-        
-//        FirebaseConfiguration.shared.setLoggerLevel(.min)
-//        FirebaseApp.configure()
+  func application(
+    _ application: UIApplication,
+    didFinishLaunchingWithOptions
+    launchOptions: [UIApplication.LaunchOptionsKey: Any]?)
+    -> Bool
+  {
 
-        if #available(iOS 14, *) {
-            ATTrackingManager.requestTrackingAuthorization(completionHandler: { _ in
-                GADMobileAds.sharedInstance().start(completionHandler: nil)
-            })
-        } else {
-            GADMobileAds.sharedInstance().start(completionHandler: nil)
-        }
+    //        FirebaseConfiguration.shared.setLoggerLevel(.min)
+    FirebaseApp.configure()
 
-//        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "7d99d4164fe23a45e4802010db93f214" ];
+    let defaultValue = ["isAdAvailable": false as NSObject]
+    remoteConfig.setDefaults(defaultValue)
 
-//        GADMobileAds.sharedInstance().start(completionHandler: nil)
-        #if targetEnvironment(simulator)
-        // swiftlint:disable:next force_cast
-//        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [kGADSimulatorID as! String]
-        #endif
-        return true
+    remoteConfig.fetch(withExpirationDuration: 0) { (_, error) in
+      if error == nil {
+        remoteConfig.activate(completion: nil)
+        isAdAvailable = remoteConfig.configValue(forKey: "isAdAvailable").boolValue
+      }
     }
 
-    // MARK: - UISceneSession Lifecycle
-
-    func application(
-        _ application: UIApplication,
-        configurationForConnecting
-            connectingSceneSession: UISceneSession,
-        options: UIScene.ConnectionOptions)
-        -> UISceneConfiguration
-    {
-        UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+    if #available(iOS 14, *) {
+      ATTrackingManager.requestTrackingAuthorization(completionHandler: { _ in
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
+      })
+    } else {
+      GADMobileAds.sharedInstance().start(completionHandler: nil)
     }
+
+    //        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "7d99d4164fe23a45e4802010db93f214" ];
+
+    //        GADMobileAds.sharedInstance().start(completionHandler: nil)
+    #if targetEnvironment(simulator)
+    // swiftlint:disable:next force_cast
+    GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [kGADSimulatorID as! String]
+    #endif
+    return true
+  }
+
+  // MARK: - UISceneSession Lifecycle
+
+  func application(
+    _ application: UIApplication,
+    configurationForConnecting
+      connectingSceneSession: UISceneSession,
+    options: UIScene.ConnectionOptions)
+    -> UISceneConfiguration
+  {
+    UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+  }
 }

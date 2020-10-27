@@ -16,389 +16,385 @@ import StringFormatting
 // swiftlint:disable:force_cast
 
 fileprivate enum C {
-    static let horizontalInset: CGFloat = 16
+  static let horizontalInset: CGFloat = 16
 }
 
 final class VinchyViewController: UIViewController {
 
-    // MARK: - Public Properties
+  // MARK: - Public Properties
 
-    var interactor: VinchyInteractorProtocol?
+  var interactor: VinchyInteractorProtocol?
 
-    // MARK: - Private Properties
+  // MARK: - Private Properties
 
-    private var sections = [VinchyViewControllerViewModel.Section]() {
-        didSet {
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
+  private var sections = [VinchyViewControllerViewModel.Section]() {
+    didSet {
+      collectionView.reloadData()
     }
+  }
 
-    private(set) var loadingIndicator = ActivityIndicatorView()
+  private(set) var loadingIndicator = ActivityIndicatorView()
 
-    private let keyboardHelper = KeyboardHelper()
+  private let keyboardHelper = KeyboardHelper()
 
-    private lazy var collectionView: UICollectionView = {
+  private lazy var collectionView: UICollectionView = {
 
-        let layout = UICollectionViewFlowLayout()
-        layout.minimumLineSpacing = 0
-        layout.scrollDirection = .vertical
+    let layout = UICollectionViewFlowLayout()
+    layout.minimumLineSpacing = 0
+    layout.scrollDirection = .vertical
 
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        collectionView.backgroundColor = .mainBackground
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    collectionView.backgroundColor = .mainBackground
 
-        collectionView.register(
-            SuggestionCollectionCell.self,
-            VinchySimpleConiniousCaruselCollectionCell.self,
-            ShareUsCollectionCell.self,
-            WineCollectionViewCell.self,
-            AdsCollectionViewCell.self,
-            SmartFilterCollectionCell.self,
-            TextCollectionCell.self)
+    collectionView.register(
+      SuggestionCollectionCell.self,
+      VinchySimpleConiniousCaruselCollectionCell.self,
+      ShareUsCollectionCell.self,
+      WineCollectionViewCell.self,
+      AdsCollectionViewCell.self,
+      SmartFilterCollectionCell.self,
+      TextCollectionCell.self)
 
-        collectionView.dataSource = self
-        collectionView.delegate = self
-        collectionView.refreshControl = refreshControl
-        collectionView.delaysContentTouches = false
-        return collectionView
-    }()
+    collectionView.dataSource = self
+    collectionView.delegate = self
+    collectionView.refreshControl = refreshControl
+    collectionView.delaysContentTouches = false
+    return collectionView
+  }()
 
-    private let refreshControl = UIRefreshControl()
+  private let refreshControl = UIRefreshControl()
 
-    private lazy var resultsTableController: ResultsTableController = {
-        let resultsTableController = ResultsTableController()
-        resultsTableController.tableView.delegate = self
-        resultsTableController.didnotFindTheWineTableCellDelegate = self
-        return resultsTableController
-    }()
+  private lazy var resultsTableController: ResultsTableController = {
+    let resultsTableController = ResultsTableController()
+    resultsTableController.tableView.delegate = self
+    resultsTableController.didnotFindTheWineTableCellDelegate = self
+    return resultsTableController
+  }()
 
-    private lazy var searchController: UISearchController = {
-        let searchController = UISearchController(searchResultsController: resultsTableController)
-        searchController.obscuresBackgroundDuringPresentation = false
-        searchController.searchBar.autocapitalizationType = .none
-        searchController.searchBar.delegate = self
-        searchController.searchBar.searchTextField.font = Font.medium(20)
-        searchController.searchBar.searchTextField.layer.cornerRadius = 20
-        searchController.searchBar.searchTextField.layer.masksToBounds = true
-        searchController.searchBar.searchTextField.layer.cornerCurve = .continuous
-        return searchController
-    }()
+  private lazy var searchController: UISearchController = {
+    let searchController = UISearchController(searchResultsController: resultsTableController)
+    searchController.obscuresBackgroundDuringPresentation = false
+    searchController.searchBar.autocapitalizationType = .none
+    searchController.searchBar.delegate = self
+    searchController.searchBar.searchTextField.font = Font.medium(20)
+    searchController.searchBar.searchTextField.layer.cornerRadius = 20
+    searchController.searchBar.searchTextField.layer.masksToBounds = true
+    searchController.searchBar.searchTextField.layer.cornerCurve = .continuous
+    return searchController
+  }()
 
-    private var isSearchingMode: Bool = false {
-        didSet {
-            DispatchQueue.main.async {
-                self.collectionView.reloadData()
-            }
-        }
+  private var isSearchingMode: Bool = false {
+    didSet {
+      collectionView.reloadData()
     }
+  }
 
-    private var suggestions: [Wine] = []
+  private var suggestions: [Wine] = []
 
-    // MARK: - Lifecycle
+  // MARK: - Lifecycle
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
+  override func viewDidLoad() {
+    super.viewDidLoad()
 
-        view.addSubview(collectionView)
-        collectionView.frame = view.frame
+    view.addSubview(collectionView)
+    collectionView.frame = view.frame
 
-        let filterBarButtonItem = UIBarButtonItem(
-            image: UIImage(named: "edit")?.withRenderingMode(.alwaysTemplate),
-            style: .plain,
-            target: self,
-            action: #selector(didTapFilter))
-        navigationItem.rightBarButtonItems = [filterBarButtonItem]
-        navigationItem.searchController = searchController
+    let filterBarButtonItem = UIBarButtonItem(
+      image: UIImage(named: "edit")?.withRenderingMode(.alwaysTemplate),
+      style: .plain,
+      target: self,
+      action: #selector(didTapFilter))
+    navigationItem.rightBarButtonItems = [filterBarButtonItem]
+    navigationItem.searchController = searchController
 
-        refreshControl.tintColor = .dark
-        refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
+    refreshControl.tintColor = .dark
+    refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
 
-        configureKeyboardHelper()
+    configureKeyboardHelper()
 
-        interactor?.viewDidLoad()
+    interactor?.viewDidLoad()
 
+  }
+
+  private func configureKeyboardHelper() {
+    keyboardHelper.bindBottomToKeyboardFrame(
+      animated: true,
+      animate: { [weak self] height in
+        self?.updateNextButtonBottomConstraint(with: height)
+      })
+  }
+
+  public func updateNextButtonBottomConstraint(with keyboardHeight: CGFloat) {
+    if keyboardHeight == 0 {
+      resultsTableController.tableView.contentInset = .zero
+      collectionView.contentInset = .zero
+      return
     }
+    resultsTableController.tableView.contentInset = .init(top: 0, left: 0, bottom: keyboardHeight, right: 0)
+    collectionView.contentInset = .init(top: 0, left: 0, bottom: keyboardHeight, right: 0)
 
-    private func configureKeyboardHelper() {
-        keyboardHelper.bindBottomToKeyboardFrame(
-            animated: true,
-            animate: { [weak self] height in
-                self?.updateNextButtonBottomConstraint(with: height)
-        })
+    view.layoutSubviews()
+  }
+
+  // MARK: - Private Methods
+
+  @objc
+  private func didTapFilter() {
+    interactor?.didTapFilter()
+  }
+
+  @objc
+  private func didPullToRefresh() {
+    CATransaction.begin()
+    CATransaction.setCompletionBlock {
+      DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        self.refreshControl.endRefreshing()
+      }
     }
-
-    public func updateNextButtonBottomConstraint(with keyboardHeight: CGFloat) {
-        if keyboardHeight == 0 {
-            resultsTableController.tableView.contentInset = .zero
-            collectionView.contentInset = .zero
-            return
-        }
-        resultsTableController.tableView.contentInset = .init(top: 0, left: 0, bottom: keyboardHeight, right: 0)
-        collectionView.contentInset = .init(top: 0, left: 0, bottom: keyboardHeight, right: 0)
-
-        view.layoutSubviews()
-    }
-
-    // MARK: - Private Methods
-
-    @objc
-    private func didTapFilter() {
-        interactor?.didTapFilter()
-    }
-
-    @objc
-    private func didPullToRefresh() {
-        CATransaction.begin()
-        CATransaction.setCompletionBlock {
-            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                self.refreshControl.endRefreshing()
-            }
-        }
-        interactor?.didPullToRefresh()
-        CATransaction.commit()
-    }
+    interactor?.didPullToRefresh()
+    CATransaction.commit()
+  }
 }
 
 // MARK: - UICollectionViewDataSource
 
 extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
 
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        minimumLineSpacingForSectionAt section: Int)
-        -> CGFloat
-    {
-        isSearchingMode ? 0 : 10
+  func collectionView(
+    _ collectionView: UICollectionView,
+    layout collectionViewLayout: UICollectionViewLayout,
+    minimumLineSpacingForSectionAt section: Int)
+  -> CGFloat
+  {
+    isSearchingMode ? 0 : 10
+  }
+
+  func collectionView(
+    _ collectionView: UICollectionView,
+    didSelectItemAt indexPath: IndexPath) {
+
+    if isSearchingMode {
+      let wineID = suggestions[indexPath.row].id
+      navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wineID), animated: true)
+    }
+  }
+
+  func collectionView(
+    _ collectionView: UICollectionView,
+    layout collectionViewLayout: UICollectionViewLayout,
+    sizeForItemAt indexPath: IndexPath)
+  -> CGSize
+  {
+    if isSearchingMode {
+      return .init(width: collectionView.frame.width, height: 44)
     }
 
-    func collectionView(
-        _ collectionView: UICollectionView,
-        didSelectItemAt indexPath: IndexPath) {
+    switch sections[indexPath.section] {
+    case .title(let model):
+      let width = collectionView.frame.width - 2 * C.horizontalInset
+      let height = TextCollectionCell.height(viewModel: model[indexPath.row], width: width)
+      return .init(width: width, height: height)
 
-        if isSearchingMode {
-            let wineID = suggestions[indexPath.row].id
-            navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wineID), animated: true)
-        }
+    case .stories(let model), .promo(let model), .big(let model), .bottles(let model):
+      return .init(width: collectionView.frame.width,
+                   height: VinchySimpleConiniousCaruselCollectionCell.height(viewModel: model[safe: indexPath.row]))
+
+    case .suggestions(_):
+      return .init(width: collectionView.frame.width, height: 44)
+
+    case .shareUs(_):
+      let width = collectionView.frame.width - 2 * C.horizontalInset
+      let height: CGFloat = 150 // TODO: -
+      return .init(width: width, height: height)
+    }
+  }
+
+  func collectionView(
+    _ collectionView: UICollectionView,
+    layout collectionViewLayout: UICollectionViewLayout,
+    insetForSectionAt section: Int)
+  -> UIEdgeInsets
+  {
+    if isSearchingMode {
+      return .init(top: 0, left: C.horizontalInset, bottom: 0, right: C.horizontalInset)
     }
 
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        sizeForItemAt indexPath: IndexPath)
-        -> CGSize
-    {
-        if isSearchingMode {
-            return .init(width: collectionView.frame.width, height: 44)
-        }
+    switch sections[section] {
+    case .title:
+      return .init(top: 10, left: C.horizontalInset, bottom: 5, right: C.horizontalInset)
 
-        switch sections[indexPath.section] {
-        case .title(let model):
-            let width = collectionView.frame.width - 2 * C.horizontalInset
-            let height = TextCollectionCell.height(viewModel: model[indexPath.row], width: width)
-            return .init(width: width, height: height)
+    case .suggestions:
+      return .init(top: 0, left: C.horizontalInset, bottom: 0, right: C.horizontalInset)
 
-        case .stories(let model), .promo(let model), .big(let model), .bottles(let model):
-            return .init(width: collectionView.frame.width,
-                         height: VinchySimpleConiniousCaruselCollectionCell.height(viewModel: model[safe: indexPath.row]))
-            
-        case .suggestions(_):
-            return .init(width: collectionView.frame.width, height: 44)
+    case .shareUs:
+      return .init(top: 15, left: C.horizontalInset, bottom: 10, right: C.horizontalInset)
 
-        case .shareUs(_):
-            let width = collectionView.frame.width - 2 * C.horizontalInset
-            let height: CGFloat = 150 // TODO: - 
-            return .init(width: width, height: height)
-        }
+    case .stories, .promo, .big, .bottles:
+      return .zero
+    }
+  }
+
+  func numberOfSections(in collectionView: UICollectionView) -> Int {
+    isSearchingMode ? 1 : sections.count
+  }
+
+  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+    if isSearchingMode {
+      return suggestions.count
+    } else {
+      switch sections[section] {
+      case .title(let model):
+        return model.count
+
+      case .stories(let model), .promo(let model), .big(let model), .bottles(let model):
+        return model.count
+
+      case .suggestions(let model):
+        return model.count
+
+      case .shareUs(let model):
+        return model.count
+      }
+    }
+  }
+
+  func collectionView(
+    _ collectionView: UICollectionView,
+    cellForItemAt indexPath: IndexPath)
+  -> UICollectionViewCell
+  {
+
+    if isSearchingMode {
+      // swiftlint:disable:next force_cast
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SuggestionCollectionCell.reuseId, for: indexPath) as! SuggestionCollectionCell
+      cell.decorate(model: .init(titleText: suggestions[indexPath.row].title))
+      return cell
     }
 
-    func collectionView(
-        _ collectionView: UICollectionView,
-        layout collectionViewLayout: UICollectionViewLayout,
-        insetForSectionAt section: Int)
-        -> UIEdgeInsets
-    {
-        if isSearchingMode {
-            return .init(top: 0, left: C.horizontalInset, bottom: 0, right: C.horizontalInset)
-        }
+    switch sections[indexPath.section] {
+    case .title(let model):
+      // swiftlint:disable:next force_cast
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseId, for: indexPath) as! TextCollectionCell
+      cell.decorate(model: model[indexPath.row])
+      return cell
 
-        switch sections[section] {
-        case .title:
-            return .init(top: 10, left: C.horizontalInset, bottom: 5, right: C.horizontalInset)
+    case .stories(let model), .promo(let model), .big(let model), .bottles(let model):
+      let cell = collectionView.dequeueReusableCell(
+        withReuseIdentifier: VinchySimpleConiniousCaruselCollectionCell.reuseId,
+        for: indexPath) as! VinchySimpleConiniousCaruselCollectionCell// swiftlint:disable:this force_cast
+      cell.decorate(model: model[indexPath.row])
+      cell.delegate = self
+      return cell
 
-        case .suggestions:
-            return .init(top: 0, left: C.horizontalInset, bottom: 0, right: C.horizontalInset)
+    case .suggestions(let model):
+      // swiftlint:disable:next force_cast
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SuggestionCollectionCell.reuseId, for: indexPath) as! SuggestionCollectionCell
+      cell.decorate(model: model[indexPath.row])
+      return cell
 
-        case .shareUs:
-            return .init(top: 15, left: C.horizontalInset, bottom: 10, right: C.horizontalInset)
-
-        case .stories, .promo, .big, .bottles:
-            return .zero
-        }
+    case .shareUs(let model):
+      // swiftlint:disable:next force_cast
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShareUsCollectionCell.reuseId, for: indexPath) as! ShareUsCollectionCell
+      cell.decorate(model: model[indexPath.row])
+      cell.delegate = self
+      return cell
     }
 
-    func numberOfSections(in collectionView: UICollectionView) -> Int {
-        isSearchingMode ? 1 : sections.count
-    }
-
-    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if isSearchingMode {
-            return suggestions.count
-        } else {
-            switch sections[section] {
-            case .title(let model):
-                return model.count
-
-            case .stories(let model), .promo(let model), .big(let model), .bottles(let model):
-                return model.count
-
-            case .suggestions(let model):
-                return model.count
-
-            case .shareUs(let model):
-                return model.count
-            }
-        }
-    }
-
-    func collectionView(
-        _ collectionView: UICollectionView,
-        cellForItemAt indexPath: IndexPath)
-        -> UICollectionViewCell
-    {
-
-        if isSearchingMode {
-            // swiftlint:disable:next force_cast
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SuggestionCollectionCell.reuseId, for: indexPath) as! SuggestionCollectionCell
-            cell.decorate(model: .init(titleText: suggestions[indexPath.row].title))
-            return cell
-        }
-
-        switch sections[indexPath.section] {
-        case .title(let model):
-            // swiftlint:disable:next force_cast
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseId, for: indexPath) as! TextCollectionCell
-            cell.decorate(model: model[indexPath.row])
-            return cell
-
-        case .stories(let model), .promo(let model), .big(let model), .bottles(let model):
-            let cell = collectionView.dequeueReusableCell(
-                withReuseIdentifier: VinchySimpleConiniousCaruselCollectionCell.reuseId,
-                for: indexPath) as! VinchySimpleConiniousCaruselCollectionCell// swiftlint:disable:this force_cast
-            cell.decorate(model: model[indexPath.row])
-            cell.delegate = self
-            return cell
-
-        case .suggestions(let model):
-            // swiftlint:disable:next force_cast
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SuggestionCollectionCell.reuseId, for: indexPath) as! SuggestionCollectionCell
-            cell.decorate(model: model[indexPath.row])
-            return cell
-
-        case .shareUs(let model):
-            // swiftlint:disable:next force_cast
-            let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShareUsCollectionCell.reuseId, for: indexPath) as! ShareUsCollectionCell
-            cell.decorate(model: model[indexPath.row])
-            cell.delegate = self
-            return cell
-        }
-
-        //            case .smartFilter:
-        //                // swiftlint:disable:next force_cast
-        //                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SmartFilterCollectionCell.reuseId, for: indexPath) as! SmartFilterCollectionCell
-        //                cell.decorate(model: .init(
-        //                                accentText: "New in Vinchy".uppercased(),
-        //                                boldText: "Personal compilations",
-        //                                subtitleText: "Answer on 3 questions & we find for you best wines.",
-        //                                buttonText: "Try now"))
-    }
+    //            case .smartFilter:
+    //                // swiftlint:disable:next force_cast
+    //                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SmartFilterCollectionCell.reuseId, for: indexPath) as! SmartFilterCollectionCell
+    //                cell.decorate(model: .init(
+    //                                accentText: "New in Vinchy".uppercased(),
+    //                                boldText: "Personal compilations",
+    //                                subtitleText: "Answer on 3 questions & we find for you best wines.",
+    //                                buttonText: "Try now"))
+  }
 }
 
 extension VinchyViewController: UISearchBarDelegate {
 
-    func searchBar(
-        _ searchBar: UISearchBar,
-        textDidChange searchText: String) {
+  func searchBar(
+    _ searchBar: UISearchBar,
+    textDidChange searchText: String) {
 
-        interactor?.didEnterSearchText(searchText)
-    }
+    interactor?.didEnterSearchText(searchText)
+  }
 
-    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-        searchBar.resignFirstResponder()
-        interactor?.didTapSearchButton(searchText: searchBar.text)
-    }
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    searchBar.resignFirstResponder()
+    interactor?.didTapSearchButton(searchText: searchBar.text)
+  }
 
-    func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
-        isSearchingMode = true
-    }
+  func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+    isSearchingMode = true
+  }
 
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        isSearchingMode = false
-    }
+  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    isSearchingMode = false
+  }
 }
 
 extension VinchyViewController: UITableViewDelegate {
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
 
-        tableView.deselectRow(at: indexPath, animated: true)
-        guard let wineID = resultsTableController.didFoundProducts[safe: indexPath.row]?.id else { return }
-        navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wineID), animated: true)
-    }
+    tableView.deselectRow(at: indexPath, animated: true)
+    guard let wineID = resultsTableController.didFoundProducts[safe: indexPath.row]?.id else { return }
+    navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wineID), animated: true)
+  }
 }
 
 extension VinchyViewController: DidnotFindTheWineTableCellProtocol {
-    
-    func didTapWriteUsButton(_ button: UIButton) {
 
-        let searchText = searchController.searchBar.searchTextField.text
-        interactor?.didTapDidnotFindWineFromSearch(
-            searchText: searchText)
-    }
+  func didTapWriteUsButton(_ button: UIButton) {
+
+    let searchText = searchController.searchBar.searchTextField.text
+    interactor?.didTapDidnotFindWineFromSearch(
+      searchText: searchText)
+  }
 }
 
 extension VinchyViewController: VinchySimpleConiniousCaruselCollectionCellDelegate {
 
-    func didTapBootleCell(wineID: Int64) {
+  func didTapBootleCell(wineID: Int64) {
 
-        navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wineID), animated: true)
+    navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wineID), animated: true)
+  }
+
+  func didTapCompilationCell(wines: [Wine], title: String?) {
+
+    guard !wines.isEmpty else {
+      showAlert(message: localized("empty_collection"))
+      return
     }
 
-    func didTapCompilationCell(wines: [Wine], title: String?) {
-
-        guard !wines.isEmpty else {
-            showAlert(message: localized("empty_collection"))
-            return
-        }
-
-        navigationController?.pushViewController(
-            Assembly.buildShowcaseModule(navTitle: title, mode: .normal(wines: wines)), animated: true)
-    }
+    navigationController?.pushViewController(
+      Assembly.buildShowcaseModule(navTitle: title, mode: .normal(wines: wines)), animated: true)
+  }
 }
 
 extension VinchyViewController: VinchyViewControllerProtocol {
 
-    func updateUI(didFindWines: [Wine]) {
-        resultsTableController.didFoundProducts = didFindWines
-    }
+  func updateUI(didFindWines: [Wine]) {
+    resultsTableController.didFoundProducts = didFindWines
+  }
 
-    func updateUI(sections: [VinchyViewControllerViewModel.Section]) {
-        self.sections = sections
-    }
+  func updateUI(sections: [VinchyViewControllerViewModel.Section]) {
+    self.sections = sections
+  }
 
-    func updateSearchSuggestions(suggestions: [Wine]) {
-        self.suggestions = suggestions
-    }
+  func updateSearchSuggestions(suggestions: [Wine]) {
+    self.suggestions = suggestions
+  }
 }
 
 extension VinchyViewController: ShareUsCollectionCellDelegate {
 
-    func didTapShareUs(_ button: UIButton) {
-        let items = [localized("i_use_vinchy"), openAppStoreURL]
-        let controller = UIActivityViewController(activityItems: items, applicationActivities: nil)
-        present(controller, animated: true)
-    }
+  func didTapShareUs(_ button: UIButton) {
+    let items = [localized("i_use_vinchy"), openAppStoreURL]
+    let controller = UIActivityViewController(activityItems: items, applicationActivities: nil)
+    present(controller, animated: true)
+  }
 }
 
 //@objc private func didTapCamera() {

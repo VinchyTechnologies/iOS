@@ -11,38 +11,35 @@ import EmailService
 
 final class VinchyRouter {
 
-    let emailService = EmailService()
+  let emailService = EmailService()
 
-    weak var viewController: UIViewController?
-    weak var interactor: VinchyInteractorProtocol?
+  weak var viewController: UIViewController?
+  weak var interactor: VinchyInteractorProtocol?
 
-    init(viewController: UIViewController) {
-        
-        self.viewController = viewController
-    }
+  init(viewController: UIViewController) {
+    self.viewController = viewController
+  }
 }
 
 extension VinchyRouter: VinchyRouterProtocol {
 
-    func pushToAdvancedFilterViewController() {
+  func pushToAdvancedFilterViewController() {
+    viewController?.navigationController?.pushViewController(
+      Assembly.buildFiltersModule(), animated: true)
+  }
 
-        viewController?.navigationController?.pushViewController(Assembly.buildFiltersModule(), animated: true)
-    }
+  func pushToDetailCollection(searchText: String) {
+    viewController?.navigationController?.pushViewController(
+      Assembly.buildShowcaseModule(
+        navTitle: nil,
+        mode: .advancedSearch(params: [("title", searchText)])),
+      animated: true)
+  }
 
-    func pushToDetailCollection(searchText: String) {
-
-        viewController?.navigationController?.pushViewController(
-            Assembly.buildShowcaseModule(
-                navTitle: nil,
-                mode: .advancedSearch(params: [("title", searchText)])),
-            animated: true)
-    }
-
-    func presentEmailController(HTMLText: String?, recipients: [String]) {
-
-        let emailController = emailService.getEmailController(
-            HTMLText: HTMLText,
-            recipients: recipients)
-        viewController?.present(emailController, animated: true, completion: nil)
-    }
+  func presentEmailController(HTMLText: String?, recipients: [String]) {
+    let emailController = emailService.getEmailController(
+      HTMLText: HTMLText,
+      recipients: recipients)
+    viewController?.present(emailController, animated: true, completion: nil)
+  }
 }

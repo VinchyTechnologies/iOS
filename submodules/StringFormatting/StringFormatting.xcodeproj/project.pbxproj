@@ -70,7 +70,9 @@
 				B6BC19EB4315403A9FF724AC /* Pods */,
 				06279ED81AF6935EDF86DFFF /* Frameworks */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		CABDBAA324C3222C00AD96D6 /* Products */ = {
 			isa = PBXGroup;
