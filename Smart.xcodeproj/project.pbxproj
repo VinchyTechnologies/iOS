@@ -139,6 +139,7 @@
 		CA4D18092492B2AC00B49BD4 /* MockMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D18062492B2AC00B49BD4 /* MockMessage.swift */; };
 		CA4D180A2492B2AC00B49BD4 /* MockUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D18072492B2AC00B49BD4 /* MockUser.swift */; };
 		CA4D180B2492B2AC00B49BD4 /* MockSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D18082492B2AC00B49BD4 /* MockSocket.swift */; };
+		CA4D4FE42548A93500A6FD0B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA4D4FE32548A93500A6FD0B /* GoogleService-Info.plist */; };
 		CA4EA6BB24BE3ACD00E6F0C4 /* currencies.json in Resources */ = {isa = PBXBuildFile; fileRef = CA4EA6BA24BE3ACD00E6F0C4 /* currencies.json */; };
 		CA51BBED254094A100208F71 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA51BBEC254094A100208F71 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		CA51BBEF254094B000208F71 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA51BBEE254094B000208F71 /* AppTrackingTransparency.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
@@ -394,6 +395,7 @@
 		CA4D18062492B2AC00B49BD4 /* MockMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockMessage.swift; sourceTree = "<group>"; };
 		CA4D18072492B2AC00B49BD4 /* MockUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockUser.swift; sourceTree = "<group>"; };
 		CA4D18082492B2AC00B49BD4 /* MockSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockSocket.swift; sourceTree = "<group>"; };
+		CA4D4FE32548A93500A6FD0B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CA4EA6BA24BE3ACD00E6F0C4 /* currencies.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = currencies.json; sourceTree = "<group>"; };
 		CA51BBEC254094A100208F71 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
 		CA51BBEE254094B000208F71 /* AppTrackingTransparency.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppTrackingTransparency.framework; path = System/Library/Frameworks/AppTrackingTransparency.framework; sourceTree = SDKROOT; };
@@ -612,6 +614,7 @@
 				CA4EA6BA24BE3ACD00E6F0C4 /* currencies.json */,
 				CA3CEFAF251288F000AAA692 /* country_codes.json */,
 				CACC1DC124C5F2980082BD01 /* filters.json */,
+				CA4D4FE32548A93500A6FD0B /* GoogleService-Info.plist */,
 				CA472ACD245EDE30009149FF /* Info.plist */,
 				CA445F6D24BFA3C20023A09F /* InfoPlist.strings */,
 				CA472ACA245EDE30009149FF /* LaunchScreen.storyboard */,
@@ -1417,6 +1420,7 @@
 				CA445F6B24BFA3C20023A09F /* InfoPlist.strings in Resources */,
 				CA63A12B249A23C100144320 /* Localizable.strings in Resources */,
 				CA4EA6BB24BE3ACD00E6F0C4 /* currencies.json in Resources */,
+				CA4D4FE42548A93500A6FD0B /* GoogleService-Info.plist in Resources */,
 				CA4AED9B24CE204900035922 /* TopSecret.plist in Resources */,
 				CA8CD68225097AD500FDB7AF /* GADTMediumTemplateView.xib in Resources */,
 				CACC1DC224C5F2980082BD01 /* filters.json in Resources */,

@@ -6,10 +6,18 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import FirebaseRemoteConfig
+
+let remoteConfig: RemoteConfig = {
+  let remoteConfig = RemoteConfig.remoteConfig()
+  let settings = RemoteConfigSettings()
+  settings.minimumFetchInterval = 0
+  remoteConfig.configSettings = settings
+  return remoteConfig
+}()
 
 let isOnboardingAvailable = false
 let isSmartFilterAvailable = false
 let isShareUsEnabled = true
 let isDescriptionInWineDetailEnabled = false
-let isAdAvailable = true
+var isAdAvailable = false

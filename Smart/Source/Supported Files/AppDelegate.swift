@@ -7,7 +7,7 @@
 //
 
 import UIKit
-//import Firebase
+import Firebase
 import GoogleMobileAds
 
 #if canImport(AppTrackingTransparency)
@@ -29,7 +29,17 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
   {
 
     //        FirebaseConfiguration.shared.setLoggerLevel(.min)
-    //        FirebaseApp.configure()
+    FirebaseApp.configure()
+
+    let defaultValue = ["isAdAvailable": false as NSObject]
+    remoteConfig.setDefaults(defaultValue)
+
+    remoteConfig.fetch(withExpirationDuration: 0) { (_, error) in
+      if error == nil {
+        remoteConfig.activate(completion: nil)
+        isAdAvailable = remoteConfig.configValue(forKey: "isAdAvailable").boolValue
+      }
+    }
 
     if #available(iOS 14, *) {
       ATTrackingManager.requestTrackingAuthorization(completionHandler: { _ in
@@ -44,7 +54,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     //        GADMobileAds.sharedInstance().start(completionHandler: nil)
     #if targetEnvironment(simulator)
     // swiftlint:disable:next force_cast
-    //        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [kGADSimulatorID as! String]
+    GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [kGADSimulatorID as! String]
     #endif
     return true
   }
