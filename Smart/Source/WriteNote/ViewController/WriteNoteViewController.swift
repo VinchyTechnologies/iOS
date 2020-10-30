@@ -100,7 +100,7 @@ extension WriteNoteViewController: UITextViewDelegate {
 
 extension WriteNoteViewController: WriteNoteViewControllerProtocol {
   func update(viewModel: WriteNoteViewModel) {
-    if let noteText = viewModel.noteText {
+    if let noteText = viewModel.noteText, !noteText.isEmpty {
       textView.text = noteText
     }
     navigationItem.title = viewModel.navigationText

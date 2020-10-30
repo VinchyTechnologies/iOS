@@ -24,74 +24,6 @@
 		CA070C1825250AEC00C3D9EC /* OnboardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA070C1525250AEC00C3D9EC /* OnboardPage.swift */; };
 		CA070C1E25250BB000C3D9EC /* OnboardingCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA070C1D25250BB000C3D9EC /* OnboardingCoordinator.swift */; };
 		CA070C2425250C1800C3D9EC /* OnboardingModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA070C2325250C1800C3D9EC /* OnboardingModuleFactory.swift */; };
-		CA154D752494156C00696436 /* BasicExampleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D742494156C00696436 /* BasicExampleViewController.swift */; };
-		CA154D77249415A000696436 /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D76249415A000696436 /* ChatViewController.swift */; };
-		CA154D79249415F200696436 /* BasicAudioController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D78249415F200696436 /* BasicAudioController.swift */; };
-		CA154DC72494EA2B00696436 /* CellSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D7D2494EA2B00696436 /* CellSizeCalculator.swift */; };
-		CA154DC82494EA2B00696436 /* MessagesCollectionViewLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D7E2494EA2B00696436 /* MessagesCollectionViewLayoutAttributes.swift */; };
-		CA154DC92494EA2B00696436 /* ContactMessageSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D7F2494EA2B00696436 /* ContactMessageSizeCalculator.swift */; };
-		CA154DCA2494EA2B00696436 /* TypingIndicatorCellSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D802494EA2B00696436 /* TypingIndicatorCellSizeCalculator.swift */; };
-		CA154DCB2494EA2B00696436 /* MessagesCollectionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D812494EA2B00696436 /* MessagesCollectionViewFlowLayout.swift */; };
-		CA154DCC2494EA2B00696436 /* MediaMessageSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D822494EA2B00696436 /* MediaMessageSizeCalculator.swift */; };
-		CA154DCD2494EA2B00696436 /* AudioMessageSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D832494EA2B00696436 /* AudioMessageSizeCalculator.swift */; };
-		CA154DCE2494EA2B00696436 /* TextMessageSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D842494EA2B00696436 /* TextMessageSizeCalculator.swift */; };
-		CA154DCF2494EA2B00696436 /* LocationMessageSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D852494EA2B00696436 /* LocationMessageSizeCalculator.swift */; };
-		CA154DD02494EA2B00696436 /* MessageSizeCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D862494EA2B00696436 /* MessageSizeCalculator.swift */; };
-		CA154DD12494EA2B00696436 /* MessageKitDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D882494EA2B00696436 /* MessageKitDateFormatter.swift */; };
-		CA154DD22494EA2B00696436 /* LabelAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D892494EA2B00696436 /* LabelAlignment.swift */; };
-		CA154DD32494EA2B00696436 /* LocationMessageSnapshotOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D8A2494EA2B00696436 /* LocationMessageSnapshotOptions.swift */; };
-		CA154DD42494EA2B00696436 /* AccessoryPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D8B2494EA2B00696436 /* AccessoryPosition.swift */; };
-		CA154DD52494EA2B00696436 /* Sender.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D8C2494EA2B00696436 /* Sender.swift */; };
-		CA154DD62494EA2B00696436 /* MessageKind.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D8D2494EA2B00696436 /* MessageKind.swift */; };
-		CA154DD72494EA2B00696436 /* MessageStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D8E2494EA2B00696436 /* MessageStyle.swift */; };
-		CA154DD82494EA2B00696436 /* MessageKitError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D8F2494EA2B00696436 /* MessageKitError.swift */; };
-		CA154DD92494EA2B00696436 /* Avatar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D902494EA2B00696436 /* Avatar.swift */; };
-		CA154DDA2494EA2B00696436 /* DetectorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D912494EA2B00696436 /* DetectorType.swift */; };
-		CA154DDB2494EA2B00696436 /* AvatarPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D922494EA2B00696436 /* AvatarPosition.swift */; };
-		CA154DDC2494EA2B00696436 /* HorizontalEdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D932494EA2B00696436 /* HorizontalEdgeInsets.swift */; };
-		CA154DDD2494EA2B00696436 /* NSConstraintLayoutSet.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D942494EA2B00696436 /* NSConstraintLayoutSet.swift */; };
-		CA154DDE2494EA2B00696436 /* UIView+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D962494EA2B00696436 /* UIView+Extensions.swift */; };
-		CA154DDF2494EA2B00696436 /* UIEdgeInsets+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D972494EA2B00696436 /* UIEdgeInsets+Extensions.swift */; };
-		CA154DE02494EA2B00696436 /* UIImage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D982494EA2B00696436 /* UIImage+Extension.swift */; };
-		CA154DE12494EA2B00696436 /* UIColor+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D992494EA2B00696436 /* UIColor+Extensions.swift */; };
-		CA154DE22494EA2B00696436 /* NSAttributedString+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D9A2494EA2B00696436 /* NSAttributedString+Extensions.swift */; };
-		CA154DE32494EA2B00696436 /* Bundle+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D9B2494EA2B00696436 /* Bundle+Extensions.swift */; };
-		CA154DE42494EA2B00696436 /* CGRect+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D9C2494EA2B00696436 /* CGRect+Extensions.swift */; };
-		CA154DE52494EA2B00696436 /* MessageInputBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154D9E2494EA2B00696436 /* MessageInputBar.swift */; };
-		CA154DE62494EA2B00696436 /* MessageKit+Availability.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DA02494EA2B00696436 /* MessageKit+Availability.swift */; };
-		CA154DE82494EA2B00696436 /* MessagesViewController+Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DA32494EA2B00696436 /* MessagesViewController+Keyboard.swift */; };
-		CA154DE92494EA2B00696436 /* MessagesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DA42494EA2B00696436 /* MessagesViewController.swift */; };
-		CA154DEA2494EA2B00696436 /* MessagesViewController+Menu.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DA52494EA2B00696436 /* MessagesViewController+Menu.swift */; };
-		CA154DEB2494EA2B00696436 /* ContactMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DA82494EA2B00696436 /* ContactMessageCell.swift */; };
-		CA154DEC2494EA2B00696436 /* LocationMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DA92494EA2B00696436 /* LocationMessageCell.swift */; };
-		CA154DED2494EA2B00696436 /* MediaMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DAA2494EA2B00696436 /* MediaMessageCell.swift */; };
-		CA154DEE2494EA2B00696436 /* TextMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DAB2494EA2B00696436 /* TextMessageCell.swift */; };
-		CA154DEF2494EA2B00696436 /* TypingIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DAC2494EA2B00696436 /* TypingIndicatorCell.swift */; };
-		CA154DF02494EA2B00696436 /* MessageContentCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DAD2494EA2B00696436 /* MessageContentCell.swift */; };
-		CA154DF12494EA2B00696436 /* MessageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DAE2494EA2B00696436 /* MessageCollectionViewCell.swift */; };
-		CA154DF22494EA2B00696436 /* AudioMessageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DAF2494EA2B00696436 /* AudioMessageCell.swift */; };
-		CA154DF32494EA2B00696436 /* MessageLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DB02494EA2B00696436 /* MessageLabel.swift */; };
-		CA154DF42494EA2B00696436 /* MessageReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DB22494EA2B00696436 /* MessageReusableView.swift */; };
-		CA154DF52494EA2B00696436 /* TypingIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DB32494EA2B00696436 /* TypingIndicator.swift */; };
-		CA154DF62494EA2B00696436 /* MessageContainerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DB42494EA2B00696436 /* MessageContainerView.swift */; };
-		CA154DF72494EA2B00696436 /* TypingBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DB52494EA2B00696436 /* TypingBubble.swift */; };
-		CA154DF82494EA2B00696436 /* InsetLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DB62494EA2B00696436 /* InsetLabel.swift */; };
-		CA154DF92494EA2B00696436 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DB72494EA2B00696436 /* AvatarView.swift */; };
-		CA154DFA2494EA2B00696436 /* MessagesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DB82494EA2B00696436 /* MessagesCollectionView.swift */; };
-		CA154DFB2494EA2B00696436 /* PlayButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DB92494EA2B00696436 /* PlayButtonView.swift */; };
-		CA154DFC2494EA2B00696436 /* BubbleCircle.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DBA2494EA2B00696436 /* BubbleCircle.swift */; };
-		CA154DFD2494EA2B00696436 /* ContactItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DBC2494EA2B00696436 /* ContactItem.swift */; };
-		CA154DFE2494EA2B00696436 /* MediaItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DBD2494EA2B00696436 /* MediaItem.swift */; };
-		CA154DFF2494EA2B00696436 /* AudioItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DBE2494EA2B00696436 /* AudioItem.swift */; };
-		CA154E002494EA2B00696436 /* MessagesLayoutDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DBF2494EA2B00696436 /* MessagesLayoutDelegate.swift */; };
-		CA154E012494EA2B00696436 /* SenderType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DC02494EA2B00696436 /* SenderType.swift */; };
-		CA154E022494EA2B00696436 /* MessageType.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DC12494EA2B00696436 /* MessageType.swift */; };
-		CA154E032494EA2B00696436 /* MessageCellDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DC22494EA2B00696436 /* MessageCellDelegate.swift */; };
-		CA154E042494EA2B00696436 /* MessageLabelDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DC32494EA2B00696436 /* MessageLabelDelegate.swift */; };
-		CA154E052494EA2B00696436 /* LocationItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DC42494EA2B00696436 /* LocationItem.swift */; };
-		CA154E062494EA2B00696436 /* MessagesDisplayDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DC52494EA2B00696436 /* MessagesDisplayDelegate.swift */; };
-		CA154E072494EA2B00696436 /* MessagesDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA154DC62494EA2B00696436 /* MessagesDataSource.swift */; };
-		CA154E152494EDCA00696436 /* MessageKitAssets.bundle in Resources */ = {isa = PBXBuildFile; fileRef = CA154E0C2494EDCA00696436 /* MessageKitAssets.bundle */; };
 		CA1821A424C0E83900280DD4 /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA1821A324C0E83900280DD4 /* Display.framework */; };
 		CA1821A524C0E83900280DD4 /* Display.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA1821A324C0E83900280DD4 /* Display.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA1821FF24C0F6F000280DD4 /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA1821FE24C0F6F000280DD4 /* Database.framework */; };
@@ -133,11 +65,6 @@
 		CA49A219251E8CFE00FBE269 /* TitleWithSubtitleInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49A218251E8CFE00FBE269 /* TitleWithSubtitleInfoCollectionViewCell.swift */; };
 		CA49A25B251F2C4600FBE269 /* BigAdCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49A25A251F2C4600FBE269 /* BigAdCollectionCell.swift */; };
 		CA4AED9B24CE204900035922 /* TopSecret.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA4AED9A24CE204900035922 /* TopSecret.plist */; };
-		CA4D18032492B27400B49BD4 /* Lorem.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D18012492B27400B49BD4 /* Lorem.swift */; };
-		CA4D18042492B27400B49BD4 /* SampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D18022492B27400B49BD4 /* SampleData.swift */; };
-		CA4D18092492B2AC00B49BD4 /* MockMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D18062492B2AC00B49BD4 /* MockMessage.swift */; };
-		CA4D180A2492B2AC00B49BD4 /* MockUser.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D18072492B2AC00B49BD4 /* MockUser.swift */; };
-		CA4D180B2492B2AC00B49BD4 /* MockSocket.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D18082492B2AC00B49BD4 /* MockSocket.swift */; };
 		CA4D4FE42548A93500A6FD0B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA4D4FE32548A93500A6FD0B /* GoogleService-Info.plist */; };
 		CA4D51042549F62500A6FD0B /* WriteNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D51032549F62500A6FD0B /* WriteNoteViewController.swift */; };
 		CA4EA6BB24BE3ACD00E6F0C4 /* currencies.json in Resources */ = {isa = PBXBuildFile; fileRef = CA4EA6BA24BE3ACD00E6F0C4 /* currencies.json */; };
@@ -284,74 +211,6 @@
 		CA070C1525250AEC00C3D9EC /* OnboardPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardPage.swift; sourceTree = "<group>"; };
 		CA070C1D25250BB000C3D9EC /* OnboardingCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingCoordinator.swift; sourceTree = "<group>"; };
 		CA070C2325250C1800C3D9EC /* OnboardingModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModuleFactory.swift; sourceTree = "<group>"; };
-		CA154D742494156C00696436 /* BasicExampleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicExampleViewController.swift; sourceTree = "<group>"; };
-		CA154D76249415A000696436 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
-		CA154D78249415F200696436 /* BasicAudioController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicAudioController.swift; sourceTree = "<group>"; };
-		CA154D7D2494EA2B00696436 /* CellSizeCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CellSizeCalculator.swift; sourceTree = "<group>"; };
-		CA154D7E2494EA2B00696436 /* MessagesCollectionViewLayoutAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesCollectionViewLayoutAttributes.swift; sourceTree = "<group>"; };
-		CA154D7F2494EA2B00696436 /* ContactMessageSizeCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactMessageSizeCalculator.swift; sourceTree = "<group>"; };
-		CA154D802494EA2B00696436 /* TypingIndicatorCellSizeCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypingIndicatorCellSizeCalculator.swift; sourceTree = "<group>"; };
-		CA154D812494EA2B00696436 /* MessagesCollectionViewFlowLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesCollectionViewFlowLayout.swift; sourceTree = "<group>"; };
-		CA154D822494EA2B00696436 /* MediaMessageSizeCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaMessageSizeCalculator.swift; sourceTree = "<group>"; };
-		CA154D832494EA2B00696436 /* AudioMessageSizeCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioMessageSizeCalculator.swift; sourceTree = "<group>"; };
-		CA154D842494EA2B00696436 /* TextMessageSizeCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextMessageSizeCalculator.swift; sourceTree = "<group>"; };
-		CA154D852494EA2B00696436 /* LocationMessageSizeCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationMessageSizeCalculator.swift; sourceTree = "<group>"; };
-		CA154D862494EA2B00696436 /* MessageSizeCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageSizeCalculator.swift; sourceTree = "<group>"; };
-		CA154D882494EA2B00696436 /* MessageKitDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageKitDateFormatter.swift; sourceTree = "<group>"; };
-		CA154D892494EA2B00696436 /* LabelAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelAlignment.swift; sourceTree = "<group>"; };
-		CA154D8A2494EA2B00696436 /* LocationMessageSnapshotOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationMessageSnapshotOptions.swift; sourceTree = "<group>"; };
-		CA154D8B2494EA2B00696436 /* AccessoryPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AccessoryPosition.swift; sourceTree = "<group>"; };
-		CA154D8C2494EA2B00696436 /* Sender.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sender.swift; sourceTree = "<group>"; };
-		CA154D8D2494EA2B00696436 /* MessageKind.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageKind.swift; sourceTree = "<group>"; };
-		CA154D8E2494EA2B00696436 /* MessageStyle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageStyle.swift; sourceTree = "<group>"; };
-		CA154D8F2494EA2B00696436 /* MessageKitError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageKitError.swift; sourceTree = "<group>"; };
-		CA154D902494EA2B00696436 /* Avatar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Avatar.swift; sourceTree = "<group>"; };
-		CA154D912494EA2B00696436 /* DetectorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetectorType.swift; sourceTree = "<group>"; };
-		CA154D922494EA2B00696436 /* AvatarPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarPosition.swift; sourceTree = "<group>"; };
-		CA154D932494EA2B00696436 /* HorizontalEdgeInsets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalEdgeInsets.swift; sourceTree = "<group>"; };
-		CA154D942494EA2B00696436 /* NSConstraintLayoutSet.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NSConstraintLayoutSet.swift; sourceTree = "<group>"; };
-		CA154D962494EA2B00696436 /* UIView+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extensions.swift"; sourceTree = "<group>"; };
-		CA154D972494EA2B00696436 /* UIEdgeInsets+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIEdgeInsets+Extensions.swift"; sourceTree = "<group>"; };
-		CA154D982494EA2B00696436 /* UIImage+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Extension.swift"; sourceTree = "<group>"; };
-		CA154D992494EA2B00696436 /* UIColor+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extensions.swift"; sourceTree = "<group>"; };
-		CA154D9A2494EA2B00696436 /* NSAttributedString+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSAttributedString+Extensions.swift"; sourceTree = "<group>"; };
-		CA154D9B2494EA2B00696436 /* Bundle+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Bundle+Extensions.swift"; sourceTree = "<group>"; };
-		CA154D9C2494EA2B00696436 /* CGRect+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "CGRect+Extensions.swift"; sourceTree = "<group>"; };
-		CA154D9E2494EA2B00696436 /* MessageInputBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageInputBar.swift; sourceTree = "<group>"; };
-		CA154DA02494EA2B00696436 /* MessageKit+Availability.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MessageKit+Availability.swift"; sourceTree = "<group>"; };
-		CA154DA32494EA2B00696436 /* MessagesViewController+Keyboard.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MessagesViewController+Keyboard.swift"; sourceTree = "<group>"; };
-		CA154DA42494EA2B00696436 /* MessagesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesViewController.swift; sourceTree = "<group>"; };
-		CA154DA52494EA2B00696436 /* MessagesViewController+Menu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "MessagesViewController+Menu.swift"; sourceTree = "<group>"; };
-		CA154DA82494EA2B00696436 /* ContactMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactMessageCell.swift; sourceTree = "<group>"; };
-		CA154DA92494EA2B00696436 /* LocationMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationMessageCell.swift; sourceTree = "<group>"; };
-		CA154DAA2494EA2B00696436 /* MediaMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaMessageCell.swift; sourceTree = "<group>"; };
-		CA154DAB2494EA2B00696436 /* TextMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextMessageCell.swift; sourceTree = "<group>"; };
-		CA154DAC2494EA2B00696436 /* TypingIndicatorCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypingIndicatorCell.swift; sourceTree = "<group>"; };
-		CA154DAD2494EA2B00696436 /* MessageContentCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageContentCell.swift; sourceTree = "<group>"; };
-		CA154DAE2494EA2B00696436 /* MessageCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCollectionViewCell.swift; sourceTree = "<group>"; };
-		CA154DAF2494EA2B00696436 /* AudioMessageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioMessageCell.swift; sourceTree = "<group>"; };
-		CA154DB02494EA2B00696436 /* MessageLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageLabel.swift; sourceTree = "<group>"; };
-		CA154DB22494EA2B00696436 /* MessageReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageReusableView.swift; sourceTree = "<group>"; };
-		CA154DB32494EA2B00696436 /* TypingIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypingIndicator.swift; sourceTree = "<group>"; };
-		CA154DB42494EA2B00696436 /* MessageContainerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageContainerView.swift; sourceTree = "<group>"; };
-		CA154DB52494EA2B00696436 /* TypingBubble.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TypingBubble.swift; sourceTree = "<group>"; };
-		CA154DB62494EA2B00696436 /* InsetLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InsetLabel.swift; sourceTree = "<group>"; };
-		CA154DB72494EA2B00696436 /* AvatarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
-		CA154DB82494EA2B00696436 /* MessagesCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesCollectionView.swift; sourceTree = "<group>"; };
-		CA154DB92494EA2B00696436 /* PlayButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlayButtonView.swift; sourceTree = "<group>"; };
-		CA154DBA2494EA2B00696436 /* BubbleCircle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BubbleCircle.swift; sourceTree = "<group>"; };
-		CA154DBC2494EA2B00696436 /* ContactItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactItem.swift; sourceTree = "<group>"; };
-		CA154DBD2494EA2B00696436 /* MediaItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MediaItem.swift; sourceTree = "<group>"; };
-		CA154DBE2494EA2B00696436 /* AudioItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AudioItem.swift; sourceTree = "<group>"; };
-		CA154DBF2494EA2B00696436 /* MessagesLayoutDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesLayoutDelegate.swift; sourceTree = "<group>"; };
-		CA154DC02494EA2B00696436 /* SenderType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SenderType.swift; sourceTree = "<group>"; };
-		CA154DC12494EA2B00696436 /* MessageType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageType.swift; sourceTree = "<group>"; };
-		CA154DC22494EA2B00696436 /* MessageCellDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageCellDelegate.swift; sourceTree = "<group>"; };
-		CA154DC32494EA2B00696436 /* MessageLabelDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageLabelDelegate.swift; sourceTree = "<group>"; };
-		CA154DC42494EA2B00696436 /* LocationItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationItem.swift; sourceTree = "<group>"; };
-		CA154DC52494EA2B00696436 /* MessagesDisplayDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesDisplayDelegate.swift; sourceTree = "<group>"; };
-		CA154DC62494EA2B00696436 /* MessagesDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessagesDataSource.swift; sourceTree = "<group>"; };
-		CA154E0C2494EDCA00696436 /* MessageKitAssets.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = MessageKitAssets.bundle; sourceTree = "<group>"; };
 		CA1821A324C0E83900280DD4 /* Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA1821FE24C0F6F000280DD4 /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA3837CB246FCF3C00AD5FCC /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -398,11 +257,6 @@
 		CA49A218251E8CFE00FBE269 /* TitleWithSubtitleInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleWithSubtitleInfoCollectionViewCell.swift; sourceTree = "<group>"; };
 		CA49A25A251F2C4600FBE269 /* BigAdCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigAdCollectionCell.swift; sourceTree = "<group>"; };
 		CA4AED9A24CE204900035922 /* TopSecret.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TopSecret.plist; sourceTree = "<group>"; };
-		CA4D18012492B27400B49BD4 /* Lorem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Lorem.swift; sourceTree = "<group>"; };
-		CA4D18022492B27400B49BD4 /* SampleData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SampleData.swift; sourceTree = "<group>"; };
-		CA4D18062492B2AC00B49BD4 /* MockMessage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockMessage.swift; sourceTree = "<group>"; };
-		CA4D18072492B2AC00B49BD4 /* MockUser.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockUser.swift; sourceTree = "<group>"; };
-		CA4D18082492B2AC00B49BD4 /* MockSocket.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockSocket.swift; sourceTree = "<group>"; };
 		CA4D4FE32548A93500A6FD0B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CA4D51032549F62500A6FD0B /* WriteNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteNoteViewController.swift; sourceTree = "<group>"; };
 		CA4EA6BA24BE3ACD00E6F0C4 /* currencies.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = currencies.json; sourceTree = "<group>"; };
@@ -658,166 +512,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		CA154D7A2494EA1D00696436 /* MessageKit */ = {
-			isa = PBXGroup;
-			children = (
-				CA154D7B2494EA2B00696436 /* Sources */,
-			);
-			path = MessageKit;
-			sourceTree = "<group>";
-		};
-		CA154D7B2494EA2B00696436 /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				CA154E082494EDCA00696436 /* Assets */,
-				CA154D7C2494EA2B00696436 /* Layout */,
-				CA154D872494EA2B00696436 /* Models */,
-				CA154D952494EA2B00696436 /* Extensions */,
-				CA154D9D2494EA2B00696436 /* Supporting */,
-				CA154DA22494EA2B00696436 /* Controllers */,
-				CA154DA62494EA2B00696436 /* Views */,
-				CA154DBB2494EA2B00696436 /* Protocols */,
-			);
-			path = Sources;
-			sourceTree = "<group>";
-		};
-		CA154D7C2494EA2B00696436 /* Layout */ = {
-			isa = PBXGroup;
-			children = (
-				CA154D7D2494EA2B00696436 /* CellSizeCalculator.swift */,
-				CA154D7E2494EA2B00696436 /* MessagesCollectionViewLayoutAttributes.swift */,
-				CA154D7F2494EA2B00696436 /* ContactMessageSizeCalculator.swift */,
-				CA154D802494EA2B00696436 /* TypingIndicatorCellSizeCalculator.swift */,
-				CA154D812494EA2B00696436 /* MessagesCollectionViewFlowLayout.swift */,
-				CA154D822494EA2B00696436 /* MediaMessageSizeCalculator.swift */,
-				CA154D832494EA2B00696436 /* AudioMessageSizeCalculator.swift */,
-				CA154D842494EA2B00696436 /* TextMessageSizeCalculator.swift */,
-				CA154D852494EA2B00696436 /* LocationMessageSizeCalculator.swift */,
-				CA154D862494EA2B00696436 /* MessageSizeCalculator.swift */,
-			);
-			path = Layout;
-			sourceTree = "<group>";
-		};
-		CA154D872494EA2B00696436 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				CA154D882494EA2B00696436 /* MessageKitDateFormatter.swift */,
-				CA154D892494EA2B00696436 /* LabelAlignment.swift */,
-				CA154D8A2494EA2B00696436 /* LocationMessageSnapshotOptions.swift */,
-				CA154D8B2494EA2B00696436 /* AccessoryPosition.swift */,
-				CA154D8C2494EA2B00696436 /* Sender.swift */,
-				CA154D8D2494EA2B00696436 /* MessageKind.swift */,
-				CA154D8E2494EA2B00696436 /* MessageStyle.swift */,
-				CA154D8F2494EA2B00696436 /* MessageKitError.swift */,
-				CA154D902494EA2B00696436 /* Avatar.swift */,
-				CA154D912494EA2B00696436 /* DetectorType.swift */,
-				CA154D922494EA2B00696436 /* AvatarPosition.swift */,
-				CA154D932494EA2B00696436 /* HorizontalEdgeInsets.swift */,
-				CA154D942494EA2B00696436 /* NSConstraintLayoutSet.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		CA154D952494EA2B00696436 /* Extensions */ = {
-			isa = PBXGroup;
-			children = (
-				CA154D962494EA2B00696436 /* UIView+Extensions.swift */,
-				CA154D972494EA2B00696436 /* UIEdgeInsets+Extensions.swift */,
-				CA154D982494EA2B00696436 /* UIImage+Extension.swift */,
-				CA154D992494EA2B00696436 /* UIColor+Extensions.swift */,
-				CA154D9A2494EA2B00696436 /* NSAttributedString+Extensions.swift */,
-				CA154D9B2494EA2B00696436 /* Bundle+Extensions.swift */,
-				CA154D9C2494EA2B00696436 /* CGRect+Extensions.swift */,
-			);
-			path = Extensions;
-			sourceTree = "<group>";
-		};
-		CA154D9D2494EA2B00696436 /* Supporting */ = {
-			isa = PBXGroup;
-			children = (
-				CA154D9E2494EA2B00696436 /* MessageInputBar.swift */,
-				CA154DA02494EA2B00696436 /* MessageKit+Availability.swift */,
-			);
-			path = Supporting;
-			sourceTree = "<group>";
-		};
-		CA154DA22494EA2B00696436 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				CA154DA32494EA2B00696436 /* MessagesViewController+Keyboard.swift */,
-				CA154DA42494EA2B00696436 /* MessagesViewController.swift */,
-				CA154DA52494EA2B00696436 /* MessagesViewController+Menu.swift */,
-			);
-			path = Controllers;
-			sourceTree = "<group>";
-		};
-		CA154DA62494EA2B00696436 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				CA154DA72494EA2B00696436 /* Cells */,
-				CA154DB02494EA2B00696436 /* MessageLabel.swift */,
-				CA154DB12494EA2B00696436 /* HeadersFooters */,
-				CA154DB32494EA2B00696436 /* TypingIndicator.swift */,
-				CA154DB42494EA2B00696436 /* MessageContainerView.swift */,
-				CA154DB52494EA2B00696436 /* TypingBubble.swift */,
-				CA154DB62494EA2B00696436 /* InsetLabel.swift */,
-				CA154DB72494EA2B00696436 /* AvatarView.swift */,
-				CA154DB82494EA2B00696436 /* MessagesCollectionView.swift */,
-				CA154DB92494EA2B00696436 /* PlayButtonView.swift */,
-				CA154DBA2494EA2B00696436 /* BubbleCircle.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		CA154DA72494EA2B00696436 /* Cells */ = {
-			isa = PBXGroup;
-			children = (
-				CA154DA82494EA2B00696436 /* ContactMessageCell.swift */,
-				CA154DA92494EA2B00696436 /* LocationMessageCell.swift */,
-				CA154DAA2494EA2B00696436 /* MediaMessageCell.swift */,
-				CA154DAB2494EA2B00696436 /* TextMessageCell.swift */,
-				CA154DAC2494EA2B00696436 /* TypingIndicatorCell.swift */,
-				CA154DAD2494EA2B00696436 /* MessageContentCell.swift */,
-				CA154DAE2494EA2B00696436 /* MessageCollectionViewCell.swift */,
-				CA154DAF2494EA2B00696436 /* AudioMessageCell.swift */,
-			);
-			path = Cells;
-			sourceTree = "<group>";
-		};
-		CA154DB12494EA2B00696436 /* HeadersFooters */ = {
-			isa = PBXGroup;
-			children = (
-				CA154DB22494EA2B00696436 /* MessageReusableView.swift */,
-			);
-			path = HeadersFooters;
-			sourceTree = "<group>";
-		};
-		CA154DBB2494EA2B00696436 /* Protocols */ = {
-			isa = PBXGroup;
-			children = (
-				CA154DBC2494EA2B00696436 /* ContactItem.swift */,
-				CA154DBD2494EA2B00696436 /* MediaItem.swift */,
-				CA154DBE2494EA2B00696436 /* AudioItem.swift */,
-				CA154DBF2494EA2B00696436 /* MessagesLayoutDelegate.swift */,
-				CA154DC02494EA2B00696436 /* SenderType.swift */,
-				CA154DC12494EA2B00696436 /* MessageType.swift */,
-				CA154DC22494EA2B00696436 /* MessageCellDelegate.swift */,
-				CA154DC32494EA2B00696436 /* MessageLabelDelegate.swift */,
-				CA154DC42494EA2B00696436 /* LocationItem.swift */,
-				CA154DC52494EA2B00696436 /* MessagesDisplayDelegate.swift */,
-				CA154DC62494EA2B00696436 /* MessagesDataSource.swift */,
-			);
-			path = Protocols;
-			sourceTree = "<group>";
-		};
-		CA154E082494EDCA00696436 /* Assets */ = {
-			isa = PBXGroup;
-			children = (
-				CA154E0C2494EDCA00696436 /* MessageKitAssets.bundle */,
-			);
-			path = Assets;
-			sourceTree = "<group>";
-		};
 		CA3B1D3E249E3EAC00FAA08A /* Search */ = {
 			isa = PBXGroup;
 			children = (
@@ -964,15 +658,6 @@
 			path = "Supported Files";
 			sourceTree = "<group>";
 		};
-		CA472B6D245EDF0D009149FF /* Libraries */ = {
-			isa = PBXGroup;
-			children = (
-				CA4D17FD2492B1BE00B49BD4 /* Chat */,
-				CA154D7A2494EA1D00696436 /* MessageKit */,
-			);
-			path = Libraries;
-			sourceTree = "<group>";
-		};
 		CA4857862517C6EF00EDA4CE /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
@@ -1031,37 +716,6 @@
 				CA490140252F7EDC00066A98 /* VinchyViewControllerViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		CA4D17FD2492B1BE00B49BD4 /* Chat */ = {
-			isa = PBXGroup;
-			children = (
-				CA4D18052492B2AC00B49BD4 /* Models */,
-				CA4D18002492B27400B49BD4 /* Data Generation */,
-				CA154D742494156C00696436 /* BasicExampleViewController.swift */,
-				CA154D76249415A000696436 /* ChatViewController.swift */,
-				CA154D78249415F200696436 /* BasicAudioController.swift */,
-			);
-			path = Chat;
-			sourceTree = "<group>";
-		};
-		CA4D18002492B27400B49BD4 /* Data Generation */ = {
-			isa = PBXGroup;
-			children = (
-				CA4D18012492B27400B49BD4 /* Lorem.swift */,
-				CA4D18022492B27400B49BD4 /* SampleData.swift */,
-			);
-			path = "Data Generation";
-			sourceTree = "<group>";
-		};
-		CA4D18052492B2AC00B49BD4 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				CA4D18062492B2AC00B49BD4 /* MockMessage.swift */,
-				CA4D18072492B2AC00B49BD4 /* MockUser.swift */,
-				CA4D18082492B2AC00B49BD4 /* MockSocket.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		CA4D51022549F5F600A6FD0B /* WriteNote */ = {
@@ -1305,7 +959,6 @@
 			isa = PBXGroup;
 			children = (
 				CA472AF6245EDE73009149FF /* EditingStackView.swift */,
-				CA472B6D245EDF0D009149FF /* Libraries */,
 				CA472B35245EDEDB009149FF /* Auth */,
 				CAA07CAA24A34A1A00FE285A /* Subscribtion */,
 			);
@@ -1507,7 +1160,6 @@
 				CA4AED9B24CE204900035922 /* TopSecret.plist in Resources */,
 				CA8CD68225097AD500FDB7AF /* GADTMediumTemplateView.xib in Resources */,
 				CACC1DC224C5F2980082BD01 /* filters.json in Resources */,
-				CA154E152494EDCA00696436 /* MessageKitAssets.bundle in Resources */,
 				CA472AC9245EDE30009149FF /* Assets.xcassets in Resources */,
 				CA3CEFB0251288F000AAA692 /* country_codes.json in Resources */,
 			);
@@ -1692,18 +1344,12 @@
 				CAA07CAC24A34A3C00FE285A /* SubscriptionViewController.swift in Sources */,
 				CA472B52245EDEDB009149FF /* PhoneLine.swift in Sources */,
 				CACA7EA3254C57CC0099E622 /* WriteNoteRouter.swift in Sources */,
-				CA154DE52494EA2B00696436 /* MessageInputBar.swift in Sources */,
 				CA4857892517C71200EDA4CE /* VinchyPresenterProtocol.swift in Sources */,
-				CA4D18032492B27400B49BD4 /* Lorem.swift in Sources */,
 				CA46DC98252A44180007819E /* SmartFilterCollectionCell.swift in Sources */,
 				CA015C1A24C44925008DF01D /* DidnotFindTheWineTableCell.swift in Sources */,
-				CA154E022494EA2B00696436 /* MessageType.swift in Sources */,
 				CA4857782517BEA000EDA4CE /* VinchyPresenter.swift in Sources */,
-				CA154DEB2494EA2B00696436 /* ContactMessageCell.swift in Sources */,
 				CACA7E9B254C57CC0099E622 /* WriteNoteAssembly.swift in Sources */,
-				CA154DDB2494EA2B00696436 /* AvatarPosition.swift in Sources */,
 				CA070C1725250AEC00C3D9EC /* OnboardPageViewController.swift in Sources */,
-				CA154DD62494EA2B00696436 /* MessageKind.swift in Sources */,
 				CA46DBEF252518460007819E /* OnboardingCache.swift in Sources */,
 				CA81984A253864080056A1C6 /* WineDetailViewControllerProtocol.swift in Sources */,
 				CA472B54245EDEDB009149FF /* Assembly.swift in Sources */,
@@ -1711,35 +1357,22 @@
 				CA79545224F92EC20040224C /* AdvancedSearchViewController.swift in Sources */,
 				CA0709952523170600C3D9EC /* MainCoordinator.swift in Sources */,
 				CAAD023A245EE7C500EDF245 /* EmailViewController.swift in Sources */,
-				CA154E012494EA2B00696436 /* SenderType.swift in Sources */,
 				CA7A87FA2506B9D600AAD10F /* ShareUsCollectionCell.swift in Sources */,
 				CA819846253864080056A1C6 /* WineDetailAssembly.swift in Sources */,
 				CA8CD67725096EC200FDB7AF /* GADTSmallTemplateView.m in Sources */,
 				CA7B838924F451FA00991F24 /* WineDetailViewController.swift in Sources */,
 				CA819848253864080056A1C6 /* WineDetailPresenterProtocol.swift in Sources */,
 				CA819847253864080056A1C6 /* WineDetailPresenter.swift in Sources */,
-				CA154DF02494EA2B00696436 /* MessageContentCell.swift in Sources */,
-				CA154DDD2494EA2B00696436 /* NSConstraintLayoutSet.swift in Sources */,
 				CAF514212461C52400667ED0 /* MorePresenter.swift in Sources */,
-				CA154DC82494EA2B00696436 /* MessagesCollectionViewLayoutAttributes.swift in Sources */,
-				CA4D18092492B2AC00B49BD4 /* MockMessage.swift in Sources */,
-				CA154DD12494EA2B00696436 /* MessageKitDateFormatter.swift in Sources */,
-				CA154DC72494EA2B00696436 /* CellSizeCalculator.swift in Sources */,
-				CA154DFF2494EA2B00696436 /* AudioItem.swift in Sources */,
-				CA154D752494156C00696436 /* BasicExampleViewController.swift in Sources */,
 				CA99E65724F6EDDD00C36BEE /* ButtonCollectionCell.swift in Sources */,
-				CA154E072494EA2B00696436 /* MessagesDataSource.swift in Sources */,
-				CA154E062494EA2B00696436 /* MessagesDisplayDelegate.swift in Sources */,
 				CA070981252314B900C3D9EC /* ApplicationCoordinatorBuilder.swift in Sources */,
 				CAF514282461C52400667ED0 /* DocCell.swift in Sources */,
 				CA472B69245EDEF9009149FF /* CategoryItem.swift in Sources */,
 				CA81984E253864080056A1C6 /* WineDetailRouter.swift in Sources */,
 				CACA7EA2254C57CC0099E622 /* WriteNoteRouterProtocol.swift in Sources */,
-				CA154DFD2494EA2B00696436 /* ContactItem.swift in Sources */,
 				CA48577C2517BEAB00EDA4CE /* VinchyRouter.swift in Sources */,
 				CA07099B2523173400C3D9EC /* MainModuleFactory.swift in Sources */,
 				CAF51434246339F500667ED0 /* NameViewController.swift in Sources */,
-				CA154DF22494EA2B00696436 /* AudioMessageCell.swift in Sources */,
 				CA472B59245EDEDB009149FF /* ShowcaseViewController.swift in Sources */,
 				CAF514222461C52400667ED0 /* MoreViewController.swift in Sources */,
 				CA5B901B250FF22E006BC638 /* MoreBounceDecoratorView.swift in Sources */,
@@ -1747,34 +1380,20 @@
 				CA8CD67C25096EE100FDB7AF /* GADTTemplateView.m in Sources */,
 				CAA9DC67250EA05F00F996A8 /* AdvancedSearchCaruselCollectionCell.swift in Sources */,
 				CA49A25B251F2C4600FBE269 /* BigAdCollectionCell.swift in Sources */,
-				CA154DFE2494EA2B00696436 /* MediaItem.swift in Sources */,
 				CA8198C0253CB0490056A1C6 /* ErrorDescription.swift in Sources */,
 				CA7B835824EED1B100991F24 /* VinchyViewController.swift in Sources */,
-				CA154DD72494EA2B00696436 /* MessageStyle.swift in Sources */,
 				CA4857942517C77E00EDA4CE /* VinchyAssembly.swift in Sources */,
 				CA070C1825250AEC00C3D9EC /* OnboardPage.swift in Sources */,
 				CA49A219251E8CFE00FBE269 /* TitleWithSubtitleInfoCollectionViewCell.swift in Sources */,
-				CA154DDC2494EA2B00696436 /* HorizontalEdgeInsets.swift in Sources */,
 				CA070C1625250AEC00C3D9EC /* OnboardViewController.swift in Sources */,
-				CA154DE12494EA2B00696436 /* UIColor+Extensions.swift in Sources */,
-				CA154DF12494EA2B00696436 /* MessageCollectionViewCell.swift in Sources */,
 				CA472B53245EDEDB009149FF /* MenuLine.swift in Sources */,
-				CA154DE32494EA2B00696436 /* Bundle+Extensions.swift in Sources */,
 				CA490141252F7EDC00066A98 /* VinchyViewControllerViewModel.swift in Sources */,
-				CA154E032494EA2B00696436 /* MessageCellDelegate.swift in Sources */,
-				CA154DCF2494EA2B00696436 /* LocationMessageSizeCalculator.swift in Sources */,
 				CA48579B2517CA5200EDA4CE /* VinchyViewControllerProtocol.swift in Sources */,
 				CA472B2B245EDEA0009149FF /* FiltersHeaderView.swift in Sources */,
 				CA99E65324F59CAA00C36BEE /* ShortInfoCollectionCell.swift in Sources */,
 				CA3B1D42249E3FE100FAA08A /* ResultsTableController.swift in Sources */,
 				CA7B836024EF109200991F24 /* MainSubtitleCollectionCell.swift in Sources */,
 				CA819844253864080056A1C6 /* WineDetailViewModel.swift in Sources */,
-				CA154D79249415F200696436 /* BasicAudioController.swift in Sources */,
-				CA4D180A2492B2AC00B49BD4 /* MockUser.swift in Sources */,
-				CA154DFC2494EA2B00696436 /* BubbleCircle.swift in Sources */,
-				CA154DE02494EA2B00696436 /* UIImage+Extension.swift in Sources */,
-				CA154DF92494EA2B00696436 /* AvatarView.swift in Sources */,
-				CA154DF82494EA2B00696436 /* InsetLabel.swift in Sources */,
 				CAF514102461C51400667ED0 /* AboutController.swift in Sources */,
 				CA81984D253864080056A1C6 /* WineDetailRouterProtocol.swift in Sources */,
 				CA3B1D5424A0A36300FAA08A /* NotesViewController.swift in Sources */,
@@ -1785,58 +1404,29 @@
 				CA4857742517BE8E00EDA4CE /* VinchyInteractor.swift in Sources */,
 				CAA9DC3C250BD20400F996A8 /* AdvancedHeader.swift in Sources */,
 				CA4857832517C67700EDA4CE /* VinchyInteractorProtocol.swift in Sources */,
-				CA154DFB2494EA2B00696436 /* PlayButtonView.swift in Sources */,
-				CA154DEF2494EA2B00696436 /* TypingIndicatorCell.swift in Sources */,
-				CA154DE62494EA2B00696436 /* MessageKit+Availability.swift in Sources */,
 				CA472AC0245EDE2F009149FF /* AppDelegate.swift in Sources */,
 				CA0709792523140700C3D9EC /* Coordinator.swift in Sources */,
-				CA4D180B2492B2AC00B49BD4 /* MockSocket.swift in Sources */,
-				CA154E042494EA2B00696436 /* MessageLabelDelegate.swift in Sources */,
 				CA81984C253864080056A1C6 /* WineDetailInteractorProtocol.swift in Sources */,
-				CA154DC92494EA2B00696436 /* ContactMessageSizeCalculator.swift in Sources */,
-				CA154DD92494EA2B00696436 /* Avatar.swift in Sources */,
-				CA154DF72494EA2B00696436 /* TypingBubble.swift in Sources */,
 				CA070C2425250C1800C3D9EC /* OnboardingModuleFactory.swift in Sources */,
 				CAA9DC65250E99DB00F996A8 /* SeparatorFooter.swift in Sources */,
 				CAF514292461C52400667ED0 /* MoreRouter.swift in Sources */,
 				CACA7E9C254C57CC0099E622 /* WriteNotePresenter.swift in Sources */,
-				CA154DDA2494EA2B00696436 /* DetectorType.swift in Sources */,
 				CAA9DC3E250C088500F996A8 /* DetailFilterController.swift in Sources */,
-				CA154DCE2494EA2B00696436 /* TextMessageSizeCalculator.swift in Sources */,
 				CA472AC2245EDE2F009149FF /* SceneDelegate.swift in Sources */,
 				CA3837CC246FCF3C00AD5FCC /* TabBarController.swift in Sources */,
-				CA154DED2494EA2B00696436 /* MediaMessageCell.swift in Sources */,
-				CA154DEE2494EA2B00696436 /* TextMessageCell.swift in Sources */,
-				CA154DE22494EA2B00696436 /* NSAttributedString+Extensions.swift in Sources */,
-				CA154DF62494EA2B00696436 /* MessageContainerView.swift in Sources */,
-				CA154DEA2494EA2B00696436 /* MessagesViewController+Menu.swift in Sources */,
-				CA154DCB2494EA2B00696436 /* MessagesCollectionViewFlowLayout.swift in Sources */,
-				CA154DF42494EA2B00696436 /* MessageReusableView.swift in Sources */,
-				CA154DD22494EA2B00696436 /* LabelAlignment.swift in Sources */,
-				CA154DD02494EA2B00696436 /* MessageSizeCalculator.swift in Sources */,
-				CA154DD82494EA2B00696436 /* MessageKitError.swift in Sources */,
 				CA99E65124F58A6000C36BEE /* ToolCollectionCell.swift in Sources */,
-				CA154DEC2494EA2B00696436 /* LocationMessageCell.swift in Sources */,
 				CACA7EA0254C57CC0099E622 /* WriteNoteInteractorProtocol.swift in Sources */,
 				CA07098B2523160C00C3D9EC /* AgreementsCoordinator.swift in Sources */,
 				CAEBD788251A6D6200210F3B /* AgreementsViewController.swift in Sources */,
 				CA7A87E62500169100AAD10F /* VinchySimpleConiniousCaruselCollectionCell.swift in Sources */,
-				CA154DDF2494EA2B00696436 /* UIEdgeInsets+Extensions.swift in Sources */,
-				CA154DCD2494EA2B00696436 /* AudioMessageSizeCalculator.swift in Sources */,
 				CAF514132461C51B00667ED0 /* DocController.swift in Sources */,
-				CA154DD32494EA2B00696436 /* LocationMessageSnapshotOptions.swift in Sources */,
 				CA472B50245EDEDB009149FF /* ProfileView.swift in Sources */,
-				CA154DF32494EA2B00696436 /* MessageLabel.swift in Sources */,
-				CA154DD52494EA2B00696436 /* Sender.swift in Sources */,
 				CACA7E9D254C57CC0099E622 /* WriteNotePresenterProtocol.swift in Sources */,
-				CA154E002494EA2B00696436 /* MessagesLayoutDelegate.swift in Sources */,
 				CA8CD68325097AD500FDB7AF /* GADTMediumTemplateView.m in Sources */,
 				CA819845253864080056A1C6 /* WineDetailInput.swift in Sources */,
 				CAAD023C245EEA0700EDF245 /* PasswordViewController.swift in Sources */,
 				CAF5146B2468172900667ED0 /* LoveViewController.swift in Sources */,
 				CA46DBE7252518230007819E /* OnboardingRepository.swift in Sources */,
-				CA154DE42494EA2B00696436 /* CGRect+Extensions.swift in Sources */,
-				CA4D18042492B27400B49BD4 /* SampleData.swift in Sources */,
 				CACA7E9F254C57CC0099E622 /* WriteNoteViewControllerProtocol.swift in Sources */,
 				CA070C1E25250BB000C3D9EC /* OnboardingCoordinator.swift in Sources */,
 				CAEBD7F3251A7F5000210F3B /* SwitcherWithText.swift in Sources */,
@@ -1847,26 +1437,16 @@
 				CACA7EA1254C57CC0099E622 /* WriteNoteInteractor.swift in Sources */,
 				CA472B0F245EDE73009149FF /* EditingStackView.swift in Sources */,
 				CA472B51245EDEDB009149FF /* NameLine.swift in Sources */,
-				CA154DE82494EA2B00696436 /* MessagesViewController+Keyboard.swift in Sources */,
 				CAF514272461C52400667ED0 /* SocialMediaCell.swift in Sources */,
 				CA7B838C24F4547B00991F24 /* GalleryCell.swift in Sources */,
-				CA154DCC2494EA2B00696436 /* MediaMessageSizeCalculator.swift in Sources */,
-				CA154D77249415A000696436 /* ChatViewController.swift in Sources */,
 				CA070974252259D300C3D9EC /* ApplicationCoordinator.swift in Sources */,
-				CA154DDE2494EA2B00696436 /* UIView+Extensions.swift in Sources */,
 				CA07098F2523164C00C3D9EC /* AgreementsModuleFactory.swift in Sources */,
 				CAA060D2252BC05C002C15B5 /* DeveloperFeatureToggles.swift in Sources */,
-				CA154DE92494EA2B00696436 /* MessagesViewController.swift in Sources */,
 				CA0709872523151500C3D9EC /* ApplicationModulesFactory.swift in Sources */,
-				CA154DF52494EA2B00696436 /* TypingIndicator.swift in Sources */,
 				CA7A87FC2507ED7800AAD10F /* AdsCollectionViewCell.swift in Sources */,
 				CAF514252461C52400667ED0 /* ContactCell.swift in Sources */,
 				CAF514262461C52400667ED0 /* RateAppCell.swift in Sources */,
-				CA154DD42494EA2B00696436 /* AccessoryPosition.swift in Sources */,
-				CA154DCA2494EA2B00696436 /* TypingIndicatorCellSizeCalculator.swift in Sources */,
-				CA154DFA2494EA2B00696436 /* MessagesCollectionView.swift in Sources */,
 				CA4D51042549F62500A6FD0B /* WriteNoteViewController.swift in Sources */,
-				CA154E052494EA2B00696436 /* LocationItem.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
