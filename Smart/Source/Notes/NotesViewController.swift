@@ -15,138 +15,136 @@ import Database
 
 final class NotesViewController: UIViewController {
 
-    // MARK: - Private Properties
+  // MARK: - Private Properties
 
-    private let tableView = UITableView()
-    private lazy var notesRealm = realm(path: .notes)
-    private let dataBase = Database<Note>()
-    private var notesNotificationToken: NotificationToken?
+  private let tableView = UITableView()
+  private lazy var notesRealm = realm(path: .notes)
+  private let dataBase = Database<Note>()
+  private var notesNotificationToken: NotificationToken?
 
-    private var notes: [Note] = [] {
-        didSet {
-            notes.isEmpty ? showEmptyView() : hideEmptyView()
-            DispatchQueue.main.async {
-                self.tableView.reloadData()
-            }
-        }
+  private var notes: [Note] = [] {
+    didSet {
+      notes.isEmpty ? showEmptyView() : hideEmptyView()
+      DispatchQueue.main.async {
+        self.tableView.reloadData()
+      }
     }
+  }
 
-    // MARK: - Lifecycle
+  // MARK: - Lifecycle
 
-    init() {
-        super.init(nibName: nil, bundle: nil)
-        notesNotificationToken = notesRealm.observe { _, _ in
-            self.notes = self.dataBase.all(at: .notes)
-        }
+  init() {
+    super.init(nibName: nil, bundle: nil)
+    notesNotificationToken = notesRealm.observe { _, _ in
+      self.notes = self.dataBase.all(at: .notes)
     }
+  }
 
-    required init?(coder: NSCoder) { fatalError() }
+  required init?(coder: NSCoder) { fatalError() }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
 
-        navigationItem.title = localized("notes").firstLetterUppercased()
 
-        view.addSubview(tableView)
-        tableView.frame = view.frame
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.tableFooterView = UIView()
-        tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
-        tableView.register(WineTableCell.self, forCellReuseIdentifier: WineTableCell.reuseId)
+  override func viewDidLoad() {
+    super.viewDidLoad()
 
-        notes = dataBase.all(at: .notes)
-    }
+    navigationItem.title = localized("notes").firstLetterUppercased()
 
-    deinit {
-        notesNotificationToken?.invalidate()
-    }
+    view.addSubview(tableView)
+    tableView.frame = view.frame
+    tableView.dataSource = self
+    tableView.delegate = self
+    tableView.tableFooterView = UIView()
+    tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
+    tableView.register(WineTableCell.self, forCellReuseIdentifier: WineTableCell.reuseId)
 
-    // MARK: - Private Methods
+    notes = dataBase.all(at: .notes)
+  }
 
-    private func hideEmptyView() {
-        tableView.backgroundView = nil
-    }
+  deinit {
+    notesNotificationToken?.invalidate()
+  }
 
-    private func showEmptyView() {
-        let errorView = ErrorView(frame: view.frame)
-        errorView.decorate(model: .init(titleText: localized("nothing_here").firstLetterUppercased(),
-                                        subtitleText: localized("you_have_not_written_any_notes_yet").firstLetterUppercased(),
-                                        buttonText: nil))
-        tableView.backgroundView = errorView
-    }
+  // MARK: - Private Methods
+
+  private func hideEmptyView() {
+    tableView.backgroundView = nil
+  }
+
+  private func showEmptyView() {
+    let errorView = ErrorView(frame: view.frame)
+    errorView.decorate(model: .init(titleText: localized("nothing_here").firstLetterUppercased(),
+                                    subtitleText: localized("you_have_not_written_any_notes_yet").firstLetterUppercased(),
+                                    buttonText: nil))
+    tableView.backgroundView = errorView
+  }
 }
 
 // MARK: - UITableViewDataSource
 
 extension NotesViewController: UITableViewDataSource {
 
-    func tableView(
-        _ tableView: UITableView,
-        numberOfRowsInSection section: Int)
-        -> Int
-    {
-        notes.count
+  func tableView(
+    _ tableView: UITableView,
+    numberOfRowsInSection section: Int)
+  -> Int
+  {
+    notes.count
+  }
+
+  func tableView(
+    _ tableView: UITableView,
+    cellForRowAt indexPath: IndexPath)
+  -> UITableViewCell
+  {
+    if let cell = tableView.dequeueReusableCell(withIdentifier: WineTableCell.reuseId) as? WineTableCell,
+       let note = notes[safe: indexPath.row] {
+      cell.decorate(model: .init(imageURL: note.wineMainImageURL.toURL, titleText: note.wineTitle, subtitleText: note.noteText))
+      return cell
     }
+    return .init()
+  }
 
-    func tableView(
-        _ tableView: UITableView,
-        cellForRowAt indexPath: IndexPath)
-    -> UITableViewCell
-    {
-        if let cell = tableView.dequeueReusableCell(withIdentifier: WineTableCell.reuseId) as? WineTableCell,
-            let note = notes[safe: indexPath.row] {
-            cell.decorate(model: .init(imageURL: note.wineMainImageURL.toURL, titleText: note.wineTitle, subtitleText: note.title))
-            return cell
-        }
-        return .init()
+  func tableView(
+    _ tableView: UITableView,
+    commit editingStyle: UITableViewCell.EditingStyle,
+    forRowAt indexPath: IndexPath)
+  {
+    if editingStyle == .delete, let note = notes[safe: indexPath.row] {
+
+      let alert = UIAlertController(title: localized("delete_note"),
+                                    message: localized("this_action_cannot_to_be_undone"),
+                                    preferredStyle: .actionSheet)
+
+      alert.addAction(UIAlertAction(title: localized("delete"), style: .destructive, handler:{ [weak self] _ in
+        guard let self = self else { return }
+        self.dataBase.remove(object: note, at: .notes)
+        self.notes = self.dataBase.all(at: .notes)
+      }))
+      alert.addAction(UIAlertAction(title: localized("cancel"), style: .cancel, handler: nil))
+      present(alert, animated: true, completion: nil)
     }
+  }
 
-    func tableView(
-        _ tableView: UITableView,
-        commit editingStyle: UITableViewCell.EditingStyle,
-        forRowAt indexPath: IndexPath)
-    {
-        if editingStyle == .delete, let note = notes[safe: indexPath.row] {
-
-            let alert = UIAlertController(title: localized("delete_note"),
-                                          message: localized("this_action_cannot_to_be_undone"),
-                                          preferredStyle: .actionSheet)
-
-            alert.addAction(UIAlertAction(title: localized("delete"), style: .destructive, handler:{ [weak self] _ in
-                guard let self = self else { return }
-                self.dataBase.remove(object: note, at: .notes)
-                self.notes = self.dataBase.all(at: .notes)
-            }))
-            alert.addAction(UIAlertAction(title: localized("cancel"), style: .cancel, handler: nil))
-            present(alert, animated: true, completion: nil)
-        }
-    }
-
-    func tableView(
-        _ tableView: UITableView,
-        titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath)
-        -> String?
-    {
-        localized("delete")
-    }
+  func tableView(
+    _ tableView: UITableView,
+    titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath)
+  -> String?
+  {
+    localized("delete")
+  }
 }
 
 // MARK: - UITableViewDelegate
 
 extension NotesViewController: UITableViewDelegate {
 
-    func tableView(
-        _ tableView: UITableView,
-        didSelectRowAt indexPath: IndexPath)
-    {
-        tableView.deselectRow(at: indexPath, animated: true)
-        guard let note = notes[safe: indexPath.row] else { return }
-        let writeMessageController = WriteMessageController()
-        writeMessageController.hidesBottomBarWhenPushed = true
-        writeMessageController.note = note
-        writeMessageController.subject = note.title
-        writeMessageController.body = note.fullReview
-        navigationController?.pushViewController(writeMessageController, animated: true)
-    }
+  func tableView(
+    _ tableView: UITableView,
+    didSelectRowAt indexPath: IndexPath)
+  {
+    tableView.deselectRow(at: indexPath, animated: true)
+    guard let note = notes[safe: indexPath.row] else { return }
+    let controller = Assembly.buildWriteNoteViewController(for: note)
+    navigationController?.pushViewController(controller, animated: true)
+  }
 }

@@ -11,7 +11,7 @@ import Core
 
 public func realm(path: RealmType) -> Realm {
     var config = Realm.Configuration()
-    config.fileURL = config.fileURL!.deletingLastPathComponent().appendingPathComponent("\(path).realm")
+    config.fileURL = config.fileURL!.deletingLastPathComponent().appendingPathComponent("\(path).realm") // swiftlint:disable:this force_unwrapping
     return try! Realm(configuration: config)// swiftlint:disable:this force_try
 }
 
@@ -20,15 +20,15 @@ public final class Database<T: Object> {
     public init() { }
 
     public func incrementID(path: RealmType) -> Int64 {
-        return (realm(path: path).objects(T.self).max(ofProperty: "id") as Int64? ?? 0) + 1
+        (realm(path: path).objects(T.self).max(ofProperty: "id") as Int64? ?? 0) + 1
     }
 
     public func isSaved(object: HasPrimaryKeyID, at path: RealmType) -> Bool {
-        return realm(path: path).object(ofType: T.self, forPrimaryKey: object.id) != nil
+        realm(path: path).object(ofType: T.self, forPrimaryKey: object.id) != nil
     }
 
     public func isEmpty(at path: RealmType) -> Bool {
-        return !realm(path: path).objects(T.self).isEmpty
+        !realm(path: path).objects(T.self).isEmpty
     }
 
     public func all(at path: RealmType) -> [T] {
@@ -56,5 +56,4 @@ public final class Database<T: Object> {
             add(object: object, at: path)
         }
     }
-
 }

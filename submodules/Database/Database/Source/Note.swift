@@ -10,24 +10,37 @@ import RealmSwift
 
 public final class Note: Object, HasPrimaryKeyID {
 
-    @objc public dynamic var id: Int64 = 0
-    @objc public dynamic var wineID: Int64 = 0
-    @objc public dynamic var wineTitle: String = ""
-    @objc public dynamic var wineMainImageURL: String = ""
-    @objc public dynamic var title: String = ""
-    @objc public dynamic var fullReview: String = ""
+  @objc
+  public dynamic var id: Int64 = 0
 
-    override public class func primaryKey() -> String? {
-        return myPrimaryKey()
-    }
+  @objc
+  public dynamic var wineID: Int64 = 0
 
-    public convenience init(id: Int64, wineID: Int64, wineTitle: String, wineMainImageURL: String, title: String, fullReview: String) {
-        self.init()
-        self.id = id
-        self.wineID = wineID
-        self.wineTitle = wineTitle
-        self.wineMainImageURL = wineMainImageURL
-        self.title = title
-        self.fullReview = fullReview
-    }
+  @objc
+  public dynamic var wineTitle: String = ""
+
+  @objc
+  public dynamic var wineMainImageURL: String = ""
+
+  @objc
+  public dynamic var noteText: String = ""
+
+  override public class func primaryKey() -> String? {
+    myPrimaryKey()
+  }
+
+  public convenience init(
+    id: Int64,
+    wineID: Int64,
+    wineTitle: String,
+    wineMainImageURL: String,
+    noteText: String) {
+
+    self.init()
+    self.id = id
+    self.wineID = wineID
+    self.wineTitle = wineTitle
+    self.wineMainImageURL = wineMainImageURL
+    self.noteText = noteText
+  }
 }

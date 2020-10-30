@@ -11,69 +11,82 @@ import StringFormatting
 import Display
 import VinchyCore
 import CommonUI
+import Database
 
 final class Assembly {
 
-    static func buildDetailModule(wineID: Int64) -> UIViewController {
-        let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID))
-        controller.hidesBottomBarWhenPushed = true
-        controller.extendedLayoutIncludesOpaqueBars = true
-        return controller
-    }
+  static func buildDetailModule(wineID: Int64) -> UIViewController {
+    let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID))
+    controller.hidesBottomBarWhenPushed = true
+    controller.extendedLayoutIncludesOpaqueBars = true
+    return controller
+  }
 
-    static func buildFiltersModule() -> UIViewController {
-        let controller = AdvancedSearchViewController()
-        controller.hidesBottomBarWhenPushed = true
-        return controller
-    }
+  static func buildFiltersModule() -> UIViewController {
+    let controller = AdvancedSearchViewController()
+    controller.hidesBottomBarWhenPushed = true
+    return controller
+  }
 
-    static func buildMainModule() -> NavigationController {
-        let controller = VinchyAssembly.assemblyModule() //VinchyViewController()
-        controller.title = localized("explore").firstLetterUppercased()
-        controller.extendedLayoutIncludesOpaqueBars = true
-        let navController = NavigationController(rootViewController: controller)
-        return navController
-    }
+  static func buildMainModule() -> NavigationController {
+    let controller = VinchyAssembly.assemblyModule()
+    controller.title = localized("explore").firstLetterUppercased()
+    controller.extendedLayoutIncludesOpaqueBars = true
+    let navController = NavigationController(rootViewController: controller)
+    return navController
+  }
 
-    static func buildShowcaseModule(navTitle: String?, mode: ShowcaseMode) -> UIViewController {
-        let controller = ShowcaseViewController(navTitle: navTitle, mode: mode)
-        controller.extendedLayoutIncludesOpaqueBars = true
-        controller.hidesBottomBarWhenPushed = true
-        return controller
-    }
+  static func buildShowcaseModule(navTitle: String?, mode: ShowcaseMode) -> UIViewController {
+    let controller = ShowcaseViewController(navTitle: navTitle, mode: mode)
+    controller.extendedLayoutIncludesOpaqueBars = true
+    controller.hidesBottomBarWhenPushed = true
+    return controller
+  }
 
-    static func buildLoveModule() -> NavigationController {
-        let controller = LoveViewController()
-        let navController = NavigationController(rootViewController: controller)
-        return navController
-    }
+  static func buildLoveModule() -> NavigationController {
+    let controller = LoveViewController()
+    let navController = NavigationController(rootViewController: controller)
+    return navController
+  }
 
-    static func buildProfileModule() -> NavigationController {
-        let controller = MoreViewController()
-        let navController = NavigationController(rootViewController: controller)
-        return navController
-    }
+  static func buildProfileModule() -> NavigationController {
+    let controller = MoreViewController()
+    let navController = NavigationController(rootViewController: controller)
+    return navController
+  }
 
-    static func buildSubscriptionModule() -> NavigationController {
-        let controller = SubscriptionViewController()
-        let navController = NavigationController(rootViewController: controller)
-        navController.navigationBar.prefersLargeTitles = true
-        navController.navigationItem.title = localized("subscriptions")
-        return navController
-    }
+  static func buildSubscriptionModule() -> NavigationController {
+    let controller = SubscriptionViewController()
+    let navController = NavigationController(rootViewController: controller)
+    navController.navigationBar.prefersLargeTitles = true
+    navController.navigationItem.title = localized("subscriptions")
+    return navController
+  }
 
-    static func buildChooseCountiesModule(preSelectedCountryCodes: [String], delegate: CountriesViewControllerDelegate) -> NavigationController {
-        let controller = CountriesViewController(preSelectedCountryCodes: preSelectedCountryCodes, delegate: delegate)
-        let navController = NavigationController(rootViewController: controller)
-        navController.modalPresentationCapturesStatusBarAppearance = true
-        return navController
-    }
+  static func buildChooseCountiesModule(preSelectedCountryCodes: [String], delegate: CountriesViewControllerDelegate) -> NavigationController {
+    let controller = CountriesViewController(preSelectedCountryCodes: preSelectedCountryCodes, delegate: delegate)
+    let navController = NavigationController(rootViewController: controller)
+    navController.modalPresentationCapturesStatusBarAppearance = true
+    return navController
+  }
 
-    static func startAuthFlow(completion: (() -> Void)?) {
-        let controller = EmailViewController()
-        controller.authCompletion = completion
-        let navController = NavigationController(rootViewController: controller)
-        navController.modalPresentationStyle = .fullScreen
-        UIApplication.topViewController()?.present(navController, animated: true, completion: nil)
-    }
+  static func startAuthFlow(completion: (() -> Void)?) {
+    let controller = EmailViewController()
+    controller.authCompletion = completion
+    let navController = NavigationController(rootViewController: controller)
+    navController.modalPresentationStyle = .fullScreen
+    UIApplication.topViewController()?.present(navController, animated: true, completion: nil)
+  }
+
+  static func buildWriteNoteViewController(for wine: Wine) -> UIViewController {
+    let controller = WriteNoteAssembly.assemblyModule(input: .init(wine: .firstTime(wine: wine)))
+    controller.hidesBottomBarWhenPushed = true
+    return controller
+  }
+
+  static func buildWriteNoteViewController(for note: Note) -> UIViewController {
+    let controller = WriteNoteAssembly.assemblyModule(input: .init(wine: .database(note: note)))
+    controller.hidesBottomBarWhenPushed = true
+    return controller
+  }
 }

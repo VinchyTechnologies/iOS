@@ -119,7 +119,7 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
         guard let wine = wine else { return }
 
         if let note = realm(path: .notes).objects(Note.self).first(where: { $0.wineID == wine.id }) {
-            router.pushToWriteViewController(note: note, subject: note.title, body: note.fullReview)
+            router.pushToWriteViewController(note: note, noteText: note.noteText)
         } else {
             router.pushToWriteViewController(wine: wine)
         }

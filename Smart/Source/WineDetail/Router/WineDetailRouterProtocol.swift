@@ -11,7 +11,7 @@ import VinchyCore
 
 protocol WineDetailRouterProtocol: AnyObject {
     func presentActivityViewController(items: [Any])
-    func pushToWriteViewController(note: Note, subject: String?, body: String?)
+    func pushToWriteViewController(note: Note, noteText: String?)
     func pushToWriteViewController(wine: Wine)
     func presentEmailController(HTMLText: String?, recipients: [String])
 }
