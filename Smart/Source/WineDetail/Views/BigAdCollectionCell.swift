@@ -9,6 +9,8 @@
 import UIKit
 import Display
 import GoogleMobileAds
+import AppTrackingTransparency
+import AdSupport
 
 final class BigAdCollectionCell: UICollectionViewCell, Reusable {
 
