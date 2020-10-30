@@ -72,9 +72,6 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (6.7.2):
     - GoogleUtilities/Logger
-  - InputBarAccessoryView (5.2.1):
-    - InputBarAccessoryView/Core (= 5.2.1)
-  - InputBarAccessoryView/Core (5.2.1)
   - nanopb (1.30906.0):
     - nanopb/decode (= 1.30906.0)
     - nanopb/encode (= 1.30906.0)
@@ -96,7 +93,6 @@ DEPENDENCIES:
   - Firebase/RemoteConfig
   - FSPagerView
   - Google-Mobile-Ads-SDK
-  - InputBarAccessoryView
   - RealmSwift (~> 10.0.0)
   - SDWebImage
   - SwiftLint
@@ -116,7 +112,6 @@ SPEC REPOS:
     - GoogleDataTransport
     - GoogleUserMessagingPlatform
     - GoogleUtilities
-    - InputBarAccessoryView
     - nanopb
     - PromisesObjC
     - Realm
@@ -138,7 +133,6 @@ SPEC CHECKSUMS:
   GoogleDataTransport: f56af7caa4ed338dc8e138a5d7c5973e66440833
   GoogleUserMessagingPlatform: 1d4b6946710d18cec34742054092e2c2bddae61f
   GoogleUtilities: 7f2f5a07f888cdb145101d6042bc4422f57e70b3
-  InputBarAccessoryView: 39a7ed22727baf3b8550ecdf6c8a4d28b2c6aa91
   nanopb: 59317e09cf1f1a0af72f12af412d54edf52603fc
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   Realm: 5654b8e5e45034d07b219e089034be2ef7d1e7bf
@@ -146,6 +140,6 @@ SPEC CHECKSUMS:
   SDWebImage: b69257f4ab14e9b6a2ef53e910fdf914d8f757c1
   SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
 
-PODFILE CHECKSUM: 13bea7bfdecff68cdd033e7a81ad0e621d123225
+PODFILE CHECKSUM: ae5b62a4e1cd1967d9583005d256cb4a84ec4203
 
 COCOAPODS: 1.9.3
