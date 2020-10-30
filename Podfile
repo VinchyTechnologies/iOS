@@ -6,7 +6,6 @@ workspace 'Smart'
 
 def commonPods
   pod 'RealmSwift', '~> 10.0.0'
-  pod 'InputBarAccessoryView'
   pod 'SDWebImage'
   pod 'FSPagerView'
   pod 'Google-Mobile-Ads-SDK'
