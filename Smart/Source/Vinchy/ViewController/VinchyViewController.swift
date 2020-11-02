@@ -85,7 +85,9 @@ final class VinchyViewController: UIViewController {
 
   private var isSearchingMode: Bool = false {
     didSet {
-      collectionView.reloadData()
+      if oldValue != isSearchingMode {
+        collectionView.reloadData()
+      }
     }
   }
 
