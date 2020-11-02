@@ -55,27 +55,11 @@ final class Assembly {
     return navController
   }
 
-  static func buildSubscriptionModule() -> NavigationController {
-    let controller = SubscriptionViewController()
-    let navController = NavigationController(rootViewController: controller)
-    navController.navigationBar.prefersLargeTitles = true
-    navController.navigationItem.title = localized("subscriptions")
-    return navController
-  }
-
   static func buildChooseCountiesModule(preSelectedCountryCodes: [String], delegate: CountriesViewControllerDelegate) -> NavigationController {
     let controller = CountriesViewController(preSelectedCountryCodes: preSelectedCountryCodes, delegate: delegate)
     let navController = NavigationController(rootViewController: controller)
     navController.modalPresentationCapturesStatusBarAppearance = true
     return navController
-  }
-
-  static func startAuthFlow(completion: (() -> Void)?) {
-    let controller = EmailViewController()
-    controller.authCompletion = completion
-    let navController = NavigationController(rootViewController: controller)
-    navController.modalPresentationStyle = .fullScreen
-    UIApplication.topViewController()?.present(navController, animated: true, completion: nil)
   }
 
   static func buildWriteNoteViewController(for wine: Wine) -> UIViewController {
