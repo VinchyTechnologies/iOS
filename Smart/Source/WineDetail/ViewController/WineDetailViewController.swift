@@ -35,7 +35,9 @@ final class WineDetailViewController: UIViewController {
         }
     }
 
-    private lazy var layout = UICollectionViewCompositionalLayout { (sectionNumber, _) -> NSCollectionLayoutSection? in
+    private lazy var layout = UICollectionViewCompositionalLayout { [weak self] (sectionNumber, _) -> NSCollectionLayoutSection? in
+
+      guard let self = self else { return nil }
 
         guard let type = self.viewModel?.sections[sectionNumber] else {
             return nil

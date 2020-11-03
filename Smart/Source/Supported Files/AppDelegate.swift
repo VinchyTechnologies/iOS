@@ -18,6 +18,10 @@ import AppTrackingTransparency
 import AdSupport
 #endif
 
+#if DEBUG
+    import CocoaDebug
+#endif
+
 @main
 final class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -28,6 +32,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     -> Bool
   {
 
+    #if DEBUG
+    CocoaDebug.enable()
+    #endif
     //        FirebaseConfiguration.shared.setLoggerLevel(.min)
     FirebaseApp.configure()
 

@@ -14,35 +14,36 @@ import AdSupport
 
 final class BigAdCollectionCell: UICollectionViewCell, Reusable {
 
-    let adBanner = GADBannerView(adSize: kGADAdSizeLargeBanner)
-    
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+  let adBanner = GADBannerView(adSize: kGADAdSizeLargeBanner)
 
-        adBanner.adUnitID = "ca-app-pub-2612888576498887/2728637945"
+  override init(frame: CGRect) {
+    super.init(frame: frame)
 
-        backgroundColor = .option
+    adBanner.adUnitID = "ca-app-pub-2612888576498887/2728637945"
 
-        addSubview(adBanner)
-        adBanner.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            adBanner.topAnchor.constraint(equalTo: topAnchor, constant: 20),
-            adBanner.leadingAnchor.constraint(equalTo: leadingAnchor),
-            adBanner.trailingAnchor.constraint(equalTo: trailingAnchor),
-            adBanner.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
-        ])
+    backgroundColor = .option
 
-        adBanner.load(GADRequest())
+    addSubview(adBanner)
+    adBanner.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      adBanner.topAnchor.constraint(equalTo: topAnchor, constant: 20),
+      adBanner.leadingAnchor.constraint(equalTo: leadingAnchor),
+      adBanner.trailingAnchor.constraint(equalTo: trailingAnchor),
+      adBanner.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
+    ])
 
-        adBanner.delegate = self
-    }
+    adBanner.load(GADRequest())
 
-    required init?(coder: NSCoder) { fatalError() }
+    adBanner.delegate = self
+  }
+
+  required init?(coder: NSCoder) { fatalError() }
 
 }
 
 extension BigAdCollectionCell: GADBannerViewDelegate {
-    func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
-        print(error)
-    }
+  func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
+    print(bannerView)
+    print(error)
+  }
 }
