@@ -27,7 +27,7 @@ final class MoreRouter {
 extension MoreRouter: MoreRouterProtocol {
   
   func pushToAboutController() {
-    let controller = AboutController()
+    let controller = AboutViewController()
     controller.hidesBottomBarWhenPushed = true
     viewController.navigationController?.pushViewController(controller, animated: true)
   }

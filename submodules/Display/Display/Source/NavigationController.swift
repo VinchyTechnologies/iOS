@@ -55,7 +55,6 @@ public final class NavigationController: UINavigationController {
             NSAttributedString.Key.font: Font.bold(18),
             NSAttributedString.Key.foregroundColor: UIColor.blueGray,
         ], for: .highlighted)
-
     }
 
     public override func pushViewController(_ viewController: UIViewController, animated: Bool) {

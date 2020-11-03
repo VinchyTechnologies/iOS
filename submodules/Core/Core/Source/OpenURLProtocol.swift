@@ -9,15 +9,15 @@
 import UIKit
 
 public protocol OpenURLProtocol: AnyObject {
-    func open(urlString: String, errorCompletion: () -> Void)
+  func open(urlString: String, errorCompletion: () -> Void)
 }
 
 extension OpenURLProtocol {
-    public func open(urlString: String, errorCompletion: () -> Void) {
-        if let url = URL(string: urlString), UIApplication.shared.canOpenURL(url) {
-            UIApplication.shared.open(url)
-        } else {
-            errorCompletion()
-        }
+  public func open(urlString: String, errorCompletion: () -> Void) {
+    if let url = URL(string: urlString), UIApplication.shared.canOpenURL(url) {
+      UIApplication.shared.open(url)
+    } else {
+      errorCompletion()
     }
+  }
 }

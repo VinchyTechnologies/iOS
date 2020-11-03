@@ -9,25 +9,25 @@
 import Foundation
 
 public extension String {
-
-    var toURL: URL? {
-
-        if self == "" {
-            return nil
-        }
-
-        return URL(string: self)
+  
+  var toURL: URL? {
+    
+    if self == "" {
+      return nil
     }
+    
+    return URL(string: self)
+  }
 }
 
 extension Optional where Wrapped == String {
-
-    var toURL: URL? {
-
-        if self == nil || self == "" {
-            return nil
-        }
-
-        return URL(string: self!) // swiftlint:disable:this force_unwrapping
+  
+  var toURL: URL? {
+    
+    if self == nil || self == "" {
+      return nil
     }
+    
+    return URL(string: self!) // swiftlint:disable:this force_unwrapping
+  }
 }

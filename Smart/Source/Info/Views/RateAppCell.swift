@@ -29,7 +29,7 @@ final class RateAppCell: UITableViewCell {
       emojiLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
       emojiLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
       emojiLabel.widthAnchor.constraint(equalToConstant: 100),
-      emojiLabel.heightAnchor.constraint(equalToConstant: 100)
+      emojiLabel.heightAnchor.constraint(equalToConstant: 100),
     ])
     
     let rateTextLabel = UILabel()
@@ -43,7 +43,7 @@ final class RateAppCell: UITableViewCell {
       rateTextLabel.topAnchor.constraint(equalTo: emojiLabel.bottomAnchor),
       rateTextLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
       rateTextLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
-      rateTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor)
+      rateTextLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
     ])
   }
   

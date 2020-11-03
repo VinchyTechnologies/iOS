@@ -10,19 +10,19 @@ import Foundation
 
 public struct TopSecretPreferences: Decodable {
 
-    public let apiKey: String
+  public let apiKey: String
 
-    private enum CodingKeys: String, CodingKey {
-        case apiKey = "API_KEY"
-    }
+  private enum CodingKeys: String, CodingKey {
+    case apiKey = "API_KEY"
+  }
 }
 
 public func getTopSecretPreferences() -> TopSecretPreferences? {
-    if let path = Bundle.main.path(forResource: "TopSecret", ofType: "plist"),
-        let xml = FileManager.default.contents(atPath: path),
-        let preferences = try? PropertyListDecoder().decode(TopSecretPreferences.self, from: xml) {
-        return preferences
-    }
-    
-    return nil
+  if let path = Bundle.main.path(forResource: "TopSecret", ofType: "plist"),
+     let xml = FileManager.default.contents(atPath: path),
+     let preferences = try? PropertyListDecoder().decode(TopSecretPreferences.self, from: xml) {
+    return preferences
+  }
+
+  return nil
 }

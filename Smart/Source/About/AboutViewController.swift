@@ -1,5 +1,5 @@
 //
-//  AboutController.swift
+//  AboutViewController.swift
 //  Coffee
 //
 //  Created by Алексей Смирнов on 12/04/2019.
@@ -12,7 +12,7 @@ import Display
 import StringFormatting
 import Core
 
-final class AboutController: UIViewController, OpenURLProtocol, Alertable {
+final class AboutViewController: UIViewController, OpenURLProtocol, Alertable {
   
   private let logoLabel: UILabel = {
     let label = UILabel()
@@ -66,7 +66,8 @@ final class AboutController: UIViewController, OpenURLProtocol, Alertable {
     ])
   }
   
-  @objc private func actionOpenWebSite() {
+  @objc
+  private func actionOpenWebSite() {
     open(urlString: instagramURL) {
       showAlert(message: localized("open_url_error"))
     }

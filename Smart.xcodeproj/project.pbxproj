@@ -124,7 +124,7 @@
 		CAF24AEC24C32AE90057547F /* CommonUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24AEA24C32AE90057547F /* CommonUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CAF24B0E24C3311F0057547F /* LocationUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24B0D24C3311F0057547F /* LocationUI.framework */; };
 		CAF24B0F24C3311F0057547F /* LocationUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24B0D24C3311F0057547F /* LocationUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CAF514102461C51400667ED0 /* AboutController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5140F2461C51300667ED0 /* AboutController.swift */; };
+		CAF514102461C51400667ED0 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5140F2461C51300667ED0 /* AboutViewController.swift */; };
 		CAF514132461C51B00667ED0 /* DocController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF514122461C51B00667ED0 /* DocController.swift */; };
 		CAF514202461C52400667ED0 /* MoreConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF514152461C52400667ED0 /* MoreConfigurator.swift */; };
 		CAF514212461C52400667ED0 /* MorePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF514162461C52400667ED0 /* MorePresenter.swift */; };
@@ -311,7 +311,7 @@
 		CAF24ACC24C323C90057547F /* StringFormatting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StringFormatting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF24AEA24C32AE90057547F /* CommonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF24B0D24C3311F0057547F /* LocationUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LocationUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CAF5140F2461C51300667ED0 /* AboutController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutController.swift; sourceTree = "<group>"; };
+		CAF5140F2461C51300667ED0 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		CAF514122461C51B00667ED0 /* DocController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocController.swift; sourceTree = "<group>"; };
 		CAF514152461C52400667ED0 /* MoreConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreConfigurator.swift; sourceTree = "<group>"; };
 		CAF514162461C52400667ED0 /* MorePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorePresenter.swift; sourceTree = "<group>"; };
@@ -575,13 +575,15 @@
 		CA472B2D245EDEC7009149FF /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				CAF5140E2461C51300667ED0 /* About */,
 				CA79545024F92E930040224C /* AdvancedSearch */,
 				CA07097E2523146200C3D9EC /* Agreement */,
+				CAF514112461C51B00667ED0 /* Doc */,
 				CA4858542519E95100EDA4CE /* ForceUpdate */,
+				CAF5140D2461C4ED00667ED0 /* Info */,
 				CAF514692468171500667ED0 /* Love */,
 				CA3B1D5224A0A34700FAA08A /* Notes */,
 				CA070A762523D77000C3D9EC /* Onboarding */,
-				CA472B39245EDEDB009149FF /* Profile */,
 				CA3B1D3E249E3EAC00FAA08A /* Search */,
 				CA0A352324785A0900C400F5 /* Showcase */,
 				CA472B3F245EDEDB009149FF /* Supported Files */,
@@ -590,14 +592,6 @@
 				CA4D51022549F5F600A6FD0B /* WriteNote */,
 			);
 			path = Source;
-			sourceTree = "<group>";
-		};
-		CA472B39245EDEDB009149FF /* Profile */ = {
-			isa = PBXGroup;
-			children = (
-				CAF5140D2461C4ED00667ED0 /* Info */,
-			);
-			path = Profile;
 			sourceTree = "<group>";
 		};
 		CA472B3F245EDEDB009149FF /* Supported Files */ = {
@@ -915,8 +909,6 @@
 				CAF514182461C52400667ED0 /* MoreInteractor.swift */,
 				CAF5141F2461C52400667ED0 /* MoreRouter.swift */,
 				CAF514192461C52400667ED0 /* Views */,
-				CAF514112461C51B00667ED0 /* Doc */,
-				CAF5140E2461C51300667ED0 /* About */,
 			);
 			path = Info;
 			sourceTree = "<group>";
@@ -924,7 +916,7 @@
 		CAF5140E2461C51300667ED0 /* About */ = {
 			isa = PBXGroup;
 			children = (
-				CAF5140F2461C51300667ED0 /* AboutController.swift */,
+				CAF5140F2461C51300667ED0 /* AboutViewController.swift */,
 			);
 			path = About;
 			sourceTree = "<group>";
@@ -1322,7 +1314,7 @@
 				CA3B1D42249E3FE100FAA08A /* ResultsTableController.swift in Sources */,
 				CA7B836024EF109200991F24 /* MainSubtitleCollectionCell.swift in Sources */,
 				CA819844253864080056A1C6 /* WineDetailViewModel.swift in Sources */,
-				CAF514102461C51400667ED0 /* AboutController.swift in Sources */,
+				CAF514102461C51400667ED0 /* AboutViewController.swift in Sources */,
 				CA81984D253864080056A1C6 /* WineDetailRouterProtocol.swift in Sources */,
 				CA3B1D5424A0A36300FAA08A /* NotesViewController.swift in Sources */,
 				CACA7E9A254C57CC0099E622 /* WriteNoteInput.swift in Sources */,

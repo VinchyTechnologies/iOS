@@ -7,5 +7,5 @@
 //
 
 public enum RealmType: String {
-    case like, dislike, notes
+  case like, dislike, notes
 }

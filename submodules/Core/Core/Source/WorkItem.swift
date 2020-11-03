@@ -9,17 +9,17 @@
 import Foundation
 
 public final class WorkItem {
-
-    private var pendingRequestWorkItem: DispatchWorkItem?
-
-    public init() { }
-
-    public func perform(after: TimeInterval, _ block: @escaping () -> Void) {
-        pendingRequestWorkItem?.cancel()
-
-        let requestWorkItem = DispatchWorkItem(block: block)
-
-        pendingRequestWorkItem = requestWorkItem
-        DispatchQueue.main.asyncAfter(deadline: .now() + after, execute: requestWorkItem)
-    }
+  
+  private var pendingRequestWorkItem: DispatchWorkItem?
+  
+  public init() { }
+  
+  public func perform(after: TimeInterval, _ block: @escaping () -> Void) {
+    pendingRequestWorkItem?.cancel()
+    
+    let requestWorkItem = DispatchWorkItem(block: block)
+    
+    pendingRequestWorkItem = requestWorkItem
+    DispatchQueue.main.asyncAfter(deadline: .now() + after, execute: requestWorkItem)
+  }
 }

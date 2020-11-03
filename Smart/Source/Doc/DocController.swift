@@ -12,14 +12,24 @@ import StringFormatting
 import Core
 
 final class DocController: UITableViewController, OpenURLProtocol, Alertable {
-  
-  private let titles = [
-    localized("terms_of_use_doc"),
-  ]
-  
-  private let urls = [
-    localized("terms_of_use_url"),
-  ]
+
+  private enum Row: CaseIterable {
+    case termsOfUse
+
+    var title: String {
+      switch self {
+      case .termsOfUse:
+        return localized("terms_of_use_doc")
+      }
+    }
+
+    var url: String {
+      switch self {
+      case .termsOfUse:
+        return localized("terms_of_use_url")
+      }
+    }
+  }
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -37,19 +47,22 @@ final class DocController: UITableViewController, OpenURLProtocol, Alertable {
   }
   
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return titles.count
+    return Row.allCases.count
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     if let cell = tableView.dequeueReusableCell(withIdentifier: StandartCell.reuseId) as? StandartCell {
-      cell.configure(text: titles[safe: indexPath.row])
+      cell.configure(text: Row.allCases[safe: indexPath.row]?.title ?? "")
       return cell
     }
     return .init()
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    actionOpenUrl(urlString: urls[safe: indexPath.row] ?? "")
+    guard let urlString = Row.allCases[safe: indexPath.row]?.url else {
+      return
+    }
+    actionOpenUrl(urlString: urlString)
   }
   
   override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
