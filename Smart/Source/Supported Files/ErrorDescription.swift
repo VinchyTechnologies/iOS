@@ -10,29 +10,29 @@ import VinchyCore
 import StringFormatting
 
 protocol APIErrorProtocol {
-    var title: String? { get }
-    var description: String? { get }
+  var title: String? { get }
+  var description: String? { get }
 }
 
 extension APIError: APIErrorProtocol {
 
-    var title: String? {
-        localized("error").firstLetterUppercased()
+  var title: String? {
+    localized("error").firstLetterUppercased()
+  }
+
+  var description: String? {
+    switch self {
+    case .invalidURL:
+      return "Invalid URL" // TODO: - localize
+
+    case .decodingError:
+      return "Decoding Error" // TODO: - localize
+
+    case .incorrectStatusCode(let statusCode):
+      return "StatusCode should be 2xx, but is \(statusCode)" // TODO: - localize
+
+    case .noData:
+      return "No Data" // TODO: - localize
     }
-
-    var description: String? {
-        switch self {
-        case .invalidURL:
-            return "Invalid URL" // TODO: - localize
-
-        case .decodingError:
-            return "Decoding Error" // TODO: - localize
-
-        case .incorrectStatusCode(let statusCode):
-            return "StatusCode should be 2xx, but is \(statusCode)" // TODO: - localize
-
-        case .noData:
-            return "No Data" // TODO: - localize
-        }
-    }
+  }
 }

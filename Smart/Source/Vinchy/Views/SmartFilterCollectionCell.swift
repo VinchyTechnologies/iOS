@@ -10,94 +10,94 @@ import UIKit
 import Display
 
 public struct SmartFilterCollectionCellViewModel: ViewModelProtocol {
-
-    fileprivate let accentText: String
-    fileprivate let boldText: String
-    fileprivate let subtitleText: String
-    fileprivate let buttonText: String
-
-    public init(
-        accentText: String,
-        boldText: String,
-        subtitleText: String,
-        buttonText: String)
-    {
-        self.accentText = accentText
-        self.boldText = boldText
-        self.subtitleText = subtitleText
-        self.buttonText = buttonText
-    }
-
+  
+  fileprivate let accentText: String
+  fileprivate let boldText: String
+  fileprivate let subtitleText: String
+  fileprivate let buttonText: String
+  
+  public init(
+    accentText: String,
+    boldText: String,
+    subtitleText: String,
+    buttonText: String)
+  {
+    self.accentText = accentText
+    self.boldText = boldText
+    self.subtitleText = subtitleText
+    self.buttonText = buttonText
+  }
+  
 }
 
 final class SmartFilterCollectionCell: UICollectionViewCell, Reusable {
-
-    private let topAccentLabel = UILabel()
-    private let boldTitleLabel = UILabel()
-    private let subtitleLabel = UILabel()
-    private let tryItNowButton = UIButton()
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-
-        backgroundColor = .option
-        layer.cornerRadius = 10
-        clipsToBounds = true
-
-        topAccentLabel.font = Font.medium(13)
-        topAccentLabel.textColor = .accent
-        topAccentLabel.textAlignment = .center
-
-        boldTitleLabel.font = Font.heavy(20)
-        boldTitleLabel.textColor = .dark
-        boldTitleLabel.textAlignment = .center
-
-        subtitleLabel.font = Font.regular(16)
-        subtitleLabel.textColor = .blueGray
-        subtitleLabel.textAlignment = .center
-        subtitleLabel.numberOfLines = 0
-
-        tryItNowButton.backgroundColor = .accent
-        tryItNowButton.setTitleColor(.white, for: .normal)
-        tryItNowButton.translatesAutoresizingMaskIntoConstraints = false
-        tryItNowButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
-        tryItNowButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        tryItNowButton.layer.cornerRadius = 10
-        tryItNowButton.clipsToBounds = true
-        tryItNowButton.titleLabel?.font = Font.bold(18)
-
-        let stackView = UIStackView(arrangedSubviews: [
-            topAccentLabel,
-            boldTitleLabel,
-            subtitleLabel,
-            tryItNowButton,
-        ])
-
-        stackView.axis = .vertical
-        stackView.distribution = .equalSpacing
-        addSubview(stackView)
-        stackView.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            stackView.topAnchor.constraint(equalTo: topAnchor, constant: 20),
-            stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 60),
-            stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -60),
-            stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
-        ])
-    }
-
-    required init?(coder: NSCoder) { fatalError() }
-
+  
+  private let topAccentLabel = UILabel()
+  private let boldTitleLabel = UILabel()
+  private let subtitleLabel = UILabel()
+  private let tryItNowButton = UIButton()
+  
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    
+    backgroundColor = .option
+    layer.cornerRadius = 10
+    clipsToBounds = true
+    
+    topAccentLabel.font = Font.medium(13)
+    topAccentLabel.textColor = .accent
+    topAccentLabel.textAlignment = .center
+    
+    boldTitleLabel.font = Font.heavy(20)
+    boldTitleLabel.textColor = .dark
+    boldTitleLabel.textAlignment = .center
+    
+    subtitleLabel.font = Font.regular(16)
+    subtitleLabel.textColor = .blueGray
+    subtitleLabel.textAlignment = .center
+    subtitleLabel.numberOfLines = 0
+    
+    tryItNowButton.backgroundColor = .accent
+    tryItNowButton.setTitleColor(.white, for: .normal)
+    tryItNowButton.translatesAutoresizingMaskIntoConstraints = false
+    tryItNowButton.heightAnchor.constraint(equalToConstant: 32).isActive = true
+    tryItNowButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
+    tryItNowButton.layer.cornerRadius = 10
+    tryItNowButton.clipsToBounds = true
+    tryItNowButton.titleLabel?.font = Font.bold(18)
+    
+    let stackView = UIStackView(arrangedSubviews: [
+      topAccentLabel,
+      boldTitleLabel,
+      subtitleLabel,
+      tryItNowButton,
+    ])
+    
+    stackView.axis = .vertical
+    stackView.distribution = .equalSpacing
+    addSubview(stackView)
+    stackView.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      stackView.topAnchor.constraint(equalTo: topAnchor, constant: 20),
+      stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 60),
+      stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -60),
+      stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
+    ])
+  }
+  
+  required init?(coder: NSCoder) { fatalError() }
+  
 }
 
 extension SmartFilterCollectionCell: Decoratable {
-
-    typealias ViewModel = SmartFilterCollectionCellViewModel
-
-    func decorate(model: ViewModel) {
-        topAccentLabel.text = model.accentText
-        boldTitleLabel.text = model.boldText
-        subtitleLabel.text = model.subtitleText
-        tryItNowButton.setTitle(model.buttonText, for: .normal)
-    }
-
+  
+  typealias ViewModel = SmartFilterCollectionCellViewModel
+  
+  func decorate(model: ViewModel) {
+    topAccentLabel.text = model.accentText
+    boldTitleLabel.text = model.boldText
+    subtitleLabel.text = model.subtitleText
+    tryItNowButton.setTitle(model.buttonText, for: .normal)
+  }
+  
 }

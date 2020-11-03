@@ -19,35 +19,35 @@ import AdSupport
 #endif
 
 #if DEBUG
-    import CocoaDebug
+import CocoaDebug
 #endif
 
 @main
 final class AppDelegate: UIResponder, UIApplicationDelegate {
-
+  
   func application(
     _ application: UIApplication,
     didFinishLaunchingWithOptions
-    launchOptions: [UIApplication.LaunchOptionsKey: Any]?)
-    -> Bool
+      launchOptions: [UIApplication.LaunchOptionsKey: Any]?)
+  -> Bool
   {
-
+    
     #if DEBUG
     CocoaDebug.enable()
     #endif
     //        FirebaseConfiguration.shared.setLoggerLevel(.min)
     FirebaseApp.configure()
-
+    
     let defaultValue = ["isAdAvailable": false as NSObject]
     remoteConfig.setDefaults(defaultValue)
-
+    
     remoteConfig.fetch(withExpirationDuration: 0) { (_, error) in
       if error == nil {
         remoteConfig.activate(completion: nil)
         isAdAvailable = remoteConfig.configValue(forKey: "isAdAvailable").boolValue
       }
     }
-
+    
     if #available(iOS 14, *) {
       ATTrackingManager.requestTrackingAuthorization(completionHandler: { _ in
         GADMobileAds.sharedInstance().start(completionHandler: nil)
@@ -55,9 +55,9 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     } else {
       GADMobileAds.sharedInstance().start(completionHandler: nil)
     }
-
+    
     //        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "7d99d4164fe23a45e4802010db93f214" ];
-
+    
     //        GADMobileAds.sharedInstance().start(completionHandler: nil)
     #if targetEnvironment(simulator)
     // swiftlint:disable:next force_cast
@@ -65,15 +65,15 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     #endif
     return true
   }
-
+  
   // MARK: - UISceneSession Lifecycle
-
+  
   func application(
     _ application: UIApplication,
     configurationForConnecting
       connectingSceneSession: UISceneSession,
     options: UIScene.ConnectionOptions)
-    -> UISceneConfiguration
+  -> UISceneConfiguration
   {
     UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
   }

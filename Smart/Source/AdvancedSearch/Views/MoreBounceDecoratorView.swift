@@ -10,47 +10,47 @@ import UIKit
 import Display
 
 struct MoreBounceDecoratorViewModel: ViewModelProtocol {
-    let titleText: String?
+  let titleText: String?
 }
 
 final class MoreBounceDecoratorView: UIView {
 
-    private let label = PaddingLabel()
+  private let label = PaddingLabel()
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+  override init(frame: CGRect) {
+    super.init(frame: frame)
 
-        backgroundColor = .accent
-        translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            widthAnchor.constraint(equalToConstant: 50),
-            heightAnchor.constraint(equalToConstant: 50),
-        ])
+    backgroundColor = .accent
+    translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      widthAnchor.constraint(equalToConstant: 50),
+      heightAnchor.constraint(equalToConstant: 50),
+    ])
 
-        label.font = Font.heavy(14)
-        label.textColor = .white
-        label.textAlignment = .center
+    label.font = Font.heavy(14)
+    label.textColor = .white
+    label.textAlignment = .center
 
-        addSubview(label)
-        label.translatesAutoresizingMaskIntoConstraints = false
-        label.fill()
+    addSubview(label)
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.fill()
 
-    }
+  }
 
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        layer.cornerRadius = bounds.width / 2
-    }
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    layer.cornerRadius = bounds.width / 2
+  }
 
-    required init?(coder: NSCoder) { fatalError() }
+  required init?(coder: NSCoder) { fatalError() }
 
 }
 
 extension MoreBounceDecoratorView: Decoratable {
+  
+  typealias ViewModel = MoreBounceDecoratorViewModel
 
-    typealias ViewModel = MoreBounceDecoratorViewModel
-
-    func decorate(model: ViewModel) {
-        label.text = model.titleText
-    }
+  func decorate(model: ViewModel) {
+    label.text = model.titleText
+  }
 }

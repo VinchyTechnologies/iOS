@@ -28,6 +28,6 @@ extension Optional where Wrapped == String {
             return nil
         }
 
-        return URL(string: self!)
+        return URL(string: self!) // swiftlint:disable:this force_unwrapping
     }
 }

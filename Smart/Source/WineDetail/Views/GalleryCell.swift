@@ -11,80 +11,80 @@ import Display
 import FSPagerView
 
 struct GalleryCellViewModel: ViewModelProtocol {
-
-    fileprivate let urls: [String?]
-
-    public init(urls: [String?]) {
-        self.urls = urls
-    }
+  
+  fileprivate let urls: [String?]
+  
+  public init(urls: [String?]) {
+    self.urls = urls
+  }
 }
 
 final class GalleryCell: UICollectionViewCell, Reusable {
-
-    private var urls: [URL] = [] {
-        didSet {
-//            print(urls)
-            DispatchQueue.main.async {
-                self.pager.reloadData()
-            }
-        }
+  
+  private var urls: [URL] = [] {
+    didSet {
+      //            print(urls)
+      DispatchQueue.main.async {
+        self.pager.reloadData()
+      }
     }
-
-    private lazy var pager: FSPagerView = {
-        let pager = FSPagerView()
-        pager.dataSource = self
-        pager.delegate = self
-        pager.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "cell")
-        return pager
-    }()
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-
-        addSubview(pager)
-        pager.frame = frame
-    }
-
-    required init?(coder: NSCoder) { fatalError() }
-
+  }
+  
+  private lazy var pager: FSPagerView = {
+    let pager = FSPagerView()
+    pager.dataSource = self
+    pager.delegate = self
+    pager.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "cell")
+    return pager
+  }()
+  
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    
+    addSubview(pager)
+    pager.frame = frame
+  }
+  
+  required init?(coder: NSCoder) { fatalError() }
+  
 }
 
 extension GalleryCell: FSPagerViewDataSource, FSPagerViewDelegate {
-
-    func numberOfItems(in pagerView: FSPagerView) -> Int {
-        urls.count
-    }
-
-    func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
-        let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
-
-        cell.imageView?.sd_imageTransition = .fade
-        cell.imageView?.sd_setImage(with: urls[index], placeholderImage: nil, options: [.allowInvalidSSLCertificates, .continueInBackground, .retryFailed], completed: { (image, _, _, _) in
-            if image == nil {
-                cell.imageView?.image = UIImage(named: "empty_image_bottle")?.withTintColor(.blueGray)
-            }
-        })
-
-        cell.imageView?.contentMode = .scaleAspectFit
-        cell.contentView.layer.shadowColor = UIColor.white.cgColor
-        return cell
-    }
-
-    func pagerView(_ pagerView: FSPagerView, shouldSelectItemAt index: Int) -> Bool {
-        false
-    }
-
-    func pagerView(_ pagerView: FSPagerView, shouldHighlightItemAt index: Int) -> Bool {
-        false
-    }
-
+  
+  func numberOfItems(in pagerView: FSPagerView) -> Int {
+    urls.count
+  }
+  
+  func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
+    let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
+    
+    cell.imageView?.sd_imageTransition = .fade
+    cell.imageView?.sd_setImage(with: urls[index], placeholderImage: nil, options: [.allowInvalidSSLCertificates, .continueInBackground, .retryFailed], completed: { (image, _, _, _) in
+      if image == nil {
+        cell.imageView?.image = UIImage(named: "empty_image_bottle")?.withTintColor(.blueGray)
+      }
+    })
+    
+    cell.imageView?.contentMode = .scaleAspectFit
+    cell.contentView.layer.shadowColor = UIColor.white.cgColor
+    return cell
+  }
+  
+  func pagerView(_ pagerView: FSPagerView, shouldSelectItemAt index: Int) -> Bool {
+    false
+  }
+  
+  func pagerView(_ pagerView: FSPagerView, shouldHighlightItemAt index: Int) -> Bool {
+    false
+  }
+  
 }
 
 extension GalleryCell: Decoratable {
-
-    typealias ViewModel = GalleryCellViewModel
-
-    func decorate(model: ViewModel) {
-        self.urls = model.urls.compactMap({ $0?.toURL })
-    }
+  
+  typealias ViewModel = GalleryCellViewModel
+  
+  func decorate(model: ViewModel) {
+    self.urls = model.urls.compactMap({ $0?.toURL })
+  }
 }

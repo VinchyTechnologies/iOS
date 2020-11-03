@@ -9,26 +9,26 @@
 import Core
 
 public protocol OnboardingCache {
-
-    /// Обновить кеш онбординга
-    ///
-    /// - Parameter lastSeenOnboardingVersion: последняя версия онбординга
-    func updateCache(with lastSeenOnboardingVersion: Int)
-
-    /// Получить закешированную последнюю увиденную версию онбординга
-    func getLastSawOnboardingVersion() -> Int?
+  
+  /// Обновить кеш онбординга
+  ///
+  /// - Parameter lastSeenOnboardingVersion: последняя версия онбординга
+  func updateCache(with lastSeenOnboardingVersion: Int)
+  
+  /// Получить закешированную последнюю увиденную версию онбординга
+  func getLastSawOnboardingVersion() -> Int?
 }
 
 final class OnboardingCacheImplementation: OnboardingCache {
-
-    func updateCache(with lastSeenOnboardingVersion: Int) {
-        UserDefaultsConfig.lastSeenOnboardingVersion = lastSeenOnboardingVersion
+  
+  func updateCache(with lastSeenOnboardingVersion: Int) {
+    UserDefaultsConfig.lastSeenOnboardingVersion = lastSeenOnboardingVersion
+  }
+  
+  func getLastSawOnboardingVersion() -> Int? {
+    if UserDefaultsConfig.lastSeenOnboardingVersion == 0 {
+      return nil
     }
-
-    func getLastSawOnboardingVersion() -> Int? {
-        if UserDefaultsConfig.lastSeenOnboardingVersion == 0 {
-            return nil
-        }
-        return UserDefaultsConfig.lastSeenOnboardingVersion
-    }
+    return UserDefaultsConfig.lastSeenOnboardingVersion
+  }
 }

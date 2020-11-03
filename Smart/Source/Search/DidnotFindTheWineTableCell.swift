@@ -11,57 +11,57 @@ import Display
 import StringFormatting
 
 protocol DidnotFindTheWineTableCellProtocol: AnyObject {
-    func didTapWriteUsButton(_ button: UIButton)
+  func didTapWriteUsButton(_ button: UIButton)
 }
 
 final class DidnotFindTheWineTableCell: UITableViewCell, Reusable {
-
-    weak var delegate: DidnotFindTheWineTableCellProtocol?
-
-    private let titleLabel = UILabel()
-    private let writeUsButton = UIButton()
-
-    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-        super.init(style: style, reuseIdentifier: reuseIdentifier)
-
-        selectionStyle = .none
-
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        titleLabel.text = localized("did_not_find_the_wine")
-        titleLabel.font = Font.bold(16)
-        titleLabel.adjustsFontSizeToFitWidth = true
-        titleLabel.minimumScaleFactor = 0.8
-
-        writeUsButton.translatesAutoresizingMaskIntoConstraints = false
-        writeUsButton.backgroundColor = .accent
-        writeUsButton.setTitle(localized("write_us").firstLetterUppercased(), for: .normal)
-        writeUsButton.setTitleColor(.white, for: .normal)
-        writeUsButton.contentEdgeInsets = .init(top: 12, left: 16, bottom: 12, right: 16)
-        writeUsButton.layer.cornerRadius = 10
-        writeUsButton.clipsToBounds = true
-        writeUsButton.titleLabel?.font = Font.bold(14)
-        writeUsButton.addTarget(self, action: #selector(didTapWriteUsButton(_:)), for: .touchUpInside)
-
-        contentView.addSubview(writeUsButton)
-        NSLayoutConstraint.activate([
-            writeUsButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-            writeUsButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
-            writeUsButton.heightAnchor.constraint(equalToConstant: 44),
-            writeUsButton.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -10),
-        ])
-
-        contentView.addSubview(titleLabel)
-        NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
-            titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
-            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: writeUsButton.leadingAnchor, constant: -10),
-        ])
-    }
-
-    required init?(coder: NSCoder) { fatalError() }
-
-    @objc
-    private func didTapWriteUsButton(_ button: UIButton) {
-        delegate?.didTapWriteUsButton(button)
-    }
+  
+  weak var delegate: DidnotFindTheWineTableCellProtocol?
+  
+  private let titleLabel = UILabel()
+  private let writeUsButton = UIButton()
+  
+  override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+    super.init(style: style, reuseIdentifier: reuseIdentifier)
+    
+    selectionStyle = .none
+    
+    titleLabel.translatesAutoresizingMaskIntoConstraints = false
+    titleLabel.text = localized("did_not_find_the_wine")
+    titleLabel.font = Font.bold(16)
+    titleLabel.adjustsFontSizeToFitWidth = true
+    titleLabel.minimumScaleFactor = 0.8
+    
+    writeUsButton.translatesAutoresizingMaskIntoConstraints = false
+    writeUsButton.backgroundColor = .accent
+    writeUsButton.setTitle(localized("write_us").firstLetterUppercased(), for: .normal)
+    writeUsButton.setTitleColor(.white, for: .normal)
+    writeUsButton.contentEdgeInsets = .init(top: 12, left: 16, bottom: 12, right: 16)
+    writeUsButton.layer.cornerRadius = 10
+    writeUsButton.clipsToBounds = true
+    writeUsButton.titleLabel?.font = Font.bold(14)
+    writeUsButton.addTarget(self, action: #selector(didTapWriteUsButton(_:)), for: .touchUpInside)
+    
+    contentView.addSubview(writeUsButton)
+    NSLayoutConstraint.activate([
+      writeUsButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+      writeUsButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+      writeUsButton.heightAnchor.constraint(equalToConstant: 44),
+      writeUsButton.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -10),
+    ])
+    
+    contentView.addSubview(titleLabel)
+    NSLayoutConstraint.activate([
+      titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+      titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+      titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: writeUsButton.leadingAnchor, constant: -10),
+    ])
+  }
+  
+  required init?(coder: NSCoder) { fatalError() }
+  
+  @objc
+  private func didTapWriteUsButton(_ button: UIButton) {
+    delegate?.didTapWriteUsButton(button)
+  }
 }

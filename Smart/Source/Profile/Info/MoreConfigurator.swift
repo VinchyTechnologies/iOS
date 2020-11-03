@@ -10,20 +10,20 @@ import UIKit
 import StringFormatting
 
 protocol MoreConfiguratorProtocol: AnyObject {
-    func configure(with viewController: MoreViewController)
+  func configure(with viewController: MoreViewController)
 }
 
 final class MoreConfigurator: MoreConfiguratorProtocol {
-    func configure(with viewController: MoreViewController) {
-        
-        let presenter = MorePresenter(view: viewController)
-        let interactor = MoreInteractor(presenter: presenter)
-        let router = MoreRouter(viewController: viewController)
-        
-        presenter.interactor = interactor
-        presenter.router = router
-        
-        viewController.presenter = presenter
-        
-    }
+  func configure(with viewController: MoreViewController) {
+    
+    let presenter = MorePresenter(view: viewController)
+    let interactor = MoreInteractor(presenter: presenter)
+    let router = MoreRouter(viewController: viewController)
+    
+    presenter.interactor = interactor
+    presenter.router = router
+    
+    viewController.presenter = presenter
+    
+  }
 }

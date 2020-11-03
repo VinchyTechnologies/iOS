@@ -9,18 +9,18 @@
 import UIKit
 
 final class ApplicationCoordinatorBuilder {
-
-    static func make(window: UIWindow?) -> ApplicationCoordinator? {
-
-        guard let window = window else {
-            return nil
-        }
-
-        let factory = ApplicationModulesFactoryImplementation(window: window)
-        let onboardingRepository = OnboardingRepository(cache: OnboardingCacheImplementation())
-        let appCoordinator = ApplicationCoordinator(window: window,
-                                                    applicationModulesFactory: factory,
-                                                    onboardingRepository: onboardingRepository)
-        return appCoordinator
+  
+  static func make(window: UIWindow?) -> ApplicationCoordinator? {
+    
+    guard let window = window else {
+      return nil
     }
+    
+    let factory = ApplicationModulesFactoryImplementation(window: window)
+    let onboardingRepository = OnboardingRepository(cache: OnboardingCacheImplementation())
+    let appCoordinator = ApplicationCoordinator(window: window,
+                                                applicationModulesFactory: factory,
+                                                onboardingRepository: onboardingRepository)
+    return appCoordinator
+  }
 }

@@ -9,13 +9,13 @@
 import UIKit
 
 final class AgreementsModuleFactory {
-
-    func makeAgreementsViewController(
-        delegate: AgreementsViewControllerOutput?)
-        -> AgreementsViewController
-    {
-        let viewController = AgreementsViewController()
-        viewController.delegate = delegate
-        return viewController
-    }
+  
+  func makeAgreementsViewController(
+    delegate: AgreementsViewControllerOutput?)
+  -> AgreementsViewController
+  {
+    let viewController = AgreementsViewController()
+    viewController.delegate = delegate
+    return viewController
+  }
 }

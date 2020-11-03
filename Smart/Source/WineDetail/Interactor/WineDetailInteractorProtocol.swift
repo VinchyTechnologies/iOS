@@ -9,11 +9,11 @@
 import Foundation
 
 protocol WineDetailInteractorProtocol: AnyObject {
-    func viewDidLoad()
-    func didTapLikeButton()
-    func didTapDislikeButton()
-    func didTapShareButton()
-    func didTapNotes()
-    func didTapPriceButton()
-    func didTapReportAnError()
+  func viewDidLoad()
+  func didTapLikeButton()
+  func didTapDislikeButton()
+  func didTapShareButton()
+  func didTapNotes()
+  func didTapPriceButton()
+  func didTapReportAnError()
 }

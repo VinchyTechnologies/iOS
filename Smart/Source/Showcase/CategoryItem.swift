@@ -9,7 +9,7 @@
 import VinchyCore
 
 struct CategoryItem: Decodable {
-
-    let title: String
-    var wines: [Wine]
+  
+  let title: String
+  var wines: [Wine]
 }

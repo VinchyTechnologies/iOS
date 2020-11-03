@@ -9,24 +9,24 @@
 import UIKit
 
 final class SceneDelegate: UIResponder {
-
+  
   // MARK: - Interanl Properties
-
+  
   var window: UIWindow?
-
+  
   // MARK: - Private Properties
-
+  
   private var appCoordinator: ApplicationCoordinator?
-
+  
 }
 
 extension SceneDelegate: UIWindowSceneDelegate {
-
+  
   func scene(
     _ scene: UIScene,
     willConnectTo session: UISceneSession,
     options connectionOptions: UIScene.ConnectionOptions) {
-
+    
     guard let windowScence = scene as? UIWindowScene else { return }
     let appWindow = UIWindow(frame: windowScence.coordinateSpace.bounds)
     appWindow.windowScene = windowScence
@@ -37,10 +37,10 @@ extension SceneDelegate: UIWindowSceneDelegate {
 }
 
 public extension UIWindow {
-
+  
   /// Transition Options
   struct TransitionOptions {
-
+    
     /// Curve of animation
     ///
     /// - linear: linear
@@ -52,7 +52,7 @@ public extension UIWindow {
       case easeIn
       case easeOut
       case easeInOut
-
+      
       /// Return the media timing function associated with curve
       internal var function: CAMediaTimingFunction {
         let key: String
@@ -65,7 +65,7 @@ public extension UIWindow {
         return CAMediaTimingFunction(name: CAMediaTimingFunctionName(rawValue: key))
       }
     }
-
+    
     /// Direction of the animation
     ///
     /// - fade: fade to new controller
@@ -79,7 +79,7 @@ public extension UIWindow {
       case toBottom
       case toLeft
       case toRight
-
+      
       /// Return the associated transition
       ///
       /// - Returns: transition
@@ -102,7 +102,7 @@ public extension UIWindow {
         return transition
       }
     }
-
+    
     /// Background of the transition
     ///
     /// - solidColor: solid color
@@ -111,19 +111,19 @@ public extension UIWindow {
       case solidColor(_: UIColor)
       case customView(_: UIView)
     }
-
+    
     /// Duration of the animation (default is 0.60s)
     public var duration: TimeInterval = 0.6
-
+    
     /// Direction of the transition (default is `toRight`)
     public var direction: TransitionOptions.Direction = .toRight
-
+    
     /// Style of the transition (default is `linear`)
     public var style: TransitionOptions.Curve = .linear
-
+    
     /// Background of the transition (default is `nil`)
     public var background: TransitionOptions.Background? = .solidColor(.mainBackground)
-
+    
     /// Initialize a new options object with given direction and curve
     ///
     /// - Parameters:
@@ -133,9 +133,9 @@ public extension UIWindow {
       self.direction = direction
       self.style = style
     }
-
+    
     public init() { }
-
+    
     /// Return the animation to perform for given options object
     internal var animation: CATransition {
       let transition = self.direction.transition()
@@ -144,14 +144,14 @@ public extension UIWindow {
       return transition
     }
   }
-
+  
   /// Change the root view controller of the window
   ///
   /// - Parameters:
   ///   - controller: controller to set
   ///   - options: options of the transition
   func setRootViewController(_ controller: UIViewController, options: TransitionOptions = TransitionOptions()) {
-
+    
     var transitionWnd: UIWindow? = nil
     if let background = options.background {
       transitionWnd = UIWindow(frame: UIScreen.main.bounds)
@@ -163,19 +163,19 @@ public extension UIWindow {
       }
       transitionWnd?.makeKeyAndVisible()
     }
-
+    
     let transition = CATransition()
     transition.duration = 0.25
     transition.type = .fade//.push
     //        transition.subtype = .fromBottom
     transition.timingFunction = CAMediaTimingFunction(name: .easeInEaseOut)
     layer.add(transition, forKey: kCATransition)
-
+    
     // Make animation
     //        self.layer.add(options.animation, forKey: kCATransition)
     self.rootViewController = controller
     self.makeKeyAndVisible()
-
+    
     if let wnd = transitionWnd {
       DispatchQueue.main.asyncAfter(deadline: (.now() + 1 + options.duration), execute: {
         wnd.removeFromSuperview()
@@ -185,7 +185,7 @@ public extension UIWindow {
 }
 
 internal extension UIViewController {
-
+  
   /// Create a new empty controller instance with given view
   ///
   /// - Parameters:
@@ -198,5 +198,5 @@ internal extension UIViewController {
     controller.view = view
     return controller
   }
-
+  
 }

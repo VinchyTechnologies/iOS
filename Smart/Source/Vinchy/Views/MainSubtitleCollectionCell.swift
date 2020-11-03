@@ -11,65 +11,65 @@ import SDWebImage
 import Display
 
 struct MainSubtitleCollectionCellViewModel: ViewModelProtocol, Hashable {
-    
-    fileprivate let subtitleText: String?
-    fileprivate let imageURL: URL?
-
-    private let identifier = UUID()
-
-    public init(subtitleText: String?, imageURL: URL?) {
-        self.subtitleText = subtitleText
-        self.imageURL = imageURL
-    }
+  
+  fileprivate let subtitleText: String?
+  fileprivate let imageURL: URL?
+  
+  private let identifier = UUID()
+  
+  public init(subtitleText: String?, imageURL: URL?) {
+    self.subtitleText = subtitleText
+    self.imageURL = imageURL
+  }
 }
 
 final class MainSubtitleCollectionCell: HighlightCollectionCell, Reusable {
-
-    private let subtitleLabel = UILabel()
-    private let imageView = UIImageView()
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-
-        highlightStyle = .scale
-
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.backgroundColor = .option
-        imageView.contentMode = .scaleToFill
-        imageView.layer.cornerRadius = 15
-        imageView.clipsToBounds = true
-
-        subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
-        subtitleLabel.font = Font.semibold(15)
-        subtitleLabel.textColor = .blueGray
-
-        addSubview(imageView)
-        addSubview(subtitleLabel)
-        NSLayoutConstraint.activate([
-            subtitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
-            subtitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
-            subtitleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
-            imageView.topAnchor.constraint(equalTo: topAnchor),
-            imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
-            imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
-            imageView.bottomAnchor.constraint(equalTo: subtitleLabel.topAnchor, constant: -3),
-        ])
-    }
-
-    required init?(coder: NSCoder) { fatalError() }
-
+  
+  private let subtitleLabel = UILabel()
+  private let imageView = UIImageView()
+  
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    
+    highlightStyle = .scale
+    
+    imageView.translatesAutoresizingMaskIntoConstraints = false
+    imageView.backgroundColor = .option
+    imageView.contentMode = .scaleToFill
+    imageView.layer.cornerRadius = 15
+    imageView.clipsToBounds = true
+    
+    subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
+    subtitleLabel.font = Font.semibold(15)
+    subtitleLabel.textColor = .blueGray
+    
+    addSubview(imageView)
+    addSubview(subtitleLabel)
+    NSLayoutConstraint.activate([
+      subtitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
+      subtitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+      subtitleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+      imageView.topAnchor.constraint(equalTo: topAnchor),
+      imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
+      imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
+      imageView.bottomAnchor.constraint(equalTo: subtitleLabel.topAnchor, constant: -3),
+    ])
+  }
+  
+  required init?(coder: NSCoder) { fatalError() }
+  
 }
 
 extension MainSubtitleCollectionCell: Decoratable {
-
-    typealias ViewModel = MainSubtitleCollectionCellViewModel
-
-    func decorate(model: ViewModel) {
-        subtitleLabel.text = model.subtitleText
-        imageView.sd_setImage(
-            with: model.imageURL,
-            placeholderImage: nil,
-            options: [.progressiveLoad, .continueInBackground],
-            completed: nil)
-    }
+  
+  typealias ViewModel = MainSubtitleCollectionCellViewModel
+  
+  func decorate(model: ViewModel) {
+    subtitleLabel.text = model.subtitleText
+    imageView.sd_setImage(
+      with: model.imageURL,
+      placeholderImage: nil,
+      options: [.progressiveLoad, .continueInBackground],
+      completed: nil)
+  }
 }

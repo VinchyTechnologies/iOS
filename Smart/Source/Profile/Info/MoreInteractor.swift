@@ -11,26 +11,26 @@ import EmailService
 import StringFormatting
 
 protocol MoreInteractorProtocol: AnyObject {
-    func sendEmail(HTMLText: String?)
+  func sendEmail(HTMLText: String?)
 }
 
 final class MoreInteractor {
-    
-    weak var presenter: MorePresenterProtocol!
-    let emailService: EmailServiceProtocol = EmailService()
-
-    required init(presenter: MorePresenterProtocol) {
-        self.presenter = presenter
-    }
+  
+  weak var presenter: MorePresenterProtocol!
+  let emailService: EmailServiceProtocol = EmailService()
+  
+  required init(presenter: MorePresenterProtocol) {
+    self.presenter = presenter
+  }
 }
 
 extension MoreInteractor: MoreInteractorProtocol {
-    func sendEmail(HTMLText: String?) {
-        if emailService.canSend {
-            let mail = emailService.getEmailController(HTMLText: HTMLText, recipients: [localized("contact_email")])
-            presenter.present(controller: mail, completion: nil)
-        } else {
-            presenter.showAlert(message: localized("open_mail_error"))
-        }
+  func sendEmail(HTMLText: String?) {
+    if emailService.canSend {
+      let mail = emailService.getEmailController(HTMLText: HTMLText, recipients: [localized("contact_email")])
+      presenter.present(controller: mail, completion: nil)
+    } else {
+      presenter.showAlert(message: localized("open_mail_error"))
     }
+  }
 }
