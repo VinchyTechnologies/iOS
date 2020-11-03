@@ -10,7 +10,7 @@ import Foundation
 
 final class WineDetailAssembly {
 
-    static func assemblyModule(input: WineDetailInput) -> WineDetailViewController {
+    static func assemblyModule(input: WineDetailInput) -> UIViewController {
 
         let viewController = WineDetailViewController()
 
