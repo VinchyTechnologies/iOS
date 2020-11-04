@@ -16,30 +16,58 @@ final class ResultsTableController: UIViewController {
   
   weak var didnotFindTheWineTableCellDelegate: DidnotFindTheWineTableCellProtocol?
   
-  var didFoundProducts: [Wine] = [] {
+  private var didFoundProducts: [Wine] = [] {
     didSet {
-      DispatchQueue.main.async {
-        self.tableView.reloadData()
-      }
+      tableView.reloadData()
     }
   }
   
-  let tableView = UITableView()
-  
+  private let tableView = UITableView()
+
+  private lazy var bottomConstraint = NSLayoutConstraint(
+    item: tableView,
+    attribute: .bottom,
+    relatedBy: .equal,
+    toItem: view,
+    attribute: .bottom,
+    multiplier: 1,
+    constant: 0)
+
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    extendedLayoutIncludesOpaqueBars = true
-    
+
     view.addSubview(tableView)
-    tableView.frame = view.frame
+    tableView.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      tableView.topAnchor.constraint(equalTo: view.topAnchor),
+      tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      bottomConstraint,
+    ])
+    
     tableView.dataSource = self
     tableView.estimatedRowHeight = 65
-    
+
     tableView.register(WineTableCell.self, forCellReuseIdentifier: WineTableCell.reuseId)
     tableView.register(DidnotFindTheWineTableCell.self,
                        forCellReuseIdentifier: DidnotFindTheWineTableCell.reuseId)
     tableView.tableFooterView = UIView()
+  }
+
+  func set(wines: [Wine]) {
+    didFoundProducts = wines
+  }
+
+  func getWines() -> [Wine] {
+    didFoundProducts
+  }
+
+  func set(constant: CGFloat) {
+    bottomConstraint.constant = constant
+  }
+
+  func set(delegate: UITableViewDelegate) {
+    tableView.delegate = delegate
   }
 }
 

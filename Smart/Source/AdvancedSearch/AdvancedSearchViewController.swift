@@ -42,7 +42,8 @@ final class AdvancedSearchViewController: UIViewController, Alertable {
   
   private var selectedIndexPathes: [IndexPath] = []
   
-  private lazy var layout = UICollectionViewCompositionalLayout { (sectionNumber, _) -> NSCollectionLayoutSection? in
+  private lazy var layout = UICollectionViewCompositionalLayout { [weak self] (sectionNumber, _) -> NSCollectionLayoutSection? in
+    guard let self = self else { return nil }
     switch self.filters[sectionNumber].type {
     case .carusel:
       let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))

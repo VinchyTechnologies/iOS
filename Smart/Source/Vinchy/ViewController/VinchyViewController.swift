@@ -64,14 +64,12 @@ final class VinchyViewController: UIViewController {
 
   private let refreshControl = UIRefreshControl()
 
-  private lazy var resultsTableController: ResultsTableController = {
-    let resultsTableController = ResultsTableController()
-    resultsTableController.tableView.delegate = self
-    resultsTableController.didnotFindTheWineTableCellDelegate = self
-    return resultsTableController
-  }()
-
   private lazy var searchController: UISearchController = {
+
+    let resultsTableController = ResultsTableController()
+    resultsTableController.set(delegate: self)
+    resultsTableController.didnotFindTheWineTableCellDelegate = self
+
     let searchController = UISearchController(searchResultsController: resultsTableController)
     searchController.obscuresBackgroundDuringPresentation = false
     searchController.searchBar.autocapitalizationType = .none
@@ -93,13 +91,28 @@ final class VinchyViewController: UIViewController {
 
   private var suggestions: [Wine] = []
 
+  private lazy var bottomConstraint = NSLayoutConstraint(
+    item: collectionView,
+    attribute: .bottom,
+    relatedBy: .equal,
+    toItem: view,
+    attribute: .bottom,
+    multiplier: 1,
+    constant: 0)
+
   // MARK: - Lifecycle
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
     view.addSubview(collectionView)
-    collectionView.frame = view.frame
+    collectionView.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+      collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      bottomConstraint,
+    ])
 
     let filterBarButtonItem = UIBarButtonItem(
       image: UIImage(named: "edit")?.withRenderingMode(.alwaysTemplate),
@@ -127,15 +140,20 @@ final class VinchyViewController: UIViewController {
   }
 
   public func updateNextButtonBottomConstraint(with keyboardHeight: CGFloat) {
+
+    defer {
+      view.layoutSubviews()
+    }
+
     if keyboardHeight == 0 {
-      resultsTableController.tableView.contentInset = .zero
-      collectionView.contentInset = .zero
+      (searchController.searchResultsController as? ResultsTableController)?.set(constant: .zero)
+      bottomConstraint.constant = .zero
       return
     }
-    resultsTableController.tableView.contentInset = .init(top: 0, left: 0, bottom: keyboardHeight, right: 0)
-    collectionView.contentInset = .init(top: 0, left: 0, bottom: keyboardHeight, right: 0)
 
-    view.layoutSubviews()
+    (searchController.searchResultsController as? ResultsTableController)?.set(constant: -keyboardHeight)
+    bottomConstraint.constant = -keyboardHeight
+
   }
 
   // MARK: - Private Methods
@@ -147,14 +165,16 @@ final class VinchyViewController: UIViewController {
 
   @objc
   private func didPullToRefresh() {
-    CATransaction.begin()
-    CATransaction.setCompletionBlock {
-      DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-        self.refreshControl.endRefreshing()
+    if !isSearchingMode {
+      CATransaction.begin()
+      CATransaction.setCompletionBlock {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+          self.refreshControl.endRefreshing()
+        }
       }
+      interactor?.didPullToRefresh()
+      CATransaction.commit()
     }
-    interactor?.didPullToRefresh()
-    CATransaction.commit()
   }
 }
 
@@ -339,9 +359,8 @@ extension VinchyViewController: UISearchBarDelegate {
 extension VinchyViewController: UITableViewDelegate {
 
   func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
     tableView.deselectRow(at: indexPath, animated: true)
-    guard let wineID = resultsTableController.didFoundProducts[safe: indexPath.row]?.id else { return }
+    guard let wineID = (searchController.searchResultsController as? ResultsTableController)?.getWines()[safe: indexPath.row]?.id else { return }
     navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wineID), animated: true)
   }
 }
@@ -378,7 +397,7 @@ extension VinchyViewController: VinchySimpleConiniousCaruselCollectionCellDelega
 extension VinchyViewController: VinchyViewControllerProtocol {
 
   func updateUI(didFindWines: [Wine]) {
-    resultsTableController.didFoundProducts = didFindWines
+    (searchController.searchResultsController as? ResultsTableController)?.set(wines: didFindWines)
   }
 
   func updateUI(sections: [VinchyViewControllerViewModel.Section]) {
