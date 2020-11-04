@@ -10,76 +10,76 @@ import UIKit
 import Display
 
 protocol AdvancedHeaderDelegate: AnyObject {
-    func didTapHeader(at section: Int)
+  func didTapHeader(at section: Int)
 }
 
 struct AdvancedHeaderViewModel: ViewModelProtocol {
 
-    fileprivate let titleText: String?
-    fileprivate let moreText: String?
-    fileprivate let shouldShowMore: Bool
+  fileprivate let titleText: String?
+  fileprivate let moreText: String?
+  fileprivate let shouldShowMore: Bool
 
-    init(titleText: String?, moreText: String?, shouldShowMore: Bool) {
-        self.titleText = titleText
-        self.moreText = moreText
-        self.shouldShowMore = shouldShowMore
-    }
+  init(titleText: String?, moreText: String?, shouldShowMore: Bool) {
+    self.titleText = titleText
+    self.moreText = moreText
+    self.shouldShowMore = shouldShowMore
+  }
 }
 
 final class AdvancedHeader: UICollectionReusableView, Reusable {
 
-    private let titleLabel = UILabel()
-    private let moreLabel = UILabel()
+  private let titleLabel = UILabel()
+  private let moreLabel = UILabel()
 
-    var section: Int = 0
+  var section: Int = 0
 
-    weak var delegate: AdvancedHeaderDelegate?
+  weak var delegate: AdvancedHeaderDelegate?
 
-    override init(frame: CGRect) {
-        super.init(frame: frame)
+  override init(frame: CGRect) {
+    super.init(frame: frame)
 
-        let tap = UITapGestureRecognizer(target: self, action: #selector(didTapHeader))
-        addGestureRecognizer(tap)
+    let tap = UITapGestureRecognizer(target: self, action: #selector(didTapHeader))
+    addGestureRecognizer(tap)
 
-        moreLabel.font = Font.medium(16)
-        moreLabel.textColor = .accent
+    moreLabel.font = Font.medium(16)
+    moreLabel.textColor = .accent
 
-        addSubview(moreLabel)
-        moreLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            moreLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
-            moreLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-        ])
+    addSubview(moreLabel)
+    moreLabel.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      moreLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
+      moreLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+    ])
 
-        titleLabel.font = Font.bold(22)
-        titleLabel.textColor = .dark
+    titleLabel.font = Font.bold(22)
+    titleLabel.textColor = .dark
 
-        addSubview(titleLabel)
-        titleLabel.translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
-            titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-            titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: moreLabel.leadingAnchor, constant: -5),
-        ])
+    addSubview(titleLabel)
+    titleLabel.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
+      titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
+      titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: moreLabel.leadingAnchor, constant: -5),
+    ])
+  }
+
+  required init?(coder: NSCoder) { fatalError() }
+
+  @objc
+  private func didTapHeader() {
+    if !moreLabel.isHidden {
+      delegate?.didTapHeader(at: section)
     }
-
-    required init?(coder: NSCoder) { fatalError() }
-
-    @objc
-    private func didTapHeader() {
-        if !moreLabel.isHidden {
-            delegate?.didTapHeader(at: section)
-        }
-    }
+  }
 }
 
 extension AdvancedHeader: Decoratable {
 
-    typealias ViewModel = AdvancedHeaderViewModel
+  typealias ViewModel = AdvancedHeaderViewModel
 
-    func decorate(model: ViewModel) {
-        titleLabel.text = model.titleText
-        moreLabel.text = model.moreText
-        moreLabel.isHidden = !model.shouldShowMore
-    }
+  func decorate(model: ViewModel) {
+    titleLabel.text = model.titleText
+    moreLabel.text = model.moreText
+    moreLabel.isHidden = !model.shouldShowMore
+  }
 }

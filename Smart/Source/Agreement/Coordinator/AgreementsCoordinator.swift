@@ -9,33 +9,33 @@
 import UIKit
 
 final class AgreementsCoordinator: BaseCoordinator {
-
-    // MARK: - Private Properties
-
-    private let moduleFactory = AgreementsModuleFactory()
-    private let navigationController: UINavigationController
-    private lazy var agreementsViewController = moduleFactory.makeAgreementsViewController(delegate: self)
-    private weak var closeDelegate: CoordinatorCloseDelegate?
-
-    // MARK: - Initializers
-
-    init(navigationController: UINavigationController,
-         closeDelegate: CoordinatorCloseDelegate?) {
-
-        self.navigationController = navigationController
-        self.closeDelegate = closeDelegate
-    }
-
-    // MARK: - Public Methods
-
-    override func start() {
-        navigationController.setViewControllers([agreementsViewController], animated: true)
-    }
+  
+  // MARK: - Private Properties
+  
+  private let moduleFactory = AgreementsModuleFactory()
+  private let navigationController: UINavigationController
+  private lazy var agreementsViewController = moduleFactory.makeAgreementsViewController(delegate: self)
+  private weak var closeDelegate: CoordinatorCloseDelegate?
+  
+  // MARK: - Initializers
+  
+  init(navigationController: UINavigationController,
+       closeDelegate: CoordinatorCloseDelegate?) {
+    
+    self.navigationController = navigationController
+    self.closeDelegate = closeDelegate
+  }
+  
+  // MARK: - Public Methods
+  
+  override func start() {
+    navigationController.setViewControllers([agreementsViewController], animated: true)
+  }
 }
 
 extension AgreementsCoordinator: AgreementsViewControllerOutput {
-
-    func didConfirmAgeAndAgreement() {
-        closeDelegate?.didCloseCoordinator(self)
-    }
+  
+  func didConfirmAgeAndAgreement() {
+    closeDelegate?.didCloseCoordinator(self)
+  }
 }

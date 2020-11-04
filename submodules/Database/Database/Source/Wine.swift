@@ -9,32 +9,32 @@
 import RealmSwift
 
 public protocol HasPrimaryKeyID: Object {
-    dynamic var id: Int64 { get }
-    static func myPrimaryKey() -> String
+  dynamic var id: Int64 { get }
+  static func myPrimaryKey() -> String
 }
 
 extension HasPrimaryKeyID where Self: Object {
-    public static func myPrimaryKey() -> String {
-        "id"
-    }
+  public static func myPrimaryKey() -> String {
+    "id"
+  }
 }
 
 public final class DBWine: Object, HasPrimaryKeyID {
 
-    @objc public dynamic var id: Int64 = 0
-    @objc public dynamic var wineID: Int64 = 0
-    @objc public dynamic var mainImageUrl: String = ""
-    @objc public dynamic var title: String = ""
+  @objc public dynamic var id: Int64 = 0
+  @objc public dynamic var wineID: Int64 = 0
+  @objc public dynamic var mainImageUrl: String = ""
+  @objc public dynamic var title: String = ""
 
-    public override class func primaryKey() -> String {
-        return myPrimaryKey()
-    }
+  public override class func primaryKey() -> String {
+    return myPrimaryKey()
+  }
 
-    public convenience init(id: Int64, wineID: Int64, mainImageUrl: String, title: String) {
-        self.init()
-        self.id = id
-        self.wineID = wineID
-        self.mainImageUrl = mainImageUrl
-        self.title = title
-    }
+  public convenience init(id: Int64, wineID: Int64, mainImageUrl: String, title: String) {
+    self.init()
+    self.id = id
+    self.wineID = wineID
+    self.mainImageUrl = mainImageUrl
+    self.title = title
+  }
 }

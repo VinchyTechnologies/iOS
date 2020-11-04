@@ -9,11 +9,11 @@
 import VinchyCore
 
 protocol WineDetailPresenterProtocol: AnyObject {
-
-    var reportAnErrorRecipients: [String] { get }
-    func startLoading()
-    func stopLoading()
-    func update(wine: Wine, isLiked: Bool, isDisliked: Bool)
-    func showAlertCantOpenEmail()
-    func showNetworkErrorAlert(error: Error)
+  
+  var reportAnErrorRecipients: [String] { get }
+  func startLoading()
+  func stopLoading()
+  func update(wine: Wine, isLiked: Bool, isDisliked: Bool)
+  func showAlertCantOpenEmail()
+  func showNetworkErrorAlert(error: Error)
 }

@@ -9,15 +9,15 @@
 import VinchyCore
 
 protocol VinchyPresenterProtocol: AnyObject {
-
-    var cantFindWineText: String { get }
-    var cantFindWineRecipients: [String] { get }
-
-    func startLoading()
-    func update(compilations: [Compilation])
-    func update(suggestions: [Wine])
-    func update(sections: [VinchyViewControllerViewModel.Section])
-    func update(didFindWines: [Wine])
-    func showAlertCantOpenEmail()
-
+  
+  var cantFindWineText: String { get }
+  var cantFindWineRecipients: [String] { get }
+  
+  func startLoading()
+  func update(compilations: [Compilation])
+  func update(suggestions: [Wine])
+  func update(sections: [VinchyViewControllerViewModel.Section])
+  func update(didFindWines: [Wine])
+  func showAlertCantOpenEmail()
+  
 }

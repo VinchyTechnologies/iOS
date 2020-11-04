@@ -9,39 +9,39 @@
 import Foundation
 
 public enum FilterType: String, Decodable {
-    case carusel
+  case carusel
 }
 
 public struct Filter: Decodable {
-    public let title: String
-    public let type: FilterType
-    public let category: FilterCategory
-    public var items: [FilterItem]
+  public let title: String
+  public let type: FilterType
+  public let category: FilterCategory
+  public var items: [FilterItem]
 }
 
 public enum FilterCategory: String, Decodable {
-    case common, countries
+  case common, countries
 }
 
 public struct FilterItem: Decodable {
-    public let title: String
-    public let imageName: String?
-
-    public init(title: String, imageName: String?) {
-        self.title = title
-        self.imageName = imageName
-    }
+  public let title: String
+  public let imageName: String?
+  
+  public init(title: String, imageName: String?) {
+    self.title = title
+    self.imageName = imageName
+  }
 }
 
 public func loadFilters() -> [Filter] {
-    
-    guard let filePath = Bundle.main.path(forResource: "filters", ofType: "json") else {
-        return []
-    }
-
-    guard let data = try? Data(contentsOf: URL(fileURLWithPath: filePath)) else {
-        return []
-    }
-
-    return try! JSONDecoder().decode([Filter].self, from: data)// swiftlint:disable:this force_try
+  
+  guard let filePath = Bundle.main.path(forResource: "filters", ofType: "json") else {
+    return []
+  }
+  
+  guard let data = try? Data(contentsOf: URL(fileURLWithPath: filePath)) else {
+    return []
+  }
+  
+  return try! JSONDecoder().decode([Filter].self, from: data)// swiftlint:disable:this force_try
 }

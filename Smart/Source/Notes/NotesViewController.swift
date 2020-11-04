@@ -42,8 +42,6 @@ final class NotesViewController: UIViewController {
 
   required init?(coder: NSCoder) { fatalError() }
 
-
-
   override func viewDidLoad() {
     super.viewDidLoad()
 

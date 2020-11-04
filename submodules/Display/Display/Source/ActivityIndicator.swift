@@ -31,7 +31,7 @@ public final class ActivityIndicatorView: UIView {
 
     var color: UIColor? = .accent {
         didSet {
-            spinnerImageView?.tintColor = color
+            spinnerImageView.tintColor = color
         }
     }
 
@@ -41,11 +41,10 @@ public final class ActivityIndicatorView: UIView {
     /// Функция, которая будет выполнена после остановки анимации
     var indicatorHide: (() -> Void)?
 
-    var spinnerImageView: UIImageView!
+    lazy var spinnerImageView: UIImageView = prepareImageView()
 
     public override init(frame: CGRect) {
         super.init(frame: frame)
-        spinnerImageView = prepareImageView()
     }
 
     required init?(coder aDecoder: NSCoder) { fatalError() }

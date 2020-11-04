@@ -9,31 +9,31 @@
 import Foundation
 
 public extension Array {
-    func grouped<T: Hashable>(map: ((Element) -> (T))) -> [[Element]] {
-        let dict = Dictionary(grouping: self) { map($0) }
-        return dict.values.map { Array<Element>($0) }
-    }
+  func grouped<T: Hashable>(map: ((Element) -> (T))) -> [[Element]] {
+    let dict = Dictionary(grouping: self) { map($0) }
+    return dict.values.map { Array<Element>($0) }
+  }
 }
 
 public extension Array where Element == String? {
 
-    func toURLs() -> [URL]? {
+  func toURLs() -> [URL]? {
 
-        var urls: [URL?] = []
+    var urls: [URL?] = []
 
-        self.forEach { (string) in
-            if string != nil && string != "" {
-                urls.append(URL(string: string!))
-            }
-        }
-
-        var urlArray: [URL] = []
-        urlArray = urls.compactMap({ $0 })
-
-        if urlArray.isEmpty {
-            return nil
-        }
-
-        return urlArray
+    self.forEach { (string) in
+      if string != nil && string != "" {
+        urls.append(URL(string: string!))
+      }
     }
+
+    var urlArray: [URL] = []
+    urlArray = urls.compactMap({ $0 })
+
+    if urlArray.isEmpty {
+      return nil
+    }
+
+    return urlArray
+  }
 }

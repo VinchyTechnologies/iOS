@@ -17,7 +17,7 @@ final class MapURLProtocol: URLProtocol {
         return request
     }
 
-    var thread: Thread!
+    var thread: Thread! // swiftlint:disable:this implicitly_unwrapped_optional
 
     override func startLoading() {
         guard let url = request.url,

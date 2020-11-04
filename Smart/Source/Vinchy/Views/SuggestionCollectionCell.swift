@@ -10,41 +10,41 @@ import UIKit
 import Display
 
 struct SuggestionCollectionCellViewModel: ViewModelProtocol, Hashable {
-
-    fileprivate let titleText: String?
-
-    public init(titleText: String?) {
-        self.titleText = titleText
-    }
+  
+  fileprivate let titleText: String?
+  
+  public init(titleText: String?) {
+    self.titleText = titleText
+  }
 }
 
 final class SuggestionCollectionCell: UICollectionViewCell, Reusable {
-
-    private let label = UILabel()
-
-    override init(frame: CGRect) {
-        super.init(frame: frame)
-
-        label.font = Font.bold(18)
-        label.textColor = .blueGray
-        addSubview(label)
-    }
-
-    override func layoutSubviews() {
-        super.layoutSubviews()
-        label.frame = CGRect(x: 20, y: 0, width: bounds.width - 40, height: bounds.height)
-    }
-
-    required init?(coder: NSCoder) { fatalError() }
-
+  
+  private let label = UILabel()
+  
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    
+    label.font = Font.bold(18)
+    label.textColor = .blueGray
+    addSubview(label)
+  }
+  
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    label.frame = CGRect(x: 20, y: 0, width: bounds.width - 40, height: bounds.height)
+  }
+  
+  required init?(coder: NSCoder) { fatalError() }
+  
 }
 
 extension SuggestionCollectionCell: Decoratable {
-
-    typealias ViewModel = SuggestionCollectionCellViewModel
-
-    func decorate(model: ViewModel) {
-        label.text = model.titleText
-    }
-
+  
+  typealias ViewModel = SuggestionCollectionCellViewModel
+  
+  func decorate(model: ViewModel) {
+    label.text = model.titleText
+  }
+  
 }

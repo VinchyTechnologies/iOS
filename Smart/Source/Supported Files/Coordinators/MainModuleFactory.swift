@@ -9,9 +9,8 @@
 import UIKit
 
 final class MainModuleFactory {
-
-    func makeTabbarController() -> TabBarController {
-        TabBarController()
-    }
-
+  
+  func makeTabbarController() -> TabBarController {
+    TabBarController()
+  }
 }

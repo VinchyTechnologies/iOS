@@ -30,7 +30,7 @@ excluded:
 colon:
   apply_to_dictionaries: false
 
-indentation: 4
+indentation: 2
 
 custom_rules:
   no_objcMembers:

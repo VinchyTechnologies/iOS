@@ -9,5 +9,5 @@
 import Display
 
 protocol WineDetailViewControllerProtocol: Alertable, Loadable {
-    func updateUI(viewModel: WineDetailViewModel)
+  func updateUI(viewModel: WineDetailViewModel)
 }

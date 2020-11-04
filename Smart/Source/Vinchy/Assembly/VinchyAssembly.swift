@@ -9,17 +9,17 @@
 import Foundation
 
 final class VinchyAssembly {
-
-    static func assemblyModule() -> VinchyViewController {
-        let viewController = VinchyViewController()
-
-        let router = VinchyRouter(viewController: viewController)
-        let presenter = VinchyPresenter(viewController: viewController)
-        let interactor = VinchyInteractor(router: router, presenter: presenter)
-
-        router.interactor = interactor
-        viewController.interactor = interactor
-
-        return viewController
-    }
+  
+  static func assemblyModule() -> VinchyViewController {
+    let viewController = VinchyViewController()
+    
+    let router = VinchyRouter(viewController: viewController)
+    let presenter = VinchyPresenter(viewController: viewController)
+    let interactor = VinchyInteractor(router: router, presenter: presenter)
+    
+    router.interactor = interactor
+    viewController.interactor = interactor
+    
+    return viewController
+  }
 }

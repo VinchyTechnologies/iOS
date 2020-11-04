@@ -10,36 +10,36 @@ import UIKit
 
 open class HighlightCollectionCell: UICollectionViewCell, HighlightableViewProtocol, CollectionCellProtocol {
 
-    public override var isHighlighted: Bool {
-        didSet {
-            highlightAnimator?.animateHighlight()
-        }
+  public override var isHighlighted: Bool {
+    didSet {
+      highlightAnimator?.animateHighlight()
     }
+  }
 
-    public var highlightStyle: CollectionCellHighlightStyle? {
-        didSet {
-            guard highlightStyle != oldValue else { return }
-            highlightAnimator = self.highlightAnimator(for: highlightStyle)
-        }
+  public var highlightStyle: CollectionCellHighlightStyle? {
+    didSet {
+      guard highlightStyle != oldValue else { return }
+      highlightAnimator = self.highlightAnimator(for: highlightStyle)
     }
+  }
 
-    private var highlightAnimator: HighlightAnimatorProtocol?
+  private var highlightAnimator: HighlightAnimatorProtocol?
 
-    private func highlightAnimator(for style: CollectionCellHighlightStyle?) -> HighlightAnimatorProtocol? {
-        switch style {
-        case .scale:
-            return ScaleHighlightAnimator(view: self)
-        case let .backgroundColor(color):
-            return BackgroundColorHighlightAnimator(view: self, highlightedBackgroundColor: color)
-        case .none:
-            return nil
-        }
+  private func highlightAnimator(for style: CollectionCellHighlightStyle?) -> HighlightAnimatorProtocol? {
+    switch style {
+    case .scale:
+      return ScaleHighlightAnimator(view: self)
+    case let .backgroundColor(color):
+      return BackgroundColorHighlightAnimator(view: self, highlightedBackgroundColor: color)
+    case .none:
+      return nil
     }
+  }
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-    }
+  public override init(frame: CGRect) {
+    super.init(frame: frame)
+  }
 
-    required public init?(coder: NSCoder) { fatalError() }
+  required public init?(coder: NSCoder) { fatalError() }
 
 }

@@ -10,38 +10,38 @@ import UIKit
 import Display
 
 public struct HeaderReusableViewModel: ViewModelProtocol {
-
-    fileprivate let title: String?
-
-    public init(title: String?) {
-        self.title = title
-    }
+  
+  fileprivate let title: String?
+  
+  public init(title: String?) {
+    self.title = title
+  }
 }
 
 public final class HeaderReusableView: UICollectionReusableView, Reusable {
-
-    private let label = UILabel()
-
-    override public init(frame: CGRect) {
-        super.init(frame: frame)
-
-        backgroundColor = .mainBackground
-
-        label.font = Font.bold(20)
-        label.textColor = .blueGray
-        
-        label.frame = CGRect(x: 10, y: 0, width: frame.width - 20, height: frame.height)
-        addSubview(label)
-    }
-
-    required init?(coder: NSCoder) { fatalError() }
+  
+  private let label = UILabel()
+  
+  override public init(frame: CGRect) {
+    super.init(frame: frame)
+    
+    backgroundColor = .mainBackground
+    
+    label.font = Font.bold(20)
+    label.textColor = .blueGray
+    
+    label.frame = CGRect(x: 10, y: 0, width: frame.width - 20, height: frame.height)
+    addSubview(label)
+  }
+  
+  required init?(coder: NSCoder) { fatalError() }
 }
 
 extension HeaderReusableView: Decoratable {
-
-    public typealias ViewModel = HeaderReusableViewModel
-
-    public func decorate(model: ViewModel) {
-        label.text = model.title
-    }
+  
+  public typealias ViewModel = HeaderReusableViewModel
+  
+  public func decorate(model: ViewModel) {
+    label.text = model.title
+  }
 }

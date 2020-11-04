@@ -10,18 +10,18 @@ import UIKit
 import Display
 
 final class DetailFilterController: UIViewController {
-
-    private let collectionView: UICollectionView = {
-        let layout = UICollectionViewFlowLayout()
-        let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-        return collectionView
-    }()
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        collectionView.frame = view.frame
-        view.addSubview(collectionView)
-    }
-
+  
+  private let collectionView: UICollectionView = {
+    let layout = UICollectionViewFlowLayout()
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    return collectionView
+  }()
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    
+    collectionView.frame = view.frame
+    view.addSubview(collectionView)
+  }
+  
 }

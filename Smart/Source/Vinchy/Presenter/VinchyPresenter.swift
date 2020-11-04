@@ -13,138 +13,138 @@ import StringFormatting
 
 final class VinchyPresenter {
 
-    private enum C {
-        static let harmfulToYourHealthText = localized("harmful_to_your_health")
-    }
+  private enum C {
+    static let harmfulToYourHealthText = localized("harmful_to_your_health")
+  }
 
-    weak var viewController: VinchyViewControllerProtocol?
+  weak var viewController: VinchyViewControllerProtocol?
 
-    init(viewController: VinchyViewControllerProtocol) {
-        self.viewController = viewController
-    }
+  init(viewController: VinchyViewControllerProtocol) {
+    self.viewController = viewController
+  }
 
-    private func addTitle(_ title: String?) {
+  private func addTitle(_ title: String?) {
 
-    }
+  }
 
 }
 
 extension VinchyPresenter: VinchyPresenterProtocol {
 
-    var cantFindWineText: String {
-        localized("email_did_not_find_wine")
-    }
+  var cantFindWineText: String {
+    localized("email_did_not_find_wine")
+  }
 
-    var cantFindWineRecipients: [String] {
-        [localized("contact_email")]
-    }
+  var cantFindWineRecipients: [String] {
+    [localized("contact_email")]
+  }
 
-    func update(sections: [VinchyViewControllerViewModel.Section]) {
-        viewController?.updateUI(sections: sections)
-    }
+  func update(sections: [VinchyViewControllerViewModel.Section]) {
+    viewController?.updateUI(sections: sections)
+  }
 
-    func startLoading() {
-        viewController?.addLoader()
-        viewController?.startLoadingAnimation()
-    }
+  func startLoading() {
+    viewController?.addLoader()
+    viewController?.startLoadingAnimation()
+  }
 
-    func update(compilations: [Compilation]) {
-        viewController?.stopLoadingAnimation()
+  func update(compilations: [Compilation]) {
+    viewController?.stopLoadingAnimation()
 
-        var sections: [VinchyViewControllerViewModel.Section] = []
+    var sections: [VinchyViewControllerViewModel.Section] = []
 
-        for compilation in compilations {
+    for compilation in compilations {
 
-            switch compilation.type {
-            case .mini:
-                if let title = compilation.title {
-                    sections.append(.title([
-                        .init(titleText: NSAttributedString(string: title,
-                                                            font: Font.heavy(20),
-                                                            textColor: .dark))
-                    ]))
-                }
-                sections.append(.stories([
-                    .init(type: compilation.type,
-                          collections: compilation.collectionList)
-                ]))
-
-            case .big:
-                if let title = compilation.title {
-                    sections.append(.title([
-                        .init(titleText: NSAttributedString(string: title,
-                                                            font: Font.heavy(20),
-                                                            textColor: .dark))
-                    ]))
-                }
-                sections.append(.big([
-                    .init(type: compilation.type,
-                          collections: compilation.collectionList)
-                ]))
-
-            case .promo:
-                if let title = compilation.title {
-                    sections.append(.title([
-                        .init(titleText: NSAttributedString(string: title,
-                                                            font: Font.heavy(20),
-                                                            textColor: .dark))
-                    ]))
-                }
-                sections.append(.promo([
-                    .init(type: compilation.type,
-                          collections: compilation.collectionList)
-                ]))
-
-            case .bottles:
-                if compilation.collectionList.first?.wineList != nil && !(compilation.collectionList.first?.wineList.isEmpty == true) {
-
-                    if let title = compilation.title {
-                        sections.append(.title([
-                            .init(titleText: NSAttributedString(string: title,
-                                                                font: Font.heavy(20),
-                                                                textColor: .dark))
-                        ]))
-                    }
-
-                    sections.append(.bottles([
-                        .init(type: compilation.type,
-                              collections: compilation.collectionList)
-                    ]))
-                }
-
-            case .shareUs:
-                sections.append(.shareUs([
-                    .init(titleText: localized("like_vinchy"))
-                ]))
-
-            case .infinity:
-                break
-
-            case .smartFilter:
-                break
-            }
+      switch compilation.type {
+      case .mini:
+        if let title = compilation.title {
+          sections.append(.title([
+            .init(titleText: NSAttributedString(string: title,
+                                                font: Font.heavy(20),
+                                                textColor: .dark))
+          ]))
         }
-
-        sections.append(.title([
-            .init(titleText:
-                    NSAttributedString(string: C.harmfulToYourHealthText,
-                                       font: Font.light(15),
-                                       textColor: .blueGray,
-                                       paragraphAlignment: .justified))
+        sections.append(.stories([
+          .init(type: compilation.type,
+                collections: compilation.collectionList)
         ]))
 
-        viewController?.updateUI(sections: sections)
+      case .big:
+        if let title = compilation.title {
+          sections.append(.title([
+            .init(titleText: NSAttributedString(string: title,
+                                                font: Font.heavy(20),
+                                                textColor: .dark))
+          ]))
+        }
+        sections.append(.big([
+          .init(type: compilation.type,
+                collections: compilation.collectionList)
+        ]))
+
+      case .promo:
+        if let title = compilation.title {
+          sections.append(.title([
+            .init(titleText: NSAttributedString(string: title,
+                                                font: Font.heavy(20),
+                                                textColor: .dark))
+          ]))
+        }
+        sections.append(.promo([
+          .init(type: compilation.type,
+                collections: compilation.collectionList)
+        ]))
+
+      case .bottles:
+        if compilation.collectionList.first?.wineList != nil && !(compilation.collectionList.first?.wineList.isEmpty == true) {
+
+          if let title = compilation.title {
+            sections.append(.title([
+              .init(titleText: NSAttributedString(string: title,
+                                                  font: Font.heavy(20),
+                                                  textColor: .dark))
+            ]))
+          }
+
+          sections.append(.bottles([
+            .init(type: compilation.type,
+                  collections: compilation.collectionList)
+          ]))
+        }
+
+      case .shareUs:
+        sections.append(.shareUs([
+          .init(titleText: localized("like_vinchy"))
+        ]))
+
+      case .infinity:
+        break
+
+      case .smartFilter:
+        break
+      }
     }
 
-    func update(suggestions: [Wine]) {
-        viewController?.updateSearchSuggestions(suggestions: suggestions)
-    }
+    sections.append(.title([
+      .init(titleText:
+              NSAttributedString(string: C.harmfulToYourHealthText,
+                                 font: Font.light(15),
+                                 textColor: .blueGray,
+                                 paragraphAlignment: .justified))
+    ]))
 
-    func update(didFindWines: [Wine]) {
-        viewController?.updateUI(didFindWines: didFindWines)
-    }
+    viewController?.updateUI(sections: sections)
+  }
 
-    func showAlertCantOpenEmail() {
-        viewController?.showAlert(title: localized("error"), message: localized("open_mail_error"))
-    }
+  func update(suggestions: [Wine]) {
+    viewController?.updateSearchSuggestions(suggestions: suggestions)
+  }
+
+  func update(didFindWines: [Wine]) {
+    viewController?.updateUI(didFindWines: didFindWines)
+  }
+
+  func showAlertCantOpenEmail() {
+    viewController?.showAlert(title: localized("error"), message: localized("open_mail_error"))
+  }
 }

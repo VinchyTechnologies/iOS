@@ -10,32 +10,33 @@ import Foundation
 
 public struct UserDefaultsConfig {
 
-    @UserDefault("isAdult", defaultValue: false)
-    static public var isAdult: Bool
+  @UserDefault("isAdult", defaultValue: false)
+  static public var isAdult: Bool
 
-    @UserDefault("agreeToTermsAndConditions", defaultValue: false)
-    static public var isAgreedToTermsAndConditions: Bool
+  @UserDefault("agreeToTermsAndConditions", defaultValue: false)
+  static public var isAgreedToTermsAndConditions: Bool
 
-    @UserDefault("lastSeenOnboardingVersion", defaultValue: 0)
-    static public var lastSeenOnboardingVersion: Int
+  @UserDefault("lastSeenOnboardingVersion", defaultValue: 0)
+  static public var lastSeenOnboardingVersion: Int
 }
 
 @propertyWrapper
 public struct UserDefault<T> {
-    public let key: String
-    public let defaultValue: T
 
-    public init(_ key: String, defaultValue: T) {
-        self.key = key
-        self.defaultValue = defaultValue
-    }
+  public let key: String
+  public let defaultValue: T
 
-    public var wrappedValue: T {
-        get {
-            return UserDefaults.standard.object(forKey: key) as? T ?? defaultValue
-        }
-        set {
-            UserDefaults.standard.set(newValue, forKey: key)
-        }
+  public init(_ key: String, defaultValue: T) {
+    self.key = key
+    self.defaultValue = defaultValue
+  }
+
+  public var wrappedValue: T {
+    get {
+      return UserDefaults.standard.object(forKey: key) as? T ?? defaultValue
     }
+    set {
+      UserDefaults.standard.set(newValue, forKey: key)
+    }
+  }
 }
