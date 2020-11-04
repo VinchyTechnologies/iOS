@@ -112,6 +112,8 @@ final class VinchyViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    definesPresentationContext = true
 
     view.addSubview(collectionView)
     collectionView.translatesAutoresizingMaskIntoConstraints = false
