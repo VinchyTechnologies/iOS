@@ -77,34 +77,4 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
   {
     UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
   }
-
-  func application(
-    _ application: UIApplication,
-    shouldSaveApplicationState coder: NSCoder)
-    -> Bool {
-    true
-  }
-
-  func application(
-    _ application: UIApplication,
-    shouldRestoreApplicationState coder: NSCoder)
-    -> Bool {
-    true
-  }
-
-  @available(iOS 13.2, *)
-  func application(
-    _ application: UIApplication,
-    shouldSaveSecureApplicationState coder: NSCoder)
-    -> Bool {
-    true
-  }
-
-  @available(iOS 13.2, *)
-  func application(
-    _ application: UIApplication,
-    shouldRestoreSecureApplicationState coder: NSCoder)
-    -> Bool {
-    true
-  }
 }

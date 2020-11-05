@@ -37,14 +37,9 @@ final class ResultsTableController: UIViewController {
     super.viewDidLoad()
 
     view.addSubview(tableView)
-    tableView.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      tableView.topAnchor.constraint(equalTo: view.topAnchor),
-      tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-      tableView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-      bottomConstraint,
-    ])
-    
+    tableView.frame = view.frame
+    tableView.keyboardDismissMode = .onDrag
+
     tableView.dataSource = self
     tableView.estimatedRowHeight = 65
 
