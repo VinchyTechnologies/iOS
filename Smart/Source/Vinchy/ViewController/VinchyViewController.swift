@@ -35,8 +35,6 @@ final class VinchyViewController: UIViewController {
 
   private(set) var loadingIndicator = ActivityIndicatorView()
 
-  private let keyboardHelper = KeyboardHelper()
-
   private lazy var collectionView: UICollectionView = {
 
     let layout = UICollectionViewFlowLayout()
@@ -59,6 +57,7 @@ final class VinchyViewController: UIViewController {
     collectionView.delegate = self
     collectionView.refreshControl = refreshControl
     collectionView.delaysContentTouches = false
+    collectionView.keyboardDismissMode = .onDrag
     return collectionView
   }()
 
@@ -86,33 +85,25 @@ final class VinchyViewController: UIViewController {
       if oldValue != isSearchingMode {
         collectionView.reloadData()
       }
+      if isSearchingMode {
+        refreshControl.removeFromSuperview()
+      } else {
+        collectionView.refreshControl = refreshControl
+      }
     }
   }
 
   private var suggestions: [Wine] = []
 
-  private lazy var bottomConstraint = NSLayoutConstraint(
-    item: collectionView,
-    attribute: .bottom,
-    relatedBy: .equal,
-    toItem: view,
-    attribute: .bottom,
-    multiplier: 1,
-    constant: 0)
-
   // MARK: - Lifecycle
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    
+    definesPresentationContext = true
 
     view.addSubview(collectionView)
-    collectionView.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-      collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-      collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-      bottomConstraint,
-    ])
+    collectionView.frame = view.frame
 
     let filterBarButtonItem = UIBarButtonItem(
       image: UIImage(named: "edit")?.withRenderingMode(.alwaysTemplate),
@@ -125,34 +116,7 @@ final class VinchyViewController: UIViewController {
     refreshControl.tintColor = .dark
     refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
 
-    configureKeyboardHelper()
-
     interactor?.viewDidLoad()
-
-  }
-
-  private func configureKeyboardHelper() {
-    keyboardHelper.bindBottomToKeyboardFrame(
-      animated: true,
-      animate: { [weak self] height in
-        self?.updateNextButtonBottomConstraint(with: height)
-      })
-  }
-
-  public func updateNextButtonBottomConstraint(with keyboardHeight: CGFloat) {
-
-    defer {
-      view.layoutSubviews()
-    }
-
-    if keyboardHeight == 0 {
-      (searchController.searchResultsController as? ResultsTableController)?.set(constant: .zero)
-      bottomConstraint.constant = .zero
-      return
-    }
-
-    (searchController.searchResultsController as? ResultsTableController)?.set(constant: -keyboardHeight)
-    bottomConstraint.constant = -keyboardHeight
 
   }
 
