@@ -15,7 +15,7 @@ import StringFormatting
 fileprivate let categoryHeaderID = "categoryHeaderID"
 fileprivate let categorySeparatorID = "categorySeparatorID"
 
-final class AdvancedSearchViewController: UIViewController, Alertable {
+final class AdvancedSearchController: UIViewController, Alertable {
   
   private enum C {
     static let maxNumberItems: Int = 9
@@ -179,7 +179,7 @@ final class AdvancedSearchViewController: UIViewController, Alertable {
   }
 }
 
-extension AdvancedSearchViewController: CountriesViewControllerDelegate {
+extension AdvancedSearchController: CountriesViewControllerDelegate {
   func didChoose(countryCodes: [String]) {
     
     let newFilterItems: [FilterItem] = countryCodes.compactMap { (code) -> FilterItem? in
@@ -204,7 +204,7 @@ extension AdvancedSearchViewController: CountriesViewControllerDelegate {
   }
 }
 
-extension AdvancedSearchViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+extension AdvancedSearchController: UICollectionViewDataSource, UICollectionViewDelegate {
   
   func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
     if let cell = cell as? AdvancedSearchCaruselCollectionCell {
@@ -301,7 +301,7 @@ extension AdvancedSearchViewController: UICollectionViewDataSource, UICollection
   }
 }
 
-extension AdvancedSearchViewController: AdvancedSearchCaruselCollectionCellDelegate {
+extension AdvancedSearchController: AdvancedSearchCaruselCollectionCellDelegate {
   
   func showMore(at section: Int) {
     showAll(at: section)
@@ -318,7 +318,7 @@ extension AdvancedSearchViewController: AdvancedSearchCaruselCollectionCellDeleg
   }
 }
 
-extension AdvancedSearchViewController: AdvancedHeaderDelegate {
+extension AdvancedSearchController: AdvancedHeaderDelegate {
   
   func didTapHeader(at section: Int) {
     showAll(at: section)
