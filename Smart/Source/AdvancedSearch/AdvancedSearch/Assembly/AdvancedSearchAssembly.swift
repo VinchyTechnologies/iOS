@@ -10,4 +10,16 @@ import Foundation
 
 final class AdvancedSearchAssembly {
 
+  static func assemblyModule() -> AdvancedSearchViewController {
+    let viewController = AdvancedSearchViewController()
+
+    let router = AdvancedSearchRouter(input: AdvancedSearchInput(), viewController: viewController)
+    let presenter = AdvancedSearchPresenter(viewController: viewController)
+    let interactor = AdvancedSearchInteractor(router: router, presenter: presenter)
+
+    router.interactor = interactor
+    viewController.interactor = interactor
+
+    return viewController
+  }
 }

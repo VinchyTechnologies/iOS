@@ -6,8 +6,14 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import CommonUI
 
 struct AdvancedSearchViewModel {
+
+  enum Section {
+    case carusel(title: String?, items: [AdvancedSearchCaruselCollectionCellViewModel])
+  }
+
+  let sections: [Section]
   
 }

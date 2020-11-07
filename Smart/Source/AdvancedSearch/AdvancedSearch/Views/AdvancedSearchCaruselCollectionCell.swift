@@ -12,21 +12,17 @@ import CommonUI
 
 public protocol AdvancedSearchCaruselCollectionCellDelegate: AnyObject {
   func didSelectItem(at indexPath: IndexPath)
-  func didDeselectItem(at indexPath: IndexPath)
-  func showMore(at section: Int)
+  func setContentOffset(_ offset: CGPoint, at section: Int)
+//  func showMore(at section: Int)
 }
 
 public struct AdvancedSearchCaruselCollectionCellViewModel: ViewModelProtocol {
 
   fileprivate let items: [ImageOptionCollectionCellViewModel]
-  fileprivate let selectedIndexs: [Int]
-  fileprivate let section: Int
   fileprivate let shouldLoadMore: Bool
 
-  public init(items: [ImageOptionCollectionCellViewModel], selectedIndexs: [Int], section: Int, shouldLoadMore: Bool) {
+  public init(items: [ImageOptionCollectionCellViewModel], shouldLoadMore: Bool) {
     self.items = items
-    self.selectedIndexs = selectedIndexs
-    self.section = section
     self.shouldLoadMore = shouldLoadMore
   }
 }
@@ -34,19 +30,13 @@ public struct AdvancedSearchCaruselCollectionCellViewModel: ViewModelProtocol {
 final class AdvancedSearchCaruselCollectionCell: UICollectionViewCell, Reusable {
 
   weak var delegate: AdvancedSearchCaruselCollectionCellDelegate?
+  var section: Int = 0
 
   private var items: [ImageOptionCollectionCellViewModel] = [] {
     didSet {
-      DispatchQueue.main.async {
-        self.collectionView.reloadData()
-        self.bounceDecorator.changeZoom(withPercent: 0)
-      }
+      collectionView.reloadData()
     }
   }
-
-  private var selectedIndexs: [Int] = []
-
-  private var section: Int = 0
 
   private lazy var bounceDecorationView: MoreBounceDecoratorView = {
     let view = MoreBounceDecoratorView()
@@ -68,11 +58,11 @@ final class AdvancedSearchCaruselCollectionCell: UICollectionViewCell, Reusable 
       delegate: self)
   }()
 
-  let collectionView: UICollectionView = {
+  let collectionView: MyCollectionView = {
     let layout = DecoratorFlowLayout()
     layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
     layout.scrollDirection = .horizontal
-    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    let collectionView = MyCollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.backgroundColor = .clear
     collectionView.register(ImageOptionCollectionCell.self)
     collectionView.delaysContentTouches = false
@@ -94,6 +84,10 @@ final class AdvancedSearchCaruselCollectionCell: UICollectionViewCell, Reusable 
   }
 
   required init?(coder: NSCoder) { fatalError() }
+
+  public func setContentOffset(_ contentOffset: CGPoint) {
+    collectionView.setContentOffset(contentOffset, animated: false)
+  }
 }
 
 extension AdvancedSearchCaruselCollectionCell: Decoratable {
@@ -101,9 +95,7 @@ extension AdvancedSearchCaruselCollectionCell: Decoratable {
   typealias ViewModel = AdvancedSearchCaruselCollectionCellViewModel
 
   func decorate(model: AdvancedSearchCaruselCollectionCellViewModel) {
-    self.selectedIndexs = model.selectedIndexs
-    self.items = model.items
-    self.section = model.section
+    items = model.items
     bounceDecorator.isEnabled = false
   }
 }
@@ -114,33 +106,29 @@ extension AdvancedSearchCaruselCollectionCell: UICollectionViewDataSource {
     items.count
   }
 
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+  func collectionView(
+    _ collectionView: UICollectionView,
+    cellForItemAt indexPath: IndexPath)
+    -> UICollectionViewCell
+  {
     // swiftlint:disable:next force_cast
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageOptionCollectionCell.reuseId, for: indexPath) as! ImageOptionCollectionCell
     cell.decorate(model: items[indexPath.row])
-    cell.setSelected(flag: selectedIndexs.contains(indexPath.row), animated: false)
     return cell
   }
-
 }
 
 extension AdvancedSearchCaruselCollectionCell: DecoratorFlowLayoutDelegate {
 
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    if let cell = collectionView.cellForItem(at: indexPath) as? ImageOptionCollectionCell {
-      let flag = !selectedIndexs.contains(indexPath.row)
-      cell.setSelected(flag: flag, animated: true)
-      if !selectedIndexs.contains(indexPath.row) {
-        selectedIndexs.append(indexPath.row)
-        delegate?.didSelectItem(at: IndexPath(row: indexPath.row, section: section))
-      } else {
-        selectedIndexs.removeAll(where: { $0 == indexPath.row })
-        delegate?.didDeselectItem(at: IndexPath(row: indexPath.row, section: section))
-      }
-    }
+  func collectionView(
+    _ collectionView: UICollectionView,
+    didSelectItemAt indexPath: IndexPath)
+  {
+    delegate?.didSelectItem(at: IndexPath(row: indexPath.row, section: section))
   }
 
   public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    delegate?.setContentOffset(scrollView.contentOffset, at: section)
     bounceDecorator.handleScrollViewDidScroll(scrollView)
   }
 
@@ -151,6 +139,49 @@ extension AdvancedSearchCaruselCollectionCell: DecoratorFlowLayoutDelegate {
 
 extension AdvancedSearchCaruselCollectionCell: ScrollViewBounceDecoratorDelegate {
   func scrollViewBounceDecoratorTriggered() {
-    delegate?.showMore(at: section)
+//    delegate?.showMore(at: section)
+  }
+}
+
+class MyCollectionView: UICollectionView {
+
+  private var temporaryOffsetOverride: CGPoint?
+
+  override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
+    super.init(frame: frame, collectionViewLayout: layout)
+    setup()
+  }
+
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    setup()
+  }
+
+  deinit {
+    removeObserver(self, forKeyPath: #keyPath(UIScrollView.contentOffset))
+  }
+
+  private func setup() {
+    self.addObserver(self, forKeyPath: #keyPath(UIScrollView.contentOffset), options: [.old, .new], context: nil)
+  }
+
+  override func reloadData() {
+    if let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout, flowLayout.estimatedItemSize == UICollectionViewFlowLayout.automaticSize {
+      temporaryOffsetOverride = contentOffset
+    }
+    super.reloadData()
+  }
+
+  override func observeValue(
+    forKeyPath keyPath: String?,
+    of object: Any?,
+    change: [NSKeyValueChangeKey: Any]?,
+    context: UnsafeMutableRawPointer?) {
+    if keyPath == #keyPath(UIScrollView.contentOffset) {
+      if let offset = temporaryOffsetOverride {
+        temporaryOffsetOverride = nil
+        self.setContentOffset(offset, animated: false)
+      }
+    }
   }
 }

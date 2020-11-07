@@ -6,7 +6,8 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import Core
+import CommonUI
 
 final class AdvancedSearchPresenter {
   
@@ -22,5 +23,42 @@ final class AdvancedSearchPresenter {
 // MARK: - AdvancedSearchPresenterProtocol
 
 extension AdvancedSearchPresenter: AdvancedSearchPresenterProtocol {
-  
+
+  func update(filters: [Filter], selectedFilters: [FilterItem], sec: Int?) {
+
+    var sections = [ViewModel.Section]()
+
+    filters.forEach { filter in
+      switch filter.category {
+      case .type:
+
+        var items = [AdvancedSearchCaruselCollectionCellViewModel]()
+
+        let cells = filter.items.map { filterItem -> ImageOptionCollectionCellViewModel in
+          .init(
+            imageName: filterItem.imageName,
+            titleText: filterItem.title,
+            isSelected: selectedFilters.contains(filterItem))
+        }
+
+        items.append(
+          AdvancedSearchCaruselCollectionCellViewModel(
+            items: cells,
+            shouldLoadMore: false))
+
+        sections.append(.carusel(title: "Type", items: items))
+
+      case .color:
+        break
+
+      case .country:
+        break
+
+      case .sugar:
+        break
+      }
+    }
+
+    viewController?.updateUI(viewModel: ViewModel(sections: sections), sec: sec)
+  }
 }

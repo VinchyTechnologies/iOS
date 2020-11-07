@@ -6,8 +6,8 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import Core
 
 protocol AdvancedSearchPresenterProtocol: AnyObject {
-  
+  func update(filters: [Filter], selectedFilters: [FilterItem], sec: Int?)
 }

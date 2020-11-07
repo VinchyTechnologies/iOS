@@ -229,7 +229,7 @@ extension WineDetailViewController: UICollectionViewDataSource {
       case .titleTextAndImage(let imageName, let titleText):
         // swiftlint:disable:next force_cast
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageOptionCollectionCell.reuseId, for: indexPath) as! ImageOptionCollectionCell
-        cell.decorate(model: .init(imageName: imageName, titleText: titleText))
+        cell.decorate(model: .init(imageName: imageName, titleText: titleText, isSelected: false))
         return cell
         
       case .titleTextAndSubtitleText(let titleText, let subtitleText):

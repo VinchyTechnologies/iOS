@@ -10,4 +10,5 @@ import Foundation
 
 protocol AdvancedSearchInteractorProtocol: AnyObject {
   func viewDidLoad()
+  func didSelectItem(at indexPath: IndexPath)
 }
