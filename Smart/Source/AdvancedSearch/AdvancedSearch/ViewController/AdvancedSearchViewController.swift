@@ -9,8 +9,10 @@
 import UIKit
 import CommonUI
 
-fileprivate let categoryHeaderID = "categoryHeaderID"
-fileprivate let categorySeparatorID = "categorySeparatorID"
+fileprivate enum C {
+  static let categoryHeaderID = "categoryHeaderID"
+  static let categorySeparatorID = "categorySeparatorID"
+}
 
 final class AdvancedSearchViewController: UIViewController {
 
@@ -41,14 +43,14 @@ final class AdvancedSearchViewController: UIViewController {
           layoutSize: .init(
             widthDimension: .fractionalWidth(1),
             heightDimension: .absolute(50)),
-          elementKind: categoryHeaderID,
+          elementKind: C.categoryHeaderID,
           alignment: .topLeading),
 
         .init(
           layoutSize: .init(
             widthDimension: .fractionalWidth(1),
             heightDimension: .absolute(20)),
-          elementKind: categorySeparatorID,
+          elementKind: C.categorySeparatorID,
           alignment: .bottom)
       ]
 
@@ -61,17 +63,27 @@ final class AdvancedSearchViewController: UIViewController {
   }
 
   private lazy var collectionView: UICollectionView = {
-
     let collectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)
     collectionView.delaysContentTouches = false
     collectionView.backgroundColor = .mainBackground
     collectionView.dataSource = self
-    collectionView.delegate = self
+
     collectionView.register(AdvancedSearchCaruselCollectionCell.self)
-    collectionView.register(AdvancedHeader.self, forSupplementaryViewOfKind: categoryHeaderID, withReuseIdentifier: AdvancedHeader.reuseId)
-    collectionView.register(SeparatorFooter.self, forSupplementaryViewOfKind: categorySeparatorID, withReuseIdentifier: SeparatorFooter.reuseId)
+
+    collectionView.register(
+      AdvancedHeader.self,
+      forSupplementaryViewOfKind: C.categoryHeaderID,
+      withReuseIdentifier: AdvancedHeader.reuseId)
+
+    collectionView.register(
+      SeparatorFooter.self,
+      forSupplementaryViewOfKind: C.categorySeparatorID,
+      withReuseIdentifier: SeparatorFooter.reuseId)
+
     return collectionView
   }()
+
+  // MARK: - Lifecycle
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -91,8 +103,7 @@ extension AdvancedSearchViewController: AdvancedSearchViewControllerProtocol {
       switch viewModel.sections[sec] {
       case .carusel(_, let items):
         let cell = collectionView.cellForItem(at: IndexPath(row: 0, section: sec)) as! AdvancedSearchCaruselCollectionCell // swiftlint:disable:this force_cast
-        let model = items[0]
-        cell.decorate(model: model)
+        cell.decorate(model: items[0])
       }
     } else {
       collectionView.reloadData()
@@ -100,7 +111,9 @@ extension AdvancedSearchViewController: AdvancedSearchViewControllerProtocol {
   }
 }
 
-extension AdvancedSearchViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+// MARK: - UICollectionViewDataSource
+
+extension AdvancedSearchViewController: UICollectionViewDataSource {
 
   func numberOfSections(in collectionView: UICollectionView) -> Int {
     guard let viewModel = viewModel else { return 0 }
@@ -110,10 +123,9 @@ extension AdvancedSearchViewController: UICollectionViewDataSource, UICollection
   func collectionView(
     _ collectionView: UICollectionView,
     numberOfItemsInSection section: Int)
-    -> Int {
-
+    -> Int
+  {
     guard let viewModel = viewModel else { return 0 }
-
     switch viewModel.sections[section] {
     case .carusel(_, let items):
       return items.count
@@ -151,7 +163,7 @@ extension AdvancedSearchViewController: UICollectionViewDataSource, UICollection
 
     switch viewModel.sections[indexPath.section] {
     case .carusel(let viewModel, _):
-      if kind == categoryHeaderID {
+      if kind == C.categoryHeaderID {
         // swiftlint:disable:next force_cast
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AdvancedHeader.reuseId, for: indexPath) as! AdvancedHeader
         header.decorate(model: viewModel)
@@ -167,12 +179,15 @@ extension AdvancedSearchViewController: UICollectionViewDataSource, UICollection
   }
 }
 
-extension AdvancedSearchViewController: AdvancedSearchCaruselCollectionCellDelegate {
+// MARK: - AdvancedSearchCaruselCollectionCellDelegate
 
+extension AdvancedSearchViewController: AdvancedSearchCaruselCollectionCellDelegate {
   func didSelectItem(at indexPath: IndexPath) {
     interactor?.didSelectItem(at: indexPath)
   }
 }
+
+// MARK: - AdvancedHeaderDelegate
 
 extension AdvancedSearchViewController: AdvancedHeaderDelegate {
   func didTapHeader(at section: Int) {
