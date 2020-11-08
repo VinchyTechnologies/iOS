@@ -30,9 +30,6 @@ public final class ImageOptionCollectionCell: HighlightCollectionCell, Reusable 
   public override init(frame: CGRect) {
     super.init(frame: frame)
 
-    translatesAutoresizingMaskIntoConstraints = false
-    heightAnchor.constraint(greaterThanOrEqualToConstant: 100).isActive = true
-
     highlightStyle = .scale
 
     backgroundColor = .option
@@ -55,9 +52,7 @@ public final class ImageOptionCollectionCell: HighlightCollectionCell, Reusable 
       imageView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
       imageView.topAnchor.constraint(equalTo: topAnchor, constant: 10),
       titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
-      titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
       titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
-      titleLabel.widthAnchor.constraint(greaterThanOrEqualToConstant: 130),
     ])
   }
 
@@ -76,6 +71,15 @@ public final class ImageOptionCollectionCell: HighlightCollectionCell, Reusable 
       self.imageView.alpha = flag ? 0 : 1
     }
   }
+
+  public static func size(for viewModel: ViewModel) -> CGSize {
+    let height: CGFloat = 100
+    let width = (viewModel.titleText?.width(usingFont: Font.with(size: 20, design: .round, traits: .bold)) ?? 0) + 30
+
+//    let tempWidth: Bool = width >= 100 && width < 130
+
+    return CGSize(width: max(width, 130), height: height)
+  }
 }
 
 extension ImageOptionCollectionCell: Decoratable {
@@ -90,6 +94,6 @@ extension ImageOptionCollectionCell: Decoratable {
     }
     titleLabel.text = model.titleText
 
-    setSelected(flag: model.isSelected, animated: true)
+    setSelected(flag: model.isSelected, animated: false)
   }
 }

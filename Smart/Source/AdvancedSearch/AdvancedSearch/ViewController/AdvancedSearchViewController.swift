@@ -87,7 +87,16 @@ extension AdvancedSearchViewController: AdvancedSearchViewControllerProtocol {
   func updateUI(viewModel: AdvancedSearchViewModel, sec: Int?) {
     self.viewModel = viewModel
     navigationItem.title = viewModel.navigationTitle
-    collectionView.reloadData()
+    if let sec = sec {
+      switch viewModel.sections[sec] {
+      case .carusel(_, let items):
+        let cell = collectionView.cellForItem(at: IndexPath(row: 0, section: sec)) as! AdvancedSearchCaruselCollectionCell // swiftlint:disable:this force_cast
+        let model = items[0]
+        cell.decorate(model: model)
+      }
+    } else {
+      collectionView.reloadData()
+    }
   }
 }
 

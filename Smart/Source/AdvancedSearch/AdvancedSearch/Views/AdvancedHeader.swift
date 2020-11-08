@@ -28,12 +28,17 @@ struct AdvancedHeaderViewModel: ViewModelProtocol {
 
 final class AdvancedHeader: UICollectionReusableView, Reusable {
 
+  // MARK: - Internal Properties
+
+  weak var delegate: AdvancedHeaderDelegate?
+  var section: Int = 0
+
+  // MARK: - Private Properties
+
   private let titleLabel = UILabel()
   private let moreLabel = UILabel()
 
-  var section: Int = 0
-
-  weak var delegate: AdvancedHeaderDelegate?
+  // MARK: - Initializers
 
   override init(frame: CGRect) {
     super.init(frame: frame)

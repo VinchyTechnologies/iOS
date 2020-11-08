@@ -49,7 +49,8 @@ final class AdvancedSearchCaruselCollectionCell: UICollectionViewCell, Reusable 
   private lazy var bounceDecorator: ScrollViewBounceDecorator = {
     let left = decorationBounceViewInsets.left - collectionView.contentInset.left
     let right = decorationBounceViewInsets.right
-    let direction: ScrollViewBounceDecorator.ScrollDirection = .horizontal(.right(.init(top: 0, left: left, bottom: 0, right: left))) // TODO: - fix Arabic
+    let direction: ScrollViewBounceDecorator.ScrollDirection =
+      .horizontal(.right(.init(top: 0, left: left, bottom: 0, right: left))) // TODO: - fix Arabic
 
     return ScrollViewBounceDecorator(
       decorationView: bounceDecorationView,
@@ -58,17 +59,15 @@ final class AdvancedSearchCaruselCollectionCell: UICollectionViewCell, Reusable 
       delegate: self)
   }()
 
-  let collectionView: MyCollectionView = {
+  let collectionView: UICollectionView = {
     let layout = DecoratorFlowLayout()
-    layout.estimatedItemSize = UICollectionViewFlowLayout.automaticSize
     layout.scrollDirection = .horizontal
-    let collectionView = MyCollectionView(frame: .zero, collectionViewLayout: layout)
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.backgroundColor = .clear
     collectionView.register(ImageOptionCollectionCell.self)
     collectionView.delaysContentTouches = false
     collectionView.contentInset = .init(top: 0, left: 15, bottom: 0, right: 15)
     collectionView.showsHorizontalScrollIndicator = false
-
     return collectionView
   }()
 
@@ -85,9 +84,6 @@ final class AdvancedSearchCaruselCollectionCell: UICollectionViewCell, Reusable 
 
   required init?(coder: NSCoder) { fatalError() }
 
-  public func setContentOffset(_ contentOffset: CGPoint) {
-    collectionView.setContentOffset(contentOffset, animated: false)
-  }
 }
 
 extension AdvancedSearchCaruselCollectionCell: Decoratable {
@@ -135,6 +131,15 @@ extension AdvancedSearchCaruselCollectionCell: DecoratorFlowLayoutDelegate {
   public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
     bounceDecorator.handleScrollViewDidEndDragging(scrollView)
   }
+
+  func collectionView(
+    _ collectionView: UICollectionView,
+    layout collectionViewLayout: UICollectionViewLayout,
+    sizeForItemAt indexPath: IndexPath)
+    -> CGSize
+  {
+    ImageOptionCollectionCell.size(for: items[indexPath.row])
+  }
 }
 
 extension AdvancedSearchCaruselCollectionCell: ScrollViewBounceDecoratorDelegate {
@@ -143,47 +148,47 @@ extension AdvancedSearchCaruselCollectionCell: ScrollViewBounceDecoratorDelegate
   }
 }
 
-class MyCollectionView: UICollectionView {
-
-  private var temporaryOffsetOverride: CGPoint?
-
-  override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
-    super.init(frame: frame, collectionViewLayout: layout)
-    setup()
-  }
-
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-    setup()
-  }
-
-  deinit {
-    removeObserver(self, forKeyPath: #keyPath(UIScrollView.contentOffset))
-  }
-
-  private func setup() {
-    self.addObserver(self, forKeyPath: #keyPath(UIScrollView.contentOffset), options: [.old, .new], context: nil)
-  }
-
-  override func reloadData() {
-    if
-      let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout,
-      flowLayout.estimatedItemSize == UICollectionViewFlowLayout.automaticSize {
-      temporaryOffsetOverride = contentOffset
-    }
-    super.reloadData()
-  }
-
-  override func observeValue(
-    forKeyPath keyPath: String?,
-    of object: Any?,
-    change: [NSKeyValueChangeKey: Any]?,
-    context: UnsafeMutableRawPointer?) {
-    if keyPath == #keyPath(UIScrollView.contentOffset) {
-      if let offset = temporaryOffsetOverride {
-        temporaryOffsetOverride = nil
-        self.setContentOffset(offset, animated: false)
-      }
-    }
-  }
-}
+//class MyCollectionView: UICollectionView {
+//
+//  private var temporaryOffsetOverride: CGPoint?
+//
+//  override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
+//    super.init(frame: frame, collectionViewLayout: layout)
+//    setup()
+//  }
+//
+//  required init?(coder aDecoder: NSCoder) {
+//    super.init(coder: aDecoder)
+//    setup()
+//  }
+//
+//  deinit {
+//    removeObserver(self, forKeyPath: #keyPath(UIScrollView.contentOffset))
+//  }
+//
+//  private func setup() {
+//    self.addObserver(self, forKeyPath: #keyPath(UIScrollView.contentOffset), options: [.old, .new], context: nil)
+//  }
+//
+//  override func reloadData() {
+//    if
+//      let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout,
+//      flowLayout.estimatedItemSize == UICollectionViewFlowLayout.automaticSize {
+//      temporaryOffsetOverride = contentOffset
+//    }
+//    super.reloadData()
+//  }
+//
+//  override func observeValue(
+//    forKeyPath keyPath: String?,
+//    of object: Any?,
+//    change: [NSKeyValueChangeKey: Any]?,
+//    context: UnsafeMutableRawPointer?) {
+//    if keyPath == #keyPath(UIScrollView.contentOffset) {
+//      if let offset = temporaryOffsetOverride {
+//        temporaryOffsetOverride = nil
+//        self.setContentOffset(offset, animated: false)
+//      }
+//    }
+//  }
+//}
