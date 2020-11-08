@@ -13,5 +13,50 @@
         "imageName": null
       }
     ]
+  },
+  {
+    "category": "color",
+    "items": [
+      {
+        "category": "color",
+        "title": "red",
+        "imageName": null
+      },
+      {
+        "category": "color",
+        "title": "white",
+        "imageName": null
+      },
+      {
+        "category": "color",
+        "title": "pink",
+        "imageName": null
+      }
+    ]
+  },
+  {
+    "category": "sugar",
+    "items": [
+      {
+        "category": "sugar",
+        "title": "dry",
+        "imageName": null
+      },
+      {
+        "category": "sugar",
+        "title": "semi-dry",
+        "imageName": null
+      },
+      {
+        "category": "sugar",
+        "title": "semi-sweet",
+        "imageName": null
+      },
+      {
+        "category": "sugar",
+        "title": "sweet",
+        "imageName": null
+      }
+    ]
   }
 ]

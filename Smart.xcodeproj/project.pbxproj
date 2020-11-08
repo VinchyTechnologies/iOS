@@ -692,16 +692,16 @@
 		CA472B3F245EDEDB009149FF /* Supported Files */ = {
 			isa = PBXGroup;
 			children = (
-				CA070977252313ED00C3D9EC /* Coordinators */,
-				CA3837CB246FCF3C00AD5FCC /* TabBarController.swift */,
-				CA472AC1245EDE2F009149FF /* SceneDelegate.swift */,
 				CA472ABF245EDE2F009149FF /* AppDelegate.swift */,
-				CA472B40245EDEDB009149FF /* Assembly.swift */,
 				CA070973252259D300C3D9EC /* ApplicationCoordinator.swift */,
 				CA070980252314B900C3D9EC /* ApplicationCoordinatorBuilder.swift */,
 				CA0709862523151500C3D9EC /* ApplicationModulesFactory.swift */,
+				CA472B40245EDEDB009149FF /* Assembly.swift */,
+				CA070977252313ED00C3D9EC /* Coordinators */,
 				CAA060D1252BC05C002C15B5 /* DeveloperFeatureToggles.swift */,
 				CA8198BF253CB0490056A1C6 /* ErrorDescription.swift */,
+				CA472AC1245EDE2F009149FF /* SceneDelegate.swift */,
+				CA3837CB246FCF3C00AD5FCC /* TabBarController.swift */,
 			);
 			path = "Supported Files";
 			sourceTree = "<group>";

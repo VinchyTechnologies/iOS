@@ -6,8 +6,8 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
 import Display
+import UIKit
 
 final class SeparatorFooter: UICollectionReusableView, Reusable {
   
@@ -28,4 +28,5 @@ final class SeparatorFooter: UICollectionReusableView, Reusable {
   }
   
   required init?(coder: NSCoder) { fatalError() }
+  
 }

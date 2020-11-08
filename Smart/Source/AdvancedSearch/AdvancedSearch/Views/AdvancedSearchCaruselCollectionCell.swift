@@ -12,7 +12,7 @@ import CommonUI
 
 public protocol AdvancedSearchCaruselCollectionCellDelegate: AnyObject {
   func didSelectItem(at indexPath: IndexPath)
-  func setContentOffset(_ offset: CGPoint, at section: Int)
+//  func setContentOffset(_ offset: CGPoint, at section: Int)
 //  func showMore(at section: Int)
 }
 
@@ -128,7 +128,7 @@ extension AdvancedSearchCaruselCollectionCell: DecoratorFlowLayoutDelegate {
   }
 
   public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    delegate?.setContentOffset(scrollView.contentOffset, at: section)
+//    delegate?.setContentOffset(scrollView.contentOffset, at: section)
     bounceDecorator.handleScrollViewDidScroll(scrollView)
   }
 
@@ -166,7 +166,9 @@ class MyCollectionView: UICollectionView {
   }
 
   override func reloadData() {
-    if let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout, flowLayout.estimatedItemSize == UICollectionViewFlowLayout.automaticSize {
+    if
+      let flowLayout = collectionViewLayout as? UICollectionViewFlowLayout,
+      flowLayout.estimatedItemSize == UICollectionViewFlowLayout.automaticSize {
       temporaryOffsetOverride = contentOffset
     }
     super.reloadData()

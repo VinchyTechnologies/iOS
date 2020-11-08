@@ -46,4 +46,14 @@ extension AdvancedSearchInteractor: AdvancedSearchInteractorProtocol {
       selectedFilters: selectedFilters,
       sec: indexPath.section)
   }
+
+  func didTapShowAll(at section: Int) {
+    switch filters[section].category {
+    case .country:
+      break // TODO: - not break
+
+    case .type, .color, .sugar:
+      break
+    }
+  }
 }

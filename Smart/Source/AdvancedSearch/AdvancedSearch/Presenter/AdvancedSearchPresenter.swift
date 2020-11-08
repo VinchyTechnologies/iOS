@@ -8,6 +8,30 @@
 
 import Core
 import CommonUI
+import StringFormatting
+
+fileprivate extension FilterCategory {
+  var title: String {
+    switch self {
+    case .type:
+      return localized("type").firstLetterUppercased()
+
+    case .color:
+      return localized("color").firstLetterUppercased()
+
+    case .country:
+      return localized("country").firstLetterUppercased()
+
+    case .sugar:
+      return localized("sugar").firstLetterUppercased()
+    }
+  }
+}
+
+fileprivate enum C {
+  static let navigationTitle = localized("advanced_search")
+  static let moreText = "More"
+}
 
 final class AdvancedSearchPresenter {
   
@@ -30,7 +54,7 @@ extension AdvancedSearchPresenter: AdvancedSearchPresenterProtocol {
 
     filters.forEach { filter in
       switch filter.category {
-      case .type:
+      case .type, .color, .sugar:
 
         var items = [AdvancedSearchCaruselCollectionCellViewModel]()
 
@@ -46,19 +70,19 @@ extension AdvancedSearchPresenter: AdvancedSearchPresenterProtocol {
             items: cells,
             shouldLoadMore: false))
 
-        sections.append(.carusel(title: "Type", items: items))
-
-      case .color:
-        break
+        sections.append(.carusel(
+                          headerViewModel: .init(
+                            titleText: filter.category.title,
+                            moreText: C.moreText,
+                            shouldShowMore: false),
+                          items: items))
 
       case .country:
-        break
-
-      case .sugar:
         break
       }
     }
 
-    viewController?.updateUI(viewModel: ViewModel(sections: sections), sec: sec)
+    let viewModel = ViewModel(sections: sections, navigationTitle: C.navigationTitle)
+    viewController?.updateUI(viewModel: viewModel, sec: sec)
   }
 }

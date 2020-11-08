@@ -9,6 +9,9 @@
 import UIKit
 import CommonUI
 
+fileprivate let categoryHeaderID = "categoryHeaderID"
+fileprivate let categorySeparatorID = "categorySeparatorID"
+
 final class AdvancedSearchViewController: UIViewController {
 
   // MARK: - Internal Properties
@@ -17,28 +20,43 @@ final class AdvancedSearchViewController: UIViewController {
 
   // MARK: - Private Properties
 
-  private var contentOffsets: [CGPoint] = []
   private var viewModel: AdvancedSearchViewModel?
 
   private lazy var layout = UICollectionViewCompositionalLayout { [weak self] (sectionNumber, _) -> NSCollectionLayoutSection? in
-    guard let self = self else { return nil }
-    switch self.viewModel?.sections[sectionNumber] {
+
+    guard
+      let self = self,
+      let viewModel = self.viewModel
+    else { return nil }
+
+    switch viewModel.sections[sectionNumber] {
     case .carusel:
       let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
       let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1),
                                                                        heightDimension: .absolute(100)),
                                                      subitems: [item])
       let section = NSCollectionLayoutSection(group: group)
-      //        section.boundarySupplementaryItems = [.init(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50)), elementKind: categoryHeaderID, alignment: .topLeading),
-      //                                              .init(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(20)), elementKind: categorySeparatorID, alignment: .bottom)]
-      //        if self.filters.count - 1 == sectionNumber {
-      //          section.boundarySupplementaryItems.removeLast()
-      //        }
+      section.boundarySupplementaryItems = [
+        .init(
+          layoutSize: .init(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .absolute(50)),
+          elementKind: categoryHeaderID,
+          alignment: .topLeading),
+
+        .init(
+          layoutSize: .init(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .absolute(20)),
+          elementKind: categorySeparatorID,
+          alignment: .bottom)
+      ]
+
+      if viewModel.sections.count - 1 == sectionNumber {
+        section.boundarySupplementaryItems.removeLast()
+      }
 
       return section
-
-    case .none:
-      return nil
     }
   }
 
@@ -50,8 +68,8 @@ final class AdvancedSearchViewController: UIViewController {
     collectionView.dataSource = self
     collectionView.delegate = self
     collectionView.register(AdvancedSearchCaruselCollectionCell.self)
-    //    collectionView.register(AdvancedHeader.self, forSupplementaryViewOfKind: categoryHeaderID, withReuseIdentifier: AdvancedHeader.reuseId)
-    //    collectionView.register(SeparatorFooter.self, forSupplementaryViewOfKind: categorySeparatorID, withReuseIdentifier: SeparatorFooter.reuseId)
+    collectionView.register(AdvancedHeader.self, forSupplementaryViewOfKind: categoryHeaderID, withReuseIdentifier: AdvancedHeader.reuseId)
+    collectionView.register(SeparatorFooter.self, forSupplementaryViewOfKind: categorySeparatorID, withReuseIdentifier: SeparatorFooter.reuseId)
     return collectionView
   }()
 
@@ -68,21 +86,17 @@ final class AdvancedSearchViewController: UIViewController {
 extension AdvancedSearchViewController: AdvancedSearchViewControllerProtocol {
   func updateUI(viewModel: AdvancedSearchViewModel, sec: Int?) {
     self.viewModel = viewModel
-    if let sec = sec {
-      switch viewModel.sections[sec] {
-      case .carusel(_, let items):
-        let cell = collectionView.cellForItem(at: IndexPath(row: 0, section: sec)) as! AdvancedSearchCaruselCollectionCell // swiftlint:disable:this force_cast
-        let model = items[0]
-        cell.decorate(model: model)
-        cell.setContentOffset(contentOffsets[sec])
-      }
-    } else {
-      collectionView.reloadData()
-    }
+    navigationItem.title = viewModel.navigationTitle
+    collectionView.reloadData()
   }
 }
 
 extension AdvancedSearchViewController: UICollectionViewDataSource, UICollectionViewDelegate {
+
+  func numberOfSections(in collectionView: UICollectionView) -> Int {
+    guard let viewModel = viewModel else { return 0 }
+    return viewModel.sections.count
+  }
 
   func collectionView(
     _ collectionView: UICollectionView,
@@ -104,34 +118,55 @@ extension AdvancedSearchViewController: UICollectionViewDataSource, UICollection
   {
     guard let viewModel = viewModel else { return .init() }
 
-    if viewModel.sections.count != contentOffsets.count {
-      contentOffsets.append(.zero)
-    }
-
     switch viewModel.sections[indexPath.section] {
-
     case .carusel(_, let items):
       let cell = collectionView.dequeueReusableCell(
         withReuseIdentifier: AdvancedSearchCaruselCollectionCell.reuseId,
         for: indexPath) as! AdvancedSearchCaruselCollectionCell // swiftlint:disable:this force_cast
 
       let model = items[indexPath.row]
-      cell.setContentOffset(contentOffsets[safe: indexPath.section] ?? .zero)
       cell.decorate(model: model)
       cell.delegate = self
       cell.section = indexPath.section
       return cell
     }
   }
+
+  func collectionView(
+    _ collectionView: UICollectionView,
+    viewForSupplementaryElementOfKind kind: String,
+    at indexPath: IndexPath)
+    -> UICollectionReusableView
+  {
+    guard let viewModel = viewModel else { return .init() }
+
+    switch viewModel.sections[indexPath.section] {
+    case .carusel(let viewModel, _):
+      if kind == categoryHeaderID {
+        // swiftlint:disable:next force_cast
+        let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AdvancedHeader.reuseId, for: indexPath) as! AdvancedHeader
+        header.decorate(model: viewModel)
+        header.section = indexPath.section
+        header.delegate = self
+        return header
+      } else {
+        // swiftlint:disable:next force_cast
+        let separator = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: SeparatorFooter.reuseId, for: indexPath) as! SeparatorFooter
+        return separator
+      }
+    }
+  }
 }
 
 extension AdvancedSearchViewController: AdvancedSearchCaruselCollectionCellDelegate {
 
-  func setContentOffset(_ offset: CGPoint, at section: Int) {
-    contentOffsets[section] = offset
-  }
-
   func didSelectItem(at indexPath: IndexPath) {
     interactor?.didSelectItem(at: indexPath)
+  }
+}
+
+extension AdvancedSearchViewController: AdvancedHeaderDelegate {
+  func didTapHeader(at section: Int) {
+    interactor?.didTapShowAll(at: section)
   }
 }
