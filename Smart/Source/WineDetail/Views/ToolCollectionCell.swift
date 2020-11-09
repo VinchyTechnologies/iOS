@@ -109,7 +109,13 @@ extension ToolCollectionCell: Decoratable {
   typealias ViewModel = ToolCollectionCellViewModel
   
   func decorate(model: ViewModel) {
-    let title = NSAttributedString(string: model.price ?? "", font: Font.with(size: 20, design: .round, traits: .bold), textColor: .white, paragraphAlignment: .center)
+
+    let title = NSAttributedString(
+      string: "~" + (model.price ?? "0.00"),
+      font: Font.with(size: 20, design: .round, traits: .bold),
+      textColor: .white,
+      paragraphAlignment: .center)
+
     priceButton.setAttributedTitle(title, for: .normal)
     likeButton.isSelected = model.isLiked
   }
