@@ -12,6 +12,7 @@ final class AdvancedSearchInteractor {
 
   private let router: AdvancedSearchRouterProtocol
   private let presenter: AdvancedSearchPresenterProtocol
+  private let initialFilters: [Filter]
   private var filters: [Filter]
   private var selectedFilters: [FilterItem] = []
 
@@ -21,6 +22,7 @@ final class AdvancedSearchInteractor {
   {
     self.router = router
     self.presenter = presenter
+    self.initialFilters = loadFilters()
     self.filters = loadFilters() // TODO: - may be via input
   }
 }
@@ -78,6 +80,30 @@ extension AdvancedSearchInteractor: AdvancedSearchInteractorProtocol {
 
     presenter.update(
       filters: filters,
+      selectedFilters: selectedFilters,
+      sec: nil)
+  }
+
+  func didTapConfirmSearchButton() {
+
+    guard !selectedFilters.isEmpty else {
+      return // TODO: - alert no one filter selected
+    }
+
+    let params: [(String, String)] = selectedFilters.compactMap ({ ($0.category.serverName, $0.title) })
+    router.pushToSearchResultsController(navigationTitle: nil, params: params)
+  }
+
+  func didTapResetAllFiltersButton() {
+
+    guard !selectedFilters.isEmpty else {
+      return
+    }
+
+    filters = loadFilters()
+    selectedFilters = []
+    presenter.update(
+      filters: initialFilters,
       selectedFilters: selectedFilters,
       sec: nil)
   }

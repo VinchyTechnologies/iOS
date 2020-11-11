@@ -101,7 +101,14 @@ extension AdvancedSearchPresenter: AdvancedSearchPresenterProtocol {
       }
     }
 
-    let viewModel = ViewModel(sections: sections, navigationTitle: C.navigationTitle)
+    let bottomButtonsViewModel = BottomButtonsViewModel(
+      leadingButtonText: "Reset", // TODO: - translate
+      trailingButtonText: localized("search").firstLetterUppercased())
+
+    let viewModel = ViewModel(
+      sections: sections,
+      navigationTitle: C.navigationTitle,
+      bottomButtonsViewModel: bottomButtonsViewModel)
     viewController?.updateUI(viewModel: viewModel, sec: sec)
   }
 }

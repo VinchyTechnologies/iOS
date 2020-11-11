@@ -67,6 +67,7 @@ final class AdvancedSearchViewController: UIViewController {
     collectionView.delaysContentTouches = false
     collectionView.backgroundColor = .mainBackground
     collectionView.dataSource = self
+    collectionView.showsVerticalScrollIndicator = false // TODO - ???
 
     collectionView.register(AdvancedSearchCaruselCollectionCell.self)
 
@@ -83,13 +84,44 @@ final class AdvancedSearchViewController: UIViewController {
     return collectionView
   }()
 
+  private lazy var bottomButtonsView: BottomButtonsView = {
+    let view = BottomButtonsView()
+    view.delegate = self
+    return view
+  }()
+
   // MARK: - Lifecycle
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
     view.addSubview(collectionView)
+
+    view.addSubview(bottomButtonsView)
+    bottomButtonsView.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      bottomButtonsView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+      bottomButtonsView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+      bottomButtonsView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+    ])
+
     interactor?.viewDidLoad()
+  }
+
+  override func viewSafeAreaInsetsDidChange() {
+    super.viewSafeAreaInsetsDidChange()
+
+    let bottomButtonsViewHeight: CGFloat = 10 + 48 + view.safeAreaInsets.bottom
+    bottomButtonsView.heightAnchor.constraint(equalToConstant: bottomButtonsViewHeight).isActive = true
+
+    // TODO: - make better
+
+  }
+
+  override func viewDidLayoutSubviews() {
+    super.viewDidLayoutSubviews()
+    let bottomButtonsViewHeight: CGFloat = 10 + 48 + view.safeAreaInsets.bottom
+    collectionView.contentInset.bottom = bottomButtonsViewHeight + 10
   }
 }
 
@@ -99,6 +131,7 @@ extension AdvancedSearchViewController: AdvancedSearchViewControllerProtocol {
   func updateUI(viewModel: AdvancedSearchViewModel, sec: Int?) {
     self.viewModel = viewModel
     navigationItem.title = viewModel.navigationTitle
+    bottomButtonsView.decorate(model: viewModel.bottomButtonsViewModel)
     if let sec = sec {
       switch viewModel.sections[sec] {
       case .carusel(_, let items):
@@ -192,5 +225,18 @@ extension AdvancedSearchViewController: AdvancedSearchCaruselCollectionCellDeleg
 extension AdvancedSearchViewController: AdvancedHeaderDelegate {
   func didTapHeader(at section: Int) {
     interactor?.didTapShowAll(at: section)
+  }
+}
+
+// MARK: - BottomButtonsViewDelegate
+
+extension AdvancedSearchViewController: BottomButtonsViewDelegate {
+
+  func didTapLeadingButton(_ button: UIButton) {
+    interactor?.didTapResetAllFiltersButton()
+  }
+
+  func didTapTrailingButton(_ button: UIButton) {
+    interactor?.didTapConfirmSearchButton()
   }
 }

@@ -13,4 +13,6 @@ protocol AdvancedSearchInteractorProtocol: AnyObject {
   func didSelectItem(at indexPath: IndexPath)
   func didTapShowAll(at section: Int)
   func didChooseCountryCodes(_ countryCodes: [String])
+  func didTapConfirmSearchButton()
+  func didTapResetAllFiltersButton()
 }

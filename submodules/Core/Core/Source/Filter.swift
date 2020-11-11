@@ -19,7 +19,24 @@ public final class Filter: Decodable {
 }
 
 public enum FilterCategory: String, Decodable {
+
   case type, color, country, sugar
+
+  public var serverName: String {
+    switch self {
+    case .type:
+      return "carbon_dioxide"
+
+    case .color:
+      return "color"
+
+    case .country:
+      return "country"
+
+    case .sugar:
+      return "sugar"
+    }
+  }
 }
 
 public struct FilterItem: Decodable, Equatable {
