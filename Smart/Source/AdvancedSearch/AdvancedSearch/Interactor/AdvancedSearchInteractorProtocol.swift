@@ -12,4 +12,5 @@ protocol AdvancedSearchInteractorProtocol: AnyObject {
   func viewDidLoad()
   func didSelectItem(at indexPath: IndexPath)
   func didTapShowAll(at section: Int)
+  func didChooseCountryCodes(_ countryCodes: [String])
 }

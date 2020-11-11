@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CommonUI
 
 final class AdvancedSearchRouter {
   
@@ -26,5 +27,17 @@ final class AdvancedSearchRouter {
 // MARK: - AdvancedSearchRouterProtocol
 
 extension AdvancedSearchRouter: AdvancedSearchRouterProtocol {
-  
+  func presentAllCountries(preSelectedCountryCodes: [String]) {
+    viewController?.present(Assembly.buildChooseCountiesModule(
+                              preSelectedCountryCodes: preSelectedCountryCodes,
+                              delegate: self),
+                            animated: true,
+                            completion: nil)
+  }
+}
+
+extension AdvancedSearchRouter: CountriesViewControllerDelegate {
+  func didChoose(countryCodes: [String]) {
+    interactor?.didChooseCountryCodes(countryCodes)
+  }
 }

@@ -78,7 +78,26 @@ extension AdvancedSearchPresenter: AdvancedSearchPresenterProtocol {
                           items: items))
 
       case .country:
-        break
+        var items = [AdvancedSearchCaruselCollectionCellViewModel]()
+
+        let cells = filter.items.map { filterItem -> ImageOptionCollectionCellViewModel in
+          .init(
+            imageName: filterItem.imageName,
+            titleText: countryNameFromLocaleCode(countryCode: filterItem.title),
+            isSelected: selectedFilters.contains(filterItem))
+        }
+
+        items.append(
+          AdvancedSearchCaruselCollectionCellViewModel(
+            items: cells,
+            shouldLoadMore: false))
+
+        sections.append(.carusel(
+                          headerViewModel: .init(
+                            titleText: localized(filter.category.title),
+                            moreText: C.moreText,
+                            shouldShowMore: true),
+                          items: items))
       }
     }
 

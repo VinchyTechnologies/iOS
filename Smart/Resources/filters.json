@@ -58,5 +58,15 @@
         "imageName": null
       }
     ]
+  },
+  {
+    "category": "country",
+    "items": [
+      {
+        "category": "country",
+        "title": "FR",
+        "imageName": "FR"
+      }
+    ]
   }
 ]

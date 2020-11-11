@@ -9,5 +9,5 @@
 import Foundation
 
 protocol AdvancedSearchRouterProtocol: AnyObject {
-  
+  func presentAllCountries(preSelectedCountryCodes: [String])
 }

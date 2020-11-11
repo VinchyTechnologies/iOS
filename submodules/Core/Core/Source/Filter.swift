@@ -8,9 +8,14 @@
 
 import Foundation
 
-public struct Filter: Decodable {
+public final class Filter: Decodable {
   public let category: FilterCategory
   public var items: [FilterItem]
+
+  public init(category: FilterCategory, items: [FilterItem]) {
+    self.category = category
+    self.items = items
+  }
 }
 
 public enum FilterCategory: String, Decodable {
