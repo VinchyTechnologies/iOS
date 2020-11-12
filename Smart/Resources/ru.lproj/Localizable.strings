@@ -6,6 +6,8 @@
   Copyright © 2020 Aleksei Smirnov. All rights reserved.
 */
 // MARK: - Common
+"unavailable_version" = "Данная версия приложения больше не поддерживается. Пожалуйста, обновите приложение.";
+"open_appstore" = "Открыть AppStore";
 "appstore_link" = "itms-apps://itunes.apple.com/app/id1536720416";
 "add" = "добавить";
 "rate_our_app" = "Оцените наше приложение";
