@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol OpenURLProtocol: AnyObject {
+public protocol OpenURLProtocol {
   func open(urlString: String, errorCompletion: () -> Void)
 }
 

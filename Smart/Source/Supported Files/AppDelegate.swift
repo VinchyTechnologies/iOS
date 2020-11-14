@@ -9,6 +9,7 @@
 import UIKit
 import Firebase
 import GoogleMobileAds
+import SwiftUI
 
 #if canImport(AppTrackingTransparency)
 import AppTrackingTransparency
@@ -38,13 +39,15 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     //        FirebaseConfiguration.shared.setLoggerLevel(.min)
     FirebaseApp.configure()
     
-    let defaultValue = ["isAdAvailable": false as NSObject]
+    let defaultValue = ["isAdAvailable": false as NSObject, "force_update_versions": [String]() as NSObject]
     remoteConfig.setDefaults(defaultValue)
     
     remoteConfig.fetch(withExpirationDuration: 0) { (_, error) in
       if error == nil {
         remoteConfig.activate(completion: nil)
         isAdAvailable = remoteConfig.configValue(forKey: "isAdAvailable").boolValue
+
+        self.showForceUpdateScreen(versions: remoteConfig.configValue(forKey: "force_update_versions").jsonValue as! [String]) // swiftlint:disable:this force_cast
       }
     }
     
@@ -76,5 +79,13 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
   -> UISceneConfiguration
   {
     UISceneConfiguration(name: "Default Configuration", sessionRole: connectingSceneSession.role)
+  }
+
+  private func showForceUpdateScreen(versions: [String]) {
+    if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+      if versions.contains(version) {
+        UIApplication.shared.asKeyWindow?.rootViewController = UIHostingController(rootView: ForceUpdateView())
+      }
+    }
   }
 }

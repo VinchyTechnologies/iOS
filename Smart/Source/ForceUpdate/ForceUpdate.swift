@@ -7,29 +7,33 @@
 //
 
 import SwiftUI
+import Core
+import StringFormatting
 
-struct ForceUpdateView: View {
+struct ForceUpdateView: View, OpenURLProtocol {
   var body: some View {
     VStack {
       Spacer()
-      Text("Sorry, this version doesn't support anymore. Please, update the app") // TODO: - localizze
+      Text(localized("unavailable_version"))
         .bold()
       Spacer()
       Button(action: {
         openAppStore()
       }, label: {
-        Text("Go to Appstore") // TODO: - localizze
+        Text(localized("open_appstore"))
           .foregroundColor(Color(.mainBackground))
           .bold()
       })
       .frame(width: UIScreen.main.bounds.width - 40, height: 48, alignment: /*@START_MENU_TOKEN@*/.center/*@END_MENU_TOKEN@*/)
       .background(Color(.accent))
       .cornerRadius(24)
+      .padding()
     }
   }
 
   private func openAppStore() {
-    UIApplication.shared.open(URL(string: openAppStoreURL)!, options: [:])
+    open(urlString: localized("appstore_link")) {
+    }
   }
 }
 
