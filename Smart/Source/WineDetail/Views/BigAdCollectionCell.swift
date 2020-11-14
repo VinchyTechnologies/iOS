@@ -14,7 +14,7 @@ import AdSupport
 
 final class BigAdCollectionCell: UICollectionViewCell, Reusable {
   
-  let adBanner = GADBannerView(adSize: kGADAdSizeLargeBanner)
+  let adBanner = GADBannerView(adSize: kGADAdSizeMediumRectangle)
   
   override init(frame: CGRect) {
     super.init(frame: frame)
