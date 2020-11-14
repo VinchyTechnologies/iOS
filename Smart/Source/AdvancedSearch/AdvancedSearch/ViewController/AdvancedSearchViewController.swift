@@ -111,7 +111,7 @@ final class AdvancedSearchViewController: UIViewController {
   override func viewSafeAreaInsetsDidChange() {
     super.viewSafeAreaInsetsDidChange()
 
-    let bottomButtonsViewHeight: CGFloat = 10 + 48 + view.safeAreaInsets.bottom
+    let bottomButtonsViewHeight: CGFloat = 20 + 48 + view.safeAreaInsets.bottom
     bottomButtonsView.heightAnchor.constraint(equalToConstant: bottomButtonsViewHeight).isActive = true
 
     // TODO: - make better
@@ -120,7 +120,7 @@ final class AdvancedSearchViewController: UIViewController {
 
   override func viewDidLayoutSubviews() {
     super.viewDidLayoutSubviews()
-    let bottomButtonsViewHeight: CGFloat = 10 + 48 + view.safeAreaInsets.bottom
+    let bottomButtonsViewHeight: CGFloat = 20 + 48 + view.safeAreaInsets.bottom
     collectionView.contentInset.bottom = bottomButtonsViewHeight + 10
   }
 }

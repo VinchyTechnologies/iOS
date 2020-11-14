@@ -31,7 +31,7 @@ public enum FilterCategory: String, Decodable {
       return "color"
 
     case .country:
-      return "country"
+      return "country_code"
 
     case .sugar:
       return "sugar"
