@@ -1,98 +1,102 @@
 [
-    {
-        "title": "type",
-        "type": "carusel",
-        "category": "common",
-        "items": [
-            {
-                "title": "quiet",
-                "imageName": null
-            },
-            {
-                "title": "sparkling",
-                "imageName": null
-            }
-        ]
-    },
-    {
-        "title": "color",
-        "type": "carusel",
-        "category": "common",
-        "items": [
-            {
-                "title": "red",
-                "imageName": null
-            },
-            {
-                "title": "white",
-                "imageName": null
-            }
-        ]
-    },
-    {
-        "title": "country_code",
-        "type": "carusel",
-        "category": "countries",
-        "items": [
-            {
-                "title": "France",
-                "imageName": "FR"
-            },
-            {
-                "title": "Spain",
-                "imageName": "ES"
-            },
-            {
-                "title": "Italy",
-                "imageName": "IT"
-            },
-            {
-                "title": "Austria",
-                "imageName": "AT"
-            },
-            {
-                "title": "Germany",
-                "imageName": "DE"
-            },
-            {
-                "title": "USA",
-                "imageName": "US"
-            },
-            {
-                "title": "Argentina",
-                "imageName": "AR"
-            },
-            {
-                "title": "Chile",
-                "imageName": "CL"
-            },
-            {
-                "title": "Australia",
-                "imageName": "AU"
-            }
-        ]
-    },
-    {
-        "title": "sugar",
-        "type": "carusel",
-        "category": "common",
-        "items": [
-            {
-                "title": "dry",
-                "imageName": null
-            },
-            {
-                "title": "semi-dry",
-                "imageName": null
-            },
-            {
-                "title": "semi-sweet",
-                "imageName": null
-            },
-            {
-                "title": "sweet",
-                "imageName": null
-            }
-        ]
-    }
+  {
+    "category": "type",
+    "items": [
+      {
+        "category": "type",
+        "title": "quiet",
+        "imageName": null
+      },
+      {
+        "category": "type",
+        "title": "sparkling",
+        "imageName": null
+      }
+    ]
+  },
+  {
+    "category": "color",
+    "items": [
+      {
+        "category": "color",
+        "title": "red",
+        "imageName": null
+      },
+      {
+        "category": "color",
+        "title": "white",
+        "imageName": null
+      },
+      {
+        "category": "color",
+        "title": "pink",
+        "imageName": null
+      }
+    ]
+  },
+  {
+    "category": "sugar",
+    "items": [
+      {
+        "category": "sugar",
+        "title": "dry",
+        "imageName": null
+      },
+      {
+        "category": "sugar",
+        "title": "semi-dry",
+        "imageName": null
+      },
+      {
+        "category": "sugar",
+        "title": "semi-sweet",
+        "imageName": null
+      },
+      {
+        "category": "sugar",
+        "title": "sweet",
+        "imageName": null
+      }
+    ]
+  },
+  {
+    "category": "country",
+    "items": [
+      {
+        "category": "country",
+        "title": "FR",
+        "imageName": "FR"
+      },
+      {
+        "category": "country",
+        "title": "ES",
+        "imageName": "ES"
+      },
+      {
+        "category": "country",
+        "title": "IT",
+        "imageName": "IT"
+      },
+      {
+        "category": "country",
+        "title": "AT",
+        "imageName": "AT"
+      },
+      {
+        "category": "country",
+        "title": "DE",
+        "imageName": "DE"
+      },
+      {
+        "category": "country",
+        "title": "AR",
+        "imageName": "AR"
+      },
+      {
+        "category": "country",
+        "title": "US",
+        "imageName": "US"
+      }
+    ]
+  }
 ]

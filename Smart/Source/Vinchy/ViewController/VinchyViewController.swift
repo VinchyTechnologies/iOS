@@ -85,11 +85,11 @@ final class VinchyViewController: UIViewController {
       if oldValue != isSearchingMode {
         collectionView.reloadData()
       }
-      if isSearchingMode {
-        refreshControl.removeFromSuperview()
-      } else {
-        collectionView.refreshControl = refreshControl
-      }
+//      if isSearchingMode {
+//        refreshControl.removeFromSuperview()
+//      } else {
+//        collectionView.refreshControl = refreshControl
+//      }
     }
   }
 
