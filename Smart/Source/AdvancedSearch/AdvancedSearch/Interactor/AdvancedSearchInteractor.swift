@@ -69,10 +69,20 @@ extension AdvancedSearchInteractor: AdvancedSearchInteractorProtocol {
     countryCodes.forEach { code in
       let filterItem = FilterItem(title: code, imageName: code, category: .country)
       filterItems.append(filterItem)
-      selectedFilters.append(filterItem)
+      if !selectedFilters.contains(filterItem) {
+        selectedFilters.append(filterItem)
+      }
     }
 
-    let filter = Filter(category: .country, items: filterItems)
+    let items: [FilterItem] = {
+      if filterItems.isEmpty {
+        selectedFilters.removeAll(where: { $0.category == .country })
+        return initialFilters.first(where: { $0.category == .country })?.items ?? []
+      }
+      return filterItems
+    }()
+
+    let filter = Filter(category: .country, items: items)
 
     if let index = filters.firstIndex(where: { $0.category == .country }) {
       filters[index] = filter

@@ -108,7 +108,7 @@ extension AdvancedSearchPresenter: AdvancedSearchPresenterProtocol {
     let viewModel = ViewModel(
       sections: sections,
       navigationTitle: C.navigationTitle,
-      bottomButtonsViewModel: bottomButtonsViewModel)
+      bottomButtonsViewModel: bottomButtonsViewModel, isBottomButtonsViewHidden: selectedFilters.isEmpty)
     viewController?.updateUI(viewModel: viewModel, sec: sec)
   }
 }

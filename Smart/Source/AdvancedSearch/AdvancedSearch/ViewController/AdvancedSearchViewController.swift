@@ -132,6 +132,7 @@ extension AdvancedSearchViewController: AdvancedSearchViewControllerProtocol {
     self.viewModel = viewModel
     navigationItem.title = viewModel.navigationTitle
     bottomButtonsView.decorate(model: viewModel.bottomButtonsViewModel)
+    bottomButtonsView.isHidden = viewModel.isBottomButtonsViewHidden
     if let sec = sec {
       switch viewModel.sections[sec] {
       case .carusel(_, let items):

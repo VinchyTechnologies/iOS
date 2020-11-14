@@ -66,6 +66,36 @@
         "category": "country",
         "title": "FR",
         "imageName": "FR"
+      },
+      {
+        "category": "country",
+        "title": "ES",
+        "imageName": "ES"
+      },
+      {
+        "category": "country",
+        "title": "IT",
+        "imageName": "IT"
+      },
+      {
+        "category": "country",
+        "title": "AT",
+        "imageName": "AT"
+      },
+      {
+        "category": "country",
+        "title": "DE",
+        "imageName": "DE"
+      },
+      {
+        "category": "country",
+        "title": "AR",
+        "imageName": "AR"
+      },
+      {
+        "category": "country",
+        "title": "US",
+        "imageName": "US"
       }
     ]
   }

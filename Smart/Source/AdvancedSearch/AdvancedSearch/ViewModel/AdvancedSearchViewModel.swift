@@ -17,5 +17,6 @@ struct AdvancedSearchViewModel {
   let sections: [Section]
   let navigationTitle: String?
   let bottomButtonsViewModel: BottomButtonsViewModel
+  let isBottomButtonsViewHidden: Bool
   
 }
