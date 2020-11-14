@@ -56,7 +56,7 @@ extension TitleWithSubtitleInfoCollectionViewCell: Decoratable {
     
     titleLabel.attributedText = NSAttributedString(string: model.titleText ?? "", font: Font.medium(20), textColor: .dark)
     
-    subtitleLabel.attributedText = NSAttributedString(string: model.subtitleText ?? "", font: Font.regular(12), textColor: .blueGray)
+    subtitleLabel.attributedText = NSAttributedString(string: model.subtitleText ?? "", font: Font.regular(14), textColor: .blueGray)
   }
   
 }

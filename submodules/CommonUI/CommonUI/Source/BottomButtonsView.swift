@@ -56,7 +56,7 @@ public final class BottomButtonsView: UIView {
     stackView.axis = .horizontal
     stackView.distribution = .fillEqually
     stackView.spacing = 16
-    stackView.layoutMargins = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+    stackView.layoutMargins = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
     stackView.isLayoutMarginsRelativeArrangement = true
 
     return stackView
