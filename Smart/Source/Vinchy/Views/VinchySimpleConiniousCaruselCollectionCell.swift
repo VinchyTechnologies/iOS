@@ -36,9 +36,7 @@ final class VinchySimpleConiniousCaruselCollectionCell: UICollectionViewCell, Re
   
   private var collections: [Collection] = [] {
     didSet {
-      DispatchQueue.main.async {
-        self.collectionView.reloadData()
-      }
+      collectionView.reloadData()
     }
   }
   

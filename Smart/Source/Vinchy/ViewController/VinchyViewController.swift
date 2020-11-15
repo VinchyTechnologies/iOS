@@ -130,14 +130,8 @@ final class VinchyViewController: UIViewController {
   @objc
   private func didPullToRefresh() {
     if !isSearchingMode {
-      CATransaction.begin()
-      CATransaction.setCompletionBlock {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-          self.refreshControl.endRefreshing()
-        }
-      }
       interactor?.didPullToRefresh()
-      CATransaction.commit()
+      self.refreshControl.endRefreshing()
     }
   }
 }
@@ -265,8 +259,12 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
       return cell
 
     case .stories(let model), .promo(let model), .big(let model), .bottles(let model):
+      collectionView.register(
+        VinchySimpleConiniousCaruselCollectionCell.self,
+        forCellWithReuseIdentifier: VinchySimpleConiniousCaruselCollectionCell.reuseId + "\(indexPath.section)")
+
       let cell = collectionView.dequeueReusableCell(
-        withReuseIdentifier: VinchySimpleConiniousCaruselCollectionCell.reuseId,
+        withReuseIdentifier: VinchySimpleConiniousCaruselCollectionCell.reuseId + "\(indexPath.section)",
         for: indexPath) as! VinchySimpleConiniousCaruselCollectionCell// swiftlint:disable:this force_cast
       cell.decorate(model: model[indexPath.row])
       cell.delegate = self
