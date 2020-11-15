@@ -96,7 +96,7 @@ final class VinchyInteractor {
 
       if isShareUsEnabled {
         let shareUs = Compilation(type: .shareUs, title: nil, collectionList: [])
-        compilations.insert(shareUs, at: compilations.isEmpty ? 0 : compilations.count - 1)
+        compilations.insert(shareUs, at: compilations.isEmpty ? 0 : min(3, compilations.count - 1))
       }
 
       if isSmartFilterAvailable {
