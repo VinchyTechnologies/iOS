@@ -6,6 +6,7 @@
   Copyright © 2020 Aleksei Smirnov. All rights reserved.
 */
 // MARK: - Common
+"reset" = "сбросить";
 "unavailable_version" = "Данная версия приложения больше не поддерживается. Пожалуйста, обновите приложение.";
 "open_appstore" = "Открыть AppStore";
 "appstore_link" = "itms-apps://itunes.apple.com/app/id1536720416";
@@ -115,6 +116,8 @@
 "unknown_country_code" = "Неизвестный код страны";
 "nothing_found" = "ничего не найдено";
 "empty_collection" = "Пустая коллекция";
+"you_have_already_liked_the_wine" = "Вы отметили вино как понравившееся";
+"you_have_already_disliked_the_wine" = "Вы отметили вино как не понравившееся";
 
 // MARK: - Notes
 "general_impression" = "общее впечатление";

@@ -89,9 +89,15 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
     }
   }
   
-  func didTapDislikeButton() {
+  func didTapDislikeButton(_ button: UIButton) {
     
     guard let wine = wine else { return }
+
+    if isFavourite(wine: wine) {
+      button.isSelected = !button.isSelected
+      presenter.showAlertWineAlreadyLiked()
+      return
+    }
     
     if let dbWine = realm(path: .dislike).objects(DBWine.self).first(where: { $0.wineID == wine.id }) {
       dataBase.remove(object: dbWine, at: .dislike)
@@ -125,9 +131,15 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
     }
   }
   
-  func didTapLikeButton() {
+  func didTapLikeButton(_ button: UIButton) {
     
     guard let wine = wine else { return }
+
+    if isDisliked(wine: wine) {
+      button.isSelected = !button.isSelected
+      presenter.showAlertWineAlreadyDisliked()
+      return
+    }
     
     if let dbWine = realm(path: .like).objects(DBWine.self).first(where: { $0.wineID == wine.id }) {
       dataBase.remove(object: dbWine, at: .like)

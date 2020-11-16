@@ -78,7 +78,6 @@
 		CA51BBEF254094B000208F71 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA51BBEE254094B000208F71 /* AppTrackingTransparency.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		CA5B901B250FF22E006BC638 /* MoreBounceDecoratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5B901A250FF22E006BC638 /* MoreBounceDecoratorView.swift */; };
 		CA63A12B249A23C100144320 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA63A129249A23C100144320 /* Localizable.strings */; };
-		CA79545224F92EC20040224C /* AdvancedSearchController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA79545124F92EC20040224C /* AdvancedSearchController.swift */; };
 		CA7A87E62500169100AAD10F /* VinchySimpleConiniousCaruselCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87E52500169100AAD10F /* VinchySimpleConiniousCaruselCollectionCell.swift */; };
 		CA7A87FA2506B9D600AAD10F /* ShareUsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87F92506B9D600AAD10F /* ShareUsCollectionCell.swift */; };
 		CA7A87FC2507ED7800AAD10F /* AdsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87FB2507ED7800AAD10F /* AdsCollectionViewCell.swift */; };
@@ -275,7 +274,6 @@
 		CA63A12A249A23C100144320 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA63A12C249A244300144320 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA63A12D249A249300144320 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
-		CA79545124F92EC20040224C /* AdvancedSearchController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSearchController.swift; sourceTree = "<group>"; };
 		CA7A87E52500169100AAD10F /* VinchySimpleConiniousCaruselCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchySimpleConiniousCaruselCollectionCell.swift; sourceTree = "<group>"; };
 		CA7A87F92506B9D600AAD10F /* ShareUsCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareUsCollectionCell.swift; sourceTree = "<group>"; };
 		CA7A87FB2507ED7800AAD10F /* AdsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -784,7 +782,6 @@
 			isa = PBXGroup;
 			children = (
 				CA2C22C62554464F002469E4 /* AdvancedSearch */,
-				CA79545124F92EC20040224C /* AdvancedSearchController.swift */,
 			);
 			path = AdvancedSearch;
 			sourceTree = "<group>";
@@ -1374,7 +1371,6 @@
 				CA2C22E32554464F002469E4 /* AdvancedSearchRouterProtocol.swift in Sources */,
 				CA472B54245EDEDB009149FF /* Assembly.swift in Sources */,
 				CAF514232461C52400667ED0 /* MoreInteractor.swift in Sources */,
-				CA79545224F92EC20040224C /* AdvancedSearchController.swift in Sources */,
 				CA0709952523170600C3D9EC /* MainCoordinator.swift in Sources */,
 				CA7A87FA2506B9D600AAD10F /* ShareUsCollectionCell.swift in Sources */,
 				CA819846253864080056A1C6 /* WineDetailAssembly.swift in Sources */,
@@ -1660,7 +1656,7 @@
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				INFOPLIST_FILE = Smart/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -1686,7 +1682,7 @@
 				CODE_SIGN_ENTITLEMENTS = Smart/VinchyRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 9;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				INFOPLIST_FILE = Smart/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

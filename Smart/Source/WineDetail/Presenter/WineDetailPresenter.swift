@@ -121,7 +121,15 @@ final class WineDetailPresenter {
 // MARK: - WineDetailPresenterProtocol
 
 extension WineDetailPresenter: WineDetailPresenterProtocol {
-  
+
+  func showAlertWineAlreadyDisliked() {
+    viewController?.showAlert(title: localized("error").firstLetterUppercased(), message: localized("you_have_already_disliked_the_wine"))
+  }
+
+  func showAlertWineAlreadyLiked() {
+    viewController?.showAlert(title: localized("error").firstLetterUppercased(), message: localized("you_have_already_liked_the_wine"))
+  }
+
   func showNetworkErrorAlert(error: Error) {
     viewController?.showAlert(message: error.localizedDescription)
   }
