@@ -16,4 +16,6 @@ protocol WineDetailPresenterProtocol: AnyObject {
   func update(wine: Wine, isLiked: Bool, isDisliked: Bool)
   func showAlertCantOpenEmail()
   func showNetworkErrorAlert(error: Error)
+  func showAlertWineAlreadyDisliked()
+  func showAlertWineAlreadyLiked()
 }

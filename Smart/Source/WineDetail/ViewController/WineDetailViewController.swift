@@ -268,7 +268,7 @@ extension WineDetailViewController: ButtonCollectionCellDelegate {
   
   func didTapDislikeButton(_ button: UIButton) {
     button.isSelected = !button.isSelected
-    interactor?.didTapDislikeButton()
+    interactor?.didTapDislikeButton(button)
   }
   
   func didTapReportAnErrorButton(_ button: UIButton) {
@@ -283,7 +283,7 @@ extension WineDetailViewController: ToolCollectionCellDelegate {
   }
   
   func didTapLike(_ button: UIButton) {
-    interactor?.didTapLikeButton()
+    interactor?.didTapLikeButton(button)
   }
   
   func didTapPrice(_ button: UIButton) {

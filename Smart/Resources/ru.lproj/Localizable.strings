@@ -116,6 +116,8 @@
 "unknown_country_code" = "Неизвестный код страны";
 "nothing_found" = "ничего не найдено";
 "empty_collection" = "Пустая коллекция";
+"you_have_already_liked_the_wine" = "Вы отметили вино как понравившееся";
+"you_have_already_disliked_the_wine" = "Вы отметили вино как не понравившееся";
 
 // MARK: - Notes
 "general_impression" = "общее впечатление";

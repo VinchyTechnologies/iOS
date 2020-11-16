@@ -116,6 +116,8 @@
 "unknown_country_code" = "Unknown country code";
 "nothing_found" = "nothing found";
 "empty_collection" = "Empty collection";
+"you_have_already_liked_the_wine" = "You have already marked the wine as favourite";
+"you_have_already_disliked_the_wine" = "You have already marked the wine as disliked";
 
 // MARK: - Notes
 "general_impression" = "general impression";

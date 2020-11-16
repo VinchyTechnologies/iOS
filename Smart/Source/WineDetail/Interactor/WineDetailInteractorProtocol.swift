@@ -6,12 +6,12 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import UIKit // TODO: - delete UIKit
 
 protocol WineDetailInteractorProtocol: AnyObject {
   func viewDidLoad()
-  func didTapLikeButton()
-  func didTapDislikeButton()
+  func didTapLikeButton(_ button: UIButton)
+  func didTapDislikeButton(_ button: UIButton)
   func didTapShareButton()
   func didTapNotes()
   func didTapPriceButton()
