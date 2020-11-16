@@ -61,7 +61,7 @@ extension AdvancedSearchPresenter: AdvancedSearchPresenterProtocol {
         let cells = filter.items.map { filterItem -> ImageOptionCollectionCellViewModel in
           .init(
             imageName: filterItem.imageName,
-            titleText: filterItem.title,
+            titleText: localized(filterItem.title).firstLetterUppercased(),
             isSelected: selectedFilters.contains(filterItem))
         }
 
@@ -102,7 +102,7 @@ extension AdvancedSearchPresenter: AdvancedSearchPresenterProtocol {
     }
 
     let bottomButtonsViewModel = BottomButtonsViewModel(
-      leadingButtonText: "Reset", // TODO: - translate
+      leadingButtonText: localized("reset").firstLetterUppercased(),
       trailingButtonText: localized("search").firstLetterUppercased())
 
     let viewModel = ViewModel(

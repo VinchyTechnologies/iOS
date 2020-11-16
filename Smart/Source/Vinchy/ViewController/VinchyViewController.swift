@@ -201,7 +201,7 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
 
     switch sections[section] {
     case .title:
-      return .init(top: 10, left: C.horizontalInset, bottom: 5, right: C.horizontalInset)
+      return .init(top: 10, left: C.horizontalInset, bottom: 8, right: C.horizontalInset)
 
     case .suggestions:
       return .init(top: 0, left: C.horizontalInset, bottom: 0, right: C.horizontalInset)
