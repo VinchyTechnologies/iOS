@@ -43,7 +43,6 @@ final class BigAdCollectionCell: UICollectionViewCell, Reusable {
 
 extension BigAdCollectionCell: GADBannerViewDelegate {
   func adView(_ bannerView: GADBannerView, didFailToReceiveAdWithError error: GADRequestError) {
-    print(bannerView)
     print(error)
   }
 }

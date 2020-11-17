@@ -111,7 +111,6 @@ extension WineCollectionViewCell: Decoratable {
 
         bottleImageView.sd_imageTransition = .fade
         bottleImageView.sd_setImage(with: model.imageURL, placeholderImage: nil, options: [.allowInvalidSSLCertificates, .continueInBackground, .retryFailed, .highPriority, .refreshCached, .handleCookies, .queryDiskDataSync]) { [weak self] (image, error, _, _) in
-            print(error as Any)
             if image == nil {
                 self?.bottleImageView.image = UIImage(named: "empty_image_bottle")?.withTintColor(.blueGray)
             }
