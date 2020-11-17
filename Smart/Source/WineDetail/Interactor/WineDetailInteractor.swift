@@ -102,7 +102,7 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
     if let dbWine = realm(path: .dislike).objects(DBWine.self).first(where: { $0.wineID == wine.id }) {
       dataBase.remove(object: dbWine, at: .dislike)
     } else {
-      dataBase.add(object: DBWine(id: dataBase.incrementID(path: .dislike), wineID: wine.id, mainImageUrl: wine.mainImageUrl ?? "", title: wine.title), at: .dislike)
+      dataBase.add(object: DBWine(id: dataBase.incrementID(path: .dislike), wineID: wine.id, title: wine.title), at: .dislike)
     }
   }
   
@@ -144,7 +144,7 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
     if let dbWine = realm(path: .like).objects(DBWine.self).first(where: { $0.wineID == wine.id }) {
       dataBase.remove(object: dbWine, at: .like)
     } else {
-      dataBase.add(object: DBWine(id: dataBase.incrementID(path: .like), wineID: wine.id, mainImageUrl: wine.mainImageUrl ?? "", title: wine.title), at: .like)
+      dataBase.add(object: DBWine(id: dataBase.incrementID(path: .like), wineID: wine.id, title: wine.title), at: .like)
     }
   }
 }

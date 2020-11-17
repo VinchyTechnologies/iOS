@@ -23,18 +23,16 @@ public final class DBWine: Object, HasPrimaryKeyID {
 
   @objc public dynamic var id: Int64 = 0
   @objc public dynamic var wineID: Int64 = 0
-  @objc public dynamic var mainImageUrl: String = ""
   @objc public dynamic var title: String = ""
 
   public override class func primaryKey() -> String {
-    return myPrimaryKey()
+    myPrimaryKey()
   }
 
-  public convenience init(id: Int64, wineID: Int64, mainImageUrl: String, title: String) {
+  public convenience init(id: Int64, wineID: Int64, title: String) {
     self.init()
     self.id = id
     self.wineID = wineID
-    self.mainImageUrl = mainImageUrl
     self.title = title
   }
 }

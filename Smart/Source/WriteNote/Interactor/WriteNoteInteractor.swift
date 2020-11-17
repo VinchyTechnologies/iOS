@@ -59,7 +59,6 @@ extension WriteNoteInteractor: WriteNoteInteractorProtocol {
         id: dataBase.incrementID(path: .notes),
         wineID: wine.id,
         wineTitle: wine.title,
-        wineMainImageURL: wine.mainImageUrl ?? "",
         noteText: noteText)
       
       dataBase.add(object: note, at: .notes)
