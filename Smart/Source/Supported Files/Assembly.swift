@@ -57,7 +57,7 @@ final class Assembly {
   static func buildChooseCountiesModule(preSelectedCountryCodes: [String], delegate: CountriesViewControllerDelegate) -> NavigationController {
     let controller = CountriesViewController(preSelectedCountryCodes: preSelectedCountryCodes, delegate: delegate)
     let navController = NavigationController(rootViewController: controller)
-    navController.modalPresentationCapturesStatusBarAppearance = true
+//    navController.modalPresentationCapturesStatusBarAppearance = true
     return navController
   }
 

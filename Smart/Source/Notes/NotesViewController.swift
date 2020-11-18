@@ -25,9 +25,7 @@ final class NotesViewController: UIViewController {
   private var notes: [Note] = [] {
     didSet {
       notes.isEmpty ? showEmptyView() : hideEmptyView()
-      DispatchQueue.main.async {
-        self.tableView.reloadData()
-      }
+      tableView.reloadData()
     }
   }
 
@@ -92,11 +90,11 @@ extension NotesViewController: UITableViewDataSource {
   func tableView(
     _ tableView: UITableView,
     cellForRowAt indexPath: IndexPath)
-  -> UITableViewCell
+    -> UITableViewCell
   {
     if let cell = tableView.dequeueReusableCell(withIdentifier: WineTableCell.reuseId) as? WineTableCell,
        let note = notes[safe: indexPath.row] {
-      cell.decorate(model: .init(imageURL: note.wineMainImageURL.toURL, titleText: note.wineTitle, subtitleText: note.noteText))
+      cell.decorate(model: .init(imageURL: imageURL(from: note.wineID).toURL, titleText: note.wineTitle, subtitleText: note.noteText))
       return cell
     }
     return .init()
@@ -126,7 +124,7 @@ extension NotesViewController: UITableViewDataSource {
   func tableView(
     _ tableView: UITableView,
     titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath)
-  -> String?
+    -> String?
   {
     localized("delete")
   }

@@ -133,7 +133,7 @@ extension LoveViewController: UICollectionViewDataSource {
   func collectionView(
     _ collectionView: UICollectionView,
     numberOfItemsInSection section: Int)
-  -> Int
+    -> Int
   {
     wines.count
   }
@@ -141,12 +141,12 @@ extension LoveViewController: UICollectionViewDataSource {
   func collectionView(
     _ collectionView: UICollectionView,
     cellForItemAt indexPath: IndexPath)
-  -> UICollectionViewCell
+    -> UICollectionViewCell
   {
     guard let wine = wines[safe: indexPath.row] else { return .init() }
     // swiftlint:disable:next force_cast
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as! WineCollectionViewCell
-    cell.decorate(model: .init(imageURL: wine.mainImageUrl.toURL, titleText: wine.title, subtitleText: nil, backgroundColor: .randomColor))
+    cell.decorate(model: .init(imageURL: imageURL(from: wine.wineID).toURL, titleText: wine.title, subtitleText: nil, backgroundColor: .randomColor))
     return cell
   }
 }

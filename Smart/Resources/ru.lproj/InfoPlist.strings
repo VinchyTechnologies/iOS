@@ -8,3 +8,4 @@
 NSLocationWhenInUseUsageDescription = "Разрешите доступ к геолокации для определения адреса доставки";
 NSCameraUsageDescription = "Разрешите доступ к камере для сканирования";
 CFBundleDisplayName = "Vinchy";
+NSUserTrackingUsageDescription = "Этот идентификатор будет использоваться для показа вам персонализированной рекламы.";
