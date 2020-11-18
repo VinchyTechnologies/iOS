@@ -15,6 +15,10 @@ public func realm(path: RealmType) -> Realm {
   return try! Realm(configuration: config)// swiftlint:disable:this force_try
 }
 
+public func imageURL(from wineID: Int64) -> String {
+  "https://bucket.vinchy.tech/wines/" + String(wineID) + ".png"
+}
+
 public final class Database<T: Object> {
 
   public init() { }

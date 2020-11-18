@@ -8,3 +8,4 @@
 NSLocationWhenInUseUsageDescription = "Allow access to geolocation to determine the delivery address";
 NSCameraUsageDescription = "Allow access to the camera for scanning";
 CFBundleDisplayName = "Vinchy";
+NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you.";

@@ -39,7 +39,7 @@ final class StoryCollectionCell: HighlightCollectionCell, Reusable  {
     imageView.contentMode = .scaleAspectFill
     addSubview(imageView)
 
-    titleLabel.font = Font.bold(20)
+    titleLabel.font = Font.bold(18)
     titleLabel.textColor = .white
     titleLabel.numberOfLines = 2
 
