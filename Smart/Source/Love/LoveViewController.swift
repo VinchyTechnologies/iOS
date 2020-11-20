@@ -11,9 +11,10 @@ import RealmSwift
 import CommonUI
 import StringFormatting
 import Database
+import Display
 
-private enum LoveViewControllerState {
-  case like, dislike
+private enum LoveViewControllerState: Int {
+  case like = 0, dislike
 }
 
 final class LoveViewController: UIViewController {
@@ -40,16 +41,37 @@ final class LoveViewController: UIViewController {
   private var currentState: LoveViewControllerState = .like {
     didSet {
       if currentState == .like {
-        navigationItem.title = localized("you_liked").firstLetterUppercased()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart.slash"), style: .plain, target: self, action: #selector(switchToUnfavourite))
         wines = dataBase.all(at: .like)
       } else if currentState == .dislike {
-        navigationItem.title = localized("you_disliked").firstLetterUppercased()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "heart"), style: .plain, target: self, action: #selector(switchToUnfavourite))
         wines = dataBase.all(at: .dislike)
       }
     }
   }
+
+  private lazy var segmentedControl: UISegmentedControl = {
+    let segmentedControl = UISegmentedControl(items: [
+      localized("you_liked").firstLetterUppercased(),
+      localized("you_disliked").firstLetterUppercased()
+    ])
+    segmentedControl.selectedSegmentIndex = currentState.rawValue
+    segmentedControl.backgroundColor = .option
+    segmentedControl.selectedSegmentTintColor = .accent
+    segmentedControl.setTitleTextAttributes([
+      NSAttributedString.Key.foregroundColor: UIColor.white,
+      NSAttributedString.Key.font: Font.bold(14)
+    ], for: .selected)
+    segmentedControl.setTitleTextAttributes([
+      NSAttributedString.Key.foregroundColor: UIColor.blueGray,
+      NSAttributedString.Key.font: Font.bold(14)
+    ], for: .normal)
+    segmentedControl.frame.size.height = 35
+    segmentedControl.frame.size.width = widthSegmentedControl()
+    segmentedControl.addTarget(
+      self,
+      action: #selector(didChangeIndexSegmantedControl(_:)),
+      for: .valueChanged)
+    return segmentedControl
+  }()
   
   private lazy var likeRealm = realm(path: .like)
   private var likeNotificationToken: NotificationToken?
@@ -59,16 +81,8 @@ final class LoveViewController: UIViewController {
   
   private var wines: [DBWine] = [] {
     didSet {
-      
-      if wines.isEmpty {
-        showEmptyView()
-      } else {
-        hideEmptyView()
-      }
-      
-      DispatchQueue.main.async {
-        self.collectionView.reloadData()
-      }
+      wines.isEmpty ? showEmptyView() : hideEmptyView()
+      collectionView.reloadData()
     }
   }
   
@@ -96,9 +110,10 @@ final class LoveViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+
     currentState = .like
-    
+    navigationItem.titleView = segmentedControl
+
     view.addSubview(collectionView)
     collectionView.backgroundColor = .mainBackground
     collectionView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
@@ -117,14 +132,33 @@ final class LoveViewController: UIViewController {
   
   private func showEmptyView() {
     let errorView = ErrorView(frame: view.frame)
-    errorView.decorate(model: .init(titleText: localized("nothing_here").firstLetterUppercased(), subtitleText: nil, buttonText: localized("add").firstLetterUppercased()))
+    errorView.decorate(
+      model: .init(
+        titleText: localized("nothing_here").firstLetterUppercased(),
+        subtitleText: nil,
+        buttonText: localized("add").firstLetterUppercased()))
     errorView.delegate = self
     collectionView.backgroundView = errorView
   }
-  
+
   @objc
-  private func switchToUnfavourite() {
-    currentState = currentState == .like ? .dislike : .like
+  private func didChangeIndexSegmantedControl(
+    _ segmentedControl: UISegmentedControl)
+  {
+    currentState = LoveViewControllerState(
+      rawValue: segmentedControl.selectedSegmentIndex) ?? .like
+  }
+
+  private func widthSegmentedControl() -> CGFloat {
+    let maxWorldWidth = max(
+      localized("you_liked").firstLetterUppercased().width(usingFont: Font.medium(16)),
+      localized("you_liked").firstLetterUppercased().width(usingFont: Font.medium(16)))
+
+    let maxWidth: CGFloat = view.frame.width - 40
+    let actualWidth: CGFloat = (maxWorldWidth + 20) * CGFloat(2)
+
+    return max(min(maxWidth, actualWidth), 200)
+
   }
 }
 
@@ -146,7 +180,12 @@ extension LoveViewController: UICollectionViewDataSource {
     guard let wine = wines[safe: indexPath.row] else { return .init() }
     // swiftlint:disable:next force_cast
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as! WineCollectionViewCell
-    cell.decorate(model: .init(imageURL: imageURL(from: wine.wineID).toURL, titleText: wine.title, subtitleText: nil, backgroundColor: .randomColor))
+    cell.decorate(
+      model: .init(
+        imageURL: imageURL(from: wine.wineID).toURL,
+        titleText: wine.title,
+        subtitleText: nil,
+        backgroundColor: .randomColor))
     return cell
   }
 }
