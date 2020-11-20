@@ -8,6 +8,7 @@
 
 import UIKit
 import CommonUI
+import Display
 
 fileprivate enum C {
   static let categoryHeaderID = "categoryHeaderID"
@@ -218,6 +219,7 @@ extension AdvancedSearchViewController: UICollectionViewDataSource {
 extension AdvancedSearchViewController: AdvancedSearchCaruselCollectionCellDelegate {
   func didSelectItem(at indexPath: IndexPath) {
     interactor?.didSelectItem(at: indexPath)
+    HapticEffectHelper.vibrate(withEffect: .medium)
   }
 }
 

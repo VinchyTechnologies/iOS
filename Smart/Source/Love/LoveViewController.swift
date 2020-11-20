@@ -147,6 +147,7 @@ final class LoveViewController: UIViewController {
   {
     currentState = LoveViewControllerState(
       rawValue: segmentedControl.selectedSegmentIndex) ?? .like
+    HapticEffectHelper.vibrate(withEffect: .selection)
   }
 
   private func widthSegmentedControl() -> CGFloat {

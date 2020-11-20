@@ -14,6 +14,7 @@
 		CA18220624C0F8CE00280DD4 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18220524C0F8CE00280DD4 /* UIColor.swift */; };
 		CA18220824C0FE2300280DD4 /* UIKitUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18220724C0FE2300280DD4 /* UIKitUtils.swift */; };
 		CA18220A24C0FF8C00280DD4 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18220924C0FF8C00280DD4 /* Keyboard.swift */; };
+		CA30393F2568339E00C3A461 /* Haptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30393E2568339E00C3A461 /* Haptic.swift */; };
 		CA53B12524E039F1009A0F85 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA53B12424E039F1009A0F85 /* Alertable.swift */; };
 		CA5B9019250FEF51006BC638 /* ScrollViewBounceDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5B9018250FEF51006BC638 /* ScrollViewBounceDecorator.swift */; };
 		CA7A87E324FEE1B200AAD10F /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87E224FEE1B200AAD10F /* Loadable.swift */; };
@@ -39,6 +40,7 @@
 		CA18220524C0F8CE00280DD4 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		CA18220724C0FE2300280DD4 /* UIKitUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitUtils.swift; sourceTree = "<group>"; };
 		CA18220924C0FF8C00280DD4 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
+		CA30393E2568339E00C3A461 /* Haptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptic.swift; sourceTree = "<group>"; };
 		CA53B12424E039F1009A0F85 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		CA5B9018250FEF51006BC638 /* ScrollViewBounceDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewBounceDecorator.swift; sourceTree = "<group>"; };
 		CA7A87E224FEE1B200AAD10F /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 				CAA9DC68250EA24900F996A8 /* DecoratorFlowLayout.swift */,
 				CA5B9018250FEF51006BC638 /* ScrollViewBounceDecorator.swift */,
 				CA81987A25387CA80056A1C6 /* Gradient.swift */,
+				CA30393E2568339E00C3A461 /* Haptic.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -260,6 +263,7 @@
 				CAA8918B250AA8D200ADBFF9 /* HighlightableViewProtocol.swift in Sources */,
 				CAA8918D250AB69400ADBFF9 /* HighlightCollectionCell.swift in Sources */,
 				CA7A87EC25026FA700AAD10F /* LoadingCollectionFooter.swift in Sources */,
+				CA30393F2568339E00C3A461 /* Haptic.swift in Sources */,
 				CAA9DC69250EA24900F996A8 /* DecoratorFlowLayout.swift in Sources */,
 				CA18220A24C0FF8C00280DD4 /* Keyboard.swift in Sources */,
 				CA7A87E324FEE1B200AAD10F /* Loadable.swift in Sources */,
