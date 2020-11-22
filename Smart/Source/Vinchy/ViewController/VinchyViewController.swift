@@ -27,7 +27,7 @@ final class VinchyViewController: UIViewController {
 
   // MARK: - Private Properties
 
-  private var sections = [VinchyViewControllerViewModel.Section]() {
+  private var viewModel: VinchyViewControllerViewModel = .init(state: .fake(sections: [])) {
     didSet {
       collectionView.reloadData()
     }
@@ -51,7 +51,8 @@ final class VinchyViewController: UIViewController {
       WineCollectionViewCell.self,
       AdsCollectionViewCell.self,
       SmartFilterCollectionCell.self,
-      TextCollectionCell.self)
+      TextCollectionCell.self,
+      FakeVinchyCollectionCell.self)
 
     collectionView.dataSource = self
     collectionView.delegate = self
@@ -163,29 +164,54 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
     _ collectionView: UICollectionView,
     layout collectionViewLayout: UICollectionViewLayout,
     sizeForItemAt indexPath: IndexPath)
-  -> CGSize
+    -> CGSize
   {
     if isSearchingMode {
       return .init(width: collectionView.frame.width, height: 44)
     }
 
-    switch sections[indexPath.section] {
-    case .title(let model):
-      let width = collectionView.frame.width - 2 * C.horizontalInset
-      let height = TextCollectionCell.height(viewModel: model[indexPath.row], width: width)
-      return .init(width: width, height: height)
+    switch viewModel.state {
+    case .fake(let sections):
+      let type: FakeVinchyCollectionCellViewModel?
+      switch sections[safe: indexPath.section] {
+      case .none:
+        type = nil
 
-    case .stories(let model), .promo(let model), .big(let model), .bottles(let model):
-      return .init(width: collectionView.frame.width,
-                   height: VinchySimpleConiniousCaruselCollectionCell.height(viewModel: model[safe: indexPath.row]))
+      case .stories(let viewModel):
+        type = viewModel
 
-    case .suggestions(_):
-      return .init(width: collectionView.frame.width, height: 44)
+      case .promo(let viewModel):
+        type = viewModel
 
-    case .shareUs(_):
-      let width = collectionView.frame.width - 2 * C.horizontalInset
-      let height: CGFloat = 150 // TODO: -
-      return .init(width: width, height: height)
+      case .title(let viewModel):
+        type = viewModel
+
+      case .big(let viewModel):
+        type = viewModel
+      }
+
+      let height = FakeVinchyCollectionCell.height(viewModel: type)
+      return .init(width: collectionView.frame.width, height: height)
+
+    case .normal(let sections):
+      switch sections[indexPath.section] {
+      case .title(let model):
+        let width = collectionView.frame.width - 2 * C.horizontalInset
+        let height = TextCollectionCell.height(viewModel: model[indexPath.row], width: width)
+        return .init(width: width, height: height)
+
+      case .stories(let model), .promo(let model), .big(let model), .bottles(let model):
+        return .init(width: collectionView.frame.width,
+                     height: VinchySimpleConiniousCaruselCollectionCell.height(viewModel: model[safe: indexPath.row]))
+
+      case .suggestions(_):
+        return .init(width: collectionView.frame.width, height: 44)
+
+      case .shareUs(_):
+        let width = collectionView.frame.width - 2 * C.horizontalInset
+        let height: CGFloat = 150 // TODO: -
+        return .init(width: width, height: height)
+      }
     }
   }
 
@@ -199,41 +225,72 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
       return .init(top: 0, left: C.horizontalInset, bottom: 0, right: C.horizontalInset)
     }
 
-    switch sections[section] {
-    case .title:
-      return .init(top: 10, left: C.horizontalInset, bottom: 8, right: C.horizontalInset)
+    switch viewModel.state {
+    case .fake(let sections):
+      switch sections[section] {
+      case .stories, .big, .promo:
+        return .zero
 
-    case .suggestions:
-      return .init(top: 0, left: C.horizontalInset, bottom: 0, right: C.horizontalInset)
+      case .title:
+        return .init(top: 10, left: 0, bottom: 10, right: 0)
+      }
 
-    case .shareUs:
-      return .init(top: 15, left: C.horizontalInset, bottom: 10, right: C.horizontalInset)
+    case .normal(let sections):
+      switch sections[section] {
+      case .title:
+        return .init(top: 10, left: C.horizontalInset, bottom: 8, right: C.horizontalInset)
 
-    case .stories, .promo, .big, .bottles:
-      return .zero
+      case .suggestions:
+        return .init(top: 0, left: C.horizontalInset, bottom: 0, right: C.horizontalInset)
+
+      case .shareUs:
+        return .init(top: 15, left: C.horizontalInset, bottom: 10, right: C.horizontalInset)
+
+      case .stories, .promo, .big, .bottles:
+        return .zero
+      }
     }
   }
 
   func numberOfSections(in collectionView: UICollectionView) -> Int {
-    isSearchingMode ? 1 : sections.count
+    if isSearchingMode {
+      return 1
+    } else {
+      switch viewModel.state {
+      case .fake(let sections):
+        return sections.count
+
+      case .normal(let sections):
+        return sections.count
+      }
+    }
   }
 
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     if isSearchingMode {
       return suggestions.count
     } else {
-      switch sections[section] {
-      case .title(let model):
-        return model.count
+      switch viewModel.state {
+      case .fake(let sections):
+        switch sections[section] {
+        case .stories, .promo, .title, .big:
+          return 1
+        }
 
-      case .stories(let model), .promo(let model), .big(let model), .bottles(let model):
-        return model.count
+      case .normal(sections: let sections):
+        switch sections[section] {
+        case .title(let model):
+          return model.count
 
-      case .suggestions(let model):
-        return model.count
+        case .stories(let model), .promo(let model), .big(let model), .bottles(let model):
+          return model.count
 
-      case .shareUs(let model):
-        return model.count
+        case .suggestions(let model):
+          return model.count
+
+        case .shareUs(let model):
+          return model.count
+        }
       }
     }
   }
@@ -241,7 +298,7 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
   func collectionView(
     _ collectionView: UICollectionView,
     cellForItemAt indexPath: IndexPath)
-  -> UICollectionViewCell
+    -> UICollectionViewCell
   {
 
     if isSearchingMode {
@@ -251,47 +308,59 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
       return cell
     }
 
-    switch sections[indexPath.section] {
-    case .title(let model):
-      // swiftlint:disable:next force_cast
-      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseId, for: indexPath) as! TextCollectionCell
-      cell.decorate(model: model[indexPath.row])
-      return cell
+    switch viewModel.state {
+    case .fake(let sections):
+      switch sections[indexPath.section] {
+      case .stories(let model), .promo(let model), .title(let model), .big(let model):
+        // swiftlint:disable:next force_cast
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FakeVinchyCollectionCell.reuseId, for: indexPath) as! FakeVinchyCollectionCell
+        cell.decorate(model: model)
+        return cell
+      }
 
-    case .stories(let model), .promo(let model), .big(let model), .bottles(let model):
-      collectionView.register(
-        VinchySimpleConiniousCaruselCollectionCell.self,
-        forCellWithReuseIdentifier: VinchySimpleConiniousCaruselCollectionCell.reuseId + "\(indexPath.section)")
+    case .normal(let sections):
+      switch sections[indexPath.section] {
+      case .title(let model):
+        // swiftlint:disable:next force_cast
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseId, for: indexPath) as! TextCollectionCell
+        cell.decorate(model: model[indexPath.row])
+        return cell
 
-      let cell = collectionView.dequeueReusableCell(
-        withReuseIdentifier: VinchySimpleConiniousCaruselCollectionCell.reuseId + "\(indexPath.section)",
-        for: indexPath) as! VinchySimpleConiniousCaruselCollectionCell// swiftlint:disable:this force_cast
-      cell.decorate(model: model[indexPath.row])
-      cell.delegate = self
-      return cell
+      case .stories(let model), .promo(let model), .big(let model), .bottles(let model):
+        collectionView.register(
+          VinchySimpleConiniousCaruselCollectionCell.self,
+          forCellWithReuseIdentifier: VinchySimpleConiniousCaruselCollectionCell.reuseId + "\(indexPath.section)")
 
-    case .suggestions(let model):
-      // swiftlint:disable:next force_cast
-      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SuggestionCollectionCell.reuseId, for: indexPath) as! SuggestionCollectionCell
-      cell.decorate(model: model[indexPath.row])
-      return cell
+        let cell = collectionView.dequeueReusableCell(
+          withReuseIdentifier: VinchySimpleConiniousCaruselCollectionCell.reuseId + "\(indexPath.section)",
+          for: indexPath) as! VinchySimpleConiniousCaruselCollectionCell// swiftlint:disable:this force_cast
+        cell.decorate(model: model[indexPath.row])
+        cell.delegate = self
+        return cell
 
-    case .shareUs(let model):
-      // swiftlint:disable:next force_cast
-      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShareUsCollectionCell.reuseId, for: indexPath) as! ShareUsCollectionCell
-      cell.decorate(model: model[indexPath.row])
-      cell.delegate = self
-      return cell
+      case .suggestions(let model):
+        // swiftlint:disable:next force_cast
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SuggestionCollectionCell.reuseId, for: indexPath) as! SuggestionCollectionCell
+        cell.decorate(model: model[indexPath.row])
+        return cell
+
+      case .shareUs(let model):
+        // swiftlint:disable:next force_cast
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShareUsCollectionCell.reuseId, for: indexPath) as! ShareUsCollectionCell
+        cell.decorate(model: model[indexPath.row])
+        cell.delegate = self
+        return cell
+      }
+
+      //            case .smartFilter:
+      //                // swiftlint:disable:next force_cast
+      //                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SmartFilterCollectionCell.reuseId, for: indexPath) as! SmartFilterCollectionCell
+      //                cell.decorate(model: .init(
+      //                                accentText: "New in Vinchy".uppercased(),
+      //                                boldText: "Personal compilations",
+      //                                subtitleText: "Answer on 3 questions & we find for you best wines.",
+      //                                buttonText: "Try now"))
     }
-
-    //            case .smartFilter:
-    //                // swiftlint:disable:next force_cast
-    //                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SmartFilterCollectionCell.reuseId, for: indexPath) as! SmartFilterCollectionCell
-    //                cell.decorate(model: .init(
-    //                                accentText: "New in Vinchy".uppercased(),
-    //                                boldText: "Personal compilations",
-    //                                subtitleText: "Answer on 3 questions & we find for you best wines.",
-    //                                buttonText: "Try now"))
   }
 }
 
@@ -362,8 +431,8 @@ extension VinchyViewController: VinchyViewControllerProtocol {
     (searchController.searchResultsController as? ResultsTableController)?.set(wines: didFindWines)
   }
 
-  func updateUI(sections: [VinchyViewControllerViewModel.Section]) {
-    self.sections = sections
+  func updateUI(viewModel: VinchyViewControllerViewModel) {
+    self.viewModel = viewModel
   }
 
   func updateSearchSuggestions(suggestions: [Wine]) {

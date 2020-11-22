@@ -16,7 +16,7 @@ fileprivate let colors: [UIColor] = [
 extension UIColor {
 
     public final class var mainBackground: UIColor {
-        .systemBackground //.white //UIColor(red: 241/255, green: 243/255, blue: 246/255, alpha: 1.0)
+        .systemBackground
     }
 
     public final class var blueGray: UIColor {
@@ -28,7 +28,7 @@ extension UIColor {
     }
 
     public final class var accent: UIColor {
-        UIColor.rgb(red: 220, green: 0, blue: 33)//UIColor.rgb(red: 173, green: 8, blue: 27)//UIColor.rgb(red: 213, green: 54, blue: 48)
+        UIColor.rgb(red: 220, green: 0, blue: 33)
     }
 
     public final class var option: UIColor {

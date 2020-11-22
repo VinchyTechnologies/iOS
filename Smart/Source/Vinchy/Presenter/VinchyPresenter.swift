@@ -31,16 +31,30 @@ final class VinchyPresenter {
 
 extension VinchyPresenter: VinchyPresenterProtocol {
 
+  func startShimmer() {
+    viewController?.updateUI(
+      viewModel: VinchyViewControllerViewModel(
+        state: .fake(sections: [
+          .stories(.init(type: .stories(count: 10))),
+          .title(.init(type: .title(count: 1))),
+          .promo(.init(type: .promo(count: 10))),
+          .title(.init(type: .title(count: 1))),
+          .promo(.init(type: .big(count: 10))),
+          .title(.init(type: .title(count: 1))),
+          .promo(.init(type: .big(count: 10))),
+          .title(.init(type: .title(count: 1))),
+          .promo(.init(type: .big(count: 10))),
+          .title(.init(type: .title(count: 1))),
+          .promo(.init(type: .big(count: 10))),
+        ])))
+  }
+
   var cantFindWineText: String {
     localized("email_did_not_find_wine")
   }
 
   var cantFindWineRecipients: [String] {
     [localized("contact_email")]
-  }
-
-  func update(sections: [VinchyViewControllerViewModel.Section]) {
-    viewController?.updateUI(sections: sections)
   }
 
   func startLoading() {
@@ -133,7 +147,7 @@ extension VinchyPresenter: VinchyPresenterProtocol {
                                  paragraphAlignment: .justified))
     ]))
 
-    viewController?.updateUI(sections: sections)
+    viewController?.updateUI(viewModel: VinchyViewControllerViewModel(state: .normal(sections: sections)))
   }
 
   func update(suggestions: [Wine]) {

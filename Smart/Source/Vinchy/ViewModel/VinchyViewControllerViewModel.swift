@@ -10,6 +10,11 @@ import CommonUI
 
 struct VinchyViewControllerViewModel {
 
+  enum State {
+    case fake(sections: [FakeSection])
+    case normal(sections: [Section])
+  }
+
   enum Section {
     case title([TextCollectionCellViewModel])
     case stories([VinchySimpleConiniousCaruselCollectionCellViewModel])
@@ -19,4 +24,14 @@ struct VinchyViewControllerViewModel {
     case suggestions([SuggestionCollectionCellViewModel])
     case shareUs([ShareUsCollectionCellViewModel])
   }
+
+  enum FakeSection {
+    case stories(FakeVinchyCollectionCellViewModel)
+    case promo(FakeVinchyCollectionCellViewModel)
+    case title(FakeVinchyCollectionCellViewModel)
+    case big(FakeVinchyCollectionCellViewModel)
+  }
+
+  let state: State
+
 }
