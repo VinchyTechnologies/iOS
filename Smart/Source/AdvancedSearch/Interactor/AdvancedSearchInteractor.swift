@@ -66,6 +66,7 @@ extension AdvancedSearchInteractor: AdvancedSearchInteractorProtocol {
   func didChooseCountryCodes(_ countryCodes: [String]) {
 
     var filterItems: [FilterItem] = []
+    selectedFilters.removeAll(where: { $0.category == .country })
     countryCodes.forEach { code in
       let filterItem = FilterItem(title: code, imageName: code, category: .country)
       filterItems.append(filterItem)
