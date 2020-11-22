@@ -47,6 +47,8 @@ final class FakeVinchyCollectionCell: UICollectionViewCell, Reusable {
     collectionView.delegate = self
     collectionView.register(FakeCell.self)
     collectionView.delaysContentTouches = false
+    collectionView.isScrollEnabled = false
+    collectionView.isUserInteractionEnabled = false
     return collectionView
   }()
 

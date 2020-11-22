@@ -29,6 +29,13 @@ final class VinchyViewController: UIViewController {
 
   private var viewModel: VinchyViewControllerViewModel = .init(state: .fake(sections: [])) {
     didSet {
+      switch viewModel.state {
+      case .fake:
+        collectionView.isScrollEnabled = false
+
+      default:
+        collectionView.isScrollEnabled = true
+      }
       collectionView.reloadData()
     }
   }
@@ -266,7 +273,11 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
     }
   }
 
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+  func collectionView(
+    _ collectionView: UICollectionView,
+    numberOfItemsInSection section: Int)
+    -> Int
+  {
     if isSearchingMode {
       return suggestions.count
     } else {
