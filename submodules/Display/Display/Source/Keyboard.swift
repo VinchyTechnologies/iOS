@@ -97,7 +97,8 @@ public final class KeyboardHelper {
       object: nil)
   }
 
-  @objc func updateKeyboard(notification: Notification) {
+  @objc
+  func updateKeyboard(notification: Notification) {
     self.keyboardUpdate = KeyboardUpdate(notification: notification)
   }
 

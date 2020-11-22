@@ -11,6 +11,6 @@ import Display
 
 protocol VinchyViewControllerProtocol: Loadable, Alertable {
     func updateSearchSuggestions(suggestions: [Wine])
-    func updateUI(sections: [VinchyViewControllerViewModel.Section])
+    func updateUI(viewModel: VinchyViewControllerViewModel)
     func updateUI(didFindWines: [Wine])
 }
