@@ -8,6 +8,15 @@
 
 import Foundation
 
-public func localized(_ string: String) -> String {
-    NSLocalizedString(string, comment: "")
+public enum LocalizedSource: String {
+  case common = "Localizable"
+  case countries = "Countries"
+}
+
+public func localized(
+  _ string: String,
+  from source: LocalizedSource = .common)
+  -> String
+{
+  NSLocalizedString(string, tableName: source.rawValue, bundle: Bundle.main, comment: "")
 }
