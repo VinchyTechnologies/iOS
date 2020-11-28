@@ -50,6 +50,16 @@ final class StoryCollectionCell: HighlightCollectionCell, Reusable  {
       titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
       titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12),
     ])
+
+    let gradientView = GradientView(frame: .zero)
+    insertSubview(gradientView, aboveSubview: imageView)
+    gradientView.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      gradientView.topAnchor.constraint(equalTo: titleLabel.topAnchor, constant: -15),
+      gradientView.leadingAnchor.constraint(equalTo: leadingAnchor),
+      gradientView.trailingAnchor.constraint(equalTo: trailingAnchor),
+      gradientView.bottomAnchor.constraint(equalTo: bottomAnchor),
+    ])
   }
 
   required init?(coder: NSCoder) { fatalError() }
