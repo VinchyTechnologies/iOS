@@ -8,6 +8,6 @@
 
 import Display
 
-protocol WineDetailViewControllerProtocol: Alertable, Loadable {
+protocol WineDetailViewControllerProtocol: Alertable, StatusAlertable, Loadable {
   func updateUI(viewModel: WineDetailViewModel)
 }

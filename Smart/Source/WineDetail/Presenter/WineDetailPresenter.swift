@@ -194,4 +194,20 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
     viewController?.updateUI(viewModel: WineDetailViewModel(navigationTitle: wine.title, sections: sections))
     
   }
+
+  func showStatusAlertDidLikedSuccessfully() {
+    viewController?.showStatusAlert(
+      viewModel: .init(
+        image: UIImage(systemName: "heart"),
+        titleText: localized("loved").firstLetterUppercased(),
+        descriptionText: localized("will_recommend_more").firstLetterUppercased()))
+  }
+
+  func showStatusAlertDidDislikedSuccessfully() {
+    viewController?.showStatusAlert(
+      viewModel: .init(
+        image: UIImage(systemName: "heart.slash"),
+        titleText: localized("unloved").firstLetterUppercased(),
+        descriptionText: localized("will_recommend_less").firstLetterUppercased()))
+  }
 }

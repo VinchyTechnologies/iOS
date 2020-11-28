@@ -13,6 +13,7 @@ def commonPods
   pod 'Firebase/Analytics'
   pod 'Firebase/RemoteConfig'
   pod 'CocoaDebug', :configurations => ['Debug']
+  pod 'SPAlert'
 end
 
 target 'Smart' do

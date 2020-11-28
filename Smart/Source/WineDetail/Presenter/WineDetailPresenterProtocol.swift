@@ -18,4 +18,6 @@ protocol WineDetailPresenterProtocol: AnyObject {
   func showNetworkErrorAlert(error: Error)
   func showAlertWineAlreadyDisliked()
   func showAlertWineAlreadyLiked()
+  func showStatusAlertDidLikedSuccessfully()
+  func showStatusAlertDidDislikedSuccessfully()
 }

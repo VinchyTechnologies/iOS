@@ -55,6 +55,11 @@
 "choose" = "choose";
 "сhoose_countries" = "choose countries";
 "i_use_vinchy" = "I use Vinchy to choose wine, I recommend it to everyone";
+"loved" = "loved";
+"will_recommend_more" = "We'll recommend more like this";
+"unloved" = "unloved";
+"will_recommend_less" = "We'll stop recommending more like this";
+
 
 // MARK: - Sugar
 "sugar" = "sugar";
@@ -85,7 +90,7 @@
 
 // MARK: - Tabs
 "explore" = "explore";
-"favourites" = "favourites";
+"favourites" = "saved";
 "notes" = "notes";
 "info" = "info";
 

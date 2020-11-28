@@ -46,6 +46,7 @@
 		CA3B1D5424A0A36300FAA08A /* NotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B1D5324A0A36300FAA08A /* NotesViewController.swift */; };
 		CA3C97DF25723C570036F7D9 /* TitleCopyableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3C97DE25723C570036F7D9 /* TitleCopyableCell.swift */; };
 		CA3C97E6257245F40036F7D9 /* Countries.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA3C97E8257245F40036F7D9 /* Countries.strings */; };
+		CA3C981F257260BC0036F7D9 /* StatusAlertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3C981E257260BC0036F7D9 /* StatusAlertable.swift */; };
 		CA3CEFB0251288F000AAA692 /* country_codes.json in Resources */ = {isa = PBXBuildFile; fileRef = CA3CEFAF251288F000AAA692 /* country_codes.json */; };
 		CA445F6B24BFA3C20023A09F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA445F6D24BFA3C20023A09F /* InfoPlist.strings */; };
 		CA46DBE7252518230007819E /* OnboardingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46DBE6252518230007819E /* OnboardingRepository.swift */; };
@@ -236,6 +237,7 @@
 		CA3C97DE25723C570036F7D9 /* TitleCopyableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCopyableCell.swift; sourceTree = "<group>"; };
 		CA3C97E7257245F40036F7D9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Countries.strings; sourceTree = "<group>"; };
 		CA3C97EB257245FB0036F7D9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Countries.strings; sourceTree = "<group>"; };
+		CA3C981E257260BC0036F7D9 /* StatusAlertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusAlertable.swift; sourceTree = "<group>"; };
 		CA3CEFAF251288F000AAA692 /* country_codes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = country_codes.json; sourceTree = "<group>"; };
 		CA445F6C24BFA3C20023A09F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CA445F6E24BFA3CD0023A09F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -695,6 +697,7 @@
 				CA8198BF253CB0490056A1C6 /* ErrorDescription.swift */,
 				CA472AC1245EDE2F009149FF /* SceneDelegate.swift */,
 				CA3837CB246FCF3C00AD5FCC /* TabBarController.swift */,
+				CA3C981E257260BC0036F7D9 /* StatusAlertable.swift */,
 			);
 			path = "Supported Files";
 			sourceTree = "<group>";
@@ -1437,6 +1440,7 @@
 				CAF514292461C52400667ED0 /* MoreRouter.swift in Sources */,
 				CACA7E9C254C57CC0099E622 /* WriteNotePresenter.swift in Sources */,
 				CA472AC2245EDE2F009149FF /* SceneDelegate.swift in Sources */,
+				CA3C981F257260BC0036F7D9 /* StatusAlertable.swift in Sources */,
 				CA3837CC246FCF3C00AD5FCC /* TabBarController.swift in Sources */,
 				CA99E65124F58A6000C36BEE /* ToolCollectionCell.swift in Sources */,
 				CA276D55256AC6720061BEBE /* FakeCell.swift in Sources */,

@@ -11,28 +11,28 @@ import Combine
 import StringFormatting
 
 public protocol Alertable: UIViewController {
-    @discardableResult
-    func showAlert(title: String, message: String?) -> AnyPublisher<Void, Never>
+  @discardableResult
+  func showAlert(title: String, message: String?) -> AnyPublisher<Void, Never>
 }
 
 extension Alertable {
 
-    @discardableResult
-    public func showAlert(title: String = localized("error").firstLetterUppercased(), message: String?) -> AnyPublisher<Void, Never> {
+  @discardableResult
+  public func showAlert(title: String = localized("error").firstLetterUppercased(), message: String?) -> AnyPublisher<Void, Never> {
 
-        return Future { resolve in
-            DispatchQueue.main.async {
-                let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-                alertController.view.tintColor = .accent
-                alertController.addAction(UIAlertAction(title: "OK", style: .default) { _ in
-                    resolve(.success(()))
-                })
-                self.present(alertController, animated: true, completion: nil)
-            }
-        }
-        .handleEvents(receiveCancel: {
-            self.dismiss(animated: true)
+    return Future { resolve in
+      DispatchQueue.main.async {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.view.tintColor = .accent
+        alertController.addAction(UIAlertAction(title: "OK", style: .default) { _ in
+          resolve(.success(()))
         })
-        .eraseToAnyPublisher()
+        self.present(alertController, animated: true, completion: nil)
+      }
     }
+    .handleEvents(receiveCancel: {
+      self.dismiss(animated: true)
+    })
+    .eraseToAnyPublisher()
+  }
 }

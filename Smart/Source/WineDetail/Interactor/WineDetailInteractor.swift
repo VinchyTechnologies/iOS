@@ -103,6 +103,7 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
       dataBase.remove(object: dbWine, at: .dislike)
     } else {
       dataBase.add(object: DBWine(id: dataBase.incrementID(path: .dislike), wineID: wine.id, title: wine.title), at: .dislike)
+      presenter.showStatusAlertDidDislikedSuccessfully()
     }
   }
   
@@ -145,6 +146,7 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
       dataBase.remove(object: dbWine, at: .like)
     } else {
       dataBase.add(object: DBWine(id: dataBase.incrementID(path: .like), wineID: wine.id, title: wine.title), at: .like)
+      presenter.showStatusAlertDidLikedSuccessfully()
     }
   }
 }
