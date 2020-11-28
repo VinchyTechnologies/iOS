@@ -174,7 +174,7 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
     
     if isDescriptionInWineDetailEnabled {
       sections += [
-        .title([.init(
+        .text([.init(
                   titleText: NSAttributedString(
                     string: wine.desc ?? "",
                     font: Font.light(18),

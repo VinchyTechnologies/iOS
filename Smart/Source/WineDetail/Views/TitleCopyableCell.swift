@@ -1,15 +1,16 @@
 //
-//  TextCollectionCell.swift
-//  CommonUI
+//  TitleCopyableCell.swift
+//  Smart
 //
-//  Created by Aleksei Smirnov on 25.08.2020.
+//  Created by Aleksei Smirnov on 28.11.2020.
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
 import UIKit
 import Display
+import CommonUI
 
-public struct TextCollectionCellViewModel: ViewModelProtocol {
+public struct TitleCopyableCellViewModel: ViewModelProtocol {
 
   fileprivate let titleText: NSAttributedString?
 
@@ -18,22 +19,22 @@ public struct TextCollectionCellViewModel: ViewModelProtocol {
   }
 }
 
-public final class TextCollectionCell: UICollectionViewCell, Reusable {
+public final class TitleCopyableCell: UICollectionViewCell, Reusable {
 
-  private let label = UILabel()
+  private let label = CopyableLabel()
 
   public override init(frame: CGRect) {
     super.init(frame: frame)
 
     label.numberOfLines = 0
 
-    addSubview(label)
+    contentView.addSubview(label)
     label.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      label.leadingAnchor.constraint(equalTo: leadingAnchor),
-      label.topAnchor.constraint(equalTo: topAnchor),
-      label.trailingAnchor.constraint(equalTo: trailingAnchor),
-      label.bottomAnchor.constraint(equalTo: bottomAnchor),
+      label.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+      label.topAnchor.constraint(equalTo: contentView.topAnchor),
+      label.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor),
+      label.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
     ])
   }
 
@@ -51,9 +52,9 @@ public final class TextCollectionCell: UICollectionViewCell, Reusable {
   }
 }
 
-extension TextCollectionCell: Decoratable {
+extension TitleCopyableCell: Decoratable {
 
-  public typealias ViewModel = TextCollectionCellViewModel
+  public typealias ViewModel = TitleCopyableCellViewModel
 
   public func decorate(model: ViewModel) {
     label.attributedText = model.titleText

@@ -49,8 +49,8 @@ final class WineDetailViewController: UIViewController {
       let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(300)), subitems: [item])
       let section = NSCollectionLayoutSection(group: group)
       return section
-      
-    case .title:
+
+    case .title, .text:
       let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(30)))
       let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(30)), subitems: [item])
       let section = NSCollectionLayoutSection(group: group)
@@ -104,6 +104,7 @@ final class WineDetailViewController: UIViewController {
     
     collectionView.register(
       GalleryCell.self,
+      TitleCopyableCell.self,
       TextCollectionCell.self,
       ToolCollectionCell.self,
       ShortInfoCollectionCell.self,
@@ -165,8 +166,11 @@ extension WineDetailViewController: UICollectionViewDataSource {
     switch type {
     case .gallery(let model):
       return model.count
-      
+
     case .title(let model):
+      return model.count
+      
+    case .text(let model):
       return model.count
       
     case .tool(let model):
@@ -202,8 +206,14 @@ extension WineDetailViewController: UICollectionViewDataSource {
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GalleryCell.reuseId, for: indexPath) as! GalleryCell
       cell.decorate(model: model[indexPath.row])
       return cell
-      
+
     case .title(let model):
+      // swiftlint:disable:next force_cast
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TitleCopyableCell.reuseId, for: indexPath) as! TitleCopyableCell
+      cell.decorate(model: model[indexPath.row])
+      return cell
+      
+    case .text(let model):
       // swiftlint:disable:next force_cast
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseId, for: indexPath) as! TextCollectionCell
       cell.decorate(model: model[indexPath.row])
