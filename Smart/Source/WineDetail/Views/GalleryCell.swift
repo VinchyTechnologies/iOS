@@ -23,7 +23,6 @@ final class GalleryCell: UICollectionViewCell, Reusable {
   
   private var urls: [URL] = [] {
     didSet {
-      //            print(urls)
       DispatchQueue.main.async {
         self.pager.reloadData()
       }

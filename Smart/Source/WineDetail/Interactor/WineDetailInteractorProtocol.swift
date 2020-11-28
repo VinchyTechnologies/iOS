@@ -11,9 +11,10 @@ import UIKit // TODO: - delete UIKit
 protocol WineDetailInteractorProtocol: AnyObject {
   func viewDidLoad()
   func didTapLikeButton(_ button: UIButton)
-  func didTapDislikeButton(_ button: UIButton)
+  func didTapDislikeButton()
   func didTapShareButton()
   func didTapNotes()
+  func didTapMore()
   func didTapPriceButton()
   func didTapReportAnError()
 }

@@ -89,6 +89,7 @@ PODS:
   - SDWebImage (5.9.4):
     - SDWebImage/Core (= 5.9.4)
   - SDWebImage/Core (5.9.4)
+  - Sheeeeeeeeet (3.1.4)
   - SPAlert (2.1.4)
   - SwiftLint (0.40.3)
 
@@ -100,6 +101,7 @@ DEPENDENCIES:
   - Google-Mobile-Ads-SDK
   - RealmSwift (~> 10.0.0)
   - SDWebImage
+  - Sheeeeeeeeet
   - SPAlert
   - SwiftLint
 
@@ -125,6 +127,7 @@ SPEC REPOS:
     - Realm
     - RealmSwift
     - SDWebImage
+    - Sheeeeeeeeet
     - SPAlert
     - SwiftLint
 
@@ -149,9 +152,10 @@ SPEC CHECKSUMS:
   Realm: 5654b8e5e45034d07b219e089034be2ef7d1e7bf
   RealmSwift: 5b4c8c85be4c14ff52054a4d80a8d338167dd79c
   SDWebImage: b69257f4ab14e9b6a2ef53e910fdf914d8f757c1
+  Sheeeeeeeeet: d4808c23c1d0aca2ccba13353ec7fa17ada2f129
   SPAlert: 1a8afa1c6ac86a82ab5b2cfdf7f9a51e68cb6c0c
   SwiftLint: dfd554ff0dff17288ee574814ccdd5cea85d76f7
 
-PODFILE CHECKSUM: 1b102b31750b6bbace0869d07f5f5e9131f53f76
+PODFILE CHECKSUM: 21f638afef08ffff313c6d7de988b546032065f4
 
 COCOAPODS: 1.9.3

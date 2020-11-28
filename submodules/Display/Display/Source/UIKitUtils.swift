@@ -9,78 +9,78 @@
 import UIKit
 
 extension UIColor {
-    public static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat = 1.0) -> UIColor {
-        return UIColor(red: red / 255, green: green / 255, blue: blue / 255, alpha: alpha)
-    }
+  public static func rgb(red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat = 1.0) -> UIColor {
+    return UIColor(red: red / 255, green: green / 255, blue: blue / 255, alpha: alpha)
+  }
 }
 
 public protocol Reusable: AnyObject {
-    static var reuseId: String { get }
+  static var reuseId: String { get }
 }
 
 public extension Reusable where Self: UITableViewCell {
-    static var reuseId: String {
-        return String(describing: self)
-    }
+  static var reuseId: String {
+    return String(describing: self)
+  }
 }
 
 public extension Reusable where Self: UICollectionViewCell {
-    static var reuseId: String {
-        return String(describing: self)
-    }
+  static var reuseId: String {
+    return String(describing: self)
+  }
 }
 
 public extension Reusable where Self: UICollectionReusableView {
-    static var reuseId: String {
-        return String(describing: self)
-    }
+  static var reuseId: String {
+    return String(describing: self)
+  }
 }
 
 public extension UICollectionView {
 
-    typealias ReusableCollectionViewCell = Reusable & UICollectionViewCell
+  typealias ReusableCollectionViewCell = Reusable & UICollectionViewCell
 
-    func register(_ array: ReusableCollectionViewCell.Type...) {
-        array.forEach { (type) in
-            register(type.self, forCellWithReuseIdentifier: type.reuseId)
-        }
+  func register(_ array: ReusableCollectionViewCell.Type...) {
+    array.forEach { (type) in
+      register(type.self, forCellWithReuseIdentifier: type.reuseId)
     }
+  }
 }
 
 public protocol ViewModelProtocol { }
 
 public protocol Decoratable {
 
-    associatedtype ViewModel: ViewModelProtocol
+  associatedtype ViewModel: ViewModelProtocol
 
-    func decorate(model: ViewModel)
+  func decorate(model: ViewModel)
 }
 
 public extension UIApplication {
 
-    var asKeyWindow: UIWindow? {
-        UIApplication.shared.connectedScenes
-            .filter({ $0.activationState == .foregroundActive })
-            .map({ $0 as? UIWindowScene })
-            .compactMap({ $0 })
-            .first?.windows
-            .filter({ $0.isKeyWindow }).first
+  var asKeyWindow: UIWindow? {
+    UIApplication.shared.connectedScenes
+      .filter({ $0.activationState == .foregroundActive })
+      .map({ $0 as? UIWindowScene })
+      .compactMap({ $0 })
+      .first?.windows
+      .filter({ $0.isKeyWindow }).first
+  }
+
+  static func topViewController(base: UIViewController? = UIApplication.shared.asKeyWindow?.rootViewController) -> UIViewController? {
+
+    if let nav = base as? UINavigationController {
+      return topViewController(base: nav.visibleViewController)
+
+    } else if let tab = base as? UITabBarController, let selected = tab.selectedViewController {
+      return topViewController(base: selected)
+
+    } else if let presented = base?.presentedViewController {
+      return topViewController(base: presented)
     }
 
-    static func topViewController(base: UIViewController? = UIApplication.shared.asKeyWindow?.rootViewController) -> UIViewController? {
-
-        if let nav = base as? UINavigationController {
-            return topViewController(base: nav.visibleViewController)
-
-        } else if let tab = base as? UITabBarController, let selected = tab.selectedViewController {
-            return topViewController(base: selected)
-
-        } else if let presented = base?.presentedViewController {
-            return topViewController(base: presented)
-        }
-
-        return base
-    }
+    return base
+  }
 }
 
 //public extension UIImage {
@@ -103,18 +103,18 @@ public extension UIApplication {
 //}
 
 public extension UIView {
-    func fill() {
+  func fill() {
 
-        guard let superView = superview else {
-            return
-        }
-
-        translatesAutoresizingMaskIntoConstraints = false
-        NSLayoutConstraint.activate([
-            topAnchor.constraint(equalTo: superView.topAnchor),
-            leadingAnchor.constraint(equalTo: superView.leadingAnchor),
-            bottomAnchor.constraint(equalTo: superView.bottomAnchor),
-            trailingAnchor.constraint(equalTo: superView.trailingAnchor),
-        ])
+    guard let superView = superview else {
+      return
     }
+
+    translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      topAnchor.constraint(equalTo: superView.topAnchor),
+      leadingAnchor.constraint(equalTo: superView.leadingAnchor),
+      bottomAnchor.constraint(equalTo: superView.bottomAnchor),
+      trailingAnchor.constraint(equalTo: superView.trailingAnchor),
+    ])
+  }
 }

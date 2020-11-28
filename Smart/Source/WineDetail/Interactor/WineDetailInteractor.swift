@@ -9,6 +9,12 @@
 import VinchyCore
 import Database
 import EmailService
+import Sheeeeeeeeet
+
+enum WineDetailMoreActions {
+  case reportAnError
+  case dislike
+}
 
 final class WineDetailInteractor {
   
@@ -73,6 +79,34 @@ final class WineDetailInteractor {
 // MARK: - WineDetailInteractorProtocol
 
 extension WineDetailInteractor: WineDetailInteractorProtocol {
+
+  func didTapMore() {
+    guard let wine = wine else { return }
+    var menuItems: [MenuItem] = []
+
+    let imageName = isDisliked(wine: wine) ? "heart.slash.fill" : "heart.slash"
+
+    let dislikeMenuItem = MenuItem(
+      title: presenter.dislikeText ?? "",
+      subtitle: nil,
+      value: WineDetailMoreActions.dislike,
+      image: UIImage(systemName: imageName),
+      isEnabled: true,
+      tapBehavior: .none)
+
+    let reportAnErrorMenuItem = MenuItem(
+      title: presenter.reportAnErrorText ?? "",
+      subtitle: nil,
+      value: WineDetailMoreActions.reportAnError,
+      image: nil,
+      isEnabled: true,
+      tapBehavior: .none)
+
+    menuItems.append(dislikeMenuItem)
+    menuItems.append(reportAnErrorMenuItem)
+    
+    router.showMoreActionSheet(menuItems: menuItems, appearance: VinchyActionSheetAppearance())
+  }
   
   func didTapPriceButton() {
     
@@ -89,12 +123,11 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
     }
   }
   
-  func didTapDislikeButton(_ button: UIButton) {
+  func didTapDislikeButton() {
     
     guard let wine = wine else { return }
 
     if isFavourite(wine: wine) {
-      button.isSelected = !button.isSelected
       presenter.showAlertWineAlreadyLiked()
       return
     }

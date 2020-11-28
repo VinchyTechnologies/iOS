@@ -10,6 +10,7 @@ import UIKit
 import Firebase
 import GoogleMobileAds
 import SwiftUI
+import Sheeeeeeeeet
 
 #if canImport(AppTrackingTransparency)
 import AppTrackingTransparency

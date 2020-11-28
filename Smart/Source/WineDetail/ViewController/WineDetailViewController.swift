@@ -14,7 +14,7 @@ import GoogleMobileAds
 
 fileprivate enum C {
   
-  static let imageConfig = UIImage.SymbolConfiguration(pointSize: 22, weight: .medium, scale: .default)
+  static let imageConfig = UIImage.SymbolConfiguration(pointSize: 18, weight: .medium, scale: .default)
 }
 
 final class WineDetailViewController: UIViewController {
@@ -115,20 +115,34 @@ final class WineDetailViewController: UIViewController {
     
     return collectionView
   }()
-  
+
+  private let noteButton = UIButton()
+  private let moreButton = UIButton()
+
   // MARK: - Lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
-    let rightBarButtonItem = UIBarButtonItem(
-      image: UIImage(systemName: "square.and.pencil",
-                     withConfiguration: C.imageConfig),
-      style: .plain,
-      target: self,
-      action: #selector(didTapNotes))
-    
-    navigationItem.rightBarButtonItem = rightBarButtonItem
+
+    noteButton.setImage(UIImage(systemName: "square.and.pencil", withConfiguration: C.imageConfig), for: .normal)
+    noteButton.backgroundColor = .option
+    noteButton.contentEdgeInsets = .init(top: 6, left: 6, bottom: 6, right: 6)
+    noteButton.titleEdgeInsets = .init(top: 0, left: 2, bottom: 0, right: 2)
+    noteButton.tintColor = .dark
+    noteButton.addTarget(self, action: #selector(didTapNotes(_:)), for: .touchUpInside)
+
+    let spacer = UIView(frame: .init(x: 0, y: 0, width: 2, height: 2))
+
+    moreButton.setImage(UIImage(systemName: "ellipsis", withConfiguration: C.imageConfig), for: .normal)
+    moreButton.backgroundColor = .option
+    moreButton.contentEdgeInsets = .init(top: 6, left: 6, bottom: 6, right: 6)
+    moreButton.tintColor = .dark
+    moreButton.addTarget(self, action: #selector(didTapMore(_:)), for: .touchUpInside)
+
+    let moreBarButtonItem = UIBarButtonItem(customView: moreButton)
+    let noteBarButtonItem = UIBarButtonItem(customView: noteButton)
+    let spacerBarItem = UIBarButtonItem(customView: spacer)
+    navigationItem.rightBarButtonItems = [moreBarButtonItem, spacerBarItem, noteBarButtonItem]
     
     view.addSubview(collectionView)
     collectionView.frame = view.frame
@@ -139,13 +153,20 @@ final class WineDetailViewController: UIViewController {
   override func viewWillLayoutSubviews() {
     super.viewWillLayoutSubviews()
     collectionView.contentInset = .init(top: 0, left: 0, bottom: 15, right: 0)
+    noteButton.layer.cornerRadius = noteButton.bounds.width / 2
+    moreButton.layer.cornerRadius = moreButton.bounds.width / 2
   }
   
   // MARK: - Private Methods
   
   @objc
-  private func didTapNotes() {
+  private func didTapNotes(_ button: UIButton) {
     interactor?.didTapNotes()
+  }
+
+  @objc
+  private func didTapMore(_ button: UIButton) {
+    interactor?.didTapMore()
   }
 }
 
@@ -278,7 +299,7 @@ extension WineDetailViewController: ButtonCollectionCellDelegate {
   
   func didTapDislikeButton(_ button: UIButton) {
     button.isSelected = !button.isSelected
-    interactor?.didTapDislikeButton(button)
+    interactor?.didTapDislikeButton()
   }
   
   func didTapReportAnErrorButton(_ button: UIButton) {

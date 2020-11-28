@@ -121,6 +121,14 @@ final class WineDetailPresenter {
 // MARK: - WineDetailPresenterProtocol
 
 extension WineDetailPresenter: WineDetailPresenterProtocol {
+  
+  var reportAnErrorText: String? {
+    localized("tell_about_error").firstLetterUppercased()
+  }
+
+  var dislikeText: String? {
+    localized("unlike").firstLetterUppercased()
+  }
 
   func showAlertWineAlreadyDisliked() {
     viewController?.showAlert(title: localized("error").firstLetterUppercased(), message: localized("you_have_already_disliked_the_wine"))
@@ -183,10 +191,10 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
     }
     
     sections += buildGeneralInfo(wine: wine)
+    /*
     sections += buildDislikeButton(wine: wine, isDisliked: isDisliked)
-    
     sections += buildReportAnErrorButton()
-    
+    */
     if isAdAvailable {
       sections += [.ad([1])] // TODO: - Add Real Model
     }

@@ -10,6 +10,7 @@ import UIKit
 import Database
 import VinchyCore
 import EmailService
+import Sheeeeeeeeet
 
 final class WineDetailRouter {
   
@@ -30,7 +31,7 @@ final class WineDetailRouter {
 // MARK: - WineDetailRouterProtocol
 
 extension WineDetailRouter: WineDetailRouterProtocol {
-  
+
   func presentEmailController(HTMLText: String?, recipients: [String]) {
     
     let emailController = emailService.getEmailController(
@@ -52,5 +53,31 @@ extension WineDetailRouter: WineDetailRouterProtocol {
   func presentActivityViewController(items: [Any]) {
     let controller = UIActivityViewController(activityItems: items, applicationActivities: nil)
     viewController?.present(controller, animated: true)
+  }
+
+  func showMoreActionSheet(menuItems: [MenuItem], appearance: ActionSheetAppearance) {
+    ActionSheet.applyAppearance(appearance, force: true)
+    let menu = Menu(items: menuItems)
+    let sheet = menu.toActionSheet { [weak self] (aSheet, action) in
+
+      guard let self = self else { return }
+
+      guard let action = action.value as? WineDetailMoreActions else {
+        return
+      }
+
+      aSheet.dismiss {
+        switch action {
+        case .dislike:
+          self.interactor?.didTapDislikeButton()
+
+        case .reportAnError:
+          self.interactor?.didTapReportAnError()
+        }
+      }
+    }
+
+    guard let viewController = viewController else { return }
+    sheet.present(in: viewController, from: nil)
   }
 }

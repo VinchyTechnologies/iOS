@@ -105,6 +105,7 @@
 		CA81984D253864080056A1C6 /* WineDetailRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA819842253864080056A1C6 /* WineDetailRouterProtocol.swift */; };
 		CA81984E253864080056A1C6 /* WineDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA819843253864080056A1C6 /* WineDetailRouter.swift */; };
 		CA8198C0253CB0490056A1C6 /* ErrorDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8198BF253CB0490056A1C6 /* ErrorDescription.swift */; };
+		CA878A882572E59700B51FF1 /* ActionSheetAppearence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA878A872572E59700B51FF1 /* ActionSheetAppearence.swift */; };
 		CA8CD67725096EC200FDB7AF /* GADTSmallTemplateView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8CD67625096EC200FDB7AF /* GADTSmallTemplateView.m */; };
 		CA8CD67A25096EDA00FDB7AF /* GADTSmallTemplateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA8CD67925096EDA00FDB7AF /* GADTSmallTemplateView.xib */; };
 		CA8CD67C25096EE100FDB7AF /* GADTTemplateView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8CD67B25096EE100FDB7AF /* GADTTemplateView.m */; };
@@ -307,6 +308,7 @@
 		CA819843253864080056A1C6 /* WineDetailRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineDetailRouter.swift; sourceTree = "<group>"; };
 		CA81989A253B897B0056A1C6 /* VinchyRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VinchyRelease.entitlements; sourceTree = "<group>"; };
 		CA8198BF253CB0490056A1C6 /* ErrorDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDescription.swift; sourceTree = "<group>"; };
+		CA878A872572E59700B51FF1 /* ActionSheetAppearence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetAppearence.swift; sourceTree = "<group>"; };
 		CA8CD67525096EC100FDB7AF /* Smart-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smart-Bridging-Header.h"; sourceTree = "<group>"; };
 		CA8CD67625096EC200FDB7AF /* GADTSmallTemplateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADTSmallTemplateView.m; sourceTree = "<group>"; };
 		CA8CD67825096ECD00FDB7AF /* GADTSmallTemplateView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADTSmallTemplateView.h; sourceTree = "<group>"; };
@@ -698,6 +700,7 @@
 				CA472AC1245EDE2F009149FF /* SceneDelegate.swift */,
 				CA3837CB246FCF3C00AD5FCC /* TabBarController.swift */,
 				CA3C981E257260BC0036F7D9 /* StatusAlertable.swift */,
+				CA878A872572E59700B51FF1 /* ActionSheetAppearence.swift */,
 			);
 			path = "Supported Files";
 			sourceTree = "<group>";
@@ -1413,6 +1416,7 @@
 				CA490141252F7EDC00066A98 /* VinchyViewControllerViewModel.swift in Sources */,
 				CA48579B2517CA5200EDA4CE /* VinchyViewControllerProtocol.swift in Sources */,
 				CA472B2B245EDEA0009149FF /* FiltersHeaderView.swift in Sources */,
+				CA878A882572E59700B51FF1 /* ActionSheetAppearence.swift in Sources */,
 				CA99E65324F59CAA00C36BEE /* ShortInfoCollectionCell.swift in Sources */,
 				CA3B1D42249E3FE100FAA08A /* ResultsTableController.swift in Sources */,
 				CA7B836024EF109200991F24 /* MainSubtitleCollectionCell.swift in Sources */,
