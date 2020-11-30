@@ -10,6 +10,7 @@ import VinchyCore
 import Database
 import EmailService
 import Sheeeeeeeeet
+import FirebaseDynamicLinks
 
 enum WineDetailMoreActions {
   case reportAnError
@@ -143,8 +144,44 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
   func didTapShareButton() {
     
     guard let wine = wine else { return }
-    let items = [wine.title]
-    router.presentActivityViewController(items: items)
+
+    var components = URLComponents()
+    components.scheme = Scheme.https.rawValue
+    components.host = domain
+    components.path = "/wines/" + String(wine.id)
+
+    guard let linkParameter = components.url else {
+      return
+    }
+
+    guard
+      let shareLink = DynamicLinkComponents(
+            link: linkParameter,
+            domainURIPrefix: "https://vinchy.page.link") else {
+      return
+    }
+
+    if let bundleID = Bundle.main.bundleIdentifier {
+      shareLink.iOSParameters = DynamicLinkIOSParameters(bundleID: bundleID)
+    }
+    shareLink.iOSParameters?.appStoreID = "1536720416"
+    shareLink.socialMetaTagParameters = DynamicLinkSocialMetaTagParameters()
+    shareLink.socialMetaTagParameters?.title = wine.title
+    shareLink.socialMetaTagParameters?.imageURL = wine.mainImageUrl?.toURL
+
+    shareLink.shorten { [weak self] (url, _, error) in
+      if error != nil {
+        return
+      }
+
+      guard let url = url else { return }
+
+      let items = [wine.title, url] as [Any]
+      self?.router.presentActivityViewController(items: items)
+
+    }
+
+
   }
   
   func viewDidLoad() {

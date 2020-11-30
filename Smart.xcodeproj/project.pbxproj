@@ -286,6 +286,7 @@
 		CA63A12A249A23C100144320 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA63A12C249A244300144320 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA63A12D249A249300144320 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CA78E28325751D97000ECDA8 /* Vinchy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Vinchy.entitlements; sourceTree = "<group>"; };
 		CA7A87E52500169100AAD10F /* VinchySimpleConiniousCaruselCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchySimpleConiniousCaruselCollectionCell.swift; sourceTree = "<group>"; };
 		CA7A87F92506B9D600AAD10F /* ShareUsCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareUsCollectionCell.swift; sourceTree = "<group>"; };
 		CA7A87FB2507ED7800AAD10F /* AdsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -641,6 +642,7 @@
 			children = (
 				CA0A3527247860EB00C400F5 /* Resources */,
 				CA472B2D245EDEC7009149FF /* Source */,
+				CA78E28325751D97000ECDA8 /* Vinchy.entitlements */,
 				CA81989A253B897B0056A1C6 /* VinchyRelease.entitlements */,
 			);
 			path = Smart;
@@ -1680,6 +1682,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = Smart/Vinchy.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 12;

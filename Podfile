@@ -11,6 +11,7 @@ def commonPods
   pod 'Google-Mobile-Ads-SDK'
   pod 'SwiftLint'
   pod 'Firebase/Analytics'
+  pod 'Firebase/DynamicLinks'
   pod 'Firebase/RemoteConfig'
   pod 'CocoaDebug', :configurations => ['Debug']
   pod 'SPAlert'

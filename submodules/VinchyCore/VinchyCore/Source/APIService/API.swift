@@ -8,7 +8,7 @@
 
 import Foundation
 
-let domain = "vinchy.tech" //"wineappp.herokuapp.com"
+public let domain = "vinchy.tech" //"wineappp.herokuapp.com"
 
 public enum APIError: Error {
   

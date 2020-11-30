@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import FirebaseDynamicLinks
+import Display
 
 final class SceneDelegate: UIResponder {
   
@@ -25,14 +27,60 @@ extension SceneDelegate: UIWindowSceneDelegate {
   func scene(
     _ scene: UIScene,
     willConnectTo session: UISceneSession,
-    options connectionOptions: UIScene.ConnectionOptions) {
-    
+    options connectionOptions: UIScene.ConnectionOptions)
+  {
     guard let windowScence = scene as? UIWindowScene else { return }
     let appWindow = UIWindow(frame: windowScence.coordinateSpace.bounds)
     appWindow.windowScene = windowScence
     window = appWindow
     appCoordinator = ApplicationCoordinatorBuilder.make(window: window)
+
     appCoordinator?.start()
+
+    if let userActivity = connectionOptions.userActivities.first {
+      self.scene(scene, continue: userActivity)
+    } else {
+      self.scene(scene, openURLContexts: connectionOptions.urlContexts)
+    }
+  }
+
+  func scene(_ scene: UIScene, continue userActivity: NSUserActivity) {
+    if let incomingURL = userActivity.webpageURL {
+      DynamicLinks.dynamicLinks().handleUniversalLink(incomingURL) { (dynamicLink, error) in
+        guard error == nil, let dynamicLink = dynamicLink else { return }
+        self.handleIncomingDynamicLink(dynamicLink)
+      }
+    }
+  }
+
+  func scene(_ scene: UIScene, openURLContexts URLContexts: Set<UIOpenURLContext>) {
+    guard let urlToOpen = URLContexts.first?.url else { return }
+    if let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: urlToOpen) {
+      handleIncomingDynamicLink(dynamicLink)
+    }
+  }
+
+  private func handleIncomingDynamicLink(_ dynamicLink: DynamicLink) {
+    guard let url = dynamicLink.url else { return }
+
+    guard (dynamicLink.matchType == .unique || dynamicLink.matchType == .default) else {
+      return
+    }
+    
+    if !url.pathComponents.isEmpty {
+      if
+        let word = url.pathComponents[safe: url.pathComponents.count - 2],
+        word == "wines" {
+        guard let id = url.pathComponents.last, let wineID = Int64(id) else {
+          return
+        }
+
+        if let tabbarController = window?.rootViewController as? TabBarController,
+           let firstVC = tabbarController.viewControllers?.first as? NavigationController {
+            firstVC.pushViewController(Assembly.buildDetailModule(wineID: wineID), animated: true)
+        }
+      }
+    }
   }
 }
 

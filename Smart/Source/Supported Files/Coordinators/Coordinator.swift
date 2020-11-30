@@ -178,7 +178,7 @@ class BaseCoordinator: CoordinatorWithDeepLinkSupport {
 }
 
 enum DeepLinkOption {
-  
+  case wineDetail(wineID: Int64)
 }
 
 enum PushNotificationOption {
