@@ -31,7 +31,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     _ application: UIApplication,
     didFinishLaunchingWithOptions
       launchOptions: [UIApplication.LaunchOptionsKey: Any]?)
-  -> Bool
+    -> Bool
   {
     
     #if DEBUG
@@ -69,7 +69,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     #endif
     return true
   }
-  
+
   // MARK: - UISceneSession Lifecycle
   
   func application(

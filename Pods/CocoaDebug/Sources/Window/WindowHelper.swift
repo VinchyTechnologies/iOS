@@ -16,8 +16,8 @@ public class WindowHelper: NSObject {
     lazy var vc = CocoaDebugViewController() //必须使用lazy, 否则崩溃
     
     //FPS
-    fileprivate var fpsCounter = FPSCounter()
-    var fpsCallback:((Int) -> Void)?
+//    fileprivate var fpsCounter = FPSCounter()
+//    var fpsCallback:((Int) -> Void)?
 
     
     private override init() {
@@ -26,7 +26,7 @@ public class WindowHelper: NSObject {
         window.bounds.size.height = UIScreen.main.bounds.height.nextDown
         super.init()
         
-        fpsCounter.delegate = self
+//        fpsCounter.delegate = self
     }
 
     
@@ -35,9 +35,9 @@ public class WindowHelper: NSObject {
             window.rootViewController = vc
             window.delegate = self
             window.isHidden = false
-            _DebugMemoryMonitor.sharedInstance()?.startMonitoring()
+//            _DebugMemoryMonitor.sharedInstance()?.startMonitoring()
 //            _DebugCpuMonitor.sharedInstance()?.startMonitoring()
-            fpsCounter.startMonitoring()
+//            fpsCounter.startMonitoring()
         }
         
         if #available(iOS 13.0, *) {
@@ -64,20 +64,20 @@ public class WindowHelper: NSObject {
             window.rootViewController = nil
             window.delegate = nil
             window.isHidden = true
-            _DebugMemoryMonitor.sharedInstance()?.stopMonitoring()
+//            _DebugMemoryMonitor.sharedInstance()?.stopMonitoring()
 //            _DebugCpuMonitor.sharedInstance()?.stopMonitoring()
-            fpsCounter.stopMonitoring()
+//            fpsCounter.stopMonitoring()
         }
     }
 }
 
 
 // MARK: - FPSCounterDelegate
-extension WindowHelper: FPSCounterDelegate {
-    @objc public func fpsCounter(_ counter: FPSCounter, didUpdateFramesPerSecond fps: Int) {
-        if let fpsCallback = fpsCallback {
-            fpsCallback(fps)
-        }
-    }
-}
+//extension WindowHelper: FPSCounterDelegate {
+//    @objc public func fpsCounter(_ counter: FPSCounter, didUpdateFramesPerSecond fps: Int) {
+//        if let fpsCallback = fpsCallback {
+//            fpsCallback(fps)
+//        }
+//    }
+//}
 

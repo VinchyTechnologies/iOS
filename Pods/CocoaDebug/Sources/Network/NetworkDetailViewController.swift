@@ -18,6 +18,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
     var naviItemTitleLabel: UILabel?
 
     var httpModel: _HttpModel?
+    var httpModels: [_HttpModel]?
     
     var detailModels: [NetworkDetailModel] = [NetworkDetailModel]()
     
@@ -260,6 +261,11 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
 //                    CocoaDebugSettings.shared.responseShakeNetworkDetail = true
                 }
                 alert.addAction(action)
+                
+                alert.popoverPresentationController?.permittedArrowDirections = .init(rawValue: 0)
+                alert.popoverPresentationController?.sourceView = self.view
+                alert.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+                
                 self.present(alert, animated: true, completion: nil)
             } else {
                 //copy to clipboard
@@ -345,6 +351,14 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         //notification
 //        NotificationCenter.default.removeObserver(self)
 
+        if let index = httpModels?.firstIndex(where: { (model) -> Bool in
+            return model.isSelected == true
+        }) {
+            httpModels?[index].isSelected = false
+        }
+        
+        httpModel?.isSelected = true
+        
         if let justCancelCallback = justCancelCallback {
             justCancelCallback()
         }
@@ -360,7 +374,7 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
 //        CocoaDebugSettings.shared.responseShakeNetworkDetail = false
         
         // create an actionSheet
-        let actionSheetController: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        let alert: UIAlertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
         
         // create an action
         let firstAction: UIAlertAction = UIAlertAction(title: "share via email", style: .default) { [weak self] action -> Void in
@@ -379,12 +393,16 @@ class NetworkDetailViewController: UITableViewController, MFMailComposeViewContr
         }
         
         // add actions
-        actionSheetController.addAction(secondAction)
-        actionSheetController.addAction(firstAction)
-        actionSheetController.addAction(cancelAction)
+        alert.addAction(secondAction)
+        alert.addAction(firstAction)
+        alert.addAction(cancelAction)
+        
+        alert.popoverPresentationController?.permittedArrowDirections = .init(rawValue: 0)
+        alert.popoverPresentationController?.sourceView = self.view
+        alert.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
         
         // present an actionSheet...
-        present(actionSheetController, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
     }
     
     
@@ -503,6 +521,11 @@ extension NetworkDetailViewController {
 //                    CocoaDebugSettings.shared.responseShakeNetworkDetail = true
                 })
                 alert.addAction(action)
+                
+                alert.popoverPresentationController?.permittedArrowDirections = .init(rawValue: 0)
+                alert.popoverPresentationController?.sourceView = self.view
+                alert.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+                
                 self.present(alert, animated: true, completion: nil)
             } else {
 //                CocoaDebugSettings.shared.responseShakeNetworkDetail = true

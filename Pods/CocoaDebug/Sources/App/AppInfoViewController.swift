@@ -14,7 +14,6 @@ class AppInfoViewController: UITableViewController {
     @IBOutlet weak var labelBuildNumber: UILabel!
     @IBOutlet weak var labelBundleName: UILabel!
     @IBOutlet weak var labelScreenResolution: UILabel!
-    @IBOutlet weak var labelScreenSize: UILabel!
     @IBOutlet weak var labelDeviceModel: UILabel!
     @IBOutlet weak var labelCrashCount: UILabel!
     @IBOutlet weak var labelBundleID: UILabel!
@@ -28,6 +27,7 @@ class AppInfoViewController: UITableViewController {
     @IBOutlet weak var webViewSwitch: UISwitch!
     @IBOutlet weak var slowAnimationsSwitch: UISwitch!
     @IBOutlet weak var naviItem: UINavigationItem!
+    @IBOutlet weak var rnSwitch: UISwitch!
 
     @IBOutlet weak var controllerMemoryLeaksSwitch: UISwitch!
     @IBOutlet weak var viewMemoryLeaksSwitch: UISwitch!
@@ -47,16 +47,15 @@ class AppInfoViewController: UITableViewController {
         naviItem.titleView = naviItemTitleLabel
         
         labelCrashCount.frame.size = CGSize(width: 30, height: 20)
-
-        labelVersionNumber.text = AppInfo.versionNumber
-        labelBuildNumber.text = AppInfo.buildNumber
-        labelBundleName.text = AppInfo.bundleName
-
-        labelScreenResolution.text = Device.screenResolution
-        labelScreenSize.text = "\(Device.screenSize)"
-        labelDeviceModel.text = "\(Device.deviceModel)"
         
-        labelBundleID.text = Bundle.main.bundleIdentifier
+        labelVersionNumber.text = CocoaDebugDeviceInfo.sharedInstance().appVersion
+        labelBuildNumber.text = CocoaDebugDeviceInfo.sharedInstance().appBuiltVersion
+        labelBundleName.text = CocoaDebugDeviceInfo.sharedInstance().appBundleName
+
+        labelScreenResolution.text = "\(Int(CocoaDebugDeviceInfo.sharedInstance().resolution.width))" + "*" + "\(Int(CocoaDebugDeviceInfo.sharedInstance().resolution.height))"
+        labelDeviceModel.text = "\(CocoaDebugDeviceInfo.sharedInstance().getPlatformString)"
+        
+        labelBundleID.text = CocoaDebugDeviceInfo.sharedInstance().appBundleID
         labelignoredURLs.text = String(CocoaDebugSettings.shared.ignoredURLs?.count ?? 0)
         
         labelserverURL.text = CocoaDebugSettings.shared.serverURL
@@ -66,23 +65,25 @@ class AppInfoViewController: UITableViewController {
             labelHtml.font = UIFont.systemFont(ofSize: 15)
         }
         
-        crashSwitch.isOn = CocoaDebugSettings.shared.enableCrashRecording
         logSwitch.isOn = !CocoaDebugSettings.shared.disableLogMonitoring
         networkSwitch.isOn = !CocoaDebugSettings.shared.disableNetworkMonitoring
+        rnSwitch.isOn = !CocoaDebugSettings.shared.disableRNMonitoring
         webViewSwitch.isOn = CocoaDebugSettings.shared.enableWKWebViewMonitoring
         slowAnimationsSwitch.isOn = CocoaDebugSettings.shared.slowAnimations
         controllerMemoryLeaksSwitch.isOn = CocoaDebugSettings.shared.enableMemoryLeaksMonitoring_ViewController
         viewMemoryLeaksSwitch.isOn = CocoaDebugSettings.shared.enableMemoryLeaksMonitoring_View
         memberVariablesMemoryLeaksSwitch.isOn = CocoaDebugSettings.shared.enableMemoryLeaksMonitoring_MemberVariables
+        crashSwitch.isOn = CocoaDebugSettings.shared.enableCrashRecording
 
-        crashSwitch.addTarget(self, action: #selector(crashSwitchChanged), for: UIControl.Event.valueChanged)
         logSwitch.addTarget(self, action: #selector(logSwitchChanged), for: UIControl.Event.valueChanged)
         networkSwitch.addTarget(self, action: #selector(networkSwitchChanged), for: UIControl.Event.valueChanged)
+        rnSwitch.addTarget(self, action: #selector(rnSwitchChanged), for: UIControl.Event.valueChanged)
         webViewSwitch.addTarget(self, action: #selector(webViewSwitchChanged), for: UIControl.Event.valueChanged)
         slowAnimationsSwitch.addTarget(self, action: #selector(slowAnimationsSwitchChanged), for: UIControl.Event.valueChanged)
         controllerMemoryLeaksSwitch.addTarget(self, action: #selector(controllerMemoryLeaksSwitchChanged), for: UIControl.Event.valueChanged)
         viewMemoryLeaksSwitch.addTarget(self, action: #selector(viewMemoryLeaksSwitchChanged), for: UIControl.Event.valueChanged)
         memberVariablesMemoryLeaksSwitch.addTarget(self, action: #selector(memberVariablesMemoryLeaksSwitchChanged), for: UIControl.Event.valueChanged)
+        crashSwitch.addTarget(self, action: #selector(crashSwitchChanged), for: UIControl.Event.valueChanged)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -102,10 +103,20 @@ class AppInfoViewController: UITableViewController {
         
         alert.addAction(cancelAction)
         alert.addAction(okAction)
+        
+        alert.popoverPresentationController?.permittedArrowDirections = .init(rawValue: 0)
+        alert.popoverPresentationController?.sourceView = self.view
+        alert.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+        
         self.present(alert, animated: true, completion: nil)
     }
     
     //MARK: - target action
+    @objc func slowAnimationsSwitchChanged(sender: UISwitch) {
+        CocoaDebugSettings.shared.slowAnimations = slowAnimationsSwitch.isOn
+//        self.showAlert()
+    }
+    
     @objc func controllerMemoryLeaksSwitchChanged(sender: UISwitch) {
         CocoaDebugSettings.shared.enableMemoryLeaksMonitoring_ViewController = controllerMemoryLeaksSwitch.isOn
 //        self.showAlert()
@@ -126,23 +137,38 @@ class AppInfoViewController: UITableViewController {
         self.showAlert()
     }
     
-    @objc func logSwitchChanged(sender: UISwitch) {
-        CocoaDebugSettings.shared.disableLogMonitoring = !logSwitch.isOn
-        self.showAlert()
-    }
-    
     @objc func networkSwitchChanged(sender: UISwitch) {
         CocoaDebugSettings.shared.disableNetworkMonitoring = !networkSwitch.isOn
         self.showAlert()
     }
     
-    @objc func webViewSwitchChanged(sender: UISwitch) {
-        CocoaDebugSettings.shared.enableWKWebViewMonitoring = webViewSwitch.isOn
+    @objc func logSwitchChanged(sender: UISwitch) {
+        CocoaDebugSettings.shared.disableLogMonitoring = !logSwitch.isOn
+        if CocoaDebugSettings.shared.disableLogMonitoring == true {
+            CocoaDebugSettings.shared.disableRNMonitoring = true
+            rnSwitch.setOn(false, animated: true)
+            CocoaDebugSettings.shared.enableWKWebViewMonitoring = false
+            webViewSwitch.setOn(false, animated: true)
+        }
         self.showAlert()
     }
     
-    @objc func slowAnimationsSwitchChanged(sender: UISwitch) {
-        CocoaDebugSettings.shared.slowAnimations = slowAnimationsSwitch.isOn
+    @objc func rnSwitchChanged(sender: UISwitch) {
+        CocoaDebugSettings.shared.disableRNMonitoring = !rnSwitch.isOn
+        if CocoaDebugSettings.shared.disableRNMonitoring == false {
+            CocoaDebugSettings.shared.disableLogMonitoring = false
+            logSwitch.setOn(true, animated: true)
+        }
+        self.showAlert()
+    }
+    
+    @objc func webViewSwitchChanged(sender: UISwitch) {
+        CocoaDebugSettings.shared.enableWKWebViewMonitoring = webViewSwitch.isOn
+        if CocoaDebugSettings.shared.enableWKWebViewMonitoring == true {
+            CocoaDebugSettings.shared.disableLogMonitoring = false
+            logSwitch.setOn(true, animated: true)
+        }
+        self.showAlert()
     }
 }
 
@@ -165,11 +191,6 @@ extension AppInfoViewController {
                 return 0
             }
         }
-        if indexPath.section == 2 && indexPath.row == 1 {
-            if labelScreenSize.text == "0.0" {
-                return 0
-            }
-        }
         if indexPath.section == 5 && indexPath.row == 0 {
             if labelignoredURLs.text == "0" {
                 if UIScreen.main.scale == 3 {
@@ -186,20 +207,30 @@ extension AppInfoViewController {
         tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.section == 1 && indexPath.row == 2 {
-            UIPasteboard.general.string = AppInfo.bundleName
+            UIPasteboard.general.string = CocoaDebugDeviceInfo.sharedInstance().appBundleName
             
             let alert = UIAlertController.init(title: "copied bundle name to clipboard", message: nil, preferredStyle: .alert)
             let action = UIAlertAction.init(title: "OK", style: .cancel, handler: nil)
             alert.addAction(action)
+            
+            alert.popoverPresentationController?.permittedArrowDirections = .init(rawValue: 0)
+            alert.popoverPresentationController?.sourceView = self.view
+            alert.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            
             self.present(alert, animated: true, completion: nil)
         }
         
         if indexPath.section == 1 && indexPath.row == 3 {
-            UIPasteboard.general.string = Bundle.main.bundleIdentifier
+            UIPasteboard.general.string = CocoaDebugDeviceInfo.sharedInstance().appBundleID
             
             let alert = UIAlertController.init(title: "copied bundle id to clipboard", message: nil, preferredStyle: .alert)
             let action = UIAlertAction.init(title: "OK", style: .cancel, handler: nil)
             alert.addAction(action)
+            
+            alert.popoverPresentationController?.permittedArrowDirections = .init(rawValue: 0)
+            alert.popoverPresentationController?.sourceView = self.view
+            alert.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            
             self.present(alert, animated: true, completion: nil)
         }
         
@@ -213,6 +244,11 @@ extension AppInfoViewController {
             let alert = UIAlertController.init(title: "copied server to clipboard", message: nil, preferredStyle: .alert)
             let action = UIAlertAction.init(title: "OK", style: .cancel, handler: nil)
             alert.addAction(action)
+            
+            alert.popoverPresentationController?.permittedArrowDirections = .init(rawValue: 0)
+            alert.popoverPresentationController?.sourceView = self.view
+            alert.popoverPresentationController?.sourceRect = CGRect(x: self.view.bounds.midX, y: self.view.bounds.midY, width: 0, height: 0)
+            
             self.present(alert, animated: true, completion: nil)
         }
     }

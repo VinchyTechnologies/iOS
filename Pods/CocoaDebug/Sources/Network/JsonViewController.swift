@@ -10,6 +10,7 @@ enum EditType {
     case unknown
     case requestHeader
     case responseHeader
+    case log
 }
 
 import Foundation
@@ -32,6 +33,12 @@ class JsonViewController: UIViewController {
     //编辑过的content
     var editedContent: String?
     
+    //log
+    var logTitleString: String?
+    var logModels: [_OCLogModel]?
+    var logModel: _OCLogModel?
+    var justCancelCallback:(() -> Void)?
+
     static func instanceFromStoryBoard() -> JsonViewController {
         let storyboard = UIStoryboard(name: "Network", bundle: Bundle(for: CocoaDebug.self))
         return storyboard.instantiateViewController(withIdentifier: "JsonViewController") as! JsonViewController
@@ -71,6 +78,18 @@ class JsonViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
 //        navigationController?.hidesBarsOnSwipe = false
+        
+        if let index = logModels?.firstIndex(where: { (model) -> Bool in
+            return model.isSelected == true
+        }) {
+            logModels?[index].isSelected = false
+        }
+        
+        logModel?.isSelected = true
+
+        if let justCancelCallback = justCancelCallback {
+            justCancelCallback()
+        }
     }
     
     override func viewDidLoad() {
@@ -106,6 +125,18 @@ class JsonViewController: UIViewController {
             imageView.isHidden = true
             textView.isHidden = false
             textView.text = String(detailModel?.responseHeaderFields?.dictionaryToString()?.dropFirst().dropLast().dropFirst().dropLast().dropFirst().dropFirst() ?? "").replacingOccurrences(of: "\",\n  \"", with: "\",\n\"")
+        }
+        else if editType == .log
+        {
+            imageView.isHidden = true
+            textView.isHidden = false
+            naviItemTitleLabel?.text = logTitleString
+            
+            if let logModel = logModel {
+                textView.text = nil
+                textView.text = logModel.str
+                textView.attributedText = logModel.attr
+            }
         }
         else
         {

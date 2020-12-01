@@ -13,10 +13,12 @@
 #import "NSObject+CocoaDebug.h"
 #import "_GPBMessage+CocoaDebug.h"
 #import "CocoaDebug.h"
+#import "CocoaDebugDeviceInfo.h"
 #import "_CacheStoragePolicy.h"
 #import "_CanonicalRequest.h"
 #import "_CustomHTTPProtocol.h"
 #import "_QNSURLSessionDemux.h"
+#import "_fishhook.h"
 #import "NSArray+_LeaksFinder.h"
 #import "NSDictionary+_LeaksFinder.h"
 #import "NSObject+_LeaksFinder.h"
@@ -37,10 +39,6 @@
 #import "_OCLogHelper.h"
 #import "_OCLogModel.h"
 #import "_OCLogStoreManager.h"
-#import "_DebugConsoleLabel.h"
-#import "_DebugCpuMonitor.h"
-#import "_DebugMemoryMonitor.h"
-#import "_DebugMonitor.h"
 #import "_HttpDatasource.h"
 #import "_HttpModel.h"
 #import "_NetworkHelper.h"
@@ -92,7 +90,6 @@
 #import "_Sandboxer.h"
 #import "_SandboxerHelper.h"
 #import "_Swizzling.h"
-#import "_WeakTimer.h"
 
 FOUNDATION_EXPORT double CocoaDebugVersionNumber;
 FOUNDATION_EXPORT const unsigned char CocoaDebugVersionString[];

@@ -9,13 +9,15 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 
-typedef NS_ENUM(NSInteger, H5LogType) {
-    H5LogTypeNone = 0,
-    H5LogTypeNotNone
+typedef NS_ENUM(NSInteger, CocoaDebugLogType) {
+    CocoaDebugLogTypeNormal = 0,
+    CocoaDebugLogTypeRN,
+    CocoaDebugLogTypeWeb
 };
 
 typedef NS_ENUM (NSInteger, CocoaDebugToolType) {
     CocoaDebugToolTypeNone,
+    CocoaDebugToolTypeRN,
     CocoaDebugToolTypeJson,
     CocoaDebugToolTypeProtobuf
 };
@@ -29,10 +31,11 @@ typedef NS_ENUM (NSInteger, CocoaDebugToolType) {
 @property (nonatomic, strong) UIColor *color;
 
 @property (nonatomic, assign) BOOL isTag;
+@property (nonatomic, assign) BOOL isSelected;
 @property (nonatomic, copy) NSString *str;
 @property (nonatomic, copy) NSAttributedString *attr;
 
-@property (nonatomic, assign) H5LogType h5LogType;
+@property (nonatomic, assign) CocoaDebugLogType logType;
 
 - (instancetype)initWithContent:(NSString *)content color:(UIColor *)color fileInfo:(NSString *)fileInfo isTag:(BOOL)isTag type:(CocoaDebugToolType)type;
 
