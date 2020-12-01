@@ -180,8 +180,6 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
       self?.router.presentActivityViewController(items: items)
 
     }
-
-
   }
   
   func viewDidLoad() {

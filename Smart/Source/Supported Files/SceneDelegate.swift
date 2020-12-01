@@ -47,6 +47,7 @@ extension SceneDelegate: UIWindowSceneDelegate {
   func scene(
     _ scene: UIScene,
     continue userActivity: NSUserActivity) {
+    usleep(50000)
     if let incomingURL = userActivity.webpageURL {
       DynamicLinks.dynamicLinks().handleUniversalLink(incomingURL) { (dynamicLink, error) in
         guard error == nil, let dynamicLink = dynamicLink else { return }

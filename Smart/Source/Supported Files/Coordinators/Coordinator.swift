@@ -191,9 +191,9 @@ enum DeepLinkOption {
         let id = url.pathComponents.last,
         let wineID = Int64(id) else { return nil }
       self = .wineDetail(wineID: wineID)
+    } else {
+      return nil
     }
-
-    return nil
   }
 }
 

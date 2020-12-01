@@ -33,36 +33,55 @@
 
 - (NSString *)parseFileInfo:(NSString *)file function:(NSString *)function line:(NSInteger)line
 {
+    if (![file isKindOfClass:[NSString class]] || ![function isKindOfClass:[NSString class]]) {
+        return @"\n";
+    }
+    
     if ([file isEqualToString:@"XXX"] && [function isEqualToString:@"XXX"] && line == 1) {
         return @"XXX|XXX|1";
     }
     
-    if (line == 0) {
-        NSString *fileName = [[file componentsSeparatedByString:@"/"] lastObject];
+    if (line == 0) { //web
+        NSString *fileName = [[file componentsSeparatedByString:@"/"] lastObject] ?: @"";
         return [NSString stringWithFormat:@"%@ %@\n", fileName, function];
     }
     
-    if (line == 999999999) {
-        NSString *fileName = [[file componentsSeparatedByString:@"/"] lastObject];
+    if (line == 999999999) { //nslog
+        NSString *fileName = [[file componentsSeparatedByString:@"/"] lastObject] ?: @"";
         return [NSString stringWithFormat:@"%@ %@\n", fileName, function];
     }
     
-    NSString *fileName = [[file componentsSeparatedByString:@"/"] lastObject];
+    if (line == -1) { //RN
+        return file;
+    }
+    
+    NSString *fileName = [[file componentsSeparatedByString:@"/"] lastObject] ?: @"";
     return [NSString stringWithFormat:@"%@[%ld]%@\n", fileName, (long)line, function];
 }
 
 - (void)handleLogWithFile:(NSString *)file function:(NSString *)function line:(NSInteger)line message:(NSString *)message color:(UIColor *)color type:(CocoaDebugToolType)type
 {
     if (!self.enable) {return;}
-    
+    if (!file || !function || !message || !color) {return;}
+
     //1.
     NSString *fileInfo = [self parseFileInfo:file function:function line:line];
     
     //2.
     _OCLogModel *newLog = [[_OCLogModel alloc] initWithContent:message color:color fileInfo:fileInfo isTag:NO type:type];
-    if (line == 0 && ![fileInfo isEqualToString:@"XXX|XXX|1"]) {
-        newLog.h5LogType = H5LogTypeNotNone;
+    
+//    if (line == 0 && ![fileInfo isEqualToString:@"XXX|XXX|1"]) {
+//        newLog.logType = CocoaDebugLogType...
+//    }
+    
+    if (type == CocoaDebugToolTypeRN) {
+        newLog.logType = CocoaDebugLogTypeRN;
     }
+    
+    if ([file isEqualToString:@"[WKWebView]"]) {
+        newLog.logType = CocoaDebugLogTypeWeb;
+    }
+    
     [[_OCLogStoreManager shared] addLog:newLog];
     
     //3.

@@ -253,16 +253,16 @@ extension UITableView {
 ///shake
 extension UIWindow {
     
-    private static var _myComputedProperty = [String:Bool]()
+    private static var _cocoadebugShakeProperty = [String:Bool]()
     
-    var myComputedProperty:Bool {
+    var cocoadebugShakeProperty:Bool {
         get {
             let tmpAddress = String(format: "%p", unsafeBitCast(self, to: Int.self))
-            return UIWindow._myComputedProperty[tmpAddress] ?? false
+            return UIWindow._cocoadebugShakeProperty[tmpAddress] ?? false
         }
         set(newValue) {
             let tmpAddress = String(format: "%p", unsafeBitCast(self, to: Int.self))
-            UIWindow._myComputedProperty[tmpAddress] = newValue
+            UIWindow._cocoadebugShakeProperty[tmpAddress] = newValue
         }
     }
     
@@ -274,7 +274,7 @@ extension UIWindow {
     open override func motionBegan(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         super.motionBegan(motion, with: event)
         
-        self.myComputedProperty = true
+        self.cocoadebugShakeProperty = true
 
         if CocoaDebugSettings.shared.responseShake == false {return}
         if motion == .motionShake {
@@ -286,8 +286,8 @@ extension UIWindow {
     open override func motionEnded(_ motion: UIEvent.EventSubtype, with event: UIEvent?) {
         super.motionEnded(motion, with: event)
         
-        if self.myComputedProperty == true {
-            self.myComputedProperty = false
+        if self.cocoadebugShakeProperty == true {
+            self.cocoadebugShakeProperty = false
             return
         }
         
@@ -310,11 +310,11 @@ extension CocoaDebug {
         
         CocoaDebugSettings.shared.isRunning = true
 
-        
-        let enableCrashRecording = UserDefaults.standard.bool(forKey: "enableCrashRecording_CocoaDebug")
+//        let enableWKWebViewMonitoring = UserDefaults.standard.bool(forKey: "enableWKWebViewMonitoring_CocoaDebug")
+//        let enableCrashRecording = UserDefaults.standard.bool(forKey: "enableCrashRecording_CocoaDebug")
         let disableLogMonitoring = UserDefaults.standard.bool(forKey: "disableLogMonitoring_CocoaDebug")
         let disableNetworkMonitoring = UserDefaults.standard.bool(forKey: "disableNetworkMonitoring_CocoaDebug")
-        let enableWKWebViewMonitoring = UserDefaults.standard.bool(forKey: "enableWKWebViewMonitoring_CocoaDebug")
+//        let disableRNMonitoring = UserDefaults.standard.bool(forKey: "disableRNMonitoring_CocoaDebug")
 
         if serverURL == nil {
             CocoaDebugSettings.shared.serverURL = ""
@@ -339,15 +339,17 @@ extension CocoaDebug {
         }
         
         CocoaDebugSettings.shared.visible = false
-        CocoaDebugSettings.shared.logSearchWordDefault = nil
-        CocoaDebugSettings.shared.logSearchWordColor = nil
+        CocoaDebugSettings.shared.logSearchWordNormal = nil
+        CocoaDebugSettings.shared.logSearchWordRN = nil
+        CocoaDebugSettings.shared.logSearchWordWeb = nil
         CocoaDebugSettings.shared.networkSearchWord = nil
-        CocoaDebugSettings.shared.enableCrashRecording = enableCrashRecording
-        CocoaDebugSettings.shared.enableWKWebViewMonitoring = enableWKWebViewMonitoring
         CocoaDebugSettings.shared.logMaxCount = CocoaDebug.logMaxCount
         CocoaDebugSettings.shared.protobufTransferMap = protobufTransferMap
         CocoaDebugSettings.shared.additionalViewController = additionalViewController
-        
+//        CocoaDebugSettings.shared.enableCrashRecording = enableCrashRecording
+//        CocoaDebugSettings.shared.enableWKWebViewMonitoring = enableWKWebViewMonitoring
+//        CocoaDebugSettings.shared.disableRNMonitoring = disableRNMonitoring
+
         var _ = _OCLogStoreManager.shared()
         CocoaDebugSettings.shared.responseShake = true
 //        CocoaDebugSettings.shared.responseShakeNetworkDetail = true
@@ -364,10 +366,10 @@ extension CocoaDebug {
         
         //log
         if disableLogMonitoring == true {
-            _LogHelper.shared.enable = false
+            _SwiftLogHelper.shared.enable = false
             _OCLogHelper.shared()?.enable = false
         } else {
-            _LogHelper.shared.enable = true
+            _SwiftLogHelper.shared.enable = true
             _OCLogHelper.shared()?.enable = true
         }
         
@@ -384,7 +386,7 @@ extension CocoaDebug {
         CocoaDebugSettings.shared.isRunning = false
         WindowHelper.shared.disable()
         _NetworkHelper.shared().disable()
-        _LogHelper.shared.enable = false
+        _SwiftLogHelper.shared.enable = false
         _OCLogHelper.shared()?.enable = false
         CrashLogger.shared.enable = false
         CocoaDebugSettings.shared.responseShake = false
