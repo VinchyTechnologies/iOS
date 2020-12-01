@@ -179,6 +179,22 @@ class BaseCoordinator: CoordinatorWithDeepLinkSupport {
 
 enum DeepLinkOption {
   case wineDetail(wineID: Int64)
+
+  init?(url: URL?) {
+
+    guard let url = url, !url.pathComponents.isEmpty else { return nil }
+    if
+      let word = url.pathComponents[safe: url.pathComponents.count - 2],
+      word == "wines"
+    {
+      guard
+        let id = url.pathComponents.last,
+        let wineID = Int64(id) else { return nil }
+      self = .wineDetail(wineID: wineID)
+    }
+
+    return nil
+  }
 }
 
 enum PushNotificationOption {
