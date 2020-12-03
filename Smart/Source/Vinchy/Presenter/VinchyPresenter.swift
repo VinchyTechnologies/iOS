@@ -131,9 +131,6 @@ extension VinchyPresenter: VinchyPresenterProtocol {
           .init(titleText: localized("like_vinchy"))
         ]))
 
-      case .infinity:
-        break
-
       case .smartFilter:
         break
       }
