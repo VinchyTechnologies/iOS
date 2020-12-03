@@ -76,19 +76,35 @@ final class VinchySimpleConiniousCaruselCollectionCell: UICollectionViewCell, Re
       return 0
     }
     
-    switch viewModel.type.itemSize.height {
-    case .absolute(let itemHeight):
-      return itemHeight
+    switch viewModel.type {
+    case .mini:
+      return 135
+
+    case .big:
+      return 155
       
-    case .dimension(let ratio):
-      return UIScreen.main.bounds.height * ratio
+    case .promo:
+      return 120
+      
+    case .bottles:
+      return 250
+
+    case .shareUs:
+      return 160
+      
+    case .smartFilter:
+      return 250
     }
   }
 }
 
 extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDataSource {
   
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+  func collectionView(
+    _ collectionView: UICollectionView,
+    numberOfItemsInSection section: Int)
+    -> Int
+  {
     
     if self.type == .bottles {
       return collections.first?.wineList.count ?? 0
@@ -136,7 +152,7 @@ extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDataSource
         return .init()
       }
       
-    case .none, .shareUs, .infinity, .smartFilter:
+    case .none, .shareUs, .smartFilter:
       fatalError()
     }
   }
@@ -166,20 +182,41 @@ extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDelegateFl
         break
       }
       
-    case .none, .shareUs, .infinity, .smartFilter:
+    case .none, .shareUs, .smartFilter:
       break
     }
   }
   
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+  func collectionView(
+    _ collectionView: UICollectionView,
+    layout collectionViewLayout: UICollectionViewLayout,
+    sizeForItemAt indexPath: IndexPath)
+    -> CGSize
+  {
     
     let width: CGFloat
     
-    switch self.type.itemSize.width {
-    case .absolute(let _width):
-      width = _width
-    case .dimension(let _width):
-      width = collectionView.frame.width * _width
+    switch self.type {
+    case .mini:
+      width = 135
+
+    case .big:
+      width = 250
+
+    case .promo:
+      width = 290
+
+    case .bottles:
+      width = 150
+
+    case .shareUs:
+      width = collectionView.frame.width - 32
+
+    case .smartFilter:
+      width = collectionView.frame.width - 32
+
+    case .none:
+      width = 0
     }
     
     return .init(width: width, height: collectionView.frame.height)
