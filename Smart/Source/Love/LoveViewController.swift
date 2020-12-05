@@ -185,8 +185,7 @@ extension LoveViewController: UICollectionViewDataSource {
       model: .init(
         imageURL: imageURL(from: wine.wineID).toURL,
         titleText: wine.title,
-        subtitleText: nil,
-        backgroundColor: .randomColor))
+        subtitleText: nil))
     return cell
   }
 }

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SDWebImage
 import Display
 
 struct MainSubtitleCollectionCellViewModel: ViewModelProtocol, Hashable {
@@ -66,10 +65,6 @@ extension MainSubtitleCollectionCell: Decoratable {
   
   func decorate(model: ViewModel) {
     subtitleLabel.text = model.subtitleText
-    imageView.sd_setImage(
-      with: model.imageURL,
-      placeholderImage: nil,
-      options: [.progressiveLoad, .continueInBackground],
-      completed: nil)
+    imageView.loadImage(url: model.imageURL)
   }
 }

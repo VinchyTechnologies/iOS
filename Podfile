@@ -6,7 +6,7 @@ workspace 'Smart'
 
 def commonPods
   pod 'RealmSwift', '~> 10.0.0'
-  pod 'SDWebImage'
+  pod 'Nuke'
   pod 'FSPagerView'
   pod 'Google-Mobile-Ads-SDK'
   pod 'SwiftLint'
@@ -34,7 +34,7 @@ end
 
 target 'Display' do
   project 'submodules/Display/Display'
-  pod 'SDWebImage'
+  pod 'Nuke'
 end
 
 target 'Database' do
@@ -52,7 +52,7 @@ end
 
 target 'CommonUI' do
   project 'submodules/CommonUI/CommonUI'
-  pod 'SDWebImage'
+  pod 'Nuke'
 end
 
 target 'LocationUI' do

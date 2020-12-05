@@ -57,6 +57,7 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
     collectionView.register(LoadingCollectionFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: LoadingCollectionFooter.reuseId)
     collectionView.delaysContentTouches = false
     collectionView.contentInset = .init(top: 0, left: 0, bottom: 10, right: 0)
+//    collectionView.prefetchDataSource = self
     
     return collectionView
   }()
@@ -222,7 +223,7 @@ extension ShowcaseViewController: UICollectionViewDataSource {
     if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as? WineCollectionViewCell,
        let wine = categoryItems[safe: indexPath.section]?.wines[safe: indexPath.row] {
       cell.decorate(model: .init(imageURL: wine.mainImageUrl?.toURL, titleText: wine.title,
-                                 subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode), backgroundColor: .randomColor))
+                                 subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode)))
       return cell
     }
     return .init()
@@ -327,3 +328,16 @@ extension ShowcaseViewController: FiltersHeaderViewDelegate {
     }
   }
 }
+
+//extension ShowcaseViewController: UICollectionViewDataSourcePrefetching {
+//  func collectionView(
+//    _ collectionView: UICollectionView,
+//    prefetchItemsAt indexPaths: [IndexPath]) {
+//
+//    indexPaths.forEach { indexPath in
+//      if let wine = categoryItems[safe: indexPath.section]?.wines[safe: indexPath.row] {
+//        prefetch(url: wine.mainImageUrl?.toURL)
+//      }
+//    }
+//  }
+//}

@@ -28,6 +28,7 @@
 		CAA8918D250AB69400ADBFF9 /* HighlightCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA8918C250AB69400ADBFF9 /* HighlightCollectionCell.swift */; };
 		CAA9DC69250EA24900F996A8 /* DecoratorFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA9DC68250EA24900F996A8 /* DecoratorFlowLayout.swift */; };
 		CABDBA9624C31FAC00AD96D6 /* ASPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = CABDBA9524C31FAC00AD96D6 /* ASPageControl.swift */; };
+		CAD904EE257BADEC009FE71F /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD904ED257BADEC009FE71F /* ImageLoader.swift */; };
 		CAE8869D24C0E5F800E33E16 /* Display.h in Headers */ = {isa = PBXBuildFile; fileRef = CAE8869B24C0E5F800E33E16 /* Display.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -55,6 +56,7 @@
 		CAA8918C250AB69400ADBFF9 /* HighlightCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HighlightCollectionCell.swift; sourceTree = "<group>"; };
 		CAA9DC68250EA24900F996A8 /* DecoratorFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecoratorFlowLayout.swift; sourceTree = "<group>"; };
 		CABDBA9524C31FAC00AD96D6 /* ASPageControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ASPageControl.swift; sourceTree = "<group>"; };
+		CAD904ED257BADEC009FE71F /* ImageLoader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageLoader.swift; sourceTree = "<group>"; };
 		CAE8869824C0E5F800E33E16 /* Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAE8869B24C0E5F800E33E16 /* Display.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Display.h; sourceTree = "<group>"; };
 		CAE8869C24C0E5F800E33E16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				CA30393E2568339E00C3A461 /* Haptic.swift */,
 				CA276D51256AC5830061BEBE /* ShimmeringView.swift */,
 				CA3C97EE2572533E0036F7D9 /* GradientView.swift */,
+				CAD904ED257BADEC009FE71F /* ImageLoader.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -256,6 +259,7 @@
 			files = (
 				CA7A87EA2502582C00AAD10F /* PaddingLabel.swift in Sources */,
 				CA53B12524E039F1009A0F85 /* Alertable.swift in Sources */,
+				CAD904EE257BADEC009FE71F /* ImageLoader.swift in Sources */,
 				CA3C97EF2572533E0036F7D9 /* GradientView.swift in Sources */,
 				CA18220424C0F88B00280DD4 /* NavigationController.swift in Sources */,
 				CA5B9019250FEF51006BC638 /* ScrollViewBounceDecorator.swift in Sources */,

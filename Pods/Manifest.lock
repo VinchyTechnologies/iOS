@@ -83,15 +83,13 @@ PODS:
     - nanopb/encode (= 2.30906.0)
   - nanopb/decode (2.30906.0)
   - nanopb/encode (2.30906.0)
+  - Nuke (9.2.0)
   - PromisesObjC (1.2.11)
   - Realm (10.0.0):
     - Realm/Headers (= 10.0.0)
   - Realm/Headers (10.0.0)
   - RealmSwift (10.0.0):
     - Realm (= 10.0.0)
-  - SDWebImage (5.10.0):
-    - SDWebImage/Core (= 5.10.0)
-  - SDWebImage/Core (5.10.0)
   - Sheeeeeeeeet (3.1.4)
   - SPAlert (2.1.4)
   - SwiftLint (0.41.0)
@@ -103,8 +101,8 @@ DEPENDENCIES:
   - Firebase/RemoteConfig
   - FSPagerView
   - Google-Mobile-Ads-SDK
+  - Nuke
   - RealmSwift (~> 10.0.0)
-  - SDWebImage
   - Sheeeeeeeeet
   - SPAlert
   - SwiftLint
@@ -127,10 +125,10 @@ SPEC REPOS:
     - GoogleUserMessagingPlatform
     - GoogleUtilities
     - nanopb
+    - Nuke
     - PromisesObjC
     - Realm
     - RealmSwift
-    - SDWebImage
     - Sheeeeeeeeet
     - SPAlert
     - SwiftLint
@@ -152,14 +150,14 @@ SPEC CHECKSUMS:
   GoogleUserMessagingPlatform: b168e8c46cd8f92aa3e34b584c4ca78a411ce367
   GoogleUtilities: 3dc4ff0d5e4840e2fa8eef0889620e8c33d4218c
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
+  Nuke: 1394e48b0940e01dd20f52ac56b121ab154e370d
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   Realm: 5654b8e5e45034d07b219e089034be2ef7d1e7bf
   RealmSwift: 5b4c8c85be4c14ff52054a4d80a8d338167dd79c
-  SDWebImage: 9169792e9eec3e45bba2a0c02f74bf8bd922d1ee
   Sheeeeeeeeet: d4808c23c1d0aca2ccba13353ec7fa17ada2f129
   SPAlert: 1a8afa1c6ac86a82ab5b2cfdf7f9a51e68cb6c0c
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
 
-PODFILE CHECKSUM: 98ce8477fb443f222cfb5eca977cd674f10544e1
+PODFILE CHECKSUM: 125386053c3cf0c5a34fe7b4c622aaee82d034ad
 
 COCOAPODS: 1.9.3

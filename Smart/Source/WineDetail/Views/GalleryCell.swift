@@ -56,13 +56,8 @@ extension GalleryCell: FSPagerViewDataSource, FSPagerViewDelegate {
   
   func pagerView(_ pagerView: FSPagerView, cellForItemAt index: Int) -> FSPagerViewCell {
     let cell = pagerView.dequeueReusableCell(withReuseIdentifier: "cell", at: index)
-    
-    cell.imageView?.sd_imageTransition = .fade
-    cell.imageView?.sd_setImage(with: urls[index], placeholderImage: nil, options: [.allowInvalidSSLCertificates, .continueInBackground, .retryFailed], completed: { (image, _, _, _) in
-      if image == nil {
-        cell.imageView?.image = UIImage(named: "empty_image_bottle")?.withTintColor(.blueGray)
-      }
-    })
+
+    cell.imageView?.loadBottle(url: urls[safe: index])
     
     cell.imageView?.contentMode = .scaleAspectFit
     cell.contentView.layer.shadowColor = UIColor.white.cgColor

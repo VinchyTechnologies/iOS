@@ -8,10 +8,10 @@
 
 import UIKit
 
-fileprivate let colors: [UIColor] = [
-    UIColor.rgb(red: 240, green: 227, blue: 223),
-    UIColor.rgb(red: 220, green: 215, blue: 210),
-]
+//fileprivate let colors: [UIColor] = [
+//    UIColor.rgb(red: 240, green: 227, blue: 223),
+//    UIColor.rgb(red: 220, green: 215, blue: 210),
+//]
 
 extension UIColor {
 
@@ -33,9 +33,5 @@ extension UIColor {
 
     public final class var option: UIColor {
         UIColor(red: 241 / 255, green: 243 / 255, blue: 246 / 255, alpha: 1.0)
-    }
-
-    public final class var randomColor: UIColor {
-        colors.randomElement() ?? .option
     }
 }
