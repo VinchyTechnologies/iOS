@@ -30,7 +30,7 @@ fileprivate extension FilterCategory {
 
 fileprivate enum C {
   static let navigationTitle = localized("advanced_search")
-  static let moreText = "More"
+  static let moreText = localized("see_all") // TODO: - capitalized with locale
 }
 
 final class AdvancedSearchPresenter {

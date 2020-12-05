@@ -6,6 +6,7 @@
   Copyright © 2020 Aleksei Smirnov. All rights reserved.
 */
 // MARK: - Common
+"see_all" = "Смотреть все";
 "reset" = "сбросить";
 "unavailable_version" = "Данная версия приложения больше не поддерживается. Пожалуйста, обновите приложение.";
 "open_appstore" = "Открыть AppStore";
