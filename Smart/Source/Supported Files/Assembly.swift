@@ -18,7 +18,7 @@ final class Assembly {
   static func buildDetailModule(wineID: Int64) -> UIViewController {
     let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID))
     controller.hidesBottomBarWhenPushed = true
-    controller.extendedLayoutIncludesOpaqueBars = true
+//    controller.extendedLayoutIncludesOpaqueBars = true
     return controller
   }
 
@@ -44,7 +44,7 @@ final class Assembly {
 
   static func buildLoveModule() -> NavigationController {
     let controller = LoveViewController()
-    let navController = NavigationController(rootViewController: controller)
+    let navController = NavigationController(rootViewController: controller, prefersLargeTitles: false)
     return navController
   }
 
@@ -56,8 +56,7 @@ final class Assembly {
 
   static func buildChooseCountiesModule(preSelectedCountryCodes: [String], delegate: CountriesViewControllerDelegate) -> NavigationController {
     let controller = CountriesViewController(preSelectedCountryCodes: preSelectedCountryCodes, delegate: delegate)
-    let navController = NavigationController(rootViewController: controller)
-//    navController.modalPresentationCapturesStatusBarAppearance = true
+    let navController = NavigationController(rootViewController: controller, prefersLargeTitles: false)
     return navController
   }
 
