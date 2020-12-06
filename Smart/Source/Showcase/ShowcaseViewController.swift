@@ -35,7 +35,7 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
   
   private lazy var collectionView: UICollectionView = {
     let rowCount = 2
-    let inset: CGFloat = 10
+    let inset: CGFloat = 16
     let itemWidth = Int((UIScreen.main.bounds.width - inset * CGFloat(rowCount + 1)) / CGFloat(rowCount))
     let itemHeight = Int(Double(itemWidth) * 1.5)
     
@@ -122,12 +122,15 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+
+    navigationItem.largeTitleDisplayMode = .never
+
     view.backgroundColor = .mainBackground
     
     view.addSubview(collectionView)
-    filtersHeaderView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
-    view.addSubview(filtersHeaderView)
+    collectionView.fill()
+//    filtersHeaderView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
+//    view.addSubview(filtersHeaderView)
   }
   
   private func fetchCategoryItems() {

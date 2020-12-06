@@ -33,7 +33,8 @@ final class DocController: UITableViewController, OpenURLProtocol, Alertable {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+
+    navigationItem.largeTitleDisplayMode = .never
     navigationItem.title = localized("legal_documents").firstLetterUppercased()
     tableView.tableFooterView = UIView()
     tableView.separatorInset = .zero

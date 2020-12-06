@@ -49,6 +49,7 @@ final class WriteNoteViewController: UIViewController {
 
     view.backgroundColor = .mainBackground
 
+    navigationItem.largeTitleDisplayMode = .never
     navigationItem.rightBarButtonItem = UIBarButtonItem(
       barButtonSystemItem: .save,
       target: self,

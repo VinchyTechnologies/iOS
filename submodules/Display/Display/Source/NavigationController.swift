@@ -7,65 +7,114 @@
 //
 
 import UIKit
+import Core
 
 public final class NavigationController: UINavigationController {
 
-    public override init(rootViewController: UIViewController) {
-        super.init(rootViewController: rootViewController)
-        rootViewController.extendedLayoutIncludesOpaqueBars = true
-        extendedLayoutIncludesOpaqueBars = true
+  // MARK: - Private Properties
+
+  private let prefersLargeTitles: Bool
+
+  // MARK: - Initializers
+
+  public init(rootViewController: UIViewController, prefersLargeTitles: Bool = true) {
+    self.prefersLargeTitles = prefersLargeTitles
+    super.init(rootViewController: rootViewController)
+  }
+
+  required init?(coder aDecoder: NSCoder) { fatalError() }
+
+  // MARK: - Lifecycle
+
+  public override func viewDidLoad() {
+    super.viewDidLoad()
+
+    switch UIDevice.type {
+    case .iPhoneSE, .iPhone5:
+      navigationBar.prefersLargeTitles = false
+
+    default:
+      navigationBar.prefersLargeTitles = prefersLargeTitles
     }
 
-    required init?(coder aDecoder: NSCoder) { fatalError() }
+    /// BackgroundColor
+    navigationBar.barTintColor = .mainBackground
 
-    public override func viewDidLoad() {
-        super.viewDidLoad()
+    /// Icons color
+    navigationBar.tintColor = .dark
 
-        /// BackgroundColor
-        navigationBar.barTintColor = .mainBackground
-        navigationBar.isTranslucent = false
+    /// Remove underline
+    navigationBar.shadowImage = UIImage()
 
-        /// Remove underline
-        navigationBar.shadowImage = UIImage()
+    navigationBar.titleTextAttributes = [
+      NSAttributedString.Key.font: Font.bold(20),
+      NSAttributedString.Key.foregroundColor: UIColor.dark
+    ]
 
-        /// Icons color
-        navigationBar.tintColor = .dark
+    UIBarButtonItem.appearance().setTitleTextAttributes([
+      NSAttributedString.Key.font: Font.bold(18),
+      NSAttributedString.Key.foregroundColor: UIColor.blueGray,
+    ], for: .normal)
 
-        navigationBar.titleTextAttributes = [
-            NSAttributedString.Key.font: Font.semibold(20),
-            NSAttributedString.Key.foregroundColor: UIColor.dark
-        ]
+    UIBarButtonItem.appearance().setTitleTextAttributes([
+      NSAttributedString.Key.font: Font.bold(18),
+      NSAttributedString.Key.foregroundColor: UIColor.blueGray,
+    ], for: .selected)
 
-        navigationBar.largeTitleTextAttributes = [
-            NSAttributedString.Key.font: Font.semibold(35),
-            NSAttributedString.Key.foregroundColor: UIColor.dark
-        ]
+    UIBarButtonItem.appearance().setTitleTextAttributes([
+      NSAttributedString.Key.font: Font.bold(18),
+      NSAttributedString.Key.foregroundColor: UIColor.blueGray,
+    ], for: .highlighted)
+  }
 
-        UIBarButtonItem.appearance().setTitleTextAttributes([
-            NSAttributedString.Key.font: Font.bold(18),
-            NSAttributedString.Key.foregroundColor: UIColor.blueGray,
-        ], for: .normal)
+  public override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+//    if let lagerTitleView = getLargeTitleView(),
+//       let lagerTitleLabel = getLargeTitleLabel(largeTitleView: lagerTitleView) {
+//      lagerTitleLabel.numberOfLines = 2
+//    }
 
-        UIBarButtonItem.appearance().setTitleTextAttributes([
-            NSAttributedString.Key.font: Font.bold(18),
-            NSAttributedString.Key.foregroundColor: UIColor.blueGray,
-        ], for: .selected)
+    getnavigationBarBackground()?.subviews.forEach { view in
+      if view.isMember(of: UIVisualEffectView.self) {
+        (view as? UIVisualEffectView)?.backgroundColor = .mainBackground
+      }
+    }
+  }
 
-        UIBarButtonItem.appearance().setTitleTextAttributes([
-            NSAttributedString.Key.font: Font.bold(18),
-            NSAttributedString.Key.foregroundColor: UIColor.blueGray,
-        ], for: .highlighted)
+  private func getnavigationBarBackground() -> UIView? {
+    for subview in self.navigationBar.subviews {
+      if NSStringFromClass(subview.classForCoder).contains("_UIBarBackground") {
+        return subview
+      }
+    }
+    return nil
+  }
+
+  private func getLargeTitleView() -> UIView? {
+    for subview in self.navigationBar.subviews
+      where NSStringFromClass(subview.classForCoder).contains("UINavigationBarLargeTitleView") {
+      return subview
     }
 
-    public override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+    return nil
+  }
 
-        viewController.extendedLayoutIncludesOpaqueBars = true
-
-        let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
-        navigationBar.backIndicatorImage = UIImage(systemName: "chevron.left", withConfiguration: imageConfig)
-        navigationBar.backIndicatorTransitionMaskImage = UIImage(systemName: "chevron.left", withConfiguration: imageConfig)
-        viewController.navigationItem.backBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: nil, action: nil)
-
-        super.pushViewController(viewController, animated: animated)
+  private func getLargeTitleLabel(largeTitleView: UIView) -> UILabel? {
+    for subview in largeTitleView.subviews
+      where subview.isMember(of: UILabel.self) {
+      return subview as? UILabel
     }
+
+    return nil
+  }
+
+  public override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+    navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
+    let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
+    navigationBar.backIndicatorImage = UIImage(systemName: "chevron.left", withConfiguration: imageConfig)
+    navigationBar.backIndicatorTransitionMaskImage = UIImage(systemName: "chevron.left", withConfiguration: imageConfig)
+    viewController.navigationItem.leftItemsSupplementBackButton = true
+
+    super.pushViewController(viewController, animated: animated)
+  }
 }
