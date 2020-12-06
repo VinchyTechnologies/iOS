@@ -115,10 +115,11 @@ final class LoveViewController: UIViewController {
     navigationItem.titleView = segmentedControl
 
     view.addSubview(collectionView)
+    collectionView.fill()
     collectionView.backgroundColor = .mainBackground
     collectionView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
     collectionView.delaysContentTouches = false
-    collectionView.frame = view.bounds
+
   }
   
   deinit {
