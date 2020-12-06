@@ -11,14 +11,11 @@ import Core
 
 public final class NavigationController: UINavigationController {
 
-  let prefersLargeTitles: Bool
+  // MARK: - Private Properties
 
-  public override init(rootViewController: UIViewController) {
-    rootViewController.extendedLayoutIncludesOpaqueBars = true
-    self.prefersLargeTitles = true
-    super.init(rootViewController: rootViewController)
-    extendedLayoutIncludesOpaqueBars = true
-  }
+  private let prefersLargeTitles: Bool
+
+  // MARK: - Initializers
 
   public init(rootViewController: UIViewController, prefersLargeTitles: Bool = true) {
     self.prefersLargeTitles = prefersLargeTitles
@@ -26,6 +23,8 @@ public final class NavigationController: UINavigationController {
   }
 
   required init?(coder aDecoder: NSCoder) { fatalError() }
+
+  // MARK: - Lifecycle
 
   public override func viewDidLoad() {
     super.viewDidLoad()
@@ -38,25 +37,17 @@ public final class NavigationController: UINavigationController {
       navigationBar.prefersLargeTitles = prefersLargeTitles
     }
 
-//    UIBarButtonItem.appearance().setBackButtonTitlePositionAdjustment(UIOffset(horizontal: -1000.0, vertical: 0.0), for: .default)
-
     /// BackgroundColor
     navigationBar.barTintColor = .mainBackground
-    navigationBar.isTranslucent = false
-
-    /// Remove underline
-    navigationBar.shadowImage = UIImage()
 
     /// Icons color
     navigationBar.tintColor = .dark
 
-    navigationBar.titleTextAttributes = [
-      NSAttributedString.Key.font: Font.semibold(20),
-      NSAttributedString.Key.foregroundColor: UIColor.dark
-    ]
+    /// Remove underline
+    navigationBar.shadowImage = UIImage()
 
-    navigationBar.largeTitleTextAttributes = [
-      NSAttributedString.Key.font: Font.semibold(32),
+    navigationBar.titleTextAttributes = [
+      NSAttributedString.Key.font: Font.bold(20),
       NSAttributedString.Key.foregroundColor: UIColor.dark
     ]
 
@@ -76,18 +67,54 @@ public final class NavigationController: UINavigationController {
     ], for: .highlighted)
   }
 
+  public override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+//    if let lagerTitleView = getLargeTitleView(),
+//       let lagerTitleLabel = getLargeTitleLabel(largeTitleView: lagerTitleView) {
+//      lagerTitleLabel.numberOfLines = 2
+//    }
+
+    getnavigationBarBackground()?.subviews.forEach { view in
+      if view.isMember(of: UIVisualEffectView.self) {
+        (view as? UIVisualEffectView)?.backgroundColor = .mainBackground
+      }
+    }
+  }
+
+  private func getnavigationBarBackground() -> UIView? {
+    for subview in self.navigationBar.subviews {
+      if NSStringFromClass(subview.classForCoder).contains("_UIBarBackground") {
+        return subview
+      }
+    }
+    return nil
+  }
+
+  private func getLargeTitleView() -> UIView? {
+    for subview in self.navigationBar.subviews
+      where NSStringFromClass(subview.classForCoder).contains("UINavigationBarLargeTitleView") {
+      return subview
+    }
+
+    return nil
+  }
+
+  private func getLargeTitleLabel(largeTitleView: UIView) -> UILabel? {
+    for subview in largeTitleView.subviews
+      where subview.isMember(of: UILabel.self) {
+      return subview as? UILabel
+    }
+
+    return nil
+  }
+
   public override func pushViewController(_ viewController: UIViewController, animated: Bool) {
-
-//    viewController.extendedLayoutIncludesOpaqueBars = true
-
+    navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
     let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
     navigationBar.backIndicatorImage = UIImage(systemName: "chevron.left", withConfiguration: imageConfig)
     navigationBar.backIndicatorTransitionMaskImage = UIImage(systemName: "chevron.left", withConfiguration: imageConfig)
-    UIView.animate(withDuration: 0.25) {
-      viewController.navigationItem.backBarButtonItem = UIBarButtonItem(title: nil, style: .plain, target: nil, action: nil)
-    }
+    viewController.navigationItem.leftItemsSupplementBackButton = true
 
     super.pushViewController(viewController, animated: animated)
-
   }
 }

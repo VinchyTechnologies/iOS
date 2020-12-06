@@ -124,6 +124,8 @@ final class WineDetailViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    navigationItem.largeTitleDisplayMode = .never
+
     noteButton.setImage(UIImage(systemName: "square.and.pencil", withConfiguration: C.imageConfig), for: .normal)
     noteButton.backgroundColor = .option
     noteButton.contentEdgeInsets = .init(top: 6, left: 6, bottom: 6, right: 6)

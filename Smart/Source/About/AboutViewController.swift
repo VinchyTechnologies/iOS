@@ -43,7 +43,8 @@ final class AboutViewController: UIViewController, OpenURLProtocol, Alertable {
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+
+    navigationItem.largeTitleDisplayMode = .never
     view.backgroundColor = .white
     navigationItem.title = localized("about_the_app").firstLetterUppercased()
     

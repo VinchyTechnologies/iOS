@@ -18,12 +18,11 @@ final class Assembly {
   static func buildDetailModule(wineID: Int64) -> UIViewController {
     let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID))
     controller.hidesBottomBarWhenPushed = true
-//    controller.extendedLayoutIncludesOpaqueBars = true
     return controller
   }
 
   static func buildFiltersModule() -> UIViewController {
-    let controller = AdvancedSearchAssembly.assemblyModule() //AdvancedSearchController()
+    let controller = AdvancedSearchAssembly.assemblyModule()
     controller.hidesBottomBarWhenPushed = true
     return controller
   }
@@ -37,7 +36,6 @@ final class Assembly {
 
   static func buildShowcaseModule(navTitle: String?, mode: ShowcaseMode) -> UIViewController {
     let controller = ShowcaseViewController(navTitle: navTitle, mode: mode)
-    controller.extendedLayoutIncludesOpaqueBars = true
     controller.hidesBottomBarWhenPushed = true
     return controller
   }

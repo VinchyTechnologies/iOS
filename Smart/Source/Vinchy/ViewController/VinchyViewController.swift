@@ -111,7 +111,7 @@ final class VinchyViewController: UIViewController {
     definesPresentationContext = true
 
     view.addSubview(collectionView)
-    collectionView.frame = view.frame
+    collectionView.fill()
 
     let filterBarButtonItem = UIBarButtonItem(
       image: UIImage(named: "edit")?.withRenderingMode(.alwaysTemplate),
