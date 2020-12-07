@@ -11,6 +11,8 @@ import Firebase
 import GoogleMobileAds
 import SwiftUI
 import Sheeeeeeeeet
+import FirebaseCrashlytics
+import Core
 
 #if canImport(AppTrackingTransparency)
 import AppTrackingTransparency
@@ -24,8 +26,13 @@ import AdSupport
 import CocoaDebug
 #endif
 
+
 @main
-final class AppDelegate: UIResponder, UIApplicationDelegate {
+final class AppDelegate: UIResponder, UIApplicationDelegate, AssertionErrorHandlerProtocol {
+
+  func handleAssertion(error: NSError) {
+    Crashlytics.crashlytics().record(error: error)
+  }
   
   func application(
     _ application: UIApplication,
@@ -67,6 +74,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     // swiftlint:disable:next force_cast
     GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [kGADSimulatorID as! String]
     #endif
+
+    assertationHandler = AssertionHandler(assertionErrorHandler: self)
     return true
   }
 

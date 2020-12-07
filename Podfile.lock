@@ -7,6 +7,9 @@ PODS:
     - FirebaseAnalytics (= 7.1.0)
   - Firebase/CoreOnly (7.1.0):
     - FirebaseCore (= 7.1.0)
+  - Firebase/Crashlytics (7.1.0):
+    - Firebase/CoreOnly
+    - FirebaseCrashlytics (~> 7.1.0)
   - Firebase/DynamicLinks (7.1.0):
     - Firebase/CoreOnly
     - FirebaseDynamicLinks (~> 7.1.0)
@@ -33,6 +36,12 @@ PODS:
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/Logger (~> 7.0)
     - nanopb (~> 2.30906.0)
+  - FirebaseCrashlytics (7.1.0):
+    - FirebaseCore (~> 7.0)
+    - FirebaseInstallations (~> 7.0)
+    - GoogleDataTransport (~> 8.0)
+    - nanopb (~> 2.30906.0)
+    - PromisesObjC (~> 1.2)
   - FirebaseDynamicLinks (7.1.0):
     - FirebaseCore (~> 7.0)
   - FirebaseInstallations (7.1.0):
@@ -99,6 +108,7 @@ PODS:
 DEPENDENCIES:
   - CocoaDebug
   - Firebase/Analytics
+  - Firebase/Crashlytics
   - Firebase/DynamicLinks
   - Firebase/RemoteConfig
   - FSPagerView
@@ -117,6 +127,7 @@ SPEC REPOS:
     - FirebaseAnalytics
     - FirebaseCore
     - FirebaseCoreDiagnostics
+    - FirebaseCrashlytics
     - FirebaseDynamicLinks
     - FirebaseInstallations
     - FirebaseRemoteConfig
@@ -142,6 +153,7 @@ SPEC CHECKSUMS:
   FirebaseAnalytics: 7f165a56dea86ddd5b8ce02af3bee982c683405c
   FirebaseCore: 20046127eef0fcb8fa25df7fc12f7b97d4e48611
   FirebaseCoreDiagnostics: 872cdb9b749b23346dddd5c1014d1babd2257de3
+  FirebaseCrashlytics: c722e4ca283272eb90eb5bc245fdc6588e2f22c2
   FirebaseDynamicLinks: dadf4564851de0ecdad2dab7fc2d1c401dcaa406
   FirebaseInstallations: 3de38553e86171b5f81d83cdeef63473d37bfdb0
   FirebaseRemoteConfig: 04cd72851dad51780aa66f05b01a7dd0b85cdbf5
@@ -160,6 +172,6 @@ SPEC CHECKSUMS:
   SPAlert: 1a8afa1c6ac86a82ab5b2cfdf7f9a51e68cb6c0c
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
 
-PODFILE CHECKSUM: 98ce8477fb443f222cfb5eca977cd674f10544e1
+PODFILE CHECKSUM: 21a1fd2b1ce2bace9afd06f48eb27090e48a033c
 
-COCOAPODS: 1.9.3
+COCOAPODS: 1.10.0

@@ -13,6 +13,7 @@ def commonPods
   pod 'Firebase/Analytics'
   pod 'Firebase/DynamicLinks'
   pod 'Firebase/RemoteConfig'
+  pod 'Firebase/Crashlytics'
   pod 'CocoaDebug', :configurations => ['Debug']
   pod 'SPAlert'
   pod "Sheeeeeeeeet"
