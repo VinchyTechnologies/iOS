@@ -9,13 +9,16 @@
 import UIKit
 import CommonUI
 import VinchyCore
-import EmailService
 import StringFormatting
 
 final class ResultsTableController: UIViewController {
+
+  // MARK: - Internal Properties
   
   weak var didnotFindTheWineTableCellDelegate: DidnotFindTheWineTableCellProtocol?
-  
+
+  // MARK: - Private Properties
+
   private var didFoundProducts: [Wine] = [] {
     didSet {
       tableView.reloadData()
@@ -24,20 +27,14 @@ final class ResultsTableController: UIViewController {
   
   private let tableView = UITableView()
 
-  private lazy var bottomConstraint = NSLayoutConstraint(
-    item: tableView,
-    attribute: .bottom,
-    relatedBy: .equal,
-    toItem: view,
-    attribute: .bottom,
-    multiplier: 1,
-    constant: 0)
+  // MARK: - Lifecycle
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
     view.addSubview(tableView)
-    tableView.frame = view.frame
+    tableView.fill()
+
     tableView.keyboardDismissMode = .onDrag
 
     tableView.dataSource = self
@@ -49,6 +46,8 @@ final class ResultsTableController: UIViewController {
     tableView.tableFooterView = UIView()
   }
 
+  // MARK: - Internal Methods
+
   func set(wines: [Wine]) {
     didFoundProducts = wines
   }
@@ -57,21 +56,19 @@ final class ResultsTableController: UIViewController {
     didFoundProducts
   }
 
-  func set(constant: CGFloat) {
-    bottomConstraint.constant = constant
-  }
-
   func set(delegate: UITableViewDelegate) {
     tableView.delegate = delegate
   }
 }
+
+// MARK: - UITableViewDataSource
 
 extension ResultsTableController: UITableViewDataSource {
   
   func tableView(
     _ tableView: UITableView,
     numberOfRowsInSection section: Int)
-  -> Int
+    -> Int
   {
     didFoundProducts.count == 0 ? 1 : didFoundProducts.count
   }
@@ -79,7 +76,7 @@ extension ResultsTableController: UITableViewDataSource {
   func tableView(
     _ tableView: UITableView,
     cellForRowAt indexPath: IndexPath)
-  -> UITableViewCell
+    -> UITableViewCell
   {
     
     guard !didFoundProducts.isEmpty else {
@@ -92,7 +89,11 @@ extension ResultsTableController: UITableViewDataSource {
     
     if let cell = tableView.dequeueReusableCell(withIdentifier: WineTableCell.reuseId) as? WineTableCell,
        let wine = didFoundProducts[safe: indexPath.row] {
-      cell.decorate(model: .init(imageURL: wine.mainImageUrl?.toURL, titleText: wine.title, subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode)))
+      cell.decorate(
+        model: .init(
+          imageURL: wine.mainImageUrl?.toURL,
+          titleText: wine.title,
+          subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode)))
       return cell
     }
     return .init()
