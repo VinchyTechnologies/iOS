@@ -76,7 +76,14 @@ public final class NavigationController: UINavigationController {
 
     getnavigationBarBackground()?.subviews.forEach { view in
       if view.isMember(of: UIVisualEffectView.self) {
-        (view as? UIVisualEffectView)?.backgroundColor = .mainBackground
+        
+        if let visualView = view as? UIVisualEffectView {
+          for subview in visualView.subviews {
+            subview.isHidden = true
+          }
+          visualView.contentView.backgroundColor = .mainBackground
+          visualView.backgroundColor = .mainBackground
+        }
       }
     }
   }

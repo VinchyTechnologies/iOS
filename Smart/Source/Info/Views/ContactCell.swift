@@ -37,6 +37,8 @@ final class ContactCell: UITableViewCell {
   
   init(icon: UIImage, text: String, detailText: String) {
     super.init(style: .default, reuseIdentifier: nil)
+
+    backgroundColor = .mainBackground
     
     selectionStyle = .none
     

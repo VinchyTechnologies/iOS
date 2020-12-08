@@ -38,6 +38,8 @@ final class DocCell: UITableViewCell {
   
   init(icon: UIImage, text: String) {
     super.init(style: .default, reuseIdentifier: nil)
+
+    backgroundColor = .mainBackground
     
     phoneLabel.text = text
     phoneImage.image = icon.withRenderingMode(.alwaysTemplate)

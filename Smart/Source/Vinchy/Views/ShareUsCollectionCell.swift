@@ -35,16 +35,11 @@ final class ShareUsCollectionCell: UICollectionViewCell, Reusable {
   override init(frame: CGRect) {
     super.init(frame: frame)
     
-    backgroundColor = .mainBackground
+    backgroundColor = .option //.mainBackground
     
     layer.cornerRadius = 24
     clipsToBounds = true
     layer.masksToBounds = false
-    
-    layer.shadowColor = UIColor.black.cgColor
-    layer.shadowOffset = CGSize(width: 1, height: 1)
-    layer.shadowOpacity = 0.4
-    layer.shadowRadius = 5
     
     let stackView = UIStackView()
     stackView.alignment = .center
@@ -61,7 +56,7 @@ final class ShareUsCollectionCell: UICollectionViewCell, Reusable {
     button.backgroundColor = .accent
     button.translatesAutoresizingMaskIntoConstraints = false
     button.heightAnchor.constraint(equalToConstant: 48).isActive = true
-    button.widthAnchor.constraint(equalToConstant: frame.width - 40).isActive = true
+    button.widthAnchor.constraint(equalToConstant: 200).isActive = true
     button.setTitle(localized("share_link").firstLetterUppercased(), for: .normal)
     button.titleLabel?.font = Font.bold(20)
     button.setTitleColor(.white, for: .normal)

@@ -11,16 +11,23 @@ import Display
 import StringFormatting
 
 final class RateAppCell: UITableViewCell {
+
+  let emojiLabel = UILabel()
   
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     
     selectionStyle = .none
-    backgroundColor = .option
-    
-    let emojiLabel = UILabel()
+    backgroundColor = UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+      if UITraitCollection.userInterfaceStyle == .dark {
+        return .secondarySystemBackground
+      } else {
+        return UIColor(red: 241 / 255, green: 243 / 255, blue: 246 / 255, alpha: 1.0)
+      }
+    }
+
     emojiLabel.translatesAutoresizingMaskIntoConstraints = false
-    emojiLabel.text = "👍"
+    emojiLabel.text = traitCollection.userInterfaceStyle == .dark ? "👍🏿" : "👍"
     emojiLabel.textAlignment = .center
     emojiLabel.font = Font.regular(50.0)
     
@@ -48,5 +55,9 @@ final class RateAppCell: UITableViewCell {
   }
   
   required init?(coder aDecoder: NSCoder) { fatalError() }
-  
+
+  override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    emojiLabel.text = traitCollection.userInterfaceStyle == .dark ? "👍🏿" : "👍"
+  }
+
 }

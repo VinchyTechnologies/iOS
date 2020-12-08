@@ -29,7 +29,7 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
       NSAttributedString.Key.font: titleFontAll,
     ]
     
-    UITabBar.appearance().barTintColor = .white
+    UITabBar.appearance().barTintColor = .mainBackground
     UITabBar.appearance().unselectedItemTintColor = .blueGray
     UITabBarItem.appearance().setTitleTextAttributes(attributesNormal, for: .normal)
     UITabBarItem.appearance().setTitleTextAttributes(attributesSelected, for: .selected)
