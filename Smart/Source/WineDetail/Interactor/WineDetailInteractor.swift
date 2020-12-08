@@ -217,4 +217,9 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
       presenter.showStatusAlertDidLikedSuccessfully()
     }
   }
+
+  func didTapSimilarWine(wineID: Int64) {
+    router.pushToWineDetailViewController(wineID: wineID)
+  }
+
 }
