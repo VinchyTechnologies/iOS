@@ -19,7 +19,7 @@ final class ResultsTableController: UIViewController {
 
   // MARK: - Private Properties
 
-  private var didFoundProducts: [Wine] = [] {
+  private var didFoundProducts: [ShortWine] = [] {
     didSet {
       tableView.reloadData()
     }
@@ -48,11 +48,11 @@ final class ResultsTableController: UIViewController {
 
   // MARK: - Internal Methods
 
-  func set(wines: [Wine]) {
+  func set(wines: [ShortWine]) {
     didFoundProducts = wines
   }
 
-  func getWines() -> [Wine] {
+  func getWines() -> [ShortWine] {
     didFoundProducts
   }
 

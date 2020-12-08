@@ -13,7 +13,7 @@ import Display
 import StringFormatting
 
 enum ShowcaseMode {
-  case normal(wines: [Wine])
+  case normal(wines: [ShortWine])
   case advancedSearch(params: [(String, String)])
 }
 

@@ -24,6 +24,7 @@ struct WineDetailViewModel {
     case servingTips([ShortInfoModel])
     case button([ButtonCollectionCellViewModel])
     case ad([Any]) // TODO: - Not Any
+    case similarWines([VinchySimpleConiniousCaruselCollectionCellViewModel])
   }
   
   let navigationTitle: String?

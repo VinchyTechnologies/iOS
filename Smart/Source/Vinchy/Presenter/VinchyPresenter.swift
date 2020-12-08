@@ -151,7 +151,7 @@ extension VinchyPresenter: VinchyPresenterProtocol {
     viewController?.updateSearchSuggestions(suggestions: suggestions)
   }
 
-  func update(didFindWines: [Wine]) {
+  func update(didFindWines: [ShortWine]) {
     viewController?.updateUI(didFindWines: didFindWines)
   }
 

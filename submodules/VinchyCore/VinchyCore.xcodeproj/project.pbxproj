@@ -22,6 +22,7 @@
 		CA7B825924EC749600991F24 /* CompilationsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B825824EC749600991F24 /* CompilationsEndpoint.swift */; };
 		CA7B825B24EC74B200991F24 /* Wines.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B825A24EC74B200991F24 /* Wines.swift */; };
 		CA7B826024EC75DA00991F24 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825F24EC75DA00991F24 /* Core.framework */; };
+		CA7CBC26257F82D400C81476 /* ShortWine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7CBC25257F82D400C81476 /* ShortWine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +44,7 @@
 		CA7B825824EC749600991F24 /* CompilationsEndpoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompilationsEndpoint.swift; sourceTree = "<group>"; };
 		CA7B825A24EC74B200991F24 /* Wines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wines.swift; sourceTree = "<group>"; };
 		CA7B825F24EC75DA00991F24 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA7CBC25257F82D400C81476 /* ShortWine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortWine.swift; sourceTree = "<group>"; };
 		DE4D3D64C790536FF2CE11B2 /* Pods-VinchyCore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyCore.release.xcconfig"; path = "Target Support Files/Pods-VinchyCore/Pods-VinchyCore.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,6 +121,7 @@
 				CA7B825124EC742600991F24 /* Sugar.swift */,
 				CA7B824824EC738500991F24 /* Wine.swift */,
 				CA7A87EF250287BB00AAD10F /* Winery.swift */,
+				CA7CBC25257F82D400C81476 /* ShortWine.swift */,
 			);
 			path = ServiceModels;
 			sourceTree = "<group>";
@@ -267,6 +270,7 @@
 				CA7B825024EC73FE00991F24 /* Compilation.swift in Sources */,
 				CA7B825924EC749600991F24 /* CompilationsEndpoint.swift in Sources */,
 				CA7B825724EC747900991F24 /* Collections.swift in Sources */,
+				CA7CBC26257F82D400C81476 /* ShortWine.swift in Sources */,
 				CA7B824924EC738500991F24 /* Wine.swift in Sources */,
 				CA7B824C24EC73B500991F24 /* Collection.swift in Sources */,
 			);

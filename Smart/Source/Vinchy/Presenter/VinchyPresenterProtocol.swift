@@ -15,7 +15,7 @@ protocol VinchyPresenterProtocol: AnyObject {
   
   func update(compilations: [Compilation])
   func update(suggestions: [Wine])
-  func update(didFindWines: [Wine])
+  func update(didFindWines: [ShortWine])
   func showAlertCantOpenEmail()
   func startShimmer()
   

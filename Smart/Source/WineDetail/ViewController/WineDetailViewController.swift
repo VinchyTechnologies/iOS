@@ -11,6 +11,7 @@ import Display
 import CommonUI
 import StringFormatting
 import GoogleMobileAds
+import VinchyCore
 
 fileprivate enum C {
   
@@ -93,6 +94,13 @@ final class WineDetailViewController: UIViewController {
       let section = NSCollectionLayoutSection(group: group)
       section.contentInsets = .init(top: 15, leading: 0, bottom: 0, trailing: 0)
       return section
+      
+    case .similarWines:
+      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(250)))
+      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(250)), subitems: [item])
+      let section = NSCollectionLayoutSection(group: group)
+      section.contentInsets = .init(top: 15, leading: 0, bottom: 0, trailing: 0)
+      return section
     }
   }
   
@@ -111,7 +119,8 @@ final class WineDetailViewController: UIViewController {
       ButtonCollectionCell.self,
       ImageOptionCollectionCell.self,
       TitleWithSubtitleInfoCollectionViewCell.self,
-      BigAdCollectionCell.self)
+      BigAdCollectionCell.self,
+      VinchySimpleConiniousCaruselCollectionCell.self)
     
     return collectionView
   }()
@@ -210,6 +219,9 @@ extension WineDetailViewController: UICollectionViewDataSource {
       
     case .ad(let model):
       return model.count
+
+    case .similarWines(let model):
+      return model.count
     }
   }
   
@@ -286,6 +298,14 @@ extension WineDetailViewController: UICollectionViewDataSource {
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BigAdCollectionCell.reuseId, for: indexPath) as! BigAdCollectionCell
       cell.adBanner.rootViewController = self
       return cell
+
+    case .similarWines(let model):
+      let cell = collectionView.dequeueReusableCell(
+        withReuseIdentifier: VinchySimpleConiniousCaruselCollectionCell.reuseId,
+        for: indexPath) as! VinchySimpleConiniousCaruselCollectionCell// swiftlint:disable:this force_cast
+      cell.decorate(model: model[indexPath.row])
+      cell.delegate = self
+      return cell
     }
   }
 }
@@ -321,6 +341,15 @@ extension WineDetailViewController: ToolCollectionCellDelegate {
   
   func didTapPrice(_ button: UIButton) {
     interactor?.didTapPriceButton()
+  }
+}
+
+extension WineDetailViewController: VinchySimpleConiniousCaruselCollectionCellDelegate {
+
+  func didTapCompilationCell(wines: [ShortWine], title: String?) { }
+
+  func didTapBootleCell(wineID: Int64) {
+    print("go", wineID)
   }
 }
 
