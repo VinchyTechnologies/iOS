@@ -20,18 +20,56 @@ extension UIColor {
   }
 
   public final class var blueGray: UIColor {
-    UIColor.rgb(red: 150, green: 159, blue: 179, alpha: 1.0)
+    UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+      if UITraitCollection.userInterfaceStyle == .dark {
+        return .secondaryLabel
+      } else {
+        return UIColor(red: 150 / 255, green: 159 / 255, blue: 179 / 255, alpha: 1.0)
+      }
+    }
   }
 
   public final class var dark: UIColor {
-    UIColor.rgb(red: 16, green: 17, blue: 20, alpha: 1.0)
+    UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+      if UITraitCollection.userInterfaceStyle == .dark {
+        return .label
+      } else {
+        return UIColor(red: 16 / 255, green: 17 / 255, blue: 20 / 255, alpha: 1.0)
+      }
+    }
   }
 
   public final class var accent: UIColor {
-    UIColor.rgb(red: 220, green: 0, blue: 33)
+    UIColor(red: 220 / 255, green: 0 / 255, blue: 33 / 255, alpha: 1.0)
   }
 
   public final class var option: UIColor {
-    UIColor(red: 241 / 255, green: 243 / 255, blue: 246 / 255, alpha: 1.0)
+    UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+      if UITraitCollection.userInterfaceStyle == .dark {
+        return .tertiarySystemFill
+      } else {
+        return UIColor(red: 241 / 255, green: 243 / 255, blue: 246 / 255, alpha: 1.0)
+      }
+    }
+  }
+
+  public final class var shimmerLight: UIColor {
+    UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+      if UITraitCollection.userInterfaceStyle == .dark {
+        return .darkGray
+      } else {
+        return UIColor(red: 231 / 255, green: 231 / 255, blue: 231 / 255, alpha: 1.0)
+      }
+    }
+  }
+
+  public final class var shimmerAlpha: UIColor {
+    UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+      if UITraitCollection.userInterfaceStyle == .dark {
+        return .tertiarySystemFill
+      } else {
+        return UIColor(red: 240 / 255, green: 240 / 255, blue: 240 / 255, alpha: 1.0)
+      }
+    }
   }
 }

@@ -9,8 +9,8 @@
 import UIKit
 
 private enum C {
-  static let lightColor: UIColor = UIColor.rgb(red: 231, green: 231, blue: 231)
-  static let alphaColor: UIColor = UIColor.rgb(red: 240, green: 240, blue: 240)
+  static let lightColor: UIColor = .shimmerLight
+  static let alphaColor: UIColor = .shimmerAlpha
   static let startPoint = CGPoint(x: 1.0, y: 0.6)
   static let endPoint = CGPoint(x: 0.0, y: 0.5)
 }
