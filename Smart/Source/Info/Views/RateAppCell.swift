@@ -10,17 +10,33 @@ import UIKit
 import Display
 import StringFormatting
 
-final class RateAppCell: UITableViewCell {
+public struct RateAppCellViewModel: ViewModelProtocol, Hashable {
   
-  override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-    super.init(style: style, reuseIdentifier: reuseIdentifier)
-    
-    selectionStyle = .none
+  fileprivate let titleText: String?
+  fileprivate let emojiLabel: String?
+  
+  public init(titleText: String?, emojiLabel: String?) {
+    self.titleText = titleText
+    self.emojiLabel = emojiLabel
+  }
+}
+
+final class RateAppCell: HighlightCollectionCell, Reusable {
+  
+  let emojiLabel = UILabel()
+  let rateTextLabel = UILabel()
+  
+//  init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+//    super.init(frame: .zero)
+//
+//    
+//  }
+  override init(frame: CGRect) {
+    super.init(frame: frame)
     backgroundColor = .option
     
-    let emojiLabel = UILabel()
     emojiLabel.translatesAutoresizingMaskIntoConstraints = false
-    emojiLabel.text = "👍"
+//    emojiLabel.text = "👍"
     emojiLabel.textAlignment = .center
     emojiLabel.font = Font.regular(50.0)
     
@@ -32,9 +48,8 @@ final class RateAppCell: UITableViewCell {
       emojiLabel.heightAnchor.constraint(equalToConstant: 100),
     ])
     
-    let rateTextLabel = UILabel()
     rateTextLabel.translatesAutoresizingMaskIntoConstraints = false
-    rateTextLabel.text = localized("rate_our_app").firstLetterUppercased()
+//    rateTextLabel.text = localized("rate_our_app").firstLetterUppercased()
     rateTextLabel.font = Font.bold(20)
     rateTextLabel.textAlignment = .center
     
@@ -48,5 +63,14 @@ final class RateAppCell: UITableViewCell {
   }
   
   required init?(coder aDecoder: NSCoder) { fatalError() }
+}
+
+extension RateAppCell: Decoratable {
   
+  typealias ViewModel = RateAppCellViewModel
+  
+  func decorate(model: ViewModel) {
+    rateTextLabel.text = model.titleText
+    emojiLabel.text = model.emojiLabel
+  }
 }

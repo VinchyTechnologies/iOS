@@ -9,7 +9,18 @@
 import UIKit
 import Display
 
-final class DocCell: UITableViewCell {
+public struct DocCellViewModel: ViewModelProtocol, Hashable {
+  
+  fileprivate let titleText: String?
+  fileprivate let icon: UIImage?
+  
+  public init(titleText: String?, icon: UIImage?) {
+    self.titleText = titleText
+    self.icon = icon
+  }
+}
+
+final class DocCell: HighlightCollectionCell, Reusable {
   
   private let phoneImage: UIImageView = {
     let imageView = UIImageView()
@@ -36,13 +47,8 @@ final class DocCell: UITableViewCell {
     return imageView
   }()
   
-  init(icon: UIImage, text: String) {
-    super.init(style: .default, reuseIdentifier: nil)
-    
-    phoneLabel.text = text
-    phoneImage.image = icon.withRenderingMode(.alwaysTemplate)
-    
-    selectionStyle = .none
+  override init(frame: CGRect) {
+    super.init(frame: frame)
     
     contentView.addSubview(phoneImage)
     NSLayoutConstraint.activate([
@@ -72,4 +78,13 @@ final class DocCell: UITableViewCell {
   }
   
   required init?(coder aDecoder: NSCoder) { fatalError() }
+}
+extension DocCell: Decoratable {
+  
+  typealias ViewModel = DocCellViewModel
+  
+  func decorate(model: ViewModel) {
+    phoneLabel.text = model.titleText
+    phoneImage.image = model.icon
+  }
 }

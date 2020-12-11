@@ -8,8 +8,22 @@
 
 import UIKit
 import Display
+import StringFormatting
 
-final class ContactCell: UITableViewCell {
+public struct ContactCellViewModel: ViewModelProtocol, Hashable {
+  
+  fileprivate let titleText: String?
+  fileprivate let detailText: String?
+  fileprivate let icon: UIImage?
+  
+  public init(titleText: String?, icon: UIImage?, detailText: String?) {
+    self.titleText = titleText
+    self.icon = icon
+    self.detailText = detailText
+  }
+}
+
+final class ContactCell: HighlightCollectionCell, Reusable {
   
   private let contactImageView: UIImageView = {
     let imageView = UIImageView()
@@ -34,15 +48,9 @@ final class ContactCell: UITableViewCell {
     label.textColor = .blueGray
     return label
   }()
-  
-  init(icon: UIImage, text: String, detailText: String) {
-    super.init(style: .default, reuseIdentifier: nil)
     
-    selectionStyle = .none
-    
-    contactImageView.image = icon.withRenderingMode(.alwaysTemplate)
-    bodyLabel.text = text
-    detailLabel.text = detailText
+  override init(frame: CGRect) {
+    super.init(frame: frame)
     
     addSubview(contactImageView)
     NSLayoutConstraint.activate([
@@ -68,4 +76,15 @@ final class ContactCell: UITableViewCell {
   }
   
   required init?(coder aDecoder: NSCoder) { fatalError() }
+}
+
+extension ContactCell: Decoratable {
+  
+  typealias ViewModel = ContactCellViewModel
+  
+  func decorate(model: ViewModel) {
+    bodyLabel.text = model.titleText
+    contactImageView.image = model.icon
+    detailLabel.text = model.detailText
+  }
 }
