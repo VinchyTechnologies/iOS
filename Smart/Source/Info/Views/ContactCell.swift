@@ -8,7 +8,6 @@
 
 import UIKit
 import Display
-import StringFormatting
 
 public struct ContactCellViewModel: ViewModelProtocol {
   
@@ -24,11 +23,7 @@ public struct ContactCellViewModel: ViewModelProtocol {
 }
 
 final class ContactCell: HighlightCollectionCell, Reusable {
-  
-  static func height() -> CGFloat {
-    return 60
-  }
-  
+
   private let contactImageView: UIImageView = {
     let imageView = UIImageView()
     imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -61,7 +56,7 @@ final class ContactCell: HighlightCollectionCell, Reusable {
       contactImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
       contactImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
       contactImageView.widthAnchor.constraint(equalToConstant: 20),
-      contactImageView.heightAnchor.constraint(equalToConstant: 20)
+      contactImageView.heightAnchor.constraint(equalToConstant: 20),
     ])
     
     addSubview(bodyLabel)
@@ -75,11 +70,16 @@ final class ContactCell: HighlightCollectionCell, Reusable {
       detailLabel.topAnchor.constraint(equalTo: bodyLabel.bottomAnchor, constant: 4),
       detailLabel.leadingAnchor.constraint(equalTo: contactImageView.trailingAnchor, constant: 30),
       detailLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-      detailLabel.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -10)
+      detailLabel.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -10),
     ])
   }
   
   required init?(coder aDecoder: NSCoder) { fatalError() }
+
+  static func height() -> CGFloat {
+    60
+  }
+
 }
 
 extension ContactCell: Decoratable {

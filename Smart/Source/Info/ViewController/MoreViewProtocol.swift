@@ -9,7 +9,6 @@
 import UIKit
 import Display
 
-protocol MoreViewProtocol: AnyObject {
-  func presentAlert(message: String)
+protocol MoreViewProtocol: Alertable {
   func updateUI(viewModel: MoreViewControllerModel)
 }

@@ -10,12 +10,15 @@ import CommonUI
 struct MoreViewControllerModel {
 
   enum Section {
-    case header([HeaderCellViewModel])
-    case contact([ContactCellViewModel])
+    case header([TextCollectionCell.ViewModel])
+    case phone([ContactCellViewModel])
+    case email([ContactCellViewModel])
+    case partner([ContactCellViewModel])
     case rate([RateAppCellViewModel])
     case social([StandartImageViewModel])
     case doc([DocCellViewModel])
   }
   
   let sections: [Section]
+  let navigationTitle: String?
 }

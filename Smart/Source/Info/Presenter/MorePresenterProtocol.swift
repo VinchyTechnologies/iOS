@@ -6,10 +6,10 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import Core
 
-protocol MorePresenterProtocol: AnyObject {
+protocol MorePresenterProtocol: OpenURLProtocol {
   func startCreateViewModel()
-  func showAlert(message: String)
-  func present(controller: UIViewController, completion: (() -> Void)?)
+  func showAlert(message: String) // TODO: - конкретный alert метод
+//  func present(controller: UIViewController, completion: (() -> Void)?)
 }

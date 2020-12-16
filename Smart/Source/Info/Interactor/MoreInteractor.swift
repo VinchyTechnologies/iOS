@@ -74,7 +74,7 @@ extension MoreInteractor: MoreInteractorProtocol {
   func sendEmail(HTMLText: String?) {
     if emailService.canSend {
       let mail = emailService.getEmailController(HTMLText: HTMLText, recipients: [localized("contact_email")])
-      presenter.present(controller: mail, completion: nil)
+//      presenter.present(controller: mail, completion: nil) // TODO: - WineDetailVC
     } else {
       presenter.showAlert(message: localized("open_mail_error"))
     }

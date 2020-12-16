@@ -1027,10 +1027,18 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
-		CAF5140D2461C4ED00667ED0 /* Info */ = {
+		CAD0C8CB258A7E7600142FE5 /* Assembly */ = {
 			isa = PBXGroup;
 			children = (
 				CAF514152461C52400667ED0 /* MoreAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		CAF5140D2461C4ED00667ED0 /* Info */ = {
+			isa = PBXGroup;
+			children = (
+				CAD0C8CB258A7E7600142FE5 /* Assembly */,
 				CE4254F025815824001158D2 /* Presenter */,
 				CE4254EF25815805001158D2 /* ViewController */,
 				CE4254F225815857001158D2 /* Interactor */,

@@ -7,14 +7,14 @@
 //
 
 import UIKit
-import StringFormatting
 
 final class MoreAssembly {
-  static func assemblyModel() -> MoreViewController {
+
+  static func assemblyModel() -> UIViewController {
+
     let viewController = MoreViewController()
-    
     let router = MoreRouter(viewController: viewController)
-    let presenter = MorePresenter(view: viewController)
+    let presenter = MorePresenter(view: viewController) // TODO: - viewController
     let interactor = MoreInteractor(presenter: presenter, router: router)
     
     viewController.interactor = interactor
