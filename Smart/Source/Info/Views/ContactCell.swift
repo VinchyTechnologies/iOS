@@ -10,7 +10,7 @@ import UIKit
 import Display
 import StringFormatting
 
-public struct ContactCellViewModel: ViewModelProtocol, Hashable {
+public struct ContactCellViewModel: ViewModelProtocol {
   
   fileprivate let titleText: String?
   fileprivate let detailText: String?
@@ -24,6 +24,10 @@ public struct ContactCellViewModel: ViewModelProtocol, Hashable {
 }
 
 final class ContactCell: HighlightCollectionCell, Reusable {
+  
+  static func height() -> CGFloat {
+    return 60
+  }
   
   private let contactImageView: UIImageView = {
     let imageView = UIImageView()

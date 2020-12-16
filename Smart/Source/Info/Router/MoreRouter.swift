@@ -9,12 +9,6 @@
 
 import UIKit
 
-protocol MoreRouterProtocol: AnyObject {
-  func present(_ viewController: UIViewController, completion: (() -> Void)?)
-  func pushToDocController()
-  func pushToAboutController()
-}
-
 final class MoreRouter {
   
   weak var viewController: MoreViewController!

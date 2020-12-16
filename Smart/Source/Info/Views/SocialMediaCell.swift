@@ -44,6 +44,10 @@ protocol SocialMediaCellDelegate: AnyObject {
 
 final class SocialMediaCell: HighlightCollectionCell, Reusable {
   
+  static func height() -> CGFloat {
+    return 60
+  }
+  
   weak var delegate: SocialMediaCellDelegate?
   
   private let titleLabel: UILabel = {
@@ -63,8 +67,6 @@ final class SocialMediaCell: HighlightCollectionCell, Reusable {
   init(delegate: SocialMediaCellDelegate) {
     super.init(frame: .zero)
     self.delegate = delegate
-    
-//    selectionStyle = .none
     
     let tapVK = UITapGestureRecognizer(target: self, action: #selector(actionVK))
     vk.addGestureRecognizer(tapVK)

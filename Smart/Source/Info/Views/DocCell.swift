@@ -22,6 +22,10 @@ public struct DocCellViewModel: ViewModelProtocol, Hashable {
 
 final class DocCell: HighlightCollectionCell, Reusable {
   
+  static func height() -> CGFloat {
+    return 60
+  }
+  
   private let phoneImage: UIImageView = {
     let imageView = UIImageView()
     imageView.translatesAutoresizingMaskIntoConstraints = false

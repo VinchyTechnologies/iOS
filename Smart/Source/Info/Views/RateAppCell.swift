@@ -23,20 +23,18 @@ public struct RateAppCellViewModel: ViewModelProtocol, Hashable {
 
 final class RateAppCell: HighlightCollectionCell, Reusable {
   
+  static func height() -> CGFloat {
+    return 150
+  }
+  
   let emojiLabel = UILabel()
   let rateTextLabel = UILabel()
-  
-//  init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-//    super.init(frame: .zero)
-//
-//    
-//  }
+
   override init(frame: CGRect) {
     super.init(frame: frame)
     backgroundColor = .option
     
     emojiLabel.translatesAutoresizingMaskIntoConstraints = false
-//    emojiLabel.text = "👍"
     emojiLabel.textAlignment = .center
     emojiLabel.font = Font.regular(50.0)
     
@@ -49,7 +47,6 @@ final class RateAppCell: HighlightCollectionCell, Reusable {
     ])
     
     rateTextLabel.translatesAutoresizingMaskIntoConstraints = false
-//    rateTextLabel.text = localized("rate_our_app").firstLetterUppercased()
     rateTextLabel.font = Font.bold(20)
     rateTextLabel.textAlignment = .center
     
