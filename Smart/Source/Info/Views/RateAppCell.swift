@@ -10,7 +10,7 @@ import UIKit
 import Display
 import StringFormatting
 
-public struct RateAppCellViewModel: ViewModelProtocol, Hashable {
+public struct RateAppCellViewModel: ViewModelProtocol {
   
   fileprivate let titleText: String?
   fileprivate let emojiLabel: String?
@@ -21,14 +21,10 @@ public struct RateAppCellViewModel: ViewModelProtocol, Hashable {
   }
 }
 
-final class RateAppCell: HighlightCollectionCell, Reusable {
-  
-  static func height() -> CGFloat {
-    return 150
-  }
-  
-  let emojiLabel = UILabel()
-  let rateTextLabel = UILabel()
+final class RateAppCell: UICollectionViewCell, Reusable {
+
+  private let emojiLabel = UILabel()
+  private let rateTextLabel = UILabel()
 
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -60,6 +56,15 @@ final class RateAppCell: HighlightCollectionCell, Reusable {
   }
   
   required init?(coder aDecoder: NSCoder) { fatalError() }
+
+  override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    emojiLabel.text = traitCollection.userInterfaceStyle == .dark ? "👍🏿" : "👍"
+  }
+
+  static func height() -> CGFloat {
+    150
+  }
+
 }
 
 extension RateAppCell: Decoratable {

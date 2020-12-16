@@ -60,7 +60,7 @@
 "will_recommend_more" = "We'll recommend more like this";
 "unloved" = "unloved";
 "will_recommend_less" = "We'll stop recommending more like this";
-
+"similar_wines" = "similar wines";
 
 // MARK: - Sugar
 "sugar" = "sugar";

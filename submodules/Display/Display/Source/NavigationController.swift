@@ -53,17 +53,17 @@ public final class NavigationController: UINavigationController {
 
     UIBarButtonItem.appearance().setTitleTextAttributes([
       NSAttributedString.Key.font: Font.bold(18),
-      NSAttributedString.Key.foregroundColor: UIColor.blueGray,
+      NSAttributedString.Key.foregroundColor: UIColor.dark,
     ], for: .normal)
 
     UIBarButtonItem.appearance().setTitleTextAttributes([
       NSAttributedString.Key.font: Font.bold(18),
-      NSAttributedString.Key.foregroundColor: UIColor.blueGray,
+      NSAttributedString.Key.foregroundColor: UIColor.dark,
     ], for: .selected)
 
     UIBarButtonItem.appearance().setTitleTextAttributes([
       NSAttributedString.Key.font: Font.bold(18),
-      NSAttributedString.Key.foregroundColor: UIColor.blueGray,
+      NSAttributedString.Key.foregroundColor: UIColor.dark,
     ], for: .highlighted)
   }
 
@@ -76,7 +76,14 @@ public final class NavigationController: UINavigationController {
 
     getnavigationBarBackground()?.subviews.forEach { view in
       if view.isMember(of: UIVisualEffectView.self) {
-        (view as? UIVisualEffectView)?.backgroundColor = .mainBackground
+        
+        if let visualView = view as? UIVisualEffectView {
+          for subview in visualView.subviews {
+            subview.isHidden = true
+          }
+          visualView.contentView.backgroundColor = .mainBackground
+          visualView.backgroundColor = .mainBackground
+        }
       }
     }
   }

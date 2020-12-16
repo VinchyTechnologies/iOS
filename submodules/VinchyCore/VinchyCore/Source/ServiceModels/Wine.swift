@@ -29,6 +29,7 @@ public struct Wine: Decodable {
   public let winery: Winery?
   public let type: WineType?
   public let sugar: Sugar?
+  public let similarWines: [ShortWine]?
   
   private enum CodingKeys: String, CodingKey {
     case id = "wine_id"
@@ -47,6 +48,7 @@ public struct Wine: Decodable {
     case winery
     case type = "carbon_dioxide"
     case sugar = "sugar"
+    case similarWines = "similar_wines"
   }
   
   public init(from decoder: Decoder) throws {
@@ -68,6 +70,7 @@ public struct Wine: Decodable {
     let winery = try? container.decodeIfPresent(Winery.self, forKey: .winery)
     let type = try? container.decodeIfPresent(WineType.self, forKey: .type)
     let sugar = try? container.decodeIfPresent(Sugar.self, forKey: .sugar)
+    let similarWines = try? container.decodeIfPresent([ShortWine].self, forKey: .similarWines)
     
     self.id = id
     self.color = color
@@ -85,6 +88,7 @@ public struct Wine: Decodable {
     self.winery = winery
     self.type = type
     self.sugar = sugar
+    self.similarWines = similarWines
   }
 
   /// For test only

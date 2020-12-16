@@ -17,7 +17,7 @@ public enum CollectionType: String, Decodable {
 }
 
 public enum CollectionItem {
-  case wine(wine: Wine)
+  case wine(wine: ShortWine)
   case ads(ad: AdsProtocol)
 }
 
@@ -41,7 +41,7 @@ public struct Collection: Decodable {
     let id = try container.decode(Int64.self, forKey: .id)
     let title = try container.decode(String.self, forKey: .title)
     let imageURL = try container.decodeIfPresent(String.self, forKey: .imageURL)
-    let wineList = try? container.decode([Wine].self, forKey: .wineList)
+    let wineList = try? container.decode([ShortWine].self, forKey: .wineList)
 
     let wines = wineList?.compactMap({ (wine) -> CollectionItem in
       return .wine(wine: wine)

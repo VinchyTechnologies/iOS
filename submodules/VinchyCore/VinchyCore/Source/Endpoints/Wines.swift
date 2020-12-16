@@ -77,11 +77,11 @@ public final class Wines {
     api.request(endpoint: WinesEndpoint.random(count: count), completion: completion)
   }
 
-  public func getFilteredWines(params: [(String, String)], completion: @escaping (Result<[Wine], APIError>) -> Void) {
+  public func getFilteredWines(params: [(String, String)], completion: @escaping (Result<[ShortWine], APIError>) -> Void) {
     api.request(endpoint: WinesEndpoint.filter(param: params), completion: completion)
   }
 
-  public func getWineBy(title: String, offset: Int, limit: Int, completion: @escaping (Result<[Wine], APIError>) -> Void) {
+  public func getWineBy(title: String, offset: Int, limit: Int, completion: @escaping (Result<[ShortWine], APIError>) -> Void) {
     api.request(endpoint: WinesEndpoint.search(title: title, offset: offset, limit: limit), completion: completion)
   }
 }

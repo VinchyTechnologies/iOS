@@ -14,7 +14,7 @@ import CommonUI
 
 protocol VinchySimpleConiniousCaruselCollectionCellDelegate: AnyObject {
   func didTapBootleCell(wineID: Int64)
-  func didTapCompilationCell(wines: [Wine], title: String?)
+  func didTapCompilationCell(wines: [ShortWine], title: String?)
 }
 
 struct VinchySimpleConiniousCaruselCollectionCellViewModel: ViewModelProtocol {
@@ -162,7 +162,7 @@ extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDelegateFl
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     switch type {
     case .mini, .big, .promo:
-      delegate?.didTapCompilationCell(wines: collections[indexPath.row].wineList.compactMap({ (collectionItem) -> Wine? in
+      delegate?.didTapCompilationCell(wines: collections[indexPath.row].wineList.compactMap({ (collectionItem) -> ShortWine? in
         switch collectionItem {
         case .wine(let wine):
           return wine

@@ -424,7 +424,7 @@ extension VinchyViewController: VinchySimpleConiniousCaruselCollectionCellDelega
     navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wineID), animated: true)
   }
 
-  func didTapCompilationCell(wines: [Wine], title: String?) {
+  func didTapCompilationCell(wines: [ShortWine], title: String?) {
 
     guard !wines.isEmpty else {
       showAlert(message: localized("empty_collection"))
@@ -438,7 +438,7 @@ extension VinchyViewController: VinchySimpleConiniousCaruselCollectionCellDelega
 
 extension VinchyViewController: VinchyViewControllerProtocol {
 
-  func updateUI(didFindWines: [Wine]) {
+  func updateUI(didFindWines: [ShortWine]) {
     (searchController.searchResultsController as? ResultsTableController)?.set(wines: didFindWines)
   }
 

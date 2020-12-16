@@ -1,17 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "logo.png",
+      "filename" : "VinchyLogo.png",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "logo-1.png",
+      "filename" : "VinchyLogo-1.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
     {
-      "filename" : "logo-2.png",
+      "filename" : "VinchyLogo-2.png",
       "idiom" : "universal",
       "scale" : "3x"
     }

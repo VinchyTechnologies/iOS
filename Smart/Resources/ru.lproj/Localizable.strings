@@ -60,6 +60,7 @@
 "will_recommend_more" = "Мы будем предлагать больше похожих вин";
 "unloved" = "Не понравилось";
 "will_recommend_less" = "Мы будем предлагать больше подобных вин";
+"similar_wines" = "похожие вина";
 
 // MARK: - Sugar
 "sugar" = "сахар";

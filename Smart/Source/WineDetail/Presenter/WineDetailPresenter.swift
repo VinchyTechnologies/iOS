@@ -198,6 +198,19 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
     if isAdAvailable {
       sections += [.ad([1])] // TODO: - Add Real Model
     }
+
+    var wineList: [CollectionItem] = []
+
+    if let similarWines = wine.similarWines {
+      similarWines.forEach { shortWine in
+        wineList.append(.wine(wine: shortWine))
+      }
+      let collections: [Collection] = [Collection(wineList: wineList)]
+
+      sections += [.title([.init(titleText: NSAttributedString(string: localized("similar_wines").firstLetterUppercased(), font: Font.heavy(20), textColor: .dark))])]
+
+      sections += [.similarWines([VinchySimpleConiniousCaruselCollectionCellViewModel(type: .bottles, collections: collections)])]
+    }
     
     viewController?.updateUI(viewModel: WineDetailViewModel(navigationTitle: wine.title, sections: sections))
     

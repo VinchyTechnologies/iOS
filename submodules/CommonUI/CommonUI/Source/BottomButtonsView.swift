@@ -68,7 +68,7 @@ public final class BottomButtonsView: UIView {
 
     let line = UIView()
     line.translatesAutoresizingMaskIntoConstraints = false
-    line.backgroundColor = .blueGray
+    line.backgroundColor = .separator
     addSubview(line)
     line.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
