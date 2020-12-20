@@ -114,7 +114,7 @@ final class SocialMediaCell: UICollectionViewCell, Reusable {
     delegate?.didClickInstagram()
   }
   static func height() -> CGFloat {
-    return 60
+    60
   }
 }
 

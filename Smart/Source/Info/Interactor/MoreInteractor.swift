@@ -72,12 +72,11 @@ extension MoreInteractor: MoreInteractorProtocol {
   }
   
   func didTapSendEmail(HTMLText: String?) {
-      
-      if emailService.canSend {
-        router.presentEmailController(HTMLText: HTMLText, recipients: [localized("contact_email")])
-      } else {
-        presenter.showAlert(message: localized("error").firstLetterUppercased())
-      }
-    }  
+    if emailService.canSend {
+      router.presentEmailController(HTMLText: HTMLText, recipients: [localized("contact_email")])
+    } else {
+      presenter.showAlert(message: localized("error").firstLetterUppercased())
+    }
   }
+}
 
