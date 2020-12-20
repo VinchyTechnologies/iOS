@@ -11,13 +11,13 @@ import Display
 
 protocol MoreInteractorProtocol: AnyObject {
   func viewDidLoad()
-  func sendEmail(HTMLText: String?)
-  func callUs()
-  func rateApp()
-  func openVk()
-  func openInstagram()
-  func emailUs()
-  func workWithUs()
-  func goToDocController()
-  func goToAboutController()
+  func didTapSendEmail(HTMLText: String?)
+  func didTapCallUs()
+  func didTapRateApp()
+  func didTapOpenVk()
+  func didTapOpenInstagram()
+  func didTapEmailUs()
+  func didTapworkWithUs()
+  func didTapDoc()
+  func didTapAboutApp()
 }

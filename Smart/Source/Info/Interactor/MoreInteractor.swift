@@ -18,8 +18,8 @@ final class MoreInteractor: OpenURLProtocol {
   let openAppStoreURL = localized("appstore_link")
   
   var presenter: MorePresenterProtocol!
-  private let router: MoreRouterProtocol
   let emailService: EmailServiceProtocol = EmailService()
+  private let router: MoreRouterProtocol
   
   required init(presenter: MorePresenterProtocol, router: MoreRouterProtocol) {
     self.presenter = presenter
@@ -35,48 +35,49 @@ final class MoreInteractor: OpenURLProtocol {
 
 extension MoreInteractor: MoreInteractorProtocol {
   
-  func rateApp() {
+  func didTapRateApp() {
     openUrl(urlString: openAppStoreURL)
   }
   
-  func openVk() {
+  func didTapOpenVk() {
     openUrl(urlString: vkURL)
   }
   
-  func callUs() {
+  func didTapCallUs() {
     openUrl(urlString: localized("contact_phone_url"))
   }
   
-  func openInstagram() {
+  func didTapOpenInstagram() {
     openUrl(urlString: instagramURL)
   }
   
-  func goToAboutController() {
+  func didTapAboutApp() {
     router.pushToAboutController()
   }
   
-  func goToDocController() {
+  func didTapDoc() {
     router.pushToDocController()
   }
   
-  func workWithUs() {
-    sendEmail(HTMLText: nil)
+  func didTapworkWithUs() {
+    didTapSendEmail(HTMLText: nil)
   }
   
-  func emailUs() {
-    sendEmail(HTMLText: nil)
+  func didTapEmailUs() {
+    didTapSendEmail(HTMLText: nil)
   }
   
   func viewDidLoad() {
     presenter.startCreateViewModel()
   }
   
-  func sendEmail(HTMLText: String?) {
-    if emailService.canSend {
-      let mail = emailService.getEmailController(HTMLText: HTMLText, recipients: [localized("contact_email")])
-//      presenter.present(controller: mail, completion: nil) // TODO: - WineDetailVC
-    } else {
-      presenter.showAlert(message: localized("open_mail_error"))
-    }
+  func didTapSendEmail(HTMLText: String?) {
+      
+      if emailService.canSend {
+        router.presentEmailController(HTMLText: HTMLText, recipients: [localized("contact_email")])
+      } else {
+        presenter.showAlert(message: localized("error").firstLetterUppercased())
+      }
+    }  
   }
-}
+

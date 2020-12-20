@@ -11,8 +11,12 @@ import CommonUI
 import StringFormatting
 import Display
 
-final class MoreViewController: UIViewController {
+fileprivate enum C {
+  static let horizontalInset: CGFloat = 16
+}
 
+final class MoreViewController: UIViewController {
+  
   var interactor: MoreInteractorProtocol?
   
   private var viewModel: MoreViewControllerModel? {
@@ -21,7 +25,7 @@ final class MoreViewController: UIViewController {
       collectionView.reloadData()
     }
   }
-
+  
   private var collectionView: UICollectionView {
     let layout = UICollectionViewFlowLayout()
     layout.minimumLineSpacing = 0
@@ -38,7 +42,7 @@ final class MoreViewController: UIViewController {
     
     collectionView.dataSource = self
     collectionView.delegate = self
-
+    
     return collectionView
   }
   
@@ -52,11 +56,11 @@ final class MoreViewController: UIViewController {
 
 extension MoreViewController: SocialMediaCellDelegate {
   func didClickVK() {
-    interactor?.openVk()
+    interactor?.didTapOpenVk()
   }
   
   func didClickInstagram() {
-    interactor?.openInstagram()
+    interactor?.didTapOpenInstagram()
   }
 }
 
@@ -84,9 +88,9 @@ extension MoreViewController: UICollectionViewDataSource {
     case .social(let model):
       return model.count
       
-    case .doc(let model):
+    case .doc(let model), .aboutApp(let model):
       return model.count
-
+      
     case .none:
       return 0
     }
@@ -119,11 +123,11 @@ extension MoreViewController: UICollectionViewDataSource {
       cell.decorate(model: model[indexPath.row])
       return cell
       
-    case .doc(let model):
+    case .doc(let model), .aboutApp(let model):
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DocCell.reuseId, for: indexPath) as! DocCell // swiftlint:disable:this force_cast
       cell.decorate(model: model[indexPath.row])
       return cell
-
+      
     case .none:
       fatalError()
     }
@@ -142,28 +146,28 @@ extension MoreViewController: UICollectionViewDelegateFlowLayout {
     case .header(let model):
       let width = collectionView.frame.width
       return CGSize(width: width, height: TextCollectionCell.height(viewModel: model[indexPath.row], width: width))
-
+      
     case .phone, .email, .partner:
       let width = collectionView.frame.width
       return CGSize(width: width, height: ContactCell.height())
-
+      
     case .rate:
       let width = collectionView.frame.width
       return CGSize(width: width, height: RateAppCell.height())
-
+      
     case .social:
       let width = collectionView.frame.width
       return CGSize(width: width, height: SocialMediaCell.height())
-
-    case .doc:
+      
+    case .doc, .aboutApp:
       let width = collectionView.frame.width
       return CGSize(width: width, height: DocCell.height())
-
+      
     case .none:
       return .zero
     }
   }
-
+  
   func collectionView(
     _ collectionView: UICollectionView,
     layout collectionViewLayout: UICollectionViewLayout,
@@ -172,20 +176,20 @@ extension MoreViewController: UICollectionViewDelegateFlowLayout {
   {
     switch viewModel?.sections[safe: section] {
     case .header:
-      return .init(top: 0, left: 16, bottom: 0, right: 16)
-
+      return .init(top: 0, left: C.horizontalInset + 20, bottom: 0, right: 16)
+      
     case .phone, .email, .partner:
-      return .init(top: 0, left: 16, bottom: 0, right: 16)
-
+      return .init(top: 0, left: C.horizontalInset, bottom: 0, right: 16)
+      
     case .rate:
-      return .init(top: 0, left: 16, bottom: 0, right: 16)
-
+      return .init(top: 0, left: C.horizontalInset, bottom: 0, right: 16)
+      
     case .social:
-      return .init(top: 0, left: 16, bottom: 0, right: 16)
-
-    case .doc:
-      return .init(top: 0, left: 16, bottom: 0, right: 16)
-
+      return .init(top: 0, left: C.horizontalInset, bottom: 0, right: 16)
+      
+    case .doc, .aboutApp:
+      return .init(top: 0, left: C.horizontalInset, bottom: 0, right: 16)
+      
     case .none:
       return .zero
     }
@@ -195,51 +199,35 @@ extension MoreViewController: UICollectionViewDelegateFlowLayout {
     _ collectionView: UICollectionView,
     didSelectItemAt indexPath: IndexPath)
   {
-
     switch viewModel?.sections[indexPath.section] {
-
+    
     case .header:
       break
-
+      
     case .phone:
-      interactor?.callUs()
-
+      interactor?.didTapCallUs()
+      
     case .email:
-      interactor?.emailUs()
-
+      interactor?.didTapEmailUs()
+      
     case .partner:
-      interactor?.workWithUs()
-
+      interactor?.didTapworkWithUs()
+      
     case .rate:
-      interactor?.rateApp()
-
+      interactor?.didTapRateApp()
+      
     case .doc:
-      interactor?.goToDocController()
-
-    default:
-      return
-
-//    case .none:
-//      break
-
+      interactor?.didTapDoc()
+      
+    case .aboutApp:
+      interactor?.didTapAboutApp()
+      
+    case .none:
+      fatalError()
+      
+    case .some(.social(_)):
+      break
     }
-
-//      switch (viewModel.sections[indexPath.section], indexPath.row) {
-//      case (.contact, 0):
-//        interactor?.callUs()
-//      case (.contact, 1):
-//        interactor?.emailUs()
-//      case (.contact, 2):
-//        interactor?.workWithUs()
-//      case (.rate, _):
-//        interactor?.rateApp()
-//      case (.doc, 0):
-//        interactor?.goToDocController()
-//      case (.doc, 1):
-//        interactor?.goToAboutController()
-//      case (_, _):
-//        break
-//    }
   }
 }
 

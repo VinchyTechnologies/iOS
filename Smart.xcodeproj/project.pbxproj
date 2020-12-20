@@ -157,7 +157,6 @@
 		CE404B0F2589D4C200917544 /* MoreRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE404B0E2589D4C200917544 /* MoreRouterProtocol.swift */; };
 		CE4254EB258157DC001158D2 /* MoreViewControllerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4254EA258157DC001158D2 /* MoreViewControllerModel.swift */; };
 		CE7346382589B75E00028574 /* MoreViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7346372589B75E00028574 /* MoreViewProtocol.swift */; };
-		CE88506D2587DAC500F3AC37 /* HeaderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE88506C2587DAC500F3AC37 /* HeaderCell.swift */; };
 		F19FB5488BC7F81712DA031F /* Pods_Smart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6424F560030C451CC71ED8CC /* Pods_Smart.framework */; };
 		F63A293274679EF87CB60861 /* Pods_SmartTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2D457686428365CEAB9A001 /* Pods_SmartTests.framework */; };
 /* End PBXBuildFile section */
@@ -368,7 +367,6 @@
 		CE404B0E2589D4C200917544 /* MoreRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreRouterProtocol.swift; sourceTree = "<group>"; };
 		CE4254EA258157DC001158D2 /* MoreViewControllerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewControllerModel.swift; sourceTree = "<group>"; };
 		CE7346372589B75E00028574 /* MoreViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewProtocol.swift; sourceTree = "<group>"; };
-		CE88506C2587DAC500F3AC37 /* HeaderCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderCell.swift; sourceTree = "<group>"; };
 		D2D457686428365CEAB9A001 /* Pods_SmartTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1069,7 +1067,6 @@
 			isa = PBXGroup;
 			children = (
 				CAF5141B2461C52400667ED0 /* ContactCell.swift */,
-				CE88506C2587DAC500F3AC37 /* HeaderCell.swift */,
 				CAF5141C2461C52400667ED0 /* RateAppCell.swift */,
 				CAF5141D2461C52400667ED0 /* SocialMediaCell.swift */,
 				CAF5141E2461C52400667ED0 /* DocCell.swift */,
@@ -1473,7 +1470,6 @@
 				CA48578F2517C74700EDA4CE /* VinchyRouterProtocol.swift in Sources */,
 				CA472B2C245EDEA0009149FF /* HeaderReusableView.swift in Sources */,
 				CA276D4E256AC34A0061BEBE /* FakeVinchyCollectionCell.swift in Sources */,
-				CE88506D2587DAC500F3AC37 /* HeaderCell.swift in Sources */,
 				CA81984B253864080056A1C6 /* WineDetailInteractor.swift in Sources */,
 				CA4857742517BE8E00EDA4CE /* VinchyInteractor.swift in Sources */,
 				CE404B072589D41200917544 /* MoreInteractorProtocol.swift in Sources */,

@@ -14,7 +14,7 @@ final class MoreAssembly {
 
     let viewController = MoreViewController()
     let router = MoreRouter(viewController: viewController)
-    let presenter = MorePresenter(view: viewController) // TODO: - viewController
+    let presenter = MorePresenter(viewController: viewController)
     let interactor = MoreInteractor(presenter: presenter, router: router)
     
     viewController.interactor = interactor

@@ -42,11 +42,7 @@ protocol SocialMediaCellDelegate: AnyObject {
   func didClickInstagram()
 }
 
-final class SocialMediaCell: HighlightCollectionCell, Reusable {
-  
-  static func height() -> CGFloat {
-    return 60
-  }
+final class SocialMediaCell: UICollectionViewCell, Reusable {
   
   weak var delegate: SocialMediaCellDelegate?
   
@@ -107,7 +103,7 @@ final class SocialMediaCell: HighlightCollectionCell, Reusable {
       stackView.heightAnchor.constraint(equalToConstant: 80)
     ])
   }
-
+  
   required init?(coder aDecoder: NSCoder) { fatalError() }
   
   @objc private func actionVK() {
@@ -116,6 +112,9 @@ final class SocialMediaCell: HighlightCollectionCell, Reusable {
   
   @objc private func actionInstagram() {
     delegate?.didClickInstagram()
+  }
+  static func height() -> CGFloat {
+    return 60
   }
 }
 

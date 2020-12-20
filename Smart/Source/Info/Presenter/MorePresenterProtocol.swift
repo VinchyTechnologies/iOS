@@ -11,5 +11,6 @@ import Core
 protocol MorePresenterProtocol: OpenURLProtocol {
   func startCreateViewModel()
   func showAlert(message: String) // TODO: - конкретный alert метод
-//  func present(controller: UIViewController, completion: (() -> Void)?)
 }
+
+

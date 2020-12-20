@@ -8,10 +8,12 @@
 // swiftlint:disable all
 
 import UIKit
+import EmailService
 
 final class MoreRouter {
   
   weak var viewController: MoreViewController!
+  let emailService = EmailService()
   
   init(viewController: MoreViewController) {
     self.viewController = viewController
@@ -19,6 +21,13 @@ final class MoreRouter {
 }
 
 extension MoreRouter: MoreRouterProtocol {
+  
+  func presentEmailController(HTMLText: String?, recipients: [String]) {
+    let emailController = emailService.getEmailController(
+      HTMLText: HTMLText,
+      recipients: recipients)
+    viewController?.present(emailController, animated: true, completion: nil)
+  }
   
   func pushToAboutController() {
     let controller = AboutViewController()
