@@ -56,7 +56,7 @@ final class ShareUsCollectionCell: UICollectionViewCell, Reusable {
     button.backgroundColor = .accent
     button.translatesAutoresizingMaskIntoConstraints = false
     button.heightAnchor.constraint(equalToConstant: 48).isActive = true
-    button.widthAnchor.constraint(equalToConstant: 200).isActive = true
+    button.widthAnchor.constraint(equalToConstant: 240).isActive = true // TODO: - adaptive
     button.setTitle(localized("share_link").firstLetterUppercased(), for: .normal)
     button.titleLabel?.font = Font.bold(20)
     button.setTitleColor(.white, for: .normal)
