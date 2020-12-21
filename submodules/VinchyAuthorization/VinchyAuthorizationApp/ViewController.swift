@@ -32,6 +32,8 @@ final class ViewController: UIViewController {
   @objc
   private func didTapAuth(_ button: UIButton) {
     print(#function)
+    let viewController = AuthorizationAssembly.assemblyModule()
+    present(viewController, animated: true, completion: nil)
   }
 }
 

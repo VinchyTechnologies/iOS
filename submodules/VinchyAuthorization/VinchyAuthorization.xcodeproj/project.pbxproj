@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25C7990D4CD38630D0A42E04 /* Pods_VinchyAuthorizationApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89253731F2C742635398AF8F /* Pods_VinchyAuthorizationApp.framework */; };
+		370686F57971ECE5F1FE476E /* Pods_VinchyAuthorization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1365932D64B5E4665879C2 /* Pods_VinchyAuthorization.framework */; };
 		443F0ADC259123FE00E15437 /* VinchyAuthorization.h in Headers */ = {isa = PBXBuildFile; fileRef = 443F0ADA259123FE00E15437 /* VinchyAuthorization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		443F0AFB259126F200E15437 /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F0AEA259126F200E15437 /* AuthorizationViewModel.swift */; };
 		443F0AFC259126F200E15437 /* AuthorizationInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F0AEC259126F200E15437 /* AuthorizationInput.swift */; };
@@ -27,6 +29,19 @@
 		443F0B1B2591282D00E15437 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 443F0B192591282D00E15437 /* LaunchScreen.storyboard */; };
 		443F0B262591282D00E15437 /* VinchyAuthorizationAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F0B252591282D00E15437 /* VinchyAuthorizationAppTests.swift */; };
 		443F0B312591282D00E15437 /* VinchyAuthorizationAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F0B302591282D00E15437 /* VinchyAuthorizationAppUITests.swift */; };
+		44A724E62591352500A7552B /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A724E22591351C00A7552B /* Display.framework */; };
+		44A724E72591352500A7552B /* Display.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44A724E22591351C00A7552B /* Display.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		44A724F62591360100A7552B /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F0AEA259126F200E15437 /* AuthorizationViewModel.swift */; };
+		44A724FA2591360400A7552B /* AuthorizationInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F0AEC259126F200E15437 /* AuthorizationInput.swift */; };
+		44A724FE2591360600A7552B /* AuthorizationAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F0AEE259126F200E15437 /* AuthorizationAssembly.swift */; };
+		44A725022591360800A7552B /* AuthorizationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F0AF0259126F200E15437 /* AuthorizationPresenter.swift */; };
+		44A725062591360B00A7552B /* AuthorizationPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F0AF1259126F200E15437 /* AuthorizationPresenterProtocol.swift */; };
+		44A7250A2591360D00A7552B /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F0AF3259126F200E15437 /* AuthorizationViewController.swift */; };
+		44A7250E2591361000A7552B /* AuthorizationViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F0AF4259126F200E15437 /* AuthorizationViewControllerProtocol.swift */; };
+		44A725122591361200A7552B /* AuthorizationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F0AF6259126F200E15437 /* AuthorizationInteractor.swift */; };
+		44A725162591361500A7552B /* AuthorizationInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F0AF7259126F200E15437 /* AuthorizationInteractorProtocol.swift */; };
+		44A7251A2591361800A7552B /* AuthorizationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F0AF9259126F200E15437 /* AuthorizationRouter.swift */; };
+		44A7251E2591361A00A7552B /* AuthorizationRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F0AFA259126F200E15437 /* AuthorizationRouterProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,7 +61,22 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		44A724E82591352500A7552B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				44A724E72591352500A7552B /* Display.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		2C46855EA6BEC4781ED8A61D /* Pods-VinchyAuthorization.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyAuthorization.debug.xcconfig"; path = "Target Support Files/Pods-VinchyAuthorization/Pods-VinchyAuthorization.debug.xcconfig"; sourceTree = "<group>"; };
 		443F0AD7259123FE00E15437 /* VinchyAuthorization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VinchyAuthorization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		443F0ADA259123FE00E15437 /* VinchyAuthorization.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VinchyAuthorization.h; sourceTree = "<group>"; };
 		443F0ADB259123FE00E15437 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -75,6 +105,12 @@
 		443F0B2C2591282D00E15437 /* VinchyAuthorizationAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VinchyAuthorizationAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		443F0B302591282D00E15437 /* VinchyAuthorizationAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyAuthorizationAppUITests.swift; sourceTree = "<group>"; };
 		443F0B322591282D00E15437 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44A724E22591351C00A7552B /* Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		554E2FC96295A4F8F9FE9A68 /* Pods-VinchyAuthorizationApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyAuthorizationApp.release.xcconfig"; path = "Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp.release.xcconfig"; sourceTree = "<group>"; };
+		89253731F2C742635398AF8F /* Pods_VinchyAuthorizationApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinchyAuthorizationApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0142329D2F9663DDB44D2E0 /* Pods-VinchyAuthorizationApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyAuthorizationApp.debug.xcconfig"; path = "Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp.debug.xcconfig"; sourceTree = "<group>"; };
+		CD1365932D64B5E4665879C2 /* Pods_VinchyAuthorization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinchyAuthorization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3F5D681B9F7A10494FA5862 /* Pods-VinchyAuthorization.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyAuthorization.release.xcconfig"; path = "Target Support Files/Pods-VinchyAuthorization/Pods-VinchyAuthorization.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +118,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				370686F57971ECE5F1FE476E /* Pods_VinchyAuthorization.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +126,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44A724E62591352500A7552B /* Display.framework in Frameworks */,
+				25C7990D4CD38630D0A42E04 /* Pods_VinchyAuthorizationApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +148,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		21455253FCBC2919372C4490 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2C46855EA6BEC4781ED8A61D /* Pods-VinchyAuthorization.debug.xcconfig */,
+				E3F5D681B9F7A10494FA5862 /* Pods-VinchyAuthorization.release.xcconfig */,
+				C0142329D2F9663DDB44D2E0 /* Pods-VinchyAuthorizationApp.debug.xcconfig */,
+				554E2FC96295A4F8F9FE9A68 /* Pods-VinchyAuthorizationApp.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../../Pods;
+			sourceTree = "<group>";
+		};
 		443F0ACD259123FD00E15437 = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +168,8 @@
 				443F0B242591282D00E15437 /* VinchyAuthorizationAppTests */,
 				443F0B2F2591282D00E15437 /* VinchyAuthorizationAppUITests */,
 				443F0AD8259123FE00E15437 /* Products */,
+				44A724E12591351C00A7552B /* Frameworks */,
+				21455253FCBC2919372C4490 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -265,6 +318,16 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		44A724E12591351C00A7552B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				44A724E22591351C00A7552B /* Display.framework */,
+				CD1365932D64B5E4665879C2 /* Pods_VinchyAuthorization.framework */,
+				89253731F2C742635398AF8F /* Pods_VinchyAuthorizationApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -283,6 +346,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 443F0ADF259123FE00E15437 /* Build configuration list for PBXNativeTarget "VinchyAuthorization" */;
 			buildPhases = (
+				D87AB88EDC9F19703D0EF6B6 /* [CP] Check Pods Manifest.lock */,
 				443F0AD2259123FE00E15437 /* Headers */,
 				443F0AD3259123FE00E15437 /* Sources */,
 				443F0AD4259123FE00E15437 /* Frameworks */,
@@ -301,9 +365,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 443F0B332591282D00E15437 /* Build configuration list for PBXNativeTarget "VinchyAuthorizationApp" */;
 			buildPhases = (
+				568967863572074888866CB3 /* [CP] Check Pods Manifest.lock */,
 				443F0B082591282C00E15437 /* Sources */,
 				443F0B092591282C00E15437 /* Frameworks */,
 				443F0B0A2591282C00E15437 /* Resources */,
+				44A724E82591352500A7552B /* Embed Frameworks */,
+				4E03E950A28C4F2E93F32208 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -431,6 +498,70 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4E03E950A28C4F2E93F32208 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		568967863572074888866CB3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VinchyAuthorizationApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D87AB88EDC9F19703D0EF6B6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VinchyAuthorization-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		443F0AD3259123FE00E15437 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -454,8 +585,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44A7250A2591360D00A7552B /* AuthorizationViewController.swift in Sources */,
+				44A724F62591360100A7552B /* AuthorizationViewModel.swift in Sources */,
+				44A725022591360800A7552B /* AuthorizationPresenter.swift in Sources */,
+				44A7251A2591361800A7552B /* AuthorizationRouter.swift in Sources */,
+				44A7251E2591361A00A7552B /* AuthorizationRouterProtocol.swift in Sources */,
+				44A725062591360B00A7552B /* AuthorizationPresenterProtocol.swift in Sources */,
+				44A7250E2591361000A7552B /* AuthorizationViewControllerProtocol.swift in Sources */,
+				44A725122591361200A7552B /* AuthorizationInteractor.swift in Sources */,
 				443F0B132591282C00E15437 /* ViewController.swift in Sources */,
+				44A724FA2591360400A7552B /* AuthorizationInput.swift in Sources */,
+				44A724FE2591360600A7552B /* AuthorizationAssembly.swift in Sources */,
 				443F0B0F2591282C00E15437 /* AppDelegate.swift in Sources */,
+				44A725162591361500A7552B /* AuthorizationInteractorProtocol.swift in Sources */,
 				443F0B112591282C00E15437 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -635,6 +777,7 @@
 		};
 		443F0AE0259123FE00E15437 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C46855EA6BEC4781ED8A61D /* Pods-VinchyAuthorization.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -645,6 +788,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = VinchyAuthorization/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -653,14 +797,16 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy.VinchyAuthorization;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		443F0AE1259123FE00E15437 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3F5D681B9F7A10494FA5862 /* Pods-VinchyAuthorization.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -671,6 +817,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = VinchyAuthorization/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -679,13 +826,15 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy.VinchyAuthorization;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		443F0B342591282D00E15437 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0142329D2F9663DDB44D2E0 /* Pods-VinchyAuthorizationApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -706,6 +855,7 @@
 		};
 		443F0B352591282D00E15437 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 554E2FC96295A4F8F9FE9A68 /* Pods-VinchyAuthorizationApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

@@ -1,0 +1,6 @@
+framework module Pods_VinchyAuthorization {
+  umbrella header "Pods-VinchyAuthorization-umbrella.h"
+
+  export *
+  module * { export * }
+}
