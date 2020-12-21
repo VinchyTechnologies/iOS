@@ -137,7 +137,7 @@
 			isa = PBXGroup;
 			children = (
 				443F0ADB259123FE00E15437 /* Info.plist */,
-				443F0AE42591243700E15437 /* Resources */,
+				44A724DB2591309000A7552B /* Resources */,
 				443F0AE32591242C00E15437 /* Sources */,
 				443F0ADA259123FE00E15437 /* VinchyAuthorization.h */,
 			);
@@ -150,13 +150,6 @@
 				443F0AE8259126F200E15437 /* Authorization */,
 			);
 			path = Sources;
-			sourceTree = "<group>";
-		};
-		443F0AE42591243700E15437 /* Resources */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Resources;
 			sourceTree = "<group>";
 		};
 		443F0AE8259126F200E15437 /* Authorization */ = {
@@ -263,6 +256,13 @@
 				443F0B322591282D00E15437 /* Info.plist */,
 			);
 			path = VinchyAuthorizationAppUITests;
+			sourceTree = "<group>";
+		};
+		44A724DB2591309000A7552B /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Resources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
