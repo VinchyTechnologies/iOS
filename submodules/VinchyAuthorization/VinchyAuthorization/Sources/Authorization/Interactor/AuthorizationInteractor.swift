@@ -5,7 +5,7 @@
 //  Created by Алексей Смирнов on 21.12.2020.
 //
 
-import Foundation
+import StringFormatting
 
 final class AuthorizationInteractor {
   
@@ -25,7 +25,25 @@ final class AuthorizationInteractor {
 
 extension AuthorizationInteractor: AuthorizationInteractorProtocol {
   
+  func didTapContinueButton(_ email: String?) {
+    if isValidEmail(email) {
+      presenter.updateValidEmail()
+      print("is valid email")
+    } else {
+      presenter.updateInvalidEmail()
+      print("is invalid email")
+    }
+  }
+  
+  func didEnterTextIntoEmailTextField(_ email: String?) {
+    if isValidEmail(email) {
+      presenter.updateValidEmail()
+    } else {
+      presenter.updateInvalidEmail()
+    }
+  }
+  
   func viewDidLoad() {
-    
+    presenter.update()
   }
 }

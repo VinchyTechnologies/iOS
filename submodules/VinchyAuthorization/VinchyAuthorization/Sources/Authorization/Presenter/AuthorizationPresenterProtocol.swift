@@ -8,5 +8,7 @@
 import Foundation
 
 protocol AuthorizationPresenterProtocol: AnyObject {
-  
+  func update()
+  func updateValidEmail()
+  func updateInvalidEmail()
 }

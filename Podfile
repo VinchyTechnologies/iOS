@@ -16,6 +16,7 @@ def commonPods
   pod 'CocoaDebug', :configurations => ['Debug']
   pod 'SPAlert'
   pod "Sheeeeeeeeet"
+  pod 'SkyFloatingLabelTextField'
 end
 
 target 'Smart' do
@@ -35,6 +36,7 @@ end
 target 'Display' do
   project 'submodules/Display/Display'
   pod 'Nuke'
+  pod 'SkyFloatingLabelTextField'
 end
 
 target 'Database' do
@@ -78,6 +80,7 @@ end
 target 'VinchyAuthorizationApp' do
   project 'submodules/VinchyAuthorization/VinchyAuthorization'
   pod 'Nuke'
+  pod 'SkyFloatingLabelTextField'
 end
 
 post_install do |installer|

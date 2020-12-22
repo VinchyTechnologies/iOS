@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import Display
 
 final class AuthorizationAssembly {
   static func assemblyModule() -> UIViewController {
@@ -18,6 +19,8 @@ final class AuthorizationAssembly {
     router.interactor = interactor
     viewController.interactor = interactor
     
-    return viewController
+    let navigationController = NavigationController(rootViewController: viewController)
+    
+    return navigationController
   }
 }

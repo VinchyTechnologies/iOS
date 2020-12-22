@@ -91,6 +91,7 @@ PODS:
   - RealmSwift (10.0.0):
     - Realm (= 10.0.0)
   - Sheeeeeeeeet (3.1.4)
+  - SkyFloatingLabelTextField (4.0.0)
   - SPAlert (2.1.4)
   - SwiftLint (0.41.0)
 
@@ -104,6 +105,7 @@ DEPENDENCIES:
   - Nuke
   - RealmSwift (~> 10.0.0)
   - Sheeeeeeeeet
+  - SkyFloatingLabelTextField
   - SPAlert
   - SwiftLint
 
@@ -130,6 +132,7 @@ SPEC REPOS:
     - Realm
     - RealmSwift
     - Sheeeeeeeeet
+    - SkyFloatingLabelTextField
     - SPAlert
     - SwiftLint
 
@@ -155,9 +158,10 @@ SPEC CHECKSUMS:
   Realm: 5654b8e5e45034d07b219e089034be2ef7d1e7bf
   RealmSwift: 5b4c8c85be4c14ff52054a4d80a8d338167dd79c
   Sheeeeeeeeet: d4808c23c1d0aca2ccba13353ec7fa17ada2f129
+  SkyFloatingLabelTextField: 79ddc40e4ad59707fedbb48d605417aee48bb78a
   SPAlert: 1a8afa1c6ac86a82ab5b2cfdf7f9a51e68cb6c0c
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
 
-PODFILE CHECKSUM: b7b0fb37598fb006b6dfa8c43fed4c714a9c72fe
+PODFILE CHECKSUM: f3c6811519275738cb2ff8277a8705a19b400495
 
 COCOAPODS: 1.10.0

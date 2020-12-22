@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -42,6 +42,8 @@
 		44A725162591361500A7552B /* AuthorizationInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F0AF7259126F200E15437 /* AuthorizationInteractorProtocol.swift */; };
 		44A7251A2591361800A7552B /* AuthorizationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F0AF9259126F200E15437 /* AuthorizationRouter.swift */; };
 		44A7251E2591361A00A7552B /* AuthorizationRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F0AFA259126F200E15437 /* AuthorizationRouterProtocol.swift */; };
+		44A72597259245E100A7552B /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A72596259245E100A7552B /* Display.framework */; };
+		44A72598259245E100A7552B /* Display.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44A72596259245E100A7552B /* Display.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -69,6 +71,17 @@
 			dstSubfolderSpec = 10;
 			files = (
 				44A724E72591352500A7552B /* Display.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44A72599259245E100A7552B /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				44A72598259245E100A7552B /* Display.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -106,6 +119,7 @@
 		443F0B302591282D00E15437 /* VinchyAuthorizationAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyAuthorizationAppUITests.swift; sourceTree = "<group>"; };
 		443F0B322591282D00E15437 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44A724E22591351C00A7552B /* Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		44A72596259245E100A7552B /* Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		554E2FC96295A4F8F9FE9A68 /* Pods-VinchyAuthorizationApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyAuthorizationApp.release.xcconfig"; path = "Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp.release.xcconfig"; sourceTree = "<group>"; };
 		89253731F2C742635398AF8F /* Pods_VinchyAuthorizationApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinchyAuthorizationApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0142329D2F9663DDB44D2E0 /* Pods-VinchyAuthorizationApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyAuthorizationApp.debug.xcconfig"; path = "Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -119,6 +133,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				370686F57971ECE5F1FE476E /* Pods_VinchyAuthorization.framework in Frameworks */,
+				44A72597259245E100A7552B /* Display.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,6 +336,7 @@
 		44A724E12591351C00A7552B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				44A72596259245E100A7552B /* Display.framework */,
 				44A724E22591351C00A7552B /* Display.framework */,
 				CD1365932D64B5E4665879C2 /* Pods_VinchyAuthorization.framework */,
 				89253731F2C742635398AF8F /* Pods_VinchyAuthorizationApp.framework */,
@@ -351,6 +367,7 @@
 				443F0AD3259123FE00E15437 /* Sources */,
 				443F0AD4259123FE00E15437 /* Frameworks */,
 				443F0AD5259123FE00E15437 /* Resources */,
+				44A72599259245E100A7552B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
