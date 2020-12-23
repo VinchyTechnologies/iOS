@@ -10,7 +10,7 @@ import Core
 
 protocol MorePresenterProtocol: OpenURLProtocol {
   func startCreateViewModel()
-  func showAlert(message: String) // TODO: - конкретный alert метод
+  func showErrorAlert()
+  func showErrorURLAlert()
+  func showURLContactUs()
 }
-
-

@@ -28,7 +28,7 @@ final class MoreInteractor: OpenURLProtocol {
   
   private func openUrl(urlString: String) {
     open(urlString: urlString) {
-      presenter.showAlert(message: localized("open_url_error"))
+      presenter.showErrorAlert()
     }
   }
 }
@@ -44,7 +44,7 @@ extension MoreInteractor: MoreInteractorProtocol {
   }
   
   func didTapCallUs() {
-    openUrl(urlString: localized("contact_phone_url"))
+    presenter.showURLContactUs()
   }
   
   func didTapOpenInstagram() {
@@ -75,7 +75,7 @@ extension MoreInteractor: MoreInteractorProtocol {
     if emailService.canSend {
       router.presentEmailController(HTMLText: HTMLText, recipients: [localized("contact_email")])
     } else {
-      presenter.showAlert(message: localized("error").firstLetterUppercased())
+      presenter.showErrorAlert()
     }
   }
 }

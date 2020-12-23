@@ -24,6 +24,7 @@ final class MorePresenter {
   weak var view: MoreViewProtocol!
   var interactor: MoreInteractorProtocol!
   var router: MoreRouterProtocol!
+  
 
   func createViewModel() -> MoreViewControllerModel  {
 
@@ -78,14 +79,6 @@ final class MorePresenter {
     self.view = viewController
   }
   
-  private func didTapOpenUrl(urlString: String) {
-    open(urlString: urlString) {
-      view.showAlert(
-        title: localized("error").firstLetterUppercased(),
-        message: localized("open_url_error").firstLetterUppercased())
-    }
-  }
-  
   private func didTapSendEmail(with HTMLText: String?) {
     interactor.didTapSendEmail(HTMLText: HTMLText)
   }
@@ -93,14 +86,27 @@ final class MorePresenter {
 
 extension MorePresenter: MorePresenterProtocol {
   
-  func startCreateViewModel() {
-    view.updateUI(viewModel: createViewModel())
+  func showErrorURLAlert() {
+    view.showAlert(
+      title: localized("open_url_error"),
+      message: nil)
   }
   
-  func showAlert(message: String) {
+  func showURLContactUs() {
+    view.showAlert(
+      title: localized("contact_phone_url"),
+      message: nil)
+  }
+  
+  func showErrorAlert() {
     view.showAlert(
       title: localized("error").firstLetterUppercased(),
-      message: message)
+      message: nil)
+  }
+  
+  
+  func startCreateViewModel() {
+    view.updateUI(viewModel: createViewModel())
   }
   
   func present(controller: UIViewController, completion: (() -> Void)?) {
