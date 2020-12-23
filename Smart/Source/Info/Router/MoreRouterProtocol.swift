@@ -6,8 +6,6 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
-
 protocol MoreRouterProtocol: AnyObject {
   func present(_ viewController: UIViewController, completion: (() -> Void)?)
   func presentEmailController(HTMLText: String?, recipients: [String])

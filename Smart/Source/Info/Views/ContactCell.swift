@@ -22,7 +22,7 @@ public struct ContactCellViewModel: ViewModelProtocol {
   }
 }
 
-final class ContactCell: HighlightCollectionCell, Reusable {
+final class ContactCell: UICollectionViewCell, Reusable {
 
   private let contactImageView: UIImageView = {
     let imageView = UIImageView()

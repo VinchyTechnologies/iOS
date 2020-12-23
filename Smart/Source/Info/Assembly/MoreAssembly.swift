@@ -10,7 +10,7 @@ import UIKit
 
 final class MoreAssembly {
 
-  static func assemblyModel() -> UIViewController {
+  static func assemblyModule() -> UIViewController {
 
     let viewController = MoreViewController()
     let router = MoreRouter(viewController: viewController)

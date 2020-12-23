@@ -11,29 +11,32 @@ import EmailService
 import StringFormatting
 import Core
 
-final class MoreInteractor: OpenURLProtocol {
+final class MoreInteractor {
   
-  let vkURL = "https://vk.com"
-  let instagramURL = "https://www.instagram.com"
-  let openAppStoreURL = localized("appstore_link")
+  var presenter: MorePresenterProtocol
   
-  var presenter: MorePresenterProtocol!
-  let emailService: EmailServiceProtocol = EmailService()
+  private let vkURL = "https://vk.com"
+  
+  private let emailService: EmailServiceProtocol = EmailService()
   private let router: MoreRouterProtocol
   
-  required init(presenter: MorePresenterProtocol, router: MoreRouterProtocol) {
+  init(presenter: MorePresenterProtocol, router: MoreRouterProtocol) {
     self.presenter = presenter
     self.router = router
   }
   
   private func openUrl(urlString: String) {
     open(urlString: urlString) {
-      presenter.showErrorAlert()
+      presenter.showOpenURLErrorAlert()
     }
   }
 }
 
 extension MoreInteractor: MoreInteractorProtocol {
+  
+  func viewDidLoad() {
+    presenter.startCreateViewModel()
+  }
   
   func didTapRateApp() {
     openUrl(urlString: openAppStoreURL)
@@ -67,15 +70,11 @@ extension MoreInteractor: MoreInteractorProtocol {
     didTapSendEmail(HTMLText: nil)
   }
   
-  func viewDidLoad() {
-    presenter.startCreateViewModel()
-  }
-  
   func didTapSendEmail(HTMLText: String?) {
     if emailService.canSend {
-      router.presentEmailController(HTMLText: HTMLText, recipients: [localized("contact_email")])
+      router.presentEmailController(HTMLText: HTMLText, recipients: presenter.sendEmailRecipients)
     } else {
-      presenter.showErrorAlert()
+      presenter.showOpenEmailErrorAlert()
     }
   }
 }

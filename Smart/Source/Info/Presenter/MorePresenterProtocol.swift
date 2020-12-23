@@ -9,8 +9,11 @@
 import Core
 
 protocol MorePresenterProtocol: OpenURLProtocol {
+  
+  var sendEmailRecipients: [String] { get }
+  
   func startCreateViewModel()
-  func showErrorAlert()
-  func showErrorURLAlert()
+  func showOpenEmailErrorAlert()
+  func showOpenURLErrorAlert()
   func showURLContactUs()
 }

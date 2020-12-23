@@ -6,10 +6,9 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
-import Display
+import Core
 
-protocol MoreInteractorProtocol: AnyObject {
+protocol MoreInteractorProtocol: OpenURLProtocol {
   func viewDidLoad()
   func didTapSendEmail(HTMLText: String?)
   func didTapCallUs()

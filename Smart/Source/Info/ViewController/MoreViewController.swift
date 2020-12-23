@@ -26,11 +26,9 @@ final class MoreViewController: UIViewController {
     }
   }
   
-  private var collectionView: UICollectionView {
+  private lazy var collectionView: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
-    layout.minimumLineSpacing = 0
     layout.scrollDirection = .vertical
-    layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 0, right: 0)
     
     let collectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)
     collectionView.backgroundColor = .mainBackground
@@ -42,9 +40,9 @@ final class MoreViewController: UIViewController {
     
     collectionView.dataSource = self
     collectionView.delegate = self
-    
+
     return collectionView
-  }
+  }()
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -176,7 +174,7 @@ extension MoreViewController: UICollectionViewDelegateFlowLayout {
   {
     switch viewModel?.sections[safe: section] {
     case .header:
-      return .init(top: 0, left: C.horizontalInset + 20, bottom: 0, right: 16)
+      return .init(top: 0, left: C.horizontalInset + 36, bottom: 0, right: 16)
       
     case .phone, .email, .partner:
       return .init(top: 0, left: C.horizontalInset, bottom: 0, right: 16)
@@ -222,16 +220,16 @@ extension MoreViewController: UICollectionViewDelegateFlowLayout {
     case .aboutApp:
       interactor?.didTapAboutApp()
       
-    case .none:
-      fatalError()
-      
-    case .some(.social(_)):
+    case .social:
       break
+      
+    case .none:
+      fatalError()    
     }
   }
 }
 
-extension MoreViewController: MoreViewProtocol {
+extension MoreViewController: MoreViewControllerProtocol {
   
   func updateUI(viewModel: MoreViewControllerModel) {
     self.viewModel = viewModel

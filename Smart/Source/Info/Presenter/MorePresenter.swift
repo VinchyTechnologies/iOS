@@ -13,20 +13,24 @@ import StringFormatting
 import CommonUI
 import Display
 
-let vkURL = "https://vk.com"
 let instagramURL = "https://www.instagram.com"
 let openAppStoreURL = localized("appstore_link")
 
 final class MorePresenter {
   
-  // MARK: - Properties
+  // MARK: - Internal Properties
   
-  weak var view: MoreViewProtocol!
-  var interactor: MoreInteractorProtocol!
-  var router: MoreRouterProtocol!
+  weak var viewController: MoreViewControllerProtocol?
   
-
-  func createViewModel() -> MoreViewControllerModel  {
+  // MARK: - Initializers
+  
+  init(viewController: MoreViewControllerProtocol) {
+    self.viewController = viewController
+  }
+  
+  // MARK: - Private Methods
+  
+  private func createViewModel() -> MoreViewControllerModel  {
 
     let headerViewModel = TextCollectionCellViewModel(
       titleText: .init(string: localized("always_available").firstLetterUppercased(),
@@ -72,44 +76,33 @@ final class MorePresenter {
       ],
       navigationTitle: localized("info").firstLetterUppercased())
   }
-  
-  // MARK: - Lifecycle
-  
-  required init(viewController: MoreViewProtocol) {
-    self.view = viewController
-  }
-  
-  private func didTapSendEmail(with HTMLText: String?) {
-    interactor.didTapSendEmail(HTMLText: HTMLText)
-  }
 }
 
 extension MorePresenter: MorePresenterProtocol {
   
-  func showErrorURLAlert() {
-    view.showAlert(
+  var sendEmailRecipients: [String] {
+    [localized("contact_email")]
+  }
+  
+  func showOpenURLErrorAlert() {
+    viewController?.showAlert(
       title: localized("open_url_error"),
       message: nil)
   }
   
   func showURLContactUs() {
-    view.showAlert(
+    viewController?.showAlert(
       title: localized("contact_phone_url"),
       message: nil)
   }
   
-  func showErrorAlert() {
-    view.showAlert(
+  func showOpenEmailErrorAlert() {
+    viewController?.showAlert(
       title: localized("error").firstLetterUppercased(),
       message: nil)
   }
   
-  
   func startCreateViewModel() {
-    view.updateUI(viewModel: createViewModel())
-  }
-  
-  func present(controller: UIViewController, completion: (() -> Void)?) {
-    router.present(controller, completion: nil)
+    viewController?.updateUI(viewModel: createViewModel())
   }
 }
