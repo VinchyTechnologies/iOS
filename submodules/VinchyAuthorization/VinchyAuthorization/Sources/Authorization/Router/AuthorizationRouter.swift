@@ -26,4 +26,8 @@ final class AuthorizationRouter {
 
 extension AuthorizationRouter: AuthorizationRouterProtocol {
   
+  func pushToEnterPasswordViewController() {
+    let controller = EnterPasswordAssembly.assemblyModule()
+    viewController?.navigationController?.pushViewController(controller, animated: true)
+  }
 }

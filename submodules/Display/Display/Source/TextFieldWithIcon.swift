@@ -9,7 +9,23 @@
 import UIKit
 import SkyFloatingLabelTextField
 
-public final class TextField: SkyFloatingLabelTextFieldWithIcon {
+public final class TextField: SkyFloatingLabelTextField {
+  
+  public override init(frame: CGRect) {
+    super.init(frame: frame)
+    lineColor = .blueGray
+    placeholderColor = .blueGray
+    titleColor = .blueGray
+    selectedLineColor = .blueGray
+    selectedTitleColor = .blueGray
+    
+  }
+  
+  required init?(coder aDecoder: NSCoder) { fatalError() }
+  
+}
+
+public final class TextFieldWithIcon: SkyFloatingLabelTextFieldWithIcon {
   
   public override init(frame: CGRect) {
     super.init(frame: frame)

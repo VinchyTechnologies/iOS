@@ -1,18 +1,24 @@
 //
-//  AuthorizationViewController.swift
+//  EnterPasswordViewController.swift
 //  VinchyAuthorization
 //
-//  Created by Алексей Смирнов on 21.12.2020.
+//  Created by Алексей Смирнов on 23.12.2020.
 //
 
 import UIKit
 import Display
 
-final class AuthorizationViewController: UIViewController {
+fileprivate enum C {
+  private static let imageConfig = UIImage.SymbolConfiguration(pointSize: 18, weight: .medium, scale: .default)
+  static let eyeImage = UIImage(systemName: "eye", withConfiguration: imageConfig)
+  static let eyeSlashImage = UIImage(systemName: "eye.slash", withConfiguration: imageConfig)
+}
+
+final class EnterPasswordViewController: UIViewController {
   
   // MARK: - Internal Properties
   
-  var interactor: AuthorizationInteractorProtocol?
+  var interactor: EnterPasswordInteractorProtocol?
   
   // MARK: - Private Properties
   
@@ -29,20 +35,27 @@ final class AuthorizationViewController: UIViewController {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
     label.textColor = .dark
-    label.font = Font.regular(20)
+    label.font = Font.bold(20)
     label.numberOfLines = 0
     return label
   }()
   
-  private lazy var emailTextField: TextFieldWithIcon = {
-    let textField = TextFieldWithIcon()
-    textField.keyboardType = .emailAddress
-    textField.iconType = .image
-    textField.iconImage = UIImage(systemName: "envelope")
-    textField.iconMarginBottom = 0
-    textField.selectedIconColor = .blueGray
+  private lazy var eyeButton: UIButton = {
+    let button = UIButton()
+    button.tintColor = .blueGray
+    button.setImage(C.eyeImage, for: .normal)
+    button.addTarget(self, action: #selector(didTapEyeButton(_:)), for: .touchUpInside)
+    return button
+  }()
+  
+  private lazy var passwordTextField: TextField = {
+    let textField = TextField()
     textField.delegate = self
-    textField.textContentType = .emailAddress
+//    textField.textContentType = .password // TODO: -
+    textField.rightViewMode = .always
+    textField.rightView = eyeButton
+    textField.keyboardType = .numberPad
+    textField.isSecureTextEntry = true
     textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     return textField
   }()
@@ -74,31 +87,16 @@ final class AuthorizationViewController: UIViewController {
     view.backgroundColor = .mainBackground
 
     navigationItem.largeTitleDisplayMode = .never
-    
-    let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
-    navigationItem.rightBarButtonItem = UIBarButtonItem(
-      image: UIImage(systemName: "xmark", withConfiguration: imageConfig),
-      style: .plain,
-      target: self,
-      action: #selector(closeSelf))
         
     view.addSubview(continueButton)
-    emailTextField.translatesAutoresizingMaskIntoConstraints = false
+    passwordTextField.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       continueButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
       continueButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
       continueButton.heightAnchor.constraint(equalToConstant: 48),
       bottomConstraint,
     ])
-    
-    view.addSubview(emailTextField)
-    emailTextField.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      emailTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24),
-      emailTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24),
-      emailTextField.bottomAnchor.constraint(equalTo: continueButton.topAnchor, constant: -16),
-    ])
-    
+        
     view.addSubview(titleLabel)
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
@@ -113,7 +111,15 @@ final class AuthorizationViewController: UIViewController {
       subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
       subtitleLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
       subtitleLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
-      subtitleLabel.bottomAnchor.constraint(lessThanOrEqualTo: emailTextField.topAnchor, constant: -8),
+    ])
+    
+    view.addSubview(passwordTextField)
+    passwordTextField.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      passwordTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+      passwordTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+      passwordTextField.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 16),
+      passwordTextField.bottomAnchor.constraint(lessThanOrEqualTo: continueButton.topAnchor, constant: -8),
     ])
     
     configureKeyboardHelper()
@@ -122,7 +128,7 @@ final class AuthorizationViewController: UIViewController {
   
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    emailTextField.becomeFirstResponder()
+    passwordTextField.becomeFirstResponder()
   }
   
   // MARK: - Private Methods
@@ -146,47 +152,55 @@ final class AuthorizationViewController: UIViewController {
   
   @objc
   private func didTapContinueButton(_ button: UIButton) {
-    interactor?.didTapContinueButton(emailTextField.text)
+//    interactor?.didTapContinueButton(emailTextField.text)
   }
   
   @objc
   private func textFieldDidChange(_ textFiled: UITextField) {
-    interactor?.didEnterTextIntoEmailTextField(textFiled.text)
+//    interactor?.didEnterTextIntoEmailTextField(textFiled.text)
   }
   
   @objc
-  private func closeSelf() {
-    dismiss(animated: true)
+  private func didTapForgotButton() {
+    
+  }
+  
+  @objc
+  private func didTapEyeButton(_ button: UIButton) {
+    passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
+    if passwordTextField.isSecureTextEntry {
+      eyeButton.setImage(C.eyeImage, for: .normal)
+    } else {
+      eyeButton.setImage(C.eyeSlashImage, for: .normal)
+    }
   }
 }
 
-// MARK: - AuthorizationViewControllerProtocol
+// MARK: - EnterPasswordViewControllerProtocol
 
-extension AuthorizationViewController: AuthorizationViewControllerProtocol {
+extension EnterPasswordViewController: EnterPasswordViewControllerProtocol {
   
-  func updateUI(viewModel: AuthorizationViewModel) {
+  func updateUI(viewModel: EnterPasswordViewModel) {
     titleLabel.text = viewModel.titleText
     subtitleLabel.text = viewModel.subtitleText
-    emailTextField.placeholder = viewModel.emailTextFiledPlaceholderText
-    emailTextField.selectedTitle = viewModel.emailTextFiledTopPlaceholderText
+    passwordTextField.placeholder = viewModel.enterPasswordTextFiledPlaceholderText
+    passwordTextField.selectedTitle = viewModel.enterPasswordTextFiledTopPlaceholderText
     continueButton.setTitle(viewModel.continueButtonText, for: .normal)
-  }
-  
-  func updateUIValidEmail() {
-    continueButton.enable()
-  }
-  
-  func updateUIInvalidEmail() {
-    continueButton.disable()
+    
+//    navigationItem.rightBarButtonItem = UIBarButtonItem(
+//      title: viewModel.rightBarButtonItemText,
+//      style: .plain,
+//      target: self,
+//      action: #selector(didTapForgotButton))
   }
 }
 
 // MARK: - UITextFieldDelegate
 
-extension AuthorizationViewController: UITextFieldDelegate {
+extension EnterPasswordViewController: UITextFieldDelegate {
   
   func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    interactor?.didTapContinueButton(textField.text)
+//    interactor?.didTapContinueButton(textField.text)
     return true
   }
 }

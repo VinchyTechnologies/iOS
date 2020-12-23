@@ -29,6 +29,7 @@ extension AuthorizationInteractor: AuthorizationInteractorProtocol {
     if isValidEmail(email) {
       presenter.updateValidEmail()
       print("is valid email")
+      router.pushToEnterPasswordViewController()
     } else {
       presenter.updateInvalidEmail()
       print("is invalid email")

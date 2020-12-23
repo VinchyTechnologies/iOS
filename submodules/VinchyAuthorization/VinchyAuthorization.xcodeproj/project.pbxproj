@@ -44,6 +44,28 @@
 		44A7251E2591361A00A7552B /* AuthorizationRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F0AFA259126F200E15437 /* AuthorizationRouterProtocol.swift */; };
 		44A72597259245E100A7552B /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A72596259245E100A7552B /* Display.framework */; };
 		44A72598259245E100A7552B /* Display.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44A72596259245E100A7552B /* Display.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		44AD9A7B25936CDB001A5188 /* EnterPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A6A25936CDB001A5188 /* EnterPasswordViewModel.swift */; };
+		44AD9A7C25936CDB001A5188 /* EnterPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A6A25936CDB001A5188 /* EnterPasswordViewModel.swift */; };
+		44AD9A7D25936CDB001A5188 /* EnterPasswordInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A6C25936CDB001A5188 /* EnterPasswordInput.swift */; };
+		44AD9A7E25936CDB001A5188 /* EnterPasswordInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A6C25936CDB001A5188 /* EnterPasswordInput.swift */; };
+		44AD9A7F25936CDB001A5188 /* EnterPasswordAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A6E25936CDB001A5188 /* EnterPasswordAssembly.swift */; };
+		44AD9A8025936CDB001A5188 /* EnterPasswordAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A6E25936CDB001A5188 /* EnterPasswordAssembly.swift */; };
+		44AD9A8125936CDB001A5188 /* EnterPasswordPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A7025936CDB001A5188 /* EnterPasswordPresenterProtocol.swift */; };
+		44AD9A8225936CDB001A5188 /* EnterPasswordPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A7025936CDB001A5188 /* EnterPasswordPresenterProtocol.swift */; };
+		44AD9A8325936CDB001A5188 /* EnterPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A7125936CDB001A5188 /* EnterPasswordPresenter.swift */; };
+		44AD9A8425936CDB001A5188 /* EnterPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A7125936CDB001A5188 /* EnterPasswordPresenter.swift */; };
+		44AD9A8525936CDB001A5188 /* EnterPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A7325936CDB001A5188 /* EnterPasswordViewController.swift */; };
+		44AD9A8625936CDB001A5188 /* EnterPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A7325936CDB001A5188 /* EnterPasswordViewController.swift */; };
+		44AD9A8725936CDB001A5188 /* EnterPasswordViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A7425936CDB001A5188 /* EnterPasswordViewControllerProtocol.swift */; };
+		44AD9A8825936CDB001A5188 /* EnterPasswordViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A7425936CDB001A5188 /* EnterPasswordViewControllerProtocol.swift */; };
+		44AD9A8925936CDB001A5188 /* EnterPasswordInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A7625936CDB001A5188 /* EnterPasswordInteractor.swift */; };
+		44AD9A8A25936CDB001A5188 /* EnterPasswordInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A7625936CDB001A5188 /* EnterPasswordInteractor.swift */; };
+		44AD9A8B25936CDB001A5188 /* EnterPasswordInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A7725936CDB001A5188 /* EnterPasswordInteractorProtocol.swift */; };
+		44AD9A8C25936CDB001A5188 /* EnterPasswordInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A7725936CDB001A5188 /* EnterPasswordInteractorProtocol.swift */; };
+		44AD9A8D25936CDB001A5188 /* EnterPasswordRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A7925936CDB001A5188 /* EnterPasswordRouterProtocol.swift */; };
+		44AD9A8E25936CDB001A5188 /* EnterPasswordRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A7925936CDB001A5188 /* EnterPasswordRouterProtocol.swift */; };
+		44AD9A8F25936CDB001A5188 /* EnterPasswordRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A7A25936CDB001A5188 /* EnterPasswordRouter.swift */; };
+		44AD9A9025936CDB001A5188 /* EnterPasswordRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A7A25936CDB001A5188 /* EnterPasswordRouter.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -120,6 +142,17 @@
 		443F0B322591282D00E15437 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		44A724E22591351C00A7552B /* Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		44A72596259245E100A7552B /* Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		44AD9A6A25936CDB001A5188 /* EnterPasswordViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordViewModel.swift; sourceTree = "<group>"; };
+		44AD9A6C25936CDB001A5188 /* EnterPasswordInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordInput.swift; sourceTree = "<group>"; };
+		44AD9A6E25936CDB001A5188 /* EnterPasswordAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordAssembly.swift; sourceTree = "<group>"; };
+		44AD9A7025936CDB001A5188 /* EnterPasswordPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordPresenterProtocol.swift; sourceTree = "<group>"; };
+		44AD9A7125936CDB001A5188 /* EnterPasswordPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordPresenter.swift; sourceTree = "<group>"; };
+		44AD9A7325936CDB001A5188 /* EnterPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordViewController.swift; sourceTree = "<group>"; };
+		44AD9A7425936CDB001A5188 /* EnterPasswordViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordViewControllerProtocol.swift; sourceTree = "<group>"; };
+		44AD9A7625936CDB001A5188 /* EnterPasswordInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordInteractor.swift; sourceTree = "<group>"; };
+		44AD9A7725936CDB001A5188 /* EnterPasswordInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordInteractorProtocol.swift; sourceTree = "<group>"; };
+		44AD9A7925936CDB001A5188 /* EnterPasswordRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordRouterProtocol.swift; sourceTree = "<group>"; };
+		44AD9A7A25936CDB001A5188 /* EnterPasswordRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordRouter.swift; sourceTree = "<group>"; };
 		554E2FC96295A4F8F9FE9A68 /* Pods-VinchyAuthorizationApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyAuthorizationApp.release.xcconfig"; path = "Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp.release.xcconfig"; sourceTree = "<group>"; };
 		89253731F2C742635398AF8F /* Pods_VinchyAuthorizationApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinchyAuthorizationApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0142329D2F9663DDB44D2E0 /* Pods-VinchyAuthorizationApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyAuthorizationApp.debug.xcconfig"; path = "Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -215,7 +248,9 @@
 		443F0AE32591242C00E15437 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				44AD9A9725937C79001A5188 /* Storage */,
 				443F0AE8259126F200E15437 /* Authorization */,
+				44AD9A6825936CDB001A5188 /* EnterPassword */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -342,6 +377,87 @@
 				89253731F2C742635398AF8F /* Pods_VinchyAuthorizationApp.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		44AD9A6825936CDB001A5188 /* EnterPassword */ = {
+			isa = PBXGroup;
+			children = (
+				44AD9A6925936CDB001A5188 /* ViewModel */,
+				44AD9A6B25936CDB001A5188 /* Input */,
+				44AD9A6D25936CDB001A5188 /* Assembly */,
+				44AD9A6F25936CDB001A5188 /* Presenter */,
+				44AD9A7225936CDB001A5188 /* ViewController */,
+				44AD9A7525936CDB001A5188 /* Interactor */,
+				44AD9A7825936CDB001A5188 /* Router */,
+			);
+			path = EnterPassword;
+			sourceTree = "<group>";
+		};
+		44AD9A6925936CDB001A5188 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				44AD9A6A25936CDB001A5188 /* EnterPasswordViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		44AD9A6B25936CDB001A5188 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				44AD9A6C25936CDB001A5188 /* EnterPasswordInput.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		44AD9A6D25936CDB001A5188 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				44AD9A6E25936CDB001A5188 /* EnterPasswordAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		44AD9A6F25936CDB001A5188 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				44AD9A7025936CDB001A5188 /* EnterPasswordPresenterProtocol.swift */,
+				44AD9A7125936CDB001A5188 /* EnterPasswordPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		44AD9A7225936CDB001A5188 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				44AD9A7325936CDB001A5188 /* EnterPasswordViewController.swift */,
+				44AD9A7425936CDB001A5188 /* EnterPasswordViewControllerProtocol.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		44AD9A7525936CDB001A5188 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				44AD9A7625936CDB001A5188 /* EnterPasswordInteractor.swift */,
+				44AD9A7725936CDB001A5188 /* EnterPasswordInteractorProtocol.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		44AD9A7825936CDB001A5188 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				44AD9A7925936CDB001A5188 /* EnterPasswordRouterProtocol.swift */,
+				44AD9A7A25936CDB001A5188 /* EnterPasswordRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		44AD9A9725937C79001A5188 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Storage;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -584,17 +700,28 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44AD9A8325936CDB001A5188 /* EnterPasswordPresenter.swift in Sources */,
+				44AD9A7B25936CDB001A5188 /* EnterPasswordViewModel.swift in Sources */,
 				443F0B05259126F200E15437 /* AuthorizationRouterProtocol.swift in Sources */,
 				443F0B00259126F200E15437 /* AuthorizationViewController.swift in Sources */,
+				44AD9A7D25936CDB001A5188 /* EnterPasswordInput.swift in Sources */,
 				443F0B03259126F200E15437 /* AuthorizationInteractorProtocol.swift in Sources */,
 				443F0AFF259126F200E15437 /* AuthorizationPresenterProtocol.swift in Sources */,
 				443F0AFE259126F200E15437 /* AuthorizationPresenter.swift in Sources */,
 				443F0B04259126F200E15437 /* AuthorizationRouter.swift in Sources */,
 				443F0AFD259126F200E15437 /* AuthorizationAssembly.swift in Sources */,
+				44AD9A8D25936CDB001A5188 /* EnterPasswordRouterProtocol.swift in Sources */,
+				44AD9A8525936CDB001A5188 /* EnterPasswordViewController.swift in Sources */,
 				443F0B02259126F200E15437 /* AuthorizationInteractor.swift in Sources */,
 				443F0B01259126F200E15437 /* AuthorizationViewControllerProtocol.swift in Sources */,
+				44AD9A8F25936CDB001A5188 /* EnterPasswordRouter.swift in Sources */,
+				44AD9A8925936CDB001A5188 /* EnterPasswordInteractor.swift in Sources */,
+				44AD9A8B25936CDB001A5188 /* EnterPasswordInteractorProtocol.swift in Sources */,
+				44AD9A8125936CDB001A5188 /* EnterPasswordPresenterProtocol.swift in Sources */,
+				44AD9A8725936CDB001A5188 /* EnterPasswordViewControllerProtocol.swift in Sources */,
 				443F0AFC259126F200E15437 /* AuthorizationInput.swift in Sources */,
 				443F0AFB259126F200E15437 /* AuthorizationViewModel.swift in Sources */,
+				44AD9A7F25936CDB001A5188 /* EnterPasswordAssembly.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -604,16 +731,27 @@
 			files = (
 				44A7250A2591360D00A7552B /* AuthorizationViewController.swift in Sources */,
 				44A724F62591360100A7552B /* AuthorizationViewModel.swift in Sources */,
+				44AD9A8825936CDB001A5188 /* EnterPasswordViewControllerProtocol.swift in Sources */,
+				44AD9A8425936CDB001A5188 /* EnterPasswordPresenter.swift in Sources */,
+				44AD9A8225936CDB001A5188 /* EnterPasswordPresenterProtocol.swift in Sources */,
 				44A725022591360800A7552B /* AuthorizationPresenter.swift in Sources */,
 				44A7251A2591361800A7552B /* AuthorizationRouter.swift in Sources */,
+				44AD9A8025936CDB001A5188 /* EnterPasswordAssembly.swift in Sources */,
+				44AD9A7E25936CDB001A5188 /* EnterPasswordInput.swift in Sources */,
+				44AD9A8625936CDB001A5188 /* EnterPasswordViewController.swift in Sources */,
 				44A7251E2591361A00A7552B /* AuthorizationRouterProtocol.swift in Sources */,
 				44A725062591360B00A7552B /* AuthorizationPresenterProtocol.swift in Sources */,
 				44A7250E2591361000A7552B /* AuthorizationViewControllerProtocol.swift in Sources */,
 				44A725122591361200A7552B /* AuthorizationInteractor.swift in Sources */,
 				443F0B132591282C00E15437 /* ViewController.swift in Sources */,
 				44A724FA2591360400A7552B /* AuthorizationInput.swift in Sources */,
+				44AD9A8E25936CDB001A5188 /* EnterPasswordRouterProtocol.swift in Sources */,
+				44AD9A8A25936CDB001A5188 /* EnterPasswordInteractor.swift in Sources */,
+				44AD9A8C25936CDB001A5188 /* EnterPasswordInteractorProtocol.swift in Sources */,
 				44A724FE2591360600A7552B /* AuthorizationAssembly.swift in Sources */,
 				443F0B0F2591282C00E15437 /* AppDelegate.swift in Sources */,
+				44AD9A7C25936CDB001A5188 /* EnterPasswordViewModel.swift in Sources */,
+				44AD9A9025936CDB001A5188 /* EnterPasswordRouter.swift in Sources */,
 				44A725162591361500A7552B /* AuthorizationInteractorProtocol.swift in Sources */,
 				443F0B112591282C00E15437 /* SceneDelegate.swift in Sources */,
 			);

@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		18BD480D87EBF0D4FDC67B34 /* Pods_Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3088510DDC0E64D6439091ED /* Pods_Display.framework */; };
-		44A7255D2592290B00A7552B /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A7255C2592290B00A7552B /* TextField.swift */; };
+		44A7255D2592290B00A7552B /* TextFieldWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A7255C2592290B00A7552B /* TextFieldWithIcon.swift */; };
 		44A72594259230C600A7552B /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A72593259230C600A7552B /* Button.swift */; };
 		CA103AE4251690F200B0324F /* StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA103AE3251690F200B0324F /* StringFormatting.framework */; };
 		CA1821A224C0E72A00280DD4 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1821A124C0E72A00280DD4 /* Font.swift */; };
@@ -37,7 +37,7 @@
 
 /* Begin PBXFileReference section */
 		3088510DDC0E64D6439091ED /* Pods_Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		44A7255C2592290B00A7552B /* TextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
+		44A7255C2592290B00A7552B /* TextFieldWithIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithIcon.swift; sourceTree = "<group>"; };
 		44A72593259230C600A7552B /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		A2E728CBFF7388AA46083FC3 /* Pods-Display.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Display.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-Display/Pods-Display.debug.xcconfig"; sourceTree = "<group>"; };
 		B3651BC8A20AEA589FD6BC11 /* Pods-Display.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Display.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-Display/Pods-Display.release.xcconfig"; sourceTree = "<group>"; };
@@ -155,7 +155,7 @@
 				CA276D51256AC5830061BEBE /* ShimmeringView.swift */,
 				CA3C97EE2572533E0036F7D9 /* GradientView.swift */,
 				CAD904ED257BADEC009FE71F /* ImageLoader.swift */,
-				44A7255C2592290B00A7552B /* TextField.swift */,
+				44A7255C2592290B00A7552B /* TextFieldWithIcon.swift */,
 				44A72593259230C600A7552B /* Button.swift */,
 			);
 			path = Source;
@@ -270,7 +270,7 @@
 				CA7A87EA2502582C00AAD10F /* PaddingLabel.swift in Sources */,
 				CA53B12524E039F1009A0F85 /* Alertable.swift in Sources */,
 				CAD904EE257BADEC009FE71F /* ImageLoader.swift in Sources */,
-				44A7255D2592290B00A7552B /* TextField.swift in Sources */,
+				44A7255D2592290B00A7552B /* TextFieldWithIcon.swift in Sources */,
 				CA3C97EF2572533E0036F7D9 /* GradientView.swift in Sources */,
 				CA18220424C0F88B00280DD4 /* NavigationController.swift in Sources */,
 				CA5B9019250FEF51006BC638 /* ScrollViewBounceDecorator.swift in Sources */,
