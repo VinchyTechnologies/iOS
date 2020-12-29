@@ -90,7 +90,7 @@ final class VinchyInteractor {
 extension VinchyInteractor: VinchyInteractorProtocol {
   func didTapSuggestionCell(at indexPath: IndexPath) {
     if isSearchingMode {
-      let wineID = suggestions[indexPath.row].id
+      let wineID = suggestions[indexPath.section].id
       router.pushToWineDetailViewController(wineID: wineID)
     }
   }

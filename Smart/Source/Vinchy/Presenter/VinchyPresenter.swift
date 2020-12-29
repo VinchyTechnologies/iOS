@@ -22,11 +22,6 @@ final class VinchyPresenter {
   init(viewController: VinchyViewControllerProtocol) {
     self.viewController = viewController
   }
-
-  private func addTitle(_ title: String?) {
-
-  }
-
 }
 
 extension VinchyPresenter: VinchyPresenterProtocol {
