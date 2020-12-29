@@ -31,6 +31,16 @@ final class VinchyPresenter {
 
 extension VinchyPresenter: VinchyPresenterProtocol {
 
+  func showAlertEmptyCollection() {
+    viewController?.showAlert(
+      title: localized("error").firstLetterUppercased(),
+      message: localized("empty_collection"))
+  }
+  
+  func stopPullRefreshing() {
+    viewController?.stopPullRefreshing()
+  }
+
   func startShimmer() {
     viewController?.updateUI(
       viewModel: VinchyViewControllerViewModel(
@@ -148,7 +158,14 @@ extension VinchyPresenter: VinchyPresenterProtocol {
   }
 
   func update(suggestions: [Wine]) {
-    viewController?.updateSearchSuggestions(suggestions: suggestions)
+    
+    var sections: [VinchyViewControllerViewModel.Section] = []
+    
+    suggestions.forEach { (wine) in
+      sections.append(.suggestions([.init(titleText: wine.title)]))
+    }
+    
+    viewController?.updateUI(viewModel: VinchyViewControllerViewModel(state: .normal(sections: sections)))
   }
 
   func update(didFindWines: [ShortWine]) {

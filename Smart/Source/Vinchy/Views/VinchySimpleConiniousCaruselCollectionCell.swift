@@ -13,7 +13,7 @@ import StringFormatting
 import CommonUI
 
 protocol VinchySimpleConiniousCaruselCollectionCellDelegate: AnyObject {
-  func didTapBootleCell(wineID: Int64)
+  func didTapBottleCell(wineID: Int64)
   func didTapCompilationCell(wines: [ShortWine], title: String?)
 }
 
@@ -177,7 +177,7 @@ extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDelegateFl
       }
       switch collectionItem {
       case .wine(let wine):
-        delegate?.didTapBootleCell(wineID: wine.id)
+        delegate?.didTapBottleCell(wineID: wine.id)
       case .ads:
         break
       }

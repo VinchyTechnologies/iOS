@@ -8,6 +8,7 @@
 
 import UIKit
 import EmailService
+import VinchyCore
 
 final class VinchyRouter {
 
@@ -22,6 +23,14 @@ final class VinchyRouter {
 }
 
 extension VinchyRouter: VinchyRouterProtocol {
+  
+  func pushToShowcaseViewController(navigationTitle: String?, wines: [ShortWine]) { // TODO: - routable
+    viewController?.navigationController?.pushViewController(
+      Assembly.buildShowcaseModule(
+        navTitle: navigationTitle,
+        mode: .normal(wines: wines)),
+      animated: true)
+  }
 
   func pushToAdvancedFilterViewController() {
     viewController?.navigationController?.pushViewController(

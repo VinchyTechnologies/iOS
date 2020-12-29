@@ -6,8 +6,11 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-protocol VinchyRouterProtocol: AnyObject {
+import VinchyCore
+
+protocol VinchyRouterProtocol: WineDetailRoutable {
   func pushToAdvancedFilterViewController()
   func pushToDetailCollection(searchText: String)
   func presentEmailController(HTMLText: String?, recipients: [String])
+  func pushToShowcaseViewController(navigationTitle: String?, wines: [ShortWine])
 }
