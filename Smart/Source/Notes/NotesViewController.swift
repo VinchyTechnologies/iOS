@@ -12,6 +12,7 @@ import Core
 import StringFormatting
 import CommonUI
 import Database
+import Display
 
 final class NotesViewController: UIViewController {
 
@@ -39,6 +40,18 @@ final class NotesViewController: UIViewController {
   }
 
   required init?(coder: NSCoder) { fatalError() }
+  
+  private lazy var searchController: UISearchController = {
+    
+    let searchController = UISearchController(searchResultsController: nil)
+    searchController.obscuresBackgroundDuringPresentation = false
+    searchController.searchBar.autocapitalizationType = .none
+    searchController.searchBar.searchTextField.font = Font.medium(20)
+    searchController.searchBar.searchTextField.layer.cornerRadius = 20
+    searchController.searchBar.searchTextField.layer.masksToBounds = true
+    searchController.searchBar.searchTextField.layer.cornerCurve = .continuous
+    return searchController
+  }()
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -54,6 +67,7 @@ final class NotesViewController: UIViewController {
     tableView.register(WineTableCell.self, forCellReuseIdentifier: WineTableCell.reuseId)
 
     notes = dataBase.all(at: .notes)
+    navigationItem.searchController = searchController
   }
 
   deinit {
