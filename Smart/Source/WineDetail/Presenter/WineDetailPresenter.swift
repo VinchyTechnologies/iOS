@@ -165,6 +165,17 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
     
     sections += buildCaruselImages(wine: wine)
     
+    if let wineryTitle = wine.winery?.title {
+      sections += [
+        .winery([
+          .init(titleText: NSAttributedString(
+                  string: wineryTitle,
+                  font: Font.medium(18),
+                  textColor: .blueGray))
+        ])
+      ]
+    }
+    
     sections += [
       .title([.init(
                 titleText: NSAttributedString(
