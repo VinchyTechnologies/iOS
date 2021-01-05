@@ -427,7 +427,7 @@ extension VinchyViewController: VinchySimpleConiniousCaruselCollectionCellDelega
   func didTapCompilationCell(wines: [ShortWine], title: String?) {
 
     guard !wines.isEmpty else {
-      showAlert(message: localized("empty_collection"))
+      showAlert(title: localized("error").firstLetterUppercased(), message: localized("empty_collection"))
       return
     }
 

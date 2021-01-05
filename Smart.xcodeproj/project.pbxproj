@@ -1040,10 +1040,10 @@
 			isa = PBXGroup;
 			children = (
 				CAD0C8CB258A7E7600142FE5 /* Assembly */,
-				CE4254F025815824001158D2 /* Presenter */,
-				CE4254EF25815805001158D2 /* ViewController */,
 				CE4254F225815857001158D2 /* Interactor */,
+				CE4254F025815824001158D2 /* Presenter */,
 				CE4254F12581583B001158D2 /* Router */,
+				CE4254EF25815805001158D2 /* ViewController */,
 				CE4254EE258157E6001158D2 /* ViewModel */,
 				CAF514192461C52400667ED0 /* Views */,
 			);
@@ -1740,7 +1740,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy;
 				PRODUCT_NAME = Vinchy;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1767,7 +1767,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy;
 				PRODUCT_NAME = Vinchy;
 				PROVISIONING_PROFILE_SPECIFIER = "";

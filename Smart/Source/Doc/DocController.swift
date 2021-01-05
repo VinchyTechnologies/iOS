@@ -43,7 +43,7 @@ final class DocController: UITableViewController, OpenURLProtocol, Alertable {
   
   func actionOpenUrl(urlString: String) {
     open(urlString: urlString) {
-      showAlert(message: localized("open_url_error"))
+      showAlert(title: localized("error").firstLetterUppercased(), message: localized("open_url_error"))
     }
   }
   

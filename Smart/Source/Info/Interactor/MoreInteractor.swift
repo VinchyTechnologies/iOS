@@ -8,7 +8,6 @@
 // swiftlint:disable all
 
 import EmailService
-import StringFormatting
 import Core
 
 final class MoreInteractor {
@@ -35,7 +34,7 @@ final class MoreInteractor {
 extension MoreInteractor: MoreInteractorProtocol {
   
   func viewDidLoad() {
-    presenter.startCreateViewModel()
+    presenter.update(isRussianLocale: Locale.current.languageCode == "ru")
   }
   
   func didTapRateApp() {
@@ -47,7 +46,9 @@ extension MoreInteractor: MoreInteractorProtocol {
   }
   
   func didTapCallUs() {
-    presenter.showURLContactUs()
+    open(urlString: presenter.phoneURL) {
+      presenter.showOpenURLErrorAlert()
+    }
   }
   
   func didTapOpenInstagram() {
@@ -74,7 +75,7 @@ extension MoreInteractor: MoreInteractorProtocol {
     if emailService.canSend {
       router.presentEmailController(HTMLText: HTMLText, recipients: presenter.sendEmailRecipients)
     } else {
-      presenter.showOpenEmailErrorAlert()
+      presenter.showAlertCantOpenEmail()
     }
   }
 }

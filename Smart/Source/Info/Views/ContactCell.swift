@@ -88,7 +88,7 @@ extension ContactCell: Decoratable {
   
   func decorate(model: ViewModel) {
     bodyLabel.text = model.titleText
-    contactImageView.image = model.icon
+    contactImageView.image = model.icon?.withRenderingMode(.alwaysTemplate)
     detailLabel.text = model.detailText
   }
 }

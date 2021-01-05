@@ -142,7 +142,7 @@ extension MoreViewController: UICollectionViewDelegateFlowLayout {
   {
     switch viewModel?.sections[safe: indexPath.section] {
     case .header(let model):
-      let width = collectionView.frame.width
+      let width = collectionView.frame.width - 2 * C.horizontalInset
       return CGSize(width: width, height: TextCollectionCell.height(viewModel: model[indexPath.row], width: width))
       
     case .phone, .email, .partner:
@@ -174,21 +174,9 @@ extension MoreViewController: UICollectionViewDelegateFlowLayout {
   {
     switch viewModel?.sections[safe: section] {
     case .header:
-      return .init(top: 0, left: C.horizontalInset + 36, bottom: 0, right: 16)
-      
-    case .phone, .email, .partner:
-      return .init(top: 0, left: C.horizontalInset, bottom: 0, right: 16)
-      
-    case .rate:
-      return .init(top: 0, left: C.horizontalInset, bottom: 0, right: 16)
-      
-    case .social:
-      return .init(top: 0, left: C.horizontalInset, bottom: 0, right: 16)
-      
-    case .doc, .aboutApp:
-      return .init(top: 0, left: C.horizontalInset, bottom: 0, right: 16)
-      
-    case .none:
+      return .init(top: 0, left: C.horizontalInset, bottom: 0, right: C.horizontalInset)
+
+    case .phone, .email, .partner, .rate, .social, .doc, .aboutApp, .none:
       return .zero
     }
   }

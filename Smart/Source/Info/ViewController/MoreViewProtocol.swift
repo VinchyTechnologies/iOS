@@ -8,6 +8,6 @@
 
 import Display
 
-protocol MoreViewControllerProtocol: Alertable {
+protocol MoreViewControllerProtocol: CantOpenURLAlertable, CantOpenEmailAlertable {
   func updateUI(viewModel: MoreViewControllerModel)
 }

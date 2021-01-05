@@ -89,6 +89,6 @@ extension DocCell: Decoratable {
   
   func decorate(model: ViewModel) {
     phoneLabel.text = model.titleText
-    phoneImage.image = model.icon
+    phoneImage.image = model.icon?.withRenderingMode(.alwaysTemplate)
   }
 }

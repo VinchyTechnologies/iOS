@@ -8,6 +8,7 @@
 
 import VinchyCore
 import StringFormatting
+import Display
 
 protocol APIErrorProtocol {
   var title: String? { get }

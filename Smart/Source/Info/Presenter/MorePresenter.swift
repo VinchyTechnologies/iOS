@@ -30,79 +30,83 @@ final class MorePresenter {
   
   // MARK: - Private Methods
   
-  private func createViewModel() -> MoreViewControllerModel  {
+  private func createViewModel(isRussianLocale: Bool) -> MoreViewControllerModel  {
+    
+    var sections: [MoreViewControllerModel.Section] = []
 
     let headerViewModel = TextCollectionCellViewModel(
       titleText: .init(string: localized("always_available").firstLetterUppercased(),
                        font: Font.bold(16),
                        textColor: .blueGray))
+    sections.append(.header([headerViewModel]))
 
-    let phoneViewModel = ContactCellViewModel(
-      titleText: localized("contact_phone"),
-      icon: UIImage(named: "phone"),
-      detailText: localized("for_any_questions").firstLetterUppercased())
+    
+    if isRussianLocale {
+      let phoneViewModel = ContactCellViewModel(
+        titleText: localized("contact_phone"),
+        icon: UIImage(named: "phone"),
+        detailText: localized("for_any_questions").firstLetterUppercased())
+      sections.append(.phone([phoneViewModel]))
+    }
+    
 
     let emailViewModel = ContactCellViewModel(
       titleText: localized("contact_email"),
       icon: UIImage(systemName: "envelope.fill"),
       detailText: localized("email_us").firstLetterUppercased())
+    sections.append(.email([emailViewModel]))
 
-    let jobViewModel = ContactCellViewModel(
+    let partnerViewModel = ContactCellViewModel(
       titleText: localized("looking_for_partners").firstLetterUppercased(),
       icon: UIImage(named: "job"),
       detailText: localized("become_a_part_of_a_wine_startup").firstLetterUppercased())
+    sections.append(.partner([partnerViewModel]))
+    
 
     let rateViewModel = RateAppCellViewModel(
       titleText: localized("rate_our_app").firstLetterUppercased(),
       emojiLabel: "👍")
+    sections.append(.rate([rateViewModel]))
+    
 
     let docViewModel = DocCellViewModel(
       titleText: localized("legal_documents").firstLetterUppercased(),
       icon: UIImage(named: "document"))
+    sections.append(.doc([docViewModel]))
+    
 
     let aboutAppViewModel = DocCellViewModel(
       titleText: localized("about_the_app").firstLetterUppercased(),
-      icon: UIImage(named: "info")?.withRenderingMode(.alwaysTemplate))
+      icon: UIImage(named: "info"))
+    sections.append(.aboutApp([aboutAppViewModel]))
+    
 
     return MoreViewControllerModel(
-      sections: [
-        .header([headerViewModel]),
-        .phone([phoneViewModel]),
-        .email([emailViewModel]),
-        .partner([jobViewModel]),
-        .rate([rateViewModel]),
-        .doc([docViewModel]),
-        .aboutApp([aboutAppViewModel])
-      ],
+      sections: sections,
       navigationTitle: localized("info").firstLetterUppercased())
   }
 }
 
 extension MorePresenter: MorePresenterProtocol {
   
+  var phoneURL: String {
+    localized("contact_phone_url")
+  }
+  
   var sendEmailRecipients: [String] {
     [localized("contact_email")]
   }
   
   func showOpenURLErrorAlert() {
-    viewController?.showAlert(
-      title: localized("open_url_error"),
-      message: nil)
+    viewController?.showAlertCantOpenURL()
   }
   
-  func showURLContactUs() {
-    viewController?.showAlert(
-      title: localized("contact_phone_url"),
-      message: nil)
+  func showAlertCantOpenEmail() {
+    viewController?.showAlertCantOpenEmail()
   }
   
-  func showOpenEmailErrorAlert() {
-    viewController?.showAlert(
-      title: localized("error").firstLetterUppercased(),
-      message: nil)
-  }
-  
-  func startCreateViewModel() {
-    viewController?.updateUI(viewModel: createViewModel())
+  func update(isRussianLocale: Bool) {
+    let viewModel = createViewModel(isRussianLocale: isRussianLocale)
+    viewController?.updateUI(viewModel: viewModel)
   }
 }

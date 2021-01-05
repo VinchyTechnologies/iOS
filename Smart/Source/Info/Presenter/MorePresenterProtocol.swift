@@ -11,9 +11,9 @@ import Core
 protocol MorePresenterProtocol: OpenURLProtocol {
   
   var sendEmailRecipients: [String] { get }
+  var phoneURL: String { get }
   
-  func startCreateViewModel()
-  func showOpenEmailErrorAlert()
+  func update(isRussianLocale: Bool)
+  func showAlertCantOpenEmail()
   func showOpenURLErrorAlert()
-  func showURLContactUs()
 }
