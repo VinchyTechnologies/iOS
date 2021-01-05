@@ -16,6 +16,8 @@ public extension UIImageView {
     guard let url = url else {
       return
     }
+    
+    ImageCache.shared.ttl = 30 * 24 * 60 * 60
 
     var options = ImageLoadingOptions(
       placeholder: nil,
@@ -36,6 +38,8 @@ public extension UIImageView {
     guard let url = url else {
       return
     }
+    
+    ImageCache.shared.ttl = 30 * 24 * 60 * 60
 
     var options = ImageLoadingOptions(
       placeholder: nil,
