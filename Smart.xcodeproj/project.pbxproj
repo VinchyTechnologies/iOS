@@ -143,7 +143,7 @@
 		CAF24B0F24C3311F0057547F /* LocationUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24B0D24C3311F0057547F /* LocationUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CAF514102461C51400667ED0 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5140F2461C51300667ED0 /* AboutViewController.swift */; };
 		CAF514132461C51B00667ED0 /* DocController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF514122461C51B00667ED0 /* DocController.swift */; };
-		CAF514202461C52400667ED0 /* MoreConfigurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF514152461C52400667ED0 /* MoreConfigurator.swift */; };
+		CAF514202461C52400667ED0 /* MoreAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF514152461C52400667ED0 /* MoreAssembly.swift */; };
 		CAF514212461C52400667ED0 /* MorePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF514162461C52400667ED0 /* MorePresenter.swift */; };
 		CAF514222461C52400667ED0 /* MoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF514172461C52400667ED0 /* MoreViewController.swift */; };
 		CAF514232461C52400667ED0 /* MoreInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF514182461C52400667ED0 /* MoreInteractor.swift */; };
@@ -153,6 +153,11 @@
 		CAF514282461C52400667ED0 /* DocCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5141E2461C52400667ED0 /* DocCell.swift */; };
 		CAF514292461C52400667ED0 /* MoreRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5141F2461C52400667ED0 /* MoreRouter.swift */; };
 		CAF5146B2468172900667ED0 /* LoveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5146A2468172900667ED0 /* LoveViewController.swift */; };
+		CE404B072589D41200917544 /* MoreInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE404B062589D41200917544 /* MoreInteractorProtocol.swift */; };
+		CE404B0B2589D47C00917544 /* MorePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE404B0A2589D47C00917544 /* MorePresenterProtocol.swift */; };
+		CE404B0F2589D4C200917544 /* MoreRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE404B0E2589D4C200917544 /* MoreRouterProtocol.swift */; };
+		CE4254EB258157DC001158D2 /* MoreViewControllerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4254EA258157DC001158D2 /* MoreViewControllerModel.swift */; };
+		CE7346382589B75E00028574 /* MoreViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7346372589B75E00028574 /* MoreViewProtocol.swift */; };
 		F19FB5488BC7F81712DA031F /* Pods_Smart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6424F560030C451CC71ED8CC /* Pods_Smart.framework */; };
 		F63A293274679EF87CB60861 /* Pods_SmartTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2D457686428365CEAB9A001 /* Pods_SmartTests.framework */; };
 /* End PBXBuildFile section */
@@ -349,7 +354,7 @@
 		CAF24B0D24C3311F0057547F /* LocationUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LocationUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF5140F2461C51300667ED0 /* AboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		CAF514122461C51B00667ED0 /* DocController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocController.swift; sourceTree = "<group>"; };
-		CAF514152461C52400667ED0 /* MoreConfigurator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreConfigurator.swift; sourceTree = "<group>"; };
+		CAF514152461C52400667ED0 /* MoreAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreAssembly.swift; sourceTree = "<group>"; };
 		CAF514162461C52400667ED0 /* MorePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MorePresenter.swift; sourceTree = "<group>"; };
 		CAF514172461C52400667ED0 /* MoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreViewController.swift; sourceTree = "<group>"; };
 		CAF514182461C52400667ED0 /* MoreInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreInteractor.swift; sourceTree = "<group>"; };
@@ -359,6 +364,11 @@
 		CAF5141E2461C52400667ED0 /* DocCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocCell.swift; sourceTree = "<group>"; };
 		CAF5141F2461C52400667ED0 /* MoreRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreRouter.swift; sourceTree = "<group>"; };
 		CAF5146A2468172900667ED0 /* LoveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoveViewController.swift; sourceTree = "<group>"; };
+		CE404B062589D41200917544 /* MoreInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInteractorProtocol.swift; sourceTree = "<group>"; };
+		CE404B0A2589D47C00917544 /* MorePresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorePresenterProtocol.swift; sourceTree = "<group>"; };
+		CE404B0E2589D4C200917544 /* MoreRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreRouterProtocol.swift; sourceTree = "<group>"; };
+		CE4254EA258157DC001158D2 /* MoreViewControllerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewControllerModel.swift; sourceTree = "<group>"; };
+		CE7346372589B75E00028574 /* MoreViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewProtocol.swift; sourceTree = "<group>"; };
 		D2D457686428365CEAB9A001 /* Pods_SmartTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1018,14 +1028,23 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		CAD0C8CB258A7E7600142FE5 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				CAF514152461C52400667ED0 /* MoreAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
 		CAF5140D2461C4ED00667ED0 /* Info */ = {
 			isa = PBXGroup;
 			children = (
-				CAF514152461C52400667ED0 /* MoreConfigurator.swift */,
-				CAF514162461C52400667ED0 /* MorePresenter.swift */,
-				CAF514172461C52400667ED0 /* MoreViewController.swift */,
-				CAF514182461C52400667ED0 /* MoreInteractor.swift */,
-				CAF5141F2461C52400667ED0 /* MoreRouter.swift */,
+				CAD0C8CB258A7E7600142FE5 /* Assembly */,
+				CE4254F225815857001158D2 /* Interactor */,
+				CE4254F025815824001158D2 /* Presenter */,
+				CE4254F12581583B001158D2 /* Router */,
+				CE4254EF25815805001158D2 /* ViewController */,
+				CE4254EE258157E6001158D2 /* ViewModel */,
 				CAF514192461C52400667ED0 /* Views */,
 			);
 			path = Info;
@@ -1066,6 +1085,50 @@
 			path = Love;
 			sourceTree = "<group>";
 		};
+		CE4254EE258157E6001158D2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CE4254EA258157DC001158D2 /* MoreViewControllerModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CE4254EF25815805001158D2 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CAF514172461C52400667ED0 /* MoreViewController.swift */,
+				CE7346372589B75E00028574 /* MoreViewProtocol.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CE4254F025815824001158D2 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CAF514162461C52400667ED0 /* MorePresenter.swift */,
+				CE404B0A2589D47C00917544 /* MorePresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CE4254F12581583B001158D2 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				CAF5141F2461C52400667ED0 /* MoreRouter.swift */,
+				CE404B0E2589D4C200917544 /* MoreRouterProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		CE4254F225815857001158D2 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				CAF514182461C52400667ED0 /* MoreInteractor.swift */,
+				CE404B062589D41200917544 /* MoreInteractorProtocol.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
 		E126C1F6258946A324BF55F2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -1087,7 +1150,6 @@
 			buildConfigurationList = CA472AE6245EDE30009149FF /* Build configuration list for PBXNativeTarget "Smart" */;
 			buildPhases = (
 				60B24D557CE2A159E6C42245 /* [CP] Check Pods Manifest.lock */,
-				2D5BD51BB17B6F0AE9B3F014 /* [CP] Prepare Artifacts */,
 				CA472AB8245EDE2F009149FF /* Sources */,
 				CA472AB9245EDE2F009149FF /* Frameworks */,
 				CA472ABA245EDE2F009149FF /* Resources */,
@@ -1128,7 +1190,6 @@
 			buildConfigurationList = CA472AEC245EDE30009149FF /* Build configuration list for PBXNativeTarget "SmartUITests" */;
 			buildPhases = (
 				B2271F10DFEE2E199FBE4F84 /* [CP] Check Pods Manifest.lock */,
-				63EB8547D69BE8AAC7E30516 /* [CP] Prepare Artifacts */,
 				CA472AD9245EDE30009149FF /* Sources */,
 				CA472ADA245EDE30009149FF /* Frameworks */,
 				CA472ADB245EDE30009149FF /* Resources */,
@@ -1244,23 +1305,6 @@
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Smart-SmartUITests/Pods-Smart-SmartUITests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		2D5BD51BB17B6F0AE9B3F014 /* [CP] Prepare Artifacts */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Smart/Pods-Smart-artifacts-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Prepare Artifacts";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Smart/Pods-Smart-artifacts-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Smart/Pods-Smart-artifacts.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		5922264A4527E1191159066F /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -1303,23 +1347,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		63EB8547D69BE8AAC7E30516 /* [CP] Prepare Artifacts */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Smart-SmartUITests/Pods-Smart-SmartUITests-artifacts-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Prepare Artifacts";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Smart-SmartUITests/Pods-Smart-SmartUITests-artifacts-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Smart-SmartUITests/Pods-Smart-SmartUITests-artifacts.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		B2271F10DFEE2E199FBE4F84 /* [CP] Check Pods Manifest.lock */ = {
@@ -1400,6 +1427,7 @@
 				CA2C22E32554464F002469E4 /* AdvancedSearchRouterProtocol.swift in Sources */,
 				CA472B54245EDEDB009149FF /* Assembly.swift in Sources */,
 				CAF514232461C52400667ED0 /* MoreInteractor.swift in Sources */,
+				CE404B0F2589D4C200917544 /* MoreRouterProtocol.swift in Sources */,
 				CA0709952523170600C3D9EC /* MainCoordinator.swift in Sources */,
 				CA7A87FA2506B9D600AAD10F /* ShareUsCollectionCell.swift in Sources */,
 				CA819846253864080056A1C6 /* WineDetailAssembly.swift in Sources */,
@@ -1448,6 +1476,7 @@
 				CA276D4E256AC34A0061BEBE /* FakeVinchyCollectionCell.swift in Sources */,
 				CA81984B253864080056A1C6 /* WineDetailInteractor.swift in Sources */,
 				CA4857742517BE8E00EDA4CE /* VinchyInteractor.swift in Sources */,
+				CE404B072589D41200917544 /* MoreInteractorProtocol.swift in Sources */,
 				CAA9DC3C250BD20400F996A8 /* AdvancedHeader.swift in Sources */,
 				CA4857832517C67700EDA4CE /* VinchyInteractorProtocol.swift in Sources */,
 				CA472AC0245EDE2F009149FF /* AppDelegate.swift in Sources */,
@@ -1461,11 +1490,13 @@
 				CAF514292461C52400667ED0 /* MoreRouter.swift in Sources */,
 				CACA7E9C254C57CC0099E622 /* WriteNotePresenter.swift in Sources */,
 				CA472AC2245EDE2F009149FF /* SceneDelegate.swift in Sources */,
+				CE4254EB258157DC001158D2 /* MoreViewControllerModel.swift in Sources */,
 				CA3C981F257260BC0036F7D9 /* StatusAlertable.swift in Sources */,
 				CA3837CC246FCF3C00AD5FCC /* TabBarController.swift in Sources */,
 				CA99E65124F58A6000C36BEE /* ToolCollectionCell.swift in Sources */,
 				CA276D55256AC6720061BEBE /* FakeCell.swift in Sources */,
 				CACA7EA0254C57CC0099E622 /* WriteNoteInteractorProtocol.swift in Sources */,
+				CE404B0B2589D47C00917544 /* MorePresenterProtocol.swift in Sources */,
 				CA2C22DC2554464F002469E4 /* AdvancedSearchPresenter.swift in Sources */,
 				CA07098B2523160C00C3D9EC /* AgreementsCoordinator.swift in Sources */,
 				CAEBD788251A6D6200210F3B /* AgreementsViewController.swift in Sources */,
@@ -1484,12 +1515,13 @@
 				CA4858512519446800EDA4CE /* ForceUpdate.swift in Sources */,
 				CACA7E99254C57CC0099E622 /* WriteNoteViewModel.swift in Sources */,
 				CA7B836224F0237100991F24 /* SuggestionCollectionCell.swift in Sources */,
-				CAF514202461C52400667ED0 /* MoreConfigurator.swift in Sources */,
+				CAF514202461C52400667ED0 /* MoreAssembly.swift in Sources */,
 				CACA7EA1254C57CC0099E622 /* WriteNoteInteractor.swift in Sources */,
 				CAF514272461C52400667ED0 /* SocialMediaCell.swift in Sources */,
 				CA2C22DE2554464F002469E4 /* AdvancedSearchViewControllerProtocol.swift in Sources */,
 				CA2C22DF2554464F002469E4 /* AdvancedSearchViewController.swift in Sources */,
 				CA7B838C24F4547B00991F24 /* GalleryCell.swift in Sources */,
+				CE7346382589B75E00028574 /* MoreViewProtocol.swift in Sources */,
 				CA070974252259D300C3D9EC /* ApplicationCoordinator.swift in Sources */,
 				CA07098F2523164C00C3D9EC /* AgreementsModuleFactory.swift in Sources */,
 				CAA060D2252BC05C002C15B5 /* DeveloperFeatureToggles.swift in Sources */,
@@ -1708,7 +1740,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy;
 				PRODUCT_NAME = Vinchy;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -1735,7 +1767,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.2;
+				MARKETING_VERSION = 1.2.1;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy;
 				PRODUCT_NAME = Vinchy;
 				PROVISIONING_PROFILE_SPECIFIER = "";

@@ -19,6 +19,7 @@ final class AboutViewController: UIViewController, OpenURLProtocol, Alertable {
     label.translatesAutoresizingMaskIntoConstraints = false
     label.text = Bundle.main.infoDictionary![kCFBundleNameKey as String] as? String
     label.font = Font.bold(45)
+    label.textColor = .accent
     return label
   }()
   
@@ -34,7 +35,6 @@ final class AboutViewController: UIViewController, OpenURLProtocol, Alertable {
   lazy var webButton: UIButton = {
     let button = UIButton()
     button.translatesAutoresizingMaskIntoConstraints = false
-    //        button.setTitle(instagramURL, for: .normal)
     button.setTitleColor(.accent, for: .normal)
     button.titleLabel?.font = Font.bold(15)
     button.addTarget(self, action: #selector(actionOpenWebSite), for: .touchUpInside)
@@ -71,7 +71,7 @@ final class AboutViewController: UIViewController, OpenURLProtocol, Alertable {
   @objc
   private func actionOpenWebSite() {
     open(urlString: instagramURL) {
-      showAlert(message: localized("open_url_error"))
+      showAlert(title: localized("error").firstLetterUppercased(), message: localized("open_url_error"))
     }
   }
 }

@@ -139,7 +139,7 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
   }
 
   func showNetworkErrorAlert(error: Error) {
-    viewController?.showAlert(message: error.localizedDescription)
+    viewController?.showAlert(title: localized("error").firstLetterUppercased(), message: error.localizedDescription)
   }
   
   var reportAnErrorRecipients: [String] {
@@ -147,7 +147,7 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
   }
   
   func showAlertCantOpenEmail() {
-    viewController?.showAlert(message: localized("open_mail_error"))
+    viewController?.showAlert(title: localized("error").firstLetterUppercased(), message: localized("open_mail_error"))
   }
   
   func startLoading() {

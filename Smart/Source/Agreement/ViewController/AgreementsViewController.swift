@@ -112,7 +112,7 @@ final class AgreementsViewController: UIViewController, OpenURLProtocol, Alertab
   
   private func openTerms() {
     open(urlString: localized("terms_of_use_url"), errorCompletion: {
-      showAlert(message: localized("open_url_error"))
+      showAlert(title: localized("error").firstLetterUppercased(), message: localized("open_url_error"))
     })
   }
 }

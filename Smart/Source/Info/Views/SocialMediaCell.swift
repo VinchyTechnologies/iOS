@@ -11,6 +11,15 @@ import Display
 import StringFormatting
 // swiftlint:disable all
 
+public struct StandartImageViewModel: ViewModelProtocol, Hashable {
+  
+  fileprivate let titleText: String?
+  
+  public init(titleText: String?) {
+    self.titleText = titleText
+  }
+}
+
 final class StandartImageView: UIImageView {
   
   override init(frame: CGRect) {
@@ -33,7 +42,7 @@ protocol SocialMediaCellDelegate: AnyObject {
   func didClickInstagram()
 }
 
-final class SocialMediaCell: UITableViewCell {
+final class SocialMediaCell: UICollectionViewCell, Reusable {
   
   weak var delegate: SocialMediaCellDelegate?
   
@@ -52,10 +61,8 @@ final class SocialMediaCell: UITableViewCell {
   private let instagram = StandartImageView(image: UIImage(named: "inst2")!.withRenderingMode(.alwaysTemplate))
   
   init(delegate: SocialMediaCellDelegate) {
-    super.init(style: .default, reuseIdentifier: nil)
+    super.init(frame: .zero)
     self.delegate = delegate
-    
-    selectionStyle = .none
     
     let tapVK = UITapGestureRecognizer(target: self, action: #selector(actionVK))
     vk.addGestureRecognizer(tapVK)
@@ -105,5 +112,17 @@ final class SocialMediaCell: UITableViewCell {
   
   @objc private func actionInstagram() {
     delegate?.didClickInstagram()
+  }
+  static func height() -> CGFloat {
+    60
+  }
+}
+
+extension SocialMediaCell: Decoratable {
+  
+  typealias ViewModel = StandartImageViewModel
+  
+  func decorate(model: ViewModel) {
+    titleLabel.text = model.titleText
   }
 }

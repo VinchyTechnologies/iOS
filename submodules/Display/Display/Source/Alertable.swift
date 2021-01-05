@@ -18,7 +18,7 @@ public protocol Alertable: UIViewController {
 extension Alertable {
 
   @discardableResult
-  public func showAlert(title: String = localized("error").firstLetterUppercased(), message: String?) -> AnyPublisher<Void, Never> {
+  public func showAlert(title: String, message: String?) -> AnyPublisher<Void, Never> {
 
     return Future { resolve in
       DispatchQueue.main.async {

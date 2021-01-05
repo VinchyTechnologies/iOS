@@ -10,24 +10,27 @@ import UIKit
 import Display
 import StringFormatting
 
-final class RateAppCell: UITableViewCell {
-
-  let emojiLabel = UILabel()
+public struct RateAppCellViewModel: ViewModelProtocol {
   
-  override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
-    super.init(style: style, reuseIdentifier: reuseIdentifier)
-    
-    selectionStyle = .none
-    backgroundColor = UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
-      if UITraitCollection.userInterfaceStyle == .dark {
-        return .secondarySystemBackground
-      } else {
-        return UIColor(red: 241 / 255, green: 243 / 255, blue: 246 / 255, alpha: 1.0)
-      }
-    }
+  fileprivate let titleText: String?
+  fileprivate let emojiLabel: String?
+  
+  public init(titleText: String?, emojiLabel: String?) {
+    self.titleText = titleText
+    self.emojiLabel = emojiLabel
+  }
+}
 
+final class RateAppCell: UICollectionViewCell, Reusable {
+
+  private let emojiLabel = UILabel()
+  private let rateTextLabel = UILabel()
+
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    backgroundColor = .option
+    
     emojiLabel.translatesAutoresizingMaskIntoConstraints = false
-    emojiLabel.text = traitCollection.userInterfaceStyle == .dark ? "👍🏿" : "👍"
     emojiLabel.textAlignment = .center
     emojiLabel.font = Font.regular(50.0)
     
@@ -39,9 +42,7 @@ final class RateAppCell: UITableViewCell {
       emojiLabel.heightAnchor.constraint(equalToConstant: 100),
     ])
     
-    let rateTextLabel = UILabel()
     rateTextLabel.translatesAutoresizingMaskIntoConstraints = false
-    rateTextLabel.text = localized("rate_our_app").firstLetterUppercased()
     rateTextLabel.font = Font.bold(20)
     rateTextLabel.textAlignment = .center
     
@@ -60,4 +61,18 @@ final class RateAppCell: UITableViewCell {
     emojiLabel.text = traitCollection.userInterfaceStyle == .dark ? "👍🏿" : "👍"
   }
 
+  static func height() -> CGFloat {
+    150
+  }
+
+}
+
+extension RateAppCell: Decoratable {
+  
+  typealias ViewModel = RateAppCellViewModel
+  
+  func decorate(model: ViewModel) {
+    rateTextLabel.text = model.titleText
+    emojiLabel.text = model.emojiLabel
+  }
 }

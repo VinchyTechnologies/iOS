@@ -9,8 +9,21 @@
 import UIKit
 import Display
 
-final class ContactCell: UITableViewCell {
+public struct ContactCellViewModel: ViewModelProtocol {
   
+  fileprivate let titleText: String?
+  fileprivate let detailText: String?
+  fileprivate let icon: UIImage?
+  
+  public init(titleText: String?, icon: UIImage?, detailText: String?) {
+    self.titleText = titleText
+    self.icon = icon
+    self.detailText = detailText
+  }
+}
+
+final class ContactCell: UICollectionViewCell, Reusable {
+
   private let contactImageView: UIImageView = {
     let imageView = UIImageView()
     imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -34,24 +47,16 @@ final class ContactCell: UITableViewCell {
     label.textColor = .blueGray
     return label
   }()
-  
-  init(icon: UIImage, text: String, detailText: String) {
-    super.init(style: .default, reuseIdentifier: nil)
-
-    backgroundColor = .mainBackground
     
-    selectionStyle = .none
-    
-    contactImageView.image = icon.withRenderingMode(.alwaysTemplate)
-    bodyLabel.text = text
-    detailLabel.text = detailText
+  override init(frame: CGRect) {
+    super.init(frame: frame)
     
     addSubview(contactImageView)
     NSLayoutConstraint.activate([
       contactImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
       contactImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
       contactImageView.widthAnchor.constraint(equalToConstant: 20),
-      contactImageView.heightAnchor.constraint(equalToConstant: 20)
+      contactImageView.heightAnchor.constraint(equalToConstant: 20),
     ])
     
     addSubview(bodyLabel)
@@ -65,9 +70,25 @@ final class ContactCell: UITableViewCell {
       detailLabel.topAnchor.constraint(equalTo: bodyLabel.bottomAnchor, constant: 4),
       detailLabel.leadingAnchor.constraint(equalTo: contactImageView.trailingAnchor, constant: 30),
       detailLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-      detailLabel.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -10)
+      detailLabel.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -10),
     ])
   }
   
   required init?(coder aDecoder: NSCoder) { fatalError() }
+
+  static func height() -> CGFloat {
+    60
+  }
+
+}
+
+extension ContactCell: Decoratable {
+  
+  typealias ViewModel = ContactCellViewModel
+  
+  func decorate(model: ViewModel) {
+    bodyLabel.text = model.titleText
+    contactImageView.image = model.icon?.withRenderingMode(.alwaysTemplate)
+    detailLabel.text = model.detailText
+  }
 }

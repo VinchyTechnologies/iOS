@@ -9,7 +9,18 @@
 import UIKit
 import Display
 
-final class DocCell: UITableViewCell {
+public struct DocCellViewModel: ViewModelProtocol {
+  
+  fileprivate let titleText: String?
+  fileprivate let icon: UIImage?
+  
+  public init(titleText: String?, icon: UIImage?) {
+    self.titleText = titleText
+    self.icon = icon
+  }
+}
+
+final class DocCell: UICollectionViewCell, Reusable {
   
   private let phoneImage: UIImageView = {
     let imageView = UIImageView()
@@ -36,22 +47,15 @@ final class DocCell: UITableViewCell {
     return imageView
   }()
   
-  init(icon: UIImage, text: String) {
-    super.init(style: .default, reuseIdentifier: nil)
-
-    backgroundColor = .mainBackground
-    
-    phoneLabel.text = text
-    phoneImage.image = icon.withRenderingMode(.alwaysTemplate)
-    
-    selectionStyle = .none
+  override init(frame: CGRect) {
+    super.init(frame: frame)
     
     contentView.addSubview(phoneImage)
     NSLayoutConstraint.activate([
       phoneImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
       phoneImage.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 30),
       phoneImage.widthAnchor.constraint(equalToConstant: 20),
-      phoneImage.heightAnchor.constraint(equalToConstant: 20)
+      phoneImage.heightAnchor.constraint(equalToConstant: 20),
     ])
     
     contentView.addSubview(phoneLabel)
@@ -61,7 +65,7 @@ final class DocCell: UITableViewCell {
       phoneLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 80),
       phoneLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
       phoneLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-      phoneLabel.heightAnchor.constraint(equalToConstant: 60)
+      phoneLabel.heightAnchor.constraint(equalToConstant: 60),
     ])
     
     contentView.addSubview(cursorView)
@@ -69,9 +73,22 @@ final class DocCell: UITableViewCell {
       cursorView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
       cursorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
       cursorView.widthAnchor.constraint(equalToConstant: 6),
-      cursorView.heightAnchor.constraint(equalToConstant: 10)
+      cursorView.heightAnchor.constraint(equalToConstant: 10),
     ])
   }
   
   required init?(coder aDecoder: NSCoder) { fatalError() }
+
+  static func height() -> CGFloat {
+    60
+  }
+}
+extension DocCell: Decoratable {
+  
+  typealias ViewModel = DocCellViewModel
+  
+  func decorate(model: ViewModel) {
+    phoneLabel.text = model.titleText
+    phoneImage.image = model.icon?.withRenderingMode(.alwaysTemplate)
+  }
 }
