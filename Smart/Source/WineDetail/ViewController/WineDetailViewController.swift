@@ -348,7 +348,7 @@ extension WineDetailViewController: VinchySimpleConiniousCaruselCollectionCellDe
 
   func didTapCompilationCell(wines: [ShortWine], title: String?) { }
 
-  func didTapBootleCell(wineID: Int64) {
+  func didTapBottleCell(wineID: Int64) {
     interactor?.didTapSimilarWine(wineID: wineID)
   }
 }

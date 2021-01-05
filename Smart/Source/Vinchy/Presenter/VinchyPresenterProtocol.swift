@@ -18,5 +18,7 @@ protocol VinchyPresenterProtocol: AnyObject {
   func update(didFindWines: [ShortWine])
   func showAlertCantOpenEmail()
   func startShimmer()
+  func stopPullRefreshing()
+  func showAlertEmptyCollection()
   
 }

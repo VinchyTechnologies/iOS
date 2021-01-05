@@ -10,11 +10,11 @@ import EmailService
 import VinchyCore
 import Core
 
-final class VinchyInteractor {
+fileprivate enum C {
+  static let searchSuggestionsCount = 10
+}
 
-  private enum C {
-    static let searchSuggestionsCount = 10
-  }
+final class VinchyInteractor {
 
   private let dispatchGroup = DispatchGroup()
   private let emailService = EmailService()
@@ -23,6 +23,10 @@ final class VinchyInteractor {
 
   private let router: VinchyRouterProtocol
   private let presenter: VinchyPresenterProtocol
+  
+  private var isSearchingMode = false
+  private var suggestions: [Wine] = []
+  private var compilations: [Compilation] = []
 
   init(
     router: VinchyRouterProtocol,
@@ -62,19 +66,19 @@ final class VinchyInteractor {
         let smartFilter = Compilation(type: .smartFilter, title: nil, collectionList: [])
         compilations.insert(smartFilter, at: 1)
       }
+      
+      self.compilations = compilations
 
       self.presenter.update(compilations: compilations)
     }
   }
 
   private func fetchSearchSuggestions() {
-
     Wines.shared.getRandomWines(count: C.searchSuggestionsCount) { [weak self] result in
       guard let self = self else { return }
-
       switch result {
       case .success(let model):
-        self.presenter.update(suggestions: model)
+        self.suggestions = model
 
       case .failure:
         break
@@ -84,6 +88,22 @@ final class VinchyInteractor {
 }
 
 extension VinchyInteractor: VinchyInteractorProtocol {
+  func didTapSuggestionCell(at indexPath: IndexPath) {
+    if isSearchingMode {
+      let wineID = suggestions[indexPath.section].id
+      router.pushToWineDetailViewController(wineID: wineID)
+    }
+  }
+  
+  func searchBarTextDidBeginEditing() {
+    isSearchingMode = true
+    presenter.update(suggestions: suggestions)
+  }
+  
+  func searchBarCancelButtonClicked() {
+    isSearchingMode = false
+    presenter.update(compilations: compilations)
+  }
 
   func didTapSearchButton(searchText: String?) {
 
@@ -123,7 +143,10 @@ extension VinchyInteractor: VinchyInteractorProtocol {
   }
 
   func didPullToRefresh() {
-    fetchData()
+    if !isSearchingMode {
+      fetchData()
+      presenter.stopPullRefreshing()
+    }
   }
 
   func didTapFilter() {
@@ -143,5 +166,23 @@ extension VinchyInteractor: VinchyInteractorProtocol {
     } else {
       presenter.showAlertCantOpenEmail()
     }
+  }
+}
+
+// MARK: - VinchySimpleConiniousCaruselCollectionCellDelegate
+
+extension VinchyInteractor {
+  
+  func didTapBottleCell(wineID: Int64) {
+    router.pushToWineDetailViewController(wineID: wineID)
+  }
+  
+  func didTapCompilationCell(wines: [ShortWine], title: String?) {
+    guard !wines.isEmpty else {
+      presenter.showAlertEmptyCollection()
+      return
+    }
+    
+    router.pushToShowcaseViewController(navigationTitle: title, wines: wines)
   }
 }
