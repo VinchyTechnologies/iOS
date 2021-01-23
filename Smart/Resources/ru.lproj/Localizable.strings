@@ -11,6 +11,7 @@
 "unavailable_version" = "Данная версия приложения больше не поддерживается. Пожалуйста, обновите приложение.";
 "open_appstore" = "Открыть AppStore";
 "appstore_link" = "itms-apps://itunes.apple.com/app/id1536720416";
+"discovery_link" = "https://vinchy.page.link/discover";
 "add" = "добавить";
 "rate_our_app" = "Оцените наше приложение";
 "error" = "ошибка";

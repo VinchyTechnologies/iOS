@@ -385,7 +385,7 @@ extension VinchyViewController: VinchyViewControllerProtocol {
 extension VinchyViewController: ShareUsCollectionCellDelegate {
   
   func didTapShareUs(_ button: UIButton) {
-    let items = [localized("i_use_vinchy"), openAppStoreURL]
+    let items = [localized("i_use_vinchy"), localized("discovery_link")]
     let controller = UIActivityViewController(activityItems: items, applicationActivities: nil)
     present(controller, animated: true)
   }

@@ -11,6 +11,7 @@
 "unavailable_version" = "Sorry, this version doesn't support anymore. Please, update the app";
 "open_appstore" = "Open AppStore";
 "appstore_link" = "itms-apps://itunes.apple.com/app/id1536720416";
+"discovery_link" = "https://vinchy.page.link/discover";
 "add" = "add";
 "rate_our_app" = "Rate our App";
 "error" = "error";
