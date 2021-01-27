@@ -21,10 +21,10 @@ final class WriteNoteViewController: UIViewController {
 
   // MARK: - Private Properties
 
-  private lazy var textView: UITextView = {
-    let textView = UITextView()
+  private lazy var textView: PlaceholderTextView = {
+    let textView = PlaceholderTextView()
     textView.font = Font.dinAlternateBold(18)
-    textView.delegate = self
+    textView.customDelegate = self
     textView.keyboardDismissMode = .interactive
     textView.showsVerticalScrollIndicator = false
     textView.alwaysBounceVertical = true
@@ -46,7 +46,6 @@ final class WriteNoteViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
     view.backgroundColor = .mainBackground
 
     navigationItem.largeTitleDisplayMode = .never
@@ -63,12 +62,13 @@ final class WriteNoteViewController: UIViewController {
       textView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
       bottomConstraint,
     ])
-
+    
+    textView.placeholderColor = .blueGray
     configureKeyboardHelper()
-
     interactor?.viewDidLoad()
+    interactor?.didStartWriteText()
   }
-
+  
   private func configureKeyboardHelper() {
     keyboardHelper.bindBottomToKeyboardFrame(
       animated: true,
@@ -100,6 +100,10 @@ extension WriteNoteViewController: UITextViewDelegate {
 // MARK: - WriteNoteViewControllerProtocol
 
 extension WriteNoteViewController: WriteNoteViewControllerProtocol {
+  
+  func setupPlaceholder(placeholder: String?) {
+    textView.placeholder = placeholder ?? ""
+  }
   
   func update(viewModel: WriteNoteViewModel) {
     if let noteText = viewModel.noteText, !noteText.isEmpty {

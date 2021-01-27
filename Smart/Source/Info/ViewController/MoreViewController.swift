@@ -33,6 +33,7 @@ final class MoreViewController: UIViewController {
     let collectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)
     collectionView.backgroundColor = .mainBackground
     collectionView.register(
+      ProfileCell.self,
       ContactCell.self,
       RateAppCell.self,
       DocCell.self,
@@ -74,6 +75,9 @@ extension MoreViewController: UICollectionViewDataSource {
     -> Int
   {
     switch viewModel?.sections[safe: section] {
+    case .profile(let model):
+      return model.count
+      
     case .header(let model):
       return model.count
       
@@ -101,6 +105,11 @@ extension MoreViewController: UICollectionViewDataSource {
     
     let section = viewModel?.sections[indexPath.section]
     switch section {
+    case .profile(let model):
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ProfileCell.reuseId, for: indexPath) as! ProfileCell // swiftlint:disable:this force_cast
+      cell.decorate(model: model[indexPath.row])
+      return cell
+      
     case .header(let model):
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseId, for: indexPath) as! TextCollectionCell // swiftlint:disable:this force_cast
       cell.decorate(model: model[indexPath.row])
@@ -141,6 +150,10 @@ extension MoreViewController: UICollectionViewDelegateFlowLayout {
     -> CGSize
   {
     switch viewModel?.sections[safe: indexPath.section] {
+    case .profile:
+      let width = collectionView.frame.width
+      return CGSize(width: width, height: SocialMediaCell.height())
+      
     case .header(let model):
       let width = collectionView.frame.width - 2 * C.horizontalInset
       return CGSize(width: width, height: TextCollectionCell.height(viewModel: model[indexPath.row], width: width))
@@ -173,8 +186,10 @@ extension MoreViewController: UICollectionViewDelegateFlowLayout {
     -> UIEdgeInsets
   {
     switch viewModel?.sections[safe: section] {
+    case .profile:
+      return .zero
     case .header:
-      return .init(top: 0, left: C.horizontalInset, bottom: 0, right: C.horizontalInset)
+      return .init(top: 35, left: C.horizontalInset, bottom: 0, right: C.horizontalInset)
 
     case .phone, .email, .partner, .rate, .social, .doc, .aboutApp, .none:
       return .zero
@@ -186,6 +201,8 @@ extension MoreViewController: UICollectionViewDelegateFlowLayout {
     didSelectItemAt indexPath: IndexPath)
   {
     switch viewModel?.sections[indexPath.section] {
+    case .profile:
+      break
     
     case .header:
       break

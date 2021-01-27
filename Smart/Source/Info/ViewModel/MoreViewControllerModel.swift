@@ -10,6 +10,7 @@ import CommonUI
 struct MoreViewControllerModel {
 
   enum Section {
+    case profile([ProfileCellViewModel])
     case header([TextCollectionCell.ViewModel])
     case phone([ContactCellViewModel])
     case email([ContactCellViewModel])
