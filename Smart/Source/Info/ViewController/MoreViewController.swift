@@ -152,7 +152,7 @@ extension MoreViewController: UICollectionViewDelegateFlowLayout {
     switch viewModel?.sections[safe: indexPath.section] {
     case .profile:
       let width = collectionView.frame.width
-      return CGSize(width: width, height: SocialMediaCell.height())
+      return CGSize(width: width, height: ProfileCell.height())
       
     case .header(let model):
       let width = collectionView.frame.width - 2 * C.horizontalInset
@@ -186,12 +186,10 @@ extension MoreViewController: UICollectionViewDelegateFlowLayout {
     -> UIEdgeInsets
   {
     switch viewModel?.sections[safe: section] {
-    case .profile:
-      return .zero
     case .header:
-      return .init(top: 35, left: C.horizontalInset, bottom: 0, right: C.horizontalInset)
+      return .init(top: 0, left: C.horizontalInset, bottom: 0, right: C.horizontalInset)
 
-    case .phone, .email, .partner, .rate, .social, .doc, .aboutApp, .none:
+    case .profile, .phone, .email, .partner, .rate, .social, .doc, .aboutApp, .none:
       return .zero
     }
   }
@@ -201,10 +199,7 @@ extension MoreViewController: UICollectionViewDelegateFlowLayout {
     didSelectItemAt indexPath: IndexPath)
   {
     switch viewModel?.sections[indexPath.section] {
-    case .profile:
-      break
-    
-    case .header:
+    case .profile, .header:
       break
       
     case .phone:

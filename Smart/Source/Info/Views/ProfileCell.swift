@@ -11,12 +11,12 @@ import Display
 
 public struct ProfileCellViewModel: ViewModelProtocol {
   
-  fileprivate let nameUser: String?
-  fileprivate let emailUser: String?
+  fileprivate let userNameText: String?
+  fileprivate let userEmailText: String?
   
   public init(nameUser: String?, emailUser: String?) {
-    self.nameUser = nameUser
-    self.emailUser = emailUser
+    self.userNameText = nameUser
+    self.userEmailText = emailUser
   }
 }
 
@@ -25,7 +25,7 @@ final class ProfileCell: UICollectionViewCell, Reusable {
   private let nameLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.font = Font.dinAlternateBold(30)
+    label.font = Font.bold(25)
     label.textColor = .dark
     return label
   }()
@@ -33,7 +33,7 @@ final class ProfileCell: UICollectionViewCell, Reusable {
   private let emailLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.font = Font.bold(20)
+    label.font = Font.medium(15)
     label.textColor = .blueGray
     return label
   }()
@@ -49,23 +49,23 @@ final class ProfileCell: UICollectionViewCell, Reusable {
   override init(frame: CGRect) {
     super.init(frame: frame)
     
-    addSubview(nameLabel)
+    contentView.addSubview(nameLabel)
     NSLayoutConstraint.activate([
-      nameLabel.topAnchor.constraint(equalTo: topAnchor, constant: 10),
-      nameLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+      nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
+      nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
     ])
     
-    addSubview(emailLabel)
+    contentView.addSubview(emailLabel)
     NSLayoutConstraint.activate([
       emailLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 3),
-      emailLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-      emailLabel.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: 20),
+      emailLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+      emailLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: 20),
     ])
     
-    addSubview(cursorView)
+    contentView.addSubview(cursorView)
     NSLayoutConstraint.activate([
       cursorView.centerYAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 1),
-      cursorView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
+      cursorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
       cursorView.widthAnchor.constraint(equalToConstant: 10),
       cursorView.heightAnchor.constraint(equalToConstant: 18),
     ])
@@ -74,7 +74,7 @@ final class ProfileCell: UICollectionViewCell, Reusable {
   required init?(coder aDecoder: NSCoder) { fatalError() }
 
   static func height() -> CGFloat {
-    170
+    80
   }
 }
 
@@ -83,7 +83,7 @@ extension ProfileCell: Decoratable {
   typealias ViewModel = ProfileCellViewModel
   
   func decorate(model: ViewModel) {
-    nameLabel.text = model.nameUser
-    emailLabel.text = model.emailUser
+    nameLabel.text = model.userNameText
+    emailLabel.text = model.userEmailText
   }
 }

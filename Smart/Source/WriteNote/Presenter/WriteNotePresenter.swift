@@ -8,7 +8,7 @@
 
 import Database
 import VinchyCore
-import Display
+import StringFormatting
 
 final class WriteNotePresenter {
 
@@ -18,28 +18,22 @@ final class WriteNotePresenter {
     self.viewController = viewController
 
   }
-  // MARK: - Private Methods
-  
-  private func setupPlaceholder() -> String {
-    let textView = "mmmmm"
-//    textView.layoutIfNeeded()
-//    textView.placeholderColor = .blueGray
-//    View.placeholder = "mmmmm"
-    return textView
-  }
 }
 
 // MARK: - WriteNotePresenterProtocol
 
 extension WriteNotePresenter: WriteNotePresenterProtocol {
+  
   func setPlaceholder() {
-    viewController?.setupPlaceholder(placeholder: setupPlaceholder())
+    viewController?.setupPlaceholder(
+      placeholder: localized("your_thoughts_about_wine").firstLetterUppercased())
   }
 
   func setInitialNoteInfo(note: Note) {
-    viewController?.update(viewModel: .init(
-                            noteText: note.noteText,
-                            navigationText: note.wineTitle))
+    viewController?.update(
+      viewModel: .init(
+          noteText: note.noteText,
+          navigationText: note.wineTitle))
   }
 
   func setInitialNoteInfo(wine: Wine) {

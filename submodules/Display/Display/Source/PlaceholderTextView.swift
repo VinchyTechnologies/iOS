@@ -8,37 +8,49 @@
 
 import UIKit
 
-public class PlaceholderTextView: UITextView {
+public final class PlaceholderTextView: UITextView {
   
   public var placeholder: String = .init() {
-    didSet { placeholderLayer.string = placeholder }
+    didSet {
+      placeholderLayer.string = placeholder
+    }
   }
   
-  public var placeholderColor = UIColor.blueGray {
-    didSet { placeholderLayer.foregroundColor = placeholderColor.cgColor }
+  public var placeholderColor: UIColor = .blueGray {
+    didSet {
+      placeholderLayer.foregroundColor = placeholderColor.cgColor
+    }
   }
   
   public var maxLength: Int? {
-    didSet { updateView() }
+    didSet {
+      updateView()
+    }
   }
   
   override public var text: String? {
-    didSet { updateView() }
+    didSet {
+      updateView()
+    }
   }
   
   override public var font: UIFont? {
-    didSet { updatePlaceholder() }
+    didSet {
+      updatePlaceholder()
+    }
   }
   
   override public var textContainerInset: UIEdgeInsets {
-    didSet { updatePlaceholder() }
+    didSet {
+      updatePlaceholder()
+    }
   }
   
-//  override public var delegate: UITextViewDelegate? {
-//    didSet {
-//      customDelegate = delegate
-//    }
-//  }
+  //  override public var delegate: UITextViewDelegate? {
+  //    didSet {
+  //      customDelegate = delegate
+  //    }
+  //  }
   
   private lazy var placeholderLayer: CATextLayer = {
     let layer = CATextLayer()
@@ -83,7 +95,11 @@ public class PlaceholderTextView: UITextView {
   }
   
   private func updateText() {
-    if let text = text, let length = maxLength, text.count > length {
+    if
+      let text = text,
+      let length = maxLength,
+      text.count > length
+    {
       self.text = String(text.prefix(length))
     }
   }
@@ -93,10 +109,11 @@ public class PlaceholderTextView: UITextView {
     
     let width = bounds.width - textContainerInset.bottom
     let height = placeholder.height(forWidth: width, font: font)
-    placeholderLayer.frame = CGRect(x: textContainerInset.left,
-                                    y: textContainerInset.right,
-                                    width: width,
-                                    height: height)
+    placeholderLayer.frame = CGRect(
+      x: textContainerInset.left,
+      y: textContainerInset.top,
+      width: width,
+      height: height)
     
     placeholderLayer.font = font
     placeholderLayer.fontSize = font.pointSize
@@ -122,16 +139,24 @@ extension PlaceholderTextView: UITextViewDelegate {
     customDelegate?.textViewDidEndEditing?(textView)
   }
   
-  public func textView(_ textView: UITextView,
-                       shouldChangeTextIn range: NSRange,
-                       replacementText text: String) -> Bool {
-    return customDelegate?.textView?(textView,
-                                     shouldChangeTextIn: range,
-                                     replacementText: text) ?? true
+  public func textView(
+    _ textView: UITextView,
+    shouldChangeTextIn range: NSRange,
+    replacementText text: String)
+    -> Bool
+  {
+    customDelegate?.textView?(
+      textView,
+      shouldChangeTextIn: range,
+      replacementText: text) ?? true
   }
   
-  override public func shouldChangeText(in range: UITextRange, replacementText text: String) -> Bool {
-    return true
+  override public func shouldChangeText(
+    in range: UITextRange,
+    replacementText text: String)
+    -> Bool
+  {
+    true
   }
   
   public func textViewDidChange(_ textView: UITextView) {
@@ -143,22 +168,30 @@ extension PlaceholderTextView: UITextViewDelegate {
     customDelegate?.textViewDidChangeSelection?(textView)
   }
   
-  public func textView(_ textView: UITextView,shouldInteractWith URL: URL,
-                       in characterRange: NSRange,
-                       interaction: UITextItemInteraction) -> Bool {
-    return customDelegate?.textView?(textView,
-                                     shouldInteractWith: URL,
-                                     in: characterRange,
-                                     interaction: interaction) ?? true
+  public func textView(
+    _ textView: UITextView,shouldInteractWith URL: URL,
+    in characterRange: NSRange,
+    interaction: UITextItemInteraction)
+    -> Bool
+  {
+    customDelegate?.textView?(
+      textView,
+      shouldInteractWith: URL,
+      in: characterRange,
+      interaction: interaction) ?? true
   }
   
-  public func textView(_ textView: UITextView,
-                       shouldInteractWith textAttachment: NSTextAttachment,
-                       in characterRange: NSRange,
-                       interaction: UITextItemInteraction) -> Bool {
-    return customDelegate?.textView?(textView,
-                                     shouldInteractWith: textAttachment,
-                                     in: characterRange,
-                                     interaction: interaction) ?? true
+  public func textView(
+    _ textView: UITextView,
+    shouldInteractWith textAttachment: NSTextAttachment,
+    in characterRange: NSRange,
+    interaction: UITextItemInteraction)
+    -> Bool
+  {
+    customDelegate?.textView?(
+      textView,
+      shouldInteractWith: textAttachment,
+      in: characterRange,
+      interaction: interaction) ?? true
   }
 }
