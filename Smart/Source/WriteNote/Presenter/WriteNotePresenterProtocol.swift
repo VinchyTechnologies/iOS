@@ -12,4 +12,5 @@ import VinchyCore
 protocol WriteNotePresenterProtocol: AnyObject {
   func setInitialNoteInfo(note: Note)
   func setInitialNoteInfo(wine: Wine)
+  func setPlaceholder()
 }

@@ -18,6 +18,7 @@ struct WineDetailViewModel {
   enum Section {
     case gallery([GalleryCellViewModel])
     case title([TitleCopyableCellViewModel])
+    case winery([TextCollectionCellViewModel])
     case text([TextCollectionCellViewModel])
     case tool([ToolCollectionCellViewModel])
     case list([TitleWithSubtitleInfoCollectionViewCellViewModel])

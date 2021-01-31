@@ -47,7 +47,7 @@ final class Assembly {
   }
 
   static func buildProfileModule() -> NavigationController {
-    let controller = MoreViewController()
+    let controller = MoreAssembly.assemblyModule()
     let navController = NavigationController(rootViewController: controller)
     return navController
   }

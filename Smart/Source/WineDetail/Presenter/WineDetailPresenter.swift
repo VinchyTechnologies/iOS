@@ -139,7 +139,7 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
   }
 
   func showNetworkErrorAlert(error: Error) {
-    viewController?.showAlert(message: error.localizedDescription)
+    viewController?.showAlert(title: localized("error").firstLetterUppercased(), message: error.localizedDescription)
   }
   
   var reportAnErrorRecipients: [String] {
@@ -147,7 +147,7 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
   }
   
   func showAlertCantOpenEmail() {
-    viewController?.showAlert(message: localized("open_mail_error"))
+    viewController?.showAlert(title: localized("error").firstLetterUppercased(), message: localized("open_mail_error"))
   }
   
   func startLoading() {
@@ -164,6 +164,17 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
     var sections: [WineDetailViewModel.Section] = []
     
     sections += buildCaruselImages(wine: wine)
+    
+    if let wineryTitle = wine.winery?.title {
+      sections += [
+        .winery([
+          .init(titleText: NSAttributedString(
+                  string: wineryTitle,
+                  font: Font.medium(18),
+                  textColor: .blueGray))
+        ])
+      ]
+    }
     
     sections += [
       .title([.init(

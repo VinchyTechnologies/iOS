@@ -8,24 +8,32 @@
 
 import Database
 import VinchyCore
+import StringFormatting
 
 final class WriteNotePresenter {
 
   weak var viewController: WriteNoteViewControllerProtocol?
 
-  init(viewController: WriteNoteViewControllerProtocol) {
+  init(viewController: WriteNoteViewControllerProtocol){
     self.viewController = viewController
+
   }
 }
 
 // MARK: - WriteNotePresenterProtocol
 
 extension WriteNotePresenter: WriteNotePresenterProtocol {
+  
+  func setPlaceholder() {
+    viewController?.setupPlaceholder(
+      placeholder: localized("your_thoughts_about_wine").firstLetterUppercased())
+  }
 
   func setInitialNoteInfo(note: Note) {
-    viewController?.update(viewModel: .init(
-                            noteText: note.noteText,
-                            navigationText: note.wineTitle))
+    viewController?.update(
+      viewModel: .init(
+          noteText: note.noteText,
+          navigationText: note.wineTitle))
   }
 
   func setInitialNoteInfo(wine: Wine) {

@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		44AA7C3B25A4A1AE00F599BA /* Throttler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA7C3A25A4A1AE00F599BA /* Throttler.swift */; };
 		5FFB4DF1C25BB618C8519B44 /* Pods_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F36A03A8E0CC5435C60647 /* Pods_Core.framework */; };
 		CA27087C24CFF39B007580D8 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27087B24CFF39B007580D8 /* Array.swift */; };
 		CA2E796324D5ECAC00F17725 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2E796224D5ECAC00F17725 /* UserDefaults.swift */; };
@@ -22,6 +23,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		44AA7C3A25A4A1AE00F599BA /* Throttler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Throttler.swift; sourceTree = "<group>"; };
 		697BF7A2F7EED885735CDEA9 /* Pods-Core.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.debug.xcconfig"; path = "Target Support Files/Pods-Core/Pods-Core.debug.xcconfig"; sourceTree = "<group>"; };
 		7B9A38AAE808F29C35EC006F /* Pods-Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.release.xcconfig"; path = "Target Support Files/Pods-Core/Pods-Core.release.xcconfig"; sourceTree = "<group>"; };
 		CA27087B24CFF39B007580D8 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
@@ -106,13 +108,14 @@
 				CA4AED9E24CED4AC00035922 /* AppBundle.swift */,
 				CA27087B24CFF39B007580D8 /* Array.swift */,
 				CABDBA9324C31E4E00AD96D6 /* CollectionExt.swift */,
+				CA3CEFB125128EDA00AAA692 /* CountryCode.swift */,
 				CACC1DC324C5F6C80082BD01 /* Filter.swift */,
 				CAF24AF624C32E470057547F /* OpenURLProtocol.swift */,
+				44AA7C3A25A4A1AE00F599BA /* Throttler.swift */,
+				CAC7EDD8257BF82B005A15DB /* UIDevice.swift */,
+				CA7A87F325028C0F00AAD10F /* URL.swift */,
 				CA2E796224D5ECAC00F17725 /* UserDefaults.swift */,
 				CA7B835024ED9AE000991F24 /* WorkItem.swift */,
-				CA7A87F325028C0F00AAD10F /* URL.swift */,
-				CA3CEFB125128EDA00AAA692 /* CountryCode.swift */,
-				CAC7EDD8257BF82B005A15DB /* UIDevice.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -230,6 +233,7 @@
 				CA27087C24CFF39B007580D8 /* Array.swift in Sources */,
 				CAC7EDD9257BF82B005A15DB /* UIDevice.swift in Sources */,
 				CABDBA9424C31E4E00AD96D6 /* CollectionExt.swift in Sources */,
+				44AA7C3B25A4A1AE00F599BA /* Throttler.swift in Sources */,
 				CA2E796324D5ECAC00F17725 /* UserDefaults.swift in Sources */,
 				CAF24AF724C32E470057547F /* OpenURLProtocol.swift in Sources */,
 				CA7A87F425028C0F00AAD10F /* URL.swift in Sources */,

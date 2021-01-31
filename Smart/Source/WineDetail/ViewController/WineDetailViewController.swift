@@ -49,13 +49,21 @@ final class WineDetailViewController: UIViewController {
       let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
       let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(300)), subitems: [item])
       let section = NSCollectionLayoutSection(group: group)
+      section.contentInsets = .init(top: 0, leading: 0, bottom: 15, trailing: 0)
+      return section
+      
+    case .winery:
+      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(15)))
+      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(15)), subitems: [item])
+      let section = NSCollectionLayoutSection(group: group)
+      section.contentInsets = .init(top: 15, leading: 15, bottom: 0, trailing: 15)
       return section
 
     case .title, .text:
-      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(30)))
-      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(30)), subitems: [item])
+      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(15)))
+      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(15)), subitems: [item])
       let section = NSCollectionLayoutSection(group: group)
-      section.contentInsets = .init(top: 15, leading: 15, bottom: 0, trailing: 15)
+      section.contentInsets = .init(top: 5, leading: 15, bottom: 0, trailing: 15)
       return section
       
     case .tool:
@@ -202,6 +210,9 @@ extension WineDetailViewController: UICollectionViewDataSource {
     case .title(let model):
       return model.count
       
+    case .winery(let model):
+      return model.count
+      
     case .text(let model):
       return model.count
       
@@ -247,8 +258,8 @@ extension WineDetailViewController: UICollectionViewDataSource {
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TitleCopyableCell.reuseId, for: indexPath) as! TitleCopyableCell
       cell.decorate(model: model[indexPath.row])
       return cell
-      
-    case .text(let model):
+            
+    case .winery(let model), .text(let model):
       // swiftlint:disable:next force_cast
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseId, for: indexPath) as! TextCollectionCell
       cell.decorate(model: model[indexPath.row])
@@ -348,7 +359,7 @@ extension WineDetailViewController: VinchySimpleConiniousCaruselCollectionCellDe
 
   func didTapCompilationCell(wines: [ShortWine], title: String?) { }
 
-  func didTapBootleCell(wineID: Int64) {
+  func didTapBottleCell(wineID: Int64) {
     interactor?.didTapSimilarWine(wineID: wineID)
   }
 }

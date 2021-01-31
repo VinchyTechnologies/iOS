@@ -12,7 +12,7 @@ import UIKit
 public enum Model: String {
 
   //Simulator
-  case simulator     = "simulator/sandbox",
+  case simulator = "simulator/sandbox",
 
        //iPod
        iPod1              = "iPod 1",
@@ -116,7 +116,7 @@ public extension UIDevice {
       }
     }
 
-    let modelMap : [String: Model] = [
+    let modelMap: [String: Model] = [
 
       //Simulator
       "i386"      : .simulator,
@@ -198,7 +198,6 @@ public extension UIDevice {
       "iPad11,4"  : .iPadAir3,
       "iPad13,1"  : .iPadAir4,
       "iPad13,2"  : .iPadAir4,
-
 
       //iPhone
       "iPhone3,1" : .iPhone4,
