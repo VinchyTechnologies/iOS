@@ -130,6 +130,7 @@
 "general_impression" = "общее впечатление";
 "description" = "Описание";
 "you_have_not_written_any_notes_yet" = "Вы не написали ещё ни одной заметки";
+"your_thoughts_about_wine" = "ваши мысли о вине...";
 
 // MARK: - Docs
 "terms_of_use_url" = "https://drive.google.com/file/d/1P9kIPsxwMD20OH4VZ2ANIdsn-1QtZNLM/view";

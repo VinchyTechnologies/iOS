@@ -130,6 +130,7 @@
 "general_impression" = "general impression";
 "description" = "description";
 "you_have_not_written_any_notes_yet" = "you have not written any notes yet";
+"your_thoughts_about_wine" = "your thoughts about wine...";
 
 // MARK: - Docs
 "terms_of_use_url" = "https://drive.google.com/file/d/1-HTyQsjLbLgHrfJm-R9lJSRMKjFEeJfg/view";

@@ -33,7 +33,14 @@ final class MorePresenter {
   private func createViewModel(isRussianLocale: Bool) -> MoreViewControllerModel  {
     
     var sections: [MoreViewControllerModel.Section] = []
-
+    
+    if isProfileCellAvailable {
+      let profileViewModel = ProfileCellViewModel(
+        nameUser: localized("Alex").firstLetterUppercased(),
+        emailUser: localized("presenter@gmail.com").localizedLowercase)
+      sections.append(.profile([profileViewModel]))
+    }
+    
     let headerViewModel = TextCollectionCellViewModel(
       titleText: .init(string: localized("always_available").firstLetterUppercased(),
                        font: Font.bold(16),

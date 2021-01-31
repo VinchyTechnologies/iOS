@@ -34,7 +34,6 @@ extension StatusAlertable {
   }
 }
 
-
 protocol CantOpenURLAlertable: Alertable {
   func showAlertCantOpenURL()
 }

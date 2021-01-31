@@ -10,4 +10,5 @@ protocol WriteNoteInteractorProtocol: AnyObject {
   func viewDidLoad()
   func didTapSave()
   func didChangeNoteText(_ text: String?)
+  func didStartWriteText()
 }
