@@ -31,7 +31,7 @@ final class API {
     urlComponents.host = endpoint.host
     urlComponents.path = endpoint.path
     
-    if endpoint.method == .get && endpoint.parameters != nil {
+    if endpoint.encoding == .queryString && endpoint.parameters != nil {
       var queryItems = [URLQueryItem]()
       endpoint.parameters?.forEach({ (key, value) in
         if let stringValue = value as? String {
@@ -39,8 +39,6 @@ final class API {
         }
       })
       urlComponents.queryItems = queryItems
-    } else {
-      // TODO: - http body
     }
     
     guard let url = urlComponents.url else {
@@ -51,6 +49,12 @@ final class API {
     }
     
     var request = URLRequest(url: url)
+    
+    if endpoint.encoding == .httpBody && endpoint.parameters != nil {
+      let dictionary = endpoint.parameters?.reduce(into: [:]) { $0[$1.0] = $1.1 }
+      let jsonData = try? JSONSerialization.data(withJSONObject: dictionary as Any)
+      request.httpBody = jsonData
+    }
     
     if endpoint.headers != nil {
       endpoint.headers?.forEach({ (key, value) in
@@ -117,3 +121,5 @@ extension CharacterSet {
     return allowed
   }()
 }
+
+

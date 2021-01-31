@@ -6,6 +6,7 @@
 //
 
 import StringFormatting
+import VinchyCore
 
 final class AuthorizationInteractor {
   
@@ -26,22 +27,39 @@ final class AuthorizationInteractor {
 extension AuthorizationInteractor: AuthorizationInteractorProtocol {
   
   func didTapContinueButton(_ email: String?) {
-    if isValidEmail(email) {
-      presenter.updateValidEmail()
-      print("is valid email")
-      router.pushToEnterPasswordViewController()
-    } else {
-      presenter.updateInvalidEmail()
-      print("is invalid email")
-    }
+    
+//    guard let email = email else {
+//      presenter.updateInvalidEmail()
+//      print("is invalid email")
+//      return
+//    }
+//
+//    if isValidEmail(email) {
+//      presenter.updateValidEmail()
+//      print("is valid email")
+      
+      Accounts.shared.createNewAccount(email: "test2@gmail.com", password: "123456") { [weak self] result in
+        switch result {
+        case .success(let accountID):
+          print(accountID.accountID)
+        case .failure(let error):
+          print(error)
+        }
+      }
+      
+//      router.pushToEnterPasswordViewController()
+//    } else {
+//      presenter.updateInvalidEmail()
+//      print("is invalid email")
+//    }
   }
   
   func didEnterTextIntoEmailTextField(_ email: String?) {
-    if isValidEmail(email) {
+//    if isValidEmail(email) {
       presenter.updateValidEmail()
-    } else {
-      presenter.updateInvalidEmail()
-    }
+//    } else {
+//      presenter.updateInvalidEmail()
+//    }
   }
   
   func viewDidLoad() {

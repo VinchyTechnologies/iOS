@@ -81,6 +81,7 @@ target 'VinchyAuthorizationApp' do
   project 'submodules/VinchyAuthorization/VinchyAuthorization'
   pod 'Nuke'
   pod 'SkyFloatingLabelTextField'
+  pod 'CocoaDebug', :configurations => ['Debug']
 end
 
 post_install do |installer|

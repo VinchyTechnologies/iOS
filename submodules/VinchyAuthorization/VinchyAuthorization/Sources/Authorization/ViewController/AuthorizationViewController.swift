@@ -8,6 +8,12 @@
 import UIKit
 import Display
 
+fileprivate enum C {
+  private static let imageConfig = UIImage.SymbolConfiguration(pointSize: 18, weight: .medium, scale: .default)
+  static let eyeImage = UIImage(systemName: "eye", withConfiguration: imageConfig)
+  static let eyeSlashImage = UIImage(systemName: "eye.slash", withConfiguration: imageConfig)
+}
+
 final class AuthorizationViewController: UIViewController {
   
   // MARK: - Internal Properties
@@ -43,6 +49,24 @@ final class AuthorizationViewController: UIViewController {
     textField.selectedIconColor = .blueGray
     textField.delegate = self
     textField.textContentType = .emailAddress
+    textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
+    return textField
+  }()
+  
+  private lazy var eyeButton: UIButton = {
+    let button = UIButton()
+    button.tintColor = .blueGray
+    button.setImage(C.eyeImage, for: .normal)
+    button.addTarget(self, action: #selector(didTapEyeButton(_:)), for: .touchUpInside)
+    return button
+  }()
+  
+  private lazy var passwordTextField: TextField = {
+    let textField = TextField()
+    textField.delegate = self
+    textField.rightViewMode = .always
+    textField.rightView = eyeButton
+    textField.isSecureTextEntry = true
     textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     return textField
   }()
@@ -91,12 +115,20 @@ final class AuthorizationViewController: UIViewController {
       bottomConstraint,
     ])
     
+    view.addSubview(passwordTextField)
+    passwordTextField.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      passwordTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24),
+      passwordTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24),
+      passwordTextField.bottomAnchor.constraint(equalTo: continueButton.topAnchor, constant: -16),
+    ])
+    
     view.addSubview(emailTextField)
     emailTextField.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       emailTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24),
       emailTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24),
-      emailTextField.bottomAnchor.constraint(equalTo: continueButton.topAnchor, constant: -16),
+      emailTextField.bottomAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: -16),
     ])
     
     view.addSubview(titleLabel)
@@ -157,6 +189,16 @@ final class AuthorizationViewController: UIViewController {
   @objc
   private func closeSelf() {
     dismiss(animated: true)
+  }
+  
+  @objc
+  private func didTapEyeButton(_ button: UIButton) {
+    passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
+    if passwordTextField.isSecureTextEntry {
+      eyeButton.setImage(C.eyeImage, for: .normal)
+    } else {
+      eyeButton.setImage(C.eyeSlashImage, for: .normal)
+    }
   }
 }
 

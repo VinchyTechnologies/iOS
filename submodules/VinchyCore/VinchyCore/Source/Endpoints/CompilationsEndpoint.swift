@@ -39,7 +39,7 @@ private enum CompilationsEndpoint: EndpointProtocol {
 
 public final class Compilations {
   
-  let api = API.shared
+  private let api = API.shared
   
   public static let shared = Compilations()
   

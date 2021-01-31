@@ -258,13 +258,13 @@
 		443F0AE8259126F200E15437 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
-				443F0AE9259126F200E15437 /* ViewModel */,
-				443F0AEB259126F200E15437 /* Input */,
 				443F0AED259126F200E15437 /* Assembly */,
-				443F0AEF259126F200E15437 /* Presenter */,
-				443F0AF2259126F200E15437 /* ViewController */,
+				443F0AEB259126F200E15437 /* Input */,
 				443F0AF5259126F200E15437 /* Interactor */,
+				443F0AEF259126F200E15437 /* Presenter */,
 				443F0AF8259126F200E15437 /* Router */,
+				443F0AF2259126F200E15437 /* ViewController */,
+				443F0AE9259126F200E15437 /* ViewModel */,
 			);
 			path = Authorization;
 			sourceTree = "<group>";

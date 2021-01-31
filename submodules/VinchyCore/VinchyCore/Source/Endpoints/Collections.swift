@@ -39,7 +39,7 @@ private enum CollectionEndpoint: EndpointProtocol {
 
 public final class Collections {
   
-  let api = API.shared
+  private let api = API.shared
   
   public static let shared = Collections()
   

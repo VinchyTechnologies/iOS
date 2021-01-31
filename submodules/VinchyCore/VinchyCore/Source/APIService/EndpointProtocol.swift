@@ -37,7 +37,7 @@ public protocol EndpointProtocol {
   var host: String { get }
   var path: String { get }
   var method: HTTPMethod { get }
-  var parameters: Parameters? { get }
+  var parameters: [(String, Any)]? { get }
   var encoding: ParameterEncoding { get }
   var headers: HTTPHeaders? { get }
   var cacheKey: String? { get }
@@ -66,13 +66,13 @@ public extension EndpointProtocol {
 
   var headers: HTTPHeaders? {
     return [
-      "Authorization": getTopSecretPreferences()?.apiKey ?? "",
+      "Authorization": "VFAXGm53nG7zBtEuF5DVAhK9YKuHBJ9xTjuCeFyHDxbP4s6gj6",
       "accept-language": Locale.current.languageCode ?? "en",
       "x-currency": Locale.current.currencyCode ?? "USD"
     ]
   }
 
   var cacheKey: String? {
-    return nil
+    nil
   }
 }

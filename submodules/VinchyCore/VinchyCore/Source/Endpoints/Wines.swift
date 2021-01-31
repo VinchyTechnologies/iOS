@@ -63,7 +63,7 @@ private enum WinesEndpoint: EndpointProtocol {
 
 public final class Wines {
 
-  let api = API.shared
+  private let api = API.shared
 
   public static let shared = Wines()
 
