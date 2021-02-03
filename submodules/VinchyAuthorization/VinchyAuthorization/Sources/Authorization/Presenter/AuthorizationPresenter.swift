@@ -22,6 +22,10 @@ final class AuthorizationPresenter {
 
 extension AuthorizationPresenter: AuthorizationPresenterProtocol {
   
+  func endEditing() {
+    viewController?.endEditing()
+  }
+  
   func showCreateUserError(error: Error) {
     viewController?.showAlert(
       title: localized("error").firstLetterUppercased(),
@@ -34,6 +38,8 @@ extension AuthorizationPresenter: AuthorizationPresenterProtocol {
       subtitleText: "To start collect bottles your should authentificate yourself",
       emailTextFiledPlaceholderText: "Enter Email",
       emailTextFiledTopPlaceholderText: "Email",
+      passwordTextFiledPlaceholderText: "Password",
+      passwordTextFiledTopPlaceholderText: "Password",
       continueButtonText: "Next")
     
     viewController?.updateUI(viewModel: viewModel)

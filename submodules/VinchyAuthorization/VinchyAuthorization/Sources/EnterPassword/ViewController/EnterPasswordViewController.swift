@@ -40,22 +40,10 @@ final class EnterPasswordViewController: UIViewController {
     return label
   }()
   
-//  private lazy var eyeButton: UIButton = {
-//    let button = UIButton()
-//    button.tintColor = .blueGray
-//    button.setImage(C.eyeImage, for: .normal)
-//    button.addTarget(self, action: #selector(didTapEyeButton(_:)), for: .touchUpInside)
-//    return button
-//  }()
-  
   private lazy var passwordTextField: TextField = {
     let textField = TextField()
     textField.delegate = self
-//    textField.textContentType = .password // TODO: -
-//    textField.rightViewMode = .always
-//    textField.rightView = eyeButton
     textField.keyboardType = .numberPad
-//    textField.isSecureTextEntry = true
     textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     return textField
   }()
@@ -157,12 +145,7 @@ final class EnterPasswordViewController: UIViewController {
   
   @objc
   private func textFieldDidChange(_ textFiled: UITextField) {
-//    interactor?.didEnterTextIntoEmailTextField(textFiled.text)
-  }
-  
-  @objc
-  private func didTapForgotButton() {
-    
+    interactor?.didEnterCodeInTextField(textFiled.text)
   }
 }
 
@@ -184,13 +167,6 @@ extension EnterPasswordViewController: EnterPasswordViewControllerProtocol {
     subtitleLabel.text = viewModel.subtitleText
     passwordTextField.placeholder = viewModel.enterPasswordTextFiledPlaceholderText
     passwordTextField.selectedTitle = viewModel.enterPasswordTextFiledTopPlaceholderText
-//    continueButton.setTitle(viewModel.continueButtonText, for: .normal)
-    
-//    navigationItem.rightBarButtonItem = UIBarButtonItem(
-//      title: viewModel.rightBarButtonItemText,
-//      style: .plain,
-//      target: self,
-//      action: #selector(didTapForgotButton))
   }
 }
 
@@ -198,8 +174,4 @@ extension EnterPasswordViewController: EnterPasswordViewControllerProtocol {
 
 extension EnterPasswordViewController: UITextFieldDelegate {
   
-//  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-////    interactor?.didTapContinueButton(textField.text)
-//    return true
-//  }
 }

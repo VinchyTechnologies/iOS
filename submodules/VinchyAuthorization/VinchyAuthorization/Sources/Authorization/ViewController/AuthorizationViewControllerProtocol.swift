@@ -11,4 +11,5 @@ protocol AuthorizationViewControllerProtocol: Alertable {
   func updateUI(viewModel: AuthorizationViewModel)
   func updateUIInvalidEmailAndPassword()
   func updateUIValidEmailAndPassword()
+  func endEditing()
 }

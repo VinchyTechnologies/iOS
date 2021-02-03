@@ -40,13 +40,19 @@ final class AuthorizationViewController: UIViewController {
     return label
   }()
   
-  private lazy var emailTextField: TextFieldWithIcon = {
-    let textField = TextFieldWithIcon()
+  private lazy var emailTextField: TextField/*WithIcon*/ = {
+    let textField = TextField/*WithIcon*/()
+    textField.autocapitalizationType = .none
     textField.keyboardType = .emailAddress
-    textField.iconType = .image
-    textField.iconImage = UIImage(systemName: "envelope")
-    textField.iconMarginBottom = 0
-    textField.selectedIconColor = .blueGray
+//    textField.iconType = .image
+//    textField.iconImage = UIImage(systemName: "envelope")
+//    textField.iconMarginBottom = 0
+//    textField.selectedIconColor = .blueGray
+    
+//    let imageView = UIImageView(image: UIImage(systemName: "envelope"))
+//    imageView.tintColor = .blueGray
+//    textField.rightView = imageView
+//    textField.rightViewMode = .always
     textField.delegate = self
     textField.textContentType = .emailAddress
     textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
@@ -169,7 +175,7 @@ final class AuthorizationViewController: UIViewController {
 
   private func updateNextButtonBottomConstraint(with keyboardHeight: CGFloat) {
     if keyboardHeight == 0 {
-      bottomConstraint.constant = -keyboardHeight
+      bottomConstraint.constant = -keyboardHeight - view.safeAreaInsets.top
     } else {
       bottomConstraint.constant = -keyboardHeight - 10
     }
@@ -182,9 +188,14 @@ final class AuthorizationViewController: UIViewController {
   }
   
   @objc
-  private func textFieldDidChange(_ textFiled: UITextField) {
+  private func textFieldDidChange(_ textFieled: UITextField) {
+    
+    if textFieled === emailTextField {
+      textFieled.text = textFieled.text?.lowercased()
+    }
+    
     interactor?.didEnterTextIntoEmailTextFieldOrPasswordTextField(
-      emailTextField.text,
+      emailTextField.text?.lowercased(),
       password: passwordTextField.text)
   }
   
@@ -208,11 +219,17 @@ final class AuthorizationViewController: UIViewController {
 
 extension AuthorizationViewController: AuthorizationViewControllerProtocol {
   
+  func endEditing() {
+    view.endEditing(true)
+  }
+  
   func updateUI(viewModel: AuthorizationViewModel) {
     titleLabel.text = viewModel.titleText
     subtitleLabel.text = viewModel.subtitleText
     emailTextField.placeholder = viewModel.emailTextFiledPlaceholderText
     emailTextField.selectedTitle = viewModel.emailTextFiledTopPlaceholderText
+    passwordTextField.placeholder = viewModel.passwordTextFiledPlaceholderText
+    passwordTextField.selectedTitle = viewModel.passwordTextFiledTopPlaceholderText
     continueButton.setTitle(viewModel.continueButtonText, for: .normal)
   }
   

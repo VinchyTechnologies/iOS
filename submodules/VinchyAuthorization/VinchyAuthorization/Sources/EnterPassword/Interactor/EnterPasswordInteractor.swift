@@ -9,6 +9,7 @@ import VinchyCore
 
 fileprivate enum C {
   static let timerSeconds: TimeInterval = 10
+  static let numberOfDigitsInCode = 4
 }
 
 final class EnterPasswordInteractor {
@@ -54,6 +55,22 @@ final class EnterPasswordInteractor {
 
 extension EnterPasswordInteractor: EnterPasswordInteractorProtocol {
   
+  func didEnterCodeInTextField(_ text: String?) {
+    if let text = text, text.count == C.numberOfDigitsInCode && text.isNumeric {
+      Accounts.shared.checkConfirmationCode(
+        accountID: input.accountID,
+        confirmationCode: text) { [weak self] result in
+        switch result {
+        case .success(let model):
+          print(model)
+          
+        case .failure(let error):
+          print("error")
+        }
+      }
+    }
+  }
+  
   func didTapSendCodeAgainButton() {
     Accounts.shared.sendConfirmationCode(accountID: input.accountID) { [weak self] result in
       switch result {
@@ -73,4 +90,10 @@ extension EnterPasswordInteractor: EnterPasswordInteractorProtocol {
     startTimer()
     presenter.update()
   }
+}
+
+fileprivate extension String {
+   var isNumeric: Bool {
+     return !(self.isEmpty) && self.allSatisfy { $0.isNumber }
+   }
 }

@@ -12,5 +12,7 @@ struct AuthorizationViewModel {
   let subtitleText: String?
   let emailTextFiledPlaceholderText: String?
   let emailTextFiledTopPlaceholderText: String?
+  let passwordTextFiledPlaceholderText: String?
+  let passwordTextFiledTopPlaceholderText: String?
   let continueButtonText: String?
 }
