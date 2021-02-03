@@ -5,8 +5,9 @@
 //  Created by Алексей Смирнов on 23.12.2020.
 //
 
-import Foundation
+import Display
 
-protocol EnterPasswordViewControllerProtocol: AnyObject {
+protocol EnterPasswordViewControllerProtocol: Alertable {
   func updateUI(viewModel: EnterPasswordViewModel)
+  func updateUI(buttonText: String, isButtonEnabled: Bool)
 }

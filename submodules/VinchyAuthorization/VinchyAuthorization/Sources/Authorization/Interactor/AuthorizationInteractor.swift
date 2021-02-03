@@ -26,40 +26,47 @@ final class AuthorizationInteractor {
 
 extension AuthorizationInteractor: AuthorizationInteractorProtocol {
   
-  func didTapContinueButton(_ email: String?) {
+  func didTapContinueButton(_ email: String?, password: String?) {
     
-//    guard let email = email else {
-//      presenter.updateInvalidEmail()
-//      print("is invalid email")
-//      return
-//    }
-//
-//    if isValidEmail(email) {
-//      presenter.updateValidEmail()
-//      print("is valid email")
-      
-      Accounts.shared.createNewAccount(email: "test2@gmail.com", password: "123456") { [weak self] result in
+    guard let email = email else {
+      presenter.updateInvalidEmailAndPassword()
+      print("is invalid email")
+      return
+    }
+    
+    guard  let password = password else {
+      presenter.updateInvalidEmailAndPassword() // TODO: -
+      print("is invalid password")
+      return
+    }
+
+    if isValidEmail(email) && !password.isEmpty {
+      presenter.updateValidEmailAndPassword()
+      print("is valid email")
+      Accounts.shared.createNewAccount(email: email, password: password) { [weak self] result in
         switch result {
         case .success(let accountID):
           print(accountID.accountID)
+          self?.router.pushToEnterPasswordViewController(accountID: accountID.accountID)
+          
         case .failure(let error):
-          print(error)
+          self?.presenter.showCreateUserError(error: error)
         }
       }
       
-//      router.pushToEnterPasswordViewController()
-//    } else {
-//      presenter.updateInvalidEmail()
-//      print("is invalid email")
-//    }
+      
+    } else {
+      presenter.updateInvalidEmailAndPassword()
+      print("is invalid email")
+    }
   }
   
-  func didEnterTextIntoEmailTextField(_ email: String?) {
-//    if isValidEmail(email) {
-      presenter.updateValidEmail()
-//    } else {
-//      presenter.updateInvalidEmail()
-//    }
+  func didEnterTextIntoEmailTextFieldOrPasswordTextField(_ email: String?, password: String?) {
+    if isValidEmail(email) && !(password?.isEmpty == true) {
+      presenter.updateValidEmailAndPassword()
+    } else {
+      presenter.updateInvalidEmailAndPassword()
+    }
   }
   
   func viewDidLoad() {

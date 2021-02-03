@@ -178,12 +178,14 @@ final class AuthorizationViewController: UIViewController {
   
   @objc
   private func didTapContinueButton(_ button: UIButton) {
-    interactor?.didTapContinueButton(emailTextField.text)
+    interactor?.didTapContinueButton(emailTextField.text, password: passwordTextField.text)
   }
   
   @objc
   private func textFieldDidChange(_ textFiled: UITextField) {
-    interactor?.didEnterTextIntoEmailTextField(textFiled.text)
+    interactor?.didEnterTextIntoEmailTextFieldOrPasswordTextField(
+      emailTextField.text,
+      password: passwordTextField.text)
   }
   
   @objc
@@ -214,11 +216,11 @@ extension AuthorizationViewController: AuthorizationViewControllerProtocol {
     continueButton.setTitle(viewModel.continueButtonText, for: .normal)
   }
   
-  func updateUIValidEmail() {
+  func updateUIValidEmailAndPassword() {
     continueButton.enable()
   }
   
-  func updateUIInvalidEmail() {
+  func updateUIInvalidEmailAndPassword() {
     continueButton.disable()
   }
 }
@@ -227,8 +229,8 @@ extension AuthorizationViewController: AuthorizationViewControllerProtocol {
 
 extension AuthorizationViewController: UITextFieldDelegate {
   
-  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-    interactor?.didTapContinueButton(textField.text)
-    return true
-  }
+//  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+//    interactor?.didTapContinueButton(textField.text)
+//    return true
+//  }
 }

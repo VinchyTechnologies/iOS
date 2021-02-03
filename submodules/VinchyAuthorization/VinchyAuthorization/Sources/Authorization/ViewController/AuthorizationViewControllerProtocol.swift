@@ -5,10 +5,10 @@
 //  Created by Алексей Смирнов on 21.12.2020.
 //
 
-import Foundation
+import Display
 
-protocol AuthorizationViewControllerProtocol: AnyObject {
+protocol AuthorizationViewControllerProtocol: Alertable {
   func updateUI(viewModel: AuthorizationViewModel)
-  func updateUIInvalidEmail()
-  func updateUIValidEmail()
+  func updateUIInvalidEmailAndPassword()
+  func updateUIValidEmailAndPassword()
 }

@@ -9,4 +9,5 @@ import Foundation
 
 protocol EnterPasswordInteractorProtocol: AnyObject {
   func viewDidLoad()
+  func didTapSendCodeAgainButton()
 }

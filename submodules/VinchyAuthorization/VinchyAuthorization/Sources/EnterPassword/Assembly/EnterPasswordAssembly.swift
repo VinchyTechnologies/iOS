@@ -9,12 +9,12 @@ import UIKit
 
 final class EnterPasswordAssembly {
   
-  static func assemblyModule() -> UIViewController {
+  static func assemblyModule(input: EnterPasswordInput) -> UIViewController {
     let viewController = EnterPasswordViewController()
     
-    let router = EnterPasswordRouter(input: EnterPasswordInput(), viewController: viewController)
+    let router = EnterPasswordRouter(input: input, viewController: viewController)
     let presenter = EnterPasswordPresenter(viewController: viewController)
-    let interactor = EnterPasswordInteractor(router: router, presenter: presenter)
+    let interactor = EnterPasswordInteractor(input: input, router: router, presenter: presenter)
     
     router.interactor = interactor
     viewController.interactor = interactor

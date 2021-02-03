@@ -40,22 +40,22 @@ final class EnterPasswordViewController: UIViewController {
     return label
   }()
   
-  private lazy var eyeButton: UIButton = {
-    let button = UIButton()
-    button.tintColor = .blueGray
-    button.setImage(C.eyeImage, for: .normal)
-    button.addTarget(self, action: #selector(didTapEyeButton(_:)), for: .touchUpInside)
-    return button
-  }()
+//  private lazy var eyeButton: UIButton = {
+//    let button = UIButton()
+//    button.tintColor = .blueGray
+//    button.setImage(C.eyeImage, for: .normal)
+//    button.addTarget(self, action: #selector(didTapEyeButton(_:)), for: .touchUpInside)
+//    return button
+//  }()
   
   private lazy var passwordTextField: TextField = {
     let textField = TextField()
     textField.delegate = self
 //    textField.textContentType = .password // TODO: -
-    textField.rightViewMode = .always
-    textField.rightView = eyeButton
+//    textField.rightViewMode = .always
+//    textField.rightView = eyeButton
     textField.keyboardType = .numberPad
-    textField.isSecureTextEntry = true
+//    textField.isSecureTextEntry = true
     textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     return textField
   }()
@@ -64,7 +64,7 @@ final class EnterPasswordViewController: UIViewController {
     let button = Button()
     button.translatesAutoresizingMaskIntoConstraints = false
     button.disable()
-    button.addTarget(self, action: #selector(didTapContinueButton(_:)), for: .touchUpInside)
+    button.addTarget(self, action: #selector(didTapSendAgainButton(_:)), for: .touchUpInside)
     return button
   }()
   
@@ -151,8 +151,8 @@ final class EnterPasswordViewController: UIViewController {
   }
   
   @objc
-  private func didTapContinueButton(_ button: UIButton) {
-//    interactor?.didTapContinueButton(emailTextField.text)
+  private func didTapSendAgainButton(_ button: UIButton) {
+    interactor?.didTapSendCodeAgainButton()
   }
   
   @objc
@@ -164,28 +164,27 @@ final class EnterPasswordViewController: UIViewController {
   private func didTapForgotButton() {
     
   }
-  
-  @objc
-  private func didTapEyeButton(_ button: UIButton) {
-    passwordTextField.isSecureTextEntry = !passwordTextField.isSecureTextEntry
-    if passwordTextField.isSecureTextEntry {
-      eyeButton.setImage(C.eyeImage, for: .normal)
-    } else {
-      eyeButton.setImage(C.eyeSlashImage, for: .normal)
-    }
-  }
 }
 
 // MARK: - EnterPasswordViewControllerProtocol
 
 extension EnterPasswordViewController: EnterPasswordViewControllerProtocol {
   
+  func updateUI(buttonText: String, isButtonEnabled: Bool) {
+    continueButton.setTitle(buttonText, for: .normal)
+    if isButtonEnabled {
+      continueButton.enable()
+    } else {
+      continueButton.disable()
+    }
+  }
+  
   func updateUI(viewModel: EnterPasswordViewModel) {
     titleLabel.text = viewModel.titleText
     subtitleLabel.text = viewModel.subtitleText
     passwordTextField.placeholder = viewModel.enterPasswordTextFiledPlaceholderText
     passwordTextField.selectedTitle = viewModel.enterPasswordTextFiledTopPlaceholderText
-    continueButton.setTitle(viewModel.continueButtonText, for: .normal)
+//    continueButton.setTitle(viewModel.continueButtonText, for: .normal)
     
 //    navigationItem.rightBarButtonItem = UIBarButtonItem(
 //      title: viewModel.rightBarButtonItemText,
@@ -199,8 +198,8 @@ extension EnterPasswordViewController: EnterPasswordViewControllerProtocol {
 
 extension EnterPasswordViewController: UITextFieldDelegate {
   
-  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-//    interactor?.didTapContinueButton(textField.text)
-    return true
-  }
+//  func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+////    interactor?.didTapContinueButton(textField.text)
+//    return true
+//  }
 }

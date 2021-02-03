@@ -8,5 +8,5 @@
 import Foundation
 
 protocol AuthorizationRouterProtocol: AnyObject {
-  func pushToEnterPasswordViewController()
+  func pushToEnterPasswordViewController(accountID: Int)
 }

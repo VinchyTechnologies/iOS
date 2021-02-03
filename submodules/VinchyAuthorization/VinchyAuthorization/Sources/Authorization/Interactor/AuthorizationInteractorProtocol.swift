@@ -9,6 +9,6 @@ import Foundation
 
 protocol AuthorizationInteractorProtocol: AnyObject {
   func viewDidLoad()
-  func didEnterTextIntoEmailTextField(_ email: String?)
-  func didTapContinueButton(_ email: String?)
+  func didEnterTextIntoEmailTextFieldOrPasswordTextField(_ email: String?, password: String?)
+  func didTapContinueButton(_ email: String?, password: String?)
 }

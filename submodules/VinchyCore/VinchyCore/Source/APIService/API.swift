@@ -83,10 +83,16 @@ final class API {
       }
       
       do {
-        //                print(String(data: data, encoding: .utf8))
-        let obj = try JSONDecoder().decode(T.self, from: data)
-        DispatchQueue.main.async {
-          completion(.success(obj))
+//        print("===", T.self, String(data: data, encoding: .utf8) as Any)
+        if T.self == EmptyResponse.self && data.isEmpty {
+          DispatchQueue.main.async {
+            completion(.success(EmptyResponse() as! T))
+          }
+        } else {
+          let obj = try JSONDecoder().decode(T.self, from: data)
+          DispatchQueue.main.async {
+            completion(.success(obj))
+          }
         }
       } catch {
         DispatchQueue.main.async {

@@ -5,7 +5,7 @@
 //  Created by Алексей Смирнов on 21.12.2020.
 //
 
-import Foundation
+import StringFormatting
 
 final class AuthorizationPresenter {
   
@@ -21,8 +21,14 @@ final class AuthorizationPresenter {
 // MARK: - AuthorizationPresenterProtocol
 
 extension AuthorizationPresenter: AuthorizationPresenterProtocol {
+  
+  func showCreateUserError(error: Error) {
+    viewController?.showAlert(
+      title: localized("error").firstLetterUppercased(),
+      message: error.localizedDescription)
+  }
+  
   func update() {
-    
     let viewModel = AuthorizationViewModel(
       titleText: "Welcome",
       subtitleText: "To start collect bottles your should authentificate yourself",
@@ -33,11 +39,11 @@ extension AuthorizationPresenter: AuthorizationPresenterProtocol {
     viewController?.updateUI(viewModel: viewModel)
   }
   
-  func updateValidEmail() {
-    viewController?.updateUIValidEmail()
+  func updateValidEmailAndPassword() {
+    viewController?.updateUIValidEmailAndPassword()
   }
   
-  func updateInvalidEmail() {
-    viewController?.updateUIInvalidEmail()
+  func updateInvalidEmailAndPassword() {
+    viewController?.updateUIInvalidEmailAndPassword()
   }
 }

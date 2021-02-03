@@ -10,6 +10,7 @@
 		2B369E35275D8A0E73843EBC /* Pods_VinchyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D29A7E3032685F4CCEE243 /* Pods_VinchyCore.framework */; };
 		44834CD725C6D36300CD187F /* Accounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44834CD625C6D36300CD187F /* Accounts.swift */; };
 		44834D1025C6F33400CD187F /* AccountID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44834D0F25C6F33400CD187F /* AccountID.swift */; };
+		4495034125CAE82D006000F8 /* EmptyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4495034025CAE82D006000F8 /* EmptyResponse.swift */; };
 		CA103AE92516913B00B0324F /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA103AE82516913B00B0324F /* Display.framework */; };
 		CA7A87F0250287BB00AAD10F /* Winery.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87EF250287BB00AAD10F /* Winery.swift */; };
 		CA7B823C24EC71F300991F24 /* VinchyCore.h in Headers */ = {isa = PBXBuildFile; fileRef = CA7B823A24EC71F300991F24 /* VinchyCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -32,6 +33,7 @@
 		16D29A7E3032685F4CCEE243 /* Pods_VinchyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinchyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		44834CD625C6D36300CD187F /* Accounts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Accounts.swift; sourceTree = "<group>"; };
 		44834D0F25C6F33400CD187F /* AccountID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountID.swift; sourceTree = "<group>"; };
+		4495034025CAE82D006000F8 /* EmptyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyResponse.swift; sourceTree = "<group>"; };
 		CA103AE82516913B00B0324F /* Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7A87EF250287BB00AAD10F /* Winery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Winery.swift; sourceTree = "<group>"; };
 		CA7B823724EC71F300991F24 /* VinchyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VinchyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -127,6 +129,7 @@
 				CA7A87EF250287BB00AAD10F /* Winery.swift */,
 				CA7CBC25257F82D400C81476 /* ShortWine.swift */,
 				44834D0F25C6F33400CD187F /* AccountID.swift */,
+				4495034025CAE82D006000F8 /* EmptyResponse.swift */,
 			);
 			path = ServiceModels;
 			sourceTree = "<group>";
@@ -270,6 +273,7 @@
 				CA7B825B24EC74B200991F24 /* Wines.swift in Sources */,
 				CA7A87F0250287BB00AAD10F /* Winery.swift in Sources */,
 				CA7B825224EC742600991F24 /* Sugar.swift in Sources */,
+				4495034125CAE82D006000F8 /* EmptyResponse.swift in Sources */,
 				CA7B824624EC72F500991F24 /* EndpointProtocol.swift in Sources */,
 				CA7B824424EC72CA00991F24 /* API.swift in Sources */,
 				CA7B825424EC744900991F24 /* DishCompatibility.swift in Sources */,

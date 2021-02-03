@@ -8,5 +8,5 @@
 import Foundation
 
 struct EnterPasswordInput {
-
+  let accountID: Int
 }

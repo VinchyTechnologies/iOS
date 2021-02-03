@@ -205,7 +205,7 @@ public final class Accounts {
   
   public func sendConfirmationCode(
     accountID: Int,
-    completion: @escaping (Result<[Collection], APIError>) -> Void)
+    completion: @escaping (Result<EmptyResponse, APIError>) -> Void)
   {
     api.request(endpoint: AccountEndpoint.sendConfirmationCode(accountID: accountID), completion: completion)
   }
