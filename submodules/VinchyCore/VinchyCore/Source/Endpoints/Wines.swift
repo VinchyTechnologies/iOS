@@ -67,7 +67,7 @@ public final class Wines {
 
   public static let shared = Wines()
 
-  public init() { }
+  private init() { }
 
   public func getDetailWine(wineID: Int64, completion: @escaping (Result<Wine, APIError>) -> Void) {
     api.request(endpoint: WinesEndpoint.detail(wineID: wineID), completion: completion)

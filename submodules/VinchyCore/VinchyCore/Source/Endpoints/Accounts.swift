@@ -145,7 +145,7 @@ public final class Accounts {
   
   public static let shared = Accounts()
   
-  public init() { }
+  private init() { }
   
   public func getAccount(
     email: String,

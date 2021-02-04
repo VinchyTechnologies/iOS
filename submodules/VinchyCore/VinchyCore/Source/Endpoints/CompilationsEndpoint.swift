@@ -43,7 +43,7 @@ public final class Compilations {
   
   public static let shared = Compilations()
   
-  public init() { }
+  private init() { }
   
   public func getCompilations(completion: @escaping (Result<[Compilation], APIError>) -> Void) {
     api.request(endpoint: CompilationsEndpoint.all, completion: completion)

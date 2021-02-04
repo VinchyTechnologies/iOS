@@ -21,7 +21,7 @@ public func imageURL(from wineID: Int64) -> String {
 
 public final class Database<T: Object> {
 
-  public init() { }
+  private init() { }
 
   public func incrementID(path: RealmType) -> Int64 {
     (realm(path: path).objects(T.self).max(ofProperty: "id") as Int64? ?? 0) + 1

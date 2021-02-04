@@ -17,6 +17,7 @@ def commonPods
   pod 'SPAlert'
   pod "Sheeeeeeeeet"
   pod 'SkyFloatingLabelTextField'
+  pod 'KeychainAccess'
 end
 
 target 'Smart' do
@@ -46,6 +47,7 @@ end
 
 target 'Core' do
   project 'submodules/Core/Core'
+  pod 'KeychainAccess'
 end
 
 target 'StringFormatting' do
@@ -82,6 +84,7 @@ target 'VinchyAuthorizationApp' do
   pod 'Nuke'
   pod 'SkyFloatingLabelTextField'
   pod 'CocoaDebug', :configurations => ['Debug']
+  pod 'KeychainAccess'
 end
 
 post_install do |installer|

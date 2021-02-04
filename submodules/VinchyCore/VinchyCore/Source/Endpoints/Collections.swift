@@ -43,7 +43,7 @@ public final class Collections {
   
   public static let shared = Collections()
   
-  public init() { }
+  private init() { }
   
   public func getCollections(completion: @escaping (Result<[Collection], APIError>) -> Void) {
     api.request(endpoint: CollectionEndpoint.all, completion: completion)

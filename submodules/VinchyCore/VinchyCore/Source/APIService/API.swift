@@ -22,7 +22,7 @@ final class API {
   
   static let shared = API()
   
-  init() { }
+  private init() { }
   
   func request<T: Decodable>(endpoint: EndpointProtocol, completion: @escaping (Result<T, APIError>) -> Void) {
     
