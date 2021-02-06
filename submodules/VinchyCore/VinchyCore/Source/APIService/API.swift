@@ -96,7 +96,7 @@ final class API {
         }
       } catch {
         DispatchQueue.main.async {
-          print("===", T.self, String(data: data, encoding: .utf8) as Any)
+//          print("===", T.self, String(data: data, encoding: .utf8) as Any)
           completion(.failure(.decodingError))
         }
       }

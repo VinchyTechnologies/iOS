@@ -30,7 +30,7 @@ final class AuthorizationInteractor {
 extension AuthorizationInteractor: AuthorizationInteractorProtocol {
   
   func didTapContinueButton(_ email: String?, password: String?) {
-    
+        
     guard let email = email else {
       presenter.updateInvalidEmailAndPassword()
       print("is invalid email")
@@ -49,28 +49,33 @@ extension AuthorizationInteractor: AuthorizationInteractorProtocol {
       
       switch input.mode {
       case .register:
+        presenter.startLoading()
         Accounts.shared.createNewAccount(email: email, password: password) { [weak self] result in
           switch result {
           case .success(let accountID):
+            self?.presenter.stopLoading()
             print(accountID.accountID)
             self?.presenter.endEditing()
             self?.router.pushToEnterPasswordViewController(accountID: accountID.accountID)
             
           case .failure(let error):
+            self?.presenter.stopLoading()
             self?.presenter.showCreateUserError(error: error)
           }
         }
           
       case .login:
+        presenter.startLoading()
         Accounts.shared.getAccount(email: email, password: password) { [weak self] result in
           switch result {
           case .success(let accountID):
-            break
+            self?.presenter.stopLoading()
 //            print(accountID.accountID)
 //            self?.presenter.endEditing()
 //            self?.router.pushToEnterPasswordViewController(accountID: accountID.accountID)
             
           case .failure(let error):
+            self?.presenter.stopLoading()
             self?.presenter.showLoginUserError(error: error)
           }
         }

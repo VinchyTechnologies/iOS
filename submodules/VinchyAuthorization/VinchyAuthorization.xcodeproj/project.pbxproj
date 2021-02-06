@@ -11,6 +11,8 @@
 		370686F57971ECE5F1FE476E /* Pods_VinchyAuthorization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1365932D64B5E4665879C2 /* Pods_VinchyAuthorization.framework */; };
 		4436017225CEDCF600ABA7F1 /* VinchyAuthorization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 443F0AD7259123FE00E15437 /* VinchyAuthorization.framework */; };
 		4436017325CEDCF600ABA7F1 /* VinchyAuthorization.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 443F0AD7259123FE00E15437 /* VinchyAuthorization.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		443601DD25CEF5B200ABA7F1 /* AuthorizationOutputDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443601DC25CEF5B200ABA7F1 /* AuthorizationOutputDelegate.swift */; };
+		4436021725CF00B500ABA7F1 /* AuthorizationNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4436021625CF00B500ABA7F1 /* AuthorizationNavigationController.swift */; };
 		443F0ADC259123FE00E15437 /* VinchyAuthorization.h in Headers */ = {isa = PBXBuildFile; fileRef = 443F0ADA259123FE00E15437 /* VinchyAuthorization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		443F0AFB259126F200E15437 /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F0AEA259126F200E15437 /* AuthorizationViewModel.swift */; };
 		443F0AFC259126F200E15437 /* AuthorizationInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F0AEC259126F200E15437 /* AuthorizationInput.swift */; };
@@ -136,6 +138,8 @@
 
 /* Begin PBXFileReference section */
 		2C46855EA6BEC4781ED8A61D /* Pods-VinchyAuthorization.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyAuthorization.debug.xcconfig"; path = "Target Support Files/Pods-VinchyAuthorization/Pods-VinchyAuthorization.debug.xcconfig"; sourceTree = "<group>"; };
+		443601DC25CEF5B200ABA7F1 /* AuthorizationOutputDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationOutputDelegate.swift; sourceTree = "<group>"; };
+		4436021625CF00B500ABA7F1 /* AuthorizationNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationNavigationController.swift; sourceTree = "<group>"; };
 		443F0AD7259123FE00E15437 /* VinchyAuthorization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VinchyAuthorization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		443F0ADA259123FE00E15437 /* VinchyAuthorization.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VinchyAuthorization.h; sourceTree = "<group>"; };
 		443F0ADB259123FE00E15437 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -246,6 +250,15 @@
 			path = ../../Pods;
 			sourceTree = "<group>";
 		};
+		443601DB25CEF59600ABA7F1 /* Output */ = {
+			isa = PBXGroup;
+			children = (
+				443601DC25CEF5B200ABA7F1 /* AuthorizationOutputDelegate.swift */,
+				4436021625CF00B500ABA7F1 /* AuthorizationNavigationController.swift */,
+			);
+			path = Output;
+			sourceTree = "<group>";
+		};
 		443F0ACD259123FD00E15437 = {
 			isa = PBXGroup;
 			children = (
@@ -286,10 +299,10 @@
 		443F0AE32591242C00E15437 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				443601DB25CEF59600ABA7F1 /* Output */,
 				443F0AE8259126F200E15437 /* Authorization */,
 				44E2161D25CD2D5F00FE31CE /* ChooseAuthType */,
 				44AD9A6825936CDB001A5188 /* EnterPassword */,
-				44AD9A9725937C79001A5188 /* Storage */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -491,13 +504,6 @@
 				44AD9A7A25936CDB001A5188 /* EnterPasswordRouter.swift */,
 			);
 			path = Router;
-			sourceTree = "<group>";
-		};
-		44AD9A9725937C79001A5188 /* Storage */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Storage;
 			sourceTree = "<group>";
 		};
 		44E2161D25CD2D5F00FE31CE /* ChooseAuthType */ = {
@@ -818,6 +824,7 @@
 				44AD9A8325936CDB001A5188 /* EnterPasswordPresenter.swift in Sources */,
 				44E2163725CD2D5F00FE31CE /* ChooseAuthTypeInteractor.swift in Sources */,
 				44AD9A7B25936CDB001A5188 /* EnterPasswordViewModel.swift in Sources */,
+				4436021725CF00B500ABA7F1 /* AuthorizationNavigationController.swift in Sources */,
 				443F0B05259126F200E15437 /* AuthorizationRouterProtocol.swift in Sources */,
 				44E2163425CD2D5F00FE31CE /* ChooseAuthTypePresenterProtocol.swift in Sources */,
 				443F0B00259126F200E15437 /* AuthorizationViewController.swift in Sources */,
@@ -846,6 +853,7 @@
 				44AD9A8725936CDB001A5188 /* EnterPasswordViewControllerProtocol.swift in Sources */,
 				443F0AFC259126F200E15437 /* AuthorizationInput.swift in Sources */,
 				443F0AFB259126F200E15437 /* AuthorizationViewModel.swift in Sources */,
+				443601DD25CEF5B200ABA7F1 /* AuthorizationOutputDelegate.swift in Sources */,
 				44AD9A7F25936CDB001A5188 /* EnterPasswordAssembly.swift in Sources */,
 				44E2163325CD2D5F00FE31CE /* ChooseAuthTypePresenter.swift in Sources */,
 			);

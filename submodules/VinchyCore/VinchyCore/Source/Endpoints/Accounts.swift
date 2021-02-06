@@ -115,7 +115,7 @@ private enum AccountEndpoint: EndpointProtocol {
   var encoding: ParameterEncoding {
     switch self {
     case .get:
-      return .httpBody
+      return .queryString
       
     case .create:
       return .httpBody
@@ -166,7 +166,7 @@ public final class Accounts {
   public func activateAccount(
     accountID: Int,
     confirmationCode: String,
-    completion: @escaping (Result<[Collection], APIError>) -> Void)
+    completion: @escaping (Result<AuthorizationTokens, APIError>) -> Void)
   {
     api.request(
       endpoint: AccountEndpoint.activate(accountID: accountID, confirmationCode: confirmationCode),

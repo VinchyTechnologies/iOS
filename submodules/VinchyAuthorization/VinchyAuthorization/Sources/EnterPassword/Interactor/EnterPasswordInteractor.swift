@@ -58,12 +58,13 @@ extension EnterPasswordInteractor: EnterPasswordInteractorProtocol {
   
   func didEnterCodeInTextField(_ text: String?) {
     if let text = text, text.count == C.numberOfDigitsInCode && text.isNumeric {
-      Accounts.shared.checkConfirmationCode(
+      Accounts.shared.activateAccount(
         accountID: input.accountID,
         confirmationCode: text) { [weak self] result in
         switch result {
         case .success(let model):
-          print(model)
+          Keychain.shared.accessToken = model.accessToken
+          Keychain.shared.refreshToken = model.refreshToken
           
         case .failure(let error):
           print("error")

@@ -19,7 +19,7 @@ public final class ChooseAuthTypeAssembly {
     router.interactor = interactor
     viewController.interactor = interactor
     
-    let navigationController = NavigationController(rootViewController: viewController)
+    let navigationController = AuthorizationNavigationController(rootViewController: viewController)
     
     return navigationController
   }

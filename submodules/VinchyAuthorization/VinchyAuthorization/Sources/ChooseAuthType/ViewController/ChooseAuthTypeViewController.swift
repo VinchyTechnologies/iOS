@@ -52,7 +52,6 @@ final class ChooseAuthTypeViewController: UIViewController {
     return button
   }()
   
-  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -104,7 +103,6 @@ final class ChooseAuthTypeViewController: UIViewController {
       registerButton.heightAnchor.constraint(equalToConstant: 48),
     ])
     
-    
     interactor?.viewDidLoad()
     
   }
@@ -116,16 +114,12 @@ final class ChooseAuthTypeViewController: UIViewController {
   
   @objc
   private func didTapRegisterButton(_ button: UIButton) {
-    navigationController?.pushViewController(
-      AuthorizationAssembly.assemblyModule(input: .init(mode: .register)),
-      animated: true)
+    interactor?.didTapRegisterButton()
   }
   
   @objc
   private func didTapLoginButton(_ button: UIButton) {
-    navigationController?.pushViewController(
-      AuthorizationAssembly.assemblyModule(input: .init(mode: .login)),
-      animated: true)
+    interactor?.didTapLoginButton()
   }
 }
 

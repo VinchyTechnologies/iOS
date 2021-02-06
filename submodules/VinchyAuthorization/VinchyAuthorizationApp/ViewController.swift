@@ -37,3 +37,13 @@ final class ViewController: UIViewController {
     present(viewController, animated: true, completion: nil)
   }
 }
+
+extension ViewController: AuthorizationOutputDelegate {
+  func didSuccessfullyRegister(output: AythorizationOutputModel?) {
+    print(#function)
+  }
+  
+  func didSuccessfullyLogin(output: AythorizationOutputModel?) {
+    print(#function)
+  }
+}

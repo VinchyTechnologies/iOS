@@ -8,5 +8,5 @@
 import Foundation
 
 protocol ChooseAuthTypeRouterProtocol: AnyObject {
-    
+  func pushAuthorizationViewController(mode: AuthorizationInput.AuthorizationMode)
 }

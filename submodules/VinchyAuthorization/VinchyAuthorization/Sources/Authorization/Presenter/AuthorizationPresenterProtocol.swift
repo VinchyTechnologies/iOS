@@ -14,4 +14,6 @@ protocol AuthorizationPresenterProtocol: AnyObject {
   func showCreateUserError(error: Error)
   func endEditing()
   func showLoginUserError(error: Error)
+  func startLoading()
+  func stopLoading()
 }

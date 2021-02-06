@@ -7,7 +7,7 @@
 
 import Display
 
-protocol AuthorizationViewControllerProtocol: Alertable {
+protocol AuthorizationViewControllerProtocol: Alertable, Loadable {
   func updateUI(viewModel: AuthorizationViewModel)
   func updateUIInvalidEmailAndPassword()
   func updateUIValidEmailAndPassword()

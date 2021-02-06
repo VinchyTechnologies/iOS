@@ -22,6 +22,8 @@ final class AuthorizationViewController: UIViewController {
   
   // MARK: - Private Properties
   
+  private(set) var loadingIndicator = ActivityIndicatorView()
+  
   private let titleLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false

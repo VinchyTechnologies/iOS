@@ -25,5 +25,10 @@ final class ChooseAuthTypeRouter {
 // MARK: - ChooseAuthTypeRouterProtocol
 
 extension ChooseAuthTypeRouter: ChooseAuthTypeRouterProtocol {
-
+  
+  func pushAuthorizationViewController(mode: AuthorizationInput.AuthorizationMode) {
+    viewController?.navigationController?.pushViewController(
+      AuthorizationAssembly.assemblyModule(input: .init(mode: mode)),
+      animated: true)
+  }
 }

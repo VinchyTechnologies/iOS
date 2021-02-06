@@ -8,5 +8,7 @@
 import Foundation
 
 protocol ChooseAuthTypeInteractorProtocol: AnyObject {
-    func viewDidLoad()
+  func viewDidLoad()
+  func didTapRegisterButton()
+  func didTapLoginButton()
 }

@@ -22,6 +22,14 @@ final class AuthorizationPresenter {
 
 extension AuthorizationPresenter: AuthorizationPresenterProtocol {
   
+  func startLoading() {
+    viewController?.startLoadingAnimation()
+  }
+  
+  func stopLoading() {
+    viewController?.stopLoadingAnimation()
+  }
+  
   func endEditing() {
     viewController?.endEditing()
   }
