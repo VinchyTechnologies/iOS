@@ -13,4 +13,5 @@ protocol AuthorizationPresenterProtocol: AnyObject {
   func updateInvalidEmailAndPassword()
   func showCreateUserError(error: Error)
   func endEditing()
+  func showLoginUserError(error: Error)
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import VinchyAuthorization
 
 final class ViewController: UIViewController {
   
@@ -32,7 +33,7 @@ final class ViewController: UIViewController {
   @objc
   private func didTapAuth(_ button: UIButton) {
     print(#function)
-    let viewController = AuthorizationAssembly.assemblyModule()
+    let viewController = ChooseAuthTypeAssembly.assemblyModule()//AuthorizationAssembly.assemblyModule()
     present(viewController, animated: true, completion: nil)
   }
 }

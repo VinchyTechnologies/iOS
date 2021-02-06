@@ -32,6 +32,12 @@ extension AuthorizationPresenter: AuthorizationPresenterProtocol {
       message: error.localizedDescription)
   }
   
+  func showLoginUserError(error: Error) {
+    viewController?.showAlert(
+      title: localized("error").firstLetterUppercased(),
+      message: error.localizedDescription)
+  }
+  
   func update() {
     let viewModel = AuthorizationViewModel(
       titleText: "Welcome",

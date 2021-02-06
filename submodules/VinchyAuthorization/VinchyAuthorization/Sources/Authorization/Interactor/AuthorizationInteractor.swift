@@ -10,13 +10,16 @@ import VinchyCore
 
 final class AuthorizationInteractor {
   
+  private let input: AuthorizationInput
   private let router: AuthorizationRouterProtocol
   private let presenter: AuthorizationPresenterProtocol
   
   init(
+    input: AuthorizationInput,
     router: AuthorizationRouterProtocol,
     presenter: AuthorizationPresenterProtocol)
   {
+    self.input = input
     self.router = router
     self.presenter = presenter
   }
@@ -43,19 +46,35 @@ extension AuthorizationInteractor: AuthorizationInteractorProtocol {
     if isValidEmail(email) && !password.isEmpty {
       presenter.updateValidEmailAndPassword()
       print("is valid email")
-      Accounts.shared.createNewAccount(email: email, password: password) { [weak self] result in
-        switch result {
-        case .success(let accountID):
-          print(accountID.accountID)
-          self?.presenter.endEditing()
-          self?.router.pushToEnterPasswordViewController(accountID: accountID.accountID)
+      
+      switch input.mode {
+      case .register:
+        Accounts.shared.createNewAccount(email: email, password: password) { [weak self] result in
+          switch result {
+          case .success(let accountID):
+            print(accountID.accountID)
+            self?.presenter.endEditing()
+            self?.router.pushToEnterPasswordViewController(accountID: accountID.accountID)
+            
+          case .failure(let error):
+            self?.presenter.showCreateUserError(error: error)
+          }
+        }
           
-        case .failure(let error):
-          self?.presenter.showCreateUserError(error: error)
+      case .login:
+        Accounts.shared.getAccount(email: email, password: password) { [weak self] result in
+          switch result {
+          case .success(let accountID):
+            break
+//            print(accountID.accountID)
+//            self?.presenter.endEditing()
+//            self?.router.pushToEnterPasswordViewController(accountID: accountID.accountID)
+            
+          case .failure(let error):
+            self?.presenter.showLoginUserError(error: error)
+          }
         }
       }
-      
-      
     } else {
       presenter.updateInvalidEmailAndPassword()
       print("is invalid email")

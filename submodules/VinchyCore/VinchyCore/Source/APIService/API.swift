@@ -86,7 +86,7 @@ final class API {
 //        print("===", T.self, String(data: data, encoding: .utf8) as Any)
         if T.self == EmptyResponse.self && data.isEmpty {
           DispatchQueue.main.async {
-            completion(.success(EmptyResponse() as! T))
+            completion(.success(EmptyResponse() as! T)) // swiftlint:disable:this force_cast
           }
         } else {
           let obj = try JSONDecoder().decode(T.self, from: data)
@@ -96,6 +96,7 @@ final class API {
         }
       } catch {
         DispatchQueue.main.async {
+          print("===", T.self, String(data: data, encoding: .utf8) as Any)
           completion(.failure(.decodingError))
         }
       }
