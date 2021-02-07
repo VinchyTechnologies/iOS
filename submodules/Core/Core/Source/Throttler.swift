@@ -15,14 +15,14 @@ public protocol ThrottlerProtocol: class {
   
 }
 
-final class Throttler: ThrottlerProtocol {
+public final class Throttler: ThrottlerProtocol {
   
   private struct Job {
     let workItem: DispatchWorkItem
     let performingDate: Date
   }
   
-  var hasJob: Bool {
+  public var hasJob: Bool {
     guard let job = job else {
       return false
     }
@@ -33,7 +33,7 @@ final class Throttler: ThrottlerProtocol {
   private let queue: DispatchQueue
   private var job: Job?
   
-  init(queue: DispatchQueue = .main) {
+  public init(queue: DispatchQueue = .main) {
     self.queue = queue
   }
   
