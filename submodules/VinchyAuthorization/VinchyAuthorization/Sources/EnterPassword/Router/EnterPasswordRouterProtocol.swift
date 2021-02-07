@@ -8,5 +8,5 @@
 import Foundation
 
 protocol EnterPasswordRouterProtocol: AnyObject {
-    
+  func dismissAndRequestSuccess()
 }

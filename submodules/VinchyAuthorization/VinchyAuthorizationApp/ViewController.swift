@@ -8,7 +8,7 @@
 import UIKit
 import VinchyAuthorization
 
-final class ViewController: UIViewController {
+final class ViewController: UIViewController, UINavigationControllerDelegate {
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -33,7 +33,8 @@ final class ViewController: UIViewController {
   @objc
   private func didTapAuth(_ button: UIButton) {
     print(#function)
-    let viewController = ChooseAuthTypeAssembly.assemblyModule()//AuthorizationAssembly.assemblyModule()
+    let viewController = ChooseAuthTypeAssembly.assemblyModule()
+    (viewController as? AuthorizationNavigationController)?.authOutputDelegate = self
     present(viewController, animated: true, completion: nil)
   }
 }

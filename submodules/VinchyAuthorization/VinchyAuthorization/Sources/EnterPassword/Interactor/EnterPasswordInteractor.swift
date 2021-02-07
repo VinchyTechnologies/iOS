@@ -67,7 +67,7 @@ extension EnterPasswordInteractor: EnterPasswordInteractorProtocol {
           Keychain.shared.refreshToken = model.refreshToken
           
         case .failure(let error):
-          print("error")
+          self?.presenter.showAlertErrorWhileSendingCode(error: error)
         }
       }
     }

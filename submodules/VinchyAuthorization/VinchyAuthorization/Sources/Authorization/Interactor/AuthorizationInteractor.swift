@@ -54,7 +54,6 @@ extension AuthorizationInteractor: AuthorizationInteractorProtocol {
           switch result {
           case .success(let accountID):
             self?.presenter.stopLoading()
-            print(accountID.accountID)
             self?.presenter.endEditing()
             self?.router.pushToEnterPasswordViewController(accountID: accountID.accountID)
             
