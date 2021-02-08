@@ -9,7 +9,7 @@ import Display
 import UIKit
 
 public final class ChooseAuthTypeAssembly {
-  public static func assemblyModule() -> UIViewController {
+  public static func assemblyModule() -> AuthorizationNavigationController {
     let viewController = ChooseAuthTypeViewController()
     
     let router = ChooseAuthTypeRouter(input: ChooseAuthTypeInput(), viewController: viewController)

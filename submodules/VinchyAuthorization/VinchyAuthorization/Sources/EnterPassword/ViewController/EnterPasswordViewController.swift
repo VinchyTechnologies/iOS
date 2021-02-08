@@ -75,6 +75,13 @@ final class EnterPasswordViewController: UIViewController {
     view.backgroundColor = .mainBackground
 
     navigationItem.largeTitleDisplayMode = .never
+    
+    let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
+    navigationItem.rightBarButtonItem = UIBarButtonItem(
+      image: UIImage(systemName: "xmark", withConfiguration: imageConfig),
+      style: .plain,
+      target: self,
+      action: #selector(closeSelf))
         
     view.addSubview(continueButton)
     passwordTextField.translatesAutoresizingMaskIntoConstraints = false
@@ -136,6 +143,11 @@ final class EnterPasswordViewController: UIViewController {
       bottomConstraint.constant = -keyboardHeight - 10
     }
     view.layoutSubviews()
+  }
+  
+  @objc
+  private func closeSelf() {
+    dismiss(animated: true)
   }
   
   @objc

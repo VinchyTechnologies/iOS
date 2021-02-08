@@ -65,6 +65,7 @@ extension EnterPasswordInteractor: EnterPasswordInteractorProtocol {
         case .success(let model):
           Keychain.shared.accessToken = model.accessToken
           Keychain.shared.refreshToken = model.refreshToken
+          self?.router.dismissAndRequestSuccess()
           
         case .failure(let error):
           self?.presenter.showAlertErrorWhileSendingCode(error: error)
@@ -96,6 +97,6 @@ extension EnterPasswordInteractor: EnterPasswordInteractorProtocol {
 
 fileprivate extension String {
    var isNumeric: Bool {
-     return !(self.isEmpty) && self.allSatisfy { $0.isNumber }
+     !(self.isEmpty) && self.allSatisfy { $0.isNumber }
    }
 }

@@ -7,11 +7,11 @@
 
 import Foundation
 
-public struct AythorizationOutputModel {
+public struct AuthorizationOutputModel {
   public let email: String
 }
 
 public protocol AuthorizationOutputDelegate: AnyObject {
-  func didSuccessfullyRegister(output: AythorizationOutputModel?)
-  func didSuccessfullyLogin(output: AythorizationOutputModel?)
+  func didSuccessfullyRegister(output: AuthorizationOutputModel?)
+  func didSuccessfullyLogin(output: AuthorizationOutputModel?)
 }

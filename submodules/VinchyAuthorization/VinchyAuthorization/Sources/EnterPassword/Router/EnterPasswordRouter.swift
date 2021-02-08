@@ -25,5 +25,9 @@ final class EnterPasswordRouter {
 // MARK: - EnterPasswordRouterProtocol
 
 extension EnterPasswordRouter: EnterPasswordRouterProtocol {
-  
+  func dismissAndRequestSuccess() {
+    viewController?.navigationController?.dismiss(animated: true, completion: {
+      (self.viewController?.navigationController as? AuthorizationNavigationController)?.authOutputDelegate?.didSuccessfullyRegister(output: nil)
+    })
+  }
 }

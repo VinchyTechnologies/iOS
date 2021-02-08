@@ -14,6 +14,11 @@ final class AuthorizationInteractor {
   private let router: AuthorizationRouterProtocol
   private let presenter: AuthorizationPresenterProtocol
   
+  private lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
+    guard let self = self else { return }
+    self.presenter.startLoading()
+  }
+  
   init(
     input: AuthorizationInput,
     router: AuthorizationRouterProtocol,
@@ -44,38 +49,48 @@ extension AuthorizationInteractor: AuthorizationInteractorProtocol {
     }
 
     if isValidEmail(email) && !password.isEmpty {
+      
+      DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        self.dispatchWorkItemHud.perform()
+      }
+      
       presenter.updateValidEmailAndPassword()
       print("is valid email")
       
       switch input.mode {
       case .register:
-        presenter.startLoading()
         Accounts.shared.createNewAccount(email: email, password: password) { [weak self] result in
+          guard let self = self else { return }
+          self.dispatchWorkItemHud.cancel()
+          DispatchQueue.main.async {
+            self.presenter.stopLoading()
+          }
+          
           switch result {
           case .success(let accountID):
-            self?.presenter.stopLoading()
-            self?.presenter.endEditing()
-            self?.router.pushToEnterPasswordViewController(accountID: accountID.accountID)
+            self.presenter.endEditing()
+            self.router.pushToEnterPasswordViewController(accountID: accountID.accountID)
             
           case .failure(let error):
-            self?.presenter.stopLoading()
-            self?.presenter.showCreateUserError(error: error)
+            self.presenter.showCreateUserError(error: error)
           }
         }
           
       case .login:
-        presenter.startLoading()
         Accounts.shared.getAccount(email: email, password: password) { [weak self] result in
+          guard let self = self else { return }
+          self.dispatchWorkItemHud.cancel()
+          DispatchQueue.main.async {
+            self.presenter.stopLoading()
+          }
+          
           switch result {
           case .success(let accountID):
-            self?.presenter.stopLoading()
-//            print(accountID.accountID)
-//            self?.presenter.endEditing()
-//            self?.router.pushToEnterPasswordViewController(accountID: accountID.accountID)
+            self.presenter.endEditing()
+            self.router.pushToEnterPasswordViewController(accountID: accountID.accountID)
             
           case .failure(let error):
-            self?.presenter.stopLoading()
-            self?.presenter.showLoginUserError(error: error)
+            self.presenter.showLoginUserError(error: error)
           }
         }
       }
