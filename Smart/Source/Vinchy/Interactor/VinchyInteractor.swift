@@ -18,8 +18,7 @@ final class VinchyInteractor {
 
   private let dispatchGroup = DispatchGroup()
   private let emailService = EmailService()
-
-  private lazy var searchWorkItem = WorkItem()
+  private let throttler = Throttler()
 
   private let router: VinchyRouterProtocol
   private let presenter: VinchyPresenterProtocol
@@ -120,10 +119,13 @@ extension VinchyInteractor: VinchyInteractorProtocol {
       let searchText = searchText,
       !searchText.isEmpty
     else {
+      presenter.update(didFindWines: [])
       return
     }
+    
+    throttler.cancel()
 
-    searchWorkItem.perform(after: 0.65) {
+    throttler.throttle(delay: .milliseconds(600)) { [weak self] in
       Wines.shared.getWineBy(title: searchText, offset: 0, limit: 40) { [weak self] result in
         switch result {
         case .success(let wines):
