@@ -116,6 +116,11 @@ final class WineDetailPresenter {
     
     return [.button([.init(buttonModel: .reportError(title: title))])]
   }
+  
+  private func buildStarRateControl() -> [WineDetailViewModel.Section] {
+    let rateViewModel = StarRatingControlCollectionViewCellViewModel(rate: 0)
+    return [.rate([rateViewModel])]
+  }
 }
 
 // MARK: - WineDetailPresenterProtocol
@@ -175,7 +180,7 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
         ])
       ]
     }
-    
+
     sections += [
       .title([.init(
                 titleText: NSAttributedString(
@@ -183,7 +188,7 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
                   font: Font.heavy(20),
                   textColor: .dark))])
     ]
-    
+    sections += buildStarRateControl()
     sections += [
       .tool([.init(
               price: formatCurrencyAmount(

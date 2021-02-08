@@ -16,6 +16,7 @@ def commonPods
   pod 'CocoaDebug', :configurations => ['Debug']
   pod 'SPAlert'
   pod "Sheeeeeeeeet"
+  pod 'Cosmos', '~> 23.0'
 end
 
 target 'Smart' do
