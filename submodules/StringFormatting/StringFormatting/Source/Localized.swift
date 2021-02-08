@@ -15,8 +15,9 @@ public enum LocalizedSource: String {
 
 public func localized(
   _ string: String,
+  bundle: Bundle = Bundle.main,
   from source: LocalizedSource = .common)
   -> String
 {
-  NSLocalizedString(string, tableName: source.rawValue, bundle: Bundle.main, comment: "")
+  NSLocalizedString(string, tableName: source.rawValue, bundle: bundle, comment: "")
 }

@@ -61,6 +61,7 @@
 		44E83A0A25D1A40800711490 /* Display.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44A724E22591351C00A7552B /* Display.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44E83A0E25D1A40C00711490 /* VinchyAuthorization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 443F0AD7259123FE00E15437 /* VinchyAuthorization.framework */; };
 		44E83A0F25D1A40C00711490 /* VinchyAuthorization.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 443F0AD7259123FE00E15437 /* VinchyAuthorization.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		44E83A4B25D1B03D00711490 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 44E83A4D25D1B03D00711490 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -171,6 +172,10 @@
 		44E2162C25CD2D5F00FE31CE /* ChooseAuthTypeInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseAuthTypeInteractorProtocol.swift; sourceTree = "<group>"; };
 		44E2162E25CD2D5F00FE31CE /* ChooseAuthTypeRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseAuthTypeRouterProtocol.swift; sourceTree = "<group>"; };
 		44E2162F25CD2D5F00FE31CE /* ChooseAuthTypeRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseAuthTypeRouter.swift; sourceTree = "<group>"; };
+		44E83A4C25D1B03D00711490 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		44E83A5025D1B07300711490 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		44E83A5125D1B07300711490 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		44E83A5225D1B07300711490 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		554E2FC96295A4F8F9FE9A68 /* Pods-VinchyAuthorizationApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyAuthorizationApp.release.xcconfig"; path = "Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp.release.xcconfig"; sourceTree = "<group>"; };
 		89253731F2C742635398AF8F /* Pods_VinchyAuthorizationApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinchyAuthorizationApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0142329D2F9663DDB44D2E0 /* Pods-VinchyAuthorizationApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyAuthorizationApp.debug.xcconfig"; path = "Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -394,6 +399,7 @@
 		44A724DB2591309000A7552B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				44E83A4D25D1B03D00711490 /* Localizable.strings */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -682,6 +688,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 443F0ACD259123FD00E15437;
 			productRefGroup = 443F0AD8259123FE00E15437 /* Products */;
@@ -701,6 +708,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44E83A4B25D1B03D00711490 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -888,6 +896,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				443F0B152591282C00E15437 /* Base */,
+				44E83A5025D1B07300711490 /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -896,8 +905,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				443F0B1A2591282D00E15437 /* Base */,
+				44E83A5125D1B07300711490 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		44E83A4D25D1B03D00711490 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				44E83A4C25D1B03D00711490 /* en */,
+				44E83A5225D1B07300711490 /* ru */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -907,6 +926,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -971,6 +991,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";

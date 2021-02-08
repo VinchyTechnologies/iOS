@@ -30,18 +30,22 @@ extension EnterPasswordPresenter: EnterPasswordPresenterProtocol {
   
   func updateButtonTitle(seconds: TimeInterval) {
     viewController?.updateUI(
-      buttonText: (seconds == 0 ? "Send code again" : timeFormatter.string(from: seconds)) ?? "",
+      buttonText: (seconds == 0 ? localized("send_code_again", bundle: Bundle(for: type(of: self))) : timeFormatter.string(from: seconds)) ?? "",
       isButtonEnabled: seconds == 0)
   }
   
   func update() {
     let viewModel = EnterPasswordViewModel(
-      titleText: nil,//"Glad to see you again",
-      subtitleText: "Enter code received in email",
-      enterPasswordTextFiledPlaceholderText: "Enter code",
-      enterPasswordTextFiledTopPlaceholderText: "Code",
-      continueButtonText: "Confirm",
-      rightBarButtonItemText: "Send code again")
+      titleText: nil,
+      subtitleText: localized(
+        "enter_the_code_received_by_email",
+        bundle: Bundle(for: type(of: self))),
+      enterPasswordTextFiledPlaceholderText: localized(
+        "enter_the_code",
+        bundle: Bundle(for: type(of: self))),
+      enterPasswordTextFiledTopPlaceholderText: localized(
+        "code",
+        bundle: Bundle(for: type(of: self))))
     
     viewController?.updateUI(viewModel: viewModel)
   }

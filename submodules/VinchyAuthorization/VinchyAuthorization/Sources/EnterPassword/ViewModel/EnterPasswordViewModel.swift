@@ -12,6 +12,4 @@ struct EnterPasswordViewModel {
   let subtitleText: String?
   let enterPasswordTextFiledPlaceholderText: String?
   let enterPasswordTextFiledTopPlaceholderText: String?
-  let continueButtonText: String?
-  let rightBarButtonItemText: String?
 }

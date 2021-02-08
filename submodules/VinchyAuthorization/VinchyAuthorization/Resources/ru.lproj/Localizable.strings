@@ -1,0 +1,11 @@
+/* 
+  Localizable.strings
+  VinchyAuthorization
+
+  Created by Алексей Смирнов on 08.02.2021.
+  
+*/
+"code" = "код";
+"enter_the_code_received_by_email" = "Введите код, полученный по электронной почте";
+"enter_the_code" = "Введите код";
+"send_code_again" = "Отправить код еще раз";
