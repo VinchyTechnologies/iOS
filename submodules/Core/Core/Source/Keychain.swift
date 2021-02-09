@@ -9,7 +9,7 @@
 import KeychainAccess
 
 fileprivate enum C {
-  static let keychainServiceName = Bundle.main.bundleIdentifier!
+  static let keychainServiceName = Bundle.main.bundleIdentifier! // swiftlint:disable:this force_unwrapping
   static let accessToken = keychainServiceName + ".accessToken"
   static let refreshToken = keychainServiceName + ".refreshToken"
 }
