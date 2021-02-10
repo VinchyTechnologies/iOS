@@ -24,6 +24,8 @@ final class StarRatingControlCollectionCell: UICollectionViewCell, Reusable {
     var view = CosmosView()
     view.settings.filledColor = .accent
     view.settings.emptyBorderColor = .accent
+    view.settings.starSize = 44
+    view.settings.fillMode = .precise
     return view
   }()
   

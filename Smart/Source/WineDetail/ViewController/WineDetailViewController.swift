@@ -386,4 +386,5 @@ extension WineDetailViewController: WineDetailViewControllerProtocol {
   func updateUI(viewModel: WineDetailViewModel) {
     self.viewModel = viewModel
   }
+  
 }

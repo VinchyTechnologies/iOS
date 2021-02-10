@@ -117,8 +117,10 @@ final class WineDetailPresenter {
     return [.button([.init(buttonModel: .reportError(title: title))])]
   }
   
-  private func buildStarRateControl() -> [WineDetailViewModel.Section] {
-    let rateViewModel = StarRatingControlCollectionViewCellViewModel(rate: 0)
+  private func buildStarRateControl(rate: Double) -> [WineDetailViewModel.Section] {
+    
+    let rateViewModel = StarRatingControlCollectionViewCellViewModel(rate: rate)
+    
     return [.rate([rateViewModel])]
   }
 }
@@ -164,7 +166,7 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
     viewController?.stopLoadingAnimation()
   }
   
-  func update(wine: Wine, isLiked: Bool, isDisliked: Bool) {
+  func update(wine: Wine, isLiked: Bool, isDisliked: Bool, rate: Double) {
     
     var sections: [WineDetailViewModel.Section] = []
     
@@ -188,7 +190,7 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
                   font: Font.heavy(20),
                   textColor: .dark))])
     ]
-    sections += buildStarRateControl()
+    sections += buildStarRateControl(rate: rate)
     sections += [
       .tool([.init(
               price: formatCurrencyAmount(
@@ -247,4 +249,5 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
         titleText: localized("unloved").firstLetterUppercased(),
         descriptionText: localized("will_recommend_less").firstLetterUppercased()))
   }
+
 }

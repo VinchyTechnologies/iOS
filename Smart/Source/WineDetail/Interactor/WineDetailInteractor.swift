@@ -59,7 +59,8 @@ final class WineDetailInteractor {
         self.presenter.update(
           wine: wine,
           isLiked: self.isFavourite(wine: wine),
-          isDisliked: self.isDisliked(wine: wine))
+          isDisliked: self.isDisliked(wine: wine),
+          rate: 4)
         self.wine = wine
         
       case .failure(let error):
