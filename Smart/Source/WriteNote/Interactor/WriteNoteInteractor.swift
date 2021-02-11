@@ -71,4 +71,9 @@ extension WriteNoteInteractor: WriteNoteInteractorProtocol {
   func didChangeNoteText(_ text: String?) {
     noteText = text
   }
+  
+  func didStartWriteText() {
+    presenter.setPlaceholder()
+  }
 }
+ 

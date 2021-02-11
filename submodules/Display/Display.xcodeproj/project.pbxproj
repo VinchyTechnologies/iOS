@@ -31,6 +31,7 @@
 		CAD0C9D6258C9B1400142FE5 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAD0C9D5258C9B1400142FE5 /* Core.framework */; };
 		CAD904EE257BADEC009FE71F /* ImageLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD904ED257BADEC009FE71F /* ImageLoader.swift */; };
 		CAE8869D24C0E5F800E33E16 /* Display.h in Headers */ = {isa = PBXBuildFile; fileRef = CAE8869B24C0E5F800E33E16 /* Display.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CE8D931025BA2878004792C6 /* PlaceholderTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D930F25BA2878004792C6 /* PlaceholderTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		CAE8869824C0E5F800E33E16 /* Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAE8869B24C0E5F800E33E16 /* Display.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Display.h; sourceTree = "<group>"; };
 		CAE8869C24C0E5F800E33E16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CE8D930F25BA2878004792C6 /* PlaceholderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -139,6 +141,7 @@
 				CA7A87E224FEE1B200AAD10F /* Loadable.swift */,
 				CA18220324C0F88B00280DD4 /* NavigationController.swift */,
 				CA7A87E92502582C00AAD10F /* PaddingLabel.swift */,
+				CE8D930F25BA2878004792C6 /* PlaceholderTextView.swift */,
 				CA18220524C0F8CE00280DD4 /* UIColor.swift */,
 				CA18220724C0FE2300280DD4 /* UIKitUtils.swift */,
 				CA7A87EB25026FA700AAD10F /* LoadingCollectionFooter.swift */,
@@ -267,6 +270,7 @@
 				CA3C97EF2572533E0036F7D9 /* GradientView.swift in Sources */,
 				CA18220424C0F88B00280DD4 /* NavigationController.swift in Sources */,
 				CA5B9019250FEF51006BC638 /* ScrollViewBounceDecorator.swift in Sources */,
+				CE8D931025BA2878004792C6 /* PlaceholderTextView.swift in Sources */,
 				CA81987B25387CA80056A1C6 /* Gradient.swift in Sources */,
 				CA18220624C0F8CE00280DD4 /* UIColor.swift in Sources */,
 				CABDBA9624C31FAC00AD96D6 /* ASPageControl.swift in Sources */,

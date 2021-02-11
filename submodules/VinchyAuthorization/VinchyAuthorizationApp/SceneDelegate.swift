@@ -11,7 +11,6 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   
   var window: UIWindow?
   
-  
   func scene(
     _ scene: UIScene,
     willConnectTo session: UISceneSession,
@@ -19,6 +18,4 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
   {
     guard let _ = (scene as? UIWindowScene) else { return }
   }
-  
 }
-
