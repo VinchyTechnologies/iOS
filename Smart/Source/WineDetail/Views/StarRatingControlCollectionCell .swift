@@ -26,32 +26,34 @@ final class StarRatingControlCollectionCell: UICollectionViewCell, Reusable {
   
   weak var delegate: StarRatingControlCollectionCellDelegate?
   
-  lazy var ratingView: CosmosView = {
+  private lazy var ratingView: CosmosView = {
     var view = CosmosView()
     view.settings.filledColor = .accent
     view.settings.emptyBorderColor = .accent
-    view.settings.starSize = 44
-    view.settings.fillMode = .precise
+    view.settings.starSize = 32
+    view.settings.fillMode = .half
+    view.settings.minTouchRating = 0
     return view
   }()
   
   override init(frame: CGRect) {
     super.init(frame: frame)
     
-    addSubview(ratingView)
+    contentView.addSubview(ratingView)
     NSLayoutConstraint.activate([
-      ratingView.topAnchor.constraint(equalTo: topAnchor, constant: 7),
-      ratingView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
-      ratingView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
-      ratingView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -7),
+      ratingView.topAnchor.constraint(equalTo: contentView.topAnchor),
+      ratingView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+      ratingView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+      ratingView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
     ])
     
-    ratingView.didFinishTouchingCosmos = { value in //weak self
-      self.delegate?.didRate(rating: value)
+    ratingView.didFinishTouchingCosmos = { rating in
+      self.delegate?.didRate(rating: rating)
     }
   }
   
   required init?(coder: NSCoder) { fatalError() }
+  
 }
 
 extension StarRatingControlCollectionCell: Decoratable {
