@@ -123,6 +123,7 @@ final class WineDetailPresenter {
     
     return [.rate([rateViewModel])]
   }
+
 }
 
 // MARK: - WineDetailPresenterProtocol

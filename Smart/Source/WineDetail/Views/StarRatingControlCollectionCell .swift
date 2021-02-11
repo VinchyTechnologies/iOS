@@ -18,7 +18,13 @@ struct StarRatingControlCollectionViewCellViewModel: ViewModelProtocol {
   }
 }
 
+protocol StarRatingControlCollectionCellDelegate: class {
+  func didRate(rating: Double)
+}
+
 final class StarRatingControlCollectionCell: UICollectionViewCell, Reusable {
+  
+  weak var delegate: StarRatingControlCollectionCellDelegate?
   
   lazy var ratingView: CosmosView = {
     var view = CosmosView()
@@ -39,6 +45,10 @@ final class StarRatingControlCollectionCell: UICollectionViewCell, Reusable {
       ratingView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
       ratingView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -7),
     ])
+    
+    ratingView.didFinishTouchingCosmos = { value in //weak self
+      self.delegate?.didRate(rating: value)
+    }
   }
   
   required init?(coder: NSCoder) { fatalError() }
