@@ -11,4 +11,6 @@ protocol EnterPasswordPresenterProtocol: AnyObject {
   func update()
   func updateButtonTitle(seconds: TimeInterval)
   func showAlertErrorWhileSendingCode(error: Error)
+  func startLoading()
+  func stopLoading()
 }

@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import VinchyCore
 
 final class EnterPasswordRouter {
   
@@ -25,9 +26,9 @@ final class EnterPasswordRouter {
 // MARK: - EnterPasswordRouterProtocol
 
 extension EnterPasswordRouter: EnterPasswordRouterProtocol {
-  func dismissAndRequestSuccess() {
+  func dismissAndRequestSuccess(output: AuthorizationOutputModel?) {
     viewController?.navigationController?.dismiss(animated: true, completion: {
-      (self.viewController?.navigationController as? AuthorizationNavigationController)?.authOutputDelegate?.didSuccessfullyRegister(output: nil)
+      (self.viewController?.navigationController as? AuthorizationNavigationController)?.authOutputDelegate?.didSuccessfullyRegister(output: output)
     })
   }
 }

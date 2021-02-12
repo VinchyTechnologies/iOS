@@ -9,4 +9,5 @@ import Foundation
 
 protocol AuthorizationRouterProtocol: AnyObject {
   func pushToEnterPasswordViewController(accountID: Int)
+  func dismissWithSuccsessLogin(output: AuthorizationOutputModel?)
 }

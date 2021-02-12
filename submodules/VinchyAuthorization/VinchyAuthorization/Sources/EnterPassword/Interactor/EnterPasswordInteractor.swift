@@ -9,7 +9,7 @@ import VinchyCore
 import Core
 
 fileprivate enum C {
-  static let timerSeconds: TimeInterval = 10
+  static let timerSeconds: TimeInterval = 60
   static let numberOfDigitsInCode = 4
 }
 
@@ -21,6 +21,11 @@ final class EnterPasswordInteractor {
   
   private var timer: Timer?
   private var counter = C.timerSeconds
+  
+  private lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
+    guard let self = self else { return }
+    self.presenter.startLoading()
+  }
   
   init(
     input: EnterPasswordInput,
@@ -58,14 +63,21 @@ extension EnterPasswordInteractor: EnterPasswordInteractorProtocol {
   
   func didEnterCodeInTextField(_ text: String?) {
     if let text = text, text.count == C.numberOfDigitsInCode && text.isNumeric {
+      DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        self.dispatchWorkItemHud.perform()
+      }
       Accounts.shared.activateAccount(
         accountID: input.accountID,
         confirmationCode: text) { [weak self] result in
+        self?.dispatchWorkItemHud.cancel()
+        DispatchQueue.main.async {
+          self?.presenter.stopLoading()
+        }
         switch result {
         case .success(let model):
           Keychain.shared.accessToken = model.accessToken
           Keychain.shared.refreshToken = model.refreshToken
-          self?.router.dismissAndRequestSuccess()
+          self?.router.dismissAndRequestSuccess(output: .init(accountID: model.accountID, email: model.email))
           
         case .failure(let error):
           self?.presenter.showAlertErrorWhileSendingCode(error: error)
@@ -75,7 +87,15 @@ extension EnterPasswordInteractor: EnterPasswordInteractorProtocol {
   }
   
   func didTapSendCodeAgainButton() {
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+      self.dispatchWorkItemHud.perform()
+    }
+    
     Accounts.shared.sendConfirmationCode(accountID: input.accountID) { [weak self] result in
+      self?.dispatchWorkItemHud.cancel()
+      DispatchQueue.main.async {
+        self?.presenter.stopLoading()
+      }
       switch result {
       case .success:
         self?.counter = C.timerSeconds

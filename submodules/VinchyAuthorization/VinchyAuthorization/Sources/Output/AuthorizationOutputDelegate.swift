@@ -5,9 +5,10 @@
 //  Created by Алексей Смирнов on 06.02.2021.
 //
 
-import Foundation
+import VinchyCore
 
 public struct AuthorizationOutputModel {
+  public let accountID: Int64
   public let email: String
 }
 

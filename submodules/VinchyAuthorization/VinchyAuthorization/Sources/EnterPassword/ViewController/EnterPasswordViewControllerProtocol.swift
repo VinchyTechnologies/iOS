@@ -7,7 +7,7 @@
 
 import Display
 
-protocol EnterPasswordViewControllerProtocol: Alertable {
+protocol EnterPasswordViewControllerProtocol: Alertable, Loadable {
   func updateUI(viewModel: EnterPasswordViewModel)
   func updateUI(buttonText: String, isButtonEnabled: Bool)
 }

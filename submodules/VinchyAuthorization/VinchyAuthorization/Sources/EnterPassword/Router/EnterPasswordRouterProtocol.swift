@@ -5,8 +5,8 @@
 //  Created by Алексей Смирнов on 23.12.2020.
 //
 
-import Foundation
+import VinchyCore
 
 protocol EnterPasswordRouterProtocol: AnyObject {
-  func dismissAndRequestSuccess()
+  func dismissAndRequestSuccess(output: AuthorizationOutputModel?)
 }

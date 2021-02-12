@@ -28,6 +28,15 @@ final class EnterPasswordPresenter {
 
 extension EnterPasswordPresenter: EnterPasswordPresenterProtocol {
   
+  func startLoading() {
+    viewController?.startLoadingAnimation()
+    viewController?.addLoader()
+  }
+  
+  func stopLoading() {
+    viewController?.stopLoadingAnimation()
+  }
+  
   func updateButtonTitle(seconds: TimeInterval) {
     viewController?.updateUI(
       buttonText: (seconds == 0 ? localized("send_code_again", bundle: Bundle(for: type(of: self))) : timeFormatter.string(from: seconds)) ?? "",

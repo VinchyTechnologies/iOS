@@ -10,7 +10,7 @@ fileprivate let authDomain = "auth.vinchy.tech"
 
 private enum AccountEndpoint: EndpointProtocol {
   
-  case get(email: String, password: String)
+  case auth(email: String, password: String)
   case create(email: String, password: String)
   case activate(accountID: Int, confirmationCode: String)
   case update(accountID: Int, refreshToken: String, password: String)
@@ -24,8 +24,8 @@ private enum AccountEndpoint: EndpointProtocol {
   
   var path: String {
     switch self {
-    case .get:
-      return "/accounts"
+    case .auth:
+      return "/accounts/auth"
       
     case .create:
       return "/accounts"
@@ -49,8 +49,8 @@ private enum AccountEndpoint: EndpointProtocol {
   
   var method: HTTPMethod {
     switch self {
-    case .get:
-      return .get
+    case .auth:
+      return .post
       
     case .create:
       return .post
@@ -74,7 +74,7 @@ private enum AccountEndpoint: EndpointProtocol {
   
   var parameters: Parameters? {
     switch self {
-    case .get(let email, let password):
+    case .auth(let email, let password):
       return [
         ("email", email),
         ("password", password),
@@ -114,8 +114,8 @@ private enum AccountEndpoint: EndpointProtocol {
   
   var encoding: ParameterEncoding {
     switch self {
-    case .get:
-      return .queryString
+    case .auth:
+      return .httpBody
       
     case .create:
       return .httpBody
@@ -147,12 +147,12 @@ public final class Accounts {
   
   private init() { }
   
-  public func getAccount(
+  public func auth(
     email: String,
     password: String,
-    completion: @escaping (Result<AccountID, APIError>) -> Void)
+    completion: @escaping (Result<AccountInfo, APIError>) -> Void)
   {
-    api.request(endpoint: AccountEndpoint.get(email: email, password: password), completion: completion)
+    api.request(endpoint: AccountEndpoint.auth(email: email, password: password), completion: completion)
   }
   
   public func createNewAccount(
@@ -166,7 +166,7 @@ public final class Accounts {
   public func activateAccount(
     accountID: Int,
     confirmationCode: String,
-    completion: @escaping (Result<AuthorizationTokens, APIError>) -> Void)
+    completion: @escaping (Result<AccountInfo, APIError>) -> Void)
   {
     api.request(
       endpoint: AccountEndpoint.activate(accountID: accountID, confirmationCode: confirmationCode),

@@ -32,7 +32,6 @@ final class ViewController: UIViewController {
   
   @objc
   private func didTapAuth(_ button: UIButton) {
-    print(#function)
     let viewController: AuthorizationNavigationController = ChooseAuthTypeAssembly.assemblyModule()
     viewController.authOutputDelegate = self
     present(viewController, animated: true, completion: nil)
@@ -42,9 +41,11 @@ final class ViewController: UIViewController {
 extension ViewController: AuthorizationOutputDelegate {
   func didSuccessfullyRegister(output: AuthorizationOutputModel?) {
     print(#function)
+    print(output as Any)
   }
   
   func didSuccessfullyLogin(output: AuthorizationOutputModel?) {
     print(#function)
+    print(output as Any)
   }
 }

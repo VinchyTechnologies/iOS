@@ -7,6 +7,7 @@
 
 import StringFormatting
 import VinchyCore
+import Core
 
 final class AuthorizationInteractor {
   
@@ -38,13 +39,11 @@ extension AuthorizationInteractor: AuthorizationInteractorProtocol {
         
     guard let email = email else {
       presenter.updateInvalidEmailAndPassword()
-      print("is invalid email")
       return
     }
     
     guard  let password = password else {
-      presenter.updateInvalidEmailAndPassword() // TODO: -
-      print("is invalid password")
+      presenter.updateInvalidEmailAndPassword()
       return
     }
 
@@ -54,8 +53,7 @@ extension AuthorizationInteractor: AuthorizationInteractorProtocol {
         self.dispatchWorkItemHud.perform()
       }
       
-      presenter.updateValidEmailAndPassword()
-      print("is valid email")
+//      presenter.updateValidEmailAndPassword()
       
       switch input.mode {
       case .register:
@@ -65,30 +63,32 @@ extension AuthorizationInteractor: AuthorizationInteractorProtocol {
           DispatchQueue.main.async {
             self.presenter.stopLoading()
           }
-          
+
           switch result {
           case .success(let accountID):
             self.presenter.endEditing()
             self.router.pushToEnterPasswordViewController(accountID: accountID.accountID)
-            
+
           case .failure(let error):
             self.presenter.showCreateUserError(error: error)
           }
         }
-          
+
       case .login:
-        Accounts.shared.getAccount(email: email, password: password) { [weak self] result in
+        Accounts.shared.auth(email: email, password: password) { [weak self] result in
           guard let self = self else { return }
           self.dispatchWorkItemHud.cancel()
           DispatchQueue.main.async {
             self.presenter.stopLoading()
           }
-          
+
           switch result {
-          case .success(let accountID):
+          case .success(let model):
             self.presenter.endEditing()
-            self.router.pushToEnterPasswordViewController(accountID: accountID.accountID)
-            
+            Keychain.shared.accessToken = model.accessToken
+            Keychain.shared.refreshToken = model.refreshToken
+            self.router.dismissWithSuccsessLogin(output: .init(accountID: model.accountID, email: model.email))
+
           case .failure(let error):
             self.presenter.showLoginUserError(error: error)
           }
@@ -96,7 +96,6 @@ extension AuthorizationInteractor: AuthorizationInteractorProtocol {
       }
     } else {
       presenter.updateInvalidEmailAndPassword()
-      print("is invalid email")
     }
   }
   

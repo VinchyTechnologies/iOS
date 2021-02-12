@@ -24,6 +24,7 @@ extension AuthorizationPresenter: AuthorizationPresenterProtocol {
   
   func startLoading() {
     viewController?.startLoadingAnimation()
+    viewController?.addLoader()
   }
   
   func stopLoading() {
