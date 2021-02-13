@@ -7,6 +7,7 @@
 
 import UIKit
 import Display
+import StringFormatting
 
 final class ChooseAuthTypeViewController: UIViewController {
   
@@ -21,12 +22,28 @@ final class ChooseAuthTypeViewController: UIViewController {
     return label
   }()
   
-  private let subtitleLabel: UILabel = {
+  private lazy var subtitleLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
-    label.textColor = .dark
-    label.font = Font.regular(20)
+    label.textColor = .blueGray
+    label.font = Font.regular(16)
     label.numberOfLines = 0
+    
+    let text = localized("agree_terms_of_use", bundle: Bundle(for: type(of: self)))
+    label.text = text
+    let underlineAttriString = NSMutableAttributedString(string: text)
+    let range1 = (text as NSString).range(of: localized("terms_of_use", bundle: Bundle(for: type(of: self))))
+    underlineAttriString.addAttribute(NSAttributedString.Key.underlineStyle, value: NSUnderlineStyle.single.rawValue, range: range1)
+    underlineAttriString.addAttribute(NSAttributedString.Key.font, value: Font.medium(16), range: range1)
+    underlineAttriString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.accent, range: range1)
+    label.attributedText = underlineAttriString
+    
+    label.isUserInteractionEnabled = true
+    label.lineBreakMode = .byWordWrapping
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tappedOnLabel(_:)))
+    tapGesture.numberOfTouchesRequired = 1
+    label.addGestureRecognizer(tapGesture)
+    
     return label
   }()
   
@@ -65,9 +82,6 @@ final class ChooseAuthTypeViewController: UIViewController {
       action: #selector(closeSelf))
     
     view.backgroundColor = .mainBackground
-    
-    titleLabel.text = "Welcome"
-    subtitleLabel.text = "Needs to auth yourself"
     
     view.addSubview(titleLabel)
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -121,6 +135,21 @@ final class ChooseAuthTypeViewController: UIViewController {
   private func didTapLoginButton(_ button: UIButton) {
     interactor?.didTapLoginButton()
   }
+  
+  @objc
+  private func tappedOnLabel(_ gesture: UITapGestureRecognizer) {
+    guard let text = subtitleLabel.text else { return }
+    let emailRange = (text as NSString).range(of: localized("terms_of_use", bundle: Bundle(for: type(of: self))))
+    if gesture.didTapAttributedTextInLabel(label: subtitleLabel, inRange: emailRange) {
+      openTerms()
+    }
+  }
+  
+  private func openTerms() {
+    open(urlString: localized("terms_of_use_url", bundle: Bundle(for: type(of: self))), errorCompletion: {
+      showAlert(title: localized("error").firstLetterUppercased(), message: localized("open_url_error"))
+    })
+  }
 }
 
 // MARK: - ChooseAuthTypeViewControllerProtocol
@@ -128,7 +157,7 @@ final class ChooseAuthTypeViewController: UIViewController {
 extension ChooseAuthTypeViewController: ChooseAuthTypeViewControllerProtocol {
   func updateUI(viewModel: ChooseAuthTypeViewModel) {
     titleLabel.text = viewModel.titleText
-    subtitleLabel.text = viewModel.subtitleText
+//    subtitleLabel.text = viewModel.subtitleText
     loginButton.setTitle(viewModel.loginButtonText, for: .normal)
     registerButton.setTitle(viewModel.registerButtonText, for: .normal)
   }

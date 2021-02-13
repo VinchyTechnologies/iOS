@@ -5,7 +5,7 @@
 //  Created by Алексей Смирнов on 05.02.2021.
 //
 
-import Foundation
+import StringFormatting
 
 final class ChooseAuthTypePresenter {
 
@@ -22,7 +22,11 @@ final class ChooseAuthTypePresenter {
 
 extension ChooseAuthTypePresenter: ChooseAuthTypePresenterProtocol {
   func update() {
-    let viewModel = ChooseAuthTypeViewModel(titleText: "Welcome", subtitleText: "Here you need to register", loginButtonText: "Log in", registerButtonText: "Register")
+    let viewModel = ChooseAuthTypeViewModel(
+      titleText: localized("hello", bundle: Bundle(for: type(of: self))).firstLetterUppercased(),
+      subtitleText: "", // TODO: - Remove from VC
+      loginButtonText: localized("sign_in", bundle: Bundle(for: type(of: self))).firstLetterUppercased(),
+      registerButtonText: localized("register", bundle: Bundle(for: type(of: self))).firstLetterUppercased())
     viewController?.updateUI(viewModel: viewModel)
   }
 }

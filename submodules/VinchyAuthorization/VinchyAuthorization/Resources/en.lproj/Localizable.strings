@@ -9,3 +9,18 @@
 "enter_the_code_received_by_email" = "Enter the code received by email";
 "enter_the_code" = "Enter the code";
 "send_code_again" = "Send code again";
+"lets_be_friends" = "Let's be friends :)";
+"enter_email" = "Enter email";
+"email" = "email";
+"enter_password" = "Enter password";
+"password" = "password";
+"next" = "next";
+"sign_in" = "Sign in";
+"register" = "register";
+"register_subtitle" = "The next step is to confirm the email with the code that we will send you";
+"sign_in_subtitle" = "Enter email and password for your account";
+"hello" = "Hello!";
+"agree_terms_of_use" = "By logging in or registering, you accept the Terms of use";
+"terms_of_use" = "Terms of use";
+"terms_of_use_url" = "";
+

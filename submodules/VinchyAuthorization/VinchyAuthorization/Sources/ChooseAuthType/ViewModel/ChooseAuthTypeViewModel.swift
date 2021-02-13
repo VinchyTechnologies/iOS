@@ -10,6 +10,7 @@ import Foundation
 struct ChooseAuthTypeViewModel {
   let titleText: String?
   let subtitleText: String?
+//  let hilightText: String?
   let loginButtonText: String?
   let registerButtonText: String?
 }

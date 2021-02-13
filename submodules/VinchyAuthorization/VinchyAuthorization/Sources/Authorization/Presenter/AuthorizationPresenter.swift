@@ -12,8 +12,10 @@ final class AuthorizationPresenter {
   private typealias ViewModel = AuthorizationViewModel
   
   weak var viewController: AuthorizationViewControllerProtocol?
+  private let input: AuthorizationInput
   
-  init(viewController: AuthorizationViewControllerProtocol) {
+  init(input: AuthorizationInput, viewController: AuthorizationViewControllerProtocol) {
+    self.input = input
     self.viewController = viewController
   }
 }
@@ -48,14 +50,28 @@ extension AuthorizationPresenter: AuthorizationPresenterProtocol {
   }
   
   func update() {
-    let viewModel = AuthorizationViewModel(
-      titleText: "Welcome",
-      subtitleText: "To start collect bottles your should authentificate yourself",
-      emailTextFiledPlaceholderText: "Enter Email",
-      emailTextFiledTopPlaceholderText: "Email",
-      passwordTextFiledPlaceholderText: "Password",
-      passwordTextFiledTopPlaceholderText: "Password",
-      continueButtonText: "Next")
+    let viewModel: AuthorizationViewModel
+    switch input.mode {
+    case .register:
+      viewModel = AuthorizationViewModel(
+        titleText: localized("register", bundle: Bundle(for: type(of: self))).firstLetterUppercased(),
+        subtitleText: localized("register_subtitle", bundle: Bundle(for: type(of: self))),
+        emailTextFiledPlaceholderText: localized("enter_email", bundle: Bundle(for: type(of: self))),
+        emailTextFiledTopPlaceholderText: localized("email", bundle: Bundle(for: type(of: self))).firstLetterUppercased(),
+        passwordTextFiledPlaceholderText: localized("enter_password", bundle: Bundle(for: type(of: self))).firstLetterUppercased(),
+        passwordTextFiledTopPlaceholderText: localized("password", bundle: Bundle(for: type(of: self))).firstLetterUppercased(),
+        continueButtonText: localized("next", bundle: Bundle(for: type(of: self))).firstLetterUppercased())
+      
+    case .login:
+      viewModel = AuthorizationViewModel(
+        titleText: localized("sign_in", bundle: Bundle(for: type(of: self))).firstLetterUppercased(),
+        subtitleText: localized("sign_in_subtitle", bundle: Bundle(for: type(of: self))), 
+        emailTextFiledPlaceholderText: localized("enter_email", bundle: Bundle(for: type(of: self))),
+        emailTextFiledTopPlaceholderText: localized("email", bundle: Bundle(for: type(of: self))).firstLetterUppercased(),
+        passwordTextFiledPlaceholderText: localized("enter_password", bundle: Bundle(for: type(of: self))).firstLetterUppercased(),
+        passwordTextFiledTopPlaceholderText: localized("password", bundle: Bundle(for: type(of: self))).firstLetterUppercased(),
+        continueButtonText: localized("next", bundle: Bundle(for: type(of: self))).firstLetterUppercased())
+    }
     
     viewController?.updateUI(viewModel: viewModel)
   }

@@ -14,7 +14,7 @@ final class AuthorizationAssembly {
     let viewController = AuthorizationViewController()
     
     let router = AuthorizationRouter(input: input, viewController: viewController)
-    let presenter = AuthorizationPresenter(viewController: viewController)
+    let presenter = AuthorizationPresenter(input: input, viewController: viewController)
     let interactor = AuthorizationInteractor(input: input, router: router, presenter: presenter)
     
     router.interactor = interactor

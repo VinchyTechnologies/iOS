@@ -5,8 +5,9 @@
 //  Created by Алексей Смирнов on 05.02.2021.
 //
 
-import Foundation
+import Display
+import Core
 
-protocol ChooseAuthTypeViewControllerProtocol: AnyObject {
+protocol ChooseAuthTypeViewControllerProtocol: Alertable, OpenURLProtocol {
   func updateUI(viewModel: ChooseAuthTypeViewModel)
 }

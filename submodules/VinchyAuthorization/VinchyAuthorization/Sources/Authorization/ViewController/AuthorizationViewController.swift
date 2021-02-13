@@ -37,7 +37,7 @@ final class AuthorizationViewController: UIViewController {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
     label.textColor = .dark
-    label.font = Font.regular(20)
+    label.font = Font.regular(16)
     label.numberOfLines = 0
     return label
   }()
