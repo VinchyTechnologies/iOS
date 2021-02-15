@@ -8,5 +8,11 @@
 import Foundation
 
 struct AuthorizationViewModel {
-
+  let titleText: String?
+  let subtitleText: String?
+  let emailTextFiledPlaceholderText: String?
+  let emailTextFiledTopPlaceholderText: String?
+  let passwordTextFiledPlaceholderText: String?
+  let passwordTextFiledTopPlaceholderText: String?
+  let continueButtonText: String?
 }

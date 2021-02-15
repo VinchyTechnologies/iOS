@@ -63,11 +63,11 @@ private enum WinesEndpoint: EndpointProtocol {
 
 public final class Wines {
 
-  let api = API.shared
+  private let api = API.shared
 
   public static let shared = Wines()
 
-  public init() { }
+  private init() { }
 
   public func getDetailWine(wineID: Int64, completion: @escaping (Result<Wine, APIError>) -> Void) {
     api.request(endpoint: WinesEndpoint.detail(wineID: wineID), completion: completion)

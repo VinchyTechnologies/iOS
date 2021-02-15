@@ -8,4 +8,10 @@
 import Foundation
 
 struct AuthorizationInput {
+  
+  enum AuthorizationMode {
+    case register, login
+  }
+  
+  let mode: AuthorizationMode
 }
