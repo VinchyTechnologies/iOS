@@ -46,7 +46,7 @@ final class NotesViewController: UIViewController {
     navigationItem.title = localized("notes").firstLetterUppercased()
 
     view.addSubview(tableView)
-    tableView.frame = view.frame
+    tableView.fill()
     tableView.dataSource = self
     tableView.delegate = self
     tableView.tableFooterView = UIView()
@@ -109,7 +109,7 @@ extension NotesViewController: UITableViewDataSource {
 
       let alert = UIAlertController(title: localized("delete_note"),
                                     message: localized("this_action_cannot_to_be_undone"),
-                                    preferredStyle: .actionSheet)
+                                    preferredStyle: .alert)
 
       alert.addAction(UIAlertAction(title: localized("delete"), style: .destructive, handler:{ [weak self] _ in
         guard let self = self else { return }

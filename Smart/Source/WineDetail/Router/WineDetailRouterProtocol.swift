@@ -15,5 +15,5 @@ protocol WineDetailRouterProtocol: WineDetailRoutable {
   func pushToWriteViewController(note: Note, noteText: String?)
   func pushToWriteViewController(wine: Wine)
   func presentEmailController(HTMLText: String?, recipients: [String])
-  func showMoreActionSheet(menuItems: [MenuItem], appearance: ActionSheetAppearance)
+  func showMoreActionSheet(menuItems: [MenuItem], appearance: ActionSheetAppearance, button: UIButton)
 }

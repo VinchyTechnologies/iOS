@@ -55,7 +55,7 @@ extension WineDetailRouter: WineDetailRouterProtocol {
     viewController?.present(controller, animated: true)
   }
 
-  func showMoreActionSheet(menuItems: [MenuItem], appearance: ActionSheetAppearance) {
+  func showMoreActionSheet(menuItems: [MenuItem], appearance: ActionSheetAppearance, button: UIButton) {
     ActionSheet.applyAppearance(appearance, force: true)
     let menu = Menu(items: menuItems)
     let sheet = menu.toActionSheet { [weak self] (aSheet, action) in
@@ -78,6 +78,6 @@ extension WineDetailRouter: WineDetailRouterProtocol {
     }
 
     guard let viewController = viewController else { return }
-    sheet.present(in: viewController, from: nil)
+    sheet.present(in: viewController, from: button)
   }
 }

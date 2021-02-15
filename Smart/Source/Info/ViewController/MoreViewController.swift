@@ -30,7 +30,7 @@ final class MoreViewController: UIViewController {
     let layout = UICollectionViewFlowLayout()
     layout.scrollDirection = .vertical
     
-    let collectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.backgroundColor = .mainBackground
     collectionView.register(
       ProfileCell.self,
@@ -50,6 +50,13 @@ final class MoreViewController: UIViewController {
     view.addSubview(collectionView)
     collectionView.fill()
     interactor?.viewDidLoad()
+  }
+  
+  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    super.viewWillTransition(to: size, with: coordinator)
+    coordinator.animate(alongsideTransition: { _ in
+        self.collectionView.collectionViewLayout.invalidateLayout()
+    })
   }
 }
 

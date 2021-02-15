@@ -147,6 +147,13 @@ final class VinchyViewController: UIViewController {
     }
   }
   
+  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    super.viewWillTransition(to: size, with: coordinator)
+    coordinator.animate(alongsideTransition: { _ in
+        self.collectionView.collectionViewLayout.invalidateLayout()
+    })
+  }
+  
   // MARK: - Private Methods
   
   @objc
