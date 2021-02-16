@@ -64,7 +64,7 @@ final class AdvancedSearchViewController: UIViewController {
   }
 
   private lazy var collectionView: UICollectionView = {
-    let collectionView = UICollectionView(frame: view.frame, collectionViewLayout: layout)
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.delaysContentTouches = false
     collectionView.backgroundColor = .mainBackground
     collectionView.dataSource = self
@@ -99,6 +99,7 @@ final class AdvancedSearchViewController: UIViewController {
     navigationItem.largeTitleDisplayMode = .never
 
     view.addSubview(collectionView)
+    collectionView.fill()
 
     view.addSubview(bottomButtonsView)
     bottomButtonsView.translatesAutoresizingMaskIntoConstraints = false
@@ -125,6 +126,13 @@ final class AdvancedSearchViewController: UIViewController {
     super.viewDidLayoutSubviews()
     let bottomButtonsViewHeight: CGFloat = 20 + 48 + view.safeAreaInsets.bottom
     collectionView.contentInset.bottom = bottomButtonsViewHeight + 10
+  }
+  
+  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    super.viewWillTransition(to: size, with: coordinator)
+    coordinator.animate(alongsideTransition: { _ in
+        self.collectionView.collectionViewLayout.invalidateLayout()
+    })
   }
 }
 

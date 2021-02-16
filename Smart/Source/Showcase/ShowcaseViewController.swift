@@ -34,19 +34,8 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
   private var filtersHeaderView = ASFiltersHeaderView()
   
   private lazy var collectionView: UICollectionView = {
-    let rowCount = 2
-    let inset: CGFloat = 16
-    let itemWidth = Int((UIScreen.main.bounds.width - inset * CGFloat(rowCount + 1)) / CGFloat(rowCount))
-    let itemHeight = Int(Double(itemWidth) * 1.5)
     
-    let layout = UICollectionViewFlowLayout()
-    layout.sectionHeadersPinToVisibleBounds = true
-    layout.sectionInset = UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
-    layout.minimumLineSpacing = inset
-    layout.minimumInteritemSpacing = 0
-    layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
-    
-    let collectionView = UICollectionView(frame: view.bounds, collectionViewLayout: layout)
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
     collectionView.dataSource = self
     collectionView.delegate = self
     collectionView.backgroundColor = .clear
@@ -131,6 +120,40 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
     collectionView.fill()
 //    filtersHeaderView.frame = CGRect(x: 0, y: 0, width: view.frame.width, height: 50)
 //    view.addSubview(filtersHeaderView)
+  }
+  
+  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    super.viewWillTransition(to: size, with: coordinator)
+    coordinator.animate(alongsideTransition: { _ in
+      self.collectionView.collectionViewLayout.invalidateLayout()
+      self.collectionView.collectionViewLayout = self.layout()
+    })
+  }
+  
+  private func layout() -> UICollectionViewLayout {
+    let rowCount: Int = {
+      if UIDevice.current.userInterfaceIdiom == .pad {
+        if Orientation.isLandscape {
+          return 4
+        } else {
+          return 3
+        }
+      } else {
+        return 2
+      }
+    }()
+    
+    let inset: CGFloat = 10
+    let itemWidth = Int((UIScreen.main.bounds.width - inset * CGFloat(rowCount + 1)) / CGFloat(rowCount))
+    let itemHeight = Int(Double(itemWidth) * 1.5)
+    
+    let layout = UICollectionViewFlowLayout()
+    layout.sectionHeadersPinToVisibleBounds = true
+    layout.sectionInset = UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
+    layout.minimumLineSpacing = inset
+    layout.minimumInteritemSpacing = 0
+    layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
+    return layout
   }
   
   private func fetchCategoryItems() {

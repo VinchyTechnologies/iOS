@@ -12,6 +12,18 @@ import StringFormatting
 
 final class TabBarController: UITabBarController, UITabBarControllerDelegate {
   
+  override var shouldAutorotate: Bool {
+    !(UIDevice.current.userInterfaceIdiom == .phone)
+  }
+  
+  public override var supportedInterfaceOrientations: UIInterfaceOrientationMask {
+    if UIDevice.current.userInterfaceIdiom == .phone {
+      return .portrait
+    } else {
+      return .all
+    }
+  }
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
