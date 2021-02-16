@@ -14,15 +14,15 @@ import CommonUI
 import Database
 import Display
 
-final class NotesViewController: UIViewController {
-
+final class NotesViewController: UIViewController, UISearchControllerDelegate, UISearchResultsUpdating {
+  
   // MARK: - Private Properties
-
   private let tableView = UITableView()
   private lazy var notesRealm = realm(path: .notes)
   private let dataBase = Database<Note>()
   private var notesNotificationToken: NotificationToken?
-
+  private let throttler = Throttler()
+  
   private var notes: [Note] = [] {
     didSet {
       notes.isEmpty ? showEmptyView() : hideEmptyView()
@@ -31,14 +31,14 @@ final class NotesViewController: UIViewController {
   }
 
   // MARK: - Lifecycle
-
+  
   init() {
     super.init(nibName: nil, bundle: nil)
     notesNotificationToken = notesRealm.observe { _, _ in
       self.notes = self.dataBase.all(at: .notes)
     }
   }
-
+  
   required init?(coder: NSCoder) { fatalError() }
   
   private lazy var searchController: UISearchController = {
@@ -50,14 +50,16 @@ final class NotesViewController: UIViewController {
     searchController.searchBar.searchTextField.layer.cornerRadius = 20
     searchController.searchBar.searchTextField.layer.masksToBounds = true
     searchController.searchBar.searchTextField.layer.cornerCurve = .continuous
+    searchController.delegate = self
+    searchController.searchResultsUpdater = self
     return searchController
   }()
-
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-
+    
     navigationItem.title = localized("notes").firstLetterUppercased()
-
+    
     view.addSubview(tableView)
     tableView.frame = view.frame
     tableView.dataSource = self
@@ -65,21 +67,43 @@ final class NotesViewController: UIViewController {
     tableView.tableFooterView = UIView()
     tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
     tableView.register(WineTableCell.self, forCellReuseIdentifier: WineTableCell.reuseId)
-
+    
     notes = dataBase.all(at: .notes)
     navigationItem.searchController = searchController
   }
-
+  
   deinit {
     notesNotificationToken?.invalidate()
   }
-
+  
+  func updateSearchResults(for searchController: UISearchController) {
+    didEnterSearchText(searchController.searchBar.text)
+  }
+  
+  private func didEnterSearchText(_ searchText: String?) {
+    
+    guard
+      let searchText = searchText?.firstLetterUppercased(),
+      !searchText.isEmpty
+    else {
+      throttler.cancel()
+      self.notes = self.dataBase.all(at: .notes)
+      return
+    }
+    
+    throttler.cancel()
+    
+    throttler.throttle(delay: .milliseconds(600)) { [weak self] in
+      self?.notes = self?.dataBase.filter(at: .notes, text: searchText) ?? []
+      self?.tableView.reloadData()
+    }
+  }
   // MARK: - Private Methods
-
+  
   private func hideEmptyView() {
     tableView.backgroundView = nil
   }
-
+  
   private func showEmptyView() {
     let errorView = ErrorView(frame: view.frame)
     errorView.decorate(model: .init(titleText: localized("nothing_here").firstLetterUppercased(),
@@ -92,15 +116,15 @@ final class NotesViewController: UIViewController {
 // MARK: - UITableViewDataSource
 
 extension NotesViewController: UITableViewDataSource {
-
+  
   func tableView(
     _ tableView: UITableView,
     numberOfRowsInSection section: Int)
-  -> Int
+    -> Int
   {
     notes.count
   }
-
+  
   func tableView(
     _ tableView: UITableView,
     cellForRowAt indexPath: IndexPath)
@@ -113,18 +137,18 @@ extension NotesViewController: UITableViewDataSource {
     }
     return .init()
   }
-
+  
   func tableView(
     _ tableView: UITableView,
     commit editingStyle: UITableViewCell.EditingStyle,
     forRowAt indexPath: IndexPath)
   {
     if editingStyle == .delete, let note = notes[safe: indexPath.row] {
-
+      
       let alert = UIAlertController(title: localized("delete_note"),
                                     message: localized("this_action_cannot_to_be_undone"),
                                     preferredStyle: .actionSheet)
-
+      
       alert.addAction(UIAlertAction(title: localized("delete"), style: .destructive, handler:{ [weak self] _ in
         guard let self = self else { return }
         self.dataBase.remove(object: note, at: .notes)
@@ -132,9 +156,10 @@ extension NotesViewController: UITableViewDataSource {
       }))
       alert.addAction(UIAlertAction(title: localized("cancel"), style: .cancel, handler: nil))
       present(alert, animated: true, completion: nil)
+      self.tableView.reloadData()
     }
   }
-
+  
   func tableView(
     _ tableView: UITableView,
     titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath)
@@ -147,7 +172,7 @@ extension NotesViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension NotesViewController: UITableViewDelegate {
-
+  
   func tableView(
     _ tableView: UITableView,
     didSelectRowAt indexPath: IndexPath)
