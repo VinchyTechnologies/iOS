@@ -9,20 +9,14 @@
 import UIKit
 
 public struct Orientation {
-    // indicate current device is in the LandScape orientation
   public static var isLandscape: Bool {
-        get {
-            UIDevice.current.orientation.isValidInterfaceOrientation
-                ? UIDevice.current.orientation.isLandscape
-                : (UIApplication.shared.windows.first?.windowScene?.interfaceOrientation.isLandscape)!
-        }
+    get {
+      guard let windowScence = UIApplication.shared.windows.first?.windowScene else {
+        return false
+      }
+      return UIDevice.current.orientation.isValidInterfaceOrientation
+        ? UIDevice.current.orientation.isLandscape
+        : windowScence.interfaceOrientation.isLandscape
     }
-    // indicate current device is in the Portrait orientation
-  public static var isPortrait: Bool {
-        get {
-            UIDevice.current.orientation.isValidInterfaceOrientation
-                ? UIDevice.current.orientation.isPortrait
-                : (UIApplication.shared.windows.first?.windowScene?.interfaceOrientation.isPortrait)!
-        }
-    }
+  }
 }
