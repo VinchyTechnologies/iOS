@@ -50,8 +50,12 @@ extension WineDetailRouter: WineDetailRouterProtocol {
     viewController?.navigationController?.pushViewController(controller, animated: true)
   }
   
-  func presentActivityViewController(items: [Any]) {
+  func presentActivityViewController(items: [Any], button: UIButton) {
     let controller = UIActivityViewController(activityItems: items, applicationActivities: nil)
+    if let popoverController = controller.popoverPresentationController {
+      popoverController.sourceView = button
+      popoverController.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
+    }
     viewController?.present(controller, animated: true)
   }
 

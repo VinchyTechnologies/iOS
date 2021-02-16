@@ -12,7 +12,7 @@ protocol WineDetailInteractorProtocol: AnyObject {
   func viewDidLoad()
   func didTapLikeButton(_ button: UIButton)
   func didTapDislikeButton()
-  func didTapShareButton()
+  func didTapShareButton(_ button: UIButton)
   func didTapNotes()
   func didTapMore(_ button: UIButton)
   func didTapPriceButton()

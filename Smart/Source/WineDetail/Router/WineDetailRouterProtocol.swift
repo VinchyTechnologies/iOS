@@ -11,7 +11,7 @@ import VinchyCore
 import Sheeeeeeeeet
 
 protocol WineDetailRouterProtocol: WineDetailRoutable {
-  func presentActivityViewController(items: [Any])
+  func presentActivityViewController(items: [Any], button: UIButton)
   func pushToWriteViewController(note: Note, noteText: String?)
   func pushToWriteViewController(wine: Wine)
   func presentEmailController(HTMLText: String?, recipients: [String])

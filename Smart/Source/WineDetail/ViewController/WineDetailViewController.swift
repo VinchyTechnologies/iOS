@@ -350,7 +350,7 @@ extension WineDetailViewController: ButtonCollectionCellDelegate {
 extension WineDetailViewController: ToolCollectionCellDelegate {
   
   func didTapShare(_ button: UIButton) {
-    interactor?.didTapShareButton()
+    interactor?.didTapShareButton(button)
   }
   
   func didTapLike(_ button: UIButton) {

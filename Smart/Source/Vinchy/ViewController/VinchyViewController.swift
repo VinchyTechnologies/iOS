@@ -426,6 +426,10 @@ extension VinchyViewController: ShareUsCollectionCellDelegate {
   func didTapShareUs(_ button: UIButton) {
     let items = [localized("i_use_vinchy"), localized("discovery_link")]
     let controller = UIActivityViewController(activityItems: items, applicationActivities: nil)
+    if let popoverController = controller.popoverPresentationController {
+      popoverController.sourceView = button
+      popoverController.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
+    }
     present(controller, animated: true)
   }
 }

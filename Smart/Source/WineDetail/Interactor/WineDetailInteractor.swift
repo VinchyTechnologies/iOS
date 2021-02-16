@@ -141,7 +141,7 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
     }
   }
   
-  func didTapShareButton() {
+  func didTapShareButton(_ button: UIButton) {
     
     guard let wine = wine else { return }
 
@@ -177,8 +177,7 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
       guard let url = url else { return }
 
       let items = [wine.title, url] as [Any]
-      self?.router.presentActivityViewController(items: items)
-
+      self?.router.presentActivityViewController(items: items, button: button)
     }
   }
   
