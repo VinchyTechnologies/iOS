@@ -33,6 +33,7 @@ final class RateAppCell: UICollectionViewCell, Reusable {
     emojiLabel.translatesAutoresizingMaskIntoConstraints = false
     emojiLabel.textAlignment = .center
     emojiLabel.font = Font.regular(50.0)
+    emojiLabel.text = traitCollection.userInterfaceStyle == .dark ? "👍🏿" : "👍"
     
     addSubview(emojiLabel)
     NSLayoutConstraint.activate([
@@ -73,6 +74,6 @@ extension RateAppCell: Decoratable {
   
   func decorate(model: ViewModel) {
     rateTextLabel.text = model.titleText
-    emojiLabel.text = model.emojiLabel
+//    emojiLabel.text = model.emojiLabel
   }
 }
