@@ -18,7 +18,16 @@ final class SceneDelegate: UIResponder {
   
   // MARK: - Private Properties
   
-  private var appCoordinator: ApplicationCoordinator?
+//  private var appCoordinator: ApplicationCoordinator?
+  
+  private lazy var root: (RootInteractor & RootDeeplinkable) = {
+    RootBuilderImpl(tabBarBuilder: TabBarBuilderImpl())
+      .build(input: RootBuilderInput(window: window!))
+  }()
+
+  private lazy var deeplinkRouter: DeeplinkRouter = {
+      DeeplinkRouterImpl(root: root)
+  }()
   
 }
 
@@ -30,12 +39,10 @@ extension SceneDelegate: UIWindowSceneDelegate {
     options connectionOptions: UIScene.ConnectionOptions)
   {
     guard let windowScence = scene as? UIWindowScene else { return }
-    let appWindow = UIWindow(frame: windowScence.coordinateSpace.bounds)
-    appWindow.windowScene = windowScence
-    window = appWindow
-    appCoordinator = ApplicationCoordinatorBuilder.make(window: window)
-
-    appCoordinator?.start()
+    
+    let window = UIWindow(windowScene: windowScence)
+    self.window = window
+    root.startApp()
 
     if let userActivity = connectionOptions.userActivities.first {
       self.scene(scene, continue: userActivity)
@@ -46,7 +53,8 @@ extension SceneDelegate: UIWindowSceneDelegate {
 
   func scene(
     _ scene: UIScene,
-    continue userActivity: NSUserActivity) {
+    continue userActivity: NSUserActivity)
+  {
     usleep(50000)
     if let incomingURL = userActivity.webpageURL {
       DynamicLinks.dynamicLinks().handleUniversalLink(incomingURL) { (dynamicLink, error) in
@@ -58,7 +66,8 @@ extension SceneDelegate: UIWindowSceneDelegate {
 
   func scene(
     _ scene: UIScene,
-    openURLContexts URLContexts: Set<UIOpenURLContext>) {
+    openURLContexts URLContexts: Set<UIOpenURLContext>)
+  {
     guard let urlToOpen = URLContexts.first?.url else { return }
     if let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: urlToOpen) {
       handleIncomingDynamicLink(dynamicLink)
@@ -70,18 +79,8 @@ extension SceneDelegate: UIWindowSceneDelegate {
       let url = dynamicLink.url,
       (dynamicLink.matchType == .unique || dynamicLink.matchType == .default)
     else { return }
-
-    switch DeepLinkOption(url: url) {
-    case .wineDetail(let wineID):
-      if
-        let tabbarController = window?.rootViewController as? TabBarController,
-        let firstVC = tabbarController.viewControllers?.first as? NavigationController {
-        firstVC.pushViewController(Assembly.buildDetailModule(wineID: wineID), animated: true)
-      }
-
-    case .none:
-      return
-    }
+    
+    self.deeplinkRouter.route(url: url)
   }
 }
 
