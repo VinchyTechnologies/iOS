@@ -9,6 +9,11 @@
 import UIKit
 import Display
 import StringFormatting
+import Combine
+
+protocol TabBarDeeplinkable {
+  func openWineDetail(wineID: Int64) -> AnyPublisher<TabBarDeeplinkable, Never>
+}
 
 final class TabBarController: UITabBarController, UITabBarControllerDelegate {
   
@@ -90,5 +95,21 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
     viewControllers = [main, love, notes, profile]
     
   }
-  
+}
+
+extension TabBarController: TabBarDeeplinkable {
+  func openWineDetail(wineID: Int64) -> AnyPublisher<TabBarDeeplinkable, Never> {
+    if let viewController = viewControllers?[safe: selectedIndex] as? NavigationController {
+      viewController.pushViewController(Assembly.buildDetailModule(wineID: wineID), animated: true)
+    }
+    return Just(self)
+        .eraseToAnyPublisher()
+  }
+}
+
+fileprivate extension Int {
+  static let main = 0
+  static let love = 1
+  static let notes = 2
+  static let profile = 3
 }
