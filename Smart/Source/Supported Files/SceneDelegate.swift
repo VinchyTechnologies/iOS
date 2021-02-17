@@ -17,9 +17,7 @@ final class SceneDelegate: UIResponder {
   var window: UIWindow?
   
   // MARK: - Private Properties
-  
-//  private var appCoordinator: ApplicationCoordinator?
-  
+    
   private lazy var root: (RootInteractor & RootDeeplinkable) = {
     RootBuilderImpl(tabBarBuilder: TabBarBuilderImpl())
       .build(input: RootBuilderInput(window: window!))
