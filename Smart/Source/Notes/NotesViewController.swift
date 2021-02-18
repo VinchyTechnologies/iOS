@@ -51,6 +51,7 @@ final class NotesViewController: UIViewController, UISearchControllerDelegate, U
     searchController.searchBar.searchTextField.layer.cornerCurve = .continuous
     searchController.delegate = self
     searchController.searchResultsUpdater = self
+    searchController.hidesNavigationBarDuringPresentation = true
     return searchController
   }()
   
@@ -58,6 +59,9 @@ final class NotesViewController: UIViewController, UISearchControllerDelegate, U
     super.viewDidLoad()
     
     navigationItem.title = localized("notes").firstLetterUppercased()
+    navigationItem.searchController = searchController
+    navigationItem.hidesSearchBarWhenScrolling = false
+    navigationController?.navigationBar.sizeToFit()
     
     view.addSubview(tableView)
     tableView.fill()
@@ -68,7 +72,6 @@ final class NotesViewController: UIViewController, UISearchControllerDelegate, U
     tableView.register(WineTableCell.self, forCellReuseIdentifier: WineTableCell.reuseId)
     
     notes = dataBase.all(at: .notes)
-    navigationItem.searchController = searchController
   }
   
   deinit {
@@ -181,5 +184,11 @@ extension NotesViewController: UITableViewDelegate {
     guard let note = notes[safe: indexPath.row] else { return }
     let controller = Assembly.buildWriteNoteViewController(for: note)
     navigationController?.pushViewController(controller, animated: true)
+  }
+  
+  func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    if !navigationItem.hidesSearchBarWhenScrolling {
+      navigationItem.hidesSearchBarWhenScrolling = true
+    }
   }
 }
