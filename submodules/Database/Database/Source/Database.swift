@@ -61,8 +61,7 @@ public final class Database<T: Object> {
     }
   }
   
-  public func filter(at path: RealmType, text: String) -> [T] {
-    let predicate = NSPredicate(format: "wineTitle CONTAINS %@ OR noteText CONTAINS %@", text, text)
+  public func filter(at path: RealmType, predicate: NSPredicate) -> [T] {
     let search = realm(path: path).objects(T.self).filter(predicate)
     return  Array<T>(search)
   }

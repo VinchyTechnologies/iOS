@@ -94,8 +94,10 @@ final class NotesViewController: UIViewController, UISearchControllerDelegate, U
     throttler.cancel()
     
     throttler.throttle(delay: .milliseconds(600)) { [weak self] in
-      self?.notes = self?.dataBase.filter(at: .notes, text: searchText) ?? []
-      self?.tableView.reloadData()
+      let predicate = NSPredicate(format: "wineTitle CONTAINS %@ OR noteText CONTAINS %@", searchText, searchText)
+      self?.notes = self?.dataBase.filter(
+        at: .notes,
+        predicate: predicate) ?? []
     }
   }
   // MARK: - Private Methods
