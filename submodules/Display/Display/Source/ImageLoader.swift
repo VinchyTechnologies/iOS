@@ -9,16 +9,22 @@
 import UIKit
 import Nuke
 
-public extension UIImageView {
-
-  func loadBottle(url: URL?) {
-
-    guard let url = url else {
-      return
-    }
-    
+final fileprivate class ImageLoader {
+  
+  fileprivate static let shared = ImageLoader()
+  
+  private init() {
     ImageCache.shared.ttl = 30 * 24 * 60 * 60
-
+    DataLoader.sharedUrlCache.diskCapacity = 0
+    let pipeline = ImagePipeline {
+      let dataCache = try? DataCache(name: "tech.vinchy.dataImageCache")
+      dataCache?.sizeLimit = 200 * 1024 * 1024
+      $0.dataCache = dataCache
+    }
+    ImagePipeline.shared = pipeline
+  }
+  
+  fileprivate func loadBottle(url: URL, imageView: UIImageView) {
     var options = ImageLoadingOptions(
       placeholder: nil,
       failureImage: UIImage(named: "empty_image_bottle")?.withTintColor(.blueGray),
@@ -31,16 +37,10 @@ public extension UIImageView {
       cachePolicy: .default,
       priority: .high)
 
-    Nuke.loadImage(with: request, options: options, into: self, completion: nil)
+    Nuke.loadImage(with: request, options: options, into: imageView, completion: nil)
   }
-
-  func loadImage(url: URL?) {
-    guard let url = url else {
-      return
-    }
-    
-    ImageCache.shared.ttl = 30 * 24 * 60 * 60
-
+  
+  fileprivate func loadCommonImage(url: URL, imageView: UIImageView) {
     var options = ImageLoadingOptions(
       placeholder: nil,
       failureImage: nil,
@@ -53,9 +53,25 @@ public extension UIImageView {
       cachePolicy: .default,
       priority: .high)
 
-    Nuke.loadImage(with: request, options: options, into: self, completion: nil)
+    Nuke.loadImage(with: request, into: imageView)
+  }
+}
+
+public extension UIImageView {
+
+  func loadBottle(url: URL?) {
+    guard let url = url else {
+      return
+    }
+    ImageLoader.shared.loadBottle(url: url, imageView: self)
   }
 
+  func loadImage(url: URL?) {
+    guard let url = url else {
+      return
+    }
+    ImageLoader.shared.loadCommonImage(url: url, imageView: self)
+  }
 }
 
 public func prefetch(url: URL?) {
