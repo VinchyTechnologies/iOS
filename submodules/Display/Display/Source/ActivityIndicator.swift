@@ -13,12 +13,6 @@ public final class ActivityIndicatorView: UIView {
     private static let animationTiming: TimeInterval = 0.25
     private static let rotateAnimationKey = "vinchy_spinnerRotate_animation"
 
-    /**
-    Свойство отвечает за старт и остановку анимации
-
-    - `true` запускает анимацию
-    - `false` останавливает анимацию
-    */
     public var isAnimating = false {
         didSet {
             if isAnimating {

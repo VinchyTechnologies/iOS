@@ -24,7 +24,7 @@ final class LoveViewController: UIViewController {
   private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
   
   private static let collectionViewLayout: UICollectionViewLayout = {
-    let rowCount = 2
+    let rowCount = UIDevice.current.userInterfaceIdiom == .pad ? 3 : 2
     let inset: CGFloat = 10
     let itemWidth = Int((UIScreen.main.bounds.width - inset * CGFloat(rowCount + 1)) / CGFloat(rowCount))
     let itemHeight = Int(Double(itemWidth) * 1.4)
@@ -120,6 +120,13 @@ final class LoveViewController: UIViewController {
     collectionView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
     collectionView.delaysContentTouches = false
 
+  }
+  
+  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    super.viewWillTransition(to: size, with: coordinator)
+    coordinator.animate(alongsideTransition: { _ in
+        self.collectionView.collectionViewLayout.invalidateLayout()
+    })
   }
   
   deinit {

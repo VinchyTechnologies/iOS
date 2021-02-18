@@ -41,7 +41,7 @@ final class GalleryCell: UICollectionViewCell, Reusable {
     super.init(frame: frame)
     
     addSubview(pager)
-    pager.frame = frame
+    pager.fill()
   }
   
   required init?(coder: NSCoder) { fatalError() }

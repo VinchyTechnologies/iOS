@@ -39,11 +39,11 @@ private enum CompilationsEndpoint: EndpointProtocol {
 
 public final class Compilations {
   
-  let api = API.shared
+  private let api = API.shared
   
   public static let shared = Compilations()
   
-  public init() { }
+  private init() { }
   
   public func getCompilations(completion: @escaping (Result<[Compilation], APIError>) -> Void) {
     api.request(endpoint: CompilationsEndpoint.all, completion: completion)

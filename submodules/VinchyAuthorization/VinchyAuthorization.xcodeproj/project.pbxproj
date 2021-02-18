@@ -3,10 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		25C7990D4CD38630D0A42E04 /* Pods_VinchyAuthorizationApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89253731F2C742635398AF8F /* Pods_VinchyAuthorizationApp.framework */; };
+		370686F57971ECE5F1FE476E /* Pods_VinchyAuthorization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1365932D64B5E4665879C2 /* Pods_VinchyAuthorization.framework */; };
+		441F760825D19ADA008DC46B /* AuthorizationNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4436021625CF00B500ABA7F1 /* AuthorizationNavigationController.swift */; };
+		443601DD25CEF5B200ABA7F1 /* AuthorizationOutputDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443601DC25CEF5B200ABA7F1 /* AuthorizationOutputDelegate.swift */; };
 		443F0ADC259123FE00E15437 /* VinchyAuthorization.h in Headers */ = {isa = PBXBuildFile; fileRef = 443F0ADA259123FE00E15437 /* VinchyAuthorization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		443F0AFB259126F200E15437 /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F0AEA259126F200E15437 /* AuthorizationViewModel.swift */; };
 		443F0AFC259126F200E15437 /* AuthorizationInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F0AEC259126F200E15437 /* AuthorizationInput.swift */; };
@@ -27,9 +31,47 @@
 		443F0B1B2591282D00E15437 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 443F0B192591282D00E15437 /* LaunchScreen.storyboard */; };
 		443F0B262591282D00E15437 /* VinchyAuthorizationAppTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F0B252591282D00E15437 /* VinchyAuthorizationAppTests.swift */; };
 		443F0B312591282D00E15437 /* VinchyAuthorizationAppUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F0B302591282D00E15437 /* VinchyAuthorizationAppUITests.swift */; };
+		44AD9A7B25936CDB001A5188 /* EnterPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A6A25936CDB001A5188 /* EnterPasswordViewModel.swift */; };
+		44AD9A7D25936CDB001A5188 /* EnterPasswordInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A6C25936CDB001A5188 /* EnterPasswordInput.swift */; };
+		44AD9A7F25936CDB001A5188 /* EnterPasswordAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A6E25936CDB001A5188 /* EnterPasswordAssembly.swift */; };
+		44AD9A8125936CDB001A5188 /* EnterPasswordPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A7025936CDB001A5188 /* EnterPasswordPresenterProtocol.swift */; };
+		44AD9A8325936CDB001A5188 /* EnterPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A7125936CDB001A5188 /* EnterPasswordPresenter.swift */; };
+		44AD9A8525936CDB001A5188 /* EnterPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A7325936CDB001A5188 /* EnterPasswordViewController.swift */; };
+		44AD9A8725936CDB001A5188 /* EnterPasswordViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A7425936CDB001A5188 /* EnterPasswordViewControllerProtocol.swift */; };
+		44AD9A8925936CDB001A5188 /* EnterPasswordInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A7625936CDB001A5188 /* EnterPasswordInteractor.swift */; };
+		44AD9A8B25936CDB001A5188 /* EnterPasswordInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A7725936CDB001A5188 /* EnterPasswordInteractorProtocol.swift */; };
+		44AD9A8D25936CDB001A5188 /* EnterPasswordRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A7925936CDB001A5188 /* EnterPasswordRouterProtocol.swift */; };
+		44AD9A8F25936CDB001A5188 /* EnterPasswordRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A7A25936CDB001A5188 /* EnterPasswordRouter.swift */; };
+		44E2163025CD2D5F00FE31CE /* ChooseAuthTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E2161F25CD2D5F00FE31CE /* ChooseAuthTypeViewModel.swift */; };
+		44E2163125CD2D5F00FE31CE /* ChooseAuthTypeInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E2162125CD2D5F00FE31CE /* ChooseAuthTypeInput.swift */; };
+		44E2163225CD2D5F00FE31CE /* ChooseAuthTypeAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E2162325CD2D5F00FE31CE /* ChooseAuthTypeAssembly.swift */; };
+		44E2163325CD2D5F00FE31CE /* ChooseAuthTypePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E2162525CD2D5F00FE31CE /* ChooseAuthTypePresenter.swift */; };
+		44E2163425CD2D5F00FE31CE /* ChooseAuthTypePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E2162625CD2D5F00FE31CE /* ChooseAuthTypePresenterProtocol.swift */; };
+		44E2163525CD2D5F00FE31CE /* ChooseAuthTypeViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E2162825CD2D5F00FE31CE /* ChooseAuthTypeViewControllerProtocol.swift */; };
+		44E2163625CD2D5F00FE31CE /* ChooseAuthTypeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E2162925CD2D5F00FE31CE /* ChooseAuthTypeViewController.swift */; };
+		44E2163725CD2D5F00FE31CE /* ChooseAuthTypeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E2162B25CD2D5F00FE31CE /* ChooseAuthTypeInteractor.swift */; };
+		44E2163825CD2D5F00FE31CE /* ChooseAuthTypeInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E2162C25CD2D5F00FE31CE /* ChooseAuthTypeInteractorProtocol.swift */; };
+		44E2163925CD2D5F00FE31CE /* ChooseAuthTypeRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E2162E25CD2D5F00FE31CE /* ChooseAuthTypeRouterProtocol.swift */; };
+		44E2163A25CD2D5F00FE31CE /* ChooseAuthTypeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E2162F25CD2D5F00FE31CE /* ChooseAuthTypeRouter.swift */; };
+		44E83A0125D1A23400711490 /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A72596259245E100A7552B /* Display.framework */; };
+		44E83A0225D1A23400711490 /* Display.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44A72596259245E100A7552B /* Display.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		44E83A0425D1A23600711490 /* VinchyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44E2161225CC8ED900FE31CE /* VinchyCore.framework */; };
+		44E83A0525D1A23600711490 /* VinchyCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44E2161225CC8ED900FE31CE /* VinchyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		44E83A0925D1A40800711490 /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A724E22591351C00A7552B /* Display.framework */; };
+		44E83A0A25D1A40800711490 /* Display.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44A724E22591351C00A7552B /* Display.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		44E83A0E25D1A40C00711490 /* VinchyAuthorization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 443F0AD7259123FE00E15437 /* VinchyAuthorization.framework */; };
+		44E83A0F25D1A40C00711490 /* VinchyAuthorization.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 443F0AD7259123FE00E15437 /* VinchyAuthorization.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		44E83A4B25D1B03D00711490 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 44E83A4D25D1B03D00711490 /* Localizable.strings */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		4436017425CEDCF700ABA7F1 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 443F0ACE259123FD00E15437 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 443F0AD6259123FE00E15437;
+			remoteInfo = VinchyAuthorization;
+		};
 		443F0B222591282D00E15437 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 443F0ACE259123FD00E15437 /* Project object */;
@@ -46,7 +88,37 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		44E83A0325D1A23400711490 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				44E83A0525D1A23600711490 /* VinchyCore.framework in Embed Frameworks */,
+				44E83A0225D1A23400711490 /* Display.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		44E83A0B25D1A40800711490 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				44E83A0A25D1A40800711490 /* Display.framework in Embed Frameworks */,
+				44E83A0F25D1A40C00711490 /* VinchyAuthorization.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
+		2C46855EA6BEC4781ED8A61D /* Pods-VinchyAuthorization.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyAuthorization.debug.xcconfig"; path = "Target Support Files/Pods-VinchyAuthorization/Pods-VinchyAuthorization.debug.xcconfig"; sourceTree = "<group>"; };
+		443601DC25CEF5B200ABA7F1 /* AuthorizationOutputDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationOutputDelegate.swift; sourceTree = "<group>"; };
+		4436021625CF00B500ABA7F1 /* AuthorizationNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationNavigationController.swift; sourceTree = "<group>"; };
 		443F0AD7259123FE00E15437 /* VinchyAuthorization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VinchyAuthorization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		443F0ADA259123FE00E15437 /* VinchyAuthorization.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VinchyAuthorization.h; sourceTree = "<group>"; };
 		443F0ADB259123FE00E15437 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -75,6 +147,40 @@
 		443F0B2C2591282D00E15437 /* VinchyAuthorizationAppUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = VinchyAuthorizationAppUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		443F0B302591282D00E15437 /* VinchyAuthorizationAppUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyAuthorizationAppUITests.swift; sourceTree = "<group>"; };
 		443F0B322591282D00E15437 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		44A724E22591351C00A7552B /* Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		44A72596259245E100A7552B /* Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		44AD9A6A25936CDB001A5188 /* EnterPasswordViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordViewModel.swift; sourceTree = "<group>"; };
+		44AD9A6C25936CDB001A5188 /* EnterPasswordInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordInput.swift; sourceTree = "<group>"; };
+		44AD9A6E25936CDB001A5188 /* EnterPasswordAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordAssembly.swift; sourceTree = "<group>"; };
+		44AD9A7025936CDB001A5188 /* EnterPasswordPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordPresenterProtocol.swift; sourceTree = "<group>"; };
+		44AD9A7125936CDB001A5188 /* EnterPasswordPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordPresenter.swift; sourceTree = "<group>"; };
+		44AD9A7325936CDB001A5188 /* EnterPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordViewController.swift; sourceTree = "<group>"; };
+		44AD9A7425936CDB001A5188 /* EnterPasswordViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordViewControllerProtocol.swift; sourceTree = "<group>"; };
+		44AD9A7625936CDB001A5188 /* EnterPasswordInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordInteractor.swift; sourceTree = "<group>"; };
+		44AD9A7725936CDB001A5188 /* EnterPasswordInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordInteractorProtocol.swift; sourceTree = "<group>"; };
+		44AD9A7925936CDB001A5188 /* EnterPasswordRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordRouterProtocol.swift; sourceTree = "<group>"; };
+		44AD9A7A25936CDB001A5188 /* EnterPasswordRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordRouter.swift; sourceTree = "<group>"; };
+		44E2161225CC8ED900FE31CE /* VinchyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		44E2161F25CD2D5F00FE31CE /* ChooseAuthTypeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseAuthTypeViewModel.swift; sourceTree = "<group>"; };
+		44E2162125CD2D5F00FE31CE /* ChooseAuthTypeInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseAuthTypeInput.swift; sourceTree = "<group>"; };
+		44E2162325CD2D5F00FE31CE /* ChooseAuthTypeAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseAuthTypeAssembly.swift; sourceTree = "<group>"; };
+		44E2162525CD2D5F00FE31CE /* ChooseAuthTypePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseAuthTypePresenter.swift; sourceTree = "<group>"; };
+		44E2162625CD2D5F00FE31CE /* ChooseAuthTypePresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseAuthTypePresenterProtocol.swift; sourceTree = "<group>"; };
+		44E2162825CD2D5F00FE31CE /* ChooseAuthTypeViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseAuthTypeViewControllerProtocol.swift; sourceTree = "<group>"; };
+		44E2162925CD2D5F00FE31CE /* ChooseAuthTypeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseAuthTypeViewController.swift; sourceTree = "<group>"; };
+		44E2162B25CD2D5F00FE31CE /* ChooseAuthTypeInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseAuthTypeInteractor.swift; sourceTree = "<group>"; };
+		44E2162C25CD2D5F00FE31CE /* ChooseAuthTypeInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseAuthTypeInteractorProtocol.swift; sourceTree = "<group>"; };
+		44E2162E25CD2D5F00FE31CE /* ChooseAuthTypeRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseAuthTypeRouterProtocol.swift; sourceTree = "<group>"; };
+		44E2162F25CD2D5F00FE31CE /* ChooseAuthTypeRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseAuthTypeRouter.swift; sourceTree = "<group>"; };
+		44E83A4C25D1B03D00711490 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		44E83A5025D1B07300711490 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
+		44E83A5125D1B07300711490 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		44E83A5225D1B07300711490 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
+		554E2FC96295A4F8F9FE9A68 /* Pods-VinchyAuthorizationApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyAuthorizationApp.release.xcconfig"; path = "Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp.release.xcconfig"; sourceTree = "<group>"; };
+		89253731F2C742635398AF8F /* Pods_VinchyAuthorizationApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinchyAuthorizationApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C0142329D2F9663DDB44D2E0 /* Pods-VinchyAuthorizationApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyAuthorizationApp.debug.xcconfig"; path = "Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp.debug.xcconfig"; sourceTree = "<group>"; };
+		CD1365932D64B5E4665879C2 /* Pods_VinchyAuthorization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinchyAuthorization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E3F5D681B9F7A10494FA5862 /* Pods-VinchyAuthorization.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyAuthorization.release.xcconfig"; path = "Target Support Files/Pods-VinchyAuthorization/Pods-VinchyAuthorization.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,6 +188,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44E83A0425D1A23600711490 /* VinchyCore.framework in Frameworks */,
+				370686F57971ECE5F1FE476E /* Pods_VinchyAuthorization.framework in Frameworks */,
+				44E83A0125D1A23400711490 /* Display.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,6 +198,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				25C7990D4CD38630D0A42E04 /* Pods_VinchyAuthorizationApp.framework in Frameworks */,
+				44E83A0925D1A40800711490 /* Display.framework in Frameworks */,
+				44E83A0E25D1A40C00711490 /* VinchyAuthorization.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -109,6 +221,27 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		21455253FCBC2919372C4490 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				2C46855EA6BEC4781ED8A61D /* Pods-VinchyAuthorization.debug.xcconfig */,
+				E3F5D681B9F7A10494FA5862 /* Pods-VinchyAuthorization.release.xcconfig */,
+				C0142329D2F9663DDB44D2E0 /* Pods-VinchyAuthorizationApp.debug.xcconfig */,
+				554E2FC96295A4F8F9FE9A68 /* Pods-VinchyAuthorizationApp.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../../Pods;
+			sourceTree = "<group>";
+		};
+		443601DB25CEF59600ABA7F1 /* Output */ = {
+			isa = PBXGroup;
+			children = (
+				443601DC25CEF5B200ABA7F1 /* AuthorizationOutputDelegate.swift */,
+				4436021625CF00B500ABA7F1 /* AuthorizationNavigationController.swift */,
+			);
+			path = Output;
+			sourceTree = "<group>";
+		};
 		443F0ACD259123FD00E15437 = {
 			isa = PBXGroup;
 			children = (
@@ -117,6 +250,8 @@
 				443F0B242591282D00E15437 /* VinchyAuthorizationAppTests */,
 				443F0B2F2591282D00E15437 /* VinchyAuthorizationAppUITests */,
 				443F0AD8259123FE00E15437 /* Products */,
+				44A724E12591351C00A7552B /* Frameworks */,
+				21455253FCBC2919372C4490 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -147,7 +282,10 @@
 		443F0AE32591242C00E15437 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				443601DB25CEF59600ABA7F1 /* Output */,
 				443F0AE8259126F200E15437 /* Authorization */,
+				44E2161D25CD2D5F00FE31CE /* ChooseAuthType */,
+				44AD9A6825936CDB001A5188 /* EnterPassword */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -155,13 +293,13 @@
 		443F0AE8259126F200E15437 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
-				443F0AE9259126F200E15437 /* ViewModel */,
-				443F0AEB259126F200E15437 /* Input */,
 				443F0AED259126F200E15437 /* Assembly */,
-				443F0AEF259126F200E15437 /* Presenter */,
-				443F0AF2259126F200E15437 /* ViewController */,
+				443F0AEB259126F200E15437 /* Input */,
 				443F0AF5259126F200E15437 /* Interactor */,
+				443F0AEF259126F200E15437 /* Presenter */,
 				443F0AF8259126F200E15437 /* Router */,
+				443F0AF2259126F200E15437 /* ViewController */,
+				443F0AE9259126F200E15437 /* ViewModel */,
 			);
 			path = Authorization;
 			sourceTree = "<group>";
@@ -261,8 +399,169 @@
 		44A724DB2591309000A7552B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				44E83A4D25D1B03D00711490 /* Localizable.strings */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		44A724E12591351C00A7552B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				44E2161225CC8ED900FE31CE /* VinchyCore.framework */,
+				44A72596259245E100A7552B /* Display.framework */,
+				44A724E22591351C00A7552B /* Display.framework */,
+				CD1365932D64B5E4665879C2 /* Pods_VinchyAuthorization.framework */,
+				89253731F2C742635398AF8F /* Pods_VinchyAuthorizationApp.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		44AD9A6825936CDB001A5188 /* EnterPassword */ = {
+			isa = PBXGroup;
+			children = (
+				44AD9A6925936CDB001A5188 /* ViewModel */,
+				44AD9A6B25936CDB001A5188 /* Input */,
+				44AD9A6D25936CDB001A5188 /* Assembly */,
+				44AD9A6F25936CDB001A5188 /* Presenter */,
+				44AD9A7225936CDB001A5188 /* ViewController */,
+				44AD9A7525936CDB001A5188 /* Interactor */,
+				44AD9A7825936CDB001A5188 /* Router */,
+			);
+			path = EnterPassword;
+			sourceTree = "<group>";
+		};
+		44AD9A6925936CDB001A5188 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				44AD9A6A25936CDB001A5188 /* EnterPasswordViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		44AD9A6B25936CDB001A5188 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				44AD9A6C25936CDB001A5188 /* EnterPasswordInput.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		44AD9A6D25936CDB001A5188 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				44AD9A6E25936CDB001A5188 /* EnterPasswordAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		44AD9A6F25936CDB001A5188 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				44AD9A7025936CDB001A5188 /* EnterPasswordPresenterProtocol.swift */,
+				44AD9A7125936CDB001A5188 /* EnterPasswordPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		44AD9A7225936CDB001A5188 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				44AD9A7325936CDB001A5188 /* EnterPasswordViewController.swift */,
+				44AD9A7425936CDB001A5188 /* EnterPasswordViewControllerProtocol.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		44AD9A7525936CDB001A5188 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				44AD9A7625936CDB001A5188 /* EnterPasswordInteractor.swift */,
+				44AD9A7725936CDB001A5188 /* EnterPasswordInteractorProtocol.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		44AD9A7825936CDB001A5188 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				44AD9A7925936CDB001A5188 /* EnterPasswordRouterProtocol.swift */,
+				44AD9A7A25936CDB001A5188 /* EnterPasswordRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		44E2161D25CD2D5F00FE31CE /* ChooseAuthType */ = {
+			isa = PBXGroup;
+			children = (
+				44E2162225CD2D5F00FE31CE /* Assembly */,
+				44E2162025CD2D5F00FE31CE /* Input */,
+				44E2162A25CD2D5F00FE31CE /* Interactor */,
+				44E2162425CD2D5F00FE31CE /* Presenter */,
+				44E2162D25CD2D5F00FE31CE /* Router */,
+				44E2162725CD2D5F00FE31CE /* ViewController */,
+				44E2161E25CD2D5F00FE31CE /* ViewModel */,
+			);
+			path = ChooseAuthType;
+			sourceTree = "<group>";
+		};
+		44E2161E25CD2D5F00FE31CE /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				44E2161F25CD2D5F00FE31CE /* ChooseAuthTypeViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		44E2162025CD2D5F00FE31CE /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				44E2162125CD2D5F00FE31CE /* ChooseAuthTypeInput.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		44E2162225CD2D5F00FE31CE /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				44E2162325CD2D5F00FE31CE /* ChooseAuthTypeAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		44E2162425CD2D5F00FE31CE /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				44E2162525CD2D5F00FE31CE /* ChooseAuthTypePresenter.swift */,
+				44E2162625CD2D5F00FE31CE /* ChooseAuthTypePresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		44E2162725CD2D5F00FE31CE /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				44E2162825CD2D5F00FE31CE /* ChooseAuthTypeViewControllerProtocol.swift */,
+				44E2162925CD2D5F00FE31CE /* ChooseAuthTypeViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		44E2162A25CD2D5F00FE31CE /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				44E2162B25CD2D5F00FE31CE /* ChooseAuthTypeInteractor.swift */,
+				44E2162C25CD2D5F00FE31CE /* ChooseAuthTypeInteractorProtocol.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		44E2162D25CD2D5F00FE31CE /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				44E2162E25CD2D5F00FE31CE /* ChooseAuthTypeRouterProtocol.swift */,
+				44E2162F25CD2D5F00FE31CE /* ChooseAuthTypeRouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -283,10 +582,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 443F0ADF259123FE00E15437 /* Build configuration list for PBXNativeTarget "VinchyAuthorization" */;
 			buildPhases = (
+				D87AB88EDC9F19703D0EF6B6 /* [CP] Check Pods Manifest.lock */,
 				443F0AD2259123FE00E15437 /* Headers */,
 				443F0AD3259123FE00E15437 /* Sources */,
 				443F0AD4259123FE00E15437 /* Frameworks */,
 				443F0AD5259123FE00E15437 /* Resources */,
+				44E83A0325D1A23400711490 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -301,13 +602,17 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 443F0B332591282D00E15437 /* Build configuration list for PBXNativeTarget "VinchyAuthorizationApp" */;
 			buildPhases = (
+				568967863572074888866CB3 /* [CP] Check Pods Manifest.lock */,
 				443F0B082591282C00E15437 /* Sources */,
 				443F0B092591282C00E15437 /* Frameworks */,
 				443F0B0A2591282C00E15437 /* Resources */,
+				4E03E950A28C4F2E93F32208 /* [CP] Embed Pods Frameworks */,
+				44E83A0B25D1A40800711490 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				4436017525CEDCF700ABA7F1 /* PBXTargetDependency */,
 			);
 			name = VinchyAuthorizationApp;
 			productName = VinchyAuthorizationApp;
@@ -383,6 +688,7 @@
 			knownRegions = (
 				en,
 				Base,
+				ru,
 			);
 			mainGroup = 443F0ACD259123FD00E15437;
 			productRefGroup = 443F0AD8259123FE00E15437 /* Products */;
@@ -402,6 +708,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44E83A4B25D1B03D00711490 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,22 +738,110 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		4E03E950A28C4F2E93F32208 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		568967863572074888866CB3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VinchyAuthorizationApp-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		D87AB88EDC9F19703D0EF6B6 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VinchyAuthorization-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		443F0AD3259123FE00E15437 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44AD9A8325936CDB001A5188 /* EnterPasswordPresenter.swift in Sources */,
+				44E2163725CD2D5F00FE31CE /* ChooseAuthTypeInteractor.swift in Sources */,
+				44AD9A7B25936CDB001A5188 /* EnterPasswordViewModel.swift in Sources */,
+				441F760825D19ADA008DC46B /* AuthorizationNavigationController.swift in Sources */,
 				443F0B05259126F200E15437 /* AuthorizationRouterProtocol.swift in Sources */,
+				44E2163425CD2D5F00FE31CE /* ChooseAuthTypePresenterProtocol.swift in Sources */,
 				443F0B00259126F200E15437 /* AuthorizationViewController.swift in Sources */,
+				44AD9A7D25936CDB001A5188 /* EnterPasswordInput.swift in Sources */,
 				443F0B03259126F200E15437 /* AuthorizationInteractorProtocol.swift in Sources */,
 				443F0AFF259126F200E15437 /* AuthorizationPresenterProtocol.swift in Sources */,
 				443F0AFE259126F200E15437 /* AuthorizationPresenter.swift in Sources */,
 				443F0B04259126F200E15437 /* AuthorizationRouter.swift in Sources */,
 				443F0AFD259126F200E15437 /* AuthorizationAssembly.swift in Sources */,
+				44AD9A8D25936CDB001A5188 /* EnterPasswordRouterProtocol.swift in Sources */,
+				44AD9A8525936CDB001A5188 /* EnterPasswordViewController.swift in Sources */,
+				44E2163025CD2D5F00FE31CE /* ChooseAuthTypeViewModel.swift in Sources */,
 				443F0B02259126F200E15437 /* AuthorizationInteractor.swift in Sources */,
+				44E2163525CD2D5F00FE31CE /* ChooseAuthTypeViewControllerProtocol.swift in Sources */,
 				443F0B01259126F200E15437 /* AuthorizationViewControllerProtocol.swift in Sources */,
+				44E2163225CD2D5F00FE31CE /* ChooseAuthTypeAssembly.swift in Sources */,
+				44E2163625CD2D5F00FE31CE /* ChooseAuthTypeViewController.swift in Sources */,
+				44AD9A8F25936CDB001A5188 /* EnterPasswordRouter.swift in Sources */,
+				44AD9A8925936CDB001A5188 /* EnterPasswordInteractor.swift in Sources */,
+				44E2163125CD2D5F00FE31CE /* ChooseAuthTypeInput.swift in Sources */,
+				44AD9A8B25936CDB001A5188 /* EnterPasswordInteractorProtocol.swift in Sources */,
+				44AD9A8125936CDB001A5188 /* EnterPasswordPresenterProtocol.swift in Sources */,
+				44E2163925CD2D5F00FE31CE /* ChooseAuthTypeRouterProtocol.swift in Sources */,
+				44E2163825CD2D5F00FE31CE /* ChooseAuthTypeInteractorProtocol.swift in Sources */,
+				44E2163A25CD2D5F00FE31CE /* ChooseAuthTypeRouter.swift in Sources */,
+				44AD9A8725936CDB001A5188 /* EnterPasswordViewControllerProtocol.swift in Sources */,
 				443F0AFC259126F200E15437 /* AuthorizationInput.swift in Sources */,
 				443F0AFB259126F200E15437 /* AuthorizationViewModel.swift in Sources */,
+				443601DD25CEF5B200ABA7F1 /* AuthorizationOutputDelegate.swift in Sources */,
+				44AD9A7F25936CDB001A5188 /* EnterPasswordAssembly.swift in Sources */,
+				44E2163325CD2D5F00FE31CE /* ChooseAuthTypePresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -479,6 +874,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		4436017525CEDCF700ABA7F1 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 443F0AD6259123FE00E15437 /* VinchyAuthorization */;
+			targetProxy = 4436017425CEDCF700ABA7F1 /* PBXContainerItemProxy */;
+		};
 		443F0B232591282D00E15437 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 443F0B0B2591282C00E15437 /* VinchyAuthorizationApp */;
@@ -496,6 +896,7 @@
 			isa = PBXVariantGroup;
 			children = (
 				443F0B152591282C00E15437 /* Base */,
+				44E83A5025D1B07300711490 /* ru */,
 			);
 			name = Main.storyboard;
 			sourceTree = "<group>";
@@ -504,8 +905,18 @@
 			isa = PBXVariantGroup;
 			children = (
 				443F0B1A2591282D00E15437 /* Base */,
+				44E83A5125D1B07300711490 /* ru */,
 			);
 			name = LaunchScreen.storyboard;
+			sourceTree = "<group>";
+		};
+		44E83A4D25D1B03D00711490 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				44E83A4C25D1B03D00711490 /* en */,
+				44E83A5225D1B07300711490 /* ru */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -515,6 +926,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -579,6 +991,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_LOCALIZABILITY_NONLOCALIZED = YES;
 				CLANG_ANALYZER_NONNULL = YES;
 				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++14";
@@ -635,6 +1048,7 @@
 		};
 		443F0AE0259123FE00E15437 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2C46855EA6BEC4781ED8A61D /* Pods-VinchyAuthorization.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -645,6 +1059,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = VinchyAuthorization/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -653,14 +1068,16 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy.VinchyAuthorization;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
 		443F0AE1259123FE00E15437 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = E3F5D681B9F7A10494FA5862 /* Pods-VinchyAuthorization.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -671,6 +1088,7 @@
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
 				INFOPLIST_FILE = VinchyAuthorization/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -679,13 +1097,15 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy.VinchyAuthorization;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
 		443F0B342591282D00E15437 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = C0142329D2F9663DDB44D2E0 /* Pods-VinchyAuthorizationApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -706,6 +1126,7 @@
 		};
 		443F0B352591282D00E15437 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 554E2FC96295A4F8F9FE9A68 /* Pods-VinchyAuthorizationApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

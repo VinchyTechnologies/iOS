@@ -26,4 +26,14 @@ final class AuthorizationRouter {
 
 extension AuthorizationRouter: AuthorizationRouterProtocol {
   
+  func dismissWithSuccsessLogin(output: AuthorizationOutputModel?) {
+    viewController?.navigationController?.dismiss(animated: true, completion: {
+      (self.viewController?.navigationController as? AuthorizationNavigationController)?.authOutputDelegate?.didSuccessfullyLogin(output: output)
+    })
+  }
+  
+  func pushToEnterPasswordViewController(accountID: Int) {
+    let controller = EnterPasswordAssembly.assemblyModule(input: .init(accountID: accountID))
+    viewController?.navigationController?.pushViewController(controller, animated: true)
+  }
 }

@@ -1,0 +1,25 @@
+/* 
+  Localizable.strings
+  VinchyAuthorization
+
+  Created by Алексей Смирнов on 08.02.2021.
+  
+*/
+"code" = "код";
+"enter_the_code_received_by_email" = "Введите код, полученный по электронной почте";
+"enter_the_code" = "Введите код";
+"send_code_again" = "Отправить код еще раз";
+"lets_be_friends" = "Давай дружить :)";
+"enter_email" = "Введите email";
+"email" = "email";
+"enter_password" = "Введите пароль";
+"password" = "пароль";
+"next" = "далее";
+"sign_in" = "Войти";
+"register" = "регистрация";
+"register_subtitle" = "Следующим шагом эл.почту нужно будет подтвердить кодом, который мы вам на неё отправим";
+"sign_in_subtitle" = "Введите email и пароль от вашего аккаунта";
+"hello" = "Привет!";
+"agree_terms_of_use" = "При входе или регистрации вы принимаете условия пользовательского соглашения";
+"terms_of_use" = "пользовательского соглашения";
+"terms_of_use_url" = "";

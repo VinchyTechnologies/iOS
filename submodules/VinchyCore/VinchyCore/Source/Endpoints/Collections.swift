@@ -39,11 +39,11 @@ private enum CollectionEndpoint: EndpointProtocol {
 
 public final class Collections {
   
-  let api = API.shared
+  private let api = API.shared
   
   public static let shared = Collections()
   
-  public init() { }
+  private init() { }
   
   public func getCollections(completion: @escaping (Result<[Collection], APIError>) -> Void) {
     api.request(endpoint: CollectionEndpoint.all, completion: completion)

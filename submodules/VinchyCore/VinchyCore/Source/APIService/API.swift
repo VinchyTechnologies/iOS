@@ -22,7 +22,7 @@ final class API {
   
   static let shared = API()
   
-  init() { }
+  private init() { }
   
   func request<T: Decodable>(endpoint: EndpointProtocol, completion: @escaping (Result<T, APIError>) -> Void) {
     
@@ -31,7 +31,7 @@ final class API {
     urlComponents.host = endpoint.host
     urlComponents.path = endpoint.path
     
-    if endpoint.method == .get && endpoint.parameters != nil {
+    if endpoint.encoding == .queryString && endpoint.parameters != nil {
       var queryItems = [URLQueryItem]()
       endpoint.parameters?.forEach({ (key, value) in
         if let stringValue = value as? String {
@@ -39,8 +39,6 @@ final class API {
         }
       })
       urlComponents.queryItems = queryItems
-    } else {
-      // TODO: - http body
     }
     
     guard let url = urlComponents.url else {
@@ -51,6 +49,12 @@ final class API {
     }
     
     var request = URLRequest(url: url)
+    
+    if endpoint.encoding == .httpBody && endpoint.parameters != nil {
+      let dictionary = endpoint.parameters?.reduce(into: [:]) { $0[$1.0] = $1.1 }
+      let jsonData = try? JSONSerialization.data(withJSONObject: dictionary as Any)
+      request.httpBody = jsonData
+    }
     
     if endpoint.headers != nil {
       endpoint.headers?.forEach({ (key, value) in
@@ -79,13 +83,20 @@ final class API {
       }
       
       do {
-        //                print(String(data: data, encoding: .utf8))
-        let obj = try JSONDecoder().decode(T.self, from: data)
-        DispatchQueue.main.async {
-          completion(.success(obj))
+//        print("===", T.self, String(data: data, encoding: .utf8) as Any)
+        if T.self == EmptyResponse.self && data.isEmpty {
+          DispatchQueue.main.async {
+            completion(.success(EmptyResponse() as! T)) // swiftlint:disable:this force_cast
+          }
+        } else {
+          let obj = try JSONDecoder().decode(T.self, from: data)
+          DispatchQueue.main.async {
+            completion(.success(obj))
+          }
         }
       } catch {
         DispatchQueue.main.async {
+//          print("===", T.self, String(data: data, encoding: .utf8) as Any)
           completion(.failure(.decodingError))
         }
       }
