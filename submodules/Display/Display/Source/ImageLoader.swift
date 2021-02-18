@@ -16,14 +16,11 @@ final public class ImageLoader {
   private let preheater = ImagePreheater()
   
   private init() {
-//    ImageCache.shared.ttl = 5//30 * 24 * 60 * 60
-    DataLoader.sharedUrlCache.diskCapacity = 0
-    let pipeline = ImagePipeline {
-      let dataCache = try? DataCache(name: "tech.vinchy.dataImageCache")
-      dataCache?.sizeLimit = 200 * 1024 * 1024
-      $0.dataCache = dataCache
-    }
-    ImagePipeline.shared = pipeline
+    ImageCache.shared.ttl = 7 * 24 * 60 * 60
+//    ImageCache.shared.countLimit = 1000
+//    ImageCache.shared.costLimit = 200 * 1024 * 1024
+//    DataLoader.sharedUrlCache.diskCapacity = 0
+//    DataLoader.sharedUrlCache.memoryCapacity = 100
   }
   
   fileprivate func loadBottle(url: URL, imageView: UIImageView) {
