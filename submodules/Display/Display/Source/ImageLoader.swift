@@ -9,12 +9,14 @@
 import UIKit
 import Nuke
 
-final fileprivate class ImageLoader {
+final public class ImageLoader {
   
-  fileprivate static let shared = ImageLoader()
+  public static let shared = ImageLoader()
+  
+  private let preheater = ImagePreheater()
   
   private init() {
-    ImageCache.shared.ttl = 30 * 24 * 60 * 60
+//    ImageCache.shared.ttl = 5//30 * 24 * 60 * 60
     DataLoader.sharedUrlCache.diskCapacity = 0
     let pipeline = ImagePipeline {
       let dataCache = try? DataCache(name: "tech.vinchy.dataImageCache")
@@ -55,6 +57,13 @@ final fileprivate class ImageLoader {
 
     Nuke.loadImage(with: request, into: imageView)
   }
+  
+  public func prefetch(url: URL?) {
+    guard let url = url else {
+      return
+    }
+    preheater.startPreheating(with: [url])
+  }
 }
 
 public extension UIImageView {
@@ -76,6 +85,5 @@ public extension UIImageView {
 
 public func prefetch(url: URL?) {
   guard let url = url else { return }
-  let preheater = ImagePreheater(destination: .diskCache)
-  preheater.startPreheating(with: [url])
+  ImageLoader.shared.prefetch(url: url)
 }
