@@ -101,22 +101,6 @@ final class WineDetailPresenter {
     }
   }
   
-  private func buildDislikeButton(wine: Wine, isDisliked: Bool) -> [WineDetailViewModel.Section] {
-    
-    let normalImage = UIImage(systemName: "heart.slash", withConfiguration: C.imageConfig)
-    let selectedImage = UIImage(systemName: "heart.slash.fill", withConfiguration: C.imageConfig)
-    let title = NSAttributedString(string: localized("unlike").firstLetterUppercased(), font: .boldSystemFont(ofSize: 18), textColor: .dark)
-    
-    return [.button([.init(buttonModel: .dislike(title: title, image: normalImage, selectedImage: selectedImage, isDisliked: isDisliked))])]
-  }
-  
-  private func buildReportAnErrorButton() -> [WineDetailViewModel.Section] {
-    
-    let title = NSAttributedString(string: localized("tell_about_error").firstLetterUppercased(), font: .boldSystemFont(ofSize: 18), textColor: .dark)
-    
-    return [.button([.init(buttonModel: .reportError(title: title))])]
-  }
-  
   private func buildReview() -> [WineDetailViewModel.Section] {
     return [.reviews([1, 1, 1, 1, 1])]
   }
@@ -208,6 +192,9 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
     sections += buildGeneralInfo(wine: wine)
     
     sections += buildReview()
+    
+    sections += [.button([.init(buttonText: localized("write_review").firstLetterUppercased())])]
+    
     /*
     sections += buildDislikeButton(wine: wine, isDisliked: isDisliked)
     sections += buildReportAnErrorButton()

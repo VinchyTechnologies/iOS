@@ -102,7 +102,7 @@ final class WineDetailViewController: UIViewController {
       let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
       let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(48)), subitems: [item])
       let section = NSCollectionLayoutSection(group: group)
-      section.contentInsets = .init(top: 20, leading: 16, bottom: 0, trailing: 16)
+      section.contentInsets = .init(top: 20, leading: 16, bottom: 20, trailing: 16)
       return section
       
     case .ad:
@@ -355,13 +355,8 @@ extension WineDetailViewController: UICollectionViewDelegate {
 
 extension WineDetailViewController: ButtonCollectionCellDelegate {
   
-  func didTapDislikeButton(_ button: UIButton) {
-    button.isSelected = !button.isSelected
-    interactor?.didTapDislikeButton()
-  }
-  
-  func didTapReportAnErrorButton(_ button: UIButton) {
-    interactor?.didTapReportAnError()
+  func didTapReviewButton(_ button: UIButton) {
+    print("did tap review")
   }
 }
 
