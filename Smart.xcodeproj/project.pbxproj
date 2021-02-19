@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4474E36525E02486001C5DE3 /* VinchyAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4474E36425E02486001C5DE3 /* VinchyAnalytics.framework */; };
+		4474E36625E02486001C5DE3 /* VinchyAnalytics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4474E36425E02486001C5DE3 /* VinchyAnalytics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		449F81AC25DD023A00585364 /* RootInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449F81AB25DD023A00585364 /* RootInteractor.swift */; };
 		449F81B225DD025900585364 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449F81B125DD025900585364 /* RootRouter.swift */; };
 		449F81B625DD027C00585364 /* RootBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449F81B525DD027C00585364 /* RootBuilder.swift */; };
@@ -187,6 +189,7 @@
 			files = (
 				CAF24ACE24C323C90057547F /* StringFormatting.framework in Embed Frameworks */,
 				CA1821A524C0E83900280DD4 /* Display.framework in Embed Frameworks */,
+				4474E36625E02486001C5DE3 /* VinchyAnalytics.framework in Embed Frameworks */,
 				CA7B825E24EC750300991F24 /* VinchyCore.framework in Embed Frameworks */,
 				CAF24AEC24C32AE90057547F /* CommonUI.framework in Embed Frameworks */,
 				CAF24B0F24C3311F0057547F /* LocationUI.framework in Embed Frameworks */,
@@ -204,6 +207,7 @@
 		1A9B4140D82D94CD0171D9D8 /* Pods-Smart-SmartUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart-SmartUITests.release.xcconfig"; path = "Target Support Files/Pods-Smart-SmartUITests/Pods-Smart-SmartUITests.release.xcconfig"; sourceTree = "<group>"; };
 		29F65C39E925B7F70D400D7A /* Pods-Smart-SmartUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart-SmartUITests.debug.xcconfig"; path = "Target Support Files/Pods-Smart-SmartUITests/Pods-Smart-SmartUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		356D7CD37446A6F72FDB6021 /* Pods-Smart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart.debug.xcconfig"; path = "Target Support Files/Pods-Smart/Pods-Smart.debug.xcconfig"; sourceTree = "<group>"; };
+		4474E36425E02486001C5DE3 /* VinchyAnalytics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyAnalytics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		449F81AB25DD023A00585364 /* RootInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootInteractor.swift; sourceTree = "<group>"; };
 		449F81B125DD025900585364 /* RootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
 		449F81B525DD027C00585364 /* RootBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootBuilder.swift; sourceTree = "<group>"; };
@@ -377,6 +381,7 @@
 			files = (
 				CA51BBEF254094B000208F71 /* AppTrackingTransparency.framework in Frameworks */,
 				CA51BBED254094A100208F71 /* AdSupport.framework in Frameworks */,
+				4474E36525E02486001C5DE3 /* VinchyAnalytics.framework in Frameworks */,
 				CA1821FF24C0F6F000280DD4 /* Database.framework in Frameworks */,
 				CAF24ACD24C323C90057547F /* StringFormatting.framework in Frameworks */,
 				F19FB5488BC7F81712DA031F /* Pods_Smart.framework in Frameworks */,
@@ -440,6 +445,7 @@
 		46483F371463D95E22014241 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4474E36425E02486001C5DE3 /* VinchyAnalytics.framework */,
 				CA51BBEE254094B000208F71 /* AppTrackingTransparency.framework */,
 				CA51BBEC254094A100208F71 /* AdSupport.framework */,
 				CA7B825C24EC750300991F24 /* VinchyCore.framework */,

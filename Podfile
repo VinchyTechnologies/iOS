@@ -13,6 +13,7 @@ def commonPods
   pod 'Firebase/Analytics'
   pod 'Firebase/DynamicLinks'
   pod 'Firebase/RemoteConfig'
+  pod 'Firebase/Analytics'
   pod 'CocoaDebug', :configurations => ['Debug']
   pod 'SPAlert'
   pod "Sheeeeeeeeet"
@@ -85,6 +86,11 @@ target 'VinchyAuthorizationApp' do
   pod 'SkyFloatingLabelTextField'
   pod 'CocoaDebug', :configurations => ['Debug']
   pod 'KeychainAccess'
+end
+
+target 'VinchyAnalytics' do
+  project 'submodules/VinchyAnalytics/VinchyAnalytics'
+  pod 'Firebase/Analytics'
 end
 
 post_install do |installer|
