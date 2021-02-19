@@ -116,6 +116,10 @@ final class WineDetailPresenter {
     
     return [.button([.init(buttonModel: .reportError(title: title))])]
   }
+  
+  private func buildReview() -> [WineDetailViewModel.Section] {
+    return [.reviews([1, 1, 1, 1, 1])]
+  }
 }
 
 // MARK: - WineDetailPresenterProtocol
@@ -202,6 +206,8 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
     }
     
     sections += buildGeneralInfo(wine: wine)
+    
+    sections += buildReview()
     /*
     sections += buildDislikeButton(wine: wine, isDisliked: isDisliked)
     sections += buildReportAnErrorButton()

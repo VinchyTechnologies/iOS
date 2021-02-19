@@ -80,6 +80,15 @@ final class WineDetailViewController: UIViewController {
       section.contentInsets = .init(top: 15, leading: 0, bottom: 0, trailing: 0)
       return section
       
+    case .reviews:
+      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .absolute(300), heightDimension: .absolute(200)))
+      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(300), heightDimension: .absolute(200)), subitems: [item])
+      let section = NSCollectionLayoutSection(group: group)
+      section.orthogonalScrollingBehavior = .continuous
+      section.contentInsets = .init(top: 15, leading: 15, bottom: 0, trailing: 15)
+      section.interGroupSpacing = 10
+      return section
+      
     case .servingTips:
       let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .estimated(180), heightDimension: .fractionalHeight(1)))
       let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .estimated(180), heightDimension: .absolute(100)), subitems: [item])
@@ -128,7 +137,8 @@ final class WineDetailViewController: UIViewController {
       ImageOptionCollectionCell.self,
       TitleWithSubtitleInfoCollectionViewCell.self,
       BigAdCollectionCell.self,
-      VinchySimpleConiniousCaruselCollectionCell.self)
+      VinchySimpleConiniousCaruselCollectionCell.self,
+      ReviewCell.self)
     
     return collectionView
   }()
@@ -229,6 +239,9 @@ extension WineDetailViewController: UICollectionViewDataSource {
     case .list(let model):
       return model.count
       
+    case .reviews(let model):
+      return model.count
+    
     case .servingTips(let model):
       return model.count
       
@@ -246,7 +259,7 @@ extension WineDetailViewController: UICollectionViewDataSource {
   func collectionView(
     _ collectionView: UICollectionView,
     cellForItemAt indexPath: IndexPath)
-  -> UICollectionViewCell
+    -> UICollectionViewCell
   {
     
     guard let type = viewModel?.sections[indexPath.section] else {
@@ -284,6 +297,11 @@ extension WineDetailViewController: UICollectionViewDataSource {
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TitleWithSubtitleInfoCollectionViewCell.reuseId, for: indexPath) as! TitleWithSubtitleInfoCollectionViewCell
       cell.decorate(model: model[indexPath.row])
       cell.backgroundColor = indexPath.row.isMultiple(of: 2) ? .option : .mainBackground
+      return cell
+      
+    case .reviews(let model):
+      // swiftlint:disable:next force_cast
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReviewCell.reuseId, for: indexPath) as! ReviewCell
       return cell
       
     case .servingTips(let model):
