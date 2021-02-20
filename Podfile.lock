@@ -1,62 +1,63 @@
 PODS:
-  - CocoaDebug (1.5.8)
-  - Firebase/Analytics (7.1.0):
+  - CocoaDebug (1.6.0)
+  - Cosmos (23.0.0)
+  - Firebase/Analytics (7.3.0):
     - Firebase/Core
-  - Firebase/Core (7.1.0):
+  - Firebase/Core (7.3.0):
     - Firebase/CoreOnly
-    - FirebaseAnalytics (= 7.1.0)
-  - Firebase/CoreOnly (7.1.0):
-    - FirebaseCore (= 7.1.0)
-  - Firebase/DynamicLinks (7.1.0):
+    - FirebaseAnalytics (= 7.3.0)
+  - Firebase/CoreOnly (7.3.0):
+    - FirebaseCore (= 7.3.0)
+  - Firebase/DynamicLinks (7.3.0):
     - Firebase/CoreOnly
-    - FirebaseDynamicLinks (~> 7.1.0)
-  - Firebase/RemoteConfig (7.1.0):
+    - FirebaseDynamicLinks (~> 7.3.0)
+  - Firebase/RemoteConfig (7.3.0):
     - Firebase/CoreOnly
-    - FirebaseRemoteConfig (~> 7.1.0)
-  - FirebaseABTesting (7.1.0):
+    - FirebaseRemoteConfig (~> 7.3.0)
+  - FirebaseABTesting (7.3.0):
     - FirebaseCore (~> 7.0)
-  - FirebaseAnalytics (7.1.0):
+  - FirebaseAnalytics (7.3.0):
     - FirebaseCore (~> 7.0)
     - FirebaseInstallations (~> 7.0)
-    - GoogleAppMeasurement (= 7.1.0)
+    - GoogleAppMeasurement (= 7.3.0)
     - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
     - GoogleUtilities/MethodSwizzler (~> 7.0)
     - GoogleUtilities/Network (~> 7.0)
     - "GoogleUtilities/NSData+zlib (~> 7.0)"
     - nanopb (~> 2.30906.0)
-  - FirebaseCore (7.1.0):
+  - FirebaseCore (7.3.0):
     - FirebaseCoreDiagnostics (~> 7.0)
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/Logger (~> 7.0)
-  - FirebaseCoreDiagnostics (7.1.0):
+  - FirebaseCoreDiagnostics (7.3.0):
     - GoogleDataTransport (~> 8.0)
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/Logger (~> 7.0)
     - nanopb (~> 2.30906.0)
-  - FirebaseDynamicLinks (7.1.0):
+  - FirebaseDynamicLinks (7.3.1):
     - FirebaseCore (~> 7.0)
-  - FirebaseInstallations (7.1.0):
+  - FirebaseInstallations (7.3.0):
     - FirebaseCore (~> 7.0)
     - GoogleUtilities/Environment (~> 7.0)
     - GoogleUtilities/UserDefaults (~> 7.0)
     - PromisesObjC (~> 1.2)
-  - FirebaseRemoteConfig (7.1.0):
+  - FirebaseRemoteConfig (7.3.0):
     - FirebaseABTesting (~> 7.0)
     - FirebaseCore (~> 7.0)
     - FirebaseInstallations (~> 7.0)
     - GoogleUtilities/Environment (~> 7.0)
     - "GoogleUtilities/NSData+zlib (~> 7.0)"
   - FSPagerView (0.8.3)
-  - Google-Mobile-Ads-SDK (7.68.0):
+  - Google-Mobile-Ads-SDK (7.69.0):
     - GoogleAppMeasurement (~> 7.0)
     - GoogleUserMessagingPlatform (~> 1.1)
-  - GoogleAppMeasurement (7.1.0):
+  - GoogleAppMeasurement (7.3.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
     - GoogleUtilities/MethodSwizzler (~> 7.0)
     - GoogleUtilities/Network (~> 7.0)
     - "GoogleUtilities/NSData+zlib (~> 7.0)"
     - nanopb (~> 2.30906.0)
-  - GoogleDataTransport (8.0.1):
+  - GoogleDataTransport (8.1.0):
     - nanopb (~> 2.30906.0)
   - GoogleUserMessagingPlatform (1.4.0)
   - GoogleUtilities/AppDelegateSwizzler (7.1.1):
@@ -94,10 +95,11 @@ PODS:
   - Sheeeeeeeeet (3.1.4)
   - SkyFloatingLabelTextField (4.0.0)
   - SPAlert (2.1.4)
-  - SwiftLint (0.41.0)
+  - SwiftLint (0.42.0)
 
 DEPENDENCIES:
   - CocoaDebug
+  - Cosmos (~> 23.0)
   - Firebase/Analytics
   - Firebase/DynamicLinks
   - Firebase/RemoteConfig
@@ -108,12 +110,13 @@ DEPENDENCIES:
   - RealmSwift (~> 10.0.0)
   - Sheeeeeeeeet
   - SkyFloatingLabelTextField
-  - SPAlert
+  - SPAlert (~> 2.1.4)
   - SwiftLint
 
 SPEC REPOS:
   trunk:
     - CocoaDebug
+    - Cosmos
     - Firebase
     - FirebaseABTesting
     - FirebaseAnalytics
@@ -140,19 +143,20 @@ SPEC REPOS:
     - SwiftLint
 
 SPEC CHECKSUMS:
-  CocoaDebug: fcf58698e6cebe8a4ea81b7c5aca44cfbd181d9c
-  Firebase: 78e8dd2e39d653de6270432ad84fe8b59f7bf4e8
-  FirebaseABTesting: aaea04ea67858a4a9dce0d22ef645477dff50146
-  FirebaseAnalytics: 7f165a56dea86ddd5b8ce02af3bee982c683405c
-  FirebaseCore: 20046127eef0fcb8fa25df7fc12f7b97d4e48611
-  FirebaseCoreDiagnostics: 872cdb9b749b23346dddd5c1014d1babd2257de3
-  FirebaseDynamicLinks: dadf4564851de0ecdad2dab7fc2d1c401dcaa406
-  FirebaseInstallations: 3de38553e86171b5f81d83cdeef63473d37bfdb0
-  FirebaseRemoteConfig: 04cd72851dad51780aa66f05b01a7dd0b85cdbf5
+  CocoaDebug: 170abf7ffdfe2d30cf6cf4414a8cf89fbac70a8e
+  Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
+  Firebase: 26223c695fe322633274198cb19dca8cb7e54416
+  FirebaseABTesting: 303b5366c0c75be479424e8935e2f475cf24ce21
+  FirebaseAnalytics: 2580c2d62535ae7b644143d48941fcc239ea897a
+  FirebaseCore: 4d3c72622ce0e2106aaa07bb4b2935ba2c370972
+  FirebaseCoreDiagnostics: d50e11039e5984d92c8a512be2395f13df747350
+  FirebaseDynamicLinks: a6df95d6dbc746c2bbf7d511343cda1344e2cf70
+  FirebaseInstallations: 971df89b48ae5ee4cc2bf6935f3857a525d28550
+  FirebaseRemoteConfig: 826fad8bec5ce1912ef97a124d6ec0ce4dcf6ec1
   FSPagerView: 670405b2f18e2a87fa37f20b00de783e562c25a8
-  Google-Mobile-Ads-SDK: 29bbdb182d69ff606cc0301da1590b40be8d2205
-  GoogleAppMeasurement: 89e1a64593f968713b0506ba1b53b38a154bf9a5
-  GoogleDataTransport: e4085e6762f36a6141738f46b0153473ce57fb18
+  Google-Mobile-Ads-SDK: 2f288748a42920d1c744946a460896a95b0e9110
+  GoogleAppMeasurement: 8d3c0aeede16ab7764144b5a4ca8e1d4323841b7
+  GoogleDataTransport: 116c84c4bdeb76be2a7a46de51244368f9794eab
   GoogleUserMessagingPlatform: b168e8c46cd8f92aa3e34b584c4ca78a411ce367
   GoogleUtilities: 3dc4ff0d5e4840e2fa8eef0889620e8c33d4218c
   KeychainAccess: 9b07f665298d13c3a85881bd3171f6f49b8151c1
@@ -164,8 +168,8 @@ SPEC CHECKSUMS:
   Sheeeeeeeeet: d4808c23c1d0aca2ccba13353ec7fa17ada2f129
   SkyFloatingLabelTextField: 79ddc40e4ad59707fedbb48d605417aee48bb78a
   SPAlert: 1a8afa1c6ac86a82ab5b2cfdf7f9a51e68cb6c0c
-  SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
+  SwiftLint: 4fa9579c63416865179bc416f0a92d55f009600d
 
-PODFILE CHECKSUM: c4a5573f31ce884d6040d03dc645031f64a49a34
+PODFILE CHECKSUM: 6b8a6700d73bed7e7ab2f99e4d8b0a9be7e9266d
 
 COCOAPODS: 1.10.1

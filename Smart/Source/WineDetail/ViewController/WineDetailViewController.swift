@@ -18,7 +18,10 @@ fileprivate enum C {
   static let imageConfig = UIImage.SymbolConfiguration(pointSize: 18, weight: .medium, scale: .default)
 }
 
-final class WineDetailViewController: UIViewController {
+final class WineDetailViewController: UIViewController, StarRatingControlCollectionCellDelegate {
+  func didRate(rating: Double) {
+    interactor?.didRate(value: rating)
+  }
   
   // MARK: - Public Properties
   
@@ -35,6 +38,7 @@ final class WineDetailViewController: UIViewController {
       }
     }
   }
+  private var rate: Double = 0.0
   
   private lazy var layout = UICollectionViewCompositionalLayout { [weak self] (sectionNumber, _) -> NSCollectionLayoutSection? in
     
@@ -60,6 +64,13 @@ final class WineDetailViewController: UIViewController {
       return section
 
     case .title, .text:
+      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(15)))
+      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(15)), subitems: [item])
+      let section = NSCollectionLayoutSection(group: group)
+      section.contentInsets = .init(top: 5, leading: 15, bottom: 0, trailing: 15)
+      return section
+      
+    case .rate:
       let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(15)))
       let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(15)), subitems: [item])
       let section = NSCollectionLayoutSection(group: group)
@@ -122,6 +133,7 @@ final class WineDetailViewController: UIViewController {
       GalleryCell.self,
       TitleCopyableCell.self,
       TextCollectionCell.self,
+      StarRatingControlCollectionCell.self,
       ToolCollectionCell.self,
       ShortInfoCollectionCell.self,
       ButtonCollectionCell.self,
@@ -213,8 +225,11 @@ extension WineDetailViewController: UICollectionViewDataSource {
     switch type {
     case .gallery(let model):
       return model.count
-
+      
     case .title(let model):
+      return model.count
+      
+    case .rate(let model):
       return model.count
       
     case .winery(let model):
@@ -264,6 +279,13 @@ extension WineDetailViewController: UICollectionViewDataSource {
       // swiftlint:disable:next force_cast
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TitleCopyableCell.reuseId, for: indexPath) as! TitleCopyableCell
       cell.decorate(model: model[indexPath.row])
+      return cell
+      
+    case .rate(let model):
+    // swiftlint:disable:next force_cast
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StarRatingControlCollectionCell.reuseId, for: indexPath) as! StarRatingControlCollectionCell
+      cell.decorate(model: model[indexPath.row])
+      cell.delegate = self
       return cell
             
     case .winery(let model), .text(let model):
@@ -372,8 +394,9 @@ extension WineDetailViewController: VinchySimpleConiniousCaruselCollectionCellDe
 }
 
 extension WineDetailViewController: WineDetailViewControllerProtocol {
-  
+
   func updateUI(viewModel: WineDetailViewModel) {
     self.viewModel = viewModel
   }
+  
 }
