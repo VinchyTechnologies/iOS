@@ -91,12 +91,26 @@ final class WineDetailViewController: UIViewController, StarRatingControlCollect
       section.contentInsets = .init(top: 15, leading: 0, bottom: 0, trailing: 0)
       return section
       
+    case .ratingAndReview:
+      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(44)))
+      let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(44)), subitems: [item])
+      let section = NSCollectionLayoutSection(group: group)
+      section.contentInsets = .init(top: 10, leading: 15, bottom: 0, trailing: 15)
+      return section
+      
+    case .tapToRate:
+      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(30)))
+      let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(30)), subitems: [item])
+      let section = NSCollectionLayoutSection(group: group)
+      section.contentInsets = .init(top: 0, leading: 15, bottom: 0, trailing: 15)
+      return section
+      
     case .reviews:
-      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .absolute(300), heightDimension: .absolute(200)))
+      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
       let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(300), heightDimension: .absolute(200)), subitems: [item])
       let section = NSCollectionLayoutSection(group: group)
       section.orthogonalScrollingBehavior = .continuous
-      section.contentInsets = .init(top: 15, leading: 15, bottom: 0, trailing: 15)
+      section.contentInsets = .init(top: 0, leading: 15, bottom: 0, trailing: 15)
       section.interGroupSpacing = 10
       return section
       
@@ -132,11 +146,12 @@ final class WineDetailViewController: UIViewController, StarRatingControlCollect
     }
   }
   
-  private lazy var collectionView: UICollectionView = {
-    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+  private lazy var collectionView: WineDetailCollectionView = {
+    let collectionView = WineDetailCollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.backgroundColor = .mainBackground
     collectionView.dataSource = self
     collectionView.delegate = self
+    collectionView.delaysContentTouches = false
     
     collectionView.register(
       GalleryCell.self,
@@ -150,7 +165,9 @@ final class WineDetailViewController: UIViewController, StarRatingControlCollect
       TitleWithSubtitleInfoCollectionViewCell.self,
       BigAdCollectionCell.self,
       VinchySimpleConiniousCaruselCollectionCell.self,
-      ReviewCell.self)
+      ReviewCell.self,
+      RatingsAndReviewsCell.self,
+      TapToRateCell.self)
     
     return collectionView
   }()
@@ -254,6 +271,12 @@ extension WineDetailViewController: UICollectionViewDataSource {
     case .list(let model):
       return model.count
       
+    case .ratingAndReview(let model):
+      return model.count
+      
+    case .tapToRate(let model):
+      return model.count
+      
     case .reviews(let model):
       return model.count
     
@@ -321,9 +344,23 @@ extension WineDetailViewController: UICollectionViewDataSource {
       cell.backgroundColor = indexPath.row.isMultiple(of: 2) ? .option : .mainBackground
       return cell
       
+    case .ratingAndReview(let model):
+      // swiftlint:disable:next force_cast
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RatingsAndReviewsCell.reuseId, for: indexPath) as! RatingsAndReviewsCell
+      cell.decorate(model: model[indexPath.row])
+      cell.delegate = self
+      return cell
+      
+    case .tapToRate(let model):
+      // swiftlint:disable:next force_cast
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TapToRateCell.reuseId, for: indexPath) as! TapToRateCell
+      cell.decorate(model: model[indexPath.row])
+      return cell
+      
     case .reviews(let model):
       // swiftlint:disable:next force_cast
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReviewCell.reuseId, for: indexPath) as! ReviewCell
+      cell.decorate(model: model[indexPath.row])
       return cell
       
     case .servingTips(let model):
@@ -378,7 +415,7 @@ extension WineDetailViewController: UICollectionViewDelegate {
 extension WineDetailViewController: ButtonCollectionCellDelegate {
   
   func didTapReviewButton(_ button: UIButton) {
-    print("did tap review")
+    interactor?.didTapWriteReviewButton()
   }
 }
 
@@ -411,5 +448,10 @@ extension WineDetailViewController: WineDetailViewControllerProtocol {
   func updateUI(viewModel: WineDetailViewModel) {
     self.viewModel = viewModel
   }
-  
+}
+
+extension WineDetailViewController: RatingsAndReviewsCellDelegate {
+  func didTapSeeAllReview() {
+    interactor?.didTapSeeAllReviews()
+  }
 }

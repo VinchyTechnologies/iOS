@@ -15,23 +15,13 @@
 @property (nonatomic, strong) UIColor *mainColor;
 
 /**
- *  设置不抓取的域名,忽略大小写,默认抓取所有
- */
-@property (nonatomic, copy) NSArray<NSString *> *ignoredURLs;
-/**
  *  设置只抓取的域名,忽略大小写,默认抓取所有
  */
 @property (nonatomic, copy) NSArray<NSString *> *onlyURLs;
-
 /**
- *  设置不抓取的日志前缀,忽略大小写,默认抓取所有
+ *  设置不抓取的域名,忽略大小写,默认抓取所有
  */
-@property (nonatomic, copy) NSArray<NSString *> *ignoredPrefixLogs;
-/**
- *  设置只抓取的日志前缀,忽略大小写,默认抓取所有
- */
-@property (nonatomic, copy) NSArray<NSString *> *onlyPrefixLogs;
-
+@property (nonatomic, copy) NSArray<NSString *> *ignoredURLs;
 /**
  *  日志最大数量,默认`1000`
  */

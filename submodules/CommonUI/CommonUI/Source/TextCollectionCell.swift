@@ -27,14 +27,8 @@ public final class TextCollectionCell: UICollectionViewCell, Reusable {
 
     label.numberOfLines = 0
 
-    addSubview(label)
-    label.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      label.leadingAnchor.constraint(equalTo: leadingAnchor),
-      label.topAnchor.constraint(equalTo: topAnchor),
-      label.trailingAnchor.constraint(equalTo: trailingAnchor),
-      label.bottomAnchor.constraint(equalTo: bottomAnchor),
-    ])
+    contentView.addSubview(label)
+    label.fill()
   }
 
   required init?(coder: NSCoder) { fatalError() }

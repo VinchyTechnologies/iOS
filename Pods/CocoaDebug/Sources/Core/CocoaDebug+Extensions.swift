@@ -275,7 +275,7 @@ extension UIWindow {
         super.motionBegan(motion, with: event)
         
         self.cocoadebugShakeProperty = true
-        
+
         if CocoaDebugSettings.shared.responseShake == false {return}
         if motion == .motionShake {
             if CocoaDebugSettings.shared.visible == true { return }
@@ -304,46 +304,33 @@ extension UIWindow {
 extension CocoaDebug {
     
     ///init
-    static func initializationMethod(serverURL: String? = nil, ignoredURLs: [String]? = nil, onlyURLs: [String]? = nil, ignoredPrefixLogs: [String]? = nil, onlyPrefixLogs: [String]? = nil, additionalViewController: UIViewController? = nil, emailToRecipients: [String]? = nil, emailCcRecipients: [String]? = nil, mainColor: String? = nil, protobufTransferMap: [String: [String]]? = nil)
+    static func initializationMethod(serverURL: String? = nil, ignoredURLs: [String]? = nil, onlyURLs: [String]? = nil, additionalViewController: UIViewController? = nil, emailToRecipients: [String]? = nil, emailCcRecipients: [String]? = nil, mainColor: String? = nil, protobufTransferMap: [String: [String]]? = nil)
     {
         if CocoaDebugSettings.shared.isRunning == true {return}
         
         CocoaDebugSettings.shared.isRunning = true
-        
-        //        let enableWKWebViewMonitoring = UserDefaults.standard.bool(forKey: "enableWKWebViewMonitoring_CocoaDebug")
-        //        let enableCrashRecording = UserDefaults.standard.bool(forKey: "enableCrashRecording_CocoaDebug")
+
+//        let enableWKWebViewMonitoring = UserDefaults.standard.bool(forKey: "enableWKWebViewMonitoring_CocoaDebug")
+//        let enableCrashRecording = UserDefaults.standard.bool(forKey: "enableCrashRecording_CocoaDebug")
         let disableLogMonitoring = UserDefaults.standard.bool(forKey: "disableLogMonitoring_CocoaDebug")
         let disableNetworkMonitoring = UserDefaults.standard.bool(forKey: "disableNetworkMonitoring_CocoaDebug")
-        //        let disableRNMonitoring = UserDefaults.standard.bool(forKey: "disableRNMonitoring_CocoaDebug")
-        
+//        let disableRNMonitoring = UserDefaults.standard.bool(forKey: "disableRNMonitoring_CocoaDebug")
+
         if serverURL == nil {
             CocoaDebugSettings.shared.serverURL = ""
         } else {
             CocoaDebugSettings.shared.serverURL = serverURL
-        }
-        
-        if ignoredURLs == nil {
-            CocoaDebugSettings.shared.ignoredURLs = []
-        } else {
-            CocoaDebugSettings.shared.ignoredURLs = ignoredURLs
         }
         if onlyURLs == nil {
             CocoaDebugSettings.shared.onlyURLs = []
         } else {
             CocoaDebugSettings.shared.onlyURLs = onlyURLs
         }
-        
-        if ignoredPrefixLogs == nil {
-            CocoaDebugSettings.shared.ignoredPrefixLogs = []
+        if ignoredURLs == nil {
+            CocoaDebugSettings.shared.ignoredURLs = []
         } else {
-            CocoaDebugSettings.shared.ignoredPrefixLogs = ignoredPrefixLogs
+            CocoaDebugSettings.shared.ignoredURLs = ignoredURLs
         }
-        if onlyPrefixLogs == nil {
-            CocoaDebugSettings.shared.onlyPrefixLogs = []
-        } else {
-            CocoaDebugSettings.shared.onlyPrefixLogs = onlyPrefixLogs
-        }
-        
         if CocoaDebugSettings.shared.firstIn == nil {//first launch
             CocoaDebugSettings.shared.firstIn = ""
             CocoaDebugSettings.shared.showBubbleAndWindow = true
@@ -359,13 +346,13 @@ extension CocoaDebug {
         CocoaDebugSettings.shared.logMaxCount = CocoaDebug.logMaxCount
         CocoaDebugSettings.shared.protobufTransferMap = protobufTransferMap
         CocoaDebugSettings.shared.additionalViewController = additionalViewController
-        //        CocoaDebugSettings.shared.enableCrashRecording = enableCrashRecording
-        //        CocoaDebugSettings.shared.enableWKWebViewMonitoring = enableWKWebViewMonitoring
-        //        CocoaDebugSettings.shared.disableRNMonitoring = disableRNMonitoring
-        
+//        CocoaDebugSettings.shared.enableCrashRecording = enableCrashRecording
+//        CocoaDebugSettings.shared.enableWKWebViewMonitoring = enableWKWebViewMonitoring
+//        CocoaDebugSettings.shared.disableRNMonitoring = disableRNMonitoring
+
         var _ = _OCLogStoreManager.shared()
         CocoaDebugSettings.shared.responseShake = true
-        //        CocoaDebugSettings.shared.responseShakeNetworkDetail = true
+//        CocoaDebugSettings.shared.responseShakeNetworkDetail = true
         
         //share via email
         CocoaDebugSettings.shared.emailToRecipients = emailToRecipients
@@ -403,7 +390,7 @@ extension CocoaDebug {
         _OCLogHelper.shared()?.enable = false
         CrashLogger.shared.enable = false
         CocoaDebugSettings.shared.responseShake = false
-        //        CocoaDebugSettings.shared.responseShakeNetworkDetail = false
+//        CocoaDebugSettings.shared.responseShakeNetworkDetail = false
     }
 }
 

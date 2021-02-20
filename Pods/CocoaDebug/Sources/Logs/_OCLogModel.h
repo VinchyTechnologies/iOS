@@ -24,8 +24,6 @@ typedef NS_ENUM (NSInteger, CocoaDebugToolType) {
 
 @interface _OCLogModel : NSObject
 
-@property (nonatomic, copy) NSData *contentData;
-
 @property (nonatomic, copy) NSString *Id;
 @property (nonatomic, copy) NSString *fileInfo;
 @property (nonatomic, copy) NSString *content;

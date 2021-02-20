@@ -8,6 +8,7 @@
 
 import UIKit
 import Display
+import Cosmos
 
 public struct ReviewCellViewModel: ViewModelProtocol {
   
@@ -29,13 +30,101 @@ public struct ReviewCellViewModel: ViewModelProtocol {
   }
 }
 
-public final class ReviewCell: UICollectionViewCell, Reusable {
+public final class ReviewCell: HighlightCollectionCell, Reusable {
+  
+  private let rateLabel: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.font = Font.with(size: 30, design: .round, traits: .bold)
+    label.textColor = .dark
+    label.text = "4.5"
+    return label
+  }()
+  
+  private lazy var ratingView: CosmosView = {
+    var view = CosmosView()
+    view.translatesAutoresizingMaskIntoConstraints = false
+    view.settings.filledColor = .accent
+    view.settings.emptyBorderColor = .accent
+    view.settings.starSize = 24
+    view.settings.fillMode = .half
+    view.settings.minTouchRating = 0
+    view.rating = 4.5
+    view.settings.starMargin = 0
+    view.isUserInteractionEnabled = false
+    return view
+  }()
+  
+  private let dateLabel: UILabel = {
+    let label = UILabel()
+    label.font = Font.regular(14)
+    label.textColor = .blueGray
+    label.text = "12.02.20"
+    return label
+  }()
+  
+  private lazy var textLabel: UILabel = {
+    let label = UILabel()
+    label.numberOfLines = 0
+    label.textColor = .dark
+    label.font = Font.regular(15)
+    let str = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy."
+    label.text = str
+            
+    return label
+  }()
+  
+  private let userLabel: UILabel = {
+    let label = UILabel()
+    label.font = Font.semibold(16)
+    label.textColor = .dark
+    label.text = "aleksei_smirnov"
+    return label
+  }()
   
   override init(frame: CGRect) {
     super.init(frame: frame)
     backgroundColor = .option
     layer.cornerRadius = 20
     clipsToBounds = true
+    highlightStyle = .scale
+    
+    contentView.addSubview(rateLabel)
+    NSLayoutConstraint.activate([
+      rateLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 14),
+      rateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 14),
+    ])
+    
+    contentView.addSubview(ratingView)
+    NSLayoutConstraint.activate([
+      ratingView.leadingAnchor.constraint(equalTo: rateLabel.trailingAnchor, constant: 6),
+      ratingView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor, constant: -14),
+      ratingView.centerYAnchor.constraint(equalTo: rateLabel.centerYAnchor),
+    ])
+    
+    contentView.addSubview(dateLabel)
+    dateLabel.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      dateLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -14),
+      dateLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 14),
+    ])
+    
+    contentView.addSubview(userLabel)
+    userLabel.translatesAutoresizingMaskIntoConstraints = false
+
+    NSLayoutConstraint.activate([
+      userLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 14),
+      userLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -14),
+    ])
+    
+    contentView.addSubview(textLabel)
+    textLabel.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      textLabel.topAnchor.constraint(equalTo: rateLabel.bottomAnchor, constant: 0),
+      textLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 14),
+      textLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -14),
+      textLabel.bottomAnchor.constraint(lessThanOrEqualTo: userLabel.topAnchor, constant: 0),
+    ])
   }
   
   required init?(coder: NSCoder) { fatalError() }
@@ -47,5 +136,10 @@ extension ReviewCell: Decoratable {
   public typealias ViewModel = ReviewCellViewModel
   
   public func decorate(model: ViewModel) {
+    ratingView.rating = model.rate ?? 0
+    rateLabel.text = String(model.rate ?? 0)
+    dateLabel.text = model.dateText
+    textLabel.text = model.reviewText
+    userLabel.text = model.userNameText
   }
 }

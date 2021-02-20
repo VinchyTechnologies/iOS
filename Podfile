@@ -59,6 +59,7 @@ end
 target 'CommonUI' do
   project 'submodules/CommonUI/CommonUI'
   pod 'Nuke'
+  pod 'Cosmos', '~> 23.0'
 end
 
 target 'LocationUI' do

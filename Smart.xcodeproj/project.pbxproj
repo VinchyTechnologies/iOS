@@ -7,8 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		440C284725E13F9D009911EE /* WineDetailCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440C284625E13F9D009911EE /* WineDetailCollectionView.swift */; };
 		4474E36525E02486001C5DE3 /* VinchyAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4474E36425E02486001C5DE3 /* VinchyAnalytics.framework */; };
 		4474E36625E02486001C5DE3 /* VinchyAnalytics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4474E36425E02486001C5DE3 /* VinchyAnalytics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		449D63B225E1054700CBBD1D /* RatingsAndReviewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449D63B125E1054700CBBD1D /* RatingsAndReviewsCell.swift */; };
+		449D63B625E10D5100CBBD1D /* TapToRateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449D63B525E10D5100CBBD1D /* TapToRateCell.swift */; };
 		449F81AC25DD023A00585364 /* RootInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449F81AB25DD023A00585364 /* RootInteractor.swift */; };
 		449F81B225DD025900585364 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449F81B125DD025900585364 /* RootRouter.swift */; };
 		449F81B625DD027C00585364 /* RootBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449F81B525DD027C00585364 /* RootBuilder.swift */; };
@@ -208,7 +211,10 @@
 		1A9B4140D82D94CD0171D9D8 /* Pods-Smart-SmartUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart-SmartUITests.release.xcconfig"; path = "Target Support Files/Pods-Smart-SmartUITests/Pods-Smart-SmartUITests.release.xcconfig"; sourceTree = "<group>"; };
 		29F65C39E925B7F70D400D7A /* Pods-Smart-SmartUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart-SmartUITests.debug.xcconfig"; path = "Target Support Files/Pods-Smart-SmartUITests/Pods-Smart-SmartUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		356D7CD37446A6F72FDB6021 /* Pods-Smart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart.debug.xcconfig"; path = "Target Support Files/Pods-Smart/Pods-Smart.debug.xcconfig"; sourceTree = "<group>"; };
+		440C284625E13F9D009911EE /* WineDetailCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineDetailCollectionView.swift; sourceTree = "<group>"; };
 		4474E36425E02486001C5DE3 /* VinchyAnalytics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyAnalytics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		449D63B125E1054700CBBD1D /* RatingsAndReviewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingsAndReviewsCell.swift; sourceTree = "<group>"; };
+		449D63B525E10D5100CBBD1D /* TapToRateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapToRateCell.swift; sourceTree = "<group>"; };
 		449F81AB25DD023A00585364 /* RootInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootInteractor.swift; sourceTree = "<group>"; };
 		449F81B125DD025900585364 /* RootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
 		449F81B525DD027C00585364 /* RootBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootBuilder.swift; sourceTree = "<group>"; };
@@ -881,6 +887,9 @@
 				CA49A218251E8CFE00FBE269 /* TitleWithSubtitleInfoCollectionViewCell.swift */,
 				CA49A25A251F2C4600FBE269 /* BigAdCollectionCell.swift */,
 				CA3C97DE25723C570036F7D9 /* TitleCopyableCell.swift */,
+				449D63B125E1054700CBBD1D /* RatingsAndReviewsCell.swift */,
+				449D63B525E10D5100CBBD1D /* TapToRateCell.swift */,
+				440C284625E13F9D009911EE /* WineDetailCollectionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1449,6 +1458,7 @@
 				CA819846253864080056A1C6 /* WineDetailAssembly.swift in Sources */,
 				CA8CD67725096EC200FDB7AF /* GADTSmallTemplateView.m in Sources */,
 				CA7B838924F451FA00991F24 /* WineDetailViewController.swift in Sources */,
+				440C284725E13F9D009911EE /* WineDetailCollectionView.swift in Sources */,
 				CA819848253864080056A1C6 /* WineDetailPresenterProtocol.swift in Sources */,
 				CA819847253864080056A1C6 /* WineDetailPresenter.swift in Sources */,
 				CAF514212461C52400667ED0 /* MorePresenter.swift in Sources */,
@@ -1485,6 +1495,7 @@
 				CA819844253864080056A1C6 /* WineDetailViewModel.swift in Sources */,
 				CAF514102461C51400667ED0 /* AboutViewController.swift in Sources */,
 				CA81984D253864080056A1C6 /* WineDetailRouterProtocol.swift in Sources */,
+				449D63B225E1054700CBBD1D /* RatingsAndReviewsCell.swift in Sources */,
 				CA3B1D5424A0A36300FAA08A /* NotesViewController.swift in Sources */,
 				CA2C22DD2554464F002469E4 /* AdvancedSearchPresenterProtocol.swift in Sources */,
 				CACA7E9A254C57CC0099E622 /* WriteNoteInput.swift in Sources */,
@@ -1542,6 +1553,7 @@
 				CAA060D2252BC05C002C15B5 /* DeveloperFeatureToggles.swift in Sources */,
 				CA7A87FC2507ED7800AAD10F /* AdsCollectionViewCell.swift in Sources */,
 				CAF514252461C52400667ED0 /* ContactCell.swift in Sources */,
+				449D63B625E10D5100CBBD1D /* TapToRateCell.swift in Sources */,
 				CAF514262461C52400667ED0 /* RateAppCell.swift in Sources */,
 				CA4D51042549F62500A6FD0B /* WriteNoteViewController.swift in Sources */,
 			);
