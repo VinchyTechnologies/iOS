@@ -37,7 +37,6 @@ public final class ReviewCell: HighlightCollectionCell, Reusable {
     label.translatesAutoresizingMaskIntoConstraints = false
     label.font = Font.with(size: 30, design: .round, traits: .bold)
     label.textColor = .dark
-    label.text = "4.5"
     return label
   }()
   
@@ -49,7 +48,6 @@ public final class ReviewCell: HighlightCollectionCell, Reusable {
     view.settings.starSize = 24
     view.settings.fillMode = .half
     view.settings.minTouchRating = 0
-    view.rating = 4.5
     view.settings.starMargin = 0
     view.isUserInteractionEnabled = false
     return view
@@ -59,7 +57,6 @@ public final class ReviewCell: HighlightCollectionCell, Reusable {
     let label = UILabel()
     label.font = Font.regular(14)
     label.textColor = .blueGray
-    label.text = "12.02.20"
     return label
   }()
   
@@ -68,9 +65,6 @@ public final class ReviewCell: HighlightCollectionCell, Reusable {
     label.numberOfLines = 0
     label.textColor = .dark
     label.font = Font.regular(15)
-    let str = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy."
-    label.text = str
-            
     return label
   }()
   
