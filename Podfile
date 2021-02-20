@@ -15,8 +15,9 @@ def commonPods
   pod 'Firebase/RemoteConfig'
   pod 'Firebase/Analytics'
   pod 'CocoaDebug', :configurations => ['Debug']
-  pod 'SPAlert'
+  pod 'SPAlert', '~> 2.1.4'
   pod "Sheeeeeeeeet"
+  pod 'Cosmos', '~> 23.0'
   pod 'SkyFloatingLabelTextField'
   pod 'KeychainAccess'
 end

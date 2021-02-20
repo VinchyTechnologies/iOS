@@ -17,7 +17,6 @@ class AppInfoViewController: UITableViewController {
     @IBOutlet weak var labelDeviceModel: UILabel!
     @IBOutlet weak var labelCrashCount: UILabel!
     @IBOutlet weak var labelBundleID: UILabel!
-    @IBOutlet weak var labelignoredURLs: UILabel!
     @IBOutlet weak var labelserverURL: UILabel!
     @IBOutlet weak var labelIOSVersion: UILabel!
     @IBOutlet weak var labelHtml: UILabel!
@@ -28,13 +27,13 @@ class AppInfoViewController: UITableViewController {
     @IBOutlet weak var slowAnimationsSwitch: UISwitch!
     @IBOutlet weak var naviItem: UINavigationItem!
     @IBOutlet weak var rnSwitch: UISwitch!
-
+    
     @IBOutlet weak var controllerMemoryLeaksSwitch: UISwitch!
     @IBOutlet weak var viewMemoryLeaksSwitch: UISwitch!
     @IBOutlet weak var memberVariablesMemoryLeaksSwitch: UISwitch!
     
     var naviItemTitleLabel: UILabel?
-
+    
     //MARK: - init
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -51,12 +50,11 @@ class AppInfoViewController: UITableViewController {
         labelVersionNumber.text = CocoaDebugDeviceInfo.sharedInstance().appVersion
         labelBuildNumber.text = CocoaDebugDeviceInfo.sharedInstance().appBuiltVersion
         labelBundleName.text = CocoaDebugDeviceInfo.sharedInstance().appBundleName
-
+        
         labelScreenResolution.text = "\(Int(CocoaDebugDeviceInfo.sharedInstance().resolution.width))" + "*" + "\(Int(CocoaDebugDeviceInfo.sharedInstance().resolution.height))"
         labelDeviceModel.text = "\(CocoaDebugDeviceInfo.sharedInstance().getPlatformString)"
         
         labelBundleID.text = CocoaDebugDeviceInfo.sharedInstance().appBundleID
-        labelignoredURLs.text = String(CocoaDebugSettings.shared.ignoredURLs?.count ?? 0)
         
         labelserverURL.text = CocoaDebugSettings.shared.serverURL
         labelIOSVersion.text = UIDevice.current.systemVersion
@@ -74,7 +72,7 @@ class AppInfoViewController: UITableViewController {
         viewMemoryLeaksSwitch.isOn = CocoaDebugSettings.shared.enableMemoryLeaksMonitoring_View
         memberVariablesMemoryLeaksSwitch.isOn = CocoaDebugSettings.shared.enableMemoryLeaksMonitoring_MemberVariables
         crashSwitch.isOn = CocoaDebugSettings.shared.enableCrashRecording
-
+        
         logSwitch.addTarget(self, action: #selector(logSwitchChanged), for: UIControl.Event.valueChanged)
         networkSwitch.addTarget(self, action: #selector(networkSwitchChanged), for: UIControl.Event.valueChanged)
         rnSwitch.addTarget(self, action: #selector(rnSwitchChanged), for: UIControl.Event.valueChanged)
@@ -114,22 +112,22 @@ class AppInfoViewController: UITableViewController {
     //MARK: - target action
     @objc func slowAnimationsSwitchChanged(sender: UISwitch) {
         CocoaDebugSettings.shared.slowAnimations = slowAnimationsSwitch.isOn
-//        self.showAlert()
+        //        self.showAlert()
     }
     
     @objc func controllerMemoryLeaksSwitchChanged(sender: UISwitch) {
         CocoaDebugSettings.shared.enableMemoryLeaksMonitoring_ViewController = controllerMemoryLeaksSwitch.isOn
-//        self.showAlert()
+        //        self.showAlert()
     }
     
     @objc func viewMemoryLeaksSwitchChanged(sender: UISwitch) {
         CocoaDebugSettings.shared.enableMemoryLeaksMonitoring_View = viewMemoryLeaksSwitch.isOn
-//        self.showAlert()
+        //        self.showAlert()
     }
     
     @objc func memberVariablesMemoryLeaksSwitchChanged(sender: UISwitch) {
         CocoaDebugSettings.shared.enableMemoryLeaksMonitoring_MemberVariables = memberVariablesMemoryLeaksSwitch.isOn
-//        self.showAlert()
+        //        self.showAlert()
     }
     
     @objc func crashSwitchChanged(sender: UISwitch) {
@@ -191,14 +189,7 @@ extension AppInfoViewController {
                 return 0
             }
         }
-        if indexPath.section == 5 && indexPath.row == 0 {
-            if labelignoredURLs.text == "0" {
-                if UIScreen.main.scale == 3 {
-                    return 1.5//plus,iPhone X
-                }
-                return 0.5//iphone 5,6,6s,7,8
-            }
-        }
+        
         return 44
     }
     
@@ -235,9 +226,7 @@ extension AppInfoViewController {
         }
         
         if indexPath.section == 1 && indexPath.row == 4 {
-            if labelserverURL.text == nil || labelserverURL.text == "" {
-                return
-            }
+            if labelserverURL.text == nil || labelserverURL.text == "" {return}
             
             UIPasteboard.general.string = CocoaDebugSettings.shared.serverURL
             

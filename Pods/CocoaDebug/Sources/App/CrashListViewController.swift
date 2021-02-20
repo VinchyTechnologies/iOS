@@ -9,17 +9,17 @@
 import UIKit
 
 class CrashListViewController: UITableViewController {
-
+    
     var models: [_CrashModel] = [_CrashModel]()
     
     @IBOutlet weak var naviItem: UINavigationItem!
     
     var naviItemTitleLabel: UILabel?
-
+    
     //MARK: - init
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         naviItemTitleLabel = UILabel.init(frame: CGRect(x: 0, y: 0, width: 80, height: 40))
         naviItemTitleLabel?.textAlignment = .center
         naviItemTitleLabel?.textColor = Color.mainGreen
@@ -29,7 +29,7 @@ class CrashListViewController: UITableViewController {
         
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action:#selector(CrashListViewController.deleteCrashes))
-
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
@@ -57,12 +57,6 @@ extension CrashListViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        //Otherwise occasionally crash
-        if indexPath.row >= models.count {
-            return UITableViewCell()
-        }
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "CrashCell", for: indexPath)
             as! CrashCell
         cell.crash = models[indexPath.row]

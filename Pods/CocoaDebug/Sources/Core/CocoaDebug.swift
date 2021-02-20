@@ -17,6 +17,10 @@ import UIKit
     @objc public static var ignoredURLs: [String]? = nil
     ///set the URLs which are only been captured, CocoaDebug capture all URLs when the value is nil. Default value is `nil`.
     @objc public static var onlyURLs: [String]? = nil
+    ///set the prefix Logs which should not been captured, CocoaDebug capture all Logs when the value is nil. Default value is `nil`.
+    @objc public static var ignoredPrefixLogs: [String]? = nil
+    ///set the prefix Logs which are only been captured, CocoaDebug capture all Logs when the value is nil. Default value is `nil`.
+    @objc public static var onlyPrefixLogs: [String]? = nil
     ///add an additional UIViewController as child controller of CocoaDebug's main UITabBarController. Default value is `nil`.
     @objc public static var additionalViewController: UIViewController? = nil
     ///the maximum count of logs which CocoaDebug display. Default value is `1000`.
@@ -32,14 +36,14 @@ import UIKit
     
     //MARK: - CocoaDebug enable
     @objc public static func enable() {
-        initializationMethod(serverURL: serverURL, ignoredURLs: ignoredURLs, onlyURLs: onlyURLs, additionalViewController: additionalViewController, emailToRecipients: emailToRecipients, emailCcRecipients: emailCcRecipients, mainColor: mainColor, protobufTransferMap: protobufTransferMap)
+        initializationMethod(serverURL: serverURL, ignoredURLs: ignoredURLs, onlyURLs: onlyURLs, ignoredPrefixLogs: ignoredPrefixLogs, onlyPrefixLogs: onlyPrefixLogs, additionalViewController: additionalViewController, emailToRecipients: emailToRecipients, emailCcRecipients: emailCcRecipients, mainColor: mainColor, protobufTransferMap: protobufTransferMap)
     }
     
     //MARK: - CocoaDebug disable
     @objc public static func disable() {
         deinitializationMethod()
     }
-
+    
     //MARK: - hide Bubble
     @objc public static func hideBubble() {
         CocoaDebugSettings.shared.showBubbleAndWindow = false

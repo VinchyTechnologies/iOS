@@ -27,7 +27,7 @@ final class WineDetailInteractor {
     guard let self = self else { return }
     self.presenter.startLoading()
   }
-  
+  private var rate: Double?
   private let dataBase = Database<DBWine>()
   private let emailService = EmailService()
   
@@ -59,7 +59,8 @@ final class WineDetailInteractor {
         self.presenter.update(
           wine: wine,
           isLiked: self.isFavourite(wine: wine),
-          isDisliked: self.isDisliked(wine: wine))
+          isDisliked: self.isDisliked(wine: wine),
+          rate: self.rate ?? 0)
         self.wine = wine
         
       case .failure(let error):
@@ -80,6 +81,10 @@ final class WineDetailInteractor {
 // MARK: - WineDetailInteractorProtocol
 
 extension WineDetailInteractor: WineDetailInteractorProtocol {
+  
+  func didRate(value: Double) {
+    self.rate = value
+  }
 
   func didTapMore(_ button: UIButton) {
     guard let wine = wine else { return }
