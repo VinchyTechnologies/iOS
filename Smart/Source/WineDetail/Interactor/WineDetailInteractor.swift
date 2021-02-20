@@ -84,6 +84,10 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
 
   func didTapSeeAllReviews() {
     print(#function)
+    guard let wineID = wine?.id else {
+      return
+    }
+    router.pushToReviewsViewController(wineID: wineID)
   }
   
   func didTapWriteReviewButton() {

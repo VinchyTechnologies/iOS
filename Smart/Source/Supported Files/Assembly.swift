@@ -69,4 +69,10 @@ final class Assembly {
     controller.hidesBottomBarWhenPushed = true
     return controller
   }
+  
+  static func buildReviewsViewController(wineID: Int64) -> UIViewController {
+    let controller = ReviewsAssembly.assemblyModule()
+    controller.hidesBottomBarWhenPushed = true
+    return controller
+  }
 }
