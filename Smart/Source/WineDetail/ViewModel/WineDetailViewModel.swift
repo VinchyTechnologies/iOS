@@ -23,6 +23,9 @@ struct WineDetailViewModel {
     case text([TextCollectionCellViewModel])
     case tool([ToolCollectionCellViewModel])
     case list([TitleWithSubtitleInfoCollectionViewCellViewModel])
+    case ratingAndReview([RatingsAndReviewsCellViewModel])
+    case tapToRate([TapToRateCellViewModel])
+    case reviews([ReviewCellViewModel])
     case servingTips([ShortInfoModel])
     case button([ButtonCollectionCellViewModel])
     case ad([Any]) // TODO: - Not Any

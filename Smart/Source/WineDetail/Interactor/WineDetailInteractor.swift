@@ -81,6 +81,14 @@ final class WineDetailInteractor {
 // MARK: - WineDetailInteractorProtocol
 
 extension WineDetailInteractor: WineDetailInteractorProtocol {
+
+  func didTapSeeAllReviews() {
+    print(#function)
+  }
+  
+  func didTapWriteReviewButton() {
+    print(#function)
+  }
   
   func didRate(value: Double) {
     self.rate = value

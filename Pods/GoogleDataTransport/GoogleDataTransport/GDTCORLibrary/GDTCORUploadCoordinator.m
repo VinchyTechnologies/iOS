@@ -113,11 +113,7 @@
 }
 
 - (void)signalToStoragesToCheckExpirations {
-  // The same storage may be associated with several targets. Make sure to check for expirations
-  // only once per storage.
-  NSSet<id<GDTCORStorageProtocol>> *storages =
-      [NSSet setWithArray:[_registrar.targetToStorage allValues]];
-  for (id<GDTCORStorageProtocol> storage in storages) {
+  for (id<GDTCORStorageProtocol> storage in [_registrar.targetToStorage allValues]) {
     [storage checkForExpirations];
   }
 }

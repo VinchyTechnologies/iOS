@@ -50,17 +50,22 @@ class NetworkViewController: UIViewController {
     //MARK: - private
     func reloadHttp(needScrollToEnd: Bool = false) {
         
-        if reloadDataFinish == false {return}
-        
-        if searchBar.isHidden != false {
-            searchBar.isHidden = false
+        if reloadDataFinish == false {
+            return
         }
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1)) { [weak self] in
+            if self?.searchBar.isHidden == true {
+                self?.searchBar.isHidden = false
+            }
+        }
+        
         
         self.models = (_HttpDatasource.shared().httpModels as NSArray as? [_HttpModel])
         self.cacheModels = self.models
         
         self.searchLogic(CocoaDebugSettings.shared.networkSearchWord ?? "")
-        
+
         dispatch_main_async_safe { [weak self] in
             self?.reloadDataFinish = false
             self?.tableView.reloadData {
@@ -161,11 +166,11 @@ class NetworkViewController: UIViewController {
         _HttpDatasource.shared().reset()
         models = []
         cacheModels = []
-        //        searchBar.text = nil
+//        searchBar.text = nil
         searchBar.resignFirstResponder()
-        //        CocoaDebugSettings.shared.networkSearchWord = nil
+//        CocoaDebugSettings.shared.networkSearchWord = nil
         CocoaDebugSettings.shared.networkLastIndex = 0
-        
+
         dispatch_main_async_safe { [weak self] in
             self?.tableView.reloadData()
             self?.naviItemTitleLabel?.text = "[0]"
@@ -263,21 +268,94 @@ extension NetworkViewController: UITableViewDelegate {
         
         CocoaDebugSettings.shared.networkLastIndex = indexPath.row
     }
+    
+    @available(iOS 11.0, *)
+    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        guard let models = models else {return UISwipeActionsConfiguration.init()}
+        let model = models[indexPath.row]
+        var title = "Tag"
+        if model.isTag == true {title = "UnTag"}
+        
+        let left = UIContextualAction(style: .normal, title: title) { [weak self] (action, sourceView, completionHandler) in
+            model.isTag = !model.isTag
+            self?.dispatch_main_async_safe { [weak self] in
+                self?.tableView.reloadData()
+            }
+            completionHandler(true)
+        }
+        
+        searchBar.resignFirstResponder()
+        left.backgroundColor = "#007aff".hexColor
+        return UISwipeActionsConfiguration(actions: [left])
+    }
+    
+    @available(iOS 11.0, *)
+    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        
+        let delete = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, sourceView, completionHandler) in
+            guard let models = self?.models else {return}
+            
+            let model: _HttpModel = models[indexPath.row]
+            _HttpDatasource.shared().remove(model)
+            
+            self?.models?.remove(at: indexPath.row)
+            _ = self?.cacheModels?.firstIndex(of: model).map { self?.cacheModels?.remove(at: $0) }
+            _ = self?.searchModels?.firstIndex(of: model).map { self?.searchModels?.remove(at: $0) }
+            
+            self?.dispatch_main_async_safe { [weak self] in
+                self?.tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+            if CocoaDebugSettings.shared.networkLastIndex == indexPath.row {
+                CocoaDebugSettings.shared.networkLastIndex = 0
+            }
+            completionHandler(true)
+        }
+        
+        searchBar.resignFirstResponder()
+        return UISwipeActionsConfiguration(actions: [delete])
+    }
+    
+    //MARK: - only for ios8/ios9/ios10, not ios11
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
+        return "Delete"
+    }
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+        return true
+    }
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if (editingStyle == .delete) {
+            guard let models = self.models else {return}
+            
+            let model: _HttpModel = models[indexPath.row]
+            _HttpDatasource.shared().remove(model)
+            
+            self.models?.remove(at: indexPath.row)
+            _ = self.cacheModels?.firstIndex(of: model).map { self.cacheModels?.remove(at: $0) }
+            _ = self.searchModels?.firstIndex(of: model).map { self.searchModels?.remove(at: $0) }
+            
+            self.dispatch_main_async_safe { [weak self] in
+                self?.tableView.deleteRows(at: [indexPath], with: .automatic)
+            }
+            if CocoaDebugSettings.shared.networkLastIndex == indexPath.row {
+                CocoaDebugSettings.shared.networkLastIndex = 0
+            }
+        }
+    }
 }
 
 //MARK: - UIScrollViewDelegate
 extension NetworkViewController: UIScrollViewDelegate {
     
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
         searchBar.resignFirstResponder()
-        reachEnd = false
     }
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        if (scrollView.contentOffset.y + 1) >= (scrollView.contentSize.height - scrollView.frame.size.height) {
-            //bottom reached
-            reachEnd = true
-        }
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        reachEnd = false
     }
 }
 

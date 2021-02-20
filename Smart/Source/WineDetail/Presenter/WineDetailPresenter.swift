@@ -101,26 +101,21 @@ final class WineDetailPresenter {
     }
   }
   
-  private func buildDislikeButton(wine: Wine, isDisliked: Bool) -> [WineDetailViewModel.Section] {
-    
-    let normalImage = UIImage(systemName: "heart.slash", withConfiguration: C.imageConfig)
-    let selectedImage = UIImage(systemName: "heart.slash.fill", withConfiguration: C.imageConfig)
-    let title = NSAttributedString(string: localized("unlike").firstLetterUppercased(), font: .boldSystemFont(ofSize: 18), textColor: .dark)
-    
-    return [.button([.init(buttonModel: .dislike(title: title, image: normalImage, selectedImage: selectedImage, isDisliked: isDisliked))])]
-  }
-  
-  private func buildReportAnErrorButton() -> [WineDetailViewModel.Section] {
-    
-    let title = NSAttributedString(string: localized("tell_about_error").firstLetterUppercased(), font: .boldSystemFont(ofSize: 18), textColor: .dark)
-    
-    return [.button([.init(buttonModel: .reportError(title: title))])]
+  private func buildReview() -> [WineDetailViewModel.Section] {
+    let str = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like"
+    return [
+      .reviews([
+        .init(userNameText: "aleksei_smirnov", dateText: "29.08.20", reviewText: str, rate: 4.5),
+        .init(userNameText: "aleksei_smirnov", dateText: "29.08.20", reviewText: str, rate: 4.0),
+        .init(userNameText: "aleksei_smirnov", dateText: "29.08.20", reviewText: str, rate: 3.5),
+        .init(userNameText: "aleksei_smirnov", dateText: "29.08.20", reviewText: str, rate: 2.5),
+        .init(userNameText: "aleksei_smirnov", dateText: "29.08.20", reviewText: str, rate: 1.5),
+      ])
+    ]
   }
   
   private func buildStarRateControl(rate: Double) -> [WineDetailViewModel.Section] {
-    
-    let rateViewModel = StarRatingControlCollectionViewCellViewModel(rate: rate)
-    
+    let rateViewModel = StarRatingControlCollectionViewCellViewModel(rate: rate)    
     return [.rate([rateViewModel])]
   }
 
@@ -214,6 +209,13 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
     }
     
     sections += buildGeneralInfo(wine: wine)
+    
+    if isReviewAvailable {
+      sections += [.ratingAndReview([.init(titleText: "Ratings & Reviews", moreText: "See All")])]
+//      sections += [.tapToRate([.init(titleText: "Tap to Rate:", rate: 0)])]
+      sections += buildReview()
+      sections += [.button([.init(buttonText: localized("write_review").firstLetterUppercased())])]
+    }
     /*
     sections += buildDislikeButton(wine: wine, isDisliked: isDisliked)
     sections += buildReportAnErrorButton()
