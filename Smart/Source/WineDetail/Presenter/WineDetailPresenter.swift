@@ -191,7 +191,11 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
                   font: Font.heavy(20),
                   textColor: .dark))])
     ]
-    sections += buildStarRateControl(rate: rate)
+    
+    if isReviewAvailable {
+      sections += buildStarRateControl(rate: rate)
+    }
+    
     sections += [
       .tool([.init(
               price: formatCurrencyAmount(

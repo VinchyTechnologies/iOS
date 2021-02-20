@@ -42,6 +42,21 @@ final class VinchyViewController: UIViewController {
   
   private(set) var loadingIndicator = ActivityIndicatorView()
   
+  private lazy var mapButton: UIButton = {
+    let button = UIButton()
+    button.translatesAutoresizingMaskIntoConstraints = false
+    button.backgroundColor = UIColor(red: 121 / 255, green: 125 / 255, blue: 140 / 255, alpha: 1.0)
+    button.setTitle("Map", for: .normal)
+    let imageConfig = UIImage.SymbolConfiguration(pointSize: 16, weight: .semibold, scale: .default)
+    button.setImage(UIImage(systemName: "map", withConfiguration: imageConfig), for: .normal)
+    button.tintColor = .white
+    button.setTitleColor(.white, for: .normal)
+    button.titleLabel?.font = Font.bold(16)
+    button.contentEdgeInsets = .init(top: 14, left: 18, bottom: 14, right: 18)
+    button.imageEdgeInsets = .init(top: 0, left: -4, bottom: 0, right: 4)
+    return button
+  }()
+  
   private lazy var collectionView: UICollectionView = {
     
     let layout = UICollectionViewFlowLayout()
@@ -111,8 +126,32 @@ final class VinchyViewController: UIViewController {
     refreshControl.tintColor = .dark
     refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
     
+    if isMapOnVinchyVCAvailable {
+      view.addSubview(mapButton)
+      NSLayoutConstraint.activate([
+        mapButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+        mapButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
+      ])
+    }
+    
     interactor?.viewDidLoad()
     
+  }
+  
+  override func viewWillLayoutSubviews() {
+    super.viewWillLayoutSubviews()
+    if isMapOnVinchyVCAvailable {
+      mapButton.layer.cornerRadius = mapButton.frame.height / 2
+      mapButton.clipsToBounds = true
+      collectionView.contentInset = .init(top: 0, left: 0, bottom: mapButton.frame.height + 16, right: 0)
+    }
+  }
+  
+  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    super.viewWillTransition(to: size, with: coordinator)
+    coordinator.animate(alongsideTransition: { _ in
+        self.collectionView.collectionViewLayout.invalidateLayout()
+    })
   }
   
   // MARK: - Private Methods
@@ -181,7 +220,7 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
       case .suggestions:
         return .init(width: collectionView.frame.width, height: 44)
         
-      case .shareUs(_):
+      case .shareUs:
         let width = collectionView.frame.width - 2 * C.horizontalInset
         let height: CGFloat = 150 // TODO: -
         return .init(width: width, height: height)
@@ -387,6 +426,10 @@ extension VinchyViewController: ShareUsCollectionCellDelegate {
   func didTapShareUs(_ button: UIButton) {
     let items = [localized("i_use_vinchy"), localized("discovery_link")]
     let controller = UIActivityViewController(activityItems: items, applicationActivities: nil)
+    if let popoverController = controller.popoverPresentationController {
+      popoverController.sourceView = button
+      popoverController.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
+    }
     present(controller, animated: true)
   }
 }

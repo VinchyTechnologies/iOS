@@ -9,16 +9,21 @@
 import UIKit
 import Nuke
 
-public extension UIImageView {
-
-  func loadBottle(url: URL?) {
-
-    guard let url = url else {
-      return
-    }
-    
-    ImageCache.shared.ttl = 30 * 24 * 60 * 60
-
+final public class ImageLoader {
+  
+  public static let shared = ImageLoader()
+  
+  private let preheater = ImagePreheater()
+  
+  private init() {
+    ImageCache.shared.ttl = 7 * 24 * 60 * 60
+//    ImageCache.shared.countLimit = 1000
+//    ImageCache.shared.costLimit = 200 * 1024 * 1024
+//    DataLoader.sharedUrlCache.diskCapacity = 0
+//    DataLoader.sharedUrlCache.memoryCapacity = 100
+  }
+  
+  fileprivate func loadBottle(url: URL, imageView: UIImageView) {
     var options = ImageLoadingOptions(
       placeholder: nil,
       failureImage: UIImage(named: "empty_image_bottle")?.withTintColor(.blueGray),
@@ -31,16 +36,10 @@ public extension UIImageView {
       cachePolicy: .default,
       priority: .high)
 
-    Nuke.loadImage(with: request, options: options, into: self, completion: nil)
+    Nuke.loadImage(with: request, options: options, into: imageView, completion: nil)
   }
-
-  func loadImage(url: URL?) {
-    guard let url = url else {
-      return
-    }
-    
-    ImageCache.shared.ttl = 30 * 24 * 60 * 60
-
+  
+  fileprivate func loadCommonImage(url: URL, imageView: UIImageView) {
     var options = ImageLoadingOptions(
       placeholder: nil,
       failureImage: nil,
@@ -53,13 +52,35 @@ public extension UIImageView {
       cachePolicy: .default,
       priority: .high)
 
-    Nuke.loadImage(with: request, options: options, into: self, completion: nil)
+    Nuke.loadImage(with: request, into: imageView)
+  }
+  
+  public func prefetch(url: URL?) {
+    guard let url = url else {
+      return
+    }
+    preheater.startPreheating(with: [url])
+  }
+}
+
+public extension UIImageView {
+
+  func loadBottle(url: URL?) {
+    guard let url = url else {
+      return
+    }
+    ImageLoader.shared.loadBottle(url: url, imageView: self)
   }
 
+  func loadImage(url: URL?) {
+    guard let url = url else {
+      return
+    }
+    ImageLoader.shared.loadCommonImage(url: url, imageView: self)
+  }
 }
 
 public func prefetch(url: URL?) {
   guard let url = url else { return }
-  let preheater = ImagePreheater(destination: .diskCache)
-  preheater.startPreheating(with: [url])
+  ImageLoader.shared.prefetch(url: url)
 }

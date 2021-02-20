@@ -176,9 +176,16 @@ final class WineDetailViewController: UIViewController, StarRatingControlCollect
     navigationItem.rightBarButtonItems = [moreBarButtonItem, spacerBarItem, noteBarButtonItem]
     
     view.addSubview(collectionView)
-    collectionView.frame = view.frame
+    collectionView.fill()
     
     interactor?.viewDidLoad()
+  }
+  
+  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    super.viewWillTransition(to: size, with: coordinator)
+    coordinator.animate(alongsideTransition: { _ in
+        self.collectionView.collectionViewLayout.invalidateLayout()
+    })
   }
   
   override func viewWillLayoutSubviews() {
@@ -197,7 +204,7 @@ final class WineDetailViewController: UIViewController, StarRatingControlCollect
 
   @objc
   private func didTapMore(_ button: UIButton) {
-    interactor?.didTapMore()
+    interactor?.didTapMore(button)
   }
 }
 
@@ -365,7 +372,7 @@ extension WineDetailViewController: ButtonCollectionCellDelegate {
 extension WineDetailViewController: ToolCollectionCellDelegate {
   
   func didTapShare(_ button: UIButton) {
-    interactor?.didTapShareButton()
+    interactor?.didTapShareButton(button)
   }
   
   func didTapLike(_ button: UIButton) {

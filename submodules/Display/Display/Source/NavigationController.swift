@@ -9,7 +9,7 @@
 import UIKit
 import Core
 
-public final class NavigationController: UINavigationController {
+open class NavigationController: UINavigationController {
 
   // MARK: - Private Properties
 
@@ -22,7 +22,7 @@ public final class NavigationController: UINavigationController {
     super.init(rootViewController: rootViewController)
   }
 
-  required init?(coder aDecoder: NSCoder) { fatalError() }
+  required public init?(coder aDecoder: NSCoder) { fatalError() }
 
   // MARK: - Lifecycle
 

@@ -13,10 +13,13 @@ def commonPods
   pod 'Firebase/Analytics'
   pod 'Firebase/DynamicLinks'
   pod 'Firebase/RemoteConfig'
+  pod 'Firebase/Analytics'
   pod 'CocoaDebug', :configurations => ['Debug']
-  pod 'SPAlert'
+  pod 'SPAlert', '~> 2.1.4'
   pod "Sheeeeeeeeet"
   pod 'Cosmos', '~> 23.0'
+  pod 'SkyFloatingLabelTextField'
+  pod 'KeychainAccess'
 end
 
 target 'Smart' do
@@ -36,6 +39,7 @@ end
 target 'Display' do
   project 'submodules/Display/Display'
   pod 'Nuke'
+  pod 'SkyFloatingLabelTextField'
 end
 
 target 'Database' do
@@ -45,6 +49,7 @@ end
 
 target 'Core' do
   project 'submodules/Core/Core'
+  pod 'KeychainAccess'
 end
 
 target 'StringFormatting' do
@@ -70,6 +75,23 @@ end
 
 target 'VinchyUI' do
   project 'submodules/VinchyUI/VinchyUI'
+end
+
+target 'VinchyAuthorization' do
+  project 'submodules/VinchyAuthorization/VinchyAuthorization'
+end
+
+target 'VinchyAuthorizationApp' do
+  project 'submodules/VinchyAuthorization/VinchyAuthorization'
+  pod 'Nuke'
+  pod 'SkyFloatingLabelTextField'
+  pod 'CocoaDebug', :configurations => ['Debug']
+  pod 'KeychainAccess'
+end
+
+target 'VinchyAnalytics' do
+  project 'submodules/VinchyAnalytics/VinchyAnalytics'
+  pod 'Firebase/Analytics'
 end
 
 post_install do |installer|

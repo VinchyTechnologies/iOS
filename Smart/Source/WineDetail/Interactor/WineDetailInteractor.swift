@@ -85,8 +85,8 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
   func didRate(value: Double) {
     self.rate = value
   }
-  
-  func didTapMore() {
+
+  func didTapMore(_ button: UIButton) {
     guard let wine = wine else { return }
     var menuItems: [MenuItem] = []
 
@@ -111,7 +111,7 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
     menuItems.append(dislikeMenuItem)
     menuItems.append(reportAnErrorMenuItem)
     
-    router.showMoreActionSheet(menuItems: menuItems, appearance: VinchyActionSheetAppearance())
+    router.showMoreActionSheet(menuItems: menuItems, appearance: VinchyActionSheetAppearance(), button: button)
   }
   
   func didTapPriceButton() {
@@ -146,7 +146,7 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
     }
   }
   
-  func didTapShareButton() {
+  func didTapShareButton(_ button: UIButton) {
     
     guard let wine = wine else { return }
 
@@ -182,8 +182,7 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
       guard let url = url else { return }
 
       let items = [wine.title, url] as [Any]
-      self?.router.presentActivityViewController(items: items)
-
+      self?.router.presentActivityViewController(items: items, button: button)
     }
   }
   

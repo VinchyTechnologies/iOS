@@ -11,7 +11,7 @@ import VinchyCore
 import Core
 
 fileprivate enum C {
-  static let searchSuggestionsCount = 10
+  static let searchSuggestionsCount = 20
 }
 
 final class VinchyInteractor {
