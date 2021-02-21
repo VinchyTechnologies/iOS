@@ -67,6 +67,8 @@ final class ReviewDetailViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    self.sheetViewController?.handleScrollView(self.scrollView)
+    
     view.addSubview(scrollView)
     scrollView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([

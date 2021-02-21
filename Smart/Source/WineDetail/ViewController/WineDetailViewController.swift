@@ -410,6 +410,23 @@ extension WineDetailViewController: UICollectionViewDelegate {
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     navigationItem.title = scrollView.contentOffset.y > 300 ? viewModel?.navigationTitle : nil
   }
+  
+  func collectionView(
+    _ collectionView: UICollectionView,
+    didSelectItemAt indexPath: IndexPath)
+  {
+    guard let type = viewModel?.sections[indexPath.section] else {
+      return
+    }
+    
+    switch type {
+    case .gallery, .title, .rate, .winery, .text, .tool, .list, .ratingAndReview, .tapToRate, .servingTips, .button, .ad, .similarWines:
+      break
+      
+    case .reviews:
+      interactor?.didTapReview(index: indexPath.row)
+    }
+  }
 }
 
 extension WineDetailViewController: ButtonCollectionCellDelegate {

@@ -111,6 +111,28 @@ extension ReviewsViewController: UICollectionViewDelegateFlowLayout {
   
   func collectionView(
     _ collectionView: UICollectionView,
+    didSelectItemAt indexPath: IndexPath)
+  {
+    switch viewModel.state {
+    case .fake(let sections):
+      switch sections[indexPath.section] {
+      case .review:
+        return
+      }
+      
+    case .normal(let sections):
+      switch sections[indexPath.row] {
+      case .review(let model):
+        interactor?.didSelectReview(id: model.id)
+        
+      case .loading:
+        return
+      }
+    }
+  }
+  
+  func collectionView(
+    _ collectionView: UICollectionView,
     layout collectionViewLayout: UICollectionViewLayout,
     sizeForItemAt indexPath: IndexPath)
     -> CGSize

@@ -10,6 +10,7 @@
 		440C284725E13F9D009911EE /* WineDetailCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440C284625E13F9D009911EE /* WineDetailCollectionView.swift */; };
 		4474E36525E02486001C5DE3 /* VinchyAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4474E36425E02486001C5DE3 /* VinchyAnalytics.framework */; };
 		4474E36625E02486001C5DE3 /* VinchyAnalytics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4474E36425E02486001C5DE3 /* VinchyAnalytics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4495625125E2E15A005E79DA /* ReviewDetailRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4495625025E2E15A005E79DA /* ReviewDetailRoutable.swift */; };
 		449D63B225E1054700CBBD1D /* RatingsAndReviewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449D63B125E1054700CBBD1D /* RatingsAndReviewsCell.swift */; };
 		449D63B625E10D5100CBBD1D /* TapToRateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449D63B525E10D5100CBBD1D /* TapToRateCell.swift */; };
 		449F81AC25DD023A00585364 /* RootInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449F81AB25DD023A00585364 /* RootInteractor.swift */; };
@@ -237,6 +238,7 @@
 		356D7CD37446A6F72FDB6021 /* Pods-Smart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart.debug.xcconfig"; path = "Target Support Files/Pods-Smart/Pods-Smart.debug.xcconfig"; sourceTree = "<group>"; };
 		440C284625E13F9D009911EE /* WineDetailCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineDetailCollectionView.swift; sourceTree = "<group>"; };
 		4474E36425E02486001C5DE3 /* VinchyAnalytics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyAnalytics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4495625025E2E15A005E79DA /* ReviewDetailRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDetailRoutable.swift; sourceTree = "<group>"; };
 		449D63B125E1054700CBBD1D /* RatingsAndReviewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingsAndReviewsCell.swift; sourceTree = "<group>"; };
 		449D63B525E10D5100CBBD1D /* TapToRateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapToRateCell.swift; sourceTree = "<group>"; };
 		449F81AB25DD023A00585364 /* RootInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootInteractor.swift; sourceTree = "<group>"; };
@@ -480,6 +482,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4495624D25E2E147005E79DA /* Routable */ = {
+			isa = PBXGroup;
+			children = (
+				4495625025E2E15A005E79DA /* ReviewDetailRoutable.swift */,
+			);
+			path = Routable;
+			sourceTree = "<group>";
+		};
 		449F81AA25DD022000585364 /* Root */ = {
 			isa = PBXGroup;
 			children = (
@@ -683,6 +693,7 @@
 				44EFDB5F25E263E00076ED6D /* Input */,
 				44EFDB6925E263E00076ED6D /* Interactor */,
 				44EFDB6325E263E00076ED6D /* Presenter */,
+				4495624D25E2E147005E79DA /* Routable */,
 				44EFDB6C25E263E00076ED6D /* Router */,
 				44EFDB6625E263E00076ED6D /* ViewController */,
 				44EFDB5D25E263E00076ED6D /* ViewModel */,
@@ -1767,6 +1778,7 @@
 				CA819848253864080056A1C6 /* WineDetailPresenterProtocol.swift in Sources */,
 				CA819847253864080056A1C6 /* WineDetailPresenter.swift in Sources */,
 				CAF514212461C52400667ED0 /* MorePresenter.swift in Sources */,
+				4495625125E2E15A005E79DA /* ReviewDetailRoutable.swift in Sources */,
 				CA99E65724F6EDDD00C36BEE /* ButtonCollectionCell.swift in Sources */,
 				44EFDB1B25E176EC0076ED6D /* ReviewsPresenter.swift in Sources */,
 				449F81CE25DD050400585364 /* DeeplinkRouter.swift in Sources */,

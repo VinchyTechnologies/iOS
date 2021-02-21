@@ -20,6 +20,7 @@ def commonPods
   pod 'Cosmos', '~> 23.0'
   pod 'SkyFloatingLabelTextField'
   pod 'KeychainAccess'
+  pod 'FittedSheets'
 end
 
 target 'Smart' do

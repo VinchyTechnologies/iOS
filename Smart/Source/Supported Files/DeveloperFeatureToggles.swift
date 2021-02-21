@@ -23,4 +23,4 @@ let isDescriptionInWineDetailEnabled = false
 var isAdAvailable = false
 let isProfileCellAvailable = false
 let isMapOnVinchyVCAvailable = false
-let isReviewAvailable = false
+let isReviewAvailable = true

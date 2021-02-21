@@ -101,4 +101,8 @@ extension ReviewsInteractor: ReviewsInteractorProtocol {
   func willDisplayLoadingView() {
     loadMoreData()
   }
+  
+  func didSelectReview(id: Int64) {
+    router.showBottomSheetReviewDetailViewController(reviewInput: .init(rate: 4.5, author: "aleksei_smirnov", date: "29.08.21", reviewText: "text"))
+  }
 }

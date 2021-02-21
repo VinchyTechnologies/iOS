@@ -81,6 +81,10 @@ final class WineDetailInteractor {
 // MARK: - WineDetailInteractorProtocol
 
 extension WineDetailInteractor: WineDetailInteractorProtocol {
+  
+  func didTapReview(index: Int) {
+    router.showBottomSheetReviewDetailViewController(reviewInput: .init(rate: 4.5, author: "aleksei_swirnov", date: "29.08.20", reviewText: "text"))
+  }
 
   func didTapSeeAllReviews() {
     print(#function)
