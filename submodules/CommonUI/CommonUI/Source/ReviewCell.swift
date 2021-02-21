@@ -72,7 +72,6 @@ public final class ReviewCell: HighlightCollectionCell, Reusable {
     let label = UILabel()
     label.font = Font.semibold(16)
     label.textColor = .dark
-    label.text = "aleksei_smirnov"
     return label
   }()
   

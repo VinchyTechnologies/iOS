@@ -75,4 +75,17 @@ final class Assembly {
     controller.hidesBottomBarWhenPushed = true
     return controller
   }
+  
+  static func buildReviewDetailViewController(
+    rate: Double?,
+    author: String?,
+    date: String?,
+    reviewText: String?)
+    -> UIViewController
+  {
+    let controller = ReviewDetailAssembly.assemblyModule(
+      input: .init(rate: rate, author: author, date: date, reviewText: reviewText))
+    controller.hidesBottomBarWhenPushed = true
+    return controller
+  }
 }

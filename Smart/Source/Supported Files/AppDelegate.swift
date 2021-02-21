@@ -21,7 +21,7 @@ import AdSupport
 #endif
 
 #if DEBUG
-import CocoaDebug
+//import CocoaDebug
 #endif
 
 @main
@@ -35,7 +35,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
   {
     
     #if DEBUG
-    CocoaDebug.enable()
+//    CocoaDebug.disable()
     #endif
     //        FirebaseConfiguration.shared.setLoggerLevel(.min)
     FirebaseApp.configure()
