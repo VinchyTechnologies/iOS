@@ -14,7 +14,7 @@ def commonPods
   pod 'Firebase/DynamicLinks'
   pod 'Firebase/RemoteConfig'
   pod 'Firebase/Analytics'
-#  pod 'CocoaDebug', :configurations => ['Debug']
+  pod 'CocoaDebug', :configurations => ['Debug']
   pod 'SPAlert', '~> 2.1.4'
   pod "Sheeeeeeeeet"
   pod 'Cosmos', '~> 23.0'

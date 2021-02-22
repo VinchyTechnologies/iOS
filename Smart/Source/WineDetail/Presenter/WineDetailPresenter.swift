@@ -9,6 +9,7 @@
 import VinchyCore
 import Display
 import StringFormatting
+import CommonUI
 
 fileprivate enum C {
   
@@ -101,16 +102,40 @@ final class WineDetailPresenter {
     }
   }
   
-  private func buildReview() -> [WineDetailViewModel.Section] {
-    let str = "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum is that it has a more-or-less normal distribution of letters, as opposed to using 'Content here, content here', making it look like readable English. Many desktop publishing packages and web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes by accident, sometimes on purpose (injected humour and the like"
+  private func buildReview(wine: Wine) -> [WineDetailViewModel.Section] {
+    
+    let reviewCellViewModels: [ReviewCellViewModel] = wine.reviews.compactMap({
+      if $0.comment?.isEmpty == true || $0.comment == nil {
+        return nil
+      }
+      
+      let dateText: String?
+      
+      if $0.updateDate == nil {
+        dateText = $0.publicationDate.toDate()
+      } else {
+        dateText = $0.updateDate.toDate()
+      }
+      
+      return ReviewCellViewModel(
+        id: $0.id,
+        userNameText: nil,
+        dateText: dateText,
+        reviewText: $0.comment,
+        rate: $0.rating)
+    })
+    
+    if reviewCellViewModels.isEmpty {
+      return []
+    }
+    
     return [
-      .reviews([
-        .init(id: 1, userNameText: "aleksei_smirnov", dateText: "29.08.20", reviewText: str, rate: 4.5),
-        .init(id: 2, userNameText: "aleksei_smirnov", dateText: "29.08.20", reviewText: str, rate: 4.0),
-        .init(id: 3, userNameText: "aleksei_smirnov", dateText: "29.08.20", reviewText: str, rate: 3.5),
-        .init(id: 4, userNameText: "aleksei_smirnov", dateText: "29.08.20", reviewText: str, rate: 2.5),
-        .init(id: 5, userNameText: "aleksei_smirnov", dateText: "29.08.20", reviewText: str, rate: 1.5),
-      ])
+      .ratingAndReview([
+        .init(titleText: "Ratings",
+              moreText: "See All",
+              shouldShowMoreText: reviewCellViewModels.count >= 5)
+      ]),
+      .reviews(reviewCellViewModels),
     ]
   }
   
@@ -188,7 +213,7 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
     ]
     
     if isReviewAvailable {
-      sections += buildStarRateControl(rate: rate)
+//      sections += buildStarRateControl(rate: rate)
     }
     
     sections += [
@@ -211,15 +236,11 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
     sections += buildGeneralInfo(wine: wine)
     
     if isReviewAvailable {
-      sections += [.ratingAndReview([.init(titleText: "Ratings & Reviews", moreText: "See All")])]
 //      sections += [.tapToRate([.init(titleText: "Tap to Rate:", rate: 0)])]
-      sections += buildReview()
+      sections += buildReview(wine: wine)
       sections += [.button([.init(buttonText: localized("write_review").firstLetterUppercased())])]
     }
-    /*
-    sections += buildDislikeButton(wine: wine, isDisliked: isDisliked)
-    sections += buildReportAnErrorButton()
-    */
+
     if isAdAvailable {
       sections += [.ad([1])] // TODO: - Add Real Model
     }
@@ -256,5 +277,4 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
         titleText: localized("unloved").firstLetterUppercased(),
         descriptionText: localized("will_recommend_less").firstLetterUppercased()))
   }
-
 }

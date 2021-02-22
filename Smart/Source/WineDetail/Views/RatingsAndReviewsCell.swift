@@ -17,10 +17,12 @@ struct RatingsAndReviewsCellViewModel: ViewModelProtocol {
 
   fileprivate let titleText: String?
   fileprivate let moreText: String?
+  fileprivate let shouldShowMoreText: Bool
 
-  init(titleText: String?, moreText: String?) {
+  init(titleText: String?, moreText: String?, shouldShowMoreText: Bool) {
     self.titleText = titleText
     self.moreText = moreText
+    self.shouldShowMoreText = shouldShowMoreText
   }
 }
 
@@ -79,5 +81,6 @@ extension RatingsAndReviewsCell: Decoratable {
   func decorate(model: ViewModel) {
     titleLabel.text = model.titleText
     moreButton.setTitle(model.moreText, for: .normal)
+    moreButton.isHidden = !model.shouldShowMoreText
   }
 }
