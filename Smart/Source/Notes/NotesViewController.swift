@@ -25,8 +25,7 @@ final class NotesViewController: UIViewController, UISearchControllerDelegate, U
   
   private var notes: [Note] = [] {
     didSet {
-      notes.isEmpty ? showEmptyView() : hideEmptyView()
-      tableView.reloadData()
+      updateEmptyView()
     }
   }
 
@@ -108,12 +107,20 @@ final class NotesViewController: UIViewController, UISearchControllerDelegate, U
     tableView.backgroundView = nil
   }
   
-  private func showEmptyView() {
+  private func showEmptyView(title: String, subtitle: String) {
     let errorView = ErrorView(frame: view.frame)
-    errorView.decorate(model: .init(titleText: localized("nothing_here").firstLetterUppercased(),
-                                    subtitleText: localized("you_have_not_written_any_notes_yet").firstLetterUppercased(),
+    errorView.decorate(model: .init(titleText: title.firstLetterUppercased(),
+                                    subtitleText: subtitle.firstLetterUppercased(),
                                     buttonText: nil))
     tableView.backgroundView = errorView
+  }
+  private func updateEmptyView() {
+    if searchController.searchBar.text?.count == 0 {
+      notes.isEmpty ? showEmptyView(title: localized("nothing_here"), subtitle: localized("you_have_not_written_any_notes_yet")) : hideEmptyView()
+    } else {
+      notes.isEmpty ? showEmptyView(title: localized("nothing_here"), subtitle: localized("no_notes_found_for_your_request")) : hideEmptyView()
+    }
+    tableView.reloadData()
   }
 }
 
