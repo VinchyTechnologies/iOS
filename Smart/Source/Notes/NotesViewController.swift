@@ -17,28 +17,12 @@ import Display
 final class NotesViewController: UIViewController, UISearchControllerDelegate, UISearchResultsUpdating {
   
   // MARK: - Private Properties
+  
   private let tableView = UITableView()
   private lazy var notesRealm = realm(path: .notes)
   private let dataBase = Database<Note>()
   private var notesNotificationToken: NotificationToken?
   private let throttler = Throttler()
-  
-  private var notes: [Note] = [] {
-    didSet {
-      updateEmptyView()
-    }
-  }
-
-  // MARK: - Lifecycle
-  
-  init() {
-    super.init(nibName: nil, bundle: nil)
-    notesNotificationToken = notesRealm.observe { _, _ in
-      self.notes = self.dataBase.all(at: .notes)
-    }
-  }
-  
-  required init?(coder: NSCoder) { fatalError() }
   
   private lazy var searchController: UISearchController = {
     let searchController = UISearchController(searchResultsController: nil)
@@ -53,6 +37,23 @@ final class NotesViewController: UIViewController, UISearchControllerDelegate, U
     searchController.hidesNavigationBarDuringPresentation = true
     return searchController
   }()
+  
+  private var notes: [Note] = [] {
+    didSet {
+      updateUI()
+    }
+  }
+
+  // MARK: - Lifecycle
+  
+  init() {
+    super.init(nibName: nil, bundle: nil)
+    notesNotificationToken = notesRealm.observe { _, _ in
+      self.notes = self.dataBase.all(at: .notes)
+    }
+  }
+  
+  required init?(coder: NSCoder) { fatalError() }
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -77,9 +78,13 @@ final class NotesViewController: UIViewController, UISearchControllerDelegate, U
     notesNotificationToken?.invalidate()
   }
   
+  // MARK: - Internaal Methods
+  
   func updateSearchResults(for searchController: UISearchController) {
     didEnterSearchText(searchController.searchBar.text)
   }
+  
+  // MARK: - Private Methods
   
   private func didEnterSearchText(_ searchText: String?) {
     
@@ -101,7 +106,6 @@ final class NotesViewController: UIViewController, UISearchControllerDelegate, U
         predicate: predicate) ?? []
     }
   }
-  // MARK: - Private Methods
   
   private func hideEmptyView() {
     tableView.backgroundView = nil
@@ -114,8 +118,9 @@ final class NotesViewController: UIViewController, UISearchControllerDelegate, U
                                     buttonText: nil))
     tableView.backgroundView = errorView
   }
-  private func updateEmptyView() {
-    if searchController.searchBar.text?.count == 0 {
+  
+  private func updateUI() {
+    if searchController.searchBar.text?.isEmpty == true {
       notes.isEmpty ? showEmptyView(title: localized("nothing_here"), subtitle: localized("you_have_not_written_any_notes_yet")) : hideEmptyView()
     } else {
       notes.isEmpty ? showEmptyView(title: localized("nothing_here"), subtitle: localized("no_notes_found_for_your_request")) : hideEmptyView()
