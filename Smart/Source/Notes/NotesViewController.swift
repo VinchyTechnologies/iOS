@@ -12,39 +12,57 @@ import Core
 import StringFormatting
 import CommonUI
 import Database
+import Display
 
-final class NotesViewController: UIViewController {
-
+final class NotesViewController: UIViewController, UISearchControllerDelegate, UISearchResultsUpdating {
+  
   // MARK: - Private Properties
-
+  
   private let tableView = UITableView()
   private lazy var notesRealm = realm(path: .notes)
   private let dataBase = Database<Note>()
   private var notesNotificationToken: NotificationToken?
-
+  private let throttler = Throttler()
+  
+  private lazy var searchController: UISearchController = {
+    let searchController = UISearchController(searchResultsController: nil)
+    searchController.obscuresBackgroundDuringPresentation = false
+    searchController.searchBar.autocapitalizationType = .none
+    searchController.searchBar.searchTextField.font = Font.medium(20)
+    searchController.searchBar.searchTextField.layer.cornerRadius = 20
+    searchController.searchBar.searchTextField.layer.masksToBounds = true
+    searchController.searchBar.searchTextField.layer.cornerCurve = .continuous
+    searchController.delegate = self
+    searchController.searchResultsUpdater = self
+    searchController.hidesNavigationBarDuringPresentation = true
+    return searchController
+  }()
+  
   private var notes: [Note] = [] {
     didSet {
-      notes.isEmpty ? showEmptyView() : hideEmptyView()
-      tableView.reloadData()
+      updateUI()
     }
   }
 
   // MARK: - Lifecycle
-
+  
   init() {
     super.init(nibName: nil, bundle: nil)
     notesNotificationToken = notesRealm.observe { _, _ in
       self.notes = self.dataBase.all(at: .notes)
     }
   }
-
+  
   required init?(coder: NSCoder) { fatalError() }
-
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-
+    
     navigationItem.title = localized("notes").firstLetterUppercased()
-
+    navigationItem.searchController = searchController
+    navigationItem.hidesSearchBarWhenScrolling = false
+    navigationController?.navigationBar.sizeToFit()
+    
     view.addSubview(tableView)
     tableView.fill()
     tableView.dataSource = self
@@ -52,41 +70,77 @@ final class NotesViewController: UIViewController {
     tableView.tableFooterView = UIView()
     tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
     tableView.register(WineTableCell.self, forCellReuseIdentifier: WineTableCell.reuseId)
-
+    
     notes = dataBase.all(at: .notes)
   }
-
+  
   deinit {
     notesNotificationToken?.invalidate()
   }
-
+  
+  // MARK: - Internaal Methods
+  
+  func updateSearchResults(for searchController: UISearchController) {
+    didEnterSearchText(searchController.searchBar.text)
+  }
+  
   // MARK: - Private Methods
-
+  
+  private func didEnterSearchText(_ searchText: String?) {
+    
+    guard
+      let searchText = searchText?.firstLetterUppercased(),
+      !searchText.isEmpty
+    else {
+      throttler.cancel()
+      self.notes = self.dataBase.all(at: .notes)
+      return
+    }
+    
+    throttler.cancel()
+    
+    throttler.throttle(delay: .milliseconds(600)) { [weak self] in
+      let predicate = NSPredicate(format: "wineTitle CONTAINS %@ OR noteText CONTAINS %@", searchText, searchText)
+      self?.notes = self?.dataBase.filter(
+        at: .notes,
+        predicate: predicate) ?? []
+    }
+  }
+  
   private func hideEmptyView() {
     tableView.backgroundView = nil
   }
-
-  private func showEmptyView() {
+  
+  private func showEmptyView(title: String, subtitle: String) {
     let errorView = ErrorView(frame: view.frame)
-    errorView.decorate(model: .init(titleText: localized("nothing_here").firstLetterUppercased(),
-                                    subtitleText: localized("you_have_not_written_any_notes_yet").firstLetterUppercased(),
+    errorView.decorate(model: .init(titleText: title.firstLetterUppercased(),
+                                    subtitleText: subtitle.firstLetterUppercased(),
                                     buttonText: nil))
     tableView.backgroundView = errorView
+  }
+  
+  private func updateUI() {
+    if searchController.searchBar.text?.isEmpty == true {
+      notes.isEmpty ? showEmptyView(title: localized("nothing_here"), subtitle: localized("you_have_not_written_any_notes_yet")) : hideEmptyView()
+    } else {
+      notes.isEmpty ? showEmptyView(title: localized("nothing_here"), subtitle: localized("no_notes_found_for_your_request")) : hideEmptyView()
+    }
+    tableView.reloadData()
   }
 }
 
 // MARK: - UITableViewDataSource
 
 extension NotesViewController: UITableViewDataSource {
-
+  
   func tableView(
     _ tableView: UITableView,
     numberOfRowsInSection section: Int)
-  -> Int
+    -> Int
   {
     notes.count
   }
-
+  
   func tableView(
     _ tableView: UITableView,
     cellForRowAt indexPath: IndexPath)
@@ -99,18 +153,17 @@ extension NotesViewController: UITableViewDataSource {
     }
     return .init()
   }
-
+  
   func tableView(
     _ tableView: UITableView,
     commit editingStyle: UITableViewCell.EditingStyle,
     forRowAt indexPath: IndexPath)
   {
     if editingStyle == .delete, let note = notes[safe: indexPath.row] {
-
+      
       let alert = UIAlertController(title: localized("delete_note"),
                                     message: localized("this_action_cannot_to_be_undone"),
                                     preferredStyle: .alert)
-
       alert.addAction(UIAlertAction(title: localized("delete"), style: .destructive, handler:{ [weak self] _ in
         guard let self = self else { return }
         self.dataBase.remove(object: note, at: .notes)
@@ -118,9 +171,10 @@ extension NotesViewController: UITableViewDataSource {
       }))
       alert.addAction(UIAlertAction(title: localized("cancel"), style: .cancel, handler: nil))
       present(alert, animated: true, completion: nil)
+      self.tableView.reloadData()
     }
   }
-
+  
   func tableView(
     _ tableView: UITableView,
     titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath)
@@ -133,7 +187,7 @@ extension NotesViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension NotesViewController: UITableViewDelegate {
-
+  
   func tableView(
     _ tableView: UITableView,
     didSelectRowAt indexPath: IndexPath)
@@ -142,5 +196,11 @@ extension NotesViewController: UITableViewDelegate {
     guard let note = notes[safe: indexPath.row] else { return }
     let controller = Assembly.buildWriteNoteViewController(for: note)
     navigationController?.pushViewController(controller, animated: true)
+  }
+  
+  func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+    if !navigationItem.hidesSearchBarWhenScrolling {
+      navigationItem.hidesSearchBarWhenScrolling = true
+    }
   }
 }
