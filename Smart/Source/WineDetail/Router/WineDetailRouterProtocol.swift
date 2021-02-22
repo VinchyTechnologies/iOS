@@ -10,7 +10,7 @@ import Database
 import VinchyCore
 import Sheeeeeeeeet
 
-protocol WineDetailRouterProtocol: WineDetailRoutable {
+protocol WineDetailRouterProtocol: WineDetailRoutable, ReviewsRoutable {
   func presentActivityViewController(items: [Any], button: UIButton)
   func pushToWriteViewController(note: Note, noteText: String?)
   func pushToWriteViewController(wine: Wine)

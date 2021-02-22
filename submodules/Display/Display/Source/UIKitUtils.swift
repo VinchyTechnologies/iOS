@@ -31,9 +31,9 @@ public extension Reusable where Self: UICollectionReusableView {
 }
 
 public extension UICollectionView {
-
+  
   typealias ReusableCollectionViewCell = Reusable & UICollectionViewCell
-
+  
   func register(_ array: ReusableCollectionViewCell.Type...) {
     array.forEach { (type) in
       register(type.self, forCellWithReuseIdentifier: type.reuseId)
@@ -44,14 +44,14 @@ public extension UICollectionView {
 public protocol ViewModelProtocol { }
 
 public protocol Decoratable {
-
+  
   associatedtype ViewModel: ViewModelProtocol
-
+  
   func decorate(model: ViewModel)
 }
 
 public extension UIApplication {
-
+  
   var asKeyWindow: UIWindow? {
     UIApplication.shared.connectedScenes
       .filter({ $0.activationState == .foregroundActive })
@@ -60,19 +60,19 @@ public extension UIApplication {
       .first?.windows
       .filter({ $0.isKeyWindow }).first
   }
-
+  
   static func topViewController(base: UIViewController? = UIApplication.shared.asKeyWindow?.rootViewController) -> UIViewController? {
-
+    
     if let nav = base as? UINavigationController {
       return topViewController(base: nav.visibleViewController)
-
+      
     } else if let tab = base as? UITabBarController, let selected = tab.selectedViewController {
       return topViewController(base: selected)
-
+      
     } else if let presented = base?.presentedViewController {
       return topViewController(base: presented)
     }
-
+    
     return base
   }
 }
@@ -98,11 +98,11 @@ public extension UIApplication {
 
 public extension UIView {
   func fill() {
-
+    
     guard let superView = superview else {
       return
     }
-
+    
     translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       topAnchor.constraint(equalTo: superView.topAnchor),

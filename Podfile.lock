@@ -1,5 +1,6 @@
 PODS:
   - CocoaDebug (1.5.8)
+  - Cosmos (23.0.0)
   - Firebase/Analytics (7.1.0):
     - Firebase/Core
   - Firebase/Core (7.1.0):
@@ -98,6 +99,7 @@ PODS:
 
 DEPENDENCIES:
   - CocoaDebug
+  - Cosmos (~> 23.0)
   - Firebase/Analytics
   - Firebase/DynamicLinks
   - Firebase/RemoteConfig
@@ -108,12 +110,13 @@ DEPENDENCIES:
   - RealmSwift (~> 10.0.0)
   - Sheeeeeeeeet
   - SkyFloatingLabelTextField
-  - SPAlert
+  - SPAlert (~> 2.1.4)
   - SwiftLint
 
 SPEC REPOS:
   trunk:
     - CocoaDebug
+    - Cosmos
     - Firebase
     - FirebaseABTesting
     - FirebaseAnalytics
@@ -141,6 +144,7 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   CocoaDebug: fcf58698e6cebe8a4ea81b7c5aca44cfbd181d9c
+  Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
   Firebase: 78e8dd2e39d653de6270432ad84fe8b59f7bf4e8
   FirebaseABTesting: aaea04ea67858a4a9dce0d22ef645477dff50146
   FirebaseAnalytics: 7f165a56dea86ddd5b8ce02af3bee982c683405c
@@ -166,6 +170,6 @@ SPEC CHECKSUMS:
   SPAlert: 1a8afa1c6ac86a82ab5b2cfdf7f9a51e68cb6c0c
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
 
-PODFILE CHECKSUM: 196e9aba2935bc327ec43fd6e9582d27404b69db
+PODFILE CHECKSUM: fde2f4f8aa6ae13c86b7deb68b867416512fe879
 
-COCOAPODS: 1.10.0
+COCOAPODS: 1.10.1

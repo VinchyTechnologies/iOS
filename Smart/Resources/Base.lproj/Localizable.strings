@@ -62,6 +62,7 @@
 "unloved" = "unloved";
 "will_recommend_less" = "We'll stop recommending more like this";
 "similar_wines" = "similar wines";
+"write_review" = "write review";
 
 // MARK: - Sugar
 "sugar" = "sugar";
