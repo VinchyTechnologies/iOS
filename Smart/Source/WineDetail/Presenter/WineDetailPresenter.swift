@@ -133,7 +133,7 @@ final class WineDetailPresenter {
       .ratingAndReview([
         .init(titleText: "Ratings",
               moreText: "See All",
-              shouldShowMoreText: reviewCellViewModels.count >= 5)
+              shouldShowMoreText: /*reviewCellViewModels.count >= 5*/false)
       ]),
       .reviews(reviewCellViewModels),
     ]

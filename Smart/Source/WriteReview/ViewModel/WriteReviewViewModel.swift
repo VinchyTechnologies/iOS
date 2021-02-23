@@ -9,5 +9,7 @@
 import Foundation
 
 struct WriteReviewViewModel {
-
+  let rating: Double?
+  let reviewText: String?
+  let navigationTitle: String?
 }

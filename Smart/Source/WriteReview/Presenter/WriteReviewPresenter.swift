@@ -6,13 +6,15 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import StringFormatting
 
 final class WriteReviewPresenter {
     
+  let input: WriteReviewInput
   weak var viewController: WriteReviewViewControllerProtocol?
   
-  init(viewController: WriteReviewViewControllerProtocol) {
+  init(input: WriteReviewInput, viewController: WriteReviewViewControllerProtocol) {
+    self.input = input
     self.viewController = viewController
   }
 }
@@ -22,10 +24,13 @@ final class WriteReviewPresenter {
 extension WriteReviewPresenter: WriteReviewPresenterProtocol {
   
   func update(rating: Double, comment: String?) {
-    viewController?.updateUI(rating: rating, comment: comment)
+    let navigationTitle = input.reviewID == nil
+      ? localized("write_review").firstLetterUppercased()
+      : localized("update_review").firstLetterUppercased()
+    viewController?.updateUI(viewModel: .init(rating: rating, reviewText: comment, navigationTitle: navigationTitle))
   }
   
   func setPlaceholder() {
-    viewController?.setPlaceholder(placeholder: "placeholder")
+    viewController?.setPlaceholder(placeholder: localized("review_placeholder"))
   }
 }

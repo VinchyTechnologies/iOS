@@ -47,12 +47,12 @@ private enum ReviewsEndpoint: EndpointProtocol {
     switch self {
     case .all(let wineID, let accountID, let offset, let limit):
       var params: Parameters = [
-        ("wine_id", wineID),
-        ("offset", offset),
-        ("limit", limit),
+        ("wine_id", String(wineID)),
+        ("offset", String(offset)),
+        ("limit", String(limit)),
       ]
       if let accountID = accountID {
-        params += [("account_id", accountID)]
+        params += [("account_id", String(accountID))]
       }
       return params
       

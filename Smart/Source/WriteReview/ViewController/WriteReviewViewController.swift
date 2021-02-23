@@ -68,7 +68,6 @@ final class WriteReviewViewController: UIViewController {
     view.backgroundColor = .mainBackground
     
     navigationItem.largeTitleDisplayMode = .never
-    navigationItem.title = "Update review"
     navigationItem.leftBarButtonItem = .init(
       barButtonSystemItem: .cancel,
       target: self,
@@ -148,9 +147,10 @@ final class WriteReviewViewController: UIViewController {
 
 extension WriteReviewViewController: WriteReviewViewControllerProtocol {
   
-  func updateUI(rating: Double, comment: String?) {
-    ratingView.rating = rating
-    textView.text = comment
+  func updateUI(viewModel: WriteReviewViewModel) {
+    ratingView.rating = viewModel.rating ?? 0
+    textView.text = viewModel.reviewText
+    navigationItem.title = viewModel.navigationTitle
   }
   
   func setPlaceholder(placeholder: String?) {

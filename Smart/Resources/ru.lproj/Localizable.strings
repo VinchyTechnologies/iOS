@@ -63,6 +63,8 @@
 "will_recommend_less" = "Мы будем стараться предлагать меньше подобных вин";
 "similar_wines" = "похожие вина";
 "write_review" = "написать отзыв";
+"update_review" = "Обновить отзыв";
+"review_placeholder" = "Отзыв(Необязательно)";
 
 // MARK: - Sugar
 "sugar" = "сахар";

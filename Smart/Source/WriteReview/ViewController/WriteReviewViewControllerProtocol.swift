@@ -10,5 +10,5 @@ import Foundation
 
 protocol WriteReviewViewControllerProtocol: AnyObject {
   func setPlaceholder(placeholder: String?)
-  func updateUI(rating: Double, comment: String?)
+  func updateUI(viewModel: WriteReviewViewModel)
 }
