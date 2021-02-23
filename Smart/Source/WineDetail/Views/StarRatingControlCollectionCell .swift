@@ -11,6 +11,7 @@ import Display
 import Cosmos
 
 struct StarRatingControlCollectionViewCellViewModel: ViewModelProtocol {
+  
   fileprivate let rate: Double
   
   init(rate: Double) {
@@ -18,38 +19,43 @@ struct StarRatingControlCollectionViewCellViewModel: ViewModelProtocol {
   }
 }
 
-protocol StarRatingControlCollectionCellDelegate: class {
-  func didRate(rating: Double)
-}
-
 final class StarRatingControlCollectionCell: UICollectionViewCell, Reusable {
   
-  weak var delegate: StarRatingControlCollectionCellDelegate?
-  
+  private let rateLabel: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.font = Font.with(size: 35, design: .round, traits: .bold)
+    label.textColor = .dark
+    return label
+  }()
+    
   private lazy var ratingView: CosmosView = {
     var view = CosmosView()
     view.settings.filledColor = .accent
     view.settings.emptyBorderColor = .accent
     view.settings.starSize = 32
-    view.settings.fillMode = .half
-    view.settings.minTouchRating = 0
+    view.settings.starMargin = 0
     return view
   }()
   
   override init(frame: CGRect) {
     super.init(frame: frame)
     
-    contentView.addSubview(ratingView)
+    contentView.addSubview(rateLabel)
+    rateLabel.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      ratingView.topAnchor.constraint(equalTo: contentView.topAnchor),
-      ratingView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-      ratingView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-      ratingView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+      rateLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+      rateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+      rateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
     ])
     
-    ratingView.didFinishTouchingCosmos = { rating in
-      self.delegate?.didRate(rating: rating)
-    }
+    contentView.addSubview(ratingView)
+    ratingView.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      ratingView.leadingAnchor.constraint(equalTo: rateLabel.trailingAnchor, constant: 6),
+      ratingView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor),
+      ratingView.centerYAnchor.constraint(equalTo: rateLabel.centerYAnchor),
+    ])
   }
   
   required init?(coder: NSCoder) { fatalError() }
@@ -61,6 +67,7 @@ extension StarRatingControlCollectionCell: Decoratable {
   typealias ViewModel = StarRatingControlCollectionViewCellViewModel
   
   func decorate(model: ViewModel) {
+    rateLabel.text = String(model.rate)
     ratingView.rating = model.rate
   }
 }

@@ -19,11 +19,8 @@ fileprivate enum C {
   static let imageConfig = UIImage.SymbolConfiguration(pointSize: 18, weight: .medium, scale: .default)
 }
 
-final class WineDetailViewController: UIViewController, StarRatingControlCollectionCellDelegate {
-  func didRate(rating: Double) {
-    interactor?.didRate(value: rating)
-  }
-  
+final class WineDetailViewController: UIViewController {
+ 
   // MARK: - Public Properties
   
   var interactor: WineDetailInteractorProtocol?
@@ -39,7 +36,6 @@ final class WineDetailViewController: UIViewController, StarRatingControlCollect
       }
     }
   }
-  private var rate: Double = 0.0
   
   private lazy var layout = UICollectionViewCompositionalLayout { [weak self] (sectionNumber, _) -> NSCollectionLayoutSection? in
     
@@ -322,7 +318,6 @@ extension WineDetailViewController: UICollectionViewDataSource {
     // swiftlint:disable:next force_cast
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StarRatingControlCollectionCell.reuseId, for: indexPath) as! StarRatingControlCollectionCell
       cell.decorate(model: model[indexPath.row])
-      cell.delegate = self
       return cell
             
     case .winery(let model), .text(let model):
