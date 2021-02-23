@@ -8,9 +8,8 @@
 
 public struct Review: Decodable {
   
-  public let id: Int64
+  public let id: Int
   public let accountID: Int64
-  public let wineID: Int64
   public let rating: Double
   public let comment: String?
   public let publicationDate: String
@@ -19,7 +18,6 @@ public struct Review: Decodable {
   private enum CodingKeys: String, CodingKey {
     case id = "review_id"
     case accountID = "account_id"
-    case wineID = "wine_id"
     case rating
     case comment
     case publicationDate = "publication_date"

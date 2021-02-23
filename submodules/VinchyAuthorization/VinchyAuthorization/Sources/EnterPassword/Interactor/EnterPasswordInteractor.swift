@@ -77,6 +77,8 @@ extension EnterPasswordInteractor: EnterPasswordInteractorProtocol {
         case .success(let model):
           Keychain.shared.accessToken = model.accessToken
           Keychain.shared.refreshToken = model.refreshToken
+          UserDefaultsConfig.accountEmail = model.email
+          UserDefaultsConfig.accountID = model.accountID
           self?.router.dismissAndRequestSuccess(output: .init(accountID: model.accountID, email: model.email))
           
         case .failure(let error):

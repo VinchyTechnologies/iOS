@@ -28,6 +28,7 @@ final class WriteNoteViewController: UIViewController {
     textView.keyboardDismissMode = .interactive
     textView.showsVerticalScrollIndicator = false
     textView.alwaysBounceVertical = true
+    textView.placeholderColor = .blueGray
     return textView
   }()
 
@@ -63,7 +64,6 @@ final class WriteNoteViewController: UIViewController {
       bottomConstraint,
     ])
     
-    textView.placeholderColor = .blueGray
     configureKeyboardHelper()
     interactor?.viewDidLoad()
     interactor?.didStartWriteText()

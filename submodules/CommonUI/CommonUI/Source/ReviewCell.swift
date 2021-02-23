@@ -12,14 +12,14 @@ import Cosmos
 
 public struct ReviewCellViewModel: ViewModelProtocol {
   
-  public let id: Int64
+  public let id: Int
   fileprivate let userNameText: String?
   fileprivate let dateText: String?
   fileprivate let reviewText: String?
   fileprivate let rate: Double?
   
   public init(
-    id: Int64,
+    id: Int,
     userNameText: String?,
     dateText: String?,
     reviewText: String?,

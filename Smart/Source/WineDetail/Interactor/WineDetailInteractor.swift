@@ -11,6 +11,8 @@ import Database
 import EmailService
 import Sheeeeeeeeet
 import FirebaseDynamicLinks
+import VinchyAuthorization
+import Core
 
 enum WineDetailMoreActions {
   case reportAnError
@@ -82,8 +84,22 @@ final class WineDetailInteractor {
 
 extension WineDetailInteractor: WineDetailInteractorProtocol {
   
-  func didTapReview(index: Int) {
-//    router.showBottomSheetReviewDetailViewController(reviewInput: .init(rate: 4.5, author: "aleksei_swirnov", date: "29.08.20", reviewText: "text"))
+  func didTapReview(reviewID: Int) {
+    guard
+      let wine = wine,
+      let review = wine.reviews.first(where: { $0.id == reviewID })
+    else {
+      return
+    }
+    
+    let dateText: String?
+    if review.updateDate == nil {
+      dateText = review.publicationDate.toDate()
+    } else {
+      dateText = review.updateDate.toDate()
+    }
+    
+    router.showBottomSheetReviewDetailViewController(reviewInput: .init(rate: review.rating, author: nil, date: dateText, reviewText: review.comment))
   }
 
   func didTapSeeAllReviews() {
@@ -94,7 +110,50 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
   }
   
   func didTapWriteReviewButton() {
+    
     print(#function)
+    
+    guard let wineID = wine?.id else {
+      return
+    }
+    
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+      self.dispatchWorkItemHud.perform()
+    }
+    
+    if UserDefaultsConfig.accountID != 0 {
+      Reviews.shared.getReviews(
+        wineID: wineID,
+        accountID: UserDefaultsConfig.accountID,
+        offset: 1,
+        limit: 1) { [weak self] result in
+        
+        guard let self = self else { return }
+        
+        self.dispatchWorkItemHud.cancel()
+        DispatchQueue.main.async {
+          self.presenter.stopLoading()
+        }
+        
+        switch result {
+        case .success(let model):
+          guard let review = model.first else {
+            self.router.presentWriteReviewViewController(reviewID: nil, wineID: wineID, rating: 0, reviewText: nil)
+            return
+          }
+          self.router.presentWriteReviewViewController(
+            reviewID: review.id,
+            wineID: wineID,
+            rating: review.rating,
+            reviewText: review.comment)
+          
+        case .failure:
+          self.router.presentWriteReviewViewController(reviewID: nil, wineID: wineID, rating: 0, reviewText: nil)
+        }
+      }
+    } else {
+      router.presentAuthorizationViewController()
+    }
   }
   
   func didRate(value: Double) {

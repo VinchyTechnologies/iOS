@@ -102,7 +102,7 @@ extension ReviewsInteractor: ReviewsInteractorProtocol {
     loadMoreData()
   }
   
-  func didSelectReview(id: Int64) {
+  func didSelectReview(id: Int) {
     router.showBottomSheetReviewDetailViewController(reviewInput: .init(rate: 4.5, author: "aleksei_smirnov", date: "29.08.21", reviewText: "text"))
   }
 }

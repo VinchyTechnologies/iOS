@@ -18,6 +18,12 @@ public struct UserDefaultsConfig {
 
   @UserDefault("lastSeenOnboardingVersion", defaultValue: 0)
   static public var lastSeenOnboardingVersion: Int
+  
+  @UserDefault("accountID", defaultValue: 0)
+  static public var accountID: Int
+  
+  @UserDefault("accountEmail", defaultValue: "")
+  static public var accountEmail: String
 }
 
 @propertyWrapper

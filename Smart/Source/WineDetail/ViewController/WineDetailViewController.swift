@@ -12,6 +12,7 @@ import CommonUI
 import StringFormatting
 import GoogleMobileAds
 import VinchyCore
+import VinchyAuthorization
 
 fileprivate enum C {
   
@@ -423,8 +424,8 @@ extension WineDetailViewController: UICollectionViewDelegate {
     case .gallery, .title, .rate, .winery, .text, .tool, .list, .ratingAndReview, .tapToRate, .servingTips, .button, .ad, .similarWines:
       break
       
-    case .reviews:
-      interactor?.didTapReview(index: indexPath.row)
+    case .reviews(let model):
+      interactor?.didTapReview(reviewID: model[indexPath.row].id)
     }
   }
 }
@@ -470,5 +471,15 @@ extension WineDetailViewController: WineDetailViewControllerProtocol {
 extension WineDetailViewController: RatingsAndReviewsCellDelegate {
   func didTapSeeAllReview() {
     interactor?.didTapSeeAllReviews()
+  }
+}
+
+extension WineDetailViewController: AuthorizationOutputDelegate {
+  func didSuccessfullyLogin(output: AuthorizationOutputModel?) {
+    
+  }
+  
+  func didSuccessfullyRegister(output: AuthorizationOutputModel?) {
+    
   }
 }

@@ -11,6 +11,7 @@ import Database
 import VinchyCore
 import EmailService
 import Sheeeeeeeeet
+import VinchyAuthorization
 
 final class WineDetailRouter {
   

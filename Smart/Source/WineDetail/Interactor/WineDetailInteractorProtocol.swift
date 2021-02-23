@@ -21,5 +21,5 @@ protocol WineDetailInteractorProtocol: AnyObject {
   func didRate(value: Double)
   func didTapWriteReviewButton()
   func didTapSeeAllReviews()
-  func didTapReview(index: Int)
+  func didTapReview(reviewID: Int)
 }

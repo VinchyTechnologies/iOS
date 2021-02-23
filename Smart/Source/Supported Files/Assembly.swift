@@ -88,4 +88,17 @@ final class Assembly {
     controller.hidesBottomBarWhenPushed = true
     return controller
   }
+  
+  static func buildWriteReviewViewController(
+    reviewID: Int?,
+    wineID: Int64,
+    rating: Double?,
+    reviewText: String?)
+    -> UIViewController
+  {
+    let controller = WriteReviewAssembly.assemblyModule(
+      input: .init(reviewID: reviewID, wineID: wineID, rating: rating, comment: reviewText))
+    let navController = NavigationController(rootViewController: controller)
+    return navController
+  }
 }

@@ -11,5 +11,5 @@ import Foundation
 protocol ReviewsInteractorProtocol: AnyObject {
   func viewDidLoad()
   func willDisplayLoadingView()
-  func didSelectReview(id: Int64)
+  func didSelectReview(id: Int)
 }

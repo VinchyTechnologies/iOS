@@ -9,8 +9,9 @@
 import Database
 import VinchyCore
 import Sheeeeeeeeet
+import VinchyAuthorization
 
-protocol WineDetailRouterProtocol: WineDetailRoutable, ReviewsRoutable, ReviewDetailRoutable {
+protocol WineDetailRouterProtocol: WineDetailRoutable, ReviewsRoutable, ReviewDetailRoutable, WriteReviewRoutable, AuthorizationRoutable {
   func presentActivityViewController(items: [Any], button: UIButton)
   func pushToWriteViewController(note: Note, noteText: String?)
   func pushToWriteViewController(wine: Wine)

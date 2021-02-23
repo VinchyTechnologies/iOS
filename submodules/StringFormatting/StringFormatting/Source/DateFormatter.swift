@@ -10,15 +10,14 @@ import Foundation
 
 fileprivate let dateFormatter: DateFormatter = {
   let dateFormatter = DateFormatter()
-  dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss"
+  dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
   dateFormatter.timeZone = TimeZone(identifier: "UTC")
   return dateFormatter
 }()
 
 fileprivate let readableDateFormatter: DateFormatter = {
   let dateFormatter = DateFormatter()
-  dateFormatter.locale = .current
-  dateFormatter.timeZone = .current
+  dateFormatter.dateStyle = .short
   return dateFormatter
 }()
 

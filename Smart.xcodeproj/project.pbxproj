@@ -8,6 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		440C284725E13F9D009911EE /* WineDetailCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440C284625E13F9D009911EE /* WineDetailCollectionView.swift */; };
+		4437AA5B25E3A7CE00F6E838 /* WriteReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437AA4A25E3A7CD00F6E838 /* WriteReviewViewModel.swift */; };
+		4437AA5C25E3A7CE00F6E838 /* WriteReviewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437AA4C25E3A7CD00F6E838 /* WriteReviewInput.swift */; };
+		4437AA5D25E3A7CE00F6E838 /* WriteReviewAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437AA4E25E3A7CD00F6E838 /* WriteReviewAssembly.swift */; };
+		4437AA5E25E3A7CE00F6E838 /* WriteReviewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437AA5025E3A7CD00F6E838 /* WriteReviewPresenter.swift */; };
+		4437AA5F25E3A7CE00F6E838 /* WriteReviewPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437AA5125E3A7CD00F6E838 /* WriteReviewPresenterProtocol.swift */; };
+		4437AA6025E3A7CE00F6E838 /* WriteReviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437AA5325E3A7CD00F6E838 /* WriteReviewViewController.swift */; };
+		4437AA6125E3A7CE00F6E838 /* WriteReviewViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437AA5425E3A7CD00F6E838 /* WriteReviewViewControllerProtocol.swift */; };
+		4437AA6225E3A7CE00F6E838 /* WriteReviewInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437AA5625E3A7CD00F6E838 /* WriteReviewInteractorProtocol.swift */; };
+		4437AA6325E3A7CE00F6E838 /* WriteReviewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437AA5725E3A7CD00F6E838 /* WriteReviewInteractor.swift */; };
+		4437AA6425E3A7CE00F6E838 /* WriteReviewRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437AA5925E3A7CD00F6E838 /* WriteReviewRouterProtocol.swift */; };
+		4437AA6525E3A7CE00F6E838 /* WriteReviewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437AA5A25E3A7CD00F6E838 /* WriteReviewRouter.swift */; };
+		4437AA6E25E3BE7300F6E838 /* WriteReviewRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437AA6D25E3BE7300F6E838 /* WriteReviewRoutable.swift */; };
 		4474E36525E02486001C5DE3 /* VinchyAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4474E36425E02486001C5DE3 /* VinchyAnalytics.framework */; };
 		4474E36625E02486001C5DE3 /* VinchyAnalytics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4474E36425E02486001C5DE3 /* VinchyAnalytics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		4495625125E2E15A005E79DA /* ReviewDetailRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4495625025E2E15A005E79DA /* ReviewDetailRoutable.swift */; };
@@ -20,6 +32,8 @@
 		449F81C425DD049B00585364 /* DeeplinkFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449F81C325DD049B00585364 /* DeeplinkFlow.swift */; };
 		449F81CA25DD04B400585364 /* DeeplinkStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449F81C925DD04B400585364 /* DeeplinkStep.swift */; };
 		449F81CE25DD050400585364 /* DeeplinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449F81CD25DD050400585364 /* DeeplinkRouter.swift */; };
+		44D3CDE825E42E0B00FFFCD5 /* VinchyAuthorization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44D3CDE725E42E0B00FFFCD5 /* VinchyAuthorization.framework */; };
+		44D3CDE925E42E0B00FFFCD5 /* VinchyAuthorization.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44D3CDE725E42E0B00FFFCD5 /* VinchyAuthorization.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44EFDB1B25E176EC0076ED6D /* ReviewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB0D25E176EC0076ED6D /* ReviewsPresenter.swift */; };
 		44EFDB1E25E176EC0076ED6D /* ReviewsInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB1225E176EC0076ED6D /* ReviewsInteractorProtocol.swift */; };
 		44EFDB2025E176EC0076ED6D /* ReviewsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB1525E176EC0076ED6D /* ReviewsRouter.swift */; };
@@ -221,6 +235,7 @@
 				4474E36625E02486001C5DE3 /* VinchyAnalytics.framework in Embed Frameworks */,
 				CA7B825E24EC750300991F24 /* VinchyCore.framework in Embed Frameworks */,
 				CAF24AEC24C32AE90057547F /* CommonUI.framework in Embed Frameworks */,
+				44D3CDE925E42E0B00FFFCD5 /* VinchyAuthorization.framework in Embed Frameworks */,
 				CAF24B0F24C3311F0057547F /* LocationUI.framework in Embed Frameworks */,
 				CABDBA8824C2FAB800AD96D6 /* Core.framework in Embed Frameworks */,
 				CA18220024C0F6F000280DD4 /* Database.framework in Embed Frameworks */,
@@ -237,6 +252,18 @@
 		29F65C39E925B7F70D400D7A /* Pods-Smart-SmartUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart-SmartUITests.debug.xcconfig"; path = "Target Support Files/Pods-Smart-SmartUITests/Pods-Smart-SmartUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		356D7CD37446A6F72FDB6021 /* Pods-Smart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart.debug.xcconfig"; path = "Target Support Files/Pods-Smart/Pods-Smart.debug.xcconfig"; sourceTree = "<group>"; };
 		440C284625E13F9D009911EE /* WineDetailCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineDetailCollectionView.swift; sourceTree = "<group>"; };
+		4437AA4A25E3A7CD00F6E838 /* WriteReviewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteReviewViewModel.swift; sourceTree = "<group>"; };
+		4437AA4C25E3A7CD00F6E838 /* WriteReviewInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteReviewInput.swift; sourceTree = "<group>"; };
+		4437AA4E25E3A7CD00F6E838 /* WriteReviewAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteReviewAssembly.swift; sourceTree = "<group>"; };
+		4437AA5025E3A7CD00F6E838 /* WriteReviewPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteReviewPresenter.swift; sourceTree = "<group>"; };
+		4437AA5125E3A7CD00F6E838 /* WriteReviewPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteReviewPresenterProtocol.swift; sourceTree = "<group>"; };
+		4437AA5325E3A7CD00F6E838 /* WriteReviewViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteReviewViewController.swift; sourceTree = "<group>"; };
+		4437AA5425E3A7CD00F6E838 /* WriteReviewViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteReviewViewControllerProtocol.swift; sourceTree = "<group>"; };
+		4437AA5625E3A7CD00F6E838 /* WriteReviewInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteReviewInteractorProtocol.swift; sourceTree = "<group>"; };
+		4437AA5725E3A7CD00F6E838 /* WriteReviewInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteReviewInteractor.swift; sourceTree = "<group>"; };
+		4437AA5925E3A7CD00F6E838 /* WriteReviewRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteReviewRouterProtocol.swift; sourceTree = "<group>"; };
+		4437AA5A25E3A7CD00F6E838 /* WriteReviewRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteReviewRouter.swift; sourceTree = "<group>"; };
+		4437AA6D25E3BE7300F6E838 /* WriteReviewRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewRoutable.swift; sourceTree = "<group>"; };
 		4474E36425E02486001C5DE3 /* VinchyAnalytics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyAnalytics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4495625025E2E15A005E79DA /* ReviewDetailRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDetailRoutable.swift; sourceTree = "<group>"; };
 		449D63B125E1054700CBBD1D /* RatingsAndReviewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingsAndReviewsCell.swift; sourceTree = "<group>"; };
@@ -248,6 +275,7 @@
 		449F81C325DD049B00585364 /* DeeplinkFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkFlow.swift; sourceTree = "<group>"; };
 		449F81C925DD04B400585364 /* DeeplinkStep.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkStep.swift; sourceTree = "<group>"; };
 		449F81CD25DD050400585364 /* DeeplinkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeeplinkRouter.swift; sourceTree = "<group>"; };
+		44D3CDE725E42E0B00FFFCD5 /* VinchyAuthorization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyAuthorization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		44EFDB0625E176EC0076ED6D /* ReviewsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsViewModel.swift; sourceTree = "<group>"; };
 		44EFDB0825E176EC0076ED6D /* ReviewsInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsInput.swift; sourceTree = "<group>"; };
 		44EFDB0A25E176EC0076ED6D /* ReviewsAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsAssembly.swift; sourceTree = "<group>"; };
@@ -458,6 +486,7 @@
 				CAF24AEB24C32AE90057547F /* CommonUI.framework in Frameworks */,
 				CAF24B0E24C3311F0057547F /* LocationUI.framework in Frameworks */,
 				CA7B825D24EC750300991F24 /* VinchyCore.framework in Frameworks */,
+				44D3CDE825E42E0B00FFFCD5 /* VinchyAuthorization.framework in Frameworks */,
 				CA1821A424C0E83900280DD4 /* Display.framework in Frameworks */,
 				CABDBA8724C2FAB800AD96D6 /* Core.framework in Frameworks */,
 			);
@@ -482,6 +511,89 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4437AA4825E3A7CD00F6E838 /* WriteReview */ = {
+			isa = PBXGroup;
+			children = (
+				4437AA4D25E3A7CD00F6E838 /* Assembly */,
+				4437AA4B25E3A7CD00F6E838 /* Input */,
+				4437AA5525E3A7CD00F6E838 /* Interactor */,
+				4437AA4F25E3A7CD00F6E838 /* Presenter */,
+				4437AA6C25E3BE5F00F6E838 /* Routable */,
+				4437AA5825E3A7CD00F6E838 /* Router */,
+				4437AA5225E3A7CD00F6E838 /* ViewController */,
+				4437AA4925E3A7CD00F6E838 /* ViewModel */,
+			);
+			path = WriteReview;
+			sourceTree = "<group>";
+		};
+		4437AA4925E3A7CD00F6E838 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				4437AA4A25E3A7CD00F6E838 /* WriteReviewViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		4437AA4B25E3A7CD00F6E838 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				4437AA4C25E3A7CD00F6E838 /* WriteReviewInput.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		4437AA4D25E3A7CD00F6E838 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				4437AA4E25E3A7CD00F6E838 /* WriteReviewAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		4437AA4F25E3A7CD00F6E838 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				4437AA5025E3A7CD00F6E838 /* WriteReviewPresenter.swift */,
+				4437AA5125E3A7CD00F6E838 /* WriteReviewPresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		4437AA5225E3A7CD00F6E838 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				4437AA5325E3A7CD00F6E838 /* WriteReviewViewController.swift */,
+				4437AA5425E3A7CD00F6E838 /* WriteReviewViewControllerProtocol.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		4437AA5525E3A7CD00F6E838 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				4437AA5625E3A7CD00F6E838 /* WriteReviewInteractorProtocol.swift */,
+				4437AA5725E3A7CD00F6E838 /* WriteReviewInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		4437AA5825E3A7CD00F6E838 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				4437AA5925E3A7CD00F6E838 /* WriteReviewRouterProtocol.swift */,
+				4437AA5A25E3A7CD00F6E838 /* WriteReviewRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		4437AA6C25E3BE5F00F6E838 /* Routable */ = {
+			isa = PBXGroup;
+			children = (
+				4437AA6D25E3BE7300F6E838 /* WriteReviewRoutable.swift */,
+			);
+			path = Routable;
+			sourceTree = "<group>";
+		};
 		4495624D25E2E147005E79DA /* Routable */ = {
 			isa = PBXGroup;
 			children = (
@@ -764,6 +876,7 @@
 		46483F371463D95E22014241 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				44D3CDE725E42E0B00FFFCD5 /* VinchyAuthorization.framework */,
 				4474E36425E02486001C5DE3 /* VinchyAnalytics.framework */,
 				CA51BBEE254094B000208F71 /* AppTrackingTransparency.framework */,
 				CA51BBEC254094A100208F71 /* AdSupport.framework */,
@@ -1035,6 +1148,7 @@
 				CA7B835624EED18500991F24 /* Vinchy */,
 				CA7B838724F451C700991F24 /* WineDetail */,
 				CA4D51022549F5F600A6FD0B /* WriteNote */,
+				4437AA4825E3A7CD00F6E838 /* WriteReview */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -1785,6 +1899,7 @@
 				CAF514282461C52400667ED0 /* DocCell.swift in Sources */,
 				CA472B69245EDEF9009149FF /* CategoryItem.swift in Sources */,
 				CA2C22E02554464F002469E4 /* AdvancedSearchInteractorProtocol.swift in Sources */,
+				4437AA5E25E3A7CE00F6E838 /* WriteReviewPresenter.swift in Sources */,
 				44EFDB7925E263E00076ED6D /* ReviewDetailRouter.swift in Sources */,
 				CA81984E253864080056A1C6 /* WineDetailRouter.swift in Sources */,
 				CACA7EA2254C57CC0099E622 /* WriteNoteRouterProtocol.swift in Sources */,
@@ -1794,7 +1909,10 @@
 				CA5B901B250FF22E006BC638 /* MoreBounceDecoratorView.swift in Sources */,
 				449F81CA25DD04B400585364 /* DeeplinkStep.swift in Sources */,
 				CA7B835B24EED6E600991F24 /* StoryCollectionCell.swift in Sources */,
+				4437AA5B25E3A7CE00F6E838 /* WriteReviewViewModel.swift in Sources */,
+				4437AA5D25E3A7CE00F6E838 /* WriteReviewAssembly.swift in Sources */,
 				CA8CD67C25096EE100FDB7AF /* GADTTemplateView.m in Sources */,
+				4437AA6325E3A7CE00F6E838 /* WriteReviewInteractor.swift in Sources */,
 				449F81AC25DD023A00585364 /* RootInteractor.swift in Sources */,
 				CAA9DC67250EA05F00F996A8 /* AdvancedSearchCaruselCollectionCell.swift in Sources */,
 				44EFDB4825E17B790076ED6D /* FakeReviewCell.swift in Sources */,
@@ -1803,6 +1921,7 @@
 				CA8198C0253CB0490056A1C6 /* ErrorDescription.swift in Sources */,
 				CA7B835824EED1B100991F24 /* VinchyViewController.swift in Sources */,
 				CA4857942517C77E00EDA4CE /* VinchyAssembly.swift in Sources */,
+				4437AA6225E3A7CE00F6E838 /* WriteReviewInteractorProtocol.swift in Sources */,
 				CA070C1825250AEC00C3D9EC /* OnboardPage.swift in Sources */,
 				44EFDB3725E177220076ED6D /* ReviewsViewModel.swift in Sources */,
 				CA49A219251E8CFE00FBE269 /* TitleWithSubtitleInfoCollectionViewCell.swift in Sources */,
@@ -1819,13 +1938,17 @@
 				44EFDB3F25E177220076ED6D /* ReviewsInteractor.swift in Sources */,
 				CA7B836024EF109200991F24 /* MainSubtitleCollectionCell.swift in Sources */,
 				CA819844253864080056A1C6 /* WineDetailViewModel.swift in Sources */,
+				4437AA6125E3A7CE00F6E838 /* WriteReviewViewControllerProtocol.swift in Sources */,
 				44EFDB7125E263E00076ED6D /* ReviewDetailAssembly.swift in Sources */,
 				CAF514102461C51400667ED0 /* AboutViewController.swift in Sources */,
 				44EFDB4F25E17FD60076ED6D /* ReviewsRoutable.swift in Sources */,
 				CA81984D253864080056A1C6 /* WineDetailRouterProtocol.swift in Sources */,
+				4437AA6425E3A7CE00F6E838 /* WriteReviewRouterProtocol.swift in Sources */,
+				4437AA6525E3A7CE00F6E838 /* WriteReviewRouter.swift in Sources */,
 				449D63B225E1054700CBBD1D /* RatingsAndReviewsCell.swift in Sources */,
 				CA3B1D5424A0A36300FAA08A /* NotesViewController.swift in Sources */,
 				CA2C22DD2554464F002469E4 /* AdvancedSearchPresenterProtocol.swift in Sources */,
+				4437AA6E25E3BE7300F6E838 /* WriteReviewRoutable.swift in Sources */,
 				CACA7E9A254C57CC0099E622 /* WriteNoteInput.swift in Sources */,
 				44EFDB3D25E177220076ED6D /* ReviewsViewController.swift in Sources */,
 				CA48578F2517C74700EDA4CE /* VinchyRouterProtocol.swift in Sources */,
@@ -1851,6 +1974,7 @@
 				44EFDB7525E263E00076ED6D /* ReviewDetailViewControllerProtocol.swift in Sources */,
 				CAF514292461C52400667ED0 /* MoreRouter.swift in Sources */,
 				CACA7E9C254C57CC0099E622 /* WriteNotePresenter.swift in Sources */,
+				4437AA5C25E3A7CE00F6E838 /* WriteReviewInput.swift in Sources */,
 				CA472AC2245EDE2F009149FF /* SceneDelegate.swift in Sources */,
 				CE4254EB258157DC001158D2 /* MoreViewControllerModel.swift in Sources */,
 				CA3C981F257260BC0036F7D9 /* StatusAlertable.swift in Sources */,
@@ -1860,11 +1984,13 @@
 				CA276D55256AC6720061BEBE /* FakeCell.swift in Sources */,
 				CACA7EA0254C57CC0099E622 /* WriteNoteInteractorProtocol.swift in Sources */,
 				44EFDB7625E263E00076ED6D /* ReviewDetailInteractor.swift in Sources */,
+				4437AA5F25E3A7CE00F6E838 /* WriteReviewPresenterProtocol.swift in Sources */,
 				CE404B0B2589D47C00917544 /* MorePresenterProtocol.swift in Sources */,
 				CA2C22DC2554464F002469E4 /* AdvancedSearchPresenter.swift in Sources */,
 				CAEBD788251A6D6200210F3B /* AgreementsViewController.swift in Sources */,
 				CA7A87E62500169100AAD10F /* VinchySimpleConiniousCaruselCollectionCell.swift in Sources */,
 				CA3C97DF25723C570036F7D9 /* TitleCopyableCell.swift in Sources */,
+				4437AA6025E3A7CE00F6E838 /* WriteReviewViewController.swift in Sources */,
 				CAF514132461C51B00667ED0 /* DocController.swift in Sources */,
 				CACA7E9D254C57CC0099E622 /* WriteNotePresenterProtocol.swift in Sources */,
 				CA7CBDF3257FE4AD00C81476 /* WineDetailRoutable.swift in Sources */,
