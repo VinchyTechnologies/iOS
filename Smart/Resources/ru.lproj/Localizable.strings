@@ -65,6 +65,9 @@
 "write_review" = "написать отзыв";
 "update_review" = "Обновить отзыв";
 "review_placeholder" = "Отзыв(Необязательно)";
+"did_update_rating" = "Мы обновили Ваш отзыв";
+"did_send_rating" = "Спасибо за ваш отзыв";
+"reviews" = "отзывы";
 
 // MARK: - Sugar
 "sugar" = "сахар";

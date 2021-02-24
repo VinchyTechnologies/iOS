@@ -27,4 +27,17 @@ final class WriteReviewRouter {
 
 extension WriteReviewRouter: WriteReviewRouterProtocol {
   
+  func dismissAfterUpdate(statusAlertViewModel: StatusAlertViewModel) {
+    viewController?.dismiss(animated: true, completion: {
+      let topViewController = UIApplication.topViewController() as? StatusAlertable
+      topViewController?.showStatusAlert(viewModel: statusAlertViewModel)
+    })
+  }
+  
+  func dismissAfterCreate(statusAlertViewModel: StatusAlertViewModel) {
+    viewController?.dismiss(animated: true, completion: {
+      let topViewController = UIApplication.topViewController() as? StatusAlertable
+      topViewController?.showStatusAlert(viewModel: statusAlertViewModel)
+    })
+  }
 }

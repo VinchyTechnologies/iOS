@@ -470,11 +470,12 @@ extension WineDetailViewController: RatingsAndReviewsCellDelegate {
 }
 
 extension WineDetailViewController: AuthorizationOutputDelegate {
+  
   func didSuccessfullyLogin(output: AuthorizationOutputModel?) {
-    
+    interactor?.didSuccessfullyLoginOrRegister()
   }
   
   func didSuccessfullyRegister(output: AuthorizationOutputModel?) {
-    
+    interactor?.didSuccessfullyLoginOrRegister()
   }
 }

@@ -16,6 +16,7 @@ public enum APIError: Error {
   case decodingError
   case incorrectStatusCode(Int)
   case noData
+  case updateTokensErrorShouldShowAuthScreen
 }
 
 final class API {

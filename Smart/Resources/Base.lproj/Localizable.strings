@@ -65,6 +65,9 @@
 "write_review" = "write a review";
 "update_review" = "update a review";
 "review_placeholder" = "Review(Optional)";
+"did_update_rating" = "we have updated your review";
+"did_send_rating" = "Thanks for your feedback";
+"reviews" = "reviews";
 
 // MARK: - Sugar
 "sugar" = "sugar";

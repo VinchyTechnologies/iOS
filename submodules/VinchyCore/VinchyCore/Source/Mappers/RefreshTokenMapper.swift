@@ -13,7 +13,7 @@ func mapToRefreshTokenCompletion<T: Decodable>(
   completion: @escaping (Result<T, APIError>) -> Void,
   fun: @escaping (() -> Void)) -> ((Result<T, APIError>) -> Void)
 {
-  let com: ((Result<T, APIError>) -> Void) = { /*[weak self]*/ result in
+  let com: ((Result<T, APIError>) -> Void) = { result in
     switch result {
     case .success(let model):
       completion(.success(model))
@@ -33,16 +33,31 @@ func mapToRefreshTokenCompletion<T: Decodable>(
                 Keychain.shared.refreshToken = model.refreshToken
                 fun()
                 
-              case .failure(let error):
-                completion(.failure(error)) // auth
+              case .failure:
+                UserDefaultsConfig.accountID = 0
+                UserDefaultsConfig.accountEmail = ""
+                Keychain.shared.accessToken = nil
+                Keychain.shared.refreshToken = nil
+                completion(.failure(.updateTokensErrorShouldShowAuthScreen)) // auth
               }
             }
           } else {
-            completion(.failure(error)) // auth
+            UserDefaultsConfig.accountID = 0
+            UserDefaultsConfig.accountEmail = ""
+            Keychain.shared.accessToken = nil
+            Keychain.shared.refreshToken = nil
+            completion(.failure(.updateTokensErrorShouldShowAuthScreen)) // auth
           }
         } else {
           completion(.failure(error))
         }
+        
+      case .updateTokensErrorShouldShowAuthScreen:
+        UserDefaultsConfig.accountID = 0
+        UserDefaultsConfig.accountEmail = ""
+        Keychain.shared.accessToken = nil
+        Keychain.shared.refreshToken = nil
+        completion(.failure(.updateTokensErrorShouldShowAuthScreen))
       }
     }
   }

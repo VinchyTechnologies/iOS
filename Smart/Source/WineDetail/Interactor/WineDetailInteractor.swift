@@ -19,6 +19,11 @@ enum WineDetailMoreActions {
   case dislike
 }
 
+private enum ActionAfterLoginOrRegistration {
+  case writeReview
+  case none
+}
+
 final class WineDetailInteractor {
   
   private let router: WineDetailRouterProtocol
@@ -34,6 +39,8 @@ final class WineDetailInteractor {
   private let emailService = EmailService()
   
   private var wine: Wine?
+  
+  private var actionAfterAuthorization: ActionAfterLoginOrRegistration = .none
   
   init(
     input: WineDetailInput,
@@ -84,6 +91,16 @@ final class WineDetailInteractor {
 
 extension WineDetailInteractor: WineDetailInteractorProtocol {
   
+  func didSuccessfullyLoginOrRegister() {
+    switch actionAfterAuthorization {
+    case .writeReview:
+      didTapWriteReviewButton()
+      
+    case .none:
+      break
+    }
+  }
+  
   func didTapReview(reviewID: Int) {
     guard
       let wine = wine,
@@ -125,7 +142,7 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
       Reviews.shared.getReviews(
         wineID: wineID,
         accountID: UserDefaultsConfig.accountID,
-        offset: 1,
+        offset: 0,
         limit: 1) { [weak self] result in
         
         guard let self = self else { return }
@@ -152,12 +169,9 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
         }
       }
     } else {
+      actionAfterAuthorization = .writeReview
       router.presentAuthorizationViewController()
     }
-  }
-  
-  func didRate(value: Double) {
-    self.rate = value
   }
 
   func didTapMore(_ button: UIButton) {
@@ -299,5 +313,4 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
   func didTapSimilarWine(wineID: Int64) {
     router.pushToWineDetailViewController(wineID: wineID)
   }
-
 }

@@ -131,7 +131,7 @@ final class WineDetailPresenter {
     
     return [
       .ratingAndReview([
-        .init(titleText: "Ratings",
+        .init(titleText: localized("reviews").firstLetterUppercased(),
               moreText: "See All",
               shouldShowMoreText: /*reviewCellViewModels.count >= 5*/false)
       ]),

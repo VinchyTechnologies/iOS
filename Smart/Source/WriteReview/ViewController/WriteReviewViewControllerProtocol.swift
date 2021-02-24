@@ -6,9 +6,9 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import Display
 
-protocol WriteReviewViewControllerProtocol: AnyObject {
+protocol WriteReviewViewControllerProtocol: Alertable {
   func setPlaceholder(placeholder: String?)
   func updateUI(viewModel: WriteReviewViewModel)
 }

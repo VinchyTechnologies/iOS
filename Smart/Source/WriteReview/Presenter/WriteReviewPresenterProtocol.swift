@@ -9,7 +9,10 @@
 import Foundation
 
 protocol WriteReviewPresenterProtocol: AnyObject {
+  var statusAlertViewModelAfterCreate: StatusAlertViewModel { get }
+  var statusAlertViewModelAfterUpdate: StatusAlertViewModel { get }
   func setPlaceholder()
   func update(rating: Double, comment: String?)
-  
+  func showAlertErrorWhileCreatingReview(error: Error)
+  func showAlertErrorWhileUpdatingReview(error: Error)
 }

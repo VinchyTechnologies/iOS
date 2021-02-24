@@ -38,7 +38,6 @@ extension WriteReviewInteractor: WriteReviewInteractorProtocol {
   }
   
   func didTapSend(rating: Double, comment: String?) {
-    print(#function)
     
     if input.rating == rating && input.comment == comment {
       router.dismiss(completion: nil)
@@ -52,10 +51,14 @@ extension WriteReviewInteractor: WriteReviewInteractorProtocol {
         guard let self = self else { return }
         switch result {
         case .success:
-          self.router.dismiss(completion: nil)
+          self.router.dismissAfterUpdate(statusAlertViewModel: self.presenter.statusAlertViewModelAfterUpdate)
           
         case .failure(let error):
-          print(error)
+          if case APIError.updateTokensErrorShouldShowAuthScreen = error {
+            self.router.presentAuthorizationViewController()
+          } else {
+            self.presenter.showAlertErrorWhileUpdatingReview(error: error)
+          }
         }
       }
     } else {
@@ -67,10 +70,14 @@ extension WriteReviewInteractor: WriteReviewInteractorProtocol {
         guard let self = self else { return }
         switch result {
         case .success:
-          self.router.dismiss(completion: nil)
+          self.router.dismissAfterCreate(statusAlertViewModel: self.presenter.statusAlertViewModelAfterCreate)
           
         case .failure(let error):
-          print("error", error)
+          if case APIError.updateTokensErrorShouldShowAuthScreen = error {
+            self.router.presentAuthorizationViewController()
+          } else {
+            self.presenter.showAlertErrorWhileCreatingReview(error: error)
+          }
         }
       }
     }

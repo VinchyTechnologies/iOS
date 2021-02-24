@@ -6,8 +6,11 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import VinchyAuthorization
 import Display
 
-protocol WriteReviewRouterProtocol: DismissRoutable {
-  
+
+protocol WriteReviewRouterProtocol: DismissRoutable, AuthorizationRoutable {
+  func dismissAfterUpdate(statusAlertViewModel: StatusAlertViewModel)
+  func dismissAfterCreate(statusAlertViewModel: StatusAlertViewModel)
 }

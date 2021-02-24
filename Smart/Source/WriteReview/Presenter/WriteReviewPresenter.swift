@@ -23,6 +23,32 @@ final class WriteReviewPresenter {
 
 extension WriteReviewPresenter: WriteReviewPresenterProtocol {
   
+  func showAlertErrorWhileCreatingReview(error: Error) {
+    viewController?.showAlert(
+      title: localized("error").firstLetterUppercased(),
+      message: error.localizedDescription)
+  }
+  
+  func showAlertErrorWhileUpdatingReview(error: Error) {
+    viewController?.showAlert(
+      title: localized("error").firstLetterUppercased(),
+      message: error.localizedDescription)
+  }
+  
+  var statusAlertViewModelAfterCreate: StatusAlertViewModel {
+    .init(
+      image: UIImage(systemName: "star.fill"),
+      titleText: localized("did_send_rating").firstLetterUppercased(),
+      descriptionText: nil)
+  }
+  
+  var statusAlertViewModelAfterUpdate: StatusAlertViewModel {
+    .init(
+      image: UIImage(systemName: "star.fill"),
+      titleText: localized("did_update_rating").firstLetterUppercased(),
+      descriptionText: nil)
+  }
+  
   func update(rating: Double, comment: String?) {
     let navigationTitle = input.reviewID == nil
       ? localized("write_review").firstLetterUppercased()
