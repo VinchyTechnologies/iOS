@@ -9,7 +9,6 @@
 import VinchyAuthorization
 import Display
 
-
 protocol WriteReviewRouterProtocol: DismissRoutable, AuthorizationRoutable {
   func dismissAfterUpdate(statusAlertViewModel: StatusAlertViewModel)
   func dismissAfterCreate(statusAlertViewModel: StatusAlertViewModel)

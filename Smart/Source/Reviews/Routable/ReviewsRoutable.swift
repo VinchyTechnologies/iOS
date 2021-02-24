@@ -6,7 +6,6 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-
 protocol ReviewsRoutable: AnyObject {
 
   var viewController: UIViewController? { get }

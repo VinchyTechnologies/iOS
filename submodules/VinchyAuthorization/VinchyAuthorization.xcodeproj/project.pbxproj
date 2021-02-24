@@ -55,9 +55,7 @@
 		44E2163925CD2D5F00FE31CE /* ChooseAuthTypeRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E2162E25CD2D5F00FE31CE /* ChooseAuthTypeRouterProtocol.swift */; };
 		44E2163A25CD2D5F00FE31CE /* ChooseAuthTypeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E2162F25CD2D5F00FE31CE /* ChooseAuthTypeRouter.swift */; };
 		44E83A0125D1A23400711490 /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A72596259245E100A7552B /* Display.framework */; };
-		44E83A0225D1A23400711490 /* Display.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44A72596259245E100A7552B /* Display.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44E83A0425D1A23600711490 /* VinchyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44E2161225CC8ED900FE31CE /* VinchyCore.framework */; };
-		44E83A0525D1A23600711490 /* VinchyCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44E2161225CC8ED900FE31CE /* VinchyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44E83A0925D1A40800711490 /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A724E22591351C00A7552B /* Display.framework */; };
 		44E83A0A25D1A40800711490 /* Display.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44A724E22591351C00A7552B /* Display.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44E83A0E25D1A40C00711490 /* VinchyAuthorization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 443F0AD7259123FE00E15437 /* VinchyAuthorization.framework */; };
@@ -90,18 +88,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		44E83A0325D1A23400711490 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				44E83A0525D1A23600711490 /* VinchyCore.framework in Embed Frameworks */,
-				44E83A0225D1A23400711490 /* Display.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		44E83A0B25D1A40800711490 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -598,7 +584,6 @@
 				443F0AD3259123FE00E15437 /* Sources */,
 				443F0AD4259123FE00E15437 /* Frameworks */,
 				443F0AD5259123FE00E15437 /* Resources */,
-				44E83A0325D1A23400711490 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -987,7 +972,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -1046,7 +1031,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
