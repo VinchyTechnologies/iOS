@@ -23,6 +23,15 @@ final class WriteReviewPresenter {
 
 extension WriteReviewPresenter: WriteReviewPresenterProtocol {
   
+  func startLoading() {
+    viewController?.startLoadingAnimation()
+    viewController?.addLoader()
+  }
+  
+  func stopLoading() {
+    viewController?.stopLoadingAnimation()
+  }
+  
   func showAlertErrorWhileCreatingReview(error: Error) {
     viewController?.showAlert(
       title: localized("error").firstLetterUppercased(),

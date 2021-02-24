@@ -15,6 +15,11 @@ final class WriteReviewInteractor {
   private let router: WriteReviewRouterProtocol
   private let presenter: WriteReviewPresenterProtocol
   
+  private lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
+    guard let self = self else { return }
+    self.presenter.startLoading()
+  }
+  
   init(
     input: WriteReviewInput,
     router: WriteReviewRouterProtocol,
@@ -39,6 +44,10 @@ extension WriteReviewInteractor: WriteReviewInteractorProtocol {
   
   func didTapSend(rating: Double, comment: String?) {
     
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+      self.dispatchWorkItemHud.perform()
+    }
+    
     if input.rating == rating && input.comment == comment {
       router.dismiss(completion: nil)
       return
@@ -49,6 +58,10 @@ extension WriteReviewInteractor: WriteReviewInteractorProtocol {
     if let reviewID = input.reviewID {
       Reviews.shared.updateReview(reviewID: reviewID, rating: rating, comment: comment) { [weak self] result in
         guard let self = self else { return }
+        self.dispatchWorkItemHud.cancel()
+        DispatchQueue.main.async {
+          self.presenter.stopLoading()
+        }
         switch result {
         case .success:
           self.router.dismissAfterUpdate(statusAlertViewModel: self.presenter.statusAlertViewModelAfterUpdate)
@@ -68,6 +81,10 @@ extension WriteReviewInteractor: WriteReviewInteractorProtocol {
         rating: rating,
         comment: comment) { [weak self] result in
         guard let self = self else { return }
+        self.dispatchWorkItemHud.cancel()
+        DispatchQueue.main.async {
+          self.presenter.stopLoading()
+        }
         switch result {
         case .success:
           self.router.dismissAfterCreate(statusAlertViewModel: self.presenter.statusAlertViewModelAfterCreate)

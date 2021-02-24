@@ -15,4 +15,6 @@ protocol WriteReviewPresenterProtocol: AnyObject {
   func update(rating: Double, comment: String?)
   func showAlertErrorWhileCreatingReview(error: Error)
   func showAlertErrorWhileUpdatingReview(error: Error)
+  func startLoading()
+  func stopLoading()
 }

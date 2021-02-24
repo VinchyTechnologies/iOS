@@ -18,6 +18,8 @@ final class WriteReviewViewController: UIViewController {
   
   // MARK: - Private Properties
   
+  private(set) var loadingIndicator = ActivityIndicatorView()
+  
   private lazy var ratingView: CosmosView = {
     var view = CosmosView()
     view.settings.filledColor = .accent

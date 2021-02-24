@@ -8,7 +8,7 @@
 
 import Display
 
-protocol WriteReviewViewControllerProtocol: Alertable {
+protocol WriteReviewViewControllerProtocol: Alertable, Loadable {
   func setPlaceholder(placeholder: String?)
   func updateUI(viewModel: WriteReviewViewModel)
 }
