@@ -34,6 +34,9 @@ extension APIError: APIErrorProtocol {
 
     case .noData:
       return "No Data" // TODO: - localize
+    
+    case .updateTokensErrorShouldShowAuthScreen:
+      return "Incorrect tokens"
     }
   }
 }

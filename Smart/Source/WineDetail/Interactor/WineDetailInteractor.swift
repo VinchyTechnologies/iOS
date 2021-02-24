@@ -11,10 +11,17 @@ import Database
 import EmailService
 import Sheeeeeeeeet
 import FirebaseDynamicLinks
+import VinchyAuthorization
+import Core
 
 enum WineDetailMoreActions {
   case reportAnError
   case dislike
+}
+
+private enum ActionAfterLoginOrRegistration {
+  case writeReview
+  case none
 }
 
 final class WineDetailInteractor {
@@ -32,6 +39,8 @@ final class WineDetailInteractor {
   private let emailService = EmailService()
   
   private var wine: Wine?
+  
+  private var actionAfterAuthorization: ActionAfterLoginOrRegistration = .none
   
   init(
     input: WineDetailInput,
@@ -81,9 +90,36 @@ final class WineDetailInteractor {
 // MARK: - WineDetailInteractorProtocol
 
 extension WineDetailInteractor: WineDetailInteractorProtocol {
+  
+  func didSuccessfullyLoginOrRegister() {
+    switch actionAfterAuthorization {
+    case .writeReview:
+      didTapWriteReviewButton()
+      
+    case .none:
+      break
+    }
+  }
+  
+  func didTapReview(reviewID: Int) {
+    guard
+      let wine = wine,
+      let review = wine.reviews.first(where: { $0.id == reviewID })
+    else {
+      return
+    }
+    
+    let dateText: String?
+    if review.updateDate == nil {
+      dateText = review.publicationDate.toDate()
+    } else {
+      dateText = review.updateDate.toDate()
+    }
+    
+    router.showBottomSheetReviewDetailViewController(reviewInput: .init(rate: review.rating, author: nil, date: dateText, reviewText: review.comment))
+  }
 
   func didTapSeeAllReviews() {
-    print(#function)
     guard let wineID = wine?.id else {
       return
     }
@@ -91,11 +127,51 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
   }
   
   func didTapWriteReviewButton() {
+    
     print(#function)
-  }
-  
-  func didRate(value: Double) {
-    self.rate = value
+    
+    guard let wineID = wine?.id else {
+      return
+    }
+    
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+      self.dispatchWorkItemHud.perform()
+    }
+    
+    if UserDefaultsConfig.accountID != 0 {
+      Reviews.shared.getReviews(
+        wineID: wineID,
+        accountID: UserDefaultsConfig.accountID,
+        offset: 0,
+        limit: 1) { [weak self] result in
+        
+        guard let self = self else { return }
+        
+        self.dispatchWorkItemHud.cancel()
+        DispatchQueue.main.async {
+          self.presenter.stopLoading()
+        }
+        
+        switch result {
+        case .success(let model):
+          guard let review = model.first else {
+            self.router.presentWriteReviewViewController(reviewID: nil, wineID: wineID, rating: 0, reviewText: nil)
+            return
+          }
+          self.router.presentWriteReviewViewController(
+            reviewID: review.id,
+            wineID: wineID,
+            rating: review.rating,
+            reviewText: review.comment)
+          
+        case .failure:
+          self.router.presentWriteReviewViewController(reviewID: nil, wineID: wineID, rating: 0, reviewText: nil)
+        }
+      }
+    } else {
+      actionAfterAuthorization = .writeReview
+      router.presentAuthorizationViewController()
+    }
   }
 
   func didTapMore(_ button: UIButton) {
@@ -237,5 +313,4 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
   func didTapSimilarWine(wineID: Int64) {
     router.pushToWineDetailViewController(wineID: wineID)
   }
-
 }

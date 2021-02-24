@@ -42,6 +42,7 @@
 		44AD9A8B25936CDB001A5188 /* EnterPasswordInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A7725936CDB001A5188 /* EnterPasswordInteractorProtocol.swift */; };
 		44AD9A8D25936CDB001A5188 /* EnterPasswordRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A7925936CDB001A5188 /* EnterPasswordRouterProtocol.swift */; };
 		44AD9A8F25936CDB001A5188 /* EnterPasswordRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A7A25936CDB001A5188 /* EnterPasswordRouter.swift */; };
+		44D3CDEE25E42ECF00FFFCD5 /* AuthorizationRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D3CDED25E42ECF00FFFCD5 /* AuthorizationRoutable.swift */; };
 		44E2163025CD2D5F00FE31CE /* ChooseAuthTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E2161F25CD2D5F00FE31CE /* ChooseAuthTypeViewModel.swift */; };
 		44E2163125CD2D5F00FE31CE /* ChooseAuthTypeInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E2162125CD2D5F00FE31CE /* ChooseAuthTypeInput.swift */; };
 		44E2163225CD2D5F00FE31CE /* ChooseAuthTypeAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E2162325CD2D5F00FE31CE /* ChooseAuthTypeAssembly.swift */; };
@@ -160,6 +161,7 @@
 		44AD9A7725936CDB001A5188 /* EnterPasswordInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordInteractorProtocol.swift; sourceTree = "<group>"; };
 		44AD9A7925936CDB001A5188 /* EnterPasswordRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordRouterProtocol.swift; sourceTree = "<group>"; };
 		44AD9A7A25936CDB001A5188 /* EnterPasswordRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordRouter.swift; sourceTree = "<group>"; };
+		44D3CDED25E42ECF00FFFCD5 /* AuthorizationRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRoutable.swift; sourceTree = "<group>"; };
 		44E2161225CC8ED900FE31CE /* VinchyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		44E2161F25CD2D5F00FE31CE /* ChooseAuthTypeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseAuthTypeViewModel.swift; sourceTree = "<group>"; };
 		44E2162125CD2D5F00FE31CE /* ChooseAuthTypeInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseAuthTypeInput.swift; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 		443F0AE32591242C00E15437 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				44D3CDEC25E42EB900FFFCD5 /* Routable */,
 				443601DB25CEF59600ABA7F1 /* Output */,
 				443F0AE8259126F200E15437 /* Authorization */,
 				44E2161D25CD2D5F00FE31CE /* ChooseAuthType */,
@@ -488,6 +491,14 @@
 				44AD9A7A25936CDB001A5188 /* EnterPasswordRouter.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		44D3CDEC25E42EB900FFFCD5 /* Routable */ = {
+			isa = PBXGroup;
+			children = (
+				44D3CDED25E42ECF00FFFCD5 /* AuthorizationRoutable.swift */,
+			);
+			path = Routable;
 			sourceTree = "<group>";
 		};
 		44E2161D25CD2D5F00FE31CE /* ChooseAuthType */ = {
@@ -827,6 +838,7 @@
 				44E2163525CD2D5F00FE31CE /* ChooseAuthTypeViewControllerProtocol.swift in Sources */,
 				443F0B01259126F200E15437 /* AuthorizationViewControllerProtocol.swift in Sources */,
 				44E2163225CD2D5F00FE31CE /* ChooseAuthTypeAssembly.swift in Sources */,
+				44D3CDEE25E42ECF00FFFCD5 /* AuthorizationRoutable.swift in Sources */,
 				44E2163625CD2D5F00FE31CE /* ChooseAuthTypeViewController.swift in Sources */,
 				44AD9A8F25936CDB001A5188 /* EnterPasswordRouter.swift in Sources */,
 				44AD9A8925936CDB001A5188 /* EnterPasswordInteractor.swift in Sources */,

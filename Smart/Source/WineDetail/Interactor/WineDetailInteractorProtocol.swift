@@ -18,7 +18,8 @@ protocol WineDetailInteractorProtocol: AnyObject {
   func didTapPriceButton()
   func didTapReportAnError()
   func didTapSimilarWine(wineID: Int64)
-  func didRate(value: Double)
   func didTapWriteReviewButton()
   func didTapSeeAllReviews()
+  func didTapReview(reviewID: Int)
+  func didSuccessfullyLoginOrRegister()
 }

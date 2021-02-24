@@ -12,17 +12,15 @@ import CommonUI
 import StringFormatting
 import GoogleMobileAds
 import VinchyCore
+import VinchyAuthorization
 
 fileprivate enum C {
   
   static let imageConfig = UIImage.SymbolConfiguration(pointSize: 18, weight: .medium, scale: .default)
 }
 
-final class WineDetailViewController: UIViewController, StarRatingControlCollectionCellDelegate {
-  func didRate(rating: Double) {
-    interactor?.didRate(value: rating)
-  }
-  
+final class WineDetailViewController: UIViewController {
+ 
   // MARK: - Public Properties
   
   var interactor: WineDetailInteractorProtocol?
@@ -38,7 +36,6 @@ final class WineDetailViewController: UIViewController, StarRatingControlCollect
       }
     }
   }
-  private var rate: Double = 0.0
   
   private lazy var layout = UICollectionViewCompositionalLayout { [weak self] (sectionNumber, _) -> NSCollectionLayoutSection? in
     
@@ -321,7 +318,6 @@ extension WineDetailViewController: UICollectionViewDataSource {
     // swiftlint:disable:next force_cast
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StarRatingControlCollectionCell.reuseId, for: indexPath) as! StarRatingControlCollectionCell
       cell.decorate(model: model[indexPath.row])
-      cell.delegate = self
       return cell
             
     case .winery(let model), .text(let model):
@@ -410,6 +406,23 @@ extension WineDetailViewController: UICollectionViewDelegate {
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     navigationItem.title = scrollView.contentOffset.y > 300 ? viewModel?.navigationTitle : nil
   }
+  
+  func collectionView(
+    _ collectionView: UICollectionView,
+    didSelectItemAt indexPath: IndexPath)
+  {
+    guard let type = viewModel?.sections[indexPath.section] else {
+      return
+    }
+    
+    switch type {
+    case .gallery, .title, .rate, .winery, .text, .tool, .list, .ratingAndReview, .tapToRate, .servingTips, .button, .ad, .similarWines:
+      break
+      
+    case .reviews(let model):
+      interactor?.didTapReview(reviewID: model[indexPath.row].id)
+    }
+  }
 }
 
 extension WineDetailViewController: ButtonCollectionCellDelegate {
@@ -453,5 +466,16 @@ extension WineDetailViewController: WineDetailViewControllerProtocol {
 extension WineDetailViewController: RatingsAndReviewsCellDelegate {
   func didTapSeeAllReview() {
     interactor?.didTapSeeAllReviews()
+  }
+}
+
+extension WineDetailViewController: AuthorizationOutputDelegate {
+  
+  func didSuccessfullyLogin(output: AuthorizationOutputModel?) {
+    interactor?.didSuccessfullyLoginOrRegister()
+  }
+  
+  func didSuccessfullyRegister(output: AuthorizationOutputModel?) {
+    interactor?.didSuccessfullyLoginOrRegister()
   }
 }

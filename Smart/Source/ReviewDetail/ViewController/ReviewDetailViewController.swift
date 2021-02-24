@@ -9,6 +9,7 @@
 import Cosmos
 import Display
 import UIKit
+import FittedSheets
 
 final class ReviewDetailViewController: UIViewController {
   
@@ -67,6 +68,11 @@ final class ReviewDetailViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     
+    sheetViewController?.handleScrollView(self.scrollView)
+    if traitCollection.userInterfaceStyle == .dark {
+      sheetViewController?.gripColor = .blueGray
+    }
+    
     view.addSubview(scrollView)
     scrollView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
@@ -115,6 +121,15 @@ final class ReviewDetailViewController: UIViewController {
     ])
     
     interactor?.viewDidLoad()
+  }
+  
+  override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    super.traitCollectionDidChange(previousTraitCollection)
+    if traitCollection.userInterfaceStyle == .dark {
+      sheetViewController?.gripColor = .blueGray
+    } else {
+      sheetViewController?.gripColor = SheetViewController.gripColor
+    }
   }
 }
 

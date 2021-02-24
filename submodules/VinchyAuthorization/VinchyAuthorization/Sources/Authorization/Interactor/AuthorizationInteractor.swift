@@ -85,6 +85,8 @@ extension AuthorizationInteractor: AuthorizationInteractorProtocol {
           switch result {
           case .success(let model):
             self.presenter.endEditing()
+            UserDefaultsConfig.accountEmail = model.email
+            UserDefaultsConfig.accountID = model.accountID
             Keychain.shared.accessToken = model.accessToken
             Keychain.shared.refreshToken = model.refreshToken
             self.router.dismissWithSuccsessLogin(output: .init(accountID: model.accountID, email: model.email))

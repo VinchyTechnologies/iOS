@@ -46,7 +46,7 @@ extension ReviewsPresenter: ReviewsPresenterProtocol {
   
   func update(reviews: [Any], needLoadMore: Bool) {
     
-    let model = ReviewCellViewModel.init(userNameText: "aleksei_smirnov", dateText: "29.08.21", reviewText: "lkdsjbvlhkbjs", rate: 4.5)
+    let model = ReviewCellViewModel.init(id: 1, userNameText: "aleksei_smirnov", dateText: "29.08.21", reviewText: "lkdsjbvlhkbjs", rate: 4.5)
     
     var items: [ReviewsViewModel.Item] = Array.init(repeating: ReviewsViewModel.Item.review(model), count: reviews.count)
     

@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol ReviewsRouterProtocol: AnyObject {
+protocol ReviewsRouterProtocol: ReviewDetailRoutable {
     
 }

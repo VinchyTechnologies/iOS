@@ -10,7 +10,7 @@ import Foundation
 
 public struct AccountInfo: Decodable {
   
-  public let accountID: Int64
+  public let accountID: Int
   public let email: String
   public let accessToken: String
   public let refreshToken: String
