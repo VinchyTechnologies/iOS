@@ -33,6 +33,10 @@ final class MoreInteractor {
 
 extension MoreInteractor: MoreInteractorProtocol {
   
+  func didTapCurrency() {
+    router.pushToCurrencyController()
+  }
+  
   func viewDidLoad() {
     presenter.update(isRussianLocale: Locale.current.languageCode == "ru")
   }

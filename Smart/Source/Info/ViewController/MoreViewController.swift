@@ -36,6 +36,7 @@ final class MoreViewController: UIViewController {
       ProfileCell.self,
       ContactCell.self,
       RateAppCell.self,
+      CurrencyCell.self,
       DocCell.self,
       TextCollectionCell.self)
     
@@ -94,6 +95,9 @@ extension MoreViewController: UICollectionViewDataSource {
     case .rate(let model):
       return model.count
       
+    case .currency(let model):
+      return model.count
+      
     case .social(let model):
       return model.count
       
@@ -129,6 +133,11 @@ extension MoreViewController: UICollectionViewDataSource {
       
     case .rate(let model):
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RateAppCell.reuseId, for: indexPath) as! RateAppCell // swiftlint:disable:this force_cast
+      cell.decorate(model: model[indexPath.row])
+      return cell
+      
+    case .currency(let model):
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CurrencyCell.reuseId, for: indexPath) as! CurrencyCell // swiftlint:disable:this force_cast
       cell.decorate(model: model[indexPath.row])
       return cell
       
@@ -173,6 +182,10 @@ extension MoreViewController: UICollectionViewDelegateFlowLayout {
       let width = collectionView.frame.width
       return CGSize(width: width, height: RateAppCell.height())
       
+    case .currency:
+      let width = collectionView.frame.width
+      return CGSize(width: width, height: CurrencyCell.height())
+      
     case .social:
       let width = collectionView.frame.width
       return CGSize(width: width, height: SocialMediaCell.height())
@@ -196,7 +209,7 @@ extension MoreViewController: UICollectionViewDelegateFlowLayout {
     case .header:
       return .init(top: 0, left: C.horizontalInset, bottom: 0, right: C.horizontalInset)
 
-    case .profile, .phone, .email, .partner, .rate, .social, .doc, .aboutApp, .none:
+    case .profile, .phone, .email, .partner, .rate, .currency, .social, .doc, .aboutApp, .none:
       return .zero
     }
   }
@@ -220,6 +233,9 @@ extension MoreViewController: UICollectionViewDelegateFlowLayout {
       
     case .rate:
       interactor?.didTapRateApp()
+      
+    case .currency:
+      interactor?.didTapCurrency()
       
     case .doc:
       interactor?.didTapDoc()

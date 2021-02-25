@@ -157,6 +157,8 @@
 		CE404B0B2589D47C00917544 /* MorePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE404B0A2589D47C00917544 /* MorePresenterProtocol.swift */; };
 		CE404B0F2589D4C200917544 /* MoreRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE404B0E2589D4C200917544 /* MoreRouterProtocol.swift */; };
 		CE4254EB258157DC001158D2 /* MoreViewControllerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4254EA258157DC001158D2 /* MoreViewControllerModel.swift */; };
+		CE69649D25E07BDE00CD414D /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69649C25E07BDE00CD414D /* CurrencyCell.swift */; };
+		CE69652825E4372E00CD414D /* CurrencyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69652725E4372E00CD414D /* CurrencyController.swift */; };
 		CE7346382589B75E00028574 /* MoreViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7346372589B75E00028574 /* MoreViewProtocol.swift */; };
 		CE8D931325BF41AD004792C6 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D931225BF41AD004792C6 /* ProfileCell.swift */; };
 		F19FB5488BC7F81712DA031F /* Pods_Smart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6424F560030C451CC71ED8CC /* Pods_Smart.framework */; };
@@ -369,6 +371,8 @@
 		CE404B0A2589D47C00917544 /* MorePresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorePresenterProtocol.swift; sourceTree = "<group>"; };
 		CE404B0E2589D4C200917544 /* MoreRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreRouterProtocol.swift; sourceTree = "<group>"; };
 		CE4254EA258157DC001158D2 /* MoreViewControllerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewControllerModel.swift; sourceTree = "<group>"; };
+		CE69649C25E07BDE00CD414D /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
+		CE69652725E4372E00CD414D /* CurrencyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyController.swift; sourceTree = "<group>"; };
 		CE7346372589B75E00028574 /* MoreViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewProtocol.swift; sourceTree = "<group>"; };
 		CE8D931225BF41AD004792C6 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
 		D2D457686428365CEAB9A001 /* Pods_SmartTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -699,6 +703,7 @@
 				CAF5140E2461C51300667ED0 /* About */,
 				CA79545024F92E930040224C /* AdvancedSearch */,
 				CA07097E2523146200C3D9EC /* Agreement */,
+				CE69652B25E4373400CD414D /* Currency */,
 				449F81C225DD048500585364 /* Deeplink */,
 				CAF514112461C51B00667ED0 /* Doc */,
 				CA4858542519E95100EDA4CE /* ForceUpdate */,
@@ -1081,6 +1086,7 @@
 			children = (
 				CE8D931225BF41AD004792C6 /* ProfileCell.swift */,
 				CAF5141B2461C52400667ED0 /* ContactCell.swift */,
+				CE69649C25E07BDE00CD414D /* CurrencyCell.swift */,
 				CAF5141C2461C52400667ED0 /* RateAppCell.swift */,
 				CAF5141D2461C52400667ED0 /* SocialMediaCell.swift */,
 				CAF5141E2461C52400667ED0 /* DocCell.swift */,
@@ -1138,6 +1144,14 @@
 				CE404B062589D41200917544 /* MoreInteractorProtocol.swift */,
 			);
 			path = Interactor;
+			sourceTree = "<group>";
+		};
+		CE69652B25E4373400CD414D /* Currency */ = {
+			isa = PBXGroup;
+			children = (
+				CE69652725E4372E00CD414D /* CurrencyController.swift */,
+			);
+			path = Currency;
 			sourceTree = "<group>";
 		};
 		E126C1F6258946A324BF55F2 /* Pods */ = {
@@ -1450,6 +1464,7 @@
 				CAF514212461C52400667ED0 /* MorePresenter.swift in Sources */,
 				CA99E65724F6EDDD00C36BEE /* ButtonCollectionCell.swift in Sources */,
 				449F81CE25DD050400585364 /* DeeplinkRouter.swift in Sources */,
+				CE69652825E4372E00CD414D /* CurrencyController.swift in Sources */,
 				CAF514282461C52400667ED0 /* DocCell.swift in Sources */,
 				CA472B69245EDEF9009149FF /* CategoryItem.swift in Sources */,
 				CA2C22E02554464F002469E4 /* AdvancedSearchInteractorProtocol.swift in Sources */,
@@ -1502,6 +1517,7 @@
 				CAF514292461C52400667ED0 /* MoreRouter.swift in Sources */,
 				CACA7E9C254C57CC0099E622 /* WriteNotePresenter.swift in Sources */,
 				CA472AC2245EDE2F009149FF /* SceneDelegate.swift in Sources */,
+				CE69649D25E07BDE00CD414D /* CurrencyCell.swift in Sources */,
 				CE4254EB258157DC001158D2 /* MoreViewControllerModel.swift in Sources */,
 				CA3C981F257260BC0036F7D9 /* StatusAlertable.swift in Sources */,
 				CA3837CC246FCF3C00AD5FCC /* TabBarController.swift in Sources */,

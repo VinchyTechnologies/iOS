@@ -22,6 +22,12 @@ final class MoreRouter {
 
 extension MoreRouter: MoreRouterProtocol {
   
+  func pushToCurrencyController() {
+    let controller = CurrencyController()
+    controller.hidesBottomBarWhenPushed = true
+    viewController?.navigationController?.pushViewController(controller, animated: true)
+  }
+  
   func presentEmailController(HTMLText: String?, recipients: [String]) {
     let emailController = emailService.getEmailController(
       HTMLText: HTMLText,
@@ -43,5 +49,5 @@ extension MoreRouter: MoreRouterProtocol {
   
   func present(_ viewController: UIViewController, completion: (() -> Void)?) {
     self.viewController?.navigationController?.present(viewController, animated: true, completion: completion)
-  }    
+  }
 }
