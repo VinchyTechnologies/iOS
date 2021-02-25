@@ -19,6 +19,9 @@ public extension AuthorizationRoutable {
   func presentAuthorizationViewController() {
     let controller: AuthorizationNavigationController = ChooseAuthTypeAssembly.assemblyModule()
     controller.authOutputDelegate = viewController as? AuthorizationOutputDelegate
-    viewController?.navigationController?.present(controller, animated: true, completion: nil)
+    if UIDevice.current.userInterfaceIdiom == .pad {
+      controller.modalPresentationStyle = .overFullScreen
+    }
+    viewController?.present(controller, animated: true, completion: nil)
   }
 }
