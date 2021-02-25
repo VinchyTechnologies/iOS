@@ -34,11 +34,12 @@ final class MorePresenter {
     
     var sections: [MoreViewControllerModel.Section] = []
     
-    if isProfileCellAvailable {
+    if isProfileCellAvailable && UserDefaultsConfig.accountID != 0 && UserDefaultsConfig.accountEmail != "" {
       let profileViewModel = ProfileCellViewModel(
-        nameUser: localized("Alex").firstLetterUppercased(),
-        emailUser: localized("presenter@gmail.com").localizedLowercase)
+        nameUser: UserDefaultsConfig.accountEmail,
+        emailUser: "")
       sections.append(.profile([profileViewModel]))
+      sections.append(.separator)
     }
     
     let headerViewModel = TextCollectionCellViewModel(

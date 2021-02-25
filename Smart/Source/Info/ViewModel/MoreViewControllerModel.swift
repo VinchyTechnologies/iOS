@@ -19,6 +19,7 @@ struct MoreViewControllerModel {
     case social([StandartImageViewModel])
     case aboutApp([DocCellViewModel])
     case doc([DocCellViewModel])
+    case separator
   }
   
   let sections: [Section]
