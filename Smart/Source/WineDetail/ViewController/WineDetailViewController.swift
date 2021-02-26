@@ -104,7 +104,8 @@ final class WineDetailViewController: UIViewController {
       
     case .reviews:
       let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(300), heightDimension: .absolute(200)), subitems: [item])
+      let width: CGFloat = UIScreen.main.bounds.width > 320 ? 300 : 285
+      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(width), heightDimension: .absolute(200)), subitems: [item])
       let section = NSCollectionLayoutSection(group: group)
       section.orthogonalScrollingBehavior = .continuous
       section.contentInsets = .init(top: 0, leading: 15, bottom: 0, trailing: 15)

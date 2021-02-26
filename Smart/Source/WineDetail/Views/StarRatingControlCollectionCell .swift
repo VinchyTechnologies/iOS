@@ -35,6 +35,8 @@ final class StarRatingControlCollectionCell: UICollectionViewCell, Reusable {
     view.settings.emptyBorderColor = .accent
     view.settings.starSize = 32
     view.settings.starMargin = 0
+    view.settings.updateOnTouch = false
+    view.settings.fillMode = .precise
     return view
   }()
   
