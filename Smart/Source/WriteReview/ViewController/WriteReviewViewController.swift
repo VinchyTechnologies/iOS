@@ -46,7 +46,7 @@ final class WriteReviewViewController: UIViewController {
     textView.showsVerticalScrollIndicator = false
     textView.alwaysBounceVertical = true
     textView.placeholderColor = .blueGray
-    textView.contentInset = .init(top: 0, left: 5, bottom: 5, right: 5)
+    textView.textContainerInset = .init(top: 16, left: 16, bottom: 16, right: 16)
     return textView
   }()
   
@@ -110,8 +110,8 @@ final class WriteReviewViewController: UIViewController {
     textView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       textView.topAnchor.constraint(equalTo: line.bottomAnchor),
-      textView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 10),
-      textView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -10),
+      textView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      textView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
       bottomConstraint,
     ])
     

@@ -20,6 +20,10 @@ open class NavigationController: UINavigationController {
   public init(rootViewController: UIViewController, prefersLargeTitles: Bool = true) {
     self.prefersLargeTitles = prefersLargeTitles
     super.init(rootViewController: rootViewController)
+    
+    let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
+    navigationBar.backIndicatorImage = UIImage(systemName: "chevron.left", withConfiguration: imageConfig)
+    navigationBar.backIndicatorTransitionMaskImage = UIImage(systemName: "chevron.left", withConfiguration: imageConfig)
   }
 
   required public init?(coder aDecoder: NSCoder) { fatalError() }
@@ -116,12 +120,25 @@ open class NavigationController: UINavigationController {
   }
 
   public override func pushViewController(_ viewController: UIViewController, animated: Bool) {
-    navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-    let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
-    navigationBar.backIndicatorImage = UIImage(systemName: "chevron.left", withConfiguration: imageConfig)
-    navigationBar.backIndicatorTransitionMaskImage = UIImage(systemName: "chevron.left", withConfiguration: imageConfig)
+    navigationBar.topItem?.backBarButtonItem = BackBarButtonItem(
+      title: "",
+      style: .plain,
+      target: self,
+      action: nil) // not nil only ""
     viewController.navigationItem.leftItemsSupplementBackButton = true
-
     super.pushViewController(viewController, animated: animated)
+  }
+}
+
+fileprivate final class BackBarButtonItem: UIBarButtonItem { // Disale long press on back button for now
+  @available(iOS 14.0, *)
+  override var menu: UIMenu? {
+    set {
+      /* Don't set the menu here */
+      /* super.menu = menu */
+    }
+    get {
+      return super.menu
+    }
   }
 }

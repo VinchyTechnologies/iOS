@@ -29,6 +29,7 @@ final class WriteNoteViewController: UIViewController {
     textView.showsVerticalScrollIndicator = false
     textView.alwaysBounceVertical = true
     textView.placeholderColor = .blueGray
+    textView.textContainerInset = .init(top: 16, left: 16, bottom: 16, right: 16)
     return textView
   }()
 
@@ -58,9 +59,9 @@ final class WriteNoteViewController: UIViewController {
     view.addSubview(textView)
     textView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      textView.topAnchor.constraint(equalTo: view.topAnchor, constant: 16),
-      textView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 16),
-      textView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+      textView.topAnchor.constraint(equalTo: view.topAnchor),
+      textView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      textView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
       bottomConstraint,
     ])
     

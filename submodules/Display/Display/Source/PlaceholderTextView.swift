@@ -46,12 +46,6 @@ public final class PlaceholderTextView: UITextView {
     }
   }
   
-  //  override public var delegate: UITextViewDelegate? {
-  //    didSet {
-  //      customDelegate = delegate
-  //    }
-  //  }
-  
   private lazy var placeholderLayer: CATextLayer = {
     let layer = CATextLayer()
     layer.frame = bounds
@@ -107,7 +101,7 @@ public final class PlaceholderTextView: UITextView {
   private func updatePlaceholder() {
     guard let font = font else { return }
     
-    let width = bounds.width - textContainerInset.bottom
+    let width = bounds.width - textContainerInset.left - textContainerInset.right
     let height = placeholder.height(forWidth: width, font: font)
     placeholderLayer.frame = CGRect(
       x: textContainerInset.left,
@@ -117,18 +111,18 @@ public final class PlaceholderTextView: UITextView {
     
     placeholderLayer.font = font
     placeholderLayer.fontSize = font.pointSize
-    placeholderLayer.isHidden = !(text ?? "" == "")
+    placeholderLayer.isHidden = !(text?.isEmpty == true)
   }
 }
 
 extension PlaceholderTextView: UITextViewDelegate {
   
   public func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
-    return customDelegate?.textViewShouldBeginEditing?(textView) ?? true
+    customDelegate?.textViewShouldBeginEditing?(textView) ?? true
   }
   
   public func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
-    return customDelegate?.textViewShouldEndEditing?(textView) ?? true
+    customDelegate?.textViewShouldEndEditing?(textView) ?? true
   }
   
   public func textViewDidBeginEditing(_ textView: UITextView) {
@@ -169,7 +163,8 @@ extension PlaceholderTextView: UITextViewDelegate {
   }
   
   public func textView(
-    _ textView: UITextView,shouldInteractWith URL: URL,
+    _ textView: UITextView,
+    shouldInteractWith URL: URL,
     in characterRange: NSRange,
     interaction: UITextItemInteraction)
     -> Bool
