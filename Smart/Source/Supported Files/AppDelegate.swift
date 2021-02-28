@@ -40,7 +40,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     //        FirebaseConfiguration.shared.setLoggerLevel(.min)
     FirebaseApp.configure()
     
-    let defaultValue = ["isAdAvailable": false as NSObject, "force_update_versions": [String]() as NSObject]
+    let defaultValue = ["isAdAvailable": true as NSObject, "force_update_versions": [String]() as NSObject]
     remoteConfig.setDefaults(defaultValue)
     
     remoteConfig.fetch(withExpirationDuration: 0) { (_, error) in
