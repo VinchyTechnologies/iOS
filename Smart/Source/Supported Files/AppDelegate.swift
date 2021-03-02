@@ -20,10 +20,6 @@ import AppTrackingTransparency
 import AdSupport
 #endif
 
-#if DEBUG
-//import CocoaDebug
-#endif
-
 @main
 final class AppDelegate: UIResponder, UIApplicationDelegate {
   
@@ -34,10 +30,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     -> Bool
   {
     
-    #if DEBUG
-//    CocoaDebug.disable()
-    #endif
-    //        FirebaseConfiguration.shared.setLoggerLevel(.min)
+    // FirebaseConfiguration.shared.setLoggerLevel(.min)
     FirebaseApp.configure()
     
     let defaultValue = ["isAdAvailable": true as NSObject, "force_update_versions": [String]() as NSObject]

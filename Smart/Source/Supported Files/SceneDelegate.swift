@@ -20,7 +20,7 @@ final class SceneDelegate: UIResponder {
     
   private lazy var root: (RootInteractor & RootDeeplinkable) = {
     RootBuilderImpl(tabBarBuilder: TabBarBuilderImpl())
-      .build(input: RootBuilderInput(window: window!))
+      .build(input: RootBuilderInput(window: window!)) // swiftlint:disable:this force_unwrapping
   }()
 
   private lazy var deeplinkRouter: DeeplinkRouter = {

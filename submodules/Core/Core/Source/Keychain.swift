@@ -12,6 +12,7 @@ fileprivate enum C {
   static let keychainServiceName = Bundle.main.bundleIdentifier! // swiftlint:disable:this force_unwrapping
   static let accessToken = keychainServiceName + ".accessToken"
   static let refreshToken = keychainServiceName + ".refreshToken"
+  static let password = keychainServiceName + ".password"
 }
 
 public final class Keychain {
@@ -37,6 +38,15 @@ public final class Keychain {
     }
     set {
       keychainService[C.refreshToken] = newValue
+    }
+  }
+  
+  public var password: String? {
+    get {
+      keychainService[C.password]
+    }
+    set {
+      keychainService[C.password] = newValue
     }
   }
 }
