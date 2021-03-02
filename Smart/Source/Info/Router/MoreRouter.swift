@@ -23,7 +23,7 @@ final class MoreRouter {
 extension MoreRouter: MoreRouterProtocol {
   
   func pushToCurrencyController() {
-    let controller = CurrencyController()
+    let controller = CurrencyAssembly.assemblyModule()
     controller.hidesBottomBarWhenPushed = true
     viewController?.navigationController?.pushViewController(controller, animated: true)
   }

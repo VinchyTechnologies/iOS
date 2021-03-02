@@ -9,7 +9,7 @@
 import UIKit
 import Display
 
-public struct CurrencyCellViewModel: ViewModelProtocol {
+public struct InfoCurrencyCellViewModel: ViewModelProtocol {
   
   fileprivate let titleText: String?
   fileprivate let icon: UIImage?
@@ -20,12 +20,11 @@ public struct CurrencyCellViewModel: ViewModelProtocol {
   }
 }
 
-final class CurrencyCell: UICollectionViewCell, Reusable {
+final class InfoCurrencyCell: UICollectionViewCell, Reusable {
   
   private let currencyImage: UIImageView = {
     let imageView = UIImageView()
     imageView.translatesAutoresizingMaskIntoConstraints = false
-    imageView.image = UIImage(named: "phone")?.withRenderingMode(.alwaysTemplate)
     imageView.tintColor = .dark
     imageView.contentMode = .scaleAspectFill
     return imageView
@@ -83,9 +82,9 @@ final class CurrencyCell: UICollectionViewCell, Reusable {
     60
   }
 }
-extension CurrencyCell: Decoratable {
+extension InfoCurrencyCell: Decoratable {
   
-  typealias ViewModel = CurrencyCellViewModel
+  typealias ViewModel = InfoCurrencyCellViewModel
   
   func decorate(model: ViewModel) {
     currencyLabel.text = model.titleText

@@ -26,6 +26,10 @@ private final class CurrencyFormatterEntry {
     }
 }
 
+public func allCurrencies() -> [String] {
+  return loadCurrencyFormatterEntries().map({ $0.key }).sorted()
+}
+
 private func loadCurrencyFormatterEntries() -> [String: CurrencyFormatterEntry] {
 
     guard let filePath = Bundle.main.path(forResource: "currencies", ofType: "json") else {

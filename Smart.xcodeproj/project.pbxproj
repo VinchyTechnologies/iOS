@@ -157,10 +157,19 @@
 		CE404B0B2589D47C00917544 /* MorePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE404B0A2589D47C00917544 /* MorePresenterProtocol.swift */; };
 		CE404B0F2589D4C200917544 /* MoreRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE404B0E2589D4C200917544 /* MoreRouterProtocol.swift */; };
 		CE4254EB258157DC001158D2 /* MoreViewControllerModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE4254EA258157DC001158D2 /* MoreViewControllerModel.swift */; };
-		CE69649D25E07BDE00CD414D /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69649C25E07BDE00CD414D /* CurrencyCell.swift */; };
-		CE69652825E4372E00CD414D /* CurrencyController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69652725E4372E00CD414D /* CurrencyController.swift */; };
+		CE58DEC325ED70DC00B5BDF9 /* CurrencyAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE58DEC225ED70DC00B5BDF9 /* CurrencyAssembly.swift */; };
+		CE58DEC725ED711700B5BDF9 /* CurrencyInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE58DEC625ED711700B5BDF9 /* CurrencyInteractor.swift */; };
+		CE58DECB25ED712900B5BDF9 /* CurrencyPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE58DECA25ED712900B5BDF9 /* CurrencyPresenter.swift */; };
+		CE58DECF25ED713F00B5BDF9 /* CurrencyRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE58DECE25ED713F00B5BDF9 /* CurrencyRouter.swift */; };
+		CE58DED325ED739200B5BDF9 /* CurrencyPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE58DED225ED739200B5BDF9 /* CurrencyPresenterProtocol.swift */; };
+		CE58DED725ED73B300B5BDF9 /* CurrencyInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE58DED625ED73B300B5BDF9 /* CurrencyInteractorProtocol.swift */; };
+		CE58DEDB25ED73C900B5BDF9 /* CurrencyRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE58DEDA25ED73C900B5BDF9 /* CurrencyRouterProtocol.swift */; };
+		CE58DEDF25ED73E200B5BDF9 /* CurrencyViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE58DEDE25ED73E200B5BDF9 /* CurrencyViewControllerProtocol.swift */; };
+		CE69649D25E07BDE00CD414D /* InfoCurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69649C25E07BDE00CD414D /* InfoCurrencyCell.swift */; };
+		CE69652825E4372E00CD414D /* CurrencyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE69652725E4372E00CD414D /* CurrencyViewController.swift */; };
 		CE7346382589B75E00028574 /* MoreViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7346372589B75E00028574 /* MoreViewProtocol.swift */; };
 		CE8D931325BF41AD004792C6 /* ProfileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8D931225BF41AD004792C6 /* ProfileCell.swift */; };
+		CEF2087C25E8297900C413EA /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF2087B25E8297900C413EA /* CurrencyCell.swift */; };
 		F19FB5488BC7F81712DA031F /* Pods_Smart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6424F560030C451CC71ED8CC /* Pods_Smart.framework */; };
 		F63A293274679EF87CB60861 /* Pods_SmartTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D2D457686428365CEAB9A001 /* Pods_SmartTests.framework */; };
 /* End PBXBuildFile section */
@@ -371,10 +380,19 @@
 		CE404B0A2589D47C00917544 /* MorePresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorePresenterProtocol.swift; sourceTree = "<group>"; };
 		CE404B0E2589D4C200917544 /* MoreRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreRouterProtocol.swift; sourceTree = "<group>"; };
 		CE4254EA258157DC001158D2 /* MoreViewControllerModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewControllerModel.swift; sourceTree = "<group>"; };
-		CE69649C25E07BDE00CD414D /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
-		CE69652725E4372E00CD414D /* CurrencyController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyController.swift; sourceTree = "<group>"; };
+		CE58DEC225ED70DC00B5BDF9 /* CurrencyAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyAssembly.swift; sourceTree = "<group>"; };
+		CE58DEC625ED711700B5BDF9 /* CurrencyInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyInteractor.swift; sourceTree = "<group>"; };
+		CE58DECA25ED712900B5BDF9 /* CurrencyPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPresenter.swift; sourceTree = "<group>"; };
+		CE58DECE25ED713F00B5BDF9 /* CurrencyRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRouter.swift; sourceTree = "<group>"; };
+		CE58DED225ED739200B5BDF9 /* CurrencyPresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyPresenterProtocol.swift; sourceTree = "<group>"; };
+		CE58DED625ED73B300B5BDF9 /* CurrencyInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyInteractorProtocol.swift; sourceTree = "<group>"; };
+		CE58DEDA25ED73C900B5BDF9 /* CurrencyRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyRouterProtocol.swift; sourceTree = "<group>"; };
+		CE58DEDE25ED73E200B5BDF9 /* CurrencyViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CurrencyViewControllerProtocol.swift; path = Smart/Source/Currency/Router/CurrencyViewControllerProtocol.swift; sourceTree = SOURCE_ROOT; };
+		CE69649C25E07BDE00CD414D /* InfoCurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoCurrencyCell.swift; sourceTree = "<group>"; };
+		CE69652725E4372E00CD414D /* CurrencyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyViewController.swift; sourceTree = "<group>"; };
 		CE7346372589B75E00028574 /* MoreViewProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreViewProtocol.swift; sourceTree = "<group>"; };
 		CE8D931225BF41AD004792C6 /* ProfileCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileCell.swift; sourceTree = "<group>"; };
+		CEF2087B25E8297900C413EA /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
 		D2D457686428365CEAB9A001 /* Pods_SmartTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -1086,7 +1104,7 @@
 			children = (
 				CE8D931225BF41AD004792C6 /* ProfileCell.swift */,
 				CAF5141B2461C52400667ED0 /* ContactCell.swift */,
-				CE69649C25E07BDE00CD414D /* CurrencyCell.swift */,
+				CE69649C25E07BDE00CD414D /* InfoCurrencyCell.swift */,
 				CAF5141C2461C52400667ED0 /* RateAppCell.swift */,
 				CAF5141D2461C52400667ED0 /* SocialMediaCell.swift */,
 				CAF5141E2461C52400667ED0 /* DocCell.swift */,
@@ -1149,9 +1167,66 @@
 		CE69652B25E4373400CD414D /* Currency */ = {
 			isa = PBXGroup;
 			children = (
-				CE69652725E4372E00CD414D /* CurrencyController.swift */,
+				CEF2087325E828B000C413EA /* Assembly */,
+				CEF2087425E828CA00C413EA /* Interactor */,
+				CEF2087525E828D700C413EA /* Presenter */,
+				CEF2087625E828E200C413EA /* Router */,
+				CEF2087725E828EB00C413EA /* ViewController */,
+				CEF2087825E828FA00C413EA /* Views */,
 			);
 			path = Currency;
+			sourceTree = "<group>";
+		};
+		CEF2087325E828B000C413EA /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				CE58DEC225ED70DC00B5BDF9 /* CurrencyAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		CEF2087425E828CA00C413EA /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				CE58DEC625ED711700B5BDF9 /* CurrencyInteractor.swift */,
+				CE58DED625ED73B300B5BDF9 /* CurrencyInteractorProtocol.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		CEF2087525E828D700C413EA /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CE58DECA25ED712900B5BDF9 /* CurrencyPresenter.swift */,
+				CE58DED225ED739200B5BDF9 /* CurrencyPresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CEF2087625E828E200C413EA /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				CE58DECE25ED713F00B5BDF9 /* CurrencyRouter.swift */,
+				CE58DEDA25ED73C900B5BDF9 /* CurrencyRouterProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		CEF2087725E828EB00C413EA /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CE69652725E4372E00CD414D /* CurrencyViewController.swift */,
+				CE58DEDE25ED73E200B5BDF9 /* CurrencyViewControllerProtocol.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CEF2087825E828FA00C413EA /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CEF2087B25E8297900C413EA /* CurrencyCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		E126C1F6258946A324BF55F2 /* Pods */ = {
@@ -1442,10 +1517,12 @@
 				CA4857892517C71200EDA4CE /* VinchyPresenterProtocol.swift in Sources */,
 				CA2C22DB2554464F002469E4 /* AdvancedSearchAssembly.swift in Sources */,
 				CA46DC98252A44180007819E /* SmartFilterCollectionCell.swift in Sources */,
+				CE58DEC325ED70DC00B5BDF9 /* CurrencyAssembly.swift in Sources */,
 				CA015C1A24C44925008DF01D /* DidnotFindTheWineTableCell.swift in Sources */,
 				CA4857782517BEA000EDA4CE /* VinchyPresenter.swift in Sources */,
 				CACA7E9B254C57CC0099E622 /* WriteNoteAssembly.swift in Sources */,
 				CA070C1725250AEC00C3D9EC /* OnboardPageViewController.swift in Sources */,
+				CE58DEDB25ED73C900B5BDF9 /* CurrencyRouterProtocol.swift in Sources */,
 				CA46DBEF252518460007819E /* OnboardingCache.swift in Sources */,
 				CA2C22D92554464F002469E4 /* AdvancedSearchViewModel.swift in Sources */,
 				CA81984A253864080056A1C6 /* WineDetailViewControllerProtocol.swift in Sources */,
@@ -1456,15 +1533,17 @@
 				449F81B225DD025900585364 /* RootRouter.swift in Sources */,
 				CA7A87FA2506B9D600AAD10F /* ShareUsCollectionCell.swift in Sources */,
 				449F81C425DD049B00585364 /* DeeplinkFlow.swift in Sources */,
+				CEF2087C25E8297900C413EA /* CurrencyCell.swift in Sources */,
 				CA819846253864080056A1C6 /* WineDetailAssembly.swift in Sources */,
 				CA8CD67725096EC200FDB7AF /* GADTSmallTemplateView.m in Sources */,
+				CE58DEDF25ED73E200B5BDF9 /* CurrencyViewControllerProtocol.swift in Sources */,
 				CA7B838924F451FA00991F24 /* WineDetailViewController.swift in Sources */,
 				CA819848253864080056A1C6 /* WineDetailPresenterProtocol.swift in Sources */,
 				CA819847253864080056A1C6 /* WineDetailPresenter.swift in Sources */,
 				CAF514212461C52400667ED0 /* MorePresenter.swift in Sources */,
 				CA99E65724F6EDDD00C36BEE /* ButtonCollectionCell.swift in Sources */,
 				449F81CE25DD050400585364 /* DeeplinkRouter.swift in Sources */,
-				CE69652825E4372E00CD414D /* CurrencyController.swift in Sources */,
+				CE69652825E4372E00CD414D /* CurrencyViewController.swift in Sources */,
 				CAF514282461C52400667ED0 /* DocCell.swift in Sources */,
 				CA472B69245EDEF9009149FF /* CategoryItem.swift in Sources */,
 				CA2C22E02554464F002469E4 /* AdvancedSearchInteractorProtocol.swift in Sources */,
@@ -1489,6 +1568,7 @@
 				CA490141252F7EDC00066A98 /* VinchyViewControllerViewModel.swift in Sources */,
 				CA48579B2517CA5200EDA4CE /* VinchyViewControllerProtocol.swift in Sources */,
 				CA472B2B245EDEA0009149FF /* FiltersHeaderView.swift in Sources */,
+				CE58DECB25ED712900B5BDF9 /* CurrencyPresenter.swift in Sources */,
 				CA878A882572E59700B51FF1 /* ActionSheetAppearence.swift in Sources */,
 				CA99E65324F59CAA00C36BEE /* ShortInfoCollectionCell.swift in Sources */,
 				CA3B1D42249E3FE100FAA08A /* ResultsTableController.swift in Sources */,
@@ -1502,9 +1582,11 @@
 				CA48578F2517C74700EDA4CE /* VinchyRouterProtocol.swift in Sources */,
 				CA472B2C245EDEA0009149FF /* HeaderReusableView.swift in Sources */,
 				CA276D4E256AC34A0061BEBE /* FakeVinchyCollectionCell.swift in Sources */,
+				CE58DED325ED739200B5BDF9 /* CurrencyPresenterProtocol.swift in Sources */,
 				CA81984B253864080056A1C6 /* WineDetailInteractor.swift in Sources */,
 				CA4857742517BE8E00EDA4CE /* VinchyInteractor.swift in Sources */,
 				CE404B072589D41200917544 /* MoreInteractorProtocol.swift in Sources */,
+				CE58DED725ED73B300B5BDF9 /* CurrencyInteractorProtocol.swift in Sources */,
 				CAA9DC3C250BD20400F996A8 /* AdvancedHeader.swift in Sources */,
 				CA4857832517C67700EDA4CE /* VinchyInteractorProtocol.swift in Sources */,
 				CA472AC0245EDE2F009149FF /* AppDelegate.swift in Sources */,
@@ -1517,7 +1599,7 @@
 				CAF514292461C52400667ED0 /* MoreRouter.swift in Sources */,
 				CACA7E9C254C57CC0099E622 /* WriteNotePresenter.swift in Sources */,
 				CA472AC2245EDE2F009149FF /* SceneDelegate.swift in Sources */,
-				CE69649D25E07BDE00CD414D /* CurrencyCell.swift in Sources */,
+				CE69649D25E07BDE00CD414D /* InfoCurrencyCell.swift in Sources */,
 				CE4254EB258157DC001158D2 /* MoreViewControllerModel.swift in Sources */,
 				CA3C981F257260BC0036F7D9 /* StatusAlertable.swift in Sources */,
 				CA3837CC246FCF3C00AD5FCC /* TabBarController.swift in Sources */,
@@ -1534,6 +1616,7 @@
 				CA7CBDF3257FE4AD00C81476 /* WineDetailRoutable.swift in Sources */,
 				CA8CD68325097AD500FDB7AF /* GADTMediumTemplateView.m in Sources */,
 				CA819845253864080056A1C6 /* WineDetailInput.swift in Sources */,
+				CE58DECF25ED713F00B5BDF9 /* CurrencyRouter.swift in Sources */,
 				CAF5146B2468172900667ED0 /* LoveViewController.swift in Sources */,
 				CA46DBE7252518230007819E /* OnboardingRepository.swift in Sources */,
 				CACA7E9F254C57CC0099E622 /* WriteNoteViewControllerProtocol.swift in Sources */,
@@ -1542,6 +1625,7 @@
 				CA4858512519446800EDA4CE /* ForceUpdate.swift in Sources */,
 				CACA7E99254C57CC0099E622 /* WriteNoteViewModel.swift in Sources */,
 				CE8D931325BF41AD004792C6 /* ProfileCell.swift in Sources */,
+				CE58DEC725ED711700B5BDF9 /* CurrencyInteractor.swift in Sources */,
 				CA7B836224F0237100991F24 /* SuggestionCollectionCell.swift in Sources */,
 				CAF514202461C52400667ED0 /* MoreAssembly.swift in Sources */,
 				CACA7EA1254C57CC0099E622 /* WriteNoteInteractor.swift in Sources */,

@@ -18,6 +18,9 @@ public struct UserDefaultsConfig {
 
   @UserDefault("lastSeenOnboardingVersion", defaultValue: 0)
   static public var lastSeenOnboardingVersion: Int
+  
+  @UserDefault("currency", defaultValue: "RUB")
+  static public var currency: String
 }
 
 @propertyWrapper

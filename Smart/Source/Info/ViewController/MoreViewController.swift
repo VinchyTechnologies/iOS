@@ -36,7 +36,7 @@ final class MoreViewController: UIViewController {
       ProfileCell.self,
       ContactCell.self,
       RateAppCell.self,
-      CurrencyCell.self,
+      InfoCurrencyCell.self,
       DocCell.self,
       TextCollectionCell.self)
     
@@ -137,7 +137,7 @@ extension MoreViewController: UICollectionViewDataSource {
       return cell
       
     case .currency(let model):
-      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CurrencyCell.reuseId, for: indexPath) as! CurrencyCell // swiftlint:disable:this force_cast
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: InfoCurrencyCell.reuseId, for: indexPath) as! InfoCurrencyCell // swiftlint:disable:this force_cast
       cell.decorate(model: model[indexPath.row])
       return cell
       
@@ -184,7 +184,7 @@ extension MoreViewController: UICollectionViewDelegateFlowLayout {
       
     case .currency:
       let width = collectionView.frame.width
-      return CGSize(width: width, height: CurrencyCell.height())
+      return CGSize(width: width, height: InfoCurrencyCell.height())
       
     case .social:
       let width = collectionView.frame.width
