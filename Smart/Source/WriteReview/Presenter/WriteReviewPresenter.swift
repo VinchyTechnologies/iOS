@@ -62,7 +62,9 @@ extension WriteReviewPresenter: WriteReviewPresenterProtocol {
     let navigationTitle = input.reviewID == nil
       ? localized("write_review").firstLetterUppercased()
       : localized("update_review").firstLetterUppercased()
-    viewController?.updateUI(viewModel: .init(rating: rating, reviewText: comment, navigationTitle: navigationTitle))
+    let rightBarButtonText = localized("send").firstLetterUppercased()
+    let underStarText = localized("tap_a_star_to_rate").firstLetterUppercased()
+    viewController?.updateUI(viewModel: .init(rating: rating, reviewText: comment, navigationTitle: navigationTitle, rightBarButtonText: rightBarButtonText, underStarText: underStarText))
   }
   
   func setPlaceholder() {

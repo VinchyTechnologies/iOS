@@ -68,6 +68,8 @@
 "did_update_rating" = "we have updated your review";
 "did_send_rating" = "Thanks for your feedback";
 "reviews" = "reviews";
+"send" = "send";
+"tap_a_star_to_rate" = "Tap a star to rate";
 
 // MARK: - Sugar
 "sugar" = "sugar";

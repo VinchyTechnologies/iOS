@@ -26,7 +26,7 @@ final class WriteReviewViewController: UIViewController {
     view.settings.emptyBorderColor = .accent
     view.settings.starSize = 40
     view.settings.fillMode = .half
-    view.settings.minTouchRating = 0
+    view.settings.minTouchRating = 0.5
     return view
   }()
   
@@ -34,7 +34,6 @@ final class WriteReviewViewController: UIViewController {
     let label = UILabel()
     label.font = Font.regular(16)
     label.textColor = .blueGray
-    label.text = "Tap a star to rate"
     return label
   }()
   
@@ -74,12 +73,6 @@ final class WriteReviewViewController: UIViewController {
       barButtonSystemItem: .cancel,
       target: self,
       action: #selector(closeSelf))
-    
-    navigationItem.rightBarButtonItem = .init(
-      title: "Send",
-      style: .plain,
-      target: self,
-      action: #selector(didTapSend))
         
     view.addSubview(ratingView)
     ratingView.translatesAutoresizingMaskIntoConstraints = false
@@ -153,6 +146,12 @@ extension WriteReviewViewController: WriteReviewViewControllerProtocol {
     ratingView.rating = viewModel.rating ?? 0
     textView.text = viewModel.reviewText
     navigationItem.title = viewModel.navigationTitle
+    navigationItem.rightBarButtonItem = .init(
+      title: viewModel.rightBarButtonText,
+      style: .plain,
+      target: self,
+      action: #selector(didTapSend))
+    ratingHintLabel.text = viewModel.underStarText
   }
   
   func setPlaceholder(placeholder: String?) {

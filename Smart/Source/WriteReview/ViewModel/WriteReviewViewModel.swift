@@ -12,4 +12,6 @@ struct WriteReviewViewModel {
   let rating: Double?
   let reviewText: String?
   let navigationTitle: String?
+  let rightBarButtonText: String?
+  let underStarText: String?
 }
