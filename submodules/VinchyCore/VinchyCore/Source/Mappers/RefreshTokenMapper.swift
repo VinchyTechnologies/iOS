@@ -35,7 +35,7 @@ func mapToRefreshTokenCompletion<T: Decodable>(
                 
               case .failure:
                 // autologin
-                Accounts.shared.auth(email: UserDefaultsConfig.accountEmail, password: password) { (result) in
+                Accounts.shared.auth(email: UserDefaultsConfig.accountEmail, password: password) { result in
                   switch result {
                   case .success(let model):
                     Keychain.shared.accessToken = model.accessToken
@@ -43,6 +43,11 @@ func mapToRefreshTokenCompletion<T: Decodable>(
                     fun()
                     
                   case .failure(let error):
+                    UserDefaultsConfig.accountID = 0
+                    UserDefaultsConfig.accountEmail = ""
+                    Keychain.shared.accessToken = nil
+                    Keychain.shared.refreshToken = nil
+                    Keychain.shared.password = nil
                     completion(.failure(error))
                   }
                 }
@@ -53,6 +58,7 @@ func mapToRefreshTokenCompletion<T: Decodable>(
             UserDefaultsConfig.accountEmail = ""
             Keychain.shared.accessToken = nil
             Keychain.shared.refreshToken = nil
+            Keychain.shared.password = nil
             completion(.failure(.updateTokensErrorShouldShowAuthScreen)) // auth
           }
         } else {
@@ -64,6 +70,7 @@ func mapToRefreshTokenCompletion<T: Decodable>(
         UserDefaultsConfig.accountEmail = ""
         Keychain.shared.accessToken = nil
         Keychain.shared.refreshToken = nil
+        Keychain.shared.password = nil
         completion(.failure(.updateTokensErrorShouldShowAuthScreen))
       }
     }

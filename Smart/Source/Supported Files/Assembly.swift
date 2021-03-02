@@ -101,4 +101,10 @@ final class Assembly {
     let navController = NavigationController(rootViewController: controller)
     return navController
   }
+  
+  static func buildMapViewController() -> UIViewController {
+    let controller = MapAssembly.assemblyModule()
+    controller.hidesBottomBarWhenPushed = true
+    return controller
+  }
 }

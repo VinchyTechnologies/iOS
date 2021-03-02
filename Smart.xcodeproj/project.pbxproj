@@ -22,6 +22,17 @@
 		4437AA6E25E3BE7300F6E838 /* WriteReviewRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437AA6D25E3BE7300F6E838 /* WriteReviewRoutable.swift */; };
 		4474E36525E02486001C5DE3 /* VinchyAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4474E36425E02486001C5DE3 /* VinchyAnalytics.framework */; };
 		4474E36625E02486001C5DE3 /* VinchyAnalytics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4474E36425E02486001C5DE3 /* VinchyAnalytics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		447C353825EEAA5700105A35 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447C352725EEAA5700105A35 /* MapViewModel.swift */; };
+		447C353925EEAA5700105A35 /* MapInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447C352925EEAA5700105A35 /* MapInput.swift */; };
+		447C353A25EEAA5700105A35 /* MapAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447C352B25EEAA5700105A35 /* MapAssembly.swift */; };
+		447C353B25EEAA5700105A35 /* MapPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447C352D25EEAA5700105A35 /* MapPresenter.swift */; };
+		447C353C25EEAA5700105A35 /* MapPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447C352E25EEAA5700105A35 /* MapPresenterProtocol.swift */; };
+		447C353D25EEAA5700105A35 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447C353025EEAA5700105A35 /* MapViewController.swift */; };
+		447C353E25EEAA5700105A35 /* MapViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447C353125EEAA5700105A35 /* MapViewControllerProtocol.swift */; };
+		447C353F25EEAA5700105A35 /* MapInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447C353325EEAA5700105A35 /* MapInteractor.swift */; };
+		447C354025EEAA5700105A35 /* MapInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447C353425EEAA5700105A35 /* MapInteractorProtocol.swift */; };
+		447C354125EEAA5700105A35 /* MapRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447C353625EEAA5700105A35 /* MapRouter.swift */; };
+		447C354225EEAA5700105A35 /* MapRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447C353725EEAA5700105A35 /* MapRouterProtocol.swift */; };
 		4495625125E2E15A005E79DA /* ReviewDetailRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4495625025E2E15A005E79DA /* ReviewDetailRoutable.swift */; };
 		449D63B225E1054700CBBD1D /* RatingsAndReviewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449D63B125E1054700CBBD1D /* RatingsAndReviewsCell.swift */; };
 		449D63B625E10D5100CBBD1D /* TapToRateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449D63B525E10D5100CBBD1D /* TapToRateCell.swift */; };
@@ -265,6 +276,17 @@
 		4437AA5A25E3A7CD00F6E838 /* WriteReviewRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteReviewRouter.swift; sourceTree = "<group>"; };
 		4437AA6D25E3BE7300F6E838 /* WriteReviewRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewRoutable.swift; sourceTree = "<group>"; };
 		4474E36425E02486001C5DE3 /* VinchyAnalytics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyAnalytics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		447C352725EEAA5700105A35 /* MapViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
+		447C352925EEAA5700105A35 /* MapInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapInput.swift; sourceTree = "<group>"; };
+		447C352B25EEAA5700105A35 /* MapAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapAssembly.swift; sourceTree = "<group>"; };
+		447C352D25EEAA5700105A35 /* MapPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPresenter.swift; sourceTree = "<group>"; };
+		447C352E25EEAA5700105A35 /* MapPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapPresenterProtocol.swift; sourceTree = "<group>"; };
+		447C353025EEAA5700105A35 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
+		447C353125EEAA5700105A35 /* MapViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewControllerProtocol.swift; sourceTree = "<group>"; };
+		447C353325EEAA5700105A35 /* MapInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapInteractor.swift; sourceTree = "<group>"; };
+		447C353425EEAA5700105A35 /* MapInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapInteractorProtocol.swift; sourceTree = "<group>"; };
+		447C353625EEAA5700105A35 /* MapRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapRouter.swift; sourceTree = "<group>"; };
+		447C353725EEAA5700105A35 /* MapRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapRouterProtocol.swift; sourceTree = "<group>"; };
 		4495625025E2E15A005E79DA /* ReviewDetailRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDetailRoutable.swift; sourceTree = "<group>"; };
 		449D63B125E1054700CBBD1D /* RatingsAndReviewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingsAndReviewsCell.swift; sourceTree = "<group>"; };
 		449D63B525E10D5100CBBD1D /* TapToRateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapToRateCell.swift; sourceTree = "<group>"; };
@@ -590,6 +612,88 @@
 			isa = PBXGroup;
 			children = (
 				4437AA6D25E3BE7300F6E838 /* WriteReviewRoutable.swift */,
+			);
+			path = Routable;
+			sourceTree = "<group>";
+		};
+		447C352525EEAA5700105A35 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				447C352A25EEAA5700105A35 /* Assembly */,
+				447C352825EEAA5700105A35 /* Input */,
+				447C353225EEAA5700105A35 /* Interactor */,
+				447C352C25EEAA5700105A35 /* Presenter */,
+				447C354725EEAD4E00105A35 /* Routable */,
+				447C353525EEAA5700105A35 /* Router */,
+				447C352F25EEAA5700105A35 /* ViewController */,
+				447C352625EEAA5700105A35 /* ViewModel */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
+		447C352625EEAA5700105A35 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				447C352725EEAA5700105A35 /* MapViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		447C352825EEAA5700105A35 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				447C352925EEAA5700105A35 /* MapInput.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		447C352A25EEAA5700105A35 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				447C352B25EEAA5700105A35 /* MapAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		447C352C25EEAA5700105A35 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				447C352D25EEAA5700105A35 /* MapPresenter.swift */,
+				447C352E25EEAA5700105A35 /* MapPresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		447C352F25EEAA5700105A35 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				447C353025EEAA5700105A35 /* MapViewController.swift */,
+				447C353125EEAA5700105A35 /* MapViewControllerProtocol.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		447C353225EEAA5700105A35 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				447C353325EEAA5700105A35 /* MapInteractor.swift */,
+				447C353425EEAA5700105A35 /* MapInteractorProtocol.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		447C353525EEAA5700105A35 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				447C353625EEAA5700105A35 /* MapRouter.swift */,
+				447C353725EEAA5700105A35 /* MapRouterProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		447C354725EEAD4E00105A35 /* Routable */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = Routable;
 			sourceTree = "<group>";
@@ -1136,6 +1240,7 @@
 				CA4858542519E95100EDA4CE /* ForceUpdate */,
 				CAF5140D2461C4ED00667ED0 /* Info */,
 				CAF514692468171500667ED0 /* Love */,
+				447C352525EEAA5700105A35 /* Map */,
 				CA3B1D5224A0A34700FAA08A /* Notes */,
 				CA070A762523D77000C3D9EC /* Onboarding */,
 				44EFDB5C25E263E00076ED6D /* ReviewDetail */,
@@ -1865,6 +1970,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CACA7EA3254C57CC0099E622 /* WriteNoteRouter.swift in Sources */,
+				447C353B25EEAA5700105A35 /* MapPresenter.swift in Sources */,
 				CA4857892517C71200EDA4CE /* VinchyPresenterProtocol.swift in Sources */,
 				CA2C22DB2554464F002469E4 /* AdvancedSearchAssembly.swift in Sources */,
 				CA46DC98252A44180007819E /* SmartFilterCollectionCell.swift in Sources */,
@@ -1874,6 +1980,7 @@
 				CA4857782517BEA000EDA4CE /* VinchyPresenter.swift in Sources */,
 				CACA7E9B254C57CC0099E622 /* WriteNoteAssembly.swift in Sources */,
 				44EFDB7225E263E00076ED6D /* ReviewDetailPresenterProtocol.swift in Sources */,
+				447C353925EEAA5700105A35 /* MapInput.swift in Sources */,
 				CA070C1725250AEC00C3D9EC /* OnboardPageViewController.swift in Sources */,
 				CA46DBEF252518460007819E /* OnboardingCache.swift in Sources */,
 				CA2C22D92554464F002469E4 /* AdvancedSearchViewModel.swift in Sources */,
@@ -1889,6 +1996,7 @@
 				CA8CD67725096EC200FDB7AF /* GADTSmallTemplateView.m in Sources */,
 				CA7B838924F451FA00991F24 /* WineDetailViewController.swift in Sources */,
 				440C284725E13F9D009911EE /* WineDetailCollectionView.swift in Sources */,
+				447C354225EEAA5700105A35 /* MapRouterProtocol.swift in Sources */,
 				CA819848253864080056A1C6 /* WineDetailPresenterProtocol.swift in Sources */,
 				CA819847253864080056A1C6 /* WineDetailPresenter.swift in Sources */,
 				CAF514212461C52400667ED0 /* MorePresenter.swift in Sources */,
@@ -1905,6 +2013,7 @@
 				CACA7EA2254C57CC0099E622 /* WriteNoteRouterProtocol.swift in Sources */,
 				CA48577C2517BEAB00EDA4CE /* VinchyRouter.swift in Sources */,
 				CA472B59245EDEDB009149FF /* ShowcaseViewController.swift in Sources */,
+				447C353A25EEAA5700105A35 /* MapAssembly.swift in Sources */,
 				CAF514222461C52400667ED0 /* MoreViewController.swift in Sources */,
 				CA5B901B250FF22E006BC638 /* MoreBounceDecoratorView.swift in Sources */,
 				449F81CA25DD04B400585364 /* DeeplinkStep.swift in Sources */,
@@ -1914,6 +2023,7 @@
 				CA8CD67C25096EE100FDB7AF /* GADTTemplateView.m in Sources */,
 				4437AA6325E3A7CE00F6E838 /* WriteReviewInteractor.swift in Sources */,
 				449F81AC25DD023A00585364 /* RootInteractor.swift in Sources */,
+				447C354025EEAA5700105A35 /* MapInteractorProtocol.swift in Sources */,
 				CAA9DC67250EA05F00F996A8 /* AdvancedSearchCaruselCollectionCell.swift in Sources */,
 				44EFDB4825E17B790076ED6D /* FakeReviewCell.swift in Sources */,
 				CA49A25B251F2C4600FBE269 /* BigAdCollectionCell.swift in Sources */,
@@ -1938,6 +2048,7 @@
 				44EFDB3F25E177220076ED6D /* ReviewsInteractor.swift in Sources */,
 				CA7B836024EF109200991F24 /* MainSubtitleCollectionCell.swift in Sources */,
 				CA819844253864080056A1C6 /* WineDetailViewModel.swift in Sources */,
+				447C353E25EEAA5700105A35 /* MapViewControllerProtocol.swift in Sources */,
 				4437AA6125E3A7CE00F6E838 /* WriteReviewViewControllerProtocol.swift in Sources */,
 				44EFDB7125E263E00076ED6D /* ReviewDetailAssembly.swift in Sources */,
 				CAF514102461C51400667ED0 /* AboutViewController.swift in Sources */,
@@ -1980,23 +2091,28 @@
 				CA3C981F257260BC0036F7D9 /* StatusAlertable.swift in Sources */,
 				CA3837CC246FCF3C00AD5FCC /* TabBarController.swift in Sources */,
 				CA99E65124F58A6000C36BEE /* ToolCollectionCell.swift in Sources */,
+				447C353C25EEAA5700105A35 /* MapPresenterProtocol.swift in Sources */,
 				44EFDB2125E176EC0076ED6D /* ReviewsRouterProtocol.swift in Sources */,
 				CA276D55256AC6720061BEBE /* FakeCell.swift in Sources */,
 				CACA7EA0254C57CC0099E622 /* WriteNoteInteractorProtocol.swift in Sources */,
 				44EFDB7625E263E00076ED6D /* ReviewDetailInteractor.swift in Sources */,
+				447C353D25EEAA5700105A35 /* MapViewController.swift in Sources */,
 				4437AA5F25E3A7CE00F6E838 /* WriteReviewPresenterProtocol.swift in Sources */,
 				CE404B0B2589D47C00917544 /* MorePresenterProtocol.swift in Sources */,
 				CA2C22DC2554464F002469E4 /* AdvancedSearchPresenter.swift in Sources */,
 				CAEBD788251A6D6200210F3B /* AgreementsViewController.swift in Sources */,
 				CA7A87E62500169100AAD10F /* VinchySimpleConiniousCaruselCollectionCell.swift in Sources */,
+				447C353825EEAA5700105A35 /* MapViewModel.swift in Sources */,
 				CA3C97DF25723C570036F7D9 /* TitleCopyableCell.swift in Sources */,
 				4437AA6025E3A7CE00F6E838 /* WriteReviewViewController.swift in Sources */,
 				CAF514132461C51B00667ED0 /* DocController.swift in Sources */,
 				CACA7E9D254C57CC0099E622 /* WriteNotePresenterProtocol.swift in Sources */,
 				CA7CBDF3257FE4AD00C81476 /* WineDetailRoutable.swift in Sources */,
 				CA8CD68325097AD500FDB7AF /* GADTMediumTemplateView.m in Sources */,
+				447C353F25EEAA5700105A35 /* MapInteractor.swift in Sources */,
 				44EFDB7425E263E00076ED6D /* ReviewDetailViewController.swift in Sources */,
 				CA819845253864080056A1C6 /* WineDetailInput.swift in Sources */,
+				447C354125EEAA5700105A35 /* MapRouter.swift in Sources */,
 				CAF5146B2468172900667ED0 /* LoveViewController.swift in Sources */,
 				CA46DBE7252518230007819E /* OnboardingRepository.swift in Sources */,
 				CACA7E9F254C57CC0099E622 /* WriteNoteViewControllerProtocol.swift in Sources */,
