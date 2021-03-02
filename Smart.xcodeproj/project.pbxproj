@@ -2340,7 +2340,7 @@
 				CODE_SIGN_ENTITLEMENTS = Smart/Vinchy.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				INFOPLIST_FILE = Smart/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2367,7 +2367,7 @@
 				CODE_SIGN_ENTITLEMENTS = Smart/VinchyRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				INFOPLIST_FILE = Smart/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
