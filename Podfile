@@ -10,7 +10,6 @@ def commonPods
   pod 'FSPagerView'
   pod 'Google-Mobile-Ads-SDK'
   pod 'SwiftLint'
-  pod 'Firebase/Analytics'
   pod 'Firebase/DynamicLinks'
   pod 'Firebase/RemoteConfig'
   pod 'Firebase/Analytics'
