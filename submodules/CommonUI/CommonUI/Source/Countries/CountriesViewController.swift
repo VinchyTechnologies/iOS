@@ -81,6 +81,7 @@ public final class CountriesViewController: UIViewController {
     super.viewDidLoad()
 
     navigationItem.title = localized("сhoose_countries").firstLetterUppercased()
+    navigationItem.largeTitleDisplayMode = .never
     view.backgroundColor = .mainBackground
 
     view.addSubview(tableView)
