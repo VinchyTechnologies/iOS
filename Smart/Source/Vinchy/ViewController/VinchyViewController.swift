@@ -54,6 +54,7 @@ final class VinchyViewController: UIViewController {
     button.titleLabel?.font = Font.bold(16)
     button.contentEdgeInsets = .init(top: 14, left: 18, bottom: 14, right: 18)
     button.imageEdgeInsets = .init(top: 0, left: -4, bottom: 0, right: 4)
+    button.addTarget(self, action: #selector(didTapMapButton(_:)), for: .touchUpInside)
     return button
   }()
   
@@ -164,6 +165,11 @@ final class VinchyViewController: UIViewController {
   @objc
   private func didPullToRefresh() {
     interactor?.didPullToRefresh()
+  }
+  
+  @objc
+  private func didTapMapButton(_ button: UIButton) {
+    interactor?.didTapMapButton()
   }
 }
 

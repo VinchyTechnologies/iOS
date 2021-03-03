@@ -22,5 +22,5 @@ let isShareUsEnabled = true
 let isDescriptionInWineDetailEnabled = false
 var isAdAvailable = false
 let isProfileCellAvailable = true
-let isMapOnVinchyVCAvailable = false
+let isMapOnVinchyVCAvailable = true
 let isReviewAvailable = true
