@@ -32,7 +32,7 @@ final class CurrencyPresenter {
   
   private func createViewModel() -> [CurrencyCellViewModel] {
     var currenciesModels: [CurrencyCellViewModel] = []
-    let currencies = allCurrencies().filter( {currencyFilter.contains($0)} )
+    let currencies = allCurrencies().filter({ currencyFilter.contains($0) })
 
     for currency in currencies {
       let isSelected = currency == selectedCurrency
