@@ -43,10 +43,14 @@ final public class OnboardViewController: UIViewController {
   override public func loadView() {
     view = UIView(frame: .zero)
     view.backgroundColor = appearanceConfiguration.backgroundColor
-    pageViewController.setViewControllers([pageViwControllerFor(pageIndex: 0)!],
-                                          direction: .forward,
-                                          animated: false,
-                                          completion: nil)
+    if let pageViewControllerForFirstIndex = pageViwControllerFor(pageIndex: 0) {
+      pageViewController.setViewControllers(
+        [pageViewControllerForFirstIndex],
+        direction: .forward,
+        animated: false,
+        completion: nil)
+    }
+    
     pageViewController.dataSource = self
     pageViewController.delegate = self
     pageViewController.view.frame = view.bounds

@@ -27,6 +27,8 @@ final class ProfileCell: UICollectionViewCell, Reusable {
     label.translatesAutoresizingMaskIntoConstraints = false
     label.font = Font.bold(25)
     label.textColor = .dark
+    label.adjustsFontSizeToFitWidth = true
+    label.minimumScaleFactor = 0.1
     return label
   }()
   
@@ -38,7 +40,7 @@ final class ProfileCell: UICollectionViewCell, Reusable {
     return label
   }()
   
-  private let cursorView: UIImageView = {
+  private let accessoryIndicatorView: UIImageView = {
     let imageView = UIImageView()
     imageView.translatesAutoresizingMaskIntoConstraints = false
     imageView.image = UIImage(named: "fill1Copy")
@@ -48,33 +50,45 @@ final class ProfileCell: UICollectionViewCell, Reusable {
     
   override init(frame: CGRect) {
     super.init(frame: frame)
-    
+        
     contentView.addSubview(nameLabel)
     NSLayoutConstraint.activate([
-      nameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
       nameLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+      nameLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
+      nameLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
     ])
     
-    contentView.addSubview(emailLabel)
-    NSLayoutConstraint.activate([
-      emailLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 3),
-      emailLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-      emailLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: 20),
-    ])
+//    contentView.addSubview(emailLabel)
+//    NSLayoutConstraint.activate([
+//      emailLabel.topAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 3),
+//      emailLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+//      emailLabel.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: 20),
+//    ])
     
-    contentView.addSubview(cursorView)
-    NSLayoutConstraint.activate([
-      cursorView.centerYAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 1),
-      cursorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
-      cursorView.widthAnchor.constraint(equalToConstant: 10),
-      cursorView.heightAnchor.constraint(equalToConstant: 18),
-    ])
+//    contentView.addSubview(accessoryIndicatorView)
+//    NSLayoutConstraint.activate([
+//      accessoryIndicatorView.centerYAnchor.constraint(equalTo: nameLabel.bottomAnchor, constant: 1),
+//      accessoryIndicatorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
+//      accessoryIndicatorView.widthAnchor.constraint(equalToConstant: 10),
+//      accessoryIndicatorView.heightAnchor.constraint(equalToConstant: 18),
+//    ])
+    
+//    let line = UIView()
+//    line.backgroundColor = .separator
+//    addSubview(line)
+//    line.translatesAutoresizingMaskIntoConstraints = false
+//    NSLayoutConstraint.activate([
+//      line.topAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -15),
+//      line.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+//      line.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+//      line.heightAnchor.constraint(equalToConstant: 0.5),
+//    ])
   }
   
   required init?(coder aDecoder: NSCoder) { fatalError() }
 
   static func height() -> CGFloat {
-    80
+    50
   }
 }
 

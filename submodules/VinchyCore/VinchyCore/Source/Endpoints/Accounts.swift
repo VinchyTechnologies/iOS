@@ -187,7 +187,7 @@ public final class Accounts {
   public func updateTokens(
     accountID: Int,
     refreshToken: String,
-    completion: @escaping (Result<[Collection], APIError>) -> Void)
+    completion: @escaping (Result<UpdateTokensResponse, APIError>) -> Void)
   {
     api.request(
       endpoint: AccountEndpoint.updateTokens(accountID: accountID, refreshToken: refreshToken),
@@ -199,7 +199,9 @@ public final class Accounts {
     confirmationCode: String,
     completion: @escaping (Result<[Collection], APIError>) -> Void)
   {
-    api.request(endpoint: AccountEndpoint.checkConfirmationCode(accountID: accountID, confirmationCode: confirmationCode),
+    api.request(endpoint: AccountEndpoint.checkConfirmationCode(
+                  accountID: accountID,
+                  confirmationCode: confirmationCode),
                 completion: completion)
   }
   

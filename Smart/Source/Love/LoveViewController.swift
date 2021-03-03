@@ -111,6 +111,7 @@ final class LoveViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    navigationItem.largeTitleDisplayMode = .never
     currentState = .like
     navigationItem.titleView = segmentedControl
 

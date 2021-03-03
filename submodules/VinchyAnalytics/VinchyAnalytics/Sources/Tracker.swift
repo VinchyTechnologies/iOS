@@ -15,7 +15,7 @@ public enum Tracker: CaseIterable, AnalyticsTrackable {
     trackers.forEach { tracker in
       switch tracker {
       case .firebase:
-        print(event, params)
+        print(event, params as Any)
       //                Analytics.logEvent(event, parameters: params)
       }
     }

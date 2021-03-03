@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4495629625E30327005E79DA /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4495629525E30327005E79DA /* DateFormatter.swift */; };
 		44A7259D25924C8000A7552B /* EmailValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A7259C25924C8000A7552B /* EmailValidation.swift */; };
 		5BDC73D0D84407576157E3A1 /* Pods_StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEFE0093A63286B07E13A180 /* Pods_StringFormatting.framework */; };
 		CA015C1C24C47BC4008DF01D /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA015C1B24C47BC4008DF01D /* Localized.swift */; };
@@ -20,6 +21,7 @@
 
 /* Begin PBXFileReference section */
 		10310676A8CB6FCD95516C49 /* Pods-StringFormatting.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StringFormatting.release.xcconfig"; path = "Target Support Files/Pods-StringFormatting/Pods-StringFormatting.release.xcconfig"; sourceTree = "<group>"; };
+		4495629525E30327005E79DA /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		44A7259C25924C8000A7552B /* EmailValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidation.swift; sourceTree = "<group>"; };
 		52D1213F483E0AC197C662D8 /* Pods-StringFormatting.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StringFormatting.debug.xcconfig"; path = "Target Support Files/Pods-StringFormatting/Pods-StringFormatting.debug.xcconfig"; sourceTree = "<group>"; };
 		BEFE0093A63286B07E13A180 /* Pods_StringFormatting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StringFormatting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,6 +106,7 @@
 				CA7A87F12502896C00AAD10F /* CountryCodeFormatter.swift */,
 				CA7A87F52502915C00AAD10F /* Temperature.swift */,
 				44A7259C25924C8000A7552B /* EmailValidation.swift */,
+				4495629525E30327005E79DA /* DateFormatter.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -214,6 +217,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4495629625E30327005E79DA /* DateFormatter.swift in Sources */,
 				CA7A87EE25027D3F00AAD10F /* Quotes.swift in Sources */,
 				44A7259D25924C8000A7552B /* EmailValidation.swift in Sources */,
 				CA7A87F22502896C00AAD10F /* CountryCodeFormatter.swift in Sources */,

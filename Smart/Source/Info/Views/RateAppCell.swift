@@ -59,6 +59,7 @@ final class RateAppCell: UICollectionViewCell, Reusable {
   required init?(coder aDecoder: NSCoder) { fatalError() }
 
   override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    super.traitCollectionDidChange(previousTraitCollection)
     emojiLabel.text = traitCollection.userInterfaceStyle == .dark ? "👍🏿" : "👍"
   }
 

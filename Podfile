@@ -10,15 +10,16 @@ def commonPods
   pod 'FSPagerView'
   pod 'Google-Mobile-Ads-SDK'
   pod 'SwiftLint'
-  pod 'Firebase/Analytics'
   pod 'Firebase/DynamicLinks'
   pod 'Firebase/RemoteConfig'
   pod 'Firebase/Analytics'
   pod 'CocoaDebug', :configurations => ['Debug']
-  pod 'SPAlert'
+  pod 'SPAlert', '~> 2.1.4'
   pod "Sheeeeeeeeet"
+  pod 'Cosmos', '~> 23.0'
   pod 'SkyFloatingLabelTextField'
   pod 'KeychainAccess'
+  pod 'FittedSheets'
 end
 
 target 'Smart' do
@@ -58,6 +59,7 @@ end
 target 'CommonUI' do
   project 'submodules/CommonUI/CommonUI'
   pod 'Nuke'
+  pod 'Cosmos', '~> 23.0'
 end
 
 target 'LocationUI' do

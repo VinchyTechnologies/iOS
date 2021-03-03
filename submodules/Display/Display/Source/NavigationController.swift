@@ -11,15 +11,33 @@ import Core
 
 open class NavigationController: UINavigationController {
 
-  // MARK: - Private Properties
-
-  private let prefersLargeTitles: Bool
-
   // MARK: - Initializers
 
-  public init(rootViewController: UIViewController, prefersLargeTitles: Bool = true) {
-    self.prefersLargeTitles = prefersLargeTitles
+  public override init(rootViewController: UIViewController) {
     super.init(rootViewController: rootViewController)
+    
+    let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
+    let backImage = UIImage(systemName: "chevron.left", withConfiguration: imageConfig)
+    
+    let navBarAppearance = UINavigationBarAppearance()
+    navBarAppearance.titleTextAttributes = [
+      NSAttributedString.Key.font: Font.bold(20),
+      NSAttributedString.Key.foregroundColor: UIColor.dark,
+    ]
+    navBarAppearance.setBackIndicatorImage(
+      backImage,
+      transitionMaskImage: backImage)
+
+    navigationBar.standardAppearance = navBarAppearance
+    navigationBar.scrollEdgeAppearance = navBarAppearance
+
+    switch UIDevice.type {
+    case .iPhoneSE, .iPhone5:
+      navigationBar.prefersLargeTitles = false
+
+    default:
+      navigationBar.prefersLargeTitles = true
+    }
   }
 
   required public init?(coder aDecoder: NSCoder) { fatalError() }
@@ -28,15 +46,7 @@ open class NavigationController: UINavigationController {
 
   public override func viewDidLoad() {
     super.viewDidLoad()
-
-    switch UIDevice.type {
-    case .iPhoneSE, .iPhone5:
-      navigationBar.prefersLargeTitles = false
-
-    default:
-      navigationBar.prefersLargeTitles = prefersLargeTitles
-    }
-
+        
     /// BackgroundColor
     navigationBar.barTintColor = .mainBackground
 
@@ -45,11 +55,6 @@ open class NavigationController: UINavigationController {
 
     /// Remove underline
     navigationBar.shadowImage = UIImage()
-
-    navigationBar.titleTextAttributes = [
-      NSAttributedString.Key.font: Font.bold(20),
-      NSAttributedString.Key.foregroundColor: UIColor.dark
-    ]
 
     UIBarButtonItem.appearance().setTitleTextAttributes([
       NSAttributedString.Key.font: Font.bold(18),
@@ -65,6 +70,15 @@ open class NavigationController: UINavigationController {
       NSAttributedString.Key.font: Font.bold(18),
       NSAttributedString.Key.foregroundColor: UIColor.dark,
     ], for: .highlighted)
+  }
+  
+  open override func viewWillLayoutSubviews() {
+    super.viewWillLayoutSubviews()
+    getnavigationBarBackground()?.subviews.forEach { view in
+      if NSStringFromClass(view.classForCoder).contains("UIBarBackgroundShadowView") {
+        view.isHidden = true
+      }
+    }
   }
 
   public override func viewDidAppear(_ animated: Bool) {
@@ -116,12 +130,25 @@ open class NavigationController: UINavigationController {
   }
 
   public override func pushViewController(_ viewController: UIViewController, animated: Bool) {
-    navigationBar.topItem?.backBarButtonItem = UIBarButtonItem(title: "", style: .plain, target: self, action: nil)
-    let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
-    navigationBar.backIndicatorImage = UIImage(systemName: "chevron.left", withConfiguration: imageConfig)
-    navigationBar.backIndicatorTransitionMaskImage = UIImage(systemName: "chevron.left", withConfiguration: imageConfig)
+    navigationBar.topItem?.backBarButtonItem = BackBarButtonItem(
+      title: "",
+      style: .plain,
+      target: self,
+      action: nil) // not nil only ""
     viewController.navigationItem.leftItemsSupplementBackButton = true
-
     super.pushViewController(viewController, animated: animated)
+  }
+}
+
+fileprivate final class BackBarButtonItem: UIBarButtonItem { // Disale long press on back button for now
+  @available(iOS 14.0, *)
+  override var menu: UIMenu? {
+    set {
+      /* Don't set the menu here */
+      /* super.menu = menu */
+    }
+    get {
+      super.menu
+    }
   }
 }

@@ -20,6 +20,7 @@ struct MoreViewControllerModel {
     case currency([InfoCurrencyCellViewModel])
     case aboutApp([DocCellViewModel])
     case doc([DocCellViewModel])
+    case separator
   }
   
   let sections: [Section]
