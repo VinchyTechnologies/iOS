@@ -100,7 +100,7 @@ extension AuthorizationInteractor: AuthorizationInteractorProtocol {
   }
   
   func didEnterTextIntoEmailTextFieldOrPasswordTextField(_ email: String?, password: String?) {
-    if isValidEmail(email) && !(password?.isEmpty == true) {
+    if isValidEmail(email) && !(password?.isNilOrEmpty) {
       presenter.updateValidEmailAndPassword()
     } else {
       presenter.updateInvalidEmailAndPassword()

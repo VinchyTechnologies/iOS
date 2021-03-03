@@ -115,7 +115,10 @@ extension VinchyPresenter: VinchyPresenterProtocol {
         ]))
 
       case .bottles:
-        if compilation.collectionList.first?.wineList != nil && !(compilation.collectionList.first?.wineList.isEmpty == true) {
+        if
+          compilation.collectionList.first?.wineList != nil,
+          let firstCollectionList = compilation.collectionList.first, !(firstCollectionList.wineList.isEmpty)
+        {
 
           if let title = compilation.title {
             sections.append(.title([
