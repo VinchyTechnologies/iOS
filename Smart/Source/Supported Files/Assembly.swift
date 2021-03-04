@@ -42,7 +42,7 @@ final class Assembly {
 
   static func buildLoveModule() -> NavigationController {
     let controller = LoveViewController()
-    let navController = NavigationController(rootViewController: controller, prefersLargeTitles: false)
+    let navController = NavigationController(rootViewController: controller)
     return navController
   }
 
@@ -54,7 +54,7 @@ final class Assembly {
 
   static func buildChooseCountiesModule(preSelectedCountryCodes: [String], delegate: CountriesViewControllerDelegate) -> NavigationController {
     let controller = CountriesViewController(preSelectedCountryCodes: preSelectedCountryCodes, delegate: delegate)
-    let navController = NavigationController(rootViewController: controller, prefersLargeTitles: false)
+    let navController = NavigationController(rootViewController: controller)
     return navController
   }
 
@@ -66,6 +66,44 @@ final class Assembly {
 
   static func buildWriteNoteViewController(for note: Note) -> UIViewController {
     let controller = WriteNoteAssembly.assemblyModule(input: .init(wine: .database(note: note)))
+    controller.hidesBottomBarWhenPushed = true
+    return controller
+  }
+  
+  static func buildReviewsViewController(wineID: Int64) -> UIViewController {
+    let controller = ReviewsAssembly.assemblyModule()
+    controller.hidesBottomBarWhenPushed = true
+    return controller
+  }
+  
+  static func buildReviewDetailViewController(
+    rate: Double?,
+    author: String?,
+    date: String?,
+    reviewText: String?)
+    -> UIViewController
+  {
+    let controller = ReviewDetailAssembly.assemblyModule(
+      input: .init(rate: rate, author: author, date: date, reviewText: reviewText))
+    controller.hidesBottomBarWhenPushed = true
+    return controller
+  }
+  
+  static func buildWriteReviewViewController(
+    reviewID: Int?,
+    wineID: Int64,
+    rating: Double?,
+    reviewText: String?)
+    -> UIViewController
+  {
+    let controller = WriteReviewAssembly.assemblyModule(
+      input: .init(reviewID: reviewID, wineID: wineID, rating: rating, comment: reviewText))
+    let navController = NavigationController(rootViewController: controller)
+    return navController
+  }
+  
+  static func buildMapViewController() -> UIViewController {
+    let controller = MapAssembly.assemblyModule()
     controller.hidesBottomBarWhenPushed = true
     return controller
   }

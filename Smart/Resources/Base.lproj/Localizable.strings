@@ -62,6 +62,14 @@
 "unloved" = "unloved";
 "will_recommend_less" = "We'll stop recommending more like this";
 "similar_wines" = "similar wines";
+"write_review" = "write a review";
+"update_review" = "update a review";
+"review_placeholder" = "Review(Optional)";
+"did_update_rating" = "we have updated your review";
+"did_send_rating" = "Thanks for your feedback";
+"reviews" = "reviews";
+"send" = "send";
+"tap_a_star_to_rate" = "Tap a star to rate";
 
 // MARK: - Sugar
 "sugar" = "sugar";
@@ -135,6 +143,7 @@
 "description" = "description";
 "you_have_not_written_any_notes_yet" = "you have not written any notes yet";
 "your_thoughts_about_wine" = "your thoughts about wine...";
+"no_notes_found_for_your_request" = "No notes found for your request";
 
 // MARK: - Docs
 "terms_of_use_url" = "https://drive.google.com/file/d/1-HTyQsjLbLgHrfJm-R9lJSRMKjFEeJfg/view";

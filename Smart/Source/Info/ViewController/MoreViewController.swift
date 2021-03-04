@@ -38,7 +38,8 @@ final class MoreViewController: UIViewController {
       RateAppCell.self,
       InfoCurrencyCell.self,
       DocCell.self,
-      TextCollectionCell.self)
+      TextCollectionCell.self,
+      SeparatorCell.self)
     
     collectionView.dataSource = self
     collectionView.delegate = self
@@ -50,6 +51,10 @@ final class MoreViewController: UIViewController {
     super.viewDidLoad()
     view.addSubview(collectionView)
     collectionView.fill()
+  }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
     interactor?.viewDidLoad()
   }
   override func viewWillAppear(_ animated: Bool) {
@@ -108,6 +113,9 @@ extension MoreViewController: UICollectionViewDataSource {
     case .doc(let model), .aboutApp(let model):
       return model.count
       
+    case .separator:
+      return 1
+      
     case .none:
       return 0
     }
@@ -155,6 +163,10 @@ extension MoreViewController: UICollectionViewDataSource {
       cell.decorate(model: model[indexPath.row])
       return cell
       
+    case .separator:
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SeparatorCell.reuseId, for: indexPath) as! SeparatorCell // swiftlint:disable:this force_cast
+      return cell
+      
     case .none:
       fatalError()
     }
@@ -198,6 +210,9 @@ extension MoreViewController: UICollectionViewDelegateFlowLayout {
       let width = collectionView.frame.width
       return CGSize(width: width, height: DocCell.height())
       
+    case .separator:
+      return .init(width: collectionView.frame.width, height: 1)
+      
     case .none:
       return .zero
     }
@@ -212,6 +227,9 @@ extension MoreViewController: UICollectionViewDelegateFlowLayout {
     switch viewModel?.sections[safe: section] {
     case .header:
       return .init(top: 0, left: C.horizontalInset, bottom: 0, right: C.horizontalInset)
+      
+    case .separator:
+      return .init(top: 0, left: 0, bottom: 10, right: 0)
 
     case .profile, .phone, .email, .partner, .rate, .currency, .social, .doc, .aboutApp, .none:
       return .zero
@@ -247,7 +265,7 @@ extension MoreViewController: UICollectionViewDelegateFlowLayout {
     case .aboutApp:
       interactor?.didTapAboutApp()
       
-    case .social:
+    case .social, .separator:
       break
       
     case .none:

@@ -21,6 +21,12 @@ public struct UserDefaultsConfig {
   
   @UserDefault("currency", defaultValue: "RUB")
   static public var currency: String
+
+  @UserDefault("accountID", defaultValue: 0)
+  static public var accountID: Int
+  
+  @UserDefault("accountEmail", defaultValue: "")
+  static public var accountEmail: String
 }
 
 @propertyWrapper

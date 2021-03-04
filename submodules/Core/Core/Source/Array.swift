@@ -21,9 +21,9 @@ public extension Array where Element == String? {
 
     var urls: [URL?] = []
 
-    self.forEach { (string) in
-      if string != nil && string != "" {
-        urls.append(URL(string: string!))
+    self.forEach { string in
+      if let string = string, string.isEmpty == false {
+        urls.append(URL(string: string))
       }
     }
 

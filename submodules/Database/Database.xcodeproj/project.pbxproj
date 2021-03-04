@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		447C346F25EEA24F00105A35 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 447C346E25EEA24F00105A35 /* Core.framework */; };
 		6DE8C5FAF98327B50B88007F /* Pods_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B51E786F09D84D5CD2E45EB7 /* Pods_Database.framework */; };
 		CA015C1E24C57E03008DF01D /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA015C1D24C57E03008DF01D /* Database.swift */; };
 		CA1821F624C0F48600280DD4 /* Database.h in Headers */ = {isa = PBXBuildFile; fileRef = CA1821F424C0F48600280DD4 /* Database.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -17,6 +18,7 @@
 
 /* Begin PBXFileReference section */
 		0E8EEAB426FC98D2C3AFE4BE /* Pods-Database.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Database.release.xcconfig"; path = "Target Support Files/Pods-Database/Pods-Database.release.xcconfig"; sourceTree = "<group>"; };
+		447C346E25EEA24F00105A35 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		B51E786F09D84D5CD2E45EB7 /* Pods_Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA015C1D24C57E03008DF01D /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		CA1821F124C0F48600280DD4 /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -34,6 +36,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DE8C5FAF98327B50B88007F /* Pods_Database.framework in Frameworks */,
+				447C346F25EEA24F00105A35 /* Core.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +56,7 @@
 		B8926B80D25EE0DB99448FD1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				447C346E25EEA24F00105A35 /* Core.framework */,
 				B51E786F09D84D5CD2E45EB7 /* Pods_Database.framework */,
 			);
 			name = Frameworks;

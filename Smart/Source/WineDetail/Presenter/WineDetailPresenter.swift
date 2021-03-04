@@ -10,6 +10,7 @@ import VinchyCore
 import Display
 import StringFormatting
 import Core
+import CommonUI
 
 fileprivate enum C {
   
@@ -102,21 +103,48 @@ final class WineDetailPresenter {
     }
   }
   
-  private func buildDislikeButton(wine: Wine, isDisliked: Bool) -> [WineDetailViewModel.Section] {
+  private func buildReview(wine: Wine) -> [WineDetailViewModel.Section] {
     
-    let normalImage = UIImage(systemName: "heart.slash", withConfiguration: C.imageConfig)
-    let selectedImage = UIImage(systemName: "heart.slash.fill", withConfiguration: C.imageConfig)
-    let title = NSAttributedString(string: localized("unlike").firstLetterUppercased(), font: .boldSystemFont(ofSize: 18), textColor: .dark)
+    let reviewCellViewModels: [ReviewCellViewModel] = wine.reviews.compactMap({
+      if $0.comment?.isEmpty == true || $0.comment == nil {
+        return nil
+      }
+      
+      let dateText: String?
+      
+      if $0.updateDate == nil {
+        dateText = $0.publicationDate.toDate()
+      } else {
+        dateText = $0.updateDate.toDate()
+      }
+      
+      return ReviewCellViewModel(
+        id: $0.id,
+        userNameText: nil,
+        dateText: dateText,
+        reviewText: $0.comment,
+        rate: $0.rating)
+    })
     
-    return [.button([.init(buttonModel: .dislike(title: title, image: normalImage, selectedImage: selectedImage, isDisliked: isDisliked))])]
+    if reviewCellViewModels.isEmpty {
+      return []
+    }
+    
+    return [
+      .ratingAndReview([
+        .init(titleText: localized("reviews").firstLetterUppercased(),
+              moreText: "See All",
+              shouldShowMoreText: /*reviewCellViewModels.count >= 5*/false)
+      ]),
+      .reviews(reviewCellViewModels),
+    ]
   }
   
-  private func buildReportAnErrorButton() -> [WineDetailViewModel.Section] {
-    
-    let title = NSAttributedString(string: localized("tell_about_error").firstLetterUppercased(), font: .boldSystemFont(ofSize: 18), textColor: .dark)
-    
-    return [.button([.init(buttonModel: .reportError(title: title))])]
+  private func buildStarRateControl(rate: Double) -> [WineDetailViewModel.Section] {
+    let rateViewModel = StarRatingControlCollectionViewCellViewModel(rate: rate)    
+    return [.rate([rateViewModel])]
   }
+
 }
 
 // MARK: - WineDetailPresenterProtocol
@@ -160,7 +188,7 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
     viewController?.stopLoadingAnimation()
   }
   
-  func update(wine: Wine, isLiked: Bool, isDisliked: Bool) {
+  func update(wine: Wine, isLiked: Bool, isDisliked: Bool, rate: Double) {
     
     var sections: [WineDetailViewModel.Section] = []
     
@@ -176,7 +204,7 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
         ])
       ]
     }
-    
+
     sections += [
       .title([.init(
                 titleText: NSAttributedString(
@@ -184,6 +212,12 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
                   font: Font.heavy(20),
                   textColor: .dark))])
     ]
+    
+    if isReviewAvailable {
+      if let rating = wine.rating {
+        sections += buildStarRateControl(rate: rating)
+      }
+    }
     
     sections += [
       .tool([.init(
@@ -203,10 +237,13 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
     }
     
     sections += buildGeneralInfo(wine: wine)
-    /*
-    sections += buildDislikeButton(wine: wine, isDisliked: isDisliked)
-    sections += buildReportAnErrorButton()
-    */
+    
+    if isReviewAvailable {
+//      sections += [.tapToRate([.init(titleText: "Tap to Rate:", rate: 0)])]
+      sections += buildReview(wine: wine)
+      sections += [.button([.init(buttonText: localized("write_review").firstLetterUppercased())])]
+    }
+
     if isAdAvailable {
       sections += [.ad([1])] // TODO: - Add Real Model
     }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		18BD480D87EBF0D4FDC67B34 /* Pods_Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3088510DDC0E64D6439091ED /* Pods_Display.framework */; };
 		4404888D25D8390600019081 /* UITapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404888C25D8390600019081 /* UITapGestureRecognizer.swift */; };
+		4410AE3325E5632400A84FF9 /* DismissRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410AE3225E5632400A84FF9 /* DismissRoutable.swift */; };
 		44A7255D2592290B00A7552B /* TextFieldWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A7255C2592290B00A7552B /* TextFieldWithIcon.swift */; };
 		44A72594259230C600A7552B /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A72593259230C600A7552B /* Button.swift */; };
 		44DE6C1625DB9E980008695D /* Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DE6C1525DB9E980008695D /* Orientation.swift */; };
@@ -41,6 +42,7 @@
 /* Begin PBXFileReference section */
 		3088510DDC0E64D6439091ED /* Pods_Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4404888C25D8390600019081 /* UITapGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITapGestureRecognizer.swift; sourceTree = "<group>"; };
+		4410AE3225E5632400A84FF9 /* DismissRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissRoutable.swift; sourceTree = "<group>"; };
 		44A7255C2592290B00A7552B /* TextFieldWithIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithIcon.swift; sourceTree = "<group>"; };
 		44A72593259230C600A7552B /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		44DE6C1525DB9E980008695D /* Orientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orientation.swift; sourceTree = "<group>"; };
@@ -146,6 +148,7 @@
 				CABDBA9524C31FAC00AD96D6 /* ASPageControl.swift */,
 				44A72593259230C600A7552B /* Button.swift */,
 				CAA9DC68250EA24900F996A8 /* DecoratorFlowLayout.swift */,
+				4410AE3225E5632400A84FF9 /* DismissRoutable.swift */,
 				CA1821A124C0E72A00280DD4 /* Font.swift */,
 				CA81987A25387CA80056A1C6 /* Gradient.swift */,
 				CA3C97EE2572533E0036F7D9 /* GradientView.swift */,
@@ -298,6 +301,7 @@
 				CA18220A24C0FF8C00280DD4 /* Keyboard.swift in Sources */,
 				CA7A87E324FEE1B200AAD10F /* Loadable.swift in Sources */,
 				CA276D52256AC5830061BEBE /* ShimmeringView.swift in Sources */,
+				4410AE3325E5632400A84FF9 /* DismissRoutable.swift in Sources */,
 				CA18220824C0FE2300280DD4 /* UIKitUtils.swift in Sources */,
 				CA1821A224C0E72A00280DD4 /* Font.swift in Sources */,
 				44A72594259230C600A7552B /* Button.swift in Sources */,

@@ -32,7 +32,7 @@ final class VinchySimpleConiniousCaruselCollectionCell: UICollectionViewCell, Re
   
   weak var delegate: VinchySimpleConiniousCaruselCollectionCellDelegate?
   
-  private var type: CollectionType!
+  private var type: CollectionType?
   
   private var collections: [Collection] = [] {
     didSet {

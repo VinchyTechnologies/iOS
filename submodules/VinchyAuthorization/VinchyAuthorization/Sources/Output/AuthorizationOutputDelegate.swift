@@ -8,7 +8,7 @@
 import VinchyCore
 
 public struct AuthorizationOutputModel {
-  public let accountID: Int64
+  public let accountID: Int
   public let email: String
 }
 

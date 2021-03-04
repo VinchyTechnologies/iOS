@@ -207,7 +207,7 @@ final class MapURLBuilder {
             item(.scale, String(describing: UIScreen.main.scale))
         ]
 
-        return components.url!
+        return components.url! // swiftlint:disable:this force_unwrapping
     }
 }
 

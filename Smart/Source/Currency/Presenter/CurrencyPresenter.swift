@@ -41,6 +41,7 @@ final class CurrencyPresenter {
   
   private func createViewModel() -> CurrencyViewControllerModel {
     var currenciesModels: [CurrencyCellViewModel] = []
+
     let currencies = allCurrencies().filter({ currencyFilter.contains($0.code) })
     
     for currency in currencies {

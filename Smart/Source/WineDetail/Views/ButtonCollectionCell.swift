@@ -10,21 +10,15 @@ import UIKit
 import Display
 
 protocol ButtonCollectionCellDelegate: AnyObject {
-  func didTapDislikeButton(_ button: UIButton)
-  func didTapReportAnErrorButton(_ button: UIButton)
+  func didTapReviewButton(_ button: UIButton)
 }
 
 struct ButtonCollectionCellViewModel: ViewModelProtocol {
   
-  enum Button {
-    case dislike(title: NSAttributedString?, image: UIImage?, selectedImage: UIImage?, isDisliked: Bool)
-    case reportError(title: NSAttributedString?)
-  }
+  fileprivate let buttonText: String?
   
-  fileprivate let buttonModel: Button
-  
-  public init(buttonModel: Button) {
-    self.buttonModel = buttonModel
+  public init(buttonText: String?) {
+    self.buttonText = buttonText
   }
 }
 
@@ -36,18 +30,14 @@ final class ButtonCollectionCell: UICollectionViewCell, Reusable {
   
   // MARK: - Private Properties
   
-  private var type: ButtonCollectionCellViewModel.Button?
-  private let button = UIButton()
+  private let button = Button()
   
   // MARK: - Initializers
   
   override init(frame: CGRect) {
     super.init(frame: frame)
     
-    button.layer.borderWidth = 2
-    button.layer.borderColor = UIColor.dark.cgColor
-    button.tintColor = .dark
-    button.imageEdgeInsets = .init(top: 0, left: -10, bottom: 0, right: 10)
+    button.enable()    
     button.addTarget(self, action: #selector(didTap(_:)), for: .touchUpInside)
     addSubview(button)
   }
@@ -65,16 +55,7 @@ final class ButtonCollectionCell: UICollectionViewCell, Reusable {
   
   @objc
   private func didTap(_ button: UIButton) {
-    
-    guard let type = type else { return }
-    
-    switch type {
-    case .dislike:
-      delegate?.didTapDislikeButton(button)
-      
-    case .reportError:
-      delegate?.didTapReportAnErrorButton(button)
-    }
+    delegate?.didTapReviewButton(button)
   }
 }
 
@@ -85,29 +66,6 @@ extension ButtonCollectionCell: Decoratable {
   typealias ViewModel = ButtonCollectionCellViewModel
   
   func decorate(model: ViewModel) {
-    
-    type = model.buttonModel
-    
-    switch model.buttonModel {
-    case .dislike(let title, let image, let selectedImage, let isDisliked):
-      button.isSelected = isDisliked
-      
-      button.setAttributedTitle(title, for: .normal)
-      
-      if let selectedImage = selectedImage {
-        button.setImage(selectedImage, for: .selected)
-      } else {
-        button.setImage(nil, for: .selected)
-      }
-      
-      if let normalImage = image {
-        button.setImage(normalImage, for: .normal)
-      } else {
-        button.setImage(nil, for: .normal)
-      }
-      
-    case .reportError(let title):
-      button.setAttributedTitle(title, for: .normal)
-    }
+    button.setTitle(model.buttonText, for: .normal)
   }
 }

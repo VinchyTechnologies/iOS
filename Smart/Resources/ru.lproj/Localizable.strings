@@ -62,6 +62,14 @@
 "unloved" = "Не понравилось";
 "will_recommend_less" = "Мы будем стараться предлагать меньше подобных вин";
 "similar_wines" = "похожие вина";
+"write_review" = "написать отзыв";
+"update_review" = "Обновить отзыв";
+"review_placeholder" = "Отзыв(Необязательно)";
+"did_update_rating" = "Мы обновили Ваш отзыв";
+"did_send_rating" = "Спасибо за ваш отзыв";
+"reviews" = "отзывы";
+"send" = "отправить";
+"tap_a_star_to_rate" = "Коснитесь для оценки";
 
 // MARK: - Sugar
 "sugar" = "сахар";
@@ -135,6 +143,7 @@
 "description" = "Описание";
 "you_have_not_written_any_notes_yet" = "Вы не написали ещё ни одной заметки";
 "your_thoughts_about_wine" = "ваши мысли о вине...";
+"no_notes_found_for_your_request" = "По вашему запросу не найдено ни одной заметки";
 
 // MARK: - Docs
 "terms_of_use_url" = "https://drive.google.com/file/d/1P9kIPsxwMD20OH4VZ2ANIdsn-1QtZNLM/view";

@@ -67,7 +67,7 @@ extension AuthorizationInteractor: AuthorizationInteractorProtocol {
           switch result {
           case .success(let accountID):
             self.presenter.endEditing()
-            self.router.pushToEnterPasswordViewController(accountID: accountID.accountID)
+            self.router.pushToEnterPasswordViewController(accountID: accountID.accountID, password: password)
 
           case .failure(let error):
             self.presenter.showCreateUserError(error: error)
@@ -85,8 +85,11 @@ extension AuthorizationInteractor: AuthorizationInteractorProtocol {
           switch result {
           case .success(let model):
             self.presenter.endEditing()
+            UserDefaultsConfig.accountEmail = model.email
+            UserDefaultsConfig.accountID = model.accountID
             Keychain.shared.accessToken = model.accessToken
             Keychain.shared.refreshToken = model.refreshToken
+            Keychain.shared.password = password
             self.router.dismissWithSuccsessLogin(output: .init(accountID: model.accountID, email: model.email))
 
           case .failure(let error):
@@ -100,7 +103,7 @@ extension AuthorizationInteractor: AuthorizationInteractorProtocol {
   }
   
   func didEnterTextIntoEmailTextFieldOrPasswordTextField(_ email: String?, password: String?) {
-    if isValidEmail(email) && !(password?.isEmpty == true) {
+    if isValidEmail(email) && !(password?.isNilOrEmpty == true) {
       presenter.updateValidEmailAndPassword()
     } else {
       presenter.updateInvalidEmailAndPassword()

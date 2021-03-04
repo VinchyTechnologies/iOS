@@ -24,12 +24,20 @@ final class AuthorizationViewController: UIViewController {
   
   private(set) var loadingIndicator = ActivityIndicatorView()
   
+  private let scrollView: UIScrollView = {
+    let scrollView = UIScrollView()
+    scrollView.alwaysBounceVertical = true
+    scrollView.showsVerticalScrollIndicator = true
+    return scrollView
+  }()
+  
   private let titleLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
     label.textColor = .accent
     label.font = Font.heavy(48)
-    label.numberOfLines = 0
+    label.adjustsFontSizeToFitWidth = true
+    label.minimumScaleFactor = 0.1
     return label
   }()
   
@@ -88,7 +96,7 @@ final class AuthorizationViewController: UIViewController {
   }()
   
   private lazy var bottomConstraint = NSLayoutConstraint(
-    item: continueButton,
+    item: scrollView,
     attribute: .bottom,
     relatedBy: .equal,
     toItem: view,
@@ -104,6 +112,8 @@ final class AuthorizationViewController: UIViewController {
     super.viewDidLoad()
     
     view.backgroundColor = .mainBackground
+    
+    edgesForExtendedLayout = []
 
     navigationItem.largeTitleDisplayMode = .never
     
@@ -113,17 +123,43 @@ final class AuthorizationViewController: UIViewController {
       style: .plain,
       target: self,
       action: #selector(closeSelf))
-        
-    view.addSubview(continueButton)
-    emailTextField.translatesAutoresizingMaskIntoConstraints = false
+    
+    view.addSubview(scrollView)
+    scrollView.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      scrollView.topAnchor.constraint(equalTo: view.topAnchor),
+      scrollView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      scrollView.widthAnchor.constraint(equalTo: view.widthAnchor),
+      bottomConstraint,
+    ])
+    
+    scrollView.addSubview(titleLabel)
+    titleLabel.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      titleLabel.topAnchor.constraint(equalTo: scrollView.topAnchor),
+      titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+      titleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+    ])
+    
+    scrollView.addSubview(subtitleLabel)
+    subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
+      subtitleLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+      subtitleLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+    ])
+    
+    scrollView.addSubview(continueButton)
+    continueButton.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       continueButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
       continueButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
       continueButton.heightAnchor.constraint(equalToConstant: 48),
-      bottomConstraint,
+      continueButton.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: -10),
     ])
     
-    view.addSubview(passwordTextField)
+    scrollView.addSubview(passwordTextField)
     passwordTextField.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       passwordTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24),
@@ -131,29 +167,13 @@ final class AuthorizationViewController: UIViewController {
       passwordTextField.bottomAnchor.constraint(equalTo: continueButton.topAnchor, constant: -16),
     ])
     
-    view.addSubview(emailTextField)
+    scrollView.addSubview(emailTextField)
     emailTextField.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       emailTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 24),
       emailTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -24),
       emailTextField.bottomAnchor.constraint(equalTo: passwordTextField.topAnchor, constant: -16),
-    ])
-    
-    view.addSubview(titleLabel)
-    titleLabel.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
-      titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-      titleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-    ])
-    
-    view.addSubview(subtitleLabel)
-    subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
-      subtitleLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-      subtitleLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
-      subtitleLabel.bottomAnchor.constraint(lessThanOrEqualTo: emailTextField.topAnchor, constant: -8),
+      emailTextField.topAnchor.constraint(greaterThanOrEqualTo: subtitleLabel.bottomAnchor, constant: 10),
     ])
     
     configureKeyboardHelper()
@@ -176,11 +196,7 @@ final class AuthorizationViewController: UIViewController {
   }
 
   private func updateNextButtonBottomConstraint(with keyboardHeight: CGFloat) {
-    if keyboardHeight == 0 {
-      bottomConstraint.constant = -keyboardHeight - view.safeAreaInsets.top
-    } else {
-      bottomConstraint.constant = -keyboardHeight - 10
-    }
+    bottomConstraint.constant = -keyboardHeight
     view.layoutSubviews()
   }
   
