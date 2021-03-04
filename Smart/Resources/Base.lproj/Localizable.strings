@@ -106,6 +106,9 @@
 "contact_phone" = "+ 7 (910) 243-36-38";
 "currency" = "Currency";
 
+// MARK: - Currency
+"currencies" = "Select currency";
+
 // MARK: - Subscriptions
 "subscriptions" = "subscriptions";
 

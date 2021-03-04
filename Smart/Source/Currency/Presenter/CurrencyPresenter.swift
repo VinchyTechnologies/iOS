@@ -15,7 +15,7 @@ final class CurrencyPresenter {
   
   // MARK: - Internal Properties
   
-   var viewController: CurrencyViewControllerProtocol?
+  var viewController: CurrencyViewControllerProtocol?
   var selectedCurrency: String?
   
   // MARK: - Initializers
@@ -26,20 +26,29 @@ final class CurrencyPresenter {
   
   // MARK: - Private Methods
   
-  let currencyFilter = Set(["AUD","BGN","BRL","CAD","CHF","CNY","CZK","DKK","GBR","HKD","HRK","HUF","IDR","ILS","INR","ISK",
-                           "JPY","KRW","MXN","MYR","NOK","NZD","PHP","PLN","RON","RUB","SEK","SGD","THB","TRY","USD",
-                           "ZAR"])
+  func localizedString(forCurrencyCode currencyCode: String) -> String {
+    let locale = NSLocale(localeIdentifier: currencyCode)
+    if locale.displayName(forKey: .currencySymbol, value: currencyCode) == currencyCode {
+      let newlocale = NSLocale(localeIdentifier: currencyCode.dropLast() + "en_US")
+      return newlocale.displayName(forKey: NSLocale.Key.currencyCode, value: currencyCode) ?? ""
+    }
+    return locale.displayName(forKey: NSLocale.Key.currencyCode, value: currencyCode) ?? ""
+  }
   
-  private func createViewModel() -> [CurrencyCellViewModel] {
+  let currencyFilter = Set(["AUD","BGN","BRL","CAD","CHF","CNY","CZK","DKK","GBR","HKD","HRK","HUF","IDR","ILS","INR","ISK",
+                            "JPY","KRW","MXN","MYR","NOK","NZD","PHP","PLN","RON","RUB","SEK","SGD","THB","TRY","USD",
+                            "ZAR"])
+  
+  private func createViewModel() -> CurrencyViewControllerModel {
     var currenciesModels: [CurrencyCellViewModel] = []
-    let currencies = allCurrencies().filter( {currencyFilter.contains($0)} )
-
+    let currencies = allCurrencies().filter({ currencyFilter.contains($0.code) })
+    
     for currency in currencies {
-      let isSelected = currency == selectedCurrency
-      let model = CurrencyCellViewModel(currency: currency, selected: isSelected)
+      let isSelected = currency.code == selectedCurrency
+      let model = CurrencyCellViewModel(title: localizedString(forCurrencyCode: currency.code).firstLetterUppercased() + "-" + currency.symbol, selected: isSelected, code: currency.code)
       currenciesModels.append(model)
     }
-    return currenciesModels
+    return CurrencyViewControllerModel(navigationTitle: localized("currencies").firstLetterUppercased(), currencies: currenciesModels)
   }
 }
 extension CurrencyPresenter: CurrencyPresenterProtocol {

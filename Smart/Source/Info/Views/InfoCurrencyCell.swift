@@ -12,10 +12,12 @@ import Display
 public struct InfoCurrencyCellViewModel: ViewModelProtocol {
   
   fileprivate let titleText: String?
+  fileprivate let symbolText: String?
   fileprivate let icon: UIImage?
   
-  public init(titleText: String?, icon: UIImage?) {
+  public init(titleText: String?, symbolText: String?, icon: UIImage?) {
     self.titleText = titleText
+    self.symbolText = symbolText
     self.icon = icon
   }
 }
@@ -35,6 +37,14 @@ final class InfoCurrencyCell: UICollectionViewCell, Reusable {
     label.translatesAutoresizingMaskIntoConstraints = false
     label.font = Font.dinAlternateBold(18)
     label.textColor = .dark
+    return label
+  }()
+  
+  private let symbolCurrencyLabel: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.font = Font.regular(18)
+    label.textColor = .accent
     return label
   }()
   
@@ -66,6 +76,14 @@ final class InfoCurrencyCell: UICollectionViewCell, Reusable {
       currencyLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
       currencyLabel.heightAnchor.constraint(equalToConstant: 60),
     ])
+    contentView.addSubview(symbolCurrencyLabel)
+    NSLayoutConstraint.activate([
+      symbolCurrencyLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+      symbolCurrencyLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
+      symbolCurrencyLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -50),
+      symbolCurrencyLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+      symbolCurrencyLabel.heightAnchor.constraint(equalToConstant: 60),
+    ])
     
     contentView.addSubview(cursorView)
     NSLayoutConstraint.activate([
@@ -88,6 +106,7 @@ extension InfoCurrencyCell: Decoratable {
   
   func decorate(model: ViewModel) {
     currencyLabel.text = model.titleText
+    symbolCurrencyLabel.text = model.symbolText
     currencyImage.image = model.icon?.withRenderingMode(.alwaysTemplate)
   }
 }

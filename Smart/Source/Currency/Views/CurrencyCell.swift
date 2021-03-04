@@ -13,12 +13,14 @@ import Core
 
 public struct CurrencyCellViewModel: ViewModelProtocol {
   
-  public let title: String
-  public let isSelected: Bool
+  public let title: String?
+  public let isSelected: Bool?
+  public let code: String?
   
-  public init(currency: String, selected: Bool) {
-    self.title = currency
+  public init(title: String?, selected: Bool?, code: String?) {
+    self.title = title
     self.isSelected = selected
+    self.code = code
   }
 }
 
@@ -75,15 +77,6 @@ final class CurrencyCell: UITableViewCell, Reusable {
   }
 
   required init?(coder aDecoder: NSCoder) { fatalError() }
-  
-  func decorate(text: String?, isSelectes: Bool) {
-    label.text = text
-    if isSelectes == true {
-      checkBox.backgroundColor = .accent
-    } else {
-      checkBox.backgroundColor = .white
-    }
-  }
 }
 
 extension CurrencyCell: Decoratable {
@@ -93,6 +86,7 @@ extension CurrencyCell: Decoratable {
   func decorate(model: ViewModel) {
     label.text = model.title
     let isSelectes = model.isSelected
+    
     checkBox.backgroundColor = Constants.iconBackgroundColor(isSelected: isSelectes ?? false)
     checkBox.layer.borderColor = Constants.iconBorderColor(isSelected: isSelectes ?? false)?.cgColor
     checkBox.layer.borderWidth = Constants.iconBorderWidth(isSelected: isSelectes ?? false)

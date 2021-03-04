@@ -9,5 +9,5 @@
 import Foundation
 
 protocol CurrencyViewControllerProtocol {
-  func update(models: [CurrencyCellViewModel])
+  func update(models: CurrencyViewControllerModel)
 }

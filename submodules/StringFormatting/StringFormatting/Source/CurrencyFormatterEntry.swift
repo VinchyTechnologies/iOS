@@ -26,8 +26,18 @@ private final class CurrencyFormatterEntry {
     }
 }
 
-public func allCurrencies() -> [String] {
-  return loadCurrencyFormatterEntries().map({ $0.key }).sorted()
+public struct CurrencyData {
+  public let code: String
+  public let symbol: String
+}
+
+public func allCurrencies() -> [CurrencyData] {
+  var currencies = [CurrencyData]()
+  
+  for currency in loadCurrencyFormatterEntries() {
+    currencies.append(CurrencyData(code: currency.key, symbol: currency.value.symbol))
+  }
+  return currencies.sorted(by: {$0.code < $1.code})
 }
 
 private func loadCurrencyFormatterEntries() -> [String: CurrencyFormatterEntry] {

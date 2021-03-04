@@ -10,51 +10,74 @@ import Display
 import StringFormatting
 import Core
 
-final class CurrencyViewController: UITableViewController {
+final class CurrencyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
   
   var selectedCurrency: String?
   
   var interactor: CurrencyInteractorProtocol?
   
-  var currencies = [CurrencyCellViewModel]()
-  
-   override func viewDidLoad() {
-    super.viewDidLoad()
-
-    navigationItem.largeTitleDisplayMode = .never
-    navigationItem.title = localized("currency").firstLetterUppercased()
-    tableView.tableFooterView = UIView()
-    tableView.separatorInset = .zero
+  private var viewModel = CurrencyViewControllerModel(navigationTitle: "", currencies: []) {
+    didSet {
+      navigationItem.title = viewModel.navigationTitle
+      tableView.reloadData()
+    }
+  }
+  private lazy var tableView: UITableView = {
+    let tableView = UITableView()
+    tableView.delegate = self
+    tableView.dataSource = self
     tableView.register(CurrencyCell.self, forCellReuseIdentifier: CurrencyCell.reuseId)
+    tableView.sectionIndexColor = .dark
+    tableView.separatorInset = .zero
+    tableView.tableFooterView = UIView()
+    
+    return tableView
+  }()
+  
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    navigationItem.largeTitleDisplayMode = .never
+    
+    view.addSubview(tableView)
+    tableView.fill()
+
     interactor?.viewDidLoad()
   }
   
-  override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return currencies.count
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    viewModel.currencies.count
   }
   
-  override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-    if let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyCell.reuseId) as? CurrencyCell {
-      let model = currencies[indexPath.row]
-      cell.decorate(text: model.title, isSelectes: model.isSelected)
-      return cell
-    }
-    return .init()
+  func tableView(
+    _ tableView: UITableView,
+    cellForRowAt indexPath: IndexPath)
+    -> UITableViewCell
+  {
+    let cell = tableView.dequeueReusableCell(withIdentifier: CurrencyCell.reuseId) as! CurrencyCell // swiftlint:disable:this force_cast
+    let model = viewModel.currencies[indexPath.row]
+    cell.decorate(model: model)
+    return cell
   }
   
-  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    interactor?.didTapCurrency(symbol: currencies[indexPath.row].title)
+  func tableView(
+    _ tableView: UITableView,
+    didSelectRowAt indexPath: IndexPath)
+  {
+    interactor?.didTapCurrency(symbol:viewModel.currencies[indexPath.row].code ?? "")
   }
   
-  override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+  func tableView(
+    _ tableView: UITableView,
+    heightForRowAt indexPath: IndexPath)
+    -> CGFloat {
     52
   }
- 
+  
 }
 extension CurrencyViewController: CurrencyViewControllerProtocol {
   
-  func update(models: [CurrencyCellViewModel]) {
-    currencies = models
+  func update(models: CurrencyViewControllerModel) {
+    self.viewModel = models
     tableView.reloadData()
   }
 }

@@ -75,8 +75,11 @@ final class MorePresenter {
       emojiLabel: "👍")
     sections.append(.rate([rateViewModel]))
     
+    let symbol = allCurrencies().first(where: ({ $0.code == UserDefaultsConfig.currency }))?.symbol ?? ""
+    
     let currencyViewModel = InfoCurrencyCellViewModel(
       titleText: localized("currency").firstLetterUppercased(),
+      symbolText: UserDefaultsConfig.currency + "-" + symbol,
       icon: UIImage(systemName: "creditcard.fill"))
     sections.append(.currency([currencyViewModel]))
     

@@ -188,7 +188,7 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
     sections += [
       .tool([.init(
               price: formatCurrencyAmount(
-                wine.price ?? 0, currency: UserDefaultsConfig.currency ?? "USD"),// Locale.current.currencyCode ?? "USD"),
+                wine.price ?? 0, currency: UserDefaultsConfig.currency),
               isLiked: isLiked)])
     ]
     
