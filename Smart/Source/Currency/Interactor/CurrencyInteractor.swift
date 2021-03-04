@@ -21,7 +21,7 @@ final class CurrencyInteractor {
 }
 
 extension CurrencyInteractor: CurrencyInteractorProtocol {
-  
+
   func viewDidLoad() {
     presenter.update(selectedCurrency: UserDefaultsConfig.currency)
   }

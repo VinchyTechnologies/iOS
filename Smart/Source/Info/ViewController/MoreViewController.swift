@@ -57,11 +57,7 @@ final class MoreViewController: UIViewController {
     super.viewWillAppear(animated)
     interactor?.viewDidLoad()
   }
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    interactor?.viewDidLoad()
-  }
-  
+
   override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
     super.viewWillTransition(to: size, with: coordinator)
     coordinator.animate(alongsideTransition: { _ in

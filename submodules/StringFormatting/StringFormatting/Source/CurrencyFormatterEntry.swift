@@ -37,7 +37,7 @@ public func allCurrencies() -> [CurrencyData] {
   for currency in loadCurrencyFormatterEntries() {
     currencies.append(CurrencyData(code: currency.key, symbol: currency.value.symbol))
   }
-  return currencies.sorted(by: {$0.code < $1.code})
+  return currencies.sorted(by: { $0.code < $1.code })
 }
 
 private func loadCurrencyFormatterEntries() -> [String: CurrencyFormatterEntry] {

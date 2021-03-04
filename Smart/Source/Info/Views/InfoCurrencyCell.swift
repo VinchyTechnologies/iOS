@@ -76,6 +76,7 @@ final class InfoCurrencyCell: UICollectionViewCell, Reusable {
       currencyLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
       currencyLabel.heightAnchor.constraint(equalToConstant: 60),
     ])
+    
     contentView.addSubview(symbolCurrencyLabel)
     NSLayoutConstraint.activate([
       symbolCurrencyLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),

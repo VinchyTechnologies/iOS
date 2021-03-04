@@ -9,6 +9,7 @@
 
 import EmailService
 import Core
+import StringFormatting
 
 final class MoreInteractor {
   
@@ -29,6 +30,10 @@ final class MoreInteractor {
       presenter.showOpenURLErrorAlert()
     }
   }
+  func cacheCurrency() -> String {
+    let symbol = allCurrencies().first(where: ({ $0.code == UserDefaultsConfig.currency }))?.symbol ?? ""
+    return UserDefaultsConfig.currency + "-" + symbol
+  }
 }
 
 extension MoreInteractor: MoreInteractorProtocol {
@@ -38,7 +43,7 @@ extension MoreInteractor: MoreInteractorProtocol {
   }
   
   func viewDidLoad() {
-    presenter.update(isRussianLocale: Locale.current.languageCode == "ru")
+    presenter.update(isRussianLocale: Locale.current.languageCode == "ru", currency: cacheCurrency())
   }
   
   func didTapRateApp() {

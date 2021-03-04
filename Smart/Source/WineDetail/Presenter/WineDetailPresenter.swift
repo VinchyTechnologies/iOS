@@ -188,7 +188,7 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
     viewController?.stopLoadingAnimation()
   }
   
-  func update(wine: Wine, isLiked: Bool, isDisliked: Bool, rate: Double) {
+  func update(wine: Wine, isLiked: Bool, isDisliked: Bool, rate: Double, currency: String) {
     
     var sections: [WineDetailViewModel.Section] = []
     
@@ -222,7 +222,7 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
     sections += [
       .tool([.init(
               price: formatCurrencyAmount(
-                wine.price ?? 0, currency: UserDefaultsConfig.currency),
+                wine.price ?? 0, currency: currency),
               isLiked: isLiked)])
     ]
     

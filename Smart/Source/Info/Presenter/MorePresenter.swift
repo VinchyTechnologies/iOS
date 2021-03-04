@@ -30,7 +30,7 @@ final class MorePresenter {
   
   // MARK: - Private Methods
   
-  private func createViewModel(isRussianLocale: Bool) -> MoreViewControllerModel  {
+  private func createViewModel(isRussianLocale: Bool, currency: String) -> MoreViewControllerModel  {
     
     var sections: [MoreViewControllerModel.Section] = []
     
@@ -76,11 +76,9 @@ final class MorePresenter {
       emojiLabel: "👍")
     sections.append(.rate([rateViewModel]))
     
-    let symbol = allCurrencies().first(where: ({ $0.code == UserDefaultsConfig.currency }))?.symbol ?? ""
-    
     let currencyViewModel = InfoCurrencyCellViewModel(
       titleText: localized("currency").firstLetterUppercased(),
-      symbolText: UserDefaultsConfig.currency + "-" + symbol,
+      symbolText: currency,
       icon: UIImage(systemName: "creditcard.fill"))
     sections.append(.currency([currencyViewModel]))
     
@@ -105,6 +103,11 @@ final class MorePresenter {
 
 extension MorePresenter: MorePresenterProtocol {
   
+  func update(isRussianLocale: Bool, currency: String) {
+    let viewModel = createViewModel(isRussianLocale: isRussianLocale, currency: currency)
+    viewController?.updateUI(viewModel: viewModel)
+  }
+  
   var phoneURL: String {
     localized("contact_phone_url")
   }
@@ -121,8 +124,4 @@ extension MorePresenter: MorePresenterProtocol {
     viewController?.showAlertCantOpenEmail()
   }
   
-  func update(isRussianLocale: Bool) {
-    let viewModel = createViewModel(isRussianLocale: isRussianLocale)
-    viewController?.updateUI(viewModel: viewModel)
-  }
 }

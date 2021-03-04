@@ -87,9 +87,9 @@ extension CurrencyCell: Decoratable {
     label.text = model.title
 
     let isSelected = model.isSelected
-    checkBox.backgroundColor = Constants.iconBackgroundColor(isSelected: isSelected)
-    checkBox.layer.borderColor = Constants.iconBorderColor(isSelected: isSelected)?.cgColor
-    checkBox.layer.borderWidth = Constants.iconBorderWidth(isSelected: isSelected)
+    checkBox.backgroundColor = Constants.iconBackgroundColor(isSelected: isSelected ?? false)
+    checkBox.layer.borderColor = Constants.iconBorderColor(isSelected: isSelected ?? false)?.cgColor
+    checkBox.layer.borderWidth = Constants.iconBorderWidth(isSelected: isSelected ?? false)
 
   }
 }
