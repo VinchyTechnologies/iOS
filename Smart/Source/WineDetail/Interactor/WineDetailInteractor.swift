@@ -69,7 +69,8 @@ final class WineDetailInteractor {
           wine: wine,
           isLiked: self.isFavourite(wine: wine),
           isDisliked: self.isDisliked(wine: wine),
-          rate: self.rate ?? 0)
+          rate: self.rate ?? 0,
+          currency: UserDefaultsConfig.currency)
         self.wine = wine
         
       case .failure(let error):

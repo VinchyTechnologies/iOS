@@ -112,6 +112,10 @@
 "contact_email" = "vinchy.tech@gmail.com";
 "contact_phone_url" = "tel://+79102433638";
 "contact_phone" = "+ 7 (910) 243-36-38";
+"currency" = "Валюта";
+
+// MARK: - Currency
+"select_currency" = "Выберите валюту";
 
 // MARK: - Subscriptions
 "subscriptions" = "Подписки";

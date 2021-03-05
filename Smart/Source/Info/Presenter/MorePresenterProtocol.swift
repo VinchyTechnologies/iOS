@@ -13,7 +13,8 @@ protocol MorePresenterProtocol: OpenURLProtocol {
   var sendEmailRecipients: [String] { get }
   var phoneURL: String { get }
   
-  func update(isRussianLocale: Bool)
+  func update(isRussianLocale: Bool, currency: String)
   func showAlertCantOpenEmail()
   func showOpenURLErrorAlert()
+
 }

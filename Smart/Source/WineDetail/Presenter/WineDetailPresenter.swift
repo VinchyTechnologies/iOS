@@ -9,6 +9,7 @@
 import VinchyCore
 import Display
 import StringFormatting
+import Core
 import CommonUI
 
 fileprivate enum C {
@@ -187,7 +188,7 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
     viewController?.stopLoadingAnimation()
   }
   
-  func update(wine: Wine, isLiked: Bool, isDisliked: Bool, rate: Double) {
+  func update(wine: Wine, isLiked: Bool, isDisliked: Bool, rate: Double, currency: String) {
     
     var sections: [WineDetailViewModel.Section] = []
     
@@ -221,7 +222,7 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
     sections += [
       .tool([.init(
               price: formatCurrencyAmount(
-                wine.price ?? 0, currency: Locale.current.currencyCode ?? "USD"),
+                wine.price ?? 0, currency: currency),
               isLiked: isLiked)])
     ]
     

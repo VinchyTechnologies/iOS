@@ -13,6 +13,7 @@ protocol MoreInteractorProtocol: OpenURLProtocol {
   func didTapSendEmail(HTMLText: String?)
   func didTapCallUs()
   func didTapRateApp()
+  func didTapCurrency()
   func didTapOpenVk()
   func didTapOpenInstagram()
   func didTapEmailUs()

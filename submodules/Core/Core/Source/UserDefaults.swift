@@ -19,6 +19,9 @@ public struct UserDefaultsConfig {
   @UserDefault("lastSeenOnboardingVersion", defaultValue: 0)
   static public var lastSeenOnboardingVersion: Int
   
+  @UserDefault("currency", defaultValue: Locale.current.currencyCode ?? "USD")
+  static public var currency: String
+
   @UserDefault("accountID", defaultValue: 0)
   static public var accountID: Int
   
