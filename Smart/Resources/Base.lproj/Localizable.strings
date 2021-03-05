@@ -115,7 +115,7 @@
 "currency" = "Currency";
 
 // MARK: - Currency
-"currencies" = "Select currency";
+"select_currency" = "Select currency";
 
 // MARK: - Subscriptions
 "subscriptions" = "subscriptions";

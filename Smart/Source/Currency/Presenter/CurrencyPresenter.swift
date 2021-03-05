@@ -15,8 +15,45 @@ final class CurrencyPresenter {
   
   // MARK: - Internal Properties
   
-  var viewController: CurrencyViewControllerProtocol?
-  var selectedCurrency: String?
+  weak var viewController: CurrencyViewControllerProtocol?
+
+  // MARK: - Private Properties
+  
+  private let currencyFilter = Set(
+    [
+      "AUD",
+      "BGN",
+      "BRL",
+      "CAD",
+      "CHF",
+      "CNY",
+      "CZK",
+      "DKK",
+      "GBR",
+      "HKD",
+      "HRK",
+      "HUF",
+      "IDR",
+      "ILS",
+      "INR",
+      "ISK",
+      "JPY",
+      "KRW",
+      "MXN",
+      "MYR",
+      "NOK",
+      "NZD",
+      "PHP",
+      "PLN",
+      "RON",
+      "RUB",
+      "SEK",
+      "SGD",
+      "THB",
+      "TRY",
+      "USD",
+      "ZAR",
+    ])
   
   // MARK: - Initializers
   
@@ -27,35 +64,31 @@ final class CurrencyPresenter {
   // MARK: - Private Methods
   
   func localizedString(forCurrencyCode currencyCode: String) -> String {
-    let locale = NSLocale(localeIdentifier: currencyCode)
-    if locale.displayName(forKey: .currencySymbol, value: currencyCode) == currencyCode {
-      let newlocale = NSLocale(localeIdentifier: currencyCode.dropLast() + "en_US")
-      return newlocale.displayName(forKey: NSLocale.Key.currencyCode, value: currencyCode) ?? ""
-    }
-    return locale.displayName(forKey: NSLocale.Key.currencyCode, value: currencyCode) ?? ""
-  }
+    let locale = NSLocale.current
+    return (locale as NSLocale).displayName(forKey: NSLocale.Key.currencyCode, value: currencyCode) ?? ""
+  }  
   
-  let currencyFilter = Set(["AUD","BGN","BRL","CAD","CHF","CNY","CZK","DKK","GBR","HKD","HRK","HUF","IDR","ILS","INR","ISK",
-                            "JPY","KRW","MXN","MYR","NOK","NZD","PHP","PLN","RON","RUB","SEK","SGD","THB","TRY","USD",
-                            "ZAR"])
-  
-  private func createViewModel() -> CurrencyViewControllerModel {
+  private func createViewModel(selectedCurrency: String) -> CurrencyViewControllerModel {
     var currenciesModels: [CurrencyCellViewModel] = []
 
     let currencies = allCurrencies().filter({ currencyFilter.contains($0.code) })
     
     for currency in currencies {
       let isSelected = currency.code == selectedCurrency
-      let model = CurrencyCellViewModel(title: localizedString(forCurrencyCode: currency.code).firstLetterUppercased() + "-" + currency.symbol, selected: isSelected, code: currency.code)
+      let model = CurrencyCellViewModel(
+        title: localizedString(forCurrencyCode: currency.code).firstLetterUppercased() + " - " + currency.symbol,
+        isSelected: isSelected,
+        code: currency.code)
       currenciesModels.append(model)
     }
-    return CurrencyViewControllerModel(navigationTitle: localized("currencies").firstLetterUppercased(), currencies: currenciesModels)
+    return CurrencyViewControllerModel(
+      navigationTitle: localized("select_currency").firstLetterUppercased(),
+      currencies: currenciesModels)
   }
 }
 extension CurrencyPresenter: CurrencyPresenterProtocol {
   
   func update(selectedCurrency: String) {
-    self.selectedCurrency = selectedCurrency
-    viewController?.update(models: createViewModel())
+    viewController?.update(viewModel: createViewModel(selectedCurrency: selectedCurrency))
   }
 }

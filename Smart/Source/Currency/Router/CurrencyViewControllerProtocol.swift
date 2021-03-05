@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol CurrencyViewControllerProtocol {
-  func update(models: CurrencyViewControllerModel)
+protocol CurrencyViewControllerProtocol: AnyObject {
+  func update(viewModel: CurrencyViewControllerModel)
 }

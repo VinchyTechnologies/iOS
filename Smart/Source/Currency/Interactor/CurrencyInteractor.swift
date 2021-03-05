@@ -10,8 +10,7 @@ import Core
 
 final class CurrencyInteractor {
   
-  var presenter: CurrencyPresenterProtocol
-  
+  private let presenter: CurrencyPresenterProtocol
   private let router: CurrencyRouterProtocol
   
   init(presenter: CurrencyPresenterProtocol, router: CurrencyRouterProtocol) {

@@ -10,5 +10,5 @@ import Foundation
 
 struct CurrencyViewControllerModel {
   let navigationTitle: String?
-  var currencies: [CurrencyCellViewModel]
+  let currencies: [CurrencyCellViewModel]
 }

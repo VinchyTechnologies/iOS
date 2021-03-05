@@ -10,10 +10,8 @@ import Display
 import StringFormatting
 import Core
 
-final class CurrencyViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
-  
-  var selectedCurrency: String?
-  
+final class CurrencyViewController: UIViewController {
+    
   var interactor: CurrencyInteractorProtocol?
   
   private var viewModel = CurrencyViewControllerModel(navigationTitle: "", currencies: []) {
@@ -22,12 +20,12 @@ final class CurrencyViewController: UIViewController, UITableViewDelegate, UITab
       tableView.reloadData()
     }
   }
+  
   private lazy var tableView: UITableView = {
     let tableView = UITableView()
     tableView.delegate = self
     tableView.dataSource = self
     tableView.register(CurrencyCell.self, forCellReuseIdentifier: CurrencyCell.reuseId)
-    tableView.sectionIndexColor = .dark
     tableView.separatorInset = .zero
     tableView.tableFooterView = UIView()
     
@@ -36,6 +34,7 @@ final class CurrencyViewController: UIViewController, UITableViewDelegate, UITab
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    
     navigationItem.largeTitleDisplayMode = .never
     
     view.addSubview(tableView)
@@ -43,8 +42,15 @@ final class CurrencyViewController: UIViewController, UITableViewDelegate, UITab
 
     interactor?.viewDidLoad()
   }
+}
+
+extension CurrencyViewController: UITableViewDataSource {
   
-  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+  func tableView(
+    _ tableView: UITableView,
+    numberOfRowsInSection section: Int)
+    -> Int
+  {
     viewModel.currencies.count
   }
   
@@ -58,26 +64,29 @@ final class CurrencyViewController: UIViewController, UITableViewDelegate, UITab
     cell.decorate(model: model)
     return cell
   }
+}
+
+extension CurrencyViewController: UITableViewDelegate {
   
   func tableView(
     _ tableView: UITableView,
     didSelectRowAt indexPath: IndexPath)
   {
-    interactor?.didTapCurrency(symbol:viewModel.currencies[indexPath.row].code ?? "")
+    interactor?.didTapCurrency(symbol: viewModel.currencies[indexPath.row].code)
   }
   
   func tableView(
     _ tableView: UITableView,
     heightForRowAt indexPath: IndexPath)
-    -> CGFloat {
+    -> CGFloat
+  {
     52
   }
-  
 }
+
 extension CurrencyViewController: CurrencyViewControllerProtocol {
   
-  func update(models: CurrencyViewControllerModel) {
-    self.viewModel = models
-    tableView.reloadData()
+  func update(viewModel: CurrencyViewControllerModel) {
+    self.viewModel = viewModel
   }
 }

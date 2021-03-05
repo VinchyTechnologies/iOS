@@ -115,7 +115,7 @@
 "currency" = "Валюта";
 
 // MARK: - Currency
-"currencies" = "Выберите валюту";
+"select_currency" = "Выберите валюту";
 
 // MARK: - Subscriptions
 "subscriptions" = "Подписки";
