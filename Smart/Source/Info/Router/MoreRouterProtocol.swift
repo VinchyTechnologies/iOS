@@ -10,6 +10,6 @@ protocol MoreRouterProtocol: AnyObject {
   func present(_ viewController: UIViewController, completion: (() -> Void)?)
   func presentEmailController(HTMLText: String?, recipients: [String])
   func pushToDocController()
-  func pushToCurrencyController()
+  func pushToCurrencyViewController()
   func pushToAboutController()
 }

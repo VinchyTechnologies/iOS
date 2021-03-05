@@ -103,11 +103,6 @@ final class MorePresenter {
 
 extension MorePresenter: MorePresenterProtocol {
   
-  func update(isRussianLocale: Bool, currency: String) {
-    let viewModel = createViewModel(isRussianLocale: isRussianLocale, currency: currency)
-    viewController?.updateUI(viewModel: viewModel)
-  }
-  
   var phoneURL: String {
     localized("contact_phone_url")
   }
@@ -124,4 +119,8 @@ extension MorePresenter: MorePresenterProtocol {
     viewController?.showAlertCantOpenEmail()
   }
   
+  func update(isRussianLocale: Bool, currency: String) {
+    let viewModel = createViewModel(isRussianLocale: isRussianLocale, currency: currency)
+    viewController?.updateUI(viewModel: viewModel)
+  }
 }

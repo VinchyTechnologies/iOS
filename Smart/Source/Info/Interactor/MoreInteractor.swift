@@ -30,20 +30,19 @@ final class MoreInteractor {
       presenter.showOpenURLErrorAlert()
     }
   }
-  func cacheCurrency() -> String {
-    let symbol = allCurrencies().first(where: ({ $0.code == UserDefaultsConfig.currency }))?.symbol ?? ""
-    return UserDefaultsConfig.currency + "-" + symbol
-  }
 }
 
 extension MoreInteractor: MoreInteractorProtocol {
   
   func didTapCurrency() {
-    router.pushToCurrencyController()
+    router.pushToCurrencyViewController()
   }
   
   func viewDidLoad() {
-    presenter.update(isRussianLocale: Locale.current.languageCode == "ru", currency: cacheCurrency())
+    let symbol = allCurrencies().first(where: ({ $0.code == UserDefaultsConfig.currency }))?.symbol ?? ""
+    presenter.update(
+      isRussianLocale: Locale.current.languageCode == "ru",
+      currency: UserDefaultsConfig.currency + "-" + symbol)
   }
   
   func didTapRateApp() {

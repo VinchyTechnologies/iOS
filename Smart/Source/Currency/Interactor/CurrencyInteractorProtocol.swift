@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol CurrencyInteractorProtocol {
+protocol CurrencyInteractorProtocol: AnyObject {
   func viewDidLoad()
   func didTapCurrency(symbol: String)
 }
