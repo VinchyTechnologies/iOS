@@ -80,7 +80,6 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (7.1.1):
     - GoogleUtilities/Logger
-  - KeychainAccess (4.2.1)
   - nanopb (2.30906.0):
     - nanopb/decode (= 2.30906.0)
     - nanopb/encode (= 2.30906.0)
@@ -107,7 +106,6 @@ DEPENDENCIES:
   - FittedSheets
   - FSPagerView
   - Google-Mobile-Ads-SDK
-  - KeychainAccess
   - Nuke
   - RealmSwift (~> 10.0.0)
   - Sheeeeeeeeet
@@ -134,7 +132,6 @@ SPEC REPOS:
     - GoogleDataTransport
     - GoogleUserMessagingPlatform
     - GoogleUtilities
-    - KeychainAccess
     - nanopb
     - Nuke
     - PromisesObjC
@@ -163,7 +160,6 @@ SPEC CHECKSUMS:
   GoogleDataTransport: e4085e6762f36a6141738f46b0153473ce57fb18
   GoogleUserMessagingPlatform: b168e8c46cd8f92aa3e34b584c4ca78a411ce367
   GoogleUtilities: 3dc4ff0d5e4840e2fa8eef0889620e8c33d4218c
-  KeychainAccess: 9b07f665298d13c3a85881bd3171f6f49b8151c1
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   Nuke: 1394e48b0940e01dd20f52ac56b121ab154e370d
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
@@ -174,6 +170,6 @@ SPEC CHECKSUMS:
   SPAlert: 1a8afa1c6ac86a82ab5b2cfdf7f9a51e68cb6c0c
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
 
-PODFILE CHECKSUM: 9722505549bb1da9d7e3e2f6dd2cef8d02b27f69
+PODFILE CHECKSUM: 401bb308bfc7408a6706a42c866b8c72628989a6
 
 COCOAPODS: 1.10.1

@@ -1,11 +1,11 @@
 ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES
 CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = NO
-FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/CocoaDebug" "${PODS_CONFIGURATION_BUILD_DIR}/KeychainAccess" "${PODS_CONFIGURATION_BUILD_DIR}/Nuke" "${PODS_CONFIGURATION_BUILD_DIR}/SkyFloatingLabelTextField"
+FRAMEWORK_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/CocoaDebug" "${PODS_CONFIGURATION_BUILD_DIR}/Nuke" "${PODS_CONFIGURATION_BUILD_DIR}/SkyFloatingLabelTextField"
 GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
-HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/CocoaDebug/CocoaDebug.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/KeychainAccess/KeychainAccess.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/Nuke/Nuke.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework/Headers"
+HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/CocoaDebug/CocoaDebug.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/Nuke/Nuke.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework/Headers"
 LD_RUNPATH_SEARCH_PATHS = $(inherited) '@executable_path/Frameworks' '@loader_path/Frameworks'
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_CONFIGURATION_BUILD_DIR}/CocoaDebug/CocoaDebug.framework/Headers" -isystem "${PODS_CONFIGURATION_BUILD_DIR}/KeychainAccess/KeychainAccess.framework/Headers" -isystem "${PODS_CONFIGURATION_BUILD_DIR}/Nuke/Nuke.framework/Headers" -isystem "${PODS_CONFIGURATION_BUILD_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework/Headers" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/CocoaDebug" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/KeychainAccess" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/Nuke" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/SkyFloatingLabelTextField"
-OTHER_LDFLAGS = $(inherited) -framework "CocoaDebug" -framework "Foundation" -framework "KeychainAccess" -framework "Nuke" -framework "SkyFloatingLabelTextField" -framework "UIKit"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_CONFIGURATION_BUILD_DIR}/CocoaDebug/CocoaDebug.framework/Headers" -isystem "${PODS_CONFIGURATION_BUILD_DIR}/Nuke/Nuke.framework/Headers" -isystem "${PODS_CONFIGURATION_BUILD_DIR}/SkyFloatingLabelTextField/SkyFloatingLabelTextField.framework/Headers" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/CocoaDebug" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/Nuke" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/SkyFloatingLabelTextField"
+OTHER_LDFLAGS = $(inherited) -framework "CocoaDebug" -framework "Foundation" -framework "Nuke" -framework "SkyFloatingLabelTextField" -framework "UIKit"
 OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS
 PODS_BUILD_DIR = ${BUILD_DIR}
 PODS_CONFIGURATION_BUILD_DIR = ${PODS_BUILD_DIR}/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)

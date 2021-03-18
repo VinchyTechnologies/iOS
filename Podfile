@@ -18,7 +18,7 @@ def commonPods
   pod "Sheeeeeeeeet" # has SPM
   pod 'Cosmos', '~> 23.0' # has SPM
   pod 'SkyFloatingLabelTextField' # has SPM
-  pod 'KeychainAccess' # has SPM
+#  pod 'KeychainAccess' # has SPM
   pod 'FittedSheets' # has SPM
 end
 
@@ -46,11 +46,6 @@ target 'Database' do
   pod 'RealmSwift', '~> 10.0.0'
 end
 
-target 'Core' do
-  project 'submodules/Core/Core'
-  pod 'KeychainAccess'
-end
-
 target 'CommonUI' do
   project 'submodules/CommonUI/CommonUI'
   pod 'Nuke'
@@ -62,7 +57,6 @@ target 'VinchyAuthorizationApp' do
   pod 'Nuke'
   pod 'SkyFloatingLabelTextField'
   pod 'CocoaDebug', :configurations => ['Debug']
-  pod 'KeychainAccess'
 end
 
 target 'VinchyAnalytics' do
