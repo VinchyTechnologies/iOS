@@ -8,7 +8,7 @@
 
 import Display
 import UIKit
-import Cosmos
+import CommonUI
 
 final class WriteReviewViewController: UIViewController {
   
@@ -20,8 +20,8 @@ final class WriteReviewViewController: UIViewController {
   
   private(set) var loadingIndicator = ActivityIndicatorView()
   
-  private lazy var ratingView: CosmosView = {
-    var view = CosmosView()
+  private lazy var ratingView: StarCosmosView = {
+    var view = StarCosmosView()
     view.settings.filledColor = .accent
     view.settings.emptyBorderColor = .accent
     view.settings.starSize = 40

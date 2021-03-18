@@ -8,7 +8,7 @@
 
 import UIKit
 import Display
-import Cosmos
+import CommonUI
 
 struct TapToRateCellViewModel: ViewModelProtocol {
   
@@ -30,8 +30,8 @@ final class TapToRateCell: UICollectionViewCell, Reusable {
     return label
   }()
   
-  private lazy var ratingView: CosmosView = {
-    let view = CosmosView()
+  private lazy var ratingView: StarCosmosView = {
+    let view = StarCosmosView()
     view.settings.filledColor = .accent
     view.settings.emptyBorderColor = .accent
     view.settings.starSize = 32

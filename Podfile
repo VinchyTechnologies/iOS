@@ -39,12 +39,6 @@ target 'Display' do
   pod 'SkyFloatingLabelTextField'
 end
 
-target 'CommonUI' do
-  project 'submodules/CommonUI/CommonUI'
-  pod 'Nuke'
-  pod 'Cosmos', '~> 23.0'
-end
-
 target 'VinchyAuthorizationApp' do
   project 'submodules/VinchyAuthorization/VinchyAuthorization'
   pod 'Nuke'

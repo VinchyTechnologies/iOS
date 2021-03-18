@@ -6,7 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Cosmos
+import CommonUI
 import Display
 import UIKit
 import FittedSheets
@@ -30,8 +30,8 @@ final class ReviewDetailViewController: UIViewController {
     return label
   }()
   
-  private lazy var ratingView: CosmosView = {
-    var view = CosmosView()
+  private lazy var ratingView: StarCosmosView = {
+    var view = StarCosmosView()
     view.translatesAutoresizingMaskIntoConstraints = false
     view.settings.filledColor = .accent
     view.settings.emptyBorderColor = .accent

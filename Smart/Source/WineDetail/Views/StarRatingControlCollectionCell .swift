@@ -8,7 +8,7 @@
 
 import UIKit
 import Display
-import Cosmos
+import CommonUI
 
 struct StarRatingControlCollectionViewCellViewModel: ViewModelProtocol {
   
@@ -29,8 +29,8 @@ final class StarRatingControlCollectionCell: UICollectionViewCell, Reusable {
     return label
   }()
     
-  private lazy var ratingView: CosmosView = {
-    var view = CosmosView()
+  private lazy var ratingView: StarCosmosView = {
+    var view = StarCosmosView()
     view.settings.filledColor = .accent
     view.settings.emptyBorderColor = .accent
     view.settings.starSize = 32

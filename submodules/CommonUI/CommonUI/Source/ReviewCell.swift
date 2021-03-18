@@ -8,7 +8,6 @@
 
 import UIKit
 import Display
-import Cosmos
 
 public struct ReviewCellViewModel: ViewModelProtocol {
   
@@ -43,8 +42,8 @@ public final class ReviewCell: HighlightCollectionCell, Reusable {
     return label
   }()
   
-  private lazy var ratingView: CosmosView = {
-    var view = CosmosView()
+  private lazy var ratingView: StarCosmosView = {
+    var view = StarCosmosView()
     view.translatesAutoresizingMaskIntoConstraints = false
     view.settings.filledColor = .accent
     view.settings.emptyBorderColor = .accent
