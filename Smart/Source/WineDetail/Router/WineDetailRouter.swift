@@ -9,7 +9,7 @@
 import UIKit
 import Database
 import VinchyCore
-import EmailService
+import Core
 import Sheeeeeeeeet
 import VinchyAuthorization
 

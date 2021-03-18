@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4465BD0C260342F000D7D195 /* EmailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4465BD0B260342F000D7D195 /* EmailService.swift */; };
 		447C358225EF71DF00105A35 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447C358125EF71DF00105A35 /* String.swift */; };
 		44911E3925D30F3100A62E40 /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44911E3825D30F3100A62E40 /* StateMachine.swift */; };
 		44911E3C25D30F5400A62E40 /* LockProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44911E3B25D30F5400A62E40 /* LockProtocol.swift */; };
@@ -28,6 +29,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4465BD0B260342F000D7D195 /* EmailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailService.swift; sourceTree = "<group>"; };
 		447C358125EF71DF00105A35 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		44911E3825D30F3100A62E40 /* StateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateMachine.swift; sourceTree = "<group>"; };
 		44911E3B25D30F5400A62E40 /* LockProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LockProtocol.swift; sourceTree = "<group>"; };
@@ -119,6 +121,7 @@
 				CA27087B24CFF39B007580D8 /* Array.swift */,
 				CABDBA9324C31E4E00AD96D6 /* CollectionExt.swift */,
 				CA3CEFB125128EDA00AAA692 /* CountryCode.swift */,
+				4465BD0B260342F000D7D195 /* EmailService.swift */,
 				CACC1DC324C5F6C80082BD01 /* Filter.swift */,
 				44E0035225CBFE5D00ED7D9E /* Keychain.swift */,
 				44911E3B25D30F5400A62E40 /* LockProtocol.swift */,
@@ -250,6 +253,7 @@
 				44911E3C25D30F5400A62E40 /* LockProtocol.swift in Sources */,
 				CAC7EDD9257BF82B005A15DB /* UIDevice.swift in Sources */,
 				CABDBA9424C31E4E00AD96D6 /* CollectionExt.swift in Sources */,
+				4465BD0C260342F000D7D195 /* EmailService.swift in Sources */,
 				44911E3925D30F3100A62E40 /* StateMachine.swift in Sources */,
 				44911E3F25D30FB800A62E40 /* PagingStateMachine.swift in Sources */,
 				44AA7C3B25A4A1AE00F599BA /* Throttler.swift in Sources */,

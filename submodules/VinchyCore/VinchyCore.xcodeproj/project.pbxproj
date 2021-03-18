@@ -7,16 +7,15 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B369E35275D8A0E73843EBC /* Pods_VinchyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D29A7E3032685F4CCEE243 /* Pods_VinchyCore.framework */; };
 		4410AE2C25E546F400A84FF9 /* RefreshTokenMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410AE2B25E546F400A84FF9 /* RefreshTokenMapper.swift */; };
 		4410AE3025E5479400A84FF9 /* UpdateTokensResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410AE2F25E5479400A84FF9 /* UpdateTokensResponse.swift */; };
 		443601D925CEF23E00ABA7F1 /* AccountInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443601D825CEF23E00ABA7F1 /* AccountInfo.swift */; };
+		4465BB2826033A6500D7D195 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825F24EC75DA00991F24 /* Core.framework */; };
 		44834CD725C6D36300CD187F /* Accounts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44834CD625C6D36300CD187F /* Accounts.swift */; };
 		44834D1025C6F33400CD187F /* AccountID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44834D0F25C6F33400CD187F /* AccountID.swift */; };
 		4495034125CAE82D006000F8 /* EmptyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4495034025CAE82D006000F8 /* EmptyResponse.swift */; };
 		4495629025E2F8AB005E79DA /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4495628F25E2F8AB005E79DA /* Review.swift */; };
 		4495629325E2F9EF005E79DA /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4495629225E2F9EF005E79DA /* Reviews.swift */; };
-		CA103AE92516913B00B0324F /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA103AE82516913B00B0324F /* Display.framework */; };
 		CA7A87F0250287BB00AAD10F /* Winery.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87EF250287BB00AAD10F /* Winery.swift */; };
 		CA7B823C24EC71F300991F24 /* VinchyCore.h in Headers */ = {isa = PBXBuildFile; fileRef = CA7B823A24EC71F300991F24 /* VinchyCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CA7B824424EC72CA00991F24 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B824324EC72CA00991F24 /* API.swift */; };
@@ -29,13 +28,10 @@
 		CA7B825724EC747900991F24 /* Collections.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B825624EC747900991F24 /* Collections.swift */; };
 		CA7B825924EC749600991F24 /* CompilationsEndpoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B825824EC749600991F24 /* CompilationsEndpoint.swift */; };
 		CA7B825B24EC74B200991F24 /* Wines.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B825A24EC74B200991F24 /* Wines.swift */; };
-		CA7B826024EC75DA00991F24 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825F24EC75DA00991F24 /* Core.framework */; };
 		CA7CBC26257F82D400C81476 /* ShortWine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7CBC25257F82D400C81476 /* ShortWine.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		12366A038800E697D8B222D2 /* Pods-VinchyCore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyCore.debug.xcconfig"; path = "Target Support Files/Pods-VinchyCore/Pods-VinchyCore.debug.xcconfig"; sourceTree = "<group>"; };
-		16D29A7E3032685F4CCEE243 /* Pods_VinchyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinchyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4410AE2B25E546F400A84FF9 /* RefreshTokenMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTokenMapper.swift; sourceTree = "<group>"; };
 		4410AE2F25E5479400A84FF9 /* UpdateTokensResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTokensResponse.swift; sourceTree = "<group>"; };
 		443601D825CEF23E00ABA7F1 /* AccountInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfo.swift; sourceTree = "<group>"; };
@@ -44,7 +40,6 @@
 		4495034025CAE82D006000F8 /* EmptyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyResponse.swift; sourceTree = "<group>"; };
 		4495628F25E2F8AB005E79DA /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		4495629225E2F9EF005E79DA /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
-		CA103AE82516913B00B0324F /* Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7A87EF250287BB00AAD10F /* Winery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Winery.swift; sourceTree = "<group>"; };
 		CA7B823724EC71F300991F24 /* VinchyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VinchyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7B823A24EC71F300991F24 /* VinchyCore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VinchyCore.h; sourceTree = "<group>"; };
@@ -61,7 +56,6 @@
 		CA7B825A24EC74B200991F24 /* Wines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wines.swift; sourceTree = "<group>"; };
 		CA7B825F24EC75DA00991F24 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7CBC25257F82D400C81476 /* ShortWine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortWine.swift; sourceTree = "<group>"; };
-		DE4D3D64C790536FF2CE11B2 /* Pods-VinchyCore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyCore.release.xcconfig"; path = "Target Support Files/Pods-VinchyCore/Pods-VinchyCore.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,9 +63,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B369E35275D8A0E73843EBC /* Pods_VinchyCore.framework in Frameworks */,
-				CA7B826024EC75DA00991F24 /* Core.framework in Frameworks */,
-				CA103AE92516913B00B0324F /* Display.framework in Frameworks */,
+				4465BB2826033A6500D7D195 /* Core.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -89,9 +81,7 @@
 		5F7998F5E0DE097EACFDCEC0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				CA103AE82516913B00B0324F /* Display.framework */,
 				CA7B825F24EC75DA00991F24 /* Core.framework */,
-				16D29A7E3032685F4CCEE243 /* Pods_VinchyCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -101,7 +91,6 @@
 			children = (
 				CA7B823924EC71F300991F24 /* VinchyCore */,
 				CA7B823824EC71F300991F24 /* Products */,
-				D0BFB794CD9326A091183DBE /* Pods */,
 				5F7998F5E0DE097EACFDCEC0 /* Frameworks */,
 			);
 			indentWidth = 2;
@@ -177,16 +166,6 @@
 			path = Endpoints;
 			sourceTree = "<group>";
 		};
-		D0BFB794CD9326A091183DBE /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				12366A038800E697D8B222D2 /* Pods-VinchyCore.debug.xcconfig */,
-				DE4D3D64C790536FF2CE11B2 /* Pods-VinchyCore.release.xcconfig */,
-			);
-			name = Pods;
-			path = ../../Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -205,7 +184,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA7B823F24EC71F300991F24 /* Build configuration list for PBXNativeTarget "VinchyCore" */;
 			buildPhases = (
-				DAF967C3A682EC13D0712D1B /* [CP] Check Pods Manifest.lock */,
 				CA7B823224EC71F300991F24 /* Headers */,
 				CA7B823324EC71F300991F24 /* Sources */,
 				CA7B823424EC71F300991F24 /* Frameworks */,
@@ -262,31 +240,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		DAF967C3A682EC13D0712D1B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-VinchyCore-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CA7B823324EC71F300991F24 /* Sources */ = {
@@ -443,7 +396,6 @@
 		};
 		CA7B824024EC71F300991F24 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 12366A038800E697D8B222D2 /* Pods-VinchyCore.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -471,7 +423,6 @@
 		};
 		CA7B824124EC71F300991F24 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DE4D3D64C790536FF2CE11B2 /* Pods-VinchyCore.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;

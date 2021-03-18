@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		25C7990D4CD38630D0A42E04 /* Pods_VinchyAuthorizationApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89253731F2C742635398AF8F /* Pods_VinchyAuthorizationApp.framework */; };
-		370686F57971ECE5F1FE476E /* Pods_VinchyAuthorization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CD1365932D64B5E4665879C2 /* Pods_VinchyAuthorization.framework */; };
 		441F760825D19ADA008DC46B /* AuthorizationNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4436021625CF00B500ABA7F1 /* AuthorizationNavigationController.swift */; };
 		443601DD25CEF5B200ABA7F1 /* AuthorizationOutputDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443601DC25CEF5B200ABA7F1 /* AuthorizationOutputDelegate.swift */; };
 		443F0ADC259123FE00E15437 /* VinchyAuthorization.h in Headers */ = {isa = PBXBuildFile; fileRef = 443F0ADA259123FE00E15437 /* VinchyAuthorization.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -61,6 +59,7 @@
 		44E83A0E25D1A40C00711490 /* VinchyAuthorization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 443F0AD7259123FE00E15437 /* VinchyAuthorization.framework */; };
 		44E83A0F25D1A40C00711490 /* VinchyAuthorization.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 443F0AD7259123FE00E15437 /* VinchyAuthorization.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44E83A4B25D1B03D00711490 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 44E83A4D25D1B03D00711490 /* Localizable.strings */; };
+		7677429BD8D8BB069FA2C8AC /* Pods_VinchyAuthorizationApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDDD9B12C1FA79F5D7DA16B /* Pods_VinchyAuthorizationApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -103,7 +102,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		2C46855EA6BEC4781ED8A61D /* Pods-VinchyAuthorization.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyAuthorization.debug.xcconfig"; path = "Target Support Files/Pods-VinchyAuthorization/Pods-VinchyAuthorization.debug.xcconfig"; sourceTree = "<group>"; };
+		30FA3399AD6714342AC7C8AB /* Pods-VinchyAuthorizationApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyAuthorizationApp.debug.xcconfig"; path = "Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp.debug.xcconfig"; sourceTree = "<group>"; };
 		443601DC25CEF5B200ABA7F1 /* AuthorizationOutputDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationOutputDelegate.swift; sourceTree = "<group>"; };
 		4436021625CF00B500ABA7F1 /* AuthorizationNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationNavigationController.swift; sourceTree = "<group>"; };
 		443F0AD7259123FE00E15437 /* VinchyAuthorization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VinchyAuthorization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -164,11 +163,8 @@
 		44E83A5025D1B07300711490 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Main.strings; sourceTree = "<group>"; };
 		44E83A5125D1B07300711490 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
 		44E83A5225D1B07300711490 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		554E2FC96295A4F8F9FE9A68 /* Pods-VinchyAuthorizationApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyAuthorizationApp.release.xcconfig"; path = "Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp.release.xcconfig"; sourceTree = "<group>"; };
-		89253731F2C742635398AF8F /* Pods_VinchyAuthorizationApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinchyAuthorizationApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C0142329D2F9663DDB44D2E0 /* Pods-VinchyAuthorizationApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyAuthorizationApp.debug.xcconfig"; path = "Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp.debug.xcconfig"; sourceTree = "<group>"; };
-		CD1365932D64B5E4665879C2 /* Pods_VinchyAuthorization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinchyAuthorization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E3F5D681B9F7A10494FA5862 /* Pods-VinchyAuthorization.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyAuthorization.release.xcconfig"; path = "Target Support Files/Pods-VinchyAuthorization/Pods-VinchyAuthorization.release.xcconfig"; sourceTree = "<group>"; };
+		7CD9E82A4B6AE9A6D14459FF /* Pods-VinchyAuthorizationApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyAuthorizationApp.release.xcconfig"; path = "Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp.release.xcconfig"; sourceTree = "<group>"; };
+		DDDDD9B12C1FA79F5D7DA16B /* Pods_VinchyAuthorizationApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinchyAuthorizationApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,7 +173,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				44E83A0425D1A23600711490 /* VinchyCore.framework in Frameworks */,
-				370686F57971ECE5F1FE476E /* Pods_VinchyAuthorization.framework in Frameworks */,
 				44E83A0125D1A23400711490 /* Display.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -186,9 +181,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				25C7990D4CD38630D0A42E04 /* Pods_VinchyAuthorizationApp.framework in Frameworks */,
 				44E83A0925D1A40800711490 /* Display.framework in Frameworks */,
 				44E83A0E25D1A40C00711490 /* VinchyAuthorization.framework in Frameworks */,
+				7677429BD8D8BB069FA2C8AC /* Pods_VinchyAuthorizationApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,13 +204,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		21455253FCBC2919372C4490 /* Pods */ = {
+		3593A15AFFB827B6A99077BA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				2C46855EA6BEC4781ED8A61D /* Pods-VinchyAuthorization.debug.xcconfig */,
-				E3F5D681B9F7A10494FA5862 /* Pods-VinchyAuthorization.release.xcconfig */,
-				C0142329D2F9663DDB44D2E0 /* Pods-VinchyAuthorizationApp.debug.xcconfig */,
-				554E2FC96295A4F8F9FE9A68 /* Pods-VinchyAuthorizationApp.release.xcconfig */,
+				30FA3399AD6714342AC7C8AB /* Pods-VinchyAuthorizationApp.debug.xcconfig */,
+				7CD9E82A4B6AE9A6D14459FF /* Pods-VinchyAuthorizationApp.release.xcconfig */,
 			);
 			name = Pods;
 			path = ../../Pods;
@@ -239,7 +232,7 @@
 				443F0B2F2591282D00E15437 /* VinchyAuthorizationAppUITests */,
 				443F0AD8259123FE00E15437 /* Products */,
 				44A724E12591351C00A7552B /* Frameworks */,
-				21455253FCBC2919372C4490 /* Pods */,
+				3593A15AFFB827B6A99077BA /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -399,8 +392,7 @@
 				44E2161225CC8ED900FE31CE /* VinchyCore.framework */,
 				44A72596259245E100A7552B /* Display.framework */,
 				44A724E22591351C00A7552B /* Display.framework */,
-				CD1365932D64B5E4665879C2 /* Pods_VinchyAuthorization.framework */,
-				89253731F2C742635398AF8F /* Pods_VinchyAuthorizationApp.framework */,
+				DDDDD9B12C1FA79F5D7DA16B /* Pods_VinchyAuthorizationApp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -579,7 +571,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 443F0ADF259123FE00E15437 /* Build configuration list for PBXNativeTarget "VinchyAuthorization" */;
 			buildPhases = (
-				D87AB88EDC9F19703D0EF6B6 /* [CP] Check Pods Manifest.lock */,
 				443F0AD2259123FE00E15437 /* Headers */,
 				443F0AD3259123FE00E15437 /* Sources */,
 				443F0AD4259123FE00E15437 /* Frameworks */,
@@ -598,12 +589,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 443F0B332591282D00E15437 /* Build configuration list for PBXNativeTarget "VinchyAuthorizationApp" */;
 			buildPhases = (
-				568967863572074888866CB3 /* [CP] Check Pods Manifest.lock */,
+				3CBE954FFAE9E6645C9EA472 /* [CP] Check Pods Manifest.lock */,
 				443F0B082591282C00E15437 /* Sources */,
 				443F0B092591282C00E15437 /* Frameworks */,
 				443F0B0A2591282C00E15437 /* Resources */,
-				4E03E950A28C4F2E93F32208 /* [CP] Embed Pods Frameworks */,
 				44E83A0B25D1A40800711490 /* Embed Frameworks */,
+				CE80F820403DCA41CDDBBE5F /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -735,24 +726,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4E03E950A28C4F2E93F32208 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		568967863572074888866CB3 /* [CP] Check Pods Manifest.lock */ = {
+		3CBE954FFAE9E6645C9EA472 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -774,26 +748,21 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		D87AB88EDC9F19703D0EF6B6 /* [CP] Check Pods Manifest.lock */ = {
+		CE80F820403DCA41CDDBBE5F /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
 			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
+			name = "[CP] Embed Pods Frameworks";
 			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-VinchyAuthorization-checkManifestLockResult.txt",
+				"${PODS_ROOT}/Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1045,7 +1014,6 @@
 		};
 		443F0AE0259123FE00E15437 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2C46855EA6BEC4781ED8A61D /* Pods-VinchyAuthorization.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1074,7 +1042,6 @@
 		};
 		443F0AE1259123FE00E15437 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E3F5D681B9F7A10494FA5862 /* Pods-VinchyAuthorization.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -1102,7 +1069,7 @@
 		};
 		443F0B342591282D00E15437 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C0142329D2F9663DDB44D2E0 /* Pods-VinchyAuthorizationApp.debug.xcconfig */;
+			baseConfigurationReference = 30FA3399AD6714342AC7C8AB /* Pods-VinchyAuthorizationApp.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
@@ -1123,7 +1090,7 @@
 		};
 		443F0B352591282D00E15437 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 554E2FC96295A4F8F9FE9A68 /* Pods-VinchyAuthorizationApp.release.xcconfig */;
+			baseConfigurationReference = 7CD9E82A4B6AE9A6D14459FF /* Pods-VinchyAuthorizationApp.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;

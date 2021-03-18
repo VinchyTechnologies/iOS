@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import EmailService
+import Core
 import VinchyCore
 
 final class VinchyRouter {

@@ -14,12 +14,12 @@ def commonPods
   pod 'Firebase/RemoteConfig'
   pod 'Firebase/Analytics'
   pod 'CocoaDebug', :configurations => ['Debug']
-  pod 'SPAlert', '~> 2.1.4'
-  pod "Sheeeeeeeeet"
-  pod 'Cosmos', '~> 23.0'
-  pod 'SkyFloatingLabelTextField'
-  pod 'KeychainAccess'
-  pod 'FittedSheets'
+  pod 'SPAlert', '~> 2.1.4' # has SPM
+  pod "Sheeeeeeeeet" # has SPM
+  pod 'Cosmos', '~> 23.0' # has SPM
+  pod 'SkyFloatingLabelTextField' # has SPM
+  pod 'KeychainAccess' # has SPM
+  pod 'FittedSheets' # has SPM
 end
 
 target 'Smart' do
@@ -33,7 +33,6 @@ target 'Smart' do
 
   target 'SmartUITests' do
   end
-
 end
 
 target 'Display' do
@@ -52,34 +51,10 @@ target 'Core' do
   pod 'KeychainAccess'
 end
 
-target 'StringFormatting' do
-  project 'submodules/StringFormatting/StringFormatting'
-end
-
 target 'CommonUI' do
   project 'submodules/CommonUI/CommonUI'
   pod 'Nuke'
   pod 'Cosmos', '~> 23.0'
-end
-
-target 'LocationUI' do
-  project 'submodules/LocationUI/LocationUI'
-end
-
-target 'EmailService' do
-  project 'submodules/EmailService/EmailService'
-end
-
-target 'VinchyCore' do
-  project 'submodules/VinchyCore/VinchyCore'
-end
-
-target 'VinchyUI' do
-  project 'submodules/VinchyUI/VinchyUI'
-end
-
-target 'VinchyAuthorization' do
-  project 'submodules/VinchyAuthorization/VinchyAuthorization'
 end
 
 target 'VinchyAuthorizationApp' do

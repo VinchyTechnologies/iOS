@@ -8,7 +8,6 @@
 
 import VinchyCore
 import Database
-import EmailService
 import Sheeeeeeeeet
 import FirebaseDynamicLinks
 import VinchyAuthorization

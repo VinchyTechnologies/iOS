@@ -8,7 +8,7 @@
 // swiftlint:disable all
 
 import UIKit
-import EmailService
+import Core
 
 final class MoreRouter {
   

@@ -23,9 +23,6 @@
          location = "group:submodules/Display/Display.xcodeproj">
       </FileRef>
       <FileRef
-         location = "group:submodules/EmailService/EmailService.xcodeproj">
-      </FileRef>
-      <FileRef
          location = "group:submodules/LocationUI/LocationUI.xcodeproj">
       </FileRef>
       <FileRef

@@ -6,7 +6,6 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import Display // TODO: - Delete
 import UIKit
 
 public protocol AdsProtocol: AnyObject { }
