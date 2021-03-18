@@ -52,13 +52,13 @@
 		44E2163825CD2D5F00FE31CE /* ChooseAuthTypeInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E2162C25CD2D5F00FE31CE /* ChooseAuthTypeInteractorProtocol.swift */; };
 		44E2163925CD2D5F00FE31CE /* ChooseAuthTypeRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E2162E25CD2D5F00FE31CE /* ChooseAuthTypeRouterProtocol.swift */; };
 		44E2163A25CD2D5F00FE31CE /* ChooseAuthTypeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E2162F25CD2D5F00FE31CE /* ChooseAuthTypeRouter.swift */; };
-		44E83A0125D1A23400711490 /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A72596259245E100A7552B /* Display.framework */; };
 		44E83A0425D1A23600711490 /* VinchyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44E2161225CC8ED900FE31CE /* VinchyCore.framework */; };
 		44E83A0925D1A40800711490 /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A724E22591351C00A7552B /* Display.framework */; };
 		44E83A0A25D1A40800711490 /* Display.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44A724E22591351C00A7552B /* Display.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44E83A0E25D1A40C00711490 /* VinchyAuthorization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 443F0AD7259123FE00E15437 /* VinchyAuthorization.framework */; };
 		44E83A0F25D1A40C00711490 /* VinchyAuthorization.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 443F0AD7259123FE00E15437 /* VinchyAuthorization.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44E83A4B25D1B03D00711490 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 44E83A4D25D1B03D00711490 /* Localizable.strings */; };
+		44F54ED626036A2400CE7C2C /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A72596259245E100A7552B /* Display.framework */; };
 		7677429BD8D8BB069FA2C8AC /* Pods_VinchyAuthorizationApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DDDDD9B12C1FA79F5D7DA16B /* Pods_VinchyAuthorizationApp.framework */; };
 /* End PBXBuildFile section */
 
@@ -173,7 +173,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44E83A0425D1A23600711490 /* VinchyCore.framework in Frameworks */,
-				44E83A0125D1A23400711490 /* Display.framework in Frameworks */,
+				44F54ED626036A2400CE7C2C /* Display.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -581,6 +581,8 @@
 			dependencies = (
 			);
 			name = VinchyAuthorization;
+			packageProductDependencies = (
+			);
 			productName = VinchyAuthorization;
 			productReference = 443F0AD7259123FE00E15437 /* VinchyAuthorization.framework */;
 			productType = "com.apple.product-type.framework";
@@ -678,6 +680,8 @@
 				ru,
 			);
 			mainGroup = 443F0ACD259123FD00E15437;
+			packageReferences = (
+			);
 			productRefGroup = 443F0AD8259123FE00E15437 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";

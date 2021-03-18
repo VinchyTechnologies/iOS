@@ -6,10 +6,10 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import CommonUI
 import Display
 import UIKit
 import FittedSheets
-import CommonUI
 
 final class ReviewDetailViewController: UIViewController {
   

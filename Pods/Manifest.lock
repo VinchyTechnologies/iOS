@@ -1,6 +1,5 @@
 PODS:
   - CocoaDebug (1.5.8)
-  - Cosmos (23.0.0)
   - Firebase/Analytics (7.1.0):
     - Firebase/Core
   - Firebase/Core (7.1.0):
@@ -85,32 +84,26 @@ PODS:
     - nanopb/encode (= 2.30906.0)
   - nanopb/decode (2.30906.0)
   - nanopb/encode (2.30906.0)
-  - Nuke (9.2.0)
   - PromisesObjC (1.2.11)
   - Sheeeeeeeeet (3.1.4)
-  - SkyFloatingLabelTextField (4.0.0)
   - SPAlert (2.1.4)
   - SwiftLint (0.41.0)
 
 DEPENDENCIES:
   - CocoaDebug
-  - Cosmos (~> 23.0)
   - Firebase/Analytics
   - Firebase/DynamicLinks
   - Firebase/RemoteConfig
   - FittedSheets
   - FSPagerView
   - Google-Mobile-Ads-SDK
-  - Nuke
   - Sheeeeeeeeet
-  - SkyFloatingLabelTextField
   - SPAlert (~> 2.1.4)
   - SwiftLint
 
 SPEC REPOS:
   trunk:
     - CocoaDebug
-    - Cosmos
     - Firebase
     - FirebaseABTesting
     - FirebaseAnalytics
@@ -127,16 +120,13 @@ SPEC REPOS:
     - GoogleUserMessagingPlatform
     - GoogleUtilities
     - nanopb
-    - Nuke
     - PromisesObjC
     - Sheeeeeeeeet
-    - SkyFloatingLabelTextField
     - SPAlert
     - SwiftLint
 
 SPEC CHECKSUMS:
   CocoaDebug: fcf58698e6cebe8a4ea81b7c5aca44cfbd181d9c
-  Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
   Firebase: 78e8dd2e39d653de6270432ad84fe8b59f7bf4e8
   FirebaseABTesting: aaea04ea67858a4a9dce0d22ef645477dff50146
   FirebaseAnalytics: 7f165a56dea86ddd5b8ce02af3bee982c683405c
@@ -153,13 +143,11 @@ SPEC CHECKSUMS:
   GoogleUserMessagingPlatform: b168e8c46cd8f92aa3e34b584c4ca78a411ce367
   GoogleUtilities: 3dc4ff0d5e4840e2fa8eef0889620e8c33d4218c
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
-  Nuke: 1394e48b0940e01dd20f52ac56b121ab154e370d
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   Sheeeeeeeeet: d4808c23c1d0aca2ccba13353ec7fa17ada2f129
-  SkyFloatingLabelTextField: 79ddc40e4ad59707fedbb48d605417aee48bb78a
   SPAlert: 1a8afa1c6ac86a82ab5b2cfdf7f9a51e68cb6c0c
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
 
-PODFILE CHECKSUM: ed62b5ed2a1e0cf84c714364d61285e1d4678394
+PODFILE CHECKSUM: eb1d258322a0b43258b27133ffe0ee3e677e93a1
 
 COCOAPODS: 1.10.1

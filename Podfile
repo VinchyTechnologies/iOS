@@ -5,7 +5,6 @@ inhibit_all_warnings!
 workspace 'Smart'
 
 def commonPods
-  pod 'Nuke'
   pod 'FSPagerView'
   pod 'Google-Mobile-Ads-SDK'
   pod 'SwiftLint'
@@ -15,8 +14,6 @@ def commonPods
   pod 'CocoaDebug', :configurations => ['Debug']
   pod 'SPAlert', '~> 2.1.4' # has SPM
   pod "Sheeeeeeeeet" # has SPM
-  pod 'Cosmos', '~> 23.0' # has SPM
-  pod 'SkyFloatingLabelTextField' # has SPM
   pod 'FittedSheets' # has SPM
 end
 
@@ -33,16 +30,8 @@ target 'Smart' do
   end
 end
 
-target 'Display' do
-  project 'submodules/Display/Display'
-  pod 'Nuke'
-  pod 'SkyFloatingLabelTextField'
-end
-
 target 'VinchyAuthorizationApp' do
   project 'submodules/VinchyAuthorization/VinchyAuthorization'
-  pod 'Nuke'
-  pod 'SkyFloatingLabelTextField'
   pod 'CocoaDebug', :configurations => ['Debug']
 end
 

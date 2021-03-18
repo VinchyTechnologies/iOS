@@ -1,15 +1,360 @@
-//  Copyright 2016-2019 Skyscanner Ltd
 //
-//  Licensed under the Apache License, Version 2.0 (the "License"); you may not use this file except in compliance 
-//  with the License. You may obtain a copy of the License at
+//  SkyFloatingLabelTextField.swift
+//  Display
 //
-//  http://www.apache.org/licenses/LICENSE-2.0
+//  Created by Алексей Смирнов on 18.03.2021.
+//  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
-//  Unless required by applicable law or agreed to in writing, software distributed under the License is distributed 
-//  on an "AS IS" BASIS, WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the License 
-//  for the specific language governing permissions and limitations under the License.
 
 import UIKit
+
+extension UITextField {
+    /// Moves the caret to the correct position by removing the trailing whitespace
+    func fixCaretPosition() {
+        // Moving the caret to the correct position by removing the trailing whitespace
+        // http://stackoverflow.com/questions/14220187/uitextfield-has-trailing-whitespace-after-securetextentry-toggle
+        let beginning = beginningOfDocument
+        selectedTextRange = textRange(from: beginning, to: beginning)
+        let end = endOfDocument
+        selectedTextRange = textRange(from: end, to: end)
+    }
+}
+
+/**
+ Identify the type of icon.
+    - font: Set your icon by setting the font of iconLabel
+    - image: Set your icon by setting the image of iconImageView
+ */
+public enum IconType: Int {
+    case font
+    case image
+}
+
+/**
+ A beautiful and flexible textfield implementation with support for icon, title label, error message and placeholder.
+ */
+open class SkyFloatingLabelTextFieldWithIcon: SkyFloatingLabelTextField {
+
+    @IBInspectable
+    var iconTypeValue: Int {
+        get {
+            return self.iconType.rawValue
+        }
+
+        set(iconIndex) {
+            self.iconType = IconType(rawValue: iconIndex) ?? .font
+        }
+    }
+
+    open var iconType: IconType = .font {
+        didSet {
+            updateIconViewHiddenState()
+        }
+    }
+
+    /// A UIImageView value that identifies the view used to display the icon
+    open var iconImageView: UIImageView!
+
+    /// A UIImage value that determines the image that the icon is using
+    @IBInspectable
+    dynamic open var iconImage: UIImage? {
+        didSet {
+            // Show a warning if setting an image while the iconType is IconType.font
+            if self.iconType == .font { NSLog("WARNING - Did set iconImage when the iconType is set to IconType.font. The image will not be displayed.") } // swiftlint:disable:this line_length
+            iconImageView?.image = iconImage
+        }
+    }
+
+    /// A Bool value that determines if the UIImage should be templated or not
+    @IBInspectable
+    dynamic open var templateImage: Bool = true {
+        didSet {
+            if templateImage {
+                   let templatedOriginalImage = self.iconImageView.image?
+                    .withRenderingMode(.alwaysTemplate)
+                    self.iconImageView.image = templatedOriginalImage
+            }
+        }
+    }
+
+    /// A UILabel value that identifies the label used to display the icon
+    open var iconLabel: UILabel!
+
+    /// A UIFont value that determines the font that the icon is using
+    @objc dynamic open var iconFont: UIFont? {
+        didSet {
+            iconLabel?.font = iconFont
+        }
+    }
+
+    /// A String value that determines the text used when displaying the icon
+    @IBInspectable
+    open var iconText: String? {
+        didSet {
+            // Show a warning if setting an icon text while the iconType is IconType.image
+            if self.iconType == .image { NSLog("WARNING - Did set iconText when the iconType is set to IconType.image. The icon with the specified text will not be displayed.") } // swiftlint:disable:this line_length
+            iconLabel?.text = iconText
+        }
+    }
+
+    /// A UIColor value that determines the color of the icon in the normal state
+    @IBInspectable
+    dynamic open var iconColor: UIColor = UIColor.gray {
+        didSet {
+            if self.iconType == .font {
+                updateIconLabelColor()
+            }
+            if self.iconType == .image && self.templateImage {
+                updateImageViewTintColor()
+            }
+        }
+    }
+
+    /// A UIColor value that determines the color of the icon when the control is selected
+    @IBInspectable
+    dynamic open var selectedIconColor: UIColor = UIColor.gray {
+        didSet {
+            updateIconLabelColor()
+        }
+    }
+
+    /// A float value that determines the width of the icon
+    @IBInspectable
+    dynamic open var iconWidth: CGFloat = 20 {
+        didSet {
+            updateFrame()
+        }
+    }
+
+    /**
+     A float value that determines the left margin of the icon.
+     Use this value to position the icon more precisely horizontally.
+     */
+    @IBInspectable
+    dynamic open var iconMarginLeft: CGFloat = 4 {
+        didSet {
+            updateFrame()
+        }
+    }
+
+    /**
+     A float value that determines the bottom margin of the icon.
+     Use this value to position the icon more precisely vertically.
+     */
+    @IBInspectable
+    dynamic open var iconMarginBottom: CGFloat = 4 {
+        didSet {
+            updateFrame()
+        }
+    }
+
+    /**
+     A float value that determines the rotation in degrees of the icon.
+     Use this value to rotate the icon in either direction.
+     */
+    @IBInspectable
+    open var iconRotationDegrees: Double = 0 {
+        didSet {
+            iconLabel.transform = CGAffineTransform(rotationAngle: CGFloat(iconRotationDegrees * .pi / 180.0))
+            iconImageView.transform = CGAffineTransform(rotationAngle: CGFloat(iconRotationDegrees * .pi / 180.0))
+        }
+    }
+
+    // MARK: Initializers
+    /**
+     Initializes the control
+     - parameter type the type of icon
+     */
+    convenience public init(frame: CGRect, iconType: IconType) {
+        self.init(frame: frame)
+        self.iconType = iconType
+        updateIconViewHiddenState()
+    }
+
+    /**
+    Initializes the control
+    - parameter frame the frame of the control
+    */
+    override public init(frame: CGRect) {
+        super.init(frame: frame)
+        createIcon()
+        updateIconViewHiddenState()
+    }
+
+    /**
+     Intialzies the control by deserializing it
+     - parameter aDecoder the object to deserialize the control from
+     */
+    required public init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        createIcon()
+        updateIconViewHiddenState()
+    }
+
+    // MARK: Creating the icon
+    /// Creates the both icon label and icon image view
+    fileprivate func createIcon() {
+        createIconLabel()
+        createIconImageView()
+    }
+
+    // MARK: Creating the icon label
+    /// Creates the icon label
+    fileprivate func createIconLabel() {
+        let iconLabel = UILabel()
+        iconLabel.backgroundColor = UIColor.clear
+        iconLabel.textAlignment = .center
+        iconLabel.autoresizingMask = [.flexibleTopMargin, .flexibleRightMargin]
+        self.iconLabel = iconLabel
+        addSubview(iconLabel)
+        updateIconLabelColor()
+    }
+
+    // MARK: Creating the icon image view
+    /// Creates the icon image view
+    fileprivate func createIconImageView() {
+        let iconImageView = UIImageView()
+        iconImageView.backgroundColor = .clear
+        iconImageView.contentMode = .scaleAspectFit
+        iconImageView.autoresizingMask = [.flexibleTopMargin, .flexibleRightMargin]
+        self.iconImageView = iconImageView
+        self.templateImage = true
+        addSubview(iconImageView)
+    }
+
+    // MARK: Set icon hidden property
+    /// Shows the corresponding icon depending on iconType property
+    fileprivate func updateIconViewHiddenState() {
+        switch iconType {
+        case .font:
+            self.iconLabel.isHidden = false
+            self.iconImageView.isHidden = true
+        case .image:
+            self.iconLabel.isHidden = true
+            self.iconImageView.isHidden = false
+        }
+    }
+
+    // MARK: Handling the icon color
+    /// Update the colors for the control. Override to customize colors.
+    override open func updateColors() {
+        super.updateColors()
+        if self.iconType == .font {
+            updateIconLabelColor()
+        }
+        if self.iconType == .image && self.templateImage {
+            updateImageViewTintColor()
+        }
+    }
+
+    fileprivate func updateImageViewTintColor() {
+        if !isEnabled {
+            iconImageView.tintColor = disabledColor
+        } else if hasErrorMessage {
+            iconImageView.tintColor = errorColor
+        } else {
+            iconImageView.tintColor = editingOrSelected ? selectedIconColor : iconColor
+        }
+    }
+
+    fileprivate func updateIconLabelColor() {
+        if !isEnabled {
+            iconLabel?.textColor = disabledColor
+        } else if hasErrorMessage {
+            iconLabel?.textColor = errorColor
+        } else {
+            iconLabel?.textColor = editingOrSelected ? selectedIconColor : iconColor
+        }
+    }
+
+    // MARK: Custom layout overrides
+    /**
+     Calculate the bounds for the textfield component of the control.
+     Override to create a custom size textbox in the control.
+     - parameter bounds: The current bounds of the textfield component
+     - returns: The rectangle that the textfield component should render in
+    */
+    override open func textRect(forBounds bounds: CGRect) -> CGRect {
+        var rect = super.textRect(forBounds: bounds)
+        if isLTRLanguage {
+            rect.origin.x += CGFloat(iconWidth + iconMarginLeft)
+        } else {
+            rect.origin.x -= CGFloat(iconWidth + iconMarginLeft)
+        }
+        rect.size.width -= CGFloat(iconWidth + iconMarginLeft)
+        return rect
+    }
+
+    /**
+     Calculate the rectangle for the textfield when it is being edited
+     - parameter bounds: The current bounds of the field
+     - returns: The rectangle that the textfield should render in
+     */
+    override open func editingRect(forBounds bounds: CGRect) -> CGRect {
+        var rect = super.editingRect(forBounds: bounds)
+        if isLTRLanguage {
+            rect.origin.x += CGFloat(iconWidth + iconMarginLeft)
+        } else {
+            // don't change the editing field X position for RTL languages
+        }
+        rect.size.width -= CGFloat(iconWidth + iconMarginLeft)
+        return rect
+    }
+
+    /**
+     Calculates the bounds for the placeholder component of the control.
+     Override to create a custom size textbox in the control.
+     - parameter bounds: The current bounds of the placeholder component
+     - returns: The rectangle that the placeholder component should render in
+     */
+    override open func placeholderRect(forBounds bounds: CGRect) -> CGRect {
+        var rect = super.placeholderRect(forBounds: bounds)
+        if isLTRLanguage {
+            rect.origin.x += CGFloat(iconWidth + iconMarginLeft)
+        } else {
+            // don't change the editing field X position for RTL languages
+        }
+        rect.size.width -= CGFloat(iconWidth + iconMarginLeft)
+        return rect
+    }
+
+    /// Invoked by layoutIfNeeded automatically
+    override open func layoutSubviews() {
+        super.layoutSubviews()
+        updateFrame()
+    }
+
+    fileprivate func updateFrame() {
+        let textWidth: CGFloat = bounds.size.width
+        if isLTRLanguage {
+            iconLabel.frame = CGRect(
+                x: 0,
+                y: bounds.size.height - textHeight() - iconMarginBottom,
+                width: iconWidth,
+                height: textHeight()
+            )
+            iconImageView.frame = CGRect(
+                x: 0,
+                y: bounds.size.height - textHeight() - iconMarginBottom,
+                width: iconWidth,
+                height: textHeight()
+            )
+        } else {
+            iconLabel.frame = CGRect(
+                x: textWidth - iconWidth,
+                y: bounds.size.height - textHeight() - iconMarginBottom,
+                width: iconWidth,
+                height: textHeight()
+            )
+            iconImageView.frame = CGRect(
+                x: textWidth - iconWidth,
+                y: bounds.size.height - textHeight() - iconMarginBottom,
+                width: iconWidth,
+                height: textHeight()
+            )
+        }
+    }
+}
 
 /**
  An enum for the possible error label placements.
@@ -27,7 +372,7 @@ public enum ErrorMessagePlacement {
 @IBDesignable
 open class SkyFloatingLabelTextField: UITextField { // swiftlint:disable:this type_body_length
     /**
-     A Boolean value that determines if the language displayed is LTR. 
+     A Boolean value that determines if the language displayed is LTR.
      Default value set automatically from the application language settings.
      */
     @objc open var isLTRLanguage: Bool = UIApplication.shared.userInterfaceLayoutDirection == .leftToRight {
@@ -54,14 +399,12 @@ open class SkyFloatingLabelTextField: UITextField { // swiftlint:disable:this ty
     }
 
     // MARK: Animation timing
-
     /// The value of the title appearing duration
     @objc dynamic open var titleFadeInDuration: TimeInterval = 0.2
     /// The value of the title disappearing duration
     @objc dynamic open var titleFadeOutDuration: TimeInterval = 0.3
 
     // MARK: Colors
-
     fileprivate var cachedTextColor: UIColor?
 
     /// A UIColor value that determines the text color of the editable text
@@ -204,7 +547,6 @@ open class SkyFloatingLabelTextField: UITextField { // swiftlint:disable:this ty
     }
 
     // MARK: Line height
-
     /// A CGFloat value that determines the height for the bottom line when the control is in the normal state
     @IBInspectable dynamic open var lineHeight: CGFloat = 0.5 {
         didSet {
@@ -222,7 +564,6 @@ open class SkyFloatingLabelTextField: UITextField { // swiftlint:disable:this ty
     }
 
     // MARK: View components
-
     /// The internal `UIView` to display the line below the text input.
     open var lineView: UIView!
 
@@ -233,9 +574,8 @@ open class SkyFloatingLabelTextField: UITextField { // swiftlint:disable:this ty
     open var errorLabel: UILabel!
 
     // MARK: Properties
-
     /**
-    The formatter used before displaying content in the title label. 
+    The formatter used before displaying content in the title label.
     This can be the `title`, `selectedTitle` or the `errorMessage`.
     The default implementation converts the text to uppercase.
     */
@@ -341,7 +681,6 @@ open class SkyFloatingLabelTextField: UITextField { // swiftlint:disable:this ty
     }
 
     // MARK: - Initializers
-
     /**
     Initializes the control
     - parameter frame the frame of the control
@@ -383,7 +722,6 @@ open class SkyFloatingLabelTextField: UITextField { // swiftlint:disable:this ty
     }
 
     // MARK: create components
-
     fileprivate func createTitleLabel() {
         let titleLabel = UILabel()
         titleLabel.autoresizingMask = [.flexibleWidth, .flexibleHeight]
@@ -426,7 +764,6 @@ open class SkyFloatingLabelTextField: UITextField { // swiftlint:disable:this ty
     }
 
     // MARK: Responder handling
-
     /**
      Attempt the control to become the first responder
      - returns: True when successfull becoming the first responder
@@ -458,7 +795,6 @@ open class SkyFloatingLabelTextField: UITextField { // swiftlint:disable:this ty
     }
 
     // MARK: - View updates
-
     fileprivate func updateControl(_ animated: Bool = false) {
         updateColors()
         updateLineView()
@@ -475,7 +811,6 @@ open class SkyFloatingLabelTextField: UITextField { // swiftlint:disable:this ty
     }
 
     // MARK: - Color updates
-
     /// Update the colors for the control. Override to customize colors.
     open func updateColors() {
         updateLineColor()
@@ -531,7 +866,6 @@ open class SkyFloatingLabelTextField: UITextField { // swiftlint:disable:this ty
     }
 
     // MARK: - Title handling
-
     fileprivate func updateTitleLabel(_ animated: Bool = false) {
         guard let titleLabel = titleLabel else {
             return
@@ -656,7 +990,6 @@ open class SkyFloatingLabelTextField: UITextField { // swiftlint:disable:this ty
     }
 
     // MARK: - UITextField text/placeholder positioning overrides
-
     /**
     Calculate the rectangle for the textfield when it is not being edited
     - parameter bounds: The current bounds of the field
@@ -721,7 +1054,6 @@ open class SkyFloatingLabelTextField: UITextField { // swiftlint:disable:this ty
     }
 
     // MARK: - Positioning Overrides
-
     /**
     Calculate the bounds for the title label. Override to create a custom size title field.
     - parameter bounds: The current bounds of the title
@@ -756,7 +1088,7 @@ open class SkyFloatingLabelTextField: UITextField { // swiftlint:disable:this ty
     }
 
     /**
-     Calculate the bounds for the bottom line of the control. 
+     Calculate the bounds for the bottom line of the control.
      Override to create a custom size bottom line in the textbox.
      - parameter bounds: The current bounds of the line
      - parameter editing: True if the control is selected or highlighted
@@ -808,7 +1140,6 @@ open class SkyFloatingLabelTextField: UITextField { // swiftlint:disable:this ty
     }
 
     // MARK: - Layout
-
     /// Invoked when the interface builder renders the control
     override open func prepareForInterfaceBuilder() {
         super.prepareForInterfaceBuilder()
@@ -832,7 +1163,6 @@ open class SkyFloatingLabelTextField: UITextField { // swiftlint:disable:this ty
 
     /**
      Calculate the content size for auto layout
-
      - returns: the content size to be used for auto layout
      */
     override open var intrinsicContentSize: CGSize {
@@ -844,7 +1174,6 @@ open class SkyFloatingLabelTextField: UITextField { // swiftlint:disable:this ty
     }
 
     // MARK: - Helpers
-
     fileprivate func titleOrPlaceholder() -> String? {
         guard let title = title ?? placeholder else {
             return nil
