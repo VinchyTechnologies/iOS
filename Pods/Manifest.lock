@@ -87,11 +87,6 @@ PODS:
   - nanopb/encode (2.30906.0)
   - Nuke (9.2.0)
   - PromisesObjC (1.2.11)
-  - Realm (10.0.0):
-    - Realm/Headers (= 10.0.0)
-  - Realm/Headers (10.0.0)
-  - RealmSwift (10.0.0):
-    - Realm (= 10.0.0)
   - Sheeeeeeeeet (3.1.4)
   - SkyFloatingLabelTextField (4.0.0)
   - SPAlert (2.1.4)
@@ -107,7 +102,6 @@ DEPENDENCIES:
   - FSPagerView
   - Google-Mobile-Ads-SDK
   - Nuke
-  - RealmSwift (~> 10.0.0)
   - Sheeeeeeeeet
   - SkyFloatingLabelTextField
   - SPAlert (~> 2.1.4)
@@ -135,8 +129,6 @@ SPEC REPOS:
     - nanopb
     - Nuke
     - PromisesObjC
-    - Realm
-    - RealmSwift
     - Sheeeeeeeeet
     - SkyFloatingLabelTextField
     - SPAlert
@@ -163,13 +155,11 @@ SPEC CHECKSUMS:
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   Nuke: 1394e48b0940e01dd20f52ac56b121ab154e370d
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
-  Realm: 5654b8e5e45034d07b219e089034be2ef7d1e7bf
-  RealmSwift: 5b4c8c85be4c14ff52054a4d80a8d338167dd79c
   Sheeeeeeeeet: d4808c23c1d0aca2ccba13353ec7fa17ada2f129
   SkyFloatingLabelTextField: 79ddc40e4ad59707fedbb48d605417aee48bb78a
   SPAlert: 1a8afa1c6ac86a82ab5b2cfdf7f9a51e68cb6c0c
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
 
-PODFILE CHECKSUM: 401bb308bfc7408a6706a42c866b8c72628989a6
+PODFILE CHECKSUM: f415881195ba7d1aebefda2e793df42e60f42540
 
 COCOAPODS: 1.10.1

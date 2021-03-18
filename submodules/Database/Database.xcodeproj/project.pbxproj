@@ -3,12 +3,13 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4465BDD1260352F700D7D195 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 4465BDD0260352F700D7D195 /* SwiftPackageProductDependency */; };
+		4465BDD3260352F700D7D195 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 4465BDD2260352F700D7D195 /* SwiftPackageProductDependency */; };
 		447C346F25EEA24F00105A35 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 447C346E25EEA24F00105A35 /* Core.framework */; };
-		6DE8C5FAF98327B50B88007F /* Pods_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B51E786F09D84D5CD2E45EB7 /* Pods_Database.framework */; };
 		CA015C1E24C57E03008DF01D /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA015C1D24C57E03008DF01D /* Database.swift */; };
 		CA1821F624C0F48600280DD4 /* Database.h in Headers */ = {isa = PBXBuildFile; fileRef = CA1821F424C0F48600280DD4 /* Database.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CA18220224C0F71600280DD4 /* FilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18220124C0F71600280DD4 /* FilePath.swift */; };
@@ -17,9 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0E8EEAB426FC98D2C3AFE4BE /* Pods-Database.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Database.release.xcconfig"; path = "Target Support Files/Pods-Database/Pods-Database.release.xcconfig"; sourceTree = "<group>"; };
 		447C346E25EEA24F00105A35 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		B51E786F09D84D5CD2E45EB7 /* Pods_Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA015C1D24C57E03008DF01D /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		CA1821F124C0F48600280DD4 /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA1821F424C0F48600280DD4 /* Database.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
@@ -27,7 +26,6 @@
 		CA18220124C0F71600280DD4 /* FilePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePath.swift; sourceTree = "<group>"; };
 		CA57581324E58DDC00907A33 /* Wine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wine.swift; sourceTree = "<group>"; };
 		CA57581524E5C78900907A33 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
-		E97CC42C2210AA0AF2B6824B /* Pods-Database.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Database.debug.xcconfig"; path = "Target Support Files/Pods-Database/Pods-Database.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -35,7 +33,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6DE8C5FAF98327B50B88007F /* Pods_Database.framework in Frameworks */,
+				4465BDD3260352F700D7D195 /* BuildFile in Frameworks */,
+				4465BDD1260352F700D7D195 /* BuildFile in Frameworks */,
 				447C346F25EEA24F00105A35 /* Core.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -43,21 +42,10 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		990BF3EEF6A28DA39E9997E0 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				E97CC42C2210AA0AF2B6824B /* Pods-Database.debug.xcconfig */,
-				0E8EEAB426FC98D2C3AFE4BE /* Pods-Database.release.xcconfig */,
-			);
-			name = Pods;
-			path = ../../Pods;
-			sourceTree = "<group>";
-		};
 		B8926B80D25EE0DB99448FD1 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				447C346E25EEA24F00105A35 /* Core.framework */,
-				B51E786F09D84D5CD2E45EB7 /* Pods_Database.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -67,7 +55,6 @@
 			children = (
 				CA1821F324C0F48600280DD4 /* Database */,
 				CA1821F224C0F48600280DD4 /* Products */,
-				990BF3EEF6A28DA39E9997E0 /* Pods */,
 				B8926B80D25EE0DB99448FD1 /* Frameworks */,
 			);
 			indentWidth = 2;
@@ -121,7 +108,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA1821F924C0F48600280DD4 /* Build configuration list for PBXNativeTarget "Database" */;
 			buildPhases = (
-				3F6AD5C3AE009F36A8FD0BFF /* [CP] Check Pods Manifest.lock */,
 				CA1821EC24C0F48600280DD4 /* Headers */,
 				CA1821ED24C0F48600280DD4 /* Sources */,
 				CA1821EE24C0F48600280DD4 /* Frameworks */,
@@ -132,6 +118,10 @@
 			dependencies = (
 			);
 			name = Database;
+			packageProductDependencies = (
+				4465BDD0260352F700D7D195 /* SwiftPackageProductDependency */,
+				4465BDD2260352F700D7D195 /* SwiftPackageProductDependency */,
+			);
 			productName = Database;
 			productReference = CA1821F124C0F48600280DD4 /* Database.framework */;
 			productType = "com.apple.product-type.framework";
@@ -160,6 +150,9 @@
 				Base,
 			);
 			mainGroup = CA1821E724C0F48600280DD4;
+			packageReferences = (
+				4465BDCF260352F700D7D195 /* RemoteSwiftPackageReference */,
+			);
 			productRefGroup = CA1821F224C0F48600280DD4 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -178,31 +171,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		3F6AD5C3AE009F36A8FD0BFF /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Database-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CA1821ED24C0F48600280DD4 /* Sources */ = {
@@ -343,7 +311,6 @@
 		};
 		CA1821FA24C0F48600280DD4 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E97CC42C2210AA0AF2B6824B /* Pods-Database.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -371,7 +338,6 @@
 		};
 		CA1821FB24C0F48600280DD4 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0E8EEAB426FC98D2C3AFE4BE /* Pods-Database.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -418,6 +384,30 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		4465BDCF260352F700D7D195 /* RemoteSwiftPackageReference */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/realm/realm-cocoa";
+			requirement = {
+				kind = exactVersion;
+				version = 10.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		4465BDD0260352F700D7D195 /* SwiftPackageProductDependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4465BDCF260352F700D7D195 /* RemoteSwiftPackageReference */;
+			productName = Realm;
+		};
+		4465BDD2260352F700D7D195 /* SwiftPackageProductDependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 4465BDCF260352F700D7D195 /* RemoteSwiftPackageReference */;
+			productName = RealmSwift;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CA1821E824C0F48600280DD4 /* Project object */;
 }

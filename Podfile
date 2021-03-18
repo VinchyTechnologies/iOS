@@ -5,7 +5,6 @@ inhibit_all_warnings!
 workspace 'Smart'
 
 def commonPods
-  pod 'RealmSwift', '~> 10.0.0'
   pod 'Nuke'
   pod 'FSPagerView'
   pod 'Google-Mobile-Ads-SDK'
@@ -18,7 +17,6 @@ def commonPods
   pod "Sheeeeeeeeet" # has SPM
   pod 'Cosmos', '~> 23.0' # has SPM
   pod 'SkyFloatingLabelTextField' # has SPM
-#  pod 'KeychainAccess' # has SPM
   pod 'FittedSheets' # has SPM
 end
 
@@ -39,11 +37,6 @@ target 'Display' do
   project 'submodules/Display/Display'
   pod 'Nuke'
   pod 'SkyFloatingLabelTextField'
-end
-
-target 'Database' do
-  project 'submodules/Database/Database'
-  pod 'RealmSwift', '~> 10.0.0'
 end
 
 target 'CommonUI' do

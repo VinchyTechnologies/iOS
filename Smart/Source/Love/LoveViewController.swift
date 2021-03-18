@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 import CommonUI
 import StringFormatting
 import Database
@@ -74,10 +73,10 @@ final class LoveViewController: UIViewController {
   }()
   
   private lazy var likeRealm = realm(path: .like)
-  private var likeNotificationToken: NotificationToken?
+  private var likeNotificationToken: DBNotificationToken?
   
   private lazy var dislikeRealm = realm(path: .dislike)
-  private var dislikeNotificationToken: NotificationToken?
+  private var dislikeNotificationToken: DBNotificationToken?
   
   private var wines: [DBWine] = [] {
     didSet {

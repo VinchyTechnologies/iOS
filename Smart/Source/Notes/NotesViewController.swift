@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 import Core
 import StringFormatting
 import CommonUI
@@ -21,7 +20,7 @@ final class NotesViewController: UIViewController, UISearchControllerDelegate, U
   private let tableView = UITableView()
   private lazy var notesRealm = realm(path: .notes)
   private let dataBase = Database<Note>()
-  private var notesNotificationToken: NotificationToken?
+  private var notesNotificationToken: DBNotificationToken?
   private let throttler = Throttler()
   
   private lazy var searchController: UISearchController = {

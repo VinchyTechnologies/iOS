@@ -19,6 +19,8 @@ public func imageURL(from wineID: Int64) -> String {
   "https://bucket.vinchy.tech/wines/" + String(wineID) + ".png"
 }
 
+public typealias DBNotificationToken = NotificationToken
+
 public final class Database<T: Object> {
   
   public init() { }
