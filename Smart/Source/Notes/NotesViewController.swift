@@ -182,6 +182,14 @@ extension NotesViewController: UITableViewDataSource {
   {
     localized("delete")
   }
+  
+  func tableView(
+    _ tableView: UITableView,
+    heightForRowAt indexPath: IndexPath)
+    -> CGFloat
+  {
+    UITableView.automaticDimension
+  }
 }
 
 // MARK: - UITableViewDelegate

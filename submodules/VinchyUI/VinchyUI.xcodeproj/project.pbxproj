@@ -8,12 +8,14 @@
 
 /* Begin PBXBuildFile section */
 		436D95B89069D13FA2518E17 /* Pods_VinchyUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCF416779C73875121645F1 /* Pods_VinchyUI.framework */; };
+		44EE338A25F6720100846ABB /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EE338925F6720100846ABB /* Font.swift */; };
 		CA7B827424ED0B0400991F24 /* VinchyUI.h in Headers */ = {isa = PBXBuildFile; fileRef = CA7B827224ED0B0400991F24 /* VinchyUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0787AEAA1D87C7F971F386C1 /* Pods-VinchyUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyUI.debug.xcconfig"; path = "Target Support Files/Pods-VinchyUI/Pods-VinchyUI.debug.xcconfig"; sourceTree = "<group>"; };
 		2945B3208D6FABBDAB0E6135 /* Pods-VinchyUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyUI.release.xcconfig"; path = "Target Support Files/Pods-VinchyUI/Pods-VinchyUI.release.xcconfig"; sourceTree = "<group>"; };
+		44EE338925F6720100846ABB /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		BCCF416779C73875121645F1 /* Pods_VinchyUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinchyUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7B826F24ED0B0400991F24 /* VinchyUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VinchyUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7B827224ED0B0400991F24 /* VinchyUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VinchyUI.h; sourceTree = "<group>"; };
@@ -32,6 +34,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		44EE338825F671EB00846ABB /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				44EE338925F6720100846ABB /* Font.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
 		5D6FB95F1D46E78B6589111C /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -58,7 +68,9 @@
 				5D6FB95F1D46E78B6589111C /* Pods */,
 				B5047D3015B10E33767E9EC9 /* Frameworks */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		CA7B827024ED0B0400991F24 /* Products */ = {
 			isa = PBXGroup;
@@ -71,18 +83,11 @@
 		CA7B827124ED0B0400991F24 /* VinchyUI */ = {
 			isa = PBXGroup;
 			children = (
-				CA7B827A24ED0B1500991F24 /* Source */,
+				44EE338825F671EB00846ABB /* Sources */,
 				CA7B827224ED0B0400991F24 /* VinchyUI.h */,
 				CA7B827324ED0B0400991F24 /* Info.plist */,
 			);
 			path = VinchyUI;
-			sourceTree = "<group>";
-		};
-		CA7B827A24ED0B1500991F24 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Source;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -129,7 +134,7 @@
 				TargetAttributes = {
 					CA7B826E24ED0B0400991F24 = {
 						CreatedOnToolsVersion = 11.5;
-						LastSwiftMigration = 1150;
+						LastSwiftMigration = 1240;
 					};
 				};
 			};
@@ -191,6 +196,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				44EE338A25F6720100846ABB /* Font.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

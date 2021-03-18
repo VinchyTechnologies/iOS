@@ -24,51 +24,58 @@ public struct WineTableCellViewModel: ViewModelProtocol {
 
 public final class WineTableCell: UITableViewCell, Reusable {
   
-  private let bottleImageView = UIImageView()
-  private let titleLabel = UILabel()
-  private let subtitleLabel = UILabel()
+  private let hStackView: UIStackView = {
+    let stackView = UIStackView()
+    stackView.axis = .horizontal
+    return stackView
+  }()
+  
+  private let twoLabelsView = TwoLabelsView()
+  
+  private let bottleImageView: UIImageView = {
+    let imageView = UIImageView()
+    imageView.translatesAutoresizingMaskIntoConstraints = false
+    imageView.contentMode = .scaleAspectFit
+    return imageView
+  }()
   
   public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     
-    bottleImageView.contentMode = .scaleAspectFit
+    hStackView.addArrangedSubview(bottleImageView)
+    hStackView.addArrangedSubview(twoLabelsView)
+    hStackView.setCustomSpacing(20, after: bottleImageView)
     
-    addSubview(bottleImageView)
-    bottleImageView.translatesAutoresizingMaskIntoConstraints = false
+    contentView.addSubview(hStackView)
+    hStackView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      bottleImageView.topAnchor.constraint(greaterThanOrEqualTo: topAnchor, constant: 15),
-      bottleImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-      bottleImageView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -15),
-      bottleImageView.heightAnchor.constraint(equalToConstant: 100),
-      bottleImageView.widthAnchor.constraint(equalToConstant: 40),
-      bottleImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
-    ])
-    
-    titleLabel.font = Font.bold(24)
-    titleLabel.numberOfLines = 2
-    
-    addSubview(titleLabel)
-    titleLabel.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      titleLabel.leadingAnchor.constraint(equalTo: bottleImageView.trailingAnchor, constant: 27),
-      titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-      titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-    ])
-    
-    subtitleLabel.font = Font.medium(16)
-    subtitleLabel.textColor = .blueGray
-    
-    addSubview(subtitleLabel)
-    subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      subtitleLabel.leadingAnchor.constraint(equalTo: bottleImageView.trailingAnchor, constant: 27),
-      subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
-      subtitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+      hStackView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 15),
+      hStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
+      hStackView.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -15),
+      hStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -16),
     ])
   }
   
   required init?(coder: NSCoder) { fatalError() }
   
+  public override func traitCollectionDidChange(
+    _ previousTraitCollection: UITraitCollection?)
+  {
+    super.traitCollectionDidChange(previousTraitCollection)
+    updateAccessibility()
+  }
+  
+  private func updateAccessibility() {
+    if traitCollection.preferredContentSizeCategory > .extraLarge {
+      bottleImageView.widthAnchor.constraint(equalTo: contentView.widthAnchor, constant: -30).isActive = true
+      bottleImageView.heightAnchor.constraint(equalTo: bottleImageView.widthAnchor).isActive = true
+      hStackView.axis = .vertical
+    } else {
+      bottleImageView.widthAnchor.constraint(equalToConstant: 50).isActive = true
+      bottleImageView.heightAnchor.constraint(equalToConstant: 100).isActive = true
+      hStackView.axis = .horizontal
+    }
+  }
 }
 
 extension WineTableCell: Decoratable {
@@ -77,7 +84,53 @@ extension WineTableCell: Decoratable {
   
   public func decorate(model: ViewModel) {
     bottleImageView.loadBottle(url: model.imageURL)
-    titleLabel.text = model.titleText
-    subtitleLabel.text = model.subtitleText
+    twoLabelsView.titleLabel.text = model.titleText
+    twoLabelsView.subtitleLabel.text = model.subtitleText
+    updateAccessibility()
   }
+}
+
+final fileprivate class TwoLabelsView: UIView {
+  
+  fileprivate let titleLabel: UILabel = {
+    let label = UILabel()
+    label.font = UIFont.preferredFont(forTextStyle: .title2).withWeight(.bold)
+    label.numberOfLines = 2
+    label.adjustsFontForContentSizeCategory = true
+    return label
+  }()
+
+  fileprivate let subtitleLabel: UILabel = {
+    let label = UILabel()
+    label.font = UIFont.preferredFont(forTextStyle: .body).withWeight(.medium)
+    label.textColor = .blueGray
+    label.numberOfLines = 2
+    label.adjustsFontForContentSizeCategory = true
+    return label
+  }()
+  
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    
+    addSubview(titleLabel)
+    titleLabel.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      titleLabel.topAnchor.constraint(greaterThanOrEqualTo: topAnchor),
+      titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -10),
+      titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+      titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+    ])
+    
+    addSubview(subtitleLabel)
+    subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
+      subtitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+      subtitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
+      subtitleLabel.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor),
+    ])
+  }
+  
+  required init?(coder: NSCoder) { fatalError() }
+  
 }
