@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		447C346F25EEA24F00105A35 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 447C346E25EEA24F00105A35 /* Core.framework */; };
+		44DD25DE2603CBD600CBA2C9 /* CoreDatabase.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DD25DD2603CBD600CBA2C9 /* CoreDatabase.swift */; };
+		44F8FF9B260603E800192C99 /* Vinchy.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 44DD265D2603E66400CBA2C9 /* Vinchy.xcdatamodeld */; };
+		44F8FFA52606087000192C99 /* CDReview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F8FFA12606087000192C99 /* CDReview.swift */; };
+		44F8FFA62606087000192C99 /* CDWine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F8FFA02606087000192C99 /* CDWine.swift */; };
 		6DE8C5FAF98327B50B88007F /* Pods_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B51E786F09D84D5CD2E45EB7 /* Pods_Database.framework */; };
 		CA015C1E24C57E03008DF01D /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA015C1D24C57E03008DF01D /* Database.swift */; };
 		CA1821F624C0F48600280DD4 /* Database.h in Headers */ = {isa = PBXBuildFile; fileRef = CA1821F424C0F48600280DD4 /* Database.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -19,6 +23,10 @@
 /* Begin PBXFileReference section */
 		0E8EEAB426FC98D2C3AFE4BE /* Pods-Database.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Database.release.xcconfig"; path = "Target Support Files/Pods-Database/Pods-Database.release.xcconfig"; sourceTree = "<group>"; };
 		447C346E25EEA24F00105A35 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		44DD25DD2603CBD600CBA2C9 /* CoreDatabase.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDatabase.swift; sourceTree = "<group>"; };
+		44DD265E2603E66400CBA2C9 /* Vinchy.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Vinchy.xcdatamodel; sourceTree = "<group>"; };
+		44F8FFA02606087000192C99 /* CDWine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CDWine.swift; path = /Users/al.smirnov/Desktop/iOS/submodules/Database/Database/Source/CoreData/CDWine.swift; sourceTree = "<absolute>"; };
+		44F8FFA12606087000192C99 /* CDReview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = CDReview.swift; path = /Users/al.smirnov/Desktop/iOS/submodules/Database/Database/Source/CoreData/CDReview.swift; sourceTree = "<absolute>"; };
 		B51E786F09D84D5CD2E45EB7 /* Pods_Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA015C1D24C57E03008DF01D /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		CA1821F124C0F48600280DD4 /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,6 +51,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		44DD25DC2603CBAD00CBA2C9 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				44F8FFA12606087000192C99 /* CDReview.swift */,
+				44F8FFA02606087000192C99 /* CDWine.swift */,
+				44DD25DD2603CBD600CBA2C9 /* CoreDatabase.swift */,
+				44DD265D2603E66400CBA2C9 /* Vinchy.xcdatamodeld */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		990BF3EEF6A28DA39E9997E0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -95,6 +114,7 @@
 		CA1821FC24C0F4D500280DD4 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				44DD25DC2603CBAD00CBA2C9 /* CoreData */,
 				CA18220124C0F71600280DD4 /* FilePath.swift */,
 				CA015C1D24C57E03008DF01D /* Database.swift */,
 				CA57581324E58DDC00907A33 /* Wine.swift */,
@@ -210,7 +230,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA015C1E24C57E03008DF01D /* Database.swift in Sources */,
+				44F8FFA52606087000192C99 /* CDReview.swift in Sources */,
 				CA18220224C0F71600280DD4 /* FilePath.swift in Sources */,
+				44F8FF9B260603E800192C99 /* Vinchy.xcdatamodeld in Sources */,
+				44DD25DE2603CBD600CBA2C9 /* CoreDatabase.swift in Sources */,
+				44F8FFA62606087000192C99 /* CDWine.swift in Sources */,
 				CA57581424E58DDC00907A33 /* Wine.swift in Sources */,
 				CA57581624E5C78900907A33 /* Note.swift in Sources */,
 			);
@@ -418,6 +442,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		44DD265D2603E66400CBA2C9 /* Vinchy.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				44DD265E2603E66400CBA2C9 /* Vinchy.xcdatamodel */,
+			);
+			currentVersion = 44DD265E2603E66400CBA2C9 /* Vinchy.xcdatamodel */;
+			name = Vinchy.xcdatamodeld;
+			path = ../../../../../Smart/Resources/Vinchy.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = CA1821E824C0F48600280DD4 /* Project object */;
 }

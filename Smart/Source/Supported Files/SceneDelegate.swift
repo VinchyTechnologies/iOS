@@ -9,6 +9,8 @@
 import UIKit
 import FirebaseDynamicLinks
 import Display
+import Database
+import CoreData
 
 final class SceneDelegate: UIResponder {
   
@@ -35,6 +37,20 @@ extension SceneDelegate: UIWindowSceneDelegate {
     willConnectTo session: UISceneSession,
     options connectionOptions: UIScene.ConnectionOptions)
   {
+//    let db = CoreDatabase<CDWine>()
+//    let entity = CDWine(context: db.persistentContainer.viewContext)
+//    entity.setValues(wineID: 123, title: "titl")
+//    
+//    let review = CDReview(context: db.persistentContainer.viewContext)
+//    review.setValues(estimation: .like, noteText: "lala", wine: entity)
+//    db.saveContext()
+//    
+//    let wines = db.fetchAll(entityName: "CDWine")
+//    let isEm = db.isEmpty(entityName: "CDWine")
+//    print("============")
+//    print(wines, isEm)
+//    print("============")
+    
     guard let windowScence = scene as? UIWindowScene else { return }
     
     let window = UIWindow(windowScene: windowScence)

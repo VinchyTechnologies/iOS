@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="17709" systemVersion="20C69" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="CDReview" representedClassName="CDReview" syncable="YES">
+        <attribute name="estimation" optional="YES" attributeType="String"/>
+        <attribute name="noteText" optional="YES" attributeType="String"/>
+        <relationship name="wine" maxCount="1" deletionRule="Cascade" destinationEntity="CDWine" inverseName="review" inverseEntity="CDWine"/>
+    </entity>
+    <entity name="CDWine" representedClassName="CDWine" syncable="YES">
+        <attribute name="title" optional="YES" attributeType="String"/>
+        <attribute name="wineID" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="review" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="CDReview" inverseName="wine" inverseEntity="CDReview"/>
+    </entity>
+    <elements>
+        <element name="CDReview" positionX="123.216796875" positionY="-249.9776306152344" width="200.910888671875" height="74"/>
+        <element name="CDWine" positionX="-45" positionY="0" width="494.09326171875" height="74"/>
+    </elements>
+</model>
