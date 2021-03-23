@@ -35,7 +35,7 @@ final class WineDetailInteractor {
     self.presenter.startLoading()
   }
   private var rate: Double?
-  private let dataBase = Database<DBWine>()
+  private let dataBase = CoreDatabase<CDWine>()
   private let emailService = EmailService()
   
   private var wine: Wine?
@@ -80,11 +80,17 @@ final class WineDetailInteractor {
   }
   
   private func isFavourite(wine: Wine) -> Bool {
-    realm(path: .like).objects(DBWine.self).first(where: { $0.wineID == wine.id }) != nil
+    let predicate = NSPredicate(format: "(review.estimation = %@) AND (wineID = %@)", Estimation.like.rawValue, String(wine.id))
+    return dataBase.fetchAll(
+      entityName: "CDWine",
+      predicate: predicate).count == 1
   }
   
   private func isDisliked(wine: Wine) -> Bool {
-    realm(path: .dislike).objects(DBWine.self).first(where: { $0.wineID == wine.id }) != nil
+    let predicate = NSPredicate(format: "(review.estimation = %@) AND (wineID = %@)", Estimation.dislike.rawValue, String(wine.id))
+    return dataBase.fetchAll(
+      entityName: "CDWine",
+      predicate: predicate).count == 1
   }
 }
 
@@ -227,10 +233,23 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
       return
     }
     
-    if let dbWine = realm(path: .dislike).objects(DBWine.self).first(where: { $0.wineID == wine.id }) {
-      dataBase.remove(object: dbWine, at: .dislike)
+    if let dbWine = dataBase.fetchAll(
+        entityName: "CDWine",
+        predicate: NSPredicate(format: "wineID = %@", String(wine.id))).first {
+      
+      if dbWine.review?.noteText == nil || dbWine.review?.noteText == "" {
+        dataBase.persistentContainer.viewContext.delete(dbWine)
+        dataBase.saveContext()
+      } else {
+        dbWine.review?.estimation = .none
+        dataBase.saveContext()
+      }
     } else {
-      dataBase.add(object: DBWine(id: dataBase.incrementID(path: .dislike), wineID: wine.id, title: wine.title), at: .dislike)
+      let entity = CDWine(context: dataBase.persistentContainer.viewContext)
+      entity.setValues(wineID: wine.id, title: wine.title)
+      let review = CDReview(context: dataBase.persistentContainer.viewContext)
+      review.setValues(estimation: .dislike, noteText: nil, wine: entity)
+      dataBase.saveContext()
       presenter.showStatusAlertDidDislikedSuccessfully()
     }
   }
@@ -303,10 +322,23 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
       return
     }
     
-    if let dbWine = realm(path: .like).objects(DBWine.self).first(where: { $0.wineID == wine.id }) {
-      dataBase.remove(object: dbWine, at: .like)
+    if let dbWine = dataBase.fetchAll(
+        entityName: "CDWine",
+        predicate: NSPredicate(format: "wineID = %@", String(wine.id))).first {
+      
+      if dbWine.review?.noteText == nil || dbWine.review?.noteText == "" {
+        dataBase.persistentContainer.viewContext.delete(dbWine)
+        dataBase.saveContext()
+      } else {
+        dbWine.review?.estimation = .none
+        dataBase.saveContext()
+      }
     } else {
-      dataBase.add(object: DBWine(id: dataBase.incrementID(path: .like), wineID: wine.id, title: wine.title), at: .like)
+      let entity = CDWine(context: dataBase.persistentContainer.viewContext)
+      entity.setValues(wineID: wine.id, title: wine.title)
+      let review = CDReview(context: dataBase.persistentContainer.viewContext)
+      review.setValues(estimation: .like, noteText: nil, wine: entity)
+      dataBase.saveContext()
       presenter.showStatusAlertDidLikedSuccessfully()
     }
   }
