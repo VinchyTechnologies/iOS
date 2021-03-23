@@ -35,7 +35,7 @@ final class Assembly {
   }
 
   static func buildShowcaseModule(navTitle: String?, mode: ShowcaseMode) -> UIViewController {
-    let controller = ShowcaseViewController(navTitle: navTitle, mode: mode)
+    let controller = ShowcaseAssembly.assemblyModule(title: navTitle, mode: mode)
     controller.hidesBottomBarWhenPushed = true
     return controller
   }
