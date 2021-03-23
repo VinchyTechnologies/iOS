@@ -6,8 +6,8 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import CoreLocation
 
 protocol MapPresenterProtocol: AnyObject {
-    
+  func updateUserLocationAndRegion(_ userLocation: CLLocationCoordinate2D, radius: Double)
 }

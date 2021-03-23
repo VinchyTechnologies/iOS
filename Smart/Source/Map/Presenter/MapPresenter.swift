@@ -6,7 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import CoreLocation
 
 final class MapPresenter {
   
@@ -22,5 +22,7 @@ final class MapPresenter {
 // MARK: - MapPresenterProtocol
 
 extension MapPresenter: MapPresenterProtocol {
-  
+  func updateUserLocationAndRegion(_ userLocation: CLLocationCoordinate2D, radius: Double) {
+    viewController?.setUserLocation(userLocation, radius: radius)
+  }
 }

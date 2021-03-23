@@ -45,7 +45,7 @@ final class VinchyViewController: UIViewController {
   private lazy var mapButton: UIButton = {
     let button = UIButton()
     button.translatesAutoresizingMaskIntoConstraints = false
-    button.backgroundColor = UIColor(red: 121 / 255, green: 125 / 255, blue: 140 / 255, alpha: 1.0)
+    button.backgroundColor = .accent//UIColor(red: 121 / 255, green: 125 / 255, blue: 140 / 255, alpha: 1.0)
     button.setTitle("Map", for: .normal)
     let imageConfig = UIImage.SymbolConfiguration(pointSize: 16, weight: .semibold, scale: .default)
     button.setImage(UIImage(systemName: "map", withConfiguration: imageConfig), for: .normal)

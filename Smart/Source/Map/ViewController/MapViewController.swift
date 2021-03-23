@@ -13,9 +13,17 @@ import MapKit
 final class MapViewController: UIViewController {
   
   var interactor: MapInteractorProtocol?
-  
+
+  private var mapChangedFromUserInteraction = false
+
   private lazy var mapView: MKMapView = {
     let mapView = MKMapView()
+    mapView.showsUserLocation = true
+    
+    let pan = UIPanGestureRecognizer(target: self, action: #selector(didDragMap(_:)))
+    pan.delegate = self
+    mapView.addGestureRecognizer(pan)
+    
     return mapView
   }()
   
@@ -36,7 +44,7 @@ final class MapViewController: UIViewController {
     view.addSubview(mapView)
     mapView.fill()
     
-    mapView.addSubview(backButton)
+    view.addSubview(backButton)
     backButton.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       backButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 12),
@@ -44,6 +52,7 @@ final class MapViewController: UIViewController {
       backButton.heightAnchor.constraint(equalToConstant: 48),
       backButton.widthAnchor.constraint(equalToConstant: 48),
     ])
+    
     interactor?.viewDidLoad()
   }
   
@@ -66,10 +75,34 @@ final class MapViewController: UIViewController {
   private func didTapBackButton(_ button: UIButton) {
     navigationController?.popViewController(animated: true)
   }
+  
+  @objc
+  func didDragMap(_ sender: UIGestureRecognizer) {
+    if sender.state == .ended {
+      interactor?.didMove(to: mapView.centerCoordinate, mapVisibleRegion: mapView.visibleMapRect)
+    }
+  }
+}
+
+extension MapViewController: UIGestureRecognizerDelegate {
+  func gestureRecognizer(
+    _ gestureRecognizer: UIGestureRecognizer,
+    shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer)
+    -> Bool
+  {
+    true
+  }
 }
 
 // MARK: - MapViewControllerProtocol
 
 extension MapViewController: MapViewControllerProtocol {
   
+  func setUserLocation(_ userLocation: CLLocationCoordinate2D, radius: Double) {
+    let viewRegion = MKCoordinateRegion(
+      center: userLocation,
+      latitudinalMeters: radius,
+      longitudinalMeters: radius)
+    mapView.setRegion(viewRegion, animated: false)
+  }
 }

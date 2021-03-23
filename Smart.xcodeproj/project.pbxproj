@@ -21,6 +21,8 @@
 		4437AA6425E3A7CE00F6E838 /* WriteReviewRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437AA5925E3A7CD00F6E838 /* WriteReviewRouterProtocol.swift */; };
 		4437AA6525E3A7CE00F6E838 /* WriteReviewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437AA5A25E3A7CD00F6E838 /* WriteReviewRouter.swift */; };
 		4437AA6E25E3BE7300F6E838 /* WriteReviewRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437AA6D25E3BE7300F6E838 /* WriteReviewRoutable.swift */; };
+		44465EC025F39400005B3F06 /* MapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44465EBF25F39400005B3F06 /* MapRepository.swift */; };
+		44465EC625F3940E005B3F06 /* MapRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44465EC525F3940E005B3F06 /* MapRepositoryProtocol.swift */; };
 		4474E36525E02486001C5DE3 /* VinchyAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4474E36425E02486001C5DE3 /* VinchyAnalytics.framework */; };
 		4474E36625E02486001C5DE3 /* VinchyAnalytics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4474E36425E02486001C5DE3 /* VinchyAnalytics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		447C353825EEAA5700105A35 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447C352725EEAA5700105A35 /* MapViewModel.swift */; };
@@ -277,6 +279,8 @@
 		4437AA5925E3A7CD00F6E838 /* WriteReviewRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteReviewRouterProtocol.swift; sourceTree = "<group>"; };
 		4437AA5A25E3A7CD00F6E838 /* WriteReviewRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteReviewRouter.swift; sourceTree = "<group>"; };
 		4437AA6D25E3BE7300F6E838 /* WriteReviewRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewRoutable.swift; sourceTree = "<group>"; };
+		44465EBF25F39400005B3F06 /* MapRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRepository.swift; sourceTree = "<group>"; };
+		44465EC525F3940E005B3F06 /* MapRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRepositoryProtocol.swift; sourceTree = "<group>"; };
 		4474E36425E02486001C5DE3 /* VinchyAnalytics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyAnalytics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		447C352725EEAA5700105A35 /* MapViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		447C352925EEAA5700105A35 /* MapInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapInput.swift; sourceTree = "<group>"; };
@@ -618,6 +622,15 @@
 			path = Routable;
 			sourceTree = "<group>";
 		};
+		44465EBE25F393E5005B3F06 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				44465EBF25F39400005B3F06 /* MapRepository.swift */,
+				44465EC525F3940E005B3F06 /* MapRepositoryProtocol.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		447C352525EEAA5700105A35 /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -625,6 +638,7 @@
 				447C352825EEAA5700105A35 /* Input */,
 				447C353225EEAA5700105A35 /* Interactor */,
 				447C352C25EEAA5700105A35 /* Presenter */,
+				44465EBE25F393E5005B3F06 /* Repository */,
 				447C354725EEAD4E00105A35 /* Routable */,
 				447C353525EEAA5700105A35 /* Router */,
 				447C352F25EEAA5700105A35 /* ViewController */,
@@ -2054,6 +2068,7 @@
 				CA819844253864080056A1C6 /* WineDetailViewModel.swift in Sources */,
 				447C353E25EEAA5700105A35 /* MapViewControllerProtocol.swift in Sources */,
 				4437AA6125E3A7CE00F6E838 /* WriteReviewViewControllerProtocol.swift in Sources */,
+				44465EC025F39400005B3F06 /* MapRepository.swift in Sources */,
 				44EFDB7125E263E00076ED6D /* ReviewDetailAssembly.swift in Sources */,
 				CAF514102461C51400667ED0 /* AboutViewController.swift in Sources */,
 				44EFDB4F25E17FD60076ED6D /* ReviewsRoutable.swift in Sources */,
@@ -2115,6 +2130,7 @@
 				CA8CD68325097AD500FDB7AF /* GADTMediumTemplateView.m in Sources */,
 				447C353F25EEAA5700105A35 /* MapInteractor.swift in Sources */,
 				44EFDB7425E263E00076ED6D /* ReviewDetailViewController.swift in Sources */,
+				44465EC625F3940E005B3F06 /* MapRepositoryProtocol.swift in Sources */,
 				CA819845253864080056A1C6 /* WineDetailInput.swift in Sources */,
 				447C354125EEAA5700105A35 /* MapRouter.swift in Sources */,
 				CAF5146B2468172900667ED0 /* LoveViewController.swift in Sources */,

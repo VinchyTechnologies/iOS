@@ -6,8 +6,9 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import MapKit
 
 protocol MapInteractorProtocol: AnyObject {
   func viewDidLoad()
+  func didMove(to position: CLLocationCoordinate2D, mapVisibleRegion: MKMapRect)
 }
