@@ -69,7 +69,7 @@ extension StarRatingControlCollectionCell: Decoratable {
   typealias ViewModel = StarRatingControlCollectionViewCellViewModel
   
   func decorate(model: ViewModel) {
-    rateLabel.text = String(model.rate)
+    rateLabel.text = String(format: "%.1f", model.rate)
     ratingView.rating = model.rate
   }
 }
