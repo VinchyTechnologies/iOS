@@ -54,6 +54,7 @@ extension WriteReviewInteractor: WriteReviewInteractorProtocol {
     }
 
     let accountID = UserDefaultsConfig.accountID
+    let comment = comment == "" ? nil : comment
 
     if let reviewID = input.reviewID {
       Reviews.shared.updateReview(reviewID: reviewID, rating: rating, comment: comment) { [weak self] result in

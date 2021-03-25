@@ -7,6 +7,7 @@
 //
 
 import Core
+import VinchyCore
 
 fileprivate enum C {
     static let limit = 20
@@ -14,15 +15,18 @@ fileprivate enum C {
 
 final class ReviewsInteractor {
   
+  private let input: ReviewsInput
   private let router: ReviewsRouterProtocol
   private let presenter: ReviewsPresenterProtocol
-  private let stateMachine = PagingStateMachine<[Any]>()
-  private var reviews: [Any] = []
+  private let stateMachine = PagingStateMachine<[Review]>()
+  private var reviews: [Review] = []
   
   init(
+    input: ReviewsInput,
     router: ReviewsRouterProtocol,
     presenter: ReviewsPresenterProtocol)
   {
+    self.input = input
     self.router = router
     self.presenter = presenter
     configureStateMachine()
@@ -48,8 +52,18 @@ final class ReviewsInteractor {
   }
   
   private func loadData(offset: Int) {
-    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-      self.stateMachine.invokeSuccess(with: Array(repeating: 1, count: 20))
+    Reviews.shared.getReviews(
+      wineID: input.wineID,
+      accountID: nil,
+      offset: offset,
+      limit: C.limit) { [weak self] result in
+      switch result {
+      case .success(let data):
+        self?.stateMachine.invokeSuccess(with: data)
+        
+      case .failure(let error):
+        self?.stateMachine.fail(with: error)
+      }
     }
   }
   
@@ -61,7 +75,7 @@ final class ReviewsInteractor {
     stateMachine.load(offset: reviews.count)
   }
   
-  private func handleLoadedData(_ data: [Any], oldState: PagingState<[Any]>) {
+  private func handleLoadedData(_ data: [Review], oldState: PagingState<[Review]>) {
     reviews += data
     let needLoadMore: Bool
     switch oldState {
@@ -79,7 +93,7 @@ final class ReviewsInteractor {
     if let error = error {
       presenter.update(reviews: reviews, needLoadMore: needLoadMore)
       if reviews.isEmpty {
-        print("show background error")
+        presenter.showInitiallyLoadingError(error: error)
       } else {
         presenter.showErrorAlert(error: error)
       }
@@ -103,6 +117,23 @@ extension ReviewsInteractor: ReviewsInteractorProtocol {
   }
   
   func didSelectReview(id: Int) {
-    router.showBottomSheetReviewDetailViewController(reviewInput: .init(rate: 4.5, author: "aleksei_smirnov", date: "29.08.21", reviewText: "text"))
+    
+    guard let review = reviews.first(where: { $0.id == id }) else {
+      return
+    }
+    
+    let dateText: String?
+    
+    if review.updateDate == nil {
+      dateText = review.publicationDate.toDate()
+    } else {
+      dateText = review.updateDate.toDate()
+    }
+    
+    router.showBottomSheetReviewDetailViewController(reviewInput:
+      .init(rate: review.rating,
+            author: nil, // TODO: - Author
+            date: dateText,
+            reviewText: review.comment))
   }
 }

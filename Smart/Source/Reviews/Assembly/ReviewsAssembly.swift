@@ -9,12 +9,11 @@
 import Foundation
 
 final class ReviewsAssembly {
-  static func assemblyModule() -> ReviewsViewController {
+  static func assemblyModule(input: ReviewsInput) -> ReviewsViewController {
     let viewController = ReviewsViewController()
-    
-    let router = ReviewsRouter(input: ReviewsInput(), viewController: viewController)
+    let router = ReviewsRouter(input: input, viewController: viewController)
     let presenter = ReviewsPresenter(viewController: viewController)
-    let interactor = ReviewsInteractor(router: router, presenter: presenter)
+    let interactor = ReviewsInteractor(input: input, router: router, presenter: presenter)
     
     router.interactor = interactor
     viewController.interactor = interactor
