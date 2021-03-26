@@ -47,8 +47,11 @@ public final class ScaleHighlightAnimator: HighlightAnimatorProtocol {
     guard let view = view else { return }
     let transform = self.transform(for: view)
     guard transform != view.highlightableView.transform else { return }
-    UIView.animate(withDuration: Constants.animationDuration,
-                   animations: { view.highlightableView.transform = transform })
+    UIView.animate(
+      withDuration: Constants.animationDuration,
+      animations: {
+        view.highlightableView.transform = transform
+      })
   }
   
   private func transform(for view: HighlightableViewProtocol) -> CGAffineTransform {
