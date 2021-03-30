@@ -207,6 +207,8 @@
 		CAF514282461C52400667ED0 /* DocCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5141E2461C52400667ED0 /* DocCell.swift */; };
 		CAF514292461C52400667ED0 /* MoreRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5141F2461C52400667ED0 /* MoreRouter.swift */; };
 		CAF5146B2468172900667ED0 /* LoveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5146A2468172900667ED0 /* LoveViewController.swift */; };
+		CE388DD92612C1CF00C34B47 /* ShowcasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE388DD72612C1CE00C34B47 /* ShowcasePresenter.swift */; };
+		CE388DDA2612C1CF00C34B47 /* ShowcasePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE388DD82612C1CE00C34B47 /* ShowcasePresenterProtocol.swift */; };
 		CE404B072589D41200917544 /* MoreInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE404B062589D41200917544 /* MoreInteractorProtocol.swift */; };
 		CE404B0B2589D47C00917544 /* MorePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE404B0A2589D47C00917544 /* MorePresenterProtocol.swift */; };
 		CE404B0F2589D4C200917544 /* MoreRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE404B0E2589D4C200917544 /* MoreRouterProtocol.swift */; };
@@ -227,8 +229,6 @@
 		CE8FF82A25FAD75C004D4F37 /* ShowcaseAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FF82925FAD75C004D4F37 /* ShowcaseAssembly.swift */; };
 		CE8FF83525FADA76004D4F37 /* ShowcaseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FF83425FADA76004D4F37 /* ShowcaseInteractor.swift */; };
 		CE8FF83925FADABF004D4F37 /* ShowcaseInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FF83825FADABF004D4F37 /* ShowcaseInteractorProtocol.swift */; };
-		CE8FF83D25FADAD8004D4F37 /* ShowcasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FF83C25FADAD8004D4F37 /* ShowcasePresenter.swift */; };
-		CE8FF84125FADAEB004D4F37 /* ShowcasePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FF84025FADAEB004D4F37 /* ShowcasePresenterProtocol.swift */; };
 		CE8FF84525FADB84004D4F37 /* ShowcaseViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FF84425FADB84004D4F37 /* ShowcaseViewControllerProtocol.swift */; };
 		CEB0A6222609442B00B07B87 /* ShowcaseRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB0A6212609442B00B07B87 /* ShowcaseRouterProtocol.swift */; };
 		CED7A23A25D1B31C00BB25FF /* StarRatingControlCollectionCell .swift in Sources */ = {isa = PBXBuildFile; fileRef = CED7A23925D1B31C00BB25FF /* StarRatingControlCollectionCell .swift */; };
@@ -502,6 +502,8 @@
 		CAF5141E2461C52400667ED0 /* DocCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocCell.swift; sourceTree = "<group>"; };
 		CAF5141F2461C52400667ED0 /* MoreRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreRouter.swift; sourceTree = "<group>"; };
 		CAF5146A2468172900667ED0 /* LoveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoveViewController.swift; sourceTree = "<group>"; };
+		CE388DD72612C1CE00C34B47 /* ShowcasePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShowcasePresenter.swift; path = Smart/Source/Showcase/Presenter.swift/ShowcasePresenter.swift; sourceTree = SOURCE_ROOT; };
+		CE388DD82612C1CE00C34B47 /* ShowcasePresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShowcasePresenterProtocol.swift; path = Smart/Source/Showcase/Presenter.swift/ShowcasePresenterProtocol.swift; sourceTree = SOURCE_ROOT; };
 		CE404B062589D41200917544 /* MoreInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInteractorProtocol.swift; sourceTree = "<group>"; };
 		CE404B0A2589D47C00917544 /* MorePresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorePresenterProtocol.swift; sourceTree = "<group>"; };
 		CE404B0E2589D4C200917544 /* MoreRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreRouterProtocol.swift; sourceTree = "<group>"; };
@@ -522,8 +524,6 @@
 		CE8FF82925FAD75C004D4F37 /* ShowcaseAssembly.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseAssembly.swift; sourceTree = "<group>"; };
 		CE8FF83425FADA76004D4F37 /* ShowcaseInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseInteractor.swift; sourceTree = "<group>"; };
 		CE8FF83825FADABF004D4F37 /* ShowcaseInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseInteractorProtocol.swift; sourceTree = "<group>"; };
-		CE8FF83C25FADAD8004D4F37 /* ShowcasePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ShowcasePresenter.swift; path = Smart/Source/Showcase/Interactor/ShowcasePresenter.swift; sourceTree = SOURCE_ROOT; };
-		CE8FF84025FADAEB004D4F37 /* ShowcasePresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcasePresenterProtocol.swift; sourceTree = "<group>"; };
 		CE8FF84425FADB84004D4F37 /* ShowcaseViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseViewControllerProtocol.swift; sourceTree = "<group>"; };
 		CEB0A6212609442B00B07B87 /* ShowcaseRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseRouterProtocol.swift; sourceTree = "<group>"; };
 		CED7A23925D1B31C00BB25FF /* StarRatingControlCollectionCell .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StarRatingControlCollectionCell .swift"; sourceTree = "<group>"; };
@@ -1772,8 +1772,8 @@
 		CE8FF82F25FAD78D004D4F37 /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				CE8FF83C25FADAD8004D4F37 /* ShowcasePresenter.swift */,
-				CE8FF84025FADAEB004D4F37 /* ShowcasePresenterProtocol.swift */,
+				CE388DD72612C1CE00C34B47 /* ShowcasePresenter.swift */,
+				CE388DD82612C1CE00C34B47 /* ShowcasePresenterProtocol.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -2182,6 +2182,7 @@
 				440C284725E13F9D009911EE /* WineDetailCollectionView.swift in Sources */,
 				447C354225EEAA5700105A35 /* MapRouterProtocol.swift in Sources */,
 				CA819848253864080056A1C6 /* WineDetailPresenterProtocol.swift in Sources */,
+				CE388DDA2612C1CF00C34B47 /* ShowcasePresenterProtocol.swift in Sources */,
 				CA819847253864080056A1C6 /* WineDetailPresenter.swift in Sources */,
 				CAF514212461C52400667ED0 /* MorePresenter.swift in Sources */,
 				4495625125E2E15A005E79DA /* ReviewDetailRoutable.swift in Sources */,
@@ -2222,6 +2223,7 @@
 				44EFDB3725E177220076ED6D /* ReviewsViewModel.swift in Sources */,
 				CA49A219251E8CFE00FBE269 /* TitleWithSubtitleInfoCollectionViewCell.swift in Sources */,
 				CA070C1625250AEC00C3D9EC /* OnboardViewController.swift in Sources */,
+				CE388DD92612C1CF00C34B47 /* ShowcasePresenter.swift in Sources */,
 				44EFDB6F25E263E00076ED6D /* ReviewDetailViewModel.swift in Sources */,
 				44EFDB7825E263E00076ED6D /* ReviewDetailRouterProtocol.swift in Sources */,
 				CA490141252F7EDC00066A98 /* VinchyViewControllerViewModel.swift in Sources */,
@@ -2278,7 +2280,6 @@
 				CACA7E9C254C57CC0099E622 /* WriteNotePresenter.swift in Sources */,
 				4437AA5C25E3A7CE00F6E838 /* WriteReviewInput.swift in Sources */,
 				CA472AC2245EDE2F009149FF /* SceneDelegate.swift in Sources */,
-				CE8FF83D25FADAD8004D4F37 /* ShowcasePresenter.swift in Sources */,
 				CE69649D25E07BDE00CD414D /* InfoCurrencyCell.swift in Sources */,
 				CE4254EB258157DC001158D2 /* MoreViewControllerModel.swift in Sources */,
 				CA3C981F257260BC0036F7D9 /* StatusAlertable.swift in Sources */,
@@ -2299,7 +2300,6 @@
 				CA7A87E62500169100AAD10F /* VinchySimpleConiniousCaruselCollectionCell.swift in Sources */,
 				447C353825EEAA5700105A35 /* MapViewModel.swift in Sources */,
 				CA3C97DF25723C570036F7D9 /* TitleCopyableCell.swift in Sources */,
-				CE8FF84125FADAEB004D4F37 /* ShowcasePresenterProtocol.swift in Sources */,
 				4437AA6025E3A7CE00F6E838 /* WriteReviewViewController.swift in Sources */,
 				CAF514132461C51B00667ED0 /* DocController.swift in Sources */,
 				CACA7E9D254C57CC0099E622 /* WriteNotePresenterProtocol.swift in Sources */,
