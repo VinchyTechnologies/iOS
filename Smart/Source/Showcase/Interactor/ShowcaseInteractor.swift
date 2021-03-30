@@ -6,11 +6,8 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
-import CommonUI
+import Core
 import VinchyCore
-import Display
-import StringFormatting
 
 final class ShowcaseInteractor: ShowcaseInteractorProtocol {
   
@@ -20,32 +17,42 @@ final class ShowcaseInteractor: ShowcaseInteractorProtocol {
   }
   
   var presenter: ShowcasePresenterProtocol
+  private let router: ShowcaseRouterProtocol
   
   private var currentPage: Int = -1
   private var shouldLoadMore = true
 
   private var mode: ShowcaseMode = .normal(wines: [])
-  private var categoryItems: [CategoryItem] = []
+  private var categoryItems: [CategoryItemViewModel] = []
   
-  init(presenter: ShowcasePresenterProtocol) {
-    self.presenter = presenter
+  private lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
+    guard let self = self else { return }
+    self.presenter.startLoading()
   }
   
+  init(presenter: ShowcasePresenterProtocol, router: ShowcaseRouterProtocol) {
+    self.presenter = presenter
+    self.router = router
+  }
+    
   func loadWines(mode: ShowcaseMode) {
-    self.mode = mode
-    
-    switch self.mode {
-    case .normal:
-      self.loadWines()
-    
-    case .advancedSearch:
-      self.loadMoreWines()
-    }
+      self.mode = mode
+      
+      switch self.mode {
+      case .normal:
+        self.loadWines()
+        
+      case .advancedSearch:
+        self.loadMoreWines()
+      }
   }
   
   func loadWines() {
+    self.dispatchWorkItemHud.cancel()
+    DispatchQueue.main.async {
+      self.presenter.stopLoading()
+    }
     switch self.mode {
-    
     case .normal(let wines):
       shouldLoadMore = false
       presenter.update(wines: wines)
@@ -53,6 +60,10 @@ final class ShowcaseInteractor: ShowcaseInteractorProtocol {
     case .advancedSearch:
       return
     }
+  }
+  
+  func viewDidLoad(mode: ShowcaseMode) {
+    loadWines(mode: mode)
   }
   
   func loadMoreWines() {

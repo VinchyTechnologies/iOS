@@ -9,6 +9,6 @@
 import Display
 
 protocol ShowcaseInteractorProtocol {
-  func loadWines(mode: ShowcaseMode)
   func loadMoreWines()
+  func viewDidLoad(mode: ShowcaseMode)
 }

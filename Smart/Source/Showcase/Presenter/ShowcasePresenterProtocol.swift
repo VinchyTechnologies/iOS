@@ -16,4 +16,6 @@ protocol ShowcasePresenterProtocol: AnyObject {
   func update(wines: [ShortWine])
   func updateFromServer(wines: [ShortWine], params: [(String, String)])
   func updateMoreLoader(shouldLoadMore: Bool)
+  func startLoading()
+  func stopLoading()
 }

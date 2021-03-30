@@ -9,9 +9,8 @@
 import CommonUI
 import Display
 
-protocol ShowcaseViewControllerProtocol: Alertable {
-  func update(category: [CategoryItem])
+protocol ShowcaseViewControllerProtocol: Alertable, Loadable {
+  func updateUI(viewModel: [CategoryItemViewModel])
   func updateUI(errorViewModel: ErrorViewModel)
-  func stopLoading()
   func updateMoreLoader(shouldLoadMore: Bool)
 }

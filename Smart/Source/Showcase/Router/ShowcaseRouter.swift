@@ -8,6 +8,11 @@
 
 import Foundation
 
-final class ShowcaseRouter {
+final class ShowcaseRouter: ShowcaseRouterProtocol {
   
+  weak var viewController: ShowcaseViewController?
+  
+  init(viewController: ShowcaseViewController) {
+    self.viewController = viewController
+  }
 }

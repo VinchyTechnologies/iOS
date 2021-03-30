@@ -13,8 +13,9 @@ final class ShowcaseAssembly {
   static func assemblyModule(title: String?, mode: ShowcaseMode) -> ShowcaseViewController {
     
     let viewController = ShowcaseViewController(navTitle: title, mode: mode)
+    let router = ShowcaseRouter(viewController: viewController)
     let presenter = ShowcasePresenter(viewController: viewController)
-    let interactor = ShowcaseInteractor(presenter: presenter)
+    let interactor = ShowcaseInteractor(presenter: presenter, router: router)
 
     viewController.interactor = interactor
 

@@ -8,7 +8,7 @@
 
 import VinchyCore
 
-struct CategoryItem: Decodable {
+struct CategoryItemViewModel: Decodable {
   
   let title: String?
   var wines: [ShortWine]

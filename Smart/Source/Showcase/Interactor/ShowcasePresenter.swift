@@ -15,7 +15,7 @@ final class ShowcasePresenter {
   // MARK: - Internal Properties
   
   var viewController: ShowcaseViewControllerProtocol?
-  var categories: [CategoryItem] = []
+  var categories: [CategoryItemViewModel] = []
   
   // MARK: - Initializers
   
@@ -25,6 +25,15 @@ final class ShowcasePresenter {
 }
 
 extension ShowcasePresenter: ShowcasePresenterProtocol {
+  
+  func startLoading() {
+    viewController?.startLoadingAnimation()
+    viewController?.addLoader()
+  }
+  
+  func stopLoading() {
+    viewController?.stopLoadingAnimation()
+  }
   
   func update(wines: [ShortWine]) {
     var groupedWines = wines.grouped(map: { $0.winery?.countryCode ?? localized("unknown_country_code") })
@@ -41,15 +50,16 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
       categories = [.init(title: "", wines: wines)]
       return
     }
-    categories = groupedWines.map({ (arrayWine) -> CategoryItem in
-      return CategoryItem(title: countryNameFromLocaleCode(countryCode: arrayWine.first?.winery?.countryCode) ?? localized("unknown_country_code"), wines: arrayWine)
+    categories = groupedWines.map({ (arrayWine) -> CategoryItemViewModel in
+      return CategoryItemViewModel(title: countryNameFromLocaleCode(countryCode: arrayWine.first?.winery?.countryCode) ?? localized("unknown_country_code"), wines: arrayWine)
     })
     
-    viewController?.update(category: categories)
+    viewController?.updateUI(viewModel: categories)
+    stopLoading()
   }
   
   func updateFromServer(wines: [ShortWine], params: [(String, String)]) {
-    viewController?.stopLoading()
+    stopLoading()
     if categories.first == nil {
       if params.first?.0 == "title" && params.count == 3 {
         self.categories = [.init(title: params.first?.1.quoted ?? "", wines: wines)]
@@ -64,7 +74,7 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
       showNothingFoundErrorAlert()
       return
     } else {
-      viewController?.update(category: categories)
+      viewController?.updateUI(viewModel: categories)
     }
   }
   

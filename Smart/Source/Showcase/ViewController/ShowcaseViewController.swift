@@ -27,12 +27,12 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
   private(set) var loadingIndicator = ActivityIndicatorView()
   var interactor: ShowcaseInteractorProtocol?
   
-  private var categoryItems: [CategoryItem] = [] {
+  private var categoryItems: [CategoryItemViewModel] = [] {
     didSet {
-      collectionView.reloadData()
+        self.collectionView.reloadData()
     }
   }
-  
+
   private var filtersHeaderView = ASFiltersHeaderView()
   
   private lazy var collectionView: UICollectionView = {
@@ -51,12 +51,6 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
     
     return collectionView
   }()
-  
-  private lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
-    guard let self = self else { return }
-    self.startLoadingAnimation()
-    self.addLoader()
-  }
   
   private var didAddShadow = false
   private var isAnimating = false
@@ -81,8 +75,7 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    interactor?.loadWines(mode: mode)
-    
+    interactor?.viewDidLoad(mode: mode)
     navigationItem.largeTitleDisplayMode = .never
 
     view.backgroundColor = .mainBackground
@@ -105,11 +98,6 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
     layout.minimumLineSpacing = C.inset
     layout.minimumInteritemSpacing = 0
     return layout
-  }
-  
-  func stopLoading() {
-    self.dispatchWorkItemHud.cancel()
-    self.stopLoadingAnimation()
   }
   
   private func fetchCategoryItems() {
@@ -279,8 +267,8 @@ extension ShowcaseViewController: FiltersHeaderViewDelegate {
 }
 
 extension ShowcaseViewController: ShowcaseViewControllerProtocol {
-  func update(category: [CategoryItem]) {
-    self.categoryItems = category
+  func updateUI(viewModel: [CategoryItemViewModel]) {
+    self.categoryItems = viewModel
   }
   func updateUI(errorViewModel: ErrorViewModel) {
     DispatchQueue.main.async {
