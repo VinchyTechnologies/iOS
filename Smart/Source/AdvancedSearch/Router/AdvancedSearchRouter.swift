@@ -32,10 +32,9 @@ extension AdvancedSearchRouter: AdvancedSearchRouterProtocol {
     navigationTitle: String?,
     params: [(String, String)])
   {
+    let input = ShowcaseInput(title: navigationTitle, mode: .advancedSearch(params: params))
     viewController?.navigationController?.pushViewController(
-      Assembly.buildShowcaseModule(
-        navTitle: navigationTitle,
-        mode: .advancedSearch(params: params)),
+      Assembly.buildShowcaseModule(input: input),
       animated: true)
   }
 

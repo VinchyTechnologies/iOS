@@ -24,11 +24,10 @@ final class VinchyRouter {
 
 extension VinchyRouter: VinchyRouterProtocol {
   
-  func pushToShowcaseViewController(navigationTitle: String?, wines: [ShortWine]) { // TODO: - routable
+  func pushToShowcaseViewController(navigationTitle: String?, wines: [ShortWine]) {// TODO: - routable
+    let input = ShowcaseInput(title: navigationTitle, mode: .normal(wines: wines))
     viewController?.navigationController?.pushViewController(
-      Assembly.buildShowcaseModule(
-        navTitle: navigationTitle,
-        mode: .normal(wines: wines)),
+      Assembly.buildShowcaseModule(input: input),
       animated: true)
   }
 
@@ -38,10 +37,9 @@ extension VinchyRouter: VinchyRouterProtocol {
   }
 
   func pushToDetailCollection(searchText: String) {
+    let input = ShowcaseInput(title: nil, mode: .advancedSearch(params: [("title", searchText)]))
     viewController?.navigationController?.pushViewController(
-      Assembly.buildShowcaseModule(
-        navTitle: nil,
-        mode: .advancedSearch(params: [("title", searchText)])),
+      Assembly.buildShowcaseModule(input: input),
       animated: true)
   }
 

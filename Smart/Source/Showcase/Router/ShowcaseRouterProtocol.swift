@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol ShowcaseRouterProtocol {
+protocol ShowcaseRouterProtocol: ShowcaseRoutable {
   
 }

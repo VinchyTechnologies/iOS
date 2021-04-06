@@ -10,9 +10,12 @@ import Foundation
 
 final class ShowcaseRouter: ShowcaseRouterProtocol {
   
-  weak var viewController: ShowcaseViewController?
+  weak var viewController: UIViewController?
+   var interactor: ShowcaseInteractorProtocol?
+  private let input: ShowcaseInput
   
-  init(viewController: ShowcaseViewController) {
+  init(viewController: UIViewController, input: ShowcaseInput) {
     self.viewController = viewController
+    self.input = input
   }
 }

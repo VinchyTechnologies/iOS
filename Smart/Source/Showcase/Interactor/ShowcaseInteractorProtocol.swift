@@ -6,9 +6,10 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Display
+import UIKit
 
 protocol ShowcaseInteractorProtocol {
-  func loadMoreWines()
-  func viewDidLoad(mode: ShowcaseMode)
+  func viewDidLoad()
+  func willDisplayLoadingView()
+  func didSelectWine(input: ShowcaseInput)
 }

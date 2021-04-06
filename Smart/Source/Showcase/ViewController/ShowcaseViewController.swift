@@ -27,8 +27,9 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
   private(set) var loadingIndicator = ActivityIndicatorView()
   var interactor: ShowcaseInteractorProtocol?
   
-  private var categoryItems: [CategoryItemViewModel] = [] {
+  private var viewModel: ShowcaseViewModel? {
     didSet {
+      navigationItem.title = viewModel?.navigationTitle
         self.collectionView.reloadData()
     }
   }
@@ -64,7 +65,7 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
   
   private let mode: ShowcaseMode
   
-  init(navTitle: String?, mode: ShowcaseMode) {
+  init(mode: ShowcaseMode) {
     self.mode = mode
     super.init(nibName: nil, bundle: nil)
   }
@@ -75,7 +76,7 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    interactor?.viewDidLoad(mode: mode)
+    interactor?.viewDidLoad()
     navigationItem.largeTitleDisplayMode = .never
 
     view.backgroundColor = .mainBackground
@@ -101,7 +102,7 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
   }
   
   private func fetchCategoryItems() {
-    let categoryTitles = categoryItems.compactMap({ $0.title })
+    let categoryTitles = viewModel?.sections.compactMap({ $0.title }) ?? []
     filtersHeaderView.decorate(model: .init(categoryTitles: categoryTitles, filterDelegate: self))
   }
 
@@ -138,23 +139,23 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
 extension ShowcaseViewController: ErrorViewDelegate {
   
   func didTapErrorButton(_ button: UIButton) {
-    interactor?.loadMoreWines()
+    interactor?.willDisplayLoadingView()
   }
 }
 
 extension ShowcaseViewController: UICollectionViewDataSource {
   
   func numberOfSections(in collectionView: UICollectionView) -> Int {
-    categoryItems.count
+    viewModel?.sections.count ?? 0
   }
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    categoryItems[section].wines.count
+    viewModel?.sections[section].wines.count ?? 0
   }
   
   func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
     if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as? WineCollectionViewCell,
-       let wine = categoryItems[safe: indexPath.section]?.wines[safe: indexPath.row] {
+       let wine = viewModel?.sections[safe: indexPath.section]?.wines[safe: indexPath.row] {
       cell.decorate(model: .init(imageURL: wine.mainImageUrl?.toURL, titleText: wine.title,
                                  subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode)))
       return cell
@@ -167,8 +168,8 @@ extension ShowcaseViewController: UICollectionViewDataSource {
     case .normal:
       break
     case .advancedSearch:
-      if indexPath.section == categoryItems.count - 1 && indexPath.row == categoryItems[indexPath.section].wines.count - 2 {
-          interactor?.loadMoreWines()
+      if indexPath.section == viewModel?.sections.count ?? 0 - 1 && indexPath.row == viewModel?.sections[indexPath.section].wines.count ?? 0 - 2 {
+          interactor?.willDisplayLoadingView()
       }
     }
   }
@@ -178,8 +179,9 @@ extension ShowcaseViewController: UICollectionViewDataSource {
     case UICollectionView.elementKindSectionHeader:
       // swiftlint:disable:next force_cast
       let reusableview = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderReusableView.reuseId, for: indexPath) as! HeaderReusableView
-      let categoryItem = categoryItems[indexPath.section]
-      reusableview.decorate(model: .init(title: categoryItem.title))
+      let categoryItem = viewModel?.sections[indexPath.section]
+      
+      reusableview.decorate(model: .init(title: categoryItem?.title))
       return reusableview
       
     case UICollectionView.elementKindSectionFooter:
@@ -247,7 +249,7 @@ extension ShowcaseViewController: UICollectionViewDataSource {
 
 extension ShowcaseViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    guard let wine = categoryItems[safe: indexPath.section]?.wines[safe: indexPath.row] else { return }
+    guard let wine = viewModel?.sections[safe: indexPath.section]?.wines[safe: indexPath.row] else { return }
     navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wine.id), animated: true)
   }
 }
@@ -267,8 +269,8 @@ extension ShowcaseViewController: FiltersHeaderViewDelegate {
 }
 
 extension ShowcaseViewController: ShowcaseViewControllerProtocol {
-  func updateUI(viewModel: [CategoryItemViewModel]) {
-    self.categoryItems = viewModel
+  func updateUI(viewModel: ShowcaseViewModel) {
+    self.viewModel = viewModel
   }
   func updateUI(errorViewModel: ErrorViewModel) {
     DispatchQueue.main.async {

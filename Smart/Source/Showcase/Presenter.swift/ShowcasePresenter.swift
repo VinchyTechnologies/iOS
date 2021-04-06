@@ -15,12 +15,14 @@ final class ShowcasePresenter {
   // MARK: - Internal Properties
   
   var viewController: ShowcaseViewControllerProtocol?
-  var categories: [CategoryItemViewModel] = []
+  var input: ShowcaseInput?
+  var title: String?
   
   // MARK: - Initializers
   
-  init(viewController: ShowcaseViewControllerProtocol) {
+  init(viewController: ShowcaseViewControllerProtocol, input: ShowcaseInput) {
     self.viewController = viewController
+    self.input = input
   }
 }
 
@@ -35,7 +37,8 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
     viewController?.stopLoadingAnimation()
   }
   
-  func update(wines: [ShortWine]) {
+  func update(wines: [ShortWine], shouldLoadMore: Bool) {
+    var sections: [ShowcaseWineSection] = []
     var groupedWines = wines.grouped(map: { $0.winery?.countryCode ?? localized("unknown_country_code") })
     
     groupedWines.sort { (arr1, arr2) -> Bool in
@@ -43,43 +46,30 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
          let w2 = countryNameFromLocaleCode(countryCode: arr2.first?.winery?.countryCode) {
         return w1 < w2
       }
+      viewController?.updateMoreLoader(shouldLoadMore: shouldLoadMore)
       return false
     }
     
     if groupedWines.count == 1 {
-      categories = [.init(title: "", wines: wines)]
-      return
-    }
-    categories = groupedWines.map({ (arrayWine) -> CategoryItemViewModel in
-      return CategoryItemViewModel(title: countryNameFromLocaleCode(countryCode: arrayWine.first?.winery?.countryCode) ?? localized("unknown_country_code"), wines: arrayWine)
-    })
-    
-    viewController?.updateUI(viewModel: categories)
-    stopLoading()
-  }
-  
-  func updateFromServer(wines: [ShortWine], params: [(String, String)]) {
-    stopLoading()
-    if categories.first == nil {
-      if params.first?.0 == "title" && params.count == 3 {
-        self.categories = [.init(title: params.first?.1.quoted ?? "", wines: wines)]
-      } else {
-        self.categories = [.init(title: localized("all").firstLetterUppercased(), wines: wines)]
-      }
+      sections = [.init(title: localized("all").firstLetterUppercased(), wines: wines)]
     } else {
-      self.categories[0].wines += wines
+      sections = groupedWines.map({ (arrayWine) -> ShowcaseWineSection in
+        return ShowcaseWineSection(title: countryNameFromLocaleCode(countryCode: arrayWine.first?.winery?.countryCode) ?? localized("unknown_country_code"), wines: arrayWine)
+      })
     }
     
-    if wines.isEmpty {
-      showNothingFoundErrorAlert()
-      return
-    } else {
-      viewController?.updateUI(viewModel: categories)
+    switch input?.mode {
+    case .normal:
+      self.title = input?.title ?? ""
+    case .advancedSearch:
+      self.title = localized("search_results").firstLetterUppercased()
+    case .none:
+      break
     }
-  }
-  
-  func updateMoreLoader(shouldLoadMore: Bool) {
-    viewController?.updateMoreLoader(shouldLoadMore: shouldLoadMore)
+    
+    let viewModel = ShowcaseViewModel(navigationTitle: self.title, sections: sections)
+    viewController?.updateUI(viewModel: viewModel)
+    stopLoading()
   }
   
   func showErrorAlert(error: Error) {

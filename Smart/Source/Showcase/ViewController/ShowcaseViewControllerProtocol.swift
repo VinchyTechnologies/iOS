@@ -10,7 +10,7 @@ import CommonUI
 import Display
 
 protocol ShowcaseViewControllerProtocol: Alertable, Loadable {
-  func updateUI(viewModel: [CategoryItemViewModel])
+  func updateUI(viewModel: ShowcaseViewModel)
   func updateUI(errorViewModel: ErrorViewModel)
   func updateMoreLoader(shouldLoadMore: Bool)
 }

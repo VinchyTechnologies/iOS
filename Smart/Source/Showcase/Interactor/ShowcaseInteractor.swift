@@ -9,70 +9,65 @@
 import Core
 import VinchyCore
 
-final class ShowcaseInteractor: ShowcaseInteractorProtocol {
+final class ShowcaseInteractor {
   
   private enum C {
     static let limit: Int = 40
     static let inset: CGFloat = 10
   }
-  
-  var presenter: ShowcasePresenterProtocol
-  private let router: ShowcaseRouterProtocol
-  
   private var currentPage: Int = -1
   private var shouldLoadMore = true
-
+  
+  private let presenter: ShowcasePresenterProtocol
+  private let router: ShowcaseRouterProtocol
+  private let stateMachine = PagingStateMachine<[ShortWine]>()
+  
   private var mode: ShowcaseMode = .normal(wines: [])
-  private var categoryItems: [CategoryItemViewModel] = []
+  private var categoryItems: [ShowcaseViewModel] = []
   
-  private lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
-    guard let self = self else { return }
-    self.presenter.startLoading()
-  }
+  private var wines: [ShortWine] = []
   
-  init(presenter: ShowcasePresenterProtocol, router: ShowcaseRouterProtocol) {
-    self.presenter = presenter
+  init(
+    router: ShowcaseRouterProtocol,
+    presenter: ShowcasePresenterProtocol,
+    mode: ShowcaseMode)
+  {
     self.router = router
+    self.presenter = presenter
+    self.mode = mode
+    configureStateMachine()
   }
-    
-  func loadWines(mode: ShowcaseMode) {
-      self.mode = mode
+  
+  private func configureStateMachine() {
+    stateMachine.observe { [weak self] (oldState, newState, _) in
+      guard let self = self else { return }
+      switch newState {
+      case let .loaded(data):
+        DispatchQueue.main.async {
+          self.handleLoadedData(data, oldState: oldState)
+        }
+      case .loading(let offset):
+        self.loadData()
+      //        self.loadData(offset: offset)
       
-      switch self.mode {
-      case .normal:
-        self.loadWines()
+      case .error(let error):
+        self.showData(error: error, needLoadMore: false)
         
-      case .advancedSearch:
-        self.loadMoreWines()
+      case .initial:
+        break
       }
-  }
-  
-  func loadWines() {
-    self.dispatchWorkItemHud.cancel()
-    DispatchQueue.main.async {
-      self.presenter.stopLoading()
-    }
-    switch self.mode {
-    case .normal(let wines):
-      shouldLoadMore = false
-      presenter.update(wines: wines)
-      
-    case .advancedSearch:
-      return
     }
   }
   
-  func viewDidLoad(mode: ShowcaseMode) {
-    loadWines(mode: mode)
-  }
-  
-  func loadMoreWines() {
+  func loadData() {
     guard shouldLoadMore else { return }
     currentPage += 1
     DispatchQueue.global(qos: .userInteractive).async {
       switch self.mode {
-      case .normal:
-        return
+      case .normal(let wines):
+        self.shouldLoadMore = false
+        self.wines = wines
+        self.stateMachine.invokeSuccess(with: wines)
         
       case .advancedSearch(var params):
         params += [("offset", String(self.currentPage)), ("limit", String(C.limit))]
@@ -81,22 +76,76 @@ final class ShowcaseInteractor: ShowcaseInteractorProtocol {
           
           switch result {
           case .success(let wines):
-            self.presenter.updateFromServer(wines: wines, params: params)
             if wines.isEmpty {
               self.shouldLoadMore = false
+              self.presenter.showNothingFoundErrorAlert()
             } else {
               self.shouldLoadMore = wines.count == C.limit
             }
-            self.presenter.updateMoreLoader(shouldLoadMore: self.shouldLoadMore)
+            self.wines = wines
+            self.stateMachine.invokeSuccess(with: wines)
+            self.presenter.stopLoading()
             
           case .failure(let error):
             if self.currentPage == 0 {
               self.currentPage = -1
-              self.presenter.showInitiallyLoadingError(error: error)
+              self.stateMachine.fail(with: error)
             }
           }
         }
       }
     }
+  }
+  
+  private func loadInitData() {
+    stateMachine.load(offset: .zero)
+  }
+  
+  private func loadMoreData() {
+    stateMachine.load(offset: wines.count)
+  }
+  
+  private func handleLoadedData(_ data: [ShortWine], oldState: PagingState<[ShortWine]>) {
+    wines += data
+    let needLoadMore: Bool
+    switch oldState {
+    case .error, .loaded, .initial:
+      needLoadMore = false
+      
+    case .loading(let offset):
+      needLoadMore = wines.count == offset + C.limit
+    }
+    
+    showData(needLoadMore: needLoadMore)
+  }
+  
+  private func showData(error: Error? = nil, needLoadMore: Bool) {
+    if let error = error {
+      presenter.update(wines: wines, shouldLoadMore: needLoadMore)
+      if wines.isEmpty {
+        print("show background error")
+      } else {
+        presenter.showErrorAlert(error: error)
+      }
+    } else {
+      presenter.update(wines: wines, shouldLoadMore: needLoadMore)
+    }
+  }
+}
+
+// MARK: - ShowcaseInteractorProtocol
+
+extension ShowcaseInteractor: ShowcaseInteractorProtocol {
+  
+  func willDisplayLoadingView() {
+    loadMoreData()
+  }
+
+  func viewDidLoad() {
+    loadInitData()
+  }
+  
+  func didSelectWine(input: ShowcaseInput) {
+    router.pushToShowcaseViewController(input: input)
   }
 }
