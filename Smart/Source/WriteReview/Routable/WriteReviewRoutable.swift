@@ -6,7 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import Display
 
 protocol WriteReviewRoutable: AnyObject {
 
@@ -27,12 +27,11 @@ extension WriteReviewRoutable {
     rating: Double,
     reviewText: String?)
   {
+    let controller = WriteReviewAssembly.assemblyModule(
+      input: .init(reviewID: reviewID, wineID: wineID, rating: rating, comment: reviewText))
+    let navController = NavigationController(rootViewController: controller)
     viewController?.present(
-      Assembly.buildWriteReviewViewController(
-        reviewID: reviewID,
-        wineID: wineID,
-        rating: rating,
-        reviewText: reviewText),
+      navController,
       animated: true,
       completion: nil)
   }

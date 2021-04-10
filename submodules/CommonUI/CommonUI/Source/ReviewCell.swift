@@ -64,12 +64,11 @@ public final class ReviewCell: HighlightCollectionCell, Reusable {
   }()
   
   private lazy var textLabel: UILabel = {
-    let label = UILabel()
-    label.numberOfLines = 0
-    label.textColor = .dark
-    label.font = Font.regular(15)
-    return label
-  }()
+    $0.numberOfLines = 0
+    $0.textColor = .dark
+    $0.font = Font.regular(15)
+    return $0
+  }(UILabel())
   
   private let userLabel: UILabel = {
     let label = UILabel()
