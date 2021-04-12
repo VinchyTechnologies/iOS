@@ -49,7 +49,16 @@ extension WriteReviewInteractor: WriteReviewInteractorProtocol {
     }
     
     if input.rating == rating && input.comment == comment {
+      dispatchWorkItemHud.cancel()
+      presenter.stopLoading()
       router.dismiss(completion: nil)
+      return
+    }
+    
+    if rating == 0 {
+      dispatchWorkItemHud.cancel()
+      presenter.stopLoading()
+      presenter.showAlertZeroRating()
       return
     }
 

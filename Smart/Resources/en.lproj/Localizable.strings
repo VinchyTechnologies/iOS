@@ -70,6 +70,7 @@
 "reviews" = "reviews";
 "send" = "send";
 "tap_a_star_to_rate" = "Tap a star to rate";
+"zero_rating_error" = "Rating cannot be zero";
 
 // MARK: - Sugar
 "sugar" = "sugar";

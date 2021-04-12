@@ -70,6 +70,7 @@
 "reviews" = "отзывы";
 "send" = "отправить";
 "tap_a_star_to_rate" = "Коснитесь для оценки";
+"zero_rating_error" = "Рейтинг не может быть нулевым";
 
 // MARK: - Sugar
 "sugar" = "сахар";
