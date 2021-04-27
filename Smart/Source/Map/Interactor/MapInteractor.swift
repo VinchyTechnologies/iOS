@@ -7,6 +7,7 @@
 //
 
 import MapKit
+import VinchyCore
 
 fileprivate enum C {
   static let defaultRadius: Double = 200
@@ -17,6 +18,8 @@ final class MapInteractor {
   private let repository: MapRepositoryProtocol
   private let router: MapRouterProtocol
   private let presenter: MapPresenterProtocol
+  
+  private var partnersOnMap: [PartnerOnMap] = []
   
   init(
     repository: MapRepositoryProtocol,
@@ -35,11 +38,18 @@ extension MapInteractor: MapInteractorProtocol {
   
   func didMove(
     to position: CLLocationCoordinate2D,
-    mapVisibleRegion: MKMapRect) {
+    mapVisibleRegion: MKMapRect,
+    mapView: MKMapView) {
     
-//    repository.requestPartners(userLocation: position) { [weak self] result in
-//      print("=== result")
-//    }
+    repository.requestPartners(userLocation: position, radius: Int(mapView.currentRadius())) { [weak self] result in
+      switch result {
+      case .success(let partnersOnMap):
+        self?.partnersOnMap = partnersOnMap
+        
+      case .failure(let error):
+        print("=== error", error)
+      }
+    }
   }
   
   func viewDidLoad() {
@@ -47,10 +57,18 @@ extension MapInteractor: MapInteractorProtocol {
       if let userLocation = userLocation {
         self.presenter.updateUserLocationAndRegion(userLocation, radius: C.defaultRadius)
       }
-      self.repository.requestPartners(userLocation: userLocation) { [weak self] result in
-        print("=== first result")
+      
+      self.repository.requestPartners(userLocation: userLocation, radius: Int(C.defaultRadius)) { [weak self] result in
+        switch result {
+        case .success(let partnersOnMap):
+          self?.partnersOnMap = partnersOnMap
+          
+        case .failure(let error):
+          print("=== error", error)
+        }
       }
     }
+    
   }
 }
 

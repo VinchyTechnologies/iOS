@@ -27,22 +27,23 @@ final class MapRepository {
   // MARK: - Private Methods
   
   private func requestPartnersData(
-    userLocation: CLLocationCoordinate2D?)
-    -> AnyPublisher<[Any], Error>
+    userLocation: CLLocationCoordinate2D?,
+    radius: Int)
+    -> AnyPublisher<[PartnerOnMap], Error>
   {
     if let userLocation = userLocation {
-      return fetchPartnersAPI(userLocation: userLocation)
+      return fetchPartnersAPI(userLocation: userLocation, radius: radius)
     } else {
-      return performFullPipeline()
+      return performFullPipeline(radius: radius)
     }
   }
   
-  private func performFullPipeline() -> AnyPublisher<[Any], Error> {
+  private func performFullPipeline(radius: Int) -> AnyPublisher<[PartnerOnMap], Error> {
     locationService
       .getLocation()
       .mapError { _ in MapError.locationPermissionDenied }
       .flatMap {
-        self.fetchPartnersAPI(userLocation: $0)
+        self.fetchPartnersAPI(userLocation: $0, radius: radius)
       }
       .eraseToAnyPublisher()
   }
@@ -54,16 +55,20 @@ final class MapRepository {
       .eraseToAnyPublisher()
   }
   
-  private func fetchPartnersAPI(userLocation: CLLocationCoordinate2D) -> AnyPublisher<[Any], Error> {
+  private func fetchPartnersAPI(userLocation: CLLocationCoordinate2D, radius: Int) -> AnyPublisher<[PartnerOnMap], Error> {
     Deferred {
       Future { promise in
-        Collections.shared.getCollections { result in
-          promise(result)
-        }
+        Partners.shared.getPartnersOnMap(
+          latitude: userLocation.latitude,
+          longitude: userLocation.longitude,
+          radius: radius,
+          completion: { result in
+            promise(result)
+          })
       }
     }
     .mapError({ $0 })
-    .map({ $0 as [Any] })
+    .map({ $0 as [PartnerOnMap] })
     .eraseToAnyPublisher()
   }
 }
@@ -84,9 +89,10 @@ extension MapRepository: MapRepositoryProtocol {
   
   func requestPartners(
     userLocation: CLLocationCoordinate2D?,
-    completion: @escaping (Result<[Any], Error>) -> Void)
+    radius: Int,
+    completion: @escaping (Result<[PartnerOnMap], Error>) -> Void)
   {
-    let apiSubscription = requestPartnersData(userLocation: userLocation)
+    let apiSubscription = requestPartnersData(userLocation: userLocation, radius: radius)
       .receive(on: DispatchQueue.main)
       .sink { receivedCompletion in
         guard case let .failure(error) = receivedCompletion else { return }

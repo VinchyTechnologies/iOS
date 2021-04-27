@@ -79,7 +79,7 @@ final class MapViewController: UIViewController {
   @objc
   func didDragMap(_ sender: UIGestureRecognizer) {
     if sender.state == .ended {
-      interactor?.didMove(to: mapView.centerCoordinate, mapVisibleRegion: mapView.visibleMapRect)
+      interactor?.didMove(to: mapView.centerCoordinate, mapVisibleRegion: mapView.visibleMapRect, mapView: mapView)
     }
   }
 }

@@ -7,15 +7,15 @@
 //
 
 import CoreLocation
+import VinchyCore
 
 protocol MapRepositoryProtocol {
     
   func requestPartners(
     userLocation: CLLocationCoordinate2D?,
-    completion: @escaping (Result<[Any], Error>) -> Void)
+    radius: Int,
+    completion: @escaping (Result<[PartnerOnMap], Error>) -> Void)
   
   func requestUserLocation(
     completion: @escaping (CLLocationCoordinate2D?) -> Void)
-  
-  //    func requestPartnersDefaultLocation(request: Weather.RequestDefault, completion: @escaping (Result<Weather.Response, Weather.Error>) -> Void)
 }

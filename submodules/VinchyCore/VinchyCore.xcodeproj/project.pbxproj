@@ -16,6 +16,9 @@
 		4495034125CAE82D006000F8 /* EmptyResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4495034025CAE82D006000F8 /* EmptyResponse.swift */; };
 		4495629025E2F8AB005E79DA /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4495628F25E2F8AB005E79DA /* Review.swift */; };
 		4495629325E2F9EF005E79DA /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4495629225E2F9EF005E79DA /* Reviews.swift */; };
+		8AD7A1D826388801007D4273 /* Partners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7A1D726388801007D4273 /* Partners.swift */; };
+		8AD7A1DB2638894A007D4273 /* PartnerOnMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7A1DA2638894A007D4273 /* PartnerOnMap.swift */; };
+		8AD7A1DE263889E7007D4273 /* AffiliatedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7A1DD263889E7007D4273 /* AffiliatedStore.swift */; };
 		CA103AE92516913B00B0324F /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA103AE82516913B00B0324F /* Display.framework */; };
 		CA7A87F0250287BB00AAD10F /* Winery.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87EF250287BB00AAD10F /* Winery.swift */; };
 		CA7B823C24EC71F300991F24 /* VinchyCore.h in Headers */ = {isa = PBXBuildFile; fileRef = CA7B823A24EC71F300991F24 /* VinchyCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -44,6 +47,9 @@
 		4495034025CAE82D006000F8 /* EmptyResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyResponse.swift; sourceTree = "<group>"; };
 		4495628F25E2F8AB005E79DA /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		4495629225E2F9EF005E79DA /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
+		8AD7A1D726388801007D4273 /* Partners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Partners.swift; sourceTree = "<group>"; };
+		8AD7A1DA2638894A007D4273 /* PartnerOnMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerOnMap.swift; sourceTree = "<group>"; };
+		8AD7A1DD263889E7007D4273 /* AffiliatedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffiliatedStore.swift; sourceTree = "<group>"; };
 		CA103AE82516913B00B0324F /* Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7A87EF250287BB00AAD10F /* Winery.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Winery.swift; sourceTree = "<group>"; };
 		CA7B823724EC71F300991F24 /* VinchyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VinchyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -152,6 +158,8 @@
 				443601D825CEF23E00ABA7F1 /* AccountInfo.swift */,
 				4495628F25E2F8AB005E79DA /* Review.swift */,
 				4410AE2F25E5479400A84FF9 /* UpdateTokensResponse.swift */,
+				8AD7A1DA2638894A007D4273 /* PartnerOnMap.swift */,
+				8AD7A1DD263889E7007D4273 /* AffiliatedStore.swift */,
 			);
 			path = ServiceModels;
 			sourceTree = "<group>";
@@ -173,6 +181,7 @@
 				CA7B825A24EC74B200991F24 /* Wines.swift */,
 				44834CD625C6D36300CD187F /* Accounts.swift */,
 				4495629225E2F9EF005E79DA /* Reviews.swift */,
+				8AD7A1D726388801007D4273 /* Partners.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -303,12 +312,15 @@
 				4410AE3025E5479400A84FF9 /* UpdateTokensResponse.swift in Sources */,
 				CA7B825024EC73FE00991F24 /* Compilation.swift in Sources */,
 				CA7B825924EC749600991F24 /* CompilationsEndpoint.swift in Sources */,
+				8AD7A1DB2638894A007D4273 /* PartnerOnMap.swift in Sources */,
+				8AD7A1D826388801007D4273 /* Partners.swift in Sources */,
 				443601D925CEF23E00ABA7F1 /* AccountInfo.swift in Sources */,
 				CA7B825724EC747900991F24 /* Collections.swift in Sources */,
 				44834CD725C6D36300CD187F /* Accounts.swift in Sources */,
 				CA7CBC26257F82D400C81476 /* ShortWine.swift in Sources */,
 				4495629025E2F8AB005E79DA /* Review.swift in Sources */,
 				CA7B824924EC738500991F24 /* Wine.swift in Sources */,
+				8AD7A1DE263889E7007D4273 /* AffiliatedStore.swift in Sources */,
 				4495629325E2F9EF005E79DA /* Reviews.swift in Sources */,
 				44834D1025C6F33400CD187F /* AccountID.swift in Sources */,
 				CA7B824C24EC73B500991F24 /* Collection.swift in Sources */,
