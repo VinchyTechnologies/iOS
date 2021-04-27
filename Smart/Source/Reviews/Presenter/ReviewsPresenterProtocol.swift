@@ -6,11 +6,11 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import VinchyCore
 
 protocol ReviewsPresenterProtocol: AnyObject {
   func startShimmer()
-  func update(reviews: [Any], needLoadMore: Bool)
+  func update(reviews: [Review], needLoadMore: Bool)
   func showErrorAlert(error: Error)
   func showInitiallyLoadingError(error: Error)
 }

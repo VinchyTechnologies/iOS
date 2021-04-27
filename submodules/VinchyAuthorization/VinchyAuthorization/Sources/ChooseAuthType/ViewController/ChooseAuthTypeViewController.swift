@@ -146,7 +146,7 @@ final class ChooseAuthTypeViewController: UIViewController {
   }
   
   private func openTerms() {
-    open(urlString: localized("terms_of_use_url", bundle: Bundle(for: type(of: self))), errorCompletion: {
+    open(urlString: localized("terms_of_use_url"), errorCompletion: {
       showAlert(title: localized("error").firstLetterUppercased(), message: localized("open_url_error"))
     })
   }

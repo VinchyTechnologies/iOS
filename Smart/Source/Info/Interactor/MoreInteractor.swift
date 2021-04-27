@@ -9,6 +9,7 @@
 
 import EmailService
 import Core
+import StringFormatting
 
 final class MoreInteractor {
   
@@ -33,8 +34,15 @@ final class MoreInteractor {
 
 extension MoreInteractor: MoreInteractorProtocol {
   
+  func didTapCurrency() {
+    router.pushToCurrencyViewController()
+  }
+  
   func viewDidLoad() {
-    presenter.update(isRussianLocale: Locale.current.languageCode == "ru")
+    let symbol = allCurrencies().first(where: ({ $0.code == UserDefaultsConfig.currency }))?.symbol ?? ""
+    presenter.update(
+      isRussianLocale: Locale.current.languageCode == "ru",
+      currency: UserDefaultsConfig.currency + "-" + symbol)
   }
   
   func didTapRateApp() {

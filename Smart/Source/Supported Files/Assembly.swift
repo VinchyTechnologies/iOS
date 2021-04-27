@@ -15,6 +15,7 @@ import Database
 
 final class Assembly {
 
+  @available(*, deprecated, message: "Use routable")
   static func buildDetailModule(wineID: Int64) -> UIViewController {
     let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID))
     controller.hidesBottomBarWhenPushed = true
@@ -70,12 +71,6 @@ final class Assembly {
     return controller
   }
   
-  static func buildReviewsViewController(wineID: Int64) -> UIViewController {
-    let controller = ReviewsAssembly.assemblyModule()
-    controller.hidesBottomBarWhenPushed = true
-    return controller
-  }
-  
   static func buildReviewDetailViewController(
     rate: Double?,
     author: String?,
@@ -87,19 +82,6 @@ final class Assembly {
       input: .init(rate: rate, author: author, date: date, reviewText: reviewText))
     controller.hidesBottomBarWhenPushed = true
     return controller
-  }
-  
-  static func buildWriteReviewViewController(
-    reviewID: Int?,
-    wineID: Int64,
-    rating: Double?,
-    reviewText: String?)
-    -> UIViewController
-  {
-    let controller = WriteReviewAssembly.assemblyModule(
-      input: .init(reviewID: reviewID, wineID: wineID, rating: rating, comment: reviewText))
-    let navController = NavigationController(rootViewController: controller)
-    return navController
   }
   
   static func buildMapViewController() -> UIViewController {

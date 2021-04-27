@@ -9,5 +9,5 @@
 import Foundation
 
 struct ReviewsInput {
-
+  let wineID: Int64
 }

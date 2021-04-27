@@ -22,23 +22,21 @@ struct StarRatingControlCollectionViewCellViewModel: ViewModelProtocol {
 final class StarRatingControlCollectionCell: UICollectionViewCell, Reusable {
   
   private let rateLabel: UILabel = {
-    let label = UILabel()
-    label.translatesAutoresizingMaskIntoConstraints = false
-    label.font = Font.with(size: 35, design: .round, traits: .bold)
-    label.textColor = .dark
-    return label
-  }()
+    $0.translatesAutoresizingMaskIntoConstraints = false
+    $0.font = Font.with(size: 35, design: .round, traits: .bold)
+    $0.textColor = .dark
+    return $0
+  }(UILabel())
     
   private lazy var ratingView: CosmosView = {
-    var view = CosmosView()
-    view.settings.filledColor = .accent
-    view.settings.emptyBorderColor = .accent
-    view.settings.starSize = 32
-    view.settings.starMargin = 0
-    view.settings.updateOnTouch = false
-    view.settings.fillMode = .precise
-    return view
-  }()
+    $0.settings.filledColor = .accent
+    $0.settings.emptyBorderColor = .accent
+    $0.settings.starSize = 32
+    $0.settings.starMargin = 0
+    $0.settings.updateOnTouch = false
+    $0.settings.fillMode = .precise
+    return $0
+  }(CosmosView())
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -69,7 +67,7 @@ extension StarRatingControlCollectionCell: Decoratable {
   typealias ViewModel = StarRatingControlCollectionViewCellViewModel
   
   func decorate(model: ViewModel) {
-    rateLabel.text = String(model.rate)
+    rateLabel.text = String(format: "%.1f", model.rate)
     ratingView.rating = model.rate
   }
 }
