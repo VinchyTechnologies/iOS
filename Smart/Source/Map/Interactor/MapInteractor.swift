@@ -39,12 +39,13 @@ extension MapInteractor: MapInteractorProtocol {
   func didMove(
     to position: CLLocationCoordinate2D,
     mapVisibleRegion: MKMapRect,
-    mapView: MKMapView) {
-    
+    mapView: MKMapView)
+  {
     repository.requestPartners(userLocation: position, radius: Int(mapView.currentRadius())) { [weak self] result in
       switch result {
       case .success(let partnersOnMap):
         self?.partnersOnMap = partnersOnMap
+        self?.presenter.didReceive(partnersOnMap: partnersOnMap)
         
       case .failure(let error):
         print("=== error", error)
@@ -62,6 +63,7 @@ extension MapInteractor: MapInteractorProtocol {
         switch result {
         case .success(let partnersOnMap):
           self?.partnersOnMap = partnersOnMap
+          self?.presenter.didReceive(partnersOnMap: partnersOnMap)
           
         case .failure(let error):
           print("=== error", error)

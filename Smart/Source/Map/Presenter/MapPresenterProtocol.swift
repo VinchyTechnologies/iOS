@@ -7,7 +7,9 @@
 //
 
 import CoreLocation
+import VinchyCore
 
 protocol MapPresenterProtocol: AnyObject {
   func updateUserLocationAndRegion(_ userLocation: CLLocationCoordinate2D, radius: Double)
+  func didReceive(partnersOnMap: [PartnerOnMap])
 }

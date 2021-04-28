@@ -9,16 +9,36 @@
 import Display
 import UIKit
 import MapKit
+import VinchyCore
 
 final class MapViewController: UIViewController {
   
   var interactor: MapInteractorProtocol?
 
   private var mapChangedFromUserInteraction = false
+  
+  private var partnersOnMap: [PartnerOnMap] = [] {
+    didSet {
+      removeAllAnnotations()
+      partnersOnMap.forEach { partner in
+        partner.affiliatedStores.forEach { store in
+          let point = MKPointAnnotation()
+          point.title = store.title
+          point.coordinate = CLLocationCoordinate2D(latitude: store.latitude, longitude: store.longitude)
+          mapView.addAnnotation(point)
+        }
+      }
+    }
+  }
 
   private lazy var mapView: MKMapView = {
     let mapView = MKMapView()
     mapView.showsUserLocation = true
+    mapView.delegate = self
+    
+    mapView.register(
+      PartnerAnnotationView.self,
+      forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
     
     let pan = UIPanGestureRecognizer(target: self, action: #selector(didDragMap(_:)))
     pan.delegate = self
@@ -77,10 +97,15 @@ final class MapViewController: UIViewController {
   }
   
   @objc
-  func didDragMap(_ sender: UIGestureRecognizer) {
+  private func didDragMap(_ sender: UIGestureRecognizer) {
     if sender.state == .ended {
       interactor?.didMove(to: mapView.centerCoordinate, mapVisibleRegion: mapView.visibleMapRect, mapView: mapView)
     }
+  }
+  
+  private func removeAllAnnotations() {
+    let allAnnotations = mapView.annotations
+    mapView.removeAnnotations(allAnnotations)
   }
 }
 
@@ -104,5 +129,28 @@ extension MapViewController: MapViewControllerProtocol {
       latitudinalMeters: radius,
       longitudinalMeters: radius)
     mapView.setRegion(viewRegion, animated: false)
+  }
+  
+  func updateUI(partnersOnMap: [PartnerOnMap]) {
+    self.partnersOnMap = partnersOnMap
+  }
+}
+
+extension MapViewController: MKMapViewDelegate {
+  
+  func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+  
+    guard annotation is MKPointAnnotation else {
+      return nil
+    }
+
+//      var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier) as? PartnerAnnotationView
+//
+//      if annotationView == nil {
+          let annotationView = PartnerAnnotationView(
+            annotation: annotation,
+            reuseIdentifier: "pin")
+
+      return annotationView
   }
 }

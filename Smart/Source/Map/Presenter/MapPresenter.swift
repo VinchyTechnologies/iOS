@@ -7,6 +7,7 @@
 //
 
 import CoreLocation
+import VinchyCore
 
 final class MapPresenter {
   
@@ -24,5 +25,9 @@ final class MapPresenter {
 extension MapPresenter: MapPresenterProtocol {
   func updateUserLocationAndRegion(_ userLocation: CLLocationCoordinate2D, radius: Double) {
     viewController?.setUserLocation(userLocation, radius: radius)
+  }
+  
+  func didReceive(partnersOnMap: [PartnerOnMap]) {
+    viewController?.updateUI(partnersOnMap: partnersOnMap)
   }
 }
