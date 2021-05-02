@@ -28,6 +28,15 @@ extension MapPresenter: MapPresenterProtocol {
   }
   
   func didReceive(partnersOnMap: [PartnerOnMap]) {
-    viewController?.updateUI(partnersOnMap: partnersOnMap)
+    
+    var annotations: [PartnerAnnotationViewModel] = []
+    
+    partnersOnMap.forEach { (partnerOnMap) in
+      partnerOnMap.affiliatedStores.forEach { (affilatedStore) in
+        annotations.append(.init(kind: .store(affilatedId: affilatedStore.id, title: affilatedStore.title, latitude: affilatedStore.latitude, longitude: affilatedStore.longitude)))
+      }
+    }
+    
+    viewController?.updateUI(partnersOnMap: annotations)
   }
 }

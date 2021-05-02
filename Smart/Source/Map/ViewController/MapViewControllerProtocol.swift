@@ -11,5 +11,5 @@ import VinchyCore
 
 protocol MapViewControllerProtocol: AnyObject {
   func setUserLocation(_ userLocation: CLLocationCoordinate2D, radius: Double)
-  func updateUI(partnersOnMap: [PartnerOnMap])
+  func updateUI(partnersOnMap: [PartnerAnnotationViewModel])
 }

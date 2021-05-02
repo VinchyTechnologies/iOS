@@ -6,6 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import Core
 import MapKit
 import VinchyCore
 
@@ -18,7 +19,7 @@ final class MapInteractor {
   private let repository: MapRepositoryProtocol
   private let router: MapRouterProtocol
   private let presenter: MapPresenterProtocol
-  
+  private let throttler = Throttler()
   private var partnersOnMap: [PartnerOnMap] = []
   
   init(
@@ -41,14 +42,17 @@ extension MapInteractor: MapInteractorProtocol {
     mapVisibleRegion: MKMapRect,
     mapView: MKMapView)
   {
-    repository.requestPartners(userLocation: position, radius: Int(mapView.currentRadius())) { [weak self] result in
-      switch result {
-      case .success(let partnersOnMap):
-        self?.partnersOnMap = partnersOnMap
-        self?.presenter.didReceive(partnersOnMap: partnersOnMap)
-        
-      case .failure(let error):
-        print("=== error", error)
+    throttler.cancel()
+    throttler.throttle(delay: .seconds(2)) {
+      self.repository.requestPartners(userLocation: position, radius: Int(mapView.currentRadius())) { [weak self] result in
+        switch result {
+        case .success(let partnersOnMap):
+          self?.partnersOnMap = partnersOnMap
+          self?.presenter.didReceive(partnersOnMap: partnersOnMap)
+          
+        case .failure(let error):
+          print("=== error", error)
+        }
       }
     }
   }
@@ -77,13 +81,17 @@ extension MapInteractor: MapInteractorProtocol {
 fileprivate extension MKMapView {
   
   func topCenterCoordinate() -> CLLocationCoordinate2D {
-    self.convert(CGPoint(x: self.frame.size.width / 2.0, y: 0), toCoordinateFrom: self)
+    convert(CGPoint(x: frame.size.width / 2.0, y: 0), toCoordinateFrom: self)
   }
   
   func currentRadius() -> Double {
-    let centerLocation = CLLocation(latitude: self.centerCoordinate.latitude, longitude: self.centerCoordinate.longitude)
+    let centerLocation = CLLocation(
+      latitude: centerCoordinate.latitude,
+      longitude: centerCoordinate.longitude)
     let topCenterCoordinate = self.topCenterCoordinate()
-    let topCenterLocation = CLLocation(latitude: topCenterCoordinate.latitude, longitude: topCenterCoordinate.longitude)
+    let topCenterLocation = CLLocation(
+      latitude: topCenterCoordinate.latitude,
+      longitude: topCenterCoordinate.longitude)
     return centerLocation.distance(from: topCenterLocation)
   }
 }

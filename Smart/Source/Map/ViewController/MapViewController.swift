@@ -17,16 +17,11 @@ final class MapViewController: UIViewController {
 
   private var mapChangedFromUserInteraction = false
   
-  private var partnersOnMap: [PartnerOnMap] = [] {
+  private var partnersOnMap: [PartnerAnnotationViewModel] = [] {
     didSet {
-      partnersOnMap.forEach { partner in
-        partner.affiliatedStores.forEach { store in
-          let point = MKPointAnnotation()
-          point.title = store.title
-          point.coordinate = CLLocationCoordinate2D(latitude: store.latitude, longitude: store.longitude)
-          if mapView.annotations.first(where: { $0.coordinate.latitude == point.coordinate.latitude && $0.coordinate.longitude == point.coordinate.longitude }) == nil { // TODO: - Not coordinates, only id
-            mapView.addAnnotation(point)
-          }
+      partnersOnMap.forEach { partnerOnMap in
+        if mapView.annotations.first(where: { ($0 as? PartnerAnnotationViewModel)?.kind == partnerOnMap.kind }) == nil {
+          mapView.addAnnotation(partnerOnMap)
         }
       }
     }
@@ -47,10 +42,12 @@ final class MapViewController: UIViewController {
     
     let pan = UIPanGestureRecognizer(target: self, action: #selector(didDragMap(_:)))
     pan.delegate = self
+//    pan.cancelsTouchesInView = false
     mapView.addGestureRecognizer(pan)
     
     let pinch = UIPinchGestureRecognizer(target: self, action: #selector(didPinchMap(_:)))
     pinch.delegate = self
+//    pinch.cancelsTouchesInView = false
     mapView.addGestureRecognizer(pinch)
     
     return mapView
@@ -119,7 +116,7 @@ final class MapViewController: UIViewController {
   @objc
   private func didPinchMap(_ sender: UIGestureRecognizer) {
     if sender.state == .ended {
-//      interactor?.didMove(to: mapView.centerCoordinate, mapVisibleRegion: mapView.visibleMapRect, mapView: mapView)
+      interactor?.didMove(to: mapView.centerCoordinate, mapVisibleRegion: mapView.visibleMapRect, mapView: mapView)
     }
   }
 }
@@ -146,7 +143,7 @@ extension MapViewController: MapViewControllerProtocol {
     mapView.setRegion(viewRegion, animated: false)
   }
   
-  func updateUI(partnersOnMap: [PartnerOnMap]) {
+  func updateUI(partnersOnMap: [PartnerAnnotationViewModel]) {
     self.partnersOnMap = partnersOnMap
   }
 }
@@ -155,7 +152,7 @@ extension MapViewController: MKMapViewDelegate {
   
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
     switch annotation {
-    case is MKPointAnnotation:
+    case is PartnerAnnotationViewModel:
       let annotationView = PartnerAnnotationView(
         annotation: annotation,
         reuseIdentifier: "pin")

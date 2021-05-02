@@ -10,6 +10,55 @@ import UIKit
 import MapKit
 import Display
 
+final class PartnerAnnotationViewModel: NSObject, MKAnnotation {
+  
+  enum Kind: Equatable {
+    case store(affilatedId: Int, title: String?, latitude: CLLocationDegrees, longitude: CLLocationDegrees)
+    
+    static func ==(lhs: Kind, rhs: Kind) -> Bool {
+      switch (lhs, rhs) {
+      case (let .store(lhsAffilatedId, _, _, _), let .store(rhsAffilatedId, _, _, _)):
+        return lhsAffilatedId == rhsAffilatedId
+      }
+    }
+  }
+  
+  let kind: Kind
+  
+  init(kind: Kind) {
+    self.kind = kind
+  }
+  
+  var title: String? {
+    switch kind {
+    case .store(_, let title, _, _):
+      return title
+    }
+  }
+  
+  // This property must be key-value observable, which the `@objc dynamic` attributes provide.
+  @objc dynamic var coordinate: CLLocationCoordinate2D {
+    get {
+      switch kind {
+      case .store(_, _, let latitude, let longitude):
+        return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+      }
+    }
+    set {
+      // For most uses, `coordinate` can be a standard property declaration without the customized getter and setter shown here.
+      // The custom getter and setter are needed in this case because of how it loads data from the `Decodable` protocol.
+//      latitude = newValue.latitude
+//      longitude = newValue.longitude
+    }
+  }
+  
+//  func ==(lhs: PartnerAnnotationViewModel, rhs: PartnerAnnotationViewModel) -> Bool {
+//    if case lhs.kind == rhs.kind {
+//      
+//    }
+//  }
+}
+
 fileprivate enum C {
   static let font: UIFont = Font.medium(16)
 }
@@ -32,13 +81,17 @@ final class PartnerAnnotationView: MKAnnotationView, Reusable {
   
   override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
     super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
-    
+
     canShowCallout = false
+
+    guard let annotation = annotation as? PartnerAnnotationViewModel else {
+      return
+    }
     
     let triangleViewWidth: CGFloat = 16
     let triangleViewHeight: CGFloat = 10
     
-    let titleText: String = (annotation?.title ?? "") ?? ""
+    let titleText: String = (annotation.title ?? "")
         
     titleLabel.text = titleText
         
