@@ -74,6 +74,7 @@
 		83CBECF11383A15B52E4B39C /* Pods_Smart_SmartUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 56086A08390D5319BC554AE2 /* Pods_Smart_SmartUITests.framework */; };
 		8AA5E5132615053D00935B5E /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA5E5122615053D00935B5E /* AboutView.swift */; };
 		8AD7A37E2639D31A007D4273 /* PartnerAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7A37D2639D31A007D4273 /* PartnerAnnotationView.swift */; };
+		8AD7A455263B2A98007D4273 /* ClusterAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7A454263B2A98007D4273 /* ClusterAnnotationView.swift */; };
 		CA015C1A24C44925008DF01D /* DidnotFindTheWineTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA015C1924C44925008DF01D /* DidnotFindTheWineTableCell.swift */; };
 		CA015C3624C582B2008DF01D /* EmailService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA015C3524C582B2008DF01D /* EmailService.framework */; };
 		CA015C3724C582B2008DF01D /* EmailService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA015C3524C582B2008DF01D /* EmailService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -356,6 +357,7 @@
 		6424F560030C451CC71ED8CC /* Pods_Smart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Smart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AA5E5122615053D00935B5E /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		8AD7A37D2639D31A007D4273 /* PartnerAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerAnnotationView.swift; sourceTree = "<group>"; };
+		8AD7A454263B2A98007D4273 /* ClusterAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterAnnotationView.swift; sourceTree = "<group>"; };
 		C0370D878089C464336C5FAE /* Pods-SmartTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartTests.debug.xcconfig"; path = "Target Support Files/Pods-SmartTests/Pods-SmartTests.debug.xcconfig"; sourceTree = "<group>"; };
 		CA015C1924C44925008DF01D /* DidnotFindTheWineTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DidnotFindTheWineTableCell.swift; sourceTree = "<group>"; };
 		CA015C3524C582B2008DF01D /* EmailService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EmailService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1054,6 +1056,7 @@
 			isa = PBXGroup;
 			children = (
 				8AD7A37D2639D31A007D4273 /* PartnerAnnotationView.swift */,
+				8AD7A454263B2A98007D4273 /* ClusterAnnotationView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2142,6 +2145,7 @@
 				CA819847253864080056A1C6 /* WineDetailPresenter.swift in Sources */,
 				CAF514212461C52400667ED0 /* MorePresenter.swift in Sources */,
 				4495625125E2E15A005E79DA /* ReviewDetailRoutable.swift in Sources */,
+				8AD7A455263B2A98007D4273 /* ClusterAnnotationView.swift in Sources */,
 				CA99E65724F6EDDD00C36BEE /* ButtonCollectionCell.swift in Sources */,
 				44EFDB1B25E176EC0076ED6D /* ReviewsPresenter.swift in Sources */,
 				449F81CE25DD050400585364 /* DeeplinkRouter.swift in Sources */,

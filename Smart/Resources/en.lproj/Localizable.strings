@@ -149,3 +149,6 @@
 // MARK: - Docs
 "terms_of_use_url" = "https://drive.google.com/file/d/1-HTyQsjLbLgHrfJm-R9lJSRMKjFEeJfg/view";
 "terms_of_use_doc" = "Terms & Conditions";
+
+// MARK: - Map
+"map" = "map";

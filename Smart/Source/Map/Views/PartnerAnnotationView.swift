@@ -24,6 +24,7 @@ final class PartnerAnnotationView: MKAnnotationView, Reusable {
     $0.backgroundColor = .accent
     $0.font = C.font
     $0.textAlignment = .center
+    $0.textColor = .white
     return $0
   }(UILabel())
   
@@ -57,6 +58,8 @@ final class PartnerAnnotationView: MKAnnotationView, Reusable {
         height: triangleViewHeight))
     addSubview(titleLabel)
     addSubview(triangleView)
+    
+    centerOffset = CGPoint(x: 0, y: -frame.size.height / 2)
   }
   
   override func layoutSubviews() {
@@ -71,7 +74,7 @@ final class PartnerAnnotationView: MKAnnotationView, Reusable {
     
 }
 
-final class TriangleView: UIView {
+fileprivate final class TriangleView: UIView {
   
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -88,7 +91,6 @@ final class TriangleView: UIView {
     context.addLine(to: CGPoint(x: rect.maxX / 2.0, y: rect.maxY))
     context.addLine(to: CGPoint(x: rect.maxX, y: rect.minY))
     context.closePath()
-    
     context.setFillColor(UIColor.accent.cgColor)
     context.fillPath()
   }

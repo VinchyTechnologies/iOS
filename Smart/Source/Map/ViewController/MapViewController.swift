@@ -19,13 +19,14 @@ final class MapViewController: UIViewController {
   
   private var partnersOnMap: [PartnerOnMap] = [] {
     didSet {
-      removeAllAnnotations()
       partnersOnMap.forEach { partner in
         partner.affiliatedStores.forEach { store in
           let point = MKPointAnnotation()
           point.title = store.title
           point.coordinate = CLLocationCoordinate2D(latitude: store.latitude, longitude: store.longitude)
-          mapView.addAnnotation(point)
+          if mapView.annotations.first(where: { $0.coordinate.latitude == point.coordinate.latitude && $0.coordinate.longitude == point.coordinate.longitude }) == nil { // TODO: - Not coordinates, only id
+            mapView.addAnnotation(point)
+          }
         }
       }
     }
@@ -38,15 +39,24 @@ final class MapViewController: UIViewController {
     
     mapView.register(
       PartnerAnnotationView.self,
-      forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+      forAnnotationViewWithReuseIdentifier: "pin")
+    
+    mapView.register(
+      LocationDataMapClusterView.self,
+      forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
     
     let pan = UIPanGestureRecognizer(target: self, action: #selector(didDragMap(_:)))
     pan.delegate = self
     mapView.addGestureRecognizer(pan)
     
+    let pinch = UIPinchGestureRecognizer(target: self, action: #selector(didPinchMap(_:)))
+    pinch.delegate = self
+    mapView.addGestureRecognizer(pinch)
+    
     return mapView
   }()
   
+  /*
   private lazy var backButton: UIButton = {
     let button = UIButton()
     let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
@@ -58,12 +68,14 @@ final class MapViewController: UIViewController {
     button.addTarget(self, action: #selector(didTapBackButton(_:)), for: .touchUpInside)
     return button
   }()
+  */
   
   override func viewDidLoad() {
     super.viewDidLoad()
     view.addSubview(mapView)
     mapView.fill()
     
+    /*
     view.addSubview(backButton)
     backButton.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
@@ -72,13 +84,14 @@ final class MapViewController: UIViewController {
       backButton.heightAnchor.constraint(equalToConstant: 48),
       backButton.widthAnchor.constraint(equalToConstant: 48),
     ])
+     */
     
     interactor?.viewDidLoad()
   }
   
   override func viewWillLayoutSubviews() {
     super.viewWillLayoutSubviews()
-    backButton.layer.cornerRadius = backButton.frame.height / 2
+//    backButton.layer.cornerRadius = backButton.frame.height / 2
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -103,9 +116,11 @@ final class MapViewController: UIViewController {
     }
   }
   
-  private func removeAllAnnotations() {
-    let allAnnotations = mapView.annotations
-    mapView.removeAnnotations(allAnnotations)
+  @objc
+  private func didPinchMap(_ sender: UIGestureRecognizer) {
+    if sender.state == .ended {
+//      interactor?.didMove(to: mapView.centerCoordinate, mapVisibleRegion: mapView.visibleMapRect, mapView: mapView)
+    }
   }
 }
 
@@ -139,18 +154,19 @@ extension MapViewController: MapViewControllerProtocol {
 extension MapViewController: MKMapViewDelegate {
   
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
-  
-    guard annotation is MKPointAnnotation else {
-      return nil
-    }
-
-//      var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier) as? PartnerAnnotationView
-//
-//      if annotationView == nil {
-          let annotationView = PartnerAnnotationView(
-            annotation: annotation,
-            reuseIdentifier: "pin")
-
+    switch annotation {
+    case is MKPointAnnotation:
+      let annotationView = PartnerAnnotationView(
+        annotation: annotation,
+        reuseIdentifier: "pin")
+      annotationView.clusteringIdentifier = String(describing: PartnerAnnotationView.self)
       return annotationView
+      
+    case is MKClusterAnnotation:
+      return mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier, for: annotation)
+      
+    default:
+      return nil
+    }    
   }
 }
