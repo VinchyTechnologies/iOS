@@ -10,5 +10,5 @@ import MapKit
 
 protocol MapInteractorProtocol: AnyObject {
   func viewDidLoad()
-  func didMove(to position: CLLocationCoordinate2D, mapVisibleRegion: MKMapRect, mapView: MKMapView)
+  func didMove(to position: CLLocationCoordinate2D, mapVisibleRegion: MKMapRect, mapView: MKMapView, shouldUseThrottler: Bool)
 }

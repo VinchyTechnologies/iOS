@@ -33,6 +33,36 @@ final class MapInteractor {
     self.router = router
     self.presenter = presenter
   }
+  
+  private func processMove(
+    to position: CLLocationCoordinate2D,
+    mapVisibleRegion: MKMapRect,
+    mapView: MKMapView)
+  {
+    let radius = mapView.currentRadius()
+    if let currentPosition = self.currentPosition {
+      let distance = CLLocation.distance(from: currentPosition, to: position)
+      if distance + Double(radius) <= self.currentRadius {
+        self.currentPosition = position
+        self.currentRadius = radius
+        return
+      }
+    }
+    
+    self.repository.requestPartners(userLocation: position, radius: Int(mapView.currentRadius())) { [weak self] result in
+      guard let self = self else { return }
+      switch result {
+      case .success(let partnersOnMap):
+        self.partnersOnMap = Set<PartnerOnMap>(partnersOnMap)
+        self.presenter.didReceive(partnersOnMap: self.partnersOnMap)
+        
+      case .failure(let error):
+        print("=== error", error)
+      }
+    }
+    self.currentPosition = position
+    self.currentRadius = radius
+  }
 }
 
 // MARK: - MapInteractorProtocol
@@ -42,36 +72,16 @@ extension MapInteractor: MapInteractorProtocol {
   func didMove(
     to position: CLLocationCoordinate2D,
     mapVisibleRegion: MKMapRect,
-    mapView: MKMapView)
+    mapView: MKMapView,
+    shouldUseThrottler: Bool)
   {
-    
-    let radius = mapView.currentRadius()
-    
-    throttler.cancel()
-    throttler.throttle(delay: .milliseconds(1250)) {
-      
-      if let currentPosition = self.currentPosition {
-        let distance = CLLocation.distance(from: currentPosition, to: position)
-        if distance + Double(radius) <= self.currentRadius {
-          self.currentPosition = position
-          self.currentRadius = radius
-          return
-        }
+    if shouldUseThrottler {
+      throttler.cancel()
+      throttler.throttle(delay: .milliseconds(1250)) {
+        self.processMove(to: position, mapVisibleRegion: mapVisibleRegion, mapView: mapView)
       }
-      
-      self.repository.requestPartners(userLocation: position, radius: Int(mapView.currentRadius())) { [weak self] result in
-        guard let self = self else { return }
-        switch result {
-        case .success(let partnersOnMap):
-          self.partnersOnMap = Set<PartnerOnMap>(partnersOnMap)
-          self.presenter.didReceive(partnersOnMap: self.partnersOnMap)
-          
-        case .failure(let error):
-          print("=== error", error)
-        }
-      }
-      self.currentPosition = position
-      self.currentRadius = radius
+    } else {
+      processMove(to: position, mapVisibleRegion: mapVisibleRegion, mapView: mapView)
     }
   }
   

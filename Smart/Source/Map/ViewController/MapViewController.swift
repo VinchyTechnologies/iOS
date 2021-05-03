@@ -103,14 +103,22 @@ final class MapViewController: UIViewController {
   @objc
   private func didDragMap(_ sender: UIGestureRecognizer) {
     if sender.state == .ended {
-      interactor?.didMove(to: mapView.centerCoordinate, mapVisibleRegion: mapView.visibleMapRect, mapView: mapView)
+      interactor?.didMove(
+        to: mapView.centerCoordinate,
+        mapVisibleRegion: mapView.visibleMapRect,
+        mapView: mapView,
+        shouldUseThrottler: true)
     }
   }
   
   @objc
   private func didPinchMap(_ sender: UIGestureRecognizer) {
     if sender.state == .ended {
-      interactor?.didMove(to: mapView.centerCoordinate, mapVisibleRegion: mapView.visibleMapRect, mapView: mapView)
+      interactor?.didMove(
+        to: mapView.centerCoordinate,
+        mapVisibleRegion: mapView.visibleMapRect,
+        mapView: mapView,
+        shouldUseThrottler: false)
     }
   }
 }
