@@ -20,7 +20,9 @@ final class MapInteractor {
   private let router: MapRouterProtocol
   private let presenter: MapPresenterProtocol
   private let throttler = Throttler()
-  private var partnersOnMap: [PartnerOnMap] = []
+  private var partnersOnMap: Set<PartnerOnMap> = Set<PartnerOnMap>() 
+  private var currentRadius = C.defaultRadius
+  private var currentPosition: CLLocationCoordinate2D?
   
   init(
     repository: MapRepositoryProtocol,
@@ -42,18 +44,34 @@ extension MapInteractor: MapInteractorProtocol {
     mapVisibleRegion: MKMapRect,
     mapView: MKMapView)
   {
+    
+    let radius = mapView.currentRadius()
+    
     throttler.cancel()
-    throttler.throttle(delay: .milliseconds(1500)) {
+    throttler.throttle(delay: .milliseconds(1250)) {
+      
+      if let currentPosition = self.currentPosition {
+        let distance = CLLocation.distance(from: currentPosition, to: position)
+        if distance + Double(radius) <= self.currentRadius {
+          self.currentPosition = position
+          self.currentRadius = radius
+          return
+        }
+      }
+      
       self.repository.requestPartners(userLocation: position, radius: Int(mapView.currentRadius())) { [weak self] result in
+        guard let self = self else { return }
         switch result {
         case .success(let partnersOnMap):
-          self?.partnersOnMap = partnersOnMap
-          self?.presenter.didReceive(partnersOnMap: partnersOnMap)
+          self.partnersOnMap = Set<PartnerOnMap>(partnersOnMap)
+          self.presenter.didReceive(partnersOnMap: self.partnersOnMap)
           
         case .failure(let error):
           print("=== error", error)
         }
       }
+      self.currentPosition = position
+      self.currentRadius = radius
     }
   }
   
@@ -64,10 +82,11 @@ extension MapInteractor: MapInteractorProtocol {
       }
       
       self.repository.requestPartners(userLocation: userLocation, radius: Int(C.defaultRadius)) { [weak self] result in
+        guard let self = self else { return }
         switch result {
         case .success(let partnersOnMap):
-          self?.partnersOnMap = partnersOnMap
-          self?.presenter.didReceive(partnersOnMap: partnersOnMap)
+          self.partnersOnMap = Set<PartnerOnMap>(partnersOnMap)
+          self.presenter.didReceive(partnersOnMap: self.partnersOnMap)
           
         case .failure(let error):
           print("=== error", error)
@@ -93,4 +112,19 @@ fileprivate extension MKMapView {
       longitude: topCenterCoordinate.longitude)
     return centerLocation.distance(from: topCenterLocation)
   }
+}
+
+fileprivate extension CLLocation {
+    
+    /// Get distance between two points
+    ///
+    /// - Parameters:
+    ///   - from: first point
+    ///   - to: second point
+    /// - Returns: the distance in meters
+    class func distance(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D) -> CLLocationDistance {
+        let from = CLLocation(latitude: from.latitude, longitude: from.longitude)
+        let to = CLLocation(latitude: to.latitude, longitude: to.longitude)
+        return from.distance(from: to)
+    }
 }

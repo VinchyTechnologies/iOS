@@ -10,15 +10,27 @@ import Display
 import MapKit
 import UIKit
 
+fileprivate enum C {
+  static let font = Font.with(size: 18, design: .round, traits: .bold)
+}
+
 final class LocationDataMapClusterView: MKAnnotationView {
+  
+  // MARK: - Internal Properties
   
   override var annotation: MKAnnotation? {
     didSet {
       guard let annotation = annotation as? MKClusterAnnotation else {
         return
       }
-      
-      countLabel.text = annotation.memberAnnotations.count < 100 ? "\(annotation.memberAnnotations.count)" : "99+"
+      let text = getCountText(count: annotation.memberAnnotations.count)
+      countLabel.text = text
+      let side: CGFloat = max(36, text.width(usingFont: C.font) + 8)
+      frame = CGRect(
+        x: 0,
+        y: 0,
+        width: side,
+        height: side)
     }
   }
   
@@ -28,7 +40,7 @@ final class LocationDataMapClusterView: MKAnnotationView {
     $0.backgroundColor = .accent
     $0.textColor = .white
     $0.textAlignment = .center
-    $0.font = Font.with(size: 18, design: .round, traits: .bold)
+    $0.font = C.font
     return $0
   }(UILabel())
 
@@ -39,10 +51,7 @@ final class LocationDataMapClusterView: MKAnnotationView {
     
     displayPriority = .defaultHigh
     collisionMode = .circle
-    
-    frame = CGRect(x: 0, y: 0, width: 36, height: 36)
-    centerOffset = CGPoint(x: 0, y: -frame.size.height / 2)
-    
+        
     addSubview(countLabel)
     countLabel.fill()
   }
@@ -53,6 +62,24 @@ final class LocationDataMapClusterView: MKAnnotationView {
     super.layoutSubviews()
     countLabel.layer.cornerRadius = countLabel.frame.height / 2
     countLabel.clipsToBounds = true
+    centerOffset = CGPoint(x: 0, y: -frame.size.height / 2)
   }
   
+  // MARK: - Private Methods
+  
+  private func getCountText(count: Int) -> String {
+    if count > 500 {
+        return "500+"
+    } else if count > 100 {
+        return "100+"
+    } else if count > 50 {
+        return "50+"
+    } else if count > 25 {
+        return "25+"
+    } else if count > 10 {
+        return "10+"
+    } else {
+        return String(count)
+    }
+  }
 }

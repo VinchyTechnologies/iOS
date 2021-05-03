@@ -18,16 +18,6 @@ final class MapViewController: UIViewController {
   var interactor: MapInteractorProtocol?
 
   // MARK: - Private Properties
-    
-  private var partnersOnMap: [PartnerAnnotationViewModel] = [] {
-    didSet {
-      partnersOnMap.forEach { partnerOnMap in
-        if mapView.annotations.first(where: { ($0 as? PartnerAnnotationViewModel) == partnerOnMap }) == nil {
-          mapView.addAnnotation(partnerOnMap)
-        }
-      }
-    }
-  }
 
   private lazy var mapView: MKMapView = {
     let mapView = MKMapView()
@@ -44,12 +34,10 @@ final class MapViewController: UIViewController {
     
     let pan = UIPanGestureRecognizer(target: self, action: #selector(didDragMap(_:)))
     pan.delegate = self
-//    pan.cancelsTouchesInView = false
     mapView.addGestureRecognizer(pan)
     
     let pinch = UIPinchGestureRecognizer(target: self, action: #selector(didPinchMap(_:)))
     pinch.delegate = self
-//    pinch.cancelsTouchesInView = false
     mapView.addGestureRecognizer(pinch)
     
     return mapView
@@ -152,7 +140,10 @@ extension MapViewController: MapViewControllerProtocol {
   }
   
   func updateUI(viewModel: MapViewModel) {
-    self.partnersOnMap = viewModel.annotations
+  }
+  
+  func updateUI(newPartnersOnMap: [PartnerAnnotationViewModel]) {
+    mapView.addAnnotations(newPartnersOnMap)
   }
 }
 

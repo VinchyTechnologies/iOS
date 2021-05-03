@@ -6,7 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-public struct PartnerOnMap: Decodable {
+public struct PartnerOnMap: Decodable, Hashable {
   
   public let id: Int
   public let affiliatedStores: [AffiliatedStore]

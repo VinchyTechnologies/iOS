@@ -163,6 +163,7 @@ public extension LocationService {
     switch error {
     case .failed, .denied:
       return Fail(error: error).eraseToAnyPublisher()
+      
     case .notDetermined:
       return requestUserPermission()
         .mapError({ (error) -> Location.Error in

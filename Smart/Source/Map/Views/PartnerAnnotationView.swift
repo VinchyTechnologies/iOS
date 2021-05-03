@@ -23,7 +23,7 @@ final class PartnerAnnotationViewModel: NSObject, MKAnnotation {
     }
   }
   
-  let kind: Kind
+  fileprivate let kind: Kind
   
   init(kind: Kind) {
     self.kind = kind

@@ -14,6 +14,7 @@ final class MapPresenter {
   private typealias ViewModel = MapViewModel
   
   weak var viewController: MapViewControllerProtocol?
+  private var partnersAnnotationViewModel: [PartnerAnnotationViewModel] = []
   
   init(viewController: MapViewControllerProtocol) {
     self.viewController = viewController
@@ -27,16 +28,30 @@ extension MapPresenter: MapPresenterProtocol {
     viewController?.setUserLocation(userLocation, radius: radius)
   }
   
-  func didReceive(partnersOnMap: [PartnerOnMap]) {
+  func didReceive(partnersOnMap: Set<PartnerOnMap>) {
     
     var annotations: [PartnerAnnotationViewModel] = []
+    let group = DispatchGroup()
+    let locker = NSRecursiveLock()
     
-    partnersOnMap.forEach { (partnerOnMap) in
-      partnerOnMap.affiliatedStores.forEach { (affilatedStore) in
-        annotations.append(.init(kind: .store(affilatedId: affilatedStore.id, title: affilatedStore.title, latitude: affilatedStore.latitude, longitude: affilatedStore.longitude)))
+    partnersOnMap.forEach { partnerOnMap in
+      group.enter()
+      DispatchQueue.global(qos: .userInitiated).async {
+        partnerOnMap.affiliatedStores.forEach { affilatedStore in
+          let annotationToAdd: PartnerAnnotationViewModel = .init(kind: .store(affilatedId: affilatedStore.id, title: affilatedStore.title, latitude: affilatedStore.latitude, longitude: affilatedStore.longitude))
+          if self.partnersAnnotationViewModel.first(where: { $0 == annotationToAdd }) == nil {
+            locker.lock()
+            annotations.append(annotationToAdd)
+            locker.unlock()
+          }
+        }
+        group.leave()
       }
     }
     
-    viewController?.updateUI(viewModel: .init(annotations: annotations))
+    group.notify(queue: .main) {
+      self.partnersAnnotationViewModel += annotations
+      self.viewController?.updateUI(newPartnersOnMap: annotations)
+    }
   }
 }
