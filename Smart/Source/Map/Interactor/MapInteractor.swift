@@ -43,7 +43,7 @@ extension MapInteractor: MapInteractorProtocol {
     mapView: MKMapView)
   {
     throttler.cancel()
-    throttler.throttle(delay: .seconds(2)) {
+    throttler.throttle(delay: .milliseconds(1500)) {
       self.repository.requestPartners(userLocation: position, radius: Int(mapView.currentRadius())) { [weak self] result in
         switch result {
         case .success(let partnersOnMap):
@@ -74,7 +74,6 @@ extension MapInteractor: MapInteractorProtocol {
         }
       }
     }
-    
   }
 }
 

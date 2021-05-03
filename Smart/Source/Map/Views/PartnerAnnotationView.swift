@@ -37,26 +37,29 @@ final class PartnerAnnotationViewModel: NSObject, MKAnnotation {
   }
   
   // This property must be key-value observable, which the `@objc dynamic` attributes provide.
-  @objc dynamic var coordinate: CLLocationCoordinate2D {
+  @objc
+  dynamic var coordinate: CLLocationCoordinate2D {
     get {
       switch kind {
       case .store(_, _, let latitude, let longitude):
         return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
       }
     }
-    set {
-      // For most uses, `coordinate` can be a standard property declaration without the customized getter and setter shown here.
-      // The custom getter and setter are needed in this case because of how it loads data from the `Decodable` protocol.
-//      latitude = newValue.latitude
-//      longitude = newValue.longitude
-    }
+    
+    set { }
   }
   
-//  func ==(lhs: PartnerAnnotationViewModel, rhs: PartnerAnnotationViewModel) -> Bool {
-//    if case lhs.kind == rhs.kind {
-//      
-//    }
-//  }
+  static func ==(lhs: PartnerAnnotationViewModel, rhs: PartnerAnnotationViewModel) -> Bool {
+    lhs.isEqual(rhs)
+  }
+  
+  override func isEqual(_ object: Any?) -> Bool {
+    if object is PartnerAnnotationViewModel {
+      return (object as! PartnerAnnotationViewModel).kind == self.kind // swiftlint:disable:this force_cast
+    } else {
+      return false
+    }
+  }
 }
 
 fileprivate enum C {

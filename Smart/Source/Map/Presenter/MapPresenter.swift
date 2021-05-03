@@ -37,6 +37,6 @@ extension MapPresenter: MapPresenterProtocol {
       }
     }
     
-    viewController?.updateUI(partnersOnMap: annotations)
+    viewController?.updateUI(viewModel: .init(annotations: annotations))
   }
 }

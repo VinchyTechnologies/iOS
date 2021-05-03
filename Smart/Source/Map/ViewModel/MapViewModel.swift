@@ -7,5 +7,5 @@
 //
 
 struct MapViewModel {
-
+  let annotations: [PartnerAnnotationViewModel]
 }

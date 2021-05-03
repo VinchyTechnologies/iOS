@@ -13,14 +13,16 @@ import VinchyCore
 
 final class MapViewController: UIViewController {
   
+  // MARK: - Internal Properties
+  
   var interactor: MapInteractorProtocol?
 
-  private var mapChangedFromUserInteraction = false
-  
+  // MARK: - Private Properties
+    
   private var partnersOnMap: [PartnerAnnotationViewModel] = [] {
     didSet {
       partnersOnMap.forEach { partnerOnMap in
-        if mapView.annotations.first(where: { ($0 as? PartnerAnnotationViewModel)?.kind == partnerOnMap.kind }) == nil {
+        if mapView.annotations.first(where: { ($0 as? PartnerAnnotationViewModel) == partnerOnMap }) == nil {
           mapView.addAnnotation(partnerOnMap)
         }
       }
@@ -67,6 +69,8 @@ final class MapViewController: UIViewController {
   }()
   */
   
+  // MARK: - Lifecycle
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     view.addSubview(mapView)
@@ -101,10 +105,12 @@ final class MapViewController: UIViewController {
     navigationController?.setNavigationBarHidden(false, animated: true)
   }
   
-  @objc
-  private func didTapBackButton(_ button: UIButton) {
-    navigationController?.popViewController(animated: true)
-  }
+  // MARK: - Private Methods
+  
+//  @objc
+//  private func didTapBackButton(_ button: UIButton) {
+//    navigationController?.popViewController(animated: true)
+//  }
   
   @objc
   private func didDragMap(_ sender: UIGestureRecognizer) {
@@ -120,6 +126,8 @@ final class MapViewController: UIViewController {
     }
   }
 }
+
+// MARK: - UIGestureRecognizerDelegate
 
 extension MapViewController: UIGestureRecognizerDelegate {
   func gestureRecognizer(
@@ -143,10 +151,12 @@ extension MapViewController: MapViewControllerProtocol {
     mapView.setRegion(viewRegion, animated: false)
   }
   
-  func updateUI(partnersOnMap: [PartnerAnnotationViewModel]) {
-    self.partnersOnMap = partnersOnMap
+  func updateUI(viewModel: MapViewModel) {
+    self.partnersOnMap = viewModel.annotations
   }
 }
+
+// MARK: - MKMapViewDelegate
 
 extension MapViewController: MKMapViewDelegate {
   
