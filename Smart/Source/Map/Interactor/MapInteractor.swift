@@ -75,8 +75,8 @@ extension MapInteractor: MapInteractorProtocol {
     mapView: MKMapView,
     shouldUseThrottler: Bool)
   {
+    throttler.cancel()
     if shouldUseThrottler {
-      throttler.cancel()
       throttler.throttle(delay: .milliseconds(1250)) {
         self.processMove(to: position, mapVisibleRegion: mapVisibleRegion, mapView: mapView)
       }

@@ -50,7 +50,11 @@ final class LocationDataMapClusterView: MKAnnotationView {
     super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
     
     displayPriority = .defaultHigh
-    collisionMode = .circle
+    if #available(iOS 14.0, *) {
+      collisionMode = .rectangle
+    } else {
+      collisionMode = .rectangle
+    }
         
     addSubview(countLabel)
     countLabel.fill()
@@ -63,6 +67,11 @@ final class LocationDataMapClusterView: MKAnnotationView {
     countLabel.layer.cornerRadius = countLabel.frame.height / 2
     countLabel.clipsToBounds = true
     centerOffset = CGPoint(x: 0, y: -frame.size.height / 2)
+  }
+  
+  override func willMove(toSuperview newSuperview: UIView?) {
+    super.willMove(toSuperview: newSuperview)
+    addBounceAnnimation()
   }
   
   // MARK: - Private Methods
@@ -81,5 +90,22 @@ final class LocationDataMapClusterView: MKAnnotationView {
     } else {
         return String(count)
     }
+  }
+  
+  private func addBounceAnnimation() {
+    let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
+    
+    bounceAnimation.values = [NSNumber(value: 0.05), NSNumber(value: 1.1), NSNumber(value: 0.9), NSNumber(value: 1)]
+    bounceAnimation.duration = 0.6
+    
+    var timingFunctions = [AnyHashable](repeating: 0, count: bounceAnimation.values?.count ?? 0)
+    for _ in 0..<(bounceAnimation.values?.count ?? 0) {
+      timingFunctions.append(CAMediaTimingFunction(name: .easeInEaseOut))
+    }
+    bounceAnimation.timingFunctions = timingFunctions as? [CAMediaTimingFunction]
+    
+    bounceAnimation.isRemovedOnCompletion = false
+    
+    layer.add(bounceAnimation, forKey: "bounce")
   }
 }

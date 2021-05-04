@@ -6,13 +6,12 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import Core
 import CoreLocation
 import VinchyCore
 
 final class MapPresenter {
-  
-  private typealias ViewModel = MapViewModel
-  
+    
   weak var viewController: MapViewControllerProtocol?
   private var partnersAnnotationViewModel: [PartnerAnnotationViewModel] = []
   
@@ -32,17 +31,23 @@ extension MapPresenter: MapPresenterProtocol {
     
     var annotations: [PartnerAnnotationViewModel] = []
     let group = DispatchGroup()
-    let locker = NSRecursiveLock()
+    var locker = os_unfair_lock()
     
     partnersOnMap.forEach { partnerOnMap in
       group.enter()
       DispatchQueue.global(qos: .userInitiated).async {
         partnerOnMap.affiliatedStores.forEach { affilatedStore in
-          let annotationToAdd: PartnerAnnotationViewModel = .init(kind: .store(affilatedId: affilatedStore.id, title: affilatedStore.title, latitude: affilatedStore.latitude, longitude: affilatedStore.longitude))
+          let annotationToAdd: PartnerAnnotationViewModel = .init(
+            kind: .store(
+              affilatedId: affilatedStore.id,
+              title: affilatedStore.title,
+              latitude: affilatedStore.latitude,
+              longitude: affilatedStore.longitude))
+          
           if self.partnersAnnotationViewModel.first(where: { $0 == annotationToAdd }) == nil {
-            locker.lock()
+            os_unfair_lock_lock(&locker)
             annotations.append(annotationToAdd)
-            locker.unlock()
+            os_unfair_lock_unlock(&locker)
           }
         }
         group.leave()

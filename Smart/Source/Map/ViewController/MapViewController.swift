@@ -26,7 +26,7 @@ final class MapViewController: UIViewController {
     
     mapView.register(
       PartnerAnnotationView.self,
-      forAnnotationViewWithReuseIdentifier: "pin")
+      forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
     
     mapView.register(
       LocationDataMapClusterView.self,
@@ -162,14 +162,21 @@ extension MapViewController: MKMapViewDelegate {
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
     switch annotation {
     case is PartnerAnnotationViewModel:
-      let annotationView = PartnerAnnotationView(
+      var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier) as? PartnerAnnotationView
+      if annotationView == nil {
+        annotationView = PartnerAnnotationView(
         annotation: annotation,
-        reuseIdentifier: "pin")
-      annotationView.clusteringIdentifier = String(describing: PartnerAnnotationView.self)
+        reuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+      }
+      annotationView?.clusteringIdentifier = String(describing: PartnerAnnotationView.self)
       return annotationView
       
     case is MKClusterAnnotation:
-      return mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier, for: annotation)
+      var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier) as? LocationDataMapClusterView
+      if annotationView == nil {
+        annotationView = LocationDataMapClusterView(annotation: annotation, reuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
+      }
+      return annotationView
       
     default:
       return nil

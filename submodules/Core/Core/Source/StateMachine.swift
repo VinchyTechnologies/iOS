@@ -32,8 +32,13 @@ open class StateMachine<S, E> {
   
   public final func process(event: Event) {
     lock.synchronized {
-      guard let newState = transitionClosure?(currentState, event)
-      else { errorHandler?(currentState, event); return }
+      guard
+        let newState = transitionClosure?(currentState, event)
+      else {
+        errorHandler?(currentState, event)
+        return
+      }
+      
       let oldState = currentState
       currentState = newState
       observerClosure?(oldState, newState, event)

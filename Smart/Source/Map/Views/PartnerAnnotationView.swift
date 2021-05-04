@@ -127,6 +127,28 @@ final class PartnerAnnotationView: MKAnnotationView, Reusable {
   }
   
   required init?(coder aDecoder: NSCoder) { fatalError() }
+  
+  override func willMove(toSuperview newSuperview: UIView?) {
+    super.willMove(toSuperview: newSuperview)
+    addBounceAnnimation()
+  }
+  
+  private func addBounceAnnimation() {
+    let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
+    
+    bounceAnimation.values = [NSNumber(value: 0.05), NSNumber(value: 1.1), NSNumber(value: 0.9), NSNumber(value: 1)]
+    bounceAnimation.duration = 0.6
+    
+    var timingFunctions = [AnyHashable](repeating: 0, count: bounceAnimation.values?.count ?? 0)
+    for _ in 0..<(bounceAnimation.values?.count ?? 0) {
+      timingFunctions.append(CAMediaTimingFunction(name: .easeInEaseOut))
+    }
+    bounceAnimation.timingFunctions = timingFunctions as? [CAMediaTimingFunction]
+    
+    bounceAnimation.isRemovedOnCompletion = false
+    
+    layer.add(bounceAnimation, forKey: "bounce")
+  }
     
 }
 
