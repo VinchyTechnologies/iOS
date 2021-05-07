@@ -9,5 +9,5 @@
 import Foundation
 
 protocol MapRouterProtocol: AnyObject {
-    
+  func showMapDetailStore(partnerId: Int, affilatedId: Int)
 }

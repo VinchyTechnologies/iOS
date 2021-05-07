@@ -13,12 +13,12 @@ import Display
 final class PartnerAnnotationViewModel: NSObject, MKAnnotation {
   
   enum Kind: Equatable {
-    case store(affilatedId: Int, title: String?, latitude: CLLocationDegrees, longitude: CLLocationDegrees)
+    case store(partnerId: Int, affilatedId: Int, title: String?, latitude: CLLocationDegrees, longitude: CLLocationDegrees)
     
     static func ==(lhs: Kind, rhs: Kind) -> Bool {
       switch (lhs, rhs) {
-      case (let .store(lhsAffilatedId, _, _, _), let .store(rhsAffilatedId, _, _, _)):
-        return lhsAffilatedId == rhsAffilatedId
+      case (let .store(lhsPartnerId, lhsAffilatedId, _, _, _), let .store(rhsPartnerId, rhsAffilatedId, _, _, _)):
+        return lhsPartnerId == rhsPartnerId && lhsAffilatedId == rhsAffilatedId
       }
     }
   }
@@ -31,17 +31,31 @@ final class PartnerAnnotationViewModel: NSObject, MKAnnotation {
   
   var title: String? {
     switch kind {
-    case .store(_, let title, _, _):
+    case .store(_, _, let title, _, _):
       return title
     }
   }
   
+  var partnerId: Int {
+    switch kind {
+    case .store(let partnerId, _, _, _, _):
+      return partnerId
+    }
+  }
+  
+  var affilatedId: Int {
+    switch kind {
+    case .store(_, let affilatedId, _, _, _):
+      return affilatedId
+    }
+  }
+    
   // This property must be key-value observable, which the `@objc dynamic` attributes provide.
   @objc
   dynamic var coordinate: CLLocationCoordinate2D {
     get {
       switch kind {
-      case .store(_, _, let latitude, let longitude):
+      case .store(_, _, _, let latitude, let longitude):
         return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
       }
     }

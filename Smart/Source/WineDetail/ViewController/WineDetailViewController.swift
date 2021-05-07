@@ -243,7 +243,7 @@ extension WineDetailViewController: UICollectionViewDataSource {
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     
-    guard let type = viewModel?.sections[section] else {
+    guard let type = viewModel?.sections[safe: section] else {
       return 0
     }
     

@@ -39,6 +39,7 @@ extension MapPresenter: MapPresenterProtocol {
         partnerOnMap.affiliatedStores.forEach { affilatedStore in
           let annotationToAdd: PartnerAnnotationViewModel = .init(
             kind: .store(
+              partnerId: partnerOnMap.id,
               affilatedId: affilatedStore.id,
               title: affilatedStore.title,
               latitude: affilatedStore.latitude,

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FittedSheets
 
 final class MapRouter {
   
@@ -26,5 +27,19 @@ final class MapRouter {
 // MARK: - MapRouterProtocol
 
 extension MapRouter: MapRouterProtocol {
-  
+  func showMapDetailStore(partnerId: Int, affilatedId: Int) {
+    guard let controller = viewController else {
+      return
+    }
+    
+    let options = SheetOptions(shrinkPresentingViewController: false)
+    
+    let mapDetailStore = MapDetailStoreAssembly.assemblyModule(input: .init(partnerId: partnerId, affilatedId: affilatedId))
+    let sheet = SheetViewController(
+      controller: mapDetailStore,
+      sizes: [.percent(0.75), .fullscreen],
+      options: options)
+    
+    controller.present(sheet, animated: true, completion: nil)
+  }
 }

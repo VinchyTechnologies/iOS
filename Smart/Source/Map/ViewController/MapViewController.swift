@@ -151,13 +151,22 @@ extension MapViewController: MapViewControllerProtocol {
   }
   
   func updateUI(newPartnersOnMap: [PartnerAnnotationViewModel]) {
+    print("before", mapView.annotations.count)
+//    mapView.removeAnnotations(mapView.annotations)
     mapView.addAnnotations(newPartnersOnMap)
+    print("after", mapView.annotations.count)
   }
 }
 
 // MARK: - MKMapViewDelegate
 
 extension MapViewController: MKMapViewDelegate {
+  
+  func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
+    if let annotation = view.annotation as? PartnerAnnotationViewModel {
+      interactor?.didTapOnPin(partnerId: annotation.partnerId, affilatedId: annotation.affilatedId)
+    }
+  }
   
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
     switch annotation {

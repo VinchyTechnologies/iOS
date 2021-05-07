@@ -69,6 +69,10 @@ final class MapInteractor {
 
 extension MapInteractor: MapInteractorProtocol {
   
+  func didTapOnPin(partnerId: Int, affilatedId: Int) {
+    router.showMapDetailStore(partnerId: partnerId, affilatedId: affilatedId)
+  }
+  
   func didMove(
     to position: CLLocationCoordinate2D,
     mapVisibleRegion: MKMapRect,

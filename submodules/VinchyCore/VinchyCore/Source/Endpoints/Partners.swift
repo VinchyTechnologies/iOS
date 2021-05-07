@@ -9,6 +9,7 @@
 private enum PartnersEndpoint: EndpointProtocol {
   
   case map(latitude: Double, longitude: Double, radius: Int)
+  case storeInfo(partnerId: Int, affilatedId: Int)
   
   var host: String {
     return domain
@@ -18,12 +19,15 @@ private enum PartnersEndpoint: EndpointProtocol {
     switch self {
     case .map:
       return "/partners"
+      
+    case .storeInfo(let partnerId, let affilatedId):
+      return "/partners/" + String(partnerId) + "/stores/" + String(affilatedId)
     }
   }
   
   var method: HTTPMethod {
     switch self {
-    case .map:
+    case .map, .storeInfo:
       return .get
     }
   }
@@ -37,9 +41,11 @@ private enum PartnersEndpoint: EndpointProtocol {
         ("radius", String(radius)),
       ]
       return params
+      
+    case .storeInfo:
+      return nil
     }
   }
-  
 }
 
 public final class Partners {
@@ -54,7 +60,8 @@ public final class Partners {
     latitude: Double,
     longitude: Double,
     radius: Int,
-    completion: @escaping (Result<[PartnerOnMap], APIError>) -> Void) {
+    completion: @escaping (Result<[PartnerOnMap], APIError>) -> Void)
+  {
     api.request(endpoint: PartnersEndpoint.map(
                   latitude: latitude,
                   longitude: longitude,
@@ -62,4 +69,14 @@ public final class Partners {
                 completion: completion)
   }
   
+  public func getPartnerStoreInfo(
+    partnerId: Int,
+    affilatedId: Int,
+    completion: @escaping (Result<PartnerInfo, APIError>) -> Void)
+  {
+    api.request(endpoint: PartnersEndpoint.storeInfo(
+                  partnerId: partnerId,
+                  affilatedId: affilatedId),
+                completion: completion)
+  }
 }
