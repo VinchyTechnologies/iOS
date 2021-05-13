@@ -26,6 +26,8 @@ extension MapDetailStorePresenter: MapDetailStorePresenterProtocol {
     
     var sections: [MapDetailStoreViewModel.Section] = []
     
+//    sections += [.navigationBar([.init()])]
+    
     sections += [.title([.init(titleText: NSAttributedString(string: storeInfo.title, font: Font.bold(24), textColor: .dark, paragraphAlignment: .center))])]
     
     sections += [.address([.init(titleText: NSAttributedString(string: storeInfo.address ?? "Вернадский проспект, 16", font: Font.regular(18), textColor: .dark, paragraphAlignment: .center))])]

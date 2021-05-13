@@ -24,6 +24,11 @@ final class MapDetailStoreViewController: UIViewController {
   private var viewModel: MapDetailStoreViewModel? {
     didSet {
       collectionView.reloadData()
+      collectionView.performBatchUpdates({
+        let sheetSize = SheetSize.fixed(self.layout.collectionViewContentSize.height + 48 + 24 /* pull Bar height */ + (UIApplication.shared.asKeyWindow?.safeAreaInsets.bottom ?? 0))
+      self.sheetViewController?.sizes = [sheetSize]
+        self.sheetViewController?.resize(to: [sheetSize][0], duration: 0.5)
+      }, completion: nil) // This blocks layoutIfNeeded animation
     }
   }
   
@@ -36,6 +41,13 @@ final class MapDetailStoreViewController: UIViewController {
     }
     
     switch type {
+    case .navigationBar:
+      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(48)))
+      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(48)), subitems: [item])
+      let section = NSCollectionLayoutSection(group: group)
+      section.contentInsets = .init(top: 15, leading: 15, bottom: 0, trailing: 15)
+      return section
+      
     case .title, .address:
       let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(15)))
       item.edgeSpacing = .init(leading: .none, top: .fixed(5), trailing: .none, bottom: .fixed(10))
@@ -72,6 +84,7 @@ final class MapDetailStoreViewController: UIViewController {
     $0.backgroundColor = .mainBackground
     $0.dataSource = self
     $0.register(
+      MapNavigationBarCollectionCell.self,
       TextCollectionCell.self,
       WorkingHoursCollectionCell.self,
       AssortmentCollectionCell.self,
@@ -79,23 +92,29 @@ final class MapDetailStoreViewController: UIViewController {
     return $0
   }(WineDetailCollectionView(frame: .zero, collectionViewLayout: layout))
   
+  private lazy var navigationBar: MapNavigationBar = {
+    $0.delegate = self
+    return $0
+  }(MapNavigationBar())
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
     view.backgroundColor = .mainBackground
-    navigationItem.largeTitleDisplayMode = .never
-    navigationItem.leftBarButtonItem = .init(image: UIImage(systemName: "figure.walk")?.withTintColor(.accent, renderingMode: .alwaysOriginal), style: .plain, target: self, action: #selector(didTapBuildRoute(_:)))
-    let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
-    navigationItem.rightBarButtonItem = UIBarButtonItem(
-      image: UIImage(systemName: "xmark", withConfiguration: imageConfig)?.withTintColor(.blueGray, renderingMode: .alwaysOriginal),
-      style: .plain,
-      target: self,
-      action: #selector(didTapClose(_:)))
+    
+    view.addSubview(navigationBar)
+    navigationBar.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      navigationBar.topAnchor.constraint(equalTo: view.topAnchor, constant: 15),
+      navigationBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      navigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      navigationBar.heightAnchor.constraint(equalToConstant: 48),
+    ])
     
     view.addSubview(collectionView)
     collectionView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+      collectionView.topAnchor.constraint(equalTo: navigationBar.bottomAnchor),
       collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
       collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -128,6 +147,9 @@ extension MapDetailStoreViewController: UICollectionViewDataSource {
     -> Int
   {
     switch viewModel?.sections[safe: section] {
+    case .navigationBar(let model):
+      return model.count
+    
     case .title(let model):
       return model.count
       
@@ -154,6 +176,11 @@ extension MapDetailStoreViewController: UICollectionViewDataSource {
     -> UICollectionViewCell
   {
     switch viewModel?.sections[safe: indexPath.section] {
+    case .navigationBar:
+      // swiftlint:disable:next force_cast
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MapNavigationBarCollectionCell.reuseId, for: indexPath) as! MapNavigationBarCollectionCell
+      return cell
+      
     case .title(let model), .address(let model):
       // swiftlint:disable:next force_cast
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseId, for: indexPath) as! TextCollectionCell
@@ -191,19 +218,24 @@ extension MapDetailStoreViewController: UICollectionViewDataSource {
 extension MapDetailStoreViewController: MapDetailStoreViewControllerProtocol {
   func updateUI(viewModel: MapDetailStoreViewModel) {
     self.viewModel = viewModel
-    collectionView.layoutSubviews()
-    print(collectionView.collectionViewLayout.collectionViewContentSize)
-    
-    sheetViewController?.setSizes(
-      [
-        .fixed(layout.collectionViewContentSize.height + 24 /* pull Bar height */ + (UIApplication.shared.asKeyWindow?.safeAreaInsets.bottom ?? 0)), .fullscreen])
   }
 }
 
 extension MapDetailStoreViewController: VinchySimpleConiniousCaruselCollectionCellDelegate {
   
   func didTapBottleCell(wineID: Int64) {
+    interactor?.didTapRecommendedWine(wineID: wineID)
   }
   
   func didTapCompilationCell(wines: [ShortWine], title: String?) { }
+}
+
+extension MapDetailStoreViewController: MapNavigationBarDelegate {
+  
+  func didTapLeadingButton(_ button: UIButton) {
+  }
+  
+  func didTapTrailingButton(_ button: UIButton) {
+    sheetViewController?.attemptDismiss(animated: true)
+  }
 }

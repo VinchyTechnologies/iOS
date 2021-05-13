@@ -19,8 +19,6 @@ final class MapDetailStoreAssembly {
 
     router.interactor = interactor
     viewController.interactor = interactor
-
-    let navigationController = NavigationController(rootViewController: viewController)
-    return viewController//navigationController
+    return viewController
   }
 }

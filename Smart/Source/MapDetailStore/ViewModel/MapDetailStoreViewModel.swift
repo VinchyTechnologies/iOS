@@ -10,6 +10,7 @@ import CommonUI
 
 struct MapDetailStoreViewModel {
   enum Section {
+    case navigationBar([MapNavigationBarCollectionCellViewModel])
     case title([TextCollectionCellViewModel])
     case address([TextCollectionCellViewModel])
     case workingHours([WorkingHoursCollectionCellViewModel])
