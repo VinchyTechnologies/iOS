@@ -37,7 +37,7 @@ extension MapRouter: MapRouterProtocol {
     let mapDetailStore = MapDetailStoreAssembly.assemblyModule(input: .init(partnerId: partnerId, affilatedId: affilatedId))
     let sheet = SheetViewController(
       controller: mapDetailStore,
-      sizes: [.percent(0.75), .fullscreen],
+      sizes: [.fixed(150)],
       options: options)
     
     controller.present(sheet, animated: true, completion: nil)
