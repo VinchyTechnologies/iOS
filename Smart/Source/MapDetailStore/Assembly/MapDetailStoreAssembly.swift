@@ -9,7 +9,7 @@
 import Display
 
 final class MapDetailStoreAssembly {
-  static func assemblyModule(input: MapDetailStoreInput) -> UIViewController {
+  static func assemblyModule(input: MapDetailStoreInput) -> MapDetailStoreViewController {
 
     let viewController = MapDetailStoreViewController()
 

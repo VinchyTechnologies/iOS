@@ -8,9 +8,12 @@
 
 import CoreLocation
 import VinchyCore
+import MapKit
 
 protocol MapViewControllerProtocol: AnyObject {
   func setUserLocation(_ userLocation: CLLocationCoordinate2D, radius: Double)
   func updateUI(viewModel: MapViewModel)
   func updateUI(newPartnersOnMap: [PartnerAnnotationViewModel])
+  func drawRoute(polyline: MKPolyline)
+  func deselectSelectedPin()
 }

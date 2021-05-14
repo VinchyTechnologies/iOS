@@ -129,7 +129,7 @@ final class PartnerAnnotationView: MKAnnotationView, Reusable {
     addSubview(titleLabel)
     addSubview(triangleView)
     
-    centerOffset = CGPoint(x: 0, y: -frame.size.height / 2)
+//    centerOffset = CGPoint(x: 0, y: -frame.size.height / 2)
   }
   
   override func layoutSubviews() {

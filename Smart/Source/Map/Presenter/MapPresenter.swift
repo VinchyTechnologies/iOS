@@ -9,6 +9,7 @@
 import Core
 import CoreLocation
 import VinchyCore
+import MapKit
 
 final class MapPresenter {
     
@@ -23,6 +24,15 @@ final class MapPresenter {
 // MARK: - MapPresenterProtocol
 
 extension MapPresenter: MapPresenterProtocol {
+  
+  func deselectSelectedPin() {
+    viewController?.deselectSelectedPin()
+  }
+  
+  func didReceive(route: MKRoute) {
+    viewController?.drawRoute(polyline: route.polyline)
+  }
+  
   func updateUserLocationAndRegion(_ userLocation: CLLocationCoordinate2D, radius: Double) {
     viewController?.setUserLocation(userLocation, radius: radius)
   }

@@ -12,10 +12,14 @@ import FittedSheets
 import VinchyCore
 import UIKit
 
+protocol MapDetailStoreViewControllerDelegate: AnyObject {
+  func didTapRouteButton(_ button: UIButton)
+}
+
 final class MapDetailStoreViewController: UIViewController {
   
   // MARK: - Internal Properties
-  
+  weak var delegate: MapDetailStoreViewControllerDelegate?
   var interactor: MapDetailStoreInteractorProtocol?
   
   // MARK: - Private Properties
@@ -233,6 +237,8 @@ extension MapDetailStoreViewController: VinchySimpleConiniousCaruselCollectionCe
 extension MapDetailStoreViewController: MapNavigationBarDelegate {
   
   func didTapLeadingButton(_ button: UIButton) {
+    sheetViewController?.attemptDismiss(animated: true)
+    self.delegate?.didTapRouteButton(button)
   }
   
   func didTapTrailingButton(_ button: UIButton) {

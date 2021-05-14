@@ -18,4 +18,8 @@ protocol MapInteractorProtocol: AnyObject {
     shouldUseThrottler: Bool)
   
   func didTapOnPin(partnerId: Int, affilatedId: Int)
+  
+  func didTapShowRouteOnBottomSheet(coordinate: CLLocationCoordinate2D)
+  
+  func requestBottomSheetDismissToDeselectSelectedPin()
 }

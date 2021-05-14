@@ -147,24 +147,64 @@ extension MapViewController: MapViewControllerProtocol {
     mapView.setRegion(viewRegion, animated: false)
   }
   
+  func deselectSelectedPin() {
+    mapView.selectedAnnotations.forEach { annotation in
+      mapView.deselectAnnotation(annotation, animated: true)
+    }
+  }
+  
   func updateUI(viewModel: MapViewModel) {
   }
   
   func updateUI(newPartnersOnMap: [PartnerAnnotationViewModel]) {
-    print("before", mapView.annotations.count)
 //    mapView.removeAnnotations(mapView.annotations)
     mapView.addAnnotations(newPartnersOnMap)
-    print("after", mapView.annotations.count)
   }
+  
+  func drawRoute(polyline: MKPolyline) {
+    mapView.annotations.forEach { annotation in
+      if (annotation as? PartnerAnnotationViewModel) != (mapView.selectedAnnotations.first as? PartnerAnnotationViewModel) {
+        mapView.removeAnnotation(annotation)
+      }
+    }
+    mapView.removeOverlays(mapView.overlays)
+    mapView.addOverlay(polyline, level: .aboveRoads)
+    let routeRect = polyline.boundingMapRect
+    mapView.setRegion(MKCoordinateRegion(routeRect), animated: true)
+  }
+  
 }
 
 // MARK: - MKMapViewDelegate
 
 extension MapViewController: MKMapViewDelegate {
   
+  func mapView(_ mapView: MKMapView, didDeselect view: MKAnnotationView) {
+    UIView.animate(
+      withDuration: 0.4,
+      delay: 0,
+      usingSpringWithDamping: 0.5,
+      initialSpringVelocity: 0.8,
+      options: .curveEaseIn) {
+      view.transform = .identity
+    } completion: { _ in
+    }
+  }
+  
   func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
     if let annotation = view.annotation as? PartnerAnnotationViewModel {
-      interactor?.didTapOnPin(partnerId: annotation.partnerId, affilatedId: annotation.affilatedId)
+      UIView.animate(
+        withDuration: 0.3,
+        delay: 0,
+        usingSpringWithDamping: 0.5,
+        initialSpringVelocity: 0.8,
+        options: .curveEaseIn) {
+        view.transform = CGAffineTransform(scaleX: 1.2, y: 1.2).translatedBy(x: 0, y: -10)
+      } completion: { (_) in
+        self.interactor?.didTapOnPin(
+          partnerId: annotation.partnerId,
+          affilatedId: annotation.affilatedId)
+      }
     }
   }
   
@@ -190,5 +230,20 @@ extension MapViewController: MKMapViewDelegate {
     default:
       return nil
     }    
+  }
+  
+  func mapView(_ mapView: MKMapView, rendererFor overlay: MKOverlay) -> MKOverlayRenderer {
+    let renderer = MKPolylineRenderer(overlay: overlay)
+    renderer.strokeColor = .accent
+    renderer.lineWidth = 4.0
+    return renderer
+  }
+}
+
+extension MapViewController: MapDetailStoreViewControllerDelegate {
+  func didTapRouteButton(_ button: UIButton) {
+    if let coordinate = mapView.selectedAnnotations.first?.coordinate {
+      interactor?.didTapShowRouteOnBottomSheet(coordinate: coordinate)
+    }
   }
 }

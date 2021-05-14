@@ -128,9 +128,7 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
   }
   
   func didTapWriteReviewButton() {
-    
-    print(#function)
-    
+        
     guard let wineID = wine?.id else {
       return
     }

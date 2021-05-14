@@ -14,6 +14,10 @@ fileprivate enum C {
   static let defaultRadius: Double = 200
 }
 
+fileprivate enum MapState {
+  case normal, routing
+}
+
 final class MapInteractor {
   
   private let repository: MapRepositoryProtocol
@@ -23,6 +27,7 @@ final class MapInteractor {
   private var partnersOnMap: Set<PartnerOnMap> = Set<PartnerOnMap>() 
   private var currentRadius = C.defaultRadius
   private var currentPosition: CLLocationCoordinate2D?
+  private var mapState = MapState.normal
   
   init(
     repository: MapRepositoryProtocol,
@@ -69,6 +74,41 @@ final class MapInteractor {
 
 extension MapInteractor: MapInteractorProtocol {
   
+  func requestBottomSheetDismissToDeselectSelectedPin() {
+    presenter.deselectSelectedPin()
+  }
+  
+  func didTapShowRouteOnBottomSheet(coordinate: CLLocationCoordinate2D) {
+    mapState = .routing
+    let currentPlacemark = MKPlacemark(coordinate: coordinate)
+    let directionRequest = MKDirections.Request()
+    let destinationPlacemark = MKPlacemark(placemark: currentPlacemark)
+    
+    directionRequest.source = MKMapItem.forCurrentLocation()
+    directionRequest.destination = MKMapItem(placemark: destinationPlacemark)
+    directionRequest.transportType = .walking
+    
+    let directions = MKDirections(request: directionRequest)
+    directions.calculate { (directionsResponse, error) in
+      guard let directionsResponse = directionsResponse else {
+        if let error = error {
+          self.router.dismissCurrentBottomSheet(shouldUseDidDismissCallback: true)
+//          self.showAlert(message: error.localizedDescription)
+          // TODO: - Alert
+        }
+        return
+      }
+      
+      if let route = directionsResponse.routes.first {
+        self.router.dismissCurrentBottomSheet(shouldUseDidDismissCallback: false)
+        self.presenter.didReceive(route: route)
+      } else {
+        self.router.dismissCurrentBottomSheet(shouldUseDidDismissCallback: true)
+        // TODO: - Alert
+      }
+    }
+  }
+  
   func didTapOnPin(partnerId: Int, affilatedId: Int) {
     router.showMapDetailStore(partnerId: partnerId, affilatedId: affilatedId)
   }
@@ -79,6 +119,7 @@ extension MapInteractor: MapInteractorProtocol {
     mapView: MKMapView,
     shouldUseThrottler: Bool)
   {
+    guard mapState == .normal else { return }
     throttler.cancel()
     if shouldUseThrottler {
       throttler.throttle(delay: .milliseconds(1250)) {

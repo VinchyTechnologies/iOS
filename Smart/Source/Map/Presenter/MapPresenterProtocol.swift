@@ -8,8 +8,11 @@
 
 import CoreLocation
 import VinchyCore
+import MapKit
 
 protocol MapPresenterProtocol: AnyObject {
   func updateUserLocationAndRegion(_ userLocation: CLLocationCoordinate2D, radius: Double)
   func didReceive(partnersOnMap: Set<PartnerOnMap>)
+  func didReceive(route: MKRoute)
+  func deselectSelectedPin()
 }
