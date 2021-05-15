@@ -35,12 +35,6 @@ final class Assembly {
     return navController
   }
 
-  static func buildShowcaseModule(navTitle: String?, mode: ShowcaseMode) -> UIViewController {
-    let controller = ShowcaseViewController(navTitle: navTitle, mode: mode)
-    controller.hidesBottomBarWhenPushed = true
-    return controller
-  }
-
   static func buildLoveModule() -> NavigationController {
     let controller = LoveViewController()
     let navController = NavigationController(rootViewController: controller)

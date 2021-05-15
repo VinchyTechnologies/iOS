@@ -192,6 +192,7 @@ extension LoveViewController: UICollectionViewDataSource {
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as! WineCollectionViewCell
     cell.decorate(
       model: .init(
+        wineID: wine.id,
         imageURL: imageURL(from: wine.wineID).toURL,
         titleText: wine.title,
         subtitleText: nil))

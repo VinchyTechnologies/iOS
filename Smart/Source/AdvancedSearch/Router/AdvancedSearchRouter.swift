@@ -28,17 +28,6 @@ final class AdvancedSearchRouter {
 
 extension AdvancedSearchRouter: AdvancedSearchRouterProtocol {
 
-  func pushToSearchResultsController(
-    navigationTitle: String?,
-    params: [(String, String)])
-  {
-    viewController?.navigationController?.pushViewController(
-      Assembly.buildShowcaseModule(
-        navTitle: navigationTitle,
-        mode: .advancedSearch(params: params)),
-      animated: true)
-  }
-
   func presentAllCountries(preSelectedCountryCodes: [String]) {
     viewController?.present(
       Assembly.buildChooseCountiesModule(
