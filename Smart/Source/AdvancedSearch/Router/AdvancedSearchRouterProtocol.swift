@@ -8,7 +8,6 @@
 
 import Foundation
 
-protocol AdvancedSearchRouterProtocol: AnyObject {
+protocol AdvancedSearchRouterProtocol: ShowcaseRoutable {
   func presentAllCountries(preSelectedCountryCodes: [String])
-  func pushToSearchResultsController(navigationTitle: String?, params: [(String, String)])
 }

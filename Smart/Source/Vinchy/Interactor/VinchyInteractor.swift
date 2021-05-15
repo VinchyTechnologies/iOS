@@ -189,6 +189,6 @@ extension VinchyInteractor {
       return
     }
     
-    router.pushToShowcaseViewController(navigationTitle: title, wines: wines)
+    router.pushToShowcaseViewController(input: .init(title: title, mode: .normal(wines: wines)))
   }
 }

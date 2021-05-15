@@ -11,11 +11,13 @@ import Display
 
 public struct WineCollectionViewCellViewModel: ViewModelProtocol, Hashable {
 
+  public let wineID: Int64
   fileprivate let imageURL: URL?
   fileprivate let titleText: String?
   fileprivate let subtitleText: String?
 
-  public init(imageURL: URL?, titleText: String?, subtitleText: String?) {
+  public init(wineID: Int64, imageURL: URL?, titleText: String?, subtitleText: String?) {
+    self.wineID = wineID
     self.imageURL = imageURL
     self.titleText = titleText
     self.subtitleText = subtitleText
