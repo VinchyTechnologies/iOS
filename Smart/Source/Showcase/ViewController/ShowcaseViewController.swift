@@ -91,13 +91,6 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
   }
 }
 
-extension ShowcaseViewController: ErrorViewDelegate {
-  
-  func didTapErrorButton(_ button: UIButton) {
-//    interactor?.willDisplayLoadingView()
-  }
-}
-
 extension ShowcaseViewController: UICollectionViewDataSource {
   
   func numberOfSections(in collectionView: UICollectionView) -> Int {
@@ -192,14 +185,19 @@ extension ShowcaseViewController: UICollectionViewDataSource {
     if case .loading = viewModel?.sections[section]  {
       return .zero
     }
-    return .init(width: collectionView.frame.width, height: 50)
+    return .init(width: collectionView.frame.width, height: 48)
   }
 }
 
 extension ShowcaseViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//    guard let wine = viewModel?.sections[safe: indexPath.section]?.wines[safe: indexPath.row] else { return }
-//    navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wine.id), animated: true)
+    switch viewModel?.sections[safe: indexPath.section] {
+    case .shelf(_, let wines):
+      interactor?.didSelectWine(wineID: wines[indexPath.row].wineID)
+      
+    case .loading, .none:
+      break
+    }
   }
   
   func collectionView(
@@ -238,6 +236,7 @@ extension ShowcaseViewController: UICollectionViewDelegateFlowLayout {
 extension ShowcaseViewController: ShowcaseViewControllerProtocol {
   
   func updateUI(viewModel: ShowcaseViewModel) {
+    hideErrorView()
     self.viewModel = viewModel
   }
   
@@ -248,5 +247,12 @@ extension ShowcaseViewController: ShowcaseViewControllerProtocol {
       errorView.delegate = self
       self.collectionView.backgroundView = errorView
     }
+  }
+}
+
+extension ShowcaseViewController: ErrorViewDelegate {
+  
+  func didTapErrorButton(_ button: UIButton) {
+    interactor?.viewDidLoad()
   }
 }

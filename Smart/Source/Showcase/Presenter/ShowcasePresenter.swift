@@ -43,6 +43,7 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
     case .advancedSearch:
       let wines = wines.compactMap { wine -> WineCollectionViewCellViewModel? in
         WineCollectionViewCellViewModel(
+          wineID: wine.id,
           imageURL: wine.mainImageUrl?.toURL,
           titleText: wine.title,
           subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode))
@@ -65,6 +66,7 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
       sections = groupedWines.map({ arrayWine -> ShowcaseViewModel.Section in
         let wines = arrayWine.compactMap { wine -> WineCollectionViewCellViewModel? in
           WineCollectionViewCellViewModel(
+            wineID: wine.id,
             imageURL: wine.mainImageUrl?.toURL,
             titleText: wine.title,
             subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode))
@@ -95,9 +97,12 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
       message: error.localizedDescription)
   }
   
-  func showNothingFoundErrorAlert() {
-    viewController?.showAlert(
-      title: localized("nothing_found").firstLetterUppercased(), message: "")
+  func showNothingFoundErrorView() {
+    viewController?.updateUI(
+      errorViewModel: ErrorViewModel(
+        titleText: localized("nothing_found").firstLetterUppercased(),
+        subtitleText: nil,
+        buttonText: nil))
   }
   
   func showInitiallyLoadingError(error: Error) {

@@ -20,6 +20,10 @@ final class ShowcaseInteractor {
   private let presenter: ShowcasePresenterProtocol
   private let stateMachine = PagingStateMachine<[ShortWine]>()
   private var wines: [ShortWine] = []
+  private lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
+    guard let self = self else { return }
+    self.presenter.startLoading()
+  }
   
   init(
     input: ShowcaseInput,
@@ -57,14 +61,29 @@ final class ShowcaseInteractor {
       stateMachine.invokeSuccess(with: data)
       
     case .advancedSearch(var params):
+      if offset == .zero {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+          self.dispatchWorkItemHud.perform()
+        }
+      }
+      
       params += [("offset", String(offset)), ("limit", String(C.limit))]
       Wines.shared.getFilteredWines(params: params) { [weak self] result in
+        guard let self = self else { return }
+        
+        if offset == .zero {
+          self.dispatchWorkItemHud.cancel()
+          DispatchQueue.main.async {
+            self.presenter.stopLoading()
+          }
+        }
+        
         switch result {
         case .success(let data):
-          self?.stateMachine.invokeSuccess(with: data)
+          self.stateMachine.invokeSuccess(with: data)
           
         case .failure(let error):
-          self?.stateMachine.fail(with: error)
+          self.stateMachine.fail(with: error)
         }
       }
     }
@@ -105,7 +124,11 @@ final class ShowcaseInteractor {
         presenter.showErrorAlert(error: error)
       }
     } else {
-      presenter.update(wines: wines, needLoadMore: needLoadMore)
+      if wines.isEmpty {
+        presenter.showNothingFoundErrorView()
+      } else {
+        presenter.update(wines: wines, needLoadMore: needLoadMore)
+      }
     }
   }
 }
@@ -122,7 +145,7 @@ extension ShowcaseInteractor: ShowcaseInteractorProtocol {
     loadInitData()
   }
   
-  func didSelectWine(input: ShowcaseInput) {
-//    router.pushToShowcaseViewController(input: input)
+  func didSelectWine(wineID: Int64) {
+    router.pushToWineDetailViewController(wineID: wineID)
   }
 }

@@ -12,7 +12,7 @@ import VinchyCore
 protocol ShowcasePresenterProtocol: AnyObject {
   func showErrorAlert(error: Error)
   func showInitiallyLoadingError(error: Error)
-  func showNothingFoundErrorAlert()
+  func showNothingFoundErrorView()
   func update(wines: [ShortWine], needLoadMore: Bool)
   func startLoading()
   func stopLoading()
