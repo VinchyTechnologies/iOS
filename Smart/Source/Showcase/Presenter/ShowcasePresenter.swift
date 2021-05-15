@@ -36,11 +36,11 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
     viewController?.stopLoadingAnimation()
   }
   
-  func update(wines: [ShortWine], shouldLoadMore: Bool) {
+  func update(wines: [ShortWine], needLoadMore: Bool) {
     var sections: [ShowcaseViewModel.Section] = []
     
     switch input.mode {
-    case .normal:
+    case .advancedSearch:
       let wines = wines.compactMap { wine -> WineCollectionViewCellViewModel? in
         WineCollectionViewCellViewModel(
           imageURL: wine.mainImageUrl?.toURL,
@@ -48,8 +48,11 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
           subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode))
       }
       sections = [.shelf(title: localized("all").firstLetterUppercased(), wines: wines)]
+      if needLoadMore {
+        sections.append(.loading)
+      }
       
-    case .advancedSearch:
+    case .normal:
       var groupedWines = wines.grouped(map: { $0.winery?.countryCode ?? localized("unknown_country_code") })
       
       groupedWines.sort { (arr1, arr2) -> Bool in
@@ -59,7 +62,7 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
         }
         return false
       }
-      sections = groupedWines.map({ (arrayWine) -> ShowcaseViewModel.Section in
+      sections = groupedWines.map({ arrayWine -> ShowcaseViewModel.Section in
         let wines = arrayWine.compactMap { wine -> WineCollectionViewCellViewModel? in
           WineCollectionViewCellViewModel(
             imageURL: wine.mainImageUrl?.toURL,
@@ -91,6 +94,7 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
       title: localized("error").firstLetterUppercased(),
       message: error.localizedDescription)
   }
+  
   func showNothingFoundErrorAlert() {
     viewController?.showAlert(
       title: localized("nothing_found").firstLetterUppercased(), message: "")

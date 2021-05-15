@@ -38,7 +38,7 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
     collectionView.delegate = self
     collectionView.backgroundColor = .clear
     collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-    collectionView.register(WineCollectionViewCell.self)
+    collectionView.register(WineCollectionViewCell.self, LoadingIndicatorCell.self)
     collectionView.register(HeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderReusableView.reuseId)
     collectionView.delaysContentTouches = false
     collectionView.contentInset = .init(top: 0, left: 0, bottom: 10, right: 0)
@@ -113,6 +113,9 @@ extension ShowcaseViewController: UICollectionViewDataSource {
     case .shelf(_, let model):
       return model.count
       
+    case .loading:
+      return 1
+      
     case .none:
       return 0
     }
@@ -130,6 +133,11 @@ extension ShowcaseViewController: UICollectionViewDataSource {
       cell.decorate(model: model[indexPath.row])
       return cell
       
+    case .loading:
+      // swiftlint:disable:next force_cast
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LoadingIndicatorCell.reuseId, for: indexPath) as! LoadingIndicatorCell
+      return cell
+      
     case .none:
       return .init()
     }
@@ -140,15 +148,15 @@ extension ShowcaseViewController: UICollectionViewDataSource {
     willDisplay cell: UICollectionViewCell,
     forItemAt indexPath: IndexPath)
   {
-//    switch input.mode {
-//    case .normal:
-//      break
-//
-//    case .advancedSearch:
-//      if indexPath.section == viewModel?.sections.count ?? 0 - 1 && indexPath.row == viewModel?.sections[indexPath.section].wines.count ?? 0 - 2 {
-//        interactor?.willDisplayLoadingView()
-//      }
-//    }
+    if case .advancedSearch = input.mode {
+      switch viewModel?.sections[safe: indexPath.section] {
+      case .loading:
+        interactor?.willDisplayLoadingView()
+        
+      case .shelf, .none:
+        break
+      }
+    }
   }
   
   func collectionView(
@@ -166,7 +174,7 @@ extension ShowcaseViewController: UICollectionViewDataSource {
         reusableview.decorate(model: .init(title: model))
         return reusableview
         
-      case .none:
+      case .loading, .none:
         return .init()
       }
       
@@ -181,7 +189,10 @@ extension ShowcaseViewController: UICollectionViewDataSource {
     referenceSizeForHeaderInSection section: Int)
     -> CGSize
   {
-    .init(width: collectionView.frame.width, height: 50)
+    if case .loading = viewModel?.sections[section]  {
+      return .zero
+    }
+    return .init(width: collectionView.frame.width, height: 50)
   }
 }
 
@@ -197,21 +208,30 @@ extension ShowcaseViewController: UICollectionViewDelegateFlowLayout {
     sizeForItemAt indexPath: IndexPath)
     -> CGSize
   {
-    let rowCount: Int = {
-      if UIDevice.current.userInterfaceIdiom == .pad {
-        if Orientation.isLandscape {
-          return 4
+    switch viewModel?.sections[safe: indexPath.section] {
+    case .shelf:
+      let rowCount: Int = {
+        if UIDevice.current.userInterfaceIdiom == .pad {
+          if Orientation.isLandscape {
+            return 4
+          } else {
+            return 3
+          }
         } else {
-          return 3
+          return 2
         }
-      } else {
-        return 2
-      }
-    }()
+      }()
+      
+      let itemWidth = Int((UIScreen.main.bounds.width - C.inset * CGFloat(rowCount + 1)) / CGFloat(rowCount))
+      let itemHeight = Int(Double(itemWidth) * 1.5)
+      return CGSize(width: itemWidth, height: itemHeight)
+      
+    case .loading:
+      return .init(width: collectionView.frame.width, height: 48)
     
-    let itemWidth = Int((UIScreen.main.bounds.width - C.inset * CGFloat(rowCount + 1)) / CGFloat(rowCount))
-    let itemHeight = Int(Double(itemWidth) * 1.5)
-    return CGSize(width: itemWidth, height: itemHeight)
+    case .none:
+      return .zero
+    }
   }
 }
 

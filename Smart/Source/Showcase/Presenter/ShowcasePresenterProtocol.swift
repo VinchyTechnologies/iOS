@@ -13,7 +13,7 @@ protocol ShowcasePresenterProtocol: AnyObject {
   func showErrorAlert(error: Error)
   func showInitiallyLoadingError(error: Error)
   func showNothingFoundErrorAlert()
-  func update(wines: [ShortWine], shouldLoadMore: Bool)
+  func update(wines: [ShortWine], needLoadMore: Bool)
   func startLoading()
   func stopLoading()
 }
