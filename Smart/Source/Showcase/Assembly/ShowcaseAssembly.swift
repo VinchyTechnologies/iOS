@@ -10,13 +10,15 @@ import UIKit
 
 final class ShowcaseAssembly {
 
-  static func assemblyModule(input: ShowcaseInput) -> ShowcaseViewController {
+  static func assemblyModule(input: ShowcaseInput) -> UIViewController {
     
-    let viewController = ShowcaseViewController(mode: input.mode)
-    let router = ShowcaseRouter(viewController: viewController, input: input)
-    let presenter = ShowcasePresenter(viewController: viewController, input: input)
-    let interactor = ShowcaseInteractor(router: router, presenter: presenter, mode: input.mode)
+    let viewController = ShowcaseViewController(input: input)
 
+    let router = ShowcaseRouter(viewController: viewController, input: input)
+    let presenter = ShowcasePresenter(input: input, viewController: viewController)
+    let interactor = ShowcaseInteractor(input: input, router: router, presenter: presenter)
+
+    router.interactor = interactor
     viewController.interactor = interactor
 
     return viewController

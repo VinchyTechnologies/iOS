@@ -6,14 +6,14 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import VinchyCore
+import CommonUI
 
 struct ShowcaseViewModel {
+  
+  enum Section {
+    case shelf(title: String?, wines: [WineCollectionViewCellViewModel])
+  }
+  
   let navigationTitle: String?
-  var sections: [ShowcaseWineSection]
-}
-
-struct ShowcaseWineSection {
-   let title: String?
-   var wines: [ShortWine]
+  let sections: [Section]
 }

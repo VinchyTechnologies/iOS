@@ -12,77 +12,69 @@ import VinchyCore
 import Display
 import StringFormatting
 
-enum ShowcaseMode {
-  case normal(wines: [ShortWine])
-  case advancedSearch(params: [(String, String)])
+fileprivate enum C {
+  static let limit: Int = 40
+  static let inset: CGFloat = 10
 }
 
 final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, Loadable {
+    
+  var interactor: ShowcaseInteractorProtocol?
   
-  private enum C {
-    static let limit: Int = 40
-    static let inset: CGFloat = 10
-  }
+  // MARK: - Private Properties
   
   private(set) var loadingIndicator = ActivityIndicatorView()
-  var interactor: ShowcaseInteractorProtocol?
   
   private var viewModel: ShowcaseViewModel? {
     didSet {
       navigationItem.title = viewModel?.navigationTitle
-        self.collectionView.reloadData()
+      collectionView.reloadData()
     }
   }
-
-  private var filtersHeaderView = ASFiltersHeaderView()
   
   private lazy var collectionView: UICollectionView = {
-    
-    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout())
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.dataSource = self
     collectionView.delegate = self
     collectionView.backgroundColor = .clear
     collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-    
     collectionView.register(WineCollectionViewCell.self)
     collectionView.register(HeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderReusableView.reuseId)
-    collectionView.register(LoadingCollectionFooter.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: LoadingCollectionFooter.reuseId)
     collectionView.delaysContentTouches = false
     collectionView.contentInset = .init(top: 0, left: 0, bottom: 10, right: 0)
     
     return collectionView
   }()
   
-  private var didAddShadow = false
-  private var isAnimating = false
-  private var currentSection: Int = 0 {
-    willSet {
-      filtersHeaderView.scrollTo(section: newValue)
-    }
-  }
+  private let layout: UICollectionViewFlowLayout = {
+    let layout = UICollectionViewFlowLayout()
+    layout.sectionHeadersPinToVisibleBounds = true
+    layout.sectionInset = UIEdgeInsets(top: 0, left: C.inset, bottom: 0, right: C.inset)
+    layout.minimumLineSpacing = C.inset
+    layout.minimumInteritemSpacing = 0
+    return layout
+  }()
   
-  private var shouldLoadMore = true
+  private let input: ShowcaseInput
   
-  private let mode: ShowcaseMode
-  
-  init(mode: ShowcaseMode) {
-    self.mode = mode
+  init(input: ShowcaseInput) {
+    self.input = input
     super.init(nibName: nil, bundle: nil)
   }
   
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
+  required init?(coder: NSCoder) { fatalError() }
+  
+  // MARK: - Lifecycle
   
   override func viewDidLoad() {
     super.viewDidLoad()
-    interactor?.viewDidLoad()
-    navigationItem.largeTitleDisplayMode = .never
-
-    view.backgroundColor = .mainBackground
     
+    view.backgroundColor = .mainBackground
+    navigationItem.largeTitleDisplayMode = .never
     view.addSubview(collectionView)
     collectionView.fill()
+    
+    interactor?.viewDidLoad()
   }
   
   override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -92,24 +84,111 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
     })
   }
   
-  private func layout() -> UICollectionViewLayout {
-    let layout = UICollectionViewFlowLayout()
-    layout.sectionHeadersPinToVisibleBounds = true
-    layout.sectionInset = UIEdgeInsets(top: 0, left: C.inset, bottom: 0, right: C.inset)
-    layout.minimumLineSpacing = C.inset
-    layout.minimumInteritemSpacing = 0
-    return layout
-  }
-  
-  private func fetchCategoryItems() {
-    let categoryTitles = viewModel?.sections.compactMap({ $0.title }) ?? []
-    filtersHeaderView.decorate(model: .init(categoryTitles: categoryTitles, filterDelegate: self))
-  }
-
   private func hideErrorView() {
     DispatchQueue.main.async {
       self.collectionView.backgroundView = nil
     }
+  }
+}
+
+extension ShowcaseViewController: ErrorViewDelegate {
+  
+  func didTapErrorButton(_ button: UIButton) {
+//    interactor?.willDisplayLoadingView()
+  }
+}
+
+extension ShowcaseViewController: UICollectionViewDataSource {
+  
+  func numberOfSections(in collectionView: UICollectionView) -> Int {
+    viewModel?.sections.count ?? 0
+  }
+  
+  func collectionView(
+    _ collectionView: UICollectionView,
+    numberOfItemsInSection section: Int)
+    -> Int
+  {
+    switch viewModel?.sections[safe: section] {
+    case .shelf(_, let model):
+      return model.count
+      
+    case .none:
+      return 0
+    }
+  }
+  
+  func collectionView(
+    _ collectionView: UICollectionView,
+    cellForItemAt indexPath: IndexPath)
+    -> UICollectionViewCell
+  {
+    switch viewModel?.sections[safe: indexPath.section] {
+    case .shelf(_, let model):
+      // swiftlint:disable:next force_cast
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as! WineCollectionViewCell
+      cell.decorate(model: model[indexPath.row])
+      return cell
+      
+    case .none:
+      return .init()
+    }
+  }
+  
+  func collectionView(
+    _ collectionView: UICollectionView,
+    willDisplay cell: UICollectionViewCell,
+    forItemAt indexPath: IndexPath)
+  {
+//    switch input.mode {
+//    case .normal:
+//      break
+//
+//    case .advancedSearch:
+//      if indexPath.section == viewModel?.sections.count ?? 0 - 1 && indexPath.row == viewModel?.sections[indexPath.section].wines.count ?? 0 - 2 {
+//        interactor?.willDisplayLoadingView()
+//      }
+//    }
+  }
+  
+  func collectionView(
+    _ collectionView: UICollectionView,
+    viewForSupplementaryElementOfKind kind: String,
+    at indexPath: IndexPath)
+    -> UICollectionReusableView
+  {
+    switch kind {
+    case UICollectionView.elementKindSectionHeader:
+      switch viewModel?.sections[safe: indexPath.section] {
+      case .shelf(let model, _):
+        // swiftlint:disable:next force_cast
+        let reusableview = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderReusableView.reuseId, for: indexPath) as! HeaderReusableView
+        reusableview.decorate(model: .init(title: model))
+        return reusableview
+        
+      case .none:
+        return .init()
+      }
+      
+    default:
+      return .init()
+    }
+  }
+  
+  func collectionView(
+    _ collectionView: UICollectionView,
+    layout collectionViewLayout: UICollectionViewLayout,
+    referenceSizeForHeaderInSection section: Int)
+    -> CGSize
+  {
+    .init(width: collectionView.frame.width, height: 50)
+  }
+}
+
+extension ShowcaseViewController: UICollectionViewDelegateFlowLayout {
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+//    guard let wine = viewModel?.sections[safe: indexPath.section]?.wines[safe: indexPath.row] else { return }
+//    navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wine.id), animated: true)
   }
   
   func collectionView(
@@ -136,142 +215,12 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
   }
 }
 
-extension ShowcaseViewController: ErrorViewDelegate {
-  
-  func didTapErrorButton(_ button: UIButton) {
-    interactor?.willDisplayLoadingView()
-  }
-}
-
-extension ShowcaseViewController: UICollectionViewDataSource {
-  
-  func numberOfSections(in collectionView: UICollectionView) -> Int {
-    viewModel?.sections.count ?? 0
-  }
-  
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    viewModel?.sections[section].wines.count ?? 0
-  }
-  
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-    if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as? WineCollectionViewCell,
-       let wine = viewModel?.sections[safe: indexPath.section]?.wines[safe: indexPath.row] {
-      cell.decorate(model: .init(imageURL: wine.mainImageUrl?.toURL, titleText: wine.title,
-                                 subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode)))
-      return cell
-    }
-    return .init()
-  }
-  
-  func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-    switch mode {
-    case .normal:
-      break
-    case .advancedSearch:
-      if indexPath.section == viewModel?.sections.count ?? 0 - 1 && indexPath.row == viewModel?.sections[indexPath.section].wines.count ?? 0 - 2 {
-          interactor?.willDisplayLoadingView()
-      }
-    }
-  }
-  
-  func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-    switch kind {
-    case UICollectionView.elementKindSectionHeader:
-      // swiftlint:disable:next force_cast
-      let reusableview = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: HeaderReusableView.reuseId, for: indexPath) as! HeaderReusableView
-      let categoryItem = viewModel?.sections[indexPath.section]
-      
-      reusableview.decorate(model: .init(title: categoryItem?.title))
-      return reusableview
-      
-    case UICollectionView.elementKindSectionFooter:
-      // swiftlint:disable:next force_cast
-      let reusableview = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: LoadingCollectionFooter.reuseId, for: indexPath) as! LoadingCollectionFooter
-      switch mode {
-      case .normal:
-        reusableview.loadingIndicator.isAnimating = false
-      case .advancedSearch:
-        reusableview.loadingIndicator.isAnimating = shouldLoadMore
-      }
-      return reusableview
-      
-    default:
-      return .init()
-    }
-  }
-  
-  func updateMoreLoader(shouldLoadMore: Bool) {
-    self.shouldLoadMore = shouldLoadMore
-  }
-  
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForHeaderInSection section: Int) -> CGSize {
-    return .init(width: collectionView.frame.width, height: filtersHeaderView.isHidden ? 0 : 50)
-  }
-  
-  func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
-    return .init(width: collectionView.bounds.width, height: shouldLoadMore ? 50 : 0)
-  }
-  
-  func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    
-    if scrollView.contentOffset.y > 0 {
-      if !didAddShadow {
-        UIView.animate(withDuration: 0.5) {
-          self.filtersHeaderView.addSoftUIEffectForView()
-          self.didAddShadow = true
-        }
-      }
-    } else {
-      if didAddShadow {
-        UIView.animate(withDuration: 0.5) {
-          self.filtersHeaderView.removeSoftUIEffectForView()
-          self.didAddShadow = false
-        }
-      }
-    }
-    
-    if isAnimating { return }
-    
-    if let section = collectionView.indexPathsForVisibleSupplementaryElements(ofKind: UICollectionView.elementKindSectionFooter).min()?.section {
-      isAnimating = false
-      if section != currentSection {
-        currentSection = section
-      }
-    }
-  }
-  
-  func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-    isAnimating = false
-    filtersHeaderView.isUserIntaractionEnabled(true)
-  }
-  
-}
-
-extension ShowcaseViewController: UICollectionViewDelegateFlowLayout {
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    guard let wine = viewModel?.sections[safe: indexPath.section]?.wines[safe: indexPath.row] else { return }
-    navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wine.id), animated: true)
-  }
-}
-
-extension ShowcaseViewController: FiltersHeaderViewDelegate {
-  func didTapFilter(index: Int) {
-    isAnimating = true
-    filtersHeaderView.isUserIntaractionEnabled(currentSection != index)
-    
-    let indexPath = IndexPath(item: 0, section: index)
-    
-    if let attributes = collectionView.layoutAttributesForSupplementaryElement(ofKind: UICollectionView.elementKindSectionHeader, at: indexPath) {
-      let topOfHeader = CGPoint(x: 0, y: attributes.frame.origin.y - collectionView.contentInset.top)
-      collectionView.setContentOffset(topOfHeader, animated: true)
-    }
-  }
-}
-
 extension ShowcaseViewController: ShowcaseViewControllerProtocol {
+  
   func updateUI(viewModel: ShowcaseViewModel) {
     self.viewModel = viewModel
   }
+  
   func updateUI(errorViewModel: ErrorViewModel) {
     DispatchQueue.main.async {
       let errorView = ErrorView(frame: self.view.frame)

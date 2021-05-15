@@ -504,8 +504,8 @@
 		CAF5141E2461C52400667ED0 /* DocCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocCell.swift; sourceTree = "<group>"; };
 		CAF5141F2461C52400667ED0 /* MoreRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreRouter.swift; sourceTree = "<group>"; };
 		CAF5146A2468172900667ED0 /* LoveViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoveViewController.swift; sourceTree = "<group>"; };
-		CE388DD72612C1CE00C34B47 /* ShowcasePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShowcasePresenter.swift; path = Smart/Source/Showcase/Presenter.swift/ShowcasePresenter.swift; sourceTree = SOURCE_ROOT; };
-		CE388DD82612C1CE00C34B47 /* ShowcasePresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShowcasePresenterProtocol.swift; path = Smart/Source/Showcase/Presenter.swift/ShowcasePresenterProtocol.swift; sourceTree = SOURCE_ROOT; };
+		CE388DD72612C1CE00C34B47 /* ShowcasePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShowcasePresenter.swift; path = Smart/Source/Showcase/Presenter/ShowcasePresenter.swift; sourceTree = SOURCE_ROOT; };
+		CE388DD82612C1CE00C34B47 /* ShowcasePresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShowcasePresenterProtocol.swift; path = Smart/Source/Showcase/Presenter/ShowcasePresenterProtocol.swift; sourceTree = SOURCE_ROOT; };
 		CE404B062589D41200917544 /* MoreInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreInteractorProtocol.swift; sourceTree = "<group>"; };
 		CE404B0A2589D47C00917544 /* MorePresenterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MorePresenterProtocol.swift; sourceTree = "<group>"; };
 		CE404B0E2589D4C200917544 /* MoreRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreRouterProtocol.swift; sourceTree = "<group>"; };
@@ -1043,6 +1043,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		8AFE2F5F26500BD0008363B4 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CE388DD82612C1CE00C34B47 /* ShowcasePresenterProtocol.swift */,
+				CE388DD72612C1CE00C34B47 /* ShowcasePresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
 		CA07097E2523146200C3D9EC /* Agreement */ = {
 			isa = PBXGroup;
 			children = (
@@ -1094,9 +1103,9 @@
 				CE8FF82D25FAD764004D4F37 /* Assembly */,
 				CE6AB01D261BD27D0011F771 /* Input */,
 				CE8FF82E25FAD77E004D4F37 /* Interactor */,
-				CE8FF82F25FAD78D004D4F37 /* Presenter */,
-				CE8FF83025FAD796004D4F37 /* Router */,
+				8AFE2F5F26500BD0008363B4 /* Presenter */,
 				CE6AAFDB2617CED40011F771 /* Routable */,
+				CE8FF83025FAD796004D4F37 /* Router */,
 				CE8FF83125FAD79E004D4F37 /* ViewController */,
 				CE8FF83225FAD7A9004D4F37 /* ViewModel */,
 				CE8FF83325FAD7C4004D4F37 /* Views */,
@@ -1789,15 +1798,6 @@
 				CE8FF83825FADABF004D4F37 /* ShowcaseInteractorProtocol.swift */,
 			);
 			path = Interactor;
-			sourceTree = "<group>";
-		};
-		CE8FF82F25FAD78D004D4F37 /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				CE388DD72612C1CE00C34B47 /* ShowcasePresenter.swift */,
-				CE388DD82612C1CE00C34B47 /* ShowcasePresenterProtocol.swift */,
-			);
-			path = Presenter;
 			sourceTree = "<group>";
 		};
 		CE8FF83025FAD796004D4F37 /* Router */ = {

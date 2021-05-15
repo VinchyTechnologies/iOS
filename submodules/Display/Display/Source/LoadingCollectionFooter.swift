@@ -8,15 +8,15 @@
 
 import UIKit
 
-public final class LoadingCollectionFooter: UICollectionReusableView, Reusable, Loadable {
-
-    public private(set) var loadingIndicator = ActivityIndicatorView()
-
-    override public init(frame: CGRect) {
-        super.init(frame: frame)
-        addLoader()
-    }
-
-    required init?(coder: NSCoder) { fatalError() }
-
-}
+//public final class LoadingCollectionFooter: UICollectionReusableView, Reusable, Loadable {
+//
+//    public private(set) var loadingIndicator = ActivityIndicatorView()
+//
+//    override public init(frame: CGRect) {
+//        super.init(frame: frame)
+//        addLoader()
+//    }
+//
+//    required init?(coder: NSCoder) { fatalError() }
+//
+//}

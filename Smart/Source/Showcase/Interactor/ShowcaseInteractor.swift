@@ -15,6 +15,7 @@ final class ShowcaseInteractor {
     static let limit: Int = 40
     static let inset: CGFloat = 10
   }
+  
   private var currentPage: Int = -1
   private var shouldLoadMore = true
   
@@ -22,19 +23,18 @@ final class ShowcaseInteractor {
   private let router: ShowcaseRouterProtocol
   private let stateMachine = PagingStateMachine<[ShortWine]>()
   
-  private var mode: ShowcaseMode = .normal(wines: [])
   private var categoryItems: [ShowcaseViewModel] = []
   
   private var wines: [ShortWine] = []
-  
+  private let input: ShowcaseInput
   init(
+    input: ShowcaseInput,
     router: ShowcaseRouterProtocol,
-    presenter: ShowcasePresenterProtocol,
-    mode: ShowcaseMode)
+    presenter: ShowcasePresenterProtocol)
   {
+    self.input = input
     self.router = router
     self.presenter = presenter
-    self.mode = mode
     configureStateMachine()
   }
   
@@ -63,7 +63,7 @@ final class ShowcaseInteractor {
     guard shouldLoadMore else { return }
     currentPage += 1
     DispatchQueue.global(qos: .userInteractive).async {
-      switch self.mode {
+      switch self.input.mode {
       case .normal(let wines):
         self.shouldLoadMore = false
         self.wines = wines
