@@ -6,13 +6,10 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-public protocol ThrottlerProtocol: class {
-  
+public protocol ThrottlerProtocol: AnyObject {
   var hasJob: Bool { get }
-  
   func throttle(delay: DispatchTimeInterval, block: @escaping () -> Void)
   func cancel()
-  
 }
 
 public final class Throttler: ThrottlerProtocol {
@@ -50,7 +47,6 @@ public final class Throttler: ThrottlerProtocol {
   public func cancel() {
     job?.workItem.cancel()
   }
-  
 }
 
 private extension DispatchTimeInterval {
@@ -76,5 +72,4 @@ private extension DispatchTimeInterval {
       return nil
     }
   }
-  
 }

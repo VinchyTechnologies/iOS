@@ -18,8 +18,10 @@ protocol WineDetailRoutable: AnyObject {
 extension WineDetailRoutable {
 
   func pushToWineDetailViewController(wineID: Int64) {
+    let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID))
+    controller.hidesBottomBarWhenPushed = true
     viewController?.navigationController?.pushViewController(
-      Assembly.buildDetailModule(wineID: wineID),
+      controller,
       animated: true)
   }
 }

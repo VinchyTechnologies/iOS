@@ -8,6 +8,7 @@
 
 import CommonUI
 import StringFormatting
+import VinchyCore
 
 final class ReviewsPresenter {
   
@@ -41,20 +42,37 @@ extension ReviewsPresenter: ReviewsPresenterProtocol {
   func startShimmer() {
     viewController?.updateUI(viewModel: .init(state: .fake(sections: [
       .review(Array(repeating: 1, count: 20))
-    ]), navigationTitle: "Reviews"))
+    ]), navigationTitle: localized("reviews").firstLetterUppercased()))
   }
   
-  func update(reviews: [Any], needLoadMore: Bool) {
+  func update(reviews: [Review], needLoadMore: Bool) {
     
-    let model = ReviewCellViewModel.init(id: 1, userNameText: "aleksei_smirnov", dateText: "29.08.21", reviewText: "lkdsjbvlhkbjs", rate: 4.5)
-    
-    var items: [ReviewsViewModel.Item] = Array.init(repeating: ReviewsViewModel.Item.review(model), count: reviews.count)
+    var items: [ReviewsViewModel.Item] = reviews.map { review -> ReviewsViewModel.Item in
+      
+      let dateText: String?
+      
+      if review.updateDate == nil {
+        dateText = review.publicationDate.toDate()
+      } else {
+        dateText = review.updateDate.toDate()
+      }
+      
+      return .review(
+        ReviewCellViewModel(
+          id: review.id,
+          userNameText: nil,
+          dateText: dateText,
+          reviewText: review.comment,
+          rate: review.rating))
+    }
     
     if needLoadMore {
       items.append(.loading)
     }
     
-    let viewModel = ReviewsViewModel(state: .normal(items: items), navigationTitle: "Reviews")
+    let viewModel = ReviewsViewModel(
+      state: .normal(items: items),
+      navigationTitle: localized("reviews").firstLetterUppercased())
     viewController?.updateUI(viewModel: viewModel)
   }
 }

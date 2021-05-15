@@ -30,12 +30,11 @@ final class GalleryCell: UICollectionViewCell, Reusable {
   }
   
   private lazy var pager: FSPagerView = {
-    let pager = FSPagerView()
-    pager.dataSource = self
-    pager.delegate = self
-    pager.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "cell")
-    return pager
-  }()
+    $0.dataSource = self
+    $0.delegate = self
+    $0.register(FSPagerViewCell.self, forCellWithReuseIdentifier: "cell")
+    return $0
+  }(FSPagerView())
   
   override init(frame: CGRect) {
     super.init(frame: frame)

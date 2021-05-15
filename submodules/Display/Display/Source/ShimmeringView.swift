@@ -22,11 +22,11 @@ public protocol ShimmeringView where Self: UIView {
     duration: CFTimeInterval,
     startPoint: CGPoint,
     endPoint: CGPoint)
-  -> CAGradientLayer
+    -> CAGradientLayer
 
   func generateShimmeringLayerFrame(
     forSuperframe superframe: CGRect)
-  -> CGRect
+    -> CGRect
 }
 
 public extension ShimmeringView {
@@ -61,10 +61,16 @@ public extension ShimmeringView {
     return gradientMask
   }
 
-  func getShimmering(beginTime: CFTimeInterval,
-                     duration: CFTimeInterval) -> CAGradientLayer {
-    getShimmering(beginTime: beginTime, duration: duration,
-                  startPoint: C.startPoint, endPoint: C.endPoint)
+  func getShimmering(
+    beginTime: CFTimeInterval,
+    duration: CFTimeInterval)
+    -> CAGradientLayer
+  {
+    getShimmering(
+      beginTime: beginTime,
+      duration: duration,
+      startPoint: C.startPoint,
+      endPoint: C.endPoint)
   }
 
   func generateShimmeringLayerFrame(forSuperframe superframe: CGRect) -> CGRect {

@@ -32,6 +32,12 @@ extension WriteReviewPresenter: WriteReviewPresenterProtocol {
     viewController?.stopLoadingAnimation()
   }
   
+  func showAlertZeroRating() {
+    viewController?.showAlert(
+      title: localized("error").firstLetterUppercased(),
+      message: localized("zero_rating_error"))
+  }
+  
   func showAlertErrorWhileCreatingReview(error: Error) {
     viewController?.showAlert(
       title: localized("error").firstLetterUppercased(),

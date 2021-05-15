@@ -56,7 +56,6 @@
 		44EFDB3C25E177220076ED6D /* ReviewsViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB2F25E177220076ED6D /* ReviewsViewControllerProtocol.swift */; };
 		44EFDB3D25E177220076ED6D /* ReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB3025E177220076ED6D /* ReviewsViewController.swift */; };
 		44EFDB3F25E177220076ED6D /* ReviewsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB3325E177220076ED6D /* ReviewsInteractor.swift */; };
-		44EFDB4825E17B790076ED6D /* FakeReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB4725E17B790076ED6D /* FakeReviewCell.swift */; };
 		44EFDB4F25E17FD60076ED6D /* ReviewsRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB4E25E17FD60076ED6D /* ReviewsRoutable.swift */; };
 		44EFDB6F25E263E00076ED6D /* ReviewDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB5E25E263E00076ED6D /* ReviewDetailViewModel.swift */; };
 		44EFDB7025E263E00076ED6D /* ReviewDetailInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6025E263E00076ED6D /* ReviewDetailInput.swift */; };
@@ -69,8 +68,10 @@
 		44EFDB7725E263E00076ED6D /* ReviewDetailInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6B25E263E00076ED6D /* ReviewDetailInteractorProtocol.swift */; };
 		44EFDB7825E263E00076ED6D /* ReviewDetailRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6D25E263E00076ED6D /* ReviewDetailRouterProtocol.swift */; };
 		44EFDB7925E263E00076ED6D /* ReviewDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6E25E263E00076ED6D /* ReviewDetailRouter.swift */; };
-		77E532E30D048695099B6B91 /* Pods_Smart_SmartUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6530C76D4EA38941AA4DB6A1 /* Pods_Smart_SmartUITests.framework */; };
-		AF16CAC7A7B5263C5970B4E9 /* Pods_SmartTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 72933E4B70819761077F759E /* Pods_SmartTests.framework */; };
+		4C2A59F01706410D0FF096C5 /* Pods_SmartTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71D3C0CD39AB75AC9CAFB367 /* Pods_SmartTests.framework */; };
+		8AA5E5132615053D00935B5E /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA5E5122615053D00935B5E /* AboutView.swift */; };
+		9B0EE1A27D1E61F2A539C7FD /* Pods_Smart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 879454F4DA32628CFDFAB2FF /* Pods_Smart.framework */; };
+		9B4CC872623D8968C92716A0 /* Pods_Smart_SmartUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2F9ABA82AB7D5F7639789DE /* Pods_Smart_SmartUITests.framework */; };
 		CA015C1A24C44925008DF01D /* DidnotFindTheWineTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA015C1924C44925008DF01D /* DidnotFindTheWineTableCell.swift */; };
 		CA015C3624C582B2008DF01D /* EmailService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA015C3524C582B2008DF01D /* EmailService.framework */; };
 		CA015C3724C582B2008DF01D /* EmailService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA015C3524C582B2008DF01D /* EmailService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -236,7 +237,6 @@
 		CED7A23A25D1B31C00BB25FF /* StarRatingControlCollectionCell .swift in Sources */ = {isa = PBXBuildFile; fileRef = CED7A23925D1B31C00BB25FF /* StarRatingControlCollectionCell .swift */; };
 		CEF2087C25E8297900C413EA /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF2087B25E8297900C413EA /* CurrencyCell.swift */; };
 		CEF7AE672602D5220098FB9D /* ShowcaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF7AE662602D5210098FB9D /* ShowcaseRouter.swift */; };
-		D1594E22E225C99DD6723DB2 /* Pods_Smart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 724165EB3932AEE40C105E6B /* Pods_Smart.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -280,6 +280,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		13532EAFBF8E683F0379651A /* Pods-SmartTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartTests.debug.xcconfig"; path = "Target Support Files/Pods-SmartTests/Pods-SmartTests.debug.xcconfig"; sourceTree = "<group>"; };
+		250D3AC7A7CA6DB06A38DD52 /* Pods-Smart-SmartUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart-SmartUITests.release.xcconfig"; path = "Target Support Files/Pods-Smart-SmartUITests/Pods-Smart-SmartUITests.release.xcconfig"; sourceTree = "<group>"; };
 		440C284625E13F9D009911EE /* WineDetailCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineDetailCollectionView.swift; sourceTree = "<group>"; };
 		4437AA4A25E3A7CD00F6E838 /* WriteReviewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteReviewViewModel.swift; sourceTree = "<group>"; };
 		4437AA4C25E3A7CD00F6E838 /* WriteReviewInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteReviewInput.swift; sourceTree = "<group>"; };
@@ -338,7 +340,6 @@
 		44EFDB3325E177220076ED6D /* ReviewsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsInteractor.swift; sourceTree = "<group>"; };
 		44EFDB3525E177220076ED6D /* ReviewsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsRouter.swift; sourceTree = "<group>"; };
 		44EFDB3625E177220076ED6D /* ReviewsRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsRouterProtocol.swift; sourceTree = "<group>"; };
-		44EFDB4725E17B790076ED6D /* FakeReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeReviewCell.swift; sourceTree = "<group>"; };
 		44EFDB4E25E17FD60076ED6D /* ReviewsRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsRoutable.swift; sourceTree = "<group>"; };
 		44EFDB5E25E263E00076ED6D /* ReviewDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailViewModel.swift; sourceTree = "<group>"; };
 		44EFDB6025E263E00076ED6D /* ReviewDetailInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailInput.swift; sourceTree = "<group>"; };
@@ -351,13 +352,13 @@
 		44EFDB6B25E263E00076ED6D /* ReviewDetailInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailInteractorProtocol.swift; sourceTree = "<group>"; };
 		44EFDB6D25E263E00076ED6D /* ReviewDetailRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailRouterProtocol.swift; sourceTree = "<group>"; };
 		44EFDB6E25E263E00076ED6D /* ReviewDetailRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailRouter.swift; sourceTree = "<group>"; };
-		6530C76D4EA38941AA4DB6A1 /* Pods_Smart_SmartUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Smart_SmartUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		724165EB3932AEE40C105E6B /* Pods_Smart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Smart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		72933E4B70819761077F759E /* Pods_SmartTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		7F3A961087AC9C6AD599432F /* Pods-Smart-SmartUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart-SmartUITests.debug.xcconfig"; path = "Target Support Files/Pods-Smart-SmartUITests/Pods-Smart-SmartUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		AEDFEEA508103F6E29E59DA5 /* Pods-SmartTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartTests.debug.xcconfig"; path = "Target Support Files/Pods-SmartTests/Pods-SmartTests.debug.xcconfig"; sourceTree = "<group>"; };
-		AF6CC9E0A0913F952750C877 /* Pods-Smart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart.release.xcconfig"; path = "Target Support Files/Pods-Smart/Pods-Smart.release.xcconfig"; sourceTree = "<group>"; };
-		C6F80FF5C0465C97DF884D9E /* Pods-Smart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart.debug.xcconfig"; path = "Target Support Files/Pods-Smart/Pods-Smart.debug.xcconfig"; sourceTree = "<group>"; };
+		4EB884005EB241F8D3E53E64 /* Pods-SmartTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartTests.release.xcconfig"; path = "Target Support Files/Pods-SmartTests/Pods-SmartTests.release.xcconfig"; sourceTree = "<group>"; };
+		60C5ACCFBBBEAFE6E521B282 /* Pods-Smart-SmartUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart-SmartUITests.debug.xcconfig"; path = "Target Support Files/Pods-Smart-SmartUITests/Pods-Smart-SmartUITests.debug.xcconfig"; sourceTree = "<group>"; };
+		71D3C0CD39AB75AC9CAFB367 /* Pods_SmartTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		879454F4DA32628CFDFAB2FF /* Pods_Smart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Smart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A56E5FE0EE15826846ACE6A /* Pods-Smart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart.debug.xcconfig"; path = "Target Support Files/Pods-Smart/Pods-Smart.debug.xcconfig"; sourceTree = "<group>"; };
+		8AA5E5122615053D00935B5E /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		A2F9ABA82AB7D5F7639789DE /* Pods_Smart_SmartUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Smart_SmartUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA015C1924C44925008DF01D /* DidnotFindTheWineTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DidnotFindTheWineTableCell.swift; sourceTree = "<group>"; };
 		CA015C3524C582B2008DF01D /* EmailService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EmailService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA070C1325250AE900C3D9EC /* OnboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardViewController.swift; sourceTree = "<group>"; };
@@ -533,8 +534,7 @@
 		CED7A23925D1B31C00BB25FF /* StarRatingControlCollectionCell .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StarRatingControlCollectionCell .swift"; sourceTree = "<group>"; };
 		CEF2087B25E8297900C413EA /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
 		CEF7AE662602D5210098FB9D /* ShowcaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseRouter.swift; sourceTree = "<group>"; };
-		F2E0A34D38B52CB3B8BC5C58 /* Pods-Smart-SmartUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart-SmartUITests.release.xcconfig"; path = "Target Support Files/Pods-Smart-SmartUITests/Pods-Smart-SmartUITests.release.xcconfig"; sourceTree = "<group>"; };
-		F74258321F66CCCFCA95C98E /* Pods-SmartTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartTests.release.xcconfig"; path = "Target Support Files/Pods-SmartTests/Pods-SmartTests.release.xcconfig"; sourceTree = "<group>"; };
+		D37E7F5E487D80CF26AE868E /* Pods-Smart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart.release.xcconfig"; path = "Target Support Files/Pods-Smart/Pods-Smart.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -554,7 +554,7 @@
 				44D3CDE825E42E0B00FFFCD5 /* VinchyAuthorization.framework in Frameworks */,
 				CA1821A424C0E83900280DD4 /* Display.framework in Frameworks */,
 				CABDBA8724C2FAB800AD96D6 /* Core.framework in Frameworks */,
-				D1594E22E225C99DD6723DB2 /* Pods_Smart.framework in Frameworks */,
+				9B0EE1A27D1E61F2A539C7FD /* Pods_Smart.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,7 +562,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AF16CAC7A7B5263C5970B4E9 /* Pods_SmartTests.framework in Frameworks */,
+				4C2A59F01706410D0FF096C5 /* Pods_SmartTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -570,7 +570,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				77E532E30D048695099B6B91 /* Pods_Smart_SmartUITests.framework in Frameworks */,
+				9B4CC872623D8968C92716A0 /* Pods_Smart_SmartUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -863,7 +863,6 @@
 				44EFDB2B25E177220076ED6D /* Presenter */,
 				44EFDB4D25E17FBF0076ED6D /* Routable */,
 				44EFDB3425E177220076ED6D /* Router */,
-				44EFDB4625E17B550076ED6D /* View */,
 				44EFDB2E25E177220076ED6D /* ViewController */,
 				44EFDB2525E177220076ED6D /* ViewModel */,
 			);
@@ -928,14 +927,6 @@
 				44EFDB3625E177220076ED6D /* ReviewsRouterProtocol.swift */,
 			);
 			path = Router;
-			sourceTree = "<group>";
-		};
-		44EFDB4625E17B550076ED6D /* View */ = {
-			isa = PBXGroup;
-			children = (
-				44EFDB4725E17B790076ED6D /* FakeReviewCell.swift */,
-			);
-			path = View;
 			sourceTree = "<group>";
 		};
 		44EFDB4D25E17FBF0076ED6D /* Routable */ = {
@@ -1036,11 +1027,27 @@
 				CABDBA8624C2FAB800AD96D6 /* Core.framework */,
 				CA1821FE24C0F6F000280DD4 /* Database.framework */,
 				CA1821A324C0E83900280DD4 /* Display.framework */,
-				724165EB3932AEE40C105E6B /* Pods_Smart.framework */,
-				6530C76D4EA38941AA4DB6A1 /* Pods_Smart_SmartUITests.framework */,
-				72933E4B70819761077F759E /* Pods_SmartTests.framework */,
+				879454F4DA32628CFDFAB2FF /* Pods_Smart.framework */,
+				A2F9ABA82AB7D5F7639789DE /* Pods_Smart_SmartUITests.framework */,
+				71D3C0CD39AB75AC9CAFB367 /* Pods_SmartTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8AA5E5162615084B00935B5E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8AA5E5122615053D00935B5E /* AboutView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8AA5E5172615085D00935B5E /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CAF5140F2461C51300667ED0 /* AboutViewController.swift */,
+			);
+			path = ViewController;
 			sourceTree = "<group>";
 		};
 		8AFE2F5F26500BD0008363B4 /* Presenter */ = {
@@ -1667,7 +1674,8 @@
 		CAF5140E2461C51300667ED0 /* About */ = {
 			isa = PBXGroup;
 			children = (
-				CAF5140F2461C51300667ED0 /* AboutViewController.swift */,
+				8AA5E5172615085D00935B5E /* ViewController */,
+				8AA5E5162615084B00935B5E /* Views */,
 			);
 			path = About;
 			sourceTree = "<group>";
@@ -1890,12 +1898,12 @@
 		E126C1F6258946A324BF55F2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				C6F80FF5C0465C97DF884D9E /* Pods-Smart.debug.xcconfig */,
-				AF6CC9E0A0913F952750C877 /* Pods-Smart.release.xcconfig */,
-				7F3A961087AC9C6AD599432F /* Pods-Smart-SmartUITests.debug.xcconfig */,
-				F2E0A34D38B52CB3B8BC5C58 /* Pods-Smart-SmartUITests.release.xcconfig */,
-				AEDFEEA508103F6E29E59DA5 /* Pods-SmartTests.debug.xcconfig */,
-				F74258321F66CCCFCA95C98E /* Pods-SmartTests.release.xcconfig */,
+				8A56E5FE0EE15826846ACE6A /* Pods-Smart.debug.xcconfig */,
+				D37E7F5E487D80CF26AE868E /* Pods-Smart.release.xcconfig */,
+				60C5ACCFBBBEAFE6E521B282 /* Pods-Smart-SmartUITests.debug.xcconfig */,
+				250D3AC7A7CA6DB06A38DD52 /* Pods-Smart-SmartUITests.release.xcconfig */,
+				13532EAFBF8E683F0379651A /* Pods-SmartTests.debug.xcconfig */,
+				4EB884005EB241F8D3E53E64 /* Pods-SmartTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -2175,6 +2183,7 @@
 				447C353B25EEAA5700105A35 /* MapPresenter.swift in Sources */,
 				CA4857892517C71200EDA4CE /* VinchyPresenterProtocol.swift in Sources */,
 				CA2C22DB2554464F002469E4 /* AdvancedSearchAssembly.swift in Sources */,
+				8AA5E5132615053D00935B5E /* AboutView.swift in Sources */,
 				CA46DC98252A44180007819E /* SmartFilterCollectionCell.swift in Sources */,
 				CE58DEC325ED70DC00B5BDF9 /* CurrencyAssembly.swift in Sources */,
 				CED7A23A25D1B31C00BB25FF /* StarRatingControlCollectionCell .swift in Sources */,
@@ -2234,7 +2243,6 @@
 				447C354025EEAA5700105A35 /* MapInteractorProtocol.swift in Sources */,
 				CAA9DC67250EA05F00F996A8 /* AdvancedSearchCaruselCollectionCell.swift in Sources */,
 				CEF7AE672602D5220098FB9D /* ShowcaseRouter.swift in Sources */,
-				44EFDB4825E17B790076ED6D /* FakeReviewCell.swift in Sources */,
 				CA49A25B251F2C4600FBE269 /* BigAdCollectionCell.swift in Sources */,
 				44EFDB3925E177220076ED6D /* ReviewsAssembly.swift in Sources */,
 				CA8198C0253CB0490056A1C6 /* ErrorDescription.swift in Sources */,
@@ -2557,21 +2565,21 @@
 		};
 		CA472AE7245EDE30009149FF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = C6F80FF5C0465C97DF884D9E /* Pods-Smart.debug.xcconfig */;
+			baseConfigurationReference = 8A56E5FE0EE15826846ACE6A /* Pods-Smart.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Smart/Vinchy.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				INFOPLIST_FILE = Smart/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy;
 				PRODUCT_NAME = Vinchy;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2584,21 +2592,21 @@
 		};
 		CA472AE8245EDE30009149FF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AF6CC9E0A0913F952750C877 /* Pods-Smart.release.xcconfig */;
+			baseConfigurationReference = D37E7F5E487D80CF26AE868E /* Pods-Smart.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Smart/VinchyRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 6;
+				CURRENT_PROJECT_VERSION = 2;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				INFOPLIST_FILE = Smart/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.6;
+				MARKETING_VERSION = 1.7;
 				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy;
 				PRODUCT_NAME = Vinchy;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2610,7 +2618,7 @@
 		};
 		CA472AEA245EDE30009149FF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = AEDFEEA508103F6E29E59DA5 /* Pods-SmartTests.debug.xcconfig */;
+			baseConfigurationReference = 13532EAFBF8E683F0379651A /* Pods-SmartTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2633,7 +2641,7 @@
 		};
 		CA472AEB245EDE30009149FF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F74258321F66CCCFCA95C98E /* Pods-SmartTests.release.xcconfig */;
+			baseConfigurationReference = 4EB884005EB241F8D3E53E64 /* Pods-SmartTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2656,7 +2664,7 @@
 		};
 		CA472AED245EDE30009149FF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7F3A961087AC9C6AD599432F /* Pods-Smart-SmartUITests.debug.xcconfig */;
+			baseConfigurationReference = 60C5ACCFBBBEAFE6E521B282 /* Pods-Smart-SmartUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -2677,7 +2685,7 @@
 		};
 		CA472AEE245EDE30009149FF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F2E0A34D38B52CB3B8BC5C58 /* Pods-Smart-SmartUITests.release.xcconfig */;
+			baseConfigurationReference = 250D3AC7A7CA6DB06A38DD52 /* Pods-Smart-SmartUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
