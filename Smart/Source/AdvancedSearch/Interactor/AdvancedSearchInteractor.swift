@@ -102,7 +102,7 @@ extension AdvancedSearchInteractor: AdvancedSearchInteractorProtocol {
     }
 
     let params: [(String, String)] = selectedFilters.compactMap ({ ($0.category.serverName, $0.title) })
-    router.pushToSearchResultsController(navigationTitle: nil, params: params)
+    router.pushToShowcaseViewController(input: .init(title: nil, mode: .advancedSearch(params: params)))
   }
 
   func didTapResetAllFiltersButton() {

@@ -18,8 +18,10 @@ protocol ShowcaseRoutable: AnyObject {
 extension ShowcaseRoutable {
 
   func pushToShowcaseViewController(input: ShowcaseInput) {
+    let controller = ShowcaseAssembly.assemblyModule(input: input)
+    controller.hidesBottomBarWhenPushed = true
     viewController?.navigationController?.pushViewController(
-      Assembly.buildShowcaseModule(input: input),
+      controller,
       animated: true)
   }
 }
