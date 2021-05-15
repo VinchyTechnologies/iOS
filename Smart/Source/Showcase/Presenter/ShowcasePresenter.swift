@@ -38,17 +38,9 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
   
   func update(wines: [ShortWine], shouldLoadMore: Bool) {
     var sections: [ShowcaseViewModel.Section] = []
-    var groupedWines = wines.grouped(map: { $0.winery?.countryCode ?? localized("unknown_country_code") })
     
-    groupedWines.sort { (arr1, arr2) -> Bool in
-      if let w1 = countryNameFromLocaleCode(countryCode: arr1.first?.winery?.countryCode),
-         let w2 = countryNameFromLocaleCode(countryCode: arr2.first?.winery?.countryCode) {
-        return w1 < w2
-      }
-      return false
-    }
-    
-    if groupedWines.count == 1 {
+    switch input.mode {
+    case .normal:
       let wines = wines.compactMap { wine -> WineCollectionViewCellViewModel? in
         WineCollectionViewCellViewModel(
           imageURL: wine.mainImageUrl?.toURL,
@@ -56,7 +48,17 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
           subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode))
       }
       sections = [.shelf(title: localized("all").firstLetterUppercased(), wines: wines)]
-    } else {
+      
+    case .advancedSearch:
+      var groupedWines = wines.grouped(map: { $0.winery?.countryCode ?? localized("unknown_country_code") })
+      
+      groupedWines.sort { (arr1, arr2) -> Bool in
+        if let w1 = countryNameFromLocaleCode(countryCode: arr1.first?.winery?.countryCode),
+           let w2 = countryNameFromLocaleCode(countryCode: arr2.first?.winery?.countryCode) {
+          return w1 < w2
+        }
+        return false
+      }
       sections = groupedWines.map({ (arrayWine) -> ShowcaseViewModel.Section in
         let wines = arrayWine.compactMap { wine -> WineCollectionViewCellViewModel? in
           WineCollectionViewCellViewModel(

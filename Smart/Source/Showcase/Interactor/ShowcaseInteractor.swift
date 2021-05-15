@@ -9,12 +9,11 @@
 import Core
 import VinchyCore
 
+fileprivate enum C {
+  static let limit: Int = 40
+}
+
 final class ShowcaseInteractor {
-  
-  private enum C {
-    static let limit: Int = 40
-    static let inset: CGFloat = 10
-  }
   
   private var currentPage: Int = -1
   private var shouldLoadMore = true
