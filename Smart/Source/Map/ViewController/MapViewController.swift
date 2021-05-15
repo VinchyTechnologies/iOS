@@ -241,6 +241,16 @@ extension MapViewController: MKMapViewDelegate {
 }
 
 extension MapViewController: MapDetailStoreViewControllerDelegate {
+  
+  func didTapAssortmentButton(_ button: UIButton) {
+    if let viewModel = (mapView.selectedAnnotations.first as? PartnerAnnotationViewModel) {
+      interactor?.didTapAssortmentButton(
+        partnerId: viewModel.partnerId,
+        affilatedId: viewModel.affilatedId,
+        title: viewModel.title)
+    }
+  }
+  
   func didTapRouteButton(_ button: UIButton) {
     if let coordinate = mapView.selectedAnnotations.first?.coordinate {
       interactor?.didTapShowRouteOnBottomSheet(coordinate: coordinate)

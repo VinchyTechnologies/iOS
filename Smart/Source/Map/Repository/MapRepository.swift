@@ -79,7 +79,7 @@ extension MapRepository: MapRepositoryProtocol {
     let subscription = getUserLocation()
       .receive(on: DispatchQueue.main)
       .sink { receivedCompletion in
-        guard case .failure(_) = receivedCompletion else { return }
+        guard case .failure = receivedCompletion else { return }
         completion(nil)
       } receiveValue: { response in
         completion(response)

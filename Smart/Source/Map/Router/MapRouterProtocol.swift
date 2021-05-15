@@ -11,4 +11,5 @@ import Foundation
 protocol MapRouterProtocol: AnyObject {
   func showMapDetailStore(partnerId: Int, affilatedId: Int)
   func dismissCurrentBottomSheet(shouldUseDidDismissCallback: Bool)
+  func showAssortmentViewController(partnerId: Int, affilatedId: Int, title: String?)
 }

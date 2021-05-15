@@ -8,6 +8,7 @@
 
 import UIKit
 import FittedSheets
+import Display
 
 final class MapRouter {
   
@@ -52,5 +53,13 @@ extension MapRouter: MapRouterProtocol {
       sheetMapDetailStoreViewController?.didDismiss = nil
     }
     sheetMapDetailStoreViewController?.attemptDismiss(animated: true)
+  }
+  
+  func showAssortmentViewController(partnerId: Int, affilatedId: Int, title: String?) {
+    let controller = ShowcaseAssembly.assemblyModule(
+      input: .init(title: title, mode: .partner(partnerID: partnerId, affilatedID: affilatedId)))
+    let navigationController = NavigationController(rootViewController: controller)
+    navigationController.modalPresentationStyle = .fullScreen
+    UIApplication.topViewController()?.present(navigationController, animated: true, completion: nil)
   }
 }

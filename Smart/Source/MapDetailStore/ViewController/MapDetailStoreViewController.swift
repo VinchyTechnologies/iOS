@@ -14,6 +14,7 @@ import UIKit
 
 protocol MapDetailStoreViewControllerDelegate: AnyObject {
   func didTapRouteButton(_ button: UIButton)
+  func didTapAssortmentButton(_ button: UIButton)
 }
 
 final class MapDetailStoreViewController: UIViewController {
@@ -201,6 +202,7 @@ extension MapDetailStoreViewController: UICollectionViewDataSource {
       // swiftlint:disable:next force_cast
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AssortmentCollectionCell.reuseId, for: indexPath) as! AssortmentCollectionCell
       cell.decorate(model: model[indexPath.row])
+      cell.delegate = self
       return cell
       
     case .recommendedWines(let model):
@@ -243,5 +245,11 @@ extension MapDetailStoreViewController: MapNavigationBarDelegate {
   
   func didTapTrailingButton(_ button: UIButton) {
     sheetViewController?.attemptDismiss(animated: true)
+  }
+}
+
+extension MapDetailStoreViewController: AssortmentCollectionCellDelegate {
+  func didTapSeeAssortmentButton(_ button: UIButton) {
+    delegate?.didTapAssortmentButton(button)
   }
 }

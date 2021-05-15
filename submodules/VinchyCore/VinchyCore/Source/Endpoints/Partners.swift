@@ -10,6 +10,7 @@ private enum PartnersEndpoint: EndpointProtocol {
   
   case map(latitude: Double, longitude: Double, radius: Int)
   case storeInfo(partnerId: Int, affilatedId: Int)
+  case wines(partnerId: Int, affilatedId: Int, limit: Int, offset: Int)
   
   var host: String {
     return domain
@@ -22,12 +23,15 @@ private enum PartnersEndpoint: EndpointProtocol {
       
     case .storeInfo(let partnerId, let affilatedId):
       return "/partners/" + String(partnerId) + "/stores/" + String(affilatedId)
+      
+    case .wines(let partnerId, let affilatedId, _, _):
+      return "/partners/" + String(partnerId) + "/stores/" + String(affilatedId) + "/wines"
     }
   }
   
   var method: HTTPMethod {
     switch self {
-    case .map, .storeInfo:
+    case .map, .storeInfo, .wines:
       return .get
     }
   }
@@ -44,6 +48,12 @@ private enum PartnersEndpoint: EndpointProtocol {
       
     case .storeInfo:
       return nil
+      
+    case .wines(_, _, let limit, let offset):
+      return [
+        ("offset", String(offset)),
+        ("limit", String(limit)),
+      ]
     }
   }
 }
@@ -77,6 +87,15 @@ public final class Partners {
     api.request(endpoint: PartnersEndpoint.storeInfo(
                   partnerId: partnerId,
                   affilatedId: affilatedId),
+                completion: completion)
+  }
+  
+  public func getPartnerWines(partnerId: Int, affilatedId: Int, limit: Int, offset: Int, completion: @escaping (Result<[ShortWine], APIError>) -> Void) {
+    api.request(endpoint: PartnersEndpoint.wines(
+                  partnerId: partnerId,
+                  affilatedId: affilatedId,
+                  limit: limit,
+                  offset: offset),
                 completion: completion)
   }
 }

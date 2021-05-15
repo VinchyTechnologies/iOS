@@ -74,6 +74,10 @@ final class MapInteractor {
 
 extension MapInteractor: MapInteractorProtocol {
   
+  func didTapAssortmentButton(partnerId: Int, affilatedId: Int, title: String?) {
+    router.showAssortmentViewController(partnerId: partnerId, affilatedId: affilatedId, title: title)
+  }
+  
   func requestBottomSheetDismissToDeselectSelectedPin() {
     presenter.deselectSelectedPin()
   }

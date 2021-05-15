@@ -71,6 +71,16 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
     
     view.backgroundColor = .mainBackground
     navigationItem.largeTitleDisplayMode = .never
+    
+    if isModal {
+      let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
+      navigationItem.leftBarButtonItem = UIBarButtonItem(
+        image: UIImage(systemName: "xmark", withConfiguration: imageConfig),
+        style: .plain,
+        target: self,
+        action: #selector(didTapCloseBarButtonItem(_:)))
+    }
+    
     view.addSubview(collectionView)
     collectionView.fill()
     
@@ -82,6 +92,11 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
     coordinator.animate(alongsideTransition: { _ in
       self.collectionView.collectionViewLayout.invalidateLayout()
     })
+  }
+  
+  @objc
+  private func didTapCloseBarButtonItem(_ barButtonItem: UIBarButtonItem) {
+    dismiss(animated: true, completion: nil)
   }
   
   private func hideErrorView() {
@@ -141,7 +156,11 @@ extension ShowcaseViewController: UICollectionViewDataSource {
     willDisplay cell: UICollectionViewCell,
     forItemAt indexPath: IndexPath)
   {
-    if case .advancedSearch = input.mode {
+    switch input.mode {
+    case .normal:
+      break
+      
+    case .advancedSearch, .partner:
       switch viewModel?.sections[safe: indexPath.section] {
       case .loading:
         interactor?.willDisplayLoadingView()

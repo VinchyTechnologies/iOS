@@ -39,8 +39,8 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
   func update(wines: [ShortWine], needLoadMore: Bool) {
     var sections: [ShowcaseViewModel.Section] = []
     
-    switch input.mode {
-    case .advancedSearch:
+    switch input.mode {      
+    case .advancedSearch, .partner:
       let wines = wines.compactMap { wine -> WineCollectionViewCellViewModel? in
         WineCollectionViewCellViewModel(
           wineID: wine.id,
@@ -80,7 +80,7 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
     
     let title: String?
     switch input.mode {
-    case .normal:
+    case .normal, .partner:
       title = input.title
       
     case .advancedSearch:
