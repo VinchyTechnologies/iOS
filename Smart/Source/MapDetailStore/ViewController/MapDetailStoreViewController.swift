@@ -39,6 +39,7 @@ final class MapDetailStoreViewController: UIViewController {
   
   private lazy var layout: UICollectionViewFlowLayout = {
     $0.scrollDirection = .vertical
+    $0.sectionHeadersPinToVisibleBounds = true
     return $0
   }(UICollectionViewFlowLayout())
   
