@@ -30,96 +30,43 @@ final class MapDetailStoreViewController: UIViewController {
     didSet {
       collectionView.reloadData()
       collectionView.performBatchUpdates({
-        let sheetSize = SheetSize.fixed(self.layout.collectionViewContentSize.height + 48 + 24 /* pull Bar height */ + (UIApplication.shared.asKeyWindow?.safeAreaInsets.bottom ?? 0))
+        let sheetSize = SheetSize.fixed(self.layout.collectionViewContentSize.height + 24 /* pull Bar height */ + (UIApplication.shared.asKeyWindow?.safeAreaInsets.bottom ?? 0))
       self.sheetViewController?.sizes = [sheetSize]
         self.sheetViewController?.resize(to: [sheetSize][0], duration: 0.5)
       }, completion: nil) // This blocks layoutIfNeeded animation
     }
   }
   
-  private lazy var layout = UICollectionViewCompositionalLayout { [weak self] (sectionNumber, _) -> NSCollectionLayoutSection? in
-    
-    guard let self = self else { return nil }
-    
-    guard let type = self.viewModel?.sections[sectionNumber] else {
-      return nil
-    }
-    
-    switch type {
-    case .navigationBar:
-      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(48)))
-      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(48)), subitems: [item])
-      let section = NSCollectionLayoutSection(group: group)
-      section.contentInsets = .init(top: 15, leading: 15, bottom: 0, trailing: 15)
-      return section
-      
-    case .title, .address:
-      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(15)))
-      item.edgeSpacing = .init(leading: .none, top: .fixed(5), trailing: .none, bottom: .fixed(10))
-      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(15)), subitems: [item])
-      let section = NSCollectionLayoutSection(group: group)
-      section.contentInsets = .init(top: 0, leading: 15, bottom: 0, trailing: 15)
-      return section
-      
-    case .workingHours:
-      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(15)))
-      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(40)), subitems: [item])
-      let section = NSCollectionLayoutSection(group: group)
-      section.contentInsets = .init(top: 5, leading: 15, bottom: 0, trailing: 15)
-      return section
-      
-    case .assortment:
-      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(15)))
-      item.edgeSpacing = .init(leading: .none, top: .fixed(20), trailing: .none, bottom: .none)
-      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(54)), subitems: [item])
-      let section = NSCollectionLayoutSection(group: group)
-      section.contentInsets = .init(top: 5, leading: 15, bottom: 25, trailing: 15)
-      return section
-      
-    case .recommendedWines:
-      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(250)))
-      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(250)), subitems: [item])
-      let section = NSCollectionLayoutSection(group: group)
-      section.contentInsets = .init(top: 15, leading: 0, bottom: 10, trailing: 0)
-      return section
-    }
-  }
+  private lazy var layout: UICollectionViewFlowLayout = {
+    $0.scrollDirection = .vertical
+    return $0
+  }(UICollectionViewFlowLayout())
   
-  private lazy var collectionView: WineDetailCollectionView = {
+  private lazy var collectionView: UICollectionView = {
     $0.backgroundColor = .mainBackground
     $0.dataSource = self
+    $0.delegate = self
+    $0.contentInset = .init(top: 24/* pull Bar height */, left: 0, bottom: 0, right: 0)
     $0.register(
-      MapNavigationBarCollectionCell.self,
       TextCollectionCell.self,
       WorkingHoursCollectionCell.self,
       AssortmentCollectionCell.self,
       VinchySimpleConiniousCaruselCollectionCell.self)
+    $0.register(
+      MapNavigationBarCollectionCell.self,
+      forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
+      withReuseIdentifier: MapNavigationBarCollectionCell.reuseId)
     return $0
-  }(WineDetailCollectionView(frame: .zero, collectionViewLayout: layout))
-  
-  private lazy var navigationBar: MapNavigationBar = {
-    $0.delegate = self
-    return $0
-  }(MapNavigationBar())
+  }(UICollectionView(frame: .zero, collectionViewLayout: layout))
   
   override func viewDidLoad() {
     super.viewDidLoad()
     
     view.backgroundColor = .mainBackground
-    
-    view.addSubview(navigationBar)
-    navigationBar.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      navigationBar.topAnchor.constraint(equalTo: view.topAnchor, constant: 15),
-      navigationBar.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-      navigationBar.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-      navigationBar.heightAnchor.constraint(equalToConstant: 48),
-    ])
-    
     view.addSubview(collectionView)
     collectionView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      collectionView.topAnchor.constraint(equalTo: navigationBar.bottomAnchor),
+      collectionView.topAnchor.constraint(equalTo: view.topAnchor),
       collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
       collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -152,23 +99,8 @@ extension MapDetailStoreViewController: UICollectionViewDataSource {
     -> Int
   {
     switch viewModel?.sections[safe: section] {
-    case .navigationBar(let model):
-      return model.count
-    
-    case .title(let model):
-      return model.count
-      
-    case .address(let model):
-      return model.count
-      
-    case .workingHours(let model):
-      return model.count
-      
-    case .assortment(let model):
-      return model.count
-      
-    case .recommendedWines(let model):
-      return model.count
+    case .content(_, let items):
+      return items.count
       
     case .none:
       return 0
@@ -181,40 +113,108 @@ extension MapDetailStoreViewController: UICollectionViewDataSource {
     -> UICollectionViewCell
   {
     switch viewModel?.sections[safe: indexPath.section] {
-    case .navigationBar:
-      // swiftlint:disable:next force_cast
-      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: MapNavigationBarCollectionCell.reuseId, for: indexPath) as! MapNavigationBarCollectionCell
-      return cell
-      
-    case .title(let model), .address(let model):
-      // swiftlint:disable:next force_cast
-      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseId, for: indexPath) as! TextCollectionCell
-      cell.decorate(model: model[indexPath.row])
-      return cell
-      
-    case .workingHours(let model):
-      // swiftlint:disable:next force_cast
-      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WorkingHoursCollectionCell.reuseId, for: indexPath) as! WorkingHoursCollectionCell
-      cell.decorate(model: model[indexPath.row])
-      return cell
-      
-    case .assortment(let model):
-      // swiftlint:disable:next force_cast
-      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AssortmentCollectionCell.reuseId, for: indexPath) as! AssortmentCollectionCell
-      cell.decorate(model: model[indexPath.row])
-      cell.delegate = self
-      return cell
-      
-    case .recommendedWines(let model):
-      let cell = collectionView.dequeueReusableCell(
-        withReuseIdentifier: VinchySimpleConiniousCaruselCollectionCell.reuseId,
-        for: indexPath) as! VinchySimpleConiniousCaruselCollectionCell// swiftlint:disable:this force_cast
-      cell.decorate(model: model[indexPath.row])
-      cell.delegate = self
-      return cell
+    case .content(_, let items):
+      switch items[indexPath.row] {
+      case .title(let model), .address(let model):
+        // swiftlint:disable:next force_cast
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseId, for: indexPath) as! TextCollectionCell
+        cell.decorate(model: model)
+        return cell
+        
+      case .workingHours(let model):
+        // swiftlint:disable:next force_cast
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WorkingHoursCollectionCell.reuseId, for: indexPath) as! WorkingHoursCollectionCell
+        cell.decorate(model: model)
+        return cell
+        
+      case .assortment(let model):
+        // swiftlint:disable:next force_cast
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AssortmentCollectionCell.reuseId, for: indexPath) as! AssortmentCollectionCell
+        cell.decorate(model: model)
+        cell.delegate = self
+        return cell
+        
+      case .recommendedWines(let model):
+        let cell = collectionView.dequeueReusableCell(
+          withReuseIdentifier: VinchySimpleConiniousCaruselCollectionCell.reuseId,
+          for: indexPath) as! VinchySimpleConiniousCaruselCollectionCell // swiftlint:disable:this force_cast
+        cell.decorate(model: model)
+        cell.delegate = self
+        return cell
+      }
       
     case .none:
       return .init()
+    }
+  }
+  
+  func collectionView(
+    _ collectionView: UICollectionView,
+    viewForSupplementaryElementOfKind kind: String,
+    at indexPath: IndexPath)
+    -> UICollectionReusableView
+  {
+    if kind == UICollectionView.elementKindSectionHeader {
+      switch viewModel?.sections[safe: indexPath.section] {
+      case .content(let model, _):
+        let cell = collectionView.dequeueReusableSupplementaryView(ofKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: MapNavigationBarCollectionCell.reuseId, for: indexPath) as! MapNavigationBarCollectionCell // swiftlint:disable:this force_cast
+        cell.decorate(model: model)
+        cell.delegate = self
+        return cell
+      
+      case .none:
+        return .init()
+      }
+    } else {
+      return .init()
+    }
+  }
+}
+
+extension MapDetailStoreViewController: UICollectionViewDelegateFlowLayout {
+  
+  func collectionView(
+    _ collectionView: UICollectionView,
+    layout collectionViewLayout: UICollectionViewLayout,
+    referenceSizeForHeaderInSection section: Int)
+    -> CGSize
+  {
+    switch viewModel?.sections[safe: section] {
+    case .content:
+      return .init(width: collectionView.frame.width, height: 48)
+      
+    case .none:
+      return .zero
+    }
+  }
+  
+  func collectionView(
+    _ collectionView: UICollectionView,
+    layout collectionViewLayout: UICollectionViewLayout,
+    sizeForItemAt indexPath: IndexPath)
+    -> CGSize
+  {
+    let width = collectionView.frame.width - 15 * 2
+    switch viewModel?.sections[safe: indexPath.section] {
+    case .content(_, let items):
+      switch items[safe: indexPath.row] {
+      case .title(let model), .address(let model):
+        return .init(width: width, height: TextCollectionCell.height(viewModel: model, width: width))
+        
+      case .assortment:
+        return .init(width: width, height: 48)
+        
+      case .workingHours:
+        return .init(width: width, height: 48)
+        
+      case .recommendedWines:
+        return .init(width: collectionView.frame.width, height: 250)
+        
+      case .none:
+        return .zero
+      }
+    case .none:
+      return .zero
     }
   }
 }
