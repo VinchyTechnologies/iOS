@@ -86,6 +86,7 @@
 		8A313C0826447042009F2165 /* MapDetailStoreRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BFD26447042009F2165 /* MapDetailStoreRouter.swift */; };
 		8A313C0926447042009F2165 /* MapDetailStoreRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BFE26447042009F2165 /* MapDetailStoreRouterProtocol.swift */; };
 		8A313C1626468678009F2165 /* WorkingHoursCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313C1526468678009F2165 /* WorkingHoursCollectionCell.swift */; };
+		8A446CDF2660123B000A1769 /* RoutingToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A446CDE2660123B000A1769 /* RoutingToolBar.swift */; };
 		8AA5E5132615053D00935B5E /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA5E5122615053D00935B5E /* AboutView.swift */; };
 		8AD7A37E2639D31A007D4273 /* PartnerAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7A37D2639D31A007D4273 /* PartnerAnnotationView.swift */; };
 		8AD7A455263B2A98007D4273 /* ClusterAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7A454263B2A98007D4273 /* ClusterAnnotationView.swift */; };
@@ -392,6 +393,7 @@
 		8A313BFD26447042009F2165 /* MapDetailStoreRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreRouter.swift; sourceTree = "<group>"; };
 		8A313BFE26447042009F2165 /* MapDetailStoreRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreRouterProtocol.swift; sourceTree = "<group>"; };
 		8A313C1526468678009F2165 /* WorkingHoursCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingHoursCollectionCell.swift; sourceTree = "<group>"; };
+		8A446CDE2660123B000A1769 /* RoutingToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingToolBar.swift; sourceTree = "<group>"; };
 		8AA5E5122615053D00935B5E /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		8AD7A37D2639D31A007D4273 /* PartnerAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerAnnotationView.swift; sourceTree = "<group>"; };
 		8AD7A454263B2A98007D4273 /* ClusterAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterAnnotationView.swift; sourceTree = "<group>"; };
@@ -1190,6 +1192,7 @@
 			children = (
 				8AD7A37D2639D31A007D4273 /* PartnerAnnotationView.swift */,
 				8AD7A454263B2A98007D4273 /* ClusterAnnotationView.swift */,
+				8A446CDE2660123B000A1769 /* RoutingToolBar.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2348,6 +2351,7 @@
 				CAF514232461C52400667ED0 /* MoreInteractor.swift in Sources */,
 				CE404B0F2589D4C200917544 /* MoreRouterProtocol.swift in Sources */,
 				449F81B225DD025900585364 /* RootRouter.swift in Sources */,
+				8A446CDF2660123B000A1769 /* RoutingToolBar.swift in Sources */,
 				CA7A87FA2506B9D600AAD10F /* ShareUsCollectionCell.swift in Sources */,
 				449F81C425DD049B00585364 /* DeeplinkFlow.swift in Sources */,
 				CEF2087C25E8297900C413EA /* CurrencyCell.swift in Sources */,

@@ -25,12 +25,21 @@ final class MapPresenter {
 
 extension MapPresenter: MapPresenterProtocol {
   
+  func removeAllOverlays() {
+    viewController?.removeAllOverlays()
+  }
+  
+  func setRoutingToolBarHidden(_ flag: Bool) {
+    viewController?.setRoutingToolBarHidden(flag)
+  }
+  
   func deselectSelectedPin() {
     viewController?.deselectSelectedPin()
   }
   
   func didReceive(route: MKRoute) {
-    viewController?.drawRoute(polyline: route.polyline)
+    viewController?.drawRoute(route: route)
+    viewController?.setRoutingToolBarHidden(false)
   }
   
   func updateUserLocationAndRegion(_ userLocation: CLLocationCoordinate2D, radius: Double) {

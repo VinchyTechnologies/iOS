@@ -59,7 +59,7 @@ extension MapRouter: MapRouterProtocol {
     let controller = ShowcaseAssembly.assemblyModule(
       input: .init(title: title, mode: .partner(partnerID: partnerId, affilatedID: affilatedId)))
     let navigationController = NavigationController(rootViewController: controller)
-    navigationController.modalPresentationStyle = .fullScreen
+    navigationController.modalPresentationStyle = .overCurrentContext
     UIApplication.topViewController()?.present(navigationController, animated: true, completion: nil)
   }
 }

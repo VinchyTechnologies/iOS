@@ -15,4 +15,6 @@ protocol MapPresenterProtocol: AnyObject {
   func didReceive(partnersOnMap: Set<PartnerOnMap>)
   func didReceive(route: MKRoute)
   func deselectSelectedPin()
+  func setRoutingToolBarHidden(_ flag: Bool)
+  func removeAllOverlays()
 }

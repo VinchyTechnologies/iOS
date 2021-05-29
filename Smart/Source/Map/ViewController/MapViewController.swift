@@ -10,6 +10,7 @@ import Display
 import UIKit
 import MapKit
 import VinchyCore
+import StringFormatting
 
 final class MapViewController: UIViewController {
   
@@ -23,6 +24,7 @@ final class MapViewController: UIViewController {
     let mapView = MKMapView()
     mapView.showsUserLocation = true
     mapView.delegate = self
+    mapView.tintColor = .accent
     
     mapView.register(
       PartnerAnnotationView.self,
@@ -42,6 +44,12 @@ final class MapViewController: UIViewController {
     
     return mapView
   }()
+  
+  private lazy var routingToolBar: RoutingToolBar = {
+    $0.delegate = self
+    $0.isHidden = true
+    return $0
+  }(RoutingToolBar())
   
   /*
   private lazy var backButton: UIButton = {
@@ -73,7 +81,16 @@ final class MapViewController: UIViewController {
       backButton.heightAnchor.constraint(equalToConstant: 48),
       backButton.widthAnchor.constraint(equalToConstant: 48),
     ])
-     */
+    */
+    
+    view.addSubview(routingToolBar)
+    routingToolBar.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      routingToolBar.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
+      routingToolBar.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+      routingToolBar.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+      routingToolBar.heightAnchor.constraint(equalToConstant: 48),
+    ])
     
     interactor?.viewDidLoad()
   }
@@ -139,6 +156,15 @@ extension MapViewController: UIGestureRecognizerDelegate {
 
 extension MapViewController: MapViewControllerProtocol {
   
+  func removeAllOverlays() {
+    let overlays = mapView.overlays
+    mapView.removeOverlays(overlays)
+  }
+  
+  func setRoutingToolBarHidden(_ flag: Bool) {
+    routingToolBar.isHidden = flag
+  }
+  
   func setUserLocation(_ userLocation: CLLocationCoordinate2D, radius: Double) {
     let viewRegion = MKCoordinateRegion(
       center: userLocation,
@@ -157,20 +183,36 @@ extension MapViewController: MapViewControllerProtocol {
   }
   
   func updateUI(newPartnersOnMap: [PartnerAnnotationViewModel]) {
-//    mapView.removeAnnotations(mapView.annotations)
     mapView.addAnnotations(newPartnersOnMap)
   }
   
-  func drawRoute(polyline: MKPolyline) {
+  func drawRoute(route: MKRoute) {
+    guard let selectedAnnotation = mapView.selectedAnnotations.first as? PartnerAnnotationViewModel else {
+      return
+    }
     mapView.annotations.forEach { annotation in
-      if (annotation as? PartnerAnnotationViewModel) != (mapView.selectedAnnotations.first as? PartnerAnnotationViewModel) {
+      if (annotation as? PartnerAnnotationViewModel) != selectedAnnotation {
         mapView.removeAnnotation(annotation)
       }
     }
     mapView.removeOverlays(mapView.overlays)
-    mapView.addOverlay(polyline, level: .aboveRoads)
-    let routeRect = polyline.boundingMapRect
-    mapView.setRegion(MKCoordinateRegion(routeRect), animated: true)
+    mapView.addOverlay(route.polyline, level: .aboveRoads)
+    guard let viewFrame = mapView.view(for: selectedAnnotation)?.frame else {
+      return
+    }
+    
+    mapView.setVisibleMapRect(route.polyline.boundingMapRect, edgePadding: .init(top: viewFrame.width / 2 + 20, left: viewFrame.width / 2 + 20, bottom: viewFrame.width / 2 + 20, right: viewFrame.width / 2 + 20), animated: true)
+    
+    let string = NSAttributedString(
+      string:
+        ("~" + (route.expectedTravelTime.toString() ?? ""))
+        + " • "
+        + (route.distance.toDistance() ?? ""),
+      font: Font.semibold(20),
+      textColor: .dark,
+      paragraphAlignment: .center)
+    
+    routingToolBar.decorate(model: .init(distanceText: string))
   }
   
 }
@@ -255,5 +297,21 @@ extension MapViewController: MapDetailStoreViewControllerDelegate {
     if let coordinate = mapView.selectedAnnotations.first?.coordinate {
       interactor?.didTapShowRouteOnBottomSheet(coordinate: coordinate)
     }
+  }
+}
+
+extension MapViewController: RoutingToolBarDelegate {
+  
+  func didTapXMarkButton(_ button: UIButton) {
+    interactor?.didTapXMarkButtonOnRoutingToolBar()
+    interactor?.didMove(
+      to: mapView.centerCoordinate,
+      mapVisibleRegion: mapView.visibleMapRect,
+      mapView: mapView,
+      shouldUseThrottler: false)
+  }
+  
+  func didTapOpenInAppButton(_ button: UIButton) {
+    print(#function)
   }
 }

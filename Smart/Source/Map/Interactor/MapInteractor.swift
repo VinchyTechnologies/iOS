@@ -11,7 +11,7 @@ import MapKit
 import VinchyCore
 
 fileprivate enum C {
-  static let defaultRadius: Double = 200
+  static let defaultRadius: Double = 2000
 }
 
 fileprivate enum MapState {
@@ -59,6 +59,7 @@ final class MapInteractor {
       switch result {
       case .success(let partnersOnMap):
         self.partnersOnMap = Set<PartnerOnMap>(partnersOnMap)
+        print(self.partnersOnMap.count)
         self.presenter.didReceive(partnersOnMap: self.partnersOnMap)
         
       case .failure(let error):
@@ -73,6 +74,13 @@ final class MapInteractor {
 // MARK: - MapInteractorProtocol
 
 extension MapInteractor: MapInteractorProtocol {
+  
+  func didTapXMarkButtonOnRoutingToolBar() {
+    mapState = .normal
+    presenter.deselectSelectedPin()
+    presenter.setRoutingToolBarHidden(true)
+    presenter.removeAllOverlays()
+  }
   
   func didTapAssortmentButton(partnerId: Int, affilatedId: Int, title: String?) {
     router.showAssortmentViewController(partnerId: partnerId, affilatedId: affilatedId, title: title)
