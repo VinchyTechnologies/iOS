@@ -71,6 +71,7 @@
 "send" = "отправить";
 "tap_a_star_to_rate" = "Коснитесь для оценки";
 "zero_rating_error" = "Рейтинг не может быть нулевым";
+"open_in_app" = "Открыть в приложении";
 
 // MARK: - Sugar
 "sugar" = "сахар";
@@ -152,3 +153,4 @@
 
 // MARK: - Map
 "map" = "карта";
+"apple_maps" = "Apple Карты";

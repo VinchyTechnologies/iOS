@@ -23,7 +23,7 @@ final class MapInteractor {
   private let repository: MapRepositoryProtocol
   private let router: MapRouterProtocol
   private let presenter: MapPresenterProtocol
-  private let throttler = Throttler()
+  private var throttler: Throttler?
   private var partnersOnMap: Set<PartnerOnMap> = Set<PartnerOnMap>() 
   private var currentRadius = C.defaultRadius
   private var currentPosition: CLLocationCoordinate2D?
@@ -42,7 +42,8 @@ final class MapInteractor {
   private func processMove(
     to position: CLLocationCoordinate2D,
     mapVisibleRegion: MKMapRect,
-    mapView: MKMapView)
+    mapView: MKMapView,
+    label: String?)
   {
     let radius = mapView.currentRadius()
     if let currentPosition = self.currentPosition {
@@ -58,9 +59,11 @@ final class MapInteractor {
       guard let self = self else { return }
       switch result {
       case .success(let partnersOnMap):
-        self.partnersOnMap = Set<PartnerOnMap>(partnersOnMap)
-        print(self.partnersOnMap.count)
-        self.presenter.didReceive(partnersOnMap: self.partnersOnMap)
+          self.partnersOnMap = Set<PartnerOnMap>(partnersOnMap)
+        if self.throttler?.label == label {
+          print(self.partnersOnMap.count)
+          self.presenter.didReceive(partnersOnMap: self.partnersOnMap, userLocation: position)
+        }
         
       case .failure(let error):
         print("=== error", error)
@@ -74,6 +77,23 @@ final class MapInteractor {
 // MARK: - MapInteractorProtocol
 
 extension MapInteractor: MapInteractorProtocol {
+  
+  func didTapSearchThisAreaButton(
+    position: CLLocationCoordinate2D,
+    radius: Double) {
+    
+    repository.requestPartners(userLocation: position, radius: Int(radius)) { [weak self] result in
+      guard let self = self else { return }
+      switch result {
+      case .success(let partnersOnMap):
+          self.partnersOnMap = Set<PartnerOnMap>(partnersOnMap)
+          self.presenter.didReceive(partnersOnMap: self.partnersOnMap, userLocation: position)
+        
+      case .failure(let error):
+        print("=== error", error)
+      }
+    }
+  }
   
   func didTapXMarkButtonOnRoutingToolBar() {
     mapState = .normal
@@ -132,13 +152,16 @@ extension MapInteractor: MapInteractorProtocol {
     shouldUseThrottler: Bool)
   {
     guard mapState == .normal else { return }
-    throttler.cancel()
+    throttler?.cancel()
     if shouldUseThrottler {
-      throttler.throttle(delay: .milliseconds(1250)) {
-        self.processMove(to: position, mapVisibleRegion: mapVisibleRegion, mapView: mapView)
+      let uuid = UUID().uuidString
+      throttler = Throttler()
+      throttler?.label = uuid
+      throttler?.throttle(delay: .milliseconds(1250)) {
+        self.processMove(to: position, mapVisibleRegion: mapVisibleRegion, mapView: mapView, label: uuid)
       }
     } else {
-      processMove(to: position, mapVisibleRegion: mapVisibleRegion, mapView: mapView)
+      processMove(to: position, mapVisibleRegion: mapVisibleRegion, mapView: mapView, label: nil)
     }
   }
   
@@ -153,7 +176,7 @@ extension MapInteractor: MapInteractorProtocol {
         switch result {
         case .success(let partnersOnMap):
           self.partnersOnMap = Set<PartnerOnMap>(partnersOnMap)
-          self.presenter.didReceive(partnersOnMap: self.partnersOnMap)
+          self.presenter.didReceive(partnersOnMap: self.partnersOnMap, userLocation: userLocation)
           
         case .failure(let error):
           print("=== error", error)
@@ -163,7 +186,7 @@ extension MapInteractor: MapInteractorProtocol {
   }
 }
 
-fileprivate extension MKMapView {
+extension MKMapView {
   
   func topCenterCoordinate() -> CLLocationCoordinate2D {
     convert(CGPoint(x: frame.size.width / 2.0, y: 0), toCoordinateFrom: self)
@@ -181,7 +204,7 @@ fileprivate extension MKMapView {
   }
 }
 
-fileprivate extension CLLocation {
+extension CLLocation {
     
     /// Get distance between two points
     ///

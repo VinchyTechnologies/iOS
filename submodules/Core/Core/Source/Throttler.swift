@@ -14,7 +14,7 @@ public protocol ThrottlerProtocol: AnyObject {
 
 public final class Throttler: ThrottlerProtocol {
   
-  var label: String?
+  public var label: String?
   
   private struct Job {
     let workItem: DispatchWorkItem

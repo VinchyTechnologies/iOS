@@ -13,11 +13,11 @@ import Display
 final class PartnerAnnotationViewModel: NSObject, MKAnnotation {
   
   enum Kind: Equatable {
-    case store(partnerId: Int, affilatedId: Int, title: String?, latitude: CLLocationDegrees, longitude: CLLocationDegrees)
+    case store(partnerId: Int, affilatedId: Int, title: String?, latitude: CLLocationDegrees, longitude: CLLocationDegrees, shouldCluster: Bool)
     
     static func ==(lhs: Kind, rhs: Kind) -> Bool {
       switch (lhs, rhs) {
-      case (let .store(lhsPartnerId, lhsAffilatedId, _, _, _), let .store(rhsPartnerId, rhsAffilatedId, _, _, _)):
+      case (let .store(lhsPartnerId, lhsAffilatedId, _, _, _, _), let .store(rhsPartnerId, rhsAffilatedId, _, _, _, _)):
         return lhsPartnerId == rhsPartnerId && lhsAffilatedId == rhsAffilatedId
       }
     }
@@ -31,22 +31,29 @@ final class PartnerAnnotationViewModel: NSObject, MKAnnotation {
   
   var title: String? {
     switch kind {
-    case .store(_, _, let title, _, _):
+    case .store(_, _, let title, _, _, _):
       return title
     }
   }
   
   var partnerId: Int {
     switch kind {
-    case .store(let partnerId, _, _, _, _):
+    case .store(let partnerId, _, _, _, _, _):
       return partnerId
     }
   }
   
   var affilatedId: Int {
     switch kind {
-    case .store(_, let affilatedId, _, _, _):
+    case .store(_, let affilatedId, _, _, _, _):
       return affilatedId
+    }
+  }
+  
+  var shouldCluster: Bool {
+    switch kind {
+    case .store(_, _, _, _, _, let shouldCluster):
+      return shouldCluster
     }
   }
     
@@ -55,7 +62,7 @@ final class PartnerAnnotationViewModel: NSObject, MKAnnotation {
   dynamic var coordinate: CLLocationCoordinate2D {
     get {
       switch kind {
-      case .store(_, _, _, let latitude, let longitude):
+      case .store(_, _, _, let latitude, let longitude, _):
         return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
       }
     }

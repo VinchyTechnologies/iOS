@@ -11,8 +11,9 @@ import UIKit
 import MapKit
 import VinchyCore
 import StringFormatting
+import Core
 
-final class MapViewController: UIViewController {
+final class MapViewController: UIViewController, OpenURLProtocol {
   
   // MARK: - Internal Properties
   
@@ -50,6 +51,21 @@ final class MapViewController: UIViewController {
     $0.isHidden = true
     return $0
   }(RoutingToolBar())
+  
+  private lazy var searchInThisAreaButton: UIButton = {
+    $0.backgroundColor = .mainBackground
+    let imageConfig = UIImage.SymbolConfiguration(pointSize: 16, weight: .semibold, scale: .default)
+    $0.setImage(UIImage(systemName: "goforward")?.withTintColor(.accent, renderingMode: .alwaysOriginal).withConfiguration(imageConfig), for: [])
+    $0.imageView?.contentMode = .scaleAspectFit
+    $0.imageView?.transform = .init(rotationAngle: .pi / 2)
+    $0.setTitle("Search this area", for: [])
+    $0.contentEdgeInsets = .init(top: 10, left: 14, bottom: 10, right: 14)
+    $0.imageEdgeInsets = .init(top: 0, left: -6, bottom: 0, right: 4)
+    $0.titleLabel?.font = Font.bold(14)
+    $0.alpha = 0
+    $0.addTarget(self, action: #selector(didTapSearchThisAreaButton(_:)), for: .touchUpInside)
+    return $0
+  }(UIButton())
   
   /*
   private lazy var backButton: UIButton = {
@@ -92,12 +108,20 @@ final class MapViewController: UIViewController {
       routingToolBar.heightAnchor.constraint(equalToConstant: 48),
     ])
     
+    view.addSubview(searchInThisAreaButton)
+    searchInThisAreaButton.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      searchInThisAreaButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 16),
+      searchInThisAreaButton.centerXAnchor.constraint(equalTo: view.safeAreaLayoutGuide.centerXAnchor),
+      searchInThisAreaButton.heightAnchor.constraint(equalToConstant: 40),
+    ])
+    
     interactor?.viewDidLoad()
   }
   
   override func viewWillLayoutSubviews() {
     super.viewWillLayoutSubviews()
-//    backButton.layer.cornerRadius = backButton.frame.height / 2
+    searchInThisAreaButton.layer.cornerRadius = searchInThisAreaButton.frame.height / 2
   }
   
   override func viewWillAppear(_ animated: Bool) {
@@ -120,23 +144,32 @@ final class MapViewController: UIViewController {
   @objc
   private func didDragMap(_ sender: UIGestureRecognizer) {
     if sender.state == .ended {
-      interactor?.didMove(
-        to: mapView.centerCoordinate,
-        mapVisibleRegion: mapView.visibleMapRect,
-        mapView: mapView,
-        shouldUseThrottler: true)
+      if routingToolBar.isHidden {
+        if searchInThisAreaButton.alpha == 0 {
+          UIView.animate(withDuration: 0.25) {
+            self.searchInThisAreaButton.alpha = 1
+          }
+        }
+      }
     }
   }
   
   @objc
   private func didPinchMap(_ sender: UIGestureRecognizer) {
     if sender.state == .ended {
-      interactor?.didMove(
-        to: mapView.centerCoordinate,
-        mapVisibleRegion: mapView.visibleMapRect,
-        mapView: mapView,
-        shouldUseThrottler: false)
+      if routingToolBar.isHidden {
+        if searchInThisAreaButton.alpha == 0 {
+          UIView.animate(withDuration: 0.25) {
+            self.searchInThisAreaButton.alpha = 1
+          }
+        }
+      }
     }
+  }
+  
+  @objc
+  private func didTapSearchThisAreaButton(_ button: UIButton) {
+    interactor?.didTapSearchThisAreaButton(position: mapView.centerCoordinate, radius: mapView.currentRadius())
   }
 }
 
@@ -183,6 +216,12 @@ extension MapViewController: MapViewControllerProtocol {
   }
   
   func updateUI(newPartnersOnMap: [PartnerAnnotationViewModel]) {
+    if searchInThisAreaButton.alpha == 1.0 {
+      UIView.animate(withDuration: 0.25) {
+        self.searchInThisAreaButton.alpha = 0.0
+      }
+    }
+    mapView.annotations.forEach({ mapView.removeAnnotation($0) })
     mapView.addAnnotations(newPartnersOnMap)
   }
   
@@ -213,8 +252,13 @@ extension MapViewController: MapViewControllerProtocol {
       paragraphAlignment: .center)
     
     routingToolBar.decorate(model: .init(distanceText: string))
+    
+    if searchInThisAreaButton.alpha == 1.0 {
+      UIView.animate(withDuration: 0.25) {
+        self.searchInThisAreaButton.alpha = 0.0
+      }
+    }
   }
-  
 }
 
 // MARK: - MKMapViewDelegate
@@ -259,7 +303,10 @@ extension MapViewController: MKMapViewDelegate {
         annotation: annotation,
         reuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
       }
-      annotationView?.clusteringIdentifier = String(describing: PartnerAnnotationView.self)
+      if (annotation as? PartnerAnnotationViewModel)?.shouldCluster == true {
+        annotationView?.clusteringIdentifier = String(describing: PartnerAnnotationView.self)
+      }
+      
       return annotationView
       
     case is MKClusterAnnotation:
@@ -304,14 +351,24 @@ extension MapViewController: RoutingToolBarDelegate {
   
   func didTapXMarkButton(_ button: UIButton) {
     interactor?.didTapXMarkButtonOnRoutingToolBar()
-    interactor?.didMove(
-      to: mapView.centerCoordinate,
-      mapVisibleRegion: mapView.visibleMapRect,
-      mapView: mapView,
-      shouldUseThrottler: false)
+    interactor?.didTapSearchThisAreaButton(position: mapView.centerCoordinate, radius: mapView.currentRadius())
   }
   
   func didTapOpenInAppButton(_ button: UIButton) {
-    print(#function)
+    if let pin = mapView.selectedAnnotations.first as? PartnerAnnotationViewModel {
+      let alert = UIAlertController(title: localized("open_in_app").firstLetterUppercased(), message: nil, preferredStyle: .actionSheet)
+      alert.addAction(UIAlertAction(title: localized("apple_maps").firstLetterUppercased(), style: .default , handler:{ _ in
+        let appleURL = "http://maps.apple.com/?ll=\(pin.coordinate.latitude),\(pin.coordinate.longitude)&q=\(pin.title ?? "Vinchy")&z=15"
+        self.open(urlString: appleURL, errorCompletion: {
+        })
+      }))
+      
+      alert.addAction(UIAlertAction(title: localized("cancel").firstLetterUppercased(), style: .cancel, handler: { _ in
+      }))
+          
+      alert.popoverPresentationController?.sourceView = self.view
+      
+      self.present(alert, animated: true)
+    }
   }
 }

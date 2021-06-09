@@ -24,4 +24,5 @@ protocol MapInteractorProtocol: AnyObject {
   func requestBottomSheetDismissToDeselectSelectedPin()
   func didTapAssortmentButton(partnerId: Int, affilatedId: Int, title: String?)
   func didTapXMarkButtonOnRoutingToolBar()
+  func didTapSearchThisAreaButton(position: CLLocationCoordinate2D, radius: Double)
 }

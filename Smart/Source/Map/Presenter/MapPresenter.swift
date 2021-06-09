@@ -14,7 +14,6 @@ import MapKit
 final class MapPresenter {
     
   weak var viewController: MapViewControllerProtocol?
-  private var partnersAnnotationViewModel: [PartnerAnnotationViewModel] = []
   
   init(viewController: MapViewControllerProtocol) {
     self.viewController = viewController
@@ -46,7 +45,7 @@ extension MapPresenter: MapPresenterProtocol {
     viewController?.setUserLocation(userLocation, radius: radius)
   }
   
-  func didReceive(partnersOnMap: Set<PartnerOnMap>) {
+  func didReceive(partnersOnMap: Set<PartnerOnMap>, userLocation: CLLocationCoordinate2D?) {
     
     var annotations: [PartnerAnnotationViewModel] = []
     let group = DispatchGroup()
@@ -55,27 +54,32 @@ extension MapPresenter: MapPresenterProtocol {
     partnersOnMap.forEach { partnerOnMap in
       group.enter()
       DispatchQueue.global(qos: .userInitiated).async {
+                
         partnerOnMap.affiliatedStores.forEach { affilatedStore in
+          let shouldCluster: Bool
+          if userLocation == nil {
+            shouldCluster = true
+          } else {
+            shouldCluster = CLLocation.distance(from: userLocation!, to: .init(latitude: affilatedStore.latitude, longitude: affilatedStore.longitude)) > 1000 //swiftlint:disable:this force_unwrapping
+          }
           let annotationToAdd: PartnerAnnotationViewModel = .init(
             kind: .store(
               partnerId: partnerOnMap.id,
               affilatedId: affilatedStore.id,
               title: affilatedStore.title,
               latitude: affilatedStore.latitude,
-              longitude: affilatedStore.longitude))
+              longitude: affilatedStore.longitude,
+              shouldCluster: shouldCluster))
           
-          if self.partnersAnnotationViewModel.first(where: { $0 == annotationToAdd }) == nil {
             os_unfair_lock_lock(&locker)
             annotations.append(annotationToAdd)
             os_unfair_lock_unlock(&locker)
-          }
         }
         group.leave()
       }
     }
     
     group.notify(queue: .main) {
-      self.partnersAnnotationViewModel += annotations
       self.viewController?.updateUI(newPartnersOnMap: annotations)
     }
   }

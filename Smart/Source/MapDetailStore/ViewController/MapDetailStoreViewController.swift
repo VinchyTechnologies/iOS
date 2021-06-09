@@ -20,6 +20,7 @@ protocol MapDetailStoreViewControllerDelegate: AnyObject {
 final class MapDetailStoreViewController: UIViewController {
   
   // MARK: - Internal Properties
+  
   weak var delegate: MapDetailStoreViewControllerDelegate?
   var interactor: MapDetailStoreInteractorProtocol?
   
@@ -47,7 +48,7 @@ final class MapDetailStoreViewController: UIViewController {
     $0.backgroundColor = .mainBackground
     $0.dataSource = self
     $0.delegate = self
-    $0.contentInset = .init(top: 24/* pull Bar height */, left: 0, bottom: 0, right: 0)
+    $0.contentInset = .init(top: 24/* pull Bar height */, left: 0, bottom: 10, right: 0)
     $0.register(
       TextCollectionCell.self,
       WorkingHoursCollectionCell.self,
@@ -75,16 +76,6 @@ final class MapDetailStoreViewController: UIViewController {
     sheetViewController?.handleScrollView(collectionView)
     
     interactor?.viewDidLoad()
-  }
-  
-  @objc
-  private func didTapBuildRoute(_ barButtonItem: UIBarButtonItem) {
-    
-  }
-  
-  @objc
-  private func didTapClose(_ barButtonItem: UIBarButtonItem) {
-    dismiss(animated: true, completion: nil)
   }
 }
 
