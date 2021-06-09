@@ -57,7 +57,8 @@ final class MapViewController: UIViewController, OpenURLProtocol {
     let imageConfig = UIImage.SymbolConfiguration(pointSize: 16, weight: .semibold, scale: .default)
     $0.setImage(UIImage(systemName: "goforward")?.withTintColor(.accent, renderingMode: .alwaysOriginal).withConfiguration(imageConfig), for: [])
     $0.imageView?.contentMode = .scaleAspectFit
-    $0.imageView?.transform = .init(rotationAngle: .pi / 2)
+    let transform: CGAffineTransform = CGAffineTransform.init(rotationAngle: .pi / 2)
+    $0.imageView?.transform = transform
     $0.setTitle("Search this area", for: [])
     $0.contentEdgeInsets = .init(top: 10, left: 14, bottom: 10, right: 14)
     $0.imageEdgeInsets = .init(top: 0, left: -6, bottom: 0, right: 4)

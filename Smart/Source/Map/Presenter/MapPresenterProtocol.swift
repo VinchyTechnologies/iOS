@@ -17,4 +17,5 @@ protocol MapPresenterProtocol: AnyObject {
   func deselectSelectedPin()
   func setRoutingToolBarHidden(_ flag: Bool)
   func removeAllOverlays()
+  func showAlert(error: Error)
 }

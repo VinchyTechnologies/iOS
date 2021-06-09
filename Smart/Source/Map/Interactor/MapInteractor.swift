@@ -66,7 +66,7 @@ final class MapInteractor {
         }
         
       case .failure(let error):
-        print("=== error", error)
+        self.presenter.showAlert(error: error)
       }
     }
     self.currentPosition = position
@@ -90,7 +90,7 @@ extension MapInteractor: MapInteractorProtocol {
           self.presenter.didReceive(partnersOnMap: self.partnersOnMap, userLocation: position)
         
       case .failure(let error):
-        print("=== error", error)
+        self.presenter.showAlert(error: error)
       }
     }
   }
@@ -125,8 +125,7 @@ extension MapInteractor: MapInteractorProtocol {
       guard let directionsResponse = directionsResponse else {
         if let error = error {
           self.router.dismissCurrentBottomSheet(shouldUseDidDismissCallback: true)
-//          self.showAlert(message: error.localizedDescription)
-          // TODO: - Alert
+          self.presenter.showAlert(error: error)
         }
         return
       }
@@ -136,7 +135,7 @@ extension MapInteractor: MapInteractorProtocol {
         self.presenter.didReceive(route: route)
       } else {
         self.router.dismissCurrentBottomSheet(shouldUseDidDismissCallback: true)
-        // TODO: - Alert
+        self.presenter.showAlert(error: NSError(domain: "No routes", code: 1, userInfo: [:]))
       }
     }
   }
@@ -179,7 +178,7 @@ extension MapInteractor: MapInteractorProtocol {
           self.presenter.didReceive(partnersOnMap: self.partnersOnMap, userLocation: userLocation)
           
         case .failure(let error):
-          print("=== error", error)
+          self.presenter.showAlert(error: error)
         }
       }
     }

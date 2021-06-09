@@ -10,6 +10,7 @@ import Core
 import CoreLocation
 import VinchyCore
 import MapKit
+import StringFormatting
 
 final class MapPresenter {
     
@@ -23,6 +24,12 @@ final class MapPresenter {
 // MARK: - MapPresenterProtocol
 
 extension MapPresenter: MapPresenterProtocol {
+  
+  func showAlert(error: Error) {
+    viewController?.showAlert(
+      title: localized("error").firstLetterUppercased(),
+      message: error.localizedDescription)
+  }
   
   func removeAllOverlays() {
     viewController?.removeAllOverlays()

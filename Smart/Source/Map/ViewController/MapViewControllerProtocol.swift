@@ -9,8 +9,9 @@
 import CoreLocation
 import VinchyCore
 import MapKit
+import Display
 
-protocol MapViewControllerProtocol: AnyObject {
+protocol MapViewControllerProtocol: Alertable {
   func setUserLocation(_ userLocation: CLLocationCoordinate2D, radius: Double)
   func updateUI(viewModel: MapViewModel)
   func updateUI(newPartnersOnMap: [PartnerAnnotationViewModel])

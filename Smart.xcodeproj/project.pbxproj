@@ -2748,6 +2748,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.7;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -Xfrontend -warn-long-expression-type-checking=100";
 				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy;
 				PRODUCT_NAME = Vinchy;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2775,6 +2776,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.7;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -Xfrontend -warn-long-expression-type-checking=100";
 				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy;
 				PRODUCT_NAME = Vinchy;
 				PROVISIONING_PROFILE_SPECIFIER = "";
