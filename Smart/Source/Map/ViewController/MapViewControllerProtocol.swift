@@ -17,6 +17,5 @@ protocol MapViewControllerProtocol: Alertable {
   func updateUI(newPartnersOnMap: [PartnerAnnotationViewModel])
   func drawRoute(route: MKRoute)
   func deselectSelectedPin()
-  func setRoutingToolBarHidden(_ flag: Bool)
   func removeAllOverlays()
 }

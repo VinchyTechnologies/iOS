@@ -35,17 +35,12 @@ extension MapPresenter: MapPresenterProtocol {
     viewController?.removeAllOverlays()
   }
   
-  func setRoutingToolBarHidden(_ flag: Bool) {
-    viewController?.setRoutingToolBarHidden(flag)
-  }
-  
   func deselectSelectedPin() {
     viewController?.deselectSelectedPin()
   }
   
   func didReceive(route: MKRoute) {
     viewController?.drawRoute(route: route)
-    viewController?.setRoutingToolBarHidden(false)
   }
   
   func updateUserLocationAndRegion(_ userLocation: CLLocationCoordinate2D, radius: Double) {

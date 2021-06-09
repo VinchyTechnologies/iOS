@@ -61,6 +61,8 @@ final class MapDetailStoreViewController: UIViewController {
     return $0
   }(UICollectionView(frame: .zero, collectionViewLayout: layout))
   
+  // MARK: - Lifecycle
+  
   override func viewDidLoad() {
     super.viewDidLoad()
     
@@ -76,6 +78,13 @@ final class MapDetailStoreViewController: UIViewController {
     sheetViewController?.handleScrollView(collectionView)
     
     interactor?.viewDidLoad()
+  }
+  
+  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    super.viewWillTransition(to: size, with: coordinator)
+    coordinator.animate(alongsideTransition: { _ in
+        self.collectionView.collectionViewLayout.invalidateLayout()
+    })
   }
 }
 
@@ -162,6 +171,8 @@ extension MapDetailStoreViewController: UICollectionViewDataSource {
     }
   }
 }
+
+// MARK: - UICollectionViewDelegateFlowLayout
 
 extension MapDetailStoreViewController: UICollectionViewDelegateFlowLayout {
   

@@ -98,7 +98,6 @@ extension MapInteractor: MapInteractorProtocol {
   func didTapXMarkButtonOnRoutingToolBar() {
     mapState = .normal
     presenter.deselectSelectedPin()
-    presenter.setRoutingToolBarHidden(true)
     presenter.removeAllOverlays()
   }
   
@@ -107,7 +106,9 @@ extension MapInteractor: MapInteractorProtocol {
   }
   
   func requestBottomSheetDismissToDeselectSelectedPin() {
-    presenter.deselectSelectedPin()
+    if mapState == .normal {
+      presenter.deselectSelectedPin()
+    }
   }
   
   func didTapShowRouteOnBottomSheet(coordinate: CLLocationCoordinate2D) {

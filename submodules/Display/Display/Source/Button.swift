@@ -40,6 +40,53 @@ public final class Button: UIButton {
     setTitleColor(.blueGray, for: .normal)
   }
   
+//  func startAnimatingPressActions() {
+//    addTarget(self, action: #selector(animateDown), for: [.touchDown, .touchDragEnter])
+//    addTarget(self, action: #selector(animateUp), for: [.touchDragExit, .touchCancel, .touchUpInside, .touchUpOutside])
+//  }
+  
+//  @objc
+//  private func animateDown(sender: UIButton) {
+//    let scaleOffset: CGFloat = 8
+//    let scale = (frame.width - scaleOffset) / frame.width
+//    animate(sender, transform: CGAffineTransform.identity.scaledBy(x: scale, y: scale))
+//  }
+//
+//  @objc
+//  private func animateUp(sender: UIButton) {
+//    animate(sender, transform: .identity)
+//  }
+  
+//  private func animate(_ button: UIButton, transform: CGAffineTransform) {
+//    UIView.animate(
+//      withDuration: 0.4,
+//      delay: 0,
+//      usingSpringWithDamping: 0.5,
+//      initialSpringVelocity: 3,
+//      options: [.curveEaseInOut],
+//      animations: {
+//        button.transform = transform
+//      },
+//      completion: nil)
+//  }
+}
+
+public enum ButtonStyle {
+  case primary
+}
+
+extension UIButton {
+  
+  func apply(style: ButtonStyle) {
+    switch style {
+    case .primary:
+      break
+    }
+  }
+}
+
+public extension UIButton {
+  
   func startAnimatingPressActions() {
     addTarget(self, action: #selector(animateDown), for: [.touchDown, .touchDragEnter])
     addTarget(self, action: #selector(animateUp), for: [.touchDragExit, .touchCancel, .touchUpInside, .touchUpOutside])
@@ -68,19 +115,5 @@ public final class Button: UIButton {
         button.transform = transform
       },
       completion: nil)
-  }
-}
-
-public enum ButtonStyle {
-  case primary
-}
-
-extension UIButton {
-  
-  func apply(style: ButtonStyle) {
-    switch style {
-    case .primary:
-      break
-    }
   }
 }

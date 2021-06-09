@@ -20,6 +20,8 @@ final class MapViewController: UIViewController, OpenURLProtocol {
   var interactor: MapInteractorProtocol?
 
   // MARK: - Private Properties
+  
+  private var selectedAnnotation: MKAnnotation?
 
   private lazy var mapView: MKMapView = {
     let mapView = MKMapView()
@@ -66,6 +68,7 @@ final class MapViewController: UIViewController, OpenURLProtocol {
     $0.titleLabel?.font = Font.bold(14)
     $0.alpha = 0
     $0.addTarget(self, action: #selector(didTapSearchThisAreaButton(_:)), for: .touchUpInside)
+    $0.startAnimatingPressActions()
     return $0
   }(UIButton())
   
@@ -196,10 +199,6 @@ extension MapViewController: MapViewControllerProtocol {
     mapView.removeOverlays(overlays)
   }
   
-  func setRoutingToolBarHidden(_ flag: Bool) {
-    routingToolBar.isHidden = flag
-  }
-  
   func setUserLocation(_ userLocation: CLLocationCoordinate2D, radius: Double) {
     let viewRegion = MKCoordinateRegion(
       center: userLocation,
@@ -228,7 +227,7 @@ extension MapViewController: MapViewControllerProtocol {
   }
   
   func drawRoute(route: MKRoute) {
-    guard let selectedAnnotation = mapView.selectedAnnotations.first as? PartnerAnnotationViewModel else {
+    guard let selectedAnnotation = selectedAnnotation as? PartnerAnnotationViewModel else {
       return
     }
     mapView.annotations.forEach { annotation in
@@ -254,6 +253,7 @@ extension MapViewController: MapViewControllerProtocol {
       paragraphAlignment: .center)
     
     routingToolBar.decorate(model: .init(distanceText: string))
+    routingToolBar.isHidden = false
     
     if searchInThisAreaButton.alpha == 1.0 {
       UIView.animate(withDuration: 0.25) {
@@ -277,6 +277,7 @@ extension MapViewController: MKMapViewDelegate {
       view.transform = .identity
     } completion: { _ in
     }
+    selectedAnnotation = nil
   }
   
   func mapView(_ mapView: MKMapView, didSelect view: MKAnnotationView) {
@@ -289,6 +290,7 @@ extension MapViewController: MKMapViewDelegate {
         options: .curveEaseIn) {
         view.transform = CGAffineTransform(scaleX: 1.2, y: 1.2).translatedBy(x: 0, y: -10)
       } completion: { (_) in
+        self.selectedAnnotation = annotation
         self.interactor?.didTapOnPin(
           partnerId: annotation.partnerId,
           affilatedId: annotation.affilatedId)
@@ -334,7 +336,7 @@ extension MapViewController: MKMapViewDelegate {
 extension MapViewController: MapDetailStoreViewControllerDelegate {
   
   func didTapAssortmentButton(_ button: UIButton) {
-    if let viewModel = (mapView.selectedAnnotations.first as? PartnerAnnotationViewModel) {
+    if let viewModel = (selectedAnnotation as? PartnerAnnotationViewModel) {
       interactor?.didTapAssortmentButton(
         partnerId: viewModel.partnerId,
         affilatedId: viewModel.affilatedId,
@@ -343,7 +345,7 @@ extension MapViewController: MapDetailStoreViewControllerDelegate {
   }
   
   func didTapRouteButton(_ button: UIButton) {
-    if let coordinate = mapView.selectedAnnotations.first?.coordinate {
+    if let coordinate = selectedAnnotation?.coordinate {
       interactor?.didTapShowRouteOnBottomSheet(coordinate: coordinate)
     }
   }
@@ -352,12 +354,13 @@ extension MapViewController: MapDetailStoreViewControllerDelegate {
 extension MapViewController: RoutingToolBarDelegate {
   
   func didTapXMarkButton(_ button: UIButton) {
+    routingToolBar.isHidden = true
     interactor?.didTapXMarkButtonOnRoutingToolBar()
     interactor?.didTapSearchThisAreaButton(position: mapView.centerCoordinate, radius: mapView.currentRadius())
   }
   
   func didTapOpenInAppButton(_ button: UIButton) {
-    if let pin = mapView.selectedAnnotations.first as? PartnerAnnotationViewModel {
+    if let pin = selectedAnnotation as? PartnerAnnotationViewModel {
       let alert = UIAlertController(title: localized("open_in_app").firstLetterUppercased(), message: nil, preferredStyle: .actionSheet)
       alert.addAction(UIAlertAction(title: localized("apple_maps").firstLetterUppercased(), style: .default , handler:{ _ in
         let appleURL = "http://maps.apple.com/?ll=\(pin.coordinate.latitude),\(pin.coordinate.longitude)&q=\(pin.title ?? "Vinchy")&z=15"

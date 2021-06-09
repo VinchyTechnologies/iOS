@@ -136,6 +136,9 @@ final class PartnerAnnotationView: MKAnnotationView, Reusable {
     addSubview(titleLabel)
     addSubview(triangleView)
     
+    titleLabel.layer.cornerRadius = titleText.height(forWidth: width, font: C.font) / 2
+    titleLabel.clipsToBounds = true
+    
 //    centerOffset = CGPoint(x: 0, y: -frame.size.height / 2)
   }
   
