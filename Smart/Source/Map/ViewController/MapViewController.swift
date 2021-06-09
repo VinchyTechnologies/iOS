@@ -368,7 +368,8 @@ extension MapViewController: RoutingToolBarDelegate {
       alert.addAction(UIAlertAction(title: localized("cancel").firstLetterUppercased(), style: .cancel, handler: { _ in
       }))
           
-      alert.popoverPresentationController?.sourceView = self.view
+      alert.popoverPresentationController?.sourceView = button
+      alert.popoverPresentationController?.permittedArrowDirections = .up
       
       self.present(alert, animated: true)
     }
