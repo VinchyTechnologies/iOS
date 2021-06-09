@@ -59,7 +59,8 @@ final class MapViewController: UIViewController, OpenURLProtocol {
     $0.imageView?.contentMode = .scaleAspectFit
     let transform: CGAffineTransform = CGAffineTransform.init(rotationAngle: .pi / 2)
     $0.imageView?.transform = transform
-    $0.setTitle("Search this area", for: [])
+    $0.setTitle(localized("search_this_area"), for: [])
+    $0.setTitleColor(.dark, for: [])
     $0.contentEdgeInsets = .init(top: 10, left: 14, bottom: 10, right: 14)
     $0.imageEdgeInsets = .init(top: 0, left: -6, bottom: 0, right: 4)
     $0.titleLabel?.font = Font.bold(14)
