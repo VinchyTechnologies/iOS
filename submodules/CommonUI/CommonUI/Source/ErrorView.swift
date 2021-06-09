@@ -37,7 +37,7 @@ public final class ErrorView: UIView {
   
   private let titleLabel = UILabel()
   private let subtitleLabel = UILabel()
-  private let button = UIButton()
+  private let button = Button()
   
   // MARK: - Initializers
   
@@ -67,11 +67,6 @@ public final class ErrorView: UIView {
     subtitleLabel.numberOfLines = 3
     subtitleLabel.widthAnchor.constraint(lessThanOrEqualToConstant: UIScreen.main.bounds.width - 40).isActive = true
 
-    button.setTitleColor(.white, for: .normal)
-    button.titleLabel?.font = Font.bold(18)
-    button.backgroundColor = .accent
-    button.layer.cornerRadius = 24
-    button.clipsToBounds = true
     button.heightAnchor.constraint(equalToConstant: 48).isActive = true
     button.widthAnchor.constraint(greaterThanOrEqualToConstant: 150).isActive = true
     button.addTarget(self, action: #selector(didTapErrorButton(_:)), for: .touchUpInside)

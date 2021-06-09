@@ -40,13 +40,14 @@ final class ButtonCollectionCell: UICollectionViewCell, Reusable {
     button.enable()    
     button.addTarget(self, action: #selector(didTap(_:)), for: .touchUpInside)
     addSubview(button)
+    button.translatesAutoresizingMaskIntoConstraints = false
+    button.fill()
   }
   
   required init?(coder: NSCoder) { fatalError() }
   
   override func layoutSubviews() {
     super.layoutSubviews()
-    button.frame = bounds
     button.layer.cornerRadius = bounds.height / 2
     button.clipsToBounds = true
   }
