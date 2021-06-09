@@ -31,6 +31,8 @@ final class LocationDataMapClusterView: MKAnnotationView {
         y: 0,
         width: side,
         height: side)
+      layer.cornerRadius = side / 2
+      clipsToBounds = true
     }
   }
   
@@ -50,11 +52,8 @@ final class LocationDataMapClusterView: MKAnnotationView {
     super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
     
     displayPriority = .defaultHigh
-    if #available(iOS 14.0, *) {
-      collisionMode = .rectangle
-    } else {
-      collisionMode = .rectangle
-    }
+   
+    collisionMode = .circle
         
     addSubview(countLabel)
     countLabel.fill()
