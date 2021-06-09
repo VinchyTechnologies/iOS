@@ -14,6 +14,7 @@
 		44AA7C3B25A4A1AE00F599BA /* Throttler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA7C3A25A4A1AE00F599BA /* Throttler.swift */; };
 		44E0035325CBFE5D00ED7D9E /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E0035225CBFE5D00ED7D9E /* Keychain.swift */; };
 		5FFB4DF1C25BB618C8519B44 /* Pods_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F36A03A8E0CC5435C60647 /* Pods_Core.framework */; };
+		8A313BCF26407B3E009F2165 /* Atomic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BCE26407B3E009F2165 /* Atomic.swift */; };
 		CA27087C24CFF39B007580D8 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27087B24CFF39B007580D8 /* Array.swift */; };
 		CA2E796324D5ECAC00F17725 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2E796224D5ECAC00F17725 /* UserDefaults.swift */; };
 		CA3CEFB225128EDA00AAA692 /* CountryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3CEFB125128EDA00AAA692 /* CountryCode.swift */; };
@@ -36,6 +37,7 @@
 		44E0035225CBFE5D00ED7D9E /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		697BF7A2F7EED885735CDEA9 /* Pods-Core.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.debug.xcconfig"; path = "Target Support Files/Pods-Core/Pods-Core.debug.xcconfig"; sourceTree = "<group>"; };
 		7B9A38AAE808F29C35EC006F /* Pods-Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.release.xcconfig"; path = "Target Support Files/Pods-Core/Pods-Core.release.xcconfig"; sourceTree = "<group>"; };
+		8A313BCE26407B3E009F2165 /* Atomic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Atomic.swift; sourceTree = "<group>"; };
 		CA27087B24CFF39B007580D8 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		CA2E796224D5ECAC00F17725 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		CA3CEFB125128EDA00AAA692 /* CountryCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCode.swift; sourceTree = "<group>"; };
@@ -117,6 +119,7 @@
 			children = (
 				CA4AED9E24CED4AC00035922 /* AppBundle.swift */,
 				CA27087B24CFF39B007580D8 /* Array.swift */,
+				8A313BCE26407B3E009F2165 /* Atomic.swift */,
 				CABDBA9324C31E4E00AD96D6 /* CollectionExt.swift */,
 				CA3CEFB125128EDA00AAA692 /* CountryCode.swift */,
 				CACC1DC324C5F6C80082BD01 /* Filter.swift */,
@@ -245,6 +248,7 @@
 				CA7B835124ED9AE000991F24 /* WorkItem.swift in Sources */,
 				CA4AED9F24CED4AC00035922 /* AppBundle.swift in Sources */,
 				CA3CEFB225128EDA00AAA692 /* CountryCode.swift in Sources */,
+				8A313BCF26407B3E009F2165 /* Atomic.swift in Sources */,
 				CA27087C24CFF39B007580D8 /* Array.swift in Sources */,
 				44E0035325CBFE5D00ED7D9E /* Keychain.swift in Sources */,
 				44911E3C25D30F5400A62E40 /* LockProtocol.swift in Sources */,

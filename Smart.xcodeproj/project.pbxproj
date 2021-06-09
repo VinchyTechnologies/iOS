@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4407196F25F015F1000531B7 /* MapRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4407196E25F015F1000531B7 /* MapRoutable.swift */; };
 		440C284725E13F9D009911EE /* WineDetailCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 440C284625E13F9D009911EE /* WineDetailCollectionView.swift */; };
 		4437AA5B25E3A7CE00F6E838 /* WriteReviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437AA4A25E3A7CD00F6E838 /* WriteReviewViewModel.swift */; };
 		4437AA5C25E3A7CE00F6E838 /* WriteReviewInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437AA4C25E3A7CD00F6E838 /* WriteReviewInput.swift */; };
@@ -20,6 +21,8 @@
 		4437AA6425E3A7CE00F6E838 /* WriteReviewRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437AA5925E3A7CD00F6E838 /* WriteReviewRouterProtocol.swift */; };
 		4437AA6525E3A7CE00F6E838 /* WriteReviewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437AA5A25E3A7CD00F6E838 /* WriteReviewRouter.swift */; };
 		4437AA6E25E3BE7300F6E838 /* WriteReviewRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437AA6D25E3BE7300F6E838 /* WriteReviewRoutable.swift */; };
+		44465EC025F39400005B3F06 /* MapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44465EBF25F39400005B3F06 /* MapRepository.swift */; };
+		44465EC625F3940E005B3F06 /* MapRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44465EC525F3940E005B3F06 /* MapRepositoryProtocol.swift */; };
 		4474E36525E02486001C5DE3 /* VinchyAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4474E36425E02486001C5DE3 /* VinchyAnalytics.framework */; };
 		4474E36625E02486001C5DE3 /* VinchyAnalytics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4474E36425E02486001C5DE3 /* VinchyAnalytics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		447C353825EEAA5700105A35 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447C352725EEAA5700105A35 /* MapViewModel.swift */; };
@@ -68,10 +71,27 @@
 		44EFDB7725E263E00076ED6D /* ReviewDetailInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6B25E263E00076ED6D /* ReviewDetailInteractorProtocol.swift */; };
 		44EFDB7825E263E00076ED6D /* ReviewDetailRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6D25E263E00076ED6D /* ReviewDetailRouterProtocol.swift */; };
 		44EFDB7925E263E00076ED6D /* ReviewDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6E25E263E00076ED6D /* ReviewDetailRouter.swift */; };
-		4C2A59F01706410D0FF096C5 /* Pods_SmartTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 71D3C0CD39AB75AC9CAFB367 /* Pods_SmartTests.framework */; };
+		761CD7BF53E3519940E11E55 /* Pods_Smart_SmartUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3C63BC087C06276000360DE1 /* Pods_Smart_SmartUITests.framework */; };
+		8A1034592648596100F7CA81 /* AssortmentCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1034582648596100F7CA81 /* AssortmentCollectionCell.swift */; };
+		8A1036CA264D7E1200F7CA81 /* MapNavigationBarCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1036C9264D7E1200F7CA81 /* MapNavigationBarCollectionCell.swift */; };
+		8A313BFF26447042009F2165 /* MapDetailStoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BEE26447042009F2165 /* MapDetailStoreViewModel.swift */; };
+		8A313C0026447042009F2165 /* MapDetailStoreInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BF026447042009F2165 /* MapDetailStoreInput.swift */; };
+		8A313C0126447042009F2165 /* MapDetailStoreAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BF226447042009F2165 /* MapDetailStoreAssembly.swift */; };
+		8A313C0226447042009F2165 /* MapDetailStorePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BF426447042009F2165 /* MapDetailStorePresenterProtocol.swift */; };
+		8A313C0326447042009F2165 /* MapDetailStorePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BF526447042009F2165 /* MapDetailStorePresenter.swift */; };
+		8A313C0426447042009F2165 /* MapDetailStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BF726447042009F2165 /* MapDetailStoreViewController.swift */; };
+		8A313C0526447042009F2165 /* MapDetailStoreViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BF826447042009F2165 /* MapDetailStoreViewControllerProtocol.swift */; };
+		8A313C0626447042009F2165 /* MapDetailStoreInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BFA26447042009F2165 /* MapDetailStoreInteractor.swift */; };
+		8A313C0726447042009F2165 /* MapDetailStoreInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BFB26447042009F2165 /* MapDetailStoreInteractorProtocol.swift */; };
+		8A313C0826447042009F2165 /* MapDetailStoreRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BFD26447042009F2165 /* MapDetailStoreRouter.swift */; };
+		8A313C0926447042009F2165 /* MapDetailStoreRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BFE26447042009F2165 /* MapDetailStoreRouterProtocol.swift */; };
+		8A313C1626468678009F2165 /* WorkingHoursCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313C1526468678009F2165 /* WorkingHoursCollectionCell.swift */; };
+		8A446CDF2660123B000A1769 /* RoutingToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A446CDE2660123B000A1769 /* RoutingToolBar.swift */; };
 		8AA5E5132615053D00935B5E /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA5E5122615053D00935B5E /* AboutView.swift */; };
-		9B0EE1A27D1E61F2A539C7FD /* Pods_Smart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 879454F4DA32628CFDFAB2FF /* Pods_Smart.framework */; };
-		9B4CC872623D8968C92716A0 /* Pods_Smart_SmartUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A2F9ABA82AB7D5F7639789DE /* Pods_Smart_SmartUITests.framework */; };
+		8AD7A37E2639D31A007D4273 /* PartnerAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7A37D2639D31A007D4273 /* PartnerAnnotationView.swift */; };
+		8AD7A455263B2A98007D4273 /* ClusterAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7A454263B2A98007D4273 /* ClusterAnnotationView.swift */; };
+		92244D55D8D8484797C6485C /* Pods_SmartTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 318C7779F8625DF75B4BBA03 /* Pods_SmartTests.framework */; };
+		980DA1CF34C2D4F9A7D9AA32 /* Pods_Smart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1AE20F070C046C1BF4D46A4D /* Pods_Smart.framework */; };
 		CA015C1A24C44925008DF01D /* DidnotFindTheWineTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA015C1924C44925008DF01D /* DidnotFindTheWineTableCell.swift */; };
 		CA015C3624C582B2008DF01D /* EmailService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA015C3524C582B2008DF01D /* EmailService.framework */; };
 		CA015C3724C582B2008DF01D /* EmailService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA015C3524C582B2008DF01D /* EmailService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -280,8 +300,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		13532EAFBF8E683F0379651A /* Pods-SmartTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartTests.debug.xcconfig"; path = "Target Support Files/Pods-SmartTests/Pods-SmartTests.debug.xcconfig"; sourceTree = "<group>"; };
-		250D3AC7A7CA6DB06A38DD52 /* Pods-Smart-SmartUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart-SmartUITests.release.xcconfig"; path = "Target Support Files/Pods-Smart-SmartUITests/Pods-Smart-SmartUITests.release.xcconfig"; sourceTree = "<group>"; };
+		127F90FB5E66C4EADCE71484 /* Pods-Smart-SmartUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart-SmartUITests.release.xcconfig"; path = "Target Support Files/Pods-Smart-SmartUITests/Pods-Smart-SmartUITests.release.xcconfig"; sourceTree = "<group>"; };
+		1AE20F070C046C1BF4D46A4D /* Pods_Smart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Smart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		24E12D197B1DEEF2EF0DDABC /* Pods-SmartTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartTests.release.xcconfig"; path = "Target Support Files/Pods-SmartTests/Pods-SmartTests.release.xcconfig"; sourceTree = "<group>"; };
+		318C7779F8625DF75B4BBA03 /* Pods_SmartTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		3C63BC087C06276000360DE1 /* Pods_Smart_SmartUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Smart_SmartUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		4407196E25F015F1000531B7 /* MapRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRoutable.swift; sourceTree = "<group>"; };
 		440C284625E13F9D009911EE /* WineDetailCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineDetailCollectionView.swift; sourceTree = "<group>"; };
 		4437AA4A25E3A7CD00F6E838 /* WriteReviewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteReviewViewModel.swift; sourceTree = "<group>"; };
 		4437AA4C25E3A7CD00F6E838 /* WriteReviewInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteReviewInput.swift; sourceTree = "<group>"; };
@@ -295,6 +319,8 @@
 		4437AA5925E3A7CD00F6E838 /* WriteReviewRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteReviewRouterProtocol.swift; sourceTree = "<group>"; };
 		4437AA5A25E3A7CD00F6E838 /* WriteReviewRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteReviewRouter.swift; sourceTree = "<group>"; };
 		4437AA6D25E3BE7300F6E838 /* WriteReviewRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewRoutable.swift; sourceTree = "<group>"; };
+		44465EBF25F39400005B3F06 /* MapRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRepository.swift; sourceTree = "<group>"; };
+		44465EC525F3940E005B3F06 /* MapRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRepositoryProtocol.swift; sourceTree = "<group>"; };
 		4474E36425E02486001C5DE3 /* VinchyAnalytics.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyAnalytics.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		447C352725EEAA5700105A35 /* MapViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewModel.swift; sourceTree = "<group>"; };
 		447C352925EEAA5700105A35 /* MapInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapInput.swift; sourceTree = "<group>"; };
@@ -352,13 +378,26 @@
 		44EFDB6B25E263E00076ED6D /* ReviewDetailInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailInteractorProtocol.swift; sourceTree = "<group>"; };
 		44EFDB6D25E263E00076ED6D /* ReviewDetailRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailRouterProtocol.swift; sourceTree = "<group>"; };
 		44EFDB6E25E263E00076ED6D /* ReviewDetailRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailRouter.swift; sourceTree = "<group>"; };
-		4EB884005EB241F8D3E53E64 /* Pods-SmartTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartTests.release.xcconfig"; path = "Target Support Files/Pods-SmartTests/Pods-SmartTests.release.xcconfig"; sourceTree = "<group>"; };
-		60C5ACCFBBBEAFE6E521B282 /* Pods-Smart-SmartUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart-SmartUITests.debug.xcconfig"; path = "Target Support Files/Pods-Smart-SmartUITests/Pods-Smart-SmartUITests.debug.xcconfig"; sourceTree = "<group>"; };
-		71D3C0CD39AB75AC9CAFB367 /* Pods_SmartTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		879454F4DA32628CFDFAB2FF /* Pods_Smart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Smart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A56E5FE0EE15826846ACE6A /* Pods-Smart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart.debug.xcconfig"; path = "Target Support Files/Pods-Smart/Pods-Smart.debug.xcconfig"; sourceTree = "<group>"; };
+		60225C90248E50828F0F66CA /* Pods-SmartTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartTests.debug.xcconfig"; path = "Target Support Files/Pods-SmartTests/Pods-SmartTests.debug.xcconfig"; sourceTree = "<group>"; };
+		8A1034582648596100F7CA81 /* AssortmentCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssortmentCollectionCell.swift; sourceTree = "<group>"; };
+		8A1036C9264D7E1200F7CA81 /* MapNavigationBarCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapNavigationBarCollectionCell.swift; sourceTree = "<group>"; };
+		8A313BEE26447042009F2165 /* MapDetailStoreViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreViewModel.swift; sourceTree = "<group>"; };
+		8A313BF026447042009F2165 /* MapDetailStoreInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreInput.swift; sourceTree = "<group>"; };
+		8A313BF226447042009F2165 /* MapDetailStoreAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreAssembly.swift; sourceTree = "<group>"; };
+		8A313BF426447042009F2165 /* MapDetailStorePresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStorePresenterProtocol.swift; sourceTree = "<group>"; };
+		8A313BF526447042009F2165 /* MapDetailStorePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStorePresenter.swift; sourceTree = "<group>"; };
+		8A313BF726447042009F2165 /* MapDetailStoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreViewController.swift; sourceTree = "<group>"; };
+		8A313BF826447042009F2165 /* MapDetailStoreViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreViewControllerProtocol.swift; sourceTree = "<group>"; };
+		8A313BFA26447042009F2165 /* MapDetailStoreInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreInteractor.swift; sourceTree = "<group>"; };
+		8A313BFB26447042009F2165 /* MapDetailStoreInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreInteractorProtocol.swift; sourceTree = "<group>"; };
+		8A313BFD26447042009F2165 /* MapDetailStoreRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreRouter.swift; sourceTree = "<group>"; };
+		8A313BFE26447042009F2165 /* MapDetailStoreRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreRouterProtocol.swift; sourceTree = "<group>"; };
+		8A313C1526468678009F2165 /* WorkingHoursCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingHoursCollectionCell.swift; sourceTree = "<group>"; };
+		8A446CDE2660123B000A1769 /* RoutingToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingToolBar.swift; sourceTree = "<group>"; };
 		8AA5E5122615053D00935B5E /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
-		A2F9ABA82AB7D5F7639789DE /* Pods_Smart_SmartUITests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Smart_SmartUITests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AD7A37D2639D31A007D4273 /* PartnerAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerAnnotationView.swift; sourceTree = "<group>"; };
+		8AD7A454263B2A98007D4273 /* ClusterAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterAnnotationView.swift; sourceTree = "<group>"; };
+		A9859EFB5E3387AE2F72EDC7 /* Pods-Smart-SmartUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart-SmartUITests.debug.xcconfig"; path = "Target Support Files/Pods-Smart-SmartUITests/Pods-Smart-SmartUITests.debug.xcconfig"; sourceTree = "<group>"; };
 		CA015C1924C44925008DF01D /* DidnotFindTheWineTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DidnotFindTheWineTableCell.swift; sourceTree = "<group>"; };
 		CA015C3524C582B2008DF01D /* EmailService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EmailService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA070C1325250AE900C3D9EC /* OnboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardViewController.swift; sourceTree = "<group>"; };
@@ -535,6 +574,7 @@
 		CEF2087B25E8297900C413EA /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
 		CEF7AE662602D5210098FB9D /* ShowcaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseRouter.swift; sourceTree = "<group>"; };
 		D37E7F5E487D80CF26AE868E /* Pods-Smart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart.release.xcconfig"; path = "Target Support Files/Pods-Smart/Pods-Smart.release.xcconfig"; sourceTree = "<group>"; };
+		F06640551DC185ED9CBFF1BF /* Pods-Smart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart.debug.xcconfig"; path = "Target Support Files/Pods-Smart/Pods-Smart.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -554,7 +594,7 @@
 				44D3CDE825E42E0B00FFFCD5 /* VinchyAuthorization.framework in Frameworks */,
 				CA1821A424C0E83900280DD4 /* Display.framework in Frameworks */,
 				CABDBA8724C2FAB800AD96D6 /* Core.framework in Frameworks */,
-				9B0EE1A27D1E61F2A539C7FD /* Pods_Smart.framework in Frameworks */,
+				980DA1CF34C2D4F9A7D9AA32 /* Pods_Smart.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -562,7 +602,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				4C2A59F01706410D0FF096C5 /* Pods_SmartTests.framework in Frameworks */,
+				92244D55D8D8484797C6485C /* Pods_SmartTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -570,7 +610,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9B4CC872623D8968C92716A0 /* Pods_Smart_SmartUITests.framework in Frameworks */,
+				761CD7BF53E3519940E11E55 /* Pods_Smart_SmartUITests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,6 +700,15 @@
 			path = Routable;
 			sourceTree = "<group>";
 		};
+		44465EBE25F393E5005B3F06 /* Repository */ = {
+			isa = PBXGroup;
+			children = (
+				44465EBF25F39400005B3F06 /* MapRepository.swift */,
+				44465EC525F3940E005B3F06 /* MapRepositoryProtocol.swift */,
+			);
+			path = Repository;
+			sourceTree = "<group>";
+		};
 		447C352525EEAA5700105A35 /* Map */ = {
 			isa = PBXGroup;
 			children = (
@@ -667,10 +716,12 @@
 				447C352825EEAA5700105A35 /* Input */,
 				447C353225EEAA5700105A35 /* Interactor */,
 				447C352C25EEAA5700105A35 /* Presenter */,
+				44465EBE25F393E5005B3F06 /* Repository */,
 				447C354725EEAD4E00105A35 /* Routable */,
 				447C353525EEAA5700105A35 /* Router */,
 				447C352F25EEAA5700105A35 /* ViewController */,
 				447C352625EEAA5700105A35 /* ViewModel */,
+				8AD7A37C2639D2FB007D4273 /* Views */,
 			);
 			path = Map;
 			sourceTree = "<group>";
@@ -738,6 +789,7 @@
 		447C354725EEAD4E00105A35 /* Routable */ = {
 			isa = PBXGroup;
 			children = (
+				4407196E25F015F1000531B7 /* MapRoutable.swift */,
 			);
 			path = Routable;
 			sourceTree = "<group>";
@@ -1027,11 +1079,96 @@
 				CABDBA8624C2FAB800AD96D6 /* Core.framework */,
 				CA1821FE24C0F6F000280DD4 /* Database.framework */,
 				CA1821A324C0E83900280DD4 /* Display.framework */,
-				879454F4DA32628CFDFAB2FF /* Pods_Smart.framework */,
-				A2F9ABA82AB7D5F7639789DE /* Pods_Smart_SmartUITests.framework */,
-				71D3C0CD39AB75AC9CAFB367 /* Pods_SmartTests.framework */,
+				1AE20F070C046C1BF4D46A4D /* Pods_Smart.framework */,
+				3C63BC087C06276000360DE1 /* Pods_Smart_SmartUITests.framework */,
+				318C7779F8625DF75B4BBA03 /* Pods_SmartTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		8A313BEC26447042009F2165 /* MapDetailStore */ = {
+			isa = PBXGroup;
+			children = (
+				8A313BF126447042009F2165 /* Assembly */,
+				8A313BEF26447042009F2165 /* Input */,
+				8A313BF926447042009F2165 /* Interactor */,
+				8A313BF326447042009F2165 /* Presenter */,
+				8A313BFC26447042009F2165 /* Router */,
+				8A313BF626447042009F2165 /* ViewController */,
+				8A313BED26447042009F2165 /* ViewModel */,
+				8A313C142646865C009F2165 /* Views */,
+			);
+			path = MapDetailStore;
+			sourceTree = "<group>";
+		};
+		8A313BED26447042009F2165 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8A313BEE26447042009F2165 /* MapDetailStoreViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8A313BEF26447042009F2165 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				8A313BF026447042009F2165 /* MapDetailStoreInput.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		8A313BF126447042009F2165 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				8A313BF226447042009F2165 /* MapDetailStoreAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		8A313BF326447042009F2165 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8A313BF526447042009F2165 /* MapDetailStorePresenter.swift */,
+				8A313BF426447042009F2165 /* MapDetailStorePresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		8A313BF626447042009F2165 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8A313BF726447042009F2165 /* MapDetailStoreViewController.swift */,
+				8A313BF826447042009F2165 /* MapDetailStoreViewControllerProtocol.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		8A313BF926447042009F2165 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				8A313BFA26447042009F2165 /* MapDetailStoreInteractor.swift */,
+				8A313BFB26447042009F2165 /* MapDetailStoreInteractorProtocol.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		8A313BFC26447042009F2165 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				8A313BFD26447042009F2165 /* MapDetailStoreRouter.swift */,
+				8A313BFE26447042009F2165 /* MapDetailStoreRouterProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		8A313C142646865C009F2165 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8A313C1526468678009F2165 /* WorkingHoursCollectionCell.swift */,
+				8A1034582648596100F7CA81 /* AssortmentCollectionCell.swift */,
+				8A1036C9264D7E1200F7CA81 /* MapNavigationBarCollectionCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		8AA5E5162615084B00935B5E /* Views */ = {
@@ -1048,6 +1185,16 @@
 				CAF5140F2461C51300667ED0 /* AboutViewController.swift */,
 			);
 			path = ViewController;
+			sourceTree = "<group>";
+		};
+		8AD7A37C2639D2FB007D4273 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8AD7A37D2639D31A007D4273 /* PartnerAnnotationView.swift */,
+				8AD7A454263B2A98007D4273 /* ClusterAnnotationView.swift */,
+				8A446CDE2660123B000A1769 /* RoutingToolBar.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		8AFE2F5F26500BD0008363B4 /* Presenter */ = {
@@ -1307,6 +1454,7 @@
 				CAF5140D2461C4ED00667ED0 /* Info */,
 				CAF514692468171500667ED0 /* Love */,
 				447C352525EEAA5700105A35 /* Map */,
+				8A313BEC26447042009F2165 /* MapDetailStore */,
 				CA3B1D5224A0A34700FAA08A /* Notes */,
 				CA070A762523D77000C3D9EC /* Onboarding */,
 				44EFDB5C25E263E00076ED6D /* ReviewDetail */,
@@ -1898,12 +2046,12 @@
 		E126C1F6258946A324BF55F2 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				8A56E5FE0EE15826846ACE6A /* Pods-Smart.debug.xcconfig */,
 				D37E7F5E487D80CF26AE868E /* Pods-Smart.release.xcconfig */,
-				60C5ACCFBBBEAFE6E521B282 /* Pods-Smart-SmartUITests.debug.xcconfig */,
-				250D3AC7A7CA6DB06A38DD52 /* Pods-Smart-SmartUITests.release.xcconfig */,
-				13532EAFBF8E683F0379651A /* Pods-SmartTests.debug.xcconfig */,
-				4EB884005EB241F8D3E53E64 /* Pods-SmartTests.release.xcconfig */,
+				F06640551DC185ED9CBFF1BF /* Pods-Smart.debug.xcconfig */,
+				A9859EFB5E3387AE2F72EDC7 /* Pods-Smart-SmartUITests.debug.xcconfig */,
+				127F90FB5E66C4EADCE71484 /* Pods-Smart-SmartUITests.release.xcconfig */,
+				60225C90248E50828F0F66CA /* Pods-SmartTests.debug.xcconfig */,
+				24E12D197B1DEEF2EF0DDABC /* Pods-SmartTests.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -2203,6 +2351,7 @@
 				CAF514232461C52400667ED0 /* MoreInteractor.swift in Sources */,
 				CE404B0F2589D4C200917544 /* MoreRouterProtocol.swift in Sources */,
 				449F81B225DD025900585364 /* RootRouter.swift in Sources */,
+				8A446CDF2660123B000A1769 /* RoutingToolBar.swift in Sources */,
 				CA7A87FA2506B9D600AAD10F /* ShareUsCollectionCell.swift in Sources */,
 				449F81C425DD049B00585364 /* DeeplinkFlow.swift in Sources */,
 				CEF2087C25E8297900C413EA /* CurrencyCell.swift in Sources */,
@@ -2217,6 +2366,7 @@
 				CA819847253864080056A1C6 /* WineDetailPresenter.swift in Sources */,
 				CAF514212461C52400667ED0 /* MorePresenter.swift in Sources */,
 				4495625125E2E15A005E79DA /* ReviewDetailRoutable.swift in Sources */,
+				8AD7A455263B2A98007D4273 /* ClusterAnnotationView.swift in Sources */,
 				CA99E65724F6EDDD00C36BEE /* ButtonCollectionCell.swift in Sources */,
 				44EFDB1B25E176EC0076ED6D /* ReviewsPresenter.swift in Sources */,
 				449F81CE25DD050400585364 /* DeeplinkRouter.swift in Sources */,
@@ -2225,11 +2375,13 @@
 				CA472B69245EDEF9009149FF /* ShowcaseViewModel.swift in Sources */,
 				CA2C22E02554464F002469E4 /* AdvancedSearchInteractorProtocol.swift in Sources */,
 				4437AA5E25E3A7CE00F6E838 /* WriteReviewPresenter.swift in Sources */,
+				4407196F25F015F1000531B7 /* MapRoutable.swift in Sources */,
 				44EFDB7925E263E00076ED6D /* ReviewDetailRouter.swift in Sources */,
 				CA81984E253864080056A1C6 /* WineDetailRouter.swift in Sources */,
 				CACA7EA2254C57CC0099E622 /* WriteNoteRouterProtocol.swift in Sources */,
 				CA48577C2517BEAB00EDA4CE /* VinchyRouter.swift in Sources */,
 				CA472B59245EDEDB009149FF /* ShowcaseViewController.swift in Sources */,
+				8A313C0226447042009F2165 /* MapDetailStorePresenterProtocol.swift in Sources */,
 				447C353A25EEAA5700105A35 /* MapAssembly.swift in Sources */,
 				CAF514222461C52400667ED0 /* MoreViewController.swift in Sources */,
 				CA5B901B250FF22E006BC638 /* MoreBounceDecoratorView.swift in Sources */,
@@ -2238,7 +2390,9 @@
 				4437AA5B25E3A7CE00F6E838 /* WriteReviewViewModel.swift in Sources */,
 				4437AA5D25E3A7CE00F6E838 /* WriteReviewAssembly.swift in Sources */,
 				CA8CD67C25096EE100FDB7AF /* GADTTemplateView.m in Sources */,
+				8A313C0626447042009F2165 /* MapDetailStoreInteractor.swift in Sources */,
 				4437AA6325E3A7CE00F6E838 /* WriteReviewInteractor.swift in Sources */,
+				8A313C0826447042009F2165 /* MapDetailStoreRouter.swift in Sources */,
 				449F81AC25DD023A00585364 /* RootInteractor.swift in Sources */,
 				447C354025EEAA5700105A35 /* MapInteractorProtocol.swift in Sources */,
 				CAA9DC67250EA05F00F996A8 /* AdvancedSearchCaruselCollectionCell.swift in Sources */,
@@ -2271,6 +2425,7 @@
 				CA819844253864080056A1C6 /* WineDetailViewModel.swift in Sources */,
 				447C353E25EEAA5700105A35 /* MapViewControllerProtocol.swift in Sources */,
 				4437AA6125E3A7CE00F6E838 /* WriteReviewViewControllerProtocol.swift in Sources */,
+				44465EC025F39400005B3F06 /* MapRepository.swift in Sources */,
 				44EFDB7125E263E00076ED6D /* ReviewDetailAssembly.swift in Sources */,
 				CAF514102461C51400667ED0 /* AboutViewController.swift in Sources */,
 				44EFDB4F25E17FD60076ED6D /* ReviewsRoutable.swift in Sources */,
@@ -2280,6 +2435,7 @@
 				4437AA6425E3A7CE00F6E838 /* WriteReviewRouterProtocol.swift in Sources */,
 				4437AA6525E3A7CE00F6E838 /* WriteReviewRouter.swift in Sources */,
 				449D63B225E1054700CBBD1D /* RatingsAndReviewsCell.swift in Sources */,
+				8AD7A37E2639D31A007D4273 /* PartnerAnnotationView.swift in Sources */,
 				CA3B1D5424A0A36300FAA08A /* NotesViewController.swift in Sources */,
 				CA2C22DD2554464F002469E4 /* AdvancedSearchPresenterProtocol.swift in Sources */,
 				4437AA6E25E3BE7300F6E838 /* WriteReviewRoutable.swift in Sources */,
@@ -2295,11 +2451,14 @@
 				CA4857742517BE8E00EDA4CE /* VinchyInteractor.swift in Sources */,
 				CE404B072589D41200917544 /* MoreInteractorProtocol.swift in Sources */,
 				CE58DED725ED73B300B5BDF9 /* CurrencyInteractorProtocol.swift in Sources */,
+				8A313C1626468678009F2165 /* WorkingHoursCollectionCell.swift in Sources */,
 				CAA9DC3C250BD20400F996A8 /* AdvancedHeader.swift in Sources */,
 				CA4857832517C67700EDA4CE /* VinchyInteractorProtocol.swift in Sources */,
 				CA472AC0245EDE2F009149FF /* AppDelegate.swift in Sources */,
 				44EFDB1E25E176EC0076ED6D /* ReviewsInteractorProtocol.swift in Sources */,
+				8A1034592648596100F7CA81 /* AssortmentCollectionCell.swift in Sources */,
 				CA2C22E12554464F002469E4 /* AdvancedSearchInteractor.swift in Sources */,
+				8A313C0726447042009F2165 /* MapDetailStoreInteractorProtocol.swift in Sources */,
 				CA81984C253864080056A1C6 /* WineDetailInteractorProtocol.swift in Sources */,
 				44EFDB3A25E177220076ED6D /* ReviewsPresenterProtocol.swift in Sources */,
 				CA2C22DA2554464F002469E4 /* AdvancedSearchInput.swift in Sources */,
@@ -2308,6 +2467,7 @@
 				CAA9DC65250E99DB00F996A8 /* SeparatorFooter.swift in Sources */,
 				44EFDB2025E176EC0076ED6D /* ReviewsRouter.swift in Sources */,
 				44EFDB7525E263E00076ED6D /* ReviewDetailViewControllerProtocol.swift in Sources */,
+				8A313C0026447042009F2165 /* MapDetailStoreInput.swift in Sources */,
 				CAF514292461C52400667ED0 /* MoreRouter.swift in Sources */,
 				CACA7E9C254C57CC0099E622 /* WriteNotePresenter.swift in Sources */,
 				4437AA5C25E3A7CE00F6E838 /* WriteReviewInput.swift in Sources */,
@@ -2318,9 +2478,11 @@
 				CA3837CC246FCF3C00AD5FCC /* TabBarController.swift in Sources */,
 				CA99E65124F58A6000C36BEE /* ToolCollectionCell.swift in Sources */,
 				447C353C25EEAA5700105A35 /* MapPresenterProtocol.swift in Sources */,
+				8A313C0426447042009F2165 /* MapDetailStoreViewController.swift in Sources */,
 				44EFDB2125E176EC0076ED6D /* ReviewsRouterProtocol.swift in Sources */,
 				CA276D55256AC6720061BEBE /* FakeCell.swift in Sources */,
 				CACA7EA0254C57CC0099E622 /* WriteNoteInteractorProtocol.swift in Sources */,
+				8A1036CA264D7E1200F7CA81 /* MapNavigationBarCollectionCell.swift in Sources */,
 				CEB0A6222609442B00B07B87 /* ShowcaseRouterProtocol.swift in Sources */,
 				44EFDB7625E263E00076ED6D /* ReviewDetailInteractor.swift in Sources */,
 				CE8FF83925FADABF004D4F37 /* ShowcaseInteractorProtocol.swift in Sources */,
@@ -2329,7 +2491,9 @@
 				CE404B0B2589D47C00917544 /* MorePresenterProtocol.swift in Sources */,
 				CA2C22DC2554464F002469E4 /* AdvancedSearchPresenter.swift in Sources */,
 				CAEBD788251A6D6200210F3B /* AgreementsViewController.swift in Sources */,
+				8A313C0526447042009F2165 /* MapDetailStoreViewControllerProtocol.swift in Sources */,
 				CA7A87E62500169100AAD10F /* VinchySimpleConiniousCaruselCollectionCell.swift in Sources */,
+				8A313C0326447042009F2165 /* MapDetailStorePresenter.swift in Sources */,
 				447C353825EEAA5700105A35 /* MapViewModel.swift in Sources */,
 				CA3C97DF25723C570036F7D9 /* TitleCopyableCell.swift in Sources */,
 				4437AA6025E3A7CE00F6E838 /* WriteReviewViewController.swift in Sources */,
@@ -2340,9 +2504,11 @@
 				CA8CD68325097AD500FDB7AF /* GADTMediumTemplateView.m in Sources */,
 				447C353F25EEAA5700105A35 /* MapInteractor.swift in Sources */,
 				44EFDB7425E263E00076ED6D /* ReviewDetailViewController.swift in Sources */,
+				44465EC625F3940E005B3F06 /* MapRepositoryProtocol.swift in Sources */,
 				CA819845253864080056A1C6 /* WineDetailInput.swift in Sources */,
 				CE58DECF25ED713F00B5BDF9 /* CurrencyRouter.swift in Sources */,
 				447C354125EEAA5700105A35 /* MapRouter.swift in Sources */,
+				8A313C0126447042009F2165 /* MapDetailStoreAssembly.swift in Sources */,
 				CAF5146B2468172900667ED0 /* LoveViewController.swift in Sources */,
 				CE8FF82A25FAD75C004D4F37 /* ShowcaseAssembly.swift in Sources */,
 				CA46DBE7252518230007819E /* OnboardingRepository.swift in Sources */,
@@ -2357,11 +2523,13 @@
 				CAF514202461C52400667ED0 /* MoreAssembly.swift in Sources */,
 				CACA7EA1254C57CC0099E622 /* WriteNoteInteractor.swift in Sources */,
 				CAF514272461C52400667ED0 /* SocialMediaCell.swift in Sources */,
+				8A313C0926447042009F2165 /* MapDetailStoreRouterProtocol.swift in Sources */,
 				CA2C22DE2554464F002469E4 /* AdvancedSearchViewControllerProtocol.swift in Sources */,
 				CA2C22DF2554464F002469E4 /* AdvancedSearchViewController.swift in Sources */,
 				449F81B625DD027C00585364 /* RootBuilder.swift in Sources */,
 				CA7B838C24F4547B00991F24 /* GalleryCell.swift in Sources */,
 				CE7346382589B75E00028574 /* MoreViewProtocol.swift in Sources */,
+				8A313BFF26447042009F2165 /* MapDetailStoreViewModel.swift in Sources */,
 				44EFDB7325E263E00076ED6D /* ReviewDetailPresenter.swift in Sources */,
 				CAA060D2252BC05C002C15B5 /* DeveloperFeatureToggles.swift in Sources */,
 				CA7A87FC2507ED7800AAD10F /* AdsCollectionViewCell.swift in Sources */,
@@ -2565,7 +2733,7 @@
 		};
 		CA472AE7245EDE30009149FF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 8A56E5FE0EE15826846ACE6A /* Pods-Smart.debug.xcconfig */;
+			baseConfigurationReference = F06640551DC185ED9CBFF1BF /* Pods-Smart.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
@@ -2580,6 +2748,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.7;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -Xfrontend -warn-long-expression-type-checking=100";
 				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy;
 				PRODUCT_NAME = Vinchy;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2607,6 +2776,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.7;
+				OTHER_SWIFT_FLAGS = "$(inherited) -D COCOAPODS -Xfrontend -warn-long-expression-type-checking=100";
 				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy;
 				PRODUCT_NAME = Vinchy;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -2618,7 +2788,7 @@
 		};
 		CA472AEA245EDE30009149FF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 13532EAFBF8E683F0379651A /* Pods-SmartTests.debug.xcconfig */;
+			baseConfigurationReference = 60225C90248E50828F0F66CA /* Pods-SmartTests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2641,7 +2811,7 @@
 		};
 		CA472AEB245EDE30009149FF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 4EB884005EB241F8D3E53E64 /* Pods-SmartTests.release.xcconfig */;
+			baseConfigurationReference = 24E12D197B1DEEF2EF0DDABC /* Pods-SmartTests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
@@ -2664,7 +2834,7 @@
 		};
 		CA472AED245EDE30009149FF /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 60C5ACCFBBBEAFE6E521B282 /* Pods-Smart-SmartUITests.debug.xcconfig */;
+			baseConfigurationReference = A9859EFB5E3387AE2F72EDC7 /* Pods-Smart-SmartUITests.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -2685,7 +2855,7 @@
 		};
 		CA472AEE245EDE30009149FF /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 250D3AC7A7CA6DB06A38DD52 /* Pods-Smart-SmartUITests.release.xcconfig */;
+			baseConfigurationReference = 127F90FB5E66C4EADCE71484 /* Pods-Smart-SmartUITests.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				CODE_SIGN_STYLE = Automatic;

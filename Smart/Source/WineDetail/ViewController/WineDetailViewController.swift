@@ -200,6 +200,15 @@ final class WineDetailViewController: UIViewController {
     let spacerBarItem = UIBarButtonItem(customView: spacer)
     navigationItem.rightBarButtonItems = [moreBarButtonItem, spacerBarItem, noteBarButtonItem]
     
+    if isModal {
+      let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
+      navigationItem.leftBarButtonItem = UIBarButtonItem(
+        image: UIImage(systemName: "xmark", withConfiguration: imageConfig),
+        style: .plain,
+        target: self,
+        action: #selector(didTapCloseBarButtonItem(_:)))
+    }
+    
     view.addSubview(collectionView)
     collectionView.fill()
     
@@ -223,6 +232,11 @@ final class WineDetailViewController: UIViewController {
   // MARK: - Private Methods
   
   @objc
+  private func didTapCloseBarButtonItem(_ barButtonItem: UIBarButtonItem) {
+    dismiss(animated: true, completion: nil)
+  }
+  
+  @objc
   private func didTapNotes(_ button: UIButton) {
     interactor?.didTapNotes()
   }
@@ -243,7 +257,7 @@ extension WineDetailViewController: UICollectionViewDataSource {
   
   func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
     
-    guard let type = viewModel?.sections[section] else {
+    guard let type = viewModel?.sections[safe: section] else {
       return 0
     }
     

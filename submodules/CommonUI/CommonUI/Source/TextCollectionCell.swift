@@ -37,7 +37,10 @@ public final class TextCollectionCell: UICollectionViewCell, Reusable {
     label.attributedText?.string
   }
 
-  public static func height(viewModel: ViewModel, width: CGFloat) -> CGFloat {
+  public static func height(viewModel: ViewModel?, width: CGFloat) -> CGFloat {
+    guard let viewModel = viewModel else {
+      return 0
+    }
     // swiftlint:disable:next force_cast
     let font = viewModel.titleText?.attributes(at: 0, effectiveRange: nil)[NSAttributedString.Key.font] as? UIFont ?? Font.regular(14)
     let height = viewModel.titleText?.string.height(forWidth: width, font: font) ?? 44

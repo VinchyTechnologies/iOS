@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4407197525F02417000531B7 /* LocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4407197425F02417000531B7 /* LocationService.swift */; };
 		CA103AD92516903B00B0324F /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA103AD82516903B00B0324F /* Display.framework */; };
 		CAF24B0724C330780057547F /* LocationUI.h in Headers */ = {isa = PBXBuildFile; fileRef = CAF24B0524C330780057547F /* LocationUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CAF24B1424C333AE0057547F /* URLImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF24B1324C333AE0057547F /* URLImageView.swift */; };
@@ -15,6 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4407197425F02417000531B7 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
 		6AACE0FEB8FFC911B1D2886F /* Pods_LocationUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LocationUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6EA039A03D4D4ACFE3B2FD64 /* Pods-LocationUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocationUI.release.xcconfig"; path = "Target Support Files/Pods-LocationUI/Pods-LocationUI.release.xcconfig"; sourceTree = "<group>"; };
 		CA103AD82516903B00B0324F /* Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -84,6 +86,7 @@
 			children = (
 				CAF24B1324C333AE0057547F /* URLImageView.swift */,
 				CAF24B1524C333CA0057547F /* MapURLProtocol.swift */,
+				4407197425F02417000531B7 /* LocationService.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -204,6 +207,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAF24B1624C333CA0057547F /* MapURLProtocol.swift in Sources */,
+				4407197525F02417000531B7 /* LocationService.swift in Sources */,
 				CAF24B1424C333AE0057547F /* URLImageView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

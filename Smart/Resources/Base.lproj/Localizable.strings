@@ -71,6 +71,7 @@
 "send" = "send";
 "tap_a_star_to_rate" = "Tap a star to rate";
 "zero_rating_error" = "Rating cannot be zero";
+"open_in_app" = "Open in another application";
 
 // MARK: - Sugar
 "sugar" = "sugar";
@@ -149,3 +150,8 @@
 // MARK: - Docs
 "terms_of_use_url" = "https://drive.google.com/file/d/1-HTyQsjLbLgHrfJm-R9lJSRMKjFEeJfg/view";
 "terms_of_use_doc" = "Terms & Conditions";
+
+// MARK: - Map
+"map" = "map";
+"apple_maps" = "Apple Maps";
+"search_this_area" = "Search this area";

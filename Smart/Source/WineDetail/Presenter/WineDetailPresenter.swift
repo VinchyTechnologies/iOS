@@ -36,7 +36,7 @@ final class WineDetailPresenter {
     
     let arg1 = [String(wine.mainImageUrl ?? "")]
     let arg2 = [String(wine.labelImageUrl ?? "")]
-    let imageURLs = (arg1 + arg2 + Array(wine.imageURLs ?? [])).map { (str) -> String? in
+    let imageURLs: [String?] = (arg1 + arg2 + Array(wine.imageURLs ?? [])).map { (str) -> String? in
       str == "" ? nil : str
     }
     

@@ -18,4 +18,5 @@ protocol VinchyInteractorProtocol: VinchySimpleConiniousCaruselCollectionCellDel
   func searchBarTextDidBeginEditing()
   func searchBarCancelButtonClicked()
   func didTapSuggestionCell(at indexPath: IndexPath)
+  func didTapMapButton()
 }

@@ -8,7 +8,7 @@
 
 import UIKit
 
-public protocol DecoratorFlowLayoutDelegate: AnyObject, UICollectionViewDelegateFlowLayout {
+public protocol DecoratorFlowLayoutDelegate: UICollectionViewDelegateFlowLayout {
 
   func collectionView(
     _ collectionView: UICollectionView,
@@ -46,7 +46,7 @@ public enum LayoutAlignment {
   case left
 }
 
-protocol AlignmentProcessorProtocol: class {
+protocol AlignmentProcessorProtocol: AnyObject {
   var supportedAlignment: LayoutAlignment { get }
   func process(attributes: [UICollectionViewLayoutAttributes],
                for layout: UICollectionViewFlowLayout) -> [UICollectionViewLayoutAttributes]

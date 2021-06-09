@@ -6,8 +6,6 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
-
 struct MapViewModel {
-
+//  let annotations: [PartnerAnnotationViewModel]
 }

@@ -8,7 +8,7 @@
 
 import VinchyCore
 
-protocol VinchyRouterProtocol: WineDetailRoutable, ShowcaseRoutable {
+protocol VinchyRouterProtocol: WineDetailRoutable, MapRoutable, ShowcaseRoutable {
   func pushToAdvancedFilterViewController()
   func pushToDetailCollection(searchText: String)
   func presentEmailController(HTMLText: String?, recipients: [String])

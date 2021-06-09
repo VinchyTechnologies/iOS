@@ -87,12 +87,18 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
      somelier.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "rectangle.stack"), selectedImage: nil)
      */
     
+    let map = Assembly.buildMapViewController()
+    map.tabBarItem = UITabBarItem(
+      title: localized("map").firstLetterUppercased(),
+      image: UIImage(systemName: "map", withConfiguration: imageConfig)?.withTintColor(.blueGray, renderingMode: .alwaysOriginal),
+      selectedImage: UIImage(systemName: "map", withConfiguration: imageConfig)?.withTintColor(.accent, renderingMode: .alwaysOriginal))
+    
     [main, love, notes, profile].forEach { (controller) in
       controller.tabBarItem.titlePositionAdjustment = .init(horizontal: 0, vertical: -3)
       controller.tabBarItem.imageInsets = .init(top: 10, left: 0, bottom: 0, right: 0)
     }
     
-    viewControllers = [main, love, notes, profile]
+    viewControllers = [main, love, map, notes, profile]
     
   }
 }

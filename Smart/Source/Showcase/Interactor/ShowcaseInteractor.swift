@@ -86,6 +86,35 @@ final class ShowcaseInteractor {
           self.stateMachine.fail(with: error)
         }
       }
+      
+    case .partner(let partnerID, let affilatedID):
+      if offset == .zero {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+          self.dispatchWorkItemHud.perform()
+        }
+      }
+      Partners.shared.getPartnerWines(
+        partnerId: partnerID,
+        affilatedId: affilatedID,
+        limit: C.limit,
+        offset: offset) { [weak self] result in
+        guard let self = self else { return }
+        
+        if offset == .zero {
+          self.dispatchWorkItemHud.cancel()
+          DispatchQueue.main.async {
+            self.presenter.stopLoading()
+          }
+        }
+        
+        switch result {
+        case .success(let data):
+          self.stateMachine.invokeSuccess(with: data)
+          
+        case .failure(let error):
+          self.stateMachine.fail(with: error)
+        }
+      }
     }
   }
   

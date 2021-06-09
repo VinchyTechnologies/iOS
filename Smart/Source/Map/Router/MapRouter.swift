@@ -7,12 +7,16 @@
 //
 
 import UIKit
+import FittedSheets
+import Display
 
 final class MapRouter {
   
   weak var viewController: UIViewController?
   weak var interactor: MapInteractorProtocol?
   private let input: MapInput
+  
+  private(set) var sheetMapDetailStoreViewController: SheetViewController?
   
   init(
     input: MapInput,
@@ -26,5 +30,36 @@ final class MapRouter {
 // MARK: - MapRouterProtocol
 
 extension MapRouter: MapRouterProtocol {
+  func showMapDetailStore(partnerId: Int, affilatedId: Int) {
+    let options = SheetOptions(shrinkPresentingViewController: false, useInlineMode: true)
+    let mapDetailStore = MapDetailStoreAssembly.assemblyModule(input: .init(partnerId: partnerId, affilatedId: affilatedId))
+    mapDetailStore.delegate = viewController as? MapViewController
+    let sheetController = SheetViewController(
+      controller: mapDetailStore,
+      sizes: [.fixed(150)],
+      options: options)
+    sheetMapDetailStoreViewController = sheetController
+    sheetController.didDismiss = { _ in
+      self.interactor?.requestBottomSheetDismissToDeselectSelectedPin()
+    }
+    
+    if let tabbarController = UIApplication.topViewController()?.tabBarController {
+      sheetController.animateIn(to: tabbarController.view, in: tabbarController)
+    }
+  }
   
+  func dismissCurrentBottomSheet(shouldUseDidDismissCallback: Bool) {
+    if !shouldUseDidDismissCallback {
+      sheetMapDetailStoreViewController?.didDismiss = nil
+    }
+    sheetMapDetailStoreViewController?.attemptDismiss(animated: true)
+  }
+  
+  func showAssortmentViewController(partnerId: Int, affilatedId: Int, title: String?) {
+    let controller = ShowcaseAssembly.assemblyModule(
+      input: .init(title: title, mode: .partner(partnerID: partnerId, affilatedID: affilatedId)))
+    let navigationController = NavigationController(rootViewController: controller)
+    navigationController.modalPresentationStyle = .overCurrentContext
+    UIApplication.topViewController()?.present(navigationController, animated: true, completion: nil)
+  }
 }

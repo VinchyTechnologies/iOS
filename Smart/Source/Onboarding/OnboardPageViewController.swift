@@ -5,7 +5,7 @@
 
 import UIKit
 
-internal protocol OnboardPageViewControllerDelegate: class {
+internal protocol OnboardPageViewControllerDelegate: AnyObject {
   
   /// Informs the `delegate` that the action button was tapped
   ///

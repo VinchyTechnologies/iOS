@@ -169,6 +169,10 @@ extension VinchyInteractor: VinchyInteractorProtocol {
       presenter.showAlertCantOpenEmail()
     }
   }
+  
+  func didTapMapButton() {
+    router.pushToMapViewController()
+  }
 }
 
 // MARK: - VinchySimpleConiniousCaruselCollectionCellDelegate

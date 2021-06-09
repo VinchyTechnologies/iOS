@@ -79,6 +79,19 @@ open class NavigationController: UINavigationController {
         view.isHidden = true
       }
     }
+    
+    getnavigationBarBackground()?.subviews.forEach { view in
+      if view.isMember(of: UIVisualEffectView.self) {
+        
+        if let visualView = view as? UIVisualEffectView {
+          for subview in visualView.subviews {
+            subview.isHidden = true
+          }
+          visualView.contentView.backgroundColor = .mainBackground
+          visualView.backgroundColor = .mainBackground
+        }
+      }
+    }
   }
 
   public override func viewDidAppear(_ animated: Bool) {

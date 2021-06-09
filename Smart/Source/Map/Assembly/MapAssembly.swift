@@ -6,7 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import LocationUI
 
 final class MapAssembly {
   
@@ -14,7 +14,9 @@ final class MapAssembly {
     let viewController = MapViewController()
     let router = MapRouter(input: MapInput(), viewController: viewController)
     let presenter = MapPresenter(viewController: viewController)
-    let interactor = MapInteractor(router: router, presenter: presenter)
+    let locationService = LocationService()
+    let repository = MapRepository(locationService: locationService)
+    let interactor = MapInteractor(repository: repository, router: router, presenter: presenter)
     
     router.interactor = interactor
     viewController.interactor = interactor

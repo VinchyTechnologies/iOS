@@ -16,4 +16,5 @@ struct ShowcaseInput {
 enum ShowcaseMode {
   case normal(wines: [ShortWine])
   case advancedSearch(params: [(String, String)])
+  case partner(partnerID: Int, affilatedID: Int)
 }
