@@ -37,7 +37,7 @@ public struct ShortWine: Decodable {
     self.winery = winery
   }
   
-  #if DEBUG
+//  #if DEBUG
   public static var fake: ShortWine {
     let json = """
 {
@@ -58,5 +58,5 @@ public struct ShortWine: Decodable {
     let obj = try! decoder.decode(ShortWine.self, from: jsonData) // swiftlint:disable:this force_try
     return obj
   }
-  #endif
+//  #endif
 }
