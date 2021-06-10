@@ -29,7 +29,7 @@ final class RoutingToolBar: UIView {
   
   private lazy var appsButton: UIButton = {
     let imageConfig = UIImage.SymbolConfiguration(pointSize: 18, weight: .medium, scale: .default)
-    $0.setImage(UIImage(systemName: "arrow.up.forward.app", withConfiguration: imageConfig), for: .normal)
+    $0.setImage(UIImage(systemName: "arrow.up.right.square", withConfiguration: imageConfig), for: .normal)
     $0.tintColor = .dark
     $0.addTarget(self, action: #selector(didTapOpenInAppButton(_:)), for: .touchUpInside)
     return $0

@@ -27,7 +27,15 @@ final class MapNavigationBarCollectionCell: UICollectionReusableView, Reusable {
   
   private lazy var leadingButton: UIButton = {
     let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
-    $0.setImage(UIImage(systemName: "figure.walk", withConfiguration: imageConfig)?.withTintColor(.accent, renderingMode: .alwaysOriginal), for: .normal)
+    
+    if #available(iOS 14.0, *) {
+      $0.setImage(UIImage(systemName: "figure.walk", withConfiguration: imageConfig)?.withTintColor(.accent, renderingMode: .alwaysOriginal), for: .normal)
+    } else {
+      $0.setImage(UIImage(named: "figureWalk")?.withTintColor(.accent, renderingMode: .alwaysOriginal), for: .normal)
+      $0.imageView?.contentMode = .scaleAspectFit
+      $0.imageEdgeInsets = .init(top: 10, left: 10, bottom: 10, right: 10)
+    }
+    
     $0.addTarget(self, action: #selector(didTapLeadingButton(_:)), for: .touchUpInside)
     return $0
   }(UIButton())
