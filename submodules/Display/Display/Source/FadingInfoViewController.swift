@@ -605,7 +605,7 @@ public class OldBottomSheetContainerViewController: UIViewController, OverlayPre
     topController.didMove(toParent: self)
     
     panGestureRecognizer = UIPanGestureRecognizer(target: self, action: #selector(panned(recognizer:)))
-    panGestureRecognizer!.delegate = self
+    panGestureRecognizer?.delegate = self
     topView.addGestureRecognizer(panGestureRecognizer!)
   }
   
@@ -628,7 +628,8 @@ public class OldBottomSheetContainerViewController: UIViewController, OverlayPre
     }
   }
   
-  @objc public  func tapped() {
+  @objc
+  public  func tapped() {
     dismiss(animated: true, completionHandler: nil)
   }
   
@@ -641,12 +642,11 @@ public class OldBottomSheetContainerViewController: UIViewController, OverlayPre
   }
   
   public func isOpen() -> Bool {
-    return topView.frame.origin.y == minTopPadding()
+    topView.frame.origin.y == minTopPadding()
   }
   
   public func minTopPadding() -> CGFloat {
     let window = UIApplication.shared.asKeyWindow
-    
     return max(window?.safeAreaInsets.top ?? 0, kMinTopPadding)
   }
 }
@@ -655,13 +655,15 @@ extension OldBottomSheetContainerViewController: UIGestureRecognizerDelegate {
   
   public func gestureRecognizerShouldBegin(_ gestureRecognizer: UIGestureRecognizer) -> Bool {
     let velocity = (gestureRecognizer as! UIPanGestureRecognizer).velocity(in: topView) // swiftlint:disable:this force_cast
-    
     return abs(velocity.y) > abs(velocity.x)
   }
   
-  public func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
-    
-    return true
+  public func gestureRecognizer(
+    _ gestureRecognizer: UIGestureRecognizer,
+    shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer)
+    -> Bool
+  {
+    true
   }
   
   private func showAnimation() {
@@ -695,7 +697,8 @@ extension OldBottomSheetContainerViewController: UIGestureRecognizerDelegate {
     //        panGestureRecognizer?.isEnabled = !scrollView!.isScrollEnabled
   }
   
-  @objc public func childPanned(recognizer: UIPanGestureRecognizer) {
+  @objc
+  public func childPanned(recognizer: UIPanGestureRecognizer) {
     manage(gestureRecognizer: recognizer)
   }
   
@@ -990,11 +993,13 @@ open class BaseSlidingViewController: UIViewController, OverlayPresentable {
     }
   }
   
-  @objc func tapped(_ tapGestureRecognizer: UITapGestureRecognizer?) {
+  @objc
+  func tapped(_ tapGestureRecognizer: UITapGestureRecognizer?) {
     dismiss(animated: false)
   }
   
-  @objc func panned(_ recognizer: UIPanGestureRecognizer) {
+  @objc
+  func panned(_ recognizer: UIPanGestureRecognizer) {
     let translation: CGPoint = recognizer.translation(in: topView)
     let velocity: CGPoint = recognizer.velocity(in: topView)
     let frameY: CGFloat = topView!.frame.origin.y + translation.y
@@ -1017,14 +1022,16 @@ open class BaseSlidingViewController: UIViewController, OverlayPresentable {
     recognizer.setTranslation(CGPoint(x: 0, y: 0), in: view)
   }
   
-  @objc func keyboardWillShow(notification: Notification) {
+  @objc
+  func keyboardWillShow(notification: Notification) {
     if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
       topPadding = originalTopPadding - keyboardSize.height
       showTopViewControllerAnimated()
     }
   }
   
-  @objc func keyboardWillHide(notification: Notification) {
+  @objc
+  func keyboardWillHide(notification: Notification) {
     if let keyboardSize = (notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue)?.cgRectValue {
       topPadding = originalTopPadding + keyboardSize.height
       showTopViewControllerAnimated()

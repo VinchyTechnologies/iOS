@@ -15,14 +15,14 @@ public protocol DecoratorFlowLayoutDelegate: UICollectionViewDelegateFlowLayout 
     layout collectionViewLayout: DecoratorFlowLayout,
     shadowForCellAt indexPath: IndexPath,
     withFrame frame: CGRect)
-  -> CALayer.Shadow?
+    -> CALayer.Shadow?
 
   func collectionView(
     _ collectionView: UICollectionView,
     layout collectionViewLayout: DecoratorFlowLayout,
     cornerRadiusForCellAt indexPath: IndexPath,
     withFrame frame: CGRect)
-  -> CGFloat?
+    -> CGFloat?
 }
 
 public extension DecoratorFlowLayoutDelegate {
@@ -32,14 +32,14 @@ public extension DecoratorFlowLayoutDelegate {
     layout collectionViewLayout: DecoratorFlowLayout,
     shadowForCellAt indexPath: IndexPath,
     withFrame frame: CGRect)
-  -> CALayer.Shadow? { return nil }
+    -> CALayer.Shadow? { return nil }
 
   func collectionView(
     _ collectionView: UICollectionView,
     layout collectionViewLayout: DecoratorFlowLayout,
     cornerRadiusForCellAt indexPath: IndexPath,
     withFrame frame: CGRect)
-  -> CGFloat? { return nil }
+    -> CGFloat? { return nil }
 }
 
 public enum LayoutAlignment {
@@ -214,8 +214,7 @@ public class DecoratorFlowLayout: UICollectionViewFlowLayout {
       x: proposedContentOffset.x,
       y: proposedContentOffset.y,
       width: collectionView.frame.width,
-      height: collectionView.frame.height
-    )
+      height: collectionView.frame.height)
 
     guard let visibleAttributes = self.layoutAttributesForElements(in: cvBouns) else {
       return super.targetContentOffset(forProposedContentOffset: proposedContentOffset)
