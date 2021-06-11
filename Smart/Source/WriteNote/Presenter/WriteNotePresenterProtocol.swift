@@ -10,7 +10,7 @@ import Database
 import VinchyCore
 
 protocol WriteNotePresenterProtocol: AnyObject {
-  func setInitialNoteInfo(note: Note)
+  func setInitialNoteInfo(note: VNote)
   func setInitialNoteInfo(wine: Wine)
   func setPlaceholder()
 }

@@ -41,7 +41,7 @@ extension WineDetailRouter: WineDetailRouterProtocol {
     viewController?.present(emailController, animated: true, completion: nil)
   }
   
-  func pushToWriteViewController(note: Note, noteText: String?) {
+  func pushToWriteViewController(note: VNote, noteText: String?) {
     let controller = Assembly.buildWriteNoteViewController(for: note)
     viewController?.navigationController?.pushViewController(controller, animated: true)
   }

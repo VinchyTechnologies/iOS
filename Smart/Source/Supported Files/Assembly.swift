@@ -59,7 +59,7 @@ final class Assembly {
     return controller
   }
 
-  static func buildWriteNoteViewController(for note: Note) -> UIViewController {
+  static func buildWriteNoteViewController(for note: VNote) -> UIViewController {
     let controller = WriteNoteAssembly.assemblyModule(input: .init(wine: .database(note: note)))
     controller.hidesBottomBarWhenPushed = true
     return controller

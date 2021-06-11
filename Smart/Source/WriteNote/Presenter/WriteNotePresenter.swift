@@ -29,7 +29,7 @@ extension WriteNotePresenter: WriteNotePresenterProtocol {
       placeholder: localized("your_thoughts_about_wine").firstLetterUppercased())
   }
 
-  func setInitialNoteInfo(note: Note) {
+  func setInitialNoteInfo(note: VNote) {
     viewController?.update(
       viewModel: .init(
           noteText: note.noteText,
