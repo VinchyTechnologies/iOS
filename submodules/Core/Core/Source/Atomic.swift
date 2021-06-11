@@ -6,8 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-final
-private class AtomicLock {
+final private class AtomicLock {
   private var _lock = os_unfair_lock()
   
   func lock() {

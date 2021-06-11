@@ -9,6 +9,14 @@
 /* Begin PBXBuildFile section */
 		447C346F25EEA24F00105A35 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 447C346E25EEA24F00105A35 /* Core.framework */; };
 		6DE8C5FAF98327B50B88007F /* Pods_Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B51E786F09D84D5CD2E45EB7 /* Pods_Database.framework */; };
+		8A2F32DE2673B7D7002DE6C1 /* SingleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F32D52673B7D6002DE6C1 /* SingleRepository.swift */; };
+		8A2F32DF2673B7D7002DE6C1 /* InMemoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F32D62673B7D7002DE6C1 /* InMemoryRepository.swift */; };
+		8A2F32E02673B7D7002DE6C1 /* InMemoryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F32D82673B7D7002DE6C1 /* InMemoryStorage.swift */; };
+		8A2F32E12673B7D7002DE6C1 /* FileStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F32D92673B7D7002DE6C1 /* FileStorage.swift */; };
+		8A2F32E22673B7D7002DE6C1 /* StorageProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F32DA2673B7D7002DE6C1 /* StorageProtocol.swift */; };
+		8A2F32E32673B7D7002DE6C1 /* InMemoryStorageWithFilePersistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F32DB2673B7D7002DE6C1 /* InMemoryStorageWithFilePersistance.swift */; };
+		8A2F32E42673B7D7002DE6C1 /* AnyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F32DC2673B7D7002DE6C1 /* AnyStorage.swift */; };
+		8A2F32E52673B7D7002DE6C1 /* CollectionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F32DD2673B7D7002DE6C1 /* CollectionRepository.swift */; };
 		CA015C1E24C57E03008DF01D /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA015C1D24C57E03008DF01D /* Database.swift */; };
 		CA1821F624C0F48600280DD4 /* Database.h in Headers */ = {isa = PBXBuildFile; fileRef = CA1821F424C0F48600280DD4 /* Database.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CA18220224C0F71600280DD4 /* FilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18220124C0F71600280DD4 /* FilePath.swift */; };
@@ -19,6 +27,14 @@
 /* Begin PBXFileReference section */
 		0E8EEAB426FC98D2C3AFE4BE /* Pods-Database.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Database.release.xcconfig"; path = "Target Support Files/Pods-Database/Pods-Database.release.xcconfig"; sourceTree = "<group>"; };
 		447C346E25EEA24F00105A35 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A2F32D52673B7D6002DE6C1 /* SingleRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleRepository.swift; sourceTree = "<group>"; };
+		8A2F32D62673B7D7002DE6C1 /* InMemoryRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InMemoryRepository.swift; sourceTree = "<group>"; };
+		8A2F32D82673B7D7002DE6C1 /* InMemoryStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InMemoryStorage.swift; sourceTree = "<group>"; };
+		8A2F32D92673B7D7002DE6C1 /* FileStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FileStorage.swift; sourceTree = "<group>"; };
+		8A2F32DA2673B7D7002DE6C1 /* StorageProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageProtocol.swift; sourceTree = "<group>"; };
+		8A2F32DB2673B7D7002DE6C1 /* InMemoryStorageWithFilePersistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InMemoryStorageWithFilePersistance.swift; sourceTree = "<group>"; };
+		8A2F32DC2673B7D7002DE6C1 /* AnyStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyStorage.swift; sourceTree = "<group>"; };
+		8A2F32DD2673B7D7002DE6C1 /* CollectionRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionRepository.swift; sourceTree = "<group>"; };
 		B51E786F09D84D5CD2E45EB7 /* Pods_Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA015C1D24C57E03008DF01D /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		CA1821F124C0F48600280DD4 /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -43,6 +59,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8A2F32D72673B7D7002DE6C1 /* Storage */ = {
+			isa = PBXGroup;
+			children = (
+				8A2F32D82673B7D7002DE6C1 /* InMemoryStorage.swift */,
+				8A2F32D92673B7D7002DE6C1 /* FileStorage.swift */,
+				8A2F32DA2673B7D7002DE6C1 /* StorageProtocol.swift */,
+				8A2F32DB2673B7D7002DE6C1 /* InMemoryStorageWithFilePersistance.swift */,
+				8A2F32DC2673B7D7002DE6C1 /* AnyStorage.swift */,
+			);
+			path = Storage;
+			sourceTree = "<group>";
+		};
 		990BF3EEF6A28DA39E9997E0 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -95,10 +123,14 @@
 		CA1821FC24C0F4D500280DD4 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				CA18220124C0F71600280DD4 /* FilePath.swift */,
+				8A2F32DD2673B7D7002DE6C1 /* CollectionRepository.swift */,
 				CA015C1D24C57E03008DF01D /* Database.swift */,
-				CA57581324E58DDC00907A33 /* Wine.swift */,
+				CA18220124C0F71600280DD4 /* FilePath.swift */,
+				8A2F32D62673B7D7002DE6C1 /* InMemoryRepository.swift */,
 				CA57581524E5C78900907A33 /* Note.swift */,
+				8A2F32D52673B7D6002DE6C1 /* SingleRepository.swift */,
+				8A2F32D72673B7D7002DE6C1 /* Storage */,
+				CA57581324E58DDC00907A33 /* Wine.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -210,8 +242,16 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA015C1E24C57E03008DF01D /* Database.swift in Sources */,
+				8A2F32E52673B7D7002DE6C1 /* CollectionRepository.swift in Sources */,
+				8A2F32E42673B7D7002DE6C1 /* AnyStorage.swift in Sources */,
+				8A2F32E12673B7D7002DE6C1 /* FileStorage.swift in Sources */,
+				8A2F32DF2673B7D7002DE6C1 /* InMemoryRepository.swift in Sources */,
+				8A2F32DE2673B7D7002DE6C1 /* SingleRepository.swift in Sources */,
 				CA18220224C0F71600280DD4 /* FilePath.swift in Sources */,
 				CA57581424E58DDC00907A33 /* Wine.swift in Sources */,
+				8A2F32E02673B7D7002DE6C1 /* InMemoryStorage.swift in Sources */,
+				8A2F32E32673B7D7002DE6C1 /* InMemoryStorageWithFilePersistance.swift in Sources */,
+				8A2F32E22673B7D7002DE6C1 /* StorageProtocol.swift in Sources */,
 				CA57581624E5C78900907A33 /* Note.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -878,11 +878,11 @@ open class BaseSlidingViewController: UIViewController, OverlayPresentable {
     var frame = CGRect(x: view.bounds.origin.x, y: view.bounds.origin.y + topPadding, width: view.bounds.size.width, height: view.bounds.size.height - topPadding)
     
     topView = UIView(frame: frame)
-    topView!.autoresizingMask = [.flexibleBottomMargin, .flexibleWidth]
-    topView!.backgroundColor = topViewController!.view.backgroundColor
-    topView!.layer.cornerRadius = 10
-    topView!.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
-    topView!.layer.masksToBounds = true
+    topView?.autoresizingMask = [.flexibleBottomMargin, .flexibleWidth]
+    topView?.backgroundColor = topViewController!.view.backgroundColor
+    topView?.layer.cornerRadius = 10
+    topView?.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+    topView?.layer.masksToBounds = true
     topView!.addSubview(arrowHolderView)
     
     frame = topView!.bounds
