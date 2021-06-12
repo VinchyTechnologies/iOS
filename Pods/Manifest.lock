@@ -86,7 +86,6 @@ PODS:
     - nanopb/encode (= 2.30906.0)
   - nanopb/decode (2.30906.0)
   - nanopb/encode (2.30906.0)
-  - Nuke (9.2.0)
   - PromisesObjC (1.2.11)
   - Sheeeeeeeeet (3.1.4)
   - SkyFloatingLabelTextField (4.0.0)
@@ -103,7 +102,6 @@ DEPENDENCIES:
   - FSPagerView
   - Google-Mobile-Ads-SDK
   - KeychainAccess
-  - Nuke
   - Sheeeeeeeeet
   - SkyFloatingLabelTextField
   - SPAlert (~> 2.1.4)
@@ -130,7 +128,6 @@ SPEC REPOS:
     - GoogleUtilities
     - KeychainAccess
     - nanopb
-    - Nuke
     - PromisesObjC
     - Sheeeeeeeeet
     - SkyFloatingLabelTextField
@@ -157,13 +154,12 @@ SPEC CHECKSUMS:
   GoogleUtilities: 3dc4ff0d5e4840e2fa8eef0889620e8c33d4218c
   KeychainAccess: 9b07f665298d13c3a85881bd3171f6f49b8151c1
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
-  Nuke: 1394e48b0940e01dd20f52ac56b121ab154e370d
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   Sheeeeeeeeet: d4808c23c1d0aca2ccba13353ec7fa17ada2f129
   SkyFloatingLabelTextField: 79ddc40e4ad59707fedbb48d605417aee48bb78a
   SPAlert: 1a8afa1c6ac86a82ab5b2cfdf7f9a51e68cb6c0c
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
 
-PODFILE CHECKSUM: b8c543ac64d5a9d6140efc05eb89ac97c92b50f2
+PODFILE CHECKSUM: d91b4fc55bd09b45e2fbdda2d21fbd2abfda2401
 
 COCOAPODS: 1.10.1

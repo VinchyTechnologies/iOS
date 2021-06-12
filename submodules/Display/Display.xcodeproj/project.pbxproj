@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -15,6 +15,8 @@
 		44DE6C1625DB9E980008695D /* Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DE6C1525DB9E980008695D /* Orientation.swift */; };
 		8A2F30492671FA13002DE6C1 /* OverlayPresentationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F30482671FA13002DE6C1 /* OverlayPresentationCenter.swift */; };
 		8A2F304B2671FAF7002DE6C1 /* FadingInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F304A2671FAF7002DE6C1 /* FadingInfoViewController.swift */; };
+		8AD49F1B267525840094E157 /* SkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD49F1A267525840094E157 /* SkyFloatingLabelTextField.swift */; };
+		8AD49F21267526E30094E157 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 8AD49F20267526E30094E157 /* Nuke */; };
 		CA103AE4251690F200B0324F /* StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA103AE3251690F200B0324F /* StringFormatting.framework */; };
 		CA1821A224C0E72A00280DD4 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1821A124C0E72A00280DD4 /* Font.swift */; };
 		CA18220424C0F88B00280DD4 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18220324C0F88B00280DD4 /* NavigationController.swift */; };
@@ -50,6 +52,7 @@
 		44DE6C1525DB9E980008695D /* Orientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orientation.swift; sourceTree = "<group>"; };
 		8A2F30482671FA13002DE6C1 /* OverlayPresentationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayPresentationCenter.swift; sourceTree = "<group>"; };
 		8A2F304A2671FAF7002DE6C1 /* FadingInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadingInfoViewController.swift; sourceTree = "<group>"; };
+		8AD49F1A267525840094E157 /* SkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
 		A2E728CBFF7388AA46083FC3 /* Pods-Display.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Display.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-Display/Pods-Display.debug.xcconfig"; sourceTree = "<group>"; };
 		B3651BC8A20AEA589FD6BC11 /* Pods-Display.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Display.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-Display/Pods-Display.release.xcconfig"; sourceTree = "<group>"; };
 		CA103AE3251690F200B0324F /* StringFormatting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StringFormatting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -88,6 +91,7 @@
 				CA103AE4251690F200B0324F /* StringFormatting.framework in Frameworks */,
 				CAD0C9D6258C9B1400142FE5 /* Core.framework in Frameworks */,
 				18BD480D87EBF0D4FDC67B34 /* Pods_Display.framework in Frameworks */,
+				8AD49F21267526E30094E157 /* Nuke in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -153,6 +157,7 @@
 				44A72593259230C600A7552B /* Button.swift */,
 				CAA9DC68250EA24900F996A8 /* DecoratorFlowLayout.swift */,
 				4410AE3225E5632400A84FF9 /* DismissRoutable.swift */,
+				8A2F304A2671FAF7002DE6C1 /* FadingInfoViewController.swift */,
 				CA1821A124C0E72A00280DD4 /* Font.swift */,
 				CA81987A25387CA80056A1C6 /* Gradient.swift */,
 				CA3C97EE2572533E0036F7D9 /* GradientView.swift */,
@@ -165,16 +170,16 @@
 				CA7A87EB25026FA700AAD10F /* LoadingCollectionFooter.swift */,
 				CA18220324C0F88B00280DD4 /* NavigationController.swift */,
 				44DE6C1525DB9E980008695D /* Orientation.swift */,
+				8A2F30482671FA13002DE6C1 /* OverlayPresentationCenter.swift */,
 				CA7A87E92502582C00AAD10F /* PaddingLabel.swift */,
 				CE8D930F25BA2878004792C6 /* PlaceholderTextView.swift */,
 				CA5B9018250FEF51006BC638 /* ScrollViewBounceDecorator.swift */,
 				CA276D51256AC5830061BEBE /* ShimmeringView.swift */,
+				8AD49F1A267525840094E157 /* SkyFloatingLabelTextField.swift */,
 				44A7255C2592290B00A7552B /* TextFieldWithIcon.swift */,
 				CA18220524C0F8CE00280DD4 /* UIColor.swift */,
 				CA18220724C0FE2300280DD4 /* UIKitUtils.swift */,
 				4404888C25D8390600019081 /* UITapGestureRecognizer.swift */,
-				8A2F30482671FA13002DE6C1 /* OverlayPresentationCenter.swift */,
-				8A2F304A2671FAF7002DE6C1 /* FadingInfoViewController.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -208,6 +213,9 @@
 			dependencies = (
 			);
 			name = Display;
+			packageProductDependencies = (
+				8AD49F20267526E30094E157 /* Nuke */,
+			);
 			productName = Display;
 			productReference = CAE8869824C0E5F800E33E16 /* Display.framework */;
 			productType = "com.apple.product-type.framework";
@@ -236,6 +244,9 @@
 				Base,
 			);
 			mainGroup = CAE8868E24C0E5F800E33E16;
+			packageReferences = (
+				8AD49F1F267526E30094E157 /* XCRemoteSwiftPackageReference "Nuke" */,
+			);
 			productRefGroup = CAE8869924C0E5F800E33E16 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -298,6 +309,7 @@
 				CA81987B25387CA80056A1C6 /* Gradient.swift in Sources */,
 				4404888D25D8390600019081 /* UITapGestureRecognizer.swift in Sources */,
 				CA18220624C0F8CE00280DD4 /* UIColor.swift in Sources */,
+				8AD49F1B267525840094E157 /* SkyFloatingLabelTextField.swift in Sources */,
 				CABDBA9624C31FAC00AD96D6 /* ASPageControl.swift in Sources */,
 				CA99E65B24F7D79B00C36BEE /* ActivityIndicator.swift in Sources */,
 				CAA8918B250AA8D200ADBFF9 /* HighlightableViewProtocol.swift in Sources */,
@@ -518,6 +530,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8AD49F1F267526E30094E157 /* XCRemoteSwiftPackageReference "Nuke" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kean/Nuke.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.3.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8AD49F20267526E30094E157 /* Nuke */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8AD49F1F267526E30094E157 /* XCRemoteSwiftPackageReference "Nuke" */;
+			productName = Nuke;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CAE8868F24C0E5F800E33E16 /* Project object */;
 }

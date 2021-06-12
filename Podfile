@@ -5,7 +5,6 @@ inhibit_all_warnings!
 workspace 'Smart'
 
 def commonPods
-  pod 'Nuke'
   pod 'FSPagerView'
   pod 'Google-Mobile-Ads-SDK'
   pod 'SwiftLint'
@@ -37,7 +36,6 @@ end
 
 target 'Display' do
   project 'submodules/Display/Display'
-  pod 'Nuke'
   pod 'SkyFloatingLabelTextField'
 end
 
@@ -48,13 +46,11 @@ end
 
 target 'CommonUI' do
   project 'submodules/CommonUI/CommonUI'
-  pod 'Nuke'
   pod 'Cosmos', '~> 23.0'
 end
 
 target 'VinchyAuthorizationApp' do
   project 'submodules/VinchyAuthorization/VinchyAuthorization'
-  pod 'Nuke'
   pod 'SkyFloatingLabelTextField'
   pod 'CocoaDebug', :configurations => ['Debug']
   pod 'KeychainAccess'
