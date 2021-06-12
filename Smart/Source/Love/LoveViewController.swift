@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 import CommonUI
 import StringFormatting
 import Database

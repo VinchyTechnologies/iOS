@@ -8,6 +8,10 @@
 
 public let winesRepository = WinesRepository() // TODO: - DI
 
+public func imageURL(from wineID: Int64) -> String {
+  "https://bucket.vinchy.tech/wines/" + String(wineID) + ".png"
+}
+
 public class VWine: Codable, DIdentifiable, DSortable, Equatable {
   
   public static func == (lhs: VWine, rhs: VWine) -> Bool {
