@@ -80,6 +80,7 @@
 		8A313C0926447042009F2165 /* MapDetailStoreRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BFE26447042009F2165 /* MapDetailStoreRouterProtocol.swift */; };
 		8A313C1626468678009F2165 /* WorkingHoursCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313C1526468678009F2165 /* WorkingHoursCollectionCell.swift */; };
 		8A446CDF2660123B000A1769 /* RoutingToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A446CDE2660123B000A1769 /* RoutingToolBar.swift */; };
+		8A63CC8826752E9E003B1D4D /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 8A63CC8726752E9E003B1D4D /* Cosmos */; };
 		8AA5E5132615053D00935B5E /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA5E5122615053D00935B5E /* AboutView.swift */; };
 		8AD49F16267520F90094E157 /* ReviewsInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB3225E177220076ED6D /* ReviewsInteractorProtocol.swift */; };
 		8AD49F17267521040094E157 /* ReviewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB2D25E177220076ED6D /* ReviewsPresenter.swift */; };
@@ -571,6 +572,7 @@
 			files = (
 				CA51BBEF254094B000208F71 /* AppTrackingTransparency.framework in Frameworks */,
 				CA51BBED254094A100208F71 /* AdSupport.framework in Frameworks */,
+				8A63CC8826752E9E003B1D4D /* Cosmos in Frameworks */,
 				CA1821FF24C0F6F000280DD4 /* Database.framework in Frameworks */,
 				CAF24ACD24C323C90057547F /* StringFormatting.framework in Frameworks */,
 				CAF24AEB24C32AE90057547F /* CommonUI.framework in Frameworks */,
@@ -1991,6 +1993,7 @@
 			packageProductDependencies = (
 				8AD49F1D267526AF0094E157 /* Nuke */,
 				8AD49F29267528240094E157 /* KeychainAccess */,
+				8A63CC8726752E9E003B1D4D /* Cosmos */,
 			);
 			productName = Smart;
 			productReference = CA472ABC245EDE2F009149FF /* Vinchy.app */;
@@ -2072,6 +2075,7 @@
 			packageReferences = (
 				8AD49F1C267526AF0094E157 /* XCRemoteSwiftPackageReference "Nuke" */,
 				8AD49F28267528240094E157 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				8A63CC8626752E9E003B1D4D /* XCRemoteSwiftPackageReference "Cosmos" */,
 			);
 			productRefGroup = CA472ABD245EDE2F009149FF /* Products */;
 			projectDirPath = "";
@@ -2837,6 +2841,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8A63CC8626752E9E003B1D4D /* XCRemoteSwiftPackageReference "Cosmos" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/Cosmos.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 23.0.0;
+			};
+		};
 		8AD49F1C267526AF0094E157 /* XCRemoteSwiftPackageReference "Nuke" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Nuke.git";
@@ -2856,6 +2868,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8A63CC8726752E9E003B1D4D /* Cosmos */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A63CC8626752E9E003B1D4D /* XCRemoteSwiftPackageReference "Cosmos" */;
+			productName = Cosmos;
+		};
 		8AD49F1D267526AF0094E157 /* Nuke */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8AD49F1C267526AF0094E157 /* XCRemoteSwiftPackageReference "Nuke" */;

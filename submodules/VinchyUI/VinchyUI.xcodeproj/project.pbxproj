@@ -7,14 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		436D95B89069D13FA2518E17 /* Pods_VinchyUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCCF416779C73875121645F1 /* Pods_VinchyUI.framework */; };
 		CA7B827424ED0B0400991F24 /* VinchyUI.h in Headers */ = {isa = PBXBuildFile; fileRef = CA7B827224ED0B0400991F24 /* VinchyUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		0787AEAA1D87C7F971F386C1 /* Pods-VinchyUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyUI.debug.xcconfig"; path = "Target Support Files/Pods-VinchyUI/Pods-VinchyUI.debug.xcconfig"; sourceTree = "<group>"; };
-		2945B3208D6FABBDAB0E6135 /* Pods-VinchyUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyUI.release.xcconfig"; path = "Target Support Files/Pods-VinchyUI/Pods-VinchyUI.release.xcconfig"; sourceTree = "<group>"; };
-		BCCF416779C73875121645F1 /* Pods_VinchyUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinchyUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7B826F24ED0B0400991F24 /* VinchyUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VinchyUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7B827224ED0B0400991F24 /* VinchyUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VinchyUI.h; sourceTree = "<group>"; };
 		CA7B827324ED0B0400991F24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -25,38 +21,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				436D95B89069D13FA2518E17 /* Pods_VinchyUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5D6FB95F1D46E78B6589111C /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				0787AEAA1D87C7F971F386C1 /* Pods-VinchyUI.debug.xcconfig */,
-				2945B3208D6FABBDAB0E6135 /* Pods-VinchyUI.release.xcconfig */,
-			);
-			name = Pods;
-			path = ../../Pods;
-			sourceTree = "<group>";
-		};
-		B5047D3015B10E33767E9EC9 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				BCCF416779C73875121645F1 /* Pods_VinchyUI.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		CA7B826524ED0B0400991F24 = {
 			isa = PBXGroup;
 			children = (
 				CA7B827124ED0B0400991F24 /* VinchyUI */,
 				CA7B827024ED0B0400991F24 /* Products */,
-				5D6FB95F1D46E78B6589111C /* Pods */,
-				B5047D3015B10E33767E9EC9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -103,7 +78,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA7B827724ED0B0400991F24 /* Build configuration list for PBXNativeTarget "VinchyUI" */;
 			buildPhases = (
-				2BDCF9C3C9C46F7AF9CF1E2E /* [CP] Check Pods Manifest.lock */,
 				CA7B826A24ED0B0400991F24 /* Headers */,
 				CA7B826B24ED0B0400991F24 /* Sources */,
 				CA7B826C24ED0B0400991F24 /* Frameworks */,
@@ -160,31 +134,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		2BDCF9C3C9C46F7AF9CF1E2E /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-VinchyUI-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CA7B826B24ED0B0400991F24 /* Sources */ = {
@@ -321,7 +270,6 @@
 		};
 		CA7B827824ED0B0400991F24 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 0787AEAA1D87C7F971F386C1 /* Pods-VinchyUI.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -349,7 +297,6 @@
 		};
 		CA7B827924ED0B0400991F24 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 2945B3208D6FABBDAB0E6135 /* Pods-VinchyUI.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;

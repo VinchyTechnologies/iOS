@@ -32,11 +32,6 @@ target 'Smart' do
 
 end
 
-target 'CommonUI' do
-  project 'submodules/CommonUI/CommonUI'
-  pod 'Cosmos', '~> 23.0'
-end
-
 target 'VinchyAuthorizationApp' do
   project 'submodules/VinchyAuthorization/VinchyAuthorization'
   pod 'CocoaDebug', :configurations => ['Debug']
