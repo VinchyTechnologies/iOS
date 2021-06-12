@@ -87,7 +87,6 @@ PODS:
   - nanopb/encode (2.30906.0)
   - PromisesObjC (1.2.11)
   - Sheeeeeeeeet (3.1.4)
-  - SkyFloatingLabelTextField (4.0.0)
   - SPAlert (2.1.4)
   - SwiftLint (0.41.0)
 
@@ -101,7 +100,6 @@ DEPENDENCIES:
   - FSPagerView
   - Google-Mobile-Ads-SDK
   - Sheeeeeeeeet
-  - SkyFloatingLabelTextField
   - SPAlert (~> 2.1.4)
   - SwiftLint
 
@@ -127,7 +125,6 @@ SPEC REPOS:
     - nanopb
     - PromisesObjC
     - Sheeeeeeeeet
-    - SkyFloatingLabelTextField
     - SPAlert
     - SwiftLint
 
@@ -152,10 +149,9 @@ SPEC CHECKSUMS:
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   Sheeeeeeeeet: d4808c23c1d0aca2ccba13353ec7fa17ada2f129
-  SkyFloatingLabelTextField: 79ddc40e4ad59707fedbb48d605417aee48bb78a
   SPAlert: 1a8afa1c6ac86a82ab5b2cfdf7f9a51e68cb6c0c
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
 
-PODFILE CHECKSUM: acfc85f2a96cdc9f8bcfced1589c1c3ba11d1840
+PODFILE CHECKSUM: 2b3bc67e801cf0367cd2c8609967bf0d8bb75ddb
 
 COCOAPODS: 1.10.1

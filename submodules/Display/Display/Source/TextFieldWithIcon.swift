@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SkyFloatingLabelTextField
 
 public final class TextField: SkyFloatingLabelTextField {
   

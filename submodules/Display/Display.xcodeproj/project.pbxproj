@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		18BD480D87EBF0D4FDC67B34 /* Pods_Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3088510DDC0E64D6439091ED /* Pods_Display.framework */; };
 		4404888D25D8390600019081 /* UITapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404888C25D8390600019081 /* UITapGestureRecognizer.swift */; };
 		4410AE3325E5632400A84FF9 /* DismissRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410AE3225E5632400A84FF9 /* DismissRoutable.swift */; };
 		44A7255D2592290B00A7552B /* TextFieldWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A7255C2592290B00A7552B /* TextFieldWithIcon.swift */; };
@@ -16,7 +15,7 @@
 		8A2F30492671FA13002DE6C1 /* OverlayPresentationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F30482671FA13002DE6C1 /* OverlayPresentationCenter.swift */; };
 		8A2F304B2671FAF7002DE6C1 /* FadingInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F304A2671FAF7002DE6C1 /* FadingInfoViewController.swift */; };
 		8AD49F1B267525840094E157 /* SkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD49F1A267525840094E157 /* SkyFloatingLabelTextField.swift */; };
-		8AD49F21267526E30094E157 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 8AD49F20267526E30094E157 /* Nuke */; };
+		8AD49F21267526E30094E157 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 8AD49F20267526E30094E157 /* SwiftPackageProductDependency */; };
 		CA103AE4251690F200B0324F /* StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA103AE3251690F200B0324F /* StringFormatting.framework */; };
 		CA1821A224C0E72A00280DD4 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1821A124C0E72A00280DD4 /* Font.swift */; };
 		CA18220424C0F88B00280DD4 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18220324C0F88B00280DD4 /* NavigationController.swift */; };
@@ -44,7 +43,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		3088510DDC0E64D6439091ED /* Pods_Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4404888C25D8390600019081 /* UITapGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITapGestureRecognizer.swift; sourceTree = "<group>"; };
 		4410AE3225E5632400A84FF9 /* DismissRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissRoutable.swift; sourceTree = "<group>"; };
 		44A7255C2592290B00A7552B /* TextFieldWithIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithIcon.swift; sourceTree = "<group>"; };
@@ -53,8 +51,6 @@
 		8A2F30482671FA13002DE6C1 /* OverlayPresentationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayPresentationCenter.swift; sourceTree = "<group>"; };
 		8A2F304A2671FAF7002DE6C1 /* FadingInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadingInfoViewController.swift; sourceTree = "<group>"; };
 		8AD49F1A267525840094E157 /* SkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
-		A2E728CBFF7388AA46083FC3 /* Pods-Display.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Display.debug.xcconfig"; path = "../../Pods/Target Support Files/Pods-Display/Pods-Display.debug.xcconfig"; sourceTree = "<group>"; };
-		B3651BC8A20AEA589FD6BC11 /* Pods-Display.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Display.release.xcconfig"; path = "../../Pods/Target Support Files/Pods-Display/Pods-Display.release.xcconfig"; sourceTree = "<group>"; };
 		CA103AE3251690F200B0324F /* StringFormatting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StringFormatting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA1821A124C0E72A00280DD4 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		CA18220324C0F88B00280DD4 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
@@ -90,30 +86,18 @@
 			files = (
 				CA103AE4251690F200B0324F /* StringFormatting.framework in Frameworks */,
 				CAD0C9D6258C9B1400142FE5 /* Core.framework in Frameworks */,
-				18BD480D87EBF0D4FDC67B34 /* Pods_Display.framework in Frameworks */,
-				8AD49F21267526E30094E157 /* Nuke in Frameworks */,
+				8AD49F21267526E30094E157 /* BuildFile in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		23E050F0B5BA4947E80780FF /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				A2E728CBFF7388AA46083FC3 /* Pods-Display.debug.xcconfig */,
-				B3651BC8A20AEA589FD6BC11 /* Pods-Display.release.xcconfig */,
-			);
-			name = Pods;
-			path = ../Pods;
-			sourceTree = "<group>";
-		};
 		BFF9333AE32420B9D271FD47 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
 				CAD0C9D5258C9B1400142FE5 /* Core.framework */,
 				CA103AE3251690F200B0324F /* StringFormatting.framework */,
-				3088510DDC0E64D6439091ED /* Pods_Display.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -123,7 +107,6 @@
 			children = (
 				CAE8869A24C0E5F800E33E16 /* Display */,
 				CAE8869924C0E5F800E33E16 /* Products */,
-				23E050F0B5BA4947E80780FF /* Pods */,
 				BFF9333AE32420B9D271FD47 /* Frameworks */,
 			);
 			indentWidth = 2;
@@ -202,7 +185,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CAE886A024C0E5F800E33E16 /* Build configuration list for PBXNativeTarget "Display" */;
 			buildPhases = (
-				32EFD40EFF8718EFCFE246BE /* [CP] Check Pods Manifest.lock */,
 				CAE8869324C0E5F800E33E16 /* Headers */,
 				CAE8869424C0E5F800E33E16 /* Sources */,
 				CAE8869524C0E5F800E33E16 /* Frameworks */,
@@ -214,7 +196,7 @@
 			);
 			name = Display;
 			packageProductDependencies = (
-				8AD49F20267526E30094E157 /* Nuke */,
+				8AD49F20267526E30094E157 /* SwiftPackageProductDependency */,
 			);
 			productName = Display;
 			productReference = CAE8869824C0E5F800E33E16 /* Display.framework */;
@@ -245,7 +227,7 @@
 			);
 			mainGroup = CAE8868E24C0E5F800E33E16;
 			packageReferences = (
-				8AD49F1F267526E30094E157 /* XCRemoteSwiftPackageReference "Nuke" */,
+				8AD49F1F267526E30094E157 /* RemoteSwiftPackageReference */,
 			);
 			productRefGroup = CAE8869924C0E5F800E33E16 /* Products */;
 			projectDirPath = "";
@@ -265,31 +247,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		32EFD40EFF8718EFCFE246BE /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Display-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CAE8869424C0E5F800E33E16 /* Sources */ = {
@@ -455,7 +412,6 @@
 		};
 		CAE886A124C0E5F800E33E16 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = A2E728CBFF7388AA46083FC3 /* Pods-Display.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -483,7 +439,6 @@
 		};
 		CAE886A224C0E5F800E33E16 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = B3651BC8A20AEA589FD6BC11 /* Pods-Display.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -532,7 +487,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8AD49F1F267526E30094E157 /* XCRemoteSwiftPackageReference "Nuke" */ = {
+		8AD49F1F267526E30094E157 /* RemoteSwiftPackageReference */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Nuke.git";
 			requirement = {
@@ -543,9 +498,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8AD49F20267526E30094E157 /* Nuke */ = {
+		8AD49F20267526E30094E157 /* SwiftPackageProductDependency */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8AD49F1F267526E30094E157 /* XCRemoteSwiftPackageReference "Nuke" */;
+			package = 8AD49F1F267526E30094E157 /* RemoteSwiftPackageReference */;
 			productName = Nuke;
 		};
 /* End XCSwiftPackageProductDependency section */

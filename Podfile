@@ -15,7 +15,6 @@ def commonPods
   pod 'SPAlert', '~> 2.1.4'
   pod "Sheeeeeeeeet"
   pod 'Cosmos', '~> 23.0'
-  pod 'SkyFloatingLabelTextField'
   pod 'FittedSheets'
 end
 
@@ -33,11 +32,6 @@ target 'Smart' do
 
 end
 
-target 'Display' do
-  project 'submodules/Display/Display'
-  pod 'SkyFloatingLabelTextField'
-end
-
 target 'CommonUI' do
   project 'submodules/CommonUI/CommonUI'
   pod 'Cosmos', '~> 23.0'
@@ -45,7 +39,6 @@ end
 
 target 'VinchyAuthorizationApp' do
   project 'submodules/VinchyAuthorization/VinchyAuthorization'
-  pod 'SkyFloatingLabelTextField'
   pod 'CocoaDebug', :configurations => ['Debug']
 end
 
