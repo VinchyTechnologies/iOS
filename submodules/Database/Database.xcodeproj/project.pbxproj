@@ -18,6 +18,7 @@
 		8A2F32E42673B7D7002DE6C1 /* AnyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F32DC2673B7D7002DE6C1 /* AnyStorage.swift */; };
 		8A2F32E52673B7D7002DE6C1 /* CollectionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F32DD2673B7D7002DE6C1 /* CollectionRepository.swift */; };
 		8A2F32E72673E4FA002DE6C1 /* NotesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F32E62673E4FA002DE6C1 /* NotesRepository.swift */; };
+		8AD49F15267516BB0094E157 /* WinesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD49F14267516BB0094E157 /* WinesRepository.swift */; };
 		CA015C1E24C57E03008DF01D /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA015C1D24C57E03008DF01D /* Database.swift */; };
 		CA1821F624C0F48600280DD4 /* Database.h in Headers */ = {isa = PBXBuildFile; fileRef = CA1821F424C0F48600280DD4 /* Database.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CA18220224C0F71600280DD4 /* FilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18220124C0F71600280DD4 /* FilePath.swift */; };
@@ -36,6 +37,7 @@
 		8A2F32DC2673B7D7002DE6C1 /* AnyStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyStorage.swift; sourceTree = "<group>"; };
 		8A2F32DD2673B7D7002DE6C1 /* CollectionRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionRepository.swift; sourceTree = "<group>"; };
 		8A2F32E62673E4FA002DE6C1 /* NotesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesRepository.swift; sourceTree = "<group>"; };
+		8AD49F14267516BB0094E157 /* WinesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinesRepository.swift; sourceTree = "<group>"; };
 		B51E786F09D84D5CD2E45EB7 /* Pods_Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA015C1D24C57E03008DF01D /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		CA1821F124C0F48600280DD4 /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -131,6 +133,7 @@
 				8A2F32D72673B7D7002DE6C1 /* Storage */,
 				CA57581324E58DDC00907A33 /* Wine.swift */,
 				8A2F32E62673E4FA002DE6C1 /* NotesRepository.swift */,
+				8AD49F14267516BB0094E157 /* WinesRepository.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -252,6 +255,7 @@
 				CA57581424E58DDC00907A33 /* Wine.swift in Sources */,
 				8A2F32E02673B7D7002DE6C1 /* InMemoryStorage.swift in Sources */,
 				8A2F32E32673B7D7002DE6C1 /* InMemoryStorageWithFilePersistance.swift in Sources */,
+				8AD49F15267516BB0094E157 /* WinesRepository.swift in Sources */,
 				8A2F32E22673B7D7002DE6C1 /* StorageProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

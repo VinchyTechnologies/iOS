@@ -11,7 +11,7 @@ public let notesRepository = NotesRepository() // TODO: - DI
 public class VNote: Codable, DIdentifiable, DSortable, Equatable {
   
   public static func == (lhs: VNote, rhs: VNote) -> Bool {
-    lhs.wineID == rhs.wineID
+    lhs.id == rhs.id
   }
   
   public typealias Id = Int // swiftlint:disable:this type_name
@@ -21,11 +21,11 @@ public class VNote: Codable, DIdentifiable, DSortable, Equatable {
   }
   
   public let id: Int
-  public let wineID: Int64
-  public let wineTitle: String
-  public let noteText: String
+  public let wineID: Int64?
+  public let wineTitle: String?
+  public let noteText: String?
   
-  public init(id: Int, wineID: Int64, wineTitle: String, noteText: String) {
+  public init(id: Int, wineID: Int64?, wineTitle: String?, noteText: String?) {
     self.id = id
     self.wineID = wineID
     self.wineTitle = wineTitle
