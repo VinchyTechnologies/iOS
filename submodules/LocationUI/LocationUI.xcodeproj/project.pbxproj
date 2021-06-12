@@ -12,20 +12,16 @@
 		CAF24B0724C330780057547F /* LocationUI.h in Headers */ = {isa = PBXBuildFile; fileRef = CAF24B0524C330780057547F /* LocationUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CAF24B1424C333AE0057547F /* URLImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF24B1324C333AE0057547F /* URLImageView.swift */; };
 		CAF24B1624C333CA0057547F /* MapURLProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF24B1524C333CA0057547F /* MapURLProtocol.swift */; };
-		D7425E5940C2E0667E87A8EA /* Pods_LocationUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6AACE0FEB8FFC911B1D2886F /* Pods_LocationUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		4407197425F02417000531B7 /* LocationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationService.swift; sourceTree = "<group>"; };
-		6AACE0FEB8FFC911B1D2886F /* Pods_LocationUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LocationUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6EA039A03D4D4ACFE3B2FD64 /* Pods-LocationUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocationUI.release.xcconfig"; path = "Target Support Files/Pods-LocationUI/Pods-LocationUI.release.xcconfig"; sourceTree = "<group>"; };
 		CA103AD82516903B00B0324F /* Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF24B0224C330780057547F /* LocationUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = LocationUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAF24B0524C330780057547F /* LocationUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = LocationUI.h; sourceTree = "<group>"; };
 		CAF24B0624C330780057547F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CAF24B1324C333AE0057547F /* URLImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLImageView.swift; sourceTree = "<group>"; };
 		CAF24B1524C333CA0057547F /* MapURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapURLProtocol.swift; sourceTree = "<group>"; };
-		E4120230FC9DD39E41A7FDAE /* Pods-LocationUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LocationUI.debug.xcconfig"; path = "Target Support Files/Pods-LocationUI/Pods-LocationUI.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -33,7 +29,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D7425E5940C2E0667E87A8EA /* Pods_LocationUI.framework in Frameworks */,
 				CA103AD92516903B00B0324F /* Display.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -41,22 +36,11 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		ACA6830D273454A65A961247 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				E4120230FC9DD39E41A7FDAE /* Pods-LocationUI.debug.xcconfig */,
-				6EA039A03D4D4ACFE3B2FD64 /* Pods-LocationUI.release.xcconfig */,
-			);
-			name = Pods;
-			path = ../../Pods;
-			sourceTree = "<group>";
-		};
 		CAF24AF824C330780057547F = {
 			isa = PBXGroup;
 			children = (
 				CAF24B0424C330780057547F /* LocationUI */,
 				CAF24B0324C330780057547F /* Products */,
-				ACA6830D273454A65A961247 /* Pods */,
 				FA6BE27CC42322CDFE304475 /* Frameworks */,
 			);
 			indentWidth = 2;
@@ -95,7 +79,6 @@
 			isa = PBXGroup;
 			children = (
 				CA103AD82516903B00B0324F /* Display.framework */,
-				6AACE0FEB8FFC911B1D2886F /* Pods_LocationUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -118,7 +101,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CAF24B0A24C330780057547F /* Build configuration list for PBXNativeTarget "LocationUI" */;
 			buildPhases = (
-				0AC5C2CC78DDDDB81C100846 /* [CP] Check Pods Manifest.lock */,
 				CAF24AFD24C330780057547F /* Headers */,
 				CAF24AFE24C330780057547F /* Sources */,
 				CAF24AFF24C330780057547F /* Frameworks */,
@@ -175,31 +157,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		0AC5C2CC78DDDDB81C100846 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-LocationUI-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CAF24AFE24C330780057547F /* Sources */ = {
@@ -339,7 +296,6 @@
 		};
 		CAF24B0B24C330780057547F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E4120230FC9DD39E41A7FDAE /* Pods-LocationUI.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -367,7 +323,6 @@
 		};
 		CAF24B0C24C330780057547F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6EA039A03D4D4ACFE3B2FD64 /* Pods-LocationUI.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;

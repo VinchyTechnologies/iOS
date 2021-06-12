@@ -41,43 +41,15 @@ target 'Display' do
   pod 'SkyFloatingLabelTextField'
 end
 
-target 'Database' do
-  project 'submodules/Database/Database'
-end
-
 target 'Core' do
   project 'submodules/Core/Core'
   pod 'KeychainAccess'
-end
-
-target 'StringFormatting' do
-  project 'submodules/StringFormatting/StringFormatting'
 end
 
 target 'CommonUI' do
   project 'submodules/CommonUI/CommonUI'
   pod 'Nuke'
   pod 'Cosmos', '~> 23.0'
-end
-
-target 'LocationUI' do
-  project 'submodules/LocationUI/LocationUI'
-end
-
-target 'EmailService' do
-  project 'submodules/EmailService/EmailService'
-end
-
-target 'VinchyCore' do
-  project 'submodules/VinchyCore/VinchyCore'
-end
-
-target 'VinchyUI' do
-  project 'submodules/VinchyUI/VinchyUI'
-end
-
-target 'VinchyAuthorization' do
-  project 'submodules/VinchyAuthorization/VinchyAuthorization'
 end
 
 target 'VinchyAuthorizationApp' do

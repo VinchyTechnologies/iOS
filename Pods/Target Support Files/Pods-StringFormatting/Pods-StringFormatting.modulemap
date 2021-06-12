@@ -1,6 +1,0 @@
-framework module Pods_StringFormatting {
-  umbrella header "Pods-StringFormatting-umbrella.h"
-
-  export *
-  module * { export * }
-}

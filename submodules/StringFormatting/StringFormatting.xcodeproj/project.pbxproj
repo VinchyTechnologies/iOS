@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		4495629625E30327005E79DA /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4495629525E30327005E79DA /* DateFormatter.swift */; };
 		44A7259D25924C8000A7552B /* EmailValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A7259C25924C8000A7552B /* EmailValidation.swift */; };
-		5BDC73D0D84407576157E3A1 /* Pods_StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BEFE0093A63286B07E13A180 /* Pods_StringFormatting.framework */; };
 		8A447058266235AD000A1769 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A447057266235AD000A1769 /* Distance.swift */; };
 		8A44705A26623862000A1769 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A44705926623862000A1769 /* Time.swift */; };
 		CA015C1C24C47BC4008DF01D /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA015C1B24C47BC4008DF01D /* Localized.swift */; };
@@ -22,13 +21,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		10310676A8CB6FCD95516C49 /* Pods-StringFormatting.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StringFormatting.release.xcconfig"; path = "Target Support Files/Pods-StringFormatting/Pods-StringFormatting.release.xcconfig"; sourceTree = "<group>"; };
 		4495629525E30327005E79DA /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		44A7259C25924C8000A7552B /* EmailValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidation.swift; sourceTree = "<group>"; };
-		52D1213F483E0AC197C662D8 /* Pods-StringFormatting.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-StringFormatting.debug.xcconfig"; path = "Target Support Files/Pods-StringFormatting/Pods-StringFormatting.debug.xcconfig"; sourceTree = "<group>"; };
 		8A447057266235AD000A1769 /* Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
 		8A44705926623862000A1769 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
-		BEFE0093A63286B07E13A180 /* Pods_StringFormatting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_StringFormatting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA015C1B24C47BC4008DF01D /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
 		CA7A87ED25027D3F00AAD10F /* Quotes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Quotes.swift; sourceTree = "<group>"; };
 		CA7A87F12502896C00AAD10F /* CountryCodeFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCodeFormatter.swift; sourceTree = "<group>"; };
@@ -45,38 +41,17 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5BDC73D0D84407576157E3A1 /* Pods_StringFormatting.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		06279ED81AF6935EDF86DFFF /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				BEFE0093A63286B07E13A180 /* Pods_StringFormatting.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		B6BC19EB4315403A9FF724AC /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				52D1213F483E0AC197C662D8 /* Pods-StringFormatting.debug.xcconfig */,
-				10310676A8CB6FCD95516C49 /* Pods-StringFormatting.release.xcconfig */,
-			);
-			name = Pods;
-			path = ../../Pods;
-			sourceTree = "<group>";
-		};
 		CABDBA9824C3222C00AD96D6 = {
 			isa = PBXGroup;
 			children = (
 				CABDBAA424C3222C00AD96D6 /* StringFormatting */,
 				CABDBAA324C3222C00AD96D6 /* Products */,
-				B6BC19EB4315403A9FF724AC /* Pods */,
-				06279ED81AF6935EDF86DFFF /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -135,7 +110,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CABDBAAA24C3222C00AD96D6 /* Build configuration list for PBXNativeTarget "StringFormatting" */;
 			buildPhases = (
-				392744D91FDA32CB6AFCCC0F /* [CP] Check Pods Manifest.lock */,
 				CABDBA9D24C3222C00AD96D6 /* Headers */,
 				CABDBA9E24C3222C00AD96D6 /* Sources */,
 				CABDBA9F24C3222C00AD96D6 /* Frameworks */,
@@ -192,31 +166,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		392744D91FDA32CB6AFCCC0F /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-StringFormatting-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CABDBA9E24C3222C00AD96D6 /* Sources */ = {
@@ -363,7 +312,6 @@
 		};
 		CABDBAAB24C3222C00AD96D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 52D1213F483E0AC197C662D8 /* Pods-StringFormatting.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -391,7 +339,6 @@
 		};
 		CABDBAAC24C3222C00AD96D6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 10310676A8CB6FCD95516C49 /* Pods-StringFormatting.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;

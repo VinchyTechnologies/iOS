@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		2B369E35275D8A0E73843EBC /* Pods_VinchyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 16D29A7E3032685F4CCEE243 /* Pods_VinchyCore.framework */; };
 		4410AE2C25E546F400A84FF9 /* RefreshTokenMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410AE2B25E546F400A84FF9 /* RefreshTokenMapper.swift */; };
 		4410AE3025E5479400A84FF9 /* UpdateTokensResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410AE2F25E5479400A84FF9 /* UpdateTokensResponse.swift */; };
 		443601D925CEF23E00ABA7F1 /* AccountInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443601D825CEF23E00ABA7F1 /* AccountInfo.swift */; };
@@ -38,8 +37,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		12366A038800E697D8B222D2 /* Pods-VinchyCore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyCore.debug.xcconfig"; path = "Target Support Files/Pods-VinchyCore/Pods-VinchyCore.debug.xcconfig"; sourceTree = "<group>"; };
-		16D29A7E3032685F4CCEE243 /* Pods_VinchyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinchyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4410AE2B25E546F400A84FF9 /* RefreshTokenMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshTokenMapper.swift; sourceTree = "<group>"; };
 		4410AE2F25E5479400A84FF9 /* UpdateTokensResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UpdateTokensResponse.swift; sourceTree = "<group>"; };
 		443601D825CEF23E00ABA7F1 /* AccountInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfo.swift; sourceTree = "<group>"; };
@@ -69,7 +66,6 @@
 		CA7B825A24EC74B200991F24 /* Wines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wines.swift; sourceTree = "<group>"; };
 		CA7B825F24EC75DA00991F24 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7CBC25257F82D400C81476 /* ShortWine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortWine.swift; sourceTree = "<group>"; };
-		DE4D3D64C790536FF2CE11B2 /* Pods-VinchyCore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyCore.release.xcconfig"; path = "Target Support Files/Pods-VinchyCore/Pods-VinchyCore.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,7 +73,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2B369E35275D8A0E73843EBC /* Pods_VinchyCore.framework in Frameworks */,
 				CA7B826024EC75DA00991F24 /* Core.framework in Frameworks */,
 				CA103AE92516913B00B0324F /* Display.framework in Frameworks */,
 			);
@@ -99,7 +94,6 @@
 			children = (
 				CA103AE82516913B00B0324F /* Display.framework */,
 				CA7B825F24EC75DA00991F24 /* Core.framework */,
-				16D29A7E3032685F4CCEE243 /* Pods_VinchyCore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -109,7 +103,6 @@
 			children = (
 				CA7B823924EC71F300991F24 /* VinchyCore */,
 				CA7B823824EC71F300991F24 /* Products */,
-				D0BFB794CD9326A091183DBE /* Pods */,
 				5F7998F5E0DE097EACFDCEC0 /* Frameworks */,
 			);
 			indentWidth = 2;
@@ -189,16 +182,6 @@
 			path = Endpoints;
 			sourceTree = "<group>";
 		};
-		D0BFB794CD9326A091183DBE /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				12366A038800E697D8B222D2 /* Pods-VinchyCore.debug.xcconfig */,
-				DE4D3D64C790536FF2CE11B2 /* Pods-VinchyCore.release.xcconfig */,
-			);
-			name = Pods;
-			path = ../../Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -217,7 +200,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA7B823F24EC71F300991F24 /* Build configuration list for PBXNativeTarget "VinchyCore" */;
 			buildPhases = (
-				DAF967C3A682EC13D0712D1B /* [CP] Check Pods Manifest.lock */,
 				CA7B823224EC71F300991F24 /* Headers */,
 				CA7B823324EC71F300991F24 /* Sources */,
 				CA7B823424EC71F300991F24 /* Frameworks */,
@@ -274,31 +256,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		DAF967C3A682EC13D0712D1B /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-VinchyCore-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CA7B823324EC71F300991F24 /* Sources */ = {
@@ -459,7 +416,6 @@
 		};
 		CA7B824024EC71F300991F24 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 12366A038800E697D8B222D2 /* Pods-VinchyCore.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -487,7 +443,6 @@
 		};
 		CA7B824124EC71F300991F24 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DE4D3D64C790536FF2CE11B2 /* Pods-VinchyCore.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
