@@ -23,8 +23,6 @@
 		4437AA6E25E3BE7300F6E838 /* WriteReviewRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4437AA6D25E3BE7300F6E838 /* WriteReviewRoutable.swift */; };
 		44465EC025F39400005B3F06 /* MapRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44465EBF25F39400005B3F06 /* MapRepository.swift */; };
 		44465EC625F3940E005B3F06 /* MapRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44465EC525F3940E005B3F06 /* MapRepositoryProtocol.swift */; };
-		4474E36525E02486001C5DE3 /* VinchyAnalytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4474E36425E02486001C5DE3 /* VinchyAnalytics.framework */; };
-		4474E36625E02486001C5DE3 /* VinchyAnalytics.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 4474E36425E02486001C5DE3 /* VinchyAnalytics.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		447C353825EEAA5700105A35 /* MapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447C352725EEAA5700105A35 /* MapViewModel.swift */; };
 		447C353925EEAA5700105A35 /* MapInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447C352925EEAA5700105A35 /* MapInput.swift */; };
 		447C353A25EEAA5700105A35 /* MapAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447C352B25EEAA5700105A35 /* MapAssembly.swift */; };
@@ -89,13 +87,12 @@
 		8AD49F192675210D0094E157 /* ReviewsRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB3625E177220076ED6D /* ReviewsRouterProtocol.swift */; };
 		8AD49F1E267526AF0094E157 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 8AD49F1D267526AF0094E157 /* Nuke */; };
 		8AD49F2A267528240094E157 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 8AD49F29267528240094E157 /* KeychainAccess */; };
+		8AD49F2C26752B4B0094E157 /* AnalyticsTrackable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD49F2B26752B4B0094E157 /* AnalyticsTrackable.swift */; };
 		8AD7A37E2639D31A007D4273 /* PartnerAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7A37D2639D31A007D4273 /* PartnerAnnotationView.swift */; };
 		8AD7A455263B2A98007D4273 /* ClusterAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7A454263B2A98007D4273 /* ClusterAnnotationView.swift */; };
 		A45E1630B1AB1ACBB6D5E58B /* Pods_SmartTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA78FE8971307D6D1C5D8B17 /* Pods_SmartTests.framework */; };
 		A66896A2FCE4890C20578E8A /* Pods_Smart_SmartUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFC751EC9AAA672E4A7DF935 /* Pods_Smart_SmartUITests.framework */; };
 		CA015C1A24C44925008DF01D /* DidnotFindTheWineTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA015C1924C44925008DF01D /* DidnotFindTheWineTableCell.swift */; };
-		CA015C3624C582B2008DF01D /* EmailService.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA015C3524C582B2008DF01D /* EmailService.framework */; };
-		CA015C3724C582B2008DF01D /* EmailService.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA015C3524C582B2008DF01D /* EmailService.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA070C1625250AEC00C3D9EC /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA070C1325250AE900C3D9EC /* OnboardViewController.swift */; };
 		CA070C1725250AEC00C3D9EC /* OnboardPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA070C1425250AEB00C3D9EC /* OnboardPageViewController.swift */; };
 		CA070C1825250AEC00C3D9EC /* OnboardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA070C1525250AEC00C3D9EC /* OnboardPage.swift */; };
@@ -287,14 +284,12 @@
 			files = (
 				CAF24ACE24C323C90057547F /* StringFormatting.framework in Embed Frameworks */,
 				CA1821A524C0E83900280DD4 /* Display.framework in Embed Frameworks */,
-				4474E36625E02486001C5DE3 /* VinchyAnalytics.framework in Embed Frameworks */,
 				CA7B825E24EC750300991F24 /* VinchyCore.framework in Embed Frameworks */,
 				CAF24AEC24C32AE90057547F /* CommonUI.framework in Embed Frameworks */,
 				44D3CDE925E42E0B00FFFCD5 /* VinchyAuthorization.framework in Embed Frameworks */,
 				CAF24B0F24C3311F0057547F /* LocationUI.framework in Embed Frameworks */,
 				CABDBA8824C2FAB800AD96D6 /* Core.framework in Embed Frameworks */,
 				CA18220024C0F6F000280DD4 /* Database.framework in Embed Frameworks */,
-				CA015C3724C582B2008DF01D /* EmailService.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -384,6 +379,7 @@
 		8A313C1526468678009F2165 /* WorkingHoursCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingHoursCollectionCell.swift; sourceTree = "<group>"; };
 		8A446CDE2660123B000A1769 /* RoutingToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingToolBar.swift; sourceTree = "<group>"; };
 		8AA5E5122615053D00935B5E /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		8AD49F2B26752B4B0094E157 /* AnalyticsTrackable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsTrackable.swift; sourceTree = "<group>"; };
 		8AD7A37D2639D31A007D4273 /* PartnerAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerAnnotationView.swift; sourceTree = "<group>"; };
 		8AD7A454263B2A98007D4273 /* ClusterAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterAnnotationView.swift; sourceTree = "<group>"; };
 		A58854690F88929379F0E016 /* Pods_Smart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Smart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -575,10 +571,8 @@
 			files = (
 				CA51BBEF254094B000208F71 /* AppTrackingTransparency.framework in Frameworks */,
 				CA51BBED254094A100208F71 /* AdSupport.framework in Frameworks */,
-				4474E36525E02486001C5DE3 /* VinchyAnalytics.framework in Frameworks */,
 				CA1821FF24C0F6F000280DD4 /* Database.framework in Frameworks */,
 				CAF24ACD24C323C90057547F /* StringFormatting.framework in Frameworks */,
-				CA015C3624C582B2008DF01D /* EmailService.framework in Frameworks */,
 				CAF24AEB24C32AE90057547F /* CommonUI.framework in Frameworks */,
 				CAF24B0E24C3311F0057547F /* LocationUI.framework in Frameworks */,
 				CA7B825D24EC750300991F24 /* VinchyCore.framework in Frameworks */,
@@ -1400,6 +1394,7 @@
 				CA472AC1245EDE2F009149FF /* SceneDelegate.swift */,
 				CA3C981E257260BC0036F7D9 /* StatusAlertable.swift */,
 				CA878A872572E59700B51FF1 /* ActionSheetAppearence.swift */,
+				8AD49F2B26752B4B0094E157 /* AnalyticsTrackable.swift */,
 			);
 			path = "Supported Files";
 			sourceTree = "<group>";
@@ -2316,6 +2311,7 @@
 				4437AA5D25E3A7CE00F6E838 /* WriteReviewAssembly.swift in Sources */,
 				CA8CD67C25096EE100FDB7AF /* GADTTemplateView.m in Sources */,
 				8A313C0626447042009F2165 /* MapDetailStoreInteractor.swift in Sources */,
+				8AD49F2C26752B4B0094E157 /* AnalyticsTrackable.swift in Sources */,
 				4437AA6325E3A7CE00F6E838 /* WriteReviewInteractor.swift in Sources */,
 				8A313C0826447042009F2165 /* MapDetailStoreRouter.swift in Sources */,
 				449F81AC25DD023A00585364 /* RootInteractor.swift in Sources */,

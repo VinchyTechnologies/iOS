@@ -14,7 +14,8 @@
 		44AA7C3B25A4A1AE00F599BA /* Throttler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA7C3A25A4A1AE00F599BA /* Throttler.swift */; };
 		44E0035325CBFE5D00ED7D9E /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E0035225CBFE5D00ED7D9E /* Keychain.swift */; };
 		8A313BCF26407B3E009F2165 /* Atomic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BCE26407B3E009F2165 /* Atomic.swift */; };
-		8AD49F27267528120094E157 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 8AD49F26267528120094E157 /* SwiftPackageProductDependency */; };
+		8A63CC8226752DA0003B1D4D /* EmailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A63CC8126752DA0003B1D4D /* EmailService.swift */; };
+		8AD49F27267528120094E157 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 8AD49F26267528120094E157 /* KeychainAccess */; };
 		CA27087C24CFF39B007580D8 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27087B24CFF39B007580D8 /* Array.swift */; };
 		CA2E796324D5ECAC00F17725 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2E796224D5ECAC00F17725 /* UserDefaults.swift */; };
 		CA3CEFB225128EDA00AAA692 /* CountryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3CEFB125128EDA00AAA692 /* CountryCode.swift */; };
@@ -36,6 +37,7 @@
 		44AA7C3A25A4A1AE00F599BA /* Throttler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Throttler.swift; sourceTree = "<group>"; };
 		44E0035225CBFE5D00ED7D9E /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
 		8A313BCE26407B3E009F2165 /* Atomic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Atomic.swift; sourceTree = "<group>"; };
+		8A63CC8126752DA0003B1D4D /* EmailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailService.swift; sourceTree = "<group>"; };
 		CA27087B24CFF39B007580D8 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		CA2E796224D5ECAC00F17725 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
 		CA3CEFB125128EDA00AAA692 /* CountryCode.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryCode.swift; sourceTree = "<group>"; };
@@ -56,7 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8AD49F27267528120094E157 /* BuildFile in Frameworks */,
+				8AD49F27267528120094E157 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -99,6 +101,7 @@
 				8A313BCE26407B3E009F2165 /* Atomic.swift */,
 				CABDBA9324C31E4E00AD96D6 /* CollectionExt.swift */,
 				CA3CEFB125128EDA00AAA692 /* CountryCode.swift */,
+				8A63CC8126752DA0003B1D4D /* EmailService.swift */,
 				CACC1DC324C5F6C80082BD01 /* Filter.swift */,
 				44E0035225CBFE5D00ED7D9E /* Keychain.swift */,
 				44911E3B25D30F5400A62E40 /* LockProtocol.swift */,
@@ -144,7 +147,7 @@
 			);
 			name = Core;
 			packageProductDependencies = (
-				8AD49F26267528120094E157 /* SwiftPackageProductDependency */,
+				8AD49F26267528120094E157 /* KeychainAccess */,
 			);
 			productName = Core;
 			productReference = CABDBA7A24C2F7A800AD96D6 /* Core.framework */;
@@ -175,7 +178,7 @@
 			);
 			mainGroup = CABDBA7024C2F7A800AD96D6;
 			packageReferences = (
-				8AD49F25267528120094E157 /* RemoteSwiftPackageReference */,
+				8AD49F25267528120094E157 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = CABDBA7B24C2F7A800AD96D6 /* Products */;
 			projectDirPath = "";
@@ -213,6 +216,7 @@
 				CABDBA9424C31E4E00AD96D6 /* CollectionExt.swift in Sources */,
 				44911E3925D30F3100A62E40 /* StateMachine.swift in Sources */,
 				44911E3F25D30FB800A62E40 /* PagingStateMachine.swift in Sources */,
+				8A63CC8226752DA0003B1D4D /* EmailService.swift in Sources */,
 				44AA7C3B25A4A1AE00F599BA /* Throttler.swift in Sources */,
 				CA2E796324D5ECAC00F17725 /* UserDefaults.swift in Sources */,
 				CAF24AF724C32E470057547F /* OpenURLProtocol.swift in Sources */,
@@ -423,7 +427,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8AD49F25267528120094E157 /* RemoteSwiftPackageReference */ = {
+		8AD49F25267528120094E157 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
 			requirement = {
@@ -434,9 +438,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8AD49F26267528120094E157 /* SwiftPackageProductDependency */ = {
+		8AD49F26267528120094E157 /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8AD49F25267528120094E157 /* RemoteSwiftPackageReference */;
+			package = 8AD49F25267528120094E157 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
 		};
 /* End XCSwiftPackageProductDependency section */

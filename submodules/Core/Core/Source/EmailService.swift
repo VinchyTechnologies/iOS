@@ -1,9 +1,9 @@
 //
 //  EmailService.swift
-//  EmailService
+//  Core
 //
-//  Created by Aleksei Smirnov on 20.07.2020.
-//  Copyright © 2020 Aleksei Smirnov. All rights reserved.
+//  Created by Алексей Смирнов on 12.06.2021.
+//  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
 import MessageUI

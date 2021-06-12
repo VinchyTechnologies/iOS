@@ -42,11 +42,6 @@ target 'VinchyAuthorizationApp' do
   pod 'CocoaDebug', :configurations => ['Debug']
 end
 
-target 'VinchyAnalytics' do
-  project 'submodules/VinchyAnalytics/VinchyAnalytics'
-  pod 'Firebase/Analytics'
-end
-
 post_install do |installer|
   installer.pods_project.targets.each do |target|
     target.build_configurations.each do |config|

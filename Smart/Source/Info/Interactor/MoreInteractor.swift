@@ -7,7 +7,6 @@
 //
 // swiftlint:disable all
 
-import EmailService
 import Core
 import StringFormatting
 

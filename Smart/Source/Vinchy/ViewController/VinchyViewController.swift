@@ -11,7 +11,6 @@ import VinchyCore
 import Display
 import CommonUI
 import Core
-import EmailService
 import StringFormatting
 
 fileprivate enum C {
