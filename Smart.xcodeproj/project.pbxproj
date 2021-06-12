@@ -45,7 +45,6 @@
 		449F81CA25DD04B400585364 /* DeeplinkStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449F81C925DD04B400585364 /* DeeplinkStep.swift */; };
 		449F81CE25DD050400585364 /* DeeplinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449F81CD25DD050400585364 /* DeeplinkRouter.swift */; };
 		44D3CDE825E42E0B00FFFCD5 /* VinchyAuthorization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44D3CDE725E42E0B00FFFCD5 /* VinchyAuthorization.framework */; };
-		44D3CDE925E42E0B00FFFCD5 /* VinchyAuthorization.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44D3CDE725E42E0B00FFFCD5 /* VinchyAuthorization.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		44EFDB3725E177220076ED6D /* ReviewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB2625E177220076ED6D /* ReviewsViewModel.swift */; };
 		44EFDB3825E177220076ED6D /* ReviewsInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB2825E177220076ED6D /* ReviewsInput.swift */; };
 		44EFDB3925E177220076ED6D /* ReviewsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB2A25E177220076ED6D /* ReviewsAssembly.swift */; };
@@ -103,9 +102,7 @@
 		CA070C2425250C1800C3D9EC /* OnboardingModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA070C2325250C1800C3D9EC /* OnboardingModuleFactory.swift */; };
 		CA0A2E6B258E319A00B800C3 /* VinchyLogoNoFolder.png in Resources */ = {isa = PBXBuildFile; fileRef = CA0A2E6A258E319A00B800C3 /* VinchyLogoNoFolder.png */; };
 		CA1821A424C0E83900280DD4 /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA1821A324C0E83900280DD4 /* Display.framework */; };
-		CA1821A524C0E83900280DD4 /* Display.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA1821A324C0E83900280DD4 /* Display.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA1821FF24C0F6F000280DD4 /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA1821FE24C0F6F000280DD4 /* Database.framework */; };
-		CA18220024C0F6F000280DD4 /* Database.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA1821FE24C0F6F000280DD4 /* Database.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA276D4E256AC34A0061BEBE /* FakeVinchyCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA276D4D256AC34A0061BEBE /* FakeVinchyCollectionCell.swift */; };
 		CA276D55256AC6720061BEBE /* FakeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA276D54256AC6720061BEBE /* FakeCell.swift */; };
 		CA2C22D92554464F002469E4 /* AdvancedSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2C22C82554464F002469E4 /* AdvancedSearchViewModel.swift */; };
@@ -165,7 +162,6 @@
 		CA7A87FA2506B9D600AAD10F /* ShareUsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87F92506B9D600AAD10F /* ShareUsCollectionCell.swift */; };
 		CA7A87FC2507ED7800AAD10F /* AdsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87FB2507ED7800AAD10F /* AdsCollectionViewCell.swift */; };
 		CA7B825D24EC750300991F24 /* VinchyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; };
-		CA7B825E24EC750300991F24 /* VinchyCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA7B835824EED1B100991F24 /* VinchyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B835724EED1B100991F24 /* VinchyViewController.swift */; };
 		CA7B835B24EED6E600991F24 /* StoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B835A24EED6E600991F24 /* StoryCollectionCell.swift */; };
 		CA7B836024EF109200991F24 /* MainSubtitleCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B835F24EF109200991F24 /* MainSubtitleCollectionCell.swift */; };
@@ -198,7 +194,6 @@
 		CAA9DC65250E99DB00F996A8 /* SeparatorFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA9DC64250E99DB00F996A8 /* SeparatorFooter.swift */; };
 		CAA9DC67250EA05F00F996A8 /* AdvancedSearchCaruselCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA9DC66250EA05F00F996A8 /* AdvancedSearchCaruselCollectionCell.swift */; };
 		CABDBA8724C2FAB800AD96D6 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CABDBA8624C2FAB800AD96D6 /* Core.framework */; };
-		CABDBA8824C2FAB800AD96D6 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CABDBA8624C2FAB800AD96D6 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CACA7E99254C57CC0099E622 /* WriteNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA7E88254C57CC0099E622 /* WriteNoteViewModel.swift */; };
 		CACA7E9A254C57CC0099E622 /* WriteNoteInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA7E8A254C57CC0099E622 /* WriteNoteInput.swift */; };
 		CACA7E9B254C57CC0099E622 /* WriteNoteAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA7E8C254C57CC0099E622 /* WriteNoteAssembly.swift */; };
@@ -213,11 +208,8 @@
 		CAEBD788251A6D6200210F3B /* AgreementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEBD787251A6D6200210F3B /* AgreementsViewController.swift */; };
 		CAEBD7F3251A7F5000210F3B /* SwitcherWithText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEBD7F2251A7F5000210F3B /* SwitcherWithText.swift */; };
 		CAF24ACD24C323C90057547F /* StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24ACC24C323C90057547F /* StringFormatting.framework */; };
-		CAF24ACE24C323C90057547F /* StringFormatting.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24ACC24C323C90057547F /* StringFormatting.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CAF24AEB24C32AE90057547F /* CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24AEA24C32AE90057547F /* CommonUI.framework */; };
-		CAF24AEC24C32AE90057547F /* CommonUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24AEA24C32AE90057547F /* CommonUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CAF24B0E24C3311F0057547F /* LocationUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24B0D24C3311F0057547F /* LocationUI.framework */; };
-		CAF24B0F24C3311F0057547F /* LocationUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24B0D24C3311F0057547F /* LocationUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CAF514102461C51400667ED0 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5140F2461C51300667ED0 /* AboutViewController.swift */; };
 		CAF514132461C51B00667ED0 /* DocController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF514122461C51B00667ED0 /* DocController.swift */; };
 		CAF514202461C52400667ED0 /* MoreAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF514152461C52400667ED0 /* MoreAssembly.swift */; };
@@ -278,27 +270,6 @@
 			remoteInfo = Smart;
 		};
 /* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		CA1821A624C0E83900280DD4 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				CAF24ACE24C323C90057547F /* StringFormatting.framework in Embed Frameworks */,
-				CA1821A524C0E83900280DD4 /* Display.framework in Embed Frameworks */,
-				CA7B825E24EC750300991F24 /* VinchyCore.framework in Embed Frameworks */,
-				CAF24AEC24C32AE90057547F /* CommonUI.framework in Embed Frameworks */,
-				44D3CDE925E42E0B00FFFCD5 /* VinchyAuthorization.framework in Embed Frameworks */,
-				CAF24B0F24C3311F0057547F /* LocationUI.framework in Embed Frameworks */,
-				CABDBA8824C2FAB800AD96D6 /* Core.framework in Embed Frameworks */,
-				CA18220024C0F6F000280DD4 /* Database.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		11EF42BF1FF88DBF7881AD8A /* Pods-Smart-SmartUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart-SmartUITests.debug.xcconfig"; path = "Target Support Files/Pods-Smart-SmartUITests/Pods-Smart-SmartUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -1983,11 +1954,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA472AE6245EDE30009149FF /* Build configuration list for PBXNativeTarget "Smart" */;
 			buildPhases = (
+				8A63CC98267537BC003B1D4D /* ShellScript */,
 				851663CAC5A3C6EDA8B663DC /* [CP] Check Pods Manifest.lock */,
 				CA472AB8245EDE2F009149FF /* Sources */,
 				CA472AB9245EDE2F009149FF /* Frameworks */,
 				CA472ABA245EDE2F009149FF /* Resources */,
-				CA1821A624C0E83900280DD4 /* Embed Frameworks */,
 				CA0709CF2523C42700C3D9EC /* Swiftlint */,
 				61111868CBB8EA93EB5BE01B /* [CP] Embed Pods Frameworks */,
 			);
@@ -2193,6 +2164,23 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
+		};
+		8A63CC98267537BC003B1D4D /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "cd \"${CONFIGURATION_BUILD_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}/\"\nif [[ -d \"Frameworks\" ]]; then \n    rm -fr Frameworks\nfi\n";
 		};
 		A06C1A9AC597CF54315F192D /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -2677,7 +2665,7 @@
 				CODE_SIGN_ENTITLEMENTS = Smart/Vinchy.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				INFOPLIST_FILE = Smart/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2705,7 +2693,7 @@
 				CODE_SIGN_ENTITLEMENTS = Smart/VinchyRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				INFOPLIST_FILE = Smart/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

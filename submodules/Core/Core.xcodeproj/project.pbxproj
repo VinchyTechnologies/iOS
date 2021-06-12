@@ -15,7 +15,7 @@
 		44E0035325CBFE5D00ED7D9E /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E0035225CBFE5D00ED7D9E /* Keychain.swift */; };
 		8A313BCF26407B3E009F2165 /* Atomic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BCE26407B3E009F2165 /* Atomic.swift */; };
 		8A63CC8226752DA0003B1D4D /* EmailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A63CC8126752DA0003B1D4D /* EmailService.swift */; };
-		8AD49F27267528120094E157 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 8AD49F26267528120094E157 /* KeychainAccess */; };
+		8A63CC972675365A003B1D4D /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 8A63CC962675365A003B1D4D /* KeychainAccess */; };
 		CA27087C24CFF39B007580D8 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27087B24CFF39B007580D8 /* Array.swift */; };
 		CA2E796324D5ECAC00F17725 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2E796224D5ECAC00F17725 /* UserDefaults.swift */; };
 		CA3CEFB225128EDA00AAA692 /* CountryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3CEFB125128EDA00AAA692 /* CountryCode.swift */; };
@@ -58,7 +58,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8AD49F27267528120094E157 /* KeychainAccess in Frameworks */,
+				8A63CC972675365A003B1D4D /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -147,7 +147,7 @@
 			);
 			name = Core;
 			packageProductDependencies = (
-				8AD49F26267528120094E157 /* KeychainAccess */,
+				8A63CC962675365A003B1D4D /* KeychainAccess */,
 			);
 			productName = Core;
 			productReference = CABDBA7A24C2F7A800AD96D6 /* Core.framework */;
@@ -178,7 +178,7 @@
 			);
 			mainGroup = CABDBA7024C2F7A800AD96D6;
 			packageReferences = (
-				8AD49F25267528120094E157 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
+				8A63CC952675365A003B1D4D /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = CABDBA7B24C2F7A800AD96D6 /* Products */;
 			projectDirPath = "";
@@ -427,7 +427,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8AD49F25267528120094E157 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+		8A63CC952675365A003B1D4D /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
 			requirement = {
@@ -438,9 +438,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8AD49F26267528120094E157 /* KeychainAccess */ = {
+		8A63CC962675365A003B1D4D /* KeychainAccess */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8AD49F25267528120094E157 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			package = 8A63CC952675365A003B1D4D /* XCRemoteSwiftPackageReference "KeychainAccess" */;
 			productName = KeychainAccess;
 		};
 /* End XCSwiftPackageProductDependency section */
