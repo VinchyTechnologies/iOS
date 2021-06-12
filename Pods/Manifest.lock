@@ -1,5 +1,6 @@
 PODS:
   - CocoaDebug (1.5.8)
+  - Cosmos (23.0.0)
   - Firebase/Analytics (7.1.0):
     - Firebase/Core
   - Firebase/Core (7.1.0):
@@ -78,26 +79,32 @@ PODS:
     - GoogleUtilities/Logger
   - GoogleUtilities/UserDefaults (7.1.1):
     - GoogleUtilities/Logger
+  - KeychainAccess (4.2.2)
   - nanopb (2.30906.0):
     - nanopb/decode (= 2.30906.0)
     - nanopb/encode (= 2.30906.0)
   - nanopb/decode (2.30906.0)
   - nanopb/encode (2.30906.0)
+  - Nuke (9.5.0)
   - PromisesObjC (1.2.11)
   - SwiftLint (0.41.0)
 
 DEPENDENCIES:
   - CocoaDebug
+  - Cosmos (~> 23.0)
   - Firebase/Analytics
   - Firebase/DynamicLinks
   - Firebase/RemoteConfig
   - FSPagerView
   - Google-Mobile-Ads-SDK
+  - KeychainAccess
+  - Nuke
   - SwiftLint
 
 SPEC REPOS:
   trunk:
     - CocoaDebug
+    - Cosmos
     - Firebase
     - FirebaseABTesting
     - FirebaseAnalytics
@@ -112,12 +119,15 @@ SPEC REPOS:
     - GoogleDataTransport
     - GoogleUserMessagingPlatform
     - GoogleUtilities
+    - KeychainAccess
     - nanopb
+    - Nuke
     - PromisesObjC
     - SwiftLint
 
 SPEC CHECKSUMS:
   CocoaDebug: fcf58698e6cebe8a4ea81b7c5aca44cfbd181d9c
+  Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
   Firebase: 78e8dd2e39d653de6270432ad84fe8b59f7bf4e8
   FirebaseABTesting: aaea04ea67858a4a9dce0d22ef645477dff50146
   FirebaseAnalytics: 7f165a56dea86ddd5b8ce02af3bee982c683405c
@@ -132,10 +142,12 @@ SPEC CHECKSUMS:
   GoogleDataTransport: e4085e6762f36a6141738f46b0153473ce57fb18
   GoogleUserMessagingPlatform: b168e8c46cd8f92aa3e34b584c4ca78a411ce367
   GoogleUtilities: 3dc4ff0d5e4840e2fa8eef0889620e8c33d4218c
+  KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
+  Nuke: 6f400a4ea957e09149ec335a3c6acdcc814d89e4
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
 
-PODFILE CHECKSUM: 5924b76a14066fcb5901a290644e4002a7d3a048
+PODFILE CHECKSUM: 8d566c131da2e128b3840571edda5ed832fc5aef
 
 COCOAPODS: 1.10.1

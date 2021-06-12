@@ -44,7 +44,6 @@
 		449F81C425DD049B00585364 /* DeeplinkFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449F81C325DD049B00585364 /* DeeplinkFlow.swift */; };
 		449F81CA25DD04B400585364 /* DeeplinkStep.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449F81C925DD04B400585364 /* DeeplinkStep.swift */; };
 		449F81CE25DD050400585364 /* DeeplinkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449F81CD25DD050400585364 /* DeeplinkRouter.swift */; };
-		44D3CDE825E42E0B00FFFCD5 /* VinchyAuthorization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44D3CDE725E42E0B00FFFCD5 /* VinchyAuthorization.framework */; };
 		44EFDB3725E177220076ED6D /* ReviewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB2625E177220076ED6D /* ReviewsViewModel.swift */; };
 		44EFDB3825E177220076ED6D /* ReviewsInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB2825E177220076ED6D /* ReviewsInput.swift */; };
 		44EFDB3925E177220076ED6D /* ReviewsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB2A25E177220076ED6D /* ReviewsAssembly.swift */; };
@@ -79,17 +78,30 @@
 		8A313C0926447042009F2165 /* MapDetailStoreRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BFE26447042009F2165 /* MapDetailStoreRouterProtocol.swift */; };
 		8A313C1626468678009F2165 /* WorkingHoursCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313C1526468678009F2165 /* WorkingHoursCollectionCell.swift */; };
 		8A446CDF2660123B000A1769 /* RoutingToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A446CDE2660123B000A1769 /* RoutingToolBar.swift */; };
-		8A63CC8826752E9E003B1D4D /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 8A63CC8726752E9E003B1D4D /* Cosmos */; };
 		8A63CC8B26753046003B1D4D /* FittedSheets in Frameworks */ = {isa = PBXBuildFile; productRef = 8A63CC8A26753046003B1D4D /* FittedSheets */; };
 		8A63CC8E2675308B003B1D4D /* Sheeeeeeeeet in Frameworks */ = {isa = PBXBuildFile; productRef = 8A63CC8D2675308B003B1D4D /* Sheeeeeeeeet */; };
 		8A63CC942675322D003B1D4D /* SPAlert in Frameworks */ = {isa = PBXBuildFile; productRef = 8A63CC932675322D003B1D4D /* SPAlert */; };
+		8A63CCB126754628003B1D4D /* CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24AEA24C32AE90057547F /* CommonUI.framework */; };
+		8A63CCB226754628003B1D4D /* CommonUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24AEA24C32AE90057547F /* CommonUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8A63CCB42675462A003B1D4D /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CABDBA8624C2FAB800AD96D6 /* Core.framework */; };
+		8A63CCB52675462A003B1D4D /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CABDBA8624C2FAB800AD96D6 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8A63CCB62675462C003B1D4D /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA1821FE24C0F6F000280DD4 /* Database.framework */; };
+		8A63CCB72675462C003B1D4D /* Database.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA1821FE24C0F6F000280DD4 /* Database.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8A63CCB82675462E003B1D4D /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA1821A324C0E83900280DD4 /* Display.framework */; };
+		8A63CCB92675462E003B1D4D /* Display.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA1821A324C0E83900280DD4 /* Display.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8A63CCBA26754630003B1D4D /* LocationUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24B0D24C3311F0057547F /* LocationUI.framework */; };
+		8A63CCBB26754630003B1D4D /* LocationUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24B0D24C3311F0057547F /* LocationUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8A63CCBC26754633003B1D4D /* StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24ACC24C323C90057547F /* StringFormatting.framework */; };
+		8A63CCBD26754633003B1D4D /* StringFormatting.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24ACC24C323C90057547F /* StringFormatting.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8A63CCBE26754635003B1D4D /* VinchyAuthorization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44D3CDE725E42E0B00FFFCD5 /* VinchyAuthorization.framework */; };
+		8A63CCBF26754635003B1D4D /* VinchyAuthorization.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44D3CDE725E42E0B00FFFCD5 /* VinchyAuthorization.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8A63CCC026754638003B1D4D /* VinchyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; };
+		8A63CCC126754638003B1D4D /* VinchyCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8AA5E5132615053D00935B5E /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA5E5122615053D00935B5E /* AboutView.swift */; };
 		8AD49F16267520F90094E157 /* ReviewsInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB3225E177220076ED6D /* ReviewsInteractorProtocol.swift */; };
 		8AD49F17267521040094E157 /* ReviewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB2D25E177220076ED6D /* ReviewsPresenter.swift */; };
 		8AD49F182675210A0094E157 /* ReviewsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB3525E177220076ED6D /* ReviewsRouter.swift */; };
 		8AD49F192675210D0094E157 /* ReviewsRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB3625E177220076ED6D /* ReviewsRouterProtocol.swift */; };
-		8AD49F1E267526AF0094E157 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 8AD49F1D267526AF0094E157 /* Nuke */; };
-		8AD49F2A267528240094E157 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 8AD49F29267528240094E157 /* KeychainAccess */; };
 		8AD49F2C26752B4B0094E157 /* AnalyticsTrackable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD49F2B26752B4B0094E157 /* AnalyticsTrackable.swift */; };
 		8AD7A37E2639D31A007D4273 /* PartnerAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7A37D2639D31A007D4273 /* PartnerAnnotationView.swift */; };
 		8AD7A455263B2A98007D4273 /* ClusterAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7A454263B2A98007D4273 /* ClusterAnnotationView.swift */; };
@@ -101,8 +113,6 @@
 		CA070C1825250AEC00C3D9EC /* OnboardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA070C1525250AEC00C3D9EC /* OnboardPage.swift */; };
 		CA070C2425250C1800C3D9EC /* OnboardingModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA070C2325250C1800C3D9EC /* OnboardingModuleFactory.swift */; };
 		CA0A2E6B258E319A00B800C3 /* VinchyLogoNoFolder.png in Resources */ = {isa = PBXBuildFile; fileRef = CA0A2E6A258E319A00B800C3 /* VinchyLogoNoFolder.png */; };
-		CA1821A424C0E83900280DD4 /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA1821A324C0E83900280DD4 /* Display.framework */; };
-		CA1821FF24C0F6F000280DD4 /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA1821FE24C0F6F000280DD4 /* Database.framework */; };
 		CA276D4E256AC34A0061BEBE /* FakeVinchyCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA276D4D256AC34A0061BEBE /* FakeVinchyCollectionCell.swift */; };
 		CA276D55256AC6720061BEBE /* FakeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA276D54256AC6720061BEBE /* FakeCell.swift */; };
 		CA2C22D92554464F002469E4 /* AdvancedSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2C22C82554464F002469E4 /* AdvancedSearchViewModel.swift */; };
@@ -161,7 +171,6 @@
 		CA7A87E62500169100AAD10F /* VinchySimpleConiniousCaruselCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87E52500169100AAD10F /* VinchySimpleConiniousCaruselCollectionCell.swift */; };
 		CA7A87FA2506B9D600AAD10F /* ShareUsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87F92506B9D600AAD10F /* ShareUsCollectionCell.swift */; };
 		CA7A87FC2507ED7800AAD10F /* AdsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87FB2507ED7800AAD10F /* AdsCollectionViewCell.swift */; };
-		CA7B825D24EC750300991F24 /* VinchyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; };
 		CA7B835824EED1B100991F24 /* VinchyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B835724EED1B100991F24 /* VinchyViewController.swift */; };
 		CA7B835B24EED6E600991F24 /* StoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B835A24EED6E600991F24 /* StoryCollectionCell.swift */; };
 		CA7B836024EF109200991F24 /* MainSubtitleCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B835F24EF109200991F24 /* MainSubtitleCollectionCell.swift */; };
@@ -193,7 +202,6 @@
 		CAA9DC3C250BD20400F996A8 /* AdvancedHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA9DC3B250BD20400F996A8 /* AdvancedHeader.swift */; };
 		CAA9DC65250E99DB00F996A8 /* SeparatorFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA9DC64250E99DB00F996A8 /* SeparatorFooter.swift */; };
 		CAA9DC67250EA05F00F996A8 /* AdvancedSearchCaruselCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA9DC66250EA05F00F996A8 /* AdvancedSearchCaruselCollectionCell.swift */; };
-		CABDBA8724C2FAB800AD96D6 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CABDBA8624C2FAB800AD96D6 /* Core.framework */; };
 		CACA7E99254C57CC0099E622 /* WriteNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA7E88254C57CC0099E622 /* WriteNoteViewModel.swift */; };
 		CACA7E9A254C57CC0099E622 /* WriteNoteInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA7E8A254C57CC0099E622 /* WriteNoteInput.swift */; };
 		CACA7E9B254C57CC0099E622 /* WriteNoteAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA7E8C254C57CC0099E622 /* WriteNoteAssembly.swift */; };
@@ -207,9 +215,6 @@
 		CACC1DC224C5F2980082BD01 /* filters.json in Resources */ = {isa = PBXBuildFile; fileRef = CACC1DC124C5F2980082BD01 /* filters.json */; };
 		CAEBD788251A6D6200210F3B /* AgreementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEBD787251A6D6200210F3B /* AgreementsViewController.swift */; };
 		CAEBD7F3251A7F5000210F3B /* SwitcherWithText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEBD7F2251A7F5000210F3B /* SwitcherWithText.swift */; };
-		CAF24ACD24C323C90057547F /* StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24ACC24C323C90057547F /* StringFormatting.framework */; };
-		CAF24AEB24C32AE90057547F /* CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24AEA24C32AE90057547F /* CommonUI.framework */; };
-		CAF24B0E24C3311F0057547F /* LocationUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24B0D24C3311F0057547F /* LocationUI.framework */; };
 		CAF514102461C51400667ED0 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5140F2461C51300667ED0 /* AboutViewController.swift */; };
 		CAF514132461C51B00667ED0 /* DocController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF514122461C51B00667ED0 /* DocController.swift */; };
 		CAF514202461C52400667ED0 /* MoreAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF514152461C52400667ED0 /* MoreAssembly.swift */; };
@@ -270,6 +275,27 @@
 			remoteInfo = Smart;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8A63CCB326754628003B1D4D /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8A63CCBD26754633003B1D4D /* StringFormatting.framework in Embed Frameworks */,
+				8A63CCB72675462C003B1D4D /* Database.framework in Embed Frameworks */,
+				8A63CCC126754638003B1D4D /* VinchyCore.framework in Embed Frameworks */,
+				8A63CCBB26754630003B1D4D /* LocationUI.framework in Embed Frameworks */,
+				8A63CCBF26754635003B1D4D /* VinchyAuthorization.framework in Embed Frameworks */,
+				8A63CCB226754628003B1D4D /* CommonUI.framework in Embed Frameworks */,
+				8A63CCB52675462A003B1D4D /* Core.framework in Embed Frameworks */,
+				8A63CCB92675462E003B1D4D /* Display.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		11EF42BF1FF88DBF7881AD8A /* Pods-Smart-SmartUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart-SmartUITests.debug.xcconfig"; path = "Target Support Files/Pods-Smart-SmartUITests/Pods-Smart-SmartUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -545,22 +571,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA51BBEF254094B000208F71 /* AppTrackingTransparency.framework in Frameworks */,
+				8A63CCB62675462C003B1D4D /* Database.framework in Frameworks */,
 				CA51BBED254094A100208F71 /* AdSupport.framework in Frameworks */,
-				8A63CC8826752E9E003B1D4D /* Cosmos in Frameworks */,
-				CA1821FF24C0F6F000280DD4 /* Database.framework in Frameworks */,
-				CAF24ACD24C323C90057547F /* StringFormatting.framework in Frameworks */,
-				CAF24AEB24C32AE90057547F /* CommonUI.framework in Frameworks */,
-				CAF24B0E24C3311F0057547F /* LocationUI.framework in Frameworks */,
-				CA7B825D24EC750300991F24 /* VinchyCore.framework in Frameworks */,
+				8A63CCBE26754635003B1D4D /* VinchyAuthorization.framework in Frameworks */,
+				8A63CCB82675462E003B1D4D /* Display.framework in Frameworks */,
 				8A63CC8E2675308B003B1D4D /* Sheeeeeeeeet in Frameworks */,
-				8AD49F1E267526AF0094E157 /* Nuke in Frameworks */,
-				44D3CDE825E42E0B00FFFCD5 /* VinchyAuthorization.framework in Frameworks */,
+				8A63CCB42675462A003B1D4D /* Core.framework in Frameworks */,
 				8A63CC8B26753046003B1D4D /* FittedSheets in Frameworks */,
+				8A63CCC026754638003B1D4D /* VinchyCore.framework in Frameworks */,
+				8A63CCB126754628003B1D4D /* CommonUI.framework in Frameworks */,
+				8A63CCBA26754630003B1D4D /* LocationUI.framework in Frameworks */,
 				8A63CC942675322D003B1D4D /* SPAlert in Frameworks */,
-				CA1821A424C0E83900280DD4 /* Display.framework in Frameworks */,
-				CABDBA8724C2FAB800AD96D6 /* Core.framework in Frameworks */,
+				8A63CCBC26754633003B1D4D /* StringFormatting.framework in Frameworks */,
 				E6736DD35DA4517E16454315 /* Pods_Smart.framework in Frameworks */,
-				8AD49F2A267528240094E157 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1954,13 +1977,14 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA472AE6245EDE30009149FF /* Build configuration list for PBXNativeTarget "Smart" */;
 			buildPhases = (
-				8A63CC98267537BC003B1D4D /* ShellScript */,
 				851663CAC5A3C6EDA8B663DC /* [CP] Check Pods Manifest.lock */,
+				8A63CC98267537BC003B1D4D /* ShellScript */,
 				CA472AB8245EDE2F009149FF /* Sources */,
 				CA472AB9245EDE2F009149FF /* Frameworks */,
 				CA472ABA245EDE2F009149FF /* Resources */,
 				CA0709CF2523C42700C3D9EC /* Swiftlint */,
 				61111868CBB8EA93EB5BE01B /* [CP] Embed Pods Frameworks */,
+				8A63CCB326754628003B1D4D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -1968,9 +1992,6 @@
 			);
 			name = Smart;
 			packageProductDependencies = (
-				8AD49F1D267526AF0094E157 /* Nuke */,
-				8AD49F29267528240094E157 /* KeychainAccess */,
-				8A63CC8726752E9E003B1D4D /* Cosmos */,
 				8A63CC8A26753046003B1D4D /* FittedSheets */,
 				8A63CC8D2675308B003B1D4D /* Sheeeeeeeeet */,
 				8A63CC932675322D003B1D4D /* SPAlert */,
@@ -2053,9 +2074,6 @@
 			);
 			mainGroup = CA472AB3245EDE2F009149FF;
 			packageReferences = (
-				8AD49F1C267526AF0094E157 /* XCRemoteSwiftPackageReference "Nuke" */,
-				8AD49F28267528240094E157 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
-				8A63CC8626752E9E003B1D4D /* XCRemoteSwiftPackageReference "Cosmos" */,
 				8A63CC8926753046003B1D4D /* XCRemoteSwiftPackageReference "FittedSheets" */,
 				8A63CC8C2675308B003B1D4D /* XCRemoteSwiftPackageReference "Sheeeeeeeeet" */,
 				8A63CC922675322D003B1D4D /* XCRemoteSwiftPackageReference "SPAlert" */,
@@ -2665,7 +2683,7 @@
 				CODE_SIGN_ENTITLEMENTS = Smart/Vinchy.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				INFOPLIST_FILE = Smart/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2693,7 +2711,7 @@
 				CODE_SIGN_ENTITLEMENTS = Smart/VinchyRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				INFOPLIST_FILE = Smart/Resources/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -2841,14 +2859,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8A63CC8626752E9E003B1D4D /* XCRemoteSwiftPackageReference "Cosmos" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/evgenyneu/Cosmos.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 23.0.0;
-			};
-		};
 		8A63CC8926753046003B1D4D /* XCRemoteSwiftPackageReference "FittedSheets" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/gordontucker/FittedSheets.git";
@@ -2873,30 +2883,9 @@
 				version = 2.1.4;
 			};
 		};
-		8AD49F1C267526AF0094E157 /* XCRemoteSwiftPackageReference "Nuke" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kean/Nuke.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 10.3.0;
-			};
-		};
-		8AD49F28267528240094E157 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 4.2.2;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8A63CC8726752E9E003B1D4D /* Cosmos */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8A63CC8626752E9E003B1D4D /* XCRemoteSwiftPackageReference "Cosmos" */;
-			productName = Cosmos;
-		};
 		8A63CC8A26753046003B1D4D /* FittedSheets */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8A63CC8926753046003B1D4D /* XCRemoteSwiftPackageReference "FittedSheets" */;
@@ -2911,16 +2900,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8A63CC922675322D003B1D4D /* XCRemoteSwiftPackageReference "SPAlert" */;
 			productName = SPAlert;
-		};
-		8AD49F1D267526AF0094E157 /* Nuke */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8AD49F1C267526AF0094E157 /* XCRemoteSwiftPackageReference "Nuke" */;
-			productName = Nuke;
-		};
-		8AD49F29267528240094E157 /* KeychainAccess */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8AD49F28267528240094E157 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
-			productName = KeychainAccess;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

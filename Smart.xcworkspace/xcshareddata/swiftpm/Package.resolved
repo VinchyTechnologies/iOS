@@ -2,39 +2,12 @@
   "object": {
     "pins": [
       {
-        "package": "Cosmos",
-        "repositoryURL": "https://github.com/evgenyneu/Cosmos.git",
-        "state": {
-          "branch": null,
-          "revision": "cce521e734d0090494bd4afab5fd2e2f2465c1af",
-          "version": "23.0.0"
-        }
-      },
-      {
         "package": "FittedSheets",
         "repositoryURL": "https://github.com/gordontucker/FittedSheets.git",
         "state": {
           "branch": null,
           "revision": "0502be20c95d5bae93a155081a1f1d7ca69924d3",
           "version": "2.4.0"
-        }
-      },
-      {
-        "package": "KeychainAccess",
-        "repositoryURL": "https://github.com/kishikawakatsumi/KeychainAccess.git",
-        "state": {
-          "branch": null,
-          "revision": "84e546727d66f1adc5439debad16270d0fdd04e7",
-          "version": "4.2.2"
-        }
-      },
-      {
-        "package": "Nuke",
-        "repositoryURL": "https://github.com/kean/Nuke.git",
-        "state": {
-          "branch": null,
-          "revision": "69ae6d5b8c4b898450432f94bd35f863d3830cfc",
-          "version": "10.3.0"
         }
       },
       {
