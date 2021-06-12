@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -13,8 +13,8 @@
 		44911E3F25D30FB800A62E40 /* PagingStateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44911E3E25D30FB800A62E40 /* PagingStateMachine.swift */; };
 		44AA7C3B25A4A1AE00F599BA /* Throttler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AA7C3A25A4A1AE00F599BA /* Throttler.swift */; };
 		44E0035325CBFE5D00ED7D9E /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E0035225CBFE5D00ED7D9E /* Keychain.swift */; };
-		5FFB4DF1C25BB618C8519B44 /* Pods_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0F36A03A8E0CC5435C60647 /* Pods_Core.framework */; };
 		8A313BCF26407B3E009F2165 /* Atomic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BCE26407B3E009F2165 /* Atomic.swift */; };
+		8AD49F27267528120094E157 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 8AD49F26267528120094E157 /* SwiftPackageProductDependency */; };
 		CA27087C24CFF39B007580D8 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27087B24CFF39B007580D8 /* Array.swift */; };
 		CA2E796324D5ECAC00F17725 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2E796224D5ECAC00F17725 /* UserDefaults.swift */; };
 		CA3CEFB225128EDA00AAA692 /* CountryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3CEFB125128EDA00AAA692 /* CountryCode.swift */; };
@@ -35,8 +35,6 @@
 		44911E3E25D30FB800A62E40 /* PagingStateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingStateMachine.swift; sourceTree = "<group>"; };
 		44AA7C3A25A4A1AE00F599BA /* Throttler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Throttler.swift; sourceTree = "<group>"; };
 		44E0035225CBFE5D00ED7D9E /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
-		697BF7A2F7EED885735CDEA9 /* Pods-Core.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.debug.xcconfig"; path = "Target Support Files/Pods-Core/Pods-Core.debug.xcconfig"; sourceTree = "<group>"; };
-		7B9A38AAE808F29C35EC006F /* Pods-Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.release.xcconfig"; path = "Target Support Files/Pods-Core/Pods-Core.release.xcconfig"; sourceTree = "<group>"; };
 		8A313BCE26407B3E009F2165 /* Atomic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Atomic.swift; sourceTree = "<group>"; };
 		CA27087B24CFF39B007580D8 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
 		CA2E796224D5ECAC00F17725 /* UserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaults.swift; sourceTree = "<group>"; };
@@ -51,7 +49,6 @@
 		CAC7EDD8257BF82B005A15DB /* UIDevice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIDevice.swift; sourceTree = "<group>"; };
 		CACC1DC324C5F6C80082BD01 /* Filter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filter.swift; sourceTree = "<group>"; };
 		CAF24AF624C32E470057547F /* OpenURLProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenURLProtocol.swift; sourceTree = "<group>"; };
-		D0F36A03A8E0CC5435C60647 /* Pods_Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,38 +56,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				5FFB4DF1C25BB618C8519B44 /* Pods_Core.framework in Frameworks */,
+				8AD49F27267528120094E157 /* BuildFile in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		10A74AB68F91C72E931E8E04 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				D0F36A03A8E0CC5435C60647 /* Pods_Core.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		A409D045A25976576BDEF4DD /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				697BF7A2F7EED885735CDEA9 /* Pods-Core.debug.xcconfig */,
-				7B9A38AAE808F29C35EC006F /* Pods-Core.release.xcconfig */,
-			);
-			name = Pods;
-			path = ../../Pods;
-			sourceTree = "<group>";
-		};
 		CABDBA7024C2F7A800AD96D6 = {
 			isa = PBXGroup;
 			children = (
 				CABDBA7C24C2F7A800AD96D6 /* Core */,
 				CABDBA7B24C2F7A800AD96D6 /* Products */,
-				A409D045A25976576BDEF4DD /* Pods */,
-				10A74AB68F91C72E931E8E04 /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -156,7 +133,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CABDBA8224C2F7A800AD96D6 /* Build configuration list for PBXNativeTarget "Core" */;
 			buildPhases = (
-				E6C3A01ECB9C3EF30508D0FC /* [CP] Check Pods Manifest.lock */,
 				CABDBA7524C2F7A800AD96D6 /* Headers */,
 				CABDBA7624C2F7A800AD96D6 /* Sources */,
 				CABDBA7724C2F7A800AD96D6 /* Frameworks */,
@@ -167,6 +143,9 @@
 			dependencies = (
 			);
 			name = Core;
+			packageProductDependencies = (
+				8AD49F26267528120094E157 /* SwiftPackageProductDependency */,
+			);
 			productName = Core;
 			productReference = CABDBA7A24C2F7A800AD96D6 /* Core.framework */;
 			productType = "com.apple.product-type.framework";
@@ -195,6 +174,9 @@
 				Base,
 			);
 			mainGroup = CABDBA7024C2F7A800AD96D6;
+			packageReferences = (
+				8AD49F25267528120094E157 /* RemoteSwiftPackageReference */,
+			);
 			productRefGroup = CABDBA7B24C2F7A800AD96D6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -213,31 +195,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		E6C3A01ECB9C3EF30508D0FC /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Core-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CABDBA7624C2F7A800AD96D6 /* Sources */ = {
@@ -391,7 +348,6 @@
 		};
 		CABDBA8324C2F7A800AD96D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 697BF7A2F7EED885735CDEA9 /* Pods-Core.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -419,7 +375,6 @@
 		};
 		CABDBA8424C2F7A800AD96D6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7B9A38AAE808F29C35EC006F /* Pods-Core.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -466,6 +421,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8AD49F25267528120094E157 /* RemoteSwiftPackageReference */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8AD49F26267528120094E157 /* SwiftPackageProductDependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8AD49F25267528120094E157 /* RemoteSwiftPackageReference */;
+			productName = KeychainAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CABDBA7124C2F7A800AD96D6 /* Project object */;
 }

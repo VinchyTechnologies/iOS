@@ -16,7 +16,6 @@ def commonPods
   pod "Sheeeeeeeeet"
   pod 'Cosmos', '~> 23.0'
   pod 'SkyFloatingLabelTextField'
-  pod 'KeychainAccess'
   pod 'FittedSheets'
 end
 
@@ -39,11 +38,6 @@ target 'Display' do
   pod 'SkyFloatingLabelTextField'
 end
 
-target 'Core' do
-  project 'submodules/Core/Core'
-  pod 'KeychainAccess'
-end
-
 target 'CommonUI' do
   project 'submodules/CommonUI/CommonUI'
   pod 'Cosmos', '~> 23.0'
@@ -53,7 +47,6 @@ target 'VinchyAuthorizationApp' do
   project 'submodules/VinchyAuthorization/VinchyAuthorization'
   pod 'SkyFloatingLabelTextField'
   pod 'CocoaDebug', :configurations => ['Debug']
-  pod 'KeychainAccess'
 end
 
 target 'VinchyAnalytics' do

@@ -88,6 +88,7 @@
 		8AD49F182675210A0094E157 /* ReviewsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB3525E177220076ED6D /* ReviewsRouter.swift */; };
 		8AD49F192675210D0094E157 /* ReviewsRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB3625E177220076ED6D /* ReviewsRouterProtocol.swift */; };
 		8AD49F1E267526AF0094E157 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 8AD49F1D267526AF0094E157 /* Nuke */; };
+		8AD49F2A267528240094E157 /* KeychainAccess in Frameworks */ = {isa = PBXBuildFile; productRef = 8AD49F29267528240094E157 /* KeychainAccess */; };
 		8AD7A37E2639D31A007D4273 /* PartnerAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7A37D2639D31A007D4273 /* PartnerAnnotationView.swift */; };
 		8AD7A455263B2A98007D4273 /* ClusterAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7A454263B2A98007D4273 /* ClusterAnnotationView.swift */; };
 		A45E1630B1AB1ACBB6D5E58B /* Pods_SmartTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA78FE8971307D6D1C5D8B17 /* Pods_SmartTests.framework */; };
@@ -586,6 +587,7 @@
 				CA1821A424C0E83900280DD4 /* Display.framework in Frameworks */,
 				CABDBA8724C2FAB800AD96D6 /* Core.framework in Frameworks */,
 				E6736DD35DA4517E16454315 /* Pods_Smart.framework in Frameworks */,
+				8AD49F2A267528240094E157 /* KeychainAccess in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1993,6 +1995,7 @@
 			name = Smart;
 			packageProductDependencies = (
 				8AD49F1D267526AF0094E157 /* Nuke */,
+				8AD49F29267528240094E157 /* KeychainAccess */,
 			);
 			productName = Smart;
 			productReference = CA472ABC245EDE2F009149FF /* Vinchy.app */;
@@ -2073,6 +2076,7 @@
 			mainGroup = CA472AB3245EDE2F009149FF;
 			packageReferences = (
 				8AD49F1C267526AF0094E157 /* XCRemoteSwiftPackageReference "Nuke" */,
+				8AD49F28267528240094E157 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 			);
 			productRefGroup = CA472ABD245EDE2F009149FF /* Products */;
 			projectDirPath = "";
@@ -2845,6 +2849,14 @@
 				minimumVersion = 10.3.0;
 			};
 		};
+		8AD49F28267528240094E157 /* XCRemoteSwiftPackageReference "KeychainAccess" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -2852,6 +2864,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8AD49F1C267526AF0094E157 /* XCRemoteSwiftPackageReference "Nuke" */;
 			productName = Nuke;
+		};
+		8AD49F29267528240094E157 /* KeychainAccess */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8AD49F28267528240094E157 /* XCRemoteSwiftPackageReference "KeychainAccess" */;
+			productName = KeychainAccess;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
