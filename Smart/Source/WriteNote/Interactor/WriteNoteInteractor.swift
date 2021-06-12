@@ -13,8 +13,6 @@ final class WriteNoteInteractor {
   private let input: WriteNoteInput
   private let router: WriteNoteRouterProtocol
   private let presenter: WriteNotePresenterProtocol
-
-  private let dataBase = Database<Note>()
   private var noteText: String?
 
   init(
@@ -46,22 +44,19 @@ extension WriteNoteInteractor: WriteNoteInteractorProtocol {
 
     switch input.wine {
     case .database(let note):
-      try! realm(path: .notes).write { // swiftlint:disable:this force_try
-        note.noteText = noteText ?? ""
-      }
+      notesRepository.remove(note)
+      let maxId = notesRepository.findAll().map({ $0.id }).max() ?? 0
+      let id = maxId + 1
+      notesRepository.append(VNote(id: id, wineID: note.wineID, wineTitle: note.wineTitle, noteText: noteText ?? ""))
 
     case .firstTime(let wine):
       guard let noteText = noteText, !noteText.isEmpty else {
         return
       }
-
-      let note = Note(
-        id: dataBase.incrementID(path: .notes),
-        wineID: wine.id,
-        wineTitle: wine.title,
-        noteText: noteText)
       
-      dataBase.add(object: note, at: .notes)
+      let maxId = notesRepository.findAll().map({ $0.id }).max() ?? 0
+      let id = maxId + 1
+      notesRepository.append(VNote(id: id, wineID: wine.id, wineTitle: wine.title, noteText: noteText))
     }
 
     router.pop()

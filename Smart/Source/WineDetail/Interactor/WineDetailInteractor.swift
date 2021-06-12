@@ -35,7 +35,7 @@ final class WineDetailInteractor {
     self.presenter.startLoading()
   }
   private var rate: Double?
-  private let dataBase = Database<DBWine>()
+  private let dataBase = winesRepository
   private let emailService = EmailService()
   
   private var wine: Wine?
@@ -80,11 +80,11 @@ final class WineDetailInteractor {
   }
   
   private func isFavourite(wine: Wine) -> Bool {
-    realm(path: .like).objects(DBWine.self).first(where: { $0.wineID == wine.id }) != nil
+    winesRepository.findAll().first(where: { $0.wineID == wine.id })?.isLiked == true
   }
   
   private func isDisliked(wine: Wine) -> Bool {
-    realm(path: .dislike).objects(DBWine.self).first(where: { $0.wineID == wine.id }) != nil
+    winesRepository.findAll().first(where: { $0.wineID == wine.id })?.isDisliked == true
   }
 }
 
@@ -225,10 +225,12 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
       return
     }
     
-    if let dbWine = realm(path: .dislike).objects(DBWine.self).first(where: { $0.wineID == wine.id }) {
-      dataBase.remove(object: dbWine, at: .dislike)
+    if let dbWine = winesRepository.findAll().filter({ $0.isDisliked == true }).first(where: { $0.wineID == wine.id }) {
+      dataBase.remove(dbWine)
     } else {
-      dataBase.add(object: DBWine(id: dataBase.incrementID(path: .dislike), wineID: wine.id, title: wine.title), at: .dislike)
+      let maxId = winesRepository.findAll().map({ $0.id }).max() ?? 0
+      let id = maxId + 1
+      winesRepository.append(VWine(id: id, wineID: wine.id, title: wine.title, isLiked: false, isDisliked: true))
       presenter.showStatusAlertDidDislikedSuccessfully()
     }
   }
@@ -284,7 +286,9 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
     
     guard let wine = wine else { return }
     
-    if let note = realm(path: .notes).objects(Note.self).first(where: { $0.wineID == wine.id }) {
+    let predicate = NSPredicate(format: "wineID == %@", String(wine.id))
+        
+    if let note = notesRepository.findAll().first(where: { predicate.evaluate(with: $0) == true }) {
       router.pushToWriteViewController(note: note, noteText: note.noteText)
     } else {
       router.pushToWriteViewController(wine: wine)
@@ -301,10 +305,12 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
       return
     }
     
-    if let dbWine = realm(path: .like).objects(DBWine.self).first(where: { $0.wineID == wine.id }) {
-      dataBase.remove(object: dbWine, at: .like)
+    if let dbWine = winesRepository.findAll().filter({ $0.isLiked == true }).first(where: { $0.wineID == wine.id }) {
+      dataBase.remove(dbWine)
     } else {
-      dataBase.add(object: DBWine(id: dataBase.incrementID(path: .like), wineID: wine.id, title: wine.title), at: .like)
+      let maxId = winesRepository.findAll().map({ $0.id }).max() ?? 0
+      let id = maxId + 1
+      winesRepository.append(VWine(id: id, wineID: wine.id, title: wine.title, isLiked: true, isDisliked: false))
       presenter.showStatusAlertDidLikedSuccessfully()
     }
   }

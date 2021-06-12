@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 import Core
 import StringFormatting
 import CommonUI
@@ -19,9 +18,6 @@ final class NotesViewController: UIViewController, UISearchControllerDelegate, U
   // MARK: - Private Properties
   
   private let tableView = UITableView()
-  private lazy var notesRealm = realm(path: .notes)
-  private let dataBase = Database<Note>()
-  private var notesNotificationToken: NotificationToken?
   private let throttler = Throttler()
   
   private lazy var searchController: UISearchController = {
@@ -38,22 +34,13 @@ final class NotesViewController: UIViewController, UISearchControllerDelegate, U
     return searchController
   }()
   
-  private var notes: [Note] = [] {
+  private var notes: [VNote] = [] {
     didSet {
       updateUI()
     }
   }
 
   // MARK: - Lifecycle
-  
-  init() {
-    super.init(nibName: nil, bundle: nil)
-    notesNotificationToken = notesRealm.observe { _, _ in
-      self.notes = self.dataBase.all(at: .notes)
-    }
-  }
-  
-  required init?(coder: NSCoder) { fatalError() }
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -70,12 +57,11 @@ final class NotesViewController: UIViewController, UISearchControllerDelegate, U
     tableView.tableFooterView = UIView()
     tableView.separatorInset = UIEdgeInsets(top: 0, left: 15, bottom: 0, right: 15)
     tableView.register(WineTableCell.self, forCellReuseIdentifier: WineTableCell.reuseId)
-    
-    notes = dataBase.all(at: .notes)
   }
   
-  deinit {
-    notesNotificationToken?.invalidate()
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    notes = notesRepository.findAll()
   }
   
   // MARK: - Internaal Methods
@@ -93,7 +79,7 @@ final class NotesViewController: UIViewController, UISearchControllerDelegate, U
       !searchText.isEmpty
     else {
       throttler.cancel()
-      self.notes = self.dataBase.all(at: .notes)
+      self.notes = notesRepository.findAll()
       return
     }
     
@@ -101,9 +87,13 @@ final class NotesViewController: UIViewController, UISearchControllerDelegate, U
     
     throttler.throttle(delay: .milliseconds(600)) { [weak self] in
       let predicate = NSPredicate(format: "wineTitle CONTAINS %@ OR noteText CONTAINS %@", searchText, searchText)
-      self?.notes = self?.dataBase.filter(
-        at: .notes,
-        predicate: predicate) ?? []
+      var searchedNotes = [VNote]()
+      self?.notes.forEach({ note in
+        if predicate.evaluate(with: note) {
+          searchedNotes.append(note)
+        }
+      })
+      self?.notes = searchedNotes
     }
   }
   
@@ -147,8 +137,11 @@ extension NotesViewController: UITableViewDataSource {
     -> UITableViewCell
   {
     if let cell = tableView.dequeueReusableCell(withIdentifier: WineTableCell.reuseId) as? WineTableCell,
-       let note = notes[safe: indexPath.row] {
-      cell.decorate(model: .init(imageURL: imageURL(from: note.wineID).toURL, titleText: note.wineTitle, subtitleText: note.noteText))
+       let note = notes[safe: indexPath.row],
+       let wineID = note.wineID,
+       let wineTitle = note.wineTitle,
+       let noteText = note.noteText {
+      cell.decorate(model: .init(imageURL: imageURL(from: wineID).toURL, titleText: wineTitle, subtitleText: noteText))
       return cell
     }
     return .init()
@@ -161,13 +154,14 @@ extension NotesViewController: UITableViewDataSource {
   {
     if editingStyle == .delete, let note = notes[safe: indexPath.row] {
       
-      let alert = UIAlertController(title: localized("delete_note"),
-                                    message: localized("this_action_cannot_to_be_undone"),
-                                    preferredStyle: .alert)
+      let alert = UIAlertController(
+        title: localized("delete_note"),
+        message: localized("this_action_cannot_to_be_undone"),
+        preferredStyle: .alert)
       alert.addAction(UIAlertAction(title: localized("delete"), style: .destructive, handler:{ [weak self] _ in
         guard let self = self else { return }
-        self.dataBase.remove(object: note, at: .notes)
-        self.notes = self.dataBase.all(at: .notes)
+        notesRepository.remove(note)
+        self.notes = notesRepository.findAll()
       }))
       alert.addAction(UIAlertAction(title: localized("cancel"), style: .cancel, handler: nil))
       present(alert, animated: true, completion: nil)

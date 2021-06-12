@@ -5,7 +5,6 @@ inhibit_all_warnings!
 workspace 'Smart'
 
 def commonPods
-  pod 'RealmSwift', '~> 10.0.0'
   pod 'Nuke'
   pod 'FSPagerView'
   pod 'Google-Mobile-Ads-SDK'
@@ -44,7 +43,6 @@ end
 
 target 'Database' do
   project 'submodules/Database/Database'
-  pod 'RealmSwift', '~> 10.0.0'
 end
 
 target 'Core' do

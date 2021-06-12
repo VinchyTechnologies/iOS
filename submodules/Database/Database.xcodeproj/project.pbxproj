@@ -17,11 +17,9 @@
 		8A2F32E32673B7D7002DE6C1 /* InMemoryStorageWithFilePersistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F32DB2673B7D7002DE6C1 /* InMemoryStorageWithFilePersistance.swift */; };
 		8A2F32E42673B7D7002DE6C1 /* AnyStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F32DC2673B7D7002DE6C1 /* AnyStorage.swift */; };
 		8A2F32E52673B7D7002DE6C1 /* CollectionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F32DD2673B7D7002DE6C1 /* CollectionRepository.swift */; };
-		CA015C1E24C57E03008DF01D /* Database.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA015C1D24C57E03008DF01D /* Database.swift */; };
+		8A2F32E72673E4FA002DE6C1 /* NotesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F32E62673E4FA002DE6C1 /* NotesRepository.swift */; };
+		8AD49F15267516BB0094E157 /* WinesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD49F14267516BB0094E157 /* WinesRepository.swift */; };
 		CA1821F624C0F48600280DD4 /* Database.h in Headers */ = {isa = PBXBuildFile; fileRef = CA1821F424C0F48600280DD4 /* Database.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		CA18220224C0F71600280DD4 /* FilePath.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18220124C0F71600280DD4 /* FilePath.swift */; };
-		CA57581424E58DDC00907A33 /* Wine.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA57581324E58DDC00907A33 /* Wine.swift */; };
-		CA57581624E5C78900907A33 /* Note.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA57581524E5C78900907A33 /* Note.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,14 +33,12 @@
 		8A2F32DB2673B7D7002DE6C1 /* InMemoryStorageWithFilePersistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InMemoryStorageWithFilePersistance.swift; sourceTree = "<group>"; };
 		8A2F32DC2673B7D7002DE6C1 /* AnyStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyStorage.swift; sourceTree = "<group>"; };
 		8A2F32DD2673B7D7002DE6C1 /* CollectionRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionRepository.swift; sourceTree = "<group>"; };
+		8A2F32E62673E4FA002DE6C1 /* NotesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesRepository.swift; sourceTree = "<group>"; };
+		8AD49F14267516BB0094E157 /* WinesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinesRepository.swift; sourceTree = "<group>"; };
 		B51E786F09D84D5CD2E45EB7 /* Pods_Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA015C1D24C57E03008DF01D /* Database.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Database.swift; sourceTree = "<group>"; };
 		CA1821F124C0F48600280DD4 /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA1821F424C0F48600280DD4 /* Database.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
 		CA1821F524C0F48600280DD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CA18220124C0F71600280DD4 /* FilePath.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilePath.swift; sourceTree = "<group>"; };
-		CA57581324E58DDC00907A33 /* Wine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Wine.swift; sourceTree = "<group>"; };
-		CA57581524E5C78900907A33 /* Note.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Note.swift; sourceTree = "<group>"; };
 		E97CC42C2210AA0AF2B6824B /* Pods-Database.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Database.debug.xcconfig"; path = "Target Support Files/Pods-Database/Pods-Database.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -124,13 +120,11 @@
 			isa = PBXGroup;
 			children = (
 				8A2F32DD2673B7D7002DE6C1 /* CollectionRepository.swift */,
-				CA015C1D24C57E03008DF01D /* Database.swift */,
-				CA18220124C0F71600280DD4 /* FilePath.swift */,
 				8A2F32D62673B7D7002DE6C1 /* InMemoryRepository.swift */,
-				CA57581524E5C78900907A33 /* Note.swift */,
 				8A2F32D52673B7D6002DE6C1 /* SingleRepository.swift */,
 				8A2F32D72673B7D7002DE6C1 /* Storage */,
-				CA57581324E58DDC00907A33 /* Wine.swift */,
+				8A2F32E62673E4FA002DE6C1 /* NotesRepository.swift */,
+				8AD49F14267516BB0094E157 /* WinesRepository.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -241,18 +235,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA015C1E24C57E03008DF01D /* Database.swift in Sources */,
+				8A2F32E72673E4FA002DE6C1 /* NotesRepository.swift in Sources */,
 				8A2F32E52673B7D7002DE6C1 /* CollectionRepository.swift in Sources */,
 				8A2F32E42673B7D7002DE6C1 /* AnyStorage.swift in Sources */,
 				8A2F32E12673B7D7002DE6C1 /* FileStorage.swift in Sources */,
 				8A2F32DF2673B7D7002DE6C1 /* InMemoryRepository.swift in Sources */,
 				8A2F32DE2673B7D7002DE6C1 /* SingleRepository.swift in Sources */,
-				CA18220224C0F71600280DD4 /* FilePath.swift in Sources */,
-				CA57581424E58DDC00907A33 /* Wine.swift in Sources */,
 				8A2F32E02673B7D7002DE6C1 /* InMemoryStorage.swift in Sources */,
 				8A2F32E32673B7D7002DE6C1 /* InMemoryStorageWithFilePersistance.swift in Sources */,
+				8AD49F15267516BB0094E157 /* WinesRepository.swift in Sources */,
 				8A2F32E22673B7D7002DE6C1 /* StorageProtocol.swift in Sources */,
-				CA57581624E5C78900907A33 /* Note.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

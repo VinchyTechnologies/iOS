@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import RealmSwift
 import CommonUI
 import StringFormatting
 import Database
@@ -19,7 +18,7 @@ private enum LoveViewControllerState: Int {
 
 final class LoveViewController: UIViewController {
   
-  private let dataBase = Database<DBWine>()
+  private let dataBase = winesRepository
   
   private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
   
@@ -41,9 +40,9 @@ final class LoveViewController: UIViewController {
   private var currentState: LoveViewControllerState = .like {
     didSet {
       if currentState == .like {
-        wines = dataBase.all(at: .like)
+        wines = dataBase.findAll().filter({ $0.isLiked == true })
       } else if currentState == .dislike {
-        wines = dataBase.all(at: .dislike)
+        wines = dataBase.findAll().filter({ $0.isDisliked == true })
       }
     }
   }
@@ -73,13 +72,7 @@ final class LoveViewController: UIViewController {
     return segmentedControl
   }()
   
-  private lazy var likeRealm = realm(path: .like)
-  private var likeNotificationToken: NotificationToken?
-  
-  private lazy var dislikeRealm = realm(path: .dislike)
-  private var dislikeNotificationToken: NotificationToken?
-  
-  private var wines: [DBWine] = [] {
+  private var wines: [VWine] = [] {
     didSet {
       wines.isEmpty ? showEmptyView() : hideEmptyView()
       collectionView.reloadData()
@@ -92,18 +85,6 @@ final class LoveViewController: UIViewController {
     collectionView.delegate = self
     collectionView.register(WineCollectionViewCell.self, forCellWithReuseIdentifier: WineCollectionViewCell.reuseId)
     collectionView.delaysContentTouches = false
-    
-    likeNotificationToken = likeRealm.observe { _, _ in
-      if self.currentState == .like {
-        self.wines = self.dataBase.all(at: .like)
-      }
-    }
-    
-    dislikeNotificationToken = dislikeRealm.observe { _, _ in
-      if self.currentState == .dislike {
-        self.wines = self.dataBase.all(at: .dislike)
-      }
-    }
   }
   
   required init?(coder: NSCoder) { fatalError() }
@@ -123,16 +104,17 @@ final class LoveViewController: UIViewController {
 
   }
   
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    let current = currentState
+    currentState = current
+  }
+  
   override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
     super.viewWillTransition(to: size, with: coordinator)
     coordinator.animate(alongsideTransition: { _ in
         self.collectionView.collectionViewLayout.invalidateLayout()
     })
-  }
-  
-  deinit {
-    likeNotificationToken?.invalidate()
-    dislikeNotificationToken?.invalidate()
   }
   
   private func hideEmptyView() {
@@ -190,12 +172,16 @@ extension LoveViewController: UICollectionViewDataSource {
     guard let wine = wines[safe: indexPath.row] else { return .init() }
     // swiftlint:disable:next force_cast
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as! WineCollectionViewCell
-    cell.decorate(
-      model: .init(
-        wineID: wine.id,
-        imageURL: imageURL(from: wine.wineID).toURL,
-        titleText: wine.title,
-        subtitleText: nil))
+    
+    if let wineID = wine.wineID, let title = wine.title {
+      cell.decorate(
+        model: .init(
+          wineID: wineID,
+          imageURL: imageURL(from: wineID).toURL,
+          titleText: title,
+          subtitleText: nil))
+    }
+    
     return cell
   }
 }
@@ -205,8 +191,8 @@ extension LoveViewController: UICollectionViewDelegate {
     _ collectionView: UICollectionView,
     didSelectItemAt indexPath: IndexPath) {
     
-    guard let wine = wines[safe: indexPath.row] else { return }
-    navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wine.wineID), animated: true)
+    guard let wineID = wines[safe: indexPath.row]?.wineID else { return }
+    navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wineID), animated: true)
   }
 }
 
