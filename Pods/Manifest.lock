@@ -1,6 +1,5 @@
 PODS:
   - CocoaDebug (1.5.8)
-  - Cosmos (23.0.0)
   - Firebase/Analytics (7.1.0):
     - Firebase/Core
   - Firebase/Core (7.1.0):
@@ -47,7 +46,6 @@ PODS:
     - FirebaseInstallations (~> 7.0)
     - GoogleUtilities/Environment (~> 7.0)
     - "GoogleUtilities/NSData+zlib (~> 7.0)"
-  - FittedSheets (2.4.0)
   - FSPagerView (0.8.3)
   - Google-Mobile-Ads-SDK (7.68.0):
     - GoogleAppMeasurement (~> 7.0)
@@ -86,27 +84,20 @@ PODS:
   - nanopb/decode (2.30906.0)
   - nanopb/encode (2.30906.0)
   - PromisesObjC (1.2.11)
-  - Sheeeeeeeeet (3.1.4)
-  - SPAlert (2.1.4)
   - SwiftLint (0.41.0)
 
 DEPENDENCIES:
   - CocoaDebug
-  - Cosmos (~> 23.0)
   - Firebase/Analytics
   - Firebase/DynamicLinks
   - Firebase/RemoteConfig
-  - FittedSheets
   - FSPagerView
   - Google-Mobile-Ads-SDK
-  - Sheeeeeeeeet
-  - SPAlert (~> 2.1.4)
   - SwiftLint
 
 SPEC REPOS:
   trunk:
     - CocoaDebug
-    - Cosmos
     - Firebase
     - FirebaseABTesting
     - FirebaseAnalytics
@@ -115,7 +106,6 @@ SPEC REPOS:
     - FirebaseDynamicLinks
     - FirebaseInstallations
     - FirebaseRemoteConfig
-    - FittedSheets
     - FSPagerView
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
@@ -124,13 +114,10 @@ SPEC REPOS:
     - GoogleUtilities
     - nanopb
     - PromisesObjC
-    - Sheeeeeeeeet
-    - SPAlert
     - SwiftLint
 
 SPEC CHECKSUMS:
   CocoaDebug: fcf58698e6cebe8a4ea81b7c5aca44cfbd181d9c
-  Cosmos: b5c6a9a637e28a061b54c8f8b1d8529d7d4db73f
   Firebase: 78e8dd2e39d653de6270432ad84fe8b59f7bf4e8
   FirebaseABTesting: aaea04ea67858a4a9dce0d22ef645477dff50146
   FirebaseAnalytics: 7f165a56dea86ddd5b8ce02af3bee982c683405c
@@ -139,7 +126,6 @@ SPEC CHECKSUMS:
   FirebaseDynamicLinks: dadf4564851de0ecdad2dab7fc2d1c401dcaa406
   FirebaseInstallations: 3de38553e86171b5f81d83cdeef63473d37bfdb0
   FirebaseRemoteConfig: 04cd72851dad51780aa66f05b01a7dd0b85cdbf5
-  FittedSheets: 470a7740a083156d711ab6ccd37d1d539005e6aa
   FSPagerView: 670405b2f18e2a87fa37f20b00de783e562c25a8
   Google-Mobile-Ads-SDK: 29bbdb182d69ff606cc0301da1590b40be8d2205
   GoogleAppMeasurement: 89e1a64593f968713b0506ba1b53b38a154bf9a5
@@ -148,10 +134,8 @@ SPEC CHECKSUMS:
   GoogleUtilities: 3dc4ff0d5e4840e2fa8eef0889620e8c33d4218c
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
-  Sheeeeeeeeet: d4808c23c1d0aca2ccba13353ec7fa17ada2f129
-  SPAlert: 1a8afa1c6ac86a82ab5b2cfdf7f9a51e68cb6c0c
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
 
-PODFILE CHECKSUM: b3e04dddcc2098dd316183dd334f63e737048d13
+PODFILE CHECKSUM: 5924b76a14066fcb5901a290644e4002a7d3a048
 
 COCOAPODS: 1.10.1

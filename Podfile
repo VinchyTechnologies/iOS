@@ -5,17 +5,14 @@ inhibit_all_warnings!
 workspace 'Smart'
 
 def commonPods
-  pod 'FSPagerView'
-  pod 'Google-Mobile-Ads-SDK'
+  pod 'FSPagerView' # no spm...
+  pod 'CocoaDebug', :configurations => ['Debug']
   pod 'SwiftLint'
+  
+  pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/DynamicLinks'
   pod 'Firebase/RemoteConfig'
   pod 'Firebase/Analytics'
-  pod 'CocoaDebug', :configurations => ['Debug']
-  pod 'SPAlert', '~> 2.1.4'
-  pod "Sheeeeeeeeet"
-  pod 'Cosmos', '~> 23.0'
-  pod 'FittedSheets'
 end
 
 target 'Smart' do

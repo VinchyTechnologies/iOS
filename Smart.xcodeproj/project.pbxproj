@@ -81,6 +81,9 @@
 		8A313C1626468678009F2165 /* WorkingHoursCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313C1526468678009F2165 /* WorkingHoursCollectionCell.swift */; };
 		8A446CDF2660123B000A1769 /* RoutingToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A446CDE2660123B000A1769 /* RoutingToolBar.swift */; };
 		8A63CC8826752E9E003B1D4D /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 8A63CC8726752E9E003B1D4D /* Cosmos */; };
+		8A63CC8B26753046003B1D4D /* FittedSheets in Frameworks */ = {isa = PBXBuildFile; productRef = 8A63CC8A26753046003B1D4D /* FittedSheets */; };
+		8A63CC8E2675308B003B1D4D /* Sheeeeeeeeet in Frameworks */ = {isa = PBXBuildFile; productRef = 8A63CC8D2675308B003B1D4D /* Sheeeeeeeeet */; };
+		8A63CC942675322D003B1D4D /* SPAlert in Frameworks */ = {isa = PBXBuildFile; productRef = 8A63CC932675322D003B1D4D /* SPAlert */; };
 		8AA5E5132615053D00935B5E /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA5E5122615053D00935B5E /* AboutView.swift */; };
 		8AD49F16267520F90094E157 /* ReviewsInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB3225E177220076ED6D /* ReviewsInteractorProtocol.swift */; };
 		8AD49F17267521040094E157 /* ReviewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB2D25E177220076ED6D /* ReviewsPresenter.swift */; };
@@ -578,8 +581,11 @@
 				CAF24AEB24C32AE90057547F /* CommonUI.framework in Frameworks */,
 				CAF24B0E24C3311F0057547F /* LocationUI.framework in Frameworks */,
 				CA7B825D24EC750300991F24 /* VinchyCore.framework in Frameworks */,
+				8A63CC8E2675308B003B1D4D /* Sheeeeeeeeet in Frameworks */,
 				8AD49F1E267526AF0094E157 /* Nuke in Frameworks */,
 				44D3CDE825E42E0B00FFFCD5 /* VinchyAuthorization.framework in Frameworks */,
+				8A63CC8B26753046003B1D4D /* FittedSheets in Frameworks */,
+				8A63CC942675322D003B1D4D /* SPAlert in Frameworks */,
 				CA1821A424C0E83900280DD4 /* Display.framework in Frameworks */,
 				CABDBA8724C2FAB800AD96D6 /* Core.framework in Frameworks */,
 				E6736DD35DA4517E16454315 /* Pods_Smart.framework in Frameworks */,
@@ -1994,6 +2000,9 @@
 				8AD49F1D267526AF0094E157 /* Nuke */,
 				8AD49F29267528240094E157 /* KeychainAccess */,
 				8A63CC8726752E9E003B1D4D /* Cosmos */,
+				8A63CC8A26753046003B1D4D /* FittedSheets */,
+				8A63CC8D2675308B003B1D4D /* Sheeeeeeeeet */,
+				8A63CC932675322D003B1D4D /* SPAlert */,
 			);
 			productName = Smart;
 			productReference = CA472ABC245EDE2F009149FF /* Vinchy.app */;
@@ -2076,6 +2085,9 @@
 				8AD49F1C267526AF0094E157 /* XCRemoteSwiftPackageReference "Nuke" */,
 				8AD49F28267528240094E157 /* XCRemoteSwiftPackageReference "KeychainAccess" */,
 				8A63CC8626752E9E003B1D4D /* XCRemoteSwiftPackageReference "Cosmos" */,
+				8A63CC8926753046003B1D4D /* XCRemoteSwiftPackageReference "FittedSheets" */,
+				8A63CC8C2675308B003B1D4D /* XCRemoteSwiftPackageReference "Sheeeeeeeeet" */,
+				8A63CC922675322D003B1D4D /* XCRemoteSwiftPackageReference "SPAlert" */,
 			);
 			productRefGroup = CA472ABD245EDE2F009149FF /* Products */;
 			projectDirPath = "";
@@ -2849,6 +2861,30 @@
 				minimumVersion = 23.0.0;
 			};
 		};
+		8A63CC8926753046003B1D4D /* XCRemoteSwiftPackageReference "FittedSheets" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gordontucker/FittedSheets.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.4.0;
+			};
+		};
+		8A63CC8C2675308B003B1D4D /* XCRemoteSwiftPackageReference "Sheeeeeeeeet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/danielsaidi/Sheeeeeeeeet.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.1.4;
+			};
+		};
+		8A63CC922675322D003B1D4D /* XCRemoteSwiftPackageReference "SPAlert" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/ivanvorobei/SPAlert.git";
+			requirement = {
+				kind = exactVersion;
+				version = 2.1.4;
+			};
+		};
 		8AD49F1C267526AF0094E157 /* XCRemoteSwiftPackageReference "Nuke" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Nuke.git";
@@ -2872,6 +2908,21 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8A63CC8626752E9E003B1D4D /* XCRemoteSwiftPackageReference "Cosmos" */;
 			productName = Cosmos;
+		};
+		8A63CC8A26753046003B1D4D /* FittedSheets */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A63CC8926753046003B1D4D /* XCRemoteSwiftPackageReference "FittedSheets" */;
+			productName = FittedSheets;
+		};
+		8A63CC8D2675308B003B1D4D /* Sheeeeeeeeet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A63CC8C2675308B003B1D4D /* XCRemoteSwiftPackageReference "Sheeeeeeeeet" */;
+			productName = Sheeeeeeeeet;
+		};
+		8A63CC932675322D003B1D4D /* SPAlert */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A63CC922675322D003B1D4D /* XCRemoteSwiftPackageReference "SPAlert" */;
+			productName = SPAlert;
 		};
 		8AD49F1D267526AF0094E157 /* Nuke */ = {
 			isa = XCSwiftPackageProductDependency;

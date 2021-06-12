@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "FittedSheets",
+        "repositoryURL": "https://github.com/gordontucker/FittedSheets.git",
+        "state": {
+          "branch": null,
+          "revision": "0502be20c95d5bae93a155081a1f1d7ca69924d3",
+          "version": "2.4.0"
+        }
+      },
+      {
         "package": "KeychainAccess",
         "repositoryURL": "https://github.com/kishikawakatsumi/KeychainAccess.git",
         "state": {
@@ -26,6 +35,24 @@
           "branch": null,
           "revision": "69ae6d5b8c4b898450432f94bd35f863d3830cfc",
           "version": "10.3.0"
+        }
+      },
+      {
+        "package": "Sheeeeeeeeet",
+        "repositoryURL": "https://github.com/danielsaidi/Sheeeeeeeeet.git",
+        "state": {
+          "branch": null,
+          "revision": "b54b90e8020cb73f0d2a135ff785aecbb058bfaa",
+          "version": "3.1.4"
+        }
+      },
+      {
+        "package": "SPAlert",
+        "repositoryURL": "https://github.com/ivanvorobei/SPAlert.git",
+        "state": {
+          "branch": null,
+          "revision": "18862409586ac547bcdf8957cd96beb872fbc729",
+          "version": "2.1.4"
         }
       }
     ]
