@@ -117,6 +117,12 @@ final class ChooseAuthTypeViewController: UIViewController {
       registerButton.heightAnchor.constraint(equalToConstant: 48),
     ])
     
+    if UIDevice.current.userInterfaceIdiom == .pad {
+      let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeDown(_:)))
+      swipeDown.direction = .down
+      view.addGestureRecognizer(swipeDown)
+    }
+    
     interactor?.viewDidLoad()
     
   }
@@ -143,6 +149,11 @@ final class ChooseAuthTypeViewController: UIViewController {
     if gesture.didTapAttributedTextInLabel(label: subtitleLabel, inRange: emailRange) {
       openTerms()
     }
+  }
+  
+  @objc
+  private func didSwipeDown(_ gesture: UISwipeGestureRecognizer) {
+    dismiss(animated: true)
   }
   
   private func openTerms() {
