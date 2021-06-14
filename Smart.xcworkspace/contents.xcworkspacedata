@@ -5,9 +5,6 @@
       location = "container:"
       name = "submodules">
       <FileRef
-         location = "group:submodules/VinchyAuthorization/VinchyAuthorization.xcodeproj">
-      </FileRef>
-      <FileRef
          location = "group:submodules/CommonUI/CommonUI.xcodeproj">
       </FileRef>
       <FileRef
@@ -24,6 +21,9 @@
       </FileRef>
       <FileRef
          location = "group:submodules/StringFormatting/StringFormatting.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:submodules/VinchyAuthorization/VinchyAuthorization.xcodeproj">
       </FileRef>
       <FileRef
          location = "group:submodules/VinchyCore/VinchyCore.xcodeproj">
@@ -46,6 +46,12 @@
    <Group
       location = "group:tools"
       name = "tools">
+      <FileRef
+         location = "group:podInstall.command">
+      </FileRef>
+      <FileRef
+         location = "group:podUpdate.command">
+      </FileRef>
       <Group
          location = "group:VinchyTemplates"
          name = "VinchyTemplates">
@@ -128,12 +134,6 @@
             </FileRef>
          </Group>
       </Group>
-      <FileRef
-         location = "group:podInstall.command">
-      </FileRef>
-      <FileRef
-         location = "group:podUpdate.command">
-      </FileRef>
    </Group>
    <FileRef
       location = "group:Pods/Pods.xcodeproj">

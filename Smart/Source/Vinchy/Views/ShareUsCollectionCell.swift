@@ -28,7 +28,7 @@ final class ShareUsCollectionCell: UICollectionViewCell, Reusable {
   
   private let titleLabel = UILabel()
   private let subtitleLabel = UILabel()
-  private let button = UIButton()
+  private let button = Button()
   
   weak var delegate: ShareUsCollectionCellDelegate?
   
@@ -53,15 +53,10 @@ final class ShareUsCollectionCell: UICollectionViewCell, Reusable {
     subtitleLabel.font = Font.bold(18)
     subtitleLabel.textColor = .blueGray
     
-    button.backgroundColor = .accent
     button.translatesAutoresizingMaskIntoConstraints = false
     button.heightAnchor.constraint(equalToConstant: 48).isActive = true
     button.widthAnchor.constraint(equalToConstant: 240).isActive = true // TODO: - adaptive
     button.setTitle(localized("share_link").firstLetterUppercased(), for: .normal)
-    button.titleLabel?.font = Font.bold(20)
-    button.setTitleColor(.white, for: .normal)
-    button.layer.cornerRadius = 24
-    button.clipsToBounds = true
     button.addTarget(self, action: #selector(didTapShareUs(_:)), for: .touchUpInside)
     
     [titleLabel, subtitleLabel].forEach({ $0.numberOfLines = 0 })
