@@ -51,6 +51,8 @@ final class MapNavigationBarCollectionCell: UICollectionReusableView, Reusable {
   
   override init(frame: CGRect) {
     super.init(frame: frame)
+    
+    backgroundColor = .mainBackground
         
     addSubview(leadingButton)
     leadingButton.translatesAutoresizingMaskIntoConstraints = false

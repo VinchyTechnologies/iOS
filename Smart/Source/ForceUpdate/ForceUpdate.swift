@@ -30,7 +30,7 @@ struct ForceUpdateView: View, OpenURLProtocol {
       .padding()
     }
   }
-
+  
   private func openAppStore() {
     open(urlString: localized("appstore_link")) {
     }
