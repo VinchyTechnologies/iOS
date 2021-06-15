@@ -1,7 +1,7 @@
 # Current version of SwiftFormat used at Airbnb: 0.48.4
 
 # options
---exclude **/Pods
+--exclude ../Pods
 --self remove # redundantSelf
 --importgrouping testable-bottom # sortedImports
 --commas always # trailingCommas

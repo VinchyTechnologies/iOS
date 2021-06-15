@@ -1,9 +1,9 @@
 import UIKit
 
 /**
-
+ 
  Helper functions for dealing with right-to-left languages.
-
+ 
  */
 struct RightToLeft {
   static func isRightToLeft(_ view: UIView) -> Bool {
