@@ -9,10 +9,14 @@
 import Foundation
 
 final class CurrencyRouter: CurrencyRouterProtocol {
-  
-  weak var viewController: CurrencyViewController?
-  
+
+  // MARK: Lifecycle
+
   init(viewController: CurrencyViewController) {
     self.viewController = viewController
   }
+
+  // MARK: Internal
+
+  weak var viewController: CurrencyViewController?
 }

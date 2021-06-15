@@ -8,15 +8,15 @@
 
 import Foundation
 
-protocol ShowcaseRoutable: AnyObject {
+// MARK: - ShowcaseRoutable
 
+protocol ShowcaseRoutable: AnyObject {
   var viewController: UIViewController? { get }
 
   func pushToShowcaseViewController(input: ShowcaseInput)
 }
 
 extension ShowcaseRoutable {
-
   func pushToShowcaseViewController(input: ShowcaseInput) {
     let controller = ShowcaseAssembly.assemblyModule(input: input)
     controller.hidesBottomBarWhenPushed = true

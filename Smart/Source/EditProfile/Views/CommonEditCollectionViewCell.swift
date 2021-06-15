@@ -9,12 +9,13 @@
 import Display
 import UIKit
 
+// MARK: - CommonEditCollectionViewCellViewModel
+
 struct CommonEditCollectionViewCellViewModel: ViewModelProtocol {
-  
   let recognizableIdentificator: String?
   fileprivate let text: String?
   fileprivate let placeholder: String?
-  
+
   init(recognizableIdentificator: String?, text: String?, placeholder: String?) {
     self.recognizableIdentificator = recognizableIdentificator
     self.text = text
@@ -22,18 +23,15 @@ struct CommonEditCollectionViewCellViewModel: ViewModelProtocol {
   }
 }
 
+// MARK: - CommonEditCollectionViewCell
+
 final class CommonEditCollectionViewCell: UICollectionViewCell, Reusable {
-  
-  private let textField: UITextField = {
-    $0.font = Font.heavy(18)
-    $0.textColor = .dark
-    $0.tintColor = .accent
-    return $0
-  }(UITextField())
-  
+
+  // MARK: Lifecycle
+
   override init(frame: CGRect) {
     super.init(frame: frame)
-        
+
     contentView.addSubview(textField)
     textField.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
@@ -43,18 +41,31 @@ final class CommonEditCollectionViewCell: UICollectionViewCell, Reusable {
       textField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
     ])
   }
-  
-  required init?(coder: NSCoder) { fatalError() }
-  
-  static func height(for viewModel: ViewModel?) -> CGFloat {
+
+  @available(*, unavailable)
+  required init?(coder _: NSCoder) { fatalError() }
+
+  // MARK: Internal
+
+  static func height(for _: ViewModel?) -> CGFloat {
     44
   }
+
+  // MARK: Private
+
+  private let textField: UITextField = {
+    $0.font = Font.heavy(18)
+    $0.textColor = .dark
+    $0.tintColor = .accent
+    return $0
+  }(UITextField())
 }
 
+// MARK: Decoratable
+
 extension CommonEditCollectionViewCell: Decoratable {
-  
   typealias ViewModel = CommonEditCollectionViewCellViewModel
-  
+
   func decorate(model: ViewModel) {
     textField.text = model.text
     if let placeholder = model.placeholder {

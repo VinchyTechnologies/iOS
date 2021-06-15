@@ -9,7 +9,6 @@
 import CommonUI
 
 struct VinchyViewControllerViewModel {
-
   enum State {
     case fake(sections: [FakeSection])
     case normal(sections: [Section])
@@ -33,5 +32,4 @@ struct VinchyViewControllerViewModel {
   }
 
   let state: State
-
 }

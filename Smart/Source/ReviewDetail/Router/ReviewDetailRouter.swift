@@ -8,12 +8,12 @@
 
 import UIKit
 
+// MARK: - ReviewDetailRouter
+
 final class ReviewDetailRouter {
-  
-  weak var viewController: UIViewController?
-  weak var interactor: ReviewDetailInteractorProtocol?
-  private let input: ReviewDetailInput
-  
+
+  // MARK: Lifecycle
+
   init(
     input: ReviewDetailInput,
     viewController: UIViewController)
@@ -21,10 +21,17 @@ final class ReviewDetailRouter {
     self.input = input
     self.viewController = viewController
   }
+
+  // MARK: Internal
+
+  weak var viewController: UIViewController?
+  weak var interactor: ReviewDetailInteractorProtocol?
+
+  // MARK: Private
+
+  private let input: ReviewDetailInput
 }
 
-// MARK: - ReviewDetailRouterProtocol
+// MARK: ReviewDetailRouterProtocol
 
-extension ReviewDetailRouter: ReviewDetailRouterProtocol {
-  
-}
+extension ReviewDetailRouter: ReviewDetailRouterProtocol {}

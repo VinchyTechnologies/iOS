@@ -8,38 +8,33 @@
 
 import Display
 
+// MARK: - AssortmentCollectionCellDelegate
+
 protocol AssortmentCollectionCellDelegate: AnyObject {
   func didTapSeeAssortmentButton(_ button: UIButton)
 }
 
+// MARK: - AssortmentCollectionCellViewModel
+
 struct AssortmentCollectionCellViewModel: ViewModelProtocol {
-  
   fileprivate let titleText: String?
-  
+
   init(titleText: String?) {
     self.titleText = titleText
   }
 }
 
+// MARK: - AssortmentCollectionCell
+
 final class AssortmentCollectionCell: UICollectionViewCell, Reusable {
-  
-  // MARK: - Internal Properties
-  
-  weak var delegate: AssortmentCollectionCellDelegate?
-  
-  // MARK: - Private Properties
-  
-  private lazy var button: Button = {
-    $0.addTarget(self, action: #selector(didTabAssortmentButton(_:)), for: .touchUpInside)
-    $0.contentEdgeInsets = .init(top: 14, left: 14, bottom: 14, right: 14)
-    return $0
-  }(Button())
-  
+
+  // MARK: Lifecycle
+
   // MARK: - Initializers
-  
+
   override init(frame: CGRect) {
     super.init(frame: frame)
-        
+
     addSubview(button)
     button.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
@@ -48,21 +43,37 @@ final class AssortmentCollectionCell: UICollectionViewCell, Reusable {
       button.centerXAnchor.constraint(equalTo: centerXAnchor),
     ])
   }
-  
-  required init?(coder: NSCoder) { fatalError() }
-  
+
+  @available(*, unavailable)
+  required init?(coder _: NSCoder) { fatalError() }
+
+  // MARK: Internal
+
+  // MARK: - Internal Properties
+
+  weak var delegate: AssortmentCollectionCellDelegate?
+
+  // MARK: Private
+
+  // MARK: - Private Properties
+
+  private lazy var button: Button = {
+    $0.addTarget(self, action: #selector(didTabAssortmentButton(_:)), for: .touchUpInside)
+    $0.contentEdgeInsets = .init(top: 14, left: 14, bottom: 14, right: 14)
+    return $0
+  }(Button())
+
   @objc
   private func didTabAssortmentButton(_ button: UIButton) {
     delegate?.didTapSeeAssortmentButton(button)
   }
 }
 
-// MARK: - Decoratable
+// MARK: Decoratable
 
 extension AssortmentCollectionCell: Decoratable {
-  
   typealias ViewModel = AssortmentCollectionCellViewModel
-  
+
   func decorate(model: ViewModel) {
     button.setTitle(model.titleText, for: .normal)
   }

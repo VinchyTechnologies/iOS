@@ -7,25 +7,31 @@
 //
 
 import Combine
-import VinchyCore
-import LocationUI
 import CoreLocation
+import LocationUI
+import VinchyCore
+
+// MARK: - MapRepository
 
 final class MapRepository {
-  
-  // MARK: - Private Properties
-  
-  private let locationService: LocationService
-  private var subscriptions = Set<AnyCancellable>()
-  
+
+  // MARK: Lifecycle
+
   // MARK: - Initializers
-  
+
   init(locationService: LocationService) {
     self.locationService = locationService
   }
-  
+
+  // MARK: Private
+
+  // MARK: - Private Properties
+
+  private let locationService: LocationService
+  private var subscriptions = Set<AnyCancellable>()
+
   // MARK: - Private Methods
-  
+
   private func requestPartnersData(
     userLocation: CLLocationCoordinate2D?,
     radius: Int)
@@ -37,7 +43,7 @@ final class MapRepository {
       return performFullPipeline(radius: radius)
     }
   }
-  
+
   private func performFullPipeline(radius: Int) -> AnyPublisher<[PartnerOnMap], Error> {
     locationService
       .getLocation()
@@ -47,14 +53,14 @@ final class MapRepository {
       }
       .eraseToAnyPublisher()
   }
-  
+
   private func getUserLocation() -> AnyPublisher<CLLocationCoordinate2D, Error> {
     locationService
       .getLocation()
       .mapError { _ in MapError.locationPermissionDenied }
       .eraseToAnyPublisher()
   }
-  
+
   private func fetchPartnersAPI(userLocation: CLLocationCoordinate2D, radius: Int) -> AnyPublisher<[PartnerOnMap], Error> {
     Deferred {
       Future { promise in
@@ -67,14 +73,15 @@ final class MapRepository {
           })
       }
     }
-    .mapError({ $0 })
-    .map({ $0 as [PartnerOnMap] })
+    .mapError { $0 }
+    .map { $0 as [PartnerOnMap] }
     .eraseToAnyPublisher()
   }
 }
 
+// MARK: MapRepositoryProtocol
+
 extension MapRepository: MapRepositoryProtocol {
-  
   func requestUserLocation(completion: @escaping (CLLocationCoordinate2D?) -> Void) {
     let subscription = getUserLocation()
       .receive(on: DispatchQueue.main)
@@ -86,7 +93,7 @@ extension MapRepository: MapRepositoryProtocol {
       }
     subscriptions.insert(subscription)
   }
-  
+
   func requestPartners(
     userLocation: CLLocationCoordinate2D?,
     radius: Int,
@@ -95,7 +102,7 @@ extension MapRepository: MapRepositoryProtocol {
     let apiSubscription = requestPartnersData(userLocation: userLocation, radius: radius)
       .receive(on: DispatchQueue.main)
       .sink { receivedCompletion in
-        guard case let .failure(error) = receivedCompletion else { return }
+        guard case .failure(let error) = receivedCompletion else { return }
         completion(.failure(error))
       } receiveValue: { response in
         completion(.success(response))

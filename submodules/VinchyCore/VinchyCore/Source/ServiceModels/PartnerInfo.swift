@@ -6,8 +6,12 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+// MARK: - PartnerInfo
+
 public struct PartnerInfo: Decodable {
-  
+
+  // MARK: Public
+
   public let affiliatedStoreId: Int
   public let title: String
   public let latitude: Double?
@@ -17,7 +21,9 @@ public struct PartnerInfo: Decodable {
   public let phoneNumber: String?
   public let scheduleOfWork: String?
   public let address: String?
-  
+
+  // MARK: Private
+
   private enum CodingKeys: String, CodingKey {
     case affiliatedStoreId = "affiliated_store_id"
     case title
@@ -31,11 +37,12 @@ public struct PartnerInfo: Decodable {
   }
 }
 
+// MARK: - AffiliatedStoreType
+
 public struct AffiliatedStoreType: Decodable {
-  
   public let affiliatedStoreTypeId: Int
   public let title: String
-  
+
   private enum CodingKeys: String, CodingKey {
     case affiliatedStoreTypeId = "affiliated_store_type_id"
     case title

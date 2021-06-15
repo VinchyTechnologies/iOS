@@ -6,9 +6,11 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import SPAlert
 import Display
+import SPAlert
 import StringFormatting
+
+// MARK: - StatusAlertViewModel
 
 public struct StatusAlertViewModel {
   let image: UIImage?
@@ -16,12 +18,13 @@ public struct StatusAlertViewModel {
   let descriptionText: String?
 }
 
+// MARK: - StatusAlertable
+
 protocol StatusAlertable {
   func showStatusAlert(viewModel: StatusAlertViewModel)
 }
 
 extension StatusAlertable {
-
   public func showStatusAlert(viewModel: StatusAlertViewModel) {
     let alertView = SPAlertView(
       title: viewModel.titleText ?? "",
@@ -34,6 +37,8 @@ extension StatusAlertable {
   }
 }
 
+// MARK: - CantOpenURLAlertable
+
 protocol CantOpenURLAlertable: Alertable {
   func showAlertCantOpenURL()
 }
@@ -45,6 +50,8 @@ extension CantOpenURLAlertable {
       message: localized("open_url_error"))
   }
 }
+
+// MARK: - CantOpenEmailAlertable
 
 protocol CantOpenEmailAlertable: Alertable {
   func showAlertCantOpenURL()

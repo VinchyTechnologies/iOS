@@ -9,9 +9,7 @@
 import Foundation
 
 final class WineDetailAssembly {
-
   static func assemblyModule(input: WineDetailInput) -> UIViewController {
-
     let viewController = WineDetailViewController()
 
     let router = WineDetailRouter(input: input, viewController: viewController)
@@ -23,5 +21,4 @@ final class WineDetailAssembly {
 
     return viewController
   }
-
 }

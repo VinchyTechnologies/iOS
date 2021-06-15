@@ -8,24 +8,37 @@
 
 import UIKit
 
+// MARK: - RootBuilderInput
+
 struct RootBuilderInput {
-    let window: UIWindow
+  let window: UIWindow
 }
+
+// MARK: - RootBuilder
 
 protocol RootBuilder {
-    func build(input: RootBuilderInput) -> RootInteractor & RootDeeplinkable
+  func build(input: RootBuilderInput) -> RootInteractor & RootDeeplinkable
 }
 
+// MARK: - RootBuilderImpl
+
 final class RootBuilderImpl: RootBuilder {
-    private let tabBarBuilder: TabBarBuilder
 
-    init(tabBarBuilder: TabBarBuilder) {
-        self.tabBarBuilder = tabBarBuilder
-    }
+  // MARK: Lifecycle
 
-    func build(input: RootBuilderInput) -> RootInteractor & RootDeeplinkable {
-        let router = RootRouterImpl(window: input.window, tabBarBuilder: tabBarBuilder)
-        let interactor = RootInteractorImpl(router: router)
-        return interactor
-    }
+  init(tabBarBuilder: TabBarBuilder) {
+    self.tabBarBuilder = tabBarBuilder
+  }
+
+  // MARK: Internal
+
+  func build(input: RootBuilderInput) -> RootInteractor & RootDeeplinkable {
+    let router = RootRouterImpl(window: input.window, tabBarBuilder: tabBarBuilder)
+    let interactor = RootInteractorImpl(router: router)
+    return interactor
+  }
+
+  // MARK: Private
+
+  private let tabBarBuilder: TabBarBuilder
 }

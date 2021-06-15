@@ -8,13 +8,12 @@
 
 import UIKit
 
-//fileprivate let colors: [UIColor] = [
+// fileprivate let colors: [UIColor] = [
 //    UIColor.rgb(red: 240, green: 227, blue: 223),
 //    UIColor.rgb(red: 220, green: 215, blue: 210),
-//]
+// ]
 
 extension UIColor {
-
   public final class var mainBackground: UIColor {
     .systemBackground
   }

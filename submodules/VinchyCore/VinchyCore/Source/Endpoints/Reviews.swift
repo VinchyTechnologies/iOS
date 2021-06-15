@@ -8,41 +8,44 @@
 
 import Core
 
-fileprivate let reviewDomain = "reviews.vinchy.tech"
+private let reviewDomain = "reviews.vinchy.tech"
+
+// MARK: - ReviewsEndpoint
 
 private enum ReviewsEndpoint: EndpointProtocol {
-  
   case all(wineID: Int64, accountID: Int?, offset: Int, limit: Int)
   case create(wineID: Int64, accountID: Int, rating: Double, comment: String?)
   case update(reviewID: Int, rating: Double, comment: String?)
-  
+
+  // MARK: Internal
+
   var host: String {
-    return reviewDomain
+    reviewDomain
   }
-  
+
   var path: String {
     switch self {
     case .all, .create:
       return "/reviews"
-      
+
     case .update(let reviewID, _, _):
       return "/reviews/" + String(reviewID)
     }
   }
-  
+
   var method: HTTPMethod {
     switch self {
     case .all:
       return .get
-      
+
     case .create:
       return .post
-      
+
     case .update:
       return .put
     }
   }
-  
+
   var parameters: Parameters? {
     switch self {
     case .all(let wineID, let accountID, let offset, let limit):
@@ -55,7 +58,7 @@ private enum ReviewsEndpoint: EndpointProtocol {
         params += [("account_id", String(accountID))]
       }
       return params
-      
+
     case .create(let wineID, let accountID, let rating, let comment):
       let params: Parameters = [
         ("wine_id", wineID),
@@ -64,7 +67,7 @@ private enum ReviewsEndpoint: EndpointProtocol {
         ("comment", comment as Any),
       ]
       return params
-      
+
     case .update(_, let rating, let comment):
       return [
         ("rating", rating),
@@ -72,16 +75,16 @@ private enum ReviewsEndpoint: EndpointProtocol {
       ]
     }
   }
-  
+
   var headers: HTTPHeaders? {
     switch self {
     case .all:
       return [
         "Authorization": "VFAXGm53nG7zBtEuF5DVAhK9YKuHBJ9xTjuCeFyHDxbP4s6gj6",
         "accept-language": Locale.current.languageCode ?? "en",
-        "x-currency": Locale.current.currencyCode ?? "USD"
+        "x-currency": Locale.current.currencyCode ?? "USD",
       ]
-      
+
     case .create, .update:
       return [
         "Authorization": "VFAXGm53nG7zBtEuF5DVAhK9YKuHBJ9xTjuCeFyHDxbP4s6gj6",
@@ -93,14 +96,18 @@ private enum ReviewsEndpoint: EndpointProtocol {
   }
 }
 
+// MARK: - Reviews
+
 public final class Reviews {
-  
-  private let api = API.shared
-  
+
+  // MARK: Lifecycle
+
+  private init() {}
+
+  // MARK: Public
+
   public static let shared = Reviews()
-  
-  private init() { }
-  
+
   public func getReviews(
     wineID: Int64,
     accountID: Int?,
@@ -116,7 +123,7 @@ public final class Reviews {
         limit: limit),
       completion: completion)
   }
-  
+
   public func createReview(
     wineID: Int64,
     accountID: Int,
@@ -124,11 +131,10 @@ public final class Reviews {
     comment: String?,
     completion: @escaping (Result<Review, APIError>) -> Void)
   {
-    
     let refreshTokenCompletion = mapToRefreshTokenCompletion(accountID: accountID, completion: completion) { [weak self] in
       self?.createReview(wineID: wineID, accountID: accountID, rating: rating, comment: comment, completion: completion)
     }
-    
+
     api.request(
       endpoint: ReviewsEndpoint.create(
         wineID: wineID,
@@ -137,7 +143,7 @@ public final class Reviews {
         comment: comment),
       completion: refreshTokenCompletion)
   }
-  
+
   public func updateReview(
     reviewID: Int,
     rating: Double,
@@ -153,4 +159,8 @@ public final class Reviews {
       endpoint: ReviewsEndpoint.update(reviewID: reviewID, rating: rating, comment: comment),
       completion: refreshTokenCompletion)
   }
+
+  // MARK: Private
+
+  private let api = API.shared
 }

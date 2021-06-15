@@ -5,22 +5,32 @@
 //  Created by Tatiana Ampilogova on 2/22/21.
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
-import UIKit
+import Core
 import Display
 import StringFormatting
-import Core
+import UIKit
+
+// MARK: - CurrencyViewController
 
 final class CurrencyViewController: UIViewController {
-    
+
+  // MARK: Internal
+
   var interactor: CurrencyInteractorProtocol?
-  
-  private var viewModel = CurrencyViewControllerModel(navigationTitle: "", currencies: []) {
-    didSet {
-      navigationItem.title = viewModel.navigationTitle
-      tableView.reloadData()
-    }
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    navigationItem.largeTitleDisplayMode = .never
+
+    view.addSubview(tableView)
+    tableView.fill()
+
+    interactor?.viewDidLoad()
   }
-  
+
+  // MARK: Private
+
   private lazy var tableView: UITableView = {
     let tableView = UITableView()
     tableView.delegate = self
@@ -28,32 +38,29 @@ final class CurrencyViewController: UIViewController {
     tableView.register(CurrencyCell.self, forCellReuseIdentifier: CurrencyCell.reuseId)
     tableView.separatorInset = .zero
     tableView.tableFooterView = UIView()
-    
+
     return tableView
   }()
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    
-    navigationItem.largeTitleDisplayMode = .never
-    
-    view.addSubview(tableView)
-    tableView.fill()
 
-    interactor?.viewDidLoad()
+  private var viewModel = CurrencyViewControllerModel(navigationTitle: "", currencies: []) {
+    didSet {
+      navigationItem.title = viewModel.navigationTitle
+      tableView.reloadData()
+    }
   }
 }
 
+// MARK: UITableViewDataSource
+
 extension CurrencyViewController: UITableViewDataSource {
-  
   func tableView(
-    _ tableView: UITableView,
-    numberOfRowsInSection section: Int)
+    _: UITableView,
+    numberOfRowsInSection _: Int)
     -> Int
   {
     viewModel.currencies.count
   }
-  
+
   func tableView(
     _ tableView: UITableView,
     cellForRowAt indexPath: IndexPath)
@@ -66,26 +73,28 @@ extension CurrencyViewController: UITableViewDataSource {
   }
 }
 
+// MARK: UITableViewDelegate
+
 extension CurrencyViewController: UITableViewDelegate {
-  
   func tableView(
-    _ tableView: UITableView,
+    _: UITableView,
     didSelectRowAt indexPath: IndexPath)
   {
     interactor?.didTapCurrency(symbol: viewModel.currencies[indexPath.row].code)
   }
-  
+
   func tableView(
-    _ tableView: UITableView,
-    heightForRowAt indexPath: IndexPath)
+    _: UITableView,
+    heightForRowAt _: IndexPath)
     -> CGFloat
   {
     52
   }
 }
 
+// MARK: CurrencyViewControllerProtocol
+
 extension CurrencyViewController: CurrencyViewControllerProtocol {
-  
   func update(viewModel: CurrencyViewControllerModel) {
     self.viewModel = viewModel
   }

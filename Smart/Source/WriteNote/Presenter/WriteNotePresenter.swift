@@ -7,23 +7,27 @@
 //
 
 import Database
-import VinchyCore
 import StringFormatting
+import VinchyCore
+
+// MARK: - WriteNotePresenter
 
 final class WriteNotePresenter {
 
-  weak var viewController: WriteNoteViewControllerProtocol?
+  // MARK: Lifecycle
 
-  init(viewController: WriteNoteViewControllerProtocol){
+  init(viewController: WriteNoteViewControllerProtocol) {
     self.viewController = viewController
-
   }
+
+  // MARK: Internal
+
+  weak var viewController: WriteNoteViewControllerProtocol?
 }
 
-// MARK: - WriteNotePresenterProtocol
+// MARK: WriteNotePresenterProtocol
 
 extension WriteNotePresenter: WriteNotePresenterProtocol {
-  
   func setPlaceholder() {
     viewController?.setupPlaceholder(
       placeholder: localized("your_thoughts_about_wine").firstLetterUppercased())
@@ -32,8 +36,8 @@ extension WriteNotePresenter: WriteNotePresenterProtocol {
   func setInitialNoteInfo(note: VNote) {
     viewController?.update(
       viewModel: .init(
-          noteText: note.noteText,
-          navigationText: note.wineTitle))
+        noteText: note.noteText,
+        navigationText: note.wineTitle))
   }
 
   func setInitialNoteInfo(wine: Wine) {

@@ -6,80 +6,95 @@ import Foundation
 
 /// A doubly linked list.
 final class LinkedList<Element> {
-    // first <-> node <-> ... <-> last
-    private(set) var first: Node?
-    private(set) var last: Node?
 
-    deinit {
-        removeAll()
+  // MARK: Lifecycle
 
-        #if TRACK_ALLOCATIONS
-        Allocations.decrement("LinkedList")
-        #endif
+  deinit {
+    removeAll()
+
+    #if TRACK_ALLOCATIONS
+    Allocations.decrement("LinkedList")
+    #endif
+  }
+
+  init() {
+    #if TRACK_ALLOCATIONS
+    Allocations.increment("LinkedList")
+    #endif
+  }
+
+  // MARK: Internal
+
+  final class Node {
+
+    // MARK: Lifecycle
+
+    init(value: Element) {
+      self.value = value
     }
 
-    init() {
-        #if TRACK_ALLOCATIONS
-        Allocations.increment("LinkedList")
-        #endif
-    }
+    // MARK: Internal
 
-    var isEmpty: Bool {
-        last == nil
-    }
+    let value: Element
 
-    /// Adds an element to the end of the list.
-    @discardableResult
-    func append(_ element: Element) -> Node {
-        let node = Node(value: element)
-        append(node)
-        return node
-    }
+    // MARK: Fileprivate
 
-    /// Adds a node to the end of the list.
-    func append(_ node: Node) {
-        if let last = last {
-            last.next = node
-            node.previous = last
-            self.last = node
-        } else {
-            last = node
-            first = node
-        }
-    }
+    fileprivate var next: Node?
+    fileprivate var previous: Node?
 
-    func remove(_ node: Node) {
-        node.next?.previous = node.previous // node.previous is nil if node=first
-        node.previous?.next = node.next // node.next is nil if node=last
-        if node === last {
-            last = node.previous
-        }
-        if node === first {
-            first = node.next
-        }
-        node.next = nil
-        node.previous = nil
-    }
+  }
 
-    func removeAll() {
-        // avoid recursive Nodes deallocation
-        var node = first
-        while let next = node?.next {
-            node?.next = nil
-            next.previous = nil
-            node = next
-        }
-        last = nil
-        first = nil
-    }
+  // first <-> node <-> ... <-> last
+  private(set) var first: Node?
+  private(set) var last: Node?
 
-    final class Node {
-        let value: Element
-        fileprivate var next: Node?
-        fileprivate var previous: Node?
+  var isEmpty: Bool {
+    last == nil
+  }
 
-        init(value: Element) {
-            self.value = value
-        }
+  /// Adds an element to the end of the list.
+  @discardableResult
+  func append(_ element: Element) -> Node {
+    let node = Node(value: element)
+    append(node)
+    return node
+  }
+
+  /// Adds a node to the end of the list.
+  func append(_ node: Node) {
+    if let last = last {
+      last.next = node
+      node.previous = last
+      self.last = node
+    } else {
+      last = node
+      first = node
     }
+  }
+
+  func remove(_ node: Node) {
+    node.next?.previous = node.previous // node.previous is nil if node=first
+    node.previous?.next = node.next // node.next is nil if node=last
+    if node === last {
+      last = node.previous
+    }
+    if node === first {
+      first = node.next
+    }
+    node.next = nil
+    node.previous = nil
+  }
+
+  func removeAll() {
+    // avoid recursive Nodes deallocation
+    var node = first
+    while let next = node?.next {
+      node?.next = nil
+      next.previous = nil
+      node = next
+    }
+    last = nil
+    first = nil
+  }
+
 }

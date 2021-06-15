@@ -9,7 +9,6 @@
 import Foundation
 
 final class AdvancedSearchAssembly {
-
   static func assemblyModule() -> AdvancedSearchViewController {
     let viewController = AdvancedSearchViewController()
 

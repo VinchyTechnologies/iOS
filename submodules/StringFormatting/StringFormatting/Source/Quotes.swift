@@ -8,17 +8,15 @@
 
 import Foundation
 
-public extension String {
-
-    var quoted: String {
-
-        guard
-            let bQuote = Locale.current.quotationBeginDelimiter,
-            let eQuote = Locale.current.quotationEndDelimiter
-        else {
-            return "\"" + self + "\""
-        }
-
-        return bQuote + self + eQuote
+extension String {
+  public var quoted: String {
+    guard
+      let bQuote = Locale.current.quotationBeginDelimiter,
+      let eQuote = Locale.current.quotationEndDelimiter
+    else {
+      return "\"" + self + "\""
     }
+
+    return bQuote + self + eQuote
+  }
 }

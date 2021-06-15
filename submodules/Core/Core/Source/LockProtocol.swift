@@ -6,19 +6,32 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+// MARK: - LockProtocol
+
 public protocol LockProtocol: AnyObject {
   func lock()
   func unlock()
 }
 
-extension NSLock: LockProtocol { }
-extension NSConditionLock: LockProtocol { }
-extension NSRecursiveLock: LockProtocol { }
-extension NSCondition: LockProtocol { }
+// MARK: - NSLock + LockProtocol
 
-public extension LockProtocol {
+extension NSLock: LockProtocol {}
+
+// MARK: - NSConditionLock + LockProtocol
+
+extension NSConditionLock: LockProtocol {}
+
+// MARK: - NSRecursiveLock + LockProtocol
+
+extension NSRecursiveLock: LockProtocol {}
+
+// MARK: - NSCondition + LockProtocol
+
+extension NSCondition: LockProtocol {}
+
+extension LockProtocol {
   @discardableResult
-  func synchronized<T>(_ block: () -> T) -> T {
+  public func synchronized<T>(_ block: () -> T) -> T {
     lock()
     defer { unlock() }
     return block()

@@ -10,24 +10,7 @@ import UIKit
 
 public final class GradientView: UIView {
 
-  public enum C {
-    public static let defaultFromColor = UIColor.clear
-    public static let defaultToColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
-    public static let defaultStartPoint = CGPoint(x: 0.5, y: 0)
-    public static let defaultEndPoint = CGPoint(x: 0.5, y: 1)
-  }
-
-  private var gradient: CAGradientLayer {
-    didSet {
-      gradient.actions = ["bounds": NSNull(), "position": NSNull()]
-    }
-  }
-
-  var fromColor: UIColor = C.defaultFromColor
-  var toColor: UIColor = C.defaultToColor
-
-  var startPoint: CGPoint = C.defaultStartPoint
-  var endPoint: CGPoint = C.defaultEndPoint
+  // MARK: Lifecycle
 
   // MARK: - Initializers
 
@@ -38,7 +21,6 @@ public final class GradientView: UIView {
     startPoint: CGPoint = C.defaultStartPoint,
     endPoint: CGPoint = C.defaultEndPoint)
   {
-
     self.fromColor = fromColor
     self.toColor = toColor
 
@@ -57,15 +39,52 @@ public final class GradientView: UIView {
     layer.addSublayer(gradient)
   }
 
-  required init?(coder aDecoder: NSCoder) { fatalError() }
+  @available(*, unavailable)
+  required init?(coder _: NSCoder) { fatalError() }
 
-  public override func layoutSubviews() {
+  // MARK: Public
+
+  public enum C {
+    public static let defaultFromColor = UIColor.clear
+    public static let defaultToColor = UIColor(red: 0, green: 0, blue: 0, alpha: 0.5)
+    public static let defaultStartPoint = CGPoint(x: 0.5, y: 0)
+    public static let defaultEndPoint = CGPoint(x: 0.5, y: 1)
+  }
+
+  override public func layoutSubviews() {
     super.layoutSubviews()
     gradient.frame = bounds
   }
 
-  func setGradient(from fromColor: UIColor, to toColor: UIColor, isByAxisX: Bool = false) {
+  // MARK: Internal
 
+  var fromColor: UIColor = C.defaultFromColor
+  var toColor: UIColor = C.defaultToColor
+
+  var startPoint: CGPoint = C.defaultStartPoint
+  var endPoint: CGPoint = C.defaultEndPoint
+
+  static func createGradientShadow(
+    from fromColor: UIColor,
+    to toColor: UIColor,
+    startPoint: CGPoint,
+    endPoint: CGPoint)
+    -> CAGradientLayer
+  {
+    let gradientLayer = CAGradientLayer()
+
+    let color1 = fromColor.cgColor
+    let color2 = toColor.cgColor
+    gradientLayer.colors = [color1, color2]
+    gradientLayer.startPoint = startPoint
+    gradientLayer.endPoint = endPoint
+
+    gradientLayer.locations = [0.0, 0.8]
+
+    return gradientLayer
+  }
+
+  func setGradient(from fromColor: UIColor, to toColor: UIColor, isByAxisX: Bool = false) {
     let color1 = fromColor.cgColor
     let color2 = toColor.cgColor
     gradient.colors = [color1, color2]
@@ -79,25 +98,12 @@ public final class GradientView: UIView {
     }
   }
 
-  static func createGradientShadow(
-    from fromColor: UIColor,
-    to toColor: UIColor,
-    startPoint: CGPoint,
-    endPoint: CGPoint)
-    -> CAGradientLayer
-  {
+  // MARK: Private
 
-    let gradientLayer = CAGradientLayer()
-
-    let color1 = fromColor.cgColor
-    let color2 = toColor.cgColor
-    gradientLayer.colors = [color1, color2]
-    gradientLayer.startPoint = startPoint
-    gradientLayer.endPoint = endPoint
-
-    gradientLayer.locations = [0.0, 0.8]
-
-    return gradientLayer
+  private var gradient: CAGradientLayer {
+    didSet {
+      gradient.actions = ["bounds": NSNull(), "position": NSNull()]
+    }
   }
 
   private func customizeAppearance() {

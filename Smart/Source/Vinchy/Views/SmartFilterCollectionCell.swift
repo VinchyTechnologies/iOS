@@ -6,16 +6,17 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
 import Display
+import UIKit
+
+// MARK: - SmartFilterCollectionCellViewModel
 
 public struct SmartFilterCollectionCellViewModel: ViewModelProtocol {
-  
   fileprivate let accentText: String
   fileprivate let boldText: String
   fileprivate let subtitleText: String
   fileprivate let buttonText: String
-  
+
   public init(
     accentText: String,
     boldText: String,
@@ -27,36 +28,34 @@ public struct SmartFilterCollectionCellViewModel: ViewModelProtocol {
     self.subtitleText = subtitleText
     self.buttonText = buttonText
   }
-  
 }
 
+// MARK: - SmartFilterCollectionCell
+
 final class SmartFilterCollectionCell: UICollectionViewCell, Reusable {
-  
-  private let topAccentLabel = UILabel()
-  private let boldTitleLabel = UILabel()
-  private let subtitleLabel = UILabel()
-  private let tryItNowButton = UIButton()
-  
+
+  // MARK: Lifecycle
+
   override init(frame: CGRect) {
     super.init(frame: frame)
-    
+
     backgroundColor = .option
     layer.cornerRadius = 10
     clipsToBounds = true
-    
+
     topAccentLabel.font = Font.medium(13)
     topAccentLabel.textColor = .accent
     topAccentLabel.textAlignment = .center
-    
+
     boldTitleLabel.font = Font.heavy(20)
     boldTitleLabel.textColor = .dark
     boldTitleLabel.textAlignment = .center
-    
+
     subtitleLabel.font = Font.regular(16)
     subtitleLabel.textColor = .blueGray
     subtitleLabel.textAlignment = .center
     subtitleLabel.numberOfLines = 0
-    
+
     tryItNowButton.backgroundColor = .accent
     tryItNowButton.setTitleColor(.white, for: .normal)
     tryItNowButton.translatesAutoresizingMaskIntoConstraints = false
@@ -65,14 +64,14 @@ final class SmartFilterCollectionCell: UICollectionViewCell, Reusable {
     tryItNowButton.layer.cornerRadius = 10
     tryItNowButton.clipsToBounds = true
     tryItNowButton.titleLabel?.font = Font.bold(18)
-    
+
     let stackView = UIStackView(arrangedSubviews: [
       topAccentLabel,
       boldTitleLabel,
       subtitleLabel,
       tryItNowButton,
     ])
-    
+
     stackView.axis = .vertical
     stackView.distribution = .equalSpacing
     addSubview(stackView)
@@ -84,20 +83,27 @@ final class SmartFilterCollectionCell: UICollectionViewCell, Reusable {
       stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
     ])
   }
-  
-  required init?(coder: NSCoder) { fatalError() }
-  
+
+  @available(*, unavailable)
+  required init?(coder _: NSCoder) { fatalError() }
+
+  // MARK: Private
+
+  private let topAccentLabel = UILabel()
+  private let boldTitleLabel = UILabel()
+  private let subtitleLabel = UILabel()
+  private let tryItNowButton = UIButton()
 }
 
+// MARK: Decoratable
+
 extension SmartFilterCollectionCell: Decoratable {
-  
   typealias ViewModel = SmartFilterCollectionCellViewModel
-  
+
   func decorate(model: ViewModel) {
     topAccentLabel.text = model.accentText
     boldTitleLabel.text = model.boldText
     subtitleLabel.text = model.subtitleText
     tryItNowButton.setTitle(model.buttonText, for: .normal)
   }
-  
 }

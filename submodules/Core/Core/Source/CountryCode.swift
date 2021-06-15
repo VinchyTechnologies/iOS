@@ -8,13 +8,14 @@
 
 import Foundation
 
+// MARK: - Country
+
 public struct Country: Decodable {
   public let code: String
   public let country: String
 }
 
 public func loadCountryCodes() -> [Country] {
-
   guard let filePath = Bundle.main.path(forResource: "country_codes", ofType: "json") else {
     return []
   }

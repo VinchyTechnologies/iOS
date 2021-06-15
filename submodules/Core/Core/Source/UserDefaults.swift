@@ -8,33 +8,35 @@
 
 import Foundation
 
-public struct UserDefaultsConfig {
+// MARK: - UserDefaultsConfig
 
+public enum UserDefaultsConfig {
   @UserDefault("isAdult", defaultValue: false)
-  static public var isAdult: Bool
+  public static var isAdult: Bool
 
   @UserDefault("agreeToTermsAndConditions", defaultValue: false)
-  static public var isAgreedToTermsAndConditions: Bool
+  public static var isAgreedToTermsAndConditions: Bool
 
   @UserDefault("lastSeenOnboardingVersion", defaultValue: 0)
-  static public var lastSeenOnboardingVersion: Int
-  
+  public static var lastSeenOnboardingVersion: Int
+
   @UserDefault("currency", defaultValue: Locale.current.currencyCode ?? "USD")
-  static public var currency: String
+  public static var currency: String
 
   @UserDefault("accountID", defaultValue: 0)
-  static public var accountID: Int
-  
+  public static var accountID: Int
+
   @UserDefault("accountEmail", defaultValue: "")
-  static public var accountEmail: String
-  
+  public static var accountEmail: String
+
   @UserDefault("userName", defaultValue: "")
-  static public var userName: String
+  public static var userName: String
 }
+
+// MARK: - UserDefault
 
 @propertyWrapper
 public struct UserDefault<T> {
-
   public let key: String
   public let defaultValue: T
 
@@ -45,7 +47,7 @@ public struct UserDefault<T> {
 
   public var wrappedValue: T {
     get {
-      return UserDefaults.standard.object(forKey: key) as? T ?? defaultValue
+      UserDefaults.standard.object(forKey: key) as? T ?? defaultValue
     }
     set {
       UserDefaults.standard.set(newValue, forKey: key)

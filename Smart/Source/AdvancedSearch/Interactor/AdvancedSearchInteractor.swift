@@ -8,13 +8,11 @@
 
 import Core
 
+// MARK: - AdvancedSearchInteractor
+
 final class AdvancedSearchInteractor {
 
-  private let router: AdvancedSearchRouterProtocol
-  private let presenter: AdvancedSearchPresenterProtocol
-  private let initialFilters: [Filter]
-  private var filters: [Filter]
-  private var selectedFilters: [FilterItem] = []
+  // MARK: Lifecycle
 
   init(
     router: AdvancedSearchRouterProtocol,
@@ -22,21 +20,27 @@ final class AdvancedSearchInteractor {
   {
     self.router = router
     self.presenter = presenter
-    self.initialFilters = loadFilters()
-    self.filters = loadFilters() // TODO: - may be via input
+    initialFilters = loadFilters()
+    filters = loadFilters() // TODO: - may be via input
   }
+
+  // MARK: Private
+
+  private let router: AdvancedSearchRouterProtocol
+  private let presenter: AdvancedSearchPresenterProtocol
+  private let initialFilters: [Filter]
+  private var filters: [Filter]
+  private var selectedFilters: [FilterItem] = []
 }
 
-// MARK: - AdvancedSearchInteractorProtocol
+// MARK: AdvancedSearchInteractorProtocol
 
 extension AdvancedSearchInteractor: AdvancedSearchInteractorProtocol {
-
   func viewDidLoad() {
     presenter.update(filters: filters, selectedFilters: selectedFilters, sec: nil)
   }
 
   func didSelectItem(at indexPath: IndexPath) {
-
     if selectedFilters.contains(where: { $0 == filters[indexPath.section].items[indexPath.row] }) {
       selectedFilters.removeAll(where: { $0 == filters[indexPath.section].items[indexPath.row] })
     } else {
@@ -54,8 +58,8 @@ extension AdvancedSearchInteractor: AdvancedSearchInteractorProtocol {
     case .country:
       let preSelectedCountryCodes: [String] =
         selectedFilters
-        .filter ({ $0.category == .country })
-        .compactMap({ $0.title })
+          .filter { $0.category == .country }
+          .compactMap { $0.title }
       router.presentAllCountries(preSelectedCountryCodes: preSelectedCountryCodes)
 
     case .type, .color, .sugar:
@@ -64,7 +68,6 @@ extension AdvancedSearchInteractor: AdvancedSearchInteractorProtocol {
   }
 
   func didChooseCountryCodes(_ countryCodes: [String]) {
-
     var filterItems: [FilterItem] = []
     selectedFilters.removeAll(where: { $0.category == .country })
     countryCodes.forEach { code in
@@ -96,17 +99,15 @@ extension AdvancedSearchInteractor: AdvancedSearchInteractorProtocol {
   }
 
   func didTapConfirmSearchButton() {
-
     guard !selectedFilters.isEmpty else {
       return // TODO: - alert no one filter selected
     }
 
-    let params: [(String, String)] = selectedFilters.compactMap ({ ($0.category.serverName, $0.title) })
+    let params: [(String, String)] = selectedFilters.compactMap { ($0.category.serverName, $0.title) }
     router.pushToShowcaseViewController(input: .init(title: nil, mode: .advancedSearch(params: params)))
   }
 
   func didTapResetAllFiltersButton() {
-
     guard !selectedFilters.isEmpty else {
       return
     }

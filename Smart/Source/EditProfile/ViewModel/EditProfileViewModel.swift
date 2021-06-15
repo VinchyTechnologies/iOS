@@ -9,7 +9,6 @@
 import UIKit
 
 struct EditProfileViewModel {
-  
   enum CommonEditCellRow {
     case title(text: NSAttributedString)
     case textField(text: String?)
@@ -18,7 +17,7 @@ struct EditProfileViewModel {
   enum Section {
     case commonEditCell([CommonEditCellRow])
   }
-  
+
   let sections: [Section]
   let navigationTitle: String?
   let saveButtonText: String?

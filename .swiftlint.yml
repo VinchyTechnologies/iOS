@@ -1,8 +1,9 @@
-whitelist_rules:
+only_rules:
   - closure_spacing
   - colon
   - empty_enum_arguments
   - force_cast
+#  - fatal_error_message
   - force_try
   - force_unwrapping
   - implicitly_unwrapped_optional
@@ -45,6 +46,8 @@ identifier_name:
     - C
     - x
     - y
+    - M
+    - Id
 
 type_name:
   max_length: # warning and error
@@ -52,3 +55,5 @@ type_name:
     error: 150
   excluded:
   - C
+  - M
+  - Id

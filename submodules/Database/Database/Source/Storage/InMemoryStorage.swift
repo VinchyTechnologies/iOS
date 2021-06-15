@@ -8,21 +8,28 @@
 import Foundation
 
 public final class InMemoryStorage<M>: StorageProtocol {
-    public init(model: M? = nil) {
-        self.model = model
-    }
 
-    public func read() -> M? {
-        model
-    }
+  // MARK: Lifecycle
 
-    public func save(_ model: M) {
-        self.model = model
-    }
+  public init(model: M? = nil) {
+    self.model = model
+  }
 
-    public func clear() {
-        model = nil
-    }
+  // MARK: Public
 
-    private var model: M?
+  public func read() -> M? {
+    model
+  }
+
+  public func save(_ model: M) {
+    self.model = model
+  }
+
+  public func clear() {
+    model = nil
+  }
+
+  // MARK: Private
+
+  private var model: M?
 }

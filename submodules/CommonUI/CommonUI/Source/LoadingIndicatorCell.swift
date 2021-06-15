@@ -10,18 +10,23 @@ import Display
 import UIKit
 
 public final class LoadingIndicatorCell: UICollectionViewCell, Loadable, Reusable {
-  
-  public private(set) var loadingIndicator = ActivityIndicatorView()
-  
-  public override init(frame: CGRect) {
+
+  // MARK: Lifecycle
+
+  override public init(frame: CGRect) {
     super.init(frame: frame)
     addLoader()
     startLoadingAnimation()
   }
-  
-  required init?(coder: NSCoder) { fatalError() }
-  
-  public override func prepareForReuse() {
+
+  @available(*, unavailable)
+  required init?(coder _: NSCoder) { fatalError() }
+
+  // MARK: Public
+
+  public private(set) var loadingIndicator = ActivityIndicatorView()
+
+  override public func prepareForReuse() {
     super.prepareForReuse()
     startLoadingAnimation()
   }

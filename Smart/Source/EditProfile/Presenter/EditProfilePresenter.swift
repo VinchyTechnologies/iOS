@@ -9,38 +9,45 @@
 import Display
 import StringFormatting
 
+// MARK: - EditProfilePresenter
+
 final class EditProfilePresenter {
 
-    private typealias ViewModel = EditProfileViewModel
+  // MARK: Lifecycle
 
-    weak var viewController: EditProfileViewControllerProtocol?
+  init(viewController: EditProfileViewControllerProtocol) {
+    self.viewController = viewController
+  }
 
-    init(viewController: EditProfileViewControllerProtocol) {
-        self.viewController = viewController
-    }
+  // MARK: Internal
+
+  weak var viewController: EditProfileViewControllerProtocol?
+
+  // MARK: Private
+
+  private typealias ViewModel = EditProfileViewModel
 }
 
-// MARK: - EditProfilePresenterProtocol
+// MARK: EditProfilePresenterProtocol
 
 extension EditProfilePresenter: EditProfilePresenterProtocol {
   func update(userName: String?, email: String) {
-    
     var sections = [EditProfileViewModel.Section]()
-    
+
     sections += [
       .commonEditCell([
         .title(text: NSAttributedString(string: "UserName", font: Font.medium(16), textColor: .dark)),
-        .textField(text: userName)
-      ])
+        .textField(text: userName),
+      ]),
     ]
-    
+
     sections += [
       .commonEditCell([
         .title(text: NSAttributedString(string: "Email", font: Font.medium(16), textColor: .dark)),
-        .textField(text: email)
-      ])
+        .textField(text: email),
+      ]),
     ]
-    
+
     let viewModel = EditProfileViewModel(sections: sections, navigationTitle: "Edit profile", saveButtonText: localized("save").firstLetterUppercased())
     viewController?.updateUI(viewModel: viewModel)
   }

@@ -8,6 +8,8 @@
 
 import Core
 
+// MARK: - Scheme
+
 public enum Scheme: String {
   case http, https
 }
@@ -18,21 +20,23 @@ public typealias Parameters = [(String, Any)]
 /// A dictionary of headers to apply to a `URLRequest`
 public typealias HTTPHeaders = [String: String]
 
-public enum HTTPMethod: String {
+// MARK: - HTTPMethod
 
-  case get     = "GET"
-  case head    = "HEAD"
-  case post    = "POST"
-  case put     = "PUT"
-  case delete  = "DELETE"
+public enum HTTPMethod: String {
+  case get = "GET"
+  case head = "HEAD"
+  case post = "POST"
+  case put = "PUT"
+  case delete = "DELETE"
   case connect = "CONNECT"
   case options = "OPTIONS"
-  case trace   = "TRACE"
-  case patch   = "PATCH"
+  case trace = "TRACE"
+  case patch = "PATCH"
 }
 
-public protocol EndpointProtocol {
+// MARK: - EndpointProtocol
 
+public protocol EndpointProtocol {
   var scheme: Scheme { get }
   var host: String { get }
   var path: String { get }
@@ -43,18 +47,19 @@ public protocol EndpointProtocol {
   var cacheKey: String? { get }
 }
 
+// MARK: - ParameterEncoding
+
 public enum ParameterEncoding {
   case httpBody
   case queryString
 }
 
-public extension EndpointProtocol {
-
-  var scheme: Scheme {
-    return .https
+extension EndpointProtocol {
+  public var scheme: Scheme {
+    .https
   }
 
-  var encoding: ParameterEncoding {
+  public var encoding: ParameterEncoding {
     switch method {
     case .get:
       return .queryString
@@ -64,15 +69,15 @@ public extension EndpointProtocol {
     }
   }
 
-  var headers: HTTPHeaders? {
-    return [
+  public var headers: HTTPHeaders? {
+    [
       "Authorization": "VFAXGm53nG7zBtEuF5DVAhK9YKuHBJ9xTjuCeFyHDxbP4s6gj6",
       "accept-language": Locale.current.languageCode ?? "en",
       "x-currency": UserDefaultsConfig.currency,
     ]
   }
 
-  var cacheKey: String? {
+  public var cacheKey: String? {
     nil
   }
 }

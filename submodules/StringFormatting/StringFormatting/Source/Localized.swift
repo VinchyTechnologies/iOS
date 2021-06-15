@@ -8,6 +8,8 @@
 
 import Foundation
 
+// MARK: - LocalizedSource
+
 public enum LocalizedSource: String {
   case common = "Localizable"
   case countries = "Countries"

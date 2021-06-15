@@ -8,35 +8,42 @@
 
 public let notesRepository = NotesRepository() // TODO: - DI
 
+// MARK: - VNote
+
 public class VNote: Codable, DIdentifiable, DSortable, Equatable {
-  
-  public static func == (lhs: VNote, rhs: VNote) -> Bool {
-    lhs.id == rhs.id
-  }
-  
-  public typealias Id = Int // swiftlint:disable:this type_name
-  
-  public static var sorting: (VNote, VNote) -> Bool {
-    { $0.id < $1.id }
-  }
-  
-  public let id: Int
-  public let wineID: Int64?
-  public let wineTitle: String?
-  public let noteText: String?
-  
+
+  // MARK: Lifecycle
+
   public init(id: Int, wineID: Int64?, wineTitle: String?, noteText: String?) {
     self.id = id
     self.wineID = wineID
     self.wineTitle = wineTitle
     self.noteText = noteText
   }
+
+  // MARK: Public
+
+  public typealias Id = Int // swiftlint:disable:this type_name
+
+  public static var sorting: (VNote, VNote) -> Bool {
+    { $0.id < $1.id }
+  }
+
+  public let id: Int
+  public let wineID: Int64?
+  public let wineTitle: String?
+  public let noteText: String?
+
+  public static func == (lhs: VNote, rhs: VNote) -> Bool {
+    lhs.id == rhs.id
+  }
 }
 
+// MARK: - NotesRepository
+
 public final class NotesRepository: CollectionRepository<VNote> {
-        
   public init() {
-      super.init(storage: InMemoryStorageWithFilePersistance().toAny())
+    super.init(storage: InMemoryStorageWithFilePersistance().toAny())
   }
 }
 
@@ -46,16 +53,16 @@ extension VNote {
     switch key {
     case "id":
       return id
-      
+
     case "wineID":
       return wineID
-      
+
     case "wineTitle":
       return wineTitle
-      
+
     case "noteText":
       return noteText
-      
+
     default:
       return nil
     }

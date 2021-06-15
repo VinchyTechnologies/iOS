@@ -7,9 +7,8 @@
 //
 
 public struct AccountID: Decodable {
-  
   public let accountID: Int
-  
+
   private enum CodingKeys: String, CodingKey {
     case accountID = "account_id"
   }

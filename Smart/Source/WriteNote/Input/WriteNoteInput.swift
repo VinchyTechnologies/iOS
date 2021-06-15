@@ -10,7 +10,6 @@ import Database
 import VinchyCore
 
 struct WriteNoteInput {
-  
   enum WriteNoteWine {
     case database(note: VNote)
     case firstTime(wine: Wine)

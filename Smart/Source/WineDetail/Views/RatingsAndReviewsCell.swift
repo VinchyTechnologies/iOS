@@ -6,15 +6,18 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
 import Display
+import UIKit
+
+// MARK: - RatingsAndReviewsCellDelegate
 
 protocol RatingsAndReviewsCellDelegate: AnyObject {
   func didTapSeeAllReview()
 }
 
-struct RatingsAndReviewsCellViewModel: ViewModelProtocol {
+// MARK: - RatingsAndReviewsCellViewModel
 
+struct RatingsAndReviewsCellViewModel: ViewModelProtocol {
   fileprivate let titleText: String?
   fileprivate let moreText: String?
   fileprivate let shouldShowMoreText: Bool
@@ -26,16 +29,11 @@ struct RatingsAndReviewsCellViewModel: ViewModelProtocol {
   }
 }
 
+// MARK: - RatingsAndReviewsCell
+
 final class RatingsAndReviewsCell: UICollectionViewCell, Reusable {
 
-  // MARK: - Internal Properties
-
-  weak var delegate: RatingsAndReviewsCellDelegate?
-
-  // MARK: - Private Properties
-
-  private let titleLabel = UILabel()
-  private let moreButton = UIButton()
+  // MARK: Lifecycle
 
   // MARK: - Initializers
 
@@ -66,16 +64,31 @@ final class RatingsAndReviewsCell: UICollectionViewCell, Reusable {
     ])
   }
 
-  required init?(coder: NSCoder) { fatalError() }
+  @available(*, unavailable)
+  required init?(coder _: NSCoder) { fatalError() }
+
+  // MARK: Internal
+
+  // MARK: - Internal Properties
+
+  weak var delegate: RatingsAndReviewsCellDelegate?
+
+  // MARK: Private
+
+  // MARK: - Private Properties
+
+  private let titleLabel = UILabel()
+  private let moreButton = UIButton()
 
   @objc
-  private func didTapSeeAllButton(_ button: UIButton) {
-      delegate?.didTapSeeAllReview()
+  private func didTapSeeAllButton(_: UIButton) {
+    delegate?.didTapSeeAllReview()
   }
 }
 
-extension RatingsAndReviewsCell: Decoratable {
+// MARK: Decoratable
 
+extension RatingsAndReviewsCell: Decoratable {
   typealias ViewModel = RatingsAndReviewsCellViewModel
 
   func decorate(model: ViewModel) {

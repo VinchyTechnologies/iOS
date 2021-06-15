@@ -8,8 +8,9 @@
 
 import Foundation
 
-public struct TopSecretPreferences: Decodable {
+// MARK: - TopSecretPreferences
 
+public struct TopSecretPreferences: Decodable {
   public let apiKey: String
 
   private enum CodingKeys: String, CodingKey {
@@ -18,9 +19,11 @@ public struct TopSecretPreferences: Decodable {
 }
 
 public func getTopSecretPreferences() -> TopSecretPreferences? {
-  if let path = Bundle.main.path(forResource: "TopSecret", ofType: "plist"),
-     let xml = FileManager.default.contents(atPath: path),
-     let preferences = try? PropertyListDecoder().decode(TopSecretPreferences.self, from: xml) {
+  if
+    let path = Bundle.main.path(forResource: "TopSecret", ofType: "plist"),
+    let xml = FileManager.default.contents(atPath: path),
+    let preferences = try? PropertyListDecoder().decode(TopSecretPreferences.self, from: xml)
+  {
     return preferences
   }
 

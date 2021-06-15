@@ -8,8 +8,9 @@
 
 import Display
 
-protocol WriteReviewRoutable: AnyObject {
+// MARK: - WriteReviewRoutable
 
+protocol WriteReviewRoutable: AnyObject {
   var viewController: UIViewController? { get }
 
   func presentWriteReviewViewController(
@@ -20,7 +21,6 @@ protocol WriteReviewRoutable: AnyObject {
 }
 
 extension WriteReviewRoutable {
-
   func presentWriteReviewViewController(
     reviewID: Int?,
     wineID: Int64,

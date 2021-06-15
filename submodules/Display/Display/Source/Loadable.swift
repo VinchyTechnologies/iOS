@@ -8,17 +8,17 @@
 
 import UIKit
 
+// MARK: - Loadable
+
 public protocol Loadable: AnyObject {
-  
   var loadingIndicator: ActivityIndicatorView { get }
-  
+
   func addLoader()
   func startLoadingAnimation()
   func stopLoadingAnimation()
 }
 
 extension Loadable where Self: UIViewController {
-  
   public func addLoader() {
     loadViewIfNeeded()
     view.addSubview(loadingIndicator)
@@ -30,19 +30,17 @@ extension Loadable where Self: UIViewController {
       loadingIndicator.centerXAnchor.constraint(equalTo: view.centerXAnchor),
     ])
   }
-  
+
   public func startLoadingAnimation() {
     loadingIndicator.isAnimating = true
   }
-  
+
   public func stopLoadingAnimation() {
     loadingIndicator.isAnimating = false
   }
-  
 }
 
 extension Loadable where Self: UIView {
-  
   public func addLoader() {
     addSubview(loadingIndicator)
     loadingIndicator.translatesAutoresizingMaskIntoConstraints = false
@@ -53,11 +51,11 @@ extension Loadable where Self: UIView {
       loadingIndicator.centerXAnchor.constraint(equalTo: centerXAnchor),
     ])
   }
-  
+
   public func startLoadingAnimation() {
     loadingIndicator.isAnimating = true
   }
-  
+
   public func stopLoadingAnimation() {
     loadingIndicator.isAnimating = false
   }

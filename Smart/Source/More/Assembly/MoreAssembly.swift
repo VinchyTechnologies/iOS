@@ -9,16 +9,14 @@
 import UIKit
 
 final class MoreAssembly {
-
   static func assemblyModule() -> UIViewController {
-
     let viewController = MoreViewController()
     let router = MoreRouter(viewController: viewController)
     let presenter = MorePresenter(viewController: viewController)
     let interactor = MoreInteractor(presenter: presenter, router: router)
-    
+
     viewController.interactor = interactor
-    
+
     return viewController
   }
 }

@@ -8,12 +8,12 @@
 import UIKit
 import VinchyCore
 
+// MARK: - EnterPasswordRouter
+
 final class EnterPasswordRouter {
-  
-  weak var viewController: UIViewController?
-  weak var interactor: EnterPasswordInteractorProtocol?
-  private let input: EnterPasswordInput
-  
+
+  // MARK: Lifecycle
+
   init(
     input: EnterPasswordInput,
     viewController: UIViewController)
@@ -21,9 +21,18 @@ final class EnterPasswordRouter {
     self.input = input
     self.viewController = viewController
   }
+
+  // MARK: Internal
+
+  weak var viewController: UIViewController?
+  weak var interactor: EnterPasswordInteractorProtocol?
+
+  // MARK: Private
+
+  private let input: EnterPasswordInput
 }
 
-// MARK: - EnterPasswordRouterProtocol
+// MARK: EnterPasswordRouterProtocol
 
 extension EnterPasswordRouter: EnterPasswordRouterProtocol {
   func dismissAndRequestSuccess(output: AuthorizationOutputModel?) {

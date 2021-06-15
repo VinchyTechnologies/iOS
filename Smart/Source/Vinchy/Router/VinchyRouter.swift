@@ -6,24 +6,31 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
 import Core
+import UIKit
 import VinchyCore
 
+// MARK: - VinchyRouter
+
 final class VinchyRouter {
+
+  // MARK: Lifecycle
+
+  init(viewController: UIViewController) {
+    self.viewController = viewController
+  }
+
+  // MARK: Internal
 
   let emailService = EmailService()
 
   weak var viewController: UIViewController?
   weak var interactor: VinchyInteractorProtocol?
-
-  init(viewController: UIViewController) {
-    self.viewController = viewController
-  }
 }
 
-extension VinchyRouter: VinchyRouterProtocol {
+// MARK: VinchyRouterProtocol
 
+extension VinchyRouter: VinchyRouterProtocol {
   func pushToAdvancedFilterViewController() {
     viewController?.navigationController?.pushViewController(
       Assembly.buildFiltersModule(), animated: true)

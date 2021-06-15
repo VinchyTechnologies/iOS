@@ -9,43 +9,39 @@
 import Display // TODO: - Delete
 import UIKit
 
-public protocol AdsProtocol: AnyObject { }
+// MARK: - AdsProtocol
+
+public protocol AdsProtocol: AnyObject {}
+
+// MARK: - CollectionType
 
 public enum CollectionType: String, Decodable {
-
   case mini, big, promo, bottles, shareUs, smartFilter
 }
+
+// MARK: - CollectionItem
 
 public enum CollectionItem {
   case wine(wine: ShortWine)
   case ads(ad: AdsProtocol)
 }
 
+// MARK: - Collection
+
 public struct Collection: Decodable {
 
-  public let id: Int64?
-  public let title: String?
-  public let imageURL: String?
-  public var wineList: [CollectionItem]
-
-  private enum CodingKeys: String, CodingKey {
-    case id = "collection_id"
-    case title
-    case imageURL = "image_url"
-    case wineList = "wine_list"
-  }
+  // MARK: Lifecycle
 
   public init(from decoder: Decoder) throws {
-
     let container = try decoder.container(keyedBy: CodingKeys.self)
     let id = try container.decode(Int64.self, forKey: .id)
     let title = try container.decode(String.self, forKey: .title)
     let imageURL = try container.decodeIfPresent(String.self, forKey: .imageURL)
     let wineList = try? container.decode([ShortWine].self, forKey: .wineList)
 
-    let wines = wineList?.compactMap({ (wine) -> CollectionItem in
-      return .wine(wine: wine)
-    })
+    let wines = wineList?.compactMap { wine -> CollectionItem in
+      .wine(wine: wine)
+    }
 
     self.id = id
     self.title = title
@@ -54,16 +50,32 @@ public struct Collection: Decodable {
   }
 
   public init(wineList: [CollectionItem]) {
-    self.id = nil
-    self.title = nil
-    self.imageURL = nil
+    id = nil
+    title = nil
+    imageURL = nil
     self.wineList = wineList
   }
 
   public init(title: String?, imageURL: String) {
-    self.id = nil
+    id = nil
     self.title = title
     self.imageURL = imageURL
-    self.wineList = []
+    wineList = []
+  }
+
+  // MARK: Public
+
+  public let id: Int64?
+  public let title: String?
+  public let imageURL: String?
+  public var wineList: [CollectionItem]
+
+  // MARK: Private
+
+  private enum CodingKeys: String, CodingKey {
+    case id = "collection_id"
+    case title
+    case imageURL = "image_url"
+    case wineList = "wine_list"
   }
 }

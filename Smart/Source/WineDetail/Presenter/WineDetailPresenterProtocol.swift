@@ -9,7 +9,6 @@
 import VinchyCore
 
 protocol WineDetailPresenterProtocol: AnyObject {
-  
   var reportAnErrorRecipients: [String] { get }
   var reportAnErrorText: String? { get }
   var dislikeText: String? { get }

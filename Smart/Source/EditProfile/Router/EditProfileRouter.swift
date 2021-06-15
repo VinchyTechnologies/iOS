@@ -8,23 +8,30 @@
 
 import UIKit
 
+// MARK: - EditProfileRouter
+
 final class EditProfileRouter {
 
-    weak var viewController: UIViewController?
-    weak var interactor: EditProfileInteractorProtocol?
-    private let input: EditProfileInput
+  // MARK: Lifecycle
 
-    init(
-        input: EditProfileInput,
-        viewController: UIViewController)
-    {
-        self.input = input
-        self.viewController = viewController
-    }
+  init(
+    input: EditProfileInput,
+    viewController: UIViewController)
+  {
+    self.input = input
+    self.viewController = viewController
+  }
+
+  // MARK: Internal
+
+  weak var viewController: UIViewController?
+  weak var interactor: EditProfileInteractorProtocol?
+
+  // MARK: Private
+
+  private let input: EditProfileInput
 }
 
-// MARK: - EditProfileRouterProtocol
+// MARK: EditProfileRouterProtocol
 
-extension EditProfileRouter: EditProfileRouterProtocol {
-
-}
+extension EditProfileRouter: EditProfileRouterProtocol {}

@@ -8,7 +8,6 @@
 import CommonUI
 
 struct MoreViewControllerModel {
-
   enum Section {
     case profile([ProfileCellViewModel])
     case header([TextCollectionCell.ViewModel])
@@ -22,7 +21,7 @@ struct MoreViewControllerModel {
     case doc([DocCellViewModel])
     case separator
   }
-  
+
   let sections: [Section]
   let navigationTitle: String?
 }

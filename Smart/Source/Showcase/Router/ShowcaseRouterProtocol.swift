@@ -8,6 +8,4 @@
 
 import Foundation
 
-protocol ShowcaseRouterProtocol: WineDetailRoutable {
-  
-}
+protocol ShowcaseRouterProtocol: WineDetailRoutable {}

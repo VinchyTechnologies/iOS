@@ -8,6 +8,8 @@
 
 public final class Winery: Decodable {
 
+  // MARK: Public
+
   /// Winery ID
   public let id: Int64
 
@@ -20,6 +22,8 @@ public final class Winery: Decodable {
   /// Name of the region the winery locates in
   public let region: String
 
+  // MARK: Private
+
   private enum CodingKeys: String, CodingKey {
     case id = "winery_id"
     case title
@@ -29,11 +33,11 @@ public final class Winery: Decodable {
 
   /// For tests only
   /*
-  public init(countryCode: String) {
-    self.id = 0
-    self.title = ""
-    self.countryCode = countryCode
-    self.region = ""
-  }
- */
+    public init(countryCode: String) {
+      self.id = 0
+      self.title = ""
+      self.countryCode = countryCode
+      self.region = ""
+    }
+   */
 }

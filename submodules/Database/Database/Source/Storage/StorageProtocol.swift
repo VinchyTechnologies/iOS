@@ -7,17 +7,19 @@
 
 import Foundation
 
+// MARK: - StorageProtocol
+
 // Hides impl
 public protocol StorageProtocol {
-    associatedtype M
+  associatedtype M
 
-    func read() -> M?
-    func save(_ model: M)
-    func clear()
+  func read() -> M?
+  func save(_ model: M)
+  func clear()
 }
 
-public extension StorageProtocol {
-    func toAny<M>() -> AnyStorage<M> where M == Self.M {
-        AnyStorage(self)
-    }
+extension StorageProtocol {
+  public func toAny<M>() -> AnyStorage<M> where M == Self.M {
+    AnyStorage(self)
+  }
 }

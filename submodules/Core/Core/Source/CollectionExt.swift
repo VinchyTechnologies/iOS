@@ -8,10 +8,9 @@
 
 import Foundation
 
-public extension Swift.Collection {
-  
+extension Swift.Collection {
   /// Returns the element at the specified index if it is within bounds, otherwise nil.
-  subscript (safe index: Index) -> Element? {
+  public subscript(safe index: Index) -> Element? {
     guard index >= startIndex, endIndex > index else { return nil }
     return self[index]
   }

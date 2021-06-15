@@ -7,9 +7,9 @@
 //
 
 import Database
-import VinchyCore
 import Sheeeeeeeeet
 import VinchyAuthorization
+import VinchyCore
 
 protocol WineDetailRouterProtocol: WineDetailRoutable, ReviewsRoutable, ReviewDetailRoutable, WriteReviewRoutable, AuthorizationRoutable {
   func presentActivityViewController(items: [Any], button: UIButton)

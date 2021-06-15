@@ -8,6 +8,8 @@
 
 import UIKit
 
+// MARK: - C
+
 private enum C {
   static let lightColor: UIColor = .shimmerLight
   static let alphaColor: UIColor = .shimmerAlpha
@@ -15,8 +17,9 @@ private enum C {
   static let endPoint = CGPoint(x: 0.0, y: 0.5)
 }
 
-public protocol ShimmeringView where Self: UIView {
+// MARK: - ShimmeringView
 
+public protocol ShimmeringView where Self: UIView {
   func getShimmering(
     beginTime: CFTimeInterval,
     duration: CFTimeInterval,
@@ -29,8 +32,8 @@ public protocol ShimmeringView where Self: UIView {
     -> CGRect
 }
 
-public extension ShimmeringView {
-  func getShimmering(
+extension ShimmeringView {
+  public func getShimmering(
     beginTime: CFTimeInterval,
     duration: CFTimeInterval,
     startPoint: CGPoint,
@@ -41,7 +44,7 @@ public extension ShimmeringView {
     gradientMask.colors = [
       C.alphaColor.cgColor,
       C.lightColor.cgColor,
-      C.alphaColor.cgColor
+      C.alphaColor.cgColor,
     ]
     gradientMask.frame = generateShimmeringLayerFrame(forSuperframe: bounds)
     gradientMask.startPoint = startPoint
@@ -61,7 +64,7 @@ public extension ShimmeringView {
     return gradientMask
   }
 
-  func getShimmering(
+  public func getShimmering(
     beginTime: CFTimeInterval,
     duration: CFTimeInterval)
     -> CAGradientLayer
@@ -73,7 +76,7 @@ public extension ShimmeringView {
       endPoint: C.endPoint)
   }
 
-  func generateShimmeringLayerFrame(forSuperframe superframe: CGRect) -> CGRect {
+  public func generateShimmeringLayerFrame(forSuperframe superframe: CGRect) -> CGRect {
     CGRect(
       x: -superframe.width,
       y: 0,

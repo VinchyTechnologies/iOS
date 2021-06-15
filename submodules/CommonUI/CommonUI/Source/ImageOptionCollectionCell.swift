@@ -6,11 +6,12 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
 import Display
+import UIKit
+
+// MARK: - ImageOptionCollectionCellViewModel
 
 public struct ImageOptionCollectionCellViewModel: ViewModelProtocol {
-
   fileprivate let imageName: String?
   fileprivate let titleText: String?
   fileprivate let isSelected: Bool
@@ -22,12 +23,13 @@ public struct ImageOptionCollectionCellViewModel: ViewModelProtocol {
   }
 }
 
+// MARK: - ImageOptionCollectionCell
+
 public final class ImageOptionCollectionCell: HighlightCollectionCell, Reusable {
 
-  private let imageView = UIImageView()
-  private let titleLabel = UILabel()
+  // MARK: Lifecycle
 
-  public override init(frame: CGRect) {
+  override public init(frame: CGRect) {
     super.init(frame: frame)
 
     highlightStyle = .scale
@@ -36,7 +38,7 @@ public final class ImageOptionCollectionCell: HighlightCollectionCell, Reusable 
     layer.cornerRadius = 15
     clipsToBounds = true
 
-    [imageView, titleLabel].forEach({ $0.translatesAutoresizingMaskIntoConstraints = false })
+    [imageView, titleLabel].forEach { $0.translatesAutoresizingMaskIntoConstraints = false }
 
     titleLabel.font = Font.with(size: 20, design: .round, traits: .bold)
     titleLabel.textColor = .dark
@@ -56,21 +58,10 @@ public final class ImageOptionCollectionCell: HighlightCollectionCell, Reusable 
     ])
   }
 
-  required init?(coder: NSCoder) { fatalError() }
+  @available(*, unavailable)
+  required init?(coder _: NSCoder) { fatalError() }
 
-  private func setSelected(flag: Bool, animated: Bool) {
-    if animated {
-      UIView.animate(withDuration: 0.15, delay: 0, options: .transitionCrossDissolve, animations: {
-        self.backgroundColor = flag ? .accent : .option
-        self.titleLabel.textColor = flag ? .white : .dark
-        self.imageView.alpha = flag ? 0 : 1
-      }, completion: nil)
-    } else {
-      self.backgroundColor = flag ? .accent : .option
-      self.titleLabel.textColor = flag ? .white : .dark
-      self.imageView.alpha = flag ? 0 : 1
-    }
-  }
+  // MARK: Public
 
   public static func size(for viewModel: ViewModel) -> CGSize {
     let height: CGFloat = 100
@@ -80,10 +71,30 @@ public final class ImageOptionCollectionCell: HighlightCollectionCell, Reusable 
 
     return CGSize(width: max(width, 130), height: height)
   }
+
+  // MARK: Private
+
+  private let imageView = UIImageView()
+  private let titleLabel = UILabel()
+
+  private func setSelected(flag: Bool, animated: Bool) {
+    if animated {
+      UIView.animate(withDuration: 0.15, delay: 0, options: .transitionCrossDissolve, animations: {
+        self.backgroundColor = flag ? .accent : .option
+        self.titleLabel.textColor = flag ? .white : .dark
+        self.imageView.alpha = flag ? 0 : 1
+      }, completion: nil)
+    } else {
+      backgroundColor = flag ? .accent : .option
+      titleLabel.textColor = flag ? .white : .dark
+      imageView.alpha = flag ? 0 : 1
+    }
+  }
 }
 
-extension ImageOptionCollectionCell: Decoratable {
+// MARK: Decoratable
 
+extension ImageOptionCollectionCell: Decoratable {
   public typealias ViewModel = ImageOptionCollectionCellViewModel
 
   public func decorate(model: ViewModel) {

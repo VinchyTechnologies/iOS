@@ -5,11 +5,12 @@
 //  Created by Aleksei Smirnov on 16.07.2020.
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
-
+// swiftformat:disable all
 import UIKit
 
-public struct Font {
+// MARK: - Font
 
+public enum Font {
   public enum Design {
     case regular
     case serif
@@ -25,7 +26,7 @@ public struct Font {
     }
 
     public init() {
-      self.rawValue = 0
+      rawValue = 0
     }
 
     public static let bold = Traits(rawValue: 1 << 0)
@@ -68,27 +69,27 @@ public struct Font {
   }
 
   public static func regular(_ size: CGFloat) -> UIFont {
-    return UIFont.systemFont(ofSize: size)
+    UIFont.systemFont(ofSize: size)
   }
 
   public static func medium(_ size: CGFloat) -> UIFont {
-    return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.medium)
+    UIFont.systemFont(ofSize: size, weight: UIFont.Weight.medium)
   }
 
   public static func semibold(_ size: CGFloat) -> UIFont {
-    return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.semibold)
+    UIFont.systemFont(ofSize: size, weight: UIFont.Weight.semibold)
   }
 
   public static func bold(_ size: CGFloat) -> UIFont {
-    return UIFont.boldSystemFont(ofSize: size)
+    UIFont.boldSystemFont(ofSize: size)
   }
 
   public static func heavy(_ size: CGFloat) -> UIFont {
-    return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.heavy)
+    UIFont.systemFont(ofSize: size, weight: UIFont.Weight.heavy)
   }
 
   public static func light(_ size: CGFloat) -> UIFont {
-    return UIFont.systemFont(ofSize: size, weight: UIFont.Weight.light)
+    UIFont.systemFont(ofSize: size, weight: UIFont.Weight.light)
   }
 
   public static func semiboldItalic(_ size: CGFloat) -> UIFont {
@@ -100,32 +101,32 @@ public struct Font {
   }
 
   public static func monospace(_ size: CGFloat) -> UIFont {
-    return UIFont(name: "Menlo-Regular", size: size - 1.0) ?? UIFont.systemFont(ofSize: size)
+    UIFont(name: "Menlo-Regular", size: size - 1.0) ?? UIFont.systemFont(ofSize: size)
   }
 
   public static func semiboldMonospace(_ size: CGFloat) -> UIFont {
-    return UIFont(name: "Menlo-Bold", size: size - 1.0) ?? UIFont.systemFont(ofSize: size)
+    UIFont(name: "Menlo-Bold", size: size - 1.0) ?? UIFont.systemFont(ofSize: size)
   }
 
   public static func italicMonospace(_ size: CGFloat) -> UIFont {
-    return UIFont(name: "Menlo-Italic", size: size - 1.0) ?? UIFont.systemFont(ofSize: size)
+    UIFont(name: "Menlo-Italic", size: size - 1.0) ?? UIFont.systemFont(ofSize: size)
   }
 
   public static func semiboldItalicMonospace(_ size: CGFloat) -> UIFont {
-    return UIFont(name: "Menlo-BoldItalic", size: size - 1.0) ?? UIFont.systemFont(ofSize: size)
+    UIFont(name: "Menlo-BoldItalic", size: size - 1.0) ?? UIFont.systemFont(ofSize: size)
   }
 
   public static func italic(_ size: CGFloat) -> UIFont {
-    return UIFont.italicSystemFont(ofSize: size)
+    UIFont.italicSystemFont(ofSize: size)
   }
 
   public static func dinAlternateBold(_ size: CGFloat) -> UIFont {
-    return UIFont(name: "DINAlternate-Bold", size: size) ?? Font.with(size: size, design: .round, traits: .bold)
+    UIFont(name: "DINAlternate-Bold", size: size) ?? Font.with(size: size, design: .round, traits: .bold)
   }
 }
 
-public extension NSAttributedString {
-  convenience init(string: String, font: UIFont? = nil, textColor: UIColor = UIColor.dark, paragraphAlignment: NSTextAlignment? = nil) {
+extension NSAttributedString {
+  public convenience init(string: String, font: UIFont? = nil, textColor: UIColor = UIColor.dark, paragraphAlignment: NSTextAlignment? = nil) {
     var attributes: [NSAttributedString.Key: AnyObject] = [:]
     if let font = font {
       attributes[NSAttributedString.Key.font] = font
@@ -140,31 +141,31 @@ public extension NSAttributedString {
   }
 }
 
-public extension String {
-
-  func height(forWidth width: CGFloat, font: UIFont) -> CGFloat {
+extension String {
+  public func height(forWidth width: CGFloat, font: UIFont) -> CGFloat {
     let constraintRect = CGSize(width: width, height: .greatestFiniteMagnitude)
-    let boundingBox = self.boundingRect(with: constraintRect,
-                                        options: .usesLineFragmentOrigin,
-                                        attributes: [.font: font],
-                                        context: nil)
+    let boundingBox = self.boundingRect( // swiftformat:disable all
+      with: constraintRect,
+      options: .usesLineFragmentOrigin,
+      attributes: [.font: font],
+      context: nil)
     return ceil(boundingBox.height)
   }
 
-  func height(forWidth width: CGFloat, font: UIFont, numberOfLines: Int) -> CGFloat {
+  public func height(forWidth width: CGFloat, font: UIFont, numberOfLines: Int) -> CGFloat {
     let result = height(forWidth: width, font: font)
     let maxHeight = font.lineHeight * CGFloat(numberOfLines)
     return min(result, maxHeight)
   }
 
-  func width(usingFont font: UIFont) -> CGFloat {
+  public func width(usingFont font: UIFont) -> CGFloat {
     let fontAttributes = [NSAttributedString.Key.font: font]
     let size = self.size(withAttributes: fontAttributes)
     return size.width
   }
 }
 
-//public extension UILabel {
+// public extension UILabel {
 //
 //    func applyGradientWith(startColor: UIColor, endColor: UIColor) -> Bool {
 //
@@ -226,4 +227,5 @@ public extension String {
 //        return true
 //    }
 //
-//}
+// }
+// swiftformat:disable all

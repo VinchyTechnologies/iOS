@@ -9,10 +9,11 @@
 import Combine
 
 open class DeeplinkFlow<DeeplinkHandler> {
-  
-  private let subject = PassthroughSubject<DeeplinkHandler, Never>()
+
+  // MARK: Internal
+
   var subscribtions = Set<AnyCancellable>()
-  
+
   final func onStep<NextDeeplinkHandler>(
     _ onStep: @escaping (DeeplinkHandler) -> AnyPublisher<NextDeeplinkHandler, Never>)
     -> DeeplinkStep<DeeplinkHandler, NextDeeplinkHandler>
@@ -22,9 +23,13 @@ open class DeeplinkFlow<DeeplinkHandler> {
         onStep(deeplink)
       }
   }
-  
+
   func subcscribe(_ deeplinkHandler: DeeplinkHandler) -> Set<AnyCancellable> {
     subject.send(deeplinkHandler)
     return subscribtions
   }
+
+  // MARK: Private
+
+  private let subject = PassthroughSubject<DeeplinkHandler, Never>()
 }

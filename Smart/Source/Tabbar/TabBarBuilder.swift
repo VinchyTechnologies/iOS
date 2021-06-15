@@ -6,9 +6,13 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+// MARK: - TabBarBuilder
+
 protocol TabBarBuilder {
   func build() -> UIViewController & TabBarDeeplinkable
 }
+
+// MARK: - TabBarBuilderImpl
 
 final class TabBarBuilderImpl: TabBarBuilder {
   func build() -> UIViewController & TabBarDeeplinkable {

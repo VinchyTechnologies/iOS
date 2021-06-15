@@ -8,11 +8,15 @@
 import UIKit
 import VinchyAuthorization
 
+// MARK: - ViewController
+
 final class ViewController: UIViewController {
-  
+
+  // MARK: Internal
+
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+
     let button = UIButton()
     button.backgroundColor = .systemRed
     button.setTitle("Authorize", for: .normal)
@@ -21,7 +25,7 @@ final class ViewController: UIViewController {
     button.layer.cornerRadius = 10
     button.setTitleColor(.white, for: .normal)
     button.titleLabel?.font = .boldSystemFont(ofSize: 18)
-    
+
     view.addSubview(button)
     button.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
@@ -29,21 +33,25 @@ final class ViewController: UIViewController {
       button.centerYAnchor.constraint(equalTo: view.centerYAnchor),
     ])
   }
-  
+
+  // MARK: Private
+
   @objc
-  private func didTapAuth(_ button: UIButton) {
+  private func didTapAuth(_: UIButton) {
     let viewController: AuthorizationNavigationController = ChooseAuthTypeAssembly.assemblyModule()
     viewController.authOutputDelegate = self
     present(viewController, animated: true, completion: nil)
   }
 }
 
+// MARK: AuthorizationOutputDelegate
+
 extension ViewController: AuthorizationOutputDelegate {
   func didSuccessfullyRegister(output: AuthorizationOutputModel?) {
     print(#function)
     print(output as Any)
   }
-  
+
   func didSuccessfullyLogin(output: AuthorizationOutputModel?) {
     print(#function)
     print(output as Any)

@@ -9,5 +9,5 @@
 import Foundation
 
 protocol EditProfileInteractorProtocol: AnyObject {
-    func viewDidLoad()
+  func viewDidLoad()
 }

@@ -8,44 +8,74 @@
 
 import UIKit
 
+// MARK: - PlaceholderTextView
+
 public final class PlaceholderTextView: UITextView {
-  
+
+  // MARK: Lifecycle
+
+  override init(frame: CGRect, textContainer: NSTextContainer?) {
+    super.init(frame: frame, textContainer: textContainer)
+    setup()
+  }
+
+  required init?(coder aDecoder: NSCoder) {
+    super.init(coder: aDecoder)
+    setup()
+  }
+
+  // MARK: Public
+
+  public weak var customDelegate: UITextViewDelegate?
+
   public var placeholder: String = .init() {
     didSet {
       placeholderLayer.string = placeholder
     }
   }
-  
+
   public var placeholderColor: UIColor = .blueGray {
     didSet {
       placeholderLayer.foregroundColor = placeholderColor.cgColor
     }
   }
-  
+
   public var maxLength: Int? {
     didSet {
       updateView()
     }
   }
-  
+
   override public var text: String? {
     didSet {
       updateView()
     }
   }
-  
+
   override public var font: UIFont? {
     didSet {
       updatePlaceholder()
     }
   }
-  
+
   override public var textContainerInset: UIEdgeInsets {
     didSet {
       updatePlaceholder()
     }
   }
-  
+
+  override public func awakeFromNib() {
+    super.awakeFromNib()
+    super.delegate = self
+  }
+
+  override public func layoutSubviews() {
+    super.layoutSubviews()
+    updateView()
+  }
+
+  // MARK: Private
+
   private lazy var placeholderLayer: CATextLayer = {
     let layer = CATextLayer()
     layer.frame = bounds
@@ -53,41 +83,19 @@ public final class PlaceholderTextView: UITextView {
     layer.contentsScale = UIScreen.main.scale
     return layer
   }()
-  
-  public weak var customDelegate: UITextViewDelegate?
-  
-  override init(frame: CGRect, textContainer: NSTextContainer?) {
-    super.init(frame: frame, textContainer: textContainer)
-    setup()
-  }
-  
-  required init?(coder aDecoder: NSCoder) {
-    super.init(coder: aDecoder)
-    setup()
-  }
-  
-  public override func awakeFromNib() {
-    super.awakeFromNib()
-    super.delegate = self
-  }
-  
-  override public func layoutSubviews() {
-    super.layoutSubviews()
-    updateView()
-  }
-  
+
   private func setup() {
     super.delegate = self
     textContainer.lineFragmentPadding = .zero
     layer.addSublayer(placeholderLayer)
     updateView()
   }
-  
+
   private func updateView() {
     updateText()
     updatePlaceholder()
   }
-  
+
   private func updateText() {
     if
       let text = text,
@@ -97,10 +105,10 @@ public final class PlaceholderTextView: UITextView {
       self.text = String(text.prefix(length))
     }
   }
-  
+
   private func updatePlaceholder() {
     guard let font = font else { return }
-    
+
     let width = bounds.width - textContainerInset.left - textContainerInset.right
     let height = placeholder.height(forWidth: width, font: font)
     placeholderLayer.frame = CGRect(
@@ -108,31 +116,32 @@ public final class PlaceholderTextView: UITextView {
       y: textContainerInset.top,
       width: width,
       height: height)
-    
+
     placeholderLayer.font = font
     placeholderLayer.fontSize = font.pointSize
     placeholderLayer.isHidden = !(text?.isEmpty == true)
   }
 }
 
+// MARK: UITextViewDelegate
+
 extension PlaceholderTextView: UITextViewDelegate {
-  
   public func textViewShouldBeginEditing(_ textView: UITextView) -> Bool {
     customDelegate?.textViewShouldBeginEditing?(textView) ?? true
   }
-  
+
   public func textViewShouldEndEditing(_ textView: UITextView) -> Bool {
     customDelegate?.textViewShouldEndEditing?(textView) ?? true
   }
-  
+
   public func textViewDidBeginEditing(_ textView: UITextView) {
     customDelegate?.textViewDidBeginEditing?(textView)
   }
-  
+
   public func textViewDidEndEditing(_ textView: UITextView) {
     customDelegate?.textViewDidEndEditing?(textView)
   }
-  
+
   public func textView(
     _ textView: UITextView,
     shouldChangeTextIn range: NSRange,
@@ -144,24 +153,24 @@ extension PlaceholderTextView: UITextViewDelegate {
       shouldChangeTextIn: range,
       replacementText: text) ?? true
   }
-  
+
   override public func shouldChangeText(
-    in range: UITextRange,
-    replacementText text: String)
+    in _: UITextRange,
+    replacementText _: String)
     -> Bool
   {
     true
   }
-  
+
   public func textViewDidChange(_ textView: UITextView) {
     updateView()
     customDelegate?.textViewDidChange?(textView)
   }
-  
+
   public func textViewDidChangeSelection(_ textView: UITextView) {
     customDelegate?.textViewDidChangeSelection?(textView)
   }
-  
+
   public func textView(
     _ textView: UITextView,
     shouldInteractWith URL: URL,
@@ -175,7 +184,7 @@ extension PlaceholderTextView: UITextViewDelegate {
       in: characterRange,
       interaction: interaction) ?? true
   }
-  
+
   public func textView(
     _ textView: UITextView,
     shouldInteractWith textAttachment: NSTextAttachment,

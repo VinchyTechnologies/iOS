@@ -6,11 +6,12 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
 import Display
+import UIKit
+
+// MARK: - WineCollectionViewCellViewModel
 
 public struct WineCollectionViewCellViewModel: ViewModelProtocol, Hashable {
-
   public let wineID: Int64
   fileprivate let imageURL: URL?
   fileprivate let titleText: String?
@@ -24,31 +25,11 @@ public struct WineCollectionViewCellViewModel: ViewModelProtocol, Hashable {
   }
 }
 
+// MARK: - WineCollectionViewCell
+
 public final class WineCollectionViewCell: HighlightCollectionCell, Reusable {
 
-  private let background = UIView()
-
-  private let bottleImageView: UIImageView = {
-    let imageView = UIImageView()
-    imageView.contentMode = .scaleAspectFill
-    return imageView
-  }()
-
-  private let titleLabel: UILabel = {
-    let label = UILabel()
-    label.font = Font.bold(16)
-    label.numberOfLines = 2
-    label.textAlignment = .center
-    return label
-  }()
-
-  private let subtitleLabel: UILabel = {
-    let label = UILabel()
-    label.font = Font.medium(14)
-    label.textColor = .blueGray
-    label.textAlignment = .center
-    return label
-  }()
+  // MARK: Lifecycle
 
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -98,16 +79,42 @@ public final class WineCollectionViewCell: HighlightCollectionCell, Reusable {
     ])
   }
 
-  required init?(coder: NSCoder) { fatalError() }
+  @available(*, unavailable)
+  required init?(coder _: NSCoder) { fatalError() }
 
+  // MARK: Private
+
+  private let background = UIView()
+
+  private let bottleImageView: UIImageView = {
+    let imageView = UIImageView()
+    imageView.contentMode = .scaleAspectFill
+    return imageView
+  }()
+
+  private let titleLabel: UILabel = {
+    let label = UILabel()
+    label.font = Font.bold(16)
+    label.numberOfLines = 2
+    label.textAlignment = .center
+    return label
+  }()
+
+  private let subtitleLabel: UILabel = {
+    let label = UILabel()
+    label.font = Font.medium(14)
+    label.textColor = .blueGray
+    label.textAlignment = .center
+    return label
+  }()
 }
 
-extension WineCollectionViewCell: Decoratable {
+// MARK: Decoratable
 
+extension WineCollectionViewCell: Decoratable {
   public typealias ViewModel = WineCollectionViewCellViewModel
 
   public func decorate(model: ViewModel) {
-
     bottleImageView.loadBottle(url: model.imageURL)
 
     if let title = model.titleText {
@@ -116,7 +123,7 @@ extension WineCollectionViewCell: Decoratable {
     } else {
       titleLabel.isHidden = true
     }
-    
+
     if let subtitle = model.subtitleText {
       subtitleLabel.isHidden = false
       subtitleLabel.text = subtitle

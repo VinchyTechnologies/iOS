@@ -7,11 +7,12 @@
 
 import Foundation
 
+// MARK: - ChooseAuthTypeInteractor
+
 final class ChooseAuthTypeInteractor {
-  
-  private let router: ChooseAuthTypeRouterProtocol
-  private let presenter: ChooseAuthTypePresenterProtocol
-  
+
+  // MARK: Lifecycle
+
   init(
     router: ChooseAuthTypeRouterProtocol,
     presenter: ChooseAuthTypePresenterProtocol)
@@ -19,20 +20,24 @@ final class ChooseAuthTypeInteractor {
     self.router = router
     self.presenter = presenter
   }
+
+  // MARK: Private
+
+  private let router: ChooseAuthTypeRouterProtocol
+  private let presenter: ChooseAuthTypePresenterProtocol
 }
 
-// MARK: - ChooseAuthTypeInteractorProtocol
+// MARK: ChooseAuthTypeInteractorProtocol
 
 extension ChooseAuthTypeInteractor: ChooseAuthTypeInteractorProtocol {
-  
   func viewDidLoad() {
     presenter.update()
   }
-  
+
   func didTapRegisterButton() {
     router.pushAuthorizationViewController(mode: .register)
   }
-  
+
   func didTapLoginButton() {
     router.pushAuthorizationViewController(mode: .login)
   }

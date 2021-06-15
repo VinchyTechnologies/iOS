@@ -6,50 +6,67 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-final private class AtomicLock {
-  private var _lock = os_unfair_lock()
-  
+// MARK: - AtomicLock
+
+private final class AtomicLock {
+
+  // MARK: Internal
+
   func lock() {
     os_unfair_lock_lock(&_lock)
   }
-  
+
   func tryLock() -> Bool {
     os_unfair_lock_trylock(&_lock)
   }
-  
+
   func unlock() {
     os_unfair_lock_unlock(&_lock)
   }
+
+  // MARK: Private
+
+  private var _lock = os_unfair_lock()
 }
+
+// MARK: - AtomicOption
 
 public struct AtomicOption: Equatable, OptionSet {
   public var rawValue: Int
   public init(rawValue: Int) {
     self.rawValue = rawValue
   }
-  
+
   public static let asyncedRead: AtomicOption = .init(rawValue: 0)
   public static let syncedRead: AtomicOption = .init(rawValue: 1)
 }
 
+// MARK: - Atomic
+
 @propertyWrapper
 public class Atomic<Value> {
-  private let lock = AtomicLock()
-  private var value: Value
-  private let option: AtomicOption
-  
-  public var projectedValue: Atomic<Value> {
-    return self
+
+  // MARK: Lifecycle
+
+  public init(wrappedValue initialValue: Value, option: AtomicOption = .asyncedRead) {
+    value = initialValue
+    self.option = option
   }
-  
+
+  // MARK: Public
+
+  public var projectedValue: Atomic<Value> {
+    self
+  }
+
   public var wrappedValue: Value {
     get {
       option.contains(.syncedRead) ? lock.lock() : ()
-      
+
       defer {
         option.contains(.syncedRead) ? lock.unlock() : ()
       }
-      
+
       return value
     }
     set {
@@ -58,33 +75,28 @@ public class Atomic<Value> {
       lock.unlock()
     }
   }
-  
-  public init(wrappedValue initialValue: Value, option: AtomicOption = .asyncedRead) {
-    self.value = initialValue
-    self.option = option
-  }
-  
+
   public func mutate(_ mutation: (inout Value) -> Void) {
     lock.lock()
-    mutation(&self.value)
+    mutation(&value)
     lock.unlock()
   }
-  
+
   public func tryMutate(_ mutation: (inout Value) -> Void) {
     let locked = lock.tryLock()
-    mutation(&self.value)
+    mutation(&value)
     if locked {
       lock.unlock()
     }
   }
-  
+
   public func mutate<T>(_ mutation: (inout Value) -> T) -> T {
     lock.lock()
     let value = mutation(&self.value)
     lock.unlock()
     return value
   }
-  
+
   public func tryMutate<T>(_ mutation: (inout Value) -> T) -> T {
     let locked = lock.tryLock()
     let value = mutation(&self.value)
@@ -93,6 +105,12 @@ public class Atomic<Value> {
     }
     return value
   }
+
+  // MARK: Private
+
+  private let lock = AtomicLock()
+  private var value: Value
+  private let option: AtomicOption
 }
 
 extension Atomic where Value: ExpressibleByNilLiteral {

@@ -10,13 +10,12 @@ import Display
 import UIKit
 
 public final class SeparatorCell: UICollectionViewCell, Reusable {
-  
-  public override init(frame: CGRect) {
+  override public init(frame: CGRect) {
     super.init(frame: frame)
-    
+
     let line = UIView()
     line.backgroundColor = .separator
-    
+
     contentView.addSubview(line)
     line.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
@@ -26,7 +25,7 @@ public final class SeparatorCell: UICollectionViewCell, Reusable {
       line.heightAnchor.constraint(equalToConstant: 0.8),
     ])
   }
-  
-  required init?(coder: NSCoder) { fatalError() }
-  
+
+  @available(*, unavailable)
+  required init?(coder _: NSCoder) { fatalError() }
 }

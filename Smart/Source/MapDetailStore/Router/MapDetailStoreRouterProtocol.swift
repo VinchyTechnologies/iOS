@@ -8,6 +8,4 @@
 
 import Foundation
 
-protocol MapDetailStoreRouterProtocol: WineDetailRoutable {
-    
-}
+protocol MapDetailStoreRouterProtocol: WineDetailRoutable {}

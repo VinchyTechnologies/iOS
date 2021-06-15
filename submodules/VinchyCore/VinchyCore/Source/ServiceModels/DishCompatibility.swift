@@ -7,8 +7,9 @@
 //
 
 public enum DishCompatibility: String, Decodable {
-
   case meat, fish, seafood, wildfowl, chicken, dessert, bakery, cheese, fruits
+
+  // MARK: Public
 
   public var imageName: String {
     switch self {

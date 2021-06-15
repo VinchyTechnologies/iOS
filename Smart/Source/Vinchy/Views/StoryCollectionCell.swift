@@ -6,11 +6,12 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
 import Display
+import UIKit
+
+// MARK: - StoryCollectionCellViewModel
 
 struct StoryCollectionCellViewModel: ViewModelProtocol, Hashable {
-
   fileprivate let imageURL: URL?
   fileprivate let titleText: String?
 
@@ -22,10 +23,11 @@ struct StoryCollectionCellViewModel: ViewModelProtocol, Hashable {
   }
 }
 
-final class StoryCollectionCell: HighlightCollectionCell, Reusable  {
+// MARK: - StoryCollectionCell
 
-  private let imageView = UIImageView()
-  private let titleLabel = UILabel()
+final class StoryCollectionCell: HighlightCollectionCell, Reusable {
+
+  // MARK: Lifecycle
 
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -62,12 +64,20 @@ final class StoryCollectionCell: HighlightCollectionCell, Reusable  {
     ])
   }
 
-  required init?(coder: NSCoder) { fatalError() }
+  @available(*, unavailable)
+  required init?(coder _: NSCoder) { fatalError() }
+
+  // MARK: Internal
 
   override func layoutSubviews() {
     super.layoutSubviews()
     imageView.frame = bounds
   }
+
+  // MARK: Private
+
+  private let imageView = UIImageView()
+  private let titleLabel = UILabel()
 
   private func setAttributedText(string: String?) {
     guard let string = string else { return }
@@ -78,13 +88,14 @@ final class StoryCollectionCell: HighlightCollectionCell, Reusable  {
       NSAttributedString.Key.paragraphStyle,
       value: paragraphStyle,
       range: NSRange(location: 0, length: attributedString.length))
-    
+
     titleLabel.attributedText = attributedString
   }
 }
 
-extension StoryCollectionCell: Decoratable {
+// MARK: Decoratable
 
+extension StoryCollectionCell: Decoratable {
   typealias ViewModel = StoryCollectionCellViewModel
 
   func decorate(model: ViewModel) {

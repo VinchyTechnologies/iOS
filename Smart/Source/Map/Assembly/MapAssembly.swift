@@ -9,7 +9,6 @@
 import LocationUI
 
 final class MapAssembly {
-  
   static func assemblyModule() -> UIViewController {
     let viewController = MapViewController()
     let router = MapRouter(input: MapInput(), viewController: viewController)
@@ -17,10 +16,10 @@ final class MapAssembly {
     let locationService = LocationService()
     let repository = MapRepository(locationService: locationService)
     let interactor = MapInteractor(repository: repository, router: router, presenter: presenter)
-    
+
     router.interactor = interactor
     viewController.interactor = interactor
-    
+
     return viewController
   }
 }

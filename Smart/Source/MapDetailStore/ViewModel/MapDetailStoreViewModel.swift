@@ -9,7 +9,6 @@
 import CommonUI
 
 struct MapDetailStoreViewModel {
-  
   enum Row {
     case title(TextCollectionCellViewModel)
     case address(TextCollectionCellViewModel)
@@ -17,10 +16,10 @@ struct MapDetailStoreViewModel {
     case assortment(AssortmentCollectionCellViewModel)
     case recommendedWines(VinchySimpleConiniousCaruselCollectionCellViewModel)
   }
-  
+
   enum Section {
     case content(header: MapNavigationBarCollectionCellViewModel, items: [Row])
   }
-  
+
   let sections: [Section]
 }

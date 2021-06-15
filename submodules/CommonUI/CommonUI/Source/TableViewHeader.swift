@@ -6,43 +6,53 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
 import Display
+import UIKit
+
+// MARK: - TableViewHeaderViewModel
 
 public struct TableViewHeaderViewModel: ViewModelProtocol {
-    
-    fileprivate let titleText: String?
+  fileprivate let titleText: String?
 
-    public init(titleText: String?) {
-        self.titleText = titleText
-    }
+  public init(titleText: String?) {
+    self.titleText = titleText
+  }
 }
+
+// MARK: - TableViewHeader
 
 public final class TableViewHeader: UIView {
 
-    private let titleLabel = UILabel()
+  // MARK: Lifecycle
 
-    public override init(frame: CGRect) {
-        super.init(frame: frame)
-        titleLabel.font = Font.medium(20)
-        titleLabel.textColor = .blueGray
-        addSubview(titleLabel)
-    }
+  override public init(frame: CGRect) {
+    super.init(frame: frame)
+    titleLabel.font = Font.medium(20)
+    titleLabel.textColor = .blueGray
+    addSubview(titleLabel)
+  }
 
-    required init?(coder: NSCoder) { fatalError() }
+  @available(*, unavailable)
+  required init?(coder _: NSCoder) { fatalError() }
 
-    public override func layoutSubviews() {
-        super.layoutSubviews()
-        titleLabel.frame = CGRect(x: 20, y: 0, width: frame.width - 40, height: frame.height)
-    }
+  // MARK: Public
 
+  override public func layoutSubviews() {
+    super.layoutSubviews()
+    titleLabel.frame = CGRect(x: 20, y: 0, width: frame.width - 40, height: frame.height)
+  }
+
+  // MARK: Private
+
+  private let titleLabel = UILabel()
 }
 
+// MARK: Decoratable
+
 extension TableViewHeader: Decoratable {
+  public typealias ViewModel = TableViewHeaderViewModel
 
-    public typealias ViewModel = TableViewHeaderViewModel
-
-    public func decorate(model: ViewModel) {
-        titleLabel.text = model.titleText
-    }
+  public func decorate(model: ViewModel) {
+    titleLabel.text = model.titleText
+  }
 }

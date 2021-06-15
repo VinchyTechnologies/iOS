@@ -8,21 +8,27 @@
 
 import KeychainAccess
 
-fileprivate enum C {
+// MARK: - C
+
+private enum C {
   static let keychainServiceName = Bundle.main.bundleIdentifier! // swiftlint:disable:this force_unwrapping
   static let accessToken = keychainServiceName + ".accessToken"
   static let refreshToken = keychainServiceName + ".refreshToken"
   static let password = keychainServiceName + ".password"
 }
 
+// MARK: - Keychain
+
 public final class Keychain {
-  
-  private let keychainService = KeychainAccess.Keychain(service: C.keychainServiceName)
-  
-  private init() { }
-  
+
+  // MARK: Lifecycle
+
+  private init() {}
+
+  // MARK: Public
+
   public static let shared = Keychain()
-  
+
   public var accessToken: String? {
     get {
       keychainService[C.accessToken]
@@ -31,7 +37,7 @@ public final class Keychain {
       keychainService[C.accessToken] = newValue
     }
   }
-  
+
   public var refreshToken: String? {
     get {
       keychainService[C.refreshToken]
@@ -40,7 +46,7 @@ public final class Keychain {
       keychainService[C.refreshToken] = newValue
     }
   }
-  
+
   public var password: String? {
     get {
       keychainService[C.password]
@@ -49,4 +55,8 @@ public final class Keychain {
       keychainService[C.password] = newValue
     }
   }
+
+  // MARK: Private
+
+  private let keychainService = KeychainAccess.Keychain(service: C.keychainServiceName)
 }

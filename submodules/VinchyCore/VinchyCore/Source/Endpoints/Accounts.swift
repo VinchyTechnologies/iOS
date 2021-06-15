@@ -6,10 +6,11 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-fileprivate let authDomain = "auth.vinchy.tech"
+private let authDomain = "auth.vinchy.tech"
+
+// MARK: - AccountEndpoint
 
 private enum AccountEndpoint: EndpointProtocol {
-  
   case auth(email: String, password: String)
   case create(email: String, password: String)
   case activate(accountID: Int, confirmationCode: String)
@@ -17,61 +18,63 @@ private enum AccountEndpoint: EndpointProtocol {
   case updateTokens(accountID: Int, refreshToken: String)
   case checkConfirmationCode(accountID: Int, confirmationCode: String)
   case sendConfirmationCode(accountID: Int)
-  
+
+  // MARK: Internal
+
   var host: String {
     authDomain
   }
-  
+
   var path: String {
     switch self {
     case .auth:
       return "/accounts/auth"
-      
+
     case .create:
       return "/accounts"
-      
+
     case .activate(let accountID, _):
       return "/accounts/" + String(accountID)
-      
+
     case .update(let accountID, _, _):
       return "/accounts/" + String(accountID)
-      
+
     case .updateTokens(let accountID, _):
       return "/accounts/" + String(accountID) + "/tokens"
-      
+
     case .checkConfirmationCode(let accountID, _):
       return "/accounts/" + String(accountID) + "/codes"
-      
+
     case .sendConfirmationCode(let accountID):
       return "/accounts/" + String(accountID) + "/codes"
     }
   }
-  
+
   var method: HTTPMethod {
     switch self {
     case .auth:
       return .post
-      
+
     case .create:
       return .post
-      
+
     case .activate:
       return .post
-      
+
     case .update:
       return .patch
-      
+
     case .updateTokens:
       return .put
-      
+
     case .checkConfirmationCode:
       return .get
-      
+
     case .sendConfirmationCode:
       return .post
     }
   }
-  
+
   var parameters: Parameters? {
     switch self {
     case .auth(let email, let password):
@@ -79,74 +82,77 @@ private enum AccountEndpoint: EndpointProtocol {
         ("email", email),
         ("password", password),
       ]
-      
+
     case .create(let email, let password):
       return [
         ("email", email),
         ("password", password),
       ]
-      
+
     case .activate(_, let confirmationCode):
       return [
-        ("confirmation_code", confirmationCode)
+        ("confirmation_code", confirmationCode),
       ]
-      
+
     case .update(_, let refreshToken, let password):
       return [
         ("refresh_token", refreshToken),
         ("password", password),
       ]
-      
+
     case .updateTokens(_, let refreshToken):
       return [
-        ("refresh_token", refreshToken)
+        ("refresh_token", refreshToken),
       ]
-      
+
     case .checkConfirmationCode(_, let confirmationCode):
       return [
-        ("confirmation_code", confirmationCode)
+        ("confirmation_code", confirmationCode),
       ]
-      
+
     case .sendConfirmationCode:
       return nil
     }
   }
-  
+
   var encoding: ParameterEncoding {
     switch self {
     case .auth:
       return .httpBody
-      
+
     case .create:
       return .httpBody
-      
+
     case .activate:
       return .httpBody
-      
+
     case .update:
       return .httpBody
-      
+
     case .updateTokens:
       return .httpBody
-      
+
     case .checkConfirmationCode:
       return .queryString
-      
+
     case .sendConfirmationCode:
       return .httpBody
     }
   }
-  
 }
 
+// MARK: - Accounts
+
 public final class Accounts {
-  
-  private let api = API.shared
-  
+
+  // MARK: Lifecycle
+
+  private init() {}
+
+  // MARK: Public
+
   public static let shared = Accounts()
-  
-  private init() { }
-  
+
   public func auth(
     email: String,
     password: String,
@@ -154,7 +160,7 @@ public final class Accounts {
   {
     api.request(endpoint: AccountEndpoint.auth(email: email, password: password), completion: completion)
   }
-  
+
   public func createNewAccount(
     email: String,
     password: String,
@@ -162,7 +168,7 @@ public final class Accounts {
   {
     api.request(endpoint: AccountEndpoint.create(email: email, password: password), completion: completion)
   }
-  
+
   public func activateAccount(
     accountID: Int,
     confirmationCode: String,
@@ -172,7 +178,7 @@ public final class Accounts {
       endpoint: AccountEndpoint.activate(accountID: accountID, confirmationCode: confirmationCode),
       completion: completion)
   }
-  
+
   public func updateAccount(
     accountID: Int,
     refreshToken: String,
@@ -183,7 +189,7 @@ public final class Accounts {
       endpoint: AccountEndpoint.update(accountID: accountID, refreshToken: refreshToken, password: password),
       completion: completion)
   }
-  
+
   public func updateTokens(
     accountID: Int,
     refreshToken: String,
@@ -193,22 +199,27 @@ public final class Accounts {
       endpoint: AccountEndpoint.updateTokens(accountID: accountID, refreshToken: refreshToken),
       completion: completion)
   }
-  
+
   public func checkConfirmationCode(
     accountID: Int,
     confirmationCode: String,
     completion: @escaping (Result<[Collection], APIError>) -> Void)
   {
-    api.request(endpoint: AccountEndpoint.checkConfirmationCode(
-                  accountID: accountID,
-                  confirmationCode: confirmationCode),
-                completion: completion)
+    api.request(
+      endpoint: AccountEndpoint.checkConfirmationCode(
+        accountID: accountID,
+        confirmationCode: confirmationCode),
+      completion: completion)
   }
-  
+
   public func sendConfirmationCode(
     accountID: Int,
     completion: @escaping (Result<EmptyResponse, APIError>) -> Void)
   {
     api.request(endpoint: AccountEndpoint.sendConfirmationCode(accountID: accountID), completion: completion)
   }
+
+  // MARK: Private
+
+  private let api = API.shared
 }

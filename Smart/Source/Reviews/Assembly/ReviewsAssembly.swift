@@ -14,10 +14,10 @@ final class ReviewsAssembly {
     let router = ReviewsRouter(input: input, viewController: viewController)
     let presenter = ReviewsPresenter(viewController: viewController)
     let interactor = ReviewsInteractor(input: input, router: router, presenter: presenter)
-    
+
     router.interactor = interactor
     viewController.interactor = interactor
-    
+
     return viewController
   }
 }

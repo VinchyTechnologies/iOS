@@ -9,16 +9,15 @@
 import Foundation
 
 final class EditProfileAssembly {
-
   static func assemblyModule() -> UIViewController {
     let viewController = EditProfileViewController()
     let router = EditProfileRouter(input: EditProfileInput(), viewController: viewController)
     let presenter = EditProfilePresenter(viewController: viewController)
     let interactor = EditProfileInteractor(router: router, presenter: presenter)
-    
+
     router.interactor = interactor
     viewController.interactor = interactor
-    
+
     return viewController
   }
 }

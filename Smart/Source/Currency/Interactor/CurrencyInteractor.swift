@@ -8,23 +8,30 @@
 
 import Core
 
+// MARK: - CurrencyInteractor
+
 final class CurrencyInteractor {
-  
-  private let presenter: CurrencyPresenterProtocol
-  private let router: CurrencyRouterProtocol
-  
+
+  // MARK: Lifecycle
+
   init(presenter: CurrencyPresenterProtocol, router: CurrencyRouterProtocol) {
     self.presenter = presenter
     self.router = router
   }
+
+  // MARK: Private
+
+  private let presenter: CurrencyPresenterProtocol
+  private let router: CurrencyRouterProtocol
 }
 
-extension CurrencyInteractor: CurrencyInteractorProtocol {
+// MARK: CurrencyInteractorProtocol
 
+extension CurrencyInteractor: CurrencyInteractorProtocol {
   func viewDidLoad() {
     presenter.update(selectedCurrency: UserDefaultsConfig.currency)
   }
-  
+
   func didTapCurrency(symbol: String) {
     UserDefaultsConfig.currency = symbol
     presenter.update(selectedCurrency: symbol)

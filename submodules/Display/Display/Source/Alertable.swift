@@ -6,9 +6,11 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
 import Combine
 import StringFormatting
+import UIKit
+
+// MARK: - Alertable
 
 public protocol Alertable: UIViewController {
   @discardableResult
@@ -16,11 +18,9 @@ public protocol Alertable: UIViewController {
 }
 
 extension Alertable {
-
   @discardableResult
   public func showAlert(title: String, message: String?) -> AnyPublisher<Void, Never> {
-
-    return Future { resolve in
+    Future { resolve in
       DispatchQueue.main.async {
         let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alertController.view.tintColor = .accent

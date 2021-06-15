@@ -6,15 +6,15 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
 import Nuke
+import UIKit
 
-final public class ImageLoader {
-  
-  public static let shared = ImageLoader()
-  
-  private let preheater = ImagePreheater()
-  
+// MARK: - ImageLoader
+
+public final class ImageLoader {
+
+  // MARK: Lifecycle
+
   private init() {
     ImageCache.shared.ttl = 7 * 24 * 60 * 60
 //    ImageCache.shared.countLimit = 1000
@@ -22,7 +22,20 @@ final public class ImageLoader {
 //    DataLoader.sharedUrlCache.diskCapacity = 0
 //    DataLoader.sharedUrlCache.memoryCapacity = 100
   }
-  
+
+  // MARK: Public
+
+  public static let shared = ImageLoader()
+
+  public func prefetch(url: URL?) {
+    guard let url = url else {
+      return
+    }
+    preheater.startPreheating(with: [url])
+  }
+
+  // MARK: Fileprivate
+
   fileprivate func loadBottle(url: URL, imageView: UIImageView) {
     var options = ImageLoadingOptions(
       placeholder: nil,
@@ -38,7 +51,7 @@ final public class ImageLoader {
 
     Nuke.loadImage(with: request, options: options, into: imageView, completion: nil)
   }
-  
+
   fileprivate func loadCommonImage(url: URL, imageView: UIImageView) {
     var options = ImageLoadingOptions(
       placeholder: nil,
@@ -54,25 +67,21 @@ final public class ImageLoader {
 
     Nuke.loadImage(with: request, into: imageView)
   }
-  
-  public func prefetch(url: URL?) {
-    guard let url = url else {
-      return
-    }
-    preheater.startPreheating(with: [url])
-  }
+
+  // MARK: Private
+
+  private let preheater = ImagePreheater()
 }
 
-public extension UIImageView {
-
-  func loadBottle(url: URL?) {
+extension UIImageView {
+  public func loadBottle(url: URL?) {
     guard let url = url else {
       return
     }
     ImageLoader.shared.loadBottle(url: url, imageView: self)
   }
 
-  func loadImage(url: URL?) {
+  public func loadImage(url: URL?) {
     guard let url = url else {
       return
     }

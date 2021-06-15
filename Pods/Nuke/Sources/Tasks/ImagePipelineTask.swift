@@ -7,16 +7,21 @@ import Foundation
 // Each task holds a strong reference to the pipeline. This is by design. The
 // user does not need to hold a strong reference to the pipeline.
 class ImagePipelineTask<Value>: Task<Value, ImagePipeline.Error> {
-    let pipeline: ImagePipeline
-    let request: ImageRequest
 
-    init(_ pipeline: ImagePipeline, _ request: ImageRequest) {
-        self.pipeline = pipeline
-        self.request = request
-    }
+  // MARK: Lifecycle
 
-    /// Executes work on the pipeline synchronization queue.
-    func async(_ work: @escaping () -> Void) {
-        pipeline.queue.async(execute: work)
-    }
+  init(_ pipeline: ImagePipeline, _ request: ImageRequest) {
+    self.pipeline = pipeline
+    self.request = request
+  }
+
+  // MARK: Internal
+
+  let pipeline: ImagePipeline
+  let request: ImageRequest
+
+  /// Executes work on the pipeline synchronization queue.
+  func async(_ work: @escaping () -> Void) {
+    pipeline.queue.async(execute: work)
+  }
 }

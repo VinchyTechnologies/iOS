@@ -8,44 +8,56 @@
 
 import UIKit
 
-public struct AnimationParameters {
+// MARK: - AnimationParameters
 
+public struct AnimationParameters {
   let duration: TimeInterval
   let padding: CGFloat
   let options: UIView.AnimationOptions
 }
 
+// MARK: - KeyboardHelper
+
 public final class KeyboardHelper {
+
+  // MARK: Lifecycle
+
+  public init() {}
+
+  // MARK: Public
 
   public typealias AnimateBlock = (_ padding: CGFloat) -> Void
   public typealias AnimationCompletionBlock = (_ padding: CGFloat) -> Void
   public typealias AnimationParametersBlock = (AnimationParameters) -> Void
 
-  private var keyboardUpdate: KeyboardUpdate? {
-    didSet {
-      if let keyboardUpdate = keyboardUpdate {
-        update(keyboardUpdate: keyboardUpdate)
-      }
-    }
+  public func bindBottomToKeyboardFrame(
+    animated: Bool = true,
+    animate: AnimateBlock? = nil,
+    completion: AnimationCompletionBlock? = nil,
+    animationParametersBlock: AnimationParametersBlock? = nil)
+  {
+    self.animated = animated
+    animateBlock = animate
+    animationCompletionBlock = completion
+    self.animationParametersBlock = animationParametersBlock
+
+    keyboardFrameObservable()
   }
 
-  private var animateBlock: AnimateBlock?
+  // MARK: Internal
 
-  private var animated = true
+  @objc
+  func updateKeyboard(notification: Notification) {
+    keyboardUpdate = KeyboardUpdate(notification: notification)
+  }
 
-  private var animationCompletionBlock: AnimationCompletionBlock?
-
-  private var animationParametersBlock: AnimationParametersBlock?
+  // MARK: Private
 
   private struct KeyboardUpdate {
 
-    let duration: TimeInterval
-    let options: UIView.AnimationOptions
-    let padding: CGFloat
-    let show: Bool
+    // MARK: Lifecycle
 
     init?(notification: Notification) {
-
       guard let userInfo = notification.userInfo else {
         return nil
       }
@@ -64,11 +76,19 @@ public final class KeyboardHelper {
       self.duration = duration
       self.options = options
       self.padding = padding
-      self.show = notification.name != UIResponder.keyboardWillHideNotification
+      show = notification.name != UIResponder.keyboardWillHideNotification
     }
 
-    private static func padding(forFrame frame: CGRect) -> CGFloat {
+    // MARK: Internal
 
+    let duration: TimeInterval
+    let options: UIView.AnimationOptions
+    let padding: CGFloat
+    let show: Bool
+
+    // MARK: Private
+
+    private static func padding(forFrame frame: CGRect) -> CGFloat {
       let endYPosition = frame.origin.y
       let keyboardHeight = frame.height
       let windowHeight = UIApplication.shared.asKeyWindow?.frame.height ?? 0
@@ -78,10 +98,23 @@ public final class KeyboardHelper {
     }
   }
 
-  public init() { }
+  private var animateBlock: AnimateBlock?
+
+  private var animated = true
+
+  private var animationCompletionBlock: AnimationCompletionBlock?
+
+  private var animationParametersBlock: AnimationParametersBlock?
+
+  private var keyboardUpdate: KeyboardUpdate? {
+    didSet {
+      if let keyboardUpdate = keyboardUpdate {
+        update(keyboardUpdate: keyboardUpdate)
+      }
+    }
+  }
 
   private func keyboardFrameObservable() {
-
     let notificationCenter = NotificationCenter.default
 
     notificationCenter.addObserver(
@@ -97,19 +130,13 @@ public final class KeyboardHelper {
       object: nil)
   }
 
-  @objc
-  func updateKeyboard(notification: Notification) {
-    self.keyboardUpdate = KeyboardUpdate(notification: notification)
-  }
-
   private func update(keyboardUpdate: KeyboardUpdate) {
-
-    guard animated && keyboardUpdate.duration > 0.0 else {
+    guard animated, keyboardUpdate.duration > 0.0 else {
       animateBlock?(keyboardUpdate.padding)
       animationParametersBlock?(AnimationParameters(
-                                  duration: keyboardUpdate.duration,
-                                  padding: keyboardUpdate.padding,
-                                  options: keyboardUpdate.options))
+        duration: keyboardUpdate.duration,
+        padding: keyboardUpdate.padding,
+        options: keyboardUpdate.options))
       return
     }
 
@@ -125,19 +152,5 @@ public final class KeyboardHelper {
           self?.animationCompletionBlock?(keyboardUpdate.padding)
         }
       })
-  }
-
-  public func bindBottomToKeyboardFrame(
-    animated: Bool = true,
-    animate: AnimateBlock? = nil,
-    completion: AnimationCompletionBlock? = nil,
-    animationParametersBlock: AnimationParametersBlock? = nil) {
-
-    self.animated = animated
-    self.animateBlock = animate
-    self.animationCompletionBlock = completion
-    self.animationParametersBlock = animationParametersBlock
-
-    keyboardFrameObservable()
   }
 }

@@ -8,6 +8,4 @@
 
 import Foundation
 
-struct AdvancedSearchInput {
-
-}
+struct AdvancedSearchInput {}

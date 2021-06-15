@@ -6,19 +6,23 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
 import Core
+import UIKit
+
+// MARK: - NavigationController
 
 open class NavigationController: UINavigationController {
 
+  // MARK: Lifecycle
+
   // MARK: - Initializers
 
-  public override init(rootViewController: UIViewController) {
+  override public init(rootViewController: UIViewController) {
     super.init(rootViewController: rootViewController)
-    
+
     let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
     let backImage = UIImage(systemName: "chevron.left", withConfiguration: imageConfig)
-    
+
     let navBarAppearance = UINavigationBarAppearance()
     navBarAppearance.titleTextAttributes = [
       NSAttributedString.Key.font: Font.bold(20),
@@ -40,13 +44,37 @@ open class NavigationController: UINavigationController {
     }
   }
 
-  required public init?(coder aDecoder: NSCoder) { fatalError() }
+  @available(*, unavailable)
+  public required init?(coder _: NSCoder) { fatalError() }
 
-  // MARK: - Lifecycle
+  // MARK: Open
 
-  public override func viewDidLoad() {
+  override open func viewWillLayoutSubviews() {
+    super.viewWillLayoutSubviews()
+    getnavigationBarBackground()?.subviews.forEach { view in
+      if NSStringFromClass(view.classForCoder).contains("UIBarBackgroundShadowView") {
+        view.isHidden = true
+      }
+    }
+
+    getnavigationBarBackground()?.subviews.forEach { view in
+      if view.isMember(of: UIVisualEffectView.self) {
+        if let visualView = view as? UIVisualEffectView {
+          for subview in visualView.subviews {
+            subview.isHidden = true
+          }
+          visualView.contentView.backgroundColor = .mainBackground
+          visualView.backgroundColor = .mainBackground
+        }
+      }
+    }
+  }
+
+  // MARK: Public
+
+  override public func viewDidLoad() {
     super.viewDidLoad()
-        
+
     /// BackgroundColor
     navigationBar.barTintColor = .mainBackground
 
@@ -71,30 +99,8 @@ open class NavigationController: UINavigationController {
       NSAttributedString.Key.foregroundColor: UIColor.dark,
     ], for: .highlighted)
   }
-  
-  open override func viewWillLayoutSubviews() {
-    super.viewWillLayoutSubviews()
-    getnavigationBarBackground()?.subviews.forEach { view in
-      if NSStringFromClass(view.classForCoder).contains("UIBarBackgroundShadowView") {
-        view.isHidden = true
-      }
-    }
-    
-    getnavigationBarBackground()?.subviews.forEach { view in
-      if view.isMember(of: UIVisualEffectView.self) {
-        
-        if let visualView = view as? UIVisualEffectView {
-          for subview in visualView.subviews {
-            subview.isHidden = true
-          }
-          visualView.contentView.backgroundColor = .mainBackground
-          visualView.backgroundColor = .mainBackground
-        }
-      }
-    }
-  }
 
-  public override func viewDidAppear(_ animated: Bool) {
+  override public func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
 //    if let lagerTitleView = getLargeTitleView(),
 //       let lagerTitleLabel = getLargeTitleLabel(largeTitleView: lagerTitleView) {
@@ -103,7 +109,6 @@ open class NavigationController: UINavigationController {
 
     getnavigationBarBackground()?.subviews.forEach { view in
       if view.isMember(of: UIVisualEffectView.self) {
-        
         if let visualView = view as? UIVisualEffectView {
           for subview in visualView.subviews {
             subview.isHidden = true
@@ -115,34 +120,7 @@ open class NavigationController: UINavigationController {
     }
   }
 
-  private func getnavigationBarBackground() -> UIView? {
-    for subview in self.navigationBar.subviews {
-      if NSStringFromClass(subview.classForCoder).contains("_UIBarBackground") {
-        return subview
-      }
-    }
-    return nil
-  }
-
-  private func getLargeTitleView() -> UIView? {
-    for subview in self.navigationBar.subviews
-      where NSStringFromClass(subview.classForCoder).contains("UINavigationBarLargeTitleView") {
-      return subview
-    }
-
-    return nil
-  }
-
-  private func getLargeTitleLabel(largeTitleView: UIView) -> UILabel? {
-    for subview in largeTitleView.subviews
-      where subview.isMember(of: UILabel.self) {
-      return subview as? UILabel
-    }
-
-    return nil
-  }
-
-  public override func pushViewController(_ viewController: UIViewController, animated: Bool) {
+  override public func pushViewController(_ viewController: UIViewController, animated: Bool) {
     navigationBar.topItem?.backBarButtonItem = BackBarButtonItem(
       title: "",
       style: .plain,
@@ -151,9 +129,42 @@ open class NavigationController: UINavigationController {
     viewController.navigationItem.leftItemsSupplementBackButton = true
     super.pushViewController(viewController, animated: animated)
   }
+
+  // MARK: Private
+
+  private func getnavigationBarBackground() -> UIView? {
+    for subview in navigationBar.subviews {
+      if NSStringFromClass(subview.classForCoder).contains("_UIBarBackground") {
+        return subview
+      }
+    }
+    return nil
+  }
+
+  private func getLargeTitleView() -> UIView? {
+    for subview in navigationBar.subviews
+      where NSStringFromClass(subview.classForCoder).contains("UINavigationBarLargeTitleView")
+    {
+      return subview
+    }
+
+    return nil
+  }
+
+  private func getLargeTitleLabel(largeTitleView: UIView) -> UILabel? {
+    for subview in largeTitleView.subviews
+      where subview.isMember(of: UILabel.self)
+    {
+      return subview as? UILabel
+    }
+
+    return nil
+  }
 }
 
-fileprivate final class BackBarButtonItem: UIBarButtonItem { // Disale long press on back button for now
+// MARK: - BackBarButtonItem
+
+private final class BackBarButtonItem: UIBarButtonItem { // Disale long press on back button for now
   @available(iOS 14.0, *)
   override var menu: UIMenu? {
     set {

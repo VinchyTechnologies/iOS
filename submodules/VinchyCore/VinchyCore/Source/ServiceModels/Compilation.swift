@@ -7,7 +7,6 @@
 //
 
 public struct Compilation: Decodable {
-
   public let id: Int64?
   public let type: CollectionType
   public let title: String?
@@ -21,7 +20,7 @@ public struct Compilation: Decodable {
   }
 
   public init(type: CollectionType, title: String?, collectionList: [Collection]) {
-    self.id = nil
+    id = nil
     self.type = type
     self.title = title
     self.collectionList = collectionList

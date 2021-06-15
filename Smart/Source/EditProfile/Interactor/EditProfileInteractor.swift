@@ -8,11 +8,12 @@
 
 import Core
 
+// MARK: - EditProfileInteractor
+
 final class EditProfileInteractor {
-  
-  private let router: EditProfileRouterProtocol
-  private let presenter: EditProfilePresenterProtocol
-  
+
+  // MARK: Lifecycle
+
   init(
     router: EditProfileRouterProtocol,
     presenter: EditProfilePresenterProtocol)
@@ -20,12 +21,16 @@ final class EditProfileInteractor {
     self.router = router
     self.presenter = presenter
   }
+
+  // MARK: Private
+
+  private let router: EditProfileRouterProtocol
+  private let presenter: EditProfilePresenterProtocol
 }
 
-// MARK: - EditProfileInteractorProtocol
+// MARK: EditProfileInteractorProtocol
 
 extension EditProfileInteractor: EditProfileInteractorProtocol {
-  
   func viewDidLoad() {
     presenter.update(userName: UserDefaultsConfig.userName, email: UserDefaultsConfig.accountEmail)
   }

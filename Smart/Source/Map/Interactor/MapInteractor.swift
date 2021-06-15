@@ -10,25 +10,24 @@ import Core
 import MapKit
 import VinchyCore
 
-fileprivate enum C {
+// MARK: - C
+
+private enum C {
   static let defaultRadius: Double = 2000
 }
 
-fileprivate enum MapState {
+// MARK: - MapState
+
+private enum MapState {
   case normal, routing
 }
 
+// MARK: - MapInteractor
+
 final class MapInteractor {
-  
-  private let repository: MapRepositoryProtocol
-  private let router: MapRouterProtocol
-  private let presenter: MapPresenterProtocol
-  private var throttler: Throttler?
-  private var partnersOnMap: Set<PartnerOnMap> = Set<PartnerOnMap>() 
-  private var currentRadius = C.defaultRadius
-  private var currentPosition: CLLocationCoordinate2D?
-  private var mapState = MapState.normal
-  
+
+  // MARK: Lifecycle
+
   init(
     repository: MapRepositoryProtocol,
     router: MapRouterProtocol,
@@ -38,91 +37,101 @@ final class MapInteractor {
     self.router = router
     self.presenter = presenter
   }
-  
+
+  // MARK: Private
+
+  private let repository: MapRepositoryProtocol
+  private let router: MapRouterProtocol
+  private let presenter: MapPresenterProtocol
+  private var throttler: Throttler?
+  private var partnersOnMap = Set<PartnerOnMap>()
+  private var currentRadius = C.defaultRadius
+  private var currentPosition: CLLocationCoordinate2D?
+  private var mapState = MapState.normal
+
   private func processMove(
     to position: CLLocationCoordinate2D,
-    mapVisibleRegion: MKMapRect,
+    mapVisibleRegion _: MKMapRect,
     mapView: MKMapView,
     label: String?)
   {
     let radius = mapView.currentRadius()
     if let currentPosition = self.currentPosition {
       let distance = CLLocation.distance(from: currentPosition, to: position)
-      if distance + Double(radius) <= self.currentRadius {
+      if distance + Double(radius) <= currentRadius {
         self.currentPosition = position
-        self.currentRadius = radius
+        currentRadius = radius
         return
       }
     }
-    
-    self.repository.requestPartners(userLocation: position, radius: Int(mapView.currentRadius())) { [weak self] result in
+
+    repository.requestPartners(userLocation: position, radius: Int(mapView.currentRadius())) { [weak self] result in
       guard let self = self else { return }
       switch result {
       case .success(let partnersOnMap):
-          self.partnersOnMap = Set<PartnerOnMap>(partnersOnMap)
+        self.partnersOnMap = Set<PartnerOnMap>(partnersOnMap)
         if self.throttler?.label == label {
           print(self.partnersOnMap.count)
           self.presenter.didReceive(partnersOnMap: self.partnersOnMap, userLocation: position)
         }
-        
+
       case .failure(let error):
         self.presenter.showAlert(error: error)
       }
     }
-    self.currentPosition = position
-    self.currentRadius = radius
+    currentPosition = position
+    currentRadius = radius
   }
 }
 
-// MARK: - MapInteractorProtocol
+// MARK: MapInteractorProtocol
 
 extension MapInteractor: MapInteractorProtocol {
-  
   func didTapSearchThisAreaButton(
     position: CLLocationCoordinate2D,
-    radius: Double) {
-    
+    radius: Double)
+  {
     repository.requestPartners(userLocation: position, radius: Int(radius)) { [weak self] result in
       guard let self = self else { return }
       switch result {
       case .success(let partnersOnMap):
-          self.partnersOnMap = Set<PartnerOnMap>(partnersOnMap)
-          self.presenter.didReceive(partnersOnMap: self.partnersOnMap, userLocation: position)
-        
+        self.partnersOnMap = Set<PartnerOnMap>(partnersOnMap)
+        self.presenter.didReceive(partnersOnMap: self.partnersOnMap, userLocation: position)
+
       case .failure(let error):
         self.presenter.showAlert(error: error)
       }
     }
   }
-  
+
   func didTapXMarkButtonOnRoutingToolBar() {
     mapState = .normal
     presenter.deselectSelectedPin()
     presenter.removeAllOverlays()
   }
-  
+
   func didTapAssortmentButton(partnerId: Int, affilatedId: Int, title: String?) {
     router.showAssortmentViewController(partnerId: partnerId, affilatedId: affilatedId, title: title)
   }
-  
+
   func requestBottomSheetDismissToDeselectSelectedPin() {
     if mapState == .normal {
       presenter.deselectSelectedPin()
     }
   }
-  
+
   func didTapShowRouteOnBottomSheet(coordinate: CLLocationCoordinate2D) {
     mapState = .routing
     let currentPlacemark = MKPlacemark(coordinate: coordinate)
     let directionRequest = MKDirections.Request()
     let destinationPlacemark = MKPlacemark(placemark: currentPlacemark)
-    
+
     directionRequest.source = MKMapItem.forCurrentLocation()
     directionRequest.destination = MKMapItem(placemark: destinationPlacemark)
     directionRequest.transportType = .walking
-    
+
     let directions = MKDirections(request: directionRequest)
-    directions.calculate { (directionsResponse, error) in
+    directions.calculate { directionsResponse, error in
       guard let directionsResponse = directionsResponse else {
         if let error = error {
           self.router.dismissCurrentBottomSheet(shouldUseDidDismissCallback: true)
@@ -130,7 +139,7 @@ extension MapInteractor: MapInteractorProtocol {
         }
         return
       }
-      
+
       if let route = directionsResponse.routes.first {
         self.router.dismissCurrentBottomSheet(shouldUseDidDismissCallback: false)
         self.presenter.didReceive(route: route)
@@ -140,11 +149,11 @@ extension MapInteractor: MapInteractorProtocol {
       }
     }
   }
-  
+
   func didTapOnPin(partnerId: Int, affilatedId: Int) {
     router.showMapDetailStore(partnerId: partnerId, affilatedId: affilatedId)
   }
-  
+
   func didMove(
     to position: CLLocationCoordinate2D,
     mapVisibleRegion: MKMapRect,
@@ -164,20 +173,20 @@ extension MapInteractor: MapInteractorProtocol {
       processMove(to: position, mapVisibleRegion: mapVisibleRegion, mapView: mapView, label: nil)
     }
   }
-  
+
   func viewDidLoad() {
     repository.requestUserLocation { userLocation in
       if let userLocation = userLocation {
         self.presenter.updateUserLocationAndRegion(userLocation, radius: C.defaultRadius)
       }
-      
+
       self.repository.requestPartners(userLocation: userLocation, radius: Int(C.defaultRadius)) { [weak self] result in
         guard let self = self else { return }
         switch result {
         case .success(let partnersOnMap):
           self.partnersOnMap = Set<PartnerOnMap>(partnersOnMap)
           self.presenter.didReceive(partnersOnMap: self.partnersOnMap, userLocation: userLocation)
-          
+
         case .failure(let error):
           self.presenter.showAlert(error: error)
         }
@@ -187,11 +196,10 @@ extension MapInteractor: MapInteractorProtocol {
 }
 
 extension MKMapView {
-  
   func topCenterCoordinate() -> CLLocationCoordinate2D {
     convert(CGPoint(x: frame.size.width / 2.0, y: 0), toCoordinateFrom: self)
   }
-  
+
   func currentRadius() -> Double {
     let centerLocation = CLLocation(
       latitude: centerCoordinate.latitude,
@@ -205,16 +213,15 @@ extension MKMapView {
 }
 
 extension CLLocation {
-    
-    /// Get distance between two points
-    ///
-    /// - Parameters:
-    ///   - from: first point
-    ///   - to: second point
-    /// - Returns: the distance in meters
-    class func distance(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D) -> CLLocationDistance {
-        let from = CLLocation(latitude: from.latitude, longitude: from.longitude)
-        let to = CLLocation(latitude: to.latitude, longitude: to.longitude)
-        return from.distance(from: to)
-    }
+  /// Get distance between two points
+  ///
+  /// - Parameters:
+  ///   - from: first point
+  ///   - to: second point
+  /// - Returns: the distance in meters
+  class func distance(from: CLLocationCoordinate2D, to: CLLocationCoordinate2D) -> CLLocationDistance {
+    let from = CLLocation(latitude: from.latitude, longitude: from.longitude)
+    let to = CLLocation(latitude: to.latitude, longitude: to.longitude)
+    return from.distance(from: to)
+  }
 }

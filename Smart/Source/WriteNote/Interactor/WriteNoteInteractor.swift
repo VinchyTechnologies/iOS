@@ -8,12 +8,11 @@
 
 import Database
 
+// MARK: - WriteNoteInteractor
+
 final class WriteNoteInteractor {
 
-  private let input: WriteNoteInput
-  private let router: WriteNoteRouterProtocol
-  private let presenter: WriteNotePresenterProtocol
-  private var noteText: String?
+  // MARK: Lifecycle
 
   init(
     input: WriteNoteInput,
@@ -24,12 +23,18 @@ final class WriteNoteInteractor {
     self.router = router
     self.presenter = presenter
   }
+
+  // MARK: Private
+
+  private let input: WriteNoteInput
+  private let router: WriteNoteRouterProtocol
+  private let presenter: WriteNotePresenterProtocol
+  private var noteText: String?
 }
 
-// MARK: - WriteNoteInteractorProtocol
+// MARK: WriteNoteInteractorProtocol
 
 extension WriteNoteInteractor: WriteNoteInteractorProtocol {
-
   func viewDidLoad() {
     switch input.wine {
     case .database(let note):
@@ -41,11 +46,10 @@ extension WriteNoteInteractor: WriteNoteInteractorProtocol {
   }
 
   func didTapSave() {
-
     switch input.wine {
     case .database(let note):
       notesRepository.remove(note)
-      let maxId = notesRepository.findAll().map({ $0.id }).max() ?? 0
+      let maxId = notesRepository.findAll().map { $0.id }.max() ?? 0
       let id = maxId + 1
       notesRepository.append(VNote(id: id, wineID: note.wineID, wineTitle: note.wineTitle, noteText: noteText ?? ""))
 
@@ -53,22 +57,20 @@ extension WriteNoteInteractor: WriteNoteInteractorProtocol {
       guard let noteText = noteText, !noteText.isEmpty else {
         return
       }
-      
-      let maxId = notesRepository.findAll().map({ $0.id }).max() ?? 0
+
+      let maxId = notesRepository.findAll().map { $0.id }.max() ?? 0
       let id = maxId + 1
       notesRepository.append(VNote(id: id, wineID: wine.id, wineTitle: wine.title, noteText: noteText))
     }
 
     router.pop()
-
   }
 
   func didChangeNoteText(_ text: String?) {
     noteText = text
   }
-  
+
   func didStartWriteText() {
     presenter.setPlaceholder()
   }
 }
- 

@@ -10,11 +10,9 @@ import UIKit
 
 public final class CopyableLabel: UILabel {
 
-  override public var canBecomeFirstResponder: Bool {
-    true
-  }
+  // MARK: Lifecycle
 
-  public override init(frame: CGRect) {
+  override public init(frame: CGRect) {
     super.init(frame: frame)
     isUserInteractionEnabled = true
     addGestureRecognizer(UILongPressGestureRecognizer(
@@ -22,27 +20,36 @@ public final class CopyableLabel: UILabel {
       action: #selector(showCopyMenu(sender:))))
   }
 
-  required init?(coder aDecoder: NSCoder) { fatalError() }
+  @available(*, unavailable)
+  required init?(coder _: NSCoder) { fatalError() }
 
-  public override func copy(_ sender: Any?) {
+  // MARK: Public
+
+  override public var canBecomeFirstResponder: Bool {
+    true
+  }
+
+  override public func copy(_: Any?) {
     UIPasteboard.general.string = text
     UIMenuController.shared.hideMenu()
   }
 
+  override public func canPerformAction(
+    _ action: Selector,
+    withSender _: Any?)
+    -> Bool
+  {
+    action == #selector(copy(_:))
+  }
+
+  // MARK: Private
+
   @objc
-  private func showCopyMenu(sender: Any?) {
+  private func showCopyMenu(sender _: Any?) {
     becomeFirstResponder()
     let menu = UIMenuController.shared
     if !menu.isMenuVisible {
       menu.showMenu(from: self, rect: bounds)
     }
-  }
-
-  public override func canPerformAction(
-    _ action: Selector,
-    withSender sender: Any?)
-    -> Bool
-  {
-    action == #selector(copy(_:))
   }
 }

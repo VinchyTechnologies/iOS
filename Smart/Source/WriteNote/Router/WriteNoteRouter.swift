@@ -8,12 +8,12 @@
 
 import UIKit
 
+// MARK: - WriteNoteRouter
+
 final class WriteNoteRouter {
-  
-  weak var viewController: UIViewController?
-  weak var interactor: WriteNoteInteractorProtocol?
-  private let input: WriteNoteInput
-  
+
+  // MARK: Lifecycle
+
   init(
     input: WriteNoteInput,
     viewController: UIViewController)
@@ -21,9 +21,18 @@ final class WriteNoteRouter {
     self.input = input
     self.viewController = viewController
   }
+
+  // MARK: Internal
+
+  weak var viewController: UIViewController?
+  weak var interactor: WriteNoteInteractorProtocol?
+
+  // MARK: Private
+
+  private let input: WriteNoteInput
 }
 
-// MARK: - WriteNoteRouterProtocol
+// MARK: WriteNoteRouterProtocol
 
 extension WriteNoteRouter: WriteNoteRouterProtocol {
   func pop() {

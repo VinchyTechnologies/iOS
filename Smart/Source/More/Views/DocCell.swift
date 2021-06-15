@@ -6,50 +6,30 @@
 //  Copyright © 2019 Алексей Смирнов. All rights reserved.
 //
 
-import UIKit
 import Display
+import UIKit
+
+// MARK: - DocCellViewModel
 
 public struct DocCellViewModel: ViewModelProtocol {
-  
   fileprivate let titleText: String?
   fileprivate let icon: UIImage?
-  
+
   public init(titleText: String?, icon: UIImage?) {
     self.titleText = titleText
     self.icon = icon
   }
 }
 
+// MARK: - DocCell
+
 final class DocCell: UICollectionViewCell, Reusable {
-  
-  private let phoneImage: UIImageView = {
-    let imageView = UIImageView()
-    imageView.translatesAutoresizingMaskIntoConstraints = false
-    imageView.image = UIImage(named: "phone")?.withRenderingMode(.alwaysTemplate)
-    imageView.tintColor = .dark
-    imageView.contentMode = .scaleAspectFill
-    return imageView
-  }()
-  
-  private let phoneLabel: UILabel = {
-    let label = UILabel()
-    label.translatesAutoresizingMaskIntoConstraints = false
-    label.font = Font.dinAlternateBold(18)
-    label.textColor = .dark
-    return label
-  }()
-  
-  private let cursorView: UIImageView = {
-    let imageView = UIImageView()
-    imageView.translatesAutoresizingMaskIntoConstraints = false
-    imageView.image = UIImage(named: "fill1Copy")
-    imageView.contentMode = .scaleAspectFit
-    return imageView
-  }()
-  
+
+  // MARK: Lifecycle
+
   override init(frame: CGRect) {
     super.init(frame: frame)
-    
+
     contentView.addSubview(phoneImage)
     NSLayoutConstraint.activate([
       phoneImage.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
@@ -57,7 +37,7 @@ final class DocCell: UICollectionViewCell, Reusable {
       phoneImage.widthAnchor.constraint(equalToConstant: 20),
       phoneImage.heightAnchor.constraint(equalToConstant: 20),
     ])
-    
+
     contentView.addSubview(phoneLabel)
     NSLayoutConstraint.activate([
       phoneLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
@@ -67,7 +47,7 @@ final class DocCell: UICollectionViewCell, Reusable {
       phoneLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
       phoneLabel.heightAnchor.constraint(equalToConstant: 60),
     ])
-    
+
     contentView.addSubview(cursorView)
     NSLayoutConstraint.activate([
       cursorView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
@@ -76,17 +56,49 @@ final class DocCell: UICollectionViewCell, Reusable {
       cursorView.heightAnchor.constraint(equalToConstant: 10),
     ])
   }
-  
-  required init?(coder aDecoder: NSCoder) { fatalError() }
+
+  @available(*, unavailable)
+  required init?(coder _: NSCoder) { fatalError() }
+
+  // MARK: Internal
 
   static func height() -> CGFloat {
     60
   }
+
+  // MARK: Private
+
+  private let phoneImage: UIImageView = {
+    let imageView = UIImageView()
+    imageView.translatesAutoresizingMaskIntoConstraints = false
+    imageView.image = UIImage(named: "phone")?.withRenderingMode(.alwaysTemplate)
+    imageView.tintColor = .dark
+    imageView.contentMode = .scaleAspectFill
+    return imageView
+  }()
+
+  private let phoneLabel: UILabel = {
+    let label = UILabel()
+    label.translatesAutoresizingMaskIntoConstraints = false
+    label.font = Font.dinAlternateBold(18)
+    label.textColor = .dark
+    return label
+  }()
+
+  private let cursorView: UIImageView = {
+    let imageView = UIImageView()
+    imageView.translatesAutoresizingMaskIntoConstraints = false
+    imageView.image = UIImage(named: "fill1Copy")
+    imageView.contentMode = .scaleAspectFit
+    return imageView
+  }()
 }
+
+// MARK: Decoratable
+
 extension DocCell: Decoratable {
-  
   typealias ViewModel = DocCellViewModel
-  
+
   func decorate(model: ViewModel) {
     phoneLabel.text = model.titleText
     phoneImage.image = model.icon?.withRenderingMode(.alwaysTemplate)

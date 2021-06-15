@@ -6,47 +6,56 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
+// MARK: - CompilationsEndpoint
+
 private enum CompilationsEndpoint: EndpointProtocol {
-  
   case all
-  
+
+  // MARK: Internal
+
   var host: String {
-    return domain
+    domain
   }
-  
+
   var path: String {
     switch self {
     case .all:
       return "/compilations"
     }
   }
-  
+
   var method: HTTPMethod {
     switch self {
     case .all:
       return .get
     }
   }
-  
+
   var parameters: Parameters? {
     switch self {
     case .all:
       return nil
     }
   }
-  
 }
 
+// MARK: - Compilations
+
 public final class Compilations {
-  
-  private let api = API.shared
-  
+
+  // MARK: Lifecycle
+
+  private init() {}
+
+  // MARK: Public
+
   public static let shared = Compilations()
-  
-  private init() { }
-  
+
   public func getCompilations(completion: @escaping (Result<[Compilation], APIError>) -> Void) {
     api.request(endpoint: CompilationsEndpoint.all, completion: completion)
   }
-  
+
+  // MARK: Private
+
+  private let api = API.shared
 }

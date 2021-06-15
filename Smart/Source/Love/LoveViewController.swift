@@ -6,79 +6,24 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
 import CommonUI
-import StringFormatting
 import Database
 import Display
+import StringFormatting
+import UIKit
+
+// MARK: - LoveViewControllerState
 
 private enum LoveViewControllerState: Int {
   case like = 0, dislike
 }
 
-final class LoveViewController: UIViewController {
-  
-  private let dataBase = winesRepository
-  
-  private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
-  
-  private static let collectionViewLayout: UICollectionViewLayout = {
-    let rowCount = UIDevice.current.userInterfaceIdiom == .pad ? 3 : 2
-    let inset: CGFloat = 10
-    let itemWidth = Int((UIScreen.main.bounds.width - inset * CGFloat(rowCount + 1)) / CGFloat(rowCount))
-    let itemHeight = Int(Double(itemWidth) * 1.4)
-    
-    let layout = UICollectionViewFlowLayout()
-    layout.sectionInset = UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
-    layout.minimumLineSpacing = inset
-    layout.minimumInteritemSpacing = 0
-    layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
-    
-    return layout
-  }()
-  
-  private var currentState: LoveViewControllerState = .like {
-    didSet {
-      if currentState == .like {
-        wines = dataBase.findAll().filter({ $0.isLiked == true })
-      } else if currentState == .dislike {
-        wines = dataBase.findAll().filter({ $0.isDisliked == true })
-      }
-    }
-  }
+// MARK: - LoveViewController
 
-  private lazy var segmentedControl: UISegmentedControl = {
-    let segmentedControl = UISegmentedControl(items: [
-      localized("you_liked").firstLetterUppercased(),
-      localized("you_disliked").firstLetterUppercased()
-    ])
-    segmentedControl.selectedSegmentIndex = currentState.rawValue
-    segmentedControl.backgroundColor = .option
-    segmentedControl.selectedSegmentTintColor = .accent
-    segmentedControl.setTitleTextAttributes([
-      NSAttributedString.Key.foregroundColor: UIColor.white,
-      NSAttributedString.Key.font: Font.bold(14)
-    ], for: .selected)
-    segmentedControl.setTitleTextAttributes([
-      NSAttributedString.Key.foregroundColor: UIColor.blueGray,
-      NSAttributedString.Key.font: Font.bold(14)
-    ], for: .normal)
-    segmentedControl.frame.size.height = 35
-    segmentedControl.frame.size.width = widthSegmentedControl()
-    segmentedControl.addTarget(
-      self,
-      action: #selector(didChangeIndexSegmantedControl(_:)),
-      for: .valueChanged)
-    return segmentedControl
-  }()
-  
-  private var wines: [VWine] = [] {
-    didSet {
-      wines.isEmpty ? showEmptyView() : hideEmptyView()
-      collectionView.reloadData()
-    }
-  }
-  
+final class LoveViewController: UIViewController {
+
+  // MARK: Lifecycle
+
   init() {
     super.init(nibName: nil, bundle: nil)
     collectionView.dataSource = self
@@ -86,9 +31,12 @@ final class LoveViewController: UIViewController {
     collectionView.register(WineCollectionViewCell.self, forCellWithReuseIdentifier: WineCollectionViewCell.reuseId)
     collectionView.delaysContentTouches = false
   }
-  
-  required init?(coder: NSCoder) { fatalError() }
-  
+
+  @available(*, unavailable)
+  required init?(coder _: NSCoder) { fatalError() }
+
+  // MARK: Internal
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -101,26 +49,87 @@ final class LoveViewController: UIViewController {
     collectionView.backgroundColor = .mainBackground
     collectionView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
     collectionView.delaysContentTouches = false
-
   }
-  
+
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     let current = currentState
     currentState = current
   }
-  
+
   override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
     super.viewWillTransition(to: size, with: coordinator)
     coordinator.animate(alongsideTransition: { _ in
-        self.collectionView.collectionViewLayout.invalidateLayout()
+      self.collectionView.collectionViewLayout.invalidateLayout()
     })
   }
-  
+
+  // MARK: Private
+
+  private static let collectionViewLayout: UICollectionViewLayout = {
+    let rowCount = UIDevice.current.userInterfaceIdiom == .pad ? 3 : 2
+    let inset: CGFloat = 10
+    let itemWidth = Int((UIScreen.main.bounds.width - inset * CGFloat(rowCount + 1)) / CGFloat(rowCount))
+    let itemHeight = Int(Double(itemWidth) * 1.4)
+
+    let layout = UICollectionViewFlowLayout()
+    layout.sectionInset = UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
+    layout.minimumLineSpacing = inset
+    layout.minimumInteritemSpacing = 0
+    layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
+
+    return layout
+  }()
+
+  private let dataBase = winesRepository
+
+  private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
+  private lazy var segmentedControl: UISegmentedControl = {
+    let segmentedControl = UISegmentedControl(items: [
+      localized("you_liked").firstLetterUppercased(),
+      localized("you_disliked").firstLetterUppercased(),
+    ])
+    segmentedControl.selectedSegmentIndex = currentState.rawValue
+    segmentedControl.backgroundColor = .option
+    segmentedControl.selectedSegmentTintColor = .accent
+    segmentedControl.setTitleTextAttributes([
+      NSAttributedString.Key.foregroundColor: UIColor.white,
+      NSAttributedString.Key.font: Font.bold(14),
+    ], for: .selected)
+    segmentedControl.setTitleTextAttributes([
+      NSAttributedString.Key.foregroundColor: UIColor.blueGray,
+      NSAttributedString.Key.font: Font.bold(14),
+    ], for: .normal)
+    segmentedControl.frame.size.height = 35
+    segmentedControl.frame.size.width = widthSegmentedControl()
+    segmentedControl.addTarget(
+      self,
+      action: #selector(didChangeIndexSegmantedControl(_:)),
+      for: .valueChanged)
+    return segmentedControl
+  }()
+
+  private var currentState: LoveViewControllerState = .like {
+    didSet {
+      if currentState == .like {
+        wines = dataBase.findAll().filter { $0.isLiked == true }
+      } else if currentState == .dislike {
+        wines = dataBase.findAll().filter { $0.isDisliked == true }
+      }
+    }
+  }
+
+  private var wines: [VWine] = [] {
+    didSet {
+      wines.isEmpty ? showEmptyView() : hideEmptyView()
+      collectionView.reloadData()
+    }
+  }
+
   private func hideEmptyView() {
     collectionView.backgroundView = nil
   }
-  
+
   private func showEmptyView() {
     let errorView = ErrorView(frame: view.frame)
     errorView.decorate(
@@ -150,20 +159,20 @@ final class LoveViewController: UIViewController {
     let actualWidth: CGFloat = (maxWorldWidth + 20) * CGFloat(2)
 
     return max(min(maxWidth, actualWidth), 200)
-
   }
 }
 
+// MARK: UICollectionViewDataSource
+
 extension LoveViewController: UICollectionViewDataSource {
-  
   func collectionView(
-    _ collectionView: UICollectionView,
-    numberOfItemsInSection section: Int)
+    _: UICollectionView,
+    numberOfItemsInSection _: Int)
     -> Int
   {
     wines.count
   }
-  
+
   func collectionView(
     _ collectionView: UICollectionView,
     cellForItemAt indexPath: IndexPath)
@@ -172,7 +181,7 @@ extension LoveViewController: UICollectionViewDataSource {
     guard let wine = wines[safe: indexPath.row] else { return .init() }
     // swiftlint:disable:next force_cast
     let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as! WineCollectionViewCell
-    
+
     if let wineID = wine.wineID, let title = wine.title {
       cell.decorate(
         model: .init(
@@ -181,24 +190,27 @@ extension LoveViewController: UICollectionViewDataSource {
           titleText: title,
           subtitleText: nil))
     }
-    
+
     return cell
   }
 }
 
+// MARK: UICollectionViewDelegate
+
 extension LoveViewController: UICollectionViewDelegate {
   func collectionView(
-    _ collectionView: UICollectionView,
-    didSelectItemAt indexPath: IndexPath) {
-    
+    _: UICollectionView,
+    didSelectItemAt indexPath: IndexPath)
+  {
     guard let wineID = wines[safe: indexPath.row]?.wineID else { return }
     navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wineID), animated: true)
   }
 }
 
+// MARK: ErrorViewDelegate
+
 extension LoveViewController: ErrorViewDelegate {
-  
-  func didTapErrorButton(_ button: UIButton) {
+  func didTapErrorButton(_: UIButton) {
     tabBarController?.selectedIndex = 0
   }
 }

@@ -10,7 +10,18 @@ import UIKit
 
 open class HighlightCollectionCell: UICollectionViewCell, HighlightableViewProtocol, CollectionCellProtocol {
 
-  public override var isHighlighted: Bool {
+  // MARK: Lifecycle
+
+  override public init(frame: CGRect) {
+    super.init(frame: frame)
+  }
+
+  @available(*, unavailable)
+  public required init?(coder _: NSCoder) { fatalError() }
+
+  // MARK: Public
+
+  override public var isHighlighted: Bool {
     didSet {
       highlightAnimator?.animateHighlight()
     }
@@ -19,9 +30,11 @@ open class HighlightCollectionCell: UICollectionViewCell, HighlightableViewProto
   public var highlightStyle: CollectionCellHighlightStyle? {
     didSet {
       guard highlightStyle != oldValue else { return }
-      highlightAnimator = self.highlightAnimator(for: highlightStyle)
+      highlightAnimator = highlightAnimator(for: highlightStyle)
     }
   }
+
+  // MARK: Private
 
   private var highlightAnimator: HighlightAnimatorProtocol?
 
@@ -29,17 +42,10 @@ open class HighlightCollectionCell: UICollectionViewCell, HighlightableViewProto
     switch style {
     case .scale:
       return ScaleHighlightAnimator(view: self)
-    case let .backgroundColor(color):
+    case .backgroundColor(let color):
       return BackgroundColorHighlightAnimator(view: self, highlightedBackgroundColor: color)
     case .none:
       return nil
     }
   }
-
-  public override init(frame: CGRect) {
-    super.init(frame: frame)
-  }
-
-  required public init?(coder: NSCoder) { fatalError() }
-
 }

@@ -6,15 +6,13 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-public extension String {
-  
-  var isNilOrEmpty: Bool {
-    return self.isEmpty
+extension String {
+  public var isNilOrEmpty: Bool {
+    isEmpty
   }
 }
 
 extension Optional where Wrapped == String {
-  
   var isNilOrEmpty: Bool {
     if self == nil {
       return true

@@ -8,8 +8,9 @@
 
 import UIKit
 
-public protocol DecoratorFlowLayoutDelegate: UICollectionViewDelegateFlowLayout {
+// MARK: - DecoratorFlowLayoutDelegate
 
+public protocol DecoratorFlowLayoutDelegate: UICollectionViewDelegateFlowLayout {
   func collectionView(
     _ collectionView: UICollectionView,
     layout collectionViewLayout: DecoratorFlowLayout,
@@ -25,40 +26,46 @@ public protocol DecoratorFlowLayoutDelegate: UICollectionViewDelegateFlowLayout 
     -> CGFloat?
 }
 
-public extension DecoratorFlowLayoutDelegate {
+extension DecoratorFlowLayoutDelegate {
+  public func collectionView(
+    _: UICollectionView,
+    layout _: DecoratorFlowLayout,
+    shadowForCellAt _: IndexPath,
+    withFrame _: CGRect)
+    -> CALayer.Shadow? { nil }
 
-  func collectionView(
-    _ collectionView: UICollectionView,
-    layout collectionViewLayout: DecoratorFlowLayout,
-    shadowForCellAt indexPath: IndexPath,
-    withFrame frame: CGRect)
-    -> CALayer.Shadow? { return nil }
-
-  func collectionView(
-    _ collectionView: UICollectionView,
-    layout collectionViewLayout: DecoratorFlowLayout,
-    cornerRadiusForCellAt indexPath: IndexPath,
-    withFrame frame: CGRect)
-    -> CGFloat? { return nil }
+  public func collectionView(
+    _: UICollectionView,
+    layout _: DecoratorFlowLayout,
+    cornerRadiusForCellAt _: IndexPath,
+    withFrame _: CGRect)
+    -> CGFloat? { nil }
 }
+
+// MARK: - LayoutAlignment
 
 public enum LayoutAlignment {
   case left
 }
 
+// MARK: - AlignmentProcessorProtocol
+
 protocol AlignmentProcessorProtocol: AnyObject {
   var supportedAlignment: LayoutAlignment { get }
-  func process(attributes: [UICollectionViewLayoutAttributes],
-               for layout: UICollectionViewFlowLayout) -> [UICollectionViewLayoutAttributes]
+  func process(
+    attributes: [UICollectionViewLayoutAttributes],
+    for layout: UICollectionViewFlowLayout) -> [UICollectionViewLayoutAttributes]
 }
 
-final class LeftAlignmentProcessor: AlignmentProcessorProtocol {
+// MARK: - LeftAlignmentProcessor
 
+final class LeftAlignmentProcessor: AlignmentProcessorProtocol {
   let supportedAlignment = LayoutAlignment.left
 
   func process(attributes: [UICollectionViewLayoutAttributes], for layout: UICollectionViewFlowLayout) -> [UICollectionViewLayoutAttributes] {
-    guard layout.scrollDirection == .vertical,
-          let collectionView = layout.collectionView else { return attributes }
+    guard
+      layout.scrollDirection == .vertical,
+      let collectionView = layout.collectionView else { return attributes }
     let sortedAttributes = attributes.sorted(by: { $0.indexPath < $1.indexPath })
     var itemMaxX: CGFloat?
     var rowMidY: CGFloat?
@@ -76,9 +83,9 @@ final class LeftAlignmentProcessor: AlignmentProcessorProtocol {
         .collectionView?(collectionView, layout: layout, minimumInteritemSpacingForSectionAt: section)
         ?? layout.minimumInteritemSpacing
 
-      let originX = itemMaxX.map({ $0 + itemInset })
+      let originX = itemMaxX.map { $0 + itemInset }
         ?? collectionView.contentInset.left + ((collectionView.delegate as? UICollectionViewDelegateFlowLayout)?
-                                                .collectionView?(collectionView, layout: layout, insetForSectionAt: section).left ?? .zero)
+          .collectionView?(collectionView, layout: layout, insetForSectionAt: section).left ?? .zero)
 
       let frame = CGRect(origin: CGPoint(x: originX, y: copy.frame.minY), size: copy.frame.size)
       copy.frame = frame
@@ -88,12 +95,13 @@ final class LeftAlignmentProcessor: AlignmentProcessorProtocol {
   }
 }
 
+// MARK: - DecoratorLayoutAttributes
+
 open class DecoratorLayoutAttributes: UICollectionViewLayoutAttributes {
 
-  public var shadow: CALayer.Shadow?
-  public var cornerRadius: CGFloat?
+  // MARK: Open
 
-  open override func copy(with zone: NSZone? = nil) -> Any {
+  override open func copy(with zone: NSZone? = nil) -> Any {
     let copy = super.copy(with: zone)
     let decorator = copy as? Self
     decorator?.shadow = shadow
@@ -101,41 +109,53 @@ open class DecoratorLayoutAttributes: UICollectionViewLayoutAttributes {
     return copy
   }
 
-  open override func isEqual(_ object: Any?) -> Bool {
-    guard super.isEqual(object),
-          let otherAttributes = object as? Self else { return false }
+  override open func isEqual(_ object: Any?) -> Bool {
+    guard
+      super.isEqual(object),
+      let otherAttributes = object as? Self else { return false }
     return otherAttributes.shadow == shadow
       && otherAttributes.cornerRadius == cornerRadius
   }
 
+  // MARK: Public
+
+  public var shadow: CALayer.Shadow?
+  public var cornerRadius: CGFloat?
 }
 
-public extension CALayer {
+extension CALayer {
+  public struct Shadow: Equatable {
 
-  struct Shadow: Equatable {
+    // MARK: Lifecycle
 
-    public static let `default` = Self(color: UIColor.black.cgColor,
-                                       opacity: 0.08,
-                                       offset: CGSize(width: .zero, height: -2),
-                                       radius: 8)
+    public init(
+      color: CGColor? = nil,
+      opacity: Float? = nil,
+      offset: CGSize? = nil,
+      radius: CGFloat? = nil)
+    {
+      self.color = color
+      self.opacity = opacity
+      self.offset = offset
+      self.radius = radius
+    }
+
+    // MARK: Public
+
+    public static let `default` = Self(
+      color: UIColor.black.cgColor,
+      opacity: 0.08,
+      offset: CGSize(width: .zero, height: -2),
+      radius: 8)
 
     public var color: CGColor?
     public var opacity: Float?
     public var offset: CGSize?
     public var radius: CGFloat?
 
-    public init(color: CGColor? = nil,
-                opacity: Float? = nil,
-                offset: CGSize? = nil,
-                radius: CGFloat? = nil) {
-      self.color = color
-      self.opacity = opacity
-      self.offset = offset
-      self.radius = radius
-    }
   }
 
-  func apply(shadow: Shadow?, withPath path: CGPath? = nil) {
+  public func apply(shadow: Shadow?, withPath path: CGPath? = nil) {
     shadowColor = shadow?.color
     shadowOpacity = shadow?.opacity ?? .zero
     shadowOffset = shadow?.offset ?? .zero
@@ -144,31 +164,28 @@ public extension CALayer {
   }
 }
 
-public extension CALayer {
-
-  func apply(cornerRadius: CGFloat?) {
+extension CALayer {
+  public func apply(cornerRadius: CGFloat?) {
     self.cornerRadius = cornerRadius ?? .zero
     masksToBounds = self.cornerRadius > .zero
   }
 }
 
+// MARK: - DecoratorFlowLayout
+
 public class DecoratorFlowLayout: UICollectionViewFlowLayout {
+
+  // MARK: Public
 
   public var alignment: LayoutAlignment?
   public var cellPaginationOffset: CGFloat?
-  private var recentOffset: CGPoint = .zero
   public weak var delegate: DecoratorFlowLayoutDelegate?
 
-  private var decoratorsCache: [IndexPath: UICollectionViewLayoutAttributes] = [:]
-  private let alignmentProcessors: [AlignmentProcessorProtocol] = [
-    LeftAlignmentProcessor()
-  ]
-
-  public override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
+  override public func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
     guard var attributes = super.layoutAttributesForElements(in: rect) else { return nil }
 
-    let indexPaths = Set(attributes.map({ $0.indexPath }))
-    let decorationAttributes = indexPaths.compactMap({ decoratorLayoutAttributes(at: $0) })
+    let indexPaths = Set(attributes.map { $0.indexPath })
+    let decorationAttributes = indexPaths.compactMap { decoratorLayoutAttributes(at: $0) }
     attributes.append(contentsOf: alignedAttributes(from: decorationAttributes))
 
     return attributes
@@ -179,34 +196,11 @@ public class DecoratorFlowLayout: UICollectionViewFlowLayout {
     super.invalidateLayout()
   }
 
-  private func decoratorLayoutAttributes(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
-    guard let collectionView = collectionView, let delegate = delegate else { return nil }
-
-    if let cachedAttributes = decoratorsCache[indexPath] { return cachedAttributes }
-
-    guard collectionView.numberOfItems(inSection: indexPath.section) > .zero else { return nil }
-    guard let itemAttribute = layoutAttributesForItem(at: indexPath) else { return nil }
-    let frame = itemAttribute.frame
-
-    let decoratorAttributes = DecoratorLayoutAttributes(forCellWith: indexPath)
-    decoratorAttributes.frame = frame
-    decoratorAttributes.shadow = delegate.collectionView(collectionView, layout: self, shadowForCellAt: indexPath, withFrame: frame)
-    decoratorAttributes.cornerRadius = delegate.collectionView(collectionView, layout: self, cornerRadiusForCellAt: indexPath, withFrame: frame)
-
-    decoratorsCache[indexPath] = decoratorAttributes
-    return decoratorAttributes
-  }
-
-  private func alignedAttributes(from attributes: [UICollectionViewLayoutAttributes]) -> [UICollectionViewLayoutAttributes] {
-    guard let alignment = alignment,
-          let processor = alignmentProcessors.first(where: { $0.supportedAlignment == alignment })
-    else { return attributes }
-    return processor.process(attributes: attributes, for: self)
-  }
-
-  override public func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity velocity: CGPoint) -> CGPoint {
-    guard let collectionView = collectionView,
-          let cellPaginationOffset = cellPaginationOffset else {
+  override public func targetContentOffset(forProposedContentOffset proposedContentOffset: CGPoint, withScrollingVelocity _: CGPoint) -> CGPoint {
+    guard
+      let collectionView = collectionView,
+      let cellPaginationOffset = cellPaginationOffset
+    else {
       return super.targetContentOffset(forProposedContentOffset: proposedContentOffset)
     }
 
@@ -216,7 +210,7 @@ public class DecoratorFlowLayout: UICollectionViewFlowLayout {
       width: collectionView.frame.width,
       height: collectionView.frame.height)
 
-    guard let visibleAttributes = self.layoutAttributesForElements(in: cvBouns) else {
+    guard let visibleAttributes = layoutAttributesForElements(in: cvBouns) else {
       return super.targetContentOffset(forProposedContentOffset: proposedContentOffset)
     }
 
@@ -240,5 +234,39 @@ public class DecoratorFlowLayout: UICollectionViewFlowLayout {
     } else {
       return recentOffset
     }
+  }
+
+  // MARK: Private
+
+  private var recentOffset: CGPoint = .zero
+  private var decoratorsCache: [IndexPath: UICollectionViewLayoutAttributes] = [:]
+  private let alignmentProcessors: [AlignmentProcessorProtocol] = [
+    LeftAlignmentProcessor(),
+  ]
+
+  private func decoratorLayoutAttributes(at indexPath: IndexPath) -> UICollectionViewLayoutAttributes? {
+    guard let collectionView = collectionView, let delegate = delegate else { return nil }
+
+    if let cachedAttributes = decoratorsCache[indexPath] { return cachedAttributes }
+
+    guard collectionView.numberOfItems(inSection: indexPath.section) > .zero else { return nil }
+    guard let itemAttribute = layoutAttributesForItem(at: indexPath) else { return nil }
+    let frame = itemAttribute.frame
+
+    let decoratorAttributes = DecoratorLayoutAttributes(forCellWith: indexPath)
+    decoratorAttributes.frame = frame
+    decoratorAttributes.shadow = delegate.collectionView(collectionView, layout: self, shadowForCellAt: indexPath, withFrame: frame)
+    decoratorAttributes.cornerRadius = delegate.collectionView(collectionView, layout: self, cornerRadiusForCellAt: indexPath, withFrame: frame)
+
+    decoratorsCache[indexPath] = decoratorAttributes
+    return decoratorAttributes
+  }
+
+  private func alignedAttributes(from attributes: [UICollectionViewLayoutAttributes]) -> [UICollectionViewLayoutAttributes] {
+    guard
+      let alignment = alignment,
+      let processor = alignmentProcessors.first(where: { $0.supportedAlignment == alignment })
+    else { return attributes }
+    return processor.process(attributes: attributes, for: self)
   }
 }

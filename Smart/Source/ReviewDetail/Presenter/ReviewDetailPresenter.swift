@@ -8,18 +8,27 @@
 
 import Foundation
 
+// MARK: - ReviewDetailPresenter
+
 final class ReviewDetailPresenter {
-    
-  weak var viewController: ReviewDetailViewControllerProtocol?
-  private let input: ReviewDetailInput
-  
+
+  // MARK: Lifecycle
+
   init(input: ReviewDetailInput, viewController: ReviewDetailViewControllerProtocol) {
     self.input = input
     self.viewController = viewController
   }
+
+  // MARK: Internal
+
+  weak var viewController: ReviewDetailViewControllerProtocol?
+
+  // MARK: Private
+
+  private let input: ReviewDetailInput
 }
 
-// MARK: - ReviewDetailPresenterProtocol
+// MARK: ReviewDetailPresenterProtocol
 
 extension ReviewDetailPresenter: ReviewDetailPresenterProtocol {
   func update() {
