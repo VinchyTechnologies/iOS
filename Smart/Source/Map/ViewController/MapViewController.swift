@@ -19,8 +19,6 @@ final class MapViewController: UIViewController, OpenURLProtocol {
 
   // MARK: Internal
 
-  // MARK: - Internal Properties
-
   var interactor: MapInteractorProtocol?
 
   override func viewDidLoad() {
@@ -75,8 +73,6 @@ final class MapViewController: UIViewController, OpenURLProtocol {
   }
 
   // MARK: Private
-
-  // MARK: - Private Properties
 
   private var selectedAnnotation: MKAnnotation?
 
@@ -142,8 +138,6 @@ final class MapViewController: UIViewController, OpenURLProtocol {
      return button
    }()
    */
-
-  // MARK: - Private Methods
 
   //  @objc
   //  private func didTapBackButton(_ button: UIButton) {

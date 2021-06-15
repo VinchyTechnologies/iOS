@@ -31,8 +31,6 @@ final class ButtonCollectionCell: UICollectionViewCell, Reusable {
 
   // MARK: Lifecycle
 
-  // MARK: - Initializers
-
   override init(frame: CGRect) {
     super.init(frame: frame)
 
@@ -48,8 +46,6 @@ final class ButtonCollectionCell: UICollectionViewCell, Reusable {
 
   // MARK: Internal
 
-  // MARK: - Internal Properties
-
   weak var delegate: ButtonCollectionCellDelegate?
 
   override func layoutSubviews() {
@@ -59,8 +55,6 @@ final class ButtonCollectionCell: UICollectionViewCell, Reusable {
   }
 
   // MARK: Private
-
-  // MARK: - Private Properties
 
   private let button = Button()
 

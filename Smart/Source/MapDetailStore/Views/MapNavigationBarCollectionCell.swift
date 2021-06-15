@@ -27,8 +27,6 @@ final class MapNavigationBarCollectionCell: UICollectionReusableView, Reusable {
 
   // MARK: Lifecycle
 
-  // MARK: - Initializers
-
   override init(frame: CGRect) {
     super.init(frame: frame)
 
@@ -58,13 +56,9 @@ final class MapNavigationBarCollectionCell: UICollectionReusableView, Reusable {
 
   // MARK: Internal
 
-  // MARK: - Internal Properties
-
   weak var delegate: MapNavigationBarDelegate?
 
   // MARK: Private
-
-  // MARK: - Private Properties
 
   private lazy var leadingButton: UIButton = {
     let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)

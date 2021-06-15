@@ -16,16 +16,12 @@ final class ShowcasePresenter {
 
   // MARK: Lifecycle
 
-  // MARK: - Initializers
-
   init(input: ShowcaseInput, viewController: ShowcaseViewControllerProtocol) {
     self.input = input
     self.viewController = viewController
   }
 
   // MARK: Private
-
-  // MARK: - Internal Properties
 
   private var input: ShowcaseInput
   private weak var viewController: ShowcaseViewControllerProtocol?

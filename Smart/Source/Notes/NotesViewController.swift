@@ -49,8 +49,6 @@ final class NotesViewController: UIViewController, UISearchControllerDelegate, U
 
   // MARK: Private
 
-  // MARK: - Private Properties
-
   private let tableView = UITableView()
   private let throttler = Throttler()
 
@@ -73,8 +71,6 @@ final class NotesViewController: UIViewController, UISearchControllerDelegate, U
       updateUI()
     }
   }
-
-  // MARK: - Private Methods
 
   private func didEnterSearchText(_ searchText: String?) {
     guard

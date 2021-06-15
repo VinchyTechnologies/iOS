@@ -37,8 +37,6 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
 
   var interactor: ShowcaseInteractorProtocol?
 
-  // MARK: - Private Properties
-
   private(set) var loadingIndicator = ActivityIndicatorView()
 
   override func viewDidLoad() {

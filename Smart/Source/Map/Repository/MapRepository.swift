@@ -17,20 +17,14 @@ final class MapRepository {
 
   // MARK: Lifecycle
 
-  // MARK: - Initializers
-
   init(locationService: LocationService) {
     self.locationService = locationService
   }
 
   // MARK: Private
 
-  // MARK: - Private Properties
-
   private let locationService: LocationService
   private var subscriptions = Set<AnyCancellable>()
-
-  // MARK: - Private Methods
 
   private func requestPartnersData(
     userLocation: CLLocationCoordinate2D?,

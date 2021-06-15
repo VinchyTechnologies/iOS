@@ -53,8 +53,6 @@ final class ReviewsViewController: UIViewController {
     }
   }
 
-  // MARK: - Private Methods
-
   private func hideErrorView() {
     DispatchQueue.main.async {
       self.collectionView.backgroundView = nil

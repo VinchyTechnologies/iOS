@@ -22,8 +22,6 @@ final class LocationDataMapClusterView: MKAnnotationView {
 
   // MARK: Lifecycle
 
-  // MARK: - Initializers
-
   override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
     super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
 
@@ -39,8 +37,6 @@ final class LocationDataMapClusterView: MKAnnotationView {
   required init?(coder _: NSCoder) { fatalError() }
 
   // MARK: Internal
-
-  // MARK: - Internal Properties
 
   override var annotation: MKAnnotation? {
     didSet {
@@ -74,8 +70,6 @@ final class LocationDataMapClusterView: MKAnnotationView {
 
   // MARK: Private
 
-  // MARK: - Private Properties
-
   private let countLabel: UILabel = {
     $0.backgroundColor = .accent
     $0.textColor = .white
@@ -83,8 +77,6 @@ final class LocationDataMapClusterView: MKAnnotationView {
     $0.font = C.font
     return $0
   }(UILabel())
-
-  // MARK: - Private Methods
 
   private func getCountText(count: Int) -> String {
     if count > 500 {

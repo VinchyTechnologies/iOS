@@ -22,11 +22,7 @@ final class EnterPasswordViewController: UIViewController {
 
   // MARK: Internal
 
-  // MARK: - Internal Properties
-
   var interactor: EnterPasswordInteractorProtocol?
-
-  // MARK: - Private Properties
 
   private(set) var loadingIndicator = ActivityIndicatorView()
 

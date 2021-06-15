@@ -23,8 +23,6 @@ final class AgreementsViewController: UIViewController, OpenURLProtocol, Alertab
 
   // MARK: Internal
 
-  // MARK: - Internal Properties
-
   weak var delegate: AgreementsViewControllerOutput?
 
   override func viewDidLoad() {
@@ -60,8 +58,6 @@ final class AgreementsViewController: UIViewController, OpenURLProtocol, Alertab
 
   // MARK: Private
 
-  // MARK: - Private Properties
-
   private lazy var iamold: SwitcherWithText = {
     let view = SwitcherWithText()
     view.switcher.addTarget(self, action: #selector(didChangeValueOfSwitcher), for: .valueChanged)
@@ -96,8 +92,6 @@ final class AgreementsViewController: UIViewController, OpenURLProtocol, Alertab
 
     return view
   }()
-
-  // MARK: - Private Methods
 
   @objc
   private func didChangeValueOfSwitcher() {

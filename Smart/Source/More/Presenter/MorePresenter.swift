@@ -22,21 +22,15 @@ final class MorePresenter {
 
   // MARK: Lifecycle
 
-  // MARK: - Initializers
-
   init(viewController: MoreViewControllerProtocol) {
     self.viewController = viewController
   }
 
   // MARK: Internal
 
-  // MARK: - Internal Properties
-
   weak var viewController: MoreViewControllerProtocol?
 
   // MARK: Private
-
-  // MARK: - Private Methods
 
   private func createViewModel(isRussianLocale: Bool, currency: String) -> MoreViewControllerModel {
     var sections: [MoreViewControllerModel.Section] = []

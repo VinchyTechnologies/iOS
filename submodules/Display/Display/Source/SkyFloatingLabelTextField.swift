@@ -24,8 +24,6 @@ open class SkyFloatingLabelTextField: UITextField {
 
   // MARK: Lifecycle
 
-  // MARK: - Initializers
-
   /**
    Initializes the control
    - parameter frame the frame of the control

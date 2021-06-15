@@ -15,8 +15,6 @@ open class NavigationController: UINavigationController {
 
   // MARK: Lifecycle
 
-  // MARK: - Initializers
-
   override public init(rootViewController: UIViewController) {
     super.init(rootViewController: rootViewController)
 

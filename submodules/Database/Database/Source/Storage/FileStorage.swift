@@ -28,8 +28,6 @@ final class FileStorage<M> where M: Codable {
   private let pathService = PathService<M>()
   private let fileManager = FileManager.default
 
-  // MARK: - Private methods
-
   private func writeToFile(_ item: M) {
     let data = try? JSONEncoder().encode(item)
     fileManager.createFile(atPath: path, contents: data, attributes: nil)

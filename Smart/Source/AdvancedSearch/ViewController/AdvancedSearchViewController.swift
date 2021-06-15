@@ -23,8 +23,6 @@ final class AdvancedSearchViewController: UIViewController {
 
   // MARK: Internal
 
-  // MARK: - Internal Properties
-
   var interactor: AdvancedSearchInteractorProtocol?
 
   override func viewDidLoad() {
@@ -69,8 +67,6 @@ final class AdvancedSearchViewController: UIViewController {
   }
 
   // MARK: Private
-
-  // MARK: - Private Properties
 
   private var viewModel: AdvancedSearchViewModel?
 

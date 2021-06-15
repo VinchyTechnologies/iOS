@@ -19,15 +19,11 @@ public final class OnboardingRepository: OnboardingRepositoryProtocol {
 
   // MARK: Lifecycle
 
-  // MARK: - Initializers
-
   public init(cache: OnboardingCache) {
     self.cache = cache
   }
 
   // MARK: Public
-
-  // MARK: - Public Methods
 
   public func setSawLastVersionOnboarding() {
     cache.updateCache(with: C.onboardingVersion)
@@ -45,8 +41,6 @@ public final class OnboardingRepository: OnboardingRepositoryProtocol {
   }
 
   // MARK: Private
-
-  // MARK: - Private Properties
 
   private enum C {
     static let onboardingVersion: Int = 1

@@ -24,15 +24,11 @@ final class WineDetailPresenter {
 
   // MARK: Lifecycle
 
-  // MARK: - Initializers
-
   init(viewController: WineDetailViewControllerProtocol) {
     self.viewController = viewController
   }
 
   // MARK: Internal
-
-  // MARK: - Internal Properties
 
   weak var viewController: WineDetailViewControllerProtocol?
 

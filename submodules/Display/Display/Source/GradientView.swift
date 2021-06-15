@@ -12,8 +12,6 @@ public final class GradientView: UIView {
 
   // MARK: Lifecycle
 
-  // MARK: - Initializers
-
   public required init(
     frame: CGRect,
     fromColor: UIColor = C.defaultFromColor,

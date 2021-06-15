@@ -27,8 +27,6 @@ final class ProfileCell: UICollectionViewCell, Reusable {
 
   // MARK: Lifecycle
 
-  // MARK: - Initializers
-
   override init(frame: CGRect) {
     super.init(frame: frame)
 
@@ -55,15 +53,11 @@ final class ProfileCell: UICollectionViewCell, Reusable {
 
   // MARK: Internal
 
-  // MARK: - Internal Methods
-
   static func height() -> CGFloat {
     54
   }
 
   // MARK: Private
-
-  // MARK: - Private Properties
 
   private let nameLabel: UILabel = {
     $0.translatesAutoresizingMaskIntoConstraints = false

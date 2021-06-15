@@ -17,8 +17,6 @@ public final class OnboardViewController: UIViewController {
 
   // MARK: Lifecycle
 
-  // MARK: - Initializers
-
   public init(
     pageItems: [OnboardPage],
     appearanceConfiguration: AppearanceConfiguration = AppearanceConfiguration())
@@ -62,13 +60,9 @@ public final class OnboardViewController: UIViewController {
 
   // MARK: Internal
 
-  // MARK: - Internal Properties
-
   weak var delegate: OnboardingViewControllerOutput?
 
   // MARK: Private
-
-  // MARK: - Private Properties
 
   private let pageViewController = UIPageViewController(
     transitionStyle: .scroll,
@@ -76,8 +70,6 @@ public final class OnboardViewController: UIViewController {
     options: nil)
   private let pageItems: [OnboardPage]
   private let appearanceConfiguration: AppearanceConfiguration
-
-  // MARK: - Private Methods
 
   private func pageViwControllerFor(pageIndex: Int) -> OnboardPageViewController? {
     let pageVC = OnboardPageViewController(

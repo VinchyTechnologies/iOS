@@ -17,19 +17,13 @@ final class CurrencyPresenter {
 
   // MARK: Lifecycle
 
-  // MARK: - Initializers
-
   init(viewController: CurrencyViewControllerProtocol) {
     self.viewController = viewController
   }
 
   // MARK: Internal
 
-  // MARK: - Internal Properties
-
   weak var viewController: CurrencyViewControllerProtocol?
-
-  // MARK: - Private Methods
 
   func localizedString(forCurrencyCode currencyCode: String) -> String {
     let locale = NSLocale.current
@@ -37,8 +31,6 @@ final class CurrencyPresenter {
   }
 
   // MARK: Private
-
-  // MARK: - Private Properties
 
   private let currencyFilter = Set(
     [

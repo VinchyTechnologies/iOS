@@ -25,8 +25,6 @@ final class VinchyViewController: UIViewController {
 
   // MARK: Internal
 
-  // MARK: - Public Properties
-
   var interactor: VinchyInteractorProtocol?
 
   private(set) var loadingIndicator = ActivityIndicatorView()
@@ -141,8 +139,6 @@ final class VinchyViewController: UIViewController {
 
   private var suggestions: [Wine] = []
 
-  // MARK: - Private Properties
-
   private var viewModel: VinchyViewControllerViewModel = .init(state: .fake(sections: [])) {
     didSet {
       switch viewModel.state {
@@ -156,8 +152,6 @@ final class VinchyViewController: UIViewController {
       collectionView.reloadData()
     }
   }
-
-  // MARK: - Private Methods
 
   @objc
   private func didTapFilter() {

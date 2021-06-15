@@ -25,12 +25,8 @@ final class MapDetailStoreViewController: UIViewController {
 
   // MARK: Internal
 
-  // MARK: - Internal Properties
-
   weak var delegate: MapDetailStoreViewControllerDelegate?
   var interactor: MapDetailStoreInteractorProtocol?
-
-  // MARK: - Private Properties
 
   private(set) var loadingIndicator = ActivityIndicatorView()
 

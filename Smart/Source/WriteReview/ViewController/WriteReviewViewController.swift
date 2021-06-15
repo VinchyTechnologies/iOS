@@ -112,8 +112,6 @@ final class WriteReviewViewController: UIViewController {
     multiplier: 1,
     constant: -16)
 
-  // MARK: - Private Methods
-
   private func configureKeyboardHelper() {
     keyboardHelper.bindBottomToKeyboardFrame(
       animated: true,

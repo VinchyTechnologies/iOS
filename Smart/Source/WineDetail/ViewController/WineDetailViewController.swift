@@ -26,8 +26,6 @@ final class WineDetailViewController: UIViewController {
 
   // MARK: Internal
 
-  // MARK: - Public Properties
-
   var interactor: WineDetailInteractorProtocol?
 
   private(set) var loadingIndicator = ActivityIndicatorView()
@@ -231,8 +229,6 @@ final class WineDetailViewController: UIViewController {
       }
     }
   }
-
-  // MARK: - Private Methods
 
   @objc
   private func didTapCloseBarButtonItem(_: UIBarButtonItem) {

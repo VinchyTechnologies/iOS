@@ -46,8 +46,6 @@ public final class ScrollViewBounceDecorator {
     }
   }
 
-  // MARK: - Public methods
-
   public func configureBounceDecorator(onView view: UIView) {
     guard !view.subviews.contains(decorationView) else { return }
 
@@ -146,8 +144,6 @@ public final class ScrollViewBounceDecorator {
 
     return maximumOffset
   }
-
-  // MARK: - Private methods
 
   private func bouncePercent(fromScrollView scrollView: UIScrollView) -> CGFloat {
     switch direction {

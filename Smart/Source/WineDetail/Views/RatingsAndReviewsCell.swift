@@ -35,8 +35,6 @@ final class RatingsAndReviewsCell: UICollectionViewCell, Reusable {
 
   // MARK: Lifecycle
 
-  // MARK: - Initializers
-
   override init(frame: CGRect) {
     super.init(frame: frame)
 
@@ -69,13 +67,9 @@ final class RatingsAndReviewsCell: UICollectionViewCell, Reusable {
 
   // MARK: Internal
 
-  // MARK: - Internal Properties
-
   weak var delegate: RatingsAndReviewsCellDelegate?
 
   // MARK: Private
-
-  // MARK: - Private Properties
 
   private let titleLabel = UILabel()
   private let moreButton = UIButton()

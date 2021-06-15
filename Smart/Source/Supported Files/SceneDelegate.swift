@@ -22,8 +22,6 @@ final class SceneDelegate: UIResponder {
 
   // MARK: Private
 
-  // MARK: - Private Properties
-
   private lazy var root: (RootInteractor & RootDeeplinkable) = {
     RootBuilderImpl(tabBarBuilder: TabBarBuilderImpl())
       .build(input: RootBuilderInput(window: window!)) // swiftlint:disable:this force_unwrapping

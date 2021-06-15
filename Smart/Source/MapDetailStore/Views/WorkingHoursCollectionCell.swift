@@ -25,8 +25,6 @@ final class WorkingHoursCollectionCell: UICollectionViewCell, Reusable {
 
   // MARK: Lifecycle
 
-  // MARK: - Initializers
-
   override init(frame: CGRect) {
     super.init(frame: frame)
 
@@ -44,16 +42,12 @@ final class WorkingHoursCollectionCell: UICollectionViewCell, Reusable {
 
   // MARK: Internal
 
-  // MARK: - Public Methods
-
   override func layoutSubviews() {
     super.layoutSubviews()
     button.layer.cornerRadius = button.frame.height / 2
   }
 
   // MARK: Private
-
-  // MARK: - Private Properties
 
   private let button: UIButton = {
     $0.contentEdgeInsets = .init(top: 14, left: 14, bottom: 14, right: 14)

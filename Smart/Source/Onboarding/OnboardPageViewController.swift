@@ -29,8 +29,6 @@ internal final class OnboardPageViewController: UIViewController {
 
   // MARK: Lifecycle
 
-  // MARK: - Initializers
-
   init(
     pageIndex: Int,
     appearanceConfiguration: OnboardViewController.AppearanceConfiguration)

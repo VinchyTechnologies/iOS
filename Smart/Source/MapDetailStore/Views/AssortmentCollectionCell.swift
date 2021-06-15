@@ -30,8 +30,6 @@ final class AssortmentCollectionCell: UICollectionViewCell, Reusable {
 
   // MARK: Lifecycle
 
-  // MARK: - Initializers
-
   override init(frame: CGRect) {
     super.init(frame: frame)
 
@@ -49,13 +47,9 @@ final class AssortmentCollectionCell: UICollectionViewCell, Reusable {
 
   // MARK: Internal
 
-  // MARK: - Internal Properties
-
   weak var delegate: AssortmentCollectionCellDelegate?
 
   // MARK: Private
-
-  // MARK: - Private Properties
 
   private lazy var button: Button = {
     $0.addTarget(self, action: #selector(didTabAssortmentButton(_:)), for: .touchUpInside)

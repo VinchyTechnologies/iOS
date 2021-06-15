@@ -35,8 +35,6 @@ final class AdvancedHeader: UICollectionReusableView, Reusable {
 
   // MARK: Lifecycle
 
-  // MARK: - Initializers
-
   override init(frame: CGRect) {
     super.init(frame: frame)
 
@@ -69,8 +67,6 @@ final class AdvancedHeader: UICollectionReusableView, Reusable {
   required init?(coder _: NSCoder) { fatalError() }
 
   // MARK: Internal
-
-  // MARK: - Internal Properties
 
   weak var delegate: AdvancedHeaderDelegate?
   var section: Int = 0

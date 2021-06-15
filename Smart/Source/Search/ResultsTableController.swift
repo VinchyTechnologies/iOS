@@ -17,8 +17,6 @@ final class ResultsTableController: UIViewController {
 
   // MARK: Internal
 
-  // MARK: - Internal Properties
-
   weak var didnotFindTheWineTableCellDelegate: DidnotFindTheWineTableCellProtocol?
 
   override func viewDidLoad() {
@@ -56,8 +54,6 @@ final class ResultsTableController: UIViewController {
   // MARK: Private
 
   private let tableView = UITableView()
-
-  // MARK: - Private Properties
 
   private var didFoundProducts: [ShortWine] = [] {
     didSet {
