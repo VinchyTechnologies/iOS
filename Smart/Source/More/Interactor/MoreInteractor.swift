@@ -33,6 +33,10 @@ final class MoreInteractor {
 
 extension MoreInteractor: MoreInteractorProtocol {
   
+  func didTapProfile() {
+    router.presentShowEditProfileViewController()
+  }
+  
   func didTapCurrency() {
     router.pushToCurrencyViewController()
   }

@@ -34,10 +34,10 @@ final class MorePresenter {
     
     var sections: [MoreViewControllerModel.Section] = []
     
-    if isProfileCellAvailable && UserDefaultsConfig.accountID != 0 && UserDefaultsConfig.accountEmail != "" {
+    if UserDefaultsConfig.accountID != 0 && UserDefaultsConfig.accountEmail != "" {
       let profileViewModel = ProfileCellViewModel(
-        nameUser: UserDefaultsConfig.accountEmail,
-        emailUser: "")
+        nameUser: UserDefaultsConfig.userName == "" ? "What's your name?" : UserDefaultsConfig.userName,
+        emailUser: UserDefaultsConfig.accountEmail)
       sections.append(.profile([profileViewModel]))
       sections.append(.separator)
     }

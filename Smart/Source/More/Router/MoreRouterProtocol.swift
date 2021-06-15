@@ -12,4 +12,5 @@ protocol MoreRouterProtocol: AnyObject {
   func pushToDocController()
   func pushToCurrencyViewController()
   func pushToAboutController()
+  func presentShowEditProfileViewController()
 }

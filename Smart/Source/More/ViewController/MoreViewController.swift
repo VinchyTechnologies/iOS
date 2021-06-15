@@ -237,7 +237,10 @@ extension MoreViewController: UICollectionViewDelegateFlowLayout {
     didSelectItemAt indexPath: IndexPath)
   {
     switch viewModel?.sections[indexPath.section] {
-    case .profile, .header:
+    case .profile:
+      interactor?.didTapProfile()
+      
+    case .header:
       break
       
     case .phone:

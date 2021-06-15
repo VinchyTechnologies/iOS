@@ -13,7 +13,7 @@ private enum PartnersEndpoint: EndpointProtocol {
   case wines(partnerId: Int, affilatedId: Int, limit: Int, offset: Int)
   
   var host: String {
-    return domain
+    domain
   }
   
   var path: String {

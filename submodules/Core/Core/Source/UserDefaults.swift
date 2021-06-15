@@ -27,6 +27,9 @@ public struct UserDefaultsConfig {
   
   @UserDefault("accountEmail", defaultValue: "")
   static public var accountEmail: String
+  
+  @UserDefault("userName", defaultValue: "")
+  static public var userName: String
 }
 
 @propertyWrapper

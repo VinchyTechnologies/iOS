@@ -8,6 +8,7 @@
 // swiftlint:disable all
 
 import Core
+import Display
 import UIKit
 
 final class MoreRouter {
@@ -21,6 +22,11 @@ final class MoreRouter {
 }
 
 extension MoreRouter: MoreRouterProtocol {
+  
+  func presentShowEditProfileViewController() {
+    let controller = NavigationController(rootViewController: EditProfileAssembly.assemblyModule()) 
+    viewController?.present(controller, animated: true)
+  }
   
   func pushToCurrencyViewController() {
     let controller = CurrencyAssembly.assemblyModule()

@@ -20,4 +20,5 @@ protocol MoreInteractorProtocol: OpenURLProtocol {
   func didTapworkWithUs()
   func didTapDoc()
   func didTapAboutApp()
+  func didTapProfile()
 }

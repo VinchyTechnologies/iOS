@@ -17,6 +17,7 @@ public final class Button: UIButton {
     setTitleColor(.white, for: .normal)
     titleLabel?.font = Font.bold(18)
     clipsToBounds = true
+    contentEdgeInsets = .init(top: 4, left: 6, bottom: 4, right: 6)
     layer.cornerCurve = .continuous
     startAnimatingPressActions()
   }
