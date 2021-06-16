@@ -8,4 +8,6 @@
 
 import Foundation
 
-struct EditProfileInput {}
+struct EditProfileInput {
+  var onDismiss: (() -> Void)?
+}

@@ -24,6 +24,7 @@ final class MoreRouter {
   // MARK: Internal
 
   weak var viewController: MoreViewController?
+  weak var interactor: MoreInteractorProtocol?
 
   // MARK: Private
 
@@ -34,7 +35,10 @@ final class MoreRouter {
 
 extension MoreRouter: MoreRouterProtocol {
   func presentShowEditProfileViewController() {
-    let controller = NavigationController(rootViewController: EditProfileAssembly.assemblyModule())
+    let rootViewController = EditProfileAssembly.assemblyModule(input: EditProfileInput(onDismiss: { [weak self] in
+      self?.interactor?.viewDidLoad()
+    }))
+    let controller = NavigationController(rootViewController: rootViewController)
     viewController?.present(controller, animated: true)
   }
 

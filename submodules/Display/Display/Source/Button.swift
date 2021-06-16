@@ -21,7 +21,7 @@ public final class Button: UIButton {
     setTitleColor(.white, for: .normal)
     titleLabel?.font = Font.bold(18)
     clipsToBounds = true
-    contentEdgeInsets = .init(top: 4, left: 6, bottom: 4, right: 6)
+    contentEdgeInsets = .init(top: 6, left: 8, bottom: 6, right: 8)
     layer.cornerCurve = .continuous
     startAnimatingPressActions()
   }
@@ -107,8 +107,7 @@ extension UIButton {
 
   @objc
   private func animateDown(sender: UIButton) {
-    let scaleOffset: CGFloat = 8
-    let scale = (frame.width - scaleOffset) / frame.width
+    let scale: CGFloat = 0.98 //(frame.width - scaleOffset) / frame.width
     animate(sender, transform: CGAffineTransform.identity.scaledBy(x: scale, y: scale))
   }
 

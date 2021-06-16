@@ -27,15 +27,18 @@ final class EditProfileViewController: UIViewController {
     navigationItem.leftBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "xmark", withConfiguration: imageConfig), style: .plain, target: self, action: #selector(didTapClose(_:)))
 
     navigationItem.rightBarButtonItem = UIBarButtonItem(customView: saveButton)
-
     view.addSubview(collectionView)
     collectionView.translatesAutoresizingMaskIntoConstraints = false
     collectionView.fill()
+
+    configureKeyboardHelper()
 
     interactor?.viewDidLoad()
   }
 
   // MARK: Private
+
+  private let keyboardHelper = KeyboardHelper()
 
   private let layout: UICollectionViewFlowLayout = {
     $0.scrollDirection = .vertical
@@ -47,34 +50,55 @@ final class EditProfileViewController: UIViewController {
     $0.register(
       CommonEditCollectionViewCell.self,
       TextCollectionCell.self)
+    $0.keyboardDismissMode = .onDrag
     $0.dataSource = self
     $0.delegate = self
     return $0
   }(UICollectionView(frame: .zero, collectionViewLayout: layout))
 
   private lazy var saveButton: Button = {
-    $0.enable()
+    $0.disable()
+    $0.addTarget(self, action: #selector(didTapSaveButton(_:)), for: .touchUpInside)
     return $0
   }(Button())
 
   private var viewModel: EditProfileViewModel? {
     didSet {
       navigationItem.title = viewModel?.navigationTitle
-      saveButton.setTitle(viewModel?.saveButtonText, for: [])
+      saveButton.setTitle(viewModel?.saveButtonText, for: .normal)
 
       collectionView.reloadData()
     }
+  }
+
+  private func configureKeyboardHelper() {
+    keyboardHelper.bindBottomToKeyboardFrame(
+      animated: true,
+      animate: { [weak self] height in
+        self?.collectionView.contentInset = .init(top: 0, left: 0, bottom: height, right: 0)
+        self?.view.layoutSubviews()
+      })
   }
 
   @objc
   private func didTapClose(_: UIBarButtonItem) {
     dismiss(animated: true)
   }
+
+  @objc
+  private func didTapSaveButton(_ button: UIButton) {
+    interactor?.didTapSaveButton()
+  }
 }
 
 // MARK: EditProfileViewControllerProtocol
 
 extension EditProfileViewController: EditProfileViewControllerProtocol {
+
+  func setSaveButtonEnabled(_ flag: Bool) {
+    flag ? saveButton.enable() : saveButton.disable()
+  }
+
   func updateUI(viewModel: EditProfileViewModel) {
     self.viewModel = viewModel
   }
@@ -119,7 +143,8 @@ extension EditProfileViewController: UICollectionViewDataSource {
       case .textField(let text):
         // swiftlint:disable:next force_cast
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommonEditCollectionViewCell.reuseId, for: indexPath) as! CommonEditCollectionViewCell
-        cell.decorate(model: .init(recognizableIdentificator: nil, text: text, placeholder: "Add"))
+        cell.decorate(model: text)
+        cell.delegate = self
         return cell
 
       case .none:
@@ -174,5 +199,18 @@ extension EditProfileViewController: UICollectionViewDelegateFlowLayout {
     -> UIEdgeInsets
   {
     UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 16)
+  }
+}
+
+// MARK: CommonEditCollectionViewCellDelegate
+
+extension EditProfileViewController: CommonEditCollectionViewCellDelegate {
+  func didChangedText(_ textField: UITextField, recognizableIdentificator: String?) {
+    if
+      let recognizableIdentificator = recognizableIdentificator,
+      let type = EditProfileTextFieldType(rawValue: recognizableIdentificator)
+    {
+      interactor?.textFieldDidChanged(type: type, newValue: textField.text)
+    }
   }
 }

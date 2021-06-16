@@ -26,11 +26,34 @@ final class EditProfileInteractor {
 
   private let router: EditProfileRouterProtocol
   private let presenter: EditProfilePresenterProtocol
+
+  private var currentEditingName: String?
 }
 
 // MARK: EditProfileInteractorProtocol
 
 extension EditProfileInteractor: EditProfileInteractorProtocol {
+
+  func didTapSaveButton() {
+    UserDefaultsConfig.userName = currentEditingName ?? ""
+    router.dismiss()
+  }
+
+  func textFieldDidChanged(type: EditProfileTextFieldType, newValue: String?) {
+    switch type {
+    case .email:
+      break
+
+    case .name:
+      currentEditingName = newValue
+      if newValue != UserDefaultsConfig.userName {
+        presenter.setSaveButtonEnabled(true)
+      } else {
+        presenter.setSaveButtonEnabled(false)
+      }
+    }
+  }
+
   func viewDidLoad() {
     presenter.update(userName: UserDefaultsConfig.userName, email: UserDefaultsConfig.accountEmail)
   }

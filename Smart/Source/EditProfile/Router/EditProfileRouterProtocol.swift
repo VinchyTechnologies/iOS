@@ -8,4 +8,6 @@
 
 import Foundation
 
-protocol EditProfileRouterProtocol: AnyObject {}
+protocol EditProfileRouterProtocol: AnyObject {
+  func dismiss()
+}

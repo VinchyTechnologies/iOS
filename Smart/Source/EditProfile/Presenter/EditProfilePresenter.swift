@@ -31,20 +31,25 @@ final class EditProfilePresenter {
 // MARK: EditProfilePresenterProtocol
 
 extension EditProfilePresenter: EditProfilePresenterProtocol {
+
+  func setSaveButtonEnabled(_ flag: Bool) {
+    viewController?.setSaveButtonEnabled(flag)
+  }
+
   func update(userName: String?, email: String) {
     var sections = [EditProfileViewModel.Section]()
 
     sections += [
       .commonEditCell([
         .title(text: NSAttributedString(string: "UserName", font: Font.medium(16), textColor: .dark)),
-        .textField(text: userName),
+        .textField(model: .init(recognizableIdentificator: EditProfileTextFieldType.name.rawValue, text: userName, placeholder: "Add", isEditable: true)),
       ]),
     ]
 
     sections += [
       .commonEditCell([
         .title(text: NSAttributedString(string: "Email", font: Font.medium(16), textColor: .dark)),
-        .textField(text: email),
+        .textField(model: .init(recognizableIdentificator: EditProfileTextFieldType.email.rawValue, text: email, placeholder: nil, isEditable: false)),
       ]),
     ]
 

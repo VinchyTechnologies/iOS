@@ -10,4 +10,5 @@ import Foundation
 
 protocol EditProfileViewControllerProtocol: AnyObject {
   func updateUI(viewModel: EditProfileViewModel)
+  func setSaveButtonEnabled(_ flag: Bool)
 }

@@ -18,8 +18,6 @@ final class WriteNoteViewController: UIViewController {
 
   // MARK: Internal
 
-  // MARK: - Interanal Properties
-
   var interactor: WriteNoteInteractorProtocol?
 
   override func viewDidLoad() {
@@ -27,11 +25,7 @@ final class WriteNoteViewController: UIViewController {
     view.backgroundColor = .mainBackground
 
     navigationItem.largeTitleDisplayMode = .never
-    navigationItem.rightBarButtonItem = UIBarButtonItem(
-      barButtonSystemItem: .save,
-      target: self,
-      action: #selector(didTapSave(_:)))
-
+    navigationItem.rightBarButtonItem = UIBarButtonItem(customView: saveButton)
     view.addSubview(textView)
     textView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
@@ -47,6 +41,13 @@ final class WriteNoteViewController: UIViewController {
   }
 
   // MARK: Private
+
+  private lazy var saveButton: Button = {
+    $0.enable()
+    $0.setTitle(localized("save").firstLetterUppercased(), for: [])
+    $0.addTarget(self, action: #selector(didTapSaveButton(_:)), for: .touchUpInside)
+    return $0
+  }(Button())
 
   private lazy var textView: PlaceholderTextView = {
     let textView = PlaceholderTextView()
@@ -85,7 +86,7 @@ final class WriteNoteViewController: UIViewController {
   }
 
   @objc
-  private func didTapSave(_: UIBarButtonItem) {
+  private func didTapSaveButton(_: UIButton) {
     interactor?.didTapSave()
   }
 }

@@ -9,9 +9,9 @@
 import Foundation
 
 final class EditProfileAssembly {
-  static func assemblyModule() -> UIViewController {
+  static func assemblyModule(input: EditProfileInput) -> UIViewController {
     let viewController = EditProfileViewController()
-    let router = EditProfileRouter(input: EditProfileInput(), viewController: viewController)
+    let router = EditProfileRouter(input: input, viewController: viewController)
     let presenter = EditProfilePresenter(viewController: viewController)
     let interactor = EditProfileInteractor(router: router, presenter: presenter)
 

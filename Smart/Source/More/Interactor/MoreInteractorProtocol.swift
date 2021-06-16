@@ -8,7 +8,7 @@
 
 import Core
 
-protocol MoreInteractorProtocol: OpenURLProtocol {
+protocol MoreInteractorProtocol: AnyObject, OpenURLProtocol {
   func viewDidLoad()
   func didTapSendEmail(HTMLText: String?)
   func didTapCallUs()

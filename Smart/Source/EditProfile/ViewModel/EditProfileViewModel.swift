@@ -8,10 +8,19 @@
 
 import UIKit
 
+// MARK: - EditProfileTextFieldType
+
+enum EditProfileTextFieldType: String {
+  case email
+  case name
+}
+
+// MARK: - EditProfileViewModel
+
 struct EditProfileViewModel {
   enum CommonEditCellRow {
     case title(text: NSAttributedString)
-    case textField(text: String?)
+    case textField(model: CommonEditCollectionViewCellViewModel)
   }
 
   enum Section {

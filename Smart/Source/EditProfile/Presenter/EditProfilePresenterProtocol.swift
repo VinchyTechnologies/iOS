@@ -10,4 +10,5 @@ import Foundation
 
 protocol EditProfilePresenterProtocol: AnyObject {
   func update(userName: String?, email: String)
+  func setSaveButtonEnabled(_ flag: Bool)
 }

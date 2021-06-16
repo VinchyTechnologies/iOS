@@ -34,4 +34,9 @@ final class EditProfileRouter {
 
 // MARK: EditProfileRouterProtocol
 
-extension EditProfileRouter: EditProfileRouterProtocol {}
+extension EditProfileRouter: EditProfileRouterProtocol {
+  func dismiss() {
+    input.onDismiss?()
+    viewController?.dismiss(animated: true)
+  }
+}

@@ -9,17 +9,25 @@
 import Display
 import UIKit
 
+// MARK: - CommonEditCollectionViewCellDelegate
+
+protocol CommonEditCollectionViewCellDelegate: AnyObject {
+  func didChangedText(_ textField: UITextField, recognizableIdentificator: String?)
+}
+
 // MARK: - CommonEditCollectionViewCellViewModel
 
 struct CommonEditCollectionViewCellViewModel: ViewModelProtocol {
   let recognizableIdentificator: String?
   fileprivate let text: String?
   fileprivate let placeholder: String?
+  fileprivate let isEditable: Bool
 
-  init(recognizableIdentificator: String?, text: String?, placeholder: String?) {
+  init(recognizableIdentificator: String?, text: String?, placeholder: String?, isEditable: Bool) {
     self.recognizableIdentificator = recognizableIdentificator
     self.text = text
     self.placeholder = placeholder
+    self.isEditable = isEditable
   }
 }
 
@@ -47,18 +55,29 @@ final class CommonEditCollectionViewCell: UICollectionViewCell, Reusable {
 
   // MARK: Internal
 
+  weak var delegate: CommonEditCollectionViewCellDelegate?
+
   static func height(for _: ViewModel?) -> CGFloat {
     44
   }
 
   // MARK: Private
 
-  private let textField: UITextField = {
+  private var recognizableIdentificator: String?
+  private lazy var textField: UITextField = {
     $0.font = Font.heavy(18)
     $0.textColor = .dark
     $0.tintColor = .accent
+    $0.addTarget(self, action: #selector(didChangedText(_:)), for: .editingChanged)
     return $0
   }(UITextField())
+
+  @objc
+  private func didChangedText(_ textField: UITextField) {
+    delegate?.didChangedText(
+      textField,
+      recognizableIdentificator: recognizableIdentificator)
+  }
 }
 
 // MARK: Decoratable
@@ -67,6 +86,7 @@ extension CommonEditCollectionViewCell: Decoratable {
   typealias ViewModel = CommonEditCollectionViewCellViewModel
 
   func decorate(model: ViewModel) {
+    recognizableIdentificator = model.recognizableIdentificator
     textField.text = model.text
     if let placeholder = model.placeholder {
       textField.attributedPlaceholder = NSAttributedString(
@@ -74,5 +94,6 @@ extension CommonEditCollectionViewCell: Decoratable {
         font: Font.heavy(18),
         textColor: .blueGray)
     }
+    textField.isUserInteractionEnabled = model.isEditable
   }
 }
