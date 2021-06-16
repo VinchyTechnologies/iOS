@@ -72,6 +72,7 @@
 "tap_a_star_to_rate" = "Tap a star to rate";
 "zero_rating_error" = "Rating cannot be zero";
 "open_in_app" = "Open in another application";
+"region" = "region";
 
 // MARK: - Sugar
 "sugar" = "sugar";

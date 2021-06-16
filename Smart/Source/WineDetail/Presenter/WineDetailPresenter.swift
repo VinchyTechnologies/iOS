@@ -73,6 +73,10 @@ final class WineDetailPresenter {
       shortDescriptions.append(.init(titleText: String(alcoholPercent) + "%", subtitleText: localized("alcohol").firstLetterUppercased()))
     }
 
+    if let region = wine.winery?.region {
+      shortDescriptions.append(.init(titleText: region, subtitleText: localized("region").firstLetterUppercased()))
+    }
+
     if !shortDescriptions.isEmpty {
       return [.list(shortDescriptions)]
     } else {

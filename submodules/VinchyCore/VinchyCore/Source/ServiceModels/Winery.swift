@@ -14,13 +14,13 @@ public final class Winery: Decodable {
   public let id: Int64
 
   /// Name of the winery
-  public let title: String
+  public let title: String?
 
   /// Country code the winery locates in
-  public let countryCode: String
+  public let countryCode: String?
 
   /// Name of the region the winery locates in
-  public let region: String
+  public let region: String?
 
   // MARK: Private
 

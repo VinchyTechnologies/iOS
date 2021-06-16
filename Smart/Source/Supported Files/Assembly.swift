@@ -10,7 +10,6 @@ import CommonUI
 import Database
 import Display
 import StringFormatting
-import SwiftUI
 import VinchyCore
 
 final class Assembly {
