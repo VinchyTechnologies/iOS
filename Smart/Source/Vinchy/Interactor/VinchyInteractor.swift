@@ -74,7 +74,7 @@ final class VinchyInteractor {
 
       self.compilations = compilations
 
-      self.presenter.update(compilations: compilations)
+      self.presenter.update(compilations: compilations, isSearchingMode: self.isSearchingMode)
     }
   }
 
@@ -109,7 +109,7 @@ extension VinchyInteractor: VinchyInteractorProtocol {
 
   func searchBarCancelButtonClicked() {
     isSearchingMode = false
-    presenter.update(compilations: compilations)
+    presenter.update(compilations: compilations, isSearchingMode: isSearchingMode)
   }
 
   func didTapSearchButton(searchText: String?) {
