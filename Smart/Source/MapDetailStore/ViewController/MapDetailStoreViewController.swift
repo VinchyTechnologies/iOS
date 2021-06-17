@@ -37,7 +37,7 @@ final class MapDetailStoreViewController: UIViewController {
     view.addSubview(collectionView)
     collectionView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+      collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 24),
       collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
       collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
@@ -66,7 +66,8 @@ final class MapDetailStoreViewController: UIViewController {
     $0.backgroundColor = .mainBackground
     $0.dataSource = self
     $0.delegate = self
-    $0.contentInset = .init(top: 24 /* pull Bar height */, left: 0, bottom: 10, right: 0)
+    $0.clipsToBounds = true
+    $0.contentInset = .init(top: 0 /* pull Bar height */, left: 0, bottom: 10, right: 0)
     $0.register(
       TextCollectionCell.self,
       WorkingHoursCollectionCell.self,
