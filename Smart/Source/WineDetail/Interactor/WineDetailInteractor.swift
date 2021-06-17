@@ -287,11 +287,8 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
 
   func didTapNotes() {
     guard let wine = wine else { return }
-
-    let predicate = NSPredicate(format: "wineID == %@", String(wine.id))
-
-    if let note = notesRepository.findAll().first(where: { predicate.evaluate(with: $0) == true }) {
-      router.pushToWriteViewController(note: note, noteText: note.noteText)
+    if let note = notesRepository.findAll().first(where: { $0.wineID == wine.id }) {
+      router.pushToWriteViewController(note: note)
     } else {
       router.pushToWriteViewController(wine: wine)
     }

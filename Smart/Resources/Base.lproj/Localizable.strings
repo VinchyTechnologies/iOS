@@ -62,9 +62,9 @@
 "unloved" = "unloved";
 "will_recommend_less" = "We'll stop recommending more like this";
 "similar_wines" = "similar wines";
-"write_review" = "write a review";
+"write_review" = "leave a review";
 "update_review" = "update a review";
-"review_placeholder" = "Review(Optional)";
+"review_placeholder" = "Review (Optional)";
 "did_update_rating" = "we have updated your review";
 "did_send_rating" = "Thanks for your feedback";
 "reviews" = "reviews";
