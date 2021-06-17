@@ -18,7 +18,7 @@ public final class ImageLoader {
   private init() {
     ImageCache.shared.ttl = 7 * 24 * 60 * 60
 
-    preheater = .init()
+    preheater = ImagePrefetcher(pipeline: .shared, destination: .memoryCache, maxConcurrentRequestCount: 4)
 //    ImageCache.shared.countLimit = 1000
 //    ImageCache.shared.costLimit = 200 * 1024 * 1024
 //    DataLoader.sharedUrlCache.diskCapacity = 0
@@ -128,7 +128,7 @@ extension UIImageView {
       sessionConfiguration.requestCachePolicy = .returnCacheDataElseLoad
       $0.dataLoader = DataLoader(configuration: sessionConfiguration)
       $0.isProgressiveDecodingEnabled = true
-      $0.dataLoadingQueue.maxConcurrentOperationCount = 5
+      $0.dataLoadingQueue.maxConcurrentOperationCount = 4
     }
 
     options.pipeline = imagePipeline
@@ -138,5 +138,3 @@ extension UIImageView {
     Nuke.loadImage(with: imageRequest, options: options, into: self)
   }
 }
-
-

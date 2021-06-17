@@ -7,6 +7,7 @@
 //
 
 import CommonUI
+import Database
 import Display
 import StringFormatting
 import UIKit
@@ -98,6 +99,8 @@ final class VinchySimpleConiniousCaruselCollectionCell: UICollectionViewCell, Re
     collectionView.delegate = self
     collectionView.register(StoryCollectionCell.self, WineCollectionViewCell.self, MainSubtitleCollectionCell.self)
     collectionView.delaysContentTouches = false
+    collectionView.prefetchDataSource = self
+    collectionView.isPrefetchingEnabled = true
     return collectionView
   }()
 
@@ -230,6 +233,79 @@ extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDelegateFl
     }
 
     return .init(width: width, height: collectionView.frame.height)
+  }
+}
+
+// MARK: UICollectionViewDataSourcePrefetching
+
+extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDataSourcePrefetching {
+  func collectionView(
+    _ collectionView: UICollectionView,
+    prefetchItemsAt indexPaths: [IndexPath])
+  {
+    var urls: [URL] = []
+    indexPaths.forEach { indexPath in
+      switch type {
+      case .big, .mini, .promo:
+        if let url = collections[indexPath.row].imageURL?.toURL {
+          urls.append(url)
+        }
+
+      case .bottles:
+        if
+          let collection = collections.first,
+          let collectionItem = collection.wineList[safe: indexPath.row]
+        {
+          switch collectionItem {
+          case .wine(let wine):
+            if let url = imageURL(from: wine.id).toURL {
+              urls.append(url)
+            }
+
+          case .ads:
+            break
+          }
+        }
+
+      case .shareUs, .smartFilter, .none:
+        break
+      }
+    }
+
+    ImageLoader.shared.prefetch(urls)
+  }
+
+  func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
+    var urls: [URL] = []
+    indexPaths.forEach { indexPath in
+      switch type {
+      case .big, .mini, .promo:
+        if let url = collections[indexPath.row].imageURL?.toURL {
+          urls.append(url)
+        }
+
+      case .bottles:
+        if
+          let collection = collections.first,
+          let collectionItem = collection.wineList[safe: indexPath.row]
+        {
+          switch collectionItem {
+          case .wine(let wine):
+            if let url = imageURL(from: wine.id).toURL {
+              urls.append(url)
+            }
+
+          case .ads:
+            break
+          }
+        }
+
+      case .shareUs, .smartFilter, .none:
+        break
+      }
+    }
+
+    ImageLoader.shared.cancelPrefetch(urls)
   }
 }
 
