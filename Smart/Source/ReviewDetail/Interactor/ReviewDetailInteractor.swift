@@ -8,11 +8,12 @@
 
 import Foundation
 
+// MARK: - ReviewDetailInteractor
+
 final class ReviewDetailInteractor {
-  
-  private let router: ReviewDetailRouterProtocol
-  private let presenter: ReviewDetailPresenterProtocol
-  
+
+  // MARK: Lifecycle
+
   init(
     router: ReviewDetailRouterProtocol,
     presenter: ReviewDetailPresenterProtocol)
@@ -20,12 +21,16 @@ final class ReviewDetailInteractor {
     self.router = router
     self.presenter = presenter
   }
+
+  // MARK: Private
+
+  private let router: ReviewDetailRouterProtocol
+  private let presenter: ReviewDetailPresenterProtocol
 }
 
-// MARK: - ReviewDetailInteractorProtocol
+// MARK: ReviewDetailInteractorProtocol
 
 extension ReviewDetailInteractor: ReviewDetailInteractorProtocol {
-  
   func viewDidLoad() {
     presenter.update()
   }

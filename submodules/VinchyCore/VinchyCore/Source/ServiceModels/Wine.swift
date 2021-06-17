@@ -6,7 +6,78 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
+// MARK: - Wine
+
 public struct Wine: Decodable {
+
+  // MARK: Lifecycle
+
+  public init(from decoder: Decoder) throws {
+    let container = try decoder.container(keyedBy: CodingKeys.self)
+    let id = try container.decode(Int64.self, forKey: .id)
+    let color = try? container.decodeIfPresent(WineColor.self, forKey: .color)
+    let mainImageURL = try? container.decodeIfPresent(String.self, forKey: .mainImageURL)
+    let labelImageURL = try? container.decodeIfPresent(String.self, forKey: .labelImageUrl)
+    let imageURLs = try? container.decodeIfPresent([String].self, forKey: .imageURLs)
+    let title = try container.decode(String.self, forKey: .title)
+    let desc = try? container.decodeIfPresent(String.self, forKey: .desc)
+    let price = try? container.decodeIfPresent(Int64.self, forKey: .price)
+    let alcoholPercent = try? container.decodeIfPresent(Double.self, forKey: .alcoholPercent)
+    let servingTemperature = try? container.decodeIfPresent(Double.self, forKey: .servingTemperature)
+    let dishCompatibility = try? container.decodeIfPresent([DishCompatibility].self, forKey: .dishCompatibility)
+    let year = try? container.decodeIfPresent(Int.self, forKey: .year)
+    let grapes = try? container.decodeIfPresent([String].self, forKey: .grapes)
+    let winery = try? container.decodeIfPresent(Winery.self, forKey: .winery)
+    let type = try? container.decodeIfPresent(WineType.self, forKey: .type)
+    let sugar = try? container.decodeIfPresent(Sugar.self, forKey: .sugar)
+    let similarWines = try? container.decodeIfPresent([ShortWine].self, forKey: .similarWines)
+    let reviews = (try? container.decodeIfPresent([Review].self, forKey: .reviews)) ?? []
+    let rating = try? container.decodeIfPresent(Double.self, forKey: .rating)
+
+    self.id = id
+    self.color = color
+    mainImageUrl = mainImageURL
+    labelImageUrl = labelImageURL
+    self.imageURLs = imageURLs
+    self.title = title
+    self.desc = desc
+    self.price = price
+    self.alcoholPercent = alcoholPercent
+    self.servingTemperature = servingTemperature
+    self.dishCompatibility = dishCompatibility
+    self.year = year
+    self.grapes = grapes
+    self.winery = winery
+    self.type = type
+    self.sugar = sugar
+    self.similarWines = similarWines
+    self.reviews = reviews
+    self.rating = rating
+  }
+
+  /// For test only
+  /*
+   public init(title: String, imageURL: String?, winery: Winery) {
+     self.id = 0
+     self.color = nil
+     self.mainImageUrl = imageURL
+     self.labelImageUrl = nil
+     self.imageURLs = nil
+     self.title = title
+     self.desc = nil
+     self.price = nil
+     self.alcoholPercent = nil
+     self.servingTemperature = nil
+     self.dishCompatibility = nil
+     self.year = nil
+     self.grapes = nil
+     self.winery = winery
+     self.type = nil
+     self.sugar = nil
+   }
+   */
+
+  // MARK: Public
 
   /// Wine ID
   public let id: Int64
@@ -32,7 +103,9 @@ public struct Wine: Decodable {
   public let similarWines: [ShortWine]?
   public let reviews: [Review]
   public let rating: Double?
-  
+
+  // MARK: Private
+
   private enum CodingKeys: String, CodingKey {
     case id = "wine_id"
     case title
@@ -45,86 +118,24 @@ public struct Wine: Decodable {
     case servingTemperature = "serving_temperature"
     case desc = "description"
     case dishCompatibility = "dish_list"
-    case year = "year"
+    case year
     case grapes = "grape_list"
     case winery
     case type = "carbon_dioxide"
-    case sugar = "sugar"
+    case sugar
     case similarWines = "similar_wines"
     case reviews
     case rating
   }
-  
-  public init(from decoder: Decoder) throws {
-    
-    let container = try decoder.container(keyedBy: CodingKeys.self)
-    let id = try container.decode(Int64.self, forKey: .id)
-    let color = try? container.decodeIfPresent(WineColor.self, forKey: .color)
-    let mainImageURL = try? container.decodeIfPresent(String.self, forKey: .mainImageURL)
-    let labelImageURL = try? container.decodeIfPresent(String.self, forKey: .labelImageUrl)
-    let imageURLs = try? container.decodeIfPresent([String].self, forKey: .imageURLs)
-    let title = try container.decode(String.self, forKey: .title)
-    let desc = try? container.decodeIfPresent(String.self, forKey: .desc)
-    let price = try? container.decodeIfPresent(Int64.self, forKey: .price)
-    let alcoholPercent = try? container.decodeIfPresent(Double.self, forKey: .alcoholPercent)
-    let servingTemperature = try? container.decodeIfPresent(Double.self, forKey: .servingTemperature)
-    let dishCompatibility = try? container.decodeIfPresent([DishCompatibility].self, forKey: .dishCompatibility)
-    let year = try? container.decodeIfPresent(Int.self, forKey: .year)
-    let grapes = try? container.decodeIfPresent([String].self, forKey: .grapes)
-    let winery = try? container.decodeIfPresent(Winery.self, forKey: .winery)
-    let type = try? container.decodeIfPresent(WineType.self, forKey: .type)
-    let sugar = try? container.decodeIfPresent(Sugar.self, forKey: .sugar)
-    let similarWines = try? container.decodeIfPresent([ShortWine].self, forKey: .similarWines)
-    let reviews = (try? container.decodeIfPresent([Review].self, forKey: .reviews)) ?? []
-    let rating = try? container.decodeIfPresent(Double.self, forKey: .rating)
-    
-    self.id = id
-    self.color = color
-    self.mainImageUrl = mainImageURL
-    self.labelImageUrl = labelImageURL
-    self.imageURLs = imageURLs
-    self.title = title
-    self.desc = desc
-    self.price = price
-    self.alcoholPercent = alcoholPercent
-    self.servingTemperature = servingTemperature
-    self.dishCompatibility = dishCompatibility
-    self.year = year
-    self.grapes = grapes
-    self.winery = winery
-    self.type = type
-    self.sugar = sugar
-    self.similarWines = similarWines
-    self.reviews = reviews
-    self.rating = rating
-  }
-
-  /// For test only
-  /*
-  public init(title: String, imageURL: String?, winery: Winery) {
-    self.id = 0
-    self.color = nil
-    self.mainImageUrl = imageURL
-    self.labelImageUrl = nil
-    self.imageURLs = nil
-    self.title = title
-    self.desc = nil
-    self.price = nil
-    self.alcoholPercent = nil
-    self.servingTemperature = nil
-    self.dishCompatibility = nil
-    self.year = nil
-    self.grapes = nil
-    self.winery = winery
-    self.type = nil
-    self.sugar = nil
-  }
-  */
 }
+
+// MARK: - WineType
 
 public enum WineType: String, Decodable {
   case sparkling, quiet
 }
+
+// MARK: - WineColor
 
 public enum WineColor: String, Decodable {
   case red, white, pink

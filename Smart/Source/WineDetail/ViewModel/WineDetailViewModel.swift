@@ -9,12 +9,11 @@
 import CommonUI
 
 struct WineDetailViewModel {
-  
   enum ShortInfoModel {
     case titleTextAndImage(imageName: String, titleText: String?)
     case titleTextAndSubtitleText(titleText: String?, subtitleText: String?)
   }
-  
+
   enum Section {
     case gallery([GalleryCellViewModel])
     case title([TitleCopyableCellViewModel])
@@ -31,8 +30,7 @@ struct WineDetailViewModel {
     case ad([Any]) // TODO: - Not Any
     case similarWines([VinchySimpleConiniousCaruselCollectionCellViewModel])
   }
-  
+
   let navigationTitle: String?
   var sections: [Section]
-  
 }

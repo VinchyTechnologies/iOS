@@ -8,21 +8,21 @@
 
 import Foundation
 
-fileprivate let dateFormatter: DateFormatter = {
+private let dateFormatter: DateFormatter = {
   let dateFormatter = DateFormatter()
   dateFormatter.dateFormat = "yyyy-MM-dd'T'HH:mm:ss.SSSSSS'Z'"
   dateFormatter.timeZone = TimeZone(identifier: "UTC")
   return dateFormatter
 }()
 
-fileprivate let readableDateFormatter: DateFormatter = {
+private let readableDateFormatter: DateFormatter = {
   let dateFormatter = DateFormatter()
   dateFormatter.dateStyle = .short
   return dateFormatter
 }()
 
-public extension Optional where Wrapped == String {
-  func toDate() -> String? {
+extension Optional where Wrapped == String {
+  public func toDate() -> String? {
     guard let self = self else { return nil }
     guard let date = dateFormatter.date(from: self) else {
       return nil
@@ -31,8 +31,8 @@ public extension Optional where Wrapped == String {
   }
 }
 
-public extension String {
-  func toDate() -> String? {
+extension String {
+  public func toDate() -> String? {
     guard let date = dateFormatter.date(from: self) else {
       return nil
     }

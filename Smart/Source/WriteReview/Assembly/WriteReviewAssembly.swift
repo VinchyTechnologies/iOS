@@ -14,10 +14,10 @@ final class WriteReviewAssembly {
     let router = WriteReviewRouter(input: input, viewController: viewController)
     let presenter = WriteReviewPresenter(input: input, viewController: viewController)
     let interactor = WriteReviewInteractor(input: input, router: router, presenter: presenter)
-    
+
     router.interactor = interactor
     viewController.interactor = interactor
-    
+
     return viewController
   }
 }

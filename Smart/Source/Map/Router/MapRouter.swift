@@ -6,18 +6,16 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
-import FittedSheets
 import Display
+import FittedSheets
+import UIKit
+
+// MARK: - MapRouter
 
 final class MapRouter {
-  
-  weak var viewController: UIViewController?
-  weak var interactor: MapInteractorProtocol?
-  private let input: MapInput
-  
-  private(set) var sheetMapDetailStoreViewController: SheetViewController?
-  
+
+  // MARK: Lifecycle
+
   init(
     input: MapInput,
     viewController: UIViewController)
@@ -25,9 +23,20 @@ final class MapRouter {
     self.input = input
     self.viewController = viewController
   }
+
+  // MARK: Internal
+
+  weak var viewController: UIViewController?
+  weak var interactor: MapInteractorProtocol?
+
+  private(set) var sheetMapDetailStoreViewController: SheetViewController?
+
+  // MARK: Private
+
+  private let input: MapInput
 }
 
-// MARK: - MapRouterProtocol
+// MARK: MapRouterProtocol
 
 extension MapRouter: MapRouterProtocol {
   func showMapDetailStore(partnerId: Int, affilatedId: Int) {
@@ -42,19 +51,19 @@ extension MapRouter: MapRouterProtocol {
     sheetController.didDismiss = { _ in
       self.interactor?.requestBottomSheetDismissToDeselectSelectedPin()
     }
-    
+
     if let tabbarController = UIApplication.topViewController()?.tabBarController {
       sheetController.animateIn(to: tabbarController.view, in: tabbarController)
     }
   }
-  
+
   func dismissCurrentBottomSheet(shouldUseDidDismissCallback: Bool) {
     if !shouldUseDidDismissCallback {
       sheetMapDetailStoreViewController?.didDismiss = nil
     }
     sheetMapDetailStoreViewController?.attemptDismiss(animated: true)
   }
-  
+
   func showAssortmentViewController(partnerId: Int, affilatedId: Int, title: String?) {
     let controller = ShowcaseAssembly.assemblyModule(
       input: .init(title: title, mode: .partner(partnerID: partnerId, affilatedID: affilatedId)))

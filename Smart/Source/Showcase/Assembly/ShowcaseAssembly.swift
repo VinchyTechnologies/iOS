@@ -9,9 +9,7 @@
 import UIKit
 
 final class ShowcaseAssembly {
-
   static func assemblyModule(input: ShowcaseInput) -> UIViewController {
-    
     let viewController = ShowcaseViewController(input: input)
 
     let router = ShowcaseRouter(viewController: viewController, input: input)

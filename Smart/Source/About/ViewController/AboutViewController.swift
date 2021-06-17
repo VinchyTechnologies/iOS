@@ -7,22 +7,19 @@
 //
 // swiftlint:disable all
 
-import SwiftUI
+import Core
 import Display
 import StringFormatting
-import Core
+import SwiftUI
 
 final class AboutViewController: UIViewController {
-  
-  // MARK: - Lifecycle
-  
   override func viewDidLoad() {
     super.viewDidLoad()
-    
+
     view.backgroundColor = .mainBackground
     navigationItem.largeTitleDisplayMode = .never
     navigationItem.title = localized("about_the_app").firstLetterUppercased()
-    
+
     let versionText = localized("version") + " " + String(describing: Bundle.main.infoDictionary!["CFBundleShortVersionString"]!)
     let logoText = Bundle.main.infoDictionary![kCFBundleNameKey as String] as? String
     let childView = UIHostingController(rootView: AboutView(viewModel: AboutViewModel(logoText: logoText, versionText: versionText)))

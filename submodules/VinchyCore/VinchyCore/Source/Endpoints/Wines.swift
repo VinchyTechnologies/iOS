@@ -6,12 +6,15 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-private enum WinesEndpoint: EndpointProtocol {
+// MARK: - WinesEndpoint
 
+private enum WinesEndpoint: EndpointProtocol {
   case random(count: Int)
   case detail(wineID: Int64)
   case filter(param: [(String, String)])
   case search(title: String, offset: Int, limit: Int)
+
+  // MARK: Internal
 
   var host: String {
     domain
@@ -55,19 +58,23 @@ private enum WinesEndpoint: EndpointProtocol {
       return [
         ("title", title),
         ("offset", String(offset)),
-        ("limit", String(limit))
+        ("limit", String(limit)),
       ]
     }
   }
 }
 
+// MARK: - Wines
+
 public final class Wines {
 
-  private let api = API.shared
+  // MARK: Lifecycle
+
+  private init() {}
+
+  // MARK: Public
 
   public static let shared = Wines()
-
-  private init() { }
 
   public func getDetailWine(wineID: Int64, completion: @escaping (Result<Wine, APIError>) -> Void) {
     api.request(endpoint: WinesEndpoint.detail(wineID: wineID), completion: completion)
@@ -84,4 +91,8 @@ public final class Wines {
   public func getWineBy(title: String, offset: Int, limit: Int, completion: @escaping (Result<[ShortWine], APIError>) -> Void) {
     api.request(endpoint: WinesEndpoint.search(title: title, offset: offset, limit: limit), completion: completion)
   }
+
+  // MARK: Private
+
+  private let api = API.shared
 }

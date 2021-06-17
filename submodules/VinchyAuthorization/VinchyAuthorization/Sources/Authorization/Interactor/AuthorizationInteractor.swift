@@ -5,21 +5,16 @@
 //  Created by Алексей Смирнов on 21.12.2020.
 //
 
+import Core
 import StringFormatting
 import VinchyCore
-import Core
+
+// MARK: - AuthorizationInteractor
 
 final class AuthorizationInteractor {
-  
-  private let input: AuthorizationInput
-  private let router: AuthorizationRouterProtocol
-  private let presenter: AuthorizationPresenterProtocol
-  
-  private lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
-    guard let self = self else { return }
-    self.presenter.startLoading()
-  }
-  
+
+  // MARK: Lifecycle
+
   init(
     input: AuthorizationInput,
     router: AuthorizationRouterProtocol,
@@ -29,32 +24,40 @@ final class AuthorizationInteractor {
     self.router = router
     self.presenter = presenter
   }
+
+  // MARK: Private
+
+  private let input: AuthorizationInput
+  private let router: AuthorizationRouterProtocol
+  private let presenter: AuthorizationPresenterProtocol
+
+  private lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
+    guard let self = self else { return }
+    self.presenter.startLoading()
+  }
 }
 
-// MARK: - AuthorizationInteractorProtocol
+// MARK: AuthorizationInteractorProtocol
 
 extension AuthorizationInteractor: AuthorizationInteractorProtocol {
-  
   func didTapContinueButton(_ email: String?, password: String?) {
-        
     guard let email = email else {
       presenter.updateInvalidEmailAndPassword()
       return
     }
-    
-    guard  let password = password else {
+
+    guard let password = password else {
       presenter.updateInvalidEmailAndPassword()
       return
     }
 
     if isValidEmail(email) && !password.isEmpty {
-      
       DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
         self.dispatchWorkItemHud.perform()
       }
-      
+
 //      presenter.updateValidEmailAndPassword()
-      
+
       switch input.mode {
       case .register:
         Accounts.shared.createNewAccount(email: email, password: password) { [weak self] result in
@@ -101,15 +104,15 @@ extension AuthorizationInteractor: AuthorizationInteractorProtocol {
       presenter.updateInvalidEmailAndPassword()
     }
   }
-  
+
   func didEnterTextIntoEmailTextFieldOrPasswordTextField(_ email: String?, password: String?) {
-    if isValidEmail(email) && !(password?.isNilOrEmpty == true) {
+    if isValidEmail(email), !(password?.isNilOrEmpty == true) {
       presenter.updateValidEmailAndPassword()
     } else {
       presenter.updateInvalidEmailAndPassword()
     }
   }
-  
+
   func viewDidLoad() {
     presenter.update()
   }

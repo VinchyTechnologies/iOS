@@ -8,18 +8,26 @@
 
 import Foundation
 
+// MARK: - Filter
+
 public final class Filter: Decodable {
-  public let category: FilterCategory
-  public var items: [FilterItem]
+
+  // MARK: Lifecycle
 
   public init(category: FilterCategory, items: [FilterItem]) {
     self.category = category
     self.items = items
   }
+
+  // MARK: Public
+
+  public let category: FilterCategory
+  public var items: [FilterItem]
 }
 
-public enum FilterCategory: String, Decodable {
+// MARK: - FilterCategory
 
+public enum FilterCategory: String, Decodable {
   case type, color, country, sugar
 
   public var serverName: String {
@@ -39,6 +47,8 @@ public enum FilterCategory: String, Decodable {
   }
 }
 
+// MARK: - FilterItem
+
 public struct FilterItem: Decodable, Equatable {
   public let title: String
   public let imageName: String?
@@ -52,14 +62,13 @@ public struct FilterItem: Decodable, Equatable {
 }
 
 public func loadFilters() -> [Filter] {
-  
   guard let filePath = Bundle.main.path(forResource: "filters", ofType: "json") else {
     return []
   }
-  
+
   guard let data = try? Data(contentsOf: URL(fileURLWithPath: filePath)) else {
     return []
   }
-  
+
   return try! JSONDecoder().decode([Filter].self, from: data) // swiftlint:disable:this force_try
 }

@@ -9,7 +9,6 @@
 import Foundation
 
 public func countryNameFromLocaleCode(countryCode: String?) -> String? {
-
   guard let countryCode = countryCode else {
     return nil
   }

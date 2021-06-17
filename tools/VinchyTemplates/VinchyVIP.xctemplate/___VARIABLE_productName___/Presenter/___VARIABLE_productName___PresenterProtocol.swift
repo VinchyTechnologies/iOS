@@ -1,7 +1,5 @@
-//___FILEHEADER___
+// ___FILEHEADER___
 
 import Foundation
 
-protocol ___VARIABLE_productName___PresenterProtocol: AnyObject {
-    
-}
+protocol ___VARIABLE_productName___PresenterProtocol: AnyObject {}

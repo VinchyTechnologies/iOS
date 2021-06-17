@@ -9,12 +9,11 @@
 import CommonUI
 
 struct ShowcaseViewModel {
-  
   enum Section {
     case shelf(title: String?, wines: [WineCollectionViewCellViewModel])
     case loading
   }
-  
+
   let navigationTitle: String?
   let sections: [Section]
 }

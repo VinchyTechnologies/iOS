@@ -6,12 +6,12 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import Core
 import CommonUI
+import Core
 import StringFormatting
 
-fileprivate extension FilterCategory {
-  var title: String {
+extension FilterCategory {
+  fileprivate var title: String {
     switch self {
     case .type:
       return localized("type").firstLetterUppercased()
@@ -28,28 +28,36 @@ fileprivate extension FilterCategory {
   }
 }
 
-fileprivate enum C {
+// MARK: - C
+
+private enum C {
   static let navigationTitle = localized("advanced_search")
   static let moreText = localized("see_all") // TODO: - capitalized with locale
 }
 
+// MARK: - AdvancedSearchPresenter
+
 final class AdvancedSearchPresenter {
-  
-  private typealias ViewModel = AdvancedSearchViewModel
-  
-  weak var viewController: AdvancedSearchViewControllerProtocol?
-  
+
+  // MARK: Lifecycle
+
   init(viewController: AdvancedSearchViewControllerProtocol) {
     self.viewController = viewController
   }
+
+  // MARK: Internal
+
+  weak var viewController: AdvancedSearchViewControllerProtocol?
+
+  // MARK: Private
+
+  private typealias ViewModel = AdvancedSearchViewModel
 }
 
-// MARK: - AdvancedSearchPresenterProtocol
+// MARK: AdvancedSearchPresenterProtocol
 
 extension AdvancedSearchPresenter: AdvancedSearchPresenterProtocol {
-
   func update(filters: [Filter], selectedFilters: [FilterItem], sec: Int?) {
-
     var sections = [ViewModel.Section]()
 
     filters.forEach { filter in
@@ -71,11 +79,11 @@ extension AdvancedSearchPresenter: AdvancedSearchPresenterProtocol {
             shouldLoadMore: false))
 
         sections.append(.carusel(
-                          headerViewModel: .init(
-                            titleText: filter.category.title,
-                            moreText: C.moreText,
-                            shouldShowMore: false),
-                          items: items))
+          headerViewModel: .init(
+            titleText: filter.category.title,
+            moreText: C.moreText,
+            shouldShowMore: false),
+          items: items))
 
       case .country:
         var items = [AdvancedSearchCaruselCollectionCellViewModel]()
@@ -93,11 +101,11 @@ extension AdvancedSearchPresenter: AdvancedSearchPresenterProtocol {
             shouldLoadMore: false))
 
         sections.append(.carusel(
-                          headerViewModel: .init(
-                            titleText: localized(filter.category.title),
-                            moreText: C.moreText,
-                            shouldShowMore: true),
-                          items: items))
+          headerViewModel: .init(
+            titleText: localized(filter.category.title),
+            moreText: C.moreText,
+            shouldShowMore: true),
+          items: items))
       }
     }
 

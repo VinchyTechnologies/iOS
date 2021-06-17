@@ -9,7 +9,6 @@
 import UIKit
 
 final class OnboardingModuleFactory {
-  
   func makeOnboardingViewController(
     delegate: OnboardingViewControllerOutput?)
     -> OnboardViewController

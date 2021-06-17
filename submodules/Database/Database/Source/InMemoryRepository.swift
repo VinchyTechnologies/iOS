@@ -9,7 +9,7 @@
 import Foundation
 
 open class InMemoryRepository<M>: CollectionRepository<M> where M: RepositoryItem {
-    public init() {
-        super.init(storage: InMemoryStorage().toAny())
-    }
+  public init() {
+    super.init(storage: InMemoryStorage().toAny())
+  }
 }

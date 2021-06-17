@@ -10,17 +10,17 @@ import MapKit
 
 protocol MapInteractorProtocol: AnyObject {
   func viewDidLoad()
-  
+
   func didMove(
     to position: CLLocationCoordinate2D,
     mapVisibleRegion: MKMapRect,
     mapView: MKMapView,
     shouldUseThrottler: Bool)
-  
+
   func didTapOnPin(partnerId: Int, affilatedId: Int)
-  
+
   func didTapShowRouteOnBottomSheet(coordinate: CLLocationCoordinate2D)
-  
+
   func requestBottomSheetDismissToDeselectSelectedPin()
   func didTapAssortmentButton(partnerId: Int, affilatedId: Int, title: String?)
   func didTapXMarkButtonOnRoutingToolBar()

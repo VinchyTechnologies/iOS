@@ -6,18 +6,21 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
-import Display
 import CommonUI
+import Display
+import UIKit
+
+// MARK: - AdvancedSearchCaruselCollectionCellDelegate
 
 public protocol AdvancedSearchCaruselCollectionCellDelegate: AnyObject {
   func didSelectItem(at indexPath: IndexPath)
-//  func setContentOffset(_ offset: CGPoint, at section: Int)
-//  func showMore(at section: Int)
+  //  func setContentOffset(_ offset: CGPoint, at section: Int)
+  //  func showMore(at section: Int)
 }
 
-public struct AdvancedSearchCaruselCollectionCellViewModel: ViewModelProtocol {
+// MARK: - AdvancedSearchCaruselCollectionCellViewModel
 
+public struct AdvancedSearchCaruselCollectionCellViewModel: ViewModelProtocol {
   fileprivate let items: [ImageOptionCollectionCellViewModel]
   fileprivate let shouldLoadMore: Bool
 
@@ -27,24 +30,52 @@ public struct AdvancedSearchCaruselCollectionCellViewModel: ViewModelProtocol {
   }
 }
 
+// MARK: - AdvancedSearchCaruselCollectionCell
+
 final class AdvancedSearchCaruselCollectionCell: UICollectionViewCell, Reusable {
+
+  // MARK: Lifecycle
+
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+
+    collectionView.dataSource = self
+    collectionView.delegate = self
+
+    addSubview(collectionView)
+    collectionView.fill()
+    bounceDecorator.configureBounceDecorator(onView: self)
+  }
+
+  @available(*, unavailable)
+  required init?(coder _: NSCoder) { fatalError() }
+
+  // MARK: Internal
 
   weak var delegate: AdvancedSearchCaruselCollectionCellDelegate?
   var section: Int = 0
 
-  private var items: [ImageOptionCollectionCellViewModel] = [] {
-    didSet {
-      collectionView.reloadData()
-    }
-  }
+  var decorationBounceViewInsets: UIEdgeInsets = .init(top: 0, left: 24, bottom: 0, right: 24)
+
+  let collectionView: UICollectionView = {
+    let layout = DecoratorFlowLayout()
+    layout.scrollDirection = .horizontal
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    collectionView.backgroundColor = .clear
+    collectionView.register(ImageOptionCollectionCell.self)
+    collectionView.delaysContentTouches = false
+    collectionView.contentInset = .init(top: 0, left: 15, bottom: 0, right: 15)
+    collectionView.showsHorizontalScrollIndicator = false
+    return collectionView
+  }()
+
+  // MARK: Private
 
   private lazy var bounceDecorationView: MoreBounceDecoratorView = {
     let view = MoreBounceDecoratorView()
     view.decorate(model: .init(titleText: "More"))
     return view
   }()
-
-  var decorationBounceViewInsets: UIEdgeInsets = .init(top: 0, left: 24, bottom: 0, right: 24)
 
   private lazy var bounceDecorator: ScrollViewBounceDecorator = {
     let left = decorationBounceViewInsets.left - collectionView.contentInset.left
@@ -59,35 +90,16 @@ final class AdvancedSearchCaruselCollectionCell: UICollectionViewCell, Reusable 
       delegate: self)
   }()
 
-  let collectionView: UICollectionView = {
-    let layout = DecoratorFlowLayout()
-    layout.scrollDirection = .horizontal
-    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-    collectionView.backgroundColor = .clear
-    collectionView.register(ImageOptionCollectionCell.self)
-    collectionView.delaysContentTouches = false
-    collectionView.contentInset = .init(top: 0, left: 15, bottom: 0, right: 15)
-    collectionView.showsHorizontalScrollIndicator = false
-    return collectionView
-  }()
-
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-
-    collectionView.dataSource = self
-    collectionView.delegate = self
-
-    addSubview(collectionView)
-    collectionView.fill()
-    bounceDecorator.configureBounceDecorator(onView: self)
+  private var items: [ImageOptionCollectionCellViewModel] = [] {
+    didSet {
+      collectionView.reloadData()
+    }
   }
-
-  required init?(coder: NSCoder) { fatalError() }
-
 }
 
-extension AdvancedSearchCaruselCollectionCell: Decoratable {
+// MARK: Decoratable
 
+extension AdvancedSearchCaruselCollectionCell: Decoratable {
   typealias ViewModel = AdvancedSearchCaruselCollectionCellViewModel
 
   func decorate(model: AdvancedSearchCaruselCollectionCellViewModel) {
@@ -96,9 +108,10 @@ extension AdvancedSearchCaruselCollectionCell: Decoratable {
   }
 }
 
-extension AdvancedSearchCaruselCollectionCell: UICollectionViewDataSource {
+// MARK: UICollectionViewDataSource
 
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+extension AdvancedSearchCaruselCollectionCell: UICollectionViewDataSource {
+  func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
     items.count
   }
 
@@ -114,27 +127,33 @@ extension AdvancedSearchCaruselCollectionCell: UICollectionViewDataSource {
   }
 }
 
+// MARK: DecoratorFlowLayoutDelegate
+
 extension AdvancedSearchCaruselCollectionCell: DecoratorFlowLayoutDelegate {
 
-  func collectionView(
-    _ collectionView: UICollectionView,
-    didSelectItemAt indexPath: IndexPath)
-  {
-    delegate?.didSelectItem(at: IndexPath(row: indexPath.row, section: section))
-  }
+  // MARK: Public
 
   public func scrollViewDidScroll(_ scrollView: UIScrollView) {
 //    delegate?.setContentOffset(scrollView.contentOffset, at: section)
     bounceDecorator.handleScrollViewDidScroll(scrollView)
   }
 
-  public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+  public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate _: Bool) {
     bounceDecorator.handleScrollViewDidEndDragging(scrollView)
   }
 
+  // MARK: Internal
+
   func collectionView(
-    _ collectionView: UICollectionView,
-    layout collectionViewLayout: UICollectionViewLayout,
+    _: UICollectionView,
+    didSelectItemAt indexPath: IndexPath)
+  {
+    delegate?.didSelectItem(at: IndexPath(row: indexPath.row, section: section))
+  }
+
+  func collectionView(
+    _: UICollectionView,
+    layout _: UICollectionViewLayout,
     sizeForItemAt indexPath: IndexPath)
     -> CGSize
   {
@@ -142,13 +161,15 @@ extension AdvancedSearchCaruselCollectionCell: DecoratorFlowLayoutDelegate {
   }
 }
 
+// MARK: ScrollViewBounceDecoratorDelegate
+
 extension AdvancedSearchCaruselCollectionCell: ScrollViewBounceDecoratorDelegate {
   func scrollViewBounceDecoratorTriggered() {
 //    delegate?.showMore(at: section)
   }
 }
 
-//class MyCollectionView: UICollectionView {
+// class MyCollectionView: UICollectionView {
 //
 //  private var temporaryOffsetOverride: CGPoint?
 //
@@ -191,4 +212,4 @@ extension AdvancedSearchCaruselCollectionCell: ScrollViewBounceDecoratorDelegate
 //      }
 //    }
 //  }
-//}
+// }

@@ -7,10 +7,9 @@
 //
 
 public struct PartnerOnMap: Decodable, Hashable {
-  
   public let id: Int
   public let affiliatedStores: [AffiliatedStore]
-  
+
   private enum CodingKeys: String, CodingKey {
     case id = "partner_id"
     case affiliatedStores = "affiliated_stores"

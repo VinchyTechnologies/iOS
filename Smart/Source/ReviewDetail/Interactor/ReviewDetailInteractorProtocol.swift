@@ -9,5 +9,5 @@
 import Foundation
 
 protocol ReviewDetailInteractorProtocol: AnyObject {
-    func viewDidLoad()
+  func viewDidLoad()
 }

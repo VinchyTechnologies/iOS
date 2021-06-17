@@ -7,14 +7,13 @@
 //
 
 public struct Review: Decodable {
-  
   public let id: Int
   public let accountID: Int64
   public let rating: Double
   public let comment: String?
   public let publicationDate: String
   public let updateDate: String?
-  
+
   private enum CodingKeys: String, CodingKey {
     case id = "review_id"
     case accountID = "account_id"

@@ -8,6 +8,8 @@
 
 import UIKit
 
+// MARK: - OpenURLProtocol
+
 public protocol OpenURLProtocol {
   func open(urlString: String, errorCompletion: () -> Void)
 }

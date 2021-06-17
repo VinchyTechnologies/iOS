@@ -8,12 +8,12 @@
 
 import UIKit
 
+// MARK: - MapDetailStoreRouter
+
 final class MapDetailStoreRouter {
-  
-  weak var viewController: UIViewController?
-  weak var interactor: MapDetailStoreInteractorProtocol?
-  private let input: MapDetailStoreInput
-  
+
+  // MARK: Lifecycle
+
   init(
     input: MapDetailStoreInput,
     viewController: UIViewController)
@@ -21,10 +21,17 @@ final class MapDetailStoreRouter {
     self.input = input
     self.viewController = viewController
   }
+
+  // MARK: Internal
+
+  weak var viewController: UIViewController?
+  weak var interactor: MapDetailStoreInteractorProtocol?
+
+  // MARK: Private
+
+  private let input: MapDetailStoreInput
 }
 
-// MARK: - MapDetailStoreRouterProtocol
+// MARK: MapDetailStoreRouterProtocol
 
-extension MapDetailStoreRouter: MapDetailStoreRouterProtocol {
-  
-}
+extension MapDetailStoreRouter: MapDetailStoreRouterProtocol {}

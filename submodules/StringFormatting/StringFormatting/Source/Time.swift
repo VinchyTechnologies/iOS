@@ -8,9 +8,8 @@
 
 import Foundation
 
-public extension TimeInterval {
-  
-  func toString() -> String? {
+extension TimeInterval {
+  public func toString() -> String? {
     let formatter = DateComponentsFormatter()
 
     formatter.maximumUnitCount = 1

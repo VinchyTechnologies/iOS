@@ -7,13 +7,13 @@
 //
 
 import Database
-import VinchyCore
 import Sheeeeeeeeet
 import VinchyAuthorization
+import VinchyCore
 
 protocol WineDetailRouterProtocol: WineDetailRoutable, ReviewsRoutable, ReviewDetailRoutable, WriteReviewRoutable, AuthorizationRoutable {
   func presentActivityViewController(items: [Any], button: UIButton)
-  func pushToWriteViewController(note: VNote, noteText: String?)
+  func pushToWriteViewController(note: VNote)
   func pushToWriteViewController(wine: Wine)
   func presentEmailController(HTMLText: String?, recipients: [String])
   func showMoreActionSheet(menuItems: [MenuItem], appearance: ActionSheetAppearance, button: UIButton)

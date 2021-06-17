@@ -6,20 +6,19 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
-import Database
-import VinchyCore
 import Core
+import Database
 import Sheeeeeeeeet
+import UIKit
 import VinchyAuthorization
+import VinchyCore
+
+// MARK: - WineDetailRouter
 
 final class WineDetailRouter {
-  
-  weak var viewController: UIViewController?
-  weak var interactor: WineDetailInteractorProtocol?
-  private let input: WineDetailInput
-  private let emailService = EmailService()
-  
+
+  // MARK: Lifecycle
+
   init(
     input: WineDetailInput,
     viewController: UIViewController)
@@ -27,30 +26,38 @@ final class WineDetailRouter {
     self.input = input
     self.viewController = viewController
   }
+
+  // MARK: Internal
+
+  weak var viewController: UIViewController?
+  weak var interactor: WineDetailInteractorProtocol?
+
+  // MARK: Private
+
+  private let input: WineDetailInput
+  private let emailService = EmailService()
 }
 
-// MARK: - WineDetailRouterProtocol
+// MARK: WineDetailRouterProtocol
 
 extension WineDetailRouter: WineDetailRouterProtocol {
-
   func presentEmailController(HTMLText: String?, recipients: [String]) {
-    
     let emailController = emailService.getEmailController(
       HTMLText: HTMLText,
       recipients: recipients)
     viewController?.present(emailController, animated: true, completion: nil)
   }
-  
-  func pushToWriteViewController(note: VNote, noteText: String?) {
+
+  func pushToWriteViewController(note: VNote) {
     let controller = Assembly.buildWriteNoteViewController(for: note)
     viewController?.navigationController?.pushViewController(controller, animated: true)
   }
-  
+
   func pushToWriteViewController(wine: Wine) {
     let controller = Assembly.buildWriteNoteViewController(for: wine)
     viewController?.navigationController?.pushViewController(controller, animated: true)
   }
-  
+
   func presentActivityViewController(items: [Any], button: UIButton) {
     let controller = UIActivityViewController(activityItems: items, applicationActivities: nil)
     if let popoverController = controller.popoverPresentationController {
@@ -63,7 +70,7 @@ extension WineDetailRouter: WineDetailRouterProtocol {
   func showMoreActionSheet(menuItems: [MenuItem], appearance: ActionSheetAppearance, button: UIButton) {
     ActionSheet.applyAppearance(appearance, force: true)
     let menu = Menu(items: menuItems)
-    let sheet = menu.toActionSheet { [weak self] (aSheet, action) in
+    let sheet = menu.toActionSheet { [weak self] aSheet, action in
 
       guard let self = self else { return }
 

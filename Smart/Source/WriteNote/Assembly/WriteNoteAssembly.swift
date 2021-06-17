@@ -6,10 +6,8 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-final class WriteNoteAssembly {
-  
+enum WriteNoteAssembly {
   static func assemblyModule(input: WriteNoteInput) -> WriteNoteViewController {
-
     let viewController = WriteNoteViewController()
 
     let router = WriteNoteRouter(input: input, viewController: viewController)

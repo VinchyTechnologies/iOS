@@ -8,12 +8,12 @@
 
 import Combine
 
+// MARK: - OpenWineDetailFlow
+
 final class OpenWineDetailFlow: DeeplinkFlow<RootDeeplinkable> {
-  
-  struct Input {
-    let wineID: Int64
-  }
-  
+
+  // MARK: Lifecycle
+
   init(input: Input) {
     super.init()
     onStep { root in
@@ -24,26 +24,41 @@ final class OpenWineDetailFlow: DeeplinkFlow<RootDeeplinkable> {
     }
     .commit()
   }
+
+  // MARK: Internal
+
+  struct Input {
+    let wineID: Int64
+  }
 }
 
-// MARK: - Router
+// MARK: - DeeplinkRouter
 
 protocol DeeplinkRouter {
   func route(url: URL)
 }
 
+// MARK: - DeeplinkRouterImpl
+
 final class DeeplinkRouterImpl {
-  enum Flow {
-    case openWineDetail(flow: OpenWineDetailFlow)
-  }
-  
-  private var subscribtions: Set<AnyCancellable>?
-  private let root: RootDeeplinkable
-  
+
+  // MARK: Lifecycle
+
   init(root: RootDeeplinkable) {
     self.root = root
   }
-  
+
+  // MARK: Internal
+
+  enum Flow {
+    case openWineDetail(flow: OpenWineDetailFlow)
+  }
+
+  // MARK: Private
+
+  private var subscribtions: Set<AnyCancellable>?
+  private let root: RootDeeplinkable
+
   private func createFlow(url: URL) -> Flow? {
     guard !url.pathComponents.isEmpty else { return nil }
     if
@@ -55,19 +70,21 @@ final class DeeplinkRouterImpl {
         let wineID = Int64(id)
       else { return nil }
       return .openWineDetail(flow: OpenWineDetailFlow(input: .init(wineID: wineID)))
-      
+
     } else {
       return nil
     }
   }
 }
 
+// MARK: DeeplinkRouter
+
 extension DeeplinkRouterImpl: DeeplinkRouter {
   func route(url: URL) {
     switch createFlow(url: url) {
-    case let .openWineDetail(flow):
+    case .openWineDetail(let flow):
       subscribtions = flow.subcscribe(root)
-      
+
     case .none:
       ()
     }

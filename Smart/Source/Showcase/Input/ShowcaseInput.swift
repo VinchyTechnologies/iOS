@@ -8,10 +8,14 @@
 
 import VinchyCore
 
+// MARK: - ShowcaseInput
+
 struct ShowcaseInput {
   let title: String?
   let mode: ShowcaseMode
 }
+
+// MARK: - ShowcaseMode
 
 enum ShowcaseMode {
   case normal(wines: [ShortWine])

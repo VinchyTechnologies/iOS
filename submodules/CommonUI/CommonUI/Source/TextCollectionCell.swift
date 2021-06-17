@@ -6,11 +6,12 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
 import Display
+import UIKit
+
+// MARK: - TextCollectionCellViewModel
 
 public struct TextCollectionCellViewModel: ViewModelProtocol {
-
   fileprivate let titleText: NSAttributedString?
 
   public init(titleText: NSAttributedString?) {
@@ -18,11 +19,13 @@ public struct TextCollectionCellViewModel: ViewModelProtocol {
   }
 }
 
+// MARK: - TextCollectionCell
+
 public final class TextCollectionCell: UICollectionViewCell, Reusable {
 
-  private let label = UILabel()
+  // MARK: Lifecycle
 
-  public override init(frame: CGRect) {
+  override public init(frame: CGRect) {
     super.init(frame: frame)
 
     label.numberOfLines = 0
@@ -31,11 +34,10 @@ public final class TextCollectionCell: UICollectionViewCell, Reusable {
     label.fill()
   }
 
-  required init?(coder: NSCoder) { fatalError() }
+  @available(*, unavailable)
+  required init?(coder _: NSCoder) { fatalError() }
 
-  public func getCurrentText() -> String? {
-    label.attributedText?.string
-  }
+  // MARK: Public
 
   public static func height(viewModel: ViewModel?, width: CGFloat) -> CGFloat {
     guard let viewModel = viewModel else {
@@ -46,10 +48,19 @@ public final class TextCollectionCell: UICollectionViewCell, Reusable {
     let height = viewModel.titleText?.string.height(forWidth: width, font: font) ?? 44
     return height
   }
+
+  public func getCurrentText() -> String? {
+    label.attributedText?.string
+  }
+
+  // MARK: Private
+
+  private let label = UILabel()
 }
 
-extension TextCollectionCell: Decoratable {
+// MARK: Decoratable
 
+extension TextCollectionCell: Decoratable {
   public typealias ViewModel = TextCollectionCellViewModel
 
   public func decorate(model: ViewModel) {

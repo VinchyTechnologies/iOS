@@ -6,8 +6,8 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import VinchyCore
 import Display
+import VinchyCore
 
 protocol VinchyViewControllerProtocol: Loadable, Alertable {
   func updateSearchSuggestions(suggestions: [Wine])

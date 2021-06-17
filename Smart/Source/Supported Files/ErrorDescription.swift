@@ -6,17 +6,20 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import VinchyCore
-import StringFormatting
 import Display
+import StringFormatting
+import VinchyCore
+
+// MARK: - APIErrorProtocol
 
 protocol APIErrorProtocol {
   var title: String? { get }
   var description: String? { get }
 }
 
-extension APIError: APIErrorProtocol {
+// MARK: - APIError + APIErrorProtocol
 
+extension APIError: APIErrorProtocol {
   var title: String? {
     localized("error").firstLetterUppercased()
   }
@@ -34,7 +37,7 @@ extension APIError: APIErrorProtocol {
 
     case .noData:
       return "No Data" // TODO: - localize
-    
+
     case .updateTokensErrorShouldShowAuthScreen:
       return "Incorrect tokens"
     }

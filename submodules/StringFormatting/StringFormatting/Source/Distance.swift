@@ -8,8 +8,8 @@
 
 import CoreLocation
 
-public extension CLLocationDistance {
-  func toDistance() -> String? {
+extension CLLocationDistance {
+  public func toDistance() -> String? {
     let distanceFormatter = MeasurementFormatter()
     distanceFormatter.unitStyle = .short
     let numberFormatter = NumberFormatter()

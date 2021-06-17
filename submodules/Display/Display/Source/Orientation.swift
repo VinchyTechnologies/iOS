@@ -8,15 +8,13 @@
 
 import UIKit
 
-public struct Orientation {
+public enum Orientation {
   public static var isLandscape: Bool {
-    get {
-      guard let windowScence = UIApplication.shared.windows.first?.windowScene else {
-        return false
-      }
-      return UIDevice.current.orientation.isValidInterfaceOrientation
-        ? UIDevice.current.orientation.isLandscape
-        : windowScence.interfaceOrientation.isLandscape
+    guard let windowScence = UIApplication.shared.windows.first?.windowScene else {
+      return false
     }
+    return UIDevice.current.orientation.isValidInterfaceOrientation
+      ? UIDevice.current.orientation.isLandscape
+      : windowScence.interfaceOrientation.isLandscape
   }
 }

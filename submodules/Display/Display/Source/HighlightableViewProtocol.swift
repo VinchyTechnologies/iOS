@@ -8,41 +8,48 @@
 
 import UIKit
 
+// MARK: - HighlightableViewProtocol
+
 public protocol HighlightableViewProtocol: AnyObject {
   var isHighlighted: Bool { get set }
   var highlightableView: UIView { get }
 }
 
-public extension HighlightableViewProtocol where Self: UICollectionViewCell {
-  var highlightableView: UIView { self }
+extension HighlightableViewProtocol where Self: UICollectionViewCell {
+  public var highlightableView: UIView { self }
 }
+
+// MARK: - HighlightAnimatorProtocol
 
 public protocol HighlightAnimatorProtocol: AnyObject {
   func animateHighlight()
 }
+
+// MARK: - CollectionCellHighlightStyle
 
 public enum CollectionCellHighlightStyle: Equatable {
   case scale
   case backgroundColor(UIColor)
 }
 
+// MARK: - CollectionCellProtocol
+
 public protocol CollectionCellProtocol where Self: UICollectionViewCell {
   var highlightStyle: CollectionCellHighlightStyle? { get set }
 }
 
+// MARK: - ScaleHighlightAnimator
+
 public final class ScaleHighlightAnimator: HighlightAnimatorProtocol {
-  
-  private enum Constants {
-    static let animationDuration: TimeInterval = 0.1
-    static let scaleOffset: CGFloat = 8
-  }
-  
-  private weak var view: HighlightableViewProtocol?
-  
+
+  // MARK: Lifecycle
+
   public init(view: HighlightableViewProtocol) {
     self.view = view
   }
-  
+
+  // MARK: Public
+
   public func animateHighlight() {
     guard let view = view else { return }
     let transform = self.transform(for: view)
@@ -53,7 +60,16 @@ public final class ScaleHighlightAnimator: HighlightAnimatorProtocol {
         view.highlightableView.transform = transform
       })
   }
-  
+
+  // MARK: Private
+
+  private enum Constants {
+    static let animationDuration: TimeInterval = 0.1
+    static let scaleOffset: CGFloat = 8
+  }
+
+  private weak var view: HighlightableViewProtocol?
+
   private func transform(for view: HighlightableViewProtocol) -> CGAffineTransform {
     guard view.isHighlighted else { return .identity }
     let scaleOffset = Constants.scaleOffset
@@ -61,26 +77,33 @@ public final class ScaleHighlightAnimator: HighlightAnimatorProtocol {
     guard scale > .zero else { return .identity }
     return CGAffineTransform(scaleX: scale, y: scale)
   }
-  
 }
 
+// MARK: - BackgroundColorHighlightAnimator
+
 public final class BackgroundColorHighlightAnimator: HighlightAnimatorProtocol {
-  
-  private weak var view: HighlightableViewProtocol?
-  private let originalBackgroundColor: UIColor?
-  private let highlightedBackgroundColor: UIColor
-  
+
+  // MARK: Lifecycle
+
   public init(view: HighlightableViewProtocol, highlightedBackgroundColor: UIColor) {
     self.view = view
-    self.originalBackgroundColor = view.highlightableView.backgroundColor
+    originalBackgroundColor = view.highlightableView.backgroundColor
     self.highlightedBackgroundColor = highlightedBackgroundColor
   }
-  
+
+  // MARK: Public
+
   public func animateHighlight() {
     guard let view = view else { return }
     view.highlightableView.backgroundColor = backgroundColor(for: view)
   }
-  
+
+  // MARK: Private
+
+  private weak var view: HighlightableViewProtocol?
+  private let originalBackgroundColor: UIColor?
+  private let highlightedBackgroundColor: UIColor
+
   private func backgroundColor(for view: HighlightableViewProtocol) -> UIColor? {
     view.isHighlighted ? highlightedBackgroundColor : originalBackgroundColor
   }

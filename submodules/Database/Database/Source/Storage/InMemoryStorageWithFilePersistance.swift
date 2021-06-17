@@ -8,30 +8,37 @@
 import Foundation
 
 public final class InMemoryStorageWithFilePersistance<M: Codable>: StorageProtocol {
-    public func read() -> M? {
-        if let inMemoryModel = inMemoryStorage.read() {
-            return inMemoryModel
-        }
-        if let inFileModel = fileStorage.read() {
-            inMemoryStorage.save(inFileModel)
-            return inFileModel
-        }
 
-        return nil
+  // MARK: Lifecycle
+
+  public init() {}
+
+  // MARK: Public
+
+  public func read() -> M? {
+    if let inMemoryModel = inMemoryStorage.read() {
+      return inMemoryModel
+    }
+    if let inFileModel = fileStorage.read() {
+      inMemoryStorage.save(inFileModel)
+      return inFileModel
     }
 
-    public func save(_ model: M) {
-        inMemoryStorage.save(model)
-        fileStorage.save(model)
-    }
+    return nil
+  }
 
-    public func clear() {
-        inMemoryStorage.clear()
-        fileStorage.clear()
-    }
+  public func save(_ model: M) {
+    inMemoryStorage.save(model)
+    fileStorage.save(model)
+  }
 
-    public init() {}
+  public func clear() {
+    inMemoryStorage.clear()
+    fileStorage.clear()
+  }
 
-    private let fileStorage: FileStorage<M> = FileStorage()
-    private let inMemoryStorage: InMemoryStorage<M> = InMemoryStorage()
+  // MARK: Private
+
+  private let fileStorage: FileStorage<M> = FileStorage()
+  private let inMemoryStorage: InMemoryStorage<M> = InMemoryStorage()
 }

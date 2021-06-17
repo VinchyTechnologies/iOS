@@ -8,17 +8,17 @@
 
 import Display
 
-protocol WineDetailRoutable: AnyObject {
+// MARK: - WineDetailRoutable
 
+protocol WineDetailRoutable: AnyObject {
   var viewController: UIViewController? { get }
 
   func pushToWineDetailViewController(wineID: Int64)
-  
+
   func presentWineDetailViewController(wineID: Int64)
 }
 
 extension WineDetailRoutable {
-
   func pushToWineDetailViewController(wineID: Int64) {
     let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID))
     controller.hidesBottomBarWhenPushed = true
@@ -26,7 +26,7 @@ extension WineDetailRoutable {
       controller,
       animated: true)
   }
-  
+
   func presentWineDetailViewController(wineID: Int64) {
     let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID))
     let navigationController = NavigationController(rootViewController: controller)

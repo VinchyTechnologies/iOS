@@ -8,34 +8,34 @@
 
 import UIKit
 
+// MARK: - TextField
+
 public final class TextField: SkyFloatingLabelTextField {
-  
-  public override init(frame: CGRect) {
+  override public init(frame: CGRect) {
     super.init(frame: frame)
     lineColor = .blueGray
     placeholderColor = .blueGray
     titleColor = .blueGray
     selectedLineColor = .blueGray
     selectedTitleColor = .blueGray
-    
   }
-  
-  required init?(coder aDecoder: NSCoder) { fatalError() }
-  
+
+  @available(*, unavailable)
+  required init?(coder _: NSCoder) { fatalError() }
 }
 
+// MARK: - TextFieldWithIcon
+
 public final class TextFieldWithIcon: SkyFloatingLabelTextFieldWithIcon {
-  
-  public override init(frame: CGRect) {
+  override public init(frame: CGRect) {
     super.init(frame: frame)
     lineColor = .blueGray
     placeholderColor = .blueGray
     titleColor = .blueGray
     selectedLineColor = .blueGray
     selectedTitleColor = .blueGray
-    
   }
-  
-  required init?(coder aDecoder: NSCoder) { fatalError() }
-  
+
+  @available(*, unavailable)
+  required init?(coder _: NSCoder) { fatalError() }
 }

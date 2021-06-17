@@ -8,7 +8,7 @@
 
 import UIKit
 
-//public final class LoadingCollectionFooter: UICollectionReusableView, Reusable, Loadable {
+// public final class LoadingCollectionFooter: UICollectionReusableView, Reusable, Loadable {
 //
 //    public private(set) var loadingIndicator = ActivityIndicatorView()
 //
@@ -19,4 +19,4 @@ import UIKit
 //
 //    required init?(coder: NSCoder) { fatalError() }
 //
-//}
+// }

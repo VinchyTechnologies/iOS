@@ -7,6 +7,4 @@
 
 import Foundation
 
-struct ChooseAuthTypeInput {
-
-}
+struct ChooseAuthTypeInput {}

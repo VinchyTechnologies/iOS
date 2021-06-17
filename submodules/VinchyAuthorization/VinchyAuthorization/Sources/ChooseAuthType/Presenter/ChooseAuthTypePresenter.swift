@@ -7,18 +7,26 @@
 
 import StringFormatting
 
+// MARK: - ChooseAuthTypePresenter
+
 final class ChooseAuthTypePresenter {
 
-    private typealias ViewModel = ChooseAuthTypeViewModel
+  // MARK: Lifecycle
 
-    weak var viewController: ChooseAuthTypeViewControllerProtocol?
+  init(viewController: ChooseAuthTypeViewControllerProtocol) {
+    self.viewController = viewController
+  }
 
-    init(viewController: ChooseAuthTypeViewControllerProtocol) {
-        self.viewController = viewController
-    }
+  // MARK: Internal
+
+  weak var viewController: ChooseAuthTypeViewControllerProtocol?
+
+  // MARK: Private
+
+  private typealias ViewModel = ChooseAuthTypeViewModel
 }
 
-// MARK: - ChooseAuthTypePresenterProtocol
+// MARK: ChooseAuthTypePresenterProtocol
 
 extension ChooseAuthTypePresenter: ChooseAuthTypePresenterProtocol {
   func update() {

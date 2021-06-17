@@ -6,6 +6,8 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+// MARK: - PagingState
+
 public enum PagingState<Data> {
   case initial
   case loaded(Data)
@@ -13,46 +15,54 @@ public enum PagingState<Data> {
   case error(Error)
 }
 
+// MARK: - PagingEvent
+
 public enum PagingEvent<Data> {
   case load(offset: Int)
   case success(Data)
   case fail(Error)
 }
 
+// MARK: - PagingStateMachine
+
 public final class PagingStateMachine<Data>: StateMachine<PagingState<Data>, PagingEvent<Data>> {
-  
+
+  // MARK: Lifecycle
+
   public init() {
     super.init(state: .initial) { currentState, event in
       switch (currentState, event) {
-      case let (.initial, .load(offset)):
+      case (.initial, .load(let offset)):
         return .loading(offset: offset)
-        
-      case let (.loaded, .load(offset)):
+
+      case (.loaded, .load(let offset)):
         return .loading(offset: offset)
-        
-      case let (.error, .load(offset)):
+
+      case (.error, .load(let offset)):
         return .loading(offset: offset)
-        
-      case let (.loading, .success(data)):
+
+      case (.loading, .success(let data)):
         return .loaded(data)
-        
-      case let (.loading, .fail(error)):
+
+      case (.loading, .fail(let error)):
         return .error(error)
-        
+
       default:
         return nil
       }
     }
   }
-  
+
+  // MARK: Public
+
   public func load(offset: Int) {
     process(event: .load(offset: offset))
   }
-  
+
   public func invokeSuccess(with data: Data) {
     process(event: .success(data))
   }
-  
+
   public func fail(with error: Error) {
     process(event: .fail(error))
   }

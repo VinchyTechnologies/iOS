@@ -6,12 +6,11 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
-import Sheeeeeeeeet
 import Display
+import Sheeeeeeeeet
+import UIKit
 
 final class VinchyActionSheetAppearance: ActionSheetAppearance {
-
   override func applyFonts() {
     super.applyFonts()
     item.titleFont = Font.medium(16)

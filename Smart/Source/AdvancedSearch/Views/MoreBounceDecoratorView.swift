@@ -6,16 +6,20 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
 import Display
+import UIKit
+
+// MARK: - MoreBounceDecoratorViewModel
 
 struct MoreBounceDecoratorViewModel: ViewModelProtocol {
   let titleText: String?
 }
 
+// MARK: - MoreBounceDecoratorView
+
 final class MoreBounceDecoratorView: UIView {
 
-  private let label = PaddingLabel()
+  // MARK: Lifecycle
 
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -34,20 +38,26 @@ final class MoreBounceDecoratorView: UIView {
     addSubview(label)
     label.translatesAutoresizingMaskIntoConstraints = false
     label.fill()
-
   }
+
+  @available(*, unavailable)
+  required init?(coder _: NSCoder) { fatalError() }
+
+  // MARK: Internal
 
   override func layoutSubviews() {
     super.layoutSubviews()
     layer.cornerRadius = bounds.width / 2
   }
 
-  required init?(coder: NSCoder) { fatalError() }
+  // MARK: Private
 
+  private let label = PaddingLabel()
 }
 
+// MARK: Decoratable
+
 extension MoreBounceDecoratorView: Decoratable {
-  
   typealias ViewModel = MoreBounceDecoratorViewModel
 
   func decorate(model: ViewModel) {

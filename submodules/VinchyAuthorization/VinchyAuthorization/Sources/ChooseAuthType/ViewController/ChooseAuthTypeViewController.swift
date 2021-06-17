@@ -5,14 +5,77 @@
 //  Created by Алексей Смирнов on 05.02.2021.
 //
 
-import UIKit
 import Display
 import StringFormatting
+import UIKit
+
+// MARK: - ChooseAuthTypeViewController
 
 final class ChooseAuthTypeViewController: UIViewController {
-  
+
+  // MARK: Internal
+
   var interactor: ChooseAuthTypeInteractorProtocol?
-  
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    navigationItem.largeTitleDisplayMode = .never
+
+    let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
+    navigationItem.rightBarButtonItem = UIBarButtonItem(
+      image: UIImage(systemName: "xmark", withConfiguration: imageConfig),
+      style: .plain,
+      target: self,
+      action: #selector(closeSelf))
+
+    view.backgroundColor = .mainBackground
+
+    view.addSubview(titleLabel)
+    titleLabel.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
+      titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
+      titleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+    ])
+
+    view.addSubview(subtitleLabel)
+    subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
+      subtitleLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+      subtitleLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+    ])
+
+    view.addSubview(loginButton)
+    loginButton.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      loginButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8),
+      loginButton.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+      loginButton.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+      loginButton.heightAnchor.constraint(equalToConstant: 48),
+    ])
+
+    view.addSubview(registerButton)
+    registerButton.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      registerButton.bottomAnchor.constraint(equalTo: loginButton.topAnchor, constant: -8),
+      registerButton.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+      registerButton.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+      registerButton.heightAnchor.constraint(equalToConstant: 48),
+    ])
+
+    if UIDevice.current.userInterfaceIdiom == .pad {
+      let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeDown(_:)))
+      swipeDown.direction = .down
+      view.addGestureRecognizer(swipeDown)
+    }
+
+    interactor?.viewDidLoad()
+  }
+
+  // MARK: Private
+
   private let titleLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
@@ -21,14 +84,14 @@ final class ChooseAuthTypeViewController: UIViewController {
     label.numberOfLines = 0
     return label
   }()
-  
+
   private lazy var subtitleLabel: UILabel = {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
     label.textColor = .blueGray
     label.font = Font.regular(16)
     label.numberOfLines = 0
-    
+
     let text = localized("agree_terms_of_use", bundle: Bundle(for: type(of: self)))
     label.text = text
     let underlineAttriString = NSMutableAttributedString(string: text)
@@ -37,16 +100,16 @@ final class ChooseAuthTypeViewController: UIViewController {
     underlineAttriString.addAttribute(NSAttributedString.Key.font, value: Font.medium(16), range: range1)
     underlineAttriString.addAttribute(NSAttributedString.Key.foregroundColor, value: UIColor.accent, range: range1)
     label.attributedText = underlineAttriString
-    
+
     label.isUserInteractionEnabled = true
     label.lineBreakMode = .byWordWrapping
     let tapGesture = UITapGestureRecognizer(target: self, action: #selector(tappedOnLabel(_:)))
     tapGesture.numberOfTouchesRequired = 1
     label.addGestureRecognizer(tapGesture)
-    
+
     return label
   }()
-  
+
   private lazy var registerButton: Button = {
     let button = Button()
     button.translatesAutoresizingMaskIntoConstraints = false
@@ -68,80 +131,22 @@ final class ChooseAuthTypeViewController: UIViewController {
     button.addTarget(self, action: #selector(didTapLoginButton(_:)), for: .touchUpInside)
     return button
   }()
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    
-    navigationItem.largeTitleDisplayMode = .never
-    
-    let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
-    navigationItem.rightBarButtonItem = UIBarButtonItem(
-      image: UIImage(systemName: "xmark", withConfiguration: imageConfig),
-      style: .plain,
-      target: self,
-      action: #selector(closeSelf))
-    
-    view.backgroundColor = .mainBackground
-    
-    view.addSubview(titleLabel)
-    titleLabel.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      titleLabel.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0),
-      titleLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-      titleLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
-    ])
-    
-    view.addSubview(subtitleLabel)
-    subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 8),
-      subtitleLabel.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-      subtitleLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
-    ])
-    
-    view.addSubview(loginButton)
-    loginButton.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      loginButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8),
-      loginButton.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-      loginButton.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
-      loginButton.heightAnchor.constraint(equalToConstant: 48),
-    ])
-    
-    view.addSubview(registerButton)
-    registerButton.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      registerButton.bottomAnchor.constraint(equalTo: loginButton.topAnchor, constant: -8),
-      registerButton.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-      registerButton.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
-      registerButton.heightAnchor.constraint(equalToConstant: 48),
-    ])
-    
-    if UIDevice.current.userInterfaceIdiom == .pad {
-      let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeDown(_:)))
-      swipeDown.direction = .down
-      view.addGestureRecognizer(swipeDown)
-    }
-    
-    interactor?.viewDidLoad()
-    
-  }
-  
+
   @objc
   private func closeSelf() {
     dismiss(animated: true)
   }
-  
+
   @objc
-  private func didTapRegisterButton(_ button: UIButton) {
+  private func didTapRegisterButton(_: UIButton) {
     interactor?.didTapRegisterButton()
   }
-  
+
   @objc
-  private func didTapLoginButton(_ button: UIButton) {
+  private func didTapLoginButton(_: UIButton) {
     interactor?.didTapLoginButton()
   }
-  
+
   @objc
   private func tappedOnLabel(_ gesture: UITapGestureRecognizer) {
     guard let text = subtitleLabel.text else { return }
@@ -150,12 +155,12 @@ final class ChooseAuthTypeViewController: UIViewController {
       openTerms()
     }
   }
-  
+
   @objc
-  private func didSwipeDown(_ gesture: UISwipeGestureRecognizer) {
+  private func didSwipeDown(_: UISwipeGestureRecognizer) {
     dismiss(animated: true)
   }
-  
+
   private func openTerms() {
     open(urlString: localized("terms_of_use_url"), errorCompletion: {
       showAlert(title: localized("error").firstLetterUppercased(), message: localized("open_url_error"))
@@ -163,7 +168,7 @@ final class ChooseAuthTypeViewController: UIViewController {
   }
 }
 
-// MARK: - ChooseAuthTypeViewControllerProtocol
+// MARK: ChooseAuthTypeViewControllerProtocol
 
 extension ChooseAuthTypeViewController: ChooseAuthTypeViewControllerProtocol {
   func updateUI(viewModel: ChooseAuthTypeViewModel) {

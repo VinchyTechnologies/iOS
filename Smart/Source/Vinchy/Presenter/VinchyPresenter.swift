@@ -6,32 +6,49 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
 import Display
-import VinchyCore
 import StringFormatting
+import UIKit
+import VinchyCore
+
+// MARK: - VinchyPresenter
 
 final class VinchyPresenter {
 
-  private enum C {
-    static let harmfulToYourHealthText = localized("harmful_to_your_health")
-  }
-
-  weak var viewController: VinchyViewControllerProtocol?
+  // MARK: Lifecycle
 
   init(viewController: VinchyViewControllerProtocol) {
     self.viewController = viewController
   }
+
+  // MARK: Internal
+
+  weak var viewController: VinchyViewControllerProtocol?
+
+  // MARK: Private
+
+  private enum C {
+    static let harmfulToYourHealthText = localized("harmful_to_your_health")
+  }
 }
 
+// MARK: VinchyPresenterProtocol
+
 extension VinchyPresenter: VinchyPresenterProtocol {
+  var cantFindWineText: String {
+    localized("email_did_not_find_wine")
+  }
+
+  var cantFindWineRecipients: [String] {
+    [localized("contact_email")]
+  }
 
   func showAlertEmptyCollection() {
     viewController?.showAlert(
       title: localized("error").firstLetterUppercased(),
       message: localized("empty_collection"))
   }
-  
+
   func stopPullRefreshing() {
     viewController?.stopPullRefreshing()
   }
@@ -54,89 +71,87 @@ extension VinchyPresenter: VinchyPresenterProtocol {
         ])))
   }
 
-  var cantFindWineText: String {
-    localized("email_did_not_find_wine")
-  }
-
-  var cantFindWineRecipients: [String] {
-    [localized("contact_email")]
-  }
-
   func startLoading() {
     viewController?.addLoader()
     viewController?.startLoadingAnimation()
   }
 
-  func update(compilations: [Compilation]) {
+  func update(compilations: [Compilation], isSearchingMode: Bool) {
     viewController?.stopLoadingAnimation()
 
     var sections: [VinchyViewControllerViewModel.Section] = []
 
     for compilation in compilations {
-
       switch compilation.type {
       case .mini:
         if let title = compilation.title {
           sections.append(.title([
-            .init(titleText: NSAttributedString(string: title,
-                                                font: Font.heavy(20),
-                                                textColor: .dark))
+            .init(titleText: NSAttributedString(
+              string: title,
+              font: Font.heavy(20),
+              textColor: .dark)),
           ]))
         }
         sections.append(.stories([
-          .init(type: compilation.type,
-                collections: compilation.collectionList)
+          .init(
+            type: compilation.type,
+            collections: compilation.collectionList),
         ]))
 
       case .big:
         if let title = compilation.title {
           sections.append(.title([
-            .init(titleText: NSAttributedString(string: title,
-                                                font: Font.heavy(20),
-                                                textColor: .dark))
+            .init(titleText: NSAttributedString(
+              string: title,
+              font: Font.heavy(20),
+              textColor: .dark)),
           ]))
         }
         sections.append(.big([
-          .init(type: compilation.type,
-                collections: compilation.collectionList)
+          .init(
+            type: compilation.type,
+            collections: compilation.collectionList),
         ]))
 
       case .promo:
         if let title = compilation.title {
           sections.append(.title([
-            .init(titleText: NSAttributedString(string: title,
-                                                font: Font.heavy(20),
-                                                textColor: .dark))
+            .init(titleText: NSAttributedString(
+              string: title,
+              font: Font.heavy(20),
+              textColor: .dark)),
           ]))
         }
         sections.append(.promo([
-          .init(type: compilation.type,
-                collections: compilation.collectionList)
+          .init(
+            type: compilation.type,
+            collections: compilation.collectionList),
         ]))
 
       case .bottles:
         if
           compilation.collectionList.first?.wineList != nil,
-          let firstCollectionList = compilation.collectionList.first, !(firstCollectionList.wineList.isEmpty)
+          let firstCollectionList = compilation.collectionList.first, !firstCollectionList.wineList.isEmpty
         {
-
           if let title = compilation.title {
             sections.append(.title([
-              .init(titleText: NSAttributedString(string: title,
-                                                  font: Font.heavy(20),
-                                                  textColor: .dark))
+              .init(titleText: NSAttributedString(
+                string: title,
+                font: Font.heavy(20),
+                textColor: .dark)),
             ]))
           }
 
           sections.append(.bottles([
-            .init(type: compilation.type,
-                  collections: compilation.collectionList)
+            .init(
+              type: compilation.type,
+              collections: compilation.collectionList),
           ]))
         }
 
       case .shareUs:
         sections.append(.shareUs([
-          .init(titleText: localized("like_vinchy"))
+          .init(titleText: localized("like_vinchy")),
         ]))
 
       case .smartFilter:
@@ -146,23 +161,25 @@ extension VinchyPresenter: VinchyPresenterProtocol {
 
     sections.append(.title([
       .init(titleText:
-              NSAttributedString(string: C.harmfulToYourHealthText,
-                                 font: Font.light(15),
-                                 textColor: .blueGray,
-                                 paragraphAlignment: .justified))
+        NSAttributedString(
+          string: C.harmfulToYourHealthText,
+          font: Font.light(15),
+          textColor: .blueGray,
+          paragraphAlignment: .justified)),
     ]))
 
-    viewController?.updateUI(viewModel: VinchyViewControllerViewModel(state: .normal(sections: sections)))
+    if !isSearchingMode {
+      viewController?.updateUI(viewModel: VinchyViewControllerViewModel(state: .normal(sections: sections)))
+    }
   }
 
   func update(suggestions: [Wine]) {
-    
     var sections: [VinchyViewControllerViewModel.Section] = []
-    
-    suggestions.forEach { (wine) in
+
+    suggestions.forEach { wine in
       sections.append(.suggestions([.init(titleText: wine.title)]))
     }
-    
+
     viewController?.updateUI(viewModel: VinchyViewControllerViewModel(state: .normal(sections: sections)))
   }
 

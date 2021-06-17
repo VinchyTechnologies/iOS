@@ -6,28 +6,26 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
 import CommonUI
+import UIKit
+
+// MARK: - ReviewsViewController
 
 final class ReviewsViewController: UIViewController {
-  
+
+  // MARK: Internal
+
   var interactor: ReviewsInteractorProtocol?
-  
-  private var viewModel: ReviewsViewModel = .init(state: .fake(sections: []), navigationTitle: nil) {
-    didSet {
-      navigationItem.title = viewModel.navigationTitle
-      switch viewModel.state {
-      case .fake:
-        collectionView.isScrollEnabled = false
-        
-      case .normal:
-        collectionView.isScrollEnabled = true
-      }
-      
-      collectionView.reloadData()
-    }
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    view.addSubview(collectionView)
+    collectionView.fill()
+    interactor?.viewDidLoad()
   }
-  
+
+  // MARK: Private
+
   private lazy var collectionView: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
     layout.scrollDirection = .vertical
@@ -39,16 +37,22 @@ final class ReviewsViewController: UIViewController {
     collectionView.register(ReviewCell.self, FakeCell.self, LoadingIndicatorCell.self)
     return collectionView
   }()
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    view.addSubview(collectionView)
-    collectionView.fill()
-    interactor?.viewDidLoad()
+
+  private var viewModel: ReviewsViewModel = .init(state: .fake(sections: []), navigationTitle: nil) {
+    didSet {
+      navigationItem.title = viewModel.navigationTitle
+      switch viewModel.state {
+      case .fake:
+        collectionView.isScrollEnabled = false
+
+      case .normal:
+        collectionView.isScrollEnabled = true
+      }
+
+      collectionView.reloadData()
+    }
   }
-  
-  // MARK: - Private Methods
-  
+
   private func hideErrorView() {
     DispatchQueue.main.async {
       self.collectionView.backgroundView = nil
@@ -56,10 +60,11 @@ final class ReviewsViewController: UIViewController {
   }
 }
 
+// MARK: UICollectionViewDataSource
+
 extension ReviewsViewController: UICollectionViewDataSource {
-  
   func collectionView(
-    _ collectionView: UICollectionView,
+    _: UICollectionView,
     numberOfItemsInSection section: Int)
     -> Int
   {
@@ -69,12 +74,12 @@ extension ReviewsViewController: UICollectionViewDataSource {
       case .review(let model):
         return model.count
       }
-      
+
     case .normal(let sections):
       return sections.count
     }
   }
-  
+
   func collectionView(
     _ collectionView: UICollectionView,
     cellForItemAt indexPath: IndexPath)
@@ -89,14 +94,14 @@ extension ReviewsViewController: UICollectionViewDataSource {
         cell.clipsToBounds = true
         return cell
       }
-      
+
     case .normal(let sections):
       switch sections[indexPath.row] {
       case .loading:
         // swiftlint:disable:next force_cast
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LoadingIndicatorCell.reuseId, for: indexPath) as! LoadingIndicatorCell
         return cell
-        
+
       case .review(let model):
         // swiftlint:disable:next force_cast
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReviewCell.reuseId, for: indexPath) as! ReviewCell
@@ -107,10 +112,11 @@ extension ReviewsViewController: UICollectionViewDataSource {
   }
 }
 
+// MARK: UICollectionViewDelegateFlowLayout
+
 extension ReviewsViewController: UICollectionViewDelegateFlowLayout {
-  
   func collectionView(
-    _ collectionView: UICollectionView,
+    _: UICollectionView,
     didSelectItemAt indexPath: IndexPath)
   {
     switch viewModel.state {
@@ -119,21 +125,21 @@ extension ReviewsViewController: UICollectionViewDelegateFlowLayout {
       case .review:
         return
       }
-      
+
     case .normal(let sections):
       switch sections[indexPath.row] {
       case .review(let model):
         interactor?.didSelectReview(id: model.id)
-        
+
       case .loading:
         return
       }
     }
   }
-  
+
   func collectionView(
     _ collectionView: UICollectionView,
-    layout collectionViewLayout: UICollectionViewLayout,
+    layout _: UICollectionViewLayout,
     sizeForItemAt indexPath: IndexPath)
     -> CGSize
   {
@@ -143,21 +149,21 @@ extension ReviewsViewController: UICollectionViewDelegateFlowLayout {
       case .review:
         return .init(width: collectionView.frame.width - 32, height: 200)
       }
-      
+
     case .normal(let sections):
       switch sections[indexPath.row] {
       case .review:
         return .init(width: collectionView.frame.width - 32, height: 200)
-        
+
       case .loading:
         return .init(width: collectionView.frame.width, height: 48)
       }
     }
   }
-  
+
   func collectionView(
-    _ collectionView: UICollectionView,
-    willDisplay cell: UICollectionViewCell,
+    _: UICollectionView,
+    willDisplay _: UICollectionViewCell,
     forItemAt indexPath: IndexPath)
   {
     switch viewModel.state {
@@ -167,7 +173,7 @@ extension ReviewsViewController: UICollectionViewDelegateFlowLayout {
       switch sections[indexPath.row] {
       case .review:
         break
-        
+
       case .loading:
         interactor?.willDisplayLoadingView()
       }
@@ -175,10 +181,9 @@ extension ReviewsViewController: UICollectionViewDelegateFlowLayout {
   }
 }
 
-// MARK: - ReviewsViewControllerProtocol
+// MARK: ReviewsViewControllerProtocol
 
 extension ReviewsViewController: ReviewsViewControllerProtocol {
-  
   func updateUI(errorViewModel: ErrorViewModel) {
     DispatchQueue.main.async {
       let errorView = ErrorView(frame: self.view.frame)
@@ -187,15 +192,17 @@ extension ReviewsViewController: ReviewsViewControllerProtocol {
       self.collectionView.backgroundView = errorView
     }
   }
-  
+
   func updateUI(viewModel: ReviewsViewModel) {
     hideErrorView()
     self.viewModel = viewModel
   }
 }
 
+// MARK: ErrorViewDelegate
+
 extension ReviewsViewController: ErrorViewDelegate {
-  func didTapErrorButton(_ button: UIButton) {
+  func didTapErrorButton(_: UIButton) {
     interactor?.viewDidLoad()
   }
 }

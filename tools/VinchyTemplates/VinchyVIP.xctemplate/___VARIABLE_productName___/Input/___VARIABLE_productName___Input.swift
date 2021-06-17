@@ -1,7 +1,5 @@
-//___FILEHEADER___
+// ___FILEHEADER___
 
 import Foundation
 
-struct ___VARIABLE_productName___Input {
-
-}
+struct ___VARIABLE_productName___Input {}

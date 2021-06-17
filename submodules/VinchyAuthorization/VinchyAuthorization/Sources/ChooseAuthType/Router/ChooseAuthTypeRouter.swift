@@ -7,25 +7,33 @@
 
 import UIKit
 
+// MARK: - ChooseAuthTypeRouter
+
 final class ChooseAuthTypeRouter {
 
-    weak var viewController: UIViewController?
-    weak var interactor: ChooseAuthTypeInteractorProtocol?
-    private let input: ChooseAuthTypeInput
+  // MARK: Lifecycle
 
-    init(
-        input: ChooseAuthTypeInput,
-        viewController: UIViewController)
-    {
-        self.input = input
-        self.viewController = viewController
-    }
+  init(
+    input: ChooseAuthTypeInput,
+    viewController: UIViewController)
+  {
+    self.input = input
+    self.viewController = viewController
+  }
+
+  // MARK: Internal
+
+  weak var viewController: UIViewController?
+  weak var interactor: ChooseAuthTypeInteractorProtocol?
+
+  // MARK: Private
+
+  private let input: ChooseAuthTypeInput
 }
 
-// MARK: - ChooseAuthTypeRouterProtocol
+// MARK: ChooseAuthTypeRouterProtocol
 
 extension ChooseAuthTypeRouter: ChooseAuthTypeRouterProtocol {
-  
   func pushAuthorizationViewController(mode: AuthorizationInput.AuthorizationMode) {
     viewController?.navigationController?.pushViewController(
       AuthorizationAssembly.assemblyModule(input: .init(mode: mode)),

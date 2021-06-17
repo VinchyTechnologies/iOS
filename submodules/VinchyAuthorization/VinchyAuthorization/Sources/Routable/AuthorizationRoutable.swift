@@ -7,16 +7,16 @@
 
 import UIKit
 
-public protocol AuthorizationRoutable: AnyObject {
+// MARK: - AuthorizationRoutable
 
+public protocol AuthorizationRoutable: AnyObject {
   var viewController: UIViewController? { get }
 
   func presentAuthorizationViewController()
 }
 
-public extension AuthorizationRoutable {
-
-  func presentAuthorizationViewController() {
+extension AuthorizationRoutable {
+  public func presentAuthorizationViewController() {
     let controller: AuthorizationNavigationController = ChooseAuthTypeAssembly.assemblyModule()
     controller.authOutputDelegate = viewController as? AuthorizationOutputDelegate
     if UIDevice.current.userInterfaceIdiom == .pad {

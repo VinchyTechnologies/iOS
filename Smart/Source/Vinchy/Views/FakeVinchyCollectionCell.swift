@@ -6,8 +6,10 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
 import Display
+import UIKit
+
+// MARK: - FakeVinchyCollectionCellType
 
 enum FakeVinchyCollectionCellType {
   case stories(count: Int)
@@ -16,8 +18,9 @@ enum FakeVinchyCollectionCellType {
   case big(count: Int)
 }
 
-struct FakeVinchyCollectionCellViewModel: ViewModelProtocol {
+// MARK: - FakeVinchyCollectionCellViewModel
 
+struct FakeVinchyCollectionCellViewModel: ViewModelProtocol {
   fileprivate let type: FakeVinchyCollectionCellType
 
   public init(type: FakeVinchyCollectionCellType) {
@@ -25,16 +28,51 @@ struct FakeVinchyCollectionCellViewModel: ViewModelProtocol {
   }
 }
 
+// MARK: - FakeVinchyCollectionCell
+
 final class FakeVinchyCollectionCell: UICollectionViewCell, Reusable {
 
-  private var type: FakeVinchyCollectionCellType? {
-    didSet {
-      collectionView.reloadData()
+  // MARK: Lifecycle
+
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    addSubview(collectionView)
+    NSLayoutConstraint.activate([
+      collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
+      collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
+      collectionView.topAnchor.constraint(equalTo: topAnchor),
+      collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
+    ])
+  }
+
+  @available(*, unavailable)
+  required init?(coder _: NSCoder) { fatalError() }
+
+  // MARK: Internal
+
+  static func height(viewModel: FakeVinchyCollectionCellViewModel?) -> CGFloat {
+    guard let type = viewModel?.type else {
+      return 0
+    }
+
+    switch type {
+    case .stories:
+      return 135
+
+    case .promo:
+      return 120
+
+    case .title:
+      return 25
+
+    case .big:
+      return 250
     }
   }
 
-  private lazy var collectionView: UICollectionView = {
+  // MARK: Private
 
+  private lazy var collectionView: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
     layout.scrollDirection = .horizontal
 
@@ -52,44 +90,17 @@ final class FakeVinchyCollectionCell: UICollectionViewCell, Reusable {
     return collectionView
   }()
 
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-    addSubview(collectionView)
-    NSLayoutConstraint.activate([
-      collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
-      collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
-      collectionView.topAnchor.constraint(equalTo: topAnchor),
-      collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
-    ])
-  }
-
-  required init?(coder: NSCoder) { fatalError() }
-
-  static func height(viewModel: FakeVinchyCollectionCellViewModel?) -> CGFloat {
-
-    guard let type = viewModel?.type else {
-      return 0
-    }
-
-    switch type {
-    case .stories:
-      return 135
-
-    case .promo:
-      return 120
-
-    case .title:
-      return 25
-      
-    case .big:
-      return 250
+  private var type: FakeVinchyCollectionCellType? {
+    didSet {
+      collectionView.reloadData()
     }
   }
 }
 
-extension FakeVinchyCollectionCell: UICollectionViewDataSource {
+// MARK: UICollectionViewDataSource
 
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+extension FakeVinchyCollectionCell: UICollectionViewDataSource {
+  func collectionView(_: UICollectionView, numberOfItemsInSection _: Int) -> Int {
     guard let type = type else { return 0 }
     switch type {
     case .stories(let count), .promo(let count), .title(let count), .big(let count):
@@ -102,7 +113,7 @@ extension FakeVinchyCollectionCell: UICollectionViewDataSource {
     cellForItemAt indexPath: IndexPath)
     -> UICollectionViewCell
   {
-    switch self.type {
+    switch type {
     case .stories, .title, .big, .promo:
       // swiftlint:disable:next force_cast
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FakeCell.reuseId, for: indexPath) as! FakeCell
@@ -116,12 +127,13 @@ extension FakeVinchyCollectionCell: UICollectionViewDataSource {
   }
 }
 
-extension FakeVinchyCollectionCell: UICollectionViewDelegateFlowLayout {
+// MARK: UICollectionViewDelegateFlowLayout
 
+extension FakeVinchyCollectionCell: UICollectionViewDelegateFlowLayout {
   func collectionView(
     _ collectionView: UICollectionView,
-    layout collectionViewLayout: UICollectionViewLayout,
-    sizeForItemAt indexPath: IndexPath)
+    layout _: UICollectionViewLayout,
+    sizeForItemAt _: IndexPath)
     -> CGSize
   {
     guard let type = type else { return .zero }
@@ -131,7 +143,7 @@ extension FakeVinchyCollectionCell: UICollectionViewDelegateFlowLayout {
 
     case .promo:
       return .init(width: UIScreen.main.bounds.width - 60, height: collectionView.frame.height)
-      
+
     case .title:
       return .init(width: UIScreen.main.bounds.width / 3, height: collectionView.frame.height)
 
@@ -141,11 +153,12 @@ extension FakeVinchyCollectionCell: UICollectionViewDelegateFlowLayout {
   }
 }
 
-extension FakeVinchyCollectionCell: Decoratable {
+// MARK: Decoratable
 
+extension FakeVinchyCollectionCell: Decoratable {
   typealias ViewModel = FakeVinchyCollectionCellViewModel
 
   func decorate(model: ViewModel) {
-    self.type = model.type
+    type = model.type
   }
 }

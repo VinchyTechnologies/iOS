@@ -6,20 +6,15 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import VinchyCore
 import Core
+import VinchyCore
+
+// MARK: - WriteReviewInteractor
 
 final class WriteReviewInteractor {
-  
-  private let input: WriteReviewInput
-  private let router: WriteReviewRouterProtocol
-  private let presenter: WriteReviewPresenterProtocol
-  
-  private lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
-    guard let self = self else { return }
-    self.presenter.startLoading()
-  }
-  
+
+  // MARK: Lifecycle
+
   init(
     input: WriteReviewInput,
     router: WriteReviewRouterProtocol,
@@ -29,32 +24,41 @@ final class WriteReviewInteractor {
     self.router = router
     self.presenter = presenter
   }
+
+  // MARK: Private
+
+  private let input: WriteReviewInput
+  private let router: WriteReviewRouterProtocol
+  private let presenter: WriteReviewPresenterProtocol
+
+  private lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
+    guard let self = self else { return }
+    self.presenter.startLoading()
+  }
 }
 
-// MARK: - WriteReviewInteractorProtocol
+// MARK: WriteReviewInteractorProtocol
 
 extension WriteReviewInteractor: WriteReviewInteractorProtocol {
-  
   func viewDidLoad() {
     presenter.setPlaceholder()
     if let rating = input.rating {
       presenter.update(rating: rating, comment: input.comment)
     }
   }
-  
+
   func didTapSend(rating: Double, comment: String?) {
-    
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
       self.dispatchWorkItemHud.perform()
     }
-    
-    if input.rating == rating && input.comment == comment {
+
+    if input.rating == rating, input.comment == comment {
       dispatchWorkItemHud.cancel()
       presenter.stopLoading()
       router.dismiss(completion: nil)
       return
     }
-    
+
     if rating == 0 {
       dispatchWorkItemHud.cancel()
       presenter.stopLoading()
@@ -75,7 +79,7 @@ extension WriteReviewInteractor: WriteReviewInteractorProtocol {
         switch result {
         case .success:
           self.router.dismissAfterUpdate(statusAlertViewModel: self.presenter.statusAlertViewModelAfterUpdate)
-          
+
         case .failure(let error):
           if case APIError.updateTokensErrorShouldShowAuthScreen = error {
             self.router.presentAuthorizationViewController()
@@ -90,22 +94,22 @@ extension WriteReviewInteractor: WriteReviewInteractorProtocol {
         accountID: accountID,
         rating: rating,
         comment: comment) { [weak self] result in
-        guard let self = self else { return }
-        self.dispatchWorkItemHud.cancel()
-        DispatchQueue.main.async {
-          self.presenter.stopLoading()
-        }
-        switch result {
-        case .success:
-          self.router.dismissAfterCreate(statusAlertViewModel: self.presenter.statusAlertViewModelAfterCreate)
-          
-        case .failure(let error):
-          if case APIError.updateTokensErrorShouldShowAuthScreen = error {
-            self.router.presentAuthorizationViewController()
-          } else {
-            self.presenter.showAlertErrorWhileCreatingReview(error: error)
+          guard let self = self else { return }
+          self.dispatchWorkItemHud.cancel()
+          DispatchQueue.main.async {
+            self.presenter.stopLoading()
           }
-        }
+          switch result {
+          case .success:
+            self.router.dismissAfterCreate(statusAlertViewModel: self.presenter.statusAlertViewModelAfterCreate)
+
+          case .failure(let error):
+            if case APIError.updateTokensErrorShouldShowAuthScreen = error {
+              self.router.presentAuthorizationViewController()
+            } else {
+              self.presenter.showAlertErrorWhileCreatingReview(error: error)
+            }
+          }
       }
     }
   }

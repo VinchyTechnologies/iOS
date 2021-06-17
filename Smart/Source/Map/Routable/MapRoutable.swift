@@ -8,15 +8,15 @@
 
 import UIKit
 
-protocol MapRoutable: AnyObject {
+// MARK: - MapRoutable
 
+protocol MapRoutable: AnyObject {
   var viewController: UIViewController? { get }
 
   func pushToMapViewController()
 }
 
 extension MapRoutable {
-
   func pushToMapViewController() {
     let mapViewController = MapAssembly.assemblyModule()
     mapViewController.hidesBottomBarWhenPushed = true

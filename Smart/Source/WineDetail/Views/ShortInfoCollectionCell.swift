@@ -6,38 +6,40 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
 import Display
+import UIKit
+
+// MARK: - ShortInfoCollectionCellViewModel
 
 struct ShortInfoCollectionCellViewModel: ViewModelProtocol {
-  
   fileprivate let title: NSAttributedString?
   fileprivate let subtitle: NSAttributedString?
-  
+
   public init(title: NSAttributedString?, subtitle: NSAttributedString?) {
     self.title = title
     self.subtitle = subtitle
   }
 }
 
+// MARK: - ShortInfoCollectionCell
+
 final class ShortInfoCollectionCell: UICollectionViewCell, Reusable {
-  
-  private let titleLabel = UILabel()
-  private let subtitleLabel = UILabel()
-  
+
+  // MARK: Lifecycle
+
   override init(frame: CGRect) {
     super.init(frame: frame)
-    
+
     backgroundColor = .option
     layer.cornerRadius = 15
-    
+
     addSubview(titleLabel)
     addSubview(subtitleLabel)
-    
-    [titleLabel, subtitleLabel].forEach({
+
+    [titleLabel, subtitleLabel].forEach {
       $0.translatesAutoresizingMaskIntoConstraints = false
-    })
-    
+    }
+
     NSLayoutConstraint.activate([
       titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
       titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor, constant: -5),
@@ -48,15 +50,21 @@ final class ShortInfoCollectionCell: UICollectionViewCell, Reusable {
       subtitleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
     ])
   }
-  
-  required init?(coder: NSCoder) { fatalError() }
-  
+
+  @available(*, unavailable)
+  required init?(coder _: NSCoder) { fatalError() }
+
+  // MARK: Private
+
+  private let titleLabel = UILabel()
+  private let subtitleLabel = UILabel()
 }
 
+// MARK: Decoratable
+
 extension ShortInfoCollectionCell: Decoratable {
-  
   typealias ViewModel = ShortInfoCollectionCellViewModel
-  
+
   func decorate(model: ViewModel) {
     titleLabel.attributedText = model.title
     subtitleLabel.attributedText = model.subtitle

@@ -1,19 +1,18 @@
-//___FILEHEADER___
+// ___FILEHEADER___
 
 import UIKit
 
+// MARK: - ___VARIABLE_productName___ViewController
+
 final class ___VARIABLE_productName___ViewController: UIViewController {
+  var interactor: ___VARIABLE_productName___InteractorProtocol?
 
-    var interactor: ___VARIABLE_productName___InteractorProtocol?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        interactor?.viewDidLoad()
-    }
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    interactor?.viewDidLoad()
+  }
 }
 
-// MARK: - ___VARIABLE_productName___ViewControllerProtocol
+// MARK: ___VARIABLE_productName___ViewControllerProtocol
 
-extension ___VARIABLE_productName___ViewController: ___VARIABLE_productName___ViewControllerProtocol {
-
-}
+extension ___VARIABLE_productName___ViewController: ___VARIABLE_productName___ViewControllerProtocol {}

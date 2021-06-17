@@ -6,16 +6,19 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
 import Display
+import UIKit
+
+// MARK: - BottomButtonsViewDelegate
 
 public protocol BottomButtonsViewDelegate: AnyObject {
   func didTapLeadingButton(_ button: UIButton)
   func didTapTrailingButton(_ button: UIButton)
 }
 
-public struct BottomButtonsViewModel: ViewModelProtocol {
+// MARK: - BottomButtonsViewModel
 
+public struct BottomButtonsViewModel: ViewModelProtocol {
   fileprivate let leadingButtonText: String?
   fileprivate let trailingButtonText: String?
 
@@ -25,9 +28,46 @@ public struct BottomButtonsViewModel: ViewModelProtocol {
   }
 }
 
+// MARK: - BottomButtonsView
+
 public final class BottomButtonsView: UIView {
 
+  // MARK: Lifecycle
+
+  override init(frame: CGRect) {
+    super.init(frame: frame)
+    backgroundColor = .mainBackground
+
+    let line = UIView()
+    line.translatesAutoresizingMaskIntoConstraints = false
+    line.backgroundColor = .separator
+    addSubview(line)
+    line.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      line.topAnchor.constraint(equalTo: topAnchor),
+      line.leadingAnchor.constraint(equalTo: leadingAnchor),
+      line.trailingAnchor.constraint(equalTo: trailingAnchor),
+      line.heightAnchor.constraint(equalToConstant: 0.3),
+    ])
+
+    addSubview(stackView)
+    stackView.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
+      stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
+      stackView.topAnchor.constraint(equalTo: topAnchor),
+      stackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
+    ])
+  }
+
+  @available(*, unavailable)
+  required init?(coder _: NSCoder) { fatalError() }
+
+  // MARK: Public
+
   public weak var delegate: BottomButtonsViewDelegate?
+
+  // MARK: Private
 
   private lazy var leadingButton: UIButton = {
     let button = UIButton()
@@ -62,34 +102,6 @@ public final class BottomButtonsView: UIView {
     return stackView
   }()
 
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-    backgroundColor = .mainBackground
-
-    let line = UIView()
-    line.translatesAutoresizingMaskIntoConstraints = false
-    line.backgroundColor = .separator
-    addSubview(line)
-    line.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      line.topAnchor.constraint(equalTo: topAnchor),
-      line.leadingAnchor.constraint(equalTo: leadingAnchor),
-      line.trailingAnchor.constraint(equalTo: trailingAnchor),
-      line.heightAnchor.constraint(equalToConstant: 0.3),
-    ])
-
-    addSubview(stackView)
-    stackView.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-      stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-      stackView.topAnchor.constraint(equalTo: topAnchor),
-      stackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-    ])
-  }
-
-  required init?(coder: NSCoder) { fatalError() }
-
   @objc
   private func didTapLeadingButton(_ button: UIButton) {
     delegate?.didTapLeadingButton(button)
@@ -101,8 +113,9 @@ public final class BottomButtonsView: UIView {
   }
 }
 
-extension BottomButtonsView: Decoratable {
+// MARK: Decoratable
 
+extension BottomButtonsView: Decoratable {
   public typealias ViewModel = BottomButtonsViewModel
 
   public func decorate(model: ViewModel) {

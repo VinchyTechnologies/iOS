@@ -7,9 +7,9 @@
 //
 
 import CoreLocation
-import VinchyCore
-import MapKit
 import Display
+import MapKit
+import VinchyCore
 
 protocol MapViewControllerProtocol: Alertable {
   func setUserLocation(_ userLocation: CLLocationCoordinate2D, radius: Double)

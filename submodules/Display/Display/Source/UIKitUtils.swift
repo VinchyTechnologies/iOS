@@ -8,76 +8,78 @@
 
 import UIKit
 
+// MARK: - Reusable
+
 public protocol Reusable: AnyObject {
   static var reuseId: String { get }
 }
 
-public extension Reusable where Self: UITableViewCell {
-  static var reuseId: String {
-    return String(describing: self)
+extension Reusable where Self: UITableViewCell {
+  public static var reuseId: String {
+    String(describing: self)
   }
 }
 
-public extension Reusable where Self: UICollectionViewCell {
-  static var reuseId: String {
-    return String(describing: self)
+extension Reusable where Self: UICollectionViewCell {
+  public static var reuseId: String {
+    String(describing: self)
   }
 }
 
-public extension Reusable where Self: UICollectionReusableView {
-  static var reuseId: String {
-    return String(describing: self)
+extension Reusable where Self: UICollectionReusableView {
+  public static var reuseId: String {
+    String(describing: self)
   }
 }
 
-public extension UICollectionView {
-  
-  typealias ReusableCollectionViewCell = Reusable & UICollectionViewCell
-  
-  func register(_ array: ReusableCollectionViewCell.Type...) {
-    array.forEach { (type) in
+extension UICollectionView {
+  public typealias ReusableCollectionViewCell = Reusable & UICollectionViewCell
+
+  public func register(_ array: ReusableCollectionViewCell.Type...) {
+    array.forEach { type in
       register(type.self, forCellWithReuseIdentifier: type.reuseId)
     }
   }
 }
 
-public protocol ViewModelProtocol { }
+// MARK: - ViewModelProtocol
+
+public protocol ViewModelProtocol {}
+
+// MARK: - Decoratable
 
 public protocol Decoratable {
-  
   associatedtype ViewModel: ViewModelProtocol
-  
+
   func decorate(model: ViewModel)
 }
 
-public extension UIApplication {
-  
-  var asKeyWindow: UIWindow? {
+extension UIApplication {
+  public var asKeyWindow: UIWindow? {
     UIApplication.shared.connectedScenes
-      .filter({ $0.activationState == .foregroundActive })
-      .map({ $0 as? UIWindowScene })
-      .compactMap({ $0 })
+      .filter { $0.activationState == .foregroundActive }
+      .map { $0 as? UIWindowScene }
+      .compactMap { $0 }
       .first?.windows
-      .filter({ $0.isKeyWindow }).first
+      .filter { $0.isKeyWindow }.first
   }
-  
-  static func topViewController(base: UIViewController? = UIApplication.shared.asKeyWindow?.rootViewController) -> UIViewController? {
-    
+
+  public static func topViewController(base: UIViewController? = UIApplication.shared.asKeyWindow?.rootViewController) -> UIViewController? {
     if let nav = base as? UINavigationController {
       return topViewController(base: nav.visibleViewController)
-      
+
     } else if let tab = base as? UITabBarController, let selected = tab.selectedViewController {
       return topViewController(base: selected)
-      
+
     } else if let presented = base?.presentedViewController {
       return topViewController(base: presented)
     }
-    
+
     return base
   }
 }
 
-//public extension UIImage {
+// public extension UIImage {
 //    func imageByMakingWhiteBackgroundTransparent() -> UIImage? {
 //        if let rawImageRef = self.cgImage {
 //            let colorMasking: [CGFloat] = [250, 255, 250, 255, 250, 255]
@@ -94,15 +96,14 @@ public extension UIApplication {
 //        }
 //        return nil
 //    }
-//}
+// }
 
-public extension UIView {
-  func fill() {
-    
+extension UIView {
+  public func fill() {
     guard let superView = superview else {
       return
     }
-    
+
     translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       topAnchor.constraint(equalTo: superView.topAnchor),
@@ -113,22 +114,22 @@ public extension UIView {
   }
 }
 
-public extension UIViewController {
-    var isModal: Bool {
-        if let index = navigationController?.viewControllers.firstIndex(of: self), index > 0 {
-            return false
-          
-        } else if presentingViewController != nil {
-            return true
-          
-        } else if navigationController?.presentingViewController?.presentedViewController == navigationController {
-            return true
-          
-        } else if tabBarController?.presentingViewController is UITabBarController {
-            return true
-          
-        } else {
-            return false
-        }
+extension UIViewController {
+  public var isModal: Bool {
+    if let index = navigationController?.viewControllers.firstIndex(of: self), index > 0 {
+      return false
+
+    } else if presentingViewController != nil {
+      return true
+
+    } else if navigationController?.presentingViewController?.presentedViewController == navigationController {
+      return true
+
+    } else if tabBarController?.presentingViewController is UITabBarController {
+      return true
+
+    } else {
+      return false
     }
+  }
 }

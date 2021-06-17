@@ -9,11 +9,10 @@
 import Foundation
 
 public func localizedTemperature(_ value: Double?) -> String? {
-    
-    guard let value = value else { return nil }
-    
-    let formatter = MeasurementFormatter()
-    formatter.locale = Locale.current
-    let measurement = Measurement(value: value, unit: UnitTemperature.celsius)
-    return formatter.string(from: measurement)
+  guard let value = value else { return nil }
+
+  let formatter = MeasurementFormatter()
+  formatter.locale = Locale.current
+  let measurement = Measurement(value: value, unit: UnitTemperature.celsius)
+  return formatter.string(from: measurement)
 }

@@ -9,17 +9,23 @@
 import Foundation
 
 public final class WorkItem {
-  
-  private var pendingRequestWorkItem: DispatchWorkItem?
-  
-  public init() { }
-  
+
+  // MARK: Lifecycle
+
+  public init() {}
+
+  // MARK: Public
+
   public func perform(after: TimeInterval, _ block: @escaping () -> Void) {
     pendingRequestWorkItem?.cancel()
-    
+
     let requestWorkItem = DispatchWorkItem(block: block)
-    
+
     pendingRequestWorkItem = requestWorkItem
     DispatchQueue.main.asyncAfter(deadline: .now() + after, execute: requestWorkItem)
   }
+
+  // MARK: Private
+
+  private var pendingRequestWorkItem: DispatchWorkItem?
 }

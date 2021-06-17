@@ -6,49 +6,67 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Display
 import CommonUI
+import Display
 import FittedSheets
-import VinchyCore
 import UIKit
+import VinchyCore
+
+// MARK: - MapDetailStoreViewControllerDelegate
 
 protocol MapDetailStoreViewControllerDelegate: AnyObject {
   func didTapRouteButton(_ button: UIButton)
   func didTapAssortmentButton(_ button: UIButton)
 }
 
+// MARK: - MapDetailStoreViewController
+
 final class MapDetailStoreViewController: UIViewController {
-  
-  // MARK: - Internal Properties
-  
+
+  // MARK: Internal
+
   weak var delegate: MapDetailStoreViewControllerDelegate?
   var interactor: MapDetailStoreInteractorProtocol?
-  
-  // MARK: - Private Properties
-  
+
   private(set) var loadingIndicator = ActivityIndicatorView()
-  private var viewModel: MapDetailStoreViewModel? {
-    didSet {
-      collectionView.reloadData()
-      collectionView.performBatchUpdates({
-        let sheetSize = SheetSize.fixed(self.layout.collectionViewContentSize.height + 24 /* pull Bar height */ + (UIApplication.shared.asKeyWindow?.safeAreaInsets.bottom ?? 0))
-      self.sheetViewController?.sizes = [sheetSize]
-        self.sheetViewController?.resize(to: [sheetSize][0], duration: 0.5)
-      }, completion: nil) // This blocks layoutIfNeeded animation
-    }
+
+  override func viewDidLoad() {
+    super.viewDidLoad()
+
+    view.backgroundColor = .mainBackground
+    view.addSubview(collectionView)
+    collectionView.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      collectionView.topAnchor.constraint(equalTo: view.topAnchor),
+      collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+      collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+    ])
+    sheetViewController?.handleScrollView(collectionView)
+
+    interactor?.viewDidLoad()
   }
-  
+
+  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    super.viewWillTransition(to: size, with: coordinator)
+    coordinator.animate(alongsideTransition: { _ in
+      self.collectionView.collectionViewLayout.invalidateLayout()
+    })
+  }
+
+  // MARK: Private
+
   private lazy var layout: UICollectionViewFlowLayout = {
     $0.scrollDirection = .vertical
     $0.sectionHeadersPinToVisibleBounds = true
     return $0
   }(UICollectionViewFlowLayout())
-  
+
   private lazy var collectionView: UICollectionView = {
     $0.backgroundColor = .mainBackground
     $0.dataSource = self
     $0.delegate = self
-    $0.contentInset = .init(top: 24/* pull Bar height */, left: 0, bottom: 10, right: 0)
+    $0.contentInset = .init(top: 24 /* pull Bar height */, left: 0, bottom: 10, right: 0)
     $0.register(
       TextCollectionCell.self,
       WorkingHoursCollectionCell.self,
@@ -60,54 +78,40 @@ final class MapDetailStoreViewController: UIViewController {
       withReuseIdentifier: MapNavigationBarCollectionCell.reuseId)
     return $0
   }(UICollectionView(frame: .zero, collectionViewLayout: layout))
-  
-  // MARK: - Lifecycle
-  
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    
-    view.backgroundColor = .mainBackground
-    view.addSubview(collectionView)
-    collectionView.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      collectionView.topAnchor.constraint(equalTo: view.topAnchor),
-      collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-      collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-      collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-    ])
-    sheetViewController?.handleScrollView(collectionView)
-    
-    interactor?.viewDidLoad()
-  }
-  
-  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-    super.viewWillTransition(to: size, with: coordinator)
-    coordinator.animate(alongsideTransition: { _ in
-        self.collectionView.collectionViewLayout.invalidateLayout()
-    })
+
+  private var viewModel: MapDetailStoreViewModel? {
+    didSet {
+      collectionView.reloadData()
+      collectionView.performBatchUpdates({
+        let sheetSize = SheetSize.fixed(self.layout.collectionViewContentSize.height + 24 /* pull Bar height */ + (UIApplication.shared.asKeyWindow?.safeAreaInsets.bottom ?? 0))
+        self.sheetViewController?.sizes = [sheetSize]
+        self.sheetViewController?.resize(to: [sheetSize][0], duration: 0.5)
+      }, completion: nil) // This blocks layoutIfNeeded animation
+    }
   }
 }
 
+// MARK: UICollectionViewDataSource
+
 extension MapDetailStoreViewController: UICollectionViewDataSource {
-  
-  func numberOfSections(in collectionView: UICollectionView) -> Int {
+  func numberOfSections(in _: UICollectionView) -> Int {
     viewModel?.sections.count ?? 0
   }
-  
+
   func collectionView(
-    _ collectionView: UICollectionView,
+    _: UICollectionView,
     numberOfItemsInSection section: Int)
     -> Int
   {
     switch viewModel?.sections[safe: section] {
     case .content(_, let items):
       return items.count
-      
+
     case .none:
       return 0
     }
   }
-  
+
   func collectionView(
     _ collectionView: UICollectionView,
     cellForItemAt indexPath: IndexPath)
@@ -121,20 +125,20 @@ extension MapDetailStoreViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseId, for: indexPath) as! TextCollectionCell
         cell.decorate(model: model)
         return cell
-        
+
       case .workingHours(let model):
         // swiftlint:disable:next force_cast
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WorkingHoursCollectionCell.reuseId, for: indexPath) as! WorkingHoursCollectionCell
         cell.decorate(model: model)
         return cell
-        
+
       case .assortment(let model):
         // swiftlint:disable:next force_cast
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: AssortmentCollectionCell.reuseId, for: indexPath) as! AssortmentCollectionCell
         cell.decorate(model: model)
         cell.delegate = self
         return cell
-        
+
       case .recommendedWines(let model):
         let cell = collectionView.dequeueReusableCell(
           withReuseIdentifier: VinchySimpleConiniousCaruselCollectionCell.reuseId,
@@ -143,12 +147,12 @@ extension MapDetailStoreViewController: UICollectionViewDataSource {
         cell.delegate = self
         return cell
       }
-      
+
     case .none:
       return .init()
     }
   }
-  
+
   func collectionView(
     _ collectionView: UICollectionView,
     viewForSupplementaryElementOfKind kind: String,
@@ -162,7 +166,7 @@ extension MapDetailStoreViewController: UICollectionViewDataSource {
         cell.decorate(model: model)
         cell.delegate = self
         return cell
-      
+
       case .none:
         return .init()
       }
@@ -172,28 +176,27 @@ extension MapDetailStoreViewController: UICollectionViewDataSource {
   }
 }
 
-// MARK: - UICollectionViewDelegateFlowLayout
+// MARK: UICollectionViewDelegateFlowLayout
 
 extension MapDetailStoreViewController: UICollectionViewDelegateFlowLayout {
-  
   func collectionView(
     _ collectionView: UICollectionView,
-    layout collectionViewLayout: UICollectionViewLayout,
+    layout _: UICollectionViewLayout,
     referenceSizeForHeaderInSection section: Int)
     -> CGSize
   {
     switch viewModel?.sections[safe: section] {
     case .content:
       return .init(width: collectionView.frame.width, height: 48)
-      
+
     case .none:
       return .zero
     }
   }
-  
+
   func collectionView(
     _ collectionView: UICollectionView,
-    layout collectionViewLayout: UICollectionViewLayout,
+    layout _: UICollectionViewLayout,
     sizeForItemAt indexPath: IndexPath)
     -> CGSize
   {
@@ -203,16 +206,16 @@ extension MapDetailStoreViewController: UICollectionViewDelegateFlowLayout {
       switch items[safe: indexPath.row] {
       case .title(let model), .address(let model):
         return .init(width: width, height: TextCollectionCell.height(viewModel: model, width: width))
-        
+
       case .assortment:
         return .init(width: width, height: 48)
-        
+
       case .workingHours:
         return .init(width: width, height: 48)
-        
+
       case .recommendedWines:
         return .init(width: collectionView.frame.width, height: 250)
-        
+
       case .none:
         return .zero
       }
@@ -222,7 +225,7 @@ extension MapDetailStoreViewController: UICollectionViewDelegateFlowLayout {
   }
 }
 
-// MARK: - MapDetailStoreViewControllerProtocol
+// MARK: MapDetailStoreViewControllerProtocol
 
 extension MapDetailStoreViewController: MapDetailStoreViewControllerProtocol {
   func updateUI(viewModel: MapDetailStoreViewModel) {
@@ -230,26 +233,30 @@ extension MapDetailStoreViewController: MapDetailStoreViewControllerProtocol {
   }
 }
 
+// MARK: VinchySimpleConiniousCaruselCollectionCellDelegate
+
 extension MapDetailStoreViewController: VinchySimpleConiniousCaruselCollectionCellDelegate {
-  
   func didTapBottleCell(wineID: Int64) {
     interactor?.didTapRecommendedWine(wineID: wineID)
   }
-  
-  func didTapCompilationCell(wines: [ShortWine], title: String?) { }
+
+  func didTapCompilationCell(wines _: [ShortWine], title _: String?) {}
 }
 
+// MARK: MapNavigationBarDelegate
+
 extension MapDetailStoreViewController: MapNavigationBarDelegate {
-  
   func didTapLeadingButton(_ button: UIButton) {
     sheetViewController?.attemptDismiss(animated: true)
-    self.delegate?.didTapRouteButton(button)
+    delegate?.didTapRouteButton(button)
   }
-  
-  func didTapTrailingButton(_ button: UIButton) {
+
+  func didTapTrailingButton(_: UIButton) {
     sheetViewController?.attemptDismiss(animated: true)
   }
 }
+
+// MARK: AssortmentCollectionCellDelegate
 
 extension MapDetailStoreViewController: AssortmentCollectionCellDelegate {
   func didTapSeeAssortmentButton(_ button: UIButton) {

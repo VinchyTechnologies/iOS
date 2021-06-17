@@ -5,26 +5,18 @@
 
 import UIKit
 
+// MARK: - OnboardingViewControllerOutput
+
 protocol OnboardingViewControllerOutput: AnyObject {
   func didFinishWathingOnboarding()
 }
 
-final public class OnboardViewController: UIViewController {
-  
-  // MARK: - Internal Properties
-  
-  weak var delegate: OnboardingViewControllerOutput?
-  
-  // MARK: - Private Properties
-  
-  private let pageViewController = UIPageViewController(transitionStyle: .scroll,
-                                                        navigationOrientation: .horizontal,
-                                                        options: nil)
-  private let pageItems: [OnboardPage]
-  private let appearanceConfiguration: AppearanceConfiguration
-  
-  // MARK: - Initializers
-  
+// MARK: - OnboardViewController
+
+public final class OnboardViewController: UIViewController {
+
+  // MARK: Lifecycle
+
   public init(
     pageItems: [OnboardPage],
     appearanceConfiguration: AppearanceConfiguration = AppearanceConfiguration())
@@ -33,13 +25,14 @@ final public class OnboardViewController: UIViewController {
     self.appearanceConfiguration = appearanceConfiguration
     super.init(nibName: nil, bundle: nil)
   }
-  
-  required public init?(coder: NSCoder) {
+
+  @available(*, unavailable)
+  public required init?(coder _: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
-  
-  // MARK: - Lifecycle
-  
+
+  // MARK: Public
+
   override public func loadView() {
     view = UIView(frame: .zero)
     view.backgroundColor = appearanceConfiguration.backgroundColor
@@ -50,23 +43,34 @@ final public class OnboardViewController: UIViewController {
         animated: false,
         completion: nil)
     }
-    
+
     pageViewController.dataSource = self
     pageViewController.delegate = self
     pageViewController.view.frame = view.bounds
-    
+
     let pageControlApperance = UIPageControl.appearance(whenContainedInInstancesOf: [OnboardViewController.self])
     pageControlApperance.pageIndicatorTintColor = appearanceConfiguration.tintColor.withAlphaComponent(0.3)
     pageControlApperance.currentPageIndicatorTintColor = appearanceConfiguration.tintColor
-    
+
     addChild(pageViewController)
     view.addSubview(pageViewController.view)
     pageViewController.didMove(toParent: self)
     navigationController?.navigationBar.barTintColor = .mainBackground
   }
-  
-  // MARK: - Private Methods
-  
+
+  // MARK: Internal
+
+  weak var delegate: OnboardingViewControllerOutput?
+
+  // MARK: Private
+
+  private let pageViewController = UIPageViewController(
+    transitionStyle: .scroll,
+    navigationOrientation: .horizontal,
+    options: nil)
+  private let pageItems: [OnboardPage]
+  private let appearanceConfiguration: AppearanceConfiguration
+
   private func pageViwControllerFor(pageIndex: Int) -> OnboardPageViewController? {
     let pageVC = OnboardPageViewController(
       pageIndex: pageIndex,
@@ -77,54 +81,56 @@ final public class OnboardViewController: UIViewController {
     pageVC.configureWithPage(pageItems[pageIndex])
     return pageVC
   }
-  
+
   private func advanceToPageWithIndex(_ pageIndex: Int) {
     DispatchQueue.main.async { [weak self] in
       guard
         let nextPage = self?.pageViwControllerFor(pageIndex: pageIndex)
       else { return }
-      
-      self?.pageViewController.setViewControllers([nextPage],
-                                                  direction: .forward,
-                                                  animated: true,
-                                                  completion: nil)
+
+      self?.pageViewController.setViewControllers(
+        [nextPage],
+        direction: .forward,
+        animated: true,
+        completion: nil)
     }
   }
 }
 
+// MARK: UIPageViewControllerDataSource
+
 extension OnboardViewController: UIPageViewControllerDataSource {
-  
   public func pageViewController(
-    _ pageViewController: UIPageViewController,
+    _: UIPageViewController,
     viewControllerBefore viewController: UIViewController)
-  -> UIViewController?
+    -> UIViewController?
   {
     guard let pageVC = viewController as? OnboardPageViewController else { return nil }
     let pageIndex = pageVC.pageIndex
     guard pageIndex != 0 else { return nil }
     return pageViwControllerFor(pageIndex: pageIndex - 1)
   }
-  
+
   public func pageViewController(
-    _ pageViewController: UIPageViewController,
+    _: UIPageViewController,
     viewControllerAfter viewController: UIViewController)
-  -> UIViewController?
+    -> UIViewController?
   {
     guard let pageVC = viewController as? OnboardPageViewController else { return nil }
     let pageIndex = pageVC.pageIndex
     return pageViwControllerFor(pageIndex: pageIndex + 1)
   }
-  
+
   public func presentationCount(
-    for pageViewController: UIPageViewController)
-  -> Int
+    for _: UIPageViewController)
+    -> Int
   {
     pageItems.count
   }
-  
+
   public func presentationIndex(
     for pageViewController: UIPageViewController)
-  -> Int
+    -> Int
   {
     if let currentPage = pageViewController.viewControllers?.first as? OnboardPageViewController {
       return currentPage.pageIndex
@@ -133,29 +139,32 @@ extension OnboardViewController: UIPageViewControllerDataSource {
   }
 }
 
-extension OnboardViewController: UIPageViewControllerDelegate { }
+// MARK: UIPageViewControllerDelegate
+
+extension OnboardViewController: UIPageViewControllerDelegate {}
+
+// MARK: OnboardPageViewControllerDelegate
 
 extension OnboardViewController: OnboardPageViewControllerDelegate {
-  
   func pageViewController(
-    _ pageVC: OnboardPageViewController,
+    _: OnboardPageViewController,
     actionTappedAt index: Int)
   {
     if let pageAction = pageItems[index].action {
-      pageAction({ (success, error) in
+      pageAction { success, error in
         guard error == nil else {
           return
         }
-        
+
         if success {
           self.advanceToPageWithIndex(index + 1)
         }
-      })
+      }
     }
   }
-  
+
   func pageViewController(
-    _ pageVC: OnboardPageViewController,
+    _: OnboardPageViewController,
     advanceTappedAt index: Int)
   {
     if index == pageItems.count - 1 {
@@ -167,65 +176,25 @@ extension OnboardViewController: OnboardPageViewControllerDelegate {
 }
 
 // MARK: - AppearanceConfiguration
-public extension OnboardViewController {
-  
-  typealias ButtonStyling = ((UIButton) -> Void)
-  
-  struct AppearanceConfiguration {
-    /// The color used for the page indicator and buttons
-    ///
-    /// - note: Defualts to the blue tint color used troughout iOS
-    let tintColor: UIColor
-    
-    /// The color used for the title text
-    ///
-    /// - note: If not specified, defualts to whatever `textColor` is
-    let titleColor: UIColor
-    
-    /// The color used for the description text (and title text `titleColor` if not set)
-    ///
-    /// - note: Defualts to `.darkText`
-    let textColor: UIColor
-    
-    /// The color used for onboarding background
-    ///
-    /// - note: Defualts to white
-    let backgroundColor: UIColor
-    
-    /// The `contentMode` used for the slide imageView
-    ///
-    /// - note: Defualts to white
-    let imageContentMode: UIView.ContentMode
-    
-    /// The font used for the title and action button
-    ///
-    /// - note: Defualts to preferred text style `.title1` (supports dinamyc type)
-    let titleFont: UIFont
-    
-    /// The font used for the desctiption label and advance button
-    ///
-    /// - note: Defualts to preferred text style `.body` (supports dinamyc type)
-    let textFont: UIFont
-    
-    /// A Swift closure used to expose and customize the button used to advance to the next page
-    ///
-    /// - note: Defualts to nil. If not used, the button will be customized based on the tint and text properties
-    let advanceButtonStyling: ButtonStyling?
-    
-    /// A Swift closure used to expose and customize the button used to trigger page specific action
-    ///
-    /// - note: Defualts to nil. If not used, the button will be customized based on the title properties
-    let actionButtonStyling: ButtonStyling?
-    
-    public init(tintColor: UIColor = .accent,
-                titleColor: UIColor? = nil,
-                textColor: UIColor = .dark,
-                backgroundColor: UIColor = .mainBackground,
-                imageContentMode: UIView.ContentMode = .center,
-                titleFont: UIFont = UIFont.preferredFont(forTextStyle: .title1),
-                textFont: UIFont = UIFont.preferredFont(forTextStyle: .body),
-                advanceButtonStyling: ButtonStyling? = nil,
-                actionButtonStyling: ButtonStyling? = nil) {
+
+extension OnboardViewController {
+  public typealias ButtonStyling = ((UIButton) -> Void)
+
+  public struct AppearanceConfiguration {
+
+    // MARK: Lifecycle
+
+    public init(
+      tintColor: UIColor = .accent,
+      titleColor: UIColor? = nil,
+      textColor: UIColor = .dark,
+      backgroundColor: UIColor = .mainBackground,
+      imageContentMode: UIView.ContentMode = .center,
+      titleFont: UIFont = UIFont.preferredFont(forTextStyle: .title1),
+      textFont: UIFont = UIFont.preferredFont(forTextStyle: .body),
+      advanceButtonStyling: ButtonStyling? = nil,
+      actionButtonStyling: ButtonStyling? = nil)
+    {
       self.tintColor = tintColor
       self.titleColor = titleColor ?? textColor
       self.textColor = textColor
@@ -236,5 +205,52 @@ public extension OnboardViewController {
       self.advanceButtonStyling = advanceButtonStyling
       self.actionButtonStyling = actionButtonStyling
     }
+
+    // MARK: Internal
+
+    /// The color used for the page indicator and buttons
+    ///
+    /// - note: Defualts to the blue tint color used troughout iOS
+    let tintColor: UIColor
+
+    /// The color used for the title text
+    ///
+    /// - note: If not specified, defualts to whatever `textColor` is
+    let titleColor: UIColor
+
+    /// The color used for the description text (and title text `titleColor` if not set)
+    ///
+    /// - note: Defualts to `.darkText`
+    let textColor: UIColor
+
+    /// The color used for onboarding background
+    ///
+    /// - note: Defualts to white
+    let backgroundColor: UIColor
+
+    /// The `contentMode` used for the slide imageView
+    ///
+    /// - note: Defualts to white
+    let imageContentMode: UIView.ContentMode
+
+    /// The font used for the title and action button
+    ///
+    /// - note: Defualts to preferred text style `.title1` (supports dinamyc type)
+    let titleFont: UIFont
+
+    /// The font used for the desctiption label and advance button
+    ///
+    /// - note: Defualts to preferred text style `.body` (supports dinamyc type)
+    let textFont: UIFont
+
+    /// A Swift closure used to expose and customize the button used to advance to the next page
+    ///
+    /// - note: Defualts to nil. If not used, the button will be customized based on the tint and text properties
+    let advanceButtonStyling: ButtonStyling?
+
+    /// A Swift closure used to expose and customize the button used to trigger page specific action
+    ///
+    /// - note: Defualts to nil. If not used, the button will be customized based on the title properties
+    let actionButtonStyling: ButtonStyling?
   }
 }

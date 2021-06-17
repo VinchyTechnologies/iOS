@@ -8,8 +8,9 @@
 
 import MessageUI
 
-public protocol EmailServiceProtocol: AnyObject {
+// MARK: - EmailServiceProtocol
 
+public protocol EmailServiceProtocol: AnyObject {
   var canSend: Bool { get }
 
   func getEmailController(
@@ -18,8 +19,9 @@ public protocol EmailServiceProtocol: AnyObject {
     -> MFMailComposeViewController
 }
 
-public final class EmailService: NSObject, EmailServiceProtocol {
+// MARK: - EmailService
 
+public final class EmailService: NSObject, EmailServiceProtocol {
   public var canSend: Bool {
     MFMailComposeViewController.canSendMail()
   }
@@ -39,12 +41,13 @@ public final class EmailService: NSObject, EmailServiceProtocol {
   }
 }
 
-extension EmailService: MFMailComposeViewControllerDelegate {
+// MARK: MFMailComposeViewControllerDelegate
 
+extension EmailService: MFMailComposeViewControllerDelegate {
   public func mailComposeController(
     _ controller: MFMailComposeViewController,
-    didFinishWith result: MFMailComposeResult,
-    error: Error?)
+    didFinishWith _: MFMailComposeResult,
+    error _: Error?)
   {
     controller.dismiss(animated: true, completion: nil)
   }

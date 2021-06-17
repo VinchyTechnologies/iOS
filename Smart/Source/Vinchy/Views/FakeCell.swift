@@ -6,21 +6,12 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
 import Display
+import UIKit
 
 final class FakeCell: UICollectionViewCell, ShimmeringView, Reusable {
 
-  private enum C {
-    static let backgroundColor: UIColor = .option//UIColor.rgb(red: 241, green: 241, blue: 241) //.option
-    static let duration: CFTimeInterval = 1.5
-  }
-
-  public var bgView = UIView()
-
-  private var gradientMask: CAGradientLayer = CAGradientLayer()
-
-  public var shouldAnimateBgView = true
+  // MARK: Lifecycle
 
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -28,22 +19,39 @@ final class FakeCell: UICollectionViewCell, ShimmeringView, Reusable {
     bgView.backgroundColor = C.backgroundColor
   }
 
-  required init?(coder: NSCoder) { fatalError() }
+  @available(*, unavailable)
+  required init?(coder _: NSCoder) { fatalError() }
 
-  public override func layoutSubviews() {
+  // MARK: Public
+
+  public var bgView = UIView()
+
+  public var shouldAnimateBgView = true
+
+  override public func layoutSubviews() {
     super.layoutSubviews()
 
     bgView.frame = bounds
 
     guard shouldAnimateBgView else { return }
-    self.gradientMask.removeFromSuperlayer()
-    self.gradientMask.removeAllAnimations()
-    self.gradientMask = self.getShimmering(beginTime: CACurrentMediaTime(), duration: C.duration)
-    self.bgView.layer.insertSublayer(self.gradientMask, at: .zero)
+    gradientMask.removeFromSuperlayer()
+    gradientMask.removeAllAnimations()
+    gradientMask = getShimmering(beginTime: CACurrentMediaTime(), duration: C.duration)
+    bgView.layer.insertSublayer(gradientMask, at: .zero)
   }
 
-  func generateShimmeringLayerFrame(forSuperframe superframe: CGRect) -> CGRect {
+  // MARK: Internal
+
+  func generateShimmeringLayerFrame(forSuperframe _: CGRect) -> CGRect {
     bgView.bounds
   }
 
+  // MARK: Private
+
+  private enum C {
+    static let backgroundColor: UIColor = .option // UIColor.rgb(red: 241, green: 241, blue: 241) //.option
+    static let duration: CFTimeInterval = 1.5
+  }
+
+  private var gradientMask = CAGradientLayer()
 }

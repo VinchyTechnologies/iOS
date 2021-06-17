@@ -9,7 +9,6 @@
 import CommonUI
 
 struct AdvancedSearchViewModel {
-
   enum Section {
     case carusel(headerViewModel: AdvancedHeaderViewModel, items: [AdvancedSearchCaruselCollectionCellViewModel])
   }
@@ -18,5 +17,4 @@ struct AdvancedSearchViewModel {
   let navigationTitle: String?
   let bottomButtonsViewModel: BottomButtonsViewModel
   let isBottomButtonsViewHidden: Bool
-  
 }

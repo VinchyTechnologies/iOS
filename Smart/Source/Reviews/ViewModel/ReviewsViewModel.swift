@@ -9,7 +9,6 @@
 import CommonUI
 
 struct ReviewsViewModel {
-  
   enum State {
     case fake(sections: [FakeSection])
     case normal(items: [Item])
@@ -26,5 +25,4 @@ struct ReviewsViewModel {
 
   let state: State
   let navigationTitle: String?
-  
 }

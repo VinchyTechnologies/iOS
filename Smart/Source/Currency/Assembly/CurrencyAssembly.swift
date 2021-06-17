@@ -9,9 +9,7 @@
 import UIKit
 
 final class CurrencyAssembly {
-
   static func assemblyModule() -> UIViewController {
-
     let viewController = CurrencyViewController()
     let router = CurrencyRouter(viewController: viewController)
     let presenter = CurrencyPresenter(viewController: viewController)

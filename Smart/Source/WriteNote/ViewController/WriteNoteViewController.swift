@@ -6,19 +6,48 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
-import Display
 import Database
-import VinchyCore
+import Display
 import StringFormatting
+import UIKit
+import VinchyCore
+
+// MARK: - WriteNoteViewController
 
 final class WriteNoteViewController: UIViewController {
 
-  // MARK: - Interanal Properties
+  // MARK: Internal
 
   var interactor: WriteNoteInteractorProtocol?
 
-  // MARK: - Private Properties
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    view.backgroundColor = .mainBackground
+
+    navigationItem.largeTitleDisplayMode = .never
+    navigationItem.rightBarButtonItem = UIBarButtonItem(customView: saveButton)
+    view.addSubview(textView)
+    textView.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      textView.topAnchor.constraint(equalTo: view.topAnchor),
+      textView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+      textView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+      bottomConstraint,
+    ])
+
+    configureKeyboardHelper()
+    interactor?.viewDidLoad()
+    interactor?.didStartWriteText()
+  }
+
+  // MARK: Private
+
+  private lazy var saveButton: Button = {
+    $0.enable()
+    $0.setTitle(localized("save").firstLetterUppercased(), for: [])
+    $0.addTarget(self, action: #selector(didTapSaveButton(_:)), for: .touchUpInside)
+    return $0
+  }(Button())
 
   private lazy var textView: PlaceholderTextView = {
     let textView = PlaceholderTextView()
@@ -43,32 +72,6 @@ final class WriteNoteViewController: UIViewController {
     multiplier: 1,
     constant: -16)
 
-  // MARK: - Lifecycle
-
-  override func viewDidLoad() {
-    super.viewDidLoad()
-    view.backgroundColor = .mainBackground
-
-    navigationItem.largeTitleDisplayMode = .never
-    navigationItem.rightBarButtonItem = UIBarButtonItem(
-      barButtonSystemItem: .save,
-      target: self,
-      action: #selector(didTapSave(_:)))
-
-    view.addSubview(textView)
-    textView.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      textView.topAnchor.constraint(equalTo: view.topAnchor),
-      textView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-      textView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
-      bottomConstraint,
-    ])
-    
-    configureKeyboardHelper()
-    interactor?.viewDidLoad()
-    interactor?.didStartWriteText()
-  }
-  
   private func configureKeyboardHelper() {
     keyboardHelper.bindBottomToKeyboardFrame(
       animated: true,
@@ -83,28 +86,26 @@ final class WriteNoteViewController: UIViewController {
   }
 
   @objc
-  private func didTapSave(_ barButtonItem: UIBarButtonItem) {
+  private func didTapSaveButton(_: UIButton) {
     interactor?.didTapSave()
   }
 }
 
-// MARK: - UITextViewDelegate
+// MARK: UITextViewDelegate
 
 extension WriteNoteViewController: UITextViewDelegate {
-
   func textViewDidChange(_ textView: UITextView) {
     interactor?.didChangeNoteText(textView.text)
   }
 }
 
-// MARK: - WriteNoteViewControllerProtocol
+// MARK: WriteNoteViewControllerProtocol
 
 extension WriteNoteViewController: WriteNoteViewControllerProtocol {
-  
   func setupPlaceholder(placeholder: String?) {
     textView.placeholder = placeholder ?? ""
   }
-  
+
   func update(viewModel: WriteNoteViewModel) {
     if let noteText = viewModel.noteText, !noteText.isEmpty {
       textView.text = noteText

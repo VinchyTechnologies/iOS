@@ -7,10 +7,14 @@
 
 import VinchyCore
 
+// MARK: - AuthorizationOutputModel
+
 public struct AuthorizationOutputModel {
   public let accountID: Int
   public let email: String
 }
+
+// MARK: - AuthorizationOutputDelegate
 
 public protocol AuthorizationOutputDelegate: AnyObject {
   func didSuccessfullyRegister(output: AuthorizationOutputModel?)

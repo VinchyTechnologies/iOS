@@ -7,7 +7,7 @@
 //
 
 import Core
- 
+
 func mapToRefreshTokenCompletion<T: Decodable>(
   accountID: Int,
   completion: @escaping (Result<T, APIError>) -> Void,
@@ -17,12 +17,12 @@ func mapToRefreshTokenCompletion<T: Decodable>(
     switch result {
     case .success(let model):
       completion(.success(model))
-      
+
     case .failure(let error):
       switch error {
       case .invalidURL, .decodingError, .noData:
         completion(.failure(error))
-        
+
       case .incorrectStatusCode(let code):
         if code == 401 {
           if let refreshToken = Keychain.shared.refreshToken, let password = Keychain.shared.password {
@@ -32,7 +32,7 @@ func mapToRefreshTokenCompletion<T: Decodable>(
                 Keychain.shared.accessToken = model.accessToken
                 Keychain.shared.refreshToken = model.refreshToken
                 fun()
-                
+
               case .failure:
                 // autologin
                 Accounts.shared.auth(email: UserDefaultsConfig.accountEmail, password: password) { result in
@@ -41,7 +41,7 @@ func mapToRefreshTokenCompletion<T: Decodable>(
                     Keychain.shared.accessToken = model.accessToken
                     Keychain.shared.refreshToken = model.refreshToken
                     fun()
-                    
+
                   case .failure(let error):
                     UserDefaultsConfig.accountID = 0
                     UserDefaultsConfig.accountEmail = ""
@@ -64,7 +64,7 @@ func mapToRefreshTokenCompletion<T: Decodable>(
         } else {
           completion(.failure(error))
         }
-        
+
       case .updateTokensErrorShouldShowAuthScreen:
         UserDefaultsConfig.accountID = 0
         UserDefaultsConfig.accountEmail = ""

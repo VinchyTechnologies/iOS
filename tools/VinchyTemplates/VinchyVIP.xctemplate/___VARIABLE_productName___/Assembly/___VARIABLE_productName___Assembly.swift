@@ -1,7 +1,5 @@
-//___FILEHEADER___
+// ___FILEHEADER___
 
 import Foundation
 
-final class ___VARIABLE_productName___Assembly: Assembly {
-
-}
+final class ___VARIABLE_productName___Assembly: Assembly {}

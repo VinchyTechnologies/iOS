@@ -6,12 +6,13 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
-import Display
 import CommonUI
+import Display
+import UIKit
+
+// MARK: - TitleCopyableCellViewModel
 
 public struct TitleCopyableCellViewModel: ViewModelProtocol {
-
   fileprivate let titleText: NSAttributedString?
 
   public init(titleText: NSAttributedString?) {
@@ -19,11 +20,13 @@ public struct TitleCopyableCellViewModel: ViewModelProtocol {
   }
 }
 
+// MARK: - TitleCopyableCell
+
 public final class TitleCopyableCell: UICollectionViewCell, Reusable {
 
-  private let label = CopyableLabel()
+  // MARK: Lifecycle
 
-  public override init(frame: CGRect) {
+  override public init(frame: CGRect) {
     super.init(frame: frame)
 
     label.numberOfLines = 0
@@ -38,11 +41,10 @@ public final class TitleCopyableCell: UICollectionViewCell, Reusable {
     ])
   }
 
-  required init?(coder: NSCoder) { fatalError() }
+  @available(*, unavailable)
+  required init?(coder _: NSCoder) { fatalError() }
 
-  public func getCurrentText() -> String? {
-    label.attributedText?.string
-  }
+  // MARK: Public
 
   public static func height(viewModel: ViewModel, width: CGFloat) -> CGFloat {
     // swiftlint:disable:next force_cast
@@ -50,10 +52,19 @@ public final class TitleCopyableCell: UICollectionViewCell, Reusable {
     let height = viewModel.titleText?.string.height(forWidth: width, font: font) ?? 44
     return height
   }
+
+  public func getCurrentText() -> String? {
+    label.attributedText?.string
+  }
+
+  // MARK: Private
+
+  private let label = CopyableLabel()
 }
 
-extension TitleCopyableCell: Decoratable {
+// MARK: Decoratable
 
+extension TitleCopyableCell: Decoratable {
   public typealias ViewModel = TitleCopyableCellViewModel
 
   public func decorate(model: ViewModel) {

@@ -6,15 +6,18 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
 import Display
+import UIKit
+
+// MARK: - AdvancedHeaderDelegate
 
 protocol AdvancedHeaderDelegate: AnyObject {
   func didTapHeader(at section: Int)
 }
 
-struct AdvancedHeaderViewModel: ViewModelProtocol {
+// MARK: - AdvancedHeaderViewModel
 
+struct AdvancedHeaderViewModel: ViewModelProtocol {
   fileprivate let titleText: String?
   fileprivate let moreText: String?
   fileprivate let shouldShowMore: Bool
@@ -26,19 +29,11 @@ struct AdvancedHeaderViewModel: ViewModelProtocol {
   }
 }
 
+// MARK: - AdvancedHeader
+
 final class AdvancedHeader: UICollectionReusableView, Reusable {
 
-  // MARK: - Internal Properties
-
-  weak var delegate: AdvancedHeaderDelegate?
-  var section: Int = 0
-
-  // MARK: - Private Properties
-
-  private let titleLabel = UILabel()
-  private let moreLabel = UILabel()
-
-  // MARK: - Initializers
+  // MARK: Lifecycle
 
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -68,7 +63,18 @@ final class AdvancedHeader: UICollectionReusableView, Reusable {
     ])
   }
 
-  required init?(coder: NSCoder) { fatalError() }
+  @available(*, unavailable)
+  required init?(coder _: NSCoder) { fatalError() }
+
+  // MARK: Internal
+
+  weak var delegate: AdvancedHeaderDelegate?
+  var section: Int = 0
+
+  // MARK: Private
+
+  private let titleLabel = UILabel()
+  private let moreLabel = UILabel()
 
   @objc
   private func didTapHeader() {
@@ -78,8 +84,9 @@ final class AdvancedHeader: UICollectionReusableView, Reusable {
   }
 }
 
-extension AdvancedHeader: Decoratable {
+// MARK: Decoratable
 
+extension AdvancedHeader: Decoratable {
   typealias ViewModel = AdvancedHeaderViewModel
 
   func decorate(model: ViewModel) {

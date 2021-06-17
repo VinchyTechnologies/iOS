@@ -6,41 +6,33 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import VinchyCore
-import Database
-import Sheeeeeeeeet
-import FirebaseDynamicLinks
-import VinchyAuthorization
 import Core
+import Database
+import FirebaseDynamicLinks
+import Sheeeeeeeeet
+import VinchyAuthorization
+import VinchyCore
+
+// MARK: - WineDetailMoreActions
 
 enum WineDetailMoreActions {
   case reportAnError
   case dislike
 }
 
+// MARK: - ActionAfterLoginOrRegistration
+
 private enum ActionAfterLoginOrRegistration {
   case writeReview
   case none
 }
 
+// MARK: - WineDetailInteractor
+
 final class WineDetailInteractor {
-  
-  private let router: WineDetailRouterProtocol
-  private let presenter: WineDetailPresenterProtocol
-  private let input: WineDetailInput
-  
-  private lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
-    guard let self = self else { return }
-    self.presenter.startLoading()
-  }
-  private var rate: Double?
-  private let dataBase = winesRepository
-  private let emailService = EmailService()
-  
-  private var wine: Wine?
-  
-  private var actionAfterAuthorization: ActionAfterLoginOrRegistration = .none
-  
+
+  // MARK: Lifecycle
+
   init(
     input: WineDetailInput,
     router: WineDetailRouterProtocol,
@@ -50,18 +42,36 @@ final class WineDetailInteractor {
     self.router = router
     self.presenter = presenter
   }
-  
+
+  // MARK: Private
+
+  private let router: WineDetailRouterProtocol
+  private let presenter: WineDetailPresenterProtocol
+  private let input: WineDetailInput
+
+  private lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
+    guard let self = self else { return }
+    self.presenter.startLoading()
+  }
+
+  private var rate: Double?
+  private let dataBase = winesRepository
+  private let emailService = EmailService()
+
+  private var wine: Wine?
+
+  private var actionAfterAuthorization: ActionAfterLoginOrRegistration = .none
+
   private func loadWineInfo() {
-    
     Wines.shared.getDetailWine(wineID: input.wineID) { [weak self] result in
-      
+
       guard let self = self else { return }
-      
+
       self.dispatchWorkItemHud.cancel()
       DispatchQueue.main.async {
         self.presenter.stopLoading()
       }
-      
+
       switch result {
       case .success(let wine):
         self.presenter.update(
@@ -71,36 +81,35 @@ final class WineDetailInteractor {
           rate: self.rate ?? 0,
           currency: UserDefaultsConfig.currency)
         self.wine = wine
-        
+
       case .failure(let error):
         self.presenter.showNetworkErrorAlert(error: error)
       }
     }
   }
-  
+
   private func isFavourite(wine: Wine) -> Bool {
     winesRepository.findAll().first(where: { $0.wineID == wine.id })?.isLiked == true
   }
-  
+
   private func isDisliked(wine: Wine) -> Bool {
     winesRepository.findAll().first(where: { $0.wineID == wine.id })?.isDisliked == true
   }
 }
 
-// MARK: - WineDetailInteractorProtocol
+// MARK: WineDetailInteractorProtocol
 
 extension WineDetailInteractor: WineDetailInteractorProtocol {
-  
   func didSuccessfullyLoginOrRegister() {
     switch actionAfterAuthorization {
     case .writeReview:
       didTapWriteReviewButton()
-      
+
     case .none:
       break
     }
   }
-  
+
   func didTapReview(reviewID: Int) {
     guard
       let wine = wine,
@@ -108,14 +117,14 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
     else {
       return
     }
-    
+
     let dateText: String?
     if review.updateDate == nil {
       dateText = review.publicationDate.toDate()
     } else {
       dateText = review.updateDate.toDate()
     }
-    
+
     router.showBottomSheetReviewDetailViewController(reviewInput: .init(rate: review.rating, author: nil, date: dateText, reviewText: review.comment))
   }
 
@@ -125,46 +134,45 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
     }
     router.pushToReviewsViewController(wineID: wineID)
   }
-  
+
   func didTapWriteReviewButton() {
-        
     guard let wineID = wine?.id else {
       return
     }
-    
+
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
       self.dispatchWorkItemHud.perform()
     }
-    
+
     if UserDefaultsConfig.accountID != 0 {
       Reviews.shared.getReviews(
         wineID: wineID,
         accountID: UserDefaultsConfig.accountID,
         offset: 0,
         limit: 1) { [weak self] result in
-        
-        guard let self = self else { return }
-        
-        self.dispatchWorkItemHud.cancel()
-        DispatchQueue.main.async {
-          self.presenter.stopLoading()
-        }
-        
-        switch result {
-        case .success(let model):
-          guard let review = model.first else {
-            self.router.presentWriteReviewViewController(reviewID: nil, wineID: wineID, rating: 0, reviewText: nil)
-            return
+
+          guard let self = self else { return }
+
+          self.dispatchWorkItemHud.cancel()
+          DispatchQueue.main.async {
+            self.presenter.stopLoading()
           }
-          self.router.presentWriteReviewViewController(
-            reviewID: review.id,
-            wineID: wineID,
-            rating: review.rating,
-            reviewText: review.comment)
-          
-        case .failure:
-          self.router.presentWriteReviewViewController(reviewID: nil, wineID: wineID, rating: 0, reviewText: nil)
-        }
+
+          switch result {
+          case .success(let model):
+            guard let review = model.first else {
+              self.router.presentWriteReviewViewController(reviewID: nil, wineID: wineID, rating: 0, reviewText: nil)
+              return
+            }
+            self.router.presentWriteReviewViewController(
+              reviewID: review.id,
+              wineID: wineID,
+              rating: review.rating,
+              reviewText: review.comment)
+
+          case .failure:
+            self.router.presentWriteReviewViewController(reviewID: nil, wineID: wineID, rating: 0, reviewText: nil)
+          }
       }
     } else {
       actionAfterAuthorization = .writeReview
@@ -196,46 +204,41 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
 
     menuItems.append(dislikeMenuItem)
     menuItems.append(reportAnErrorMenuItem)
-    
+
     router.showMoreActionSheet(menuItems: menuItems, appearance: VinchyActionSheetAppearance(), button: button)
   }
-  
-  func didTapPriceButton() {
-    
-  }
-  
+
+  func didTapPriceButton() {}
+
   func didTapReportAnError() {
-    
     guard let wine = wine else { return }
-    
+
     if emailService.canSend {
       router.presentEmailController(HTMLText: wine.title, recipients: presenter.reportAnErrorRecipients)
     } else {
       presenter.showAlertCantOpenEmail()
     }
   }
-  
+
   func didTapDislikeButton() {
-    
     guard let wine = wine else { return }
 
     if isFavourite(wine: wine) {
       presenter.showAlertWineAlreadyLiked()
       return
     }
-    
+
     if let dbWine = winesRepository.findAll().filter({ $0.isDisliked == true }).first(where: { $0.wineID == wine.id }) {
       dataBase.remove(dbWine)
     } else {
-      let maxId = winesRepository.findAll().map({ $0.id }).max() ?? 0
+      let maxId = winesRepository.findAll().map { $0.id }.max() ?? 0
       let id = maxId + 1
       winesRepository.append(VWine(id: id, wineID: wine.id, title: wine.title, isLiked: false, isDisliked: true))
       presenter.showStatusAlertDidDislikedSuccessfully()
     }
   }
-  
+
   func didTapShareButton(_ button: UIButton) {
-    
     guard let wine = wine else { return }
 
     var components = URLComponents()
@@ -249,8 +252,9 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
 
     guard
       let shareLink = DynamicLinkComponents(
-            link: linkParameter,
-            domainURIPrefix: "https://vinchy.page.link") else {
+        link: linkParameter,
+        domainURIPrefix: "https://vinchy.page.link")
+    else {
       return
     }
 
@@ -262,7 +266,7 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
     shareLink.socialMetaTagParameters?.title = wine.title
     shareLink.socialMetaTagParameters?.imageURL = wine.mainImageUrl?.toURL
 
-    shareLink.shorten { [weak self] (url, _, error) in
+    shareLink.shorten { [weak self] url, _, error in
       if error != nil {
         return
       }
@@ -273,29 +277,24 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
       self?.router.presentActivityViewController(items: items, button: button)
     }
   }
-  
+
   func viewDidLoad() {
     loadWineInfo()
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
       self.dispatchWorkItemHud.perform()
     }
   }
-  
+
   func didTapNotes() {
-    
     guard let wine = wine else { return }
-    
-    let predicate = NSPredicate(format: "wineID == %@", String(wine.id))
-        
-    if let note = notesRepository.findAll().first(where: { predicate.evaluate(with: $0) == true }) {
-      router.pushToWriteViewController(note: note, noteText: note.noteText)
+    if let note = notesRepository.findAll().first(where: { $0.wineID == wine.id }) {
+      router.pushToWriteViewController(note: note)
     } else {
       router.pushToWriteViewController(wine: wine)
     }
   }
-  
+
   func didTapLikeButton(_ button: UIButton) {
-    
     guard let wine = wine else { return }
 
     if isDisliked(wine: wine) {
@@ -303,11 +302,11 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
       presenter.showAlertWineAlreadyDisliked()
       return
     }
-    
+
     if let dbWine = winesRepository.findAll().filter({ $0.isLiked == true }).first(where: { $0.wineID == wine.id }) {
       dataBase.remove(dbWine)
     } else {
-      let maxId = winesRepository.findAll().map({ $0.id }).max() ?? 0
+      let maxId = winesRepository.findAll().map { $0.id }.max() ?? 0
       let id = maxId + 1
       winesRepository.append(VWine(id: id, wineID: wine.id, title: wine.title, isLiked: true, isDisliked: false))
       presenter.showStatusAlertDidLikedSuccessfully()

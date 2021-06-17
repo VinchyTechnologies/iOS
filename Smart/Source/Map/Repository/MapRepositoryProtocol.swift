@@ -10,12 +10,11 @@ import CoreLocation
 import VinchyCore
 
 protocol MapRepositoryProtocol {
-    
   func requestPartners(
     userLocation: CLLocationCoordinate2D?,
     radius: Int,
     completion: @escaping (Result<[PartnerOnMap], Error>) -> Void)
-  
+
   func requestUserLocation(
     completion: @escaping (CLLocationCoordinate2D?) -> Void)
 }

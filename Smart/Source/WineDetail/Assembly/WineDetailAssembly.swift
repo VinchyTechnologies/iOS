@@ -9,7 +9,6 @@
 import Foundation
 
 final class WineDetailAssembly {
-
 //    static func assemblyModule() -> WineDetailViewController {
 //        let viewController = WineDetailViewController()
 //

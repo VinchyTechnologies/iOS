@@ -10,13 +10,12 @@ import Display
 import UIKit
 
 final class SeparatorFooter: UICollectionReusableView, Reusable {
-  
   override init(frame: CGRect) {
     super.init(frame: frame)
-    
+
     let line = UIView()
     line.backgroundColor = .systemGray5
-    
+
     addSubview(line)
     line.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
@@ -26,7 +25,7 @@ final class SeparatorFooter: UICollectionReusableView, Reusable {
       line.heightAnchor.constraint(equalToConstant: 0.8),
     ])
   }
-  
-  required init?(coder: NSCoder) { fatalError() }
-  
+
+  @available(*, unavailable)
+  required init?(coder _: NSCoder) { fatalError() }
 }

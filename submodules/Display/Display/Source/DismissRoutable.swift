@@ -8,16 +8,16 @@
 
 import UIKit
 
+// MARK: - DismissRoutable
+
 public protocol DismissRoutable: AnyObject {
-  
   var viewController: UIViewController? { get }
-  
+
   func dismiss(completion: (() -> Void)?)
 }
 
-public extension DismissRoutable {
-  
-  func dismiss(completion: (() -> Void)?) {
+extension DismissRoutable {
+  public func dismiss(completion: (() -> Void)?) {
     viewController?.dismiss(animated: true, completion: completion)
   }
 }

@@ -6,92 +6,24 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
 import CommonUI
 import Display
+import UIKit
 
-fileprivate enum C {
+// MARK: - C
+
+private enum C {
   static let categoryHeaderID = "categoryHeaderID"
   static let categorySeparatorID = "categorySeparatorID"
 }
 
+// MARK: - AdvancedSearchViewController
+
 final class AdvancedSearchViewController: UIViewController {
 
-  // MARK: - Internal Properties
-  
+  // MARK: Internal
+
   var interactor: AdvancedSearchInteractorProtocol?
-
-  // MARK: - Private Properties
-
-  private var viewModel: AdvancedSearchViewModel?
-
-  private lazy var layout: UICollectionViewCompositionalLayout = UICollectionViewCompositionalLayout { [weak self] (sectionNumber, _) -> NSCollectionLayoutSection? in
-
-    guard
-      let self = self,
-      let viewModel = self.viewModel
-    else { return nil }
-
-    switch viewModel.sections[sectionNumber] {
-    case .carusel:
-      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1),
-                                                                       heightDimension: .absolute(100)),
-                                                     subitems: [item])
-      let section = NSCollectionLayoutSection(group: group)
-      section.boundarySupplementaryItems = [
-        .init(
-          layoutSize: .init(
-            widthDimension: .fractionalWidth(1),
-            heightDimension: .absolute(50)),
-          elementKind: C.categoryHeaderID,
-          alignment: .topLeading),
-
-        .init(
-          layoutSize: .init(
-            widthDimension: .fractionalWidth(1),
-            heightDimension: .absolute(20)),
-          elementKind: C.categorySeparatorID,
-          alignment: .bottom)
-      ]
-
-      if viewModel.sections.count - 1 == sectionNumber {
-        section.boundarySupplementaryItems.removeLast()
-      }
-
-      return section
-    }
-  }
-
-  private lazy var collectionView: UICollectionView = {
-    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
-    collectionView.delaysContentTouches = false
-    collectionView.backgroundColor = .mainBackground
-    collectionView.dataSource = self
-    collectionView.showsVerticalScrollIndicator = false // TODO - ???
-
-    collectionView.register(AdvancedSearchCaruselCollectionCell.self)
-
-    collectionView.register(
-      AdvancedHeader.self,
-      forSupplementaryViewOfKind: C.categoryHeaderID,
-      withReuseIdentifier: AdvancedHeader.reuseId)
-
-    collectionView.register(
-      SeparatorFooter.self,
-      forSupplementaryViewOfKind: C.categorySeparatorID,
-      withReuseIdentifier: SeparatorFooter.reuseId)
-
-    return collectionView
-  }()
-
-  private lazy var bottomButtonsView: BottomButtonsView = {
-    let view = BottomButtonsView()
-    view.delegate = self
-    return view
-  }()
-
-  // MARK: - Lifecycle
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -119,7 +51,6 @@ final class AdvancedSearchViewController: UIViewController {
     bottomButtonsView.heightAnchor.constraint(equalToConstant: bottomButtonsViewHeight).isActive = true
 
     // TODO: - make better
-
   }
 
   override func viewDidLayoutSubviews() {
@@ -127,16 +58,88 @@ final class AdvancedSearchViewController: UIViewController {
     let bottomButtonsViewHeight: CGFloat = 20 + 48 + view.safeAreaInsets.bottom
     collectionView.contentInset.bottom = bottomButtonsViewHeight + 10
   }
-  
+
   override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
     super.viewWillTransition(to: size, with: coordinator)
     coordinator.animate(alongsideTransition: { _ in
-        self.collectionView.collectionViewLayout.invalidateLayout()
+      self.collectionView.collectionViewLayout.invalidateLayout()
     })
   }
+
+  // MARK: Private
+
+  private var viewModel: AdvancedSearchViewModel?
+
+  private lazy var layout = UICollectionViewCompositionalLayout { [weak self] sectionNumber, _ -> NSCollectionLayoutSection? in
+
+    guard
+      let self = self,
+      let viewModel = self.viewModel
+    else { return nil }
+
+    switch viewModel.sections[sectionNumber] {
+    case .carusel:
+      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
+      let group = NSCollectionLayoutGroup.horizontal(
+        layoutSize: .init(
+          widthDimension: .fractionalWidth(1),
+          heightDimension: .absolute(100)),
+        subitems: [item])
+      let section = NSCollectionLayoutSection(group: group)
+      section.boundarySupplementaryItems = [
+        .init(
+          layoutSize: .init(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .absolute(50)),
+          elementKind: C.categoryHeaderID,
+          alignment: .topLeading),
+
+        .init(
+          layoutSize: .init(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .absolute(20)),
+          elementKind: C.categorySeparatorID,
+          alignment: .bottom),
+      ]
+
+      if viewModel.sections.count - 1 == sectionNumber {
+        section.boundarySupplementaryItems.removeLast()
+      }
+
+      return section
+    }
+  }
+
+  private lazy var collectionView: UICollectionView = {
+    let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
+    collectionView.delaysContentTouches = false
+    collectionView.backgroundColor = .mainBackground
+    collectionView.dataSource = self
+    collectionView.showsVerticalScrollIndicator = false // TODO: - ???
+
+    collectionView.register(AdvancedSearchCaruselCollectionCell.self)
+
+    collectionView.register(
+      AdvancedHeader.self,
+      forSupplementaryViewOfKind: C.categoryHeaderID,
+      withReuseIdentifier: AdvancedHeader.reuseId)
+
+    collectionView.register(
+      SeparatorFooter.self,
+      forSupplementaryViewOfKind: C.categorySeparatorID,
+      withReuseIdentifier: SeparatorFooter.reuseId)
+
+    return collectionView
+  }()
+
+  private lazy var bottomButtonsView: BottomButtonsView = {
+    let view = BottomButtonsView()
+    view.delegate = self
+    return view
+  }()
 }
 
-// MARK: - AdvancedSearchViewControllerProtocol
+// MARK: AdvancedSearchViewControllerProtocol
 
 extension AdvancedSearchViewController: AdvancedSearchViewControllerProtocol {
   func updateUI(viewModel: AdvancedSearchViewModel, sec: Int?) {
@@ -156,17 +159,16 @@ extension AdvancedSearchViewController: AdvancedSearchViewControllerProtocol {
   }
 }
 
-// MARK: - UICollectionViewDataSource
+// MARK: UICollectionViewDataSource
 
 extension AdvancedSearchViewController: UICollectionViewDataSource {
-
-  func numberOfSections(in collectionView: UICollectionView) -> Int {
+  func numberOfSections(in _: UICollectionView) -> Int {
     guard let viewModel = viewModel else { return 0 }
     return viewModel.sections.count
   }
 
   func collectionView(
-    _ collectionView: UICollectionView,
+    _: UICollectionView,
     numberOfItemsInSection section: Int)
     -> Int
   {
@@ -224,7 +226,7 @@ extension AdvancedSearchViewController: UICollectionViewDataSource {
   }
 }
 
-// MARK: - AdvancedSearchCaruselCollectionCellDelegate
+// MARK: AdvancedSearchCaruselCollectionCellDelegate
 
 extension AdvancedSearchViewController: AdvancedSearchCaruselCollectionCellDelegate {
   func didSelectItem(at indexPath: IndexPath) {
@@ -233,7 +235,7 @@ extension AdvancedSearchViewController: AdvancedSearchCaruselCollectionCellDeleg
   }
 }
 
-// MARK: - AdvancedHeaderDelegate
+// MARK: AdvancedHeaderDelegate
 
 extension AdvancedSearchViewController: AdvancedHeaderDelegate {
   func didTapHeader(at section: Int) {
@@ -241,15 +243,14 @@ extension AdvancedSearchViewController: AdvancedHeaderDelegate {
   }
 }
 
-// MARK: - BottomButtonsViewDelegate
+// MARK: BottomButtonsViewDelegate
 
 extension AdvancedSearchViewController: BottomButtonsViewDelegate {
-
-  func didTapLeadingButton(_ button: UIButton) {
+  func didTapLeadingButton(_: UIButton) {
     interactor?.didTapResetAllFiltersButton()
   }
 
-  func didTapTrailingButton(_ button: UIButton) {
+  func didTapTrailingButton(_: UIButton) {
     interactor?.didTapConfirmSearchButton()
   }
 }
