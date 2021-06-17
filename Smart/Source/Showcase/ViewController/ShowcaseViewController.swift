@@ -7,6 +7,7 @@
 //
 
 import CommonUI
+import Database
 import Display
 import StringFormatting
 import UIKit
@@ -73,6 +74,8 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.dataSource = self
     collectionView.delegate = self
+    collectionView.isPrefetchingEnabled = true
+    collectionView.prefetchDataSource = self
     collectionView.backgroundColor = .clear
     collectionView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     collectionView.register(WineCollectionViewCell.self, LoadingIndicatorCell.self)
@@ -285,5 +288,42 @@ extension ShowcaseViewController: ShowcaseViewControllerProtocol {
 extension ShowcaseViewController: ErrorViewDelegate {
   func didTapErrorButton(_: UIButton) {
     interactor?.viewDidLoad()
+  }
+}
+
+// MARK: UICollectionViewDataSourcePrefetching
+
+extension ShowcaseViewController: UICollectionViewDataSourcePrefetching {
+
+  func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+    var urls: [URL] = []
+    indexPaths.forEach { indexPath in
+      switch viewModel?.sections[indexPath.section] {
+      case .shelf(_, let wines):
+        if let wine = wines[safe: indexPath.row], let url = imageURL(from: wine.wineID).toURL {
+          urls.append(url)
+        }
+
+      case .loading, .none:
+        break
+      }
+    }
+    ImageLoader.shared.prefetch(Array(Set(urls)))
+  }
+
+  func collectionView(_ collectionView: UICollectionView, cancelPrefetchingForItemsAt indexPaths: [IndexPath]) {
+    var urls: [URL] = []
+    indexPaths.forEach { indexPath in
+      switch viewModel?.sections[indexPath.section] {
+      case .shelf(_, let wines):
+        if let wine = wines[safe: indexPath.row], let url = imageURL(from: wine.wineID).toURL {
+          urls.append(url)
+        }
+
+      case .loading, .none:
+        break
+      }
+    }
+    ImageLoader.shared.cancelPrefetch(Array(Set(urls)))
   }
 }
