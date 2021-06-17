@@ -542,6 +542,7 @@ public class OldBottomSheetContainerViewController: UIViewController, OverlayPre
   public var threshold: CGFloat = 0
 
   public var topPadding: CGFloat = 0
+  // swiftlint:disable:next implicitly_unwrapped_optional
   public var bluredView: UIVisualEffectView! // swiftlint:disable all
   public var topView: UIScrollView!
   public var arrowView: UIView!

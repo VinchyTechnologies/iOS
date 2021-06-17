@@ -67,9 +67,9 @@ final class LoveViewController: UIViewController {
   // MARK: Private
 
   private static let collectionViewLayout: UICollectionViewLayout = {
-    let rowCount = UIDevice.current.userInterfaceIdiom == .pad ? 3 : 2
+    let rowCount: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 3 : 2
     let inset: CGFloat = 10
-    let itemWidth = Int((UIScreen.main.bounds.width - inset * CGFloat(rowCount + 1)) / CGFloat(rowCount))
+    let itemWidth = Int((UIScreen.main.bounds.width - inset * (rowCount + 1)) / rowCount)
     let itemHeight = Int(Double(itemWidth) * 1.4)
 
     let layout = UICollectionViewFlowLayout()

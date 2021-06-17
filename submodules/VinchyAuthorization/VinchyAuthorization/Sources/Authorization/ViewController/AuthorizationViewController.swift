@@ -24,7 +24,6 @@ final class AuthorizationViewController: UIViewController {
 
   var interactor: AuthorizationInteractorProtocol?
 
-
   private(set) var loadingIndicator = ActivityIndicatorView()
 
   override func viewDidLoad() {
