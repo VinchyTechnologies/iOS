@@ -34,14 +34,17 @@ extension MapDetailStorePresenter: MapDetailStorePresenterProtocol {
 
     rows += [.title(.init(titleText: NSAttributedString(string: storeInfo.title, font: Font.bold(24), textColor: .dark, paragraphAlignment: .center)))]
 
-    rows += [.address(.init(titleText: NSAttributedString(string: storeInfo.address ?? "Вернадский проспект, 16", font: Font.regular(18), textColor: .dark, paragraphAlignment: .center)))]
+    if let address = storeInfo.address {
+      rows += [.address(.init(titleText: NSAttributedString(string: address, font: Font.regular(18), textColor: .dark, paragraphAlignment: .center)))]
+    }
 
     rows += [.workingHours(.init(titleText: "19:00 - 20:00"))]
 
     rows += [.assortment(.init(titleText: "Посмотреть ассортимент"))]
 
-    rows += [.title(.init(titleText: NSAttributedString(string: "Vinchy рекомендует", font: Font.heavy(20), textColor: .dark)))]
-    rows += [.recommendedWines(.init(type: .bottles, collections: [.init(wineList: [.wine(wine: ShortWine.fake)])]))]
+//    rows += [.title(.init(titleText: NSAttributedString(string: "Vinchy рекомендует", font: Font.heavy(20), textColor: .dark)))]
+
+//    rows += [.recommendedWines(.init(type: .bottles, collections: [.init(wineList: [.wine(wine: ShortWine.fake)])]))]
 
     viewController?.updateUI(viewModel: .init(sections: [.content(header: .init(), items: rows)]))
   }
