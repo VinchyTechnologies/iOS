@@ -28,6 +28,11 @@ final class WriteNotePresenter {
 // MARK: WriteNotePresenterProtocol
 
 extension WriteNotePresenter: WriteNotePresenterProtocol {
+
+  func setSaveButtonActive(_ flag: Bool) {
+    viewController?.setSaveButtonActive(flag)
+  }
+
   func setPlaceholder() {
     viewController?.setupPlaceholder(
       placeholder: localized("your_thoughts_about_wine").firstLetterUppercased())

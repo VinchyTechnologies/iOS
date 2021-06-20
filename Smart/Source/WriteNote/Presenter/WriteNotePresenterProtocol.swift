@@ -13,4 +13,5 @@ protocol WriteNotePresenterProtocol: AnyObject {
   func setInitialNoteInfo(note: VNote)
   func setInitialNoteInfo(wine: Wine)
   func setPlaceholder()
+  func setSaveButtonActive(_ flag: Bool)
 }

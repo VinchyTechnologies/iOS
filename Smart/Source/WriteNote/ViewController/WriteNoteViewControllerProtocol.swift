@@ -10,4 +10,5 @@ import Display
 protocol WriteNoteViewControllerProtocol: AnyObject {
   func update(viewModel: WriteNoteViewModel)
   func setupPlaceholder(placeholder: String?)
+  func setSaveButtonActive(_ flag: Bool)
 }

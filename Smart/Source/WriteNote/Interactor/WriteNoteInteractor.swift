@@ -68,6 +68,22 @@ extension WriteNoteInteractor: WriteNoteInteractorProtocol {
 
   func didChangeNoteText(_ text: String?) {
     noteText = text
+
+    switch input.wine {
+    case .database(let note):
+      if note.noteText == noteText {
+        presenter.setSaveButtonActive(false)
+      } else {
+        presenter.setSaveButtonActive(true)
+      }
+
+    case .firstTime:
+      if let text = text, !text.isEmpty {
+        presenter.setSaveButtonActive(true)
+      } else {
+        presenter.setSaveButtonActive(false)
+      }
+    }
   }
 
   func didStartWriteText() {

@@ -85,7 +85,6 @@ PODS:
     - nanopb/encode (= 2.30906.0)
   - nanopb/decode (2.30906.0)
   - nanopb/encode (2.30906.0)
-  - Nuke (9.5.0)
   - PromisesObjC (1.2.11)
   - SwiftLint (0.41.0)
 
@@ -98,7 +97,6 @@ DEPENDENCIES:
   - FSPagerView
   - Google-Mobile-Ads-SDK
   - KeychainAccess
-  - Nuke
   - SwiftLint
 
 SPEC REPOS:
@@ -121,7 +119,6 @@ SPEC REPOS:
     - GoogleUtilities
     - KeychainAccess
     - nanopb
-    - Nuke
     - PromisesObjC
     - SwiftLint
 
@@ -144,10 +141,9 @@ SPEC CHECKSUMS:
   GoogleUtilities: 3dc4ff0d5e4840e2fa8eef0889620e8c33d4218c
   KeychainAccess: c0c4f7f38f6fc7bbe58f5702e25f7bd2f65abf51
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
-  Nuke: 6f400a4ea957e09149ec335a3c6acdcc814d89e4
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
 
-PODFILE CHECKSUM: 8d566c131da2e128b3840571edda5ed832fc5aef
+PODFILE CHECKSUM: d3040edb3be5e9674d8fd1aaf3bb27fd4c993e4e
 
 COCOAPODS: 1.10.1

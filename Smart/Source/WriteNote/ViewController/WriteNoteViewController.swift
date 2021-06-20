@@ -43,7 +43,7 @@ final class WriteNoteViewController: UIViewController {
   // MARK: Private
 
   private lazy var saveButton: Button = {
-    $0.enable()
+    $0.disable()
     $0.setTitle(localized("save").firstLetterUppercased(), for: [])
     $0.addTarget(self, action: #selector(didTapSaveButton(_:)), for: .touchUpInside)
     return $0
@@ -102,6 +102,15 @@ extension WriteNoteViewController: UITextViewDelegate {
 // MARK: WriteNoteViewControllerProtocol
 
 extension WriteNoteViewController: WriteNoteViewControllerProtocol {
+
+  func setSaveButtonActive(_ flag: Bool) {
+    if flag {
+      saveButton.enable()
+    } else {
+      saveButton.disable()
+    }
+  }
+
   func setupPlaceholder(placeholder: String?) {
     textView.placeholder = placeholder ?? ""
   }
