@@ -73,7 +73,8 @@ final class LoveViewController: UIViewController {
     let itemHeight = Int(Double(itemWidth) * 1.4)
 
     let layout = UICollectionViewFlowLayout()
-    layout.sectionInset = UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
+    let sectionInset = UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
+    layout.sectionInset = sectionInset
     layout.minimumLineSpacing = inset
     layout.minimumInteritemSpacing = 0
     layout.itemSize = CGSize(width: itemWidth, height: itemHeight)

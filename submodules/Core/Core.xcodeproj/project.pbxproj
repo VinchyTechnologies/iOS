@@ -3,11 +3,10 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		354E588535B3D4E1C8C8792A /* Pods_Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 819FEEF301CD8923DE9A520C /* Pods_Core.framework */; };
 		447C358225EF71DF00105A35 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447C358125EF71DF00105A35 /* String.swift */; };
 		44911E3925D30F3100A62E40 /* StateMachine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44911E3825D30F3100A62E40 /* StateMachine.swift */; };
 		44911E3C25D30F5400A62E40 /* LockProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44911E3B25D30F5400A62E40 /* LockProtocol.swift */; };
@@ -16,6 +15,7 @@
 		44E0035325CBFE5D00ED7D9E /* Keychain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E0035225CBFE5D00ED7D9E /* Keychain.swift */; };
 		8A313BCF26407B3E009F2165 /* Atomic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BCE26407B3E009F2165 /* Atomic.swift */; };
 		8A63CC8226752DA0003B1D4D /* EmailService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A63CC8126752DA0003B1D4D /* EmailService.swift */; };
+		8A69556726812AB500F14902 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 8A69556626812AB500F14902 /* SwiftPackageProductDependency */; };
 		CA27087C24CFF39B007580D8 /* Array.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA27087B24CFF39B007580D8 /* Array.swift */; };
 		CA2E796324D5ECAC00F17725 /* UserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2E796224D5ECAC00F17725 /* UserDefaults.swift */; };
 		CA3CEFB225128EDA00AAA692 /* CountryCode.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3CEFB125128EDA00AAA692 /* CountryCode.swift */; };
@@ -36,9 +36,6 @@
 		44911E3E25D30FB800A62E40 /* PagingStateMachine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PagingStateMachine.swift; sourceTree = "<group>"; };
 		44AA7C3A25A4A1AE00F599BA /* Throttler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Throttler.swift; sourceTree = "<group>"; };
 		44E0035225CBFE5D00ED7D9E /* Keychain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keychain.swift; sourceTree = "<group>"; };
-		5469794AC30EF39ACB9D090D /* Pods-Core.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.release.xcconfig"; path = "Target Support Files/Pods-Core/Pods-Core.release.xcconfig"; sourceTree = "<group>"; };
-		62EC3C646354ACE3D998AFFB /* Pods-Core.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Core.debug.xcconfig"; path = "Target Support Files/Pods-Core/Pods-Core.debug.xcconfig"; sourceTree = "<group>"; };
-		819FEEF301CD8923DE9A520C /* Pods_Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A313BCE26407B3E009F2165 /* Atomic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Atomic.swift; sourceTree = "<group>"; };
 		8A63CC8126752DA0003B1D4D /* EmailService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailService.swift; sourceTree = "<group>"; };
 		CA27087B24CFF39B007580D8 /* Array.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Array.swift; sourceTree = "<group>"; };
@@ -61,38 +58,18 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				354E588535B3D4E1C8C8792A /* Pods_Core.framework in Frameworks */,
+				8A69556726812AB500F14902 /* BuildFile in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		AB29919C94E5571EDA0DD1FB /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				62EC3C646354ACE3D998AFFB /* Pods-Core.debug.xcconfig */,
-				5469794AC30EF39ACB9D090D /* Pods-Core.release.xcconfig */,
-			);
-			name = Pods;
-			path = ../../Pods;
-			sourceTree = "<group>";
-		};
-		C9FCAFE9945B2D5913D22D83 /* Frameworks */ = {
-			isa = PBXGroup;
-			children = (
-				819FEEF301CD8923DE9A520C /* Pods_Core.framework */,
-			);
-			name = Frameworks;
-			sourceTree = "<group>";
-		};
 		CABDBA7024C2F7A800AD96D6 = {
 			isa = PBXGroup;
 			children = (
 				CABDBA7C24C2F7A800AD96D6 /* Core */,
 				CABDBA7B24C2F7A800AD96D6 /* Products */,
-				AB29919C94E5571EDA0DD1FB /* Pods */,
-				C9FCAFE9945B2D5913D22D83 /* Frameworks */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -159,7 +136,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CABDBA8224C2F7A800AD96D6 /* Build configuration list for PBXNativeTarget "Core" */;
 			buildPhases = (
-				C383CBE405F05DB9ABC75C69 /* [CP] Check Pods Manifest.lock */,
 				CABDBA7524C2F7A800AD96D6 /* Headers */,
 				CABDBA7624C2F7A800AD96D6 /* Sources */,
 				CABDBA7724C2F7A800AD96D6 /* Frameworks */,
@@ -170,6 +146,9 @@
 			dependencies = (
 			);
 			name = Core;
+			packageProductDependencies = (
+				8A69556626812AB500F14902 /* SwiftPackageProductDependency */,
+			);
 			productName = Core;
 			productReference = CABDBA7A24C2F7A800AD96D6 /* Core.framework */;
 			productType = "com.apple.product-type.framework";
@@ -198,6 +177,9 @@
 				Base,
 			);
 			mainGroup = CABDBA7024C2F7A800AD96D6;
+			packageReferences = (
+				8A69556526812AB500F14902 /* RemoteSwiftPackageReference */,
+			);
 			productRefGroup = CABDBA7B24C2F7A800AD96D6 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -216,31 +198,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		C383CBE405F05DB9ABC75C69 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-Core-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		CABDBA7624C2F7A800AD96D6 /* Sources */ = {
@@ -395,7 +352,6 @@
 		};
 		CABDBA8324C2F7A800AD96D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 62EC3C646354ACE3D998AFFB /* Pods-Core.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -423,7 +379,6 @@
 		};
 		CABDBA8424C2F7A800AD96D6 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5469794AC30EF39ACB9D090D /* Pods-Core.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -470,6 +425,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8A69556526812AB500F14902 /* RemoteSwiftPackageReference */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/kishikawakatsumi/KeychainAccess.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 4.2.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8A69556626812AB500F14902 /* SwiftPackageProductDependency */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A69556526812AB500F14902 /* RemoteSwiftPackageReference */;
+			productName = KeychainAccess;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CABDBA7124C2F7A800AD96D6 /* Project object */;
 }

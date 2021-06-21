@@ -5,8 +5,6 @@ inhibit_all_warnings!
 workspace 'Smart'
 
 def commonPods
-#  pod 'Nuke'
-  pod 'KeychainAccess'
   pod 'Cosmos', '~> 23.0'
   pod 'FSPagerView' # no spm...
   pod 'CocoaDebug', :configurations => ['Debug']
@@ -32,20 +30,9 @@ target 'Smart' do
 
 end
 
-#target 'Display' do
-#  project 'submodules/Display/Display'
-#  pod 'Nuke'
-#end
-
 target 'CommonUI' do
   project 'submodules/CommonUI/CommonUI'
-#  pod 'Nuke'
   pod 'Cosmos', '~> 23.0'
-end
-
-target 'Core' do
-  project 'submodules/Core/Core'
-  pod 'KeychainAccess'
 end
 
 target 'VinchyAuthorizationApp' do

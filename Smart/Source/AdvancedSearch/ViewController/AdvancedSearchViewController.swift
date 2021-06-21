@@ -70,7 +70,8 @@ final class AdvancedSearchViewController: UIViewController {
 
   private var viewModel: AdvancedSearchViewModel?
 
-  private lazy var layout = UICollectionViewCompositionalLayout { [weak self] sectionNumber, _ -> NSCollectionLayoutSection? in
+  // swiftformat:disable:next redundantType
+  private lazy var layout: UICollectionViewCompositionalLayout = UICollectionViewCompositionalLayout { [weak self] sectionNumber, _ -> NSCollectionLayoutSection? in
 
     guard
       let self = self,
