@@ -58,9 +58,6 @@ public final class ImageOptionCollectionCell: HighlightCollectionCell, Reusable 
     ])
   }
 
-  @available(*, unavailable)
-  required init?(coder _: NSCoder) { fatalError() }
-
   // MARK: Public
 
   public static func size(for viewModel: ViewModel) -> CGSize {

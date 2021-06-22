@@ -57,9 +57,6 @@ final class MainSubtitleCollectionCell: HighlightCollectionCell, Reusable {
     ])
   }
 
-  @available(*, unavailable)
-  required init?(coder _: NSCoder) { fatalError() }
-
   // MARK: Private
 
   private let subtitleLabel = UILabel()

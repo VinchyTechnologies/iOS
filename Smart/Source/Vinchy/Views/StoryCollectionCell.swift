@@ -64,9 +64,6 @@ final class StoryCollectionCell: HighlightCollectionCell, Reusable {
     ])
   }
 
-  @available(*, unavailable)
-  required init?(coder _: NSCoder) { fatalError() }
-
   // MARK: Internal
 
   override func layoutSubviews() {
