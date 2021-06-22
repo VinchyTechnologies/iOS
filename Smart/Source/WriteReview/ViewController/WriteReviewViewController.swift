@@ -14,6 +14,16 @@ import UIKit
 
 final class WriteReviewViewController: UIViewController {
 
+  // MARK: Lifecycle
+
+  init() {
+    super.init(nibName: nil, bundle: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+  }
+
+  required init?(coder: NSCoder) { fatalError() }
+
   // MARK: Internal
 
   var interactor: WriteReviewInteractorProtocol?
@@ -66,7 +76,6 @@ final class WriteReviewViewController: UIViewController {
       bottomConstraint,
     ])
 
-    configureKeyboardHelper()
     interactor?.viewDidLoad()
   }
 
@@ -101,8 +110,6 @@ final class WriteReviewViewController: UIViewController {
     return textView
   }()
 
-  private let keyboardHelper = KeyboardHelper()
-
   private lazy var bottomConstraint = NSLayoutConstraint(
     item: textView,
     attribute: .bottom,
@@ -112,17 +119,18 @@ final class WriteReviewViewController: UIViewController {
     multiplier: 1,
     constant: -16)
 
-  private func configureKeyboardHelper() {
-    keyboardHelper.bindBottomToKeyboardFrame(
-      animated: true,
-      animate: { [weak self] height in
-        self?.updateNextButtonBottomConstraint(with: height)
-      })
-  }
+  @objc
+  private func adjustForKeyboard(notification: Notification) {
+    guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
 
-  private func updateNextButtonBottomConstraint(with keyboardHeight: CGFloat) {
-    bottomConstraint.constant = -keyboardHeight
-    view.layoutSubviews()
+    let keyboardScreenEndFrame = keyboardValue.cgRectValue
+    let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: UIApplication.shared.asKeyWindow)
+
+    if notification.name == UIResponder.keyboardWillHideNotification {
+      bottomConstraint.constant = .zero
+    } else {
+      bottomConstraint.constant = -keyboardViewEndFrame.height
+    }
   }
 
   @objc

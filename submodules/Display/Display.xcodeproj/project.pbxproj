@@ -14,14 +14,13 @@
 		44DE6C1625DB9E980008695D /* Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DE6C1525DB9E980008695D /* Orientation.swift */; };
 		8A2F30492671FA13002DE6C1 /* OverlayPresentationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F30482671FA13002DE6C1 /* OverlayPresentationCenter.swift */; };
 		8A2F304B2671FAF7002DE6C1 /* FadingInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F304A2671FAF7002DE6C1 /* FadingInfoViewController.swift */; };
-		8A6951FB267CC12800F14902 /* BuildFile in Frameworks */ = {isa = PBXBuildFile; productRef = 8A6951FA267CC12800F14902 /* SwiftPackageProductDependency */; };
+		8A6951FB267CC12800F14902 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 8A6951FA267CC12800F14902 /* Nuke */; };
 		8AD49F1B267525840094E157 /* SkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD49F1A267525840094E157 /* SkyFloatingLabelTextField.swift */; };
 		CA103AE4251690F200B0324F /* StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA103AE3251690F200B0324F /* StringFormatting.framework */; };
 		CA1821A224C0E72A00280DD4 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1821A124C0E72A00280DD4 /* Font.swift */; };
 		CA18220424C0F88B00280DD4 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18220324C0F88B00280DD4 /* NavigationController.swift */; };
 		CA18220624C0F8CE00280DD4 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18220524C0F8CE00280DD4 /* UIColor.swift */; };
 		CA18220824C0FE2300280DD4 /* UIKitUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18220724C0FE2300280DD4 /* UIKitUtils.swift */; };
-		CA18220A24C0FF8C00280DD4 /* Keyboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18220924C0FF8C00280DD4 /* Keyboard.swift */; };
 		CA276D52256AC5830061BEBE /* ShimmeringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA276D51256AC5830061BEBE /* ShimmeringView.swift */; };
 		CA30393F2568339E00C3A461 /* Haptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA30393E2568339E00C3A461 /* Haptic.swift */; };
 		CA3C97EF2572533E0036F7D9 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3C97EE2572533E0036F7D9 /* GradientView.swift */; };
@@ -56,7 +55,6 @@
 		CA18220324C0F88B00280DD4 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
 		CA18220524C0F8CE00280DD4 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		CA18220724C0FE2300280DD4 /* UIKitUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitUtils.swift; sourceTree = "<group>"; };
-		CA18220924C0FF8C00280DD4 /* Keyboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keyboard.swift; sourceTree = "<group>"; };
 		CA276D51256AC5830061BEBE /* ShimmeringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmeringView.swift; sourceTree = "<group>"; };
 		CA30393E2568339E00C3A461 /* Haptic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Haptic.swift; sourceTree = "<group>"; };
 		CA3C97EE2572533E0036F7D9 /* GradientView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientView.swift; sourceTree = "<group>"; };
@@ -86,7 +84,7 @@
 			files = (
 				CA103AE4251690F200B0324F /* StringFormatting.framework in Frameworks */,
 				CAD0C9D6258C9B1400142FE5 /* Core.framework in Frameworks */,
-				8A6951FB267CC12800F14902 /* BuildFile in Frameworks */,
+				8A6951FB267CC12800F14902 /* Nuke in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -148,7 +146,6 @@
 				CAA8918A250AA8D200ADBFF9 /* HighlightableViewProtocol.swift */,
 				CAA8918C250AB69400ADBFF9 /* HighlightCollectionCell.swift */,
 				CAD904ED257BADEC009FE71F /* ImageLoader.swift */,
-				CA18220924C0FF8C00280DD4 /* Keyboard.swift */,
 				CA7A87E224FEE1B200AAD10F /* Loadable.swift */,
 				CA7A87EB25026FA700AAD10F /* LoadingCollectionFooter.swift */,
 				CA18220324C0F88B00280DD4 /* NavigationController.swift */,
@@ -196,7 +193,7 @@
 			);
 			name = Display;
 			packageProductDependencies = (
-				8A6951FA267CC12800F14902 /* SwiftPackageProductDependency */,
+				8A6951FA267CC12800F14902 /* Nuke */,
 			);
 			productName = Display;
 			productReference = CAE8869824C0E5F800E33E16 /* Display.framework */;
@@ -227,7 +224,7 @@
 			);
 			mainGroup = CAE8868E24C0E5F800E33E16;
 			packageReferences = (
-				8A6951F9267CC12800F14902 /* RemoteSwiftPackageReference */,
+				8A6951F9267CC12800F14902 /* XCRemoteSwiftPackageReference "Nuke" */,
 			);
 			productRefGroup = CAE8869924C0E5F800E33E16 /* Products */;
 			projectDirPath = "";
@@ -274,7 +271,6 @@
 				CA7A87EC25026FA700AAD10F /* LoadingCollectionFooter.swift in Sources */,
 				CA30393F2568339E00C3A461 /* Haptic.swift in Sources */,
 				CAA9DC69250EA24900F996A8 /* DecoratorFlowLayout.swift in Sources */,
-				CA18220A24C0FF8C00280DD4 /* Keyboard.swift in Sources */,
 				CA7A87E324FEE1B200AAD10F /* Loadable.swift in Sources */,
 				8A2F30492671FA13002DE6C1 /* OverlayPresentationCenter.swift in Sources */,
 				CA276D52256AC5830061BEBE /* ShimmeringView.swift in Sources */,
@@ -487,7 +483,7 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8A6951F9267CC12800F14902 /* RemoteSwiftPackageReference */ = {
+		8A6951F9267CC12800F14902 /* XCRemoteSwiftPackageReference "Nuke" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Nuke.git";
 			requirement = {
@@ -498,9 +494,9 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8A6951FA267CC12800F14902 /* SwiftPackageProductDependency */ = {
+		8A6951FA267CC12800F14902 /* Nuke */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8A6951F9267CC12800F14902 /* RemoteSwiftPackageReference */;
+			package = 8A6951F9267CC12800F14902 /* XCRemoteSwiftPackageReference "Nuke" */;
 			productName = Nuke;
 		};
 /* End XCSwiftPackageProductDependency section */

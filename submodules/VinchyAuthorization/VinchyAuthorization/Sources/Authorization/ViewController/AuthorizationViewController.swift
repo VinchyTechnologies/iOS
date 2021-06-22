@@ -20,6 +20,16 @@ private enum C {
 
 final class AuthorizationViewController: UIViewController {
 
+  // MARK: Lifecycle
+
+  init() {
+    super.init(nibName: nil, bundle: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+  }
+
+  required init?(coder: NSCoder) { fatalError() }
+
   // MARK: Internal
 
   var interactor: AuthorizationInteractorProtocol?
@@ -94,7 +104,6 @@ final class AuthorizationViewController: UIViewController {
       emailTextField.topAnchor.constraint(greaterThanOrEqualTo: subtitleLabel.bottomAnchor, constant: 10),
     ])
 
-    configureKeyboardHelper()
     interactor?.viewDidLoad()
   }
 
@@ -185,19 +194,18 @@ final class AuthorizationViewController: UIViewController {
     multiplier: 1,
     constant: 0)
 
-  private let keyboardHelper = KeyboardHelper()
+  @objc
+  private func adjustForKeyboard(notification: Notification) {
+    guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
 
-  private func configureKeyboardHelper() {
-    keyboardHelper.bindBottomToKeyboardFrame(
-      animated: true,
-      animate: { [weak self] height in
-        self?.updateNextButtonBottomConstraint(with: height)
-      })
-  }
+    let keyboardScreenEndFrame = keyboardValue.cgRectValue
+    let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: UIApplication.shared.asKeyWindow)
 
-  private func updateNextButtonBottomConstraint(with keyboardHeight: CGFloat) {
-    bottomConstraint.constant = -keyboardHeight
-    view.layoutSubviews()
+    if notification.name == UIResponder.keyboardWillHideNotification {
+      scrollView.contentInset = .zero
+    } else {
+      scrollView.contentInset = .init(top: 0, left: 0, bottom: keyboardViewEndFrame.height, right: 0)
+    }
   }
 
   @objc

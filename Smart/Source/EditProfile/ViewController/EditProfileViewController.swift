@@ -14,6 +14,16 @@ import UIKit
 
 final class EditProfileViewController: UIViewController {
 
+  // MARK: Lifecycle
+
+  init() {
+    super.init(nibName: nil, bundle: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+  }
+
+  required init?(coder: NSCoder) { fatalError() }
+
   // MARK: Internal
 
   var interactor: EditProfileInteractorProtocol?
@@ -31,14 +41,10 @@ final class EditProfileViewController: UIViewController {
     collectionView.translatesAutoresizingMaskIntoConstraints = false
     collectionView.fill()
 
-    configureKeyboardHelper()
-
     interactor?.viewDidLoad()
   }
 
   // MARK: Private
-
-  private let keyboardHelper = KeyboardHelper()
 
   private let layout: UICollectionViewFlowLayout = {
     $0.scrollDirection = .vertical
@@ -71,13 +77,18 @@ final class EditProfileViewController: UIViewController {
     }
   }
 
-  private func configureKeyboardHelper() {
-    keyboardHelper.bindBottomToKeyboardFrame(
-      animated: true,
-      animate: { [weak self] height in
-        self?.collectionView.contentInset = .init(top: 0, left: 0, bottom: height, right: 0)
-        self?.view.layoutSubviews()
-      })
+  @objc
+  private func adjustForKeyboard(notification: Notification) {
+    guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+
+    let keyboardScreenEndFrame = keyboardValue.cgRectValue
+    let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: UIApplication.shared.asKeyWindow)
+
+    if notification.name == UIResponder.keyboardWillHideNotification {
+      collectionView.contentInset = .zero
+    } else {
+      collectionView.contentInset = .init(top: 0, left: 0, bottom: keyboardViewEndFrame.height, right: 0)
+    }
   }
 
   @objc

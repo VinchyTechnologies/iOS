@@ -20,6 +20,16 @@ private enum C {
 
 final class EnterPasswordViewController: UIViewController {
 
+  // MARK: Lifecycle
+
+  init() {
+    super.init(nibName: nil, bundle: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+    NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+  }
+
+  required init?(coder: NSCoder) { fatalError() }
+
   // MARK: Internal
 
   var interactor: EnterPasswordInteractorProtocol?
@@ -74,7 +84,6 @@ final class EnterPasswordViewController: UIViewController {
       passwordTextField.bottomAnchor.constraint(lessThanOrEqualTo: continueButton.topAnchor, constant: -8),
     ])
 
-    configureKeyboardHelper()
     interactor?.viewDidLoad()
   }
 
@@ -128,23 +137,18 @@ final class EnterPasswordViewController: UIViewController {
     multiplier: 1,
     constant: 0)
 
-  private let keyboardHelper = KeyboardHelper()
+  @objc
+  private func adjustForKeyboard(notification: Notification) {
+    guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
 
-  private func configureKeyboardHelper() {
-    keyboardHelper.bindBottomToKeyboardFrame(
-      animated: true,
-      animate: { [weak self] height in
-        self?.updateNextButtonBottomConstraint(with: height)
-      })
-  }
+    let keyboardScreenEndFrame = keyboardValue.cgRectValue
+    let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: UIApplication.shared.asKeyWindow)
 
-  private func updateNextButtonBottomConstraint(with keyboardHeight: CGFloat) {
-    if keyboardHeight == 0 {
-      bottomConstraint.constant = -keyboardHeight
+    if notification.name == UIResponder.keyboardWillHideNotification {
+      bottomConstraint.constant = 0
     } else {
-      bottomConstraint.constant = -keyboardHeight - 10
+      bottomConstraint.constant = -keyboardViewEndFrame.height - 10
     }
-    view.layoutSubviews()
   }
 
   @objc
