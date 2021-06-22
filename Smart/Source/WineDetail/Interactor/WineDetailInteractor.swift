@@ -95,47 +95,8 @@ final class WineDetailInteractor {
   private func isDisliked(wine: Wine) -> Bool {
     winesRepository.findAll().first(where: { $0.wineID == wine.id })?.isDisliked == true
   }
-}
 
-// MARK: WineDetailInteractorProtocol
-
-extension WineDetailInteractor: WineDetailInteractorProtocol {
-  func didSuccessfullyLoginOrRegister() {
-    switch actionAfterAuthorization {
-    case .writeReview:
-      didTapWriteReviewButton()
-
-    case .none:
-      break
-    }
-  }
-
-  func didTapReview(reviewID: Int) {
-    guard
-      let wine = wine,
-      let review = wine.reviews.first(where: { $0.id == reviewID })
-    else {
-      return
-    }
-
-    let dateText: String?
-    if review.updateDate == nil {
-      dateText = review.publicationDate.toDate()
-    } else {
-      dateText = review.updateDate.toDate()
-    }
-
-    router.showBottomSheetReviewDetailViewController(reviewInput: .init(rate: review.rating, author: nil, date: dateText, reviewText: review.comment))
-  }
-
-  func didTapSeeAllReviews() {
-    guard let wineID = wine?.id else {
-      return
-    }
-    router.pushToReviewsViewController(wineID: wineID)
-  }
-
-  func didTapWriteReviewButton() {
+  private func openReviewFlow() {
     guard let wineID = wine?.id else {
       return
     }
@@ -179,6 +140,54 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
       router.presentAuthorizationViewController()
     }
   }
+}
+
+// MARK: WineDetailInteractorProtocol
+
+extension WineDetailInteractor: WineDetailInteractorProtocol {
+
+  func didTapStarsRatingControl() {
+    openReviewFlow()
+  }
+
+  func didSuccessfullyLoginOrRegister() {
+    switch actionAfterAuthorization {
+    case .writeReview:
+      didTapWriteReviewButton()
+
+    case .none:
+      break
+    }
+  }
+
+  func didTapReview(reviewID: Int) {
+    guard
+      let wine = wine,
+      let review = wine.reviews.first(where: { $0.id == reviewID })
+    else {
+      return
+    }
+
+    let dateText: String?
+    if review.updateDate == nil {
+      dateText = review.publicationDate.toDate()
+    } else {
+      dateText = review.updateDate.toDate()
+    }
+
+    router.showBottomSheetReviewDetailViewController(reviewInput: .init(rate: review.rating, author: nil, date: dateText, reviewText: review.comment))
+  }
+
+  func didTapSeeAllReviews() {
+    guard let wineID = wine?.id else {
+      return
+    }
+    router.pushToReviewsViewController(wineID: wineID)
+  }
+
+  func didTapWriteReviewButton() {
+    openReviewFlow()
+  }
 
   func didTapMore(_ button: UIButton) {
     guard let wine = wine else { return }
@@ -208,7 +217,7 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
     router.showMoreActionSheet(menuItems: menuItems, appearance: VinchyActionSheetAppearance(), button: button)
   }
 
-  func didTapPriceButton() {}
+  func didTapPriceButton() { }
 
   func didTapReportAnError() {
     guard let wine = wine else { return }

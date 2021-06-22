@@ -10,9 +10,16 @@ import CommonUI
 import Display
 import UIKit
 
+// MARK: - StarRatingControlCollectionCellDelegate
+
+protocol StarRatingControlCollectionCellDelegate: AnyObject {
+  func didTapStarRatingControl()
+}
+
 // MARK: - StarRatingControlCollectionViewCellViewModel
 
 struct StarRatingControlCollectionViewCellViewModel: ViewModelProtocol {
+
   fileprivate let rate: Double
 
   init(rate: Double) {
@@ -29,25 +36,34 @@ final class StarRatingControlCollectionCell: UICollectionViewCell, Reusable {
   override init(frame: CGRect) {
     super.init(frame: frame)
 
-    contentView.addSubview(rateLabel)
-    rateLabel.translatesAutoresizingMaskIntoConstraints = false
+    let hStack = UIStackView()
+    hStack.axis = .horizontal
+    hStack.alignment = .center
+    hStack.spacing = 6
+
+    hStack.addArrangedSubview(rateLabel)
+    hStack.addArrangedSubview(ratingView)
+    hStack.addArrangedSubview(UIView())
+
+    hStack.translatesAutoresizingMaskIntoConstraints = false
+    contentView.addSubview(hStack)
     NSLayoutConstraint.activate([
-      rateLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-      rateLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-      rateLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+      hStack.topAnchor.constraint(equalTo: contentView.topAnchor),
+      hStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+      hStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+      hStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
     ])
 
-    contentView.addSubview(ratingView)
-    ratingView.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      ratingView.leadingAnchor.constraint(equalTo: rateLabel.trailingAnchor, constant: 6),
-      ratingView.trailingAnchor.constraint(lessThanOrEqualTo: contentView.trailingAnchor),
-      ratingView.centerYAnchor.constraint(equalTo: rateLabel.centerYAnchor),
-    ])
+    let tap = UITapGestureRecognizer(target: self, action: #selector(didTapStarRatingControl))
+    addGestureRecognizer(tap)
   }
 
   @available(*, unavailable)
   required init?(coder _: NSCoder) { fatalError() }
+
+  // MARK: Internal
+
+  weak var delegate: StarRatingControlCollectionCellDelegate?
 
   // MARK: Private
 
@@ -67,6 +83,11 @@ final class StarRatingControlCollectionCell: UICollectionViewCell, Reusable {
     $0.settings.fillMode = .precise
     return $0
   }(StarsRatingView())
+
+  @objc
+  private func didTapStarRatingControl() {
+    delegate?.didTapStarRatingControl()
+  }
 }
 
 // MARK: Decoratable
@@ -75,7 +96,12 @@ extension StarRatingControlCollectionCell: Decoratable {
   typealias ViewModel = StarRatingControlCollectionViewCellViewModel
 
   func decorate(model: ViewModel) {
-    rateLabel.text = String(format: "%.1f", model.rate)
+    if model.rate != 0.0 {
+      rateLabel.text = String(format: "%.1f", model.rate)
+      rateLabel.isHidden = false
+    } else {
+      rateLabel.isHidden = true
+    }
     ratingView.rating = model.rate
   }
 }

@@ -221,6 +221,8 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
     if isReviewAvailable {
       if let rating = wine.rating {
         sections += buildStarRateControl(rate: rating)
+      } else {
+        sections += buildStarRateControl(rate: 0.0)
       }
     }
 

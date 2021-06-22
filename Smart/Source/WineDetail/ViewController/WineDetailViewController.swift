@@ -329,6 +329,7 @@ extension WineDetailViewController: UICollectionViewDataSource {
       // swiftlint:disable:next force_cast
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StarRatingControlCollectionCell.reuseId, for: indexPath) as! StarRatingControlCollectionCell
       cell.decorate(model: model[indexPath.row])
+      cell.delegate = self
       return cell
 
     case .winery(let model), .text(let model):
@@ -496,5 +497,13 @@ extension WineDetailViewController: AuthorizationOutputDelegate {
 
   func didSuccessfullyRegister(output _: AuthorizationOutputModel?) {
     interactor?.didSuccessfullyLoginOrRegister()
+  }
+}
+
+// MARK: StarRatingControlCollectionCellDelegate
+
+extension WineDetailViewController: StarRatingControlCollectionCellDelegate {
+  func didTapStarRatingControl() {
+    interactor?.didTapStarsRatingControl()
   }
 }
