@@ -10,7 +10,7 @@ public let notesRepository = NotesRepository() // TODO: - DI
 
 // MARK: - VNote
 
-public class VNote: Codable, DIdentifiable, DSortable, Equatable {
+public final class VNote: Codable, DIdentifiable, DSortable, Equatable {
 
   // MARK: Lifecycle
 

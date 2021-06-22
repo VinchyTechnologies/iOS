@@ -14,7 +14,7 @@ public func imageURL(from wineID: Int64) -> String {
 
 // MARK: - VWine
 
-public class VWine: Codable, DIdentifiable, DSortable, Equatable {
+public final class VWine: Codable, DIdentifiable, DSortable, Equatable {
 
   // MARK: Lifecycle
 
