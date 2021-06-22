@@ -3,14 +3,15 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		262CB20929B1A0D82287A81E /* Pods_CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 90688B62CE243F5E93E37986 /* Pods_CommonUI.framework */; };
 		4474E3C025E02F22001C5DE3 /* ReviewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4474E3BF25E02F22001C5DE3 /* ReviewCell.swift */; };
 		44EFDB5525E194950076ED6D /* LoadingIndicatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB5425E194950076ED6D /* LoadingIndicatorCell.swift */; };
 		44F2B15825E7874800DE9674 /* SeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F2B15725E7874800DE9674 /* SeparatorCell.swift */; };
+		8A69570E2682511000F14902 /* StarsRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69570D2682511000F14902 /* StarsRatingView.swift */; };
+		8A6957112682520000F14902 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 8A6957102682520000F14902 /* Cosmos */; };
 		CA103ADD2516904C00B0324F /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA103ADC2516904C00B0324F /* Display.framework */; };
 		CA3C97DC257239F70036F7D9 /* CopyableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3C97DB257239F70036F7D9 /* CopyableLabel.swift */; };
 		CA3CEFA6251143EB00AAA692 /* CountriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3CEFA5251143EB00AAA692 /* CountriesViewController.swift */; };
@@ -29,8 +30,7 @@
 		4474E3BF25E02F22001C5DE3 /* ReviewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewCell.swift; sourceTree = "<group>"; };
 		44EFDB5425E194950076ED6D /* LoadingIndicatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorCell.swift; sourceTree = "<group>"; };
 		44F2B15725E7874800DE9674 /* SeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorCell.swift; sourceTree = "<group>"; };
-		72C860F090D4A0A00DCEB6F6 /* Pods-CommonUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonUI.release.xcconfig"; path = "Target Support Files/Pods-CommonUI/Pods-CommonUI.release.xcconfig"; sourceTree = "<group>"; };
-		90688B62CE243F5E93E37986 /* Pods_CommonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A69570D2682511000F14902 /* StarsRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarsRatingView.swift; sourceTree = "<group>"; };
 		CA103ADC2516904C00B0324F /* Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA3C97DB257239F70036F7D9 /* CopyableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyableLabel.swift; sourceTree = "<group>"; };
 		CA3CEFA5251143EB00AAA692 /* CountriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewController.swift; sourceTree = "<group>"; };
@@ -46,7 +46,6 @@
 		CAF24AED24C32B0D0057547F /* WineTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineTableCell.swift; sourceTree = "<group>"; };
 		CAF24AF224C32CF50057547F /* ErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		CAF24AF424C32DA30057547F /* TableViewHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewHeader.swift; sourceTree = "<group>"; };
-		DA7D38739A0D14586DDCA446 /* Pods-CommonUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonUI.debug.xcconfig"; path = "Target Support Files/Pods-CommonUI/Pods-CommonUI.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,8 +53,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A6957112682520000F14902 /* Cosmos in Frameworks */,
 				CA103ADD2516904C00B0324F /* Display.framework in Frameworks */,
-				262CB20929B1A0D82287A81E /* Pods_CommonUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -67,19 +66,8 @@
 			children = (
 				CA51BC312541DFE900208F71 /* SDWebImage.framework */,
 				CA103ADC2516904C00B0324F /* Display.framework */,
-				90688B62CE243F5E93E37986 /* Pods_CommonUI.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		5A5EB2497E159691D5178DFC /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				DA7D38739A0D14586DDCA446 /* Pods-CommonUI.debug.xcconfig */,
-				72C860F090D4A0A00DCEB6F6 /* Pods-CommonUI.release.xcconfig */,
-			);
-			name = Pods;
-			path = ../../Pods;
 			sourceTree = "<group>";
 		};
 		CA3CEFA4251143C300AAA692 /* Countries */ = {
@@ -97,7 +85,6 @@
 				CAF24AE124C32A730057547F /* CommonUI */,
 				CAF24AE024C32A730057547F /* Products */,
 				47343B9F47B1F795DCF9CAE5 /* Frameworks */,
-				5A5EB2497E159691D5178DFC /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -132,6 +119,7 @@
 				44EFDB5425E194950076ED6D /* LoadingIndicatorCell.swift */,
 				4474E3BF25E02F22001C5DE3 /* ReviewCell.swift */,
 				44F2B15725E7874800DE9674 /* SeparatorCell.swift */,
+				8A69570D2682511000F14902 /* StarsRatingView.swift */,
 				CAF24AF424C32DA30057547F /* TableViewHeader.swift */,
 				CA99E64E24F56B6300C36BEE /* TextCollectionCell.swift */,
 				CA7A87F725040C4F00AAD10F /* WineCollectionViewCell.swift */,
@@ -158,7 +146,6 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CAF24AE724C32A730057547F /* Build configuration list for PBXNativeTarget "CommonUI" */;
 			buildPhases = (
-				C176BFDE9B85560D2B74997A /* [CP] Check Pods Manifest.lock */,
 				CAF24ADA24C32A730057547F /* Headers */,
 				CAF24ADB24C32A730057547F /* Sources */,
 				CAF24ADC24C32A730057547F /* Frameworks */,
@@ -169,6 +156,9 @@
 			dependencies = (
 			);
 			name = CommonUI;
+			packageProductDependencies = (
+				8A6957102682520000F14902 /* Cosmos */,
+			);
 			productName = CommonUI;
 			productReference = CAF24ADF24C32A730057547F /* CommonUI.framework */;
 			productType = "com.apple.product-type.framework";
@@ -197,6 +187,9 @@
 				Base,
 			);
 			mainGroup = CAF24AD524C32A730057547F;
+			packageReferences = (
+				8A69570F2682520000F14902 /* XCRemoteSwiftPackageReference "Cosmos" */,
+			);
 			productRefGroup = CAF24AE024C32A730057547F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -216,31 +209,6 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
-/* Begin PBXShellScriptBuildPhase section */
-		C176BFDE9B85560D2B74997A /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputFileListPaths = (
-			);
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-CommonUI-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
-
 /* Begin PBXSourcesBuildPhase section */
 		CAF24ADB24C32A730057547F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -257,6 +225,7 @@
 				CA99E65924F79E4A00C36BEE /* ImageOptionCollectionCell.swift in Sources */,
 				44EFDB5525E194950076ED6D /* LoadingIndicatorCell.swift in Sources */,
 				CAF24AF324C32CF50057547F /* ErrorView.swift in Sources */,
+				8A69570E2682511000F14902 /* StarsRatingView.swift in Sources */,
 				CAF24AEE24C32B0D0057547F /* WineTableCell.swift in Sources */,
 				4474E3C025E02F22001C5DE3 /* ReviewCell.swift in Sources */,
 			);
@@ -389,7 +358,6 @@
 		};
 		CAF24AE824C32A730057547F /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = DA7D38739A0D14586DDCA446 /* Pods-CommonUI.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -417,7 +385,6 @@
 		};
 		CAF24AE924C32A730057547F /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 72C860F090D4A0A00DCEB6F6 /* Pods-CommonUI.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -464,6 +431,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8A69570F2682520000F14902 /* XCRemoteSwiftPackageReference "Cosmos" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/Cosmos.git";
+			requirement = {
+				kind = exactVersion;
+				version = 23.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8A6957102682520000F14902 /* Cosmos */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A69570F2682520000F14902 /* XCRemoteSwiftPackageReference "Cosmos" */;
+			productName = Cosmos;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CAF24AD624C32A730057547F /* Project object */;
 }

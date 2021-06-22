@@ -6,7 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Cosmos
+import CommonUI
 import Display
 import UIKit
 
@@ -72,8 +72,8 @@ final class WriteReviewViewController: UIViewController {
 
   // MARK: Private
 
-  private lazy var ratingView: CosmosView = {
-    var view = CosmosView()
+  private lazy var ratingView: StarsRatingView = {
+    var view = StarsRatingView()
     view.settings.filledColor = .accent
     view.settings.emptyBorderColor = .accent
     view.settings.starSize = 40

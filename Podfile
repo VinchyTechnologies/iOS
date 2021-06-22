@@ -5,7 +5,6 @@ inhibit_all_warnings!
 workspace 'Smart'
 
 def commonPods
-  pod 'Cosmos', '~> 23.0'
   pod 'FSPagerView' # no spm...
   pod 'CocoaDebug', :configurations => ['Debug']
   pod 'SwiftLint'
@@ -27,12 +26,6 @@ target 'Smart' do
 
   target 'SmartUITests' do
   end
-
-end
-
-target 'CommonUI' do
-  project 'submodules/CommonUI/CommonUI'
-  pod 'Cosmos', '~> 23.0'
 end
 
 target 'VinchyAuthorizationApp' do

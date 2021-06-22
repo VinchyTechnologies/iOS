@@ -6,7 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Cosmos
+import CommonUI
 import Display
 import UIKit
 
@@ -58,7 +58,7 @@ final class StarRatingControlCollectionCell: UICollectionViewCell, Reusable {
     return $0
   }(UILabel())
 
-  private lazy var ratingView: CosmosView = {
+  private lazy var ratingView: StarsRatingView = {
     $0.settings.filledColor = .accent
     $0.settings.emptyBorderColor = .accent
     $0.settings.starSize = 32
@@ -66,7 +66,7 @@ final class StarRatingControlCollectionCell: UICollectionViewCell, Reusable {
     $0.settings.updateOnTouch = false
     $0.settings.fillMode = .precise
     return $0
-  }(CosmosView())
+  }(StarsRatingView())
 }
 
 // MARK: Decoratable

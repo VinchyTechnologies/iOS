@@ -6,7 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Cosmos
+import CommonUI
 import Display
 import UIKit
 
@@ -58,8 +58,8 @@ final class TapToRateCell: UICollectionViewCell, Reusable {
     return label
   }()
 
-  private lazy var ratingView: CosmosView = {
-    let view = CosmosView()
+  private lazy var ratingView: StarsRatingView = {
+    let view = StarsRatingView()
     view.settings.filledColor = .accent
     view.settings.emptyBorderColor = .accent
     view.settings.starSize = 32
