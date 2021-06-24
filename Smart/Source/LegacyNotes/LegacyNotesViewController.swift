@@ -1,5 +1,5 @@
 //
-//  NotesViewController.swift
+//  LegacyNotesViewController.swift
 //  Smart
 //
 //  Created by Aleksei Smirnov on 22.06.2020.
@@ -13,9 +13,9 @@ import Display
 import StringFormatting
 import UIKit
 
-// MARK: - NotesViewController
+// MARK: - LegacyNotesViewController
 
-final class NotesViewController: UIViewController, UISearchControllerDelegate, UISearchResultsUpdating {
+final class LegacyNotesViewController: UIViewController, UISearchControllerDelegate, UISearchResultsUpdating {
 
   // MARK: Internal
 
@@ -121,7 +121,7 @@ final class NotesViewController: UIViewController, UISearchControllerDelegate, U
 
 // MARK: UITableViewDataSource
 
-extension NotesViewController: UITableViewDataSource {
+extension LegacyNotesViewController: UITableViewDataSource {
   func tableView(
     _: UITableView,
     numberOfRowsInSection _: Int)
@@ -180,7 +180,7 @@ extension NotesViewController: UITableViewDataSource {
 
 // MARK: UITableViewDelegate
 
-extension NotesViewController: UITableViewDelegate {
+extension LegacyNotesViewController: UITableViewDelegate {
   func tableView(
     _ tableView: UITableView,
     didSelectRowAt indexPath: IndexPath)
