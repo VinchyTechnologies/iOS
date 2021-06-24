@@ -100,6 +100,13 @@
 "bakery" = "выпечка";
 "cheese" = "сыр";
 "fruits" = "фрукты";
+"snacks" = "закуски";
+"shellfish" = "моллюски";
+"vegetarian" = "веган";
+"spicy" = "острое";
+"mushrooms" = "грибы";
+"aperitif" = "аперетив";
+"pasta" = "паста";
 
 // MARK: - Tabs
 "explore" = "главная";

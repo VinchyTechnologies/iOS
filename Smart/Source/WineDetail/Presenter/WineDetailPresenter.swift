@@ -93,7 +93,7 @@ final class WineDetailPresenter {
 
     if let dishes = wine.dishCompatibility, !dishes.isEmpty {
       dishes.forEach { dish in
-        servingTips.append(.titleTextAndImage(imageName: dish.imageName, titleText: localized(dish.rawValue).firstLetterUppercased()))
+        servingTips.append(.titleTextAndImage(imageName: dish.imageName, titleText: dish.localized))
       }
     }
 
@@ -244,6 +244,8 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
     }
 
     sections += buildGeneralInfo(wine: wine)
+
+    sections += buildServingTips(wine: wine)
 
     if isReviewAvailable {
 //      sections += [.tapToRate([.init(titleText: "Tap to Rate:", rate: 0)])]

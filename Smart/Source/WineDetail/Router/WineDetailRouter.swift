@@ -8,6 +8,7 @@
 
 import Core
 import Database
+import Display
 import Sheeeeeeeeet
 import UIKit
 import VinchyAuthorization

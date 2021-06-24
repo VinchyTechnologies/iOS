@@ -12,12 +12,12 @@ import UIKit
 // MARK: - ImageOptionCollectionCellViewModel
 
 public struct ImageOptionCollectionCellViewModel: ViewModelProtocol {
-  fileprivate let imageName: String?
+  fileprivate let image: UIImage?
   fileprivate let titleText: String?
   fileprivate let isSelected: Bool
 
-  public init(imageName: String?, titleText: String?, isSelected: Bool) {
-    self.imageName = imageName
+  public init(image: UIImage?, titleText: String?, isSelected: Bool) {
+    self.image = image
     self.titleText = titleText
     self.isSelected = isSelected
   }
@@ -95,8 +95,8 @@ extension ImageOptionCollectionCell: Decoratable {
   public typealias ViewModel = ImageOptionCollectionCellViewModel
 
   public func decorate(model: ViewModel) {
-    if let named = model.imageName {
-      imageView.image = UIImage(named: named)
+    if let named = model.image {
+      imageView.image = named
     } else {
       imageView.image = nil
     }

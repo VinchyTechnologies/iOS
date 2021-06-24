@@ -81,6 +81,7 @@ final class StarRatingControlCollectionCell: UICollectionViewCell, Reusable {
     $0.settings.starMargin = 0
     $0.settings.updateOnTouch = false
     $0.settings.fillMode = .precise
+    $0.settings.emptyBorderWidth = 1.0
     return $0
   }(StarsRatingView())
 

@@ -162,8 +162,8 @@ final class WineDetailViewController: UIViewController {
       return section
 
     case .servingTips:
-      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .estimated(180), heightDimension: .fractionalHeight(1)))
-      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .estimated(180), heightDimension: .absolute(100)), subitems: [item])
+      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .estimated(135), heightDimension: .fractionalHeight(1)))
+      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .estimated(135), heightDimension: .absolute(100)), subitems: [item])
       let section = NSCollectionLayoutSection(group: group)
       section.orthogonalScrollingBehavior = .continuous
       section.contentInsets = .init(top: 15, leading: 15, bottom: 0, trailing: 15)
@@ -377,7 +377,7 @@ extension WineDetailViewController: UICollectionViewDataSource {
       case .titleTextAndImage(let imageName, let titleText):
         // swiftlint:disable:next force_cast
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageOptionCollectionCell.reuseId, for: indexPath) as! ImageOptionCollectionCell
-        cell.decorate(model: .init(imageName: imageName, titleText: titleText, isSelected: false))
+        cell.decorate(model: .init(image: UIImage(named: imageName)?.withTintColor(.dark, renderingMode: .alwaysOriginal), titleText: titleText, isSelected: false))
         return cell
 
       case .titleTextAndSubtitleText(let titleText, let subtitleText):

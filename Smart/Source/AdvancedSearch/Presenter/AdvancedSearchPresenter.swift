@@ -68,7 +68,7 @@ extension AdvancedSearchPresenter: AdvancedSearchPresenterProtocol {
 
         let cells = filter.items.map { filterItem -> ImageOptionCollectionCellViewModel in
           .init(
-            imageName: filterItem.imageName,
+            image: UIImage(named: filterItem.imageName ?? ""),
             titleText: localized(filterItem.title).firstLetterUppercased(),
             isSelected: selectedFilters.contains(filterItem))
         }
@@ -90,7 +90,7 @@ extension AdvancedSearchPresenter: AdvancedSearchPresenterProtocol {
 
         let cells = filter.items.map { filterItem -> ImageOptionCollectionCellViewModel in
           .init(
-            imageName: filterItem.imageName,
+            image: UIImage(named: filterItem.imageName ?? ""),
             titleText: countryNameFromLocaleCode(countryCode: filterItem.title),
             isSelected: selectedFilters.contains(filterItem))
         }
