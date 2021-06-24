@@ -8,18 +8,27 @@
 
 import Foundation
 
+// MARK: - NotesPresenter
+
 final class NotesPresenter {
 
-    private typealias ViewModel = NotesViewModel
+  // MARK: Lifecycle
 
-    weak var viewController: NotesViewControllerProtocol?
+  init(viewController: NotesViewControllerProtocol) {
+    self.viewController = viewController
+  }
 
-    init(viewController: NotesViewControllerProtocol) {
-        self.viewController = viewController
-    }
+  // MARK: Internal
+
+  weak var viewController: NotesViewControllerProtocol?
+
+  // MARK: Private
+
+  private typealias ViewModel = NotesViewModel
+
 }
 
-// MARK: - NotesPresenterProtocol
+// MARK: NotesPresenterProtocol
 
 extension NotesPresenter: NotesPresenterProtocol {
 

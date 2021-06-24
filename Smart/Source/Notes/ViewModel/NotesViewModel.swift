@@ -6,8 +6,15 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import CommonUI
 
 struct NotesViewModel {
 
+  enum Section {
+    case simpleNote([WineTableCellViewModel])
+  }
+  
+  let sections: [Section]
+
+  let navigationTitleText: String?
 }

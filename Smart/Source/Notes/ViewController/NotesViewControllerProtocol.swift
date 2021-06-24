@@ -9,5 +9,5 @@
 import Foundation
 
 protocol NotesViewControllerProtocol: AnyObject {
-    
+  func updateUI(viewModel: NotesViewModel)
 }

@@ -8,25 +8,32 @@
 
 import Foundation
 
+// MARK: - NotesInteractor
+
 final class NotesInteractor {
 
-    private let router: NotesRouterProtocol
-    private let presenter: NotesPresenterProtocol
+  // MARK: Lifecycle
 
-    init(
-        router: NotesRouterProtocol,
-        presenter: NotesPresenterProtocol)
-    {
-        self.router = router
-        self.presenter = presenter
-    }
+  init(
+    router: NotesRouterProtocol,
+    presenter: NotesPresenterProtocol)
+  {
+    self.router = router
+    self.presenter = presenter
+  }
+
+  // MARK: Private
+
+  private let router: NotesRouterProtocol
+  private let presenter: NotesPresenterProtocol
+
 }
 
-// MARK: - NotesInteractorProtocol
+// MARK: NotesInteractorProtocol
 
 extension NotesInteractor: NotesInteractorProtocol {
 
-    func viewDidLoad() {
-        
-    }
+  func viewDidLoad() {
+
+  }
 }

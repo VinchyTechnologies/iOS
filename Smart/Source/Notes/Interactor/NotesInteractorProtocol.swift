@@ -9,5 +9,5 @@
 import Foundation
 
 protocol NotesInteractorProtocol: AnyObject {
-    func viewDidLoad()
+  func viewDidLoad()
 }

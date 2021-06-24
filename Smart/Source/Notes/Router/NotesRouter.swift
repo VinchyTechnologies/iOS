@@ -8,22 +8,32 @@
 
 import UIKit
 
+// MARK: - NotesRouter
+
 final class NotesRouter {
 
-    weak var viewController: UIViewController?
-    weak var interactor: NotesInteractorProtocol?
-    private let input: NotesInput
+  // MARK: Lifecycle
 
-    init(
-        input: NotesInput,
-        viewController: UIViewController)
-    {
-        self.input = input
-        self.viewController = viewController
-    }
+  init(
+    input: NotesInput,
+    viewController: UIViewController)
+  {
+    self.input = input
+    self.viewController = viewController
+  }
+
+  // MARK: Internal
+
+  weak var viewController: UIViewController?
+  weak var interactor: NotesInteractorProtocol?
+
+  // MARK: Private
+
+  private let input: NotesInput
+
 }
 
-// MARK: - NotesRouterProtocol
+// MARK: NotesRouterProtocol
 
 extension NotesRouter: NotesRouterProtocol {
 

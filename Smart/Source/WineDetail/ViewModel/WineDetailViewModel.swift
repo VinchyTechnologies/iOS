@@ -32,5 +32,5 @@ struct WineDetailViewModel {
   }
 
   let navigationTitle: String?
-  var sections: [Section]
+  let sections: [Section]
 }
