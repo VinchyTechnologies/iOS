@@ -122,18 +122,6 @@ extension NotesViewController: UITableViewDataSource {
         return cell
       }
       return .init()
-
-//    if
-//      let cell = tableView.dequeueReusableCell(withIdentifier: WineTableCell.reuseId) as? WineTableCell,
-//      let note = notes[safe: indexPath.row],
-//      let wineID = note.wineID,
-//      let wineTitle = note.wineTitle,
-//      let noteText = note.noteText
-//    {
-//      cell.decorate(model: .init(imageURL: imageURL(from: wineID).toURL, titleText: wineTitle, subtitleText: noteText))
-//      return cell
-//    }
-//    return .init()
     }
   }
 
@@ -142,20 +130,7 @@ extension NotesViewController: UITableViewDataSource {
     commit editingStyle: UITableViewCell.EditingStyle,
     forRowAt indexPath: IndexPath)
   {
-//    if editingStyle == .delete, let note = notes[safe: indexPath.row] {
-//      let alert = UIAlertController(
-//        title: localized("delete_note"),
-//        message: localized("this_action_cannot_to_be_undone"),
-//        preferredStyle: .alert)
-//      alert.addAction(UIAlertAction(title: localized("delete"), style: .destructive, handler: { [weak self] _ in
-//        guard let self = self else { return }
-//        notesRepository.remove(note)
-//        self.notes = notesRepository.findAll()
-//      }))
-//      alert.addAction(UIAlertAction(title: localized("cancel"), style: .cancel, handler: nil))
-//      present(alert, animated: true, completion: nil)
-//      tableView.reloadData()
-//    }
+
   }
 
 //  func tableView(
@@ -163,7 +138,7 @@ extension NotesViewController: UITableViewDataSource {
 //    titleForDeleteConfirmationButtonForRowAt _: IndexPath)
 //    -> String?
 //  {
-//    localized("delete")
+//    //localized("delete")
 //  }
 }
 

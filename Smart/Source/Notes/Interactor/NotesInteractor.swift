@@ -38,7 +38,8 @@ final class NotesInteractor {
 extension NotesInteractor: NotesInteractorProtocol {
 
   func viewDidLoad() {
-    presenter.update()
+    notes = notesRepository.findAll()
+    presenter.update(notes: notes)
   }
 
   func didEnterSearchText(_ searchText: String?) {

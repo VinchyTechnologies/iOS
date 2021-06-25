@@ -6,6 +6,8 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import CommonUI
+import Database
 import Foundation
 import StringFormatting
 
@@ -27,19 +29,29 @@ final class NotesPresenter {
 
   private typealias ViewModel = NotesViewModel
 
-  private func createViewModel() -> NotesViewModel {
+  private func createViewModel(notes: [VNote]) -> NotesViewModel {
     var sections: [NotesViewModel.Section] = []
-    //заполнить секции
+    var cells: [WineTableCellViewModel] = []
+
+    for note in notes {
+      if
+        let wineID = note.wineID,
+        let wineTitle = note.wineTitle,
+        let noteText = note.noteText
+      {
+        cells.append(.init(imageURL: imageURL(from: wineID).toURL, titleText: wineTitle, subtitleText: noteText))
+      }
+    }
+    sections.append(.simpleNote(cells))
     return NotesViewModel(sections: sections, navigationTitleText: localized("notes").firstLetterUppercased())
   }
-
 }
 
 // MARK: NotesPresenterProtocol
 
 extension NotesPresenter: NotesPresenterProtocol {
-  func update() {
-    let viewModel = createViewModel()
+  func update(notes: [VNote]) {
+    let viewModel = createViewModel(notes: notes)
     viewController?.updateUI(viewModel: viewModel)
   }
 }
