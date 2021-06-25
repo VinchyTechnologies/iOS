@@ -105,6 +105,8 @@
 		8AD49F2C26752B4B0094E157 /* AnalyticsTrackable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD49F2B26752B4B0094E157 /* AnalyticsTrackable.swift */; };
 		8AD7A37E2639D31A007D4273 /* PartnerAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7A37D2639D31A007D4273 /* PartnerAnnotationView.swift */; };
 		8AD7A455263B2A98007D4273 /* ClusterAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7A454263B2A98007D4273 /* ClusterAnnotationView.swift */; };
+		8AE788F6268636500056A84B /* GeoOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE788F5268636500056A84B /* GeoOnboardingViewController.swift */; };
+		8AE788F8268638CD0056A84B /* OnboardingBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE788F7268638CD0056A84B /* OnboardingBottomView.swift */; };
 		8AF966BE2678F194001891B2 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF966AD2678F194001891B2 /* EditProfileViewModel.swift */; };
 		8AF966BF2678F194001891B2 /* EditProfileInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF966AF2678F194001891B2 /* EditProfileInput.swift */; };
 		8AF966C02678F194001891B2 /* EditProfileAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF966B12678F194001891B2 /* EditProfileAssembly.swift */; };
@@ -394,6 +396,8 @@
 		8AD49F2B26752B4B0094E157 /* AnalyticsTrackable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsTrackable.swift; sourceTree = "<group>"; };
 		8AD7A37D2639D31A007D4273 /* PartnerAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerAnnotationView.swift; sourceTree = "<group>"; };
 		8AD7A454263B2A98007D4273 /* ClusterAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterAnnotationView.swift; sourceTree = "<group>"; };
+		8AE788F5268636500056A84B /* GeoOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoOnboardingViewController.swift; sourceTree = "<group>"; };
+		8AE788F7268638CD0056A84B /* OnboardingBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBottomView.swift; sourceTree = "<group>"; };
 		8AF966AD2678F194001891B2 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
 		8AF966AF2678F194001891B2 /* EditProfileInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileInput.swift; sourceTree = "<group>"; };
 		8AF966B12678F194001891B2 /* EditProfileAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileAssembly.swift; sourceTree = "<group>"; };
@@ -1258,6 +1262,8 @@
 				CA070C1525250AEC00C3D9EC /* OnboardPage.swift */,
 				CA070C1425250AEB00C3D9EC /* OnboardPageViewController.swift */,
 				CA070C1325250AE900C3D9EC /* OnboardViewController.swift */,
+				8AE788F5268636500056A84B /* GeoOnboardingViewController.swift */,
+				8AE788F7268638CD0056A84B /* OnboardingBottomView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -2537,6 +2543,7 @@
 				8A313C0426447042009F2165 /* MapDetailStoreViewController.swift in Sources */,
 				CA276D55256AC6720061BEBE /* FakeCell.swift in Sources */,
 				CACA7EA0254C57CC0099E622 /* WriteNoteInteractorProtocol.swift in Sources */,
+				8AE788F8268638CD0056A84B /* OnboardingBottomView.swift in Sources */,
 				8A1036CA264D7E1200F7CA81 /* MapNavigationBarCollectionCell.swift in Sources */,
 				CEB0A6222609442B00B07B87 /* ShowcaseRouterProtocol.swift in Sources */,
 				44EFDB7625E263E00076ED6D /* ReviewDetailInteractor.swift in Sources */,
@@ -2545,6 +2552,7 @@
 				4437AA5F25E3A7CE00F6E838 /* WriteReviewPresenterProtocol.swift in Sources */,
 				CE404B0B2589D47C00917544 /* MorePresenterProtocol.swift in Sources */,
 				CA2C22DC2554464F002469E4 /* AdvancedSearchPresenter.swift in Sources */,
+				8AE788F6268636500056A84B /* GeoOnboardingViewController.swift in Sources */,
 				CAEBD788251A6D6200210F3B /* AgreementsViewController.swift in Sources */,
 				8A313C0526447042009F2165 /* MapDetailStoreViewControllerProtocol.swift in Sources */,
 				CA7A87E62500169100AAD10F /* VinchySimpleConiniousCaruselCollectionCell.swift in Sources */,
