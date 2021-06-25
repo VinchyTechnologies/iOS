@@ -6,11 +6,12 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import Combine
 import Display
-import Foundation
 
 protocol NotesViewControllerProtocol: Alertable {
   func updateUI(viewModel: NotesViewModel)
   func hideEmptyView()
   func showEmptyView(title: String, subtitle: String)
+  func showAlert(wineID: Int64, title: String, message: String?) -> AnyPublisher<Void, Never>
 }

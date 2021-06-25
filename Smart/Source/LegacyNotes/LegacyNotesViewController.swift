@@ -142,7 +142,7 @@ extension LegacyNotesViewController: UITableViewDataSource {
       let wineTitle = note.wineTitle,
       let noteText = note.noteText
     {
-      cell.decorate(model: .init(imageURL: imageURL(from: wineID).toURL, titleText: wineTitle, subtitleText: noteText))
+      cell.decorate(model: .init(wineID: wineID, imageURL: imageURL(from: wineID).toURL, titleText: wineTitle, subtitleText: noteText))
       return cell
     }
     return .init()

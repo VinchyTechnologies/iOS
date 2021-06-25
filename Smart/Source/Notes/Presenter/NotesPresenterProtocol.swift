@@ -7,11 +7,18 @@
 //
 
 import Database
-import Foundation
+
+// MARK: - NotesEmptyType
+
+enum NotesEmptyType {
+  case isEmpty, noFound
+}
+
+// MARK: - NotesPresenterProtocol
 
 protocol NotesPresenterProtocol: AnyObject {
   func update(notes: [VNote])
-  func showAlert()
-  func showEmpty(isEmpty: Bool)
+  func showDeletingAlert(wineID: Int64)
+  func showEmpty(type: NotesEmptyType)
   func hideEmpty()
 }

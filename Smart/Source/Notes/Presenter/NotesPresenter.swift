@@ -39,7 +39,7 @@ final class NotesPresenter {
         let wineTitle = note.wineTitle,
         let noteText = note.noteText
       {
-        cells.append(.init(imageURL: imageURL(from: wineID).toURL, titleText: wineTitle, subtitleText: noteText))
+        cells.append(.init(wineID: wineID, imageURL: imageURL(from: wineID).toURL, titleText: wineTitle, subtitleText: noteText))
       }
     }
     sections.append(.simpleNote(cells))
@@ -50,10 +50,14 @@ final class NotesPresenter {
 // MARK: NotesPresenterProtocol
 
 extension NotesPresenter: NotesPresenterProtocol {
-  func showEmpty(isEmpty: Bool) {
-    if isEmpty {
+
+  func showEmpty(type: NotesEmptyType) {
+
+    switch type {
+    case .isEmpty:
       viewController?.showEmptyView(title: localized("nothing_here"), subtitle: localized("you_have_not_written_any_notes_yet"))
-    } else {
+
+    case .noFound:
       viewController?.showEmptyView(title: localized("nothing_here"), subtitle: localized("no_notes_found_for_your_request"))
     }
   }
@@ -67,7 +71,7 @@ extension NotesPresenter: NotesPresenterProtocol {
     viewController?.updateUI(viewModel: viewModel)
   }
 
-  func showAlert() {
-    viewController?.showAlert(title: localized("delete_note"), message: localized("this_action_cannot_to_be_undone"))
+  func showDeletingAlert(wineID: Int64) {
+    viewController?.showAlert(wineID: wineID, title: localized("delete_note"), message: localized("this_action_cannot_to_be_undone"))
   }
 }

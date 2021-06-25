@@ -29,15 +29,15 @@ final class NotesInteractor {
   private let router: NotesRouterProtocol
   private let presenter: NotesPresenterProtocol
   private let throttler: ThrottlerProtocol = Throttler()
-  private var indexPathDelete: IndexPath?
-  private var searchText: String = ""
+//  private var indexPathDelete: IndexPath?
+  private var searchText: String?
 
   private var notes: [VNote] = [] {
     didSet {
-      if searchText.isEmpty == true {
-        notes.isEmpty ? presenter.showEmpty(isEmpty: true) : presenter.hideEmpty()
+      if searchText.isNilOrEmpty {
+        notes.isEmpty ? presenter.showEmpty(type: .isEmpty) : presenter.hideEmpty()
       } else {
-        notes.isEmpty ? presenter.showEmpty(isEmpty: false) : presenter.hideEmpty()
+        notes.isEmpty ? presenter.showEmpty(type: .noFound) : presenter.hideEmpty()
       }
       presenter.update(notes: notes)
     }
@@ -47,23 +47,22 @@ final class NotesInteractor {
 // MARK: NotesInteractorProtocol
 
 extension NotesInteractor: NotesInteractorProtocol {
-  func didTapConfirmDeleteCell() {
-    guard let indexPathDelete = indexPathDelete else {
-      return
-    }
-    notesRepository.remove(notes[indexPathDelete.row])
-    notes = notesRepository.findAll()
-  }
-
-  func didTapDeleteCell(at indexPath: IndexPath) {
-    if notes[safe: indexPath.row] != nil {
-      indexPathDelete = indexPath
-      presenter.showAlert()
+  func didTapConfirmDeleteCell(wineID: Int64) {
+    if let noteForDeleting = notes.first(where: { $0.wineID == wineID }) {
+      notesRepository.remove(noteForDeleting)
+      notes = notesRepository.findAll()
     }
   }
 
-  func didTapNoteCell(at indexPath: IndexPath) {
-    guard let note = notes[safe: indexPath.row] else { return }
+  func didTapDeleteCell(wineID: Int64) {
+    if notes.first(where: { $0.wineID == wineID }) != nil {
+//      indexPathDelete = indexPath
+      presenter.showDeletingAlert(wineID: wineID)
+    }
+  }
+
+  func didTapNoteCell(wineID: Int64) {
+    guard let note = notes.first(where: { $0.wineID == wineID }) else { return }
     router.pushToDetailCollection(note: note)
   }
 
@@ -72,7 +71,7 @@ extension NotesInteractor: NotesInteractorProtocol {
   }
 
   func didEnterSearchText(_ searchText: String?) {
-    self.searchText = searchText ?? ""
+    self.searchText = searchText
 
     guard
       let searchText = searchText?.firstLetterUppercased(),

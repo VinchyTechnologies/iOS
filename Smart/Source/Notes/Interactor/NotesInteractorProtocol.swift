@@ -11,7 +11,7 @@ import Foundation
 protocol NotesInteractorProtocol: AnyObject {
   func viewDidLoad()
   func didEnterSearchText(_ searchText: String?)
-  func didTapNoteCell(at indexPath: IndexPath)
-  func didTapDeleteCell(at indexPath: IndexPath)
-  func didTapConfirmDeleteCell()
+  func didTapNoteCell(wineID: Int64)
+  func didTapDeleteCell(wineID: Int64)
+  func didTapConfirmDeleteCell(wineID: Int64)
 }

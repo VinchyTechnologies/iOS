@@ -20,12 +20,14 @@ final class NotesViewController: UIViewController {
 
   var interactor: NotesInteractorProtocol?
 
+
   var viewModel: NotesViewModel? {
     didSet {
       navigationItem.title = viewModel?.navigationTitleText
       tableView.reloadData()
     }
   }
+
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -76,7 +78,13 @@ extension NotesViewController: UITableViewDelegate {
     didSelectRowAt indexPath: IndexPath)
   {
     tableView.deselectRow(at: indexPath, animated: true)
-    interactor?.didTapNoteCell(at: indexPath)
+    guard let type = viewModel?.sections[safe: indexPath.section] else {
+      return
+    }
+    switch type {
+    case .simpleNote(let model):
+      interactor?.didTapNoteCell(wineID: model[indexPath.row].wineID)
+    }
   }
 
   func scrollViewWillBeginDragging(_: UIScrollView) {
@@ -129,7 +137,15 @@ extension NotesViewController: UITableViewDataSource {
     forRowAt indexPath: IndexPath)
   {
     if editingStyle == .delete {
-      interactor?.didTapDeleteCell(at: indexPath)
+
+      guard let type = viewModel?.sections[indexPath.section] else {
+        return
+      }
+
+      switch type {
+      case .simpleNote(let model):
+        interactor?.didTapDeleteCell(wineID: model[indexPath.row].wineID)
+      }
     }
   }
 
@@ -174,17 +190,15 @@ extension NotesViewController: NotesViewControllerProtocol {
 // MARK: Alertable
 
 extension NotesViewController: Alertable {
-  func showAlert(title: String, message: String?) -> AnyPublisher<Void, Never> {
+  func showAlert(wineID: Int64, title: String, message: String?) -> AnyPublisher<Void, Never> {
     Future { _ in
-      DispatchQueue.main.async {
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-        alertController.addAction(UIAlertAction(title: localized("delete"), style: .destructive, handler: { [weak self] _ in
-          guard let self = self else { return }
-          self.interactor?.didTapConfirmDeleteCell()
-        }))
-        alertController.addAction(UIAlertAction(title: localized("cancel"), style: .cancel, handler: nil))
-        self.present(alertController, animated: true, completion: nil)
-      }
+      let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+      alertController.addAction(UIAlertAction(title: localized("delete"), style: .destructive, handler: { [weak self] _ in
+        guard let self = self else { return }
+        self.interactor?.didTapConfirmDeleteCell(wineID: wineID)
+      }))
+      alertController.addAction(UIAlertAction(title: localized("cancel"), style: .cancel, handler: nil))
+      self.present(alertController, animated: true, completion: nil)
     }
     .handleEvents(receiveCancel: {
       self.dismiss(animated: true)
