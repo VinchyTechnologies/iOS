@@ -6,8 +6,9 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import Display
 import Foundation
 
-protocol NotesViewControllerProtocol: AnyObject {
+protocol NotesViewControllerProtocol: Alertable {
   func updateUI(viewModel: NotesViewModel)
 }

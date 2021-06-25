@@ -12,4 +12,6 @@ protocol NotesInteractorProtocol: AnyObject {
   func viewDidLoad()
   func didEnterSearchText(_ searchText: String?)
   func didTapNoteCell(at indexPath: IndexPath)
+  func didTapDeleteCell(at indexPath: IndexPath)
+  func didTapConfirmDeleteCell()
 }

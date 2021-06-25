@@ -6,8 +6,10 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import Combine
 import CommonUI
 import Display
+import StringFormatting
 import UIKit
 
 // MARK: - NotesViewController
@@ -128,16 +130,18 @@ extension NotesViewController: UITableViewDataSource {
     commit editingStyle: UITableViewCell.EditingStyle,
     forRowAt indexPath: IndexPath)
   {
-
+    if editingStyle == .delete {
+      interactor?.didTapDeleteCell(at: indexPath)
+    }
   }
 
-//  func tableView(
-//    _: UITableView,
-//    titleForDeleteConfirmationButtonForRowAt _: IndexPath)
-//    -> String?
-//  {
-//    //localized("delete")
-//  }
+  func tableView(
+    _: UITableView,
+    titleForDeleteConfirmationButtonForRowAt _: IndexPath)
+    -> String?
+  {
+    localized("delete")
+  }
 }
 
 // MARK: UISearchControllerDelegate
@@ -159,5 +163,27 @@ extension NotesViewController: UISearchResultsUpdating {
 extension NotesViewController: NotesViewControllerProtocol {
   func updateUI(viewModel: NotesViewModel) {
     self.viewModel = viewModel
+  }
+}
+
+// MARK: Alertable
+
+extension NotesViewController: Alertable {
+  func showAlert(title: String, message: String?) -> AnyPublisher<Void, Never> {
+    Future { _ in
+      DispatchQueue.main.async {
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: localized("delete"), style: .destructive, handler: { [weak self] _ in
+          guard let self = self else { return }
+          self.interactor?.didTapConfirmDeleteCell()
+        }))
+        alertController.addAction(UIAlertAction(title: localized("cancel"), style: .cancel, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+      }
+    }
+    .handleEvents(receiveCancel: {
+      self.dismiss(animated: true)
+    })
+    .eraseToAnyPublisher()
   }
 }

@@ -11,4 +11,5 @@ import Foundation
 
 protocol NotesPresenterProtocol: AnyObject {
   func update(notes: [VNote])
+  func showAlert()
 }

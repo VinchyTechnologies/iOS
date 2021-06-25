@@ -54,4 +54,7 @@ extension NotesPresenter: NotesPresenterProtocol {
     let viewModel = createViewModel(notes: notes)
     viewController?.updateUI(viewModel: viewModel)
   }
+  func showAlert() {
+    viewController?.showAlert(title: localized("delete_note"), message: localized("this_action_cannot_to_be_undone"))
+  }
 }

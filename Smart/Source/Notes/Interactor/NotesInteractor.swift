@@ -29,6 +29,7 @@ final class NotesInteractor {
   private let router: NotesRouterProtocol
   private let presenter: NotesPresenterProtocol
   private let throttler: ThrottlerProtocol = Throttler()
+  private var indexPathDelete: IndexPath?
 
   private var notes: [VNote] = [] {
     didSet {
@@ -40,6 +41,21 @@ final class NotesInteractor {
 // MARK: NotesInteractorProtocol
 
 extension NotesInteractor: NotesInteractorProtocol {
+  func didTapConfirmDeleteCell() {
+    guard let indexPathDelete = indexPathDelete else {
+      return
+    }
+    notesRepository.remove(notes[indexPathDelete.row])
+    notes = notesRepository.findAll()
+  }
+
+  func didTapDeleteCell(at indexPath: IndexPath) {
+    if notes[safe: indexPath.row] != nil {
+      indexPathDelete = indexPath
+      presenter.showAlert()
+    }
+  }
+
   func didTapNoteCell(at indexPath: IndexPath) {
     guard let note = notes[safe: indexPath.row] else { return }
     router.pushToDetailCollection(note: note)
