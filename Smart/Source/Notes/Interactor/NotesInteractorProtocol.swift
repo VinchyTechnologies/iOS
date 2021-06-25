@@ -10,4 +10,5 @@ import Foundation
 
 protocol NotesInteractorProtocol: AnyObject {
   func viewDidLoad()
+  func didEnterSearchText(_ searchText: String?)
 }

@@ -9,5 +9,5 @@
 import Foundation
 
 protocol NotesPresenterProtocol: AnyObject {
-
+  func update()
 }

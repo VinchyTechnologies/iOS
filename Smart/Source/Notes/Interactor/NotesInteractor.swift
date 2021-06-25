@@ -6,6 +6,8 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import Core
+import Database
 import Foundation
 
 // MARK: - NotesInteractor
@@ -26,7 +28,9 @@ final class NotesInteractor {
 
   private let router: NotesRouterProtocol
   private let presenter: NotesPresenterProtocol
+  private let throttler: ThrottlerProtocol = Throttler()
 
+  private var notes: [VNote] = []
 }
 
 // MARK: NotesInteractorProtocol
@@ -34,6 +38,30 @@ final class NotesInteractor {
 extension NotesInteractor: NotesInteractorProtocol {
 
   func viewDidLoad() {
+    presenter.update()
+  }
 
+  func didEnterSearchText(_ searchText: String?) {
+    guard
+      let searchText = searchText?.firstLetterUppercased(),
+      !searchText.isEmpty
+    else {
+      throttler.cancel()
+      notes = notesRepository.findAll()
+      return
+    }
+
+    throttler.cancel()
+
+    throttler.throttle(delay: .milliseconds(600)) { [weak self] in
+      let predicate = NSPredicate(format: "wineTitle CONTAINS %@ OR noteText CONTAINS %@", searchText, searchText)
+      var searchedNotes = [VNote]()
+      self?.notes.forEach { note in
+        if predicate.evaluate(with: note) {
+          searchedNotes.append(note)
+        }
+      }
+      self?.notes = searchedNotes
+    }
   }
 }

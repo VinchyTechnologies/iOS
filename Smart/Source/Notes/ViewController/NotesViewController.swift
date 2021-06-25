@@ -6,30 +6,38 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
 import CommonUI
 import Display
+import UIKit
 
 // MARK: - NotesViewController
 
-final class NotesViewController: UIViewController, UISearchControllerDelegate, UISearchResultsUpdating {
+final class NotesViewController: UIViewController {
 
   // MARK: Internal
 
   var interactor: NotesInteractorProtocol?
 
+  var viewModel: NotesViewModel? {
+    didSet {
+      navigationItem.title = viewModel?.navigationTitleText
+      tableView.reloadData()
+    }
+  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
-//    navigationItem.title = localized("notes").firstLetterUppercased()
     navigationItem.searchController = searchController
     navigationItem.hidesSearchBarWhenScrolling = false
     navigationController?.navigationBar.sizeToFit()
 
     view.addSubview(tableView)
     tableView.fill()
+  }
 
-
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
     interactor?.viewDidLoad()
   }
 
@@ -60,10 +68,123 @@ final class NotesViewController: UIViewController, UISearchControllerDelegate, U
 
 }
 
+// MARK: UITableViewDelegate
+
+extension NotesViewController: UITableViewDelegate {
+  func tableView(
+    _ tableView: UITableView,
+    didSelectRowAt indexPath: IndexPath)
+  {
+    tableView.deselectRow(at: indexPath, animated: true)
+//    guard let note = notes[safe: indexPath.row] else { return }
+//    let controller = Assembly.buildWriteNoteViewController(for: note)
+//    navigationController?.pushViewController(controller, animated: true)
+  }
+
+  func scrollViewWillBeginDragging(_: UIScrollView) {
+    if !navigationItem.hidesSearchBarWhenScrolling {
+      navigationItem.hidesSearchBarWhenScrolling = true
+    }
+  }
+}
+
+// MARK: UITableViewDataSource
+
+extension NotesViewController: UITableViewDataSource {
+
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    guard let type = viewModel?.sections[safe: section] else {
+      return 0
+    }
+    switch type {
+    case .simpleNote(let model):
+      return model.count
+    }
+  }
+
+  func numberOfSections(in tableView: UITableView) -> Int {
+    viewModel?.sections.count ?? 0
+  }
+
+  func tableView(
+    _ tableView: UITableView,
+    cellForRowAt indexPath: IndexPath)
+    -> UITableViewCell
+  {
+    guard let type = viewModel?.sections[indexPath.section] else {
+      return .init()
+    }
+
+    switch type {
+    case .simpleNote(let model):
+      if let cell = tableView.dequeueReusableCell(withIdentifier: WineTableCell.reuseId) as? WineTableCell {
+        cell.decorate(model: model[indexPath.row])
+        return cell
+      }
+      return .init()
+
+//    if
+//      let cell = tableView.dequeueReusableCell(withIdentifier: WineTableCell.reuseId) as? WineTableCell,
+//      let note = notes[safe: indexPath.row],
+//      let wineID = note.wineID,
+//      let wineTitle = note.wineTitle,
+//      let noteText = note.noteText
+//    {
+//      cell.decorate(model: .init(imageURL: imageURL(from: wineID).toURL, titleText: wineTitle, subtitleText: noteText))
+//      return cell
+//    }
+//    return .init()
+    }
+  }
+
+  func tableView(
+    _: UITableView,
+    commit editingStyle: UITableViewCell.EditingStyle,
+    forRowAt indexPath: IndexPath)
+  {
+//    if editingStyle == .delete, let note = notes[safe: indexPath.row] {
+//      let alert = UIAlertController(
+//        title: localized("delete_note"),
+//        message: localized("this_action_cannot_to_be_undone"),
+//        preferredStyle: .alert)
+//      alert.addAction(UIAlertAction(title: localized("delete"), style: .destructive, handler: { [weak self] _ in
+//        guard let self = self else { return }
+//        notesRepository.remove(note)
+//        self.notes = notesRepository.findAll()
+//      }))
+//      alert.addAction(UIAlertAction(title: localized("cancel"), style: .cancel, handler: nil))
+//      present(alert, animated: true, completion: nil)
+//      tableView.reloadData()
+//    }
+  }
+
+//  func tableView(
+//    _: UITableView,
+//    titleForDeleteConfirmationButtonForRowAt _: IndexPath)
+//    -> String?
+//  {
+//    localized("delete")
+//  }
+}
+
+// MARK: UISearchControllerDelegate
+
+extension NotesViewController: UISearchControllerDelegate {
+
+}
+
+// MARK: UISearchResultsUpdating
+
+extension NotesViewController: UISearchResultsUpdating {
+  func updateSearchResults(for searchController: UISearchController) {
+    interactor?.didEnterSearchText(searchController.searchBar.text)
+  }
+}
+
 // MARK: NotesViewControllerProtocol
 
 extension NotesViewController: NotesViewControllerProtocol {
   func updateUI(viewModel: NotesViewModel) {
-    navigationItem.title = viewModel.navigationTitleText
+    self.viewModel = viewModel
   }
 }

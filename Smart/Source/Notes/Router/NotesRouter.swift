@@ -14,11 +14,8 @@ final class NotesRouter {
 
   // MARK: Lifecycle
 
-  init(
-    input: NotesInput,
-    viewController: UIViewController)
+  init(viewController: UIViewController)
   {
-    self.input = input
     self.viewController = viewController
   }
 
@@ -26,10 +23,6 @@ final class NotesRouter {
 
   weak var viewController: UIViewController?
   weak var interactor: NotesInteractorProtocol?
-
-  // MARK: Private
-
-  private let input: NotesInput
 
 }
 

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import StringFormatting
 
 // MARK: - NotesPresenter
 
@@ -26,10 +27,19 @@ final class NotesPresenter {
 
   private typealias ViewModel = NotesViewModel
 
+  private func createViewModel() -> NotesViewModel {
+    var sections: [NotesViewModel.Section] = []
+    //заполнить секции
+    return NotesViewModel(sections: sections, navigationTitleText: localized("notes").firstLetterUppercased())
+  }
+
 }
 
 // MARK: NotesPresenterProtocol
 
 extension NotesPresenter: NotesPresenterProtocol {
-
+  func update() {
+    let viewModel = createViewModel()
+    viewController?.updateUI(viewModel: viewModel)
+  }
 }

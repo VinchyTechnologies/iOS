@@ -13,8 +13,7 @@ struct NotesViewModel {
   enum Section {
     case simpleNote([WineTableCellViewModel])
   }
-  
-  let sections: [Section]
 
+  let sections: [Section]
   let navigationTitleText: String?
 }

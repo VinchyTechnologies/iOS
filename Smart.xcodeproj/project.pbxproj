@@ -106,7 +106,6 @@
 		8AD7A37E2639D31A007D4273 /* PartnerAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7A37D2639D31A007D4273 /* PartnerAnnotationView.swift */; };
 		8AD7A455263B2A98007D4273 /* ClusterAnnotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7A454263B2A98007D4273 /* ClusterAnnotationView.swift */; };
 		8AE7880B2684E8D60056A84B /* NotesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE787FA2684E8D60056A84B /* NotesViewModel.swift */; };
-		8AE7880C2684E8D60056A84B /* NotesInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE787FC2684E8D60056A84B /* NotesInput.swift */; };
 		8AE7880D2684E8D60056A84B /* NotesAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE787FE2684E8D60056A84B /* NotesAssembly.swift */; };
 		8AE7880E2684E8D60056A84B /* NotesPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE788002684E8D60056A84B /* NotesPresenterProtocol.swift */; };
 		8AE7880F2684E8D60056A84B /* NotesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE788012684E8D60056A84B /* NotesPresenter.swift */; };
@@ -406,7 +405,6 @@
 		8AD7A37D2639D31A007D4273 /* PartnerAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerAnnotationView.swift; sourceTree = "<group>"; };
 		8AD7A454263B2A98007D4273 /* ClusterAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterAnnotationView.swift; sourceTree = "<group>"; };
 		8AE787FA2684E8D60056A84B /* NotesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesViewModel.swift; sourceTree = "<group>"; };
-		8AE787FC2684E8D60056A84B /* NotesInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesInput.swift; sourceTree = "<group>"; };
 		8AE787FE2684E8D60056A84B /* NotesAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesAssembly.swift; sourceTree = "<group>"; };
 		8AE788002684E8D60056A84B /* NotesPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesPresenterProtocol.swift; sourceTree = "<group>"; };
 		8AE788012684E8D60056A84B /* NotesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesPresenter.swift; sourceTree = "<group>"; };
@@ -1159,7 +1157,6 @@
 			isa = PBXGroup;
 			children = (
 				8AE787FD2684E8D60056A84B /* Assembly */,
-				8AE787FB2684E8D60056A84B /* Input */,
 				8AE788052684E8D60056A84B /* Interactor */,
 				8AE787FF2684E8D60056A84B /* Presenter */,
 				8AE788082684E8D60056A84B /* Router */,
@@ -1175,14 +1172,6 @@
 				8AE787FA2684E8D60056A84B /* NotesViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		8AE787FB2684E8D60056A84B /* Input */ = {
-			isa = PBXGroup;
-			children = (
-				8AE787FC2684E8D60056A84B /* NotesInput.swift */,
-			);
-			path = Input;
 			sourceTree = "<group>";
 		};
 		8AE787FD2684E8D60056A84B /* Assembly */ = {
@@ -2504,7 +2493,6 @@
 				449F81C425DD049B00585364 /* DeeplinkFlow.swift in Sources */,
 				CEF2087C25E8297900C413EA /* CurrencyCell.swift in Sources */,
 				CA819846253864080056A1C6 /* WineDetailAssembly.swift in Sources */,
-				8AE7880C2684E8D60056A84B /* NotesInput.swift in Sources */,
 				CA8CD67725096EC200FDB7AF /* GADTSmallTemplateView.m in Sources */,
 				CE58DEDF25ED73E200B5BDF9 /* CurrencyViewControllerProtocol.swift in Sources */,
 				CA7B838924F451FA00991F24 /* WineDetailViewController.swift in Sources */,
