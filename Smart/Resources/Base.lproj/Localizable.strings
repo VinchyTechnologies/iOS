@@ -73,6 +73,7 @@
 "zero_rating_error" = "Rating cannot be zero";
 "open_in_app" = "Open in another application";
 "region" = "region";
+"save" = "save";
 
 // MARK: - Sugar
 "sugar" = "sugar";
