@@ -67,7 +67,6 @@ final class NotesViewController: UIViewController {
     $0.register(WineTableCell.self, forCellReuseIdentifier: WineTableCell.reuseId)
     return $0
   }(UITableView())
-
 }
 
 // MARK: UITableViewDelegate
@@ -163,6 +162,19 @@ extension NotesViewController: UISearchResultsUpdating {
 extension NotesViewController: NotesViewControllerProtocol {
   func updateUI(viewModel: NotesViewModel) {
     self.viewModel = viewModel
+  }
+
+  func hideEmptyView() {
+    tableView.backgroundView = nil
+  }
+
+  func showEmptyView(title: String, subtitle: String) {
+    let errorView = ErrorView(frame: view.frame)
+    errorView.decorate(model: .init(
+      titleText: title.firstLetterUppercased(),
+      subtitleText: subtitle.firstLetterUppercased(),
+      buttonText: nil))
+    tableView.backgroundView = errorView
   }
 }
 

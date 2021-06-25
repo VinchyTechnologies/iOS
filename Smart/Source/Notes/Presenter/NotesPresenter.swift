@@ -50,10 +50,23 @@ final class NotesPresenter {
 // MARK: NotesPresenterProtocol
 
 extension NotesPresenter: NotesPresenterProtocol {
+  func showEmpty(_ isEmpty: Bool) {
+    if isEmpty {
+      viewController?.showEmptyView(title: localized("nothing_here"), subtitle: localized("you_have_not_written_any_notes_yet"))
+    } else {
+      viewController?.showEmptyView(title: localized("nothing_here"), subtitle: localized("no_notes_found_for_your_request"))
+    }
+  }
+
+  func hideEmpty() {
+    viewController?.hideEmptyView()
+  }
+
   func update(notes: [VNote]) {
     let viewModel = createViewModel(notes: notes)
     viewController?.updateUI(viewModel: viewModel)
   }
+
   func showAlert() {
     viewController?.showAlert(title: localized("delete_note"), message: localized("this_action_cannot_to_be_undone"))
   }

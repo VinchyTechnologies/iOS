@@ -11,4 +11,6 @@ import Foundation
 
 protocol NotesViewControllerProtocol: Alertable {
   func updateUI(viewModel: NotesViewModel)
+  func hideEmptyView()
+  func showEmptyView(title: String, subtitle: String)
 }
