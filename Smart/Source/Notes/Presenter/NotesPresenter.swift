@@ -50,7 +50,7 @@ final class NotesPresenter {
 // MARK: NotesPresenterProtocol
 
 extension NotesPresenter: NotesPresenterProtocol {
-  func showEmpty(_ isEmpty: Bool) {
+  func showEmpty(isEmpty: Bool) {
     if isEmpty {
       viewController?.showEmptyView(title: localized("nothing_here"), subtitle: localized("you_have_not_written_any_notes_yet"))
     } else {

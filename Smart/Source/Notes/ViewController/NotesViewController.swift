@@ -53,7 +53,6 @@ final class NotesViewController: UIViewController {
     searchController.searchBar.searchTextField.layer.cornerRadius = 20
     searchController.searchBar.searchTextField.layer.masksToBounds = true
     searchController.searchBar.searchTextField.layer.cornerCurve = .continuous
-    searchController.delegate = self
     searchController.searchResultsUpdater = self
     searchController.hidesNavigationBarDuringPresentation = true
     return searchController
@@ -141,12 +140,6 @@ extension NotesViewController: UITableViewDataSource {
   {
     localized("delete")
   }
-}
-
-// MARK: UISearchControllerDelegate
-
-extension NotesViewController: UISearchControllerDelegate {
-
 }
 
 // MARK: UISearchResultsUpdating

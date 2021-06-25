@@ -30,9 +30,15 @@ final class NotesInteractor {
   private let presenter: NotesPresenterProtocol
   private let throttler: ThrottlerProtocol = Throttler()
   private var indexPathDelete: IndexPath?
+  private var searchText: String = ""
 
   private var notes: [VNote] = [] {
     didSet {
+      if searchText.isEmpty == true {
+        notes.isEmpty ? presenter.showEmpty(isEmpty: true) : presenter.hideEmpty()
+      } else {
+        notes.isEmpty ? presenter.showEmpty(isEmpty: false) : presenter.hideEmpty()
+      }
       presenter.update(notes: notes)
     }
   }
@@ -66,6 +72,8 @@ extension NotesInteractor: NotesInteractorProtocol {
   }
 
   func didEnterSearchText(_ searchText: String?) {
+    self.searchText = searchText ?? ""
+
     guard
       let searchText = searchText?.firstLetterUppercased(),
       !searchText.isEmpty

@@ -12,6 +12,6 @@ import Foundation
 protocol NotesPresenterProtocol: AnyObject {
   func update(notes: [VNote])
   func showAlert()
-  func showEmpty(_ isEmpty: Bool)
+  func showEmpty(isEmpty: Bool)
   func hideEmpty()
 }
