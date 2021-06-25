@@ -24,7 +24,20 @@ public struct Wine: Decodable {
     let price = try? container.decodeIfPresent(Int64.self, forKey: .price)
     let alcoholPercent = try? container.decodeIfPresent(Double.self, forKey: .alcoholPercent)
     let servingTemperature = try? container.decodeIfPresent(Double.self, forKey: .servingTemperature)
-    let dishCompatibility = try? container.decodeIfPresent([DishCompatibility].self, forKey: .dishCompatibility)
+    let dishCompatibilityFromBackend = try? container.decodeIfPresent([DishCompatibility].self, forKey: .dishCompatibility)
+
+    var dishCompatibility: [DishCompatibility] = []
+
+    if let dishCompatibilityFromBackend = dishCompatibilityFromBackend, !dishCompatibilityFromBackend.isEmpty {
+      var orderedAllCases = DishCompatibility.allCases
+      orderedAllCases.forEach { dish in
+        if !dishCompatibilityFromBackend.contains(dish) {
+          orderedAllCases.removeAll(where: { $0 == dish })
+        }
+      }
+      dishCompatibility = orderedAllCases
+    }
+
     let year = try? container.decodeIfPresent(Int.self, forKey: .year)
     let grapes = try? container.decodeIfPresent([String].self, forKey: .grapes)
     let winery = try? container.decodeIfPresent(Winery.self, forKey: .winery)
