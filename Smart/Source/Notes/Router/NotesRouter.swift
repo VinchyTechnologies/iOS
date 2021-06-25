@@ -6,6 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import Database
 import UIKit
 
 // MARK: - NotesRouter
@@ -29,5 +30,8 @@ final class NotesRouter {
 // MARK: NotesRouterProtocol
 
 extension NotesRouter: NotesRouterProtocol {
-
+  func pushToDetailCollection(note: VNote) {
+    let controller = Assembly.buildWriteNoteViewController(for: note)
+    viewController?.navigationController?.pushViewController(controller, animated: true)
+  }
 }

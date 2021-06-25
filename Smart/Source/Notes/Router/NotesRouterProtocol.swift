@@ -6,8 +6,9 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import Database
 import Foundation
 
 protocol NotesRouterProtocol: AnyObject {
-
+  func pushToDetailCollection(note: VNote)
 }

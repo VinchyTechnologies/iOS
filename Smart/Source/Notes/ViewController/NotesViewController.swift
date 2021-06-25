@@ -76,9 +76,7 @@ extension NotesViewController: UITableViewDelegate {
     didSelectRowAt indexPath: IndexPath)
   {
     tableView.deselectRow(at: indexPath, animated: true)
-//    guard let note = notes[safe: indexPath.row] else { return }
-//    let controller = Assembly.buildWriteNoteViewController(for: note)
-//    navigationController?.pushViewController(controller, animated: true)
+    interactor?.didTapNoteCell(at: indexPath)
   }
 
   func scrollViewWillBeginDragging(_: UIScrollView) {

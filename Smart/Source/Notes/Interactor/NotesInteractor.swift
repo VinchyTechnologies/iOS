@@ -30,16 +30,23 @@ final class NotesInteractor {
   private let presenter: NotesPresenterProtocol
   private let throttler: ThrottlerProtocol = Throttler()
 
-  private var notes: [VNote] = []
+  private var notes: [VNote] = [] {
+    didSet {
+      presenter.update(notes: notes)
+    }
+  }
 }
 
 // MARK: NotesInteractorProtocol
 
 extension NotesInteractor: NotesInteractorProtocol {
+  func didTapNoteCell(at indexPath: IndexPath) {
+    guard let note = notes[safe: indexPath.row] else { return }
+    router.pushToDetailCollection(note: note)
+  }
 
   func viewDidLoad() {
     notes = notesRepository.findAll()
-    presenter.update(notes: notes)
   }
 
   func didEnterSearchText(_ searchText: String?) {

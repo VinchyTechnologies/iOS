@@ -11,4 +11,5 @@ import Foundation
 protocol NotesInteractorProtocol: AnyObject {
   func viewDidLoad()
   func didEnterSearchText(_ searchText: String?)
+  func didTapNoteCell(at indexPath: IndexPath)
 }
