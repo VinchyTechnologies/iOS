@@ -87,7 +87,7 @@ final class LegacyNotesViewController: UIViewController, UISearchControllerDeleg
     throttler.throttle(delay: .milliseconds(600)) { [weak self] in
       let predicate = NSPredicate(format: "wineTitle CONTAINS %@ OR noteText CONTAINS %@", searchText, searchText)
       var searchedNotes = [VNote]()
-      self?.notes.forEach { note in
+      notesRepository.findAll().forEach { note in
         if predicate.evaluate(with: note) {
           searchedNotes.append(note)
         }

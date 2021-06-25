@@ -20,14 +20,12 @@ final class NotesViewController: UIViewController {
 
   var interactor: NotesInteractorProtocol?
 
-
   var viewModel: NotesViewModel? {
     didSet {
       navigationItem.title = viewModel?.navigationTitleText
       tableView.reloadData()
     }
   }
-
 
   override func viewDidLoad() {
     super.viewDidLoad()

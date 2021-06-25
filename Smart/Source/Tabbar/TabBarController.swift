@@ -76,7 +76,7 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
       image: UIImage(systemName: "heart", withConfiguration: imageConfig)?.withTintColor(.blueGray, renderingMode: .alwaysOriginal),
       selectedImage: UIImage(systemName: "heart", withConfiguration: imageConfig)?.withTintColor(.accent, renderingMode: .alwaysOriginal))
 
-    let notes = NavigationController(rootViewController: Assembly.buildNotesViewController())
+    let notes = NavigationController(rootViewController: NotesAssembly.assemblyModule())
     notes.tabBarItem = UITabBarItem(
       title: localized("notes").firstLetterUppercased(),
       image: UIImage(systemName: "square.and.pencil", withConfiguration: imageConfig)?.withTintColor(.blueGray, renderingMode: .alwaysOriginal),

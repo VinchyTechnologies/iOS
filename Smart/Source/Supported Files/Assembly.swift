@@ -81,9 +81,4 @@ final class Assembly {
     controller.hidesBottomBarWhenPushed = true
     return controller
   }
-
-  static func buildNotesViewController() -> UIViewController {
-    let controller = NotesAssembly.assemblyModule()
-    return controller
-  }
 }

@@ -29,7 +29,6 @@ final class NotesInteractor {
   private let router: NotesRouterProtocol
   private let presenter: NotesPresenterProtocol
   private let throttler: ThrottlerProtocol = Throttler()
-//  private var indexPathDelete: IndexPath?
   private var searchText: String?
 
   private var notes: [VNote] = [] {
@@ -56,7 +55,6 @@ extension NotesInteractor: NotesInteractorProtocol {
 
   func didTapDeleteCell(wineID: Int64) {
     if notes.first(where: { $0.wineID == wineID }) != nil {
-//      indexPathDelete = indexPath
       presenter.showDeletingAlert(wineID: wineID)
     }
   }
@@ -87,7 +85,7 @@ extension NotesInteractor: NotesInteractorProtocol {
     throttler.throttle(delay: .milliseconds(600)) { [weak self] in
       let predicate = NSPredicate(format: "wineTitle CONTAINS %@ OR noteText CONTAINS %@", searchText, searchText)
       var searchedNotes = [VNote]()
-      self?.notes.forEach { note in
+      notesRepository.findAll().forEach { note in
         if predicate.evaluate(with: note) {
           searchedNotes.append(note)
         }
