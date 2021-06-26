@@ -61,9 +61,9 @@ final class RootRouterImpl: RootRouter {
 final class AgreementsModuleFactory {
   func makeAgreementsViewController(
     delegate: AgreementsViewControllerOutput?)
-    -> AgreementsViewController
+    -> NewAgreementViewController
   {
-    let viewController = AgreementsViewController()
+    let viewController = NewAgreementViewController()
     viewController.delegate = delegate
     return viewController
   }

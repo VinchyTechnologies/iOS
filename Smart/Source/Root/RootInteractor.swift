@@ -45,7 +45,7 @@ final class RootInteractorImpl: RootInteractor, AgreementsViewControllerOutput, 
   func startApp() {
     if !(UserDefaultsConfig.isAdult && UserDefaultsConfig.isAgreedToTermsAndConditions) {
       startDoc()
-    } else if /*!onboardingRepository.isLastVersionOnboardingSeen(),*/ isOnboardingAvailable {
+    } else if !onboardingRepository.isLastVersionOnboardingSeen(), isOnboardingAvailable {
       startOnboardingFlow()
     } else {
       startTabBar()

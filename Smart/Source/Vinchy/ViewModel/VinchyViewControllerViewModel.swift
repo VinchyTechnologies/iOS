@@ -22,6 +22,7 @@ struct VinchyViewControllerViewModel {
     case bottles([VinchySimpleConiniousCaruselCollectionCellViewModel])
     case suggestions([SuggestionCollectionCellViewModel])
     case shareUs([ShareUsCollectionCellViewModel])
+    case smartFilter([SmartFilterCollectionCellViewModel])
   }
 
   enum FakeSection {

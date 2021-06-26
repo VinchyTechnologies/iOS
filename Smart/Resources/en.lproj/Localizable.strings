@@ -74,6 +74,7 @@
 "open_in_app" = "Open in another application";
 "region" = "region";
 "save" = "save";
+"continue" = "continue";
 
 // MARK: - Sugar
 "sugar" = "sugar";
@@ -136,9 +137,9 @@
 
 // MARK: - ConfirmToStartViewController
 "legal_age" = "You are older than minimum legal drinking age in your country.";
-"terms_of_use_agreement" = "You agree to the Terms & Conditions.";
+"terms_of_use_agreement" = "By clicking the \"Continue\" button, you acknowledge that you are older than the minimum legal drinking age in your country and agree to the Terms & Conditions.";
 "terms_of_use" = "Terms & Conditions.";
-"before_we_start" = "Before we start...";
+"before_we_start" = "A little formalities at the beginning";
 
 // MARK: - Error
 "open_url_error" = "An error occured while opening the URL";

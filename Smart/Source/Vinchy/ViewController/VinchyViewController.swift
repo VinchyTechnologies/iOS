@@ -227,6 +227,11 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
         let width = collectionView.frame.width - 2 * C.horizontalInset
         let height: CGFloat = 150 // TODO: -
         return .init(width: width, height: height)
+
+      case .smartFilter:
+        let width = collectionView.frame.width - 2 * C.horizontalInset
+        let height: CGFloat = 170 // TODO: -
+        return .init(width: width, height: height)
       }
     }
   }
@@ -255,7 +260,7 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
       case .suggestions:
         return .init(top: 0, left: C.horizontalInset, bottom: 0, right: C.horizontalInset)
 
-      case .shareUs:
+      case .shareUs, .smartFilter:
         return .init(top: 15, left: C.horizontalInset, bottom: 10, right: C.horizontalInset)
 
       case .stories, .promo, .big, .bottles:
@@ -298,6 +303,9 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
         return model.count
 
       case .shareUs(let model):
+        return model.count
+
+      case .smartFilter(let model):
         return model.count
       }
     }
@@ -350,16 +358,13 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
         cell.decorate(model: model[indexPath.row])
         cell.delegate = self
         return cell
-      }
 
-      //            case .smartFilter:
-      //                // swiftlint:disable:next force_cast
-      //                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SmartFilterCollectionCell.reuseId, for: indexPath) as! SmartFilterCollectionCell
-      //                cell.decorate(model: .init(
-      //                                accentText: "New in Vinchy".uppercased(),
-      //                                boldText: "Personal compilations",
-      //                                subtitleText: "Answer on 3 questions & we find for you best wines.",
-      //                                buttonText: "Try now"))
+      case .smartFilter(let model):
+        // swiftlint:disable:next force_cast
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SmartFilterCollectionCell.reuseId, for: indexPath) as! SmartFilterCollectionCell
+        cell.decorate(model: model[indexPath.row])
+        return cell
+      }
     }
   }
 }
