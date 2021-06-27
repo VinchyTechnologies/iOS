@@ -16,6 +16,7 @@ import VinchyCore
 
 private enum C {
   static let imageConfig = UIImage.SymbolConfiguration(pointSize: 22, weight: .medium, scale: .default)
+  static let numberOfNonHiddenRowsInGeneralInfoSection: Int = 3
 }
 
 // MARK: - WineDetailPresenter
@@ -31,6 +32,8 @@ final class WineDetailPresenter {
   // MARK: Internal
 
   weak var viewController: WineDetailViewControllerProtocol?
+
+  var viewModel: WineDetailViewModel?
 
   // MARK: Private
 
@@ -50,7 +53,7 @@ final class WineDetailPresenter {
     }
   }
 
-  private func buildGeneralInfo(wine: Wine) -> [WineDetailViewModel.Section] {
+  private func buildGeneralInfo(wine: Wine, prefix: Int?) -> (sections: [WineDetailViewModel.Section], count: Int) {
     var shortDescriptions: [TitleWithSubtitleInfoCollectionViewCellViewModel] = []
 
     if let color = wine.color {
@@ -78,9 +81,13 @@ final class WineDetailPresenter {
     }
 
     if !shortDescriptions.isEmpty {
-      return [.list(shortDescriptions)]
+      if let prefix = prefix {
+        return (sections: [.list(Array(shortDescriptions.prefix(prefix)))], count: shortDescriptions.count)
+      } else {
+        return (sections: [.list(shortDescriptions)], count: shortDescriptions.count)
+      }
     } else {
-      return []
+      return (sections: [], count: 0)
     }
   }
 
@@ -152,49 +159,8 @@ final class WineDetailPresenter {
     let rateViewModel = StarRatingControlCollectionViewCellViewModel(rate: rate)
     return [.rate([rateViewModel])]
   }
-}
 
-// MARK: WineDetailPresenterProtocol
-
-extension WineDetailPresenter: WineDetailPresenterProtocol {
-  var reportAnErrorText: String? {
-    localized("tell_about_error").firstLetterUppercased()
-  }
-
-  var dislikeText: String? {
-    localized("unlike").firstLetterUppercased()
-  }
-
-  var reportAnErrorRecipients: [String] {
-    [localized("contact_email")]
-  }
-
-  func showAlertWineAlreadyDisliked() {
-    viewController?.showAlert(title: localized("error").firstLetterUppercased(), message: localized("you_have_already_disliked_the_wine"))
-  }
-
-  func showAlertWineAlreadyLiked() {
-    viewController?.showAlert(title: localized("error").firstLetterUppercased(), message: localized("you_have_already_liked_the_wine"))
-  }
-
-  func showNetworkErrorAlert(error: Error) {
-    viewController?.showAlert(title: localized("error").firstLetterUppercased(), message: error.localizedDescription)
-  }
-
-  func showAlertCantOpenEmail() {
-    viewController?.showAlert(title: localized("error").firstLetterUppercased(), message: localized("open_mail_error"))
-  }
-
-  func startLoading() {
-    viewController?.addLoader()
-    viewController?.startLoadingAnimation()
-  }
-
-  func stopLoading() {
-    viewController?.stopLoadingAnimation()
-  }
-
-  func update(wine: Wine, isLiked: Bool, isDisliked _: Bool, rate _: Double, currency: String) {
+  private func generateAllSections(wine: Wine, isLiked: Bool, isDisliked: Bool, rate: Double, currency: String) -> [WineDetailViewModel.Section] {
     var sections: [WineDetailViewModel.Section] = []
 
     sections += buildCaruselImages(wine: wine)
@@ -243,7 +209,12 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
       ]
     }
 
-    sections += buildGeneralInfo(wine: wine)
+    let generalInfoRows = buildGeneralInfo(wine: wine, prefix: C.numberOfNonHiddenRowsInGeneralInfoSection)
+    sections += generalInfoRows.sections
+
+    if generalInfoRows.count > C.numberOfNonHiddenRowsInGeneralInfoSection {
+      sections += [.expandCollapse([.init(chevronDirection: .down, titleText: localized("expand").firstLetterUppercased(), animated: false)])]
+    }
 
     sections += buildServingTips(wine: wine)
 
@@ -270,7 +241,97 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
       sections += [.similarWines([VinchySimpleConiniousCaruselCollectionCellViewModel(type: .bottles, collections: collections)])]
     }
 
-    viewController?.updateUI(viewModel: WineDetailViewModel(navigationTitle: wine.title, sections: sections))
+    return sections
+  }
+}
+
+// MARK: WineDetailPresenterProtocol
+
+extension WineDetailPresenter: WineDetailPresenterProtocol {
+
+  var reportAnErrorText: String? {
+    localized("tell_about_error").firstLetterUppercased()
+  }
+
+  var dislikeText: String? {
+    localized("unlike").firstLetterUppercased()
+  }
+
+  var reportAnErrorRecipients: [String] {
+    [localized("contact_email")]
+  }
+
+  func expandOrCollapseGeneralInfo(wine: Wine, isGeneralInfoCollapsed: Bool) {
+
+    let indexOfGeneralInfo = viewModel?.sections.firstIndex(where: { section in
+      switch section {
+      case .list:
+        return true
+
+      default:
+        return false
+      }
+    })
+
+    guard let indexOfGeneralInfo = indexOfGeneralInfo else {
+      return
+    }
+
+    guard
+      let section = buildGeneralInfo(
+        wine: wine,
+        prefix: isGeneralInfoCollapsed ? C.numberOfNonHiddenRowsInGeneralInfoSection : nil).sections.first
+    else {
+      return
+    }
+
+    viewModel?.sections[indexOfGeneralInfo] = section
+
+    guard var viewModel = viewModel else {
+      return
+    }
+
+    viewModel.isGeneralInfoCollapsed = isGeneralInfoCollapsed
+
+    viewController?.updateGeneralInfoSectionAndExpandOrCollapseCell(viewModel: viewModel)
+
+    self.viewModel = viewModel
+  }
+
+  func showAlertWineAlreadyDisliked() {
+    viewController?.showAlert(title: localized("error").firstLetterUppercased(), message: localized("you_have_already_disliked_the_wine"))
+  }
+
+  func showAlertWineAlreadyLiked() {
+    viewController?.showAlert(title: localized("error").firstLetterUppercased(), message: localized("you_have_already_liked_the_wine"))
+  }
+
+  func showNetworkErrorAlert(error: Error) {
+    viewController?.showAlert(title: localized("error").firstLetterUppercased(), message: error.localizedDescription)
+  }
+
+  func showAlertCantOpenEmail() {
+    viewController?.showAlert(title: localized("error").firstLetterUppercased(), message: localized("open_mail_error"))
+  }
+
+  func startLoading() {
+    viewController?.addLoader()
+    viewController?.startLoadingAnimation()
+  }
+
+  func stopLoading() {
+    viewController?.stopLoadingAnimation()
+  }
+
+  func update(wine: Wine, isLiked: Bool, isDisliked: Bool, rate: Double, currency: String, isGeneralInfoCollapsed: Bool) {
+
+    let sections = generateAllSections(wine: wine, isLiked: isLiked, isDisliked: isDisliked, rate: rate, currency: currency)
+
+    let viewModel = WineDetailViewModel(navigationTitle: wine.title, sections: sections, isGeneralInfoCollapsed: isGeneralInfoCollapsed)
+
+    viewController?.updateUI(viewModel: viewModel)
+
+    self.viewModel = viewModel
   }
 
   func showStatusAlertDidLikedSuccessfully() {

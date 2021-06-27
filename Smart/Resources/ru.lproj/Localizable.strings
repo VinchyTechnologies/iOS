@@ -75,6 +75,8 @@
 "region" = "регион";
 "save" = "сохранить";
 "continue" = "продолжить";
+"expand" = "ещё";
+"collapse" = "скрыть";
 
 // MARK: - Sugar
 "sugar" = "сахар";

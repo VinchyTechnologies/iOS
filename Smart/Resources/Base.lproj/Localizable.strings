@@ -75,6 +75,8 @@
 "region" = "region";
 "save" = "save";
 "continue" = "continue";
+"expand" = "more";
+"collapse" = "less";
 
 // MARK: - Sugar
 "sugar" = "sugar";

@@ -14,11 +14,12 @@ protocol WineDetailPresenterProtocol: AnyObject {
   var dislikeText: String? { get }
   func startLoading()
   func stopLoading()
-  func update(wine: Wine, isLiked: Bool, isDisliked: Bool, rate: Double, currency: String)
+  func update(wine: Wine, isLiked: Bool, isDisliked: Bool, rate: Double, currency: String, isGeneralInfoCollapsed: Bool)
   func showAlertCantOpenEmail()
   func showNetworkErrorAlert(error: Error)
   func showAlertWineAlreadyDisliked()
   func showAlertWineAlreadyLiked()
   func showStatusAlertDidLikedSuccessfully()
   func showStatusAlertDidDislikedSuccessfully()
+  func expandOrCollapseGeneralInfo(wine: Wine, isGeneralInfoCollapsed: Bool)
 }

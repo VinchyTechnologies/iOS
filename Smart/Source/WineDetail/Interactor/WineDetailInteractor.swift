@@ -48,6 +48,7 @@ final class WineDetailInteractor {
   private let router: WineDetailRouterProtocol
   private let presenter: WineDetailPresenterProtocol
   private let input: WineDetailInput
+  private var isGeneralInfoCollapsed: Bool = true
 
   private lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
     guard let self = self else { return }
@@ -79,7 +80,8 @@ final class WineDetailInteractor {
           isLiked: self.isFavourite(wine: wine),
           isDisliked: self.isDisliked(wine: wine),
           rate: self.rate ?? 0,
-          currency: UserDefaultsConfig.currency)
+          currency: UserDefaultsConfig.currency,
+          isGeneralInfoCollapsed: self.isGeneralInfoCollapsed)
         self.wine = wine
 
       case .failure(let error):
@@ -145,6 +147,14 @@ final class WineDetailInteractor {
 // MARK: WineDetailInteractorProtocol
 
 extension WineDetailInteractor: WineDetailInteractorProtocol {
+
+  func didTapExpandOrCollapseGeneralInfo() {
+    guard let wine = wine else {
+      return
+    }
+    isGeneralInfoCollapsed = !isGeneralInfoCollapsed
+    presenter.expandOrCollapseGeneralInfo(wine: wine, isGeneralInfoCollapsed: isGeneralInfoCollapsed)
+  }
 
   func didTapStarsRatingControl() {
     openReviewFlow()

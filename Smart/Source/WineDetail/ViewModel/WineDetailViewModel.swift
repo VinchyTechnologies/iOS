@@ -29,8 +29,10 @@ struct WineDetailViewModel {
     case button([ButtonCollectionCellViewModel])
     case ad([Any]) // TODO: - Not Any
     case similarWines([VinchySimpleConiniousCaruselCollectionCellViewModel])
+    case expandCollapse([ExpandCollapseCellViewModel])
   }
 
   let navigationTitle: String?
   var sections: [Section]
+  var isGeneralInfoCollapsed: Bool
 }

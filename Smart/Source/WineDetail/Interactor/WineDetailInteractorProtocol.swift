@@ -23,4 +23,5 @@ protocol WineDetailInteractorProtocol: AnyObject {
   func didTapReview(reviewID: Int)
   func didSuccessfullyLoginOrRegister()
   func didTapStarsRatingControl()
+  func didTapExpandOrCollapseGeneralInfo()
 }
