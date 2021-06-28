@@ -16,4 +16,5 @@ struct NotesViewModel {
 
   let sections: [Section]
   let navigationTitleText: String?
+  let titleForDeleteConfirmationButton: String?
 }

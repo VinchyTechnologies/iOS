@@ -152,7 +152,7 @@ extension NotesViewController: UITableViewDataSource {
     titleForDeleteConfirmationButtonForRowAt _: IndexPath)
     -> String?
   {
-    localized("delete")
+    viewModel?.titleForDeleteConfirmationButton
   }
 }
 
@@ -167,6 +167,7 @@ extension NotesViewController: UISearchResultsUpdating {
 // MARK: NotesViewControllerProtocol
 
 extension NotesViewController: NotesViewControllerProtocol {
+
   func updateUI(viewModel: NotesViewModel) {
     self.viewModel = viewModel
   }
@@ -188,14 +189,14 @@ extension NotesViewController: NotesViewControllerProtocol {
 // MARK: Alertable
 
 extension NotesViewController: Alertable {
-  func showAlert(wineID: Int64, title: String, message: String?) -> AnyPublisher<Void, Never> {
+  func showAlert(wineID: Int64, title: String, firstActionTitle: String, secondActionTitle: String, message: String?) -> AnyPublisher<Void, Never> {
     Future { _ in
       let alertController = UIAlertController(title: title, message: message, preferredStyle: .alert)
-      alertController.addAction(UIAlertAction(title: localized("delete"), style: .destructive, handler: { [weak self] _ in
+      alertController.addAction(UIAlertAction(title: firstActionTitle, style: .destructive, handler: { [weak self] _ in
         guard let self = self else { return }
         self.interactor?.didTapConfirmDeleteCell(wineID: wineID)
       }))
-      alertController.addAction(UIAlertAction(title: localized("cancel"), style: .cancel, handler: nil))
+      alertController.addAction(UIAlertAction(title: secondActionTitle, style: .cancel, handler: nil))
       self.present(alertController, animated: true, completion: nil)
     }
     .handleEvents(receiveCancel: {

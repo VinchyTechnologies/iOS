@@ -13,5 +13,5 @@ protocol NotesViewControllerProtocol: Alertable {
   func updateUI(viewModel: NotesViewModel)
   func hideEmptyView()
   func showEmptyView(title: String, subtitle: String)
-  func showAlert(wineID: Int64, title: String, message: String?) -> AnyPublisher<Void, Never>
+  func showAlert(wineID: Int64, title: String, firstActionTitle: String, secondActionTitle: String, message: String?) -> AnyPublisher<Void, Never>
 }
