@@ -96,9 +96,9 @@ private enum AccountEndpoint: EndpointProtocol {
 
     case .update(_, let refreshToken, let accountName, let password):
       return [
-        ("refresh_token", refreshToken),
+        ("access_token", refreshToken),
         ("account_name", accountName as Any),
-        ("password", password as Any),
+//        ("password", password as Any),
       ]
 
     case .updateTokens(_, let refreshToken):

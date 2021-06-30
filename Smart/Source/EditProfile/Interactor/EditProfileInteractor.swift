@@ -40,7 +40,7 @@ extension EditProfileInteractor: EditProfileInteractorProtocol {
 
 //    Accounts.shared.updateAccount(
 //      accountID: UserDefaultsConfig.accountID,
-//      refreshToken: Keychain.shared.refreshToken ?? "",
+//      refreshToken: "Keychain.shared.accessToken" ?? "",
 //      accountName: currentEditingName,
 //      password: nil) { result in
 //        switch result {
