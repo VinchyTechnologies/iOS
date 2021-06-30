@@ -130,7 +130,7 @@ final class WineDetailViewController: UIViewController {
       section.contentInsets = .init(top: 15, leading: 15, bottom: 0, trailing: 15)
       return section
 
-    case .list:
+    case .list, .whereToBuy:
       let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)))
       let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)), subitems: [item])
       let section = NSCollectionLayoutSection(group: group)
@@ -181,7 +181,7 @@ final class WineDetailViewController: UIViewController {
       let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)))
       let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)), subitems: [item])
       let section = NSCollectionLayoutSection(group: group)
-      section.contentInsets = .init(top: 15, leading: 0, bottom: 0, trailing: 0)
+      section.contentInsets = .init(top: 15, leading: 0, bottom: 10, trailing: 0)
       return section
 
     case .similarWines:
@@ -222,7 +222,8 @@ final class WineDetailViewController: UIViewController {
       ReviewCell.self,
       RatingsAndReviewsCell.self,
       TapToRateCell.self,
-      ExpandCollapseCell.self)
+      ExpandCollapseCell.self,
+      WhereToBuyCell.self)
 
     return collectionView
   }()
@@ -304,6 +305,9 @@ extension WineDetailViewController: UICollectionViewDataSource {
       return model.count
 
     case .expandCollapse(let model):
+      return model.count
+
+    case .whereToBuy(let model):
       return model.count
     }
   }
@@ -421,6 +425,14 @@ extension WineDetailViewController: UICollectionViewDataSource {
         for: indexPath) as! ExpandCollapseCell // swiftlint:disable:this force_cast
       cell.decorate(model: model[indexPath.row])
       return cell
+
+    case .whereToBuy(let model):
+      let cell = collectionView.dequeueReusableCell(
+        withReuseIdentifier: WhereToBuyCell.reuseId,
+        for: indexPath) as! WhereToBuyCell // swiftlint:disable:this force_cast
+      cell.decorate(model: model[indexPath.row])
+      cell.backgroundColor = indexPath.row.isMultiple(of: 2) ? .option : .mainBackground
+      return cell
     }
   }
 }
@@ -446,6 +458,9 @@ extension WineDetailViewController: UICollectionViewDelegate {
 
     case .expandCollapse:
       interactor?.didTapExpandOrCollapseGeneralInfo()
+
+    case .whereToBuy:
+      break
 
     case .reviews(let model):
       interactor?.didTapReview(reviewID: model[indexPath.row].id)

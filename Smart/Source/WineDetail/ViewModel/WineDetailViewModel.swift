@@ -30,6 +30,7 @@ struct WineDetailViewModel {
     case ad([Any]) // TODO: - Not Any
     case similarWines([VinchySimpleConiniousCaruselCollectionCellViewModel])
     case expandCollapse([ExpandCollapseCellViewModel])
+    case whereToBuy([WhereToBuyCellViewModel])
   }
 
   let navigationTitle: String?

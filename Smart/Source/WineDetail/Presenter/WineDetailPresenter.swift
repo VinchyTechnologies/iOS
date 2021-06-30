@@ -228,6 +228,27 @@ final class WineDetailPresenter {
       sections += [.ad([1])] // TODO: - Add Real Model
     }
 
+    /// where to buy
+
+//    sections += [
+//
+//      .title([.init(
+//        titleText: NSAttributedString(
+//          string: localized("Where to buy?").firstLetterUppercased(),
+//          font: Font.heavy(20),
+//          textColor: .dark))]),
+//    ]
+//
+//    sections += [
+//      .whereToBuy([
+//        .init(imageURL: "https://buninave.ru/wp-content/uploads/2018/05/logo_5ka.png", titleText: "Пятерочка", subtitleText: nil),
+//        .init(imageURL: "https://buninave.ru/wp-content/uploads/2018/05/logo_5ka.png", titleText: "Пятерочка", subtitleText: nil),
+//        .init(imageURL: "https://buninave.ru/wp-content/uploads/2018/05/logo_5ka.png", titleText: "Пятерочка", subtitleText: nil),
+//        .init(imageURL: "https://buninave.ru/wp-content/uploads/2018/05/logo_5ka.png", titleText: "Пятерочка", subtitleText: nil),
+//        .init(imageURL: "https://buninave.ru/wp-content/uploads/2018/05/logo_5ka.png", titleText: "Пятерочка", subtitleText: nil),
+//      ]),
+//    ]
+
     var wineList: [CollectionItem] = []
 
     if let similarWines = wine.similarWines {
