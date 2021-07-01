@@ -112,6 +112,17 @@
 		8A91602A268CE66C00240B18 /* AreYouInStoreInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91601E268CE66C00240B18 /* AreYouInStoreInteractor.swift */; };
 		8A91602B268CE66C00240B18 /* AreYouInStoreRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916020268CE66C00240B18 /* AreYouInStoreRouter.swift */; };
 		8A91602C268CE66C00240B18 /* AreYouInStoreRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916021268CE66C00240B18 /* AreYouInStoreRouterProtocol.swift */; };
+		8A916118268E27EB00240B18 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916107268E27EB00240B18 /* SearchViewModel.swift */; };
+		8A916119268E27EB00240B18 /* SearchInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916109268E27EB00240B18 /* SearchInput.swift */; };
+		8A91611A268E27EB00240B18 /* SearchAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91610B268E27EB00240B18 /* SearchAssembly.swift */; };
+		8A91611B268E27EB00240B18 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91610D268E27EB00240B18 /* SearchPresenter.swift */; };
+		8A91611C268E27EB00240B18 /* SearchPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91610E268E27EB00240B18 /* SearchPresenterProtocol.swift */; };
+		8A91611D268E27EB00240B18 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916110268E27EB00240B18 /* SearchViewController.swift */; };
+		8A91611E268E27EB00240B18 /* SearchViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916111268E27EB00240B18 /* SearchViewControllerProtocol.swift */; };
+		8A91611F268E27EB00240B18 /* SearchInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916113268E27EB00240B18 /* SearchInteractorProtocol.swift */; };
+		8A916120268E27EB00240B18 /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916114268E27EB00240B18 /* SearchInteractor.swift */; };
+		8A916121268E27EB00240B18 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916116268E27EB00240B18 /* SearchRouter.swift */; };
+		8A916122268E27EB00240B18 /* SearchRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916117268E27EB00240B18 /* SearchRouterProtocol.swift */; };
 		8AA5E5132615053D00935B5E /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA5E5122615053D00935B5E /* AboutView.swift */; };
 		8AD49F16267520F90094E157 /* ReviewsInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB3225E177220076ED6D /* ReviewsInteractorProtocol.swift */; };
 		8AD49F17267521040094E157 /* ReviewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB2D25E177220076ED6D /* ReviewsPresenter.swift */; };
@@ -422,6 +433,17 @@
 		8A91601E268CE66C00240B18 /* AreYouInStoreInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreYouInStoreInteractor.swift; sourceTree = "<group>"; };
 		8A916020268CE66C00240B18 /* AreYouInStoreRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreYouInStoreRouter.swift; sourceTree = "<group>"; };
 		8A916021268CE66C00240B18 /* AreYouInStoreRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreYouInStoreRouterProtocol.swift; sourceTree = "<group>"; };
+		8A916107268E27EB00240B18 /* SearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		8A916109268E27EB00240B18 /* SearchInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchInput.swift; sourceTree = "<group>"; };
+		8A91610B268E27EB00240B18 /* SearchAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchAssembly.swift; sourceTree = "<group>"; };
+		8A91610D268E27EB00240B18 /* SearchPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
+		8A91610E268E27EB00240B18 /* SearchPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPresenterProtocol.swift; sourceTree = "<group>"; };
+		8A916110268E27EB00240B18 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		8A916111268E27EB00240B18 /* SearchViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewControllerProtocol.swift; sourceTree = "<group>"; };
+		8A916113268E27EB00240B18 /* SearchInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchInteractorProtocol.swift; sourceTree = "<group>"; };
+		8A916114268E27EB00240B18 /* SearchInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
+		8A916116268E27EB00240B18 /* SearchRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
+		8A916117268E27EB00240B18 /* SearchRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRouterProtocol.swift; sourceTree = "<group>"; };
 		8AA5E5122615053D00935B5E /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		8AD49F2B26752B4B0094E157 /* AnalyticsTrackable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsTrackable.swift; sourceTree = "<group>"; };
 		8AD7A37D2639D31A007D4273 /* PartnerAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerAnnotationView.swift; sourceTree = "<group>"; };
@@ -1215,6 +1237,80 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		8A916105268E27EB00240B18 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				8A91610A268E27EB00240B18 /* Assembly */,
+				8A916108268E27EB00240B18 /* Input */,
+				8A916112268E27EB00240B18 /* Interactor */,
+				8A91610C268E27EB00240B18 /* Presenter */,
+				8A916115268E27EB00240B18 /* Router */,
+				8A91610F268E27EB00240B18 /* ViewController */,
+				8A916106268E27EB00240B18 /* ViewModel */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		8A916106268E27EB00240B18 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8A916107268E27EB00240B18 /* SearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8A916108268E27EB00240B18 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				8A916109268E27EB00240B18 /* SearchInput.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		8A91610A268E27EB00240B18 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				8A91610B268E27EB00240B18 /* SearchAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		8A91610C268E27EB00240B18 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8A91610D268E27EB00240B18 /* SearchPresenter.swift */,
+				8A91610E268E27EB00240B18 /* SearchPresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		8A91610F268E27EB00240B18 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8A916110268E27EB00240B18 /* SearchViewController.swift */,
+				8A916111268E27EB00240B18 /* SearchViewControllerProtocol.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		8A916112268E27EB00240B18 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				8A916113268E27EB00240B18 /* SearchInteractorProtocol.swift */,
+				8A916114268E27EB00240B18 /* SearchInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		8A916115268E27EB00240B18 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				8A916116268E27EB00240B18 /* SearchRouter.swift */,
+				8A916117268E27EB00240B18 /* SearchRouterProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		8AA5E5162615084B00935B5E /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1492,13 +1588,13 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
-		CA3B1D3E249E3EAC00FAA08A /* Search */ = {
+		CA3B1D3E249E3EAC00FAA08A /* ResultsSearch */ = {
 			isa = PBXGroup;
 			children = (
 				CA3B1D41249E3FE100FAA08A /* ResultsTableController.swift */,
 				CA015C1924C44925008DF01D /* DidnotFindTheWineTableCell.swift */,
 			);
-			path = Search;
+			path = ResultsSearch;
 			sourceTree = "<group>";
 		};
 		CA3B1D5224A0A34700FAA08A /* Notes */ = {
@@ -1589,10 +1685,11 @@
 				CAF5140D2461C4ED00667ED0 /* More */,
 				CA3B1D5224A0A34700FAA08A /* Notes */,
 				CA070A762523D77000C3D9EC /* Onboarding */,
+				CA3B1D3E249E3EAC00FAA08A /* ResultsSearch */,
 				44EFDB5C25E263E00076ED6D /* ReviewDetail */,
 				44EFDB2425E177220076ED6D /* Reviews */,
 				449F81AA25DD022000585364 /* Root */,
-				CA3B1D3E249E3EAC00FAA08A /* Search */,
+				8A916105268E27EB00240B18 /* Search */,
 				CA0A352324785A0900C400F5 /* Showcase */,
 				CA472B3F245EDEDB009149FF /* Supported Files */,
 				449F81B925DD02A600585364 /* Tabbar */,
@@ -2567,6 +2664,7 @@
 				8A313C0826447042009F2165 /* MapDetailStoreRouter.swift in Sources */,
 				8A916026268CE66C00240B18 /* AreYouInStorePresenterProtocol.swift in Sources */,
 				449F81AC25DD023A00585364 /* RootInteractor.swift in Sources */,
+				8A91611B268E27EB00240B18 /* SearchPresenter.swift in Sources */,
 				447C354025EEAA5700105A35 /* MapInteractorProtocol.swift in Sources */,
 				CAA9DC67250EA05F00F996A8 /* AdvancedSearchCaruselCollectionCell.swift in Sources */,
 				8A916027268CE66C00240B18 /* AreYouInStoreViewController.swift in Sources */,
@@ -2578,6 +2676,7 @@
 				CA4857942517C77E00EDA4CE /* VinchyAssembly.swift in Sources */,
 				8A91600C268CC3AE00240B18 /* WhereToBuyCell.swift in Sources */,
 				4437AA6225E3A7CE00F6E838 /* WriteReviewInteractorProtocol.swift in Sources */,
+				8A91611C268E27EB00240B18 /* SearchPresenterProtocol.swift in Sources */,
 				CA070C1825250AEC00C3D9EC /* OnboardPage.swift in Sources */,
 				44EFDB3725E177220076ED6D /* ReviewsViewModel.swift in Sources */,
 				CA49A219251E8CFE00FBE269 /* TitleWithSubtitleInfoCollectionViewCell.swift in Sources */,
@@ -2600,6 +2699,7 @@
 				CA7B836024EF109200991F24 /* MainSubtitleCollectionCell.swift in Sources */,
 				CA819844253864080056A1C6 /* WineDetailViewModel.swift in Sources */,
 				447C353E25EEAA5700105A35 /* MapViewControllerProtocol.swift in Sources */,
+				8A916122268E27EB00240B18 /* SearchRouterProtocol.swift in Sources */,
 				4437AA6125E3A7CE00F6E838 /* WriteReviewViewControllerProtocol.swift in Sources */,
 				44465EC025F39400005B3F06 /* MapRepository.swift in Sources */,
 				44EFDB7125E263E00076ED6D /* ReviewDetailAssembly.swift in Sources */,
@@ -2654,6 +2754,7 @@
 				4437AA5C25E3A7CE00F6E838 /* WriteReviewInput.swift in Sources */,
 				CA472AC2245EDE2F009149FF /* SceneDelegate.swift in Sources */,
 				8A916023268CE66C00240B18 /* AreYouInStoreInput.swift in Sources */,
+				8A91611E268E27EB00240B18 /* SearchViewControllerProtocol.swift in Sources */,
 				CE69649D25E07BDE00CD414D /* InfoCurrencyCell.swift in Sources */,
 				CE4254EB258157DC001158D2 /* MoreViewControllerModel.swift in Sources */,
 				8A0D9CB726871D9D0076A7EC /* NewAgreementViewController.swift in Sources */,
@@ -2662,16 +2763,19 @@
 				CA99E65124F58A6000C36BEE /* ToolCollectionCell.swift in Sources */,
 				8A916025268CE66C00240B18 /* AreYouInStorePresenter.swift in Sources */,
 				447C353C25EEAA5700105A35 /* MapPresenterProtocol.swift in Sources */,
+				8A916121268E27EB00240B18 /* SearchRouter.swift in Sources */,
 				8A91602B268CE66C00240B18 /* AreYouInStoreRouter.swift in Sources */,
 				8A313C0426447042009F2165 /* MapDetailStoreViewController.swift in Sources */,
 				CA276D55256AC6720061BEBE /* FakeCell.swift in Sources */,
 				CACA7EA0254C57CC0099E622 /* WriteNoteInteractorProtocol.swift in Sources */,
 				8AE788F8268638CD0056A84B /* OnboardingBottomView.swift in Sources */,
 				8A1036CA264D7E1200F7CA81 /* MapNavigationBarCollectionCell.swift in Sources */,
+				8A916118268E27EB00240B18 /* SearchViewModel.swift in Sources */,
 				CEB0A6222609442B00B07B87 /* ShowcaseRouterProtocol.swift in Sources */,
 				44EFDB7625E263E00076ED6D /* ReviewDetailInteractor.swift in Sources */,
 				CE8FF83925FADABF004D4F37 /* ShowcaseInteractorProtocol.swift in Sources */,
 				447C353D25EEAA5700105A35 /* MapViewController.swift in Sources */,
+				8A916119268E27EB00240B18 /* SearchInput.swift in Sources */,
 				4437AA5F25E3A7CE00F6E838 /* WriteReviewPresenterProtocol.swift in Sources */,
 				CE404B0B2589D47C00917544 /* MorePresenterProtocol.swift in Sources */,
 				CA2C22DC2554464F002469E4 /* AdvancedSearchPresenter.swift in Sources */,
@@ -2689,6 +2793,7 @@
 				CE7E3F1225F06AE50045A759 /* CurrencyViewControllerModel.swift in Sources */,
 				CA8CD68325097AD500FDB7AF /* GADTMediumTemplateView.m in Sources */,
 				447C353F25EEAA5700105A35 /* MapInteractor.swift in Sources */,
+				8A91611A268E27EB00240B18 /* SearchAssembly.swift in Sources */,
 				44EFDB7425E263E00076ED6D /* ReviewDetailViewController.swift in Sources */,
 				44465EC625F3940E005B3F06 /* MapRepositoryProtocol.swift in Sources */,
 				8AF966BF2678F194001891B2 /* EditProfileInput.swift in Sources */,
@@ -2711,6 +2816,7 @@
 				CAF514202461C52400667ED0 /* MoreAssembly.swift in Sources */,
 				CACA7EA1254C57CC0099E622 /* WriteNoteInteractor.swift in Sources */,
 				8AF966C72678F194001891B2 /* EditProfileRouter.swift in Sources */,
+				8A91611F268E27EB00240B18 /* SearchInteractorProtocol.swift in Sources */,
 				CAF514272461C52400667ED0 /* SocialMediaCell.swift in Sources */,
 				8A313C0926447042009F2165 /* MapDetailStoreRouterProtocol.swift in Sources */,
 				CA2C22DE2554464F002469E4 /* AdvancedSearchViewControllerProtocol.swift in Sources */,
@@ -2718,9 +2824,11 @@
 				8AF966BE2678F194001891B2 /* EditProfileViewModel.swift in Sources */,
 				449F81B625DD027C00585364 /* RootBuilder.swift in Sources */,
 				CA7B838C24F4547B00991F24 /* GalleryCell.swift in Sources */,
+				8A91611D268E27EB00240B18 /* SearchViewController.swift in Sources */,
 				CE7346382589B75E00028574 /* MoreViewProtocol.swift in Sources */,
 				8A313BFF26447042009F2165 /* MapDetailStoreViewModel.swift in Sources */,
 				8AF966C52678F194001891B2 /* EditProfileInteractorProtocol.swift in Sources */,
+				8A916120268E27EB00240B18 /* SearchInteractor.swift in Sources */,
 				44EFDB7325E263E00076ED6D /* ReviewDetailPresenter.swift in Sources */,
 				CAA060D2252BC05C002C15B5 /* DeveloperFeatureToggles.swift in Sources */,
 				CA7A87FC2507ED7800AAD10F /* AdsCollectionViewCell.swift in Sources */,
