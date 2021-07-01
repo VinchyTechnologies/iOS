@@ -64,7 +64,7 @@ extension NotesInteractor: NotesInteractorProtocol {
 
   func didTapNoteCell(wineID: Int64) {
     guard let note = notes.first(where: { $0.wineID == wineID }) else { return }
-    router.pushToDetailNote(note: note)
+    router.pushToWriteViewController(note: note)
   }
 
   func viewWillAppear() {

@@ -10,5 +10,5 @@ import Database
 import Foundation
 
 protocol NotesRouterProtocol: AnyObject {
-  func pushToDetailNote(note: VNote)
+  func pushToWriteViewController(note: VNote)
 }
