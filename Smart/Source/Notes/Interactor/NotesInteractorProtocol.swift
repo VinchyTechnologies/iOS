@@ -9,7 +9,7 @@
 import Foundation
 
 protocol NotesInteractorProtocol: AnyObject {
-  func viewDidLoad()
+  func viewWillAppear()
   func didEnterSearchText(_ searchText: String?)
   func didTapNoteCell(wineID: Int64)
   func didTapDeleteCell(wineID: Int64)

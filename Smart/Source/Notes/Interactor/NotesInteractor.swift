@@ -13,9 +13,9 @@ import Foundation
 // MARK: - NotesInteractor
 
 final class NotesInteractor {
-  
+
   // MARK: Lifecycle
-  
+
   init(
     router: NotesRouterProtocol,
     presenter: NotesPresenterProtocol)
@@ -23,21 +23,22 @@ final class NotesInteractor {
     self.router = router
     self.presenter = presenter
   }
-  
+
   // MARK: Private
-  
+
   private let router: NotesRouterProtocol
   private let presenter: NotesPresenterProtocol
   private let throttler: ThrottlerProtocol = Throttler()
   private var searchText: String?
-  
+
   private var allNotes: [VNote] = []
+
   private var notes: [VNote] = [] {
     didSet {
       if searchText.isNilOrEmpty {
-        notes.isEmpty ? presenter.showEmpty(type: .isEmpty) : presenter.hideEmpty()
+        notes.isEmpty ? presenter.showEmptyView(type: .isEmpty) : presenter.hideEmptyView()
       } else {
-        notes.isEmpty ? presenter.showEmpty(type: .noFound) : presenter.hideEmpty()
+        notes.isEmpty ? presenter.showEmptyView(type: .noFound) : presenter.hideEmptyView()
       }
       presenter.update(notes: notes)
     }
@@ -54,26 +55,26 @@ extension NotesInteractor: NotesInteractorProtocol {
       notes = notes.filter({ $0.wineID != wineID })
     }
   }
-  
+
   func didTapDeleteCell(wineID: Int64) {
     if notes.first(where: { $0.wineID == wineID }) != nil {
       presenter.showDeletingAlert(wineID: wineID)
     }
   }
-  
+
   func didTapNoteCell(wineID: Int64) {
     guard let note = notes.first(where: { $0.wineID == wineID }) else { return }
-    router.pushToDetailCollection(note: note)
+    router.pushToDetailNote(note: note)
   }
-  
-  func viewDidLoad() {
+
+  func viewWillAppear() {
     allNotes = notesRepository.findAll()
     notes = allNotes
   }
-  
+
   func didEnterSearchText(_ searchText: String?) {
     self.searchText = searchText
-    
+
     guard
       let searchText = searchText?.firstLetterUppercased(),
       !searchText.isEmpty
@@ -82,9 +83,9 @@ extension NotesInteractor: NotesInteractorProtocol {
       notes = allNotes
       return
     }
-    
+
     throttler.cancel()
-    
+
     throttler.throttle(delay: .milliseconds(600)) { [weak self] in
       let predicate = NSPredicate(format: "wineTitle CONTAINS %@ OR noteText CONTAINS %@", searchText, searchText)
       var searchedNotes = [VNote]()

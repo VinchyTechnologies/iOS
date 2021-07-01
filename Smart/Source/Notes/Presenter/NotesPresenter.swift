@@ -51,7 +51,7 @@ final class NotesPresenter {
 
 extension NotesPresenter: NotesPresenterProtocol {
 
-  func showEmpty(type: NotesEmptyType) {
+  func showEmptyView(type: NotesEmptyType) {
 
     switch type {
     case .isEmpty:
@@ -62,7 +62,7 @@ extension NotesPresenter: NotesPresenterProtocol {
     }
   }
 
-  func hideEmpty() {
+  func hideEmptyView() {
     viewController?.hideEmptyView()
   }
 

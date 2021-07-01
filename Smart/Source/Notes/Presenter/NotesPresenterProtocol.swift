@@ -19,6 +19,6 @@ enum NotesEmptyType {
 protocol NotesPresenterProtocol: AnyObject {
   func update(notes: [VNote])
   func showDeletingAlert(wineID: Int64)
-  func showEmpty(type: NotesEmptyType)
-  func hideEmpty()
+  func showEmptyView(type: NotesEmptyType)
+  func hideEmptyView()
 }

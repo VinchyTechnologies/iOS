@@ -149,7 +149,6 @@
 		CA2C22E32554464F002469E4 /* AdvancedSearchRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA2C22D82554464F002469E4 /* AdvancedSearchRouterProtocol.swift */; };
 		CA3837CC246FCF3C00AD5FCC /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3837CB246FCF3C00AD5FCC /* TabBarController.swift */; };
 		CA3B1D42249E3FE100FAA08A /* ResultsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B1D41249E3FE100FAA08A /* ResultsTableController.swift */; };
-		CA3B1D5424A0A36300FAA08A /* LegacyNotesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3B1D5324A0A36300FAA08A /* LegacyNotesViewController.swift */; };
 		CA3C97DF25723C570036F7D9 /* TitleCopyableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3C97DE25723C570036F7D9 /* TitleCopyableCell.swift */; };
 		CA3C97E6257245F40036F7D9 /* Countries.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA3C97E8257245F40036F7D9 /* Countries.strings */; };
 		CA3C981F257260BC0036F7D9 /* StatusAlertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3C981E257260BC0036F7D9 /* StatusAlertable.swift */; };
@@ -450,7 +449,6 @@
 		CA2C22D82554464F002469E4 /* AdvancedSearchRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSearchRouterProtocol.swift; sourceTree = "<group>"; };
 		CA3837CB246FCF3C00AD5FCC /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		CA3B1D41249E3FE100FAA08A /* ResultsTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableController.swift; sourceTree = "<group>"; };
-		CA3B1D5324A0A36300FAA08A /* LegacyNotesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LegacyNotesViewController.swift; sourceTree = "<group>"; };
 		CA3C97DE25723C570036F7D9 /* TitleCopyableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCopyableCell.swift; sourceTree = "<group>"; };
 		CA3C97E7257245F40036F7D9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Countries.strings; sourceTree = "<group>"; };
 		CA3C97EB257245FB0036F7D9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Countries.strings; sourceTree = "<group>"; };
@@ -1474,14 +1472,6 @@
 			path = Search;
 			sourceTree = "<group>";
 		};
-		CA3B1D5224A0A34700FAA08A /* LegacyNotes */ = {
-			isa = PBXGroup;
-			children = (
-				CA3B1D5324A0A36300FAA08A /* LegacyNotesViewController.swift */,
-			);
-			path = LegacyNotes;
-			sourceTree = "<group>";
-		};
 		CA46DBE5252517FD0007819E /* Repository */ = {
 			isa = PBXGroup;
 			children = (
@@ -1555,7 +1545,6 @@
 				CAF514112461C51B00667ED0 /* Doc */,
 				8AF966AB2678F194001891B2 /* EditProfile */,
 				CA4858542519E95100EDA4CE /* ForceUpdate */,
-				CA3B1D5224A0A34700FAA08A /* LegacyNotes */,
 				CAF514692468171500667ED0 /* Love */,
 				447C352525EEAA5700105A35 /* Map */,
 				8A313BEC26447042009F2165 /* MapDetailStore */,
@@ -2579,7 +2568,6 @@
 				4437AA6525E3A7CE00F6E838 /* WriteReviewRouter.swift in Sources */,
 				449D63B225E1054700CBBD1D /* RatingsAndReviewsCell.swift in Sources */,
 				8AD7A37E2639D31A007D4273 /* PartnerAnnotationView.swift in Sources */,
-				CA3B1D5424A0A36300FAA08A /* LegacyNotesViewController.swift in Sources */,
 				CA2C22DD2554464F002469E4 /* AdvancedSearchPresenterProtocol.swift in Sources */,
 				4437AA6E25E3BE7300F6E838 /* WriteReviewRoutable.swift in Sources */,
 				CACA7E9A254C57CC0099E622 /* WriteNoteInput.swift in Sources */,

@@ -30,7 +30,7 @@ final class NotesRouter {
 // MARK: NotesRouterProtocol
 
 extension NotesRouter: NotesRouterProtocol {
-  func pushToDetailCollection(note: VNote) {
+  func pushToDetailNote(note: VNote) {
     let controller = Assembly.buildWriteNoteViewController(for: note)
     viewController?.navigationController?.pushViewController(controller, animated: true)
   }

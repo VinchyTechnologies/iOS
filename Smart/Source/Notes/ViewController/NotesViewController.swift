@@ -20,13 +20,6 @@ final class NotesViewController: UIViewController {
 
   var interactor: NotesInteractorProtocol?
 
-  var viewModel: NotesViewModel? {
-    didSet {
-      navigationItem.title = viewModel?.navigationTitleText
-      tableView.reloadData()
-    }
-  }
-
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -40,7 +33,7 @@ final class NotesViewController: UIViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    interactor?.viewDidLoad()
+    interactor?.viewWillAppear()
   }
 
   // MARK: Private
@@ -66,6 +59,13 @@ final class NotesViewController: UIViewController {
     $0.register(WineTableCell.self, forCellReuseIdentifier: WineTableCell.reuseId)
     return $0
   }(UITableView())
+
+  private var viewModel: NotesViewModel? {
+    didSet {
+      navigationItem.title = viewModel?.navigationTitleText
+      tableView.reloadData()
+    }
+  }
 }
 
 // MARK: UITableViewDelegate
@@ -121,11 +121,10 @@ extension NotesViewController: UITableViewDataSource {
 
     switch type {
     case .simpleNote(let model):
-      if let cell = tableView.dequeueReusableCell(withIdentifier: WineTableCell.reuseId) as? WineTableCell {
-        cell.decorate(model: model[indexPath.row])
-        return cell
-      }
-      return .init()
+      // swiftlint:disable:next force_cast
+      let cell = tableView.dequeueReusableCell(withIdentifier: WineTableCell.reuseId, for: indexPath) as! WineTableCell
+      cell.decorate(model: model[indexPath.row])
+      return cell
     }
   }
 
