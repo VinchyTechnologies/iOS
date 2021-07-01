@@ -1682,13 +1682,13 @@
 		CA4D51022549F5F600A6FD0B /* WriteNote */ = {
 			isa = PBXGroup;
 			children = (
-				CACA7E87254C57CC0099E622 /* ViewModel */,
-				CACA7E89254C57CC0099E622 /* Input */,
 				CACA7E8B254C57CC0099E622 /* Assembly */,
-				CACA7E8D254C57CC0099E622 /* Presenter */,
-				CACA7E90254C57CC0099E622 /* ViewController */,
+				CACA7E89254C57CC0099E622 /* Input */,
 				CACA7E93254C57CC0099E622 /* Interactor */,
+				CACA7E8D254C57CC0099E622 /* Presenter */,
 				CACA7E96254C57CC0099E622 /* Router */,
+				CACA7E90254C57CC0099E622 /* ViewController */,
+				CACA7E87254C57CC0099E622 /* ViewModel */,
 			);
 			path = WriteNote;
 			sourceTree = "<group>";

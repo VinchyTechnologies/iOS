@@ -107,7 +107,7 @@ extension UIButton {
 
   @objc
   private func animateDown(sender: UIButton) {
-    let scale: CGFloat = 0.98 //(frame.width - scaleOffset) / frame.width
+    let scale: CGFloat = max(0.98, (frame.width - 8) / frame.width)
     animate(sender, transform: CGAffineTransform.identity.scaledBy(x: scale, y: scale))
   }
 

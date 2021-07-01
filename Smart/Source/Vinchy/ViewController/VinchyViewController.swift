@@ -73,9 +73,9 @@ final class VinchyViewController: UIViewController {
 //            .init(titleText: NSAttributedString(string: "Кажется, Вы в магазине \"Пятерочка\"?", font: Font.bold(24), textColor: .dark, paragraphAlignment: .center)),
 //          ]),
 //
-////          .title([
-////            .init(titleText: NSAttributedString(string: "Рекомендуем обратить внимание", font: Font.regular(16), textColor: .dark)),
-////          ]),
+    ////          .title([
+    ////            .init(titleText: NSAttributedString(string: "Рекомендуем обратить внимание", font: Font.regular(16), textColor: .dark)),
+    ////          ]),
 //
 //          .recommendedWines([
 //            .init(type: .bottles, collections: [.init(wineList: [.wine(wine: ShortWine.fake)])]),
