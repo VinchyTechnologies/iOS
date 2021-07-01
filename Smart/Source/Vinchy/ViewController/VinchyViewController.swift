@@ -59,34 +59,34 @@ final class VinchyViewController: UIViewController {
 
     interactor?.viewDidLoad()
 
-    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-      let options = SheetOptions(shrinkPresentingViewController: false)
-      let controller = AreYouInStoreAssembly.assemblyModule(input: .init())
-
-      let bottomButtonsViewModel = BottomButtonsViewModel(
-        leadingButtonText: "Я не здесь",
-        trailingButtonText: "Смотреть ещё")
-
-      let viewModel = AreYouInStoreViewModel(
-        sections: [
-          .title([
-            .init(titleText: NSAttributedString(string: "Кажется, Вы в магазине \"Пятерочка\"?", font: Font.bold(24), textColor: .dark, paragraphAlignment: .center)),
-          ]),
-
+//    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+//      let options = SheetOptions(shrinkPresentingViewController: false)
+//      let controller = AreYouInStoreAssembly.assemblyModule(input: .init())
+//
+//      let bottomButtonsViewModel = BottomButtonsViewModel(
+//        leadingButtonText: "Я не здесь",
+//        trailingButtonText: "Смотреть ещё")
+//
+//      let viewModel = AreYouInStoreViewModel(
+//        sections: [
 //          .title([
-//            .init(titleText: NSAttributedString(string: "Рекомендуем обратить внимание", font: Font.regular(16), textColor: .dark)),
+//            .init(titleText: NSAttributedString(string: "Кажется, Вы в магазине \"Пятерочка\"?", font: Font.bold(24), textColor: .dark, paragraphAlignment: .center)),
 //          ]),
-
-          .recommendedWines([
-            .init(type: .bottles, collections: [.init(wineList: [.wine(wine: ShortWine.fake)])]),
-          ]),
-        ],
-        bottomButtonsViewModel: bottomButtonsViewModel)
-
-      let height = AreYouInStoreViewController.height(viewModel: viewModel) // TODO: - input
-      let sheetController = SheetViewController(controller: controller, sizes: [.fixed(height)], options: options)
-      self.present(sheetController, animated: true, completion: nil)
-    }
+//
+////          .title([
+////            .init(titleText: NSAttributedString(string: "Рекомендуем обратить внимание", font: Font.regular(16), textColor: .dark)),
+////          ]),
+//
+//          .recommendedWines([
+//            .init(type: .bottles, collections: [.init(wineList: [.wine(wine: ShortWine.fake)])]),
+//          ]),
+//        ],
+//        bottomButtonsViewModel: bottomButtonsViewModel)
+//
+//      let height = AreYouInStoreViewController.height(viewModel: viewModel) // TODO: - input
+//      let sheetController = SheetViewController(controller: controller, sizes: [.fixed(height)], options: options)
+//      self.present(sheetController, animated: true, completion: nil)
+//    }
   }
 
   override func viewWillLayoutSubviews() {
