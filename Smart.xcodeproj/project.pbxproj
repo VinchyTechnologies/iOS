@@ -101,6 +101,17 @@
 		8A63CCC126754638003B1D4D /* VinchyCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A915C9E26887D9500240B18 /* ExpandCollapseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A915C9D26887D9500240B18 /* ExpandCollapseCell.swift */; };
 		8A91600C268CC3AE00240B18 /* WhereToBuyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91600B268CC3AE00240B18 /* WhereToBuyCell.swift */; };
+		8A916022268CE66C00240B18 /* AreYouInStoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916011268CE66C00240B18 /* AreYouInStoreViewModel.swift */; };
+		8A916023268CE66C00240B18 /* AreYouInStoreInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916013268CE66C00240B18 /* AreYouInStoreInput.swift */; };
+		8A916024268CE66C00240B18 /* AreYouInStoreAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916015268CE66C00240B18 /* AreYouInStoreAssembly.swift */; };
+		8A916025268CE66C00240B18 /* AreYouInStorePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916017268CE66C00240B18 /* AreYouInStorePresenter.swift */; };
+		8A916026268CE66C00240B18 /* AreYouInStorePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916018268CE66C00240B18 /* AreYouInStorePresenterProtocol.swift */; };
+		8A916027268CE66C00240B18 /* AreYouInStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91601A268CE66C00240B18 /* AreYouInStoreViewController.swift */; };
+		8A916028268CE66C00240B18 /* AreYouInStoreViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91601B268CE66C00240B18 /* AreYouInStoreViewControllerProtocol.swift */; };
+		8A916029268CE66C00240B18 /* AreYouInStoreInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91601D268CE66C00240B18 /* AreYouInStoreInteractorProtocol.swift */; };
+		8A91602A268CE66C00240B18 /* AreYouInStoreInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91601E268CE66C00240B18 /* AreYouInStoreInteractor.swift */; };
+		8A91602B268CE66C00240B18 /* AreYouInStoreRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916020268CE66C00240B18 /* AreYouInStoreRouter.swift */; };
+		8A91602C268CE66C00240B18 /* AreYouInStoreRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916021268CE66C00240B18 /* AreYouInStoreRouterProtocol.swift */; };
 		8AA5E5132615053D00935B5E /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA5E5122615053D00935B5E /* AboutView.swift */; };
 		8AD49F16267520F90094E157 /* ReviewsInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB3225E177220076ED6D /* ReviewsInteractorProtocol.swift */; };
 		8AD49F17267521040094E157 /* ReviewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB2D25E177220076ED6D /* ReviewsPresenter.swift */; };
@@ -400,6 +411,17 @@
 		8A446CDE2660123B000A1769 /* RoutingToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingToolBar.swift; sourceTree = "<group>"; };
 		8A915C9D26887D9500240B18 /* ExpandCollapseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandCollapseCell.swift; sourceTree = "<group>"; };
 		8A91600B268CC3AE00240B18 /* WhereToBuyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhereToBuyCell.swift; sourceTree = "<group>"; };
+		8A916011268CE66C00240B18 /* AreYouInStoreViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreYouInStoreViewModel.swift; sourceTree = "<group>"; };
+		8A916013268CE66C00240B18 /* AreYouInStoreInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreYouInStoreInput.swift; sourceTree = "<group>"; };
+		8A916015268CE66C00240B18 /* AreYouInStoreAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreYouInStoreAssembly.swift; sourceTree = "<group>"; };
+		8A916017268CE66C00240B18 /* AreYouInStorePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreYouInStorePresenter.swift; sourceTree = "<group>"; };
+		8A916018268CE66C00240B18 /* AreYouInStorePresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreYouInStorePresenterProtocol.swift; sourceTree = "<group>"; };
+		8A91601A268CE66C00240B18 /* AreYouInStoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreYouInStoreViewController.swift; sourceTree = "<group>"; };
+		8A91601B268CE66C00240B18 /* AreYouInStoreViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreYouInStoreViewControllerProtocol.swift; sourceTree = "<group>"; };
+		8A91601D268CE66C00240B18 /* AreYouInStoreInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreYouInStoreInteractorProtocol.swift; sourceTree = "<group>"; };
+		8A91601E268CE66C00240B18 /* AreYouInStoreInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreYouInStoreInteractor.swift; sourceTree = "<group>"; };
+		8A916020268CE66C00240B18 /* AreYouInStoreRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreYouInStoreRouter.swift; sourceTree = "<group>"; };
+		8A916021268CE66C00240B18 /* AreYouInStoreRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreYouInStoreRouterProtocol.swift; sourceTree = "<group>"; };
 		8AA5E5122615053D00935B5E /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		8AD49F2B26752B4B0094E157 /* AnalyticsTrackable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsTrackable.swift; sourceTree = "<group>"; };
 		8AD7A37D2639D31A007D4273 /* PartnerAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerAnnotationView.swift; sourceTree = "<group>"; };
@@ -1119,6 +1141,80 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		8A91600F268CE66C00240B18 /* AreYouInStore */ = {
+			isa = PBXGroup;
+			children = (
+				8A916014268CE66C00240B18 /* Assembly */,
+				8A916012268CE66C00240B18 /* Input */,
+				8A91601C268CE66C00240B18 /* Interactor */,
+				8A916016268CE66C00240B18 /* Presenter */,
+				8A91601F268CE66C00240B18 /* Router */,
+				8A916019268CE66C00240B18 /* ViewController */,
+				8A916010268CE66C00240B18 /* ViewModel */,
+			);
+			path = AreYouInStore;
+			sourceTree = "<group>";
+		};
+		8A916010268CE66C00240B18 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8A916011268CE66C00240B18 /* AreYouInStoreViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8A916012268CE66C00240B18 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				8A916013268CE66C00240B18 /* AreYouInStoreInput.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		8A916014268CE66C00240B18 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				8A916015268CE66C00240B18 /* AreYouInStoreAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		8A916016268CE66C00240B18 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8A916017268CE66C00240B18 /* AreYouInStorePresenter.swift */,
+				8A916018268CE66C00240B18 /* AreYouInStorePresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		8A916019268CE66C00240B18 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8A91601A268CE66C00240B18 /* AreYouInStoreViewController.swift */,
+				8A91601B268CE66C00240B18 /* AreYouInStoreViewControllerProtocol.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		8A91601C268CE66C00240B18 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				8A91601D268CE66C00240B18 /* AreYouInStoreInteractorProtocol.swift */,
+				8A91601E268CE66C00240B18 /* AreYouInStoreInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		8A91601F268CE66C00240B18 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				8A916020268CE66C00240B18 /* AreYouInStoreRouter.swift */,
+				8A916021268CE66C00240B18 /* AreYouInStoreRouterProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		8AA5E5162615084B00935B5E /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1481,6 +1577,7 @@
 				CAF5140E2461C51300667ED0 /* About */,
 				CA79545024F92E930040224C /* AdvancedSearch */,
 				CA07097E2523146200C3D9EC /* Agreement */,
+				8A91600F268CE66C00240B18 /* AreYouInStore */,
 				CE69652B25E4373400CD414D /* Currency */,
 				449F81C225DD048500585364 /* Deeplink */,
 				CAF514112461C51B00667ED0 /* Doc */,
@@ -2392,6 +2489,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A916029268CE66C00240B18 /* AreYouInStoreInteractorProtocol.swift in Sources */,
 				CACA7EA3254C57CC0099E622 /* WriteNoteRouter.swift in Sources */,
 				447C353B25EEAA5700105A35 /* MapPresenter.swift in Sources */,
 				8A0D9CB926872CF60076A7EC /* NewAgreementsBottomView.swift in Sources */,
@@ -2431,6 +2529,7 @@
 				CE58DEDF25ED73E200B5BDF9 /* CurrencyViewControllerProtocol.swift in Sources */,
 				CA7B838924F451FA00991F24 /* WineDetailViewController.swift in Sources */,
 				440C284725E13F9D009911EE /* WineDetailCollectionView.swift in Sources */,
+				8A916024268CE66C00240B18 /* AreYouInStoreAssembly.swift in Sources */,
 				447C354225EEAA5700105A35 /* MapRouterProtocol.swift in Sources */,
 				CA819848253864080056A1C6 /* WineDetailPresenterProtocol.swift in Sources */,
 				CE388DDA2612C1CF00C34B47 /* ShowcasePresenterProtocol.swift in Sources */,
@@ -2446,6 +2545,7 @@
 				CA472B69245EDEF9009149FF /* ShowcaseViewModel.swift in Sources */,
 				CA2C22E02554464F002469E4 /* AdvancedSearchInteractorProtocol.swift in Sources */,
 				4437AA5E25E3A7CE00F6E838 /* WriteReviewPresenter.swift in Sources */,
+				8A91602C268CE66C00240B18 /* AreYouInStoreRouterProtocol.swift in Sources */,
 				4407196F25F015F1000531B7 /* MapRoutable.swift in Sources */,
 				44EFDB7925E263E00076ED6D /* ReviewDetailRouter.swift in Sources */,
 				CA81984E253864080056A1C6 /* WineDetailRouter.swift in Sources */,
@@ -2465,9 +2565,11 @@
 				8AD49F2C26752B4B0094E157 /* AnalyticsTrackable.swift in Sources */,
 				4437AA6325E3A7CE00F6E838 /* WriteReviewInteractor.swift in Sources */,
 				8A313C0826447042009F2165 /* MapDetailStoreRouter.swift in Sources */,
+				8A916026268CE66C00240B18 /* AreYouInStorePresenterProtocol.swift in Sources */,
 				449F81AC25DD023A00585364 /* RootInteractor.swift in Sources */,
 				447C354025EEAA5700105A35 /* MapInteractorProtocol.swift in Sources */,
 				CAA9DC67250EA05F00F996A8 /* AdvancedSearchCaruselCollectionCell.swift in Sources */,
+				8A916027268CE66C00240B18 /* AreYouInStoreViewController.swift in Sources */,
 				CEF7AE672602D5220098FB9D /* ShowcaseRouter.swift in Sources */,
 				CA49A25B251F2C4600FBE269 /* BigAdCollectionCell.swift in Sources */,
 				44EFDB3925E177220076ED6D /* ReviewsAssembly.swift in Sources */,
@@ -2502,6 +2604,7 @@
 				44465EC025F39400005B3F06 /* MapRepository.swift in Sources */,
 				44EFDB7125E263E00076ED6D /* ReviewDetailAssembly.swift in Sources */,
 				CAF514102461C51400667ED0 /* AboutViewController.swift in Sources */,
+				8A916022268CE66C00240B18 /* AreYouInStoreViewModel.swift in Sources */,
 				44EFDB4F25E17FD60076ED6D /* ReviewsRoutable.swift in Sources */,
 				CE8FF84525FADB84004D4F37 /* ShowcaseViewControllerProtocol.swift in Sources */,
 				CA81984D253864080056A1C6 /* WineDetailRouterProtocol.swift in Sources */,
@@ -2545,17 +2648,21 @@
 				44EFDB7525E263E00076ED6D /* ReviewDetailViewControllerProtocol.swift in Sources */,
 				8AF966C42678F194001891B2 /* EditProfileViewControllerProtocol.swift in Sources */,
 				8A313C0026447042009F2165 /* MapDetailStoreInput.swift in Sources */,
+				8A91602A268CE66C00240B18 /* AreYouInStoreInteractor.swift in Sources */,
 				CAF514292461C52400667ED0 /* MoreRouter.swift in Sources */,
 				CACA7E9C254C57CC0099E622 /* WriteNotePresenter.swift in Sources */,
 				4437AA5C25E3A7CE00F6E838 /* WriteReviewInput.swift in Sources */,
 				CA472AC2245EDE2F009149FF /* SceneDelegate.swift in Sources */,
+				8A916023268CE66C00240B18 /* AreYouInStoreInput.swift in Sources */,
 				CE69649D25E07BDE00CD414D /* InfoCurrencyCell.swift in Sources */,
 				CE4254EB258157DC001158D2 /* MoreViewControllerModel.swift in Sources */,
 				8A0D9CB726871D9D0076A7EC /* NewAgreementViewController.swift in Sources */,
 				CA3C981F257260BC0036F7D9 /* StatusAlertable.swift in Sources */,
 				CA3837CC246FCF3C00AD5FCC /* TabBarController.swift in Sources */,
 				CA99E65124F58A6000C36BEE /* ToolCollectionCell.swift in Sources */,
+				8A916025268CE66C00240B18 /* AreYouInStorePresenter.swift in Sources */,
 				447C353C25EEAA5700105A35 /* MapPresenterProtocol.swift in Sources */,
+				8A91602B268CE66C00240B18 /* AreYouInStoreRouter.swift in Sources */,
 				8A313C0426447042009F2165 /* MapDetailStoreViewController.swift in Sources */,
 				CA276D55256AC6720061BEBE /* FakeCell.swift in Sources */,
 				CACA7EA0254C57CC0099E622 /* WriteNoteInteractorProtocol.swift in Sources */,
@@ -2596,6 +2703,7 @@
 				449F81BD25DD039A00585364 /* TabBarBuilder.swift in Sources */,
 				CAEBD7F3251A7F5000210F3B /* SwitcherWithText.swift in Sources */,
 				CA4858512519446800EDA4CE /* ForceUpdate.swift in Sources */,
+				8A916028268CE66C00240B18 /* AreYouInStoreViewControllerProtocol.swift in Sources */,
 				CACA7E99254C57CC0099E622 /* WriteNoteViewModel.swift in Sources */,
 				CE8D931325BF41AD004792C6 /* ProfileCell.swift in Sources */,
 				CE58DEC725ED711700B5BDF9 /* CurrencyInteractor.swift in Sources */,
