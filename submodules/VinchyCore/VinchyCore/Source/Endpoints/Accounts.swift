@@ -14,7 +14,7 @@ private enum AccountEndpoint: EndpointProtocol {
   case auth(email: String, password: String)
   case create(email: String, password: String)
   case activate(accountID: Int, confirmationCode: String)
-  case update(accountID: Int, refreshToken: String, password: String)
+  case update(accountID: Int, refreshToken: String, accountName: String?, password: String?)
   case updateTokens(accountID: Int, refreshToken: String)
   case checkConfirmationCode(accountID: Int, confirmationCode: String)
   case sendConfirmationCode(accountID: Int)
@@ -36,7 +36,7 @@ private enum AccountEndpoint: EndpointProtocol {
     case .activate(let accountID, _):
       return "/accounts/" + String(accountID)
 
-    case .update(let accountID, _, _):
+    case .update(let accountID, _, _, _):
       return "/accounts/" + String(accountID)
 
     case .updateTokens(let accountID, _):
@@ -94,10 +94,11 @@ private enum AccountEndpoint: EndpointProtocol {
         ("confirmation_code", confirmationCode),
       ]
 
-    case .update(_, let refreshToken, let password):
+    case .update(_, let refreshToken, let accountName, let password):
       return [
-        ("refresh_token", refreshToken),
-        ("password", password),
+        ("access_token", refreshToken),
+        ("account_name", accountName as Any),
+//        ("password", password as Any),
       ]
 
     case .updateTokens(_, let refreshToken):
@@ -182,11 +183,12 @@ public final class Accounts {
   public func updateAccount(
     accountID: Int,
     refreshToken: String,
-    password: String,
+    accountName: String?,
+    password: String?,
     completion: @escaping (Result<[Collection], APIError>) -> Void)
   {
     api.request(
-      endpoint: AccountEndpoint.update(accountID: accountID, refreshToken: refreshToken, password: password),
+      endpoint: AccountEndpoint.update(accountID: accountID, refreshToken: refreshToken, accountName: accountName, password: password),
       completion: completion)
   }
 

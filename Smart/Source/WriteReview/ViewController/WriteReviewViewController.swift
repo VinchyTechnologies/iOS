@@ -88,6 +88,7 @@ final class WriteReviewViewController: UIViewController {
     view.settings.starSize = 40
     view.settings.fillMode = .half
     view.settings.minTouchRating = 0.5
+    view.settings.emptyBorderWidth = 1.0
     return view
   }()
 

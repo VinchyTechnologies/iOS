@@ -155,7 +155,13 @@ extension VinchyPresenter: VinchyPresenterProtocol {
         ]))
 
       case .smartFilter:
-        break
+        sections.append(.smartFilter([
+          .init(
+            accentText: "New in Vinchy".uppercased(),
+            boldText: "Personal compilations",
+            subtitleText: "Answer on 3 questions & we find for you best wines.",
+            buttonText: "Try now"),
+        ]))
       }
     }
 

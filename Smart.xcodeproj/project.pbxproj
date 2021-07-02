@@ -63,6 +63,8 @@
 		44EFDB7725E263E00076ED6D /* ReviewDetailInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6B25E263E00076ED6D /* ReviewDetailInteractorProtocol.swift */; };
 		44EFDB7825E263E00076ED6D /* ReviewDetailRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6D25E263E00076ED6D /* ReviewDetailRouterProtocol.swift */; };
 		44EFDB7925E263E00076ED6D /* ReviewDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6E25E263E00076ED6D /* ReviewDetailRouter.swift */; };
+		8A0D9CB726871D9D0076A7EC /* NewAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0D9CB626871D9D0076A7EC /* NewAgreementViewController.swift */; };
+		8A0D9CB926872CF60076A7EC /* NewAgreementsBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0D9CB826872CF60076A7EC /* NewAgreementsBottomView.swift */; };
 		8A1034592648596100F7CA81 /* AssortmentCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1034582648596100F7CA81 /* AssortmentCollectionCell.swift */; };
 		8A1036CA264D7E1200F7CA81 /* MapNavigationBarCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1036C9264D7E1200F7CA81 /* MapNavigationBarCollectionCell.swift */; };
 		8A313BFF26447042009F2165 /* MapDetailStoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BEE26447042009F2165 /* MapDetailStoreViewModel.swift */; };
@@ -97,6 +99,30 @@
 		8A63CCBF26754635003B1D4D /* VinchyAuthorization.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44D3CDE725E42E0B00FFFCD5 /* VinchyAuthorization.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A63CCC026754638003B1D4D /* VinchyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; };
 		8A63CCC126754638003B1D4D /* VinchyCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8A915C9E26887D9500240B18 /* ExpandCollapseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A915C9D26887D9500240B18 /* ExpandCollapseCell.swift */; };
+		8A91600C268CC3AE00240B18 /* WhereToBuyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91600B268CC3AE00240B18 /* WhereToBuyCell.swift */; };
+		8A916022268CE66C00240B18 /* AreYouInStoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916011268CE66C00240B18 /* AreYouInStoreViewModel.swift */; };
+		8A916023268CE66C00240B18 /* AreYouInStoreInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916013268CE66C00240B18 /* AreYouInStoreInput.swift */; };
+		8A916024268CE66C00240B18 /* AreYouInStoreAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916015268CE66C00240B18 /* AreYouInStoreAssembly.swift */; };
+		8A916025268CE66C00240B18 /* AreYouInStorePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916017268CE66C00240B18 /* AreYouInStorePresenter.swift */; };
+		8A916026268CE66C00240B18 /* AreYouInStorePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916018268CE66C00240B18 /* AreYouInStorePresenterProtocol.swift */; };
+		8A916027268CE66C00240B18 /* AreYouInStoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91601A268CE66C00240B18 /* AreYouInStoreViewController.swift */; };
+		8A916028268CE66C00240B18 /* AreYouInStoreViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91601B268CE66C00240B18 /* AreYouInStoreViewControllerProtocol.swift */; };
+		8A916029268CE66C00240B18 /* AreYouInStoreInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91601D268CE66C00240B18 /* AreYouInStoreInteractorProtocol.swift */; };
+		8A91602A268CE66C00240B18 /* AreYouInStoreInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91601E268CE66C00240B18 /* AreYouInStoreInteractor.swift */; };
+		8A91602B268CE66C00240B18 /* AreYouInStoreRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916020268CE66C00240B18 /* AreYouInStoreRouter.swift */; };
+		8A91602C268CE66C00240B18 /* AreYouInStoreRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916021268CE66C00240B18 /* AreYouInStoreRouterProtocol.swift */; };
+		8A916118268E27EB00240B18 /* SearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916107268E27EB00240B18 /* SearchViewModel.swift */; };
+		8A916119268E27EB00240B18 /* SearchInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916109268E27EB00240B18 /* SearchInput.swift */; };
+		8A91611A268E27EB00240B18 /* SearchAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91610B268E27EB00240B18 /* SearchAssembly.swift */; };
+		8A91611B268E27EB00240B18 /* SearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91610D268E27EB00240B18 /* SearchPresenter.swift */; };
+		8A91611C268E27EB00240B18 /* SearchPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91610E268E27EB00240B18 /* SearchPresenterProtocol.swift */; };
+		8A91611D268E27EB00240B18 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916110268E27EB00240B18 /* SearchViewController.swift */; };
+		8A91611E268E27EB00240B18 /* SearchViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916111268E27EB00240B18 /* SearchViewControllerProtocol.swift */; };
+		8A91611F268E27EB00240B18 /* SearchInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916113268E27EB00240B18 /* SearchInteractorProtocol.swift */; };
+		8A916120268E27EB00240B18 /* SearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916114268E27EB00240B18 /* SearchInteractor.swift */; };
+		8A916121268E27EB00240B18 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916116268E27EB00240B18 /* SearchRouter.swift */; };
+		8A916122268E27EB00240B18 /* SearchRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916117268E27EB00240B18 /* SearchRouterProtocol.swift */; };
 		8AA5E5132615053D00935B5E /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA5E5122615053D00935B5E /* AboutView.swift */; };
 		8AD49F16267520F90094E157 /* ReviewsInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB3225E177220076ED6D /* ReviewsInteractorProtocol.swift */; };
 		8AD49F17267521040094E157 /* ReviewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB2D25E177220076ED6D /* ReviewsPresenter.swift */; };
@@ -115,6 +141,8 @@
 		8AE788132684E8D60056A84B /* NotesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE788072684E8D60056A84B /* NotesInteractor.swift */; };
 		8AE788142684E8D60056A84B /* NotesRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE788092684E8D60056A84B /* NotesRouterProtocol.swift */; };
 		8AE788152684E8D60056A84B /* NotesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7880A2684E8D60056A84B /* NotesRouter.swift */; };
+		8AE788F6268636500056A84B /* GeoOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE788F5268636500056A84B /* GeoOnboardingViewController.swift */; };
+		8AE788F8268638CD0056A84B /* OnboardingBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE788F7268638CD0056A84B /* OnboardingBottomView.swift */; };
 		8AF966BE2678F194001891B2 /* EditProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF966AD2678F194001891B2 /* EditProfileViewModel.swift */; };
 		8AF966BF2678F194001891B2 /* EditProfileInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF966AF2678F194001891B2 /* EditProfileInput.swift */; };
 		8AF966C02678F194001891B2 /* EditProfileAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF966B12678F194001891B2 /* EditProfileAssembly.swift */; };
@@ -384,6 +412,8 @@
 		44EFDB6B25E263E00076ED6D /* ReviewDetailInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailInteractorProtocol.swift; sourceTree = "<group>"; };
 		44EFDB6D25E263E00076ED6D /* ReviewDetailRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailRouterProtocol.swift; sourceTree = "<group>"; };
 		44EFDB6E25E263E00076ED6D /* ReviewDetailRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailRouter.swift; sourceTree = "<group>"; };
+		8A0D9CB626871D9D0076A7EC /* NewAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAgreementViewController.swift; sourceTree = "<group>"; };
+		8A0D9CB826872CF60076A7EC /* NewAgreementsBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAgreementsBottomView.swift; sourceTree = "<group>"; };
 		8A1034582648596100F7CA81 /* AssortmentCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssortmentCollectionCell.swift; sourceTree = "<group>"; };
 		8A1036C9264D7E1200F7CA81 /* MapNavigationBarCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapNavigationBarCollectionCell.swift; sourceTree = "<group>"; };
 		8A313BEE26447042009F2165 /* MapDetailStoreViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreViewModel.swift; sourceTree = "<group>"; };
@@ -399,6 +429,30 @@
 		8A313BFE26447042009F2165 /* MapDetailStoreRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreRouterProtocol.swift; sourceTree = "<group>"; };
 		8A313C1526468678009F2165 /* WorkingHoursCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingHoursCollectionCell.swift; sourceTree = "<group>"; };
 		8A446CDE2660123B000A1769 /* RoutingToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingToolBar.swift; sourceTree = "<group>"; };
+		8A915C9D26887D9500240B18 /* ExpandCollapseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandCollapseCell.swift; sourceTree = "<group>"; };
+		8A91600B268CC3AE00240B18 /* WhereToBuyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhereToBuyCell.swift; sourceTree = "<group>"; };
+		8A916011268CE66C00240B18 /* AreYouInStoreViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreYouInStoreViewModel.swift; sourceTree = "<group>"; };
+		8A916013268CE66C00240B18 /* AreYouInStoreInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreYouInStoreInput.swift; sourceTree = "<group>"; };
+		8A916015268CE66C00240B18 /* AreYouInStoreAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreYouInStoreAssembly.swift; sourceTree = "<group>"; };
+		8A916017268CE66C00240B18 /* AreYouInStorePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreYouInStorePresenter.swift; sourceTree = "<group>"; };
+		8A916018268CE66C00240B18 /* AreYouInStorePresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreYouInStorePresenterProtocol.swift; sourceTree = "<group>"; };
+		8A91601A268CE66C00240B18 /* AreYouInStoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreYouInStoreViewController.swift; sourceTree = "<group>"; };
+		8A91601B268CE66C00240B18 /* AreYouInStoreViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreYouInStoreViewControllerProtocol.swift; sourceTree = "<group>"; };
+		8A91601D268CE66C00240B18 /* AreYouInStoreInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreYouInStoreInteractorProtocol.swift; sourceTree = "<group>"; };
+		8A91601E268CE66C00240B18 /* AreYouInStoreInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreYouInStoreInteractor.swift; sourceTree = "<group>"; };
+		8A916020268CE66C00240B18 /* AreYouInStoreRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreYouInStoreRouter.swift; sourceTree = "<group>"; };
+		8A916021268CE66C00240B18 /* AreYouInStoreRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreYouInStoreRouterProtocol.swift; sourceTree = "<group>"; };
+		8A916107268E27EB00240B18 /* SearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewModel.swift; sourceTree = "<group>"; };
+		8A916109268E27EB00240B18 /* SearchInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchInput.swift; sourceTree = "<group>"; };
+		8A91610B268E27EB00240B18 /* SearchAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchAssembly.swift; sourceTree = "<group>"; };
+		8A91610D268E27EB00240B18 /* SearchPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPresenter.swift; sourceTree = "<group>"; };
+		8A91610E268E27EB00240B18 /* SearchPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchPresenterProtocol.swift; sourceTree = "<group>"; };
+		8A916110268E27EB00240B18 /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		8A916111268E27EB00240B18 /* SearchViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewControllerProtocol.swift; sourceTree = "<group>"; };
+		8A916113268E27EB00240B18 /* SearchInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchInteractorProtocol.swift; sourceTree = "<group>"; };
+		8A916114268E27EB00240B18 /* SearchInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchInteractor.swift; sourceTree = "<group>"; };
+		8A916116268E27EB00240B18 /* SearchRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
+		8A916117268E27EB00240B18 /* SearchRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRouterProtocol.swift; sourceTree = "<group>"; };
 		8AA5E5122615053D00935B5E /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		8AD49F2B26752B4B0094E157 /* AnalyticsTrackable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsTrackable.swift; sourceTree = "<group>"; };
 		8AD7A37D2639D31A007D4273 /* PartnerAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerAnnotationView.swift; sourceTree = "<group>"; };
@@ -413,6 +467,8 @@
 		8AE788072684E8D60056A84B /* NotesInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesInteractor.swift; sourceTree = "<group>"; };
 		8AE788092684E8D60056A84B /* NotesRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesRouterProtocol.swift; sourceTree = "<group>"; };
 		8AE7880A2684E8D60056A84B /* NotesRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesRouter.swift; sourceTree = "<group>"; };
+		8AE788F5268636500056A84B /* GeoOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoOnboardingViewController.swift; sourceTree = "<group>"; };
+		8AE788F7268638CD0056A84B /* OnboardingBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBottomView.swift; sourceTree = "<group>"; };
 		8AF966AD2678F194001891B2 /* EditProfileViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileViewModel.swift; sourceTree = "<group>"; };
 		8AF966AF2678F194001891B2 /* EditProfileInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileInput.swift; sourceTree = "<group>"; };
 		8AF966B12678F194001891B2 /* EditProfileAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileAssembly.swift; sourceTree = "<group>"; };
@@ -1125,6 +1181,154 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		8A91600F268CE66C00240B18 /* AreYouInStore */ = {
+			isa = PBXGroup;
+			children = (
+				8A916014268CE66C00240B18 /* Assembly */,
+				8A916012268CE66C00240B18 /* Input */,
+				8A91601C268CE66C00240B18 /* Interactor */,
+				8A916016268CE66C00240B18 /* Presenter */,
+				8A91601F268CE66C00240B18 /* Router */,
+				8A916019268CE66C00240B18 /* ViewController */,
+				8A916010268CE66C00240B18 /* ViewModel */,
+			);
+			path = AreYouInStore;
+			sourceTree = "<group>";
+		};
+		8A916010268CE66C00240B18 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8A916011268CE66C00240B18 /* AreYouInStoreViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8A916012268CE66C00240B18 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				8A916013268CE66C00240B18 /* AreYouInStoreInput.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		8A916014268CE66C00240B18 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				8A916015268CE66C00240B18 /* AreYouInStoreAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		8A916016268CE66C00240B18 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8A916017268CE66C00240B18 /* AreYouInStorePresenter.swift */,
+				8A916018268CE66C00240B18 /* AreYouInStorePresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		8A916019268CE66C00240B18 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8A91601A268CE66C00240B18 /* AreYouInStoreViewController.swift */,
+				8A91601B268CE66C00240B18 /* AreYouInStoreViewControllerProtocol.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		8A91601C268CE66C00240B18 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				8A91601D268CE66C00240B18 /* AreYouInStoreInteractorProtocol.swift */,
+				8A91601E268CE66C00240B18 /* AreYouInStoreInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		8A91601F268CE66C00240B18 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				8A916020268CE66C00240B18 /* AreYouInStoreRouter.swift */,
+				8A916021268CE66C00240B18 /* AreYouInStoreRouterProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		8A916105268E27EB00240B18 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				8A91610A268E27EB00240B18 /* Assembly */,
+				8A916108268E27EB00240B18 /* Input */,
+				8A916112268E27EB00240B18 /* Interactor */,
+				8A91610C268E27EB00240B18 /* Presenter */,
+				8A916115268E27EB00240B18 /* Router */,
+				8A91610F268E27EB00240B18 /* ViewController */,
+				8A916106268E27EB00240B18 /* ViewModel */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		8A916106268E27EB00240B18 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8A916107268E27EB00240B18 /* SearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8A916108268E27EB00240B18 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				8A916109268E27EB00240B18 /* SearchInput.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		8A91610A268E27EB00240B18 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				8A91610B268E27EB00240B18 /* SearchAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		8A91610C268E27EB00240B18 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8A91610D268E27EB00240B18 /* SearchPresenter.swift */,
+				8A91610E268E27EB00240B18 /* SearchPresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		8A91610F268E27EB00240B18 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8A916110268E27EB00240B18 /* SearchViewController.swift */,
+				8A916111268E27EB00240B18 /* SearchViewControllerProtocol.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		8A916112268E27EB00240B18 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				8A916113268E27EB00240B18 /* SearchInteractorProtocol.swift */,
+				8A916114268E27EB00240B18 /* SearchInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		8A916115268E27EB00240B18 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				8A916116268E27EB00240B18 /* SearchRouter.swift */,
+				8A916117268E27EB00240B18 /* SearchRouterProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		8AA5E5162615084B00935B5E /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -1321,6 +1525,7 @@
 			isa = PBXGroup;
 			children = (
 				CAEBD787251A6D6200210F3B /* AgreementsViewController.swift */,
+				8A0D9CB626871D9D0076A7EC /* NewAgreementViewController.swift */,
 			);
 			path = ViewController;
 			sourceTree = "<group>";
@@ -1329,6 +1534,7 @@
 			isa = PBXGroup;
 			children = (
 				CAEBD7F2251A7F5000210F3B /* SwitcherWithText.swift */,
+				8A0D9CB826872CF60076A7EC /* NewAgreementsBottomView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1341,6 +1547,8 @@
 				CA070C1525250AEC00C3D9EC /* OnboardPage.swift */,
 				CA070C1425250AEB00C3D9EC /* OnboardPageViewController.swift */,
 				CA070C1325250AE900C3D9EC /* OnboardViewController.swift */,
+				8AE788F5268636500056A84B /* GeoOnboardingViewController.swift */,
+				8AE788F7268638CD0056A84B /* OnboardingBottomView.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -1463,13 +1671,13 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
-		CA3B1D3E249E3EAC00FAA08A /* Search */ = {
+		CA3B1D3E249E3EAC00FAA08A /* ResultsSearch */ = {
 			isa = PBXGroup;
 			children = (
 				CA3B1D41249E3FE100FAA08A /* ResultsTableController.swift */,
 				CA015C1924C44925008DF01D /* DidnotFindTheWineTableCell.swift */,
 			);
-			path = Search;
+			path = ResultsSearch;
 			sourceTree = "<group>";
 		};
 		CA46DBE5252517FD0007819E /* Repository */ = {
@@ -1540,6 +1748,7 @@
 				CAF5140E2461C51300667ED0 /* About */,
 				CA79545024F92E930040224C /* AdvancedSearch */,
 				CA07097E2523146200C3D9EC /* Agreement */,
+				8A91600F268CE66C00240B18 /* AreYouInStore */,
 				CE69652B25E4373400CD414D /* Currency */,
 				449F81C225DD048500585364 /* Deeplink */,
 				CAF514112461C51B00667ED0 /* Doc */,
@@ -1551,10 +1760,11 @@
 				CAF5140D2461C4ED00667ED0 /* More */,
 				8AE787F82684E8D60056A84B /* Notes */,
 				CA070A762523D77000C3D9EC /* Onboarding */,
+				CA3B1D3E249E3EAC00FAA08A /* ResultsSearch */,
 				44EFDB5C25E263E00076ED6D /* ReviewDetail */,
 				44EFDB2425E177220076ED6D /* Reviews */,
 				449F81AA25DD022000585364 /* Root */,
-				CA3B1D3E249E3EAC00FAA08A /* Search */,
+				8A916105268E27EB00240B18 /* Search */,
 				CA0A352324785A0900C400F5 /* Showcase */,
 				CA472B3F245EDEDB009149FF /* Supported Files */,
 				449F81B925DD02A600585364 /* Tabbar */,
@@ -1644,13 +1854,13 @@
 		CA4D51022549F5F600A6FD0B /* WriteNote */ = {
 			isa = PBXGroup;
 			children = (
-				CACA7E87254C57CC0099E622 /* ViewModel */,
-				CACA7E89254C57CC0099E622 /* Input */,
 				CACA7E8B254C57CC0099E622 /* Assembly */,
-				CACA7E8D254C57CC0099E622 /* Presenter */,
-				CACA7E90254C57CC0099E622 /* ViewController */,
+				CACA7E89254C57CC0099E622 /* Input */,
 				CACA7E93254C57CC0099E622 /* Interactor */,
+				CACA7E8D254C57CC0099E622 /* Presenter */,
 				CACA7E96254C57CC0099E622 /* Router */,
+				CACA7E90254C57CC0099E622 /* ViewController */,
+				CACA7E87254C57CC0099E622 /* ViewModel */,
 			);
 			path = WriteNote;
 			sourceTree = "<group>";
@@ -1731,6 +1941,8 @@
 				449D63B125E1054700CBBD1D /* RatingsAndReviewsCell.swift */,
 				449D63B525E10D5100CBBD1D /* TapToRateCell.swift */,
 				440C284625E13F9D009911EE /* WineDetailCollectionView.swift */,
+				8A915C9D26887D9500240B18 /* ExpandCollapseCell.swift */,
+				8A91600B268CC3AE00240B18 /* WhereToBuyCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2449,8 +2661,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A916029268CE66C00240B18 /* AreYouInStoreInteractorProtocol.swift in Sources */,
 				CACA7EA3254C57CC0099E622 /* WriteNoteRouter.swift in Sources */,
 				447C353B25EEAA5700105A35 /* MapPresenter.swift in Sources */,
+				8A0D9CB926872CF60076A7EC /* NewAgreementsBottomView.swift in Sources */,
 				CA4857892517C71200EDA4CE /* VinchyPresenterProtocol.swift in Sources */,
 				8AF966C12678F194001891B2 /* EditProfilePresenterProtocol.swift in Sources */,
 				CA2C22DB2554464F002469E4 /* AdvancedSearchAssembly.swift in Sources */,
@@ -2458,6 +2672,7 @@
 				CA46DC98252A44180007819E /* SmartFilterCollectionCell.swift in Sources */,
 				CE58DEC325ED70DC00B5BDF9 /* CurrencyAssembly.swift in Sources */,
 				CED7A23A25D1B31C00BB25FF /* StarRatingControlCollectionCell .swift in Sources */,
+				8A915C9E26887D9500240B18 /* ExpandCollapseCell.swift in Sources */,
 				CA015C1A24C44925008DF01D /* DidnotFindTheWineTableCell.swift in Sources */,
 				44EFDB3C25E177220076ED6D /* ReviewsViewControllerProtocol.swift in Sources */,
 				CA4857782517BEA000EDA4CE /* VinchyPresenter.swift in Sources */,
@@ -2487,6 +2702,7 @@
 				CA7B838924F451FA00991F24 /* WineDetailViewController.swift in Sources */,
 				8AE7880B2684E8D60056A84B /* NotesViewModel.swift in Sources */,
 				440C284725E13F9D009911EE /* WineDetailCollectionView.swift in Sources */,
+				8A916024268CE66C00240B18 /* AreYouInStoreAssembly.swift in Sources */,
 				447C354225EEAA5700105A35 /* MapRouterProtocol.swift in Sources */,
 				CA819848253864080056A1C6 /* WineDetailPresenterProtocol.swift in Sources */,
 				CE388DDA2612C1CF00C34B47 /* ShowcasePresenterProtocol.swift in Sources */,
@@ -2502,6 +2718,7 @@
 				CA472B69245EDEF9009149FF /* ShowcaseViewModel.swift in Sources */,
 				CA2C22E02554464F002469E4 /* AdvancedSearchInteractorProtocol.swift in Sources */,
 				4437AA5E25E3A7CE00F6E838 /* WriteReviewPresenter.swift in Sources */,
+				8A91602C268CE66C00240B18 /* AreYouInStoreRouterProtocol.swift in Sources */,
 				4407196F25F015F1000531B7 /* MapRoutable.swift in Sources */,
 				44EFDB7925E263E00076ED6D /* ReviewDetailRouter.swift in Sources */,
 				CA81984E253864080056A1C6 /* WineDetailRouter.swift in Sources */,
@@ -2522,16 +2739,21 @@
 				8AD49F2C26752B4B0094E157 /* AnalyticsTrackable.swift in Sources */,
 				4437AA6325E3A7CE00F6E838 /* WriteReviewInteractor.swift in Sources */,
 				8A313C0826447042009F2165 /* MapDetailStoreRouter.swift in Sources */,
+				8A916026268CE66C00240B18 /* AreYouInStorePresenterProtocol.swift in Sources */,
 				449F81AC25DD023A00585364 /* RootInteractor.swift in Sources */,
+				8A91611B268E27EB00240B18 /* SearchPresenter.swift in Sources */,
 				447C354025EEAA5700105A35 /* MapInteractorProtocol.swift in Sources */,
 				CAA9DC67250EA05F00F996A8 /* AdvancedSearchCaruselCollectionCell.swift in Sources */,
+				8A916027268CE66C00240B18 /* AreYouInStoreViewController.swift in Sources */,
 				CEF7AE672602D5220098FB9D /* ShowcaseRouter.swift in Sources */,
 				CA49A25B251F2C4600FBE269 /* BigAdCollectionCell.swift in Sources */,
 				44EFDB3925E177220076ED6D /* ReviewsAssembly.swift in Sources */,
 				CA8198C0253CB0490056A1C6 /* ErrorDescription.swift in Sources */,
 				CA7B835824EED1B100991F24 /* VinchyViewController.swift in Sources */,
 				CA4857942517C77E00EDA4CE /* VinchyAssembly.swift in Sources */,
+				8A91600C268CC3AE00240B18 /* WhereToBuyCell.swift in Sources */,
 				4437AA6225E3A7CE00F6E838 /* WriteReviewInteractorProtocol.swift in Sources */,
+				8A91611C268E27EB00240B18 /* SearchPresenterProtocol.swift in Sources */,
 				CA070C1825250AEC00C3D9EC /* OnboardPage.swift in Sources */,
 				44EFDB3725E177220076ED6D /* ReviewsViewModel.swift in Sources */,
 				CA49A219251E8CFE00FBE269 /* TitleWithSubtitleInfoCollectionViewCell.swift in Sources */,
@@ -2556,10 +2778,12 @@
 				CA7B836024EF109200991F24 /* MainSubtitleCollectionCell.swift in Sources */,
 				CA819844253864080056A1C6 /* WineDetailViewModel.swift in Sources */,
 				447C353E25EEAA5700105A35 /* MapViewControllerProtocol.swift in Sources */,
+				8A916122268E27EB00240B18 /* SearchRouterProtocol.swift in Sources */,
 				4437AA6125E3A7CE00F6E838 /* WriteReviewViewControllerProtocol.swift in Sources */,
 				44465EC025F39400005B3F06 /* MapRepository.swift in Sources */,
 				44EFDB7125E263E00076ED6D /* ReviewDetailAssembly.swift in Sources */,
 				CAF514102461C51400667ED0 /* AboutViewController.swift in Sources */,
+				8A916022268CE66C00240B18 /* AreYouInStoreViewModel.swift in Sources */,
 				44EFDB4F25E17FD60076ED6D /* ReviewsRoutable.swift in Sources */,
 				CE8FF84525FADB84004D4F37 /* ShowcaseViewControllerProtocol.swift in Sources */,
 				CA81984D253864080056A1C6 /* WineDetailRouterProtocol.swift in Sources */,
@@ -2605,28 +2829,39 @@
 				44EFDB7525E263E00076ED6D /* ReviewDetailViewControllerProtocol.swift in Sources */,
 				8AF966C42678F194001891B2 /* EditProfileViewControllerProtocol.swift in Sources */,
 				8A313C0026447042009F2165 /* MapDetailStoreInput.swift in Sources */,
+				8A91602A268CE66C00240B18 /* AreYouInStoreInteractor.swift in Sources */,
 				CAF514292461C52400667ED0 /* MoreRouter.swift in Sources */,
 				CACA7E9C254C57CC0099E622 /* WriteNotePresenter.swift in Sources */,
 				8AE788152684E8D60056A84B /* NotesRouter.swift in Sources */,
 				4437AA5C25E3A7CE00F6E838 /* WriteReviewInput.swift in Sources */,
 				CA472AC2245EDE2F009149FF /* SceneDelegate.swift in Sources */,
+				8A916023268CE66C00240B18 /* AreYouInStoreInput.swift in Sources */,
+				8A91611E268E27EB00240B18 /* SearchViewControllerProtocol.swift in Sources */,
 				CE69649D25E07BDE00CD414D /* InfoCurrencyCell.swift in Sources */,
 				CE4254EB258157DC001158D2 /* MoreViewControllerModel.swift in Sources */,
+				8A0D9CB726871D9D0076A7EC /* NewAgreementViewController.swift in Sources */,
 				CA3C981F257260BC0036F7D9 /* StatusAlertable.swift in Sources */,
 				CA3837CC246FCF3C00AD5FCC /* TabBarController.swift in Sources */,
 				CA99E65124F58A6000C36BEE /* ToolCollectionCell.swift in Sources */,
+				8A916025268CE66C00240B18 /* AreYouInStorePresenter.swift in Sources */,
 				447C353C25EEAA5700105A35 /* MapPresenterProtocol.swift in Sources */,
+				8A916121268E27EB00240B18 /* SearchRouter.swift in Sources */,
+				8A91602B268CE66C00240B18 /* AreYouInStoreRouter.swift in Sources */,
 				8A313C0426447042009F2165 /* MapDetailStoreViewController.swift in Sources */,
 				CA276D55256AC6720061BEBE /* FakeCell.swift in Sources */,
 				CACA7EA0254C57CC0099E622 /* WriteNoteInteractorProtocol.swift in Sources */,
+				8AE788F8268638CD0056A84B /* OnboardingBottomView.swift in Sources */,
 				8A1036CA264D7E1200F7CA81 /* MapNavigationBarCollectionCell.swift in Sources */,
+				8A916118268E27EB00240B18 /* SearchViewModel.swift in Sources */,
 				CEB0A6222609442B00B07B87 /* ShowcaseRouterProtocol.swift in Sources */,
 				44EFDB7625E263E00076ED6D /* ReviewDetailInteractor.swift in Sources */,
 				CE8FF83925FADABF004D4F37 /* ShowcaseInteractorProtocol.swift in Sources */,
 				447C353D25EEAA5700105A35 /* MapViewController.swift in Sources */,
+				8A916119268E27EB00240B18 /* SearchInput.swift in Sources */,
 				4437AA5F25E3A7CE00F6E838 /* WriteReviewPresenterProtocol.swift in Sources */,
 				CE404B0B2589D47C00917544 /* MorePresenterProtocol.swift in Sources */,
 				CA2C22DC2554464F002469E4 /* AdvancedSearchPresenter.swift in Sources */,
+				8AE788F6268636500056A84B /* GeoOnboardingViewController.swift in Sources */,
 				CAEBD788251A6D6200210F3B /* AgreementsViewController.swift in Sources */,
 				8A313C0526447042009F2165 /* MapDetailStoreViewControllerProtocol.swift in Sources */,
 				CA7A87E62500169100AAD10F /* VinchySimpleConiniousCaruselCollectionCell.swift in Sources */,
@@ -2641,6 +2876,7 @@
 				CE7E3F1225F06AE50045A759 /* CurrencyViewControllerModel.swift in Sources */,
 				CA8CD68325097AD500FDB7AF /* GADTMediumTemplateView.m in Sources */,
 				447C353F25EEAA5700105A35 /* MapInteractor.swift in Sources */,
+				8A91611A268E27EB00240B18 /* SearchAssembly.swift in Sources */,
 				44EFDB7425E263E00076ED6D /* ReviewDetailViewController.swift in Sources */,
 				44465EC625F3940E005B3F06 /* MapRepositoryProtocol.swift in Sources */,
 				8AF966BF2678F194001891B2 /* EditProfileInput.swift in Sources */,
@@ -2655,6 +2891,7 @@
 				449F81BD25DD039A00585364 /* TabBarBuilder.swift in Sources */,
 				CAEBD7F3251A7F5000210F3B /* SwitcherWithText.swift in Sources */,
 				CA4858512519446800EDA4CE /* ForceUpdate.swift in Sources */,
+				8A916028268CE66C00240B18 /* AreYouInStoreViewControllerProtocol.swift in Sources */,
 				CACA7E99254C57CC0099E622 /* WriteNoteViewModel.swift in Sources */,
 				CE8D931325BF41AD004792C6 /* ProfileCell.swift in Sources */,
 				CE58DEC725ED711700B5BDF9 /* CurrencyInteractor.swift in Sources */,
@@ -2662,6 +2899,7 @@
 				CAF514202461C52400667ED0 /* MoreAssembly.swift in Sources */,
 				CACA7EA1254C57CC0099E622 /* WriteNoteInteractor.swift in Sources */,
 				8AF966C72678F194001891B2 /* EditProfileRouter.swift in Sources */,
+				8A91611F268E27EB00240B18 /* SearchInteractorProtocol.swift in Sources */,
 				CAF514272461C52400667ED0 /* SocialMediaCell.swift in Sources */,
 				8A313C0926447042009F2165 /* MapDetailStoreRouterProtocol.swift in Sources */,
 				CA2C22DE2554464F002469E4 /* AdvancedSearchViewControllerProtocol.swift in Sources */,
@@ -2669,9 +2907,11 @@
 				8AF966BE2678F194001891B2 /* EditProfileViewModel.swift in Sources */,
 				449F81B625DD027C00585364 /* RootBuilder.swift in Sources */,
 				CA7B838C24F4547B00991F24 /* GalleryCell.swift in Sources */,
+				8A91611D268E27EB00240B18 /* SearchViewController.swift in Sources */,
 				CE7346382589B75E00028574 /* MoreViewProtocol.swift in Sources */,
 				8A313BFF26447042009F2165 /* MapDetailStoreViewModel.swift in Sources */,
 				8AF966C52678F194001891B2 /* EditProfileInteractorProtocol.swift in Sources */,
+				8A916120268E27EB00240B18 /* SearchInteractor.swift in Sources */,
 				44EFDB7325E263E00076ED6D /* ReviewDetailPresenter.swift in Sources */,
 				8AE788112684E8D60056A84B /* NotesViewControllerProtocol.swift in Sources */,
 				CAA060D2252BC05C002C15B5 /* DeveloperFeatureToggles.swift in Sources */,

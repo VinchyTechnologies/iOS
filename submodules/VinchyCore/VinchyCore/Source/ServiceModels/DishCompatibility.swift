@@ -8,20 +8,20 @@
 
 import StringFormatting
 
-public enum DishCompatibility: String, Decodable {
-  case cheese = "Cheese"
+public enum DishCompatibility: String, Decodable, CaseIterable {
+  case meat = "Meat"
   case fish = "Fish"
+  case poultry = "Poultry"
+  case cheese = "Cheese"
   case shellfish = "Shellfish"
   case vegetarian = "Vegetarian"
-  case meat = "Meat"
-  case poultry = "Poultry"
   case spicy = "Spicy food"
   case mushrooms = "Mushrooms"
-  case aperitif = "Aperitif"
   case snacks = "Snacks"
-  case fruits = "Fruits"
   case pasta = "Pasta"
+  case fruits = "Fruits"
   case desserts = "Desserts"
+  case aperitif = "Aperitif"
 
   // MARK: Public
 

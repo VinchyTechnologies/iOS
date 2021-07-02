@@ -45,7 +45,7 @@ extension UIColor {
   public final class var option: UIColor {
     UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
       if UITraitCollection.userInterfaceStyle == .dark {
-        return .tertiarySystemFill
+        return UIColor(red: 38 / 255, green: 38 / 255, blue: 41 / 255, alpha: 1.0)
       } else {
         return UIColor(red: 241 / 255, green: 243 / 255, blue: 246 / 255, alpha: 1.0)
       }

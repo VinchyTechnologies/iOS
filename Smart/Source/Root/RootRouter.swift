@@ -46,7 +46,7 @@ final class RootRouterImpl: RootRouter {
   }
 
   func routeToOnboarding(delegate: OnboardingViewControllerOutput?) {
-    let vc = OnboardingModuleFactory().makeOnboardingViewController(delegate: delegate)
+    let vc = GeoOnboardingViewController() //OnboardingModuleFactory().makeOnboardingViewController(delegate: delegate)
     window.rootViewController = vc
   }
 
@@ -61,9 +61,9 @@ final class RootRouterImpl: RootRouter {
 final class AgreementsModuleFactory {
   func makeAgreementsViewController(
     delegate: AgreementsViewControllerOutput?)
-    -> AgreementsViewController
+    -> NewAgreementViewController
   {
-    let viewController = AgreementsViewController()
+    let viewController = NewAgreementViewController()
     viewController.delegate = delegate
     return viewController
   }

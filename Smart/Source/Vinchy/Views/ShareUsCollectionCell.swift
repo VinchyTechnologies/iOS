@@ -37,7 +37,7 @@ final class ShareUsCollectionCell: UICollectionViewCell, Reusable {
 
     backgroundColor = .option // .mainBackground
 
-    layer.cornerRadius = 24
+    layer.cornerRadius = 12
     clipsToBounds = true
     layer.masksToBounds = false
 

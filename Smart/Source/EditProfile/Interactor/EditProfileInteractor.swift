@@ -7,6 +7,7 @@
 //
 
 import Core
+import VinchyCore
 
 // MARK: - EditProfileInteractor
 
@@ -36,6 +37,21 @@ extension EditProfileInteractor: EditProfileInteractorProtocol {
 
   func didTapSaveButton() {
     UserDefaultsConfig.userName = currentEditingName ?? ""
+
+//    Accounts.shared.updateAccount(
+//      accountID: UserDefaultsConfig.accountID,
+//      refreshToken: "Keychain.shared.accessToken" ?? "",
+//      accountName: currentEditingName,
+//      password: nil) { result in
+//        switch result {
+//        case .success:
+//          break
+//
+//        case .failure:
+//          break
+//        }
+//    }
+
     router.dismiss()
   }
 

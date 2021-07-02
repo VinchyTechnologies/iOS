@@ -130,7 +130,7 @@ final class WineDetailViewController: UIViewController {
       section.contentInsets = .init(top: 15, leading: 15, bottom: 0, trailing: 15)
       return section
 
-    case .list:
+    case .list, .whereToBuy:
       let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)))
       let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)), subitems: [item])
       let section = NSCollectionLayoutSection(group: group)
@@ -181,7 +181,7 @@ final class WineDetailViewController: UIViewController {
       let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)))
       let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)), subitems: [item])
       let section = NSCollectionLayoutSection(group: group)
-      section.contentInsets = .init(top: 15, leading: 0, bottom: 0, trailing: 0)
+      section.contentInsets = .init(top: 15, leading: 0, bottom: 10, trailing: 0)
       return section
 
     case .similarWines:
@@ -189,6 +189,13 @@ final class WineDetailViewController: UIViewController {
       let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(250)), subitems: [item])
       let section = NSCollectionLayoutSection(group: group)
       section.contentInsets = .init(top: 15, leading: 0, bottom: 0, trailing: 0)
+      return section
+
+    case .expandCollapse:
+      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(30)))
+      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(30)), subitems: [item])
+      let section = NSCollectionLayoutSection(group: group)
+      section.contentInsets = .init(top: 0, leading: 0, bottom: 10, trailing: 0)
       return section
     }
   }
@@ -214,7 +221,9 @@ final class WineDetailViewController: UIViewController {
       VinchySimpleConiniousCaruselCollectionCell.self,
       ReviewCell.self,
       RatingsAndReviewsCell.self,
-      TapToRateCell.self)
+      TapToRateCell.self,
+      ExpandCollapseCell.self,
+      WhereToBuyCell.self)
 
     return collectionView
   }()
@@ -222,13 +231,7 @@ final class WineDetailViewController: UIViewController {
   private let noteButton = UIButton()
   private let moreButton = UIButton()
 
-  private var viewModel: WineDetailViewModel? {
-    didSet {
-      DispatchQueue.main.async {
-        self.collectionView.reloadData()
-      }
-    }
-  }
+  private var viewModel: WineDetailViewModel?
 
   @objc
   private func didTapCloseBarButtonItem(_: UIBarButtonItem) {
@@ -299,6 +302,12 @@ extension WineDetailViewController: UICollectionViewDataSource {
       return model.count
 
     case .similarWines(let model):
+      return model.count
+
+    case .expandCollapse(let model):
+      return model.count
+
+    case .whereToBuy(let model):
       return model.count
     }
   }
@@ -409,6 +418,21 @@ extension WineDetailViewController: UICollectionViewDataSource {
       cell.decorate(model: model[indexPath.row])
       cell.delegate = self
       return cell
+
+    case .expandCollapse(let model):
+      let cell = collectionView.dequeueReusableCell(
+        withReuseIdentifier: ExpandCollapseCell.reuseId,
+        for: indexPath) as! ExpandCollapseCell // swiftlint:disable:this force_cast
+      cell.decorate(model: model[indexPath.row])
+      return cell
+
+    case .whereToBuy(let model):
+      let cell = collectionView.dequeueReusableCell(
+        withReuseIdentifier: WhereToBuyCell.reuseId,
+        for: indexPath) as! WhereToBuyCell // swiftlint:disable:this force_cast
+      cell.decorate(model: model[indexPath.row])
+      cell.backgroundColor = indexPath.row.isMultiple(of: 2) ? .option : .mainBackground
+      return cell
     }
   }
 }
@@ -430,6 +454,12 @@ extension WineDetailViewController: UICollectionViewDelegate {
 
     switch type {
     case .gallery, .title, .rate, .winery, .text, .tool, .list, .ratingAndReview, .tapToRate, .servingTips, .button, .ad, .similarWines:
+      break
+
+    case .expandCollapse:
+      interactor?.didTapExpandOrCollapseGeneralInfo()
+
+    case .whereToBuy:
       break
 
     case .reviews(let model):
@@ -475,8 +505,57 @@ extension WineDetailViewController: VinchySimpleConiniousCaruselCollectionCellDe
 // MARK: WineDetailViewControllerProtocol
 
 extension WineDetailViewController: WineDetailViewControllerProtocol {
+
+  func updateGeneralInfoSectionAndExpandOrCollapseCell(viewModel: WineDetailViewModel) {
+    self.viewModel = viewModel
+
+    let sectionIndex = viewModel.sections.firstIndex { section in
+      switch section {
+      case .list:
+        return true
+
+      default:
+        return false
+      }
+    }
+
+    guard let sectionIndex = sectionIndex else {
+      return
+    }
+
+    let collapseSection = viewModel.sections.firstIndex { section in
+      switch section {
+      case .expandCollapse:
+        return true
+
+      default:
+        return false
+      }
+    }
+
+    guard let collapseSection = collapseSection else {
+      return
+    }
+
+    let expandOrCollapseCell = collectionView.cellForItem(at: IndexPath(row: 0, section: collapseSection)) as? ExpandCollapseCell
+
+    let titleText = viewModel.isGeneralInfoCollapsed
+      ? localized("expand").firstLetterUppercased()
+      : localized("collapse").firstLetterUppercased()
+
+    expandOrCollapseCell?.decorate(
+      model: .init(
+        chevronDirection: viewModel.isGeneralInfoCollapsed ? .down : .up,
+        titleText: titleText,
+        animated: true))
+
+    collectionView.reloadSections(IndexSet([sectionIndex]))
+
+  }
+
   func updateUI(viewModel: WineDetailViewModel) {
     self.viewModel = viewModel
+    collectionView.reloadData()
   }
 }
 
