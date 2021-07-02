@@ -30,12 +30,6 @@ final class SearchViewController: UIViewController {
 
   // MARK: Private
 
-  private var viewModel: SearchViewModel? {
-    didSet {
-      collectionView.reloadData()
-    }
-  }
-
   private lazy var layout = UICollectionViewCompositionalLayout { [weak self] sectionNumber, _ -> NSCollectionLayoutSection? in
 
     guard let self = self else { return nil }
@@ -64,6 +58,13 @@ final class SearchViewController: UIViewController {
     collectionView.register(WineCollectionViewCell.self)
     return collectionView
   }()
+
+  private var viewModel: SearchViewModel? {
+    didSet {
+      collectionView.reloadData()
+    }
+  }
+
 }
 
 // MARK: UICollectionViewDataSource
