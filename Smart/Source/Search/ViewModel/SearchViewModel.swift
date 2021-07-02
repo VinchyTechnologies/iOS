@@ -6,8 +6,13 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import CommonUI
 
 struct SearchViewModel {
 
+  enum Section {
+    case recentlySearched([WineCollectionViewCellViewModel])
+  }
+
+  let sections: [Section]
 }

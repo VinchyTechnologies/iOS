@@ -9,5 +9,5 @@
 import Foundation
 
 protocol SearchViewControllerProtocol: AnyObject {
-
+  func updateUI(viewModel: SearchViewModel)
 }
