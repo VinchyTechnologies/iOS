@@ -20,11 +20,15 @@ protocol WineDetailRoutable: AnyObject {
 
 extension WineDetailRoutable {
   func pushToWineDetailViewController(wineID: Int64) {
-    let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID))
-    controller.hidesBottomBarWhenPushed = true
-    viewController?.navigationController?.pushViewController(
-      controller,
-      animated: true)
+    if UIDevice.current.userInterfaceIdiom == .pad {
+      presentWineDetailViewController(wineID: wineID)
+    } else {
+      let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID))
+      controller.hidesBottomBarWhenPushed = true
+      viewController?.navigationController?.pushViewController(
+        controller,
+        animated: true)
+    }
   }
 
   func presentWineDetailViewController(wineID: Int64) {

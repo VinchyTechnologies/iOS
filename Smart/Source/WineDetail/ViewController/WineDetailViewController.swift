@@ -58,7 +58,7 @@ final class WineDetailViewController: UIViewController {
     if isModal {
       let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
       navigationItem.leftBarButtonItem = UIBarButtonItem(
-        image: UIImage(systemName: "xmark", withConfiguration: imageConfig),
+        image: UIImage(systemName: "chevron.down", withConfiguration: imageConfig),
         style: .plain,
         target: self,
         action: #selector(didTapCloseBarButtonItem(_:)))

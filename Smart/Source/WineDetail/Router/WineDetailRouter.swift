@@ -42,6 +42,15 @@ final class WineDetailRouter {
 // MARK: WineDetailRouterProtocol
 
 extension WineDetailRouter: WineDetailRouterProtocol {
+
+  func pushToWineDetailViewController(wineID: Int64) {
+    let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID))
+    controller.hidesBottomBarWhenPushed = true
+    viewController?.navigationController?.pushViewController(
+      controller,
+      animated: true)
+  }
+
   func presentEmailController(HTMLText: String?, recipients: [String]) {
     let emailController = emailService.getEmailController(
       HTMLText: HTMLText,
