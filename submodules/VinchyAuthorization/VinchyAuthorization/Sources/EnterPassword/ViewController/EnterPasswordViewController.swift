@@ -28,7 +28,8 @@ final class EnterPasswordViewController: UIViewController {
     NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
   }
 
-  required init?(coder: NSCoder) { fatalError() }
+  @available(*, unavailable)
+  required init?(coder _: NSCoder) { fatalError() }
 
   // MARK: Internal
 
@@ -51,7 +52,6 @@ final class EnterPasswordViewController: UIViewController {
       action: #selector(closeSelf))
 
     view.addSubview(continueButton)
-    passwordTextField.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       continueButton.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
       continueButton.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
@@ -78,8 +78,8 @@ final class EnterPasswordViewController: UIViewController {
     view.addSubview(passwordTextField)
     passwordTextField.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      passwordTextField.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 16),
-      passwordTextField.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -16),
+      passwordTextField.widthAnchor.constraint(equalToConstant: 300),
+      passwordTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
       passwordTextField.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 16),
       passwordTextField.bottomAnchor.constraint(lessThanOrEqualTo: continueButton.topAnchor, constant: -8),
     ])
@@ -112,15 +112,13 @@ final class EnterPasswordViewController: UIViewController {
     return label
   }()
 
-  private lazy var passwordTextField: TextField = {
-    let textField = TextField()
-    textField.delegate = self
-    textField.keyboardType = .numberPad
-    textField.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
-    return textField
+  private lazy var passwordTextField: OTPStackView = {
+    let otpStackView = OTPStackView()
+    otpStackView.delegate = self
+    return otpStackView
   }()
 
-  private let continueButton: Button = {
+  private lazy var continueButton: Button = {
     let button = Button()
     button.translatesAutoresizingMaskIntoConstraints = false
     button.disable()
@@ -160,11 +158,6 @@ final class EnterPasswordViewController: UIViewController {
   private func didTapSendAgainButton(_: UIButton) {
     interactor?.didTapSendCodeAgainButton()
   }
-
-  @objc
-  private func textFieldDidChange(_ textFiled: UITextField) {
-    interactor?.didEnterCodeInTextField(textFiled.text)
-  }
 }
 
 // MARK: EnterPasswordViewControllerProtocol
@@ -182,11 +175,13 @@ extension EnterPasswordViewController: EnterPasswordViewControllerProtocol {
   func updateUI(viewModel: EnterPasswordViewModel) {
     titleLabel.text = viewModel.titleText
     subtitleLabel.text = viewModel.subtitleText
-    passwordTextField.placeholder = viewModel.enterPasswordTextFiledPlaceholderText
-    passwordTextField.selectedTitle = viewModel.enterPasswordTextFiledTopPlaceholderText
   }
 }
 
-// MARK: UITextFieldDelegate
+// MARK: OTPDelegate
 
-extension EnterPasswordViewController: UITextFieldDelegate {}
+extension EnterPasswordViewController: OTPDelegate {
+  func didChangeText(_ text: String) {
+    interactor?.didEnterCodeInTextField(text)
+  }
+}
