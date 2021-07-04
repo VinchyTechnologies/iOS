@@ -62,7 +62,7 @@ extension MoreRouter: MoreRouterProtocol {
   }
 
   func pushToDocController() {
-    let controller = DocController()
+    let controller = DocumentsAssembly.assemblyModule() //DocController()
     controller.hidesBottomBarWhenPushed = true
     viewController?.navigationController?.pushViewController(controller, animated: true)
   }
