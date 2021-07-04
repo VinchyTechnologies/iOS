@@ -92,6 +92,7 @@ extension ResultsTableController: UITableViewDataSource {
     {
       cell.decorate(
         model: .init(
+          wineID: wine.id,
           imageURL: wine.mainImageUrl?.toURL,
           titleText: wine.title,
           subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode)))
