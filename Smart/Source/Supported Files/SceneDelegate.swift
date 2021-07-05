@@ -47,7 +47,11 @@ extension SceneDelegate: UIWindowSceneDelegate {
 
     let window = UIWindow(windowScene: windowScence)
     self.window = window
-    root.startApp()
+//    root.startApp()
+
+    let store = StoreAssembly.assemblyModule()
+    window.rootViewController = store
+    window.makeKeyAndVisible()
 
     if let userActivity = connectionOptions.userActivities.first {
       self.scene(scene, continue: userActivity)

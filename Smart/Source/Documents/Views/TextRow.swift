@@ -79,7 +79,7 @@ final class TextRow: UIView, EpoxyableView {
 
       IconView.groupItem(
         dataID: DataID.image,
-        content: UIImage(systemName: "arrow.up.right.square"),
+        content: .init(image: .local(UIImage(systemName: "arrow.up.right.square"))),
         style: .init(size: .init(width: 24, height: 24), tintColor: .accent))
     }
   }

@@ -6,8 +6,15 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import Display
 import EpoxyCore
 import UIKit
+
+// MARK: - TextStyle
+
+enum TextStyle {
+  case lagerTitle
+}
 
 // MARK: - Label
 
@@ -21,17 +28,13 @@ final class Label: UILabel, EpoxyableView {
     font = style.font
     numberOfLines = style.numberOfLines
     if style.showLabelBackground {
-      backgroundColor = .secondarySystemBackground
+      backgroundColor = .mainBackground
     }
   }
 
-  required init?(coder: NSCoder) {
-    fatalError("init(coder:) has not been implemented")
-  }
+  required init?(coder: NSCoder) { fatalError() }
 
   // MARK: Internal
-
-  // MARK: StyledView
 
   struct Style: Hashable {
     let font: UIFont
@@ -46,7 +49,6 @@ final class Label: UILabel, EpoxyableView {
   func setContent(_ content: String, animated: Bool) {
     text = content
   }
-
 }
 
 extension Label.Style {
@@ -58,5 +60,12 @@ extension Label.Style {
     .init(
       font: UIFont.preferredFont(forTextStyle: textStyle),
       showLabelBackground: showBackground)
+  }
+
+  static func style(with textStyle: TextStyle) -> Label.Style {
+    switch textStyle {
+    case .lagerTitle:
+      return .init(font: Font.heavy(20), showLabelBackground: true)
+    }
   }
 }
