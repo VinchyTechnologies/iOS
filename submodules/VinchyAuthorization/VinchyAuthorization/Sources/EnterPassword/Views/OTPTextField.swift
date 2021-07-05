@@ -15,7 +15,7 @@ protocol OTPTextFieldDelegate: AnyObject {
 
 // MARK: - OTPTextField
 
-class OTPTextField: UITextField {
+final class OTPTextField: UITextField {
 
   // MARK: Lifecycle
 
@@ -70,12 +70,11 @@ class OTPTextField: UITextField {
   // MARK: Private
 
   private lazy var bottomLine: UIView = {
-    let bottomLine = UIView()
-    bottomLine.translatesAutoresizingMaskIntoConstraints = false
-    bottomLine.backgroundColor = .blueGray
-    bottomLine.layer.cornerRadius = 2
-    return bottomLine
-  }()
+    $0.translatesAutoresizingMaskIntoConstraints = false
+    $0.backgroundColor = .blueGray
+    $0.layer.cornerRadius = 2
+    return $0
+  }(UIView())
 
   private func addBottomLine() {
     addSubview(bottomLine)

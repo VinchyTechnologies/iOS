@@ -14,17 +14,19 @@ protocol OTPDelegate: AnyObject {
   func didChangeText(_ text: String)
 }
 
+// MARK: - C
+
+private enum C {
+  static let defaultNumberOfFields = 4
+  static let defaultSpacing = CGFloat(30)
+  static let defaultFontSize = CGFloat(50)
+}
+
 // MARK: - OTPStackView
 
-class OTPStackView: UIStackView {
+final class OTPStackView: UIStackView {
 
   // MARK: Lifecycle
-
-  required init(coder: NSCoder) {
-    super.init(coder: coder)
-    setupStackView()
-    addOTPFields()
-  }
 
   override init(frame: CGRect) {
     super.init(frame: frame)
@@ -32,14 +34,21 @@ class OTPStackView: UIStackView {
     addOTPFields()
   }
 
+  required init(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
   // MARK: Public
 
-  public let numberOfFields: Int = 4
+  public let numberOfFields: Int = C.defaultNumberOfFields
 
   public final func getOTP() -> String {
     var OTP = String()
     for textField in textFieldsCollection {
-      OTP += textField.text!
+      guard let text = textField.text else {
+        continue
+      }
+      OTP += text
     }
     return OTP
   }
@@ -60,7 +69,7 @@ class OTPStackView: UIStackView {
     distribution = .fillEqually
     axis = .horizontal
     alignment = .center
-    spacing = 30
+    spacing = C.defaultSpacing
   }
 
   private final func addOTPFields() {
@@ -83,7 +92,7 @@ class OTPStackView: UIStackView {
     textField.delegate = self
     textField.translatesAutoresizingMaskIntoConstraints = false
     textField.textAlignment = .center
-    textField.font = .systemFont(ofSize: 50)
+    textField.font = .systemFont(ofSize: C.defaultFontSize)
     textField.keyboardType = .numberPad
     textField.autocorrectionType = .yes
     textField.textContentType = .oneTimeCode

@@ -41,7 +41,6 @@ final class AuthorizationInteractor {
 
 extension AuthorizationInteractor: AuthorizationInteractorProtocol {
   func didTapContinueButton(_ email: String?, password: String?) {
-//    router.pushToEnterPasswordViewController(accountID: 1, password: "password")
 
     guard let email = email else {
       presenter.updateInvalidEmailAndPassword()
@@ -57,8 +56,6 @@ extension AuthorizationInteractor: AuthorizationInteractorProtocol {
       DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
         self.dispatchWorkItemHud.perform()
       }
-
-//      presenter.updateValidEmailAndPassword()
 
       switch input.mode {
       case .register:
@@ -117,6 +114,5 @@ extension AuthorizationInteractor: AuthorizationInteractorProtocol {
 
   func viewDidLoad() {
     presenter.update()
-//    presenter.updateValidEmailAndPassword()
   }
 }

@@ -113,10 +113,9 @@ final class EnterPasswordViewController: UIViewController {
   }()
 
   private lazy var passwordTextField: OTPStackView = {
-    let otpStackView = OTPStackView()
-    otpStackView.delegate = self
-    return otpStackView
-  }()
+    $0.delegate = self
+    return $0
+  }(OTPStackView())
 
   private lazy var continueButton: Button = {
     let button = Button()
