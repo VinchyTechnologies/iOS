@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol DocumentsViewControllerProtocol: AnyObject {
+protocol DocumentsViewControllerProtocol: CantOpenURLAlertable {
   func updateUI(viewModel: DocumentsViewModel)
 }

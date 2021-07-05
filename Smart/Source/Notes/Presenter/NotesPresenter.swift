@@ -72,6 +72,11 @@ extension NotesPresenter: NotesPresenterProtocol {
   }
 
   func showDeletingAlert(wineID: Int64) {
-    viewController?.showAlert(wineID: wineID, title: localized("delete_note"), firstActionTitle: localized("delete"), secondActionTitle: localized("cancel"), message: localized("this_action_cannot_to_be_undone"))
+    viewController?.showAlert(
+      wineID: wineID,
+      title: localized("delete_note"),
+      firstActionTitle: localized("delete"),
+      secondActionTitle: localized("cancel"),
+      message: localized("this_action_cannot_to_be_undone"))
   }
 }

@@ -10,4 +10,5 @@ import Foundation
 
 protocol DocumentsPresenterProtocol: AnyObject {
   func update(documents: [Document])
+  func showAlertCantOpenURL()
 }

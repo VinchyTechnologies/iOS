@@ -26,6 +26,11 @@ final class DocumentsPresenter {
 // MARK: DocumentsPresenterProtocol
 
 extension DocumentsPresenter: DocumentsPresenterProtocol {
+
+  func showAlertCantOpenURL() {
+    viewController?.showAlertCantOpenURL()
+  }
+
   func update(documents: [Document]) {
     let sections = documents.compactMap { document in
       DocumentsViewModel.Section.urlDocument(.init(id: document.id, title: document.title, body: nil))

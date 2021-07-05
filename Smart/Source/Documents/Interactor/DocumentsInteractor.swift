@@ -38,7 +38,7 @@ extension DocumentsInteractor: DocumentsInteractorProtocol {
   func didSelectDocument(documentId: Int) {
     if let document = Document.allCases.first(where: { $0.id == documentId }) {
       router.open(urlString: document.url) {
-//        presenter.
+        presenter.showAlertCantOpenURL()
       }
     }
   }

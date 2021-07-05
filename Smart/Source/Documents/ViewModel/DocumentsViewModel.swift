@@ -16,6 +16,6 @@ struct DocumentsViewModel {
 
   let sections: [Section]
   let navigationTitleText: String?
-  
+
   static let empty: Self = .init(sections: [], navigationTitleText: nil)
 }
