@@ -13,8 +13,7 @@ final class OnboardingModuleFactory {
     delegate: OnboardingViewControllerOutput?)
     -> OnboardViewController
   {
-    let pageItems: [OnboardPage] = [OnboardPage(title: "title", description: "description")]
-    let viewController = OnboardViewController(pageItems: pageItems)
+    let viewController = OnboardViewController()
     viewController.delegate = delegate
     return viewController
   }
