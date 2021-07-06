@@ -9,36 +9,39 @@
 import Display
 import UIKit
 
-final class FeaturesOnboardingViewController: UIViewController {
+final class FeaturesOnboardingViewController: UICollectionViewCell, Reusable {
 
-  // MARK: Internal
+  // MARK: Lifecycle
 
-  override func viewDidLoad() {
-    super.viewDidLoad()
+  override init(frame: CGRect) {
+    super.init(frame: frame)
 
-    view.backgroundColor = .mainBackground
+    backgroundColor = .mainBackground
 
     let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
     let xMarkButton = UIButton(type: .system)
     xMarkButton.setImage(UIImage(systemName: "xmark", withConfiguration: imageConfig), for: [])
     xMarkButton.tintColor = .dark
-    view.addSubview(xMarkButton)
+    addSubview(xMarkButton)
     xMarkButton.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      xMarkButton.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 24),
-      xMarkButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -24),
+      xMarkButton.topAnchor.constraint(equalTo: safeAreaLayoutGuide.topAnchor, constant: 24),
+      xMarkButton.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
       xMarkButton.widthAnchor.constraint(equalToConstant: 36),
       xMarkButton.heightAnchor.constraint(equalToConstant: 36),
     ])
 
-    view.addSubview(continueButton)
+    xMarkButton.addTarget(self, action: #selector(didTapCloseSelf), for: .touchUpInside)
+
+    addSubview(continueButton)
     continueButton.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      continueButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -10),
+      continueButton.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -10),
       continueButton.widthAnchor.constraint(equalToConstant: UIScreen.main.bounds.width * 0.8),
       continueButton.heightAnchor.constraint(equalToConstant: 48),
-      continueButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+      continueButton.centerXAnchor.constraint(equalTo: centerXAnchor),
     ])
+    continueButton.addTarget(self, action: #selector(didTapNexButton), for: .touchUpInside)
 
     let page1 = OnboardingFeatureView()
     page1.decorate(model: .init(style: .bottles))
@@ -60,16 +63,24 @@ final class FeaturesOnboardingViewController: UIViewController {
     vStackView.spacing = 40
     vStackView.alignment = .center
 
-    view.addSubview(vStackView)
+    addSubview(vStackView)
     vStackView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      vStackView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-      vStackView.centerYAnchor.constraint(equalTo: view.centerYAnchor),
-      vStackView.leadingAnchor.constraint(greaterThanOrEqualTo: view.leadingAnchor, constant: 24),
-      vStackView.trailingAnchor.constraint(lessThanOrEqualTo: view.trailingAnchor, constant: -24),
+      vStackView.centerXAnchor.constraint(equalTo: centerXAnchor),
+      vStackView.centerYAnchor.constraint(equalTo: centerYAnchor),
+      vStackView.leadingAnchor.constraint(greaterThanOrEqualTo: leadingAnchor, constant: 24),
+      vStackView.trailingAnchor.constraint(lessThanOrEqualTo: trailingAnchor, constant: -24),
       vStackView.bottomAnchor.constraint(lessThanOrEqualTo: continueButton.topAnchor, constant: -24),
     ])
   }
+
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
+  // MARK: Internal
+
+  weak var delegate: OnboardingPageDelegate?
 
   // MARK: Private
 
@@ -77,4 +88,15 @@ final class FeaturesOnboardingViewController: UIViewController {
     $0.setTitle("Дальше", for: [])
     return $0
   }(Button())
+
+
+  @objc
+  private func didTapCloseSelf() {
+    delegate?.didTapCloseButton()
+  }
+
+  @objc
+  private func didTapNexButton() {
+    delegate?.didTapNexButton()
+  }
 }
