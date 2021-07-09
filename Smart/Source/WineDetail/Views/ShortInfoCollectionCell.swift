@@ -23,12 +23,14 @@ struct ShortInfoCollectionCellViewModel: ViewModelProtocol {
 
 // MARK: - ShortInfoCollectionCell
 
-final class ShortInfoCollectionCell: UICollectionViewCell, Reusable {
+final class ShortInfoCollectionCell: HighlightCollectionCell, Reusable {
 
   // MARK: Lifecycle
 
   override init(frame: CGRect) {
     super.init(frame: frame)
+
+    highlightStyle = .scale
 
     backgroundColor = .option
     layer.cornerRadius = 15

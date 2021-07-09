@@ -77,6 +77,7 @@
 "continue" = "continue";
 "expand" = "more";
 "collapse" = "less";
+"wine_has_no_reviews_yet" = "This wine has no reviews yet, be the first to write it!";
 
 // MARK: - Sugar
 "sugar" = "sugar";

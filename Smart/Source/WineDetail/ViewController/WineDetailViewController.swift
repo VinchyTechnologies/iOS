@@ -134,7 +134,7 @@ final class WineDetailViewController: UIViewController {
       let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)))
       let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)), subitems: [item])
       let section = NSCollectionLayoutSection(group: group)
-      section.contentInsets = .init(top: 15, leading: 0, bottom: 0, trailing: 0)
+      section.contentInsets = .init(top: 15, leading: 0, bottom: 5, trailing: 0)
       return section
 
     case .ratingAndReview:
@@ -392,8 +392,8 @@ extension WineDetailViewController: UICollectionViewDataSource {
       case .titleTextAndSubtitleText(let titleText, let subtitleText):
         // swiftlint:disable:next force_cast
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShortInfoCollectionCell.reuseId, for: indexPath) as! ShortInfoCollectionCell
-        let title = NSAttributedString(string: titleText ?? "", font: Font.with(size: 24, design: .round, traits: .bold), textColor: .dark)
-        let subtitle = NSAttributedString(string: subtitleText ?? "", font: Font.with(size: 18, design: .round, traits: .bold), textColor: .blueGray)
+        let title = NSAttributedString(string: titleText ?? "", font: Font.semibold(22), textColor: .dark)
+        let subtitle = NSAttributedString(string: subtitleText ?? "", font: Font.with(size: 18, design: .round, traits: .bold), textColor: .dark)
         cell.decorate(model: .init(title: title, subtitle: subtitle))
         return cell
       }
@@ -540,7 +540,7 @@ extension WineDetailViewController: WineDetailViewControllerProtocol {
     let expandOrCollapseCell = collectionView.cellForItem(at: IndexPath(row: 0, section: collapseSection)) as? ExpandCollapseCell
 
     let titleText = viewModel.isGeneralInfoCollapsed
-      ? localized("expand").firstLetterUppercased()
+      ? localized("expand").firstLetterUppercased() // TODO: - remove localization
       : localized("collapse").firstLetterUppercased()
 
     expandOrCollapseCell?.decorate(
@@ -550,7 +550,6 @@ extension WineDetailViewController: WineDetailViewControllerProtocol {
         animated: true))
 
     collectionView.reloadSections(IndexSet([sectionIndex]))
-
   }
 
   func updateUI(viewModel: WineDetailViewModel) {
