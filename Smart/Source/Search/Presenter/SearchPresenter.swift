@@ -6,7 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import VinchyCore
 
 // MARK: - SearchPresenter
 
@@ -31,5 +31,14 @@ final class SearchPresenter {
 // MARK: SearchPresenterProtocol
 
 extension SearchPresenter: SearchPresenterProtocol {
+  func update(suggestions: [Wine]) {
+    var sections: [SearchViewModel.Section] = []
 
+    suggestions.forEach { wine in
+      sections.append(.recentlySearched([.init(wineID: wine.id, imageURL: nil, titleText: wine.title, subtitleText: wine.title)]))
+      //sections.append(.suggestions([.init(titleText: wine.title)]))
+    }
+
+    viewController?.updateUI(viewModel: SearchViewModel(sections: sections))
+  }
 }
