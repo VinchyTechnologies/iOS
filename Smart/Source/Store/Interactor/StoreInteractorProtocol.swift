@@ -10,4 +10,5 @@ import Foundation
 
 protocol StoreInteractorProtocol: AnyObject {
   func viewDidLoad()
+  func didSelectWine(wineID: Int64)
 }

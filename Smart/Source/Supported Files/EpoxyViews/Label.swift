@@ -13,7 +13,7 @@ import UIKit
 // MARK: - TextStyle
 
 enum TextStyle {
-  case lagerTitle
+  case lagerTitle, miniBold
 }
 
 // MARK: - Label
@@ -23,13 +23,16 @@ final class Label: UILabel, EpoxyableView {
   // MARK: Lifecycle
 
   init(style: Style) {
+    self.style = style
     super.init(frame: .zero)
     translatesAutoresizingMaskIntoConstraints = false
     font = style.font
     numberOfLines = style.numberOfLines
     if style.showLabelBackground {
-      backgroundColor = .mainBackground
+      backgroundColor = style.backgroundColor
     }
+    textAlignment = style.textAligment
+    textColor = style.textColor
   }
 
   required init?(coder: NSCoder) { fatalError() }
@@ -40,15 +43,33 @@ final class Label: UILabel, EpoxyableView {
     let font: UIFont
     let showLabelBackground: Bool
     var numberOfLines = 0
+    var backgroundColor: UIColor = .mainBackground
+    var isRounded: Bool = false
+    var textAligment: NSTextAlignment = .left
+    var textColor: UIColor = .dark
+    var insets: UIEdgeInsets = .zero
   }
 
   // MARK: ContentConfigurableView
 
   typealias Content = String
 
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    if style.isRounded {
+      layer.cornerRadius = frame.height / 2
+      clipsToBounds = true
+    }
+  }
+
   func setContent(_ content: String, animated: Bool) {
     text = content
   }
+
+  // MARK: Private
+
+  private let style: Style
+
 }
 
 extension Label.Style {
@@ -62,10 +83,29 @@ extension Label.Style {
       showLabelBackground: showBackground)
   }
 
-  static func style(with textStyle: TextStyle) -> Label.Style {
+  static func style(
+    with textStyle: TextStyle,
+    backgroundColor: UIColor = .mainBackground,
+    numberOfLines: Int = 0,
+    isRoundedCorners: Bool = false,
+    textAligment: NSTextAlignment = .left,
+    textColor: UIColor = .dark,
+    insets: UIEdgeInsets = .zero)
+    -> Label.Style
+  {
     switch textStyle {
     case .lagerTitle:
       return .init(font: Font.heavy(20), showLabelBackground: true)
+
+    case .miniBold:
+      return .init(
+        font: Font.semibold(16),
+        showLabelBackground: true,
+        numberOfLines: numberOfLines,
+        backgroundColor: backgroundColor,
+        isRounded: isRoundedCorners,
+        textAligment: textAligment,
+        textColor: textColor)
     }
   }
 }

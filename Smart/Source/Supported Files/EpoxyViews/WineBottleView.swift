@@ -10,6 +10,8 @@ import CommonUI
 import Display
 import Epoxy
 
+// MARK: - WineBottleView
+
 final class WineBottleView: UIView, EpoxyableView {
 
   // MARK: Lifecycle
@@ -116,4 +118,20 @@ final class WineBottleView: UIView, EpoxyableView {
     label.textAlignment = .center
     return label
   }()
+}
+
+// MARK: HighlightableView
+
+extension WineBottleView: HighlightableView {
+  func didHighlight(_ isHighlighted: Bool) {
+    UIView.animate(
+      withDuration: 0.15,
+      delay: 0,
+      options: [.beginFromCurrentState, .allowUserInteraction])
+    {
+      self.transform = isHighlighted
+        ? CGAffineTransform(scaleX: 0.95, y: 0.95)
+        : .identity
+    }
+  }
 }

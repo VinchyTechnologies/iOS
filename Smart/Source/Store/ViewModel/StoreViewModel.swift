@@ -14,7 +14,9 @@ struct StoreViewModel {
     case logo(LogoRow.Content)
     case title(Label.Content)
     case wines([WineBottleView.Content])
-    case assortiment([WineBottleView.Content])
+    case assortiment([HorizontalWineView.Content])
+    case staticSelectedFilters([Label.Content])
+    case separator
   }
 
   let sections: [Section]

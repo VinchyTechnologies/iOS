@@ -32,8 +32,11 @@ final class StoreInteractor {
 // MARK: StoreInteractorProtocol
 
 extension StoreInteractor: StoreInteractorProtocol {
-
   func viewDidLoad() {
 
+  }
+
+  func didSelectWine(wineID: Int64) {
+    router.pushToWineDetailViewController(wineID: wineID)
   }
 }

@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol StoreRouterProtocol: AnyObject {
+protocol StoreRouterProtocol: WineDetailRoutable {
 
 }

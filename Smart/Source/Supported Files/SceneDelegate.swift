@@ -49,7 +49,7 @@ extension SceneDelegate: UIWindowSceneDelegate {
     self.window = window
 //    root.startApp()
 
-    let store = StoreAssembly.assemblyModule()
+    let store = NavigationController(rootViewController: StoreAssembly.assemblyModule())
     window.rootViewController = store
     window.makeKeyAndVisible()
 
