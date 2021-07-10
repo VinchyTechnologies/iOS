@@ -44,7 +44,7 @@ final class VinchyViewController: UIViewController {
       target: self,
       action: #selector(didTapFilter))
     navigationItem.rightBarButtonItems = [filterBarButtonItem]
-    navigationItem.searchController = searchController
+    navigationItem.searchController = SearchAssembly.assemblyModule()
 
     refreshControl.tintColor = .dark
     refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)

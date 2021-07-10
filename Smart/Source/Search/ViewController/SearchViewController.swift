@@ -12,7 +12,7 @@ import UIKit
 
 // MARK: - SearchViewController
 
-final class SearchViewController: UIViewController {
+final class SearchViewController: UISearchController {
 
   // MARK: Internal
 

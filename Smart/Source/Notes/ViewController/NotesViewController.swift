@@ -188,7 +188,7 @@ extension NotesViewController: NotesViewControllerProtocol {
 // MARK: Alertable
 
 extension NotesViewController: Alertable {
-  
+
   @discardableResult
   func showAlert(wineID: Int64, title: String, firstActionTitle: String, secondActionTitle: String, message: String?) -> AnyPublisher<Void, Never> {
     Future { _ in
