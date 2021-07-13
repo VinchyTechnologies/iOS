@@ -7,6 +7,7 @@
 //
 
 import Database
+import Display
 import Epoxy
 import UIKit
 
@@ -17,7 +18,10 @@ final class StoreViewController: CollectionViewController {
   // MARK: Lifecycle
 
   init() {
-    super.init(layout: UICollectionViewCompositionalLayout.epoxy)
+    let layout = SeparatorFlowLayout()
+    layout.sectionHeadersPinToVisibleBounds = true
+    super.init(layout: layout)
+    layout.delegate = self
   }
 
   // MARK: Internal
@@ -40,7 +44,7 @@ final class StoreViewController: CollectionViewController {
     navigationItem.rightBarButtonItems = [filterBarButtonItem]
 
     interactor?.viewDidLoad()
-    let viewModel = StoreViewModel(sections: [
+    let viewModel = StoreViewModel(selectedFilters: ["All"], sections: [
       .logo(
         LogoRow.Content(
           id: 1,
@@ -59,48 +63,20 @@ final class StoreViewController: CollectionViewController {
         .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
       ]),
 
-      .staticSelectedFilters(["Весь ассортимент"]),
-
       .assortiment([
         .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
-      ]),
-      .separator,
-
-      .assortiment([
+        .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
+        .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
+        .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
+        .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
+        .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
+        .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
+        .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
+        .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
+        .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
+        .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
         .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
       ]),
-      .separator,
-
-      .assortiment([
-        .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
-      ]),
-      .separator,
-
-      .assortiment([
-        .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
-      ]),
-      .separator,
-
-      .assortiment([
-        .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
-      ]),
-      .separator,
-
-      .assortiment([
-        .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
-      ]),
-      .separator,
-
-      .assortiment([
-        .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
-      ]),
-      .separator,
-
-      .assortiment([
-        .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
-      ]),
-      .separator,
-
     ])
 
     updateUI(viewModel: viewModel)
@@ -125,7 +101,7 @@ final class StoreViewController: CollectionViewController {
             content: content,
             style: .large)
         }
-        .compositionalLayoutSection(sectionLayout(for: section))
+        .flowLayoutItemSize(.init(width: view.frame.width, height: 60))
 
       case .title(let content):
         return SectionModel(dataID: SectionID.title) {
@@ -134,19 +110,21 @@ final class StoreViewController: CollectionViewController {
             content: content,
             style: .style(with: .lagerTitle))
         }
-        .compositionalLayoutSection(sectionLayout(for: section))
+        .flowLayoutItemSize(.init(width: view.frame.width - 48, height: 40))
+        .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 0, right: 24))
 
-      case .wines(let rows):
-        return SectionModel(dataID: SectionID.wines, items: rows.compactMap({ content in
-          WineBottleView.itemModel(
-            dataID: content.wineID,
+      case .wines(let content):
+        return SectionModel(dataID: SectionID.wines) {
+          BottlesCollectionView.itemModel(
+            dataID: SectionID.wines,
             content: content,
+            behaviors: .init(didTap: { [weak self] wineID in
+              self?.interactor?.didSelectWine(wineID: wineID)
+            }),
             style: .init())
-            .didSelect { [weak self] _ in
-              self?.interactor?.didSelectWine(wineID: content.wineID)
-            }
-        }))
-          .compositionalLayoutSection(sectionLayout(for: section))
+        }
+        .flowLayoutItemSize(.init(width: view.frame.width, height: 250))
+        .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 16, right: 0))
 
       case .assortiment(let rows):
         return SectionModel(dataID: SectionID.assortiment, items: rows.compactMap({ content in
@@ -158,75 +136,15 @@ final class StoreViewController: CollectionViewController {
               self?.interactor?.didSelectWine(wineID: content.wineID)
             }
         }))
-          .compositionalLayoutSection(sectionLayout(for: section))
-
-      case .staticSelectedFilters(let rows):
-        return SectionModel(dataID: SectionID.staticSelectedFilters, items: rows.compactMap({ content in
-          FilterItemView.itemModel(
-            dataID: SectionID.title,
-            content: content,
-            style: .init())
-        }))
-          .compositionalLayoutSection(sectionLayout(for: section))
-
-      case .separator:
-        return SectionModel(dataID: SectionID.separator) {
-          SeparatorView.itemModel(
-            dataID: SectionID.logo,
-            content: nil,
-            style: .init())
-        }
-        .compositionalLayoutSection(sectionLayout(for: section))
+          .supplementaryItems(ofKind: UICollectionView.elementKindSectionHeader, [
+            FilterItemView.supplementaryItemModel(
+              dataID: SectionID.staticSelectedFilters,
+              content: "Весь ассортимент",
+              style: .init()),
+          ])
+          .flowLayoutHeaderReferenceSize(.init(width: view.frame.width, height: 50))
+          .flowLayoutItemSize(.init(width: view.frame.width, height: 100))
       }
-    }
-  }
-
-  private func sectionLayout(for type: StoreViewModel.Section) -> NSCollectionLayoutSection? {
-    switch type {
-    case .logo:
-      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(15)))
-      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(15)), subitems: [item])
-      let section = NSCollectionLayoutSection(group: group)
-      return section
-
-    case .title:
-      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(15)))
-      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(15)), subitems: [item])
-      let section = NSCollectionLayoutSection(group: group)
-      section.contentInsets = .init(top: 10, leading: 24, bottom: 0, trailing: 24)
-      return section
-
-    case .wines:
-      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .absolute(150), heightDimension: .absolute(250)))
-      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(150), heightDimension: .absolute(250)), subitems: [item])
-      let section = NSCollectionLayoutSection(group: group)
-      section.interGroupSpacing = 8
-      section.orthogonalScrollingBehavior = .continuous
-      section.contentInsets = .init(top: 10, leading: 24, bottom: 0, trailing: 24)
-      return section
-
-    case .assortiment:
-      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)))
-      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)), subitems: [item])
-      let section = NSCollectionLayoutSection(group: group)
-      section.contentInsets = .init(top: 10, leading: 24, bottom: 0, trailing: 24)
-      return section
-
-    case .staticSelectedFilters:
-      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .estimated(100), heightDimension: .estimated(24)))
-      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(24)), subitems: [item])
-      let section = NSCollectionLayoutSection(group: group)
-      section.interGroupSpacing = 8
-      section.orthogonalScrollingBehavior = .continuous
-      section.contentInsets = .init(top: 20, leading: 24, bottom: 0, trailing: 24)
-      return section
-
-    case .separator:
-      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(0.8)))
-      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(0.8)), subitems: [item])
-      let section = NSCollectionLayoutSection(group: group)
-      section.contentInsets = .init(top: 0, leading: 24, bottom: 0, trailing: 0)
-      return section
     }
   }
 }
@@ -248,6 +166,25 @@ extension StoreViewController: UIScrollViewDelegate {
       navigationItem.title = "x5Group"
     } else {
       navigationItem.title = nil
+    }
+  }
+}
+
+// MARK: SeparatorFlowLayoutDelegate
+
+extension StoreViewController: SeparatorFlowLayoutDelegate {
+  func collectionView(
+    _ collectionView: UICollectionView,
+    layout collectionViewLayout: SeparatorFlowLayout,
+    shouldShowSeparatorBelowItemAt indexPath: IndexPath)
+    -> Bool
+  {
+    switch viewModel.sections[indexPath.section] {
+    case .logo, .title, .wines:
+      return false
+
+    case .assortiment(_):
+      return true
     }
   }
 }

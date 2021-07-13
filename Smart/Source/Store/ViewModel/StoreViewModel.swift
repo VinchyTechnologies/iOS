@@ -13,13 +13,13 @@ struct StoreViewModel {
   enum Section {
     case logo(LogoRow.Content)
     case title(Label.Content)
-    case wines([WineBottleView.Content])
+    case wines(BottlesCollectionView.Content)
     case assortiment([HorizontalWineView.Content])
-    case staticSelectedFilters([Label.Content])
-    case separator
+//    case staticSelectedFilters([Label.Content])
   }
 
+  let selectedFilters: [String]?
   let sections: [Section]
 
-  static let empty: Self = .init(sections: [])
+  static let empty: Self = .init(selectedFilters: nil, sections: [])
 }
