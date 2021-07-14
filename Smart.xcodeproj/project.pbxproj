@@ -93,6 +93,7 @@
 		8A07991626999BBA000ACA2B /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07991526999BBA000ACA2B /* SeparatorView.swift */; };
 		8A0799182699A06C000ACA2B /* FilterItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0799172699A06C000ACA2B /* FilterItemView.swift */; };
 		8A079F2E269E151F000ACA2B /* BottlesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A079F2D269E151F000ACA2B /* BottlesCollectionView.swift */; };
+		8A07983B269750A0000ACA2B /* PluralLocalizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 8A07983D269750A0000ACA2B /* PluralLocalizable.stringsdict */; };
 		8A0D9CB726871D9D0076A7EC /* NewAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0D9CB626871D9D0076A7EC /* NewAgreementViewController.swift */; };
 		8A0D9CB926872CF60076A7EC /* NewAgreementsBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0D9CB826872CF60076A7EC /* NewAgreementsBottomView.swift */; };
 		8A1034592648596100F7CA81 /* AssortmentCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1034582648596100F7CA81 /* AssortmentCollectionCell.swift */; };
@@ -474,6 +475,8 @@
 		8A07991526999BBA000ACA2B /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
 		8A0799172699A06C000ACA2B /* FilterItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterItemView.swift; sourceTree = "<group>"; };
 		8A079F2D269E151F000ACA2B /* BottlesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottlesCollectionView.swift; sourceTree = "<group>"; };
+		8A07983C269750A0000ACA2B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/PluralLocalizable.stringsdict; sourceTree = "<group>"; };
+		8A07983E269750A4000ACA2B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/PluralLocalizable.stringsdict; sourceTree = "<group>"; };
 		8A0D9CB626871D9D0076A7EC /* NewAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAgreementViewController.swift; sourceTree = "<group>"; };
 		8A0D9CB826872CF60076A7EC /* NewAgreementsBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAgreementsBottomView.swift; sourceTree = "<group>"; };
 		8A1034582648596100F7CA81 /* AssortmentCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssortmentCollectionCell.swift; sourceTree = "<group>"; };
@@ -1843,6 +1846,7 @@
 				CA63A129249A23C100144320 /* Localizable.strings */,
 				CA4AED9A24CE204900035922 /* TopSecret.plist */,
 				CA3C97E8257245F40036F7D9 /* Countries.strings */,
+				8A07983D269750A0000ACA2B /* PluralLocalizable.stringsdict */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -2736,6 +2740,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA8CD67A25096EDA00FDB7AF /* GADTSmallTemplateView.xib in Resources */,
+				8A07983B269750A0000ACA2B /* PluralLocalizable.stringsdict in Resources */,
 				CA472ACC245EDE30009149FF /* LaunchScreen.storyboard in Resources */,
 				CA445F6B24BFA3C20023A09F /* InfoPlist.strings in Resources */,
 				CA63A12B249A23C100144320 /* Localizable.strings in Resources */,
@@ -3236,6 +3241,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		8A07983D269750A0000ACA2B /* PluralLocalizable.stringsdict */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8A07983C269750A0000ACA2B /* en */,
+				8A07983E269750A4000ACA2B /* ru */,
+			);
+			name = PluralLocalizable.stringsdict;
+			sourceTree = "<group>";
+		};
 		CA3C97E8257245F40036F7D9 /* Countries.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -3404,7 +3418,7 @@
 				CODE_SIGN_ENTITLEMENTS = Smart/Vinchy.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				INFOPLIST_FILE = Smart/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -3419,6 +3433,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Smart/Source/Vinchy/Views/Smart-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_REFLECTION_METADATA_LEVEL = none;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3433,7 +3448,7 @@
 				CODE_SIGN_ENTITLEMENTS = Smart/VinchyRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				INFOPLIST_FILE = Smart/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -3447,6 +3462,7 @@
 				PRODUCT_NAME = Vinchy;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Smart/Source/Vinchy/Views/Smart-Bridging-Header.h";
+				SWIFT_REFLECTION_METADATA_LEVEL = none;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
