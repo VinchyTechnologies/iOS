@@ -76,7 +76,7 @@ extension VinchyPresenter: VinchyPresenterProtocol {
     viewController?.startLoadingAnimation()
   }
 
-  func update(compilations: [Compilation], isSearchingMode: Bool) {
+  func update(compilations: [Compilation]) {
     viewController?.stopLoadingAnimation()
 
     var sections: [VinchyViewControllerViewModel.Section] = []
@@ -174,23 +174,8 @@ extension VinchyPresenter: VinchyPresenterProtocol {
           paragraphAlignment: .justified)),
     ]))
 
-    if !isSearchingMode {
-      viewController?.updateUI(viewModel: VinchyViewControllerViewModel(state: .normal(sections: sections)))
-    }
-  }
-
-  func update(suggestions: [Wine]) {
-    var sections: [VinchyViewControllerViewModel.Section] = []
-
-    suggestions.forEach { wine in
-      sections.append(.suggestions([.init(titleText: wine.title)]))
-    }
-
     viewController?.updateUI(viewModel: VinchyViewControllerViewModel(state: .normal(sections: sections)))
-  }
 
-  func update(didFindWines: [ShortWine]) {
-    viewController?.updateUI(didFindWines: didFindWines)
   }
 
   func showAlertCantOpenEmail() {

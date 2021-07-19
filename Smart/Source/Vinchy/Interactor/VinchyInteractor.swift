@@ -7,13 +7,9 @@
 //
 
 import Core
+import Database
 import VinchyCore
 
-// MARK: - C
-
-private enum C {
-  static let searchSuggestionsCount = 20
-}
 
 // MARK: - VinchyInteractor
 
@@ -38,8 +34,6 @@ final class VinchyInteractor {
   private let router: VinchyRouterProtocol
   private let presenter: VinchyPresenterProtocol
 
-  private var isSearchingMode = false
-  private var suggestions: [Wine] = []
   private var compilations: [Compilation] = []
 
   private func fetchData() {
@@ -73,21 +67,7 @@ final class VinchyInteractor {
       }
 
       self.compilations = compilations
-
-      self.presenter.update(compilations: compilations, isSearchingMode: self.isSearchingMode)
-    }
-  }
-
-  private func fetchSearchSuggestions() {
-    Wines.shared.getRandomWines(count: C.searchSuggestionsCount) { [weak self] result in
-      guard let self = self else { return }
-      switch result {
-      case .success(let model):
-        self.suggestions = model
-
-      case .failure:
-        break
-      }
+      self.presenter.update(compilations: compilations)
     }
   }
 }
@@ -95,66 +75,22 @@ final class VinchyInteractor {
 // MARK: VinchyInteractorProtocol
 
 extension VinchyInteractor: VinchyInteractorProtocol {
-  func didTapSuggestionCell(at indexPath: IndexPath) {
-    if isSearchingMode {
-      let wineID = suggestions[indexPath.section].id
-      router.pushToWineDetailViewController(wineID: wineID)
-    }
-  }
+  func didSelectResultCell(wineID: Int64, title: String) {
 
-  func searchBarTextDidBeginEditing() {
-    isSearchingMode = true
-    presenter.update(suggestions: suggestions)
-  }
+    let maxId = searchedWinesRepository.findAll().map { $0.id }.max() ?? 0
+    let id = maxId + 1
+    searchedWinesRepository.append(VSearchedWine(id: id, wineID: wineID, title: title))
 
-  func searchBarCancelButtonClicked() {
-    isSearchingMode = false
-    presenter.update(compilations: compilations, isSearchingMode: isSearchingMode)
-  }
-
-  func didTapSearchButton(searchText: String?) {
-    guard let searchText = searchText else {
-      return
-    }
-
-    router.pushToDetailCollection(searchText: searchText)
-  }
-
-  func didEnterSearchText(_ searchText: String?) {
-    guard
-      let searchText = searchText,
-      !searchText.isEmpty
-    else {
-      presenter.update(didFindWines: [])
-      return
-    }
-
-    throttler.cancel()
-
-    throttler.throttle(delay: .milliseconds(600)) { [weak self] in
-      Wines.shared.getWineBy(title: searchText, offset: 0, limit: 40) { [weak self] result in
-        switch result {
-        case .success(let wines):
-          self?.presenter.update(didFindWines: wines)
-
-        case .failure(let error):
-          print(error.localizedDescription)
-        }
-      }
-    }
   }
 
   func viewDidLoad() {
     presenter.startShimmer()
     fetchData()
-    fetchSearchSuggestions()
   }
 
   func didPullToRefresh() {
-    if !isSearchingMode {
-      fetchData()
-      presenter.stopPullRefreshing()
-    }
+    fetchData()
+    presenter.stopPullRefreshing()
   }
 
   func didTapFilter() {

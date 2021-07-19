@@ -11,9 +11,9 @@ import StringFormatting
 import UIKit
 import VinchyCore
 
-// MARK: - ResultsTableController
+// MARK: - LegacyResultsTableController
 
-final class ResultsTableController: UIViewController {
+final class LegacyResultsTableController: UIViewController {
 
   // MARK: Internal
 
@@ -64,7 +64,7 @@ final class ResultsTableController: UIViewController {
 
 // MARK: UITableViewDataSource
 
-extension ResultsTableController: UITableViewDataSource {
+extension LegacyResultsTableController: UITableViewDataSource {
   func tableView(
     _: UITableView,
     numberOfRowsInSection _: Int)

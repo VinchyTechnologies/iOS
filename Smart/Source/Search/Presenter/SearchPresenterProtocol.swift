@@ -6,8 +6,11 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import Database
 import VinchyCore
 
 protocol SearchPresenterProtocol: AnyObject {
-  func update(suggestions: [Wine])
+  func update(searched: [VSearchedWine])
+  func update(didFindWines: [ShortWine])
+
 }

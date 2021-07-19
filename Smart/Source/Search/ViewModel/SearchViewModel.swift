@@ -11,6 +11,7 @@ import CommonUI
 struct SearchViewModel {
 
   enum Section {
+    case title([TextCollectionCellViewModel])
     case recentlySearched([WineCollectionViewCellViewModel])
   }
 

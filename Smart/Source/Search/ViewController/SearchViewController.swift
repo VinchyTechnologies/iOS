@@ -7,8 +7,10 @@
 //
 
 import CommonUI
+import Core
 import Display
 import UIKit
+import VinchyCore
 
 // MARK: - SearchViewController
 
@@ -16,16 +18,21 @@ final class SearchViewController: UISearchController {
 
   // MARK: Internal
 
+  //дизайн в loadview, init
+
   var interactor: SearchInteractorProtocol?
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    interactor?.viewWillAppear()
+    collectionView.isHidden = false
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
-
     view.addSubview(collectionView)
-    collectionView.translatesAutoresizingMaskIntoConstraints = false
     collectionView.fill()
-
-    interactor?.viewDidLoad()
+    searchBar.delegate = self
   }
 
   // MARK: Private
@@ -39,11 +46,21 @@ final class SearchViewController: UISearchController {
     }
 
     switch type {
-    case .recentlySearched:
-      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .absolute(80), heightDimension: .absolute(250)))
-      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(250)), subitems: [item])
+    case .title(let model):
+      let width = CGFloat(self.collectionView.frame.width - CGFloat(2 * 16))
+      let height = CGFloat(TextCollectionCell.height(viewModel: model[sectionNumber], width: width))
+      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
+      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(width), heightDimension: .absolute(height)), subitems: [item])
+      group.contentInsets = .init(top: 0, leading: 8, bottom: 0, trailing: 0)
       let section = NSCollectionLayoutSection(group: group)
-      section.contentInsets = .init(top: 15, leading: 0, bottom: 0, trailing: 0)
+      section.contentInsets = .init(top: 15, leading: 8, bottom: 0, trailing: 0)
+      return section
+    case .recentlySearched:
+      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(250)))
+      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(150), heightDimension: .absolute(250)), subitems: [item])
+      group.contentInsets = .init(top: 0, leading: 8, bottom: 0, trailing: 0)
+      let section = NSCollectionLayoutSection(group: group)
+      section.contentInsets = .init(top: 15, leading: 8, bottom: 0, trailing: 0)
       section.orthogonalScrollingBehavior = .continuous
       return section
     }
@@ -53,9 +70,9 @@ final class SearchViewController: UISearchController {
     let collectionView = WineDetailCollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.backgroundColor = .mainBackground
     collectionView.dataSource = self
-//    collectionView.delegate = self
     collectionView.delaysContentTouches = false
     collectionView.register(WineCollectionViewCell.self)
+    collectionView.register(TextCollectionCell.self)
     return collectionView
   }()
 
@@ -83,7 +100,8 @@ extension SearchViewController: UICollectionViewDataSource {
     switch viewModel?.sections[safe: section] {
     case .recentlySearched(let model):
       return model.count
-
+    case .title(let model):
+      return model.count
     case .none:
       return 0
     }
@@ -101,6 +119,11 @@ extension SearchViewController: UICollectionViewDataSource {
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as! WineCollectionViewCell
       cell.decorate(model: model[indexPath.row])
       return cell
+    case .title(let model):
+      // swiftlint:disable:next force_cast
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseId, for: indexPath) as! TextCollectionCell
+      cell.decorate(model: model[indexPath.row])
+      return cell
 
     case .none:
       return .init()
@@ -113,5 +136,31 @@ extension SearchViewController: UICollectionViewDataSource {
 extension SearchViewController: SearchViewControllerProtocol {
   func updateUI(viewModel: SearchViewModel) {
     self.viewModel = viewModel
+  }
+  func updateUI(didFindWines: [ShortWine]) {
+    (searchResultsController as? LegacyResultsTableController)?.set(wines: didFindWines)
+  }
+}
+
+// MARK: UISearchBarDelegate
+
+extension SearchViewController: UISearchBarDelegate {
+  func searchBar(
+    _: UISearchBar,
+    textDidChange searchText: String)
+  {
+
+    if !searchText.isEmpty {
+      collectionView.isHidden = true
+    } else {
+      collectionView.isHidden = false
+    }
+
+    interactor?.didEnterSearchText(searchText)
+  }
+
+  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+    searchBar.resignFirstResponder()
+    interactor?.didTapSearchButton(searchText: searchBar.text)
   }
 }

@@ -6,6 +6,10 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import CommonUI
+import Database
+import Display
+import UIKit
 import VinchyCore
 
 // MARK: - SearchPresenter
@@ -31,14 +35,24 @@ final class SearchPresenter {
 // MARK: SearchPresenterProtocol
 
 extension SearchPresenter: SearchPresenterProtocol {
-  func update(suggestions: [Wine]) {
+  func update(didFindWines: [ShortWine]) {
+    viewController?.updateUI(didFindWines: didFindWines)
+  }
+  func update(searched: [VSearchedWine]) {
     var sections: [SearchViewModel.Section] = []
-
-    suggestions.forEach { wine in
-      sections.append(.recentlySearched([.init(wineID: wine.id, imageURL: nil, titleText: wine.title, subtitleText: wine.title)]))
-      //sections.append(.suggestions([.init(titleText: wine.title)]))
+    var wineCollectionViewCellViewModels: [WineCollectionViewCellViewModel] = []
+    searched.forEach { wine in
+      wineCollectionViewCellViewModels.append(.init(wineID: wine.wineID, imageURL: imageURL(from: wine.wineID).toURL, titleText: wine.title, subtitleText: nil))
     }
-
+    if !wineCollectionViewCellViewModels.isEmpty {
+      sections.append(.title(
+        [.init(titleText: NSAttributedString(
+          string: "Вы недавно искали",
+          font: Font.heavy(20),
+          textColor: .dark))]
+      ))
+    }
+    sections.append(.recentlySearched(wineCollectionViewCellViewModels.reversed()))
     viewController?.updateUI(viewModel: SearchViewModel(sections: sections))
   }
 }

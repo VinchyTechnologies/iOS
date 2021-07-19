@@ -7,13 +7,8 @@
 //
 
 import Core
+import Database
 import VinchyCore
-
-// MARK: - C
-
-private enum C {
-  static let searchSuggestionsCount = 20
-}
 
 // MARK: - SearchInteractor
 
@@ -29,35 +24,23 @@ final class SearchInteractor {
     self.presenter = presenter
   }
 
+  // MARK: Internal
+
+  func fetchSearchedWines() {
+    searched = searchedWinesRepository.findAll()
+  }
+
   // MARK: Private
+
+  private let throttler = Throttler()
 
   private let router: SearchRouterProtocol
   private let presenter: SearchPresenterProtocol
   private let dispatchGroup = DispatchGroup()
 
-  private var suggestions: [Wine] = []
-
-  private func fetchSearchSuggestions() {
-    dispatchGroup.enter()
-    var suggestions: [Wine] = []
-
-    Wines.shared.getRandomWines(count: C.searchSuggestionsCount) { [weak self] result in
-      guard let self = self else { return }
-      switch result {
-      case .success(let model):
-        suggestions = model
-
-      case .failure:
-        break
-      }
-      self.dispatchGroup.leave()
-    }
-    dispatchGroup.notify(queue: .main) { [weak self] in
-      guard let self = self else { return }
-
-      self.suggestions = suggestions
-
-      self.presenter.update(suggestions: suggestions)
+  private var searched: [VSearchedWine] = [] {
+    didSet {
+      presenter.update(searched: searched)
     }
   }
 }
@@ -66,7 +49,40 @@ final class SearchInteractor {
 
 extension SearchInteractor: SearchInteractorProtocol {
 
-  func viewDidLoad() {
-    fetchSearchSuggestions()
+  func viewWillAppear() {
+    fetchSearchedWines()
+  }
+
+  func didTapSearchButton(searchText: String?) {
+    guard let searchText = searchText else {
+      return
+    }
+    router.pushToDetailCollection(searchText: searchText)
+  }
+
+  func didEnterSearchText(_ searchText: String?) {
+    guard
+      let searchText = searchText,
+      !searchText.isEmpty
+    else {
+      presenter.update(didFindWines: [])
+      fetchSearchedWines()
+      return
+    }
+    print(searchText)
+
+    throttler.cancel()
+
+    throttler.throttle(delay: .milliseconds(600)) { [weak self] in
+      Wines.shared.getWineBy(title: searchText, offset: 0, limit: 40) { [weak self] result in
+        switch result {
+        case .success(let wines):
+          self?.presenter.update(didFindWines: wines)
+
+        case .failure(let error):
+          print(error.localizedDescription)
+        }
+      }
+    }
   }
 }

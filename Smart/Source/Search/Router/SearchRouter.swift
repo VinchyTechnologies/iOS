@@ -6,7 +6,9 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import Core
 import UIKit
+import VinchyCore
 
 // MARK: - SearchRouter
 
@@ -36,5 +38,8 @@ final class SearchRouter {
 // MARK: SearchRouterProtocol
 
 extension SearchRouter: SearchRouterProtocol {
-
+  func pushToDetailCollection(searchText: String) {
+    let input = ShowcaseInput(title: nil, mode: .advancedSearch(params: [("title", searchText)]))
+    pushToShowcaseViewController(input: input)
+  }
 }

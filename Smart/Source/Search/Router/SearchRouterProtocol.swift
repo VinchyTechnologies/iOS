@@ -6,8 +6,8 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import VinchyCore
 
-protocol SearchRouterProtocol: AnyObject {
-
+protocol SearchRouterProtocol: ShowcaseRoutable {
+  func pushToDetailCollection(searchText: String)
 }

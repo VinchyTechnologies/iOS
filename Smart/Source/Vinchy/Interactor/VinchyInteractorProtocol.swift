@@ -13,10 +13,6 @@ protocol VinchyInteractorProtocol: VinchySimpleConiniousCaruselCollectionCellDel
   func didPullToRefresh()
   func didTapFilter()
   func didTapDidnotFindWineFromSearch(searchText: String?)
-  func didTapSearchButton(searchText: String?)
-  func didEnterSearchText(_ searchText: String?)
-  func searchBarTextDidBeginEditing()
-  func searchBarCancelButtonClicked()
-  func didTapSuggestionCell(at indexPath: IndexPath)
+  func didSelectResultCell(wineID: Int64, title: String)
   func didTapMapButton()
 }

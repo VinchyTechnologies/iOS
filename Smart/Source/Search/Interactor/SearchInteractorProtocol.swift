@@ -9,5 +9,7 @@
 import Foundation
 
 protocol SearchInteractorProtocol: AnyObject {
-  func viewDidLoad()
+  func viewWillAppear()
+  func didTapSearchButton(searchText: String?)
+  func didEnterSearchText(_ searchText: String?)
 }
