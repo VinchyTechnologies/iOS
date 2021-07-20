@@ -35,14 +35,14 @@ final class FilterItemView: UIView, EpoxyableView {
 
     backgroundColor = .accent
 
-//    addSubview(titleLabel)
-//    titleLabel.translatesAutoresizingMaskIntoConstraints = false
-//    NSLayoutConstraint.activate([
-//      titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8),
-//      titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
-//      titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
-//      titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
-//    ])
+    addSubview(titleLabel)
+    titleLabel.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      titleLabel.topAnchor.constraint(equalTo: topAnchor, constant: 8),
+      titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
+      titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -8),
+      titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
+    ])
   }
   required init?(coder: NSCoder) { fatalError() }
 
@@ -58,8 +58,8 @@ final class FilterItemView: UIView, EpoxyableView {
 
   override func layoutSubviews() {
     super.layoutSubviews()
-//    layer.cornerRadius = frame.height / 2
-//    clipsToBounds = true
+    layer.cornerRadius = frame.height / 2
+    clipsToBounds = true
   }
 
   func setContent(_ content: Content, animated: Bool) {

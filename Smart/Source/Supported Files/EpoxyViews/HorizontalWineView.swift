@@ -118,5 +118,3 @@ extension HorizontalWineView: HighlightableView {
     }
   }
 }
-
-

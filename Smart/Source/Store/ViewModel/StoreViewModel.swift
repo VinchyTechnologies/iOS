@@ -14,12 +14,10 @@ struct StoreViewModel {
     case logo(LogoRow.Content)
     case title(Label.Content)
     case wines(BottlesCollectionView.Content)
-    case assortiment([HorizontalWineView.Content])
-//    case staticSelectedFilters([Label.Content])
+    case assortiment(header: FiltersCollectionView.Content, content: [HorizontalWineView.Content])
   }
 
-  let selectedFilters: [String]?
   let sections: [Section]
 
-  static let empty: Self = .init(selectedFilters: nil, sections: [])
+  static let empty: Self = .init(sections: [])
 }

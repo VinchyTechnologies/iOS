@@ -28,7 +28,6 @@ final class BottlesCollectionView: CollectionView, EpoxyableView {
 
   typealias Content = [WineBottleView.Content]
 
-
   func setBehaviors(_ behaviors: Behaviors?) {
     didTap = behaviors?.didTap
   }
@@ -36,9 +35,9 @@ final class BottlesCollectionView: CollectionView, EpoxyableView {
   func setContent(_ content: Content, animated: Bool) {
 
     let sectionModel = SectionModel(dataID: SectionID.bottlesCollectionViewSectionBottles) {
-      content.map { wineCollectionViewCellViewModel in
+      content.enumerated().map { index, wineCollectionViewCellViewModel in
         WineBottleView.itemModel(
-          dataID: wineCollectionViewCellViewModel.wineID,
+          dataID: index,
           content: wineCollectionViewCellViewModel,
           style: .init())
           .didSelect { [weak self] _ in
@@ -57,7 +56,6 @@ final class BottlesCollectionView: CollectionView, EpoxyableView {
     case bottlesCollectionViewSectionBottles
   }
 
-
   private var didTap: ((_ wineID: Int64) -> Void)?
 
   private var layoutSection: NSCollectionLayoutSection? {
@@ -66,7 +64,7 @@ final class BottlesCollectionView: CollectionView, EpoxyableView {
     let section = NSCollectionLayoutSection(group: group)
     section.interGroupSpacing = 8
     section.orthogonalScrollingBehavior = .continuous
-    section.contentInsets = .init(top: 10, leading: 24, bottom: 0, trailing: 24)
+    section.contentInsets = .init(top: 0, leading: 24, bottom: 0, trailing: 24)
     return section
   }
 }

@@ -94,6 +94,7 @@
 		8A0799182699A06C000ACA2B /* FilterItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0799172699A06C000ACA2B /* FilterItemView.swift */; };
 		8A079F2E269E151F000ACA2B /* BottlesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A079F2D269E151F000ACA2B /* BottlesCollectionView.swift */; };
 		8A07983B269750A0000ACA2B /* PluralLocalizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 8A07983D269750A0000ACA2B /* PluralLocalizable.stringsdict */; };
+		8A079F30269E2E34000ACA2B /* FiltersCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A079F2F269E2E34000ACA2B /* FiltersCollectionView.swift */; };
 		8A0D9CB726871D9D0076A7EC /* NewAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0D9CB626871D9D0076A7EC /* NewAgreementViewController.swift */; };
 		8A0D9CB926872CF60076A7EC /* NewAgreementsBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0D9CB826872CF60076A7EC /* NewAgreementsBottomView.swift */; };
 		8A1034592648596100F7CA81 /* AssortmentCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1034582648596100F7CA81 /* AssortmentCollectionCell.swift */; };
@@ -477,6 +478,7 @@
 		8A079F2D269E151F000ACA2B /* BottlesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottlesCollectionView.swift; sourceTree = "<group>"; };
 		8A07983C269750A0000ACA2B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/PluralLocalizable.stringsdict; sourceTree = "<group>"; };
 		8A07983E269750A4000ACA2B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/PluralLocalizable.stringsdict; sourceTree = "<group>"; };
+		8A079F2F269E2E34000ACA2B /* FiltersCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersCollectionView.swift; sourceTree = "<group>"; };
 		8A0D9CB626871D9D0076A7EC /* NewAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAgreementViewController.swift; sourceTree = "<group>"; };
 		8A0D9CB826872CF60076A7EC /* NewAgreementsBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAgreementsBottomView.swift; sourceTree = "<group>"; };
 		8A1034582648596100F7CA81 /* AssortmentCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssortmentCollectionCell.swift; sourceTree = "<group>"; };
@@ -1318,6 +1320,7 @@
 			children = (
 				8A0794DD26936A8E000ACA2B /* LogoRow.swift */,
 				8A0799172699A06C000ACA2B /* FilterItemView.swift */,
+				8A079F2F269E2E34000ACA2B /* FiltersCollectionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2981,6 +2984,7 @@
 				44EFDB7925E263E00076ED6D /* ReviewDetailRouter.swift in Sources */,
 				8A9554682692284B00F1C5AE /* DocumentsViewController.swift in Sources */,
 				CA81984E253864080056A1C6 /* WineDetailRouter.swift in Sources */,
+				8A079F30269E2E34000ACA2B /* FiltersCollectionView.swift in Sources */,
 				CACA7EA2254C57CC0099E622 /* WriteNoteRouterProtocol.swift in Sources */,
 				CA48577C2517BEAB00EDA4CE /* VinchyRouter.swift in Sources */,
 				8AE788102684E8D60056A84B /* NotesViewController.swift in Sources */,

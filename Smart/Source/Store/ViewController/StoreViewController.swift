@@ -44,7 +44,7 @@ final class StoreViewController: CollectionViewController {
     navigationItem.rightBarButtonItems = [filterBarButtonItem]
 
     interactor?.viewDidLoad()
-    let viewModel = StoreViewModel(selectedFilters: ["All"], sections: [
+    let viewModel = StoreViewModel(sections: [
       .logo(
         LogoRow.Content(
           id: 1,
@@ -63,20 +63,22 @@ final class StoreViewController: CollectionViewController {
         .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
       ]),
 
-      .assortiment([
-        .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
-        .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
-        .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
-        .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
-        .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
-        .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
-        .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
-        .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
-        .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
-        .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
-        .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
-        .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
-      ]),
+      .assortiment(
+        header: ["Весь ассортмент"],
+        content: [
+          .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
+          .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
+          .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
+          .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
+          .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
+          .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
+          .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
+          .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
+          .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
+          .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
+          .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
+          .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
+        ]),
     ])
 
     updateUI(viewModel: viewModel)
@@ -85,7 +87,7 @@ final class StoreViewController: CollectionViewController {
   // MARK: Private
 
   private enum SectionID {
-    case logo, title, wines, staticSelectedFilters, separator, assortiment
+    case logo, title, wines, winesSection, staticSelectedFilters, separator, assortiment
   }
 
   private var viewModel: StoreViewModel = .empty
@@ -116,7 +118,7 @@ final class StoreViewController: CollectionViewController {
       case .wines(let content):
         return SectionModel(dataID: SectionID.wines) {
           BottlesCollectionView.itemModel(
-            dataID: SectionID.wines,
+            dataID: SectionID.winesSection,
             content: content,
             behaviors: .init(didTap: { [weak self] wineID in
               self?.interactor?.didSelectWine(wineID: wineID)
@@ -126,10 +128,10 @@ final class StoreViewController: CollectionViewController {
         .flowLayoutItemSize(.init(width: view.frame.width, height: 250))
         .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 16, right: 0))
 
-      case .assortiment(let rows):
-        return SectionModel(dataID: SectionID.assortiment, items: rows.compactMap({ content in
+      case .assortiment(let header, let rows):
+        return SectionModel(dataID: SectionID.assortiment, items: rows.enumerated().compactMap({ index, content in
           HorizontalWineView.itemModel(
-            dataID: content.wineID,
+            dataID: content.wineID + Int64(index),
             content: content,
             style: .init())
             .didSelect { [weak self] _ in
@@ -137,13 +139,13 @@ final class StoreViewController: CollectionViewController {
             }
         }))
           .supplementaryItems(ofKind: UICollectionView.elementKindSectionHeader, [
-            FilterItemView.supplementaryItemModel(
+            FiltersCollectionView.supplementaryItemModel(
               dataID: SectionID.staticSelectedFilters,
-              content: "Весь ассортимент",
+              content: header,
               style: .init()),
           ])
           .flowLayoutHeaderReferenceSize(.init(width: view.frame.width, height: 50))
-          .flowLayoutItemSize(.init(width: view.frame.width, height: 100))
+          .flowLayoutItemSize(.init(width: view.frame.width, height: 130))
       }
     }
   }
@@ -183,7 +185,7 @@ extension StoreViewController: SeparatorFlowLayoutDelegate {
     case .logo, .title, .wines:
       return false
 
-    case .assortiment(_):
+    case .assortiment:
       return true
     }
   }
