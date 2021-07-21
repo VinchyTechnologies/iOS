@@ -13,7 +13,7 @@ final class WineDetailCollectionView: UICollectionView {
   override func layoutSubviews() {
     super.layoutSubviews()
 
-    guard #available(iOS 14.3, *) else { return }
+//    guard #available(iOS 14.3, *) else { return }
 
     subviews.forEach { subview in
       guard

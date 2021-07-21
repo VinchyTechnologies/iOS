@@ -13,6 +13,7 @@
 		44A72594259230C600A7552B /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A72593259230C600A7552B /* Button.swift */; };
 		44DE6C1625DB9E980008695D /* Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DE6C1525DB9E980008695D /* Orientation.swift */; };
 		8A0793E4269350AB000ACA2B /* UICollectionViewCompositionalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0793E3269350AB000ACA2B /* UICollectionViewCompositionalLayout.swift */; };
+		8A079F2C269E0961000ACA2B /* SeparatorFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A079F2B269E0961000ACA2B /* SeparatorFlowLayout.swift */; };
 		8A2F30492671FA13002DE6C1 /* OverlayPresentationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F30482671FA13002DE6C1 /* OverlayPresentationCenter.swift */; };
 		8A2F304B2671FAF7002DE6C1 /* FadingInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F304A2671FAF7002DE6C1 /* FadingInfoViewController.swift */; };
 		8A6951FB267CC12800F14902 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 8A6951FA267CC12800F14902 /* Nuke */; };
@@ -49,6 +50,7 @@
 		44A72593259230C600A7552B /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		44DE6C1525DB9E980008695D /* Orientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orientation.swift; sourceTree = "<group>"; };
 		8A0793E3269350AB000ACA2B /* UICollectionViewCompositionalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCompositionalLayout.swift; sourceTree = "<group>"; };
+		8A079F2B269E0961000ACA2B /* SeparatorFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorFlowLayout.swift; sourceTree = "<group>"; };
 		8A2F30482671FA13002DE6C1 /* OverlayPresentationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayPresentationCenter.swift; sourceTree = "<group>"; };
 		8A2F304A2671FAF7002DE6C1 /* FadingInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadingInfoViewController.swift; sourceTree = "<group>"; };
 		8AD49F1A267525840094E157 /* SkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
@@ -163,6 +165,7 @@
 				CA18220724C0FE2300280DD4 /* UIKitUtils.swift */,
 				4404888C25D8390600019081 /* UITapGestureRecognizer.swift */,
 				8A0793E3269350AB000ACA2B /* UICollectionViewCompositionalLayout.swift */,
+				8A079F2B269E0961000ACA2B /* SeparatorFlowLayout.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -258,6 +261,7 @@
 				CA53B12524E039F1009A0F85 /* Alertable.swift in Sources */,
 				CAD904EE257BADEC009FE71F /* ImageLoader.swift in Sources */,
 				44A7255D2592290B00A7552B /* TextFieldWithIcon.swift in Sources */,
+				8A079F2C269E0961000ACA2B /* SeparatorFlowLayout.swift in Sources */,
 				8A2F304B2671FAF7002DE6C1 /* FadingInfoViewController.swift in Sources */,
 				CA3C97EF2572533E0036F7D9 /* GradientView.swift in Sources */,
 				CA18220424C0F88B00280DD4 /* NavigationController.swift in Sources */,
