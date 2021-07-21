@@ -13,8 +13,10 @@ struct StoreViewModel {
   enum Section {
     case logo(LogoRow.Content)
     case title(Label.Content)
+    case address(Label.Content)
     case wines(BottlesCollectionView.Content)
     case assortiment(header: FiltersCollectionView.Content, content: [HorizontalWineView.Content])
+    case loading
   }
 
   let sections: [Section]

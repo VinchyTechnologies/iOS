@@ -51,6 +51,8 @@ final class StoreViewController: CollectionViewController {
           title: "x5Group",
           logoURL: "https://buninave.ru/wp-content/uploads/2018/05/logo_5ka.png")),
 
+      .address("Москва, Проспект Вернадского, 16"),
+
       .title("Vinchy recommends"),
 
       .wines([
@@ -79,6 +81,8 @@ final class StoreViewController: CollectionViewController {
           .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
           .init(wineID: 1, imageURL: imageURL(from: 891).toURL, titleText: "Wine", subtitleText: "Italia"),
         ]),
+
+      .loading,
     ])
 
     updateUI(viewModel: viewModel)
@@ -87,7 +91,7 @@ final class StoreViewController: CollectionViewController {
   // MARK: Private
 
   private enum SectionID {
-    case logo, title, wines, winesSection, staticSelectedFilters, separator, assortiment
+    case logo, title, wines, winesSection, staticSelectedFilters, separator, assortiment, address, loading
   }
 
   private var viewModel: StoreViewModel = .empty
@@ -103,17 +107,38 @@ final class StoreViewController: CollectionViewController {
             content: content,
             style: .large)
         }
+        .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 16, right: 0))
         .flowLayoutItemSize(.init(width: view.frame.width, height: 60))
 
       case .title(let content):
+        let width: CGFloat = view.frame.width - 48
+        let height: CGFloat = Label.height(
+          for: content,
+          width: width,
+          style: .style(with: .lagerTitle))
         return SectionModel(dataID: SectionID.title) {
           Label.itemModel(
             dataID: SectionID.title,
             content: content,
             style: .style(with: .lagerTitle))
         }
-        .flowLayoutItemSize(.init(width: view.frame.width - 48, height: 40))
-        .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 0, right: 24))
+        .flowLayoutItemSize(.init(width: width, height: height))
+        .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 8, right: 24))
+
+      case .address(let content):
+        let width: CGFloat = view.frame.width - 48
+        let height: CGFloat = Label.height(
+          for: content,
+          width: width,
+          style: .style(with: .regular, textColor: .blueGray))
+        return SectionModel(dataID: SectionID.address) {
+          Label.itemModel(
+            dataID: SectionID.address,
+            content: content,
+            style: .style(with: .regular, textColor: .blueGray))
+        }
+        .flowLayoutItemSize(.init(width: width, height: height))
+        .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 16, right: 24))
 
       case .wines(let content):
         return SectionModel(dataID: SectionID.wines) {
@@ -146,6 +171,13 @@ final class StoreViewController: CollectionViewController {
           ])
           .flowLayoutHeaderReferenceSize(.init(width: view.frame.width, height: 50))
           .flowLayoutItemSize(.init(width: view.frame.width, height: 130))
+
+      case .loading:
+        return SectionModel(dataID: SectionID.loading) {
+          LoadingView.itemModel(dataID: SectionID.loading)
+        }
+        .flowLayoutItemSize(.init(width: view.frame.width, height: 48))
+        .flowLayoutSectionInset(.init(top: 16, left: 0, bottom: 16, right: 0))
       }
     }
   }
@@ -182,7 +214,7 @@ extension StoreViewController: SeparatorFlowLayoutDelegate {
     -> Bool
   {
     switch viewModel.sections[indexPath.section] {
-    case .logo, .title, .wines:
+    case .logo, .title, .wines, .address, .loading:
       return false
 
     case .assortiment:

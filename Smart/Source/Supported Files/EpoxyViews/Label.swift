@@ -13,7 +13,7 @@ import UIKit
 // MARK: - TextStyle
 
 enum TextStyle {
-  case lagerTitle, miniBold
+  case lagerTitle, miniBold, regular
 }
 
 // MARK: - Label
@@ -53,6 +53,16 @@ final class Label: UILabel, EpoxyableView {
   // MARK: ContentConfigurableView
 
   typealias Content = String
+
+  static func height(for content: Content?, width: CGFloat, style: Style) -> CGFloat {
+    guard let content = content else {
+      return 0
+    }
+    // swiftlint:disable:next force_cast
+    let font = style.font
+    let height = content.height(forWidth: width, font: font)
+    return height
+  }
 
   override func layoutSubviews() {
     super.layoutSubviews()
@@ -100,6 +110,16 @@ extension Label.Style {
     case .miniBold:
       return .init(
         font: Font.semibold(16),
+        showLabelBackground: true,
+        numberOfLines: numberOfLines,
+        backgroundColor: backgroundColor,
+        isRounded: isRoundedCorners,
+        textAligment: textAligment,
+        textColor: textColor)
+
+    case .regular:
+      return .init(
+        font: Font.regular(16),
         showLabelBackground: true,
         numberOfLines: numberOfLines,
         backgroundColor: backgroundColor,
