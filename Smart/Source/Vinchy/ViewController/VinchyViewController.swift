@@ -38,12 +38,17 @@ final class VinchyViewController: UIViewController {
     view.addSubview(collectionView)
     collectionView.fill()
 
-    let filterBarButtonItem = UIBarButtonItem(
-      image: UIImage(named: "edit")?.withRenderingMode(.alwaysTemplate),
-      style: .plain,
-      target: self,
-      action: #selector(didTapFilter))
-    navigationItem.rightBarButtonItems = [filterBarButtonItem]
+    filterButton.setImage(UIImage(named: "edit")?.withRenderingMode(.alwaysTemplate), for: [])
+    filterButton.backgroundColor = .option
+    filterButton.imageView?.contentMode = .scaleAspectFit
+    filterButton.imageEdgeInsets = UIEdgeInsets(top: 1, left: 1.5, bottom: 1, right: 1.5)
+    filterButton.contentEdgeInsets = .init(top: 6, left: 6, bottom: 6, right: 6)
+    filterButton.tintColor = .dark
+    filterButton.addTarget(self, action: #selector(didTapFilter), for: .touchUpInside)
+
+    let filterBarButtonItem = UIBarButtonItem(customView: filterButton)
+    navigationItem.rightBarButtonItem = filterBarButtonItem
+
     navigationItem.searchController = searchController
 
     refreshControl.tintColor = .dark
@@ -96,6 +101,9 @@ final class VinchyViewController: UIViewController {
       mapButton.clipsToBounds = true
       collectionView.contentInset = .init(top: 0, left: 0, bottom: mapButton.frame.height + 16, right: 0)
     }
+
+    filterButton.layer.cornerRadius = filterButton.frame.height / 2
+    filterButton.clipsToBounds = true
   }
 
   override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -106,6 +114,8 @@ final class VinchyViewController: UIViewController {
   }
 
   // MARK: Private
+
+  private let filterButton = UIButton(type: .system)
 
   private lazy var mapButton: UIButton = {
     let button = UIButton()
