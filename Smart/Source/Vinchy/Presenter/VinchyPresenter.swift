@@ -35,13 +35,6 @@ final class VinchyPresenter {
 // MARK: VinchyPresenterProtocol
 
 extension VinchyPresenter: VinchyPresenterProtocol {
-  var cantFindWineText: String {
-    localized("email_did_not_find_wine")
-  }
-
-  var cantFindWineRecipients: [String] {
-    [localized("contact_email")]
-  }
 
   func showAlertEmptyCollection() {
     viewController?.showAlert(
@@ -175,10 +168,5 @@ extension VinchyPresenter: VinchyPresenterProtocol {
     ]))
 
     viewController?.updateUI(viewModel: VinchyViewControllerViewModel(state: .normal(sections: sections)))
-
-  }
-
-  func showAlertCantOpenEmail() {
-    viewController?.showAlert(title: localized("error"), message: localized("open_mail_error"))
   }
 }

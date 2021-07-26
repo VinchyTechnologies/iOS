@@ -10,7 +10,6 @@ import Core
 import Database
 import VinchyCore
 
-
 // MARK: - VinchyInteractor
 
 final class VinchyInteractor {
@@ -28,7 +27,6 @@ final class VinchyInteractor {
   // MARK: Private
 
   private let dispatchGroup = DispatchGroup()
-  private let emailService = EmailService()
   private let throttler = Throttler()
 
   private let router: VinchyRouterProtocol
@@ -75,13 +73,6 @@ final class VinchyInteractor {
 // MARK: VinchyInteractorProtocol
 
 extension VinchyInteractor: VinchyInteractorProtocol {
-  func didSelectResultCell(wineID: Int64, title: String) {
-
-    let maxId = searchedWinesRepository.findAll().map { $0.id }.max() ?? 0
-    let id = maxId + 1
-    searchedWinesRepository.append(VSearchedWine(id: id, wineID: wineID, title: title))
-
-  }
 
   func viewDidLoad() {
     presenter.startShimmer()
@@ -95,20 +86,6 @@ extension VinchyInteractor: VinchyInteractorProtocol {
 
   func didTapFilter() {
     router.pushToAdvancedFilterViewController()
-  }
-
-  func didTapDidnotFindWineFromSearch(searchText: String?) {
-    guard let searchText = searchText else {
-      return
-    }
-
-    if emailService.canSend {
-      router.presentEmailController(
-        HTMLText: presenter.cantFindWineText + searchText,
-        recipients: presenter.cantFindWineRecipients)
-    } else {
-      presenter.showAlertCantOpenEmail()
-    }
   }
 
   func didTapMapButton() {

@@ -6,8 +6,6 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import VinchyCore
-
-protocol SearchRouterProtocol: ShowcaseRoutable {
-  func pushToDetailCollection(searchText: String)
+protocol SearchRouterProtocol: AnyObject {
+  func presentEmailController(HTMLText: String?, recipients: [String])
 }

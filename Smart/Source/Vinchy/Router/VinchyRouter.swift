@@ -22,8 +22,6 @@ final class VinchyRouter {
 
   // MARK: Internal
 
-  let emailService = EmailService()
-
   weak var viewController: UIViewController?
   weak var interactor: VinchyInteractorProtocol?
 }
@@ -39,12 +37,5 @@ extension VinchyRouter: VinchyRouterProtocol {
   func pushToDetailCollection(searchText: String) {
     let input = ShowcaseInput(title: nil, mode: .advancedSearch(params: [("title", searchText)]))
     pushToShowcaseViewController(input: input)
-  }
-
-  func presentEmailController(HTMLText: String?, recipients: [String]) {
-    let emailController = emailService.getEmailController(
-      HTMLText: HTMLText,
-      recipients: recipients)
-    viewController?.present(emailController, animated: true, completion: nil)
   }
 }

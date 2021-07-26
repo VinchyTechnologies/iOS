@@ -7,9 +7,5 @@
 //
 
 import Display
-import VinchyCore
 
-protocol SearchViewControllerProtocol: AnyObject {
-  func updateUI(viewModel: SearchViewModel)
-  func updateUI(didFindWines: [ShortWine])
-}
+protocol SearchViewControllerProtocol: Alertable {}

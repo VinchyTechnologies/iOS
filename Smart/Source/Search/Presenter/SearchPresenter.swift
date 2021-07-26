@@ -6,11 +6,9 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import CommonUI
-import Database
-import Display
-import UIKit
-import VinchyCore
+// MARK: - SearchPresenter
+
+import StringFormatting
 
 // MARK: - SearchPresenter
 
@@ -35,24 +33,15 @@ final class SearchPresenter {
 // MARK: SearchPresenterProtocol
 
 extension SearchPresenter: SearchPresenterProtocol {
-  func update(didFindWines: [ShortWine]) {
-    viewController?.updateUI(didFindWines: didFindWines)
+  var cantFindWineText: String {
+    localized("email_did_not_find_wine")
   }
-  func update(searched: [VSearchedWine]) {
-    var sections: [SearchViewModel.Section] = []
-    var wineCollectionViewCellViewModels: [WineCollectionViewCellViewModel] = []
-    searched.forEach { wine in
-      wineCollectionViewCellViewModels.append(.init(wineID: wine.wineID, imageURL: imageURL(from: wine.wineID).toURL, titleText: wine.title, subtitleText: nil))
-    }
-    if !wineCollectionViewCellViewModels.isEmpty {
-      sections.append(.title(
-        [.init(titleText: NSAttributedString(
-          string: "Вы недавно искали",
-          font: Font.heavy(20),
-          textColor: .dark))]
-      ))
-    }
-    sections.append(.recentlySearched(wineCollectionViewCellViewModels.reversed()))
-    viewController?.updateUI(viewModel: SearchViewModel(sections: sections))
+
+  var cantFindWineRecipients: [String] {
+    [localized("contact_email")]
+  }
+
+  func showAlertCantOpenEmail() {
+    viewController?.showAlert(title: localized("error"), message: localized("open_mail_error"))
   }
 }

@@ -151,16 +151,7 @@ final class VinchyViewController: UIViewController {
   private let refreshControl = UIRefreshControl()
 
   private lazy var searchController: SearchViewController = {
-
     let searchController = SearchAssembly.assemblyModule()
-    (searchController.searchResultsController as? LegacyResultsTableController)?.set(delegate: self)
-
-    searchController.obscuresBackgroundDuringPresentation = false
-    searchController.searchBar.autocapitalizationType = .none
-    searchController.searchBar.searchTextField.font = Font.medium(20)
-    searchController.searchBar.searchTextField.layer.cornerRadius = 20
-    searchController.searchBar.searchTextField.layer.masksToBounds = true
-    searchController.searchBar.searchTextField.layer.cornerCurve = .continuous
     return searchController
   }()
 
@@ -373,16 +364,6 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
   }
 }
 
-// MARK: DidnotFindTheWineTableCellProtocol
-
-extension VinchyViewController: DidnotFindTheWineTableCellProtocol {
-  func didTapWriteUsButton(_: UIButton) {
-    let searchText = searchController.searchBar.searchTextField.text
-    interactor?.didTapDidnotFindWineFromSearch(
-      searchText: searchText)
-  }
-}
-
 // MARK: VinchyViewControllerProtocol
 
 extension VinchyViewController: VinchyViewControllerProtocol {
@@ -409,19 +390,6 @@ extension VinchyViewController: ShareUsCollectionCellDelegate {
   }
 }
 
-// MARK: UITableViewDelegate
-
-extension VinchyViewController: UITableViewDelegate {
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    tableView.deselectRow(at: indexPath, animated: true)
-
-    guard
-      let wineID = (searchController.searchResultsController as? LegacyResultsTableController)?.getWines()[safe: indexPath.row]?.id,
-      let title = (searchController.searchResultsController as? LegacyResultsTableController)?.getWines()[safe: indexPath.row]?.title else { return }
-    interactor?.didSelectResultCell(wineID: wineID, title: title)
-    navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wineID), animated: true)
-  }
-}
 // @objc private func didTapCamera() {
 //    if let window = view.window {
 //        let transition = CATransition()

@@ -17,10 +17,8 @@ final class SearchRouter {
   // MARK: Lifecycle
 
   init(
-    input: SearchInput,
     viewController: UIViewController)
   {
-    self.input = input
     self.viewController = viewController
   }
 
@@ -31,15 +29,18 @@ final class SearchRouter {
 
   // MARK: Private
 
-  private let input: SearchInput
+  private let emailService = EmailService()
 
 }
 
 // MARK: SearchRouterProtocol
 
 extension SearchRouter: SearchRouterProtocol {
-  func pushToDetailCollection(searchText: String) {
-    let input = ShowcaseInput(title: nil, mode: .advancedSearch(params: [("title", searchText)]))
-    pushToShowcaseViewController(input: input)
+  func presentEmailController(HTMLText: String?, recipients: [String]) {
+    let emailController = emailService.getEmailController(
+      HTMLText: HTMLText,
+      recipients: recipients)
+    viewController?.present(emailController, animated: true, completion: nil)
   }
 }
+

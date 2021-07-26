@@ -6,10 +6,6 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
-
 protocol SearchInteractorProtocol: AnyObject {
-  func viewWillAppear()
-  func didTapSearchButton(searchText: String?)
-  func didEnterSearchText(_ searchText: String?)
+  func didTapDidnotFindWineFromSearch(searchText: String?)
 }

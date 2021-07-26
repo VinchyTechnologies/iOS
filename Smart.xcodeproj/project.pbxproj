@@ -65,6 +65,18 @@
 		44EFDB7925E263E00076ED6D /* ReviewDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6E25E263E00076ED6D /* ReviewDetailRouter.swift */; };
 		745869A026A5D46E00519739 /* DidnotFindTheWineTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7458699F26A5D46E00519739 /* DidnotFindTheWineTableCell.swift */; };
 		745869A226A5D4DD00519739 /* LegacyResultsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745869A126A5D4DC00519739 /* LegacyResultsTableController.swift */; };
+		74E55FA726AACE2C0086C159 /* ResultsSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E55F9626AACE2C0086C159 /* ResultsSearchViewModel.swift */; };
+		74E55FA926AACE2C0086C159 /* ResultsSearchAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E55F9A26AACE2C0086C159 /* ResultsSearchAssembly.swift */; };
+		74E55FAA26AACE2C0086C159 /* ResultsSearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E55F9C26AACE2C0086C159 /* ResultsSearchPresenter.swift */; };
+		74E55FAB26AACE2C0086C159 /* ResultsSearchPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E55F9D26AACE2C0086C159 /* ResultsSearchPresenterProtocol.swift */; };
+		74E55FAC26AACE2C0086C159 /* ResultsSearchViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E55F9F26AACE2C0086C159 /* ResultsSearchViewControllerProtocol.swift */; };
+		74E55FAD26AACE2C0086C159 /* ResultsSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E55FA026AACE2C0086C159 /* ResultsSearchViewController.swift */; };
+		74E55FAE26AACE2C0086C159 /* ResultsSearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E55FA226AACE2C0086C159 /* ResultsSearchInteractor.swift */; };
+		74E55FAF26AACE2C0086C159 /* ResultsSearchInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E55FA326AACE2C0086C159 /* ResultsSearchInteractorProtocol.swift */; };
+		74E55FB026AACE2C0086C159 /* ResultsSearchRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E55FA526AACE2C0086C159 /* ResultsSearchRouterProtocol.swift */; };
+		74E55FB126AACE2C0086C159 /* ResultsSearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E55FA626AACE2C0086C159 /* ResultsSearchRouter.swift */; };
+		74E55FB426AAD25E0086C159 /* WineCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E55FB326AAD25E0086C159 /* WineCollectionCell.swift */; };
+		74E55FB626AADB350086C159 /* DidnotFindTheWineCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E55FB526AADB340086C159 /* DidnotFindTheWineCollectionCell.swift */; };
 		8A079300269239C0000ACA2B /* DocumentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0792EF269239C0000ACA2B /* DocumentsViewModel.swift */; };
 		8A079301269239C1000ACA2B /* DocumentsInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0792F1269239C0000ACA2B /* DocumentsInput.swift */; };
 		8A079302269239C1000ACA2B /* DocumentsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0792F3269239C0000ACA2B /* DocumentsAssembly.swift */; };
@@ -428,6 +440,18 @@
 		44EFDB6E25E263E00076ED6D /* ReviewDetailRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailRouter.swift; sourceTree = "<group>"; };
 		7458699F26A5D46E00519739 /* DidnotFindTheWineTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DidnotFindTheWineTableCell.swift; sourceTree = "<group>"; };
 		745869A126A5D4DC00519739 /* LegacyResultsTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegacyResultsTableController.swift; sourceTree = "<group>"; };
+		74E55F9626AACE2C0086C159 /* ResultsSearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsSearchViewModel.swift; sourceTree = "<group>"; };
+		74E55F9A26AACE2C0086C159 /* ResultsSearchAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsSearchAssembly.swift; sourceTree = "<group>"; };
+		74E55F9C26AACE2C0086C159 /* ResultsSearchPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsSearchPresenter.swift; sourceTree = "<group>"; };
+		74E55F9D26AACE2C0086C159 /* ResultsSearchPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsSearchPresenterProtocol.swift; sourceTree = "<group>"; };
+		74E55F9F26AACE2C0086C159 /* ResultsSearchViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsSearchViewControllerProtocol.swift; sourceTree = "<group>"; };
+		74E55FA026AACE2C0086C159 /* ResultsSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsSearchViewController.swift; sourceTree = "<group>"; };
+		74E55FA226AACE2C0086C159 /* ResultsSearchInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsSearchInteractor.swift; sourceTree = "<group>"; };
+		74E55FA326AACE2C0086C159 /* ResultsSearchInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsSearchInteractorProtocol.swift; sourceTree = "<group>"; };
+		74E55FA526AACE2C0086C159 /* ResultsSearchRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsSearchRouterProtocol.swift; sourceTree = "<group>"; };
+		74E55FA626AACE2C0086C159 /* ResultsSearchRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsSearchRouter.swift; sourceTree = "<group>"; };
+		74E55FB326AAD25E0086C159 /* WineCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineCollectionCell.swift; sourceTree = "<group>"; };
+		74E55FB526AADB340086C159 /* DidnotFindTheWineCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DidnotFindTheWineCollectionCell.swift; sourceTree = "<group>"; };
 		8A0792EF269239C0000ACA2B /* DocumentsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsViewModel.swift; sourceTree = "<group>"; };
 		8A0792F1269239C0000ACA2B /* DocumentsInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsInput.swift; sourceTree = "<group>"; };
 		8A0792F3269239C0000ACA2B /* DocumentsAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsAssembly.swift; sourceTree = "<group>"; };
@@ -1122,6 +1146,81 @@
 				EA78FE8971307D6D1C5D8B17 /* Pods_SmartTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		74E55F9426AACE2C0086C159 /* ResultsSearch */ = {
+			isa = PBXGroup;
+			children = (
+				74E55FB226AAD22C0086C159 /* Views */,
+				74E55F9526AACE2C0086C159 /* ViewModel */,
+				74E55F9926AACE2C0086C159 /* Assembly */,
+				74E55F9B26AACE2C0086C159 /* Presenter */,
+				74E55F9E26AACE2C0086C159 /* ViewController */,
+				74E55FA126AACE2C0086C159 /* Interactor */,
+				74E55FA426AACE2C0086C159 /* Router */,
+			);
+			path = ResultsSearch;
+			sourceTree = "<group>";
+		};
+		74E55F9526AACE2C0086C159 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				74E55F9626AACE2C0086C159 /* ResultsSearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		74E55F9926AACE2C0086C159 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				74E55F9A26AACE2C0086C159 /* ResultsSearchAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		74E55F9B26AACE2C0086C159 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				74E55F9C26AACE2C0086C159 /* ResultsSearchPresenter.swift */,
+				74E55F9D26AACE2C0086C159 /* ResultsSearchPresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		74E55F9E26AACE2C0086C159 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				74E55F9F26AACE2C0086C159 /* ResultsSearchViewControllerProtocol.swift */,
+				74E55FA026AACE2C0086C159 /* ResultsSearchViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		74E55FA126AACE2C0086C159 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				74E55FA226AACE2C0086C159 /* ResultsSearchInteractor.swift */,
+				74E55FA326AACE2C0086C159 /* ResultsSearchInteractorProtocol.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		74E55FA426AACE2C0086C159 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				74E55FA526AACE2C0086C159 /* ResultsSearchRouterProtocol.swift */,
+				74E55FA626AACE2C0086C159 /* ResultsSearchRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		74E55FB226AAD22C0086C159 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				74E55FB326AAD25E0086C159 /* WineCollectionCell.swift */,
+				74E55FB526AADB340086C159 /* DidnotFindTheWineCollectionCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		8A0792ED269239C0000ACA2B /* Documents */ = {
@@ -1885,6 +1984,7 @@
 				CA7B838724F451C700991F24 /* WineDetail */,
 				CA4D51022549F5F600A6FD0B /* WriteNote */,
 				4437AA4825E3A7CD00F6E838 /* WriteReview */,
+				74E55F9426AACE2C0086C159 /* ResultsSearch */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -2001,8 +2101,8 @@
 				CA4857862517C6EF00EDA4CE /* Interactor */,
 				CA4857872517C6FF00EDA4CE /* Presenter */,
 				CA48578C2517C72100EDA4CE /* Router */,
-				CA4857992517CA3900EDA4CE /* ViewController */,
 				CA490146252F817200066A98 /* ViewModel */,
+				CA4857992517CA3900EDA4CE /* ViewController */,
 				CA7B835924EED6BA00991F24 /* Views */,
 			);
 			path = Vinchy;
@@ -2775,6 +2875,7 @@
 				CA4857892517C71200EDA4CE /* VinchyPresenterProtocol.swift in Sources */,
 				8AF966C12678F194001891B2 /* EditProfilePresenterProtocol.swift in Sources */,
 				745869A026A5D46E00519739 /* DidnotFindTheWineTableCell.swift in Sources */,
+				74E55FA726AACE2C0086C159 /* ResultsSearchViewModel.swift in Sources */,
 				CA2C22DB2554464F002469E4 /* AdvancedSearchAssembly.swift in Sources */,
 				8AA5E5132615053D00935B5E /* AboutView.swift in Sources */,
 				CA46DC98252A44180007819E /* SmartFilterCollectionCell.swift in Sources */,
@@ -2796,10 +2897,12 @@
 				8AF966C22678F194001891B2 /* EditProfilePresenter.swift in Sources */,
 				CA2C22D92554464F002469E4 /* AdvancedSearchViewModel.swift in Sources */,
 				CA81984A253864080056A1C6 /* WineDetailViewControllerProtocol.swift in Sources */,
+				74E55FB626AADB350086C159 /* DidnotFindTheWineCollectionCell.swift in Sources */,
 				CA2C22E32554464F002469E4 /* AdvancedSearchRouterProtocol.swift in Sources */,
 				CA472B54245EDEDB009149FF /* Assembly.swift in Sources */,
 				CAF514232461C52400667ED0 /* MoreInteractor.swift in Sources */,
 				CE404B0F2589D4C200917544 /* MoreRouterProtocol.swift in Sources */,
+				74E55FB126AACE2C0086C159 /* ResultsSearchRouter.swift in Sources */,
 				449F81B225DD025900585364 /* RootRouter.swift in Sources */,
 				8A446CDF2660123B000A1769 /* RoutingToolBar.swift in Sources */,
 				CA7A87FA2506B9D600AAD10F /* ShareUsCollectionCell.swift in Sources */,
@@ -2824,6 +2927,7 @@
 				449F81CE25DD050400585364 /* DeeplinkRouter.swift in Sources */,
 				CE69652825E4372E00CD414D /* CurrencyViewController.swift in Sources */,
 				CAF514282461C52400667ED0 /* DocCell.swift in Sources */,
+				74E55FAB26AACE2C0086C159 /* ResultsSearchPresenterProtocol.swift in Sources */,
 				CA472B69245EDEF9009149FF /* ShowcaseViewModel.swift in Sources */,
 				CA2C22E02554464F002469E4 /* AdvancedSearchInteractorProtocol.swift in Sources */,
 				4437AA5E25E3A7CE00F6E838 /* WriteReviewPresenter.swift in Sources */,
@@ -2859,6 +2963,7 @@
 				CEF7AE672602D5220098FB9D /* ShowcaseRouter.swift in Sources */,
 				CA49A25B251F2C4600FBE269 /* BigAdCollectionCell.swift in Sources */,
 				44EFDB3925E177220076ED6D /* ReviewsAssembly.swift in Sources */,
+				74E55FB026AACE2C0086C159 /* ResultsSearchRouterProtocol.swift in Sources */,
 				CA8198C0253CB0490056A1C6 /* ErrorDescription.swift in Sources */,
 				CA7B835824EED1B100991F24 /* VinchyViewController.swift in Sources */,
 				CA4857942517C77E00EDA4CE /* VinchyAssembly.swift in Sources */,
@@ -2879,12 +2984,14 @@
 				CA472B2B245EDEA0009149FF /* FiltersHeaderView.swift in Sources */,
 				CE8FF83525FADA76004D4F37 /* ShowcaseInteractor.swift in Sources */,
 				CE58DECB25ED712900B5BDF9 /* CurrencyPresenter.swift in Sources */,
+				74E55FAD26AACE2C0086C159 /* ResultsSearchViewController.swift in Sources */,
 				CE6AAFD82617CEC80011F771 /* ShowcaseRoutable.swift in Sources */,
 				44EFDB3825E177220076ED6D /* ReviewsInput.swift in Sources */,
 				CA878A882572E59700B51FF1 /* ActionSheetAppearence.swift in Sources */,
 				8AE788132684E8D60056A84B /* NotesInteractor.swift in Sources */,
 				CA99E65324F59CAA00C36BEE /* ShortInfoCollectionCell.swift in Sources */,
 				8AF9441B2692295D003EB76A /* Label.swift in Sources */,
+				74E55FAA26AACE2C0086C159 /* ResultsSearchPresenter.swift in Sources */,
 				8AF966C32678F194001891B2 /* EditProfileViewController.swift in Sources */,
 				44EFDB3F25E177220076ED6D /* ReviewsInteractor.swift in Sources */,
 				CA7B836024EF109200991F24 /* MainSubtitleCollectionCell.swift in Sources */,
@@ -2916,10 +3023,12 @@
 				CE58DED325ED739200B5BDF9 /* CurrencyPresenterProtocol.swift in Sources */,
 				8A079307269239C1000ACA2B /* DocumentsInteractor.swift in Sources */,
 				44EFDB7025E263E00076ED6D /* ReviewDetailInput.swift in Sources */,
+				74E55FB426AAD25E0086C159 /* WineCollectionCell.swift in Sources */,
 				CA81984B253864080056A1C6 /* WineDetailInteractor.swift in Sources */,
 				CA4857742517BE8E00EDA4CE /* VinchyInteractor.swift in Sources */,
 				CE404B072589D41200917544 /* MoreInteractorProtocol.swift in Sources */,
 				CE58DED725ED73B300B5BDF9 /* CurrencyInteractorProtocol.swift in Sources */,
+				74E55FA926AACE2C0086C159 /* ResultsSearchAssembly.swift in Sources */,
 				8A079306269239C1000ACA2B /* DocumentsViewControllerProtocol.swift in Sources */,
 				8A313C1626468678009F2165 /* WorkingHoursCollectionCell.swift in Sources */,
 				CAA9DC3C250BD20400F996A8 /* AdvancedHeader.swift in Sources */,
@@ -2931,6 +3040,8 @@
 				CA2C22E12554464F002469E4 /* AdvancedSearchInteractor.swift in Sources */,
 				8AD49F16267520F90094E157 /* ReviewsInteractorProtocol.swift in Sources */,
 				8AD49F192675210D0094E157 /* ReviewsRouterProtocol.swift in Sources */,
+				74E55FAF26AACE2C0086C159 /* ResultsSearchInteractorProtocol.swift in Sources */,
+				74E55FAC26AACE2C0086C159 /* ResultsSearchViewControllerProtocol.swift in Sources */,
 				8A313C0726447042009F2165 /* MapDetailStoreInteractorProtocol.swift in Sources */,
 				8AE7880F2684E8D60056A84B /* NotesPresenter.swift in Sources */,
 				CA81984C253864080056A1C6 /* WineDetailInteractorProtocol.swift in Sources */,
@@ -3019,6 +3130,7 @@
 				8A079304269239C1000ACA2B /* DocumentsPresenter.swift in Sources */,
 				8A91611F268E27EB00240B18 /* SearchInteractorProtocol.swift in Sources */,
 				CAF514272461C52400667ED0 /* SocialMediaCell.swift in Sources */,
+				74E55FAE26AACE2C0086C159 /* ResultsSearchInteractor.swift in Sources */,
 				8A313C0926447042009F2165 /* MapDetailStoreRouterProtocol.swift in Sources */,
 				CA2C22DE2554464F002469E4 /* AdvancedSearchViewControllerProtocol.swift in Sources */,
 				CA2C22DF2554464F002469E4 /* AdvancedSearchViewController.swift in Sources */,
