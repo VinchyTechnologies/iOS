@@ -7,6 +7,7 @@
 //
 
 import Display
+import StringFormatting
 import VinchyCore
 
 // MARK: - MapDetailStorePresenter
@@ -27,7 +28,14 @@ final class MapDetailStorePresenter {
 // MARK: MapDetailStorePresenterProtocol
 
 extension MapDetailStorePresenter: MapDetailStorePresenterProtocol {
-  func update(storeInfo: PartnerInfo) {
+
+  func showErrorAlert(error: Error) {
+    viewController?.showAlert(
+      title: localized("error").firstLetterUppercased(),
+      message: error.localizedDescription)
+  }
+
+  func update(storeInfo: PartnerInfo, recommendedWines: [ShortWine]) {
     var rows: [MapDetailStoreViewModel.Row] = []
 
 //    sections += [.navigationBar([.init()])]
@@ -42,9 +50,20 @@ extension MapDetailStorePresenter: MapDetailStorePresenterProtocol {
 
     rows += [.assortment(.init(titleText: "Посмотреть ассортимент"))]
 
-//    rows += [.title(.init(titleText: NSAttributedString(string: "Vinchy рекомендует", font: Font.heavy(20), textColor: .dark)))]
+    if !recommendedWines.isEmpty {
+      rows += [
+        .title(.init(titleText: NSAttributedString(string: "Vinchy рекомендует", font: Font.heavy(20), textColor: .dark))),
+      ]
 
-//    rows += [.recommendedWines(.init(type: .bottles, collections: [.init(wineList: [.wine(wine: ShortWine.fake)])]))]
+      rows += [
+        .recommendedWines(
+          .init(
+            type: .bottles,
+            collections: [
+              .init(wineList: recommendedWines.compactMap({ .wine(wine: $0) })),
+            ])),
+      ]
+    }
 
     viewController?.updateUI(viewModel: .init(sections: [.content(header: .init(), items: rows)]))
   }
