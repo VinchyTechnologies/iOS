@@ -10,16 +10,50 @@ import Foundation
 
 struct StoreViewModel {
 
-  enum Section {
-    case logo(LogoRow.Content)
-    case title(Label.Content)
-    case address(Label.Content)
-    case wines(BottlesCollectionView.Content)
-    case assortiment(header: FiltersCollectionView.Content, content: [HorizontalWineView.Content])
-    case loading
+  enum SectionID {
+    case logo, title, wines, winesSection, staticSelectedFilters, separator, assortiment, address, loading
   }
 
-  let sections: [Section]
+  enum ItemID {
+    case logoItem, titleItem, addressItem, winesItem, headerAssortimentItem, loadingItem
+  }
 
-  static let empty: Self = .init(sections: [])
+  enum Section {
+    case logo(itemID: ItemID = .logoItem, LogoRow.Content)
+    case title(itemID: ItemID = .titleItem, Label.Content)
+    case address(itemID: ItemID = .addressItem, Label.Content)
+    case wines(itemID: ItemID = .winesItem, BottlesCollectionView.Content)
+    case assortiment(headerDataID: ItemID = .headerAssortimentItem, header: FiltersCollectionView.Content, content: [HorizontalWineView.Content])
+    case loading(itemID: ItemID = .loadingItem)
+
+    // MARK: Internal
+
+    var dataID: SectionID {
+      switch self {
+      case .logo:
+        return .logo
+
+      case .title:
+        return .title
+
+      case .address:
+        return .address
+
+      case .wines:
+        return .wines
+
+      case .assortiment:
+        return .assortiment
+
+      case .loading:
+        return .loading
+      }
+    }
+  }
+
+  static let empty: Self = .init(sections: [], navigationTitleText: nil)
+
+  let sections: [Section]
+  let navigationTitleText: String?
+
 }

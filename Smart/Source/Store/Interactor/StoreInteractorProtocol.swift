@@ -11,4 +11,6 @@ import Foundation
 protocol StoreInteractorProtocol: AnyObject {
   func viewDidLoad()
   func didSelectWine(wineID: Int64)
+  func willDisplayLoadingView()
+  func didTapReloadButton()
 }

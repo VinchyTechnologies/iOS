@@ -27,8 +27,11 @@ public final class LoadingView: UIView, EpoxyableView, Loadable {
 
   // MARK: Public
 
-  public private(set) var loadingIndicator = ActivityIndicatorView()
+  public static var height: CGFloat {
+    48
+  }
 
+  public private(set) var loadingIndicator = ActivityIndicatorView()
 }
 
 // MARK: DisplayRespondingView

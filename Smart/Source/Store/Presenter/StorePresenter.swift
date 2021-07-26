@@ -6,7 +6,8 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import CommonUI
+import StringFormatting
 
 // MARK: - StorePresenter
 
@@ -22,14 +23,79 @@ final class StorePresenter {
 
   weak var viewController: StoreViewControllerProtocol?
 
-  // MARK: Private
-
-  private typealias ViewModel = StoreViewModel
-
 }
 
 // MARK: StorePresenterProtocol
 
 extension StorePresenter: StorePresenterProtocol {
 
+  func showErrorAlert(error: Error) {
+    viewController?.showAlert(
+      title: localized("error").firstLetterUppercased(),
+      message: error.localizedDescription)
+  }
+
+  func showInitiallyLoadingError(error: Error) {
+    viewController?.updateUI(
+      errorViewModel: ErrorViewModel(
+        titleText: localized("error").firstLetterUppercased(),
+        subtitleText: error.localizedDescription,
+        buttonText: localized("reload").firstLetterUppercased()))
+  }
+
+  func startLoading() {
+    viewController?.addLoader()
+    viewController?.startLoadingAnimation()
+  }
+
+  func stopLoading() {
+    viewController?.stopLoadingAnimation()
+  }
+
+  func update(data: StoreInteractorData, needLoadMore: Bool) {
+
+    var sections: [StoreViewModel.Section] = []
+
+    sections += [
+      .logo(itemID: .logoItem, .init(title: data.partnerInfo.title, logoURL: data.partnerInfo.logoURL)),
+    ]
+
+    if let addressText = data.partnerInfo.address {
+      sections += [.address(addressText)]
+    }
+
+    if !data.recommendedWines.isEmpty {
+      sections += [.title("Vinchy recommends")] // TODO: - localize
+
+      let winesContent = data.recommendedWines.map { wine in
+        WineBottleView.Content(
+          wineID: wine.id,
+          imageURL: wine.mainImageUrl?.toURL,
+          titleText: wine.title,
+          subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode))
+      }
+
+      sections += [.wines(winesContent)]
+    }
+
+    if !data.assortimentWines.isEmpty {
+
+      let winesContent: [HorizontalWineView.Content] = data.assortimentWines.map({ wine in
+        HorizontalWineView.Content.init(
+          wineID: wine.id,
+          imageURL: wine.mainImageUrl?.toURL,
+          titleText: wine.title,
+          subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode))
+      })
+
+      sections += [.assortiment(header: ["Весь ассортмент"], content: winesContent)]
+
+      if needLoadMore {
+        sections += [.loading(itemID: .loadingItem)]
+      }
+    }
+
+    let viewModel = StoreViewModel(sections: sections, navigationTitleText: data.partnerInfo.title)
+    viewController?.updateUI(viewModel: viewModel)
+  }
 }

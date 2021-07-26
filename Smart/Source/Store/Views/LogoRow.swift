@@ -19,7 +19,7 @@ final class LogoRow: UIView, EpoxyableView {
     self.style = style
     super.init(frame: .zero)
     translatesAutoresizingMaskIntoConstraints = false
-    layoutMargins = UIEdgeInsets(top: 16, left: 24, bottom: 16, right: 24)
+    layoutMargins = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
     group.install(in: self)
     group.constrainToMarginsWithHighPriorityBottom()
   }
@@ -33,9 +33,16 @@ final class LogoRow: UIView, EpoxyableView {
   }
 
   struct Content: Equatable {
-    var id: Int
     var title: String?
     var logoURL: String?
+
+    func height(for width: CGFloat) -> CGFloat {
+      let widthOfImage: CGFloat = logoURL == nil ? 0 : 48 + 8
+      let widthWithOrWithoutImage: CGFloat = width - widthOfImage
+      let labelHeight = Label.height(for: title, width: widthWithOrWithoutImage, style: .style(with: .lagerTitle))
+      let height = logoURL == nil ? labelHeight : max(60, labelHeight)
+      return height
+    }
   }
 
   func setContent(_ content: Content, animated: Bool) {

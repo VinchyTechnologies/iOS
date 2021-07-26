@@ -9,5 +9,9 @@
 import Foundation
 
 protocol StorePresenterProtocol: AnyObject {
-
+  func update(data: StoreInteractorData, needLoadMore: Bool)
+  func startLoading()
+  func stopLoading()
+  func showErrorAlert(error: Error)
+  func showInitiallyLoadingError(error: Error)
 }

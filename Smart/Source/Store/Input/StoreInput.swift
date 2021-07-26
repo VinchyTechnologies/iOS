@@ -6,8 +6,14 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import VinchyCore
 
 struct StoreInput {
 
+  enum Mode {
+    case normal(affilatedId: Int)
+    case hasPersonalRecommendations(affilatedId: Int, wines: [ShortWine])
+  }
+
+  let mode: Mode
 }
