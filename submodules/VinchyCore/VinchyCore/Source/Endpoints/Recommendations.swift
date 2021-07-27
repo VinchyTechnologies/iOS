@@ -21,8 +21,8 @@ private enum RecommendationsEndpoint: EndpointProtocol {
 
   var path: String {
     switch self {
-    case .personal(let accountId, let partnerId, let affilatedId):
-      return "/partners/" + String(partnerId) + "/stores/" + String(affilatedId) + "/recommendations/" + String(accountId)
+    case .personal(_, let partnerId, let affilatedId):
+      return "/partners/" + String(partnerId) + "/stores/" + String(affilatedId) + "/recommendations"
     }
   }
 
@@ -35,8 +35,11 @@ private enum RecommendationsEndpoint: EndpointProtocol {
 
   var parameters: Parameters? {
     switch self {
-    case .personal:
-      return nil
+    case .personal(let accountID, _, _):
+      let params: Parameters = [
+        ("account_id", accountID),
+      ]
+      return params
     }
   }
 }
