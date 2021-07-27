@@ -165,13 +165,3 @@ public final class ScrollViewBounceDecorator {
     }
   }
 }
-
-extension UIEdgeInsets {
-  fileprivate var vertical: CGFloat {
-    top + bottom
-  }
-
-  fileprivate var horizontal: CGFloat {
-    left + right
-  }
-}

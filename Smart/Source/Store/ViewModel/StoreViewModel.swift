@@ -14,8 +14,13 @@ struct StoreViewModel {
     case logo, title, wines, winesSection, staticSelectedFilters, separator, assortiment, address, loading
   }
 
-  enum ItemID {
-    case logoItem, titleItem, addressItem, winesItem, headerAssortimentItem, loadingItem
+  enum ItemID: String {
+    case logoItem, titleItem, addressItem, winesItem, headerAssortimentItem, loadingItem, ad
+  }
+
+  enum AssortimentContent {
+    case horizontalWine(HorizontalWineView.Content)
+    case ad(itemID: ItemID = .ad)
   }
 
   enum Section {
@@ -23,7 +28,7 @@ struct StoreViewModel {
     case title(itemID: ItemID = .titleItem, Label.Content)
     case address(itemID: ItemID = .addressItem, Label.Content)
     case wines(itemID: ItemID = .winesItem, BottlesCollectionView.Content)
-    case assortiment(headerDataID: ItemID = .headerAssortimentItem, header: FiltersCollectionView.Content, content: [HorizontalWineView.Content])
+    case assortiment(headerDataID: ItemID = .headerAssortimentItem, header: FiltersCollectionView.Content, content: [AssortimentContent])
     case loading(itemID: ItemID = .loadingItem)
 
     // MARK: Internal

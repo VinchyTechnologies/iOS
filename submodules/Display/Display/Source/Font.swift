@@ -163,6 +163,16 @@ extension String {
     let size = self.size(withAttributes: fontAttributes)
     return size.width
   }
+  
+  public func size(for font: UIFont) -> CGSize {
+    let availableSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
+    let result = self.boundingRect( // swiftformat:disable all
+      with: availableSize,
+      options: [.usesLineFragmentOrigin],
+      attributes: [.font: font],
+      context: nil)
+    return CGSize(width: ceil(result.width), height: ceil(result.height))
+  }
 }
 
 // public extension UILabel {

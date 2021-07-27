@@ -28,7 +28,6 @@ final class StoreViewController: CollectionViewController {
   // MARK: Internal
 
   private(set) var loadingIndicator = ActivityIndicatorView()
-
   var interactor: StoreInteractorProtocol?
 
   override func viewDidLoad() {
@@ -116,14 +115,28 @@ final class StoreViewController: CollectionViewController {
       case .assortiment(let headerItemID, let header, let rows):
         return SectionModel(
           dataID: section.dataID,
-          items: rows.enumerated().compactMap({ index, content in
-            HorizontalWineView.itemModel(
-              dataID: content.wineID + Int64(index),
-              content: content,
-              style: .init())
-              .didSelect { [weak self] _ in
-                self?.interactor?.didSelectWine(wineID: content.wineID)
-              }
+          items: rows.enumerated().compactMap({ index, assortmentContent in
+            switch assortmentContent {
+            case .horizontalWine(let content):
+              return HorizontalWineView.itemModel(
+                dataID: content.wineID + Int64(index),
+                content: content,
+                style: .init())
+                .didSelect { [weak self] _ in
+                  self?.interactor?.didSelectWine(wineID: content.wineID)
+                }
+                .flowLayoutItemSize(.init(width: view.frame.width, height: 130))
+
+            case .ad(let itemID):
+              return AdItemView.itemModel(
+                dataID: itemID.rawValue + String(index),
+                content: .init(),
+                style: .init())
+                .setBehaviors { [weak self] context in
+                  context.view.adBanner.rootViewController = self
+                }
+                .flowLayoutItemSize(.init(width: view.frame.width, height: AdItemView.height))
+            }
           }))
           .supplementaryItems(ofKind: UICollectionView.elementKindSectionHeader, [
             FiltersCollectionView.supplementaryItemModel(
@@ -135,7 +148,6 @@ final class StoreViewController: CollectionViewController {
               },
           ])
           .flowLayoutHeaderReferenceSize(.init(width: view.frame.width, height: 50))
-          .flowLayoutItemSize(.init(width: view.frame.width, height: 130))
 
       case .loading(let itemID):
         return SectionModel(dataID: section.dataID) {

@@ -59,7 +59,13 @@ public final class OverlayPresentationCenter: OverlayPresentationCenterProtocol 
   {
     guard !isAlreadyPresented else { return }
     viewController.presentableDelegate = self
-    applicationKeyWindow = application.windows.first(where: { $0.isKeyWindow })
+    let windowScene = UIApplication.shared
+      .connectedScenes
+      .filter { $0.activationState == .foregroundActive }
+      .first
+    if let windowScene = windowScene as? UIWindowScene {
+      applicationKeyWindow = UIWindow(windowScene: windowScene)
+    }
     presentationWindow.makeKeyAndVisible()
     presentationViewController.present(viewController, animated: animated, completion: completion)
   }
@@ -92,7 +98,11 @@ public final class OverlayPresentationCenter: OverlayPresentationCenterProtocol 
   }
 
   private func createPresentationWindow() -> UIWindow {
-    let window = UIWindow()
+    let windowScene = UIApplication.shared.connectedScenes.first as! UIWindowScene // swiftlint:disable:this force_cast
+    let window = UIWindow(windowScene: windowScene)
+    let viewController = UIViewController()
+    viewController.view.backgroundColor = .clear
+    window.rootViewController = viewController
     window.backgroundColor = .clear
     return window
   }

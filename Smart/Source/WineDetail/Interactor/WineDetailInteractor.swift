@@ -89,7 +89,6 @@ final class WineDetailInteractor {
       }
     }
   }
-
   private func isFavourite(wine: Wine) -> Bool {
     winesRepository.findAll().first(where: { $0.wineID == wine.id })?.isLiked == true
   }
@@ -147,6 +146,16 @@ final class WineDetailInteractor {
 // MARK: WineDetailInteractorProtocol
 
 extension WineDetailInteractor: WineDetailInteractorProtocol {
+
+  func didShowTutorial() {
+    UserDefaultsConfig.userHasSeenTutorialForReviewButton = true
+  }
+
+  func didScrollStopped() {
+    if !UserDefaultsConfig.userHasSeenTutorialForReviewButton {
+      presenter.showReviewButtonTutorial()
+    }
+  }
 
   func didTapExpandOrCollapseGeneralInfo() {
     guard let wine = wine else {

@@ -298,7 +298,6 @@ final class WineDetailPresenter {
 // MARK: WineDetailPresenterProtocol
 
 extension WineDetailPresenter: WineDetailPresenterProtocol {
-
   var reportAnErrorText: String? {
     localized("tell_about_error").firstLetterUppercased()
   }
@@ -309,6 +308,10 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
 
   var reportAnErrorRecipients: [String] {
     [localized("contact_email")]
+  }
+
+  func showReviewButtonTutorial() {
+    viewController?.showReviewButtonTutorial(viewModel: .init(title: "Чаще оставляйте отзывы!", content: "Только с помощью Ваших отзывов и оценок мы сможем подобрать вино специально для Вас"))
   }
 
   func expandOrCollapseGeneralInfo(wine: Wine, isGeneralInfoCollapsed: Bool) {

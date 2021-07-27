@@ -88,7 +88,15 @@ extension StorePresenter: StorePresenterProtocol {
           subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode))
       })
 
-      sections += [.assortiment(header: ["Весь ассортмент"], content: winesContent)]
+      var assortmentsContent = [StoreViewModel.AssortimentContent]()
+      winesContent.enumerated().forEach { index, wineContent in
+        if index % 10 == 0 && index != 0 && isAdAvailable {
+          assortmentsContent.append(.ad(itemID: .ad))
+        }
+        assortmentsContent.append(.horizontalWine(wineContent))
+      }
+
+      sections += [.assortiment(header: ["Весь ассортмент"], content: assortmentsContent)]
 
       if needLoadMore {
         sections += [.loading(itemID: .loadingItem)]

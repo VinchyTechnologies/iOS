@@ -100,6 +100,7 @@
 		8A0D9CB926872CF60076A7EC /* NewAgreementsBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0D9CB826872CF60076A7EC /* NewAgreementsBottomView.swift */; };
 		8A1034592648596100F7CA81 /* AssortmentCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1034582648596100F7CA81 /* AssortmentCollectionCell.swift */; };
 		8A1036CA264D7E1200F7CA81 /* MapNavigationBarCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1036C9264D7E1200F7CA81 /* MapNavigationBarCollectionCell.swift */; };
+		8A251E3226B0065C00DAED2D /* AdItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A251E3126B0065C00DAED2D /* AdItemView.swift */; };
 		8A313BFF26447042009F2165 /* MapDetailStoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BEE26447042009F2165 /* MapDetailStoreViewModel.swift */; };
 		8A313C0026447042009F2165 /* MapDetailStoreInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BF026447042009F2165 /* MapDetailStoreInput.swift */; };
 		8A313C0126447042009F2165 /* MapDetailStoreAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BF226447042009F2165 /* MapDetailStoreAssembly.swift */; };
@@ -485,6 +486,7 @@
 		8A0D9CB826872CF60076A7EC /* NewAgreementsBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAgreementsBottomView.swift; sourceTree = "<group>"; };
 		8A1034582648596100F7CA81 /* AssortmentCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssortmentCollectionCell.swift; sourceTree = "<group>"; };
 		8A1036C9264D7E1200F7CA81 /* MapNavigationBarCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapNavigationBarCollectionCell.swift; sourceTree = "<group>"; };
+		8A251E3126B0065C00DAED2D /* AdItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdItemView.swift; sourceTree = "<group>"; };
 		8A313BEE26447042009F2165 /* MapDetailStoreViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreViewModel.swift; sourceTree = "<group>"; };
 		8A313BF026447042009F2165 /* MapDetailStoreInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreInput.swift; sourceTree = "<group>"; };
 		8A313BF226447042009F2165 /* MapDetailStoreAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreAssembly.swift; sourceTree = "<group>"; };
@@ -1323,6 +1325,7 @@
 				8A0794DD26936A8E000ACA2B /* LogoRow.swift */,
 				8A0799172699A06C000ACA2B /* FilterItemView.swift */,
 				8A079F2F269E2E34000ACA2B /* FiltersCollectionView.swift */,
+				8A251E3126B0065C00DAED2D /* AdItemView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3071,6 +3074,7 @@
 				CA2C22DD2554464F002469E4 /* AdvancedSearchPresenterProtocol.swift in Sources */,
 				4437AA6E25E3BE7300F6E838 /* WriteReviewRoutable.swift in Sources */,
 				CACA7E9A254C57CC0099E622 /* WriteNoteInput.swift in Sources */,
+				8A251E3226B0065C00DAED2D /* AdItemView.swift in Sources */,
 				44EFDB3D25E177220076ED6D /* ReviewsViewController.swift in Sources */,
 				CA48578F2517C74700EDA4CE /* VinchyRouterProtocol.swift in Sources */,
 				CA472B2C245EDEA0009149FF /* HeaderReusableView.swift in Sources */,

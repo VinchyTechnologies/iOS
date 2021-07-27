@@ -30,6 +30,8 @@ final class WineDetailViewController: UIViewController {
 
   private(set) var loadingIndicator = ActivityIndicatorView()
 
+  var presentationCenter: OverlayPresentationCenterProtocol? = OverlayPresentationCenter(application: UIApplication.shared)
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -233,6 +235,14 @@ final class WineDetailViewController: UIViewController {
 
   private var viewModel: WineDetailViewModel?
 
+  private var activeRect: CGRect {
+    let headerRect = CGRect.zero //headerView.convert(headerView.bounds, to: view)
+    let collectionViewRect = collectionView.convert(collectionView.safeAreaLayoutGuide.layoutFrame, to: view)
+    let activeRectTopLeft = CGPoint(x: collectionViewRect.origin.x, y: headerRect.origin.y + headerRect.size.height)
+    let activeRectBottomRight = CGPoint(x: collectionViewRect.origin.x + collectionViewRect.size.width, y: collectionViewRect.origin.y + collectionViewRect.size.height)
+    return CGRect(origin: activeRectTopLeft, size: CGSize(width: activeRectBottomRight.x - activeRectTopLeft.x, height: activeRectBottomRight.y - activeRectTopLeft.y))
+  }
+
   @objc
   private func didTapCloseBarButtonItem(_: UIBarButtonItem) {
     dismiss(animated: true, completion: nil)
@@ -246,6 +256,38 @@ final class WineDetailViewController: UIViewController {
   @objc
   private func didTapMore(_ button: UIButton) {
     interactor?.didTapMore(button)
+  }
+
+  private func showDeliveryTutorialIfCan(at indexPath: IndexPath, collectionCell: UICollectionViewCell, viewModel: DeliveryTutorialViewModel) {
+    let point = collectionCell.convert(
+      CGPoint(x: collectionCell.contentView.frame.minX, y: collectionCell.contentView.frame.maxY + 8),
+      to: nil)
+    let size = collectionCell.contentView.frame.size
+    let sourceViewFrame = CGRect(origin: point, size: size)
+    guard
+      presentDeliveryTutorialView(
+        viewModel: viewModel,
+        sourceViewFrame: sourceViewFrame) else { return }
+    interactor?.didShowTutorial()
+  }
+
+  private func presentDeliveryTutorialView(
+    viewModel: DeliveryTutorialViewModel,
+    sourceViewFrame: CGRect)
+    -> Bool
+  {
+    let availiableWidth = collectionView.bounds.size.width - 32
+    guard
+      let tutorialViewController = TutorialViewController.build(
+        with: viewModel,
+        sourceViewFrame: sourceViewFrame,
+        availiableWidth: availiableWidth,
+        activeRect: activeRect)
+    else {
+      return false
+    }
+    presentationCenter?.presentViewController(tutorialViewController, animated: true, completion: nil)
+    return true
   }
 }
 
@@ -444,6 +486,16 @@ extension WineDetailViewController: UICollectionViewDelegate {
     navigationItem.title = scrollView.contentOffset.y > 300 ? viewModel?.navigationTitle : nil
   }
 
+  func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    interactor?.didScrollStopped()
+  }
+
+  func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    if !decelerate {
+      interactor?.didScrollStopped()
+    }
+  }
+
   func collectionView(
     _: UICollectionView,
     didSelectItemAt indexPath: IndexPath)
@@ -505,6 +557,16 @@ extension WineDetailViewController: VinchySimpleConiniousCaruselCollectionCellDe
 // MARK: WineDetailViewControllerProtocol
 
 extension WineDetailViewController: WineDetailViewControllerProtocol {
+
+  func showReviewButtonTutorial(viewModel: DeliveryTutorialViewModel) {
+    for visibleCell in collectionView.visibleCells {
+      guard
+        let indexPath = collectionView.indexPath(for: visibleCell),
+        let restaurantCell = visibleCell as? ButtonCollectionCell
+      else { continue }
+      showDeliveryTutorialIfCan(at: indexPath, collectionCell: restaurantCell, viewModel: viewModel)
+    }
+  }
 
   func updateGeneralInfoSectionAndExpandOrCollapseCell(viewModel: WineDetailViewModel) {
     self.viewModel = viewModel
