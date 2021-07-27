@@ -47,7 +47,12 @@ extension ResultsSearchPresenter: ResultsSearchPresenterProtocol {
       var wineCollectionCellViewModels: [WineCollectionCellViewModel] = []
 
       didFindWines.forEach { wine in
-        wineCollectionCellViewModels.append(.init(wineID: wine.id, imageURL: wine.mainImageUrl?.toURL, titleText: wine.title, subtitleText: wine.winery?.region))
+        wineCollectionCellViewModels.append(.init(
+          wineID: wine.id,
+          imageURL: wine.mainImageUrl?.toURL,
+          titleText: wine.title,
+          subtitleText:
+          countryNameFromLocaleCode(countryCode: wine.winery?.countryCode)))
 
       }
       sections.append(.searchResults(wineCollectionCellViewModels))
