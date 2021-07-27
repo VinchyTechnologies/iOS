@@ -24,6 +24,9 @@ extension FilterCategory {
 
     case .sugar:
       return localized("sugar").firstLetterUppercased()
+
+    case .compatibility:
+      return localized("compatibility").firstLetterUppercased()
     }
   }
 }
@@ -62,14 +65,14 @@ extension AdvancedSearchPresenter: AdvancedSearchPresenterProtocol {
 
     filters.forEach { filter in
       switch filter.category {
-      case .type, .color, .sugar:
+      case .type, .color, .sugar, .compatibility:
 
         var items = [AdvancedSearchCaruselCollectionCellViewModel]()
 
         let cells = filter.items.map { filterItem -> ImageOptionCollectionCellViewModel in
           .init(
-            image: UIImage(named: filterItem.imageName ?? ""),
-            titleText: localized(filterItem.title).firstLetterUppercased(),
+            image: UIImage(named: filterItem.imageName?.lowercased() ?? ""),
+            titleText: localized(filterItem.title.lowercased()).firstLetterUppercased(),
             isSelected: selectedFilters.contains(filterItem))
         }
 

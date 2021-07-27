@@ -62,7 +62,7 @@ extension AdvancedSearchInteractor: AdvancedSearchInteractorProtocol {
           .compactMap { $0.title }
       router.presentAllCountries(preSelectedCountryCodes: preSelectedCountryCodes)
 
-    case .type, .color, .sugar:
+    case .type, .color, .sugar, .compatibility:
       break
     }
   }
