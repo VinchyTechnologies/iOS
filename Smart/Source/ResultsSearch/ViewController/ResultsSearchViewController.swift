@@ -57,9 +57,9 @@ final class ResultsSearchViewController: UIViewController {
       case .recentlySearched:
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(250)))
         let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(150), heightDimension: .absolute(250)), subitems: [item])
-        group.contentInsets = .init(top: 0, leading: 8, bottom: 0, trailing: 8)
+        group.contentInsets = .init(top: 0, leading: 5, bottom: 0, trailing: 5)
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 15, leading: 8, bottom: 0, trailing: 8)
+        section.contentInsets = .init(top: 15, leading: 11, bottom: 0, trailing: 11)
         section.orthogonalScrollingBehavior = .continuous
         return section
       case .titleRecentlySearched(let model):
