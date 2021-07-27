@@ -10,6 +10,12 @@ import CommonUI
 import StringFormatting
 import VinchyCore
 
+// MARK: - ResultsSearchCollectionCellDelegate
+
+protocol ResultsSearchCollectionCellDelegate: AnyObject {
+  func didTapBottleCell(wineID: Int64)
+}
+
 // MARK: - ResultsSearchViewControllerState
 
 private enum ResultsSearchViewControllerState: Int {
@@ -26,6 +32,7 @@ final class ResultsSearchViewController: UIViewController {
   var interactor: ResultsSearchInteractorProtocol?
 
   weak var didnotFindTheWineCollectionCellDelegate: DidnotFindTheWineCollectionCellProtocol?
+  weak var resultsSearchCollectionCellDelegate: ResultsSearchCollectionCellDelegate?
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
@@ -199,8 +206,7 @@ extension ResultsSearchViewController: UICollectionViewDataSource, UICollectionV
       case .searchResults(let model):
         let wineID = model[indexPath.row].wineID
         interactor?.didSelectResultCell(wineID: wineID, title: model[indexPath.row].titleText)
-        // use router
-        navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wineID), animated: true)
+        resultsSearchCollectionCellDelegate?.didTapBottleCell(wineID: wineID)
       default:
         return
       }
@@ -212,8 +218,7 @@ extension ResultsSearchViewController: UICollectionViewDataSource, UICollectionV
           return
         }
         interactor?.didSelectResultCell(wineID: wineID, title: titleText)
-        // use router
-        navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wineID), animated: true)
+        resultsSearchCollectionCellDelegate?.didTapBottleCell(wineID: wineID)
       default:
         return
       }
