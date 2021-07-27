@@ -78,6 +78,8 @@
 "expand" = "ещё";
 "collapse" = "скрыть";
 "wine_has_no_reviews_yet" = "У этого вина еще нет отзывов, будьте первым, кто напишет его!";
+"vinchy_recommends" = "vinchy рекомендует";
+"view_assortment" = "посмотреть ассортимент";
 
 // MARK: - Sugar
 "sugar" = "сахар";

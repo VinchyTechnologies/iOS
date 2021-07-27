@@ -78,6 +78,8 @@
 "expand" = "more";
 "collapse" = "less";
 "wine_has_no_reviews_yet" = "This wine has no reviews yet, be the first to write it!";
+"vinchy_recommends" = "vinchy recommends";
+"view_assortment" = "view assortment";
 
 // MARK: - Sugar
 "sugar" = "sugar";

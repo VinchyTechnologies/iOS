@@ -46,13 +46,17 @@ extension MapDetailStorePresenter: MapDetailStorePresenterProtocol {
       rows += [.address(.init(titleText: NSAttributedString(string: address, font: Font.regular(18), textColor: .dark, paragraphAlignment: .center)))]
     }
 
-    rows += [.workingHours(.init(titleText: "19:00 - 20:00"))]
+//    rows += [.workingHours(.init(titleText: "19:00 - 20:00"))]
 
-    rows += [.assortment(.init(titleText: "Посмотреть ассортимент"))]
+    rows += [.assortment(.init(titleText: localized("view_assortment").firstLetterUppercased()))]
 
     if !recommendedWines.isEmpty {
       rows += [
-        .title(.init(titleText: NSAttributedString(string: "Vinchy рекомендует", font: Font.heavy(20), textColor: .dark))),
+        .title(.init(
+          titleText: NSAttributedString(
+            string: localized("vinchy_recommends").firstLetterUppercased(),
+            font: Font.heavy(20),
+            textColor: .dark))),
       ]
 
       rows += [
