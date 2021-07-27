@@ -42,7 +42,7 @@ final class ResultsSearchViewController: UIViewController {
     super.viewDidLoad()
     view.addSubview(collectionView)
     collectionView.fill()
-    collectionView.backgroundColor = .white
+    collectionView.backgroundColor = .systemBackground
   }
 
   // MARK: Private
