@@ -16,13 +16,6 @@ protocol ResultsSearchCollectionCellDelegate: AnyObject {
   func didTapBottleCell(wineID: Int64)
 }
 
-// MARK: - ResultsSearchViewControllerState
-
-private enum ResultsSearchViewControllerState: Int {
-  case like
-  case dislike
-}
-
 // MARK: - ResultsSearchViewController
 
 final class ResultsSearchViewController: UIViewController {
@@ -34,15 +27,16 @@ final class ResultsSearchViewController: UIViewController {
   weak var didnotFindTheWineCollectionCellDelegate: DidnotFindTheWineCollectionCellProtocol?
   weak var resultsSearchCollectionCellDelegate: ResultsSearchCollectionCellDelegate?
 
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    interactor?.viewWillAppear()
-  }
   override func viewDidLoad() {
     super.viewDidLoad()
     view.addSubview(collectionView)
     collectionView.fill()
-    collectionView.backgroundColor = .systemBackground
+    collectionView.backgroundColor = .mainBackground
+  }
+
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    interactor?.viewWillAppear()
   }
 
   // MARK: Private

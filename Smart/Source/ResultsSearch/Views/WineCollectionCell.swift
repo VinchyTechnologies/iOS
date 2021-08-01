@@ -84,16 +84,12 @@ class WineCollectionCell: UICollectionViewCell, Reusable {
 
 extension WineCollectionCell: Decoratable {
 
-  // MARK: Public
+  typealias ViewModel = WineCollectionCellViewModel
 
-  public func decorate(model: ViewModel) {
+  internal func decorate(model: ViewModel) {
     bottleImageView.loadBottle(url: model.imageURL)
     titleLabel.text = model.titleText
     subtitleLabel.text = model.subtitleText
   }
-
-  // MARK: Internal
-
-  typealias ViewModel = WineCollectionCellViewModel
 
 }

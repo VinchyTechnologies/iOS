@@ -31,7 +31,7 @@ protocol DidnotFindTheWineCollectionCellProtocol: AnyObject {
 
 // MARK: - DidnotFindTheWineCollectionCell
 
-class DidnotFindTheWineCollectionCell: UICollectionViewCell, Reusable {
+final class DidnotFindTheWineCollectionCell: UICollectionViewCell, Reusable {
 
   // MARK: Lifecycle
 
@@ -88,15 +88,11 @@ class DidnotFindTheWineCollectionCell: UICollectionViewCell, Reusable {
 
 extension DidnotFindTheWineCollectionCell: Decoratable {
 
-  // MARK: Public
+  typealias ViewModel = DidnotFindTheWineCollectionCellViewModel
 
-  public func decorate(model: ViewModel) {
+  internal func decorate(model: ViewModel) {
     titleLabel.text = model.titleText
     writeUsButton.setTitle(model.writeUsButtonText, for: .normal)
   }
-
-  // MARK: Internal
-
-  typealias ViewModel = DidnotFindTheWineCollectionCellViewModel
 
 }

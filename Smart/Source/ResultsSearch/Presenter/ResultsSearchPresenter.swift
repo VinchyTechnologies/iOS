@@ -72,7 +72,7 @@ extension ResultsSearchPresenter: ResultsSearchPresenterProtocol {
     if !wineCollectionViewCellViewModels.isEmpty {
       sections.append(.titleRecentlySearched(
         [.init(titleText: NSAttributedString(
-          string: "Вы недавно искали",
+          string: localized("recently_searched").firstLetterUppercased(),
           font: Font.heavy(20),
           textColor: .dark))]
       ))
