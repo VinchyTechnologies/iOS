@@ -64,7 +64,7 @@ extension ResultsSearchInteractor: ResultsSearchInteractorProtocol {
       searchedWinesRepository.remove(sameWine)
 
     } else if count >= C.searchedLimit {
-      if let firstWine = searchedWinesRepository.findAll()[safe: 0] {
+      if let firstWine = searchedWinesRepository.findAll().first {
         searchedWinesRepository.remove(firstWine)
       }
     }
