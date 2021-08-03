@@ -71,7 +71,7 @@ extension AdvancedSearchPresenter: AdvancedSearchPresenterProtocol {
 
         let cells = filter.items.map { filterItem -> ImageOptionCollectionCellViewModel in
           .init(
-            image: UIImage(named: filterItem.imageName?.lowercased() ?? ""),
+            image: UIImage(named: filterItem.imageName?.lowercased() ?? "")?.withTintColor(.dark, renderingMode: .alwaysOriginal),
             titleText: localized(filterItem.title.lowercased()).firstLetterUppercased(),
             isSelected: selectedFilters.contains(filterItem))
         }

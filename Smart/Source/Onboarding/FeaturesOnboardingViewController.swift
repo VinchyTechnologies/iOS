@@ -89,7 +89,6 @@ final class FeaturesOnboardingViewController: UICollectionViewCell, Reusable {
     return $0
   }(Button())
 
-
   @objc
   private func didTapCloseSelf() {
     delegate?.didTapCloseButton()

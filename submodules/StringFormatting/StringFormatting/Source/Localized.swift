@@ -24,7 +24,6 @@ public func localized(
   NSLocalizedString(string, tableName: source.rawValue, bundle: bundle, comment: "")
 }
 
-
 public func localizedPlural(
   _ string: String,
   count: UInt,

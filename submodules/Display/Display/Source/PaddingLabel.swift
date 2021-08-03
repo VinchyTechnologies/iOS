@@ -41,4 +41,3 @@ extension UIEdgeInsets: Hashable {
     hasher.combine(bottom)
   }
 }
-
