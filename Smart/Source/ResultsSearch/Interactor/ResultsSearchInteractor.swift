@@ -69,7 +69,7 @@ extension ResultsSearchInteractor: ResultsSearchInteractorProtocol {
       }
     }
 
-    searchedWinesRepository.append(VSearchedWine(id: id, wineID: wineID, title: title, creationDate: Date()))
+    searchedWinesRepository.append(VSearchedWine(id: id, wineID: wineID, title: title, createdAt: Date()))
   }
 
   func didEnterSearchText(_ searchText: String?) {
