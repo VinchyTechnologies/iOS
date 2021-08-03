@@ -63,8 +63,6 @@
 		44EFDB7725E263E00076ED6D /* ReviewDetailInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6B25E263E00076ED6D /* ReviewDetailInteractorProtocol.swift */; };
 		44EFDB7825E263E00076ED6D /* ReviewDetailRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6D25E263E00076ED6D /* ReviewDetailRouterProtocol.swift */; };
 		44EFDB7925E263E00076ED6D /* ReviewDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6E25E263E00076ED6D /* ReviewDetailRouter.swift */; };
-		745869A026A5D46E00519739 /* DidnotFindTheWineTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7458699F26A5D46E00519739 /* DidnotFindTheWineTableCell.swift */; };
-		745869A226A5D4DD00519739 /* LegacyResultsTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 745869A126A5D4DC00519739 /* LegacyResultsTableController.swift */; };
 		74E55FA726AACE2C0086C159 /* ResultsSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E55F9626AACE2C0086C159 /* ResultsSearchViewModel.swift */; };
 		74E55FA926AACE2C0086C159 /* ResultsSearchAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E55F9A26AACE2C0086C159 /* ResultsSearchAssembly.swift */; };
 		74E55FAA26AACE2C0086C159 /* ResultsSearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E55F9C26AACE2C0086C159 /* ResultsSearchPresenter.swift */; };
@@ -459,8 +457,6 @@
 		44EFDB6B25E263E00076ED6D /* ReviewDetailInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailInteractorProtocol.swift; sourceTree = "<group>"; };
 		44EFDB6D25E263E00076ED6D /* ReviewDetailRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailRouterProtocol.swift; sourceTree = "<group>"; };
 		44EFDB6E25E263E00076ED6D /* ReviewDetailRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailRouter.swift; sourceTree = "<group>"; };
-		7458699F26A5D46E00519739 /* DidnotFindTheWineTableCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DidnotFindTheWineTableCell.swift; sourceTree = "<group>"; };
-		745869A126A5D4DC00519739 /* LegacyResultsTableController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LegacyResultsTableController.swift; sourceTree = "<group>"; };
 		74E55F9626AACE2C0086C159 /* ResultsSearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsSearchViewModel.swift; sourceTree = "<group>"; };
 		74E55F9A26AACE2C0086C159 /* ResultsSearchAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsSearchAssembly.swift; sourceTree = "<group>"; };
 		74E55F9C26AACE2C0086C159 /* ResultsSearchPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsSearchPresenter.swift; sourceTree = "<group>"; };
@@ -2033,15 +2029,6 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
-		CA3B1D3E249E3EAC00FAA08A /* LegacyResultsSearch */ = {
-			isa = PBXGroup;
-			children = (
-				7458699F26A5D46E00519739 /* DidnotFindTheWineTableCell.swift */,
-				745869A126A5D4DC00519739 /* LegacyResultsTableController.swift */,
-			);
-			path = LegacyResultsSearch;
-			sourceTree = "<group>";
-		};
 		CA46DBE5252517FD0007819E /* Repository */ = {
 			isa = PBXGroup;
 			children = (
@@ -2122,7 +2109,6 @@
 				CAF5140D2461C4ED00667ED0 /* More */,
 				8AE787F82684E8D60056A84B /* Notes */,
 				CA070A762523D77000C3D9EC /* Onboarding */,
-				CA3B1D3E249E3EAC00FAA08A /* LegacyResultsSearch */,
 				44EFDB5C25E263E00076ED6D /* ReviewDetail */,
 				44EFDB2425E177220076ED6D /* Reviews */,
 				449F81AA25DD022000585364 /* Root */,
@@ -3028,7 +3014,6 @@
 				8A0794D426936141000ACA2B /* StorePresenter.swift in Sources */,
 				CA4857892517C71200EDA4CE /* VinchyPresenterProtocol.swift in Sources */,
 				8AF966C12678F194001891B2 /* EditProfilePresenterProtocol.swift in Sources */,
-				745869A026A5D46E00519739 /* DidnotFindTheWineTableCell.swift in Sources */,
 				74E55FA726AACE2C0086C159 /* ResultsSearchViewModel.swift in Sources */,
 				CA2C22DB2554464F002469E4 /* AdvancedSearchAssembly.swift in Sources */,
 				8AA5E5132615053D00935B5E /* AboutView.swift in Sources */,
@@ -3104,7 +3089,6 @@
 				8A0794D226936141000ACA2B /* StoreInput.swift in Sources */,
 				449F81CA25DD04B400585364 /* DeeplinkStep.swift in Sources */,
 				CA7B835B24EED6E600991F24 /* StoryCollectionCell.swift in Sources */,
-				745869A226A5D4DD00519739 /* LegacyResultsTableController.swift in Sources */,
 				4437AA5B25E3A7CE00F6E838 /* WriteReviewViewModel.swift in Sources */,
 				4437AA5D25E3A7CE00F6E838 /* WriteReviewAssembly.swift in Sources */,
 				CA8CD67C25096EE100FDB7AF /* GADTTemplateView.m in Sources */,
@@ -3151,7 +3135,6 @@
 				8AF9441B2692295D003EB76A /* Label.swift in Sources */,
 				74E55FAA26AACE2C0086C159 /* ResultsSearchPresenter.swift in Sources */,
 				8A0795B726943DD6000ACA2B /* FeaturesOnboardingViewController.swift in Sources */,
-				CA3B1D42249E3FE100FAA08A /* ResultsTableController.swift in Sources */,
 				8AF966C32678F194001891B2 /* EditProfileViewController.swift in Sources */,
 				44EFDB3F25E177220076ED6D /* ReviewsInteractor.swift in Sources */,
 				CA7B836024EF109200991F24 /* MainSubtitleCollectionCell.swift in Sources */,
