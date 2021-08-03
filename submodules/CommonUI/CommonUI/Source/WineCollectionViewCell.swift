@@ -13,9 +13,9 @@ import UIKit
 
 public struct WineCollectionViewCellViewModel: ViewModelProtocol, Hashable {
   public let wineID: Int64
-  fileprivate let imageURL: URL?
+  public let imageURL: URL?
   public let titleText: String?
-  fileprivate let subtitleText: String?
+  public let subtitleText: String?
 
 
   public init(wineID: Int64, imageURL: URL?, titleText: String?, subtitleText: String?) {
