@@ -10,10 +10,11 @@ import CommonUI
 import StringFormatting
 import VinchyCore
 
-// MARK: - ResultsSearchCollectionCellDelegate
+// MARK: - ResultsSearchDelegate
 
-protocol ResultsSearchCollectionCellDelegate: AnyObject {
+protocol ResultsSearchDelegate: AnyObject {
   func didTapBottleCell(wineID: Int64)
+  func didTapSearchButton(searchText: String?)
 }
 
 // MARK: - ResultsSearchViewController
@@ -25,7 +26,7 @@ final class ResultsSearchViewController: UIViewController {
   var interactor: ResultsSearchInteractorProtocol?
 
   weak var didnotFindTheWineCollectionCellDelegate: DidnotFindTheWineCollectionCellProtocol?
-  weak var resultsSearchCollectionCellDelegate: ResultsSearchCollectionCellDelegate?
+  weak var resultsSearchDelegate: ResultsSearchDelegate?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -211,7 +212,7 @@ extension ResultsSearchViewController: UICollectionViewDataSource, UICollectionV
       case .searchResults(let model):
         let wineID = model[indexPath.row].wineID
         interactor?.didSelectResultCell(wineID: wineID, title: model[indexPath.row].titleText)
-        resultsSearchCollectionCellDelegate?.didTapBottleCell(wineID: wineID)
+        resultsSearchDelegate?.didTapBottleCell(wineID: wineID)
 
       case .didNotFindTheWine, .none:
         return
@@ -225,7 +226,7 @@ extension ResultsSearchViewController: UICollectionViewDataSource, UICollectionV
           return
         }
         interactor?.didSelectResultCell(wineID: wineID, title: titleText)
-        resultsSearchCollectionCellDelegate?.didTapBottleCell(wineID: wineID)
+        resultsSearchDelegate?.didTapBottleCell(wineID: wineID)
 
       case .none, .titleRecentlySearched:
         return
@@ -249,6 +250,6 @@ extension ResultsSearchViewController: UISearchBarDelegate {
 
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     searchBar.resignFirstResponder()
-    interactor?.didTapSearchButton(searchText: searchBar.text)
+    resultsSearchDelegate?.didTapSearchButton(searchText: searchBar.text)
   }
 }

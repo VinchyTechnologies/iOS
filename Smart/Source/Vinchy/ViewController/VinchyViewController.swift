@@ -162,7 +162,7 @@ final class VinchyViewController: UIViewController {
 
   private lazy var searchController: SearchViewController = {
     let searchController = SearchAssembly.assemblyModule()
-    (searchController.searchResultsController as? ResultsSearchViewController)?.resultsSearchCollectionCellDelegate = interactor
+    (searchController.searchResultsController as? ResultsSearchViewController)?.resultsSearchDelegate = interactor
     return searchController
   }()
 

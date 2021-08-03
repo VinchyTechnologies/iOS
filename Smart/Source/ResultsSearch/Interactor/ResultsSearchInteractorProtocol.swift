@@ -11,6 +11,5 @@ import Foundation
 protocol ResultsSearchInteractorProtocol: AnyObject {
   func viewWillAppear()
   func didSelectResultCell(wineID: Int64, title: String)
-  func didTapSearchButton(searchText: String?)
   func didEnterSearchText(_ searchText: String?)
 }

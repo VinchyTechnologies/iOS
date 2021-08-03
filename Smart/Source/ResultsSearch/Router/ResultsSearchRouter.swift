@@ -31,9 +31,4 @@ final class ResultsSearchRouter {
 
 // MARK: ResultsSearchRouterProtocol
 
-extension ResultsSearchRouter: ResultsSearchRouterProtocol {
-  func pushToDetailCollection(searchText: String) {
-    let input = ShowcaseInput(title: nil, mode: .advancedSearch(params: [("title", searchText)]))
-    pushToShowcaseViewController(input: input)
-  }
-}
+extension ResultsSearchRouter: ResultsSearchRouterProtocol {}

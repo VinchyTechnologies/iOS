@@ -73,6 +73,13 @@ final class VinchyInteractor {
 // MARK: VinchyInteractorProtocol
 
 extension VinchyInteractor: VinchyInteractorProtocol {
+  func didTapSearchButton(searchText: String?) {
+    guard let searchText = searchText else {
+      return
+    }
+
+    router.pushToDetailCollection(searchText: searchText)
+  }
 
   func viewDidLoad() {
     presenter.startShimmer()

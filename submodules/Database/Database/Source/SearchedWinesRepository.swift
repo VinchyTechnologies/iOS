@@ -14,10 +14,11 @@ public final class VSearchedWine: Codable, DIdentifiable, DSortable, Equatable {
 
   // MARK: Lifecycle
 
-  public init(id: Int, wineID: Int64, title: String) {
+  public init(id: Int, wineID: Int64, title: String, creationDate: Date) {
     self.id = id
     self.wineID = wineID
     self.title = title
+    self.creationDate = creationDate
   }
 
   // MARK: Public
@@ -31,6 +32,7 @@ public final class VSearchedWine: Codable, DIdentifiable, DSortable, Equatable {
   public let id: Int
   public let wineID: Int64
   public let title: String
+  public let creationDate: Date
 
   public static func == (lhs: VSearchedWine, rhs: VSearchedWine) -> Bool {
     lhs.id == rhs.id
@@ -57,6 +59,9 @@ extension VSearchedWine {
 
     case "title":
       return title
+
+    case "creationDate":
+      return creationDate
 
     default:
       return nil

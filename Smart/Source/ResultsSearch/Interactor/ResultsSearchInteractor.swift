@@ -69,14 +69,7 @@ extension ResultsSearchInteractor: ResultsSearchInteractorProtocol {
       }
     }
 
-    searchedWinesRepository.append(VSearchedWine(id: id, wineID: wineID, title: title))
-  }
-
-  func didTapSearchButton(searchText: String?) {
-    guard let searchText = searchText else {
-      return
-    }
-    router.pushToDetailCollection(searchText: searchText)
+    searchedWinesRepository.append(VSearchedWine(id: id, wineID: wineID, title: title, creationDate: Date()))
   }
 
   func didEnterSearchText(_ searchText: String?) {
