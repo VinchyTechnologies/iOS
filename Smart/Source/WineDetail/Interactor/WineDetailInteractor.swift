@@ -13,6 +13,13 @@ import Sheeeeeeeeet
 import VinchyAuthorization
 import VinchyCore
 
+// MARK: - WineDetailInteractorData
+
+struct WineDetailInteractorData {
+  var wineInfo: Wine
+  var wineReviews: [Review] = []
+}
+
 // MARK: - WineDetailMoreActions
 
 enum WineDetailMoreActions {
@@ -49,6 +56,7 @@ final class WineDetailInteractor {
   private let presenter: WineDetailPresenterProtocol
   private let input: WineDetailInput
   private var isGeneralInfoCollapsed: Bool = true
+  private let dispatchGroup = DispatchGroup()
 
   private lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
     guard let self = self else { return }
@@ -60,32 +68,49 @@ final class WineDetailInteractor {
   private let emailService = EmailService()
 
   private var wine: Wine?
-
+  private var reviews: [Review]?
   private var actionAfterAuthorization: ActionAfterLoginOrRegistration = .none
 
   private func loadWineInfo() {
-    Wines.shared.getDetailWine(wineID: input.wineID) { [weak self] result in
 
-      guard let self = self else { return }
-
-      self.dispatchWorkItemHud.cancel()
-      DispatchQueue.main.async {
-        self.presenter.stopLoading()
+    if wine == nil {
+      dispatchGroup.enter()
+      Wines.shared.getDetailWine(wineID: input.wineID) { [weak self]
+        result in
+        guard let self = self else { return }
+        switch result {
+        case .success(let responce):
+          self.wine = responce
+        case .failure(let error):
+          self.presenter.showNetworkErrorAlert(error: error)
+        }
+        self.dispatchGroup.leave()
       }
+    }
+    if reviews == nil {
+      dispatchGroup.enter()
+      Reviews.shared.getReviews(wineID: input.wineID, accountID: nil, offset: 0, limit: 5) { [weak self] result in
+        guard let self = self else { return }
+        switch result {
+        case .success(let responce):
+          self.reviews = responce
+        case .failure(let error):
+          self.presenter.showNetworkErrorAlert(error: error)
+        }
+        self.dispatchGroup.leave()
+      }
+    }
 
-      switch result {
-      case .success(let wine):
-        self.presenter.update(
-          wine: wine,
-          isLiked: self.isFavourite(wine: wine),
-          isDisliked: self.isDisliked(wine: wine),
-          rate: self.rate ?? 0,
-          currency: UserDefaultsConfig.currency,
-          isGeneralInfoCollapsed: self.isGeneralInfoCollapsed)
-        self.wine = wine
-
-      case .failure(let error):
-        self.presenter.showNetworkErrorAlert(error: error)
+    dispatchGroup.notify(queue: .main) {
+      if let wine = self.wine, let reviews = self.reviews {
+        let data = WineDetailInteractorData(
+          wineInfo: wine,
+          wineReviews: reviews)
+        self.presenter.update(wine: data.wineInfo, reviews: data.wineReviews, isLiked: self.isFavourite(wine: data.wineInfo), isDisliked: self.isDisliked(wine: data.wineInfo), rate: self.rate ?? 0, currency: UserDefaultsConfig.currency, isGeneralInfoCollapsed: self.isGeneralInfoCollapsed)
+        self.dispatchWorkItemHud.cancel()
+        DispatchQueue.main.async {
+          self.presenter.stopLoading()
+        }
       }
     }
   }
@@ -182,7 +207,7 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
   func didTapReview(reviewID: Int) {
     guard
       let wine = wine,
-      let review = wine.reviews.first(where: { $0.id == reviewID })
+      let review = reviews?.first(where: { $0.id == reviewID })
     else {
       return
     }
