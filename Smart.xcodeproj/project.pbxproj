@@ -1190,13 +1190,13 @@
 		74E55F9426AACE2C0086C159 /* ResultsSearch */ = {
 			isa = PBXGroup;
 			children = (
-				74E55FB226AAD22C0086C159 /* Views */,
-				74E55F9526AACE2C0086C159 /* ViewModel */,
 				74E55F9926AACE2C0086C159 /* Assembly */,
-				74E55F9B26AACE2C0086C159 /* Presenter */,
-				74E55F9E26AACE2C0086C159 /* ViewController */,
 				74E55FA126AACE2C0086C159 /* Interactor */,
+				74E55F9B26AACE2C0086C159 /* Presenter */,
 				74E55FA426AACE2C0086C159 /* Router */,
+				74E55F9E26AACE2C0086C159 /* ViewController */,
+				74E55F9526AACE2C0086C159 /* ViewModel */,
+				74E55FB226AAD22C0086C159 /* Views */,
 			);
 			path = ResultsSearch;
 			sourceTree = "<group>";
@@ -2109,6 +2109,7 @@
 				CAF5140D2461C4ED00667ED0 /* More */,
 				8AE787F82684E8D60056A84B /* Notes */,
 				CA070A762523D77000C3D9EC /* Onboarding */,
+				74E55F9426AACE2C0086C159 /* ResultsSearch */,
 				44EFDB5C25E263E00076ED6D /* ReviewDetail */,
 				44EFDB2425E177220076ED6D /* Reviews */,
 				449F81AA25DD022000585364 /* Root */,
@@ -2121,7 +2122,6 @@
 				CA7B838724F451C700991F24 /* WineDetail */,
 				CA4D51022549F5F600A6FD0B /* WriteNote */,
 				4437AA4825E3A7CD00F6E838 /* WriteReview */,
-				74E55F9426AACE2C0086C159 /* ResultsSearch */,
 			);
 			path = Source;
 			sourceTree = "<group>";

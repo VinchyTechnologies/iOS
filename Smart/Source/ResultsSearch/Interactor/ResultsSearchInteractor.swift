@@ -34,7 +34,7 @@ final class ResultsSearchInteractor {
 
   func fetchSearchedWines() {
     recentlySearchedWines = searchedWinesRepository.findAll()
-    presenter.update(searched: recentlySearchedWines)
+    presenter.update(searchedWines: recentlySearchedWines)
   }
 
   // MARK: Private
@@ -97,9 +97,8 @@ extension ResultsSearchInteractor: ResultsSearchInteractorProtocol {
         case .success(let wines):
           self?.presenter.update(didFindWines: wines)
 
-        case .failure(let error):
+        case .failure:
           self?.presenter.update(didFindWines: [])
-          print(error.localizedDescription)
         }
       }
     }

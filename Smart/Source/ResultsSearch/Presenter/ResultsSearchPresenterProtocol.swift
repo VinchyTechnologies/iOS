@@ -10,6 +10,6 @@ import Database
 import VinchyCore
 
 protocol ResultsSearchPresenterProtocol: AnyObject {
-  func update(searched: [VSearchedWine])
+  func update(searchedWines: [VSearchedWine])
   func update(didFindWines: [ShortWine])
 }

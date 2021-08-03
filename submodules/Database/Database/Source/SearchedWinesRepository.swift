@@ -51,8 +51,10 @@ extension VSearchedWine {
     switch key {
     case "id":
       return id
+
     case "wineID":
       return wineID
+
     case "title":
       return title
 

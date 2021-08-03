@@ -27,9 +27,6 @@ final class ResultsSearchPresenter {
 
   weak var viewController: ResultsSearchViewControllerProtocol?
 
-  // MARK: Private
-
-  private typealias ViewModel = ResultsSearchViewModel
 }
 
 // MARK: ResultsSearchPresenterProtocol
@@ -60,13 +57,18 @@ extension ResultsSearchPresenter: ResultsSearchPresenterProtocol {
     }
   }
 
-  func update(searched: [VSearchedWine]) {
+  func update(searchedWines: [VSearchedWine]) {
 
     var sections: [ResultsSearchViewModel.HistorySection] = []
     var wineCollectionViewCellViewModels: [WineCollectionViewCellViewModel] = []
 
-    searched.forEach { wine in
-      wineCollectionViewCellViewModels.append(.init(wineID: wine.wineID, imageURL: imageURL(from: wine.wineID).toURL, titleText: wine.title, subtitleText: nil))
+    searchedWines.forEach { wine in
+      wineCollectionViewCellViewModels.append(
+        .init(
+          wineID: wine.wineID,
+          imageURL: imageURL(from: wine.wineID).toURL,
+          titleText: wine.title,
+          subtitleText: nil))
     }
 
     if !wineCollectionViewCellViewModels.isEmpty {

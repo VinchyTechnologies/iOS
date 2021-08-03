@@ -6,10 +6,8 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-
 protocol SearchPresenterProtocol: AnyObject {
   var cantFindWineText: String { get }
   var cantFindWineRecipients: [String] { get }
-
   func showAlertCantOpenEmail()
 }

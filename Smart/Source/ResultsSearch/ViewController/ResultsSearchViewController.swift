@@ -56,6 +56,7 @@ final class ResultsSearchViewController: UIViewController {
         section.contentInsets = .init(top: 15, leading: 11, bottom: 0, trailing: 11)
         section.orthogonalScrollingBehavior = .continuous
         return section
+
       case .titleRecentlySearched(let model):
         let width = CGFloat(self.collectionView.frame.width - CGFloat(2 * 16))
         let height = CGFloat(TextCollectionCell.height(viewModel: model[sectionNumber], width: width))
@@ -66,17 +67,17 @@ final class ResultsSearchViewController: UIViewController {
         section.contentInsets = .init(top: 15, leading: 8, bottom: 0, trailing: 0)
         return section
       }
+
     case .results(let sections):
       switch sections[sectionNumber] {
       case .didNotFindTheWine:
-        let width = CGFloat(self.collectionView.frame.width - CGFloat(2 * 16))
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(width), heightDimension: .absolute(65)), subitems: [item])
+        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(65)), subitems: [item])
         group.contentInsets = .init(top: 0, leading: 8, bottom: 0, trailing: 0)
         let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 15, leading: 8, bottom: 0, trailing: 0)
-        section.orthogonalScrollingBehavior = .continuous
+        section.contentInsets = .init(top: 0, leading: 16, bottom: 0, trailing: 16)
         return section
+
       case .searchResults:
         let width = CGFloat(self.collectionView.frame.width - CGFloat(2 * 16))
         let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
@@ -86,6 +87,7 @@ final class ResultsSearchViewController: UIViewController {
         section.contentInsets = .init(top: 0, leading: 8, bottom: 0, trailing: 0)
         return section
       }
+
     case .none:
       return nil
     }
@@ -112,7 +114,6 @@ final class ResultsSearchViewController: UIViewController {
       collectionView.reloadData()
     }
   }
-
 }
 
 // MARK: ResultsSearchViewControllerProtocol
@@ -130,8 +131,10 @@ extension ResultsSearchViewController: UICollectionViewDataSource, UICollectionV
     switch viewModel?.state {
     case .history(let sections):
       return sections.count
+
     case .results(let sections):
       return sections.count
+
     case .none:
       return 0
     }
@@ -143,16 +146,20 @@ extension ResultsSearchViewController: UICollectionViewDataSource, UICollectionV
       switch sections[section] {
       case .titleRecentlySearched:
         return 1
+
       case .recentlySearched(let model):
         return model.count
       }
+
     case .results(let sections):
       switch sections[section] {
       case .didNotFindTheWine:
         return 1
+
       case .searchResults(let model):
         return model.count
       }
+
     case .none:
       return 0
     }
@@ -168,12 +175,14 @@ extension ResultsSearchViewController: UICollectionViewDataSource, UICollectionV
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as! WineCollectionViewCell
         cell.decorate(model: model[indexPath.row])
         return cell
+
       case .titleRecentlySearched(let model):
         // swiftlint:disable:next force_cast
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseId, for: indexPath) as! TextCollectionCell
         cell.decorate(model: model[indexPath.row])
         return cell
       }
+
     case .results(let sections):
       switch sections[indexPath.section] {
       case .didNotFindTheWine(let model):
@@ -182,12 +191,14 @@ extension ResultsSearchViewController: UICollectionViewDataSource, UICollectionV
         cell.delegate = didnotFindTheWineCollectionCellDelegate
         cell.decorate(model: model[indexPath.row])
         return cell
+
       case .searchResults(let model):
         // swiftlint:disable:next force_cast
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionCell.reuseId, for: indexPath) as! WineCollectionCell
         cell.decorate(model: model[indexPath.row])
         return cell
       }
+
     case .none:
       return .init()
     }
@@ -196,16 +207,18 @@ extension ResultsSearchViewController: UICollectionViewDataSource, UICollectionV
   func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     switch viewModel?.state {
     case .results(let sections):
-      switch sections[indexPath.section] {
+      switch sections[safe: indexPath.section] {
       case .searchResults(let model):
         let wineID = model[indexPath.row].wineID
         interactor?.didSelectResultCell(wineID: wineID, title: model[indexPath.row].titleText)
         resultsSearchCollectionCellDelegate?.didTapBottleCell(wineID: wineID)
-      default:
+
+      case .didNotFindTheWine, .none:
         return
       }
+
     case .history(let sections):
-      switch sections[indexPath.section] {
+      switch sections[safe: indexPath.section] {
       case .recentlySearched(let model):
         let wineID = model[indexPath.row].wineID
         guard let titleText = model[indexPath.row].titleText else {
@@ -213,9 +226,11 @@ extension ResultsSearchViewController: UICollectionViewDataSource, UICollectionV
         }
         interactor?.didSelectResultCell(wineID: wineID, title: titleText)
         resultsSearchCollectionCellDelegate?.didTapBottleCell(wineID: wineID)
-      default:
+
+      case .none, .titleRecentlySearched:
         return
       }
+
     case .none:
       return
     }

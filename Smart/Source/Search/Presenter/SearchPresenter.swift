@@ -42,6 +42,8 @@ extension SearchPresenter: SearchPresenterProtocol {
   }
 
   func showAlertCantOpenEmail() {
-    viewController?.showAlert(title: localized("error"), message: localized("open_mail_error"))
+    viewController?.showAlert(
+      title: localized("error"),
+      message: localized("open_mail_error"))
   }
 }

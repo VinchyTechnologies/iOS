@@ -27,8 +27,6 @@ final class ResultsSearchRouter {
   weak var viewController: UIViewController?
   weak var interactor: ResultsSearchInteractorProtocol?
 
-  // MARK: Private
-
 }
 
 // MARK: ResultsSearchRouterProtocol

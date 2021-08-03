@@ -43,4 +43,3 @@ extension SearchRouter: SearchRouterProtocol {
     viewController?.present(emailController, animated: true, completion: nil)
   }
 }
-

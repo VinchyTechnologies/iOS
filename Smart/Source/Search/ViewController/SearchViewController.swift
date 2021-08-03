@@ -18,7 +18,6 @@ final class SearchViewController: UISearchController {
 
   // MARK: Lifecycle
 
-  //дизайн в loadview, init
   override init(searchResultsController: UIViewController?) {
     super.init(searchResultsController: searchResultsController)
     showsSearchResultsController = true
@@ -38,10 +37,6 @@ final class SearchViewController: UISearchController {
   // MARK: Internal
 
   var interactor: SearchInteractorProtocol?
-
-  // MARK: Private
-
-  private var viewModel: SearchViewModel?
 
 }
 

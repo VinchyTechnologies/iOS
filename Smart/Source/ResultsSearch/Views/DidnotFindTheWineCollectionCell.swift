@@ -54,14 +54,14 @@ final class DidnotFindTheWineCollectionCell: UICollectionViewCell, Reusable {
     contentView.addSubview(writeUsButton)
     NSLayoutConstraint.activate([
       writeUsButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-      writeUsButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -20),
+      writeUsButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
       writeUsButton.heightAnchor.constraint(equalToConstant: 44),
       writeUsButton.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -10),
     ])
 
     contentView.addSubview(titleLabel)
     NSLayoutConstraint.activate([
-      titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 20),
+      titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
       titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
       titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: writeUsButton.leadingAnchor, constant: -10),
     ])
@@ -94,5 +94,4 @@ extension DidnotFindTheWineCollectionCell: Decoratable {
     titleLabel.text = model.titleText
     writeUsButton.setTitle(model.writeUsButtonText, for: .normal)
   }
-
 }
