@@ -8,7 +8,9 @@
 
 import UIKit
 
-public final class PaddingLabel: UILabel {
+// MARK: - PaddingLabel
+
+open class PaddingLabel: UILabel {
   public var insets: UIEdgeInsets = .zero
 
   override public var intrinsicContentSize: CGSize {
@@ -26,5 +28,16 @@ public final class PaddingLabel: UILabel {
 
   override public func drawText(in rect: CGRect) {
     super.drawText(in: rect.inset(by: insets))
+  }
+}
+
+// MARK: - UIEdgeInsets + Hashable
+
+extension UIEdgeInsets: Hashable {
+  public func hash(into hasher: inout Hasher) {
+    hasher.combine(left)
+    hasher.combine(right)
+    hasher.combine(top)
+    hasher.combine(bottom)
   }
 }

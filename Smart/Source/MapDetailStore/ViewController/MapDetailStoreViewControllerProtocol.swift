@@ -8,6 +8,6 @@
 
 import Display
 
-protocol MapDetailStoreViewControllerProtocol: Loadable {
+protocol MapDetailStoreViewControllerProtocol: Loadable, Alertable {
   func updateUI(viewModel: MapDetailStoreViewModel)
 }

@@ -34,16 +34,16 @@ public enum DishCompatibility: String, Decodable, CaseIterable {
       return "fish"
 
     case .poultry:
-      return "chicken"
+      return "poultry"
 
     case .desserts:
-      return "cake"
+      return "desserts"
 
     case .cheese:
       return "cheese"
 
     case .fruits:
-      return "fruit"
+      return "fruits"
 
     case .shellfish:
       return "shellfish"
@@ -52,13 +52,13 @@ public enum DishCompatibility: String, Decodable, CaseIterable {
       return "pasta"
 
     case .vegetarian:
-      return "vegan"
+      return "vegetarian"
 
     case .mushrooms:
-      return "mushroom"
+      return "mushrooms"
 
     case .spicy:
-      return "spicy"
+      return "spicy food"
 
     case .aperitif:
       return "aperitif"
@@ -89,7 +89,7 @@ public enum DishCompatibility: String, Decodable, CaseIterable {
       return StringFormatting.localized("vegetarian").firstLetterUppercased()
 
     case .spicy:
-      return StringFormatting.localized("spicy").firstLetterUppercased()
+      return StringFormatting.localized("spicy food").firstLetterUppercased()
 
     case .mushrooms:
       return StringFormatting.localized("mushrooms").firstLetterUppercased()
@@ -107,7 +107,7 @@ public enum DishCompatibility: String, Decodable, CaseIterable {
       return StringFormatting.localized("fruits").firstLetterUppercased()
 
     case .desserts:
-      return StringFormatting.localized("dessert").firstLetterUppercased()
+      return StringFormatting.localized("desserts").firstLetterUppercased()
     }
   }
 }

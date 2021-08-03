@@ -28,7 +28,9 @@ public final class Filter: Decodable {
 // MARK: - FilterCategory
 
 public enum FilterCategory: String, Decodable {
-  case type, color, country, sugar
+  case type, color, country, sugar, compatibility
+
+  // MARK: Public
 
   public var serverName: String {
     switch self {
@@ -43,6 +45,9 @@ public enum FilterCategory: String, Decodable {
 
     case .sugar:
       return "sugar"
+
+    case .compatibility:
+      return "dish_list"
     }
   }
 }

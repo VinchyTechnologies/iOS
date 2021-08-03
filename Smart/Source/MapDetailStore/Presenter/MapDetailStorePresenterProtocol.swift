@@ -11,5 +11,6 @@ import VinchyCore
 protocol MapDetailStorePresenterProtocol: AnyObject {
   func startLoading()
   func stopLoading()
-  func update(storeInfo: PartnerInfo)
+  func update(storeInfo: PartnerInfo, recommendedWines: [ShortWine])
+  func showErrorAlert(error: Error)
 }

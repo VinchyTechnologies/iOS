@@ -1,0 +1,240 @@
+//
+//  StoreInteractor.swift
+//  Smart
+//
+//  Created by Алексей Смирнов on 05.07.2021.
+//  Copyright © 2021 Aleksei Smirnov. All rights reserved.
+//
+
+import Core
+import VinchyCore
+
+// MARK: - StoreInteractorData
+
+struct StoreInteractorData {
+  let partnerInfo: PartnerInfo
+  var recommendedWines: [ShortWine] = []
+  var assortimentWines: [ShortWine] = []
+}
+
+// MARK: - StoreInteractorError
+
+enum StoreInteractorError: Error {
+  case initialLoading(APIError)
+  case loadMore(APIError)
+}
+
+// MARK: - C
+
+fileprivate enum C {
+  static let limit: Int = 40
+}
+
+// MARK: - StoreInteractor
+
+final class StoreInteractor {
+
+  // MARK: Lifecycle
+
+  init(
+    input: StoreInput,
+    router: StoreRouterProtocol,
+    presenter: StorePresenterProtocol)
+  {
+    self.input = input
+    self.router = router
+    self.presenter = presenter
+    configureStateMachine()
+  }
+
+  // MARK: Private
+
+  private lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
+    guard let self = self else { return }
+    self.presenter.startLoading()
+  }
+
+  private let input: StoreInput
+  private let router: StoreRouterProtocol
+  private let presenter: StorePresenterProtocol
+  private let stateMachine = PagingStateMachine<StoreInteractorData>()
+  private let dispatchGroup = DispatchGroup()
+  private var data: StoreInteractorData?
+  private var partnerInfo: PartnerInfo?
+  private var assortimentWines: [ShortWine] = []
+  private var personalRecommendedWines: [ShortWine]?
+
+  private func configureStateMachine() {
+    stateMachine.observe { [weak self] oldState, newState, _ in
+      guard let self = self else { return }
+      switch newState {
+      case .loaded(let data):
+        self.handleLoadedData(data, oldState: oldState)
+
+      case .loading(let offset):
+        self.loadData(offset: offset)
+
+      case .error(let error):
+        self.showData(error: error as? StoreInteractorError, needLoadMore: false)
+
+      case .initial:
+        break
+      }
+    }
+  }
+
+  private func loadData(offset: Int) {
+    var generalError: StoreInteractorError?
+    switch input.mode {
+    case .normal(let affilatedId):
+      if partnerInfo == nil {
+        dispatchGroup.enter()
+        Partners.shared.getPartnerStoreInfo(partnerId: 1, affilatedId: affilatedId) { [weak self] result in
+          guard let self = self else { return }
+          switch result {
+          case .success(let response):
+            self.partnerInfo = response
+
+          case .failure(let error):
+            generalError = .initialLoading(error)
+            print(error.localizedDescription)
+          }
+          self.dispatchGroup.leave()
+        }
+      }
+
+      if personalRecommendedWines == nil {
+        dispatchGroup.enter()
+        Recommendations.shared.getPersonalRecommendedWines(
+          accountId: UserDefaultsConfig.accountID,
+          partnerId: 1,
+          affilatedId: affilatedId) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+              self.personalRecommendedWines = response
+
+            case .failure(let error):
+              print(error)
+              if self.data == nil {
+                self.personalRecommendedWines = nil
+              } else {
+                self.personalRecommendedWines = []
+              }
+            }
+            self.dispatchGroup.leave()
+        }
+      }
+
+      dispatchGroup.enter()
+      Partners.shared.getPartnerWines(
+        partnerId: 1,
+        affilatedId: affilatedId,
+        limit: C.limit,
+        offset: offset) { [weak self] result in
+          guard let self = self else { return }
+          switch result {
+          case .success(let response):
+            self.assortimentWines += response
+
+          case .failure(let error):
+            print(error)
+            if self.assortimentWines.isEmpty {
+              generalError = .initialLoading(error)
+            } else {
+              generalError = .loadMore(error)
+            }
+          }
+          self.dispatchGroup.leave()
+      }
+
+      dispatchGroup.notify(queue: .main) {
+        if let partnerInfo = self.partnerInfo {
+          let data = StoreInteractorData(
+            partnerInfo: partnerInfo,
+            recommendedWines: self.personalRecommendedWines ?? [],
+            assortimentWines: self.assortimentWines)
+          self.data = data
+          self.stateMachine.invokeSuccess(with: data)
+        } else {
+          if let error = generalError {
+            self.stateMachine.fail(with: error)
+          }
+        }
+      }
+
+    case .hasPersonalRecommendations(_, _):
+      break
+    }
+  }
+
+  private func loadInitData() {
+    stateMachine.load(offset: .zero)
+  }
+
+  private func loadMoreData() {
+    guard let data = data else { return }
+    stateMachine.load(offset: data.assortimentWines.count)
+  }
+
+  private func handleLoadedData(_ data: StoreInteractorData, oldState: PagingState<StoreInteractorData>) {
+    var needLoadMore: Bool
+    switch oldState {
+    case .error, .loaded, .initial:
+      needLoadMore = false
+
+    case .loading(let offset):
+      needLoadMore = (self.data?.assortimentWines.count ?? 0) == offset + C.limit
+    }
+
+    showData(needLoadMore: needLoadMore)
+  }
+
+  private func showData(error: StoreInteractorError? = nil, needLoadMore: Bool) {
+    dispatchWorkItemHud.cancel()
+    DispatchQueue.main.async {
+      self.presenter.stopLoading()
+    }
+
+    if let error = error {
+      switch error {
+      case .initialLoading(let error):
+        presenter.showInitiallyLoadingError(error: error)
+
+      case .loadMore(let error):
+        presenter.showErrorAlert(error: error)
+      }
+
+    } else {
+      guard let data = data else {
+        return
+      }
+      presenter.update(data: data, needLoadMore: needLoadMore)
+    }
+  }
+}
+
+// MARK: StoreInteractorProtocol
+
+extension StoreInteractor: StoreInteractorProtocol {
+
+  func didTapReloadButton() {
+    dispatchWorkItemHud.perform()
+    loadInitData()
+  }
+
+  func willDisplayLoadingView() {
+    loadMoreData()
+  }
+
+  func viewDidLoad() {
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+      self.dispatchWorkItemHud.perform()
+    }
+    loadInitData()
+  }
+
+  func didSelectWine(wineID: Int64) {
+    router.pushToWineDetailViewController(wineID: wineID)
+  }
+}

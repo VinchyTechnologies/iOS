@@ -30,6 +30,8 @@ final class WineDetailViewController: UIViewController {
 
   private(set) var loadingIndicator = ActivityIndicatorView()
 
+  var presentationCenter: OverlayPresentationCenterProtocol? = OverlayPresentationCenter(application: UIApplication.shared)
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -134,7 +136,7 @@ final class WineDetailViewController: UIViewController {
       let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)))
       let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)), subitems: [item])
       let section = NSCollectionLayoutSection(group: group)
-      section.contentInsets = .init(top: 15, leading: 0, bottom: 0, trailing: 0)
+      section.contentInsets = .init(top: 15, leading: 0, bottom: 5, trailing: 0)
       return section
 
     case .ratingAndReview:
@@ -233,6 +235,14 @@ final class WineDetailViewController: UIViewController {
 
   private var viewModel: WineDetailViewModel?
 
+  private var activeRect: CGRect {
+    let headerRect = CGRect.zero //headerView.convert(headerView.bounds, to: view)
+    let collectionViewRect = collectionView.convert(collectionView.safeAreaLayoutGuide.layoutFrame, to: view)
+    let activeRectTopLeft = CGPoint(x: collectionViewRect.origin.x, y: headerRect.origin.y + headerRect.size.height)
+    let activeRectBottomRight = CGPoint(x: collectionViewRect.origin.x + collectionViewRect.size.width, y: collectionViewRect.origin.y + collectionViewRect.size.height)
+    return CGRect(origin: activeRectTopLeft, size: CGSize(width: activeRectBottomRight.x - activeRectTopLeft.x, height: activeRectBottomRight.y - activeRectTopLeft.y))
+  }
+
   @objc
   private func didTapCloseBarButtonItem(_: UIBarButtonItem) {
     dismiss(animated: true, completion: nil)
@@ -246,6 +256,38 @@ final class WineDetailViewController: UIViewController {
   @objc
   private func didTapMore(_ button: UIButton) {
     interactor?.didTapMore(button)
+  }
+
+  private func showDeliveryTutorialIfCan(at indexPath: IndexPath, collectionCell: UICollectionViewCell, viewModel: DeliveryTutorialViewModel) {
+    let point = collectionCell.convert(
+      CGPoint(x: collectionCell.contentView.frame.minX, y: collectionCell.contentView.frame.maxY + 8),
+      to: nil)
+    let size = collectionCell.contentView.frame.size
+    let sourceViewFrame = CGRect(origin: point, size: size)
+    guard
+      presentDeliveryTutorialView(
+        viewModel: viewModel,
+        sourceViewFrame: sourceViewFrame) else { return }
+    interactor?.didShowTutorial()
+  }
+
+  private func presentDeliveryTutorialView(
+    viewModel: DeliveryTutorialViewModel,
+    sourceViewFrame: CGRect)
+    -> Bool
+  {
+    let availiableWidth = collectionView.bounds.size.width - 32
+    guard
+      let tutorialViewController = TutorialViewController.build(
+        with: viewModel,
+        sourceViewFrame: sourceViewFrame,
+        availiableWidth: availiableWidth,
+        activeRect: activeRect)
+    else {
+      return false
+    }
+    presentationCenter?.presentViewController(tutorialViewController, animated: true, completion: nil)
+    return true
   }
 }
 
@@ -392,8 +434,8 @@ extension WineDetailViewController: UICollectionViewDataSource {
       case .titleTextAndSubtitleText(let titleText, let subtitleText):
         // swiftlint:disable:next force_cast
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShortInfoCollectionCell.reuseId, for: indexPath) as! ShortInfoCollectionCell
-        let title = NSAttributedString(string: titleText ?? "", font: Font.with(size: 24, design: .round, traits: .bold), textColor: .dark)
-        let subtitle = NSAttributedString(string: subtitleText ?? "", font: Font.with(size: 18, design: .round, traits: .bold), textColor: .blueGray)
+        let title = NSAttributedString(string: titleText ?? "", font: Font.semibold(22), textColor: .dark)
+        let subtitle = NSAttributedString(string: subtitleText ?? "", font: Font.with(size: 18, design: .round, traits: .bold), textColor: .dark)
         cell.decorate(model: .init(title: title, subtitle: subtitle))
         return cell
       }
@@ -442,6 +484,16 @@ extension WineDetailViewController: UICollectionViewDataSource {
 extension WineDetailViewController: UICollectionViewDelegate {
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     navigationItem.title = scrollView.contentOffset.y > 300 ? viewModel?.navigationTitle : nil
+  }
+
+  func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+    interactor?.didScrollStopped()
+  }
+
+  func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+    if !decelerate {
+      interactor?.didScrollStopped()
+    }
   }
 
   func collectionView(
@@ -506,6 +558,16 @@ extension WineDetailViewController: VinchySimpleConiniousCaruselCollectionCellDe
 
 extension WineDetailViewController: WineDetailViewControllerProtocol {
 
+  func showReviewButtonTutorial(viewModel: DeliveryTutorialViewModel) {
+    for visibleCell in collectionView.visibleCells {
+      guard
+        let indexPath = collectionView.indexPath(for: visibleCell),
+        let restaurantCell = visibleCell as? ButtonCollectionCell
+      else { continue }
+      showDeliveryTutorialIfCan(at: indexPath, collectionCell: restaurantCell, viewModel: viewModel)
+    }
+  }
+
   func updateGeneralInfoSectionAndExpandOrCollapseCell(viewModel: WineDetailViewModel) {
     self.viewModel = viewModel
 
@@ -540,7 +602,7 @@ extension WineDetailViewController: WineDetailViewControllerProtocol {
     let expandOrCollapseCell = collectionView.cellForItem(at: IndexPath(row: 0, section: collapseSection)) as? ExpandCollapseCell
 
     let titleText = viewModel.isGeneralInfoCollapsed
-      ? localized("expand").firstLetterUppercased()
+      ? localized("expand").firstLetterUppercased() // TODO: - remove localization
       : localized("collapse").firstLetterUppercased()
 
     expandOrCollapseCell?.decorate(
@@ -550,7 +612,6 @@ extension WineDetailViewController: WineDetailViewControllerProtocol {
         animated: true))
 
     collectionView.reloadSections(IndexSet([sectionIndex]))
-
   }
 
   func updateUI(viewModel: WineDetailViewModel) {

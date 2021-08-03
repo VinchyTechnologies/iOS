@@ -94,9 +94,10 @@ final class OnboardingBottomView: UIView {
 
   // MARK: Private
 
+  private lazy var yellowButton = Button()
+
   private let titleLabel = UILabel()
   private let subtitleLabel = UILabel()
-  private let yellowButton = Button()
 
   @objc
   private func didTapYellowButton(_ button: UIButton) {

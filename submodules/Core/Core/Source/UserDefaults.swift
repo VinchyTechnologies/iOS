@@ -17,6 +17,9 @@ public enum UserDefaultsConfig {
   @UserDefault("agreeToTermsAndConditions", defaultValue: false)
   public static var isAgreedToTermsAndConditions: Bool
 
+  @UserDefault("userHasSeenTutorialForReviewButton", defaultValue: false)
+  public static var userHasSeenTutorialForReviewButton: Bool
+
   @UserDefault("lastSeenOnboardingVersion", defaultValue: 0)
   public static var lastSeenOnboardingVersion: Int
 

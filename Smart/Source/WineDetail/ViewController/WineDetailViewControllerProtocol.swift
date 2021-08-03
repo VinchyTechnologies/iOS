@@ -11,4 +11,5 @@ import Display
 protocol WineDetailViewControllerProtocol: Alertable, StatusAlertable, Loadable {
   func updateUI(viewModel: WineDetailViewModel)
   func updateGeneralInfoSectionAndExpandOrCollapseCell(viewModel: WineDetailViewModel)
+  func showReviewButtonTutorial(viewModel: DeliveryTutorialViewModel)
 }

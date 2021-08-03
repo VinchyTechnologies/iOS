@@ -88,10 +88,33 @@
 		8A079309269239C1000ACA2B /* DocumentsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0792FE269239C0000ACA2B /* DocumentsRouter.swift */; };
 		8A07930A269239C1000ACA2B /* DocumentsRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0792FF269239C0000ACA2B /* DocumentsRouterProtocol.swift */; };
 		8A07930C26924DAF000ACA2B /* Document.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07930B26924DAF000ACA2B /* Document.swift */; };
+		8A0794D126936141000ACA2B /* StoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0794C026936141000ACA2B /* StoreViewModel.swift */; };
+		8A0794D226936141000ACA2B /* StoreInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0794C226936141000ACA2B /* StoreInput.swift */; };
+		8A0794D326936141000ACA2B /* StoreAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0794C426936141000ACA2B /* StoreAssembly.swift */; };
+		8A0794D426936141000ACA2B /* StorePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0794C626936141000ACA2B /* StorePresenter.swift */; };
+		8A0794D526936141000ACA2B /* StorePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0794C726936141000ACA2B /* StorePresenterProtocol.swift */; };
+		8A0794D626936141000ACA2B /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0794C926936141000ACA2B /* StoreViewController.swift */; };
+		8A0794D726936141000ACA2B /* StoreViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0794CA26936141000ACA2B /* StoreViewControllerProtocol.swift */; };
+		8A0794D826936141000ACA2B /* StoreInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0794CC26936141000ACA2B /* StoreInteractor.swift */; };
+		8A0794D926936141000ACA2B /* StoreInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0794CD26936141000ACA2B /* StoreInteractorProtocol.swift */; };
+		8A0794DA26936141000ACA2B /* StoreRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0794CF26936141000ACA2B /* StoreRouterProtocol.swift */; };
+		8A0794DB26936141000ACA2B /* StoreRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0794D026936141000ACA2B /* StoreRouter.swift */; };
+		8A0794DE26936A8E000ACA2B /* LogoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0794DD26936A8E000ACA2B /* LogoRow.swift */; };
+		8A0794E126938394000ACA2B /* WineBottleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0794E026938394000ACA2B /* WineBottleView.swift */; };
+		8A0795B726943DD6000ACA2B /* FeaturesOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0795B626943DD6000ACA2B /* FeaturesOnboardingViewController.swift */; };
+		8A0795BA26943E85000ACA2B /* OnboardingFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0795B926943E85000ACA2B /* OnboardingFeatureView.swift */; };
+		8A07983B269750A0000ACA2B /* PluralLocalizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 8A07983D269750A0000ACA2B /* PluralLocalizable.stringsdict */; };
+		8A07991426998363000ACA2B /* HorizontalWineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07991326998363000ACA2B /* HorizontalWineView.swift */; };
+		8A07991626999BBA000ACA2B /* SeparatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A07991526999BBA000ACA2B /* SeparatorView.swift */; };
+		8A0799182699A06C000ACA2B /* FilterItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0799172699A06C000ACA2B /* FilterItemView.swift */; };
+		8A079F2E269E151F000ACA2B /* BottlesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A079F2D269E151F000ACA2B /* BottlesCollectionView.swift */; };
+		8A079F30269E2E34000ACA2B /* FiltersCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A079F2F269E2E34000ACA2B /* FiltersCollectionView.swift */; };
+		8A0BBEDF26A8578C0049DA74 /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0BBEDE26A8578C0049DA74 /* LoadingView.swift */; };
 		8A0D9CB726871D9D0076A7EC /* NewAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0D9CB626871D9D0076A7EC /* NewAgreementViewController.swift */; };
 		8A0D9CB926872CF60076A7EC /* NewAgreementsBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0D9CB826872CF60076A7EC /* NewAgreementsBottomView.swift */; };
 		8A1034592648596100F7CA81 /* AssortmentCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1034582648596100F7CA81 /* AssortmentCollectionCell.swift */; };
 		8A1036CA264D7E1200F7CA81 /* MapNavigationBarCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1036C9264D7E1200F7CA81 /* MapNavigationBarCollectionCell.swift */; };
+		8A251E3226B0065C00DAED2D /* AdItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A251E3126B0065C00DAED2D /* AdItemView.swift */; };
 		8A313BFF26447042009F2165 /* MapDetailStoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BEE26447042009F2165 /* MapDetailStoreViewModel.swift */; };
 		8A313C0026447042009F2165 /* MapDetailStoreInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BF026447042009F2165 /* MapDetailStoreInput.swift */; };
 		8A313C0126447042009F2165 /* MapDetailStoreAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BF226447042009F2165 /* MapDetailStoreAssembly.swift */; };
@@ -188,8 +211,6 @@
 		A45E1630B1AB1ACBB6D5E58B /* Pods_SmartTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EA78FE8971307D6D1C5D8B17 /* Pods_SmartTests.framework */; };
 		A66896A2FCE4890C20578E8A /* Pods_Smart_SmartUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EFC751EC9AAA672E4A7DF935 /* Pods_Smart_SmartUITests.framework */; };
 		CA070C1625250AEC00C3D9EC /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA070C1325250AE900C3D9EC /* OnboardViewController.swift */; };
-		CA070C1725250AEC00C3D9EC /* OnboardPageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA070C1425250AEB00C3D9EC /* OnboardPageViewController.swift */; };
-		CA070C1825250AEC00C3D9EC /* OnboardPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA070C1525250AEC00C3D9EC /* OnboardPage.swift */; };
 		CA070C2425250C1800C3D9EC /* OnboardingModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA070C2325250C1800C3D9EC /* OnboardingModuleFactory.swift */; };
 		CA276D4E256AC34A0061BEBE /* FakeVinchyCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA276D4D256AC34A0061BEBE /* FakeVinchyCollectionCell.swift */; };
 		CA276D55256AC6720061BEBE /* FakeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA276D54256AC6720061BEBE /* FakeCell.swift */; };
@@ -463,10 +484,34 @@
 		8A0792FE269239C0000ACA2B /* DocumentsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsRouter.swift; sourceTree = "<group>"; };
 		8A0792FF269239C0000ACA2B /* DocumentsRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsRouterProtocol.swift; sourceTree = "<group>"; };
 		8A07930B26924DAF000ACA2B /* Document.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Document.swift; sourceTree = "<group>"; };
+		8A0794C026936141000ACA2B /* StoreViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreViewModel.swift; sourceTree = "<group>"; };
+		8A0794C226936141000ACA2B /* StoreInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreInput.swift; sourceTree = "<group>"; };
+		8A0794C426936141000ACA2B /* StoreAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreAssembly.swift; sourceTree = "<group>"; };
+		8A0794C626936141000ACA2B /* StorePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorePresenter.swift; sourceTree = "<group>"; };
+		8A0794C726936141000ACA2B /* StorePresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorePresenterProtocol.swift; sourceTree = "<group>"; };
+		8A0794C926936141000ACA2B /* StoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
+		8A0794CA26936141000ACA2B /* StoreViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreViewControllerProtocol.swift; sourceTree = "<group>"; };
+		8A0794CC26936141000ACA2B /* StoreInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreInteractor.swift; sourceTree = "<group>"; };
+		8A0794CD26936141000ACA2B /* StoreInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreInteractorProtocol.swift; sourceTree = "<group>"; };
+		8A0794CF26936141000ACA2B /* StoreRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreRouterProtocol.swift; sourceTree = "<group>"; };
+		8A0794D026936141000ACA2B /* StoreRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreRouter.swift; sourceTree = "<group>"; };
+		8A0794DD26936A8E000ACA2B /* LogoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoRow.swift; sourceTree = "<group>"; };
+		8A0794E026938394000ACA2B /* WineBottleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineBottleView.swift; sourceTree = "<group>"; };
+		8A0795B626943DD6000ACA2B /* FeaturesOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesOnboardingViewController.swift; sourceTree = "<group>"; };
+		8A0795B926943E85000ACA2B /* OnboardingFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFeatureView.swift; sourceTree = "<group>"; };
+		8A07983C269750A0000ACA2B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/PluralLocalizable.stringsdict; sourceTree = "<group>"; };
+		8A07983E269750A4000ACA2B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/PluralLocalizable.stringsdict; sourceTree = "<group>"; };
+		8A07991326998363000ACA2B /* HorizontalWineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalWineView.swift; sourceTree = "<group>"; };
+		8A07991526999BBA000ACA2B /* SeparatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorView.swift; sourceTree = "<group>"; };
+		8A0799172699A06C000ACA2B /* FilterItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterItemView.swift; sourceTree = "<group>"; };
+		8A079F2D269E151F000ACA2B /* BottlesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottlesCollectionView.swift; sourceTree = "<group>"; };
+		8A079F2F269E2E34000ACA2B /* FiltersCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltersCollectionView.swift; sourceTree = "<group>"; };
+		8A0BBEDE26A8578C0049DA74 /* LoadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		8A0D9CB626871D9D0076A7EC /* NewAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAgreementViewController.swift; sourceTree = "<group>"; };
 		8A0D9CB826872CF60076A7EC /* NewAgreementsBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAgreementsBottomView.swift; sourceTree = "<group>"; };
 		8A1034582648596100F7CA81 /* AssortmentCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssortmentCollectionCell.swift; sourceTree = "<group>"; };
 		8A1036C9264D7E1200F7CA81 /* MapNavigationBarCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapNavigationBarCollectionCell.swift; sourceTree = "<group>"; };
+		8A251E3126B0065C00DAED2D /* AdItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdItemView.swift; sourceTree = "<group>"; };
 		8A313BEE26447042009F2165 /* MapDetailStoreViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreViewModel.swift; sourceTree = "<group>"; };
 		8A313BF026447042009F2165 /* MapDetailStoreInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreInput.swift; sourceTree = "<group>"; };
 		8A313BF226447042009F2165 /* MapDetailStoreAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreAssembly.swift; sourceTree = "<group>"; };
@@ -539,8 +584,6 @@
 		A58854690F88929379F0E016 /* Pods_Smart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Smart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA015C3524C582B2008DF01D /* EmailService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EmailService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA070C1325250AE900C3D9EC /* OnboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardViewController.swift; sourceTree = "<group>"; };
-		CA070C1425250AEB00C3D9EC /* OnboardPageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardPageViewController.swift; sourceTree = "<group>"; };
-		CA070C1525250AEC00C3D9EC /* OnboardPage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardPage.swift; sourceTree = "<group>"; };
 		CA070C2325250C1800C3D9EC /* OnboardingModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModuleFactory.swift; sourceTree = "<group>"; };
 		CA1821A324C0E83900280DD4 /* Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA1821FE24C0F6F000280DD4 /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1298,6 +1341,115 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		8A0794BE26936141000ACA2B /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				8A0794C326936141000ACA2B /* Assembly */,
+				8A0794C126936141000ACA2B /* Input */,
+				8A0794CB26936141000ACA2B /* Interactor */,
+				8A0794C526936141000ACA2B /* Presenter */,
+				8A0794CE26936141000ACA2B /* Router */,
+				8A0794C826936141000ACA2B /* ViewController */,
+				8A0794BF26936141000ACA2B /* ViewModel */,
+				8A0794DC269369BA000ACA2B /* Views */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		8A0794BF26936141000ACA2B /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8A0794C026936141000ACA2B /* StoreViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8A0794C126936141000ACA2B /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				8A0794C226936141000ACA2B /* StoreInput.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		8A0794C326936141000ACA2B /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				8A0794C426936141000ACA2B /* StoreAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		8A0794C526936141000ACA2B /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8A0794C626936141000ACA2B /* StorePresenter.swift */,
+				8A0794C726936141000ACA2B /* StorePresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		8A0794C826936141000ACA2B /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8A0794C926936141000ACA2B /* StoreViewController.swift */,
+				8A0794CA26936141000ACA2B /* StoreViewControllerProtocol.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		8A0794CB26936141000ACA2B /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				8A0794CC26936141000ACA2B /* StoreInteractor.swift */,
+				8A0794CD26936141000ACA2B /* StoreInteractorProtocol.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		8A0794CE26936141000ACA2B /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				8A0794CF26936141000ACA2B /* StoreRouterProtocol.swift */,
+				8A0794D026936141000ACA2B /* StoreRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		8A0794DC269369BA000ACA2B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8A0794DD26936A8E000ACA2B /* LogoRow.swift */,
+				8A0799172699A06C000ACA2B /* FilterItemView.swift */,
+				8A079F2F269E2E34000ACA2B /* FiltersCollectionView.swift */,
+				8A251E3126B0065C00DAED2D /* AdItemView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8A0794DF26936AB6000ACA2B /* EpoxyViews */ = {
+			isa = PBXGroup;
+			children = (
+				8AF9441A2692295D003EB76A /* Label.swift */,
+				8AF9441C26922D77003EB76A /* IconView.swift */,
+				8A0794E026938394000ACA2B /* WineBottleView.swift */,
+				8A07991326998363000ACA2B /* HorizontalWineView.swift */,
+				8A07991526999BBA000ACA2B /* SeparatorView.swift */,
+				8A079F2D269E151F000ACA2B /* BottlesCollectionView.swift */,
+				8A0BBEDE26A8578C0049DA74 /* LoadingView.swift */,
+			);
+			path = EpoxyViews;
+			sourceTree = "<group>";
+		};
+		8A0795B826943E73000ACA2B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8AE788F7268638CD0056A84B /* OnboardingBottomView.swift */,
+				8A0795B926943E85000ACA2B /* OnboardingFeatureView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		8A313BEC26447042009F2165 /* MapDetailStore */ = {
 			isa = PBXGroup;
 			children = (
@@ -1626,8 +1778,6 @@
 			isa = PBXGroup;
 			children = (
 				8AF94418269228F5003EB76A /* TextRow.swift */,
-				8AF9441A2692295D003EB76A /* Label.swift */,
-				8AF9441C26922D77003EB76A /* IconView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1754,13 +1904,12 @@
 		CA070A762523D77000C3D9EC /* Onboarding */ = {
 			isa = PBXGroup;
 			children = (
+				8A0795B826943E73000ACA2B /* Views */,
 				CA46DBE5252517FD0007819E /* Repository */,
 				CA070C1B25250B6200C3D9EC /* Coordinator */,
-				CA070C1525250AEC00C3D9EC /* OnboardPage.swift */,
-				CA070C1425250AEB00C3D9EC /* OnboardPageViewController.swift */,
 				CA070C1325250AE900C3D9EC /* OnboardViewController.swift */,
 				8AE788F5268636500056A84B /* GeoOnboardingViewController.swift */,
-				8AE788F7268638CD0056A84B /* OnboardingBottomView.swift */,
+				8A0795B626943DD6000ACA2B /* FeaturesOnboardingViewController.swift */,
 			);
 			path = Onboarding;
 			sourceTree = "<group>";
@@ -1803,6 +1952,7 @@
 				CA63A129249A23C100144320 /* Localizable.strings */,
 				CA4AED9A24CE204900035922 /* TopSecret.plist */,
 				CA3C97E8257245F40036F7D9 /* Countries.strings */,
+				8A07983D269750A0000ACA2B /* PluralLocalizable.stringsdict */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -1978,6 +2128,7 @@
 				449F81AA25DD022000585364 /* Root */,
 				8A916105268E27EB00240B18 /* Search */,
 				CA0A352324785A0900C400F5 /* Showcase */,
+				8A0794BE26936141000ACA2B /* Store */,
 				CA472B3F245EDEDB009149FF /* Supported Files */,
 				449F81B925DD02A600585364 /* Tabbar */,
 				CA7B835624EED18500991F24 /* Vinchy */,
@@ -1992,6 +2143,7 @@
 		CA472B3F245EDEDB009149FF /* Supported Files */ = {
 			isa = PBXGroup;
 			children = (
+				8A0794DF26936AB6000ACA2B /* EpoxyViews */,
 				CA472ABF245EDE2F009149FF /* AppDelegate.swift */,
 				CA472B40245EDEDB009149FF /* Assembly.swift */,
 				CAA060D1252BC05C002C15B5 /* DeveloperFeatureToggles.swift */,
@@ -2694,6 +2846,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA8CD67A25096EDA00FDB7AF /* GADTSmallTemplateView.xib in Resources */,
+				8A07983B269750A0000ACA2B /* PluralLocalizable.stringsdict in Resources */,
 				CA472ACC245EDE30009149FF /* LaunchScreen.storyboard in Resources */,
 				CA445F6B24BFA3C20023A09F /* InfoPlist.strings in Resources */,
 				CA63A12B249A23C100144320 /* Localizable.strings in Resources */,
@@ -2872,6 +3025,7 @@
 				CACA7EA3254C57CC0099E622 /* WriteNoteRouter.swift in Sources */,
 				447C353B25EEAA5700105A35 /* MapPresenter.swift in Sources */,
 				8A0D9CB926872CF60076A7EC /* NewAgreementsBottomView.swift in Sources */,
+				8A0794D426936141000ACA2B /* StorePresenter.swift in Sources */,
 				CA4857892517C71200EDA4CE /* VinchyPresenterProtocol.swift in Sources */,
 				8AF966C12678F194001891B2 /* EditProfilePresenterProtocol.swift in Sources */,
 				745869A026A5D46E00519739 /* DidnotFindTheWineTableCell.swift in Sources */,
@@ -2891,7 +3045,6 @@
 				8AD49F182675210A0094E157 /* ReviewsRouter.swift in Sources */,
 				447C353925EEAA5700105A35 /* MapInput.swift in Sources */,
 				8AF966C02678F194001891B2 /* EditProfileAssembly.swift in Sources */,
-				CA070C1725250AEC00C3D9EC /* OnboardPageViewController.swift in Sources */,
 				CE58DEDB25ED73C900B5BDF9 /* CurrencyRouterProtocol.swift in Sources */,
 				CA46DBEF252518460007819E /* OnboardingCache.swift in Sources */,
 				8AF966C22678F194001891B2 /* EditProfilePresenter.swift in Sources */,
@@ -2904,6 +3057,7 @@
 				CE404B0F2589D4C200917544 /* MoreRouterProtocol.swift in Sources */,
 				74E55FB126AACE2C0086C159 /* ResultsSearchRouter.swift in Sources */,
 				449F81B225DD025900585364 /* RootRouter.swift in Sources */,
+				8A0BBEDF26A8578C0049DA74 /* LoadingView.swift in Sources */,
 				8A446CDF2660123B000A1769 /* RoutingToolBar.swift in Sources */,
 				CA7A87FA2506B9D600AAD10F /* ShareUsCollectionCell.swift in Sources */,
 				449F81C425DD049B00585364 /* DeeplinkFlow.swift in Sources */,
@@ -2912,6 +3066,7 @@
 				CA8CD67725096EC200FDB7AF /* GADTSmallTemplateView.m in Sources */,
 				CE58DEDF25ED73E200B5BDF9 /* CurrencyViewControllerProtocol.swift in Sources */,
 				CA7B838924F451FA00991F24 /* WineDetailViewController.swift in Sources */,
+				8A0794DB26936141000ACA2B /* StoreRouter.swift in Sources */,
 				8AE7880B2684E8D60056A84B /* NotesViewModel.swift in Sources */,
 				440C284725E13F9D009911EE /* WineDetailCollectionView.swift in Sources */,
 				8A916024268CE66C00240B18 /* AreYouInStoreAssembly.swift in Sources */,
@@ -2928,6 +3083,7 @@
 				CE69652825E4372E00CD414D /* CurrencyViewController.swift in Sources */,
 				CAF514282461C52400667ED0 /* DocCell.swift in Sources */,
 				74E55FAB26AACE2C0086C159 /* ResultsSearchPresenterProtocol.swift in Sources */,
+				8A0795BA26943E85000ACA2B /* OnboardingFeatureView.swift in Sources */,
 				CA472B69245EDEF9009149FF /* ShowcaseViewModel.swift in Sources */,
 				CA2C22E02554464F002469E4 /* AdvancedSearchInteractorProtocol.swift in Sources */,
 				4437AA5E25E3A7CE00F6E838 /* WriteReviewPresenter.swift in Sources */,
@@ -2936,6 +3092,7 @@
 				44EFDB7925E263E00076ED6D /* ReviewDetailRouter.swift in Sources */,
 				8A9554682692284B00F1C5AE /* DocumentsViewController.swift in Sources */,
 				CA81984E253864080056A1C6 /* WineDetailRouter.swift in Sources */,
+				8A079F30269E2E34000ACA2B /* FiltersCollectionView.swift in Sources */,
 				CACA7EA2254C57CC0099E622 /* WriteNoteRouterProtocol.swift in Sources */,
 				CA48577C2517BEAB00EDA4CE /* VinchyRouter.swift in Sources */,
 				8AE788102684E8D60056A84B /* NotesViewController.swift in Sources */,
@@ -2944,6 +3101,7 @@
 				447C353A25EEAA5700105A35 /* MapAssembly.swift in Sources */,
 				CAF514222461C52400667ED0 /* MoreViewController.swift in Sources */,
 				CA5B901B250FF22E006BC638 /* MoreBounceDecoratorView.swift in Sources */,
+				8A0794D226936141000ACA2B /* StoreInput.swift in Sources */,
 				449F81CA25DD04B400585364 /* DeeplinkStep.swift in Sources */,
 				CA7B835B24EED6E600991F24 /* StoryCollectionCell.swift in Sources */,
 				745869A226A5D4DD00519739 /* LegacyResultsTableController.swift in Sources */,
@@ -2970,7 +3128,6 @@
 				8A91600C268CC3AE00240B18 /* WhereToBuyCell.swift in Sources */,
 				4437AA6225E3A7CE00F6E838 /* WriteReviewInteractorProtocol.swift in Sources */,
 				8A91611C268E27EB00240B18 /* SearchPresenterProtocol.swift in Sources */,
-				CA070C1825250AEC00C3D9EC /* OnboardPage.swift in Sources */,
 				44EFDB3725E177220076ED6D /* ReviewsViewModel.swift in Sources */,
 				CA49A219251E8CFE00FBE269 /* TitleWithSubtitleInfoCollectionViewCell.swift in Sources */,
 				CA070C1625250AEC00C3D9EC /* OnboardViewController.swift in Sources */,
@@ -2982,6 +3139,7 @@
 				CA48579B2517CA5200EDA4CE /* VinchyViewControllerProtocol.swift in Sources */,
 				8AE7880E2684E8D60056A84B /* NotesPresenterProtocol.swift in Sources */,
 				CA472B2B245EDEA0009149FF /* FiltersHeaderView.swift in Sources */,
+				8A0794D126936141000ACA2B /* StoreViewModel.swift in Sources */,
 				CE8FF83525FADA76004D4F37 /* ShowcaseInteractor.swift in Sources */,
 				CE58DECB25ED712900B5BDF9 /* CurrencyPresenter.swift in Sources */,
 				74E55FAD26AACE2C0086C159 /* ResultsSearchViewController.swift in Sources */,
@@ -2992,29 +3150,36 @@
 				CA99E65324F59CAA00C36BEE /* ShortInfoCollectionCell.swift in Sources */,
 				8AF9441B2692295D003EB76A /* Label.swift in Sources */,
 				74E55FAA26AACE2C0086C159 /* ResultsSearchPresenter.swift in Sources */,
+				8A0795B726943DD6000ACA2B /* FeaturesOnboardingViewController.swift in Sources */,
+				CA3B1D42249E3FE100FAA08A /* ResultsTableController.swift in Sources */,
 				8AF966C32678F194001891B2 /* EditProfileViewController.swift in Sources */,
 				44EFDB3F25E177220076ED6D /* ReviewsInteractor.swift in Sources */,
 				CA7B836024EF109200991F24 /* MainSubtitleCollectionCell.swift in Sources */,
 				CA819844253864080056A1C6 /* WineDetailViewModel.swift in Sources */,
+				8A0794D526936141000ACA2B /* StorePresenterProtocol.swift in Sources */,
 				447C353E25EEAA5700105A35 /* MapViewControllerProtocol.swift in Sources */,
 				8A916122268E27EB00240B18 /* SearchRouterProtocol.swift in Sources */,
 				8A079302269239C1000ACA2B /* DocumentsAssembly.swift in Sources */,
 				4437AA6125E3A7CE00F6E838 /* WriteReviewViewControllerProtocol.swift in Sources */,
 				44465EC025F39400005B3F06 /* MapRepository.swift in Sources */,
 				44EFDB7125E263E00076ED6D /* ReviewDetailAssembly.swift in Sources */,
+				8A079F2E269E151F000ACA2B /* BottlesCollectionView.swift in Sources */,
 				CAF514102461C51400667ED0 /* AboutViewController.swift in Sources */,
 				8A916022268CE66C00240B18 /* AreYouInStoreViewModel.swift in Sources */,
 				44EFDB4F25E17FD60076ED6D /* ReviewsRoutable.swift in Sources */,
 				CE8FF84525FADB84004D4F37 /* ShowcaseViewControllerProtocol.swift in Sources */,
 				CA81984D253864080056A1C6 /* WineDetailRouterProtocol.swift in Sources */,
+				8A0794DA26936141000ACA2B /* StoreRouterProtocol.swift in Sources */,
 				CE6AB01F261BD2A40011F771 /* ShowcaseInput.swift in Sources */,
 				4437AA6425E3A7CE00F6E838 /* WriteReviewRouterProtocol.swift in Sources */,
+				8A07991626999BBA000ACA2B /* SeparatorView.swift in Sources */,
 				4437AA6525E3A7CE00F6E838 /* WriteReviewRouter.swift in Sources */,
 				449D63B225E1054700CBBD1D /* RatingsAndReviewsCell.swift in Sources */,
 				8AD7A37E2639D31A007D4273 /* PartnerAnnotationView.swift in Sources */,
 				CA2C22DD2554464F002469E4 /* AdvancedSearchPresenterProtocol.swift in Sources */,
 				4437AA6E25E3BE7300F6E838 /* WriteReviewRoutable.swift in Sources */,
 				CACA7E9A254C57CC0099E622 /* WriteNoteInput.swift in Sources */,
+				8A251E3226B0065C00DAED2D /* AdItemView.swift in Sources */,
 				44EFDB3D25E177220076ED6D /* ReviewsViewController.swift in Sources */,
 				CA48578F2517C74700EDA4CE /* VinchyRouterProtocol.swift in Sources */,
 				CA472B2C245EDEA0009149FF /* HeaderReusableView.swift in Sources */,
@@ -3031,10 +3196,13 @@
 				74E55FA926AACE2C0086C159 /* ResultsSearchAssembly.swift in Sources */,
 				8A079306269239C1000ACA2B /* DocumentsViewControllerProtocol.swift in Sources */,
 				8A313C1626468678009F2165 /* WorkingHoursCollectionCell.swift in Sources */,
+				8A0794D826936141000ACA2B /* StoreInteractor.swift in Sources */,
 				CAA9DC3C250BD20400F996A8 /* AdvancedHeader.swift in Sources */,
 				8AF966CB267908F6001891B2 /* CommonEditCollectionViewCell.swift in Sources */,
+				8A0794D626936141000ACA2B /* StoreViewController.swift in Sources */,
 				CA4857832517C67700EDA4CE /* VinchyInteractorProtocol.swift in Sources */,
 				8AD49F17267521040094E157 /* ReviewsPresenter.swift in Sources */,
+				8A0794D926936141000ACA2B /* StoreInteractorProtocol.swift in Sources */,
 				CA472AC0245EDE2F009149FF /* AppDelegate.swift in Sources */,
 				8A1034592648596100F7CA81 /* AssortmentCollectionCell.swift in Sources */,
 				CA2C22E12554464F002469E4 /* AdvancedSearchInteractor.swift in Sources */,
@@ -3073,6 +3241,7 @@
 				CA3837CC246FCF3C00AD5FCC /* TabBarController.swift in Sources */,
 				CA99E65124F58A6000C36BEE /* ToolCollectionCell.swift in Sources */,
 				8A916025268CE66C00240B18 /* AreYouInStorePresenter.swift in Sources */,
+				8A07991426998363000ACA2B /* HorizontalWineView.swift in Sources */,
 				447C353C25EEAA5700105A35 /* MapPresenterProtocol.swift in Sources */,
 				8A916121268E27EB00240B18 /* SearchRouter.swift in Sources */,
 				8A91602B268CE66C00240B18 /* AreYouInStoreRouter.swift in Sources */,
@@ -3107,6 +3276,7 @@
 				447C353F25EEAA5700105A35 /* MapInteractor.swift in Sources */,
 				8A91611A268E27EB00240B18 /* SearchAssembly.swift in Sources */,
 				44EFDB7425E263E00076ED6D /* ReviewDetailViewController.swift in Sources */,
+				8A0794D326936141000ACA2B /* StoreAssembly.swift in Sources */,
 				44465EC625F3940E005B3F06 /* MapRepositoryProtocol.swift in Sources */,
 				8AF966BF2678F194001891B2 /* EditProfileInput.swift in Sources */,
 				CA819845253864080056A1C6 /* WineDetailInput.swift in Sources */,
@@ -3114,6 +3284,7 @@
 				447C354125EEAA5700105A35 /* MapRouter.swift in Sources */,
 				8A313C0126447042009F2165 /* MapDetailStoreAssembly.swift in Sources */,
 				CAF5146B2468172900667ED0 /* LoveViewController.swift in Sources */,
+				8A0794D726936141000ACA2B /* StoreViewControllerProtocol.swift in Sources */,
 				CE8FF82A25FAD75C004D4F37 /* ShowcaseAssembly.swift in Sources */,
 				CA46DBE7252518230007819E /* OnboardingRepository.swift in Sources */,
 				CACA7E9F254C57CC0099E622 /* WriteNoteViewControllerProtocol.swift in Sources */,
@@ -3131,6 +3302,7 @@
 				8A91611F268E27EB00240B18 /* SearchInteractorProtocol.swift in Sources */,
 				CAF514272461C52400667ED0 /* SocialMediaCell.swift in Sources */,
 				74E55FAE26AACE2C0086C159 /* ResultsSearchInteractor.swift in Sources */,
+				8A0799182699A06C000ACA2B /* FilterItemView.swift in Sources */,
 				8A313C0926447042009F2165 /* MapDetailStoreRouterProtocol.swift in Sources */,
 				CA2C22DE2554464F002469E4 /* AdvancedSearchViewControllerProtocol.swift in Sources */,
 				CA2C22DF2554464F002469E4 /* AdvancedSearchViewController.swift in Sources */,
@@ -3143,6 +3315,7 @@
 				8A313BFF26447042009F2165 /* MapDetailStoreViewModel.swift in Sources */,
 				8AF966C52678F194001891B2 /* EditProfileInteractorProtocol.swift in Sources */,
 				8A916120268E27EB00240B18 /* SearchInteractor.swift in Sources */,
+				8A0794DE26936A8E000ACA2B /* LogoRow.swift in Sources */,
 				44EFDB7325E263E00076ED6D /* ReviewDetailPresenter.swift in Sources */,
 				8AE788112684E8D60056A84B /* NotesViewControllerProtocol.swift in Sources */,
 				CAA060D2252BC05C002C15B5 /* DeveloperFeatureToggles.swift in Sources */,
@@ -3150,6 +3323,7 @@
 				CAF514252461C52400667ED0 /* ContactCell.swift in Sources */,
 				8AF966C82678F194001891B2 /* EditProfileRouterProtocol.swift in Sources */,
 				8A07930C26924DAF000ACA2B /* Document.swift in Sources */,
+				8A0794E126938394000ACA2B /* WineBottleView.swift in Sources */,
 				449D63B625E10D5100CBBD1D /* TapToRateCell.swift in Sources */,
 				CAF514262461C52400667ED0 /* RateAppCell.swift in Sources */,
 				CA4D51042549F62500A6FD0B /* WriteNoteViewController.swift in Sources */,
@@ -3188,6 +3362,15 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		8A07983D269750A0000ACA2B /* PluralLocalizable.stringsdict */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8A07983C269750A0000ACA2B /* en */,
+				8A07983E269750A4000ACA2B /* ru */,
+			);
+			name = PluralLocalizable.stringsdict;
+			sourceTree = "<group>";
+		};
 		CA3C97E8257245F40036F7D9 /* Countries.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -3356,7 +3539,7 @@
 				CODE_SIGN_ENTITLEMENTS = Smart/Vinchy.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				INFOPLIST_FILE = Smart/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -3371,6 +3554,7 @@
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Smart/Source/Vinchy/Views/Smart-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_REFLECTION_METADATA_LEVEL = none;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -3385,7 +3569,7 @@
 				CODE_SIGN_ENTITLEMENTS = Smart/VinchyRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 10;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				INFOPLIST_FILE = Smart/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
@@ -3399,6 +3583,7 @@
 				PRODUCT_NAME = Vinchy;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Smart/Source/Vinchy/Views/Smart-Bridging-Header.h";
+				SWIFT_REFLECTION_METADATA_LEVEL = none;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

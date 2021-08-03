@@ -98,5 +98,75 @@
         "imageName": "US"
       }
     ]
+  },
+  {
+    "category": "compatibility",
+    "items": [
+      {
+        "category": "compatibility",
+        "title": "Meat",
+        "imageName": "Meat"
+      },
+      {
+        "category": "compatibility",
+        "title": "Fish",
+        "imageName": "Fish"
+      },
+      {
+        "category": "compatibility",
+        "title": "Poultry",
+        "imageName": "Poultry"
+      },
+      {
+        "category": "compatibility",
+        "title": "Cheese",
+        "imageName": "Cheese"
+      },
+      {
+        "category": "compatibility",
+        "title": "Shellfish",
+        "imageName": "Shellfish"
+      },
+      {
+        "category": "compatibility",
+        "title": "Vegetarian",
+        "imageName": "Vegetarian"
+      },
+      {
+        "category": "compatibility",
+        "title": "Spicy food",
+        "imageName": "Spicy food"
+      },
+      {
+        "category": "compatibility",
+        "title": "Mushrooms",
+        "imageName": "Mushrooms"
+      },
+      {
+        "category": "compatibility",
+        "title": "Snacks",
+        "imageName": "Snacks"
+      },
+      {
+        "category": "compatibility",
+        "title": "Pasta",
+        "imageName": "Pasta"
+      },
+      {
+        "category": "compatibility",
+        "title": "Fruits",
+        "imageName": "Fruits"
+      },
+      {
+        "category": "compatibility",
+        "title": "Desserts",
+        "imageName": "Desserts"
+      },
+      {
+        "category": "compatibility",
+        "title": "Aperitif",
+        "imageName": "Aperitif"
+      }
+    ]
   }
 ]
