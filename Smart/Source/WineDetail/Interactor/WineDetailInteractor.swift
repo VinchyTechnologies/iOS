@@ -13,13 +13,6 @@ import Sheeeeeeeeet
 import VinchyAuthorization
 import VinchyCore
 
-// MARK: - WineDetailInteractorData
-
-struct WineDetailInteractorData {
-  var wineInfo: Wine
-  var wineReviews: [Review] = []
-}
-
 // MARK: - WineDetailMoreActions
 
 enum WineDetailMoreActions {
@@ -92,21 +85,18 @@ final class WineDetailInteractor {
       Reviews.shared.getReviews(wineID: input.wineID, accountID: nil, offset: 0, limit: 5) { [weak self] result in
         guard let self = self else { return }
         switch result {
-        case .success(let responce):
-          self.reviews = responce
-        case .failure(let error):
-          self.presenter.showNetworkErrorAlert(error: error)
+        case .success(let response):
+          self.reviews = response
+        case .failure:
+          self.reviews = nil
         }
         self.dispatchGroup.leave()
       }
     }
 
     dispatchGroup.notify(queue: .main) {
-      if let wine = self.wine, let reviews = self.reviews {
-        let data = WineDetailInteractorData(
-          wineInfo: wine,
-          wineReviews: reviews)
-        self.presenter.update(wine: data.wineInfo, reviews: data.wineReviews, isLiked: self.isFavourite(wine: data.wineInfo), isDisliked: self.isDisliked(wine: data.wineInfo), rate: self.rate ?? 0, currency: UserDefaultsConfig.currency, isGeneralInfoCollapsed: self.isGeneralInfoCollapsed)
+      if let wine = self.wine {
+        self.presenter.update(wine: wine, reviews: self.reviews, isLiked: self.isFavourite(wine: wine), isDisliked: self.isDisliked(wine: wine), rate: self.rate ?? 0, currency: UserDefaultsConfig.currency, isGeneralInfoCollapsed: self.isGeneralInfoCollapsed)
         self.dispatchWorkItemHud.cancel()
         DispatchQueue.main.async {
           self.presenter.stopLoading()
