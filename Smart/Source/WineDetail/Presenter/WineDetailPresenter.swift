@@ -128,8 +128,8 @@ final class WineDetailPresenter {
     }
   }
 
-  private func buildReview(wine: Wine) -> [WineDetailViewModel.Section] {
-    let reviewCellViewModels: [ReviewCellViewModel] = wine.reviews.compactMap {
+  private func buildReview(reviews: [Review]) -> [WineDetailViewModel.Section] {
+    let reviewCellViewModels: [ReviewCellViewModel] = reviews.compactMap {
       if $0.comment?.isEmpty == true || $0.comment == nil {
         return nil
       }
@@ -186,7 +186,7 @@ final class WineDetailPresenter {
     return [.rate([rateViewModel])]
   }
 
-  private func generateAllSections(wine: Wine, isLiked: Bool, isDisliked: Bool, rate: Double, currency: String, isGeneralInfoCollapsed: Bool) -> [WineDetailViewModel.Section] {
+  private func generateAllSections(wine: Wine, reviews: [Review]?, isLiked: Bool, isDisliked: Bool, rate: Double, currency: String, isGeneralInfoCollapsed: Bool) -> [WineDetailViewModel.Section] {
     var sections: [WineDetailViewModel.Section] = []
 
     sections += buildCaruselImages(wine: wine)
@@ -249,8 +249,10 @@ final class WineDetailPresenter {
 
     if isReviewAvailable {
 //      sections += [.tapToRate([.init(titleText: "Tap to Rate:", rate: 0)])]
-      sections += buildReview(wine: wine)
-      sections += [.button([.init(buttonText: localized("write_review").firstLetterUppercased())])]
+      if let reviews = reviews {
+        sections += buildReview(reviews: reviews)
+        sections += [.button([.init(buttonText: localized("write_review").firstLetterUppercased())])]
+      }
     }
 
     if isAdAvailable {
@@ -394,9 +396,9 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
     viewController?.stopLoadingAnimation()
   }
 
-  func update(wine: Wine, isLiked: Bool, isDisliked: Bool, rate: Double, currency: String, isGeneralInfoCollapsed: Bool) {
+  func update(wine: Wine, reviews: [Review]?, isLiked: Bool, isDisliked: Bool, rate: Double, currency: String, isGeneralInfoCollapsed: Bool) {
 
-    let sections = generateAllSections(wine: wine, isLiked: isLiked, isDisliked: isDisliked, rate: rate, currency: currency, isGeneralInfoCollapsed: isGeneralInfoCollapsed)
+    let sections = generateAllSections(wine: wine, reviews: reviews, isLiked: isLiked, isDisliked: isDisliked, rate: rate, currency: currency, isGeneralInfoCollapsed: isGeneralInfoCollapsed)
 
     let viewModel = WineDetailViewModel(navigationTitle: wine.title, sections: sections, isGeneralInfoCollapsed: isGeneralInfoCollapsed)
 
