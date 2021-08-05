@@ -37,7 +37,7 @@ private enum RecommendationsEndpoint: EndpointProtocol {
     switch self {
     case .personal(let accountID, _, _):
       let params: Parameters = [
-        ("account_id", accountID),
+        ("account_id", String(accountID)),
       ]
       return params
     }
