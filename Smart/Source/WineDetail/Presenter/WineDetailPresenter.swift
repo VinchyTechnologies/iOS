@@ -255,8 +255,10 @@ final class WineDetailPresenter {
       }
     }
 
+    /// Ad
+    
     if isAdAvailable {
-      sections += [.ad([1])] // TODO: - Add Real Model
+      sections += [.ad(itemID: .ad)]
     }
 
     /// where to buy
@@ -278,6 +280,8 @@ final class WineDetailPresenter {
         .whereToBuy(storeViewModels),
       ]
     }
+    
+    /// Similar wines
 
     if let similarWines = wine.similarWines {
 

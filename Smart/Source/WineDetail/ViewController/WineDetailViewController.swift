@@ -274,15 +274,26 @@ final class WineDetailViewController: CollectionViewController {
         return nil
       case .button(_):
         return nil
-      case .ad(_):
-        return nil
+
+      case .ad(let itemID):
+        return SectionModel(dataID: section.dataID) {
+          AdItemView.itemModel(
+            dataID: itemID,
+            content: .init(),
+            style: .init())
+            .setBehaviors { [weak self] context in
+              context.view.adBanner.rootViewController = self
+            }
+            .flowLayoutItemSize(.init(width: view.frame.width, height: AdItemView.height))
+        }
+
       case .similarWines(let itemID, let content):
         return SectionModel(dataID: section.dataID) {
           BottlesCollectionView.itemModel(
             dataID: itemID,
             content: content,
             behaviors: .init(didTap: { [weak self] wineID in
-//              self?.interactor?.didSelectWine(wineID: wineID)
+              self?.interactor?.didTapSimilarWine(wineID: wineID)
             }),
             style: .init())
         }
@@ -607,17 +618,15 @@ extension WineDetailViewController: ToolCollectionCellDelegate {
   }
 }
 
-// MARK: VinchySimpleConiniousCaruselCollectionCellDelegate
-
-extension WineDetailViewController: VinchySimpleConiniousCaruselCollectionCellDelegate {
-  func didTapCompilationCell(wines _: [ShortWine], title _: String?) {}
-
-  func didTapBottleCell(wineID: Int64) {
-    interactor?.didTapSimilarWine(wineID: wineID)
-  }
-}
-
 // MARK: WineDetailViewControllerProtocol
+
+//extension WineDetailViewController: VinchySimpleConiniousCaruselCollectionCellDelegate {
+//  func didTapCompilationCell(wines _: [ShortWine], title _: String?) {}
+//
+//  func didTapBottleCell(wineID: Int64) {
+//    interactor?.didTapSimilarWine(wineID: wineID)
+//  }
+//}
 
 extension WineDetailViewController: WineDetailViewControllerProtocol {
 
