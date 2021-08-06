@@ -244,7 +244,6 @@
 		CA4858512519446800EDA4CE /* ForceUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4858502519446800EDA4CE /* ForceUpdate.swift */; };
 		CA490141252F7EDC00066A98 /* VinchyViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA490140252F7EDC00066A98 /* VinchyViewControllerViewModel.swift */; };
 		CA49A219251E8CFE00FBE269 /* TitleWithSubtitleInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49A218251E8CFE00FBE269 /* TitleWithSubtitleInfoCollectionViewCell.swift */; };
-		CA49A25B251F2C4600FBE269 /* BigAdCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49A25A251F2C4600FBE269 /* BigAdCollectionCell.swift */; };
 		CA4AED9B24CE204900035922 /* TopSecret.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA4AED9A24CE204900035922 /* TopSecret.plist */; };
 		CA4D4FE42548A93500A6FD0B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA4D4FE32548A93500A6FD0B /* GoogleService-Info.plist */; };
 		CA4D51042549F62500A6FD0B /* WriteNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D51032549F62500A6FD0B /* WriteNoteViewController.swift */; };
@@ -616,7 +615,6 @@
 		CA4858502519446800EDA4CE /* ForceUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceUpdate.swift; sourceTree = "<group>"; };
 		CA490140252F7EDC00066A98 /* VinchyViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyViewControllerViewModel.swift; sourceTree = "<group>"; };
 		CA49A218251E8CFE00FBE269 /* TitleWithSubtitleInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleWithSubtitleInfoCollectionViewCell.swift; sourceTree = "<group>"; };
-		CA49A25A251F2C4600FBE269 /* BigAdCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BigAdCollectionCell.swift; sourceTree = "<group>"; };
 		CA4AED9A24CE204900035922 /* TopSecret.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TopSecret.plist; sourceTree = "<group>"; };
 		CA4D4FE32548A93500A6FD0B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CA4D51032549F62500A6FD0B /* WriteNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteNoteViewController.swift; sourceTree = "<group>"; };
@@ -2204,7 +2202,6 @@
 				CED7A23925D1B31C00BB25FF /* StarRatingControlCollectionCell .swift */,
 				CA99E65624F6EDDD00C36BEE /* ButtonCollectionCell.swift */,
 				CA49A218251E8CFE00FBE269 /* TitleWithSubtitleInfoCollectionViewCell.swift */,
-				CA49A25A251F2C4600FBE269 /* BigAdCollectionCell.swift */,
 				CA3C97DE25723C570036F7D9 /* TitleCopyableCell.swift */,
 				449D63B125E1054700CBBD1D /* RatingsAndReviewsCell.swift */,
 				449D63B525E10D5100CBBD1D /* TapToRateCell.swift */,
@@ -3017,7 +3014,6 @@
 				CAA9DC67250EA05F00F996A8 /* AdvancedSearchCaruselCollectionCell.swift in Sources */,
 				8A916027268CE66C00240B18 /* AreYouInStoreViewController.swift in Sources */,
 				CEF7AE672602D5220098FB9D /* ShowcaseRouter.swift in Sources */,
-				CA49A25B251F2C4600FBE269 /* BigAdCollectionCell.swift in Sources */,
 				44EFDB3925E177220076ED6D /* ReviewsAssembly.swift in Sources */,
 				CA8198C0253CB0490056A1C6 /* ErrorDescription.swift in Sources */,
 				CA7B835824EED1B100991F24 /* VinchyViewController.swift in Sources */,
