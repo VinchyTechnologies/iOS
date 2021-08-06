@@ -250,8 +250,14 @@ final class WineDetailViewController: CollectionViewController {
   private var sections: [SectionModel] {
     viewModel.sections.compactMap({ section in
       switch section {
-      case .gallery(let content):
-        return nil
+      case .gallery(let itemID, let content):
+        return SectionModel(dataID: section.dataID) {
+          GalleryView.itemModel(
+            dataID: itemID,
+            content: content,
+            style: .init())
+            .flowLayoutItemSize(.init(width: view.frame.width, height: GalleryView.height))
+        }
 
       case .title(let itemID, let content):
         let width: CGFloat = view.frame.width - 48
@@ -288,6 +294,7 @@ final class WineDetailViewController: CollectionViewController {
 
       case .text(_):
         return nil
+
       case .tool(_):
         return nil
       case .list(_):

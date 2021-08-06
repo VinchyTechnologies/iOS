@@ -37,7 +37,7 @@ final class WhereToBuyCell: UICollectionViewCell, Reusable {
     titleLabel.numberOfLines = 0
     subtitleLabel.numberOfLines = 0
 
-    let stackView = UIStackView(arrangedSubviews: [subtitleLabel, titleLabel])
+    let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
     stackView.axis = .vertical
     stackView.spacing = 2
 

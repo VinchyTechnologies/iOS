@@ -47,7 +47,7 @@ final class WineDetailPresenter {
     }
 
     if !imageURLs.isEmpty {
-      return [.gallery([.init(urls: imageURLs)])]
+      return [.gallery(itemID: .gallery, .init(urls: imageURLs))]
     } else {
       return []
     }
