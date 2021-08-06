@@ -252,12 +252,40 @@ final class WineDetailViewController: CollectionViewController {
       switch section {
       case .gallery(let content):
         return nil
-      case .title(_):
-        return nil
+
+      case .title(let itemID, let content):
+        let width: CGFloat = view.frame.width - 48
+        let height: CGFloat = Label.height(
+          for: content,
+          width: width,
+          style: .style(with: .lagerTitle))
+        return SectionModel(dataID: section.dataID) {
+          Label.itemModel(
+            dataID: itemID,
+            content: content,
+            style: .style(with: .lagerTitle))
+        }
+        .flowLayoutItemSize(.init(width: width, height: height))
+        .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 8, right: 24))
+
       case .rate(_):
         return nil
-      case .winery(_):
-        return nil
+
+      case .winery(let itemID, let content):
+        let width: CGFloat = view.frame.width - 48
+        let height: CGFloat = Label.height(
+          for: content,
+          width: width,
+          style: .style(with: .subtitle))
+        return SectionModel(dataID: section.dataID) {
+          Label.itemModel(
+            dataID: itemID,
+            content: content,
+            style: .style(with: .subtitle))
+        }
+        .flowLayoutItemSize(.init(width: width, height: height))
+        .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 8, right: 24))
+
       case .text(_):
         return nil
       case .tool(_):

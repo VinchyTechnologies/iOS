@@ -10,12 +10,12 @@ import CommonUI
 
 struct WineDetailViewModel {
 
-  enum ItemID: String {
-    case similarWines, ad
+  enum ItemID: Hashable {
+    case similarWines, ad, titleItem, similarWinesTitle, servingTipsTitle, whereToBuyTitle, winery
   }
 
-  enum SectionID {
-    case similarWines, ad
+  enum SectionID: Hashable {
+    case similarWines, ad, title(ItemID), winery
   }
 
   enum ShortInfoModel {
@@ -25,9 +25,9 @@ struct WineDetailViewModel {
 
   enum Section {
     case gallery([GalleryCellViewModel])
-    case title([TitleCopyableCellViewModel])
+    case title(itemID: ItemID, Label.Content) // done
     case rate([StarRatingControlCollectionViewCellViewModel])
-    case winery([TextCollectionCellViewModel])
+    case winery(itemID: ItemID, Label.Content)
     case text([TextCollectionCellViewModel])
     case tool([ToolCollectionCellViewModel])
     case list([TitleWithSubtitleInfoCollectionViewCellViewModel])
@@ -36,7 +36,7 @@ struct WineDetailViewModel {
     case reviews([ReviewCellViewModel])
     case servingTips([ShortInfoModel])
     case button([ButtonCollectionCellViewModel])
-    case ad(itemID: ItemID) // TODO: - Not Any
+    case ad(itemID: ItemID) // done
     case similarWines(itemID: ItemID, content: BottlesCollectionView.Content) // done
     case expandCollapse([ExpandCollapseCellViewModel])
     case whereToBuy([WhereToBuyCellViewModel])
@@ -47,12 +47,16 @@ struct WineDetailViewModel {
       switch self {
       case .gallery(_):
         return .similarWines
-      case .title(_):
-        return .similarWines
+
+      case .title(let itemID, _):
+        return .title(itemID)
+
       case .rate(_):
         return .similarWines
-      case .winery(_):
-        return .similarWines
+
+      case .winery:
+        return .winery
+
       case .text(_):
         return .similarWines
       case .tool(_):

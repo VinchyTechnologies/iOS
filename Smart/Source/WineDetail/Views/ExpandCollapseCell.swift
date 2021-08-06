@@ -41,7 +41,7 @@ final class ExpandCollapseCell: UICollectionViewCell, Reusable {
     contentView.addSubview(titleLabel)
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      titleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: -(4 + 20)),
+      titleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: -4 - 20),
       titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
     ])
 

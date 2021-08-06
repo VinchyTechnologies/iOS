@@ -116,11 +116,12 @@ final class WineDetailPresenter {
 
     if !servingTips.isEmpty {
       return [
-        .title([.init(
-          titleText: NSAttributedString(
-            string: localized("serving_tips").firstLetterUppercased(),
-            font: Font.heavy(20),
-            textColor: .dark))]),
+        .title(itemID: .servingTipsTitle, localized("serving_tips").firstLetterUppercased()),
+//        .title([.init(
+//          titleText: NSAttributedString(
+//            string: localized("serving_tips").firstLetterUppercased(),
+//            font: Font.heavy(20),
+//            textColor: .dark))]),
         .servingTips(servingTips),
       ]
     } else {
@@ -191,23 +192,28 @@ final class WineDetailPresenter {
 
     sections += buildCaruselImages(wine: wine)
 
+
+    /// Winery
+
     if let wineryTitle = wine.winery?.title {
       sections += [
-        .winery([
-          .init(titleText: NSAttributedString(
-            string: wineryTitle,
-            font: Font.medium(18),
-            textColor: .blueGray)),
-        ]),
+        .winery(
+          itemID: .winery, wineryTitle
+//          .init(titleText: NSAttributedString(
+//            string: wineryTitle,
+//            font: Font.medium(18),
+//            textColor: .blueGray)),
+        ),
       ]
     }
 
     sections += [
-      .title([.init(
-        titleText: NSAttributedString(
-          string: wine.title,
-          font: Font.heavy(20),
-          textColor: .dark))]),
+      .title(itemID: .titleItem, wine.title),
+//      .title([.init(
+//        titleText: NSAttributedString(
+//          string: wine.title,
+//          font: Font.heavy(20),
+//          textColor: .dark))]),
     ]
 
     if isReviewAvailable {
@@ -256,7 +262,7 @@ final class WineDetailPresenter {
     }
 
     /// Ad
-    
+
     if isAdAvailable {
       sections += [.ad(itemID: .ad)]
     }
@@ -265,11 +271,12 @@ final class WineDetailPresenter {
 
     if let stores = stores, !stores.isEmpty {
       sections += [
-        .title([.init(
-          titleText: NSAttributedString(
-            string: localized("where_to_buy").firstLetterUppercased(),
-            font: Font.heavy(20),
-            textColor: .dark))]),
+        .title(itemID: .whereToBuyTitle, localized("where_to_buy").firstLetterUppercased()),
+//        .title([.init(
+//          titleText: NSAttributedString(
+//            string: localized("where_to_buy").firstLetterUppercased(),
+//            font: Font.heavy(20),
+//            textColor: .dark))]),
       ]
 
       let storeViewModels: [WhereToBuyCellViewModel] = stores.compactMap { partner in
@@ -280,7 +287,7 @@ final class WineDetailPresenter {
         .whereToBuy(storeViewModels),
       ]
     }
-    
+
     /// Similar wines
 
     if let similarWines = wine.similarWines {
@@ -296,7 +303,10 @@ final class WineDetailPresenter {
             subtitleText: countryNameFromLocaleCode(countryCode: shortWine.winery?.countryCode)))
       }
 
-      sections += [.title([.init(titleText: NSAttributedString(string: localized("similar_wines").firstLetterUppercased(), font: Font.heavy(20), textColor: .dark))])]
+      sections += [
+        .title(itemID: .similarWinesTitle, localized("similar_wines").firstLetterUppercased()),
+//        .title([.init(titleText: NSAttributedString(string: localized("similar_wines").firstLetterUppercased(), font: Font.heavy(20), textColor: .dark))])
+      ]
 
       sections += [.similarWines(itemID: .similarWines, content: wineList)]
     }
