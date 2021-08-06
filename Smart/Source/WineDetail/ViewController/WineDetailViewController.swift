@@ -28,8 +28,7 @@ final class WineDetailViewController: CollectionViewController {
   // MARK: Lifecycle
 
   init() {
-    let layout = UICollectionViewFlowLayout()
-    super.init(layout: layout)
+    super.init(layout: UICollectionViewFlowLayout())
   }
 
   // MARK: Internal
@@ -300,8 +299,6 @@ final class WineDetailViewController: CollectionViewController {
       case .list(_):
         return nil
       case .ratingAndReview(_):
-        return nil
-      case .tapToRate(_):
         return nil
       case .reviews(_):
         return nil

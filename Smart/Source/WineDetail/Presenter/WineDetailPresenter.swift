@@ -254,7 +254,6 @@ final class WineDetailPresenter {
     sections += buildServingTips(wine: wine)
 
     if isReviewAvailable {
-//      sections += [.tapToRate([.init(titleText: "Tap to Rate:", rate: 0)])]
       if let reviews = reviews {
         sections += buildReview(reviews: reviews)
         sections += [.button([.init(buttonText: localized("write_review").firstLetterUppercased())])]

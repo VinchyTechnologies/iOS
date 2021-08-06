@@ -36,7 +36,6 @@
 		447C354225EEAA5700105A35 /* MapRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 447C353725EEAA5700105A35 /* MapRouterProtocol.swift */; };
 		4495625125E2E15A005E79DA /* ReviewDetailRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4495625025E2E15A005E79DA /* ReviewDetailRoutable.swift */; };
 		449D63B225E1054700CBBD1D /* RatingsAndReviewsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449D63B125E1054700CBBD1D /* RatingsAndReviewsCell.swift */; };
-		449D63B625E10D5100CBBD1D /* TapToRateCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449D63B525E10D5100CBBD1D /* TapToRateCell.swift */; };
 		449F81AC25DD023A00585364 /* RootInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449F81AB25DD023A00585364 /* RootInteractor.swift */; };
 		449F81B225DD025900585364 /* RootRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449F81B125DD025900585364 /* RootRouter.swift */; };
 		449F81B625DD027C00585364 /* RootBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 449F81B525DD027C00585364 /* RootBuilder.swift */; };
@@ -414,7 +413,6 @@
 		447C353725EEAA5700105A35 /* MapRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapRouterProtocol.swift; sourceTree = "<group>"; };
 		4495625025E2E15A005E79DA /* ReviewDetailRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDetailRoutable.swift; sourceTree = "<group>"; };
 		449D63B125E1054700CBBD1D /* RatingsAndReviewsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingsAndReviewsCell.swift; sourceTree = "<group>"; };
-		449D63B525E10D5100CBBD1D /* TapToRateCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TapToRateCell.swift; sourceTree = "<group>"; };
 		449F81AB25DD023A00585364 /* RootInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootInteractor.swift; sourceTree = "<group>"; };
 		449F81B125DD025900585364 /* RootRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootRouter.swift; sourceTree = "<group>"; };
 		449F81B525DD027C00585364 /* RootBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RootBuilder.swift; sourceTree = "<group>"; };
@@ -2201,7 +2199,6 @@
 				CA49A218251E8CFE00FBE269 /* TitleWithSubtitleInfoCollectionViewCell.swift */,
 				CA3C97DE25723C570036F7D9 /* TitleCopyableCell.swift */,
 				449D63B125E1054700CBBD1D /* RatingsAndReviewsCell.swift */,
-				449D63B525E10D5100CBBD1D /* TapToRateCell.swift */,
 				440C284625E13F9D009911EE /* WineDetailCollectionView.swift */,
 				8A915C9D26887D9500240B18 /* ExpandCollapseCell.swift */,
 				8A91600B268CC3AE00240B18 /* WhereToBuyCell.swift */,
@@ -3207,7 +3204,6 @@
 				8AF966C82678F194001891B2 /* EditProfileRouterProtocol.swift in Sources */,
 				8A07930C26924DAF000ACA2B /* Document.swift in Sources */,
 				8A0794E126938394000ACA2B /* WineBottleView.swift in Sources */,
-				449D63B625E10D5100CBBD1D /* TapToRateCell.swift in Sources */,
 				CAF514262461C52400667ED0 /* RateAppCell.swift in Sources */,
 				CA4D51042549F62500A6FD0B /* WriteNoteViewController.swift in Sources */,
 			);

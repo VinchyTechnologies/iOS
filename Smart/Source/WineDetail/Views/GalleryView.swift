@@ -46,7 +46,6 @@ final class GalleryView: UIView, EpoxyableView {
 
   typealias Content = GalleryCellViewModel
 
-
   static var height: CGFloat {
     300
   }

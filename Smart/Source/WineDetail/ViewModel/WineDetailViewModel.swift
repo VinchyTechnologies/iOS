@@ -32,7 +32,6 @@ struct WineDetailViewModel {
     case tool([ToolCollectionCellViewModel])
     case list([TitleWithSubtitleInfoCollectionViewCellViewModel])
     case ratingAndReview([RatingsAndReviewsCellViewModel])
-    case tapToRate([TapToRateCellViewModel])
     case reviews([ReviewCellViewModel])
     case servingTips([ShortInfoModel])
     case button([ButtonCollectionCellViewModel])
@@ -65,8 +64,7 @@ struct WineDetailViewModel {
         return .similarWines
       case .ratingAndReview(_):
         return .similarWines
-      case .tapToRate(_):
-        return .similarWines
+      
       case .reviews(_):
         return .similarWines
       case .servingTips(_):
