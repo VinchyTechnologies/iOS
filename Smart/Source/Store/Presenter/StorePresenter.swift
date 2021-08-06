@@ -65,7 +65,7 @@ extension StorePresenter: StorePresenterProtocol {
     }
 
     if !data.recommendedWines.isEmpty {
-      sections += [.title("Vinchy recommends")] // TODO: - localize
+      sections += [.title(localized("vinchy_recommends").firstLetterUppercased())]
 
       let winesContent = data.recommendedWines.map { wine in
         WineBottleView.Content(
@@ -96,7 +96,7 @@ extension StorePresenter: StorePresenterProtocol {
         assortmentsContent.append(.horizontalWine(wineContent))
       }
 
-      sections += [.assortiment(header: ["Весь ассортмент"], content: assortmentsContent)]
+      sections += [.assortiment(header: [localized("all").firstLetterUppercased()], content: assortmentsContent)]
 
       if needLoadMore {
         sections += [.loading(itemID: .loadingItem)]

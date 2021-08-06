@@ -12,11 +12,13 @@ import UIKit
 // MARK: - WhereToBuyCellViewModel
 
 struct WhereToBuyCellViewModel: ViewModelProtocol {
+  let affilatedId: Int
   fileprivate let imageURL: String?
   fileprivate let titleText: String?
   fileprivate let subtitleText: String?
 
-  init(imageURL: String?, titleText: String?, subtitleText: String?) {
+  init(affilatedId: Int, imageURL: String?, titleText: String?, subtitleText: String?) {
+    self.affilatedId = affilatedId
     self.imageURL = imageURL
     self.titleText = titleText
     self.subtitleText = subtitleText
@@ -51,6 +53,7 @@ final class WhereToBuyCell: UICollectionViewCell, Reusable {
       hStackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 15),
       hStackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -15),
       hStackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -7),
+      hStackView.heightAnchor.constraint(greaterThanOrEqualToConstant: 50),
     ])
   }
 
@@ -89,7 +92,12 @@ extension WhereToBuyCell: Decoratable {
 
   func decorate(model: ViewModel) {
 
-    imageView.loadImage(url: model.imageURL?.toURL)
+    if model.imageURL == nil {
+      imageView.isHidden = true
+    } else {
+      imageView.isHidden = false
+      imageView.loadImage(url: model.imageURL?.toURL)
+    }
 
     titleLabel.attributedText = NSAttributedString(
       string: model.titleText ?? "",

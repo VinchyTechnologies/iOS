@@ -62,6 +62,7 @@ final class WineDetailInteractor {
 
   private var wine: Wine?
   private var reviews: [Review]?
+  private var stores: [PartnerInfo]?
   private var actionAfterAuthorization: ActionAfterLoginOrRegistration = .none
 
   private func loadWineInfo() {
@@ -72,14 +73,16 @@ final class WineDetailInteractor {
         result in
         guard let self = self else { return }
         switch result {
-        case .success(let responce):
-          self.wine = responce
+        case .success(let response):
+          self.wine = response
+
         case .failure(let error):
           self.presenter.showNetworkErrorAlert(error: error)
         }
         self.dispatchGroup.leave()
       }
     }
+
     if reviews == nil {
       dispatchGroup.enter()
       Reviews.shared.getReviews(wineID: input.wineID, accountID: nil, offset: 0, limit: 5) { [weak self] result in
@@ -87,6 +90,7 @@ final class WineDetailInteractor {
         switch result {
         case .success(let response):
           self.reviews = response
+
         case .failure:
           self.reviews = nil
         }
@@ -94,9 +98,24 @@ final class WineDetailInteractor {
       }
     }
 
+    if stores == nil {
+      dispatchGroup.enter()
+      Partners.shared.getPartnersByWine(wineID: input.wineID, latitude: 55.755786, longitude: 37.617633, limit: 5, offset: 0) { [weak self] result in // TODO: - user location
+        guard let self = self else { return }
+        switch result {
+        case .success(let response):
+          self.stores = response
+
+        case .failure:
+          break
+        }
+        self.dispatchGroup.leave()
+      }
+    }
+
     dispatchGroup.notify(queue: .main) {
       if let wine = self.wine {
-        self.presenter.update(wine: wine, reviews: self.reviews, isLiked: self.isFavourite(wine: wine), isDisliked: self.isDisliked(wine: wine), rate: self.rate ?? 0, currency: UserDefaultsConfig.currency, isGeneralInfoCollapsed: self.isGeneralInfoCollapsed)
+        self.presenter.update(wine: wine, reviews: self.reviews, isLiked: self.isFavourite(wine: wine), isDisliked: self.isDisliked(wine: wine), rate: self.rate ?? 0, currency: UserDefaultsConfig.currency, stores: self.stores, isGeneralInfoCollapsed: self.isGeneralInfoCollapsed)
         self.dispatchWorkItemHud.cancel()
         DispatchQueue.main.async {
           self.presenter.stopLoading()
@@ -161,6 +180,10 @@ final class WineDetailInteractor {
 // MARK: WineDetailInteractorProtocol
 
 extension WineDetailInteractor: WineDetailInteractorProtocol {
+
+  func didSelectStore(affilatedId: Int) {
+    router.presentStore(affilatedId: affilatedId)
+  }
 
   func didShowTutorial() {
     UserDefaultsConfig.userHasSeenTutorialForReviewButton = true

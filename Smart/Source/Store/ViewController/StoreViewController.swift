@@ -35,6 +35,15 @@ final class StoreViewController: CollectionViewController {
 
     navigationItem.largeTitleDisplayMode = .never
 
+    if isModal {
+      let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
+      navigationItem.leftBarButtonItem = UIBarButtonItem(
+        image: UIImage(systemName: "chevron.down", withConfiguration: imageConfig),
+        style: .plain,
+        target: self,
+        action: #selector(didTapCloseBarButtonItem(_:)))
+    }
+
     collectionView.delaysContentTouches = false
     collectionView.scrollDelegate = self
 
@@ -172,6 +181,11 @@ final class StoreViewController: CollectionViewController {
 
   private func hideErrorView() {
     collectionView.backgroundView = nil
+  }
+
+  @objc
+  private func didTapCloseBarButtonItem(_: UIBarButtonItem) {
+    dismiss(animated: true, completion: nil)
   }
 }
 

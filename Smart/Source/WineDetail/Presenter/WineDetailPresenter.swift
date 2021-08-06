@@ -186,7 +186,7 @@ final class WineDetailPresenter {
     return [.rate([rateViewModel])]
   }
 
-  private func generateAllSections(wine: Wine, reviews: [Review]?, isLiked: Bool, isDisliked: Bool, rate: Double, currency: String, isGeneralInfoCollapsed: Bool) -> [WineDetailViewModel.Section] {
+  private func generateAllSections(wine: Wine, reviews: [Review]?, isLiked: Bool, isDisliked: Bool, rate: Double, currency: String, stores: [PartnerInfo]?, isGeneralInfoCollapsed: Bool) -> [WineDetailViewModel.Section] {
     var sections: [WineDetailViewModel.Section] = []
 
     sections += buildCaruselImages(wine: wine)
@@ -261,24 +261,23 @@ final class WineDetailPresenter {
 
     /// where to buy
 
-//    sections += [
-//
-//      .title([.init(
-//        titleText: NSAttributedString(
-//          string: localized("Where to buy?").firstLetterUppercased(),
-//          font: Font.heavy(20),
-//          textColor: .dark))]),
-//    ]
-//
-//    sections += [
-//      .whereToBuy([
-//        .init(imageURL: "https://buninave.ru/wp-content/uploads/2018/05/logo_5ka.png", titleText: "Пятерочка", subtitleText: nil),
-//        .init(imageURL: "https://buninave.ru/wp-content/uploads/2018/05/logo_5ka.png", titleText: "Пятерочка", subtitleText: nil),
-//        .init(imageURL: "https://buninave.ru/wp-content/uploads/2018/05/logo_5ka.png", titleText: "Пятерочка", subtitleText: nil),
-//        .init(imageURL: "https://buninave.ru/wp-content/uploads/2018/05/logo_5ka.png", titleText: "Пятерочка", subtitleText: nil),
-//        .init(imageURL: "https://buninave.ru/wp-content/uploads/2018/05/logo_5ka.png", titleText: "Пятерочка", subtitleText: nil),
-//      ]),
-//    ]
+    if let stores = stores, !stores.isEmpty {
+      sections += [
+        .title([.init(
+          titleText: NSAttributedString(
+            string: localized("where_to_buy").firstLetterUppercased(),
+            font: Font.heavy(20),
+            textColor: .dark))]),
+      ]
+
+      let storeViewModels: [WhereToBuyCellViewModel] = stores.compactMap { partner in
+        .init(affilatedId: partner.affiliatedStoreId, imageURL: partner.logoURL, titleText: partner.title, subtitleText: nil)
+      }
+
+      sections += [
+        .whereToBuy(storeViewModels),
+      ]
+    }
 
     var wineList: [CollectionItem] = []
 
@@ -313,7 +312,10 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
   }
 
   func showReviewButtonTutorial() {
-    viewController?.showReviewButtonTutorial(viewModel: .init(title: "Чаще оставляйте отзывы!", content: "Только с помощью Ваших отзывов и оценок мы сможем подобрать вино специально для Вас"))
+    viewController?.showReviewButtonTutorial(
+      viewModel: .init(
+        title: localized("leave_review_more_often").firstLetterUppercased(),
+        content: localized("hint_to_review_button").firstLetterUppercased()))
   }
 
   func expandOrCollapseGeneralInfo(wine: Wine, isGeneralInfoCollapsed: Bool) {
@@ -396,9 +398,9 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
     viewController?.stopLoadingAnimation()
   }
 
-  func update(wine: Wine, reviews: [Review]?, isLiked: Bool, isDisliked: Bool, rate: Double, currency: String, isGeneralInfoCollapsed: Bool) {
+  func update(wine: Wine, reviews: [Review]?, isLiked: Bool, isDisliked: Bool, rate: Double, currency: String, stores: [PartnerInfo]?, isGeneralInfoCollapsed: Bool) {
 
-    let sections = generateAllSections(wine: wine, reviews: reviews, isLiked: isLiked, isDisliked: isDisliked, rate: rate, currency: currency, isGeneralInfoCollapsed: isGeneralInfoCollapsed)
+    let sections = generateAllSections(wine: wine, reviews: reviews, isLiked: isLiked, isDisliked: isDisliked, rate: rate, currency: currency, stores: stores, isGeneralInfoCollapsed: isGeneralInfoCollapsed)
 
     let viewModel = WineDetailViewModel(navigationTitle: wine.title, sections: sections, isGeneralInfoCollapsed: isGeneralInfoCollapsed)
 

@@ -511,8 +511,11 @@ extension WineDetailViewController: UICollectionViewDelegate {
     case .expandCollapse:
       interactor?.didTapExpandOrCollapseGeneralInfo()
 
-    case .whereToBuy:
-      break
+    case .whereToBuy(let model):
+      guard let affilatedId = model[safe: indexPath.row]?.affilatedId else {
+        return
+      }
+      interactor?.didSelectStore(affilatedId: affilatedId)
 
     case .reviews(let model):
       interactor?.didTapReview(reviewID: model[indexPath.row].id)
