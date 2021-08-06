@@ -279,17 +279,22 @@ final class WineDetailPresenter {
       ]
     }
 
-    var wineList: [CollectionItem] = []
-
     if let similarWines = wine.similarWines {
+
+      var wineList: [WineBottleView.Content] = []
+
       similarWines.forEach { shortWine in
-        wineList.append(.wine(wine: shortWine))
+        wineList.append(
+          .init(
+            wineID: shortWine.id,
+            imageURL: shortWine.mainImageUrl?.toURL,
+            titleText: shortWine.title,
+            subtitleText: countryNameFromLocaleCode(countryCode: shortWine.winery?.countryCode)))
       }
-      let collections: [Collection] = [Collection(wineList: wineList)]
 
       sections += [.title([.init(titleText: NSAttributedString(string: localized("similar_wines").firstLetterUppercased(), font: Font.heavy(20), textColor: .dark))])]
 
-      sections += [.similarWines([VinchySimpleConiniousCaruselCollectionCellViewModel(type: .bottles, collections: collections)])]
+      sections += [.similarWines(itemID: .similarWines, content: wineList)]
     }
 
     return sections

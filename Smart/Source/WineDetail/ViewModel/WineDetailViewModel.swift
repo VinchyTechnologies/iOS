@@ -9,6 +9,15 @@
 import CommonUI
 
 struct WineDetailViewModel {
+
+  enum ItemID: String {
+    case similarWines
+  }
+
+  enum SectionID {
+    case similarWines
+  }
+
   enum ShortInfoModel {
     case titleTextAndImage(imageName: String, titleText: String?)
     case titleTextAndSubtitleText(titleText: String?, subtitleText: String?)
@@ -28,9 +37,50 @@ struct WineDetailViewModel {
     case servingTips([ShortInfoModel])
     case button([ButtonCollectionCellViewModel])
     case ad([Any]) // TODO: - Not Any
-    case similarWines([VinchySimpleConiniousCaruselCollectionCellViewModel])
+    case similarWines(itemID: ItemID, content: BottlesCollectionView.Content) // done
     case expandCollapse([ExpandCollapseCellViewModel])
     case whereToBuy([WhereToBuyCellViewModel])
+
+    // MARK: Internal
+
+    var dataID: SectionID {
+      switch self {
+      case .gallery(_):
+        return .similarWines
+      case .title(_):
+        return .similarWines
+      case .rate(_):
+        return .similarWines
+      case .winery(_):
+        return .similarWines
+      case .text(_):
+        return .similarWines
+      case .tool(_):
+        return .similarWines
+      case .list(_):
+        return .similarWines
+      case .ratingAndReview(_):
+        return .similarWines
+      case .tapToRate(_):
+        return .similarWines
+      case .reviews(_):
+        return .similarWines
+      case .servingTips(_):
+        return .similarWines
+      case .button(_):
+        return .similarWines
+      case .ad(_):
+        return .similarWines
+
+      case .similarWines:
+        return .similarWines
+
+      case .expandCollapse(_):
+        return .similarWines
+      case .whereToBuy(_):
+        return .similarWines
+      }
+    }
   }
 
   let navigationTitle: String?
