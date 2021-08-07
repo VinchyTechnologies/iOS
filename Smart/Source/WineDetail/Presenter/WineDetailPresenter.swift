@@ -192,7 +192,6 @@ final class WineDetailPresenter {
 
     sections += buildCaruselImages(wine: wine)
 
-
     /// Winery
 
     if let wineryTitle = wine.winery?.title {
@@ -209,11 +208,6 @@ final class WineDetailPresenter {
 
     sections += [
       .title(itemID: .titleItem, wine.title),
-//      .title([.init(
-//        titleText: NSAttributedString(
-//          string: wine.title,
-//          font: Font.heavy(20),
-//          textColor: .dark))]),
     ]
 
     if isReviewAvailable {
@@ -225,10 +219,12 @@ final class WineDetailPresenter {
     }
 
     sections += [
-      .tool([.init(
-        price: formatCurrencyAmount(
-          wine.price ?? 0, currency: currency),
-        isLiked: isLiked)]),
+      .tool(
+        itemID: .tool,
+        content: .init(
+          price: formatCurrencyAmount(
+            wine.price ?? 0, currency: currency),
+          isLiked: isLiked)),
     ]
 
     if isDescriptionInWineDetailEnabled {
@@ -271,11 +267,6 @@ final class WineDetailPresenter {
     if let stores = stores, !stores.isEmpty {
       sections += [
         .title(itemID: .whereToBuyTitle, localized("where_to_buy").firstLetterUppercased()),
-//        .title([.init(
-//          titleText: NSAttributedString(
-//            string: localized("where_to_buy").firstLetterUppercased(),
-//            font: Font.heavy(20),
-//            textColor: .dark))]),
       ]
 
       let storeViewModels: [WhereToBuyCellViewModel] = stores.compactMap { partner in
@@ -304,7 +295,6 @@ final class WineDetailPresenter {
 
       sections += [
         .title(itemID: .similarWinesTitle, localized("similar_wines").firstLetterUppercased()),
-//        .title([.init(titleText: NSAttributedString(string: localized("similar_wines").firstLetterUppercased(), font: Font.heavy(20), textColor: .dark))])
       ]
 
       sections += [.similarWines(itemID: .similarWines, content: wineList)]

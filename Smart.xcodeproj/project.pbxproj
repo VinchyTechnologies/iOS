@@ -276,7 +276,7 @@
 		CA8CD67C25096EE100FDB7AF /* GADTTemplateView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8CD67B25096EE100FDB7AF /* GADTTemplateView.m */; };
 		CA8CD68225097AD500FDB7AF /* GADTMediumTemplateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA8CD67F25097AD500FDB7AF /* GADTMediumTemplateView.xib */; };
 		CA8CD68325097AD500FDB7AF /* GADTMediumTemplateView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8CD68025097AD500FDB7AF /* GADTMediumTemplateView.m */; };
-		CA99E65124F58A6000C36BEE /* ToolCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA99E65024F58A6000C36BEE /* ToolCollectionCell.swift */; };
+		CA99E65124F58A6000C36BEE /* ToolView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA99E65024F58A6000C36BEE /* ToolView.swift */; };
 		CA99E65324F59CAA00C36BEE /* ShortInfoCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA99E65224F59CAA00C36BEE /* ShortInfoCollectionCell.swift */; };
 		CA99E65724F6EDDD00C36BEE /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA99E65624F6EDDD00C36BEE /* ButtonView.swift */; };
 		CAA060D2252BC05C002C15B5 /* DeveloperFeatureToggles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA060D1252BC05C002C15B5 /* DeveloperFeatureToggles.swift */; };
@@ -655,7 +655,7 @@
 		CA8CD67F25097AD500FDB7AF /* GADTMediumTemplateView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GADTMediumTemplateView.xib; sourceTree = "<group>"; };
 		CA8CD68025097AD500FDB7AF /* GADTMediumTemplateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADTMediumTemplateView.m; sourceTree = "<group>"; };
 		CA8CD68125097AD500FDB7AF /* GADTMediumTemplateView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GADTMediumTemplateView.h; sourceTree = "<group>"; };
-		CA99E65024F58A6000C36BEE /* ToolCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolCollectionCell.swift; sourceTree = "<group>"; };
+		CA99E65024F58A6000C36BEE /* ToolView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToolView.swift; sourceTree = "<group>"; };
 		CA99E65224F59CAA00C36BEE /* ShortInfoCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortInfoCollectionCell.swift; sourceTree = "<group>"; };
 		CA99E65624F6EDDD00C36BEE /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		CAA060D1252BC05C002C15B5 /* DeveloperFeatureToggles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperFeatureToggles.swift; sourceTree = "<group>"; };
@@ -2190,7 +2190,7 @@
 			isa = PBXGroup;
 			children = (
 				CA7B838B24F4547B00991F24 /* GalleryView.swift */,
-				CA99E65024F58A6000C36BEE /* ToolCollectionCell.swift */,
+				CA99E65024F58A6000C36BEE /* ToolView.swift */,
 				CA99E65224F59CAA00C36BEE /* ShortInfoCollectionCell.swift */,
 				CED7A23925D1B31C00BB25FF /* StarRatingControlCollectionCell .swift */,
 				CA99E65624F6EDDD00C36BEE /* ButtonView.swift */,
@@ -3116,7 +3116,7 @@
 				8A079301269239C1000ACA2B /* DocumentsInput.swift in Sources */,
 				CA3C981F257260BC0036F7D9 /* StatusAlertable.swift in Sources */,
 				CA3837CC246FCF3C00AD5FCC /* TabBarController.swift in Sources */,
-				CA99E65124F58A6000C36BEE /* ToolCollectionCell.swift in Sources */,
+				CA99E65124F58A6000C36BEE /* ToolView.swift in Sources */,
 				8A916025268CE66C00240B18 /* AreYouInStorePresenter.swift in Sources */,
 				8A07991426998363000ACA2B /* HorizontalWineView.swift in Sources */,
 				447C353C25EEAA5700105A35 /* MapPresenterProtocol.swift in Sources */,

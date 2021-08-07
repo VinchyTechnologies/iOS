@@ -11,11 +11,11 @@ import CommonUI
 struct WineDetailViewModel {
 
   enum ItemID: Hashable {
-    case similarWines, ad, titleItem, similarWinesTitle, servingTipsTitle, whereToBuyTitle, winery, gallery, writeReviewButton
+    case similarWines, ad, titleItem, similarWinesTitle, servingTipsTitle, whereToBuyTitle, winery, gallery, writeReviewButton, tool
   }
 
   enum SectionID: Hashable {
-    case similarWines, ad, title(ItemID), winery, gallery, button(ItemID)
+    case similarWines, ad, title(ItemID), winery, gallery, button(ItemID), tool
   }
 
   enum ShortInfoModel {
@@ -29,12 +29,12 @@ struct WineDetailViewModel {
     case rate([StarRatingControlCollectionViewCellViewModel])
     case winery(itemID: ItemID, Label.Content) // done
     case text([TextCollectionCellViewModel])
-    case tool([ToolCollectionCellViewModel])
+    case tool(itemID: ItemID, content: ToolView.Content) // done
     case list([TitleWithSubtitleInfoCollectionViewCellViewModel])
     case ratingAndReview([RatingsAndReviewsCellViewModel])
     case reviews([ReviewCellViewModel])
     case servingTips([ShortInfoModel])
-    case button(itemID: ItemID, content: ButtonView.Content)
+    case button(itemID: ItemID, content: ButtonView.Content) // done
     case ad(itemID: ItemID) // done
     case similarWines(itemID: ItemID, content: BottlesCollectionView.Content) // done
     case expandCollapse([ExpandCollapseCellViewModel])
@@ -58,8 +58,10 @@ struct WineDetailViewModel {
 
       case .text(_):
         return .similarWines
-      case .tool(_):
-        return .similarWines
+        
+      case .tool:
+        return .tool
+
       case .list(_):
         return .similarWines
       case .ratingAndReview(_):

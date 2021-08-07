@@ -294,8 +294,20 @@ final class WineDetailViewController: CollectionViewController {
       case .text(_):
         return nil
 
-      case .tool(_):
-        return nil
+      case .tool(let itemID, let content):
+        let width: CGFloat = view.frame.width - 48
+        return SectionModel(dataID: section.dataID) {
+          ToolView.itemModel(
+            dataID: itemID,
+            content: content,
+            style: .init())
+            .setBehaviors { [weak self] context in
+              context.view.delegate = self
+            }
+        }
+        .flowLayoutItemSize(.init(width: width, height: ToolView.height))
+        .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 16, right: 24))
+
       case .list(_):
         return nil
       case .ratingAndReview(_):
