@@ -333,7 +333,7 @@
 		CE8FF83925FADABF004D4F37 /* ShowcaseInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FF83825FADABF004D4F37 /* ShowcaseInteractorProtocol.swift */; };
 		CE8FF84525FADB84004D4F37 /* ShowcaseViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8FF84425FADB84004D4F37 /* ShowcaseViewControllerProtocol.swift */; };
 		CEB0A6222609442B00B07B87 /* ShowcaseRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEB0A6212609442B00B07B87 /* ShowcaseRouterProtocol.swift */; };
-		CED7A23A25D1B31C00BB25FF /* StarRatingControlCollectionCell .swift in Sources */ = {isa = PBXBuildFile; fileRef = CED7A23925D1B31C00BB25FF /* StarRatingControlCollectionCell .swift */; };
+		CED7A23A25D1B31C00BB25FF /* StarRatingControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CED7A23925D1B31C00BB25FF /* StarRatingControlView.swift */; };
 		CEF2087C25E8297900C413EA /* CurrencyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF2087B25E8297900C413EA /* CurrencyCell.swift */; };
 		CEF7AE672602D5220098FB9D /* ShowcaseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEF7AE662602D5210098FB9D /* ShowcaseRouter.swift */; };
 		E6736DD35DA4517E16454315 /* Pods_Smart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A58854690F88929379F0E016 /* Pods_Smart.framework */; };
@@ -716,7 +716,7 @@
 		CE8FF83825FADABF004D4F37 /* ShowcaseInteractorProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseInteractorProtocol.swift; sourceTree = "<group>"; };
 		CE8FF84425FADB84004D4F37 /* ShowcaseViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseViewControllerProtocol.swift; sourceTree = "<group>"; };
 		CEB0A6212609442B00B07B87 /* ShowcaseRouterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseRouterProtocol.swift; sourceTree = "<group>"; };
-		CED7A23925D1B31C00BB25FF /* StarRatingControlCollectionCell .swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "StarRatingControlCollectionCell .swift"; sourceTree = "<group>"; };
+		CED7A23925D1B31C00BB25FF /* StarRatingControlView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarRatingControlView.swift; sourceTree = "<group>"; };
 		CEF2087B25E8297900C413EA /* CurrencyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrencyCell.swift; sourceTree = "<group>"; };
 		CEF7AE662602D5210098FB9D /* ShowcaseRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseRouter.swift; sourceTree = "<group>"; };
 		EA78FE8971307D6D1C5D8B17 /* Pods_SmartTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_SmartTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -2192,7 +2192,7 @@
 				CA7B838B24F4547B00991F24 /* GalleryView.swift */,
 				CA99E65024F58A6000C36BEE /* ToolView.swift */,
 				CA99E65224F59CAA00C36BEE /* ShortInfoCollectionCell.swift */,
-				CED7A23925D1B31C00BB25FF /* StarRatingControlCollectionCell .swift */,
+				CED7A23925D1B31C00BB25FF /* StarRatingControlView.swift */,
 				CA99E65624F6EDDD00C36BEE /* ButtonView.swift */,
 				CA49A218251E8CFE00FBE269 /* TitleWithSubtitleInfoCollectionViewCell.swift */,
 				449D63B125E1054700CBBD1D /* RatingsAndReviewsCell.swift */,
@@ -2923,7 +2923,7 @@
 				8AA5E5132615053D00935B5E /* AboutView.swift in Sources */,
 				CA46DC98252A44180007819E /* SmartFilterCollectionCell.swift in Sources */,
 				CE58DEC325ED70DC00B5BDF9 /* CurrencyAssembly.swift in Sources */,
-				CED7A23A25D1B31C00BB25FF /* StarRatingControlCollectionCell .swift in Sources */,
+				CED7A23A25D1B31C00BB25FF /* StarRatingControlView.swift in Sources */,
 				8A915C9E26887D9500240B18 /* ExpandCollapseCell.swift in Sources */,
 				CA015C1A24C44925008DF01D /* DidnotFindTheWineTableCell.swift in Sources */,
 				44EFDB3C25E177220076ED6D /* ReviewsViewControllerProtocol.swift in Sources */,

@@ -273,8 +273,19 @@ final class WineDetailViewController: CollectionViewController {
         .flowLayoutItemSize(.init(width: width, height: height))
         .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 8, right: 24))
 
-      case .rate(_):
-        return nil
+      case .rate(let itemID, let content):
+        let width: CGFloat = view.frame.width - 48
+        return SectionModel(dataID: section.dataID) {
+          StarRatingControlView.itemModel(
+            dataID: itemID,
+            content: content,
+            style: .init())
+            .setBehaviors { [weak self] context in
+              context.view.delegate = self
+            }
+        }
+        .flowLayoutItemSize(.init(width: width, height: StarRatingControlView.height))
+        .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 16, right: 24))
 
       case .winery(let itemID, let content):
         let width: CGFloat = view.frame.width - 48

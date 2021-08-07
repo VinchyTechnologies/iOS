@@ -184,7 +184,7 @@ final class WineDetailPresenter {
 
   private func buildStarRateControl(rate: Double) -> [WineDetailViewModel.Section] {
     let rateViewModel = StarRatingControlCollectionViewCellViewModel(rate: rate)
-    return [.rate([rateViewModel])]
+    return [.rate(itemID: .rate, content: rateViewModel)]
   }
 
   private func generateAllSections(wine: Wine, reviews: [Review]?, isLiked: Bool, isDisliked: Bool, rate: Double, currency: String, stores: [PartnerInfo]?, isGeneralInfoCollapsed: Bool) -> [WineDetailViewModel.Section] {
