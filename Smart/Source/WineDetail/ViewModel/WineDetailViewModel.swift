@@ -11,11 +11,11 @@ import CommonUI
 struct WineDetailViewModel {
 
   enum ItemID: Hashable {
-    case similarWines, ad, titleItem, similarWinesTitle, servingTipsTitle, whereToBuyTitle, winery, gallery
+    case similarWines, ad, titleItem, similarWinesTitle, servingTipsTitle, whereToBuyTitle, winery, gallery, writeReviewButton
   }
 
   enum SectionID: Hashable {
-    case similarWines, ad, title(ItemID), winery, gallery
+    case similarWines, ad, title(ItemID), winery, gallery, button(ItemID)
   }
 
   enum ShortInfoModel {
@@ -34,7 +34,7 @@ struct WineDetailViewModel {
     case ratingAndReview([RatingsAndReviewsCellViewModel])
     case reviews([ReviewCellViewModel])
     case servingTips([ShortInfoModel])
-    case button([ButtonCollectionCellViewModel])
+    case button(itemID: ItemID, content: ButtonView.Content)
     case ad(itemID: ItemID) // done
     case similarWines(itemID: ItemID, content: BottlesCollectionView.Content) // done
     case expandCollapse([ExpandCollapseCellViewModel])
@@ -64,13 +64,14 @@ struct WineDetailViewModel {
         return .similarWines
       case .ratingAndReview(_):
         return .similarWines
-      
+
       case .reviews(_):
         return .similarWines
       case .servingTips(_):
         return .similarWines
-      case .button(_):
-        return .similarWines
+
+      case .button(let itemID, _):
+        return .button(itemID)
 
       case .ad:
         return .ad

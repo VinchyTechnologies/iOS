@@ -304,8 +304,20 @@ final class WineDetailViewController: CollectionViewController {
         return nil
       case .servingTips(_):
         return nil
-      case .button(_):
-        return nil
+
+      case .button(let itemID, let content):
+        let width: CGFloat = view.frame.width - 48
+        return SectionModel(dataID: section.dataID) {
+          ButtonView.itemModel(
+            dataID: itemID,
+            content: content,
+            style: .init())
+            .setBehaviors { [weak self] context in
+              context.view.delegate = self
+            }
+        }
+        .flowLayoutItemSize(.init(width: width, height: ButtonView.height))
+        .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 16, right: 24))
 
       case .ad(let itemID):
         return SectionModel(dataID: section.dataID) {
@@ -663,13 +675,13 @@ extension WineDetailViewController: ToolCollectionCellDelegate {
 extension WineDetailViewController: WineDetailViewControllerProtocol {
 
   func showReviewButtonTutorial(viewModel: DeliveryTutorialViewModel) {
-    for visibleCell in collectionView.visibleCells {
-      guard
-        let indexPath = collectionView.indexPath(for: visibleCell),
-        let restaurantCell = visibleCell as? ButtonCollectionCell
-      else { continue }
-      showDeliveryTutorialIfCan(at: indexPath, collectionCell: restaurantCell, viewModel: viewModel)
-    }
+//    for visibleCell in collectionView.visibleCells {
+//      guard
+//        let indexPath = collectionView.indexPath(for: visibleCell),
+//        let restaurantCell = visibleCell as? ButtonView
+//      else { continue }
+//      showDeliveryTutorialIfCan(at: indexPath, collectionCell: restaurantCell, viewModel: viewModel)
+//    }
   }
 
   func updateGeneralInfoSectionAndExpandOrCollapseCell(viewModel: WineDetailViewModel) {

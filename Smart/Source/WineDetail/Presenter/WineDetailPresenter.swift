@@ -256,7 +256,7 @@ final class WineDetailPresenter {
     if isReviewAvailable {
       if let reviews = reviews {
         sections += buildReview(reviews: reviews)
-        sections += [.button([.init(buttonText: localized("write_review").firstLetterUppercased())])]
+        sections += [.button(itemID: .writeReviewButton, content: .init(buttonText: localized("write_review").firstLetterUppercased()))]
       }
     }
 
