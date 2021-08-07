@@ -369,8 +369,22 @@ final class WineDetailViewController: CollectionViewController {
 
       case .expandCollapse(_):
         return nil
-      case .whereToBuy(_):
-        return nil
+      case .whereToBuy(let itemID, let rows):
+        let width: CGFloat = view.frame.width
+        return SectionModel(
+          dataID: section.dataID,
+          items: rows.enumerated().compactMap({ index, content in
+            WhereToBuyView.itemModel(
+              dataID: itemID.rawValue + String(index),
+              content: content,
+              style: .init(backgroundColor: index.isMultiple(of: 2) ? .option : .mainBackground))
+              .flowLayoutItemSize(.init(width: width, height: WhereToBuyView.height(width: width, content: content)))
+              .didSelect { [weak self] _ in
+                self?.interactor?.didSelectStore(affilatedId: content.affilatedId)
+              }
+          }))
+          .flowLayoutSectionInset(.zero)
+          .flowLayoutMinimumLineSpacing(0)
       }
     })
   }

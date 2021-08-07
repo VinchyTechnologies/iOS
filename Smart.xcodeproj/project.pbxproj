@@ -132,7 +132,7 @@
 		8A63CCC026754638003B1D4D /* VinchyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; };
 		8A63CCC126754638003B1D4D /* VinchyCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A915C9E26887D9500240B18 /* ExpandCollapseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A915C9D26887D9500240B18 /* ExpandCollapseCell.swift */; };
-		8A91600C268CC3AE00240B18 /* WhereToBuyCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91600B268CC3AE00240B18 /* WhereToBuyCell.swift */; };
+		8A91600C268CC3AE00240B18 /* WhereToBuyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91600B268CC3AE00240B18 /* WhereToBuyView.swift */; };
 		8A916022268CE66C00240B18 /* AreYouInStoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916011268CE66C00240B18 /* AreYouInStoreViewModel.swift */; };
 		8A916023268CE66C00240B18 /* AreYouInStoreInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916013268CE66C00240B18 /* AreYouInStoreInput.swift */; };
 		8A916024268CE66C00240B18 /* AreYouInStoreAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916015268CE66C00240B18 /* AreYouInStoreAssembly.swift */; };
@@ -495,7 +495,7 @@
 		8A313C1526468678009F2165 /* WorkingHoursCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingHoursCollectionCell.swift; sourceTree = "<group>"; };
 		8A446CDE2660123B000A1769 /* RoutingToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingToolBar.swift; sourceTree = "<group>"; };
 		8A915C9D26887D9500240B18 /* ExpandCollapseCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandCollapseCell.swift; sourceTree = "<group>"; };
-		8A91600B268CC3AE00240B18 /* WhereToBuyCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhereToBuyCell.swift; sourceTree = "<group>"; };
+		8A91600B268CC3AE00240B18 /* WhereToBuyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhereToBuyView.swift; sourceTree = "<group>"; };
 		8A916011268CE66C00240B18 /* AreYouInStoreViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreYouInStoreViewModel.swift; sourceTree = "<group>"; };
 		8A916013268CE66C00240B18 /* AreYouInStoreInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreYouInStoreInput.swift; sourceTree = "<group>"; };
 		8A916015268CE66C00240B18 /* AreYouInStoreAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreYouInStoreAssembly.swift; sourceTree = "<group>"; };
@@ -2198,7 +2198,7 @@
 				449D63B125E1054700CBBD1D /* RatingsAndReviewsCell.swift */,
 				440C284625E13F9D009911EE /* WineDetailCollectionView.swift */,
 				8A915C9D26887D9500240B18 /* ExpandCollapseCell.swift */,
-				8A91600B268CC3AE00240B18 /* WhereToBuyCell.swift */,
+				8A91600B268CC3AE00240B18 /* WhereToBuyView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3009,7 +3009,7 @@
 				CA8198C0253CB0490056A1C6 /* ErrorDescription.swift in Sources */,
 				CA7B835824EED1B100991F24 /* VinchyViewController.swift in Sources */,
 				CA4857942517C77E00EDA4CE /* VinchyAssembly.swift in Sources */,
-				8A91600C268CC3AE00240B18 /* WhereToBuyCell.swift in Sources */,
+				8A91600C268CC3AE00240B18 /* WhereToBuyView.swift in Sources */,
 				4437AA6225E3A7CE00F6E838 /* WriteReviewInteractorProtocol.swift in Sources */,
 				8A91611C268E27EB00240B18 /* SearchPresenterProtocol.swift in Sources */,
 				44EFDB3725E177220076ED6D /* ReviewsViewModel.swift in Sources */,

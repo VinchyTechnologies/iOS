@@ -274,7 +274,7 @@ final class WineDetailPresenter {
       }
 
       sections += [
-        .whereToBuy(storeViewModels),
+        .whereToBuy(itemID: .whereToBuy, content: storeViewModels),
       ]
     }
 

@@ -10,12 +10,12 @@ import CommonUI
 
 struct WineDetailViewModel {
 
-  enum ItemID: Hashable {
-    case similarWines, ad, titleItem, similarWinesTitle, servingTipsTitle, whereToBuyTitle, winery, gallery, writeReviewButton, tool, rate
+  enum ItemID: String, Hashable {
+    case similarWines, ad, titleItem, similarWinesTitle, servingTipsTitle, whereToBuyTitle, winery, gallery, writeReviewButton, tool, rate, whereToBuy
   }
 
   enum SectionID: Hashable {
-    case similarWines, ad, title(ItemID), winery, gallery, button(ItemID), tool, rate
+    case similarWines, ad, title(ItemID), winery, gallery, button(ItemID), tool, rate, whereToBuy
   }
 
   enum ShortInfoModel {
@@ -26,7 +26,7 @@ struct WineDetailViewModel {
   enum Section {
     case gallery(itemID: ItemID, GalleryView.Content) // done
     case title(itemID: ItemID, Label.Content) // done
-    case rate(itemID: ItemID, content: StarRatingControlView.Content)
+    case rate(itemID: ItemID, content: StarRatingControlView.Content) // done
     case winery(itemID: ItemID, Label.Content) // done
     case text([TextCollectionCellViewModel])
     case tool(itemID: ItemID, content: ToolView.Content) // done
@@ -38,7 +38,7 @@ struct WineDetailViewModel {
     case ad(itemID: ItemID) // done
     case similarWines(itemID: ItemID, content: BottlesCollectionView.Content) // done
     case expandCollapse([ExpandCollapseCellViewModel])
-    case whereToBuy([WhereToBuyCellViewModel])
+    case whereToBuy(itemID: ItemID, content: [WhereToBuyView.Content])
 
     // MARK: Internal
 
@@ -83,8 +83,9 @@ struct WineDetailViewModel {
 
       case .expandCollapse(_):
         return .similarWines
-      case .whereToBuy(_):
-        return .similarWines
+
+      case .whereToBuy:
+        return .whereToBuy
       }
     }
   }
