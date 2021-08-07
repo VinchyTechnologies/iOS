@@ -42,11 +42,9 @@ final class WhereToBuyView: UIView, EpoxyableView {
     titleLabel.numberOfLines = 0
     subtitleLabel.numberOfLines = 0
 
-    let stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
     stackView.axis = .vertical
     stackView.spacing = 2
 
-    let hStackView = UIStackView(arrangedSubviews: [imageView, stackView, accessoryImageView])
     hStackView.axis = .horizontal
     hStackView.alignment = .center
     hStackView.spacing = 4
@@ -131,8 +129,10 @@ final class WhereToBuyView: UIView, EpoxyableView {
   }
 
   // MARK: Private
-
+  
   private let style: Style
+  private lazy var stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
+  private lazy var hStackView = UIStackView(arrangedSubviews: [imageView, stackView, accessoryImageView])
   private let titleLabel = UILabel()
   private let subtitleLabel = UILabel()
 
@@ -157,16 +157,16 @@ final class WhereToBuyView: UIView, EpoxyableView {
 
 // MARK: HighlightableView
 
-//extension WhereToBuyView: HighlightableView {
-//  func didHighlight(_ isHighlighted: Bool) {
-//    UIView.animate(
-//      withDuration: 0.15,
-//      delay: 0,
-//      options: [.beginFromCurrentState, .allowUserInteraction])
-//    {
-//      self.transform = isHighlighted
-//        ? CGAffineTransform(scaleX: 0.95, y: 0.95)
-//        : .identity
-//    }
-//  }
-//}
+extension WhereToBuyView: HighlightableView {
+  func didHighlight(_ isHighlighted: Bool) {
+    UIView.animate(
+      withDuration: 0.15,
+      delay: 0,
+      options: [.beginFromCurrentState, .allowUserInteraction])
+    {
+      self.hStackView.transform = isHighlighted
+        ? CGAffineTransform(scaleX: 0.95, y: 0.95)
+        : .identity
+    }
+  }
+}
