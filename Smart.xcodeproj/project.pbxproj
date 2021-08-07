@@ -240,7 +240,7 @@
 		CA48579B2517CA5200EDA4CE /* VinchyViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA48579A2517CA5200EDA4CE /* VinchyViewControllerProtocol.swift */; };
 		CA4858512519446800EDA4CE /* ForceUpdate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4858502519446800EDA4CE /* ForceUpdate.swift */; };
 		CA490141252F7EDC00066A98 /* VinchyViewControllerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA490140252F7EDC00066A98 /* VinchyViewControllerViewModel.swift */; };
-		CA49A219251E8CFE00FBE269 /* TitleWithSubtitleInfoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49A218251E8CFE00FBE269 /* TitleWithSubtitleInfoCollectionViewCell.swift */; };
+		CA49A219251E8CFE00FBE269 /* TitleWithSubtitleInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA49A218251E8CFE00FBE269 /* TitleWithSubtitleInfoView.swift */; };
 		CA4AED9B24CE204900035922 /* TopSecret.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA4AED9A24CE204900035922 /* TopSecret.plist */; };
 		CA4D4FE42548A93500A6FD0B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA4D4FE32548A93500A6FD0B /* GoogleService-Info.plist */; };
 		CA4D51042549F62500A6FD0B /* WriteNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4D51032549F62500A6FD0B /* WriteNoteViewController.swift */; };
@@ -608,7 +608,7 @@
 		CA48579A2517CA5200EDA4CE /* VinchyViewControllerProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyViewControllerProtocol.swift; sourceTree = "<group>"; };
 		CA4858502519446800EDA4CE /* ForceUpdate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForceUpdate.swift; sourceTree = "<group>"; };
 		CA490140252F7EDC00066A98 /* VinchyViewControllerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyViewControllerViewModel.swift; sourceTree = "<group>"; };
-		CA49A218251E8CFE00FBE269 /* TitleWithSubtitleInfoCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleWithSubtitleInfoCollectionViewCell.swift; sourceTree = "<group>"; };
+		CA49A218251E8CFE00FBE269 /* TitleWithSubtitleInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleWithSubtitleInfoView.swift; sourceTree = "<group>"; };
 		CA4AED9A24CE204900035922 /* TopSecret.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = TopSecret.plist; sourceTree = "<group>"; };
 		CA4D4FE32548A93500A6FD0B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CA4D51032549F62500A6FD0B /* WriteNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteNoteViewController.swift; sourceTree = "<group>"; };
@@ -2194,7 +2194,7 @@
 				CA99E65224F59CAA00C36BEE /* ShortInfoCollectionCell.swift */,
 				CED7A23925D1B31C00BB25FF /* StarRatingControlView.swift */,
 				CA99E65624F6EDDD00C36BEE /* ButtonView.swift */,
-				CA49A218251E8CFE00FBE269 /* TitleWithSubtitleInfoCollectionViewCell.swift */,
+				CA49A218251E8CFE00FBE269 /* TitleWithSubtitleInfoView.swift */,
 				449D63B125E1054700CBBD1D /* RatingsAndReviewsCell.swift */,
 				440C284625E13F9D009911EE /* WineDetailCollectionView.swift */,
 				8A915C9D26887D9500240B18 /* ExpandCollapseCell.swift */,
@@ -3013,7 +3013,7 @@
 				4437AA6225E3A7CE00F6E838 /* WriteReviewInteractorProtocol.swift in Sources */,
 				8A91611C268E27EB00240B18 /* SearchPresenterProtocol.swift in Sources */,
 				44EFDB3725E177220076ED6D /* ReviewsViewModel.swift in Sources */,
-				CA49A219251E8CFE00FBE269 /* TitleWithSubtitleInfoCollectionViewCell.swift in Sources */,
+				CA49A219251E8CFE00FBE269 /* TitleWithSubtitleInfoView.swift in Sources */,
 				CA070C1625250AEC00C3D9EC /* OnboardViewController.swift in Sources */,
 				CE388DD92612C1CF00C34B47 /* ShowcasePresenter.swift in Sources */,
 				44EFDB6F25E263E00076ED6D /* ReviewDetailViewModel.swift in Sources */,

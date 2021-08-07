@@ -129,7 +129,7 @@ final class WhereToBuyView: UIView, EpoxyableView {
   }
 
   // MARK: Private
-  
+
   private let style: Style
   private lazy var stackView = UIStackView(arrangedSubviews: [titleLabel, subtitleLabel])
   private lazy var hStackView = UIStackView(arrangedSubviews: [imageView, stackView, accessoryImageView])

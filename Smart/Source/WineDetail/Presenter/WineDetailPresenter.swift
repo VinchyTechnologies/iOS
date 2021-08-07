@@ -92,9 +92,9 @@ final class WineDetailPresenter {
 
     if !shortDescriptions.isEmpty {
       if let prefix = prefix {
-        return (sections: [.list(Array(shortDescriptions.prefix(prefix)))], count: shortDescriptions.count)
+        return (sections: [.list(itemID: .list, content: Array(shortDescriptions.prefix(prefix)))], count: shortDescriptions.count)
       } else {
-        return (sections: [.list(shortDescriptions)], count: shortDescriptions.count)
+        return (sections: [.list(itemID: .list, content: shortDescriptions)], count: shortDescriptions.count)
       }
     } else {
       return (sections: [], count: 0)
