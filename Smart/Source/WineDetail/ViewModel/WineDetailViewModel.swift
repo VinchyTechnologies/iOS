@@ -11,7 +11,7 @@ import CommonUI
 struct WineDetailViewModel {
 
   enum ItemID: String, Hashable {
-    case similarWines, ad, titleItem, similarWinesTitle, servingTipsTitle, whereToBuyTitle, winery, gallery, writeReviewButton, tool, rate, whereToBuy, list
+    case similarWines, ad, titleItem, similarWinesTitle, servingTipsTitle, whereToBuyTitle, winery, gallery, writeReviewButton, tool, rate, whereToBuy, list, noReviewsYet
   }
 
   enum SectionID: Hashable {
@@ -28,9 +28,9 @@ struct WineDetailViewModel {
     case title(itemID: ItemID, Label.Content) // done
     case rate(itemID: ItemID, content: StarRatingControlView.Content) // done
     case winery(itemID: ItemID, Label.Content) // done
-    case text([TextCollectionCellViewModel])
+    case text(itemID: ItemID, Label.Content)
     case tool(itemID: ItemID, content: ToolView.Content) // done
-    case list(itemID: ItemID, content: [TitleWithSubtitleInfoView.Content])
+    case list(itemID: ItemID, content: [TitleWithSubtitleInfoView.Content]) // done
     case ratingAndReview([RatingsAndReviewsCellViewModel])
     case reviews([ReviewCellViewModel])
     case servingTips([ShortInfoModel])

@@ -302,8 +302,20 @@ final class WineDetailViewController: CollectionViewController {
         .flowLayoutItemSize(.init(width: width, height: height))
         .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 8, right: 24))
 
-      case .text(_):
-        return nil
+      case .text(let itemID, let content):
+        let width: CGFloat = view.frame.width - 48
+        let height: CGFloat = Label.height(
+          for: content,
+          width: width,
+          style: .style(with: .miniBold, textAligment: .center))
+        return SectionModel(dataID: section.dataID) {
+          Label.itemModel(
+            dataID: itemID,
+            content: content,
+            style: .style(with: .miniBold, textAligment: .center))
+        }
+        .flowLayoutItemSize(.init(width: width, height: height))
+        .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 8, right: 24))
 
       case .tool(let itemID, let content):
         let width: CGFloat = view.frame.width - 48

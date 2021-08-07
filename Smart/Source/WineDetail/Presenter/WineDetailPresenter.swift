@@ -160,14 +160,7 @@ final class WineDetailPresenter {
             shouldShowMoreText: reviewCellViewModels.count >= 5),
         ]),
 
-        .text([
-          .init(
-            titleText: NSAttributedString(
-              string: localized("wine_has_no_reviews_yet").firstLetterUppercased(),
-              font: Font.semibold(16),
-              textColor: .dark,
-              paragraphAlignment: .center)),
-        ]),
+        .text(itemID: .noReviewsYet, localized("wine_has_no_reviews_yet").firstLetterUppercased()),
       ]
     }
 
@@ -227,15 +220,15 @@ final class WineDetailPresenter {
           isLiked: isLiked)),
     ]
 
-    if isDescriptionInWineDetailEnabled {
-      sections += [
-        .text([.init(
-          titleText: NSAttributedString(
-            string: wine.desc ?? "",
-            font: Font.light(18),
-            textColor: .dark))]),
-      ]
-    }
+//    if isDescriptionInWineDetailEnabled {
+//      sections += [
+//        .text([.init(
+//          titleText: NSAttributedString(
+//            string: wine.desc ?? "",
+//            font: Font.light(18),
+//            textColor: .dark))]),
+//      ]
+//    }
 
     let generalInfoRows = buildGeneralInfo(wine: wine, prefix: C.numberOfNonHiddenRowsInGeneralInfoSection)
     sections += generalInfoRows.sections
