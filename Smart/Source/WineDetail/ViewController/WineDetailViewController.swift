@@ -347,8 +347,19 @@ final class WineDetailViewController: CollectionViewController {
 
       case .ratingAndReview(_):
         return nil
-      case .reviews(_):
-        return nil
+      case .reviews(let itemID, let content):
+        return SectionModel(dataID: section.dataID) {
+          ReviewsCollectionView.itemModel(
+            dataID: itemID,
+            content: content,
+            behaviors: .init(didTap: { [weak self] reviewID in
+              self?.interactor?.didTapReview(reviewID: reviewID)
+            }),
+            style: .init())
+        }
+        .flowLayoutItemSize(.init(width: view.frame.width, height: 200))
+        .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 16, right: 0))
+
       case .servingTips(_):
         return nil
 

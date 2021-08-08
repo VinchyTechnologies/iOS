@@ -117,11 +117,6 @@ final class WineDetailPresenter {
     if !servingTips.isEmpty {
       return [
         .title(itemID: .servingTipsTitle, localized("serving_tips").firstLetterUppercased()),
-//        .title([.init(
-//          titleText: NSAttributedString(
-//            string: localized("serving_tips").firstLetterUppercased(),
-//            font: Font.heavy(20),
-//            textColor: .dark))]),
         .servingTips(servingTips),
       ]
     } else {
@@ -130,7 +125,7 @@ final class WineDetailPresenter {
   }
 
   private func buildReview(reviews: [Review]) -> [WineDetailViewModel.Section] {
-    let reviewCellViewModels: [ReviewCellViewModel] = reviews.compactMap {
+    let reviewCellViewModels: [ReviewView.Content] = reviews.compactMap {
       if $0.comment?.isEmpty == true || $0.comment == nil {
         return nil
       }
@@ -143,7 +138,7 @@ final class WineDetailPresenter {
         dateText = $0.updateDate.toDate()
       }
 
-      return ReviewCellViewModel(
+      return ReviewView.Content(
         id: $0.id,
         userNameText: nil,
         dateText: dateText,
@@ -171,7 +166,7 @@ final class WineDetailPresenter {
           moreText: localized("see_all").firstLetterUppercased(),
           shouldShowMoreText: reviewCellViewModels.count >= 5),
       ]),
-      .reviews(reviewCellViewModels),
+      .reviews(itemID: .reviews, content: reviewCellViewModels),
     ]
   }
 
