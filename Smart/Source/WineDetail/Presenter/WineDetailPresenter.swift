@@ -237,7 +237,9 @@ final class WineDetailPresenter {
       let titleText = isGeneralInfoCollapsed
         ? localized("expand").firstLetterUppercased()
         : localized("collapse").firstLetterUppercased()
-      sections += [.expandCollapse([.init(chevronDirection: .down, titleText: titleText, animated: false)])]
+      sections += [
+        .expandCollapse(itemID: .expandCollapse, content: .init(chevronDirection: isGeneralInfoCollapsed ? .down : .up, titleText: titleText, animated: false)),
+      ]
     }
 
     sections += buildServingTips(wine: wine)
@@ -360,7 +362,7 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
         ? localized("expand").firstLetterUppercased()
         : localized("collapse").firstLetterUppercased()
 
-      viewModel?.sections[indexOfExpandCollapse] = .expandCollapse([.init(chevronDirection: isGeneralInfoCollapsed ? .down : .up, titleText: titleText, animated: false)])
+      viewModel?.sections[indexOfExpandCollapse] = .expandCollapse(itemID: .expandCollapse, content: .init(chevronDirection: isGeneralInfoCollapsed ? .down : .up, titleText: titleText, animated: false))
     }
 
     guard var viewModel = viewModel else {

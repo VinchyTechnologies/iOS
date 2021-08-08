@@ -11,11 +11,11 @@ import CommonUI
 struct WineDetailViewModel {
 
   enum ItemID: String, Hashable {
-    case similarWines, ad, titleItem, similarWinesTitle, servingTipsTitle, whereToBuyTitle, winery, gallery, writeReviewButton, tool, rate, whereToBuy, list, noReviewsYet
+    case similarWines, ad, titleItem, similarWinesTitle, servingTipsTitle, whereToBuyTitle, winery, gallery, writeReviewButton, tool, rate, whereToBuy, list, noReviewsYet, expandCollapse
   }
 
   enum SectionID: Hashable {
-    case similarWines, ad, title(ItemID), winery, gallery, button(ItemID), tool, rate, whereToBuy, list
+    case similarWines, ad, title(ItemID), winery, gallery, button(ItemID), tool, rate, whereToBuy, list, text, expandCollapse
   }
 
   enum ShortInfoModel {
@@ -28,7 +28,7 @@ struct WineDetailViewModel {
     case title(itemID: ItemID, Label.Content) // done
     case rate(itemID: ItemID, content: StarRatingControlView.Content) // done
     case winery(itemID: ItemID, Label.Content) // done
-    case text(itemID: ItemID, Label.Content)
+    case text(itemID: ItemID, Label.Content) // done
     case tool(itemID: ItemID, content: ToolView.Content) // done
     case list(itemID: ItemID, content: [TitleWithSubtitleInfoView.Content]) // done
     case ratingAndReview([RatingsAndReviewsCellViewModel])
@@ -37,7 +37,7 @@ struct WineDetailViewModel {
     case button(itemID: ItemID, content: ButtonView.Content) // done
     case ad(itemID: ItemID) // done
     case similarWines(itemID: ItemID, content: BottlesCollectionView.Content) // done
-    case expandCollapse([ExpandCollapseCellViewModel])
+    case expandCollapse(itemID: ItemID, content: ExpandCollapseView.Content) // done
     case whereToBuy(itemID: ItemID, content: [WhereToBuyView.Content]) // done
 
     // MARK: Internal
@@ -56,8 +56,8 @@ struct WineDetailViewModel {
       case .winery:
         return .winery
 
-      case .text(_):
-        return .similarWines
+      case .text:
+        return .text
 
       case .tool:
         return .tool
@@ -82,8 +82,8 @@ struct WineDetailViewModel {
       case .similarWines:
         return .similarWines
 
-      case .expandCollapse(_):
-        return .similarWines
+      case .expandCollapse:
+        return .expandCollapse
 
       case .whereToBuy:
         return .whereToBuy

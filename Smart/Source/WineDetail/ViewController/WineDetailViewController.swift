@@ -391,8 +391,18 @@ final class WineDetailViewController: CollectionViewController {
         .flowLayoutItemSize(.init(width: view.frame.width, height: 250))
         .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 16, right: 0))
 
-      case .expandCollapse(_):
-        return nil
+      case .expandCollapse(let itemID, let content):
+        return SectionModel(dataID: section.dataID) {
+          ExpandCollapseView.itemModel(
+            dataID: itemID,
+            content: content,
+            style: .init())
+            .didSelect { [weak self] context in
+              self?.interactor?.didTapExpandOrCollapseGeneralInfo()
+            }
+            .flowLayoutItemSize(.init(width: view.frame.width, height: 44))
+        }
+
       case .whereToBuy(let itemID, let rows):
         let width: CGFloat = view.frame.width
         return SectionModel(
@@ -745,56 +755,14 @@ extension WineDetailViewController: WineDetailViewControllerProtocol {
 //    }
   }
 
-  func updateGeneralInfoSectionAndExpandOrCollapseCell(viewModel: WineDetailViewModel) {
+  func updateGeneralInfoSectionAndExpandOrCollapseCell(viewModel: WineDetailViewModel) { // TODO: - only updateUI
     self.viewModel = viewModel
-
-    let sectionIndex = viewModel.sections.firstIndex { section in
-      switch section {
-      case .list:
-        return true
-
-      default:
-        return false
-      }
-    }
-
-    guard let sectionIndex = sectionIndex else {
-      return
-    }
-
-    let collapseSection = viewModel.sections.firstIndex { section in
-      switch section {
-      case .expandCollapse:
-        return true
-
-      default:
-        return false
-      }
-    }
-
-    guard let collapseSection = collapseSection else {
-      return
-    }
-
-    let expandOrCollapseCell = collectionView.cellForItem(at: IndexPath(row: 0, section: collapseSection)) as? ExpandCollapseCell
-
-    let titleText = viewModel.isGeneralInfoCollapsed
-      ? localized("expand").firstLetterUppercased() // TODO: - remove localization
-      : localized("collapse").firstLetterUppercased()
-
-    expandOrCollapseCell?.decorate(
-      model: .init(
-        chevronDirection: viewModel.isGeneralInfoCollapsed ? .down : .up,
-        titleText: titleText,
-        animated: true))
-
-    collectionView.reloadSections(IndexSet([sectionIndex]))
+    collectionView.setSections(sections, animated: true)
   }
 
   func updateUI(viewModel: WineDetailViewModel) {
     self.viewModel = viewModel
     collectionView.setSections(sections, animated: true)
-//    collectionView.reloadData()
   }
 }
 

@@ -1,5 +1,5 @@
 //
-//  ExpandCollapseCell.swift
+//  ExpandCollapseView.swift
 //  Smart
 //
 //  Created by Алексей Смирнов on 27.06.2021.
@@ -7,11 +7,12 @@
 //
 
 import Display
+import Epoxy
 import UIKit
 
 // MARK: - ExpandCollapseCellViewModel
 
-struct ExpandCollapseCellViewModel: ViewModelProtocol {
+struct ExpandCollapseCellViewModel: ViewModelProtocol, Equatable {
 
   enum ChevronDirection {
     case up, down
@@ -28,37 +29,81 @@ struct ExpandCollapseCellViewModel: ViewModelProtocol {
   }
 }
 
-// MARK: - ExpandCollapseCell
+// MARK: - ExpandCollapseView
 
-final class ExpandCollapseCell: UICollectionViewCell, Reusable {
+final class ExpandCollapseView: UIView, EpoxyableView {
 
   // MARK: Lifecycle
 
-  override init(frame: CGRect) {
-    super.init(frame: frame)
+  init(style: Style) {
+    self.style = style
+    super.init(frame: .zero)
+    translatesAutoresizingMaskIntoConstraints = false
+
     backgroundColor = .mainBackground
 
-    contentView.addSubview(titleLabel)
+    addSubview(titleLabel)
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      titleLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: -4 - 20),
-      titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+      titleLabel.centerXAnchor.constraint(equalTo: centerXAnchor, constant: -4 - 20),
+      titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
     ])
 
-    contentView.addSubview(imageView)
+    addSubview(imageView)
     imageView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       imageView.leadingAnchor.constraint(equalTo: titleLabel.trailingAnchor, constant: 4),
-      imageView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+      imageView.centerYAnchor.constraint(equalTo: centerYAnchor),
       imageView.widthAnchor.constraint(equalToConstant: 20),
       imageView.heightAnchor.constraint(equalToConstant: 20),
     ])
   }
 
-  required init?(coder: NSCoder) { fatalError() }
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
+  // MARK: Internal
+
+  struct Style: Hashable {
+
+  }
+
+  typealias Content = ExpandCollapseCellViewModel
+
+  func setContent(_ content: Content, animated: Bool) {
+    if content.animated {
+
+      UIView.transition(with: titleLabel, duration: 0.25, options: [.beginFromCurrentState, .transitionCrossDissolve, .layoutSubviews, .curveEaseIn]) {
+        self.titleLabel.text = content.titleText
+      } completion: { _ in }
+
+      UIView.animate(withDuration: 0.25, delay: 0.0, options: [.beginFromCurrentState, .layoutSubviews, .curveEaseIn]) {
+        switch content.chevronDirection {
+        case .up:
+          self.imageView.transform = CGAffineTransform(rotationAngle: .pi)
+
+        case .down:
+          self.imageView.transform = CGAffineTransform(rotationAngle: -2 * .pi)
+        }
+
+        self.layoutIfNeeded()
+      } completion: { _ in }
+    } else {
+      titleLabel.text = content.titleText
+      switch content.chevronDirection {
+      case .up:
+        imageView.transform = CGAffineTransform(rotationAngle: .pi)
+
+      case .down:
+        imageView.transform = CGAffineTransform(rotationAngle: -2 * .pi)
+      }
+    }
+  }
 
   // MARK: Private
 
+  private let style: Style
   private let titleLabel: UILabel = {
     $0.textColor = .accent
     $0.font = Font.medium(16)
@@ -70,40 +115,4 @@ final class ExpandCollapseCell: UICollectionViewCell, Reusable {
     $0.image = UIImage(systemName: "chevron.down", withConfiguration: imageConfig)?.withTintColor(.accent, renderingMode: .alwaysOriginal)
     return $0
   }(UIImageView())
-}
-
-// MARK: Decoratable
-
-extension ExpandCollapseCell: Decoratable {
-  typealias ViewModel = ExpandCollapseCellViewModel
-
-  func decorate(model: ViewModel) {
-    if model.animated {
-
-      UIView.transition(with: titleLabel, duration: 0.25, options: [.beginFromCurrentState, .transitionCrossDissolve, .layoutSubviews, .curveEaseIn]) {
-        self.titleLabel.text = model.titleText
-      } completion: { _ in }
-
-      UIView.animate(withDuration: 0.25, delay: 0.0, options: [.beginFromCurrentState, .layoutSubviews, .curveEaseIn]) {
-        switch model.chevronDirection {
-        case .up:
-          self.imageView.transform = CGAffineTransform(rotationAngle: .pi)
-
-        case .down:
-          self.imageView.transform = CGAffineTransform(rotationAngle: -2 * .pi)
-        }
-
-        self.layoutIfNeeded()
-      } completion: { _ in }
-    } else {
-      titleLabel.text = model.titleText
-      switch model.chevronDirection {
-      case .up:
-        imageView.transform = CGAffineTransform(rotationAngle: .pi)
-
-      case .down:
-        break
-      }
-    }
-  }
 }
