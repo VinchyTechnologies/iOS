@@ -6,6 +6,6 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
-
-struct StoresInput {}
+struct StoresInput {
+  let wineID: Int64
+}

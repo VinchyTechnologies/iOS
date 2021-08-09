@@ -15,9 +15,11 @@ final class StoresInteractor {
   // MARK: Lifecycle
 
   init(
+    input: StoresInput,
     router: StoresRouterProtocol,
     presenter: StoresPresenterProtocol)
   {
+    self.input = input
     self.router = router
     self.presenter = presenter
   }
@@ -26,6 +28,7 @@ final class StoresInteractor {
 
   private let router: StoresRouterProtocol
   private let presenter: StoresPresenterProtocol
+  private let input: StoresInput
 }
 
 // MARK: StoresInteractorProtocol
