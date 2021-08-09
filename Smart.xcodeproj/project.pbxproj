@@ -63,6 +63,17 @@
 		44EFDB7725E263E00076ED6D /* ReviewDetailInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6B25E263E00076ED6D /* ReviewDetailInteractorProtocol.swift */; };
 		44EFDB7825E263E00076ED6D /* ReviewDetailRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6D25E263E00076ED6D /* ReviewDetailRouterProtocol.swift */; };
 		44EFDB7925E263E00076ED6D /* ReviewDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6E25E263E00076ED6D /* ReviewDetailRouter.swift */; };
+		748586C426C0426400F5CBEA /* StoresViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586B326C0426300F5CBEA /* StoresViewModel.swift */; };
+		748586C526C0426400F5CBEA /* StoresInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586B526C0426300F5CBEA /* StoresInput.swift */; };
+		748586C626C0426400F5CBEA /* StoresAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586B726C0426300F5CBEA /* StoresAssembly.swift */; };
+		748586C726C0426400F5CBEA /* StoresPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586B926C0426300F5CBEA /* StoresPresenterProtocol.swift */; };
+		748586C826C0426400F5CBEA /* StoresPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586BA26C0426300F5CBEA /* StoresPresenter.swift */; };
+		748586C926C0426400F5CBEA /* StoresViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586BC26C0426300F5CBEA /* StoresViewController.swift */; };
+		748586CA26C0426400F5CBEA /* StoresViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586BD26C0426300F5CBEA /* StoresViewControllerProtocol.swift */; };
+		748586CB26C0426400F5CBEA /* StoresInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586BF26C0426300F5CBEA /* StoresInteractorProtocol.swift */; };
+		748586CC26C0426400F5CBEA /* StoresInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586C026C0426300F5CBEA /* StoresInteractor.swift */; };
+		748586CD26C0426400F5CBEA /* StoresRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586C226C0426300F5CBEA /* StoresRouterProtocol.swift */; };
+		748586CE26C0426400F5CBEA /* StoresRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586C326C0426300F5CBEA /* StoresRouter.swift */; };
 		8A079300269239C0000ACA2B /* DocumentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0792EF269239C0000ACA2B /* DocumentsViewModel.swift */; };
 		8A079301269239C1000ACA2B /* DocumentsInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0792F1269239C0000ACA2B /* DocumentsInput.swift */; };
 		8A079302269239C1000ACA2B /* DocumentsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0792F3269239C0000ACA2B /* DocumentsAssembly.swift */; };
@@ -448,6 +459,17 @@
 		44EFDB6B25E263E00076ED6D /* ReviewDetailInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailInteractorProtocol.swift; sourceTree = "<group>"; };
 		44EFDB6D25E263E00076ED6D /* ReviewDetailRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailRouterProtocol.swift; sourceTree = "<group>"; };
 		44EFDB6E25E263E00076ED6D /* ReviewDetailRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailRouter.swift; sourceTree = "<group>"; };
+		748586B326C0426300F5CBEA /* StoresViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoresViewModel.swift; sourceTree = "<group>"; };
+		748586B526C0426300F5CBEA /* StoresInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoresInput.swift; sourceTree = "<group>"; };
+		748586B726C0426300F5CBEA /* StoresAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoresAssembly.swift; sourceTree = "<group>"; };
+		748586B926C0426300F5CBEA /* StoresPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoresPresenterProtocol.swift; sourceTree = "<group>"; };
+		748586BA26C0426300F5CBEA /* StoresPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoresPresenter.swift; sourceTree = "<group>"; };
+		748586BC26C0426300F5CBEA /* StoresViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoresViewController.swift; sourceTree = "<group>"; };
+		748586BD26C0426300F5CBEA /* StoresViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoresViewControllerProtocol.swift; sourceTree = "<group>"; };
+		748586BF26C0426300F5CBEA /* StoresInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoresInteractorProtocol.swift; sourceTree = "<group>"; };
+		748586C026C0426300F5CBEA /* StoresInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoresInteractor.swift; sourceTree = "<group>"; };
+		748586C226C0426300F5CBEA /* StoresRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoresRouterProtocol.swift; sourceTree = "<group>"; };
+		748586C326C0426300F5CBEA /* StoresRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoresRouter.swift; sourceTree = "<group>"; };
 		8A0792EF269239C0000ACA2B /* DocumentsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsViewModel.swift; sourceTree = "<group>"; };
 		8A0792F1269239C0000ACA2B /* DocumentsInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsInput.swift; sourceTree = "<group>"; };
 		8A0792F3269239C0000ACA2B /* DocumentsAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsAssembly.swift; sourceTree = "<group>"; };
@@ -1167,6 +1189,80 @@
 				EA78FE8971307D6D1C5D8B17 /* Pods_SmartTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		748586B126C0426300F5CBEA /* Stores */ = {
+			isa = PBXGroup;
+			children = (
+				748586B226C0426300F5CBEA /* ViewModel */,
+				748586B426C0426300F5CBEA /* Input */,
+				748586B626C0426300F5CBEA /* Assembly */,
+				748586B826C0426300F5CBEA /* Presenter */,
+				748586BB26C0426300F5CBEA /* ViewController */,
+				748586BE26C0426300F5CBEA /* Interactor */,
+				748586C126C0426300F5CBEA /* Router */,
+			);
+			path = Stores;
+			sourceTree = "<group>";
+		};
+		748586B226C0426300F5CBEA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				748586B326C0426300F5CBEA /* StoresViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		748586B426C0426300F5CBEA /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				748586B526C0426300F5CBEA /* StoresInput.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		748586B626C0426300F5CBEA /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				748586B726C0426300F5CBEA /* StoresAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		748586B826C0426300F5CBEA /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				748586B926C0426300F5CBEA /* StoresPresenterProtocol.swift */,
+				748586BA26C0426300F5CBEA /* StoresPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		748586BB26C0426300F5CBEA /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				748586BC26C0426300F5CBEA /* StoresViewController.swift */,
+				748586BD26C0426300F5CBEA /* StoresViewControllerProtocol.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		748586BE26C0426300F5CBEA /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				748586BF26C0426300F5CBEA /* StoresInteractorProtocol.swift */,
+				748586C026C0426300F5CBEA /* StoresInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		748586C126C0426300F5CBEA /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				748586C226C0426300F5CBEA /* StoresRouterProtocol.swift */,
+				748586C326C0426300F5CBEA /* StoresRouter.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		8A0792ED269239C0000ACA2B /* Documents */ = {
@@ -2032,6 +2128,7 @@
 				8A916105268E27EB00240B18 /* Search */,
 				CA0A352324785A0900C400F5 /* Showcase */,
 				8A0794BE26936141000ACA2B /* Store */,
+				748586B126C0426300F5CBEA /* Stores */,
 				CA472B3F245EDEDB009149FF /* Supported Files */,
 				449F81B925DD02A600585364 /* Tabbar */,
 				CA7B835624EED18500991F24 /* Vinchy */,
@@ -3040,6 +3137,7 @@
 				CE8FF83525FADA76004D4F37 /* ShowcaseInteractor.swift in Sources */,
 				CE58DECB25ED712900B5BDF9 /* CurrencyPresenter.swift in Sources */,
 				CE6AAFD82617CEC80011F771 /* ShowcaseRoutable.swift in Sources */,
+				748586C926C0426400F5CBEA /* StoresViewController.swift in Sources */,
 				44EFDB3825E177220076ED6D /* ReviewsInput.swift in Sources */,
 				CA878A882572E59700B51FF1 /* ActionSheetAppearence.swift in Sources */,
 				8AE788132684E8D60056A84B /* NotesInteractor.swift in Sources */,
@@ -3086,6 +3184,8 @@
 				CA81984B253864080056A1C6 /* WineDetailInteractor.swift in Sources */,
 				CA4857742517BE8E00EDA4CE /* VinchyInteractor.swift in Sources */,
 				CE404B072589D41200917544 /* MoreInteractorProtocol.swift in Sources */,
+				748586CC26C0426400F5CBEA /* StoresInteractor.swift in Sources */,
+				748586C426C0426400F5CBEA /* StoresViewModel.swift in Sources */,
 				CE58DED725ED73B300B5BDF9 /* CurrencyInteractorProtocol.swift in Sources */,
 				8A079306269239C1000ACA2B /* DocumentsViewControllerProtocol.swift in Sources */,
 				8A313C1626468678009F2165 /* WorkingHoursCollectionCell.swift in Sources */,
@@ -3108,10 +3208,12 @@
 				44EFDB3A25E177220076ED6D /* ReviewsPresenterProtocol.swift in Sources */,
 				8A079308269239C1000ACA2B /* DocumentsInteractorProtocol.swift in Sources */,
 				CA2C22DA2554464F002469E4 /* AdvancedSearchInput.swift in Sources */,
+				748586C626C0426400F5CBEA /* StoresAssembly.swift in Sources */,
 				CA070C2425250C1800C3D9EC /* OnboardingModuleFactory.swift in Sources */,
 				8AE7880D2684E8D60056A84B /* NotesAssembly.swift in Sources */,
 				CA2C22E22554464F002469E4 /* AdvancedSearchRouter.swift in Sources */,
 				CAA9DC65250E99DB00F996A8 /* SeparatorFooter.swift in Sources */,
+				748586C726C0426400F5CBEA /* StoresPresenterProtocol.swift in Sources */,
 				44EFDB7525E263E00076ED6D /* ReviewDetailViewControllerProtocol.swift in Sources */,
 				8AF966C42678F194001891B2 /* EditProfileViewControllerProtocol.swift in Sources */,
 				8A313C0026447042009F2165 /* MapDetailStoreInput.swift in Sources */,
@@ -3124,6 +3226,7 @@
 				8A916023268CE66C00240B18 /* AreYouInStoreInput.swift in Sources */,
 				8A91611E268E27EB00240B18 /* SearchViewControllerProtocol.swift in Sources */,
 				CE69649D25E07BDE00CD414D /* InfoCurrencyCell.swift in Sources */,
+				748586CA26C0426400F5CBEA /* StoresViewControllerProtocol.swift in Sources */,
 				CE4254EB258157DC001158D2 /* MoreViewControllerModel.swift in Sources */,
 				8AF9441D26922D77003EB76A /* IconView.swift in Sources */,
 				8A0D9CB726871D9D0076A7EC /* NewAgreementViewController.swift in Sources */,
@@ -3138,6 +3241,7 @@
 				8A91602B268CE66C00240B18 /* AreYouInStoreRouter.swift in Sources */,
 				8A313C0426447042009F2165 /* MapDetailStoreViewController.swift in Sources */,
 				CA276D55256AC6720061BEBE /* FakeCell.swift in Sources */,
+				748586C826C0426400F5CBEA /* StoresPresenter.swift in Sources */,
 				8A079303269239C1000ACA2B /* DocumentsPresenterProtocol.swift in Sources */,
 				CACA7EA0254C57CC0099E622 /* WriteNoteInteractorProtocol.swift in Sources */,
 				8AE788F8268638CD0056A84B /* OnboardingBottomView.swift in Sources */,
@@ -3148,6 +3252,7 @@
 				CE8FF83925FADABF004D4F37 /* ShowcaseInteractorProtocol.swift in Sources */,
 				447C353D25EEAA5700105A35 /* MapViewController.swift in Sources */,
 				8A916119268E27EB00240B18 /* SearchInput.swift in Sources */,
+				748586CE26C0426400F5CBEA /* StoresRouter.swift in Sources */,
 				4437AA5F25E3A7CE00F6E838 /* WriteReviewPresenterProtocol.swift in Sources */,
 				CE404B0B2589D47C00917544 /* MorePresenterProtocol.swift in Sources */,
 				CA2C22DC2554464F002469E4 /* AdvancedSearchPresenter.swift in Sources */,
@@ -3174,6 +3279,7 @@
 				CE58DECF25ED713F00B5BDF9 /* CurrencyRouter.swift in Sources */,
 				447C354125EEAA5700105A35 /* MapRouter.swift in Sources */,
 				8A313C0126447042009F2165 /* MapDetailStoreAssembly.swift in Sources */,
+				748586CB26C0426400F5CBEA /* StoresInteractorProtocol.swift in Sources */,
 				CAF5146B2468172900667ED0 /* LoveViewController.swift in Sources */,
 				8A0794D726936141000ACA2B /* StoreViewControllerProtocol.swift in Sources */,
 				CE8FF82A25FAD75C004D4F37 /* ShowcaseAssembly.swift in Sources */,
@@ -3199,6 +3305,7 @@
 				CA2C22DF2554464F002469E4 /* AdvancedSearchViewController.swift in Sources */,
 				8AF966BE2678F194001891B2 /* EditProfileViewModel.swift in Sources */,
 				449F81B625DD027C00585364 /* RootBuilder.swift in Sources */,
+				748586C526C0426400F5CBEA /* StoresInput.swift in Sources */,
 				8A079300269239C0000ACA2B /* DocumentsViewModel.swift in Sources */,
 				CA7B838C24F4547B00991F24 /* GalleryCell.swift in Sources */,
 				8A91611D268E27EB00240B18 /* SearchViewController.swift in Sources */,
@@ -3211,6 +3318,7 @@
 				8AE788112684E8D60056A84B /* NotesViewControllerProtocol.swift in Sources */,
 				CAA060D2252BC05C002C15B5 /* DeveloperFeatureToggles.swift in Sources */,
 				CA7A87FC2507ED7800AAD10F /* AdsCollectionViewCell.swift in Sources */,
+				748586CD26C0426400F5CBEA /* StoresRouterProtocol.swift in Sources */,
 				CAF514252461C52400667ED0 /* ContactCell.swift in Sources */,
 				8AF966C82678F194001891B2 /* EditProfileRouterProtocol.swift in Sources */,
 				8A07930C26924DAF000ACA2B /* Document.swift in Sources */,
