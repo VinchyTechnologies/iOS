@@ -271,7 +271,7 @@ final class WineDetailViewController: CollectionViewController {
             style: .style(with: .lagerTitle))
         }
         .flowLayoutItemSize(.init(width: width, height: height))
-        .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 8, right: 24))
+        .flowLayoutSectionInset(.init(top: 16, left: 24, bottom: 8, right: 24))
 
       case .rate(let itemID, let content):
         let width: CGFloat = view.frame.width - 48
@@ -300,7 +300,7 @@ final class WineDetailViewController: CollectionViewController {
             style: .style(with: .subtitle))
         }
         .flowLayoutItemSize(.init(width: width, height: height))
-        .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 8, right: 24))
+        .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 0, right: 24))
 
       case .text(let itemID, let content):
         let width: CGFloat = view.frame.width - 48
@@ -360,8 +360,15 @@ final class WineDetailViewController: CollectionViewController {
         .flowLayoutItemSize(.init(width: view.frame.width, height: 200))
         .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 16, right: 0))
 
-      case .servingTips(_):
-        return nil
+      case .servingTips(let itemID, let content):
+        return SectionModel(dataID: section.dataID) {
+          ServingTipsCollectionView.itemModel(
+            dataID: itemID,
+            content: content,
+            style: .init())
+        }
+        .flowLayoutItemSize(.init(width: view.frame.width, height: 100))
+        .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 16, right: 0))
 
       case .button(let itemID, let content):
         let width: CGFloat = view.frame.width - 48
@@ -408,7 +415,7 @@ final class WineDetailViewController: CollectionViewController {
             dataID: itemID,
             content: content,
             style: .init())
-            .didSelect { [weak self] context in
+            .didSelect { [weak self] _ in
               self?.interactor?.didTapExpandOrCollapseGeneralInfo()
             }
             .flowLayoutItemSize(.init(width: view.frame.width, height: 44))

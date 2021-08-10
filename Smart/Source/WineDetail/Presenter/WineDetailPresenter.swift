@@ -102,22 +102,23 @@ final class WineDetailPresenter {
   }
 
   private func buildServingTips(wine: Wine) -> [WineDetailViewModel.Section] {
-    var servingTips = [WineDetailViewModel.ShortInfoModel]()
+    var servingTips = [ServingTipsCollectionViewItem]()
 
     if let servingTemperature = localizedTemperature(wine.minServingTemperature, wine.maxServingTemperature) {
-      servingTips.append(.titleTextAndSubtitleText(titleText: servingTemperature, subtitleText: localized("serving_temperature").firstLetterUppercased()))
+      let subtitle = localized("serving_temperature").firstLetterUppercased()
+      servingTips.append(.titleOption(content: .init(titleText: servingTemperature, subtitleText: subtitle)))
     }
 
     if let dishes = wine.dishCompatibility, !dishes.isEmpty {
       dishes.forEach { dish in
-        servingTips.append(.titleTextAndImage(imageName: dish.imageName, titleText: dish.localized))
+        servingTips.append(.imageOption(content: .init(image: UIImage(named: dish.imageName), titleText: dish.localized, isSelected: false)))
       }
     }
 
     if !servingTips.isEmpty {
       return [
         .title(itemID: .servingTipsTitle, localized("serving_tips").firstLetterUppercased()),
-        .servingTips(servingTips),
+        .servingTips(itemID: .servingTips, content: .init(items: servingTips)),
       ]
     } else {
       return []

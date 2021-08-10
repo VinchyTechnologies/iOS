@@ -160,3 +160,20 @@ public final class ReviewView: UIView, EpoxyableView {
     return label
   }()
 }
+
+// MARK: HighlightableView
+
+extension ReviewView: HighlightableView {
+  public func didHighlight(_ isHighlighted: Bool) {
+    UIView.animate(
+      withDuration: 0.15,
+      delay: 0,
+      options: [.beginFromCurrentState, .allowUserInteraction])
+    {
+      self.transform = isHighlighted
+        ? CGAffineTransform(scaleX: 0.95, y: 0.95)
+        : .identity
+    }
+  }
+}
+
