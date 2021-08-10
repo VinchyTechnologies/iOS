@@ -8,4 +8,10 @@
 
 import Foundation
 
-protocol StoresPresenterProtocol: AnyObject {}
+protocol StoresPresenterProtocol: AnyObject {
+  func update(data: StoresInteractorData, needLoadMore: Bool)
+  func startLoading()
+  func stopLoading()
+  func showErrorAlert(error: Error)
+  func showInitiallyLoadingError(error: Error)
+}

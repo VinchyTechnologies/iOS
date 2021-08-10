@@ -6,7 +6,8 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import CommonUI
+import StringFormatting
 
 // MARK: - StoresPresenter
 
@@ -29,4 +30,50 @@ final class StoresPresenter {
 
 // MARK: StoresPresenterProtocol
 
-extension StoresPresenter: StoresPresenterProtocol {}
+extension StoresPresenter: StoresPresenterProtocol {
+
+  func update(data: StoresInteractorData, needLoadMore: Bool) {
+
+    var sections: [StoresViewModel.Section] = []
+
+    if !data.partnersInfo.isEmpty {
+      sections += [.title(localized("all_shops").firstLetterUppercased())]
+
+      let partnersContent: [StoresViewModel.PartnersContent] = data.partnersInfo.map({ partner in
+        StoresViewModel.PartnersContent.horizontalPartner(.init(affiliatedStoreId: partner.affiliatedStoreId, imageURL: partner.logoURL?.toURL, titleText: partner.title, subtitleText: partner.address))
+      })
+
+      sections += [.partners(header: [localized("all").firstLetterUppercased()], content: partnersContent)]
+
+      if needLoadMore {
+        sections += [.loading(itemID: .loadingItem)]
+      }
+    }
+
+    let viewModel = StoresViewModel(sections: sections, navigationTitleText: "название вина")
+    viewController?.updateUI(viewModel: viewModel)
+  }
+
+  func startLoading() {
+    viewController?.addLoader()
+    viewController?.startLoadingAnimation()
+  }
+
+  func stopLoading() {
+    viewController?.stopLoadingAnimation()
+  }
+
+  func showErrorAlert(error: Error) {
+    viewController?.showAlert(
+      title: localized("error").firstLetterUppercased(),
+      message: error.localizedDescription)
+  }
+
+  func showInitiallyLoadingError(error: Error) {
+    viewController?.updateUI(
+      errorViewModel: ErrorViewModel(
+        titleText: localized("error").firstLetterUppercased(),
+        subtitleText: error.localizedDescription,
+        buttonText: localized("reload").firstLetterUppercased()))
+  }
+}

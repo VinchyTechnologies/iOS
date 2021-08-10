@@ -74,6 +74,7 @@
 		748586CC26C0426400F5CBEA /* StoresInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586C026C0426300F5CBEA /* StoresInteractor.swift */; };
 		748586CD26C0426400F5CBEA /* StoresRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586C226C0426300F5CBEA /* StoresRouterProtocol.swift */; };
 		748586CE26C0426400F5CBEA /* StoresRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586C326C0426300F5CBEA /* StoresRouter.swift */; };
+		748586D026C1B69A00F5CBEA /* HorizontalPartnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586CF26C1B69A00F5CBEA /* HorizontalPartnerView.swift */; };
 		8A079300269239C0000ACA2B /* DocumentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0792EF269239C0000ACA2B /* DocumentsViewModel.swift */; };
 		8A079301269239C1000ACA2B /* DocumentsInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0792F1269239C0000ACA2B /* DocumentsInput.swift */; };
 		8A079302269239C1000ACA2B /* DocumentsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0792F3269239C0000ACA2B /* DocumentsAssembly.swift */; };
@@ -470,6 +471,7 @@
 		748586C026C0426300F5CBEA /* StoresInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoresInteractor.swift; sourceTree = "<group>"; };
 		748586C226C0426300F5CBEA /* StoresRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoresRouterProtocol.swift; sourceTree = "<group>"; };
 		748586C326C0426300F5CBEA /* StoresRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoresRouter.swift; sourceTree = "<group>"; };
+		748586CF26C1B69A00F5CBEA /* HorizontalPartnerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalPartnerView.swift; sourceTree = "<group>"; };
 		8A0792EF269239C0000ACA2B /* DocumentsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsViewModel.swift; sourceTree = "<group>"; };
 		8A0792F1269239C0000ACA2B /* DocumentsInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsInput.swift; sourceTree = "<group>"; };
 		8A0792F3269239C0000ACA2B /* DocumentsAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsAssembly.swift; sourceTree = "<group>"; };
@@ -1436,6 +1438,7 @@
 				8A07991526999BBA000ACA2B /* SeparatorView.swift */,
 				8A079F2D269E151F000ACA2B /* BottlesCollectionView.swift */,
 				8A0BBEDE26A8578C0049DA74 /* LoadingView.swift */,
+				748586CF26C1B69A00F5CBEA /* HorizontalPartnerView.swift */,
 			);
 			path = EpoxyViews;
 			sourceTree = "<group>";
@@ -3265,6 +3268,7 @@
 				8AE788142684E8D60056A84B /* NotesRouterProtocol.swift in Sources */,
 				CA3C97DF25723C570036F7D9 /* TitleCopyableCell.swift in Sources */,
 				4437AA6025E3A7CE00F6E838 /* WriteReviewViewController.swift in Sources */,
+				748586D026C1B69A00F5CBEA /* HorizontalPartnerView.swift in Sources */,
 				CACA7E9D254C57CC0099E622 /* WriteNotePresenterProtocol.swift in Sources */,
 				CA7CBDF3257FE4AD00C81476 /* WineDetailRoutable.swift in Sources */,
 				CE7E3F1225F06AE50045A759 /* CurrencyViewControllerModel.swift in Sources */,

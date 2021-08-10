@@ -8,4 +8,6 @@
 
 import Foundation
 
-protocol StoresRouterProtocol: AnyObject {}
+protocol StoresRouterProtocol: AnyObject {
+  func presentStore(affilatedId: Int)
+}

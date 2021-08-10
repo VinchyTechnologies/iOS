@@ -6,6 +6,10 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import CommonUI
+import Display
 
-protocol StoresViewControllerProtocol: AnyObject {}
+protocol StoresViewControllerProtocol: Loadable, Alertable {
+  func updateUI(viewModel: StoresViewModel)
+  func updateUI(errorViewModel: ErrorViewModel)
+}

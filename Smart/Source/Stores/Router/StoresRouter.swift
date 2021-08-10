@@ -6,6 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import Display
 import UIKit
 
 // MARK: - StoresRouter
@@ -34,4 +35,11 @@ final class StoresRouter {
 
 // MARK: StoresRouterProtocol
 
-extension StoresRouter: StoresRouterProtocol {}
+extension StoresRouter: StoresRouterProtocol {
+  func presentStore(affilatedId: Int) {
+    let controller = StoreAssembly.assemblyModule(input: .init(mode: .normal(affilatedId: affilatedId)))
+    let navigationController = NavigationController(rootViewController: controller)
+    navigationController.modalPresentationStyle = .overCurrentContext
+    viewController?.present(navigationController, animated: true, completion: nil)
+  }
+}
