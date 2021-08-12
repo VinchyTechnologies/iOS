@@ -86,7 +86,13 @@ public final class Partners {
 
   public static let shared = Partners()
 
-  public func getPartnersByWine(wineID: Int64, latitude: Double, longitude: Double, limit: Int, offset: Int, completion: @escaping (Result<[PartnerInfo], APIError>) -> Void)
+  public func getPartnersByWine(
+    wineID: Int64,
+    latitude: Double,
+    longitude: Double,
+    limit: Int,
+    offset: Int,
+    completion: @escaping (Result<[PartnerInfo], APIError>) -> Void)
   {
     api.request(
       endpoint: PartnersEndpoint.partnersByWine(

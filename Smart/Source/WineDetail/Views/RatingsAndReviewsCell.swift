@@ -7,17 +7,18 @@
 //
 
 import Display
+import Epoxy
 import UIKit
 
-// MARK: - RatingsAndReviewsCellDelegate
+// MARK: - TitleAndMoreViewDelegate
 
-protocol RatingsAndReviewsCellDelegate: AnyObject {
+protocol TitleAndMoreViewDelegate: AnyObject {
   func didTapSeeAllReview()
 }
 
-// MARK: - RatingsAndReviewsCellViewModel
+// MARK: - TitleAndMoreViewViewModel
 
-struct RatingsAndReviewsCellViewModel: ViewModelProtocol {
+struct TitleAndMoreViewViewModel: ViewModelProtocol, Equatable {
   fileprivate let titleText: String?
   fileprivate let moreText: String?
   fileprivate let shouldShowMoreText: Bool
@@ -29,65 +30,74 @@ struct RatingsAndReviewsCellViewModel: ViewModelProtocol {
   }
 }
 
-// MARK: - RatingsAndReviewsCell
+// MARK: - TitleAndMoreView
 
-final class RatingsAndReviewsCell: UICollectionViewCell, Reusable {
+final class TitleAndMoreView: UIView, EpoxyableView {
 
   // MARK: Lifecycle
 
-  override init(frame: CGRect) {
-    super.init(frame: frame)
+  init(style: Style) {
+    self.style = style
+    super.init(frame: .zero)
+    translatesAutoresizingMaskIntoConstraints = false
 
     moreButton.titleLabel?.font = Font.medium(16)
     moreButton.setTitleColor(.accent, for: .normal)
     moreButton.addTarget(self, action: #selector(didTapSeeAllButton(_:)), for: .touchUpInside)
 
-    contentView.addSubview(moreButton)
+    addSubview(moreButton)
     moreButton.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      moreButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-      moreButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+      moreButton.trailingAnchor.constraint(equalTo: trailingAnchor),
+      moreButton.centerYAnchor.constraint(equalTo: centerYAnchor),
     ])
 
     titleLabel.font = Font.heavy(20)
     titleLabel.textColor = .dark
 
-    contentView.addSubview(titleLabel)
+    addSubview(titleLabel)
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      titleLabel.topAnchor.constraint(equalTo: contentView.topAnchor),
-      titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
+      titleLabel.topAnchor.constraint(equalTo: topAnchor),
+      titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
       titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: moreButton.leadingAnchor, constant: -5),
-      titleLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+      titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
     ])
   }
 
-  @available(*, unavailable)
-  required init?(coder _: NSCoder) { fatalError() }
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
 
   // MARK: Internal
 
-  weak var delegate: RatingsAndReviewsCellDelegate?
+  struct Style: Hashable {
+  }
+
+  typealias Content = TitleAndMoreViewViewModel
+
+  weak var delegate: TitleAndMoreViewDelegate?
+
+  static func height(width: CGFloat, content: Content) -> CGFloat {
+    let buttonWidth = content.moreText?.width(usingFont: Font.medium(16)) ?? 0
+    let titleWidth = width - buttonWidth - 5
+    return content.titleText?.height(forWidth: titleWidth, font: Font.heavy(20)) ?? 0
+  }
+
+  func setContent(_ content: Content, animated: Bool) {
+    titleLabel.text = content.titleText
+    moreButton.setTitle(content.moreText, for: .normal)
+    moreButton.isHidden = !content.shouldShowMoreText
+  }
 
   // MARK: Private
 
+  private let style: Style
   private let titleLabel = UILabel()
   private let moreButton = UIButton()
 
   @objc
   private func didTapSeeAllButton(_: UIButton) {
     delegate?.didTapSeeAllReview()
-  }
-}
-
-// MARK: Decoratable
-
-extension RatingsAndReviewsCell: Decoratable {
-  typealias ViewModel = RatingsAndReviewsCellViewModel
-
-  func decorate(model: ViewModel) {
-    titleLabel.text = model.titleText
-    moreButton.setTitle(model.moreText, for: .normal)
-    moreButton.isHidden = !model.shouldShowMoreText
   }
 }

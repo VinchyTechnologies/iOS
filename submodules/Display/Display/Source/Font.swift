@@ -159,9 +159,7 @@ extension String {
   }
 
   public func width(usingFont font: UIFont) -> CGFloat {
-    let fontAttributes = [NSAttributedString.Key.font: font]
-    let size = self.size(withAttributes: fontAttributes)
-    return size.width
+    ceil(self.size(withAttributes: [.font: font]).width)
   }
   
   public func size(for font: UIFont) -> CGSize {

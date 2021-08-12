@@ -1,5 +1,5 @@
 //
-//  ToolCollectionCell.swift
+//  ToolView.swift
 //  Smart
 //
 //  Created by Aleksei Smirnov on 25.08.2020.
@@ -7,11 +7,12 @@
 //
 
 import Display
+import Epoxy
 import UIKit
 
 // MARK: - ToolCollectionCellViewModel
 
-struct ToolCollectionCellViewModel: ViewModelProtocol {
+struct ToolCollectionCellViewModel: ViewModelProtocol, Equatable {
   fileprivate let price: String?
   fileprivate let isLiked: Bool
 
@@ -29,14 +30,16 @@ protocol ToolCollectionCellDelegate: AnyObject {
   func didTapPrice(_ button: UIButton)
 }
 
-// MARK: - ToolCollectionCell
+// MARK: - ToolView
 
-final class ToolCollectionCell: UICollectionViewCell, Reusable {
+final class ToolView: UIView, EpoxyableView {
 
   // MARK: Lifecycle
 
-  override init(frame: CGRect) {
-    super.init(frame: frame)
+  init(style: Style) {
+    self.style = style
+    super.init(frame: .zero)
+    translatesAutoresizingMaskIntoConstraints = false
 
     [shareButton, likeButton, priceButton].forEach {
       $0.translatesAutoresizingMaskIntoConstraints = false
@@ -86,16 +89,38 @@ final class ToolCollectionCell: UICollectionViewCell, Reusable {
     ])
   }
 
-  @available(*, unavailable)
-  required init?(coder _: NSCoder) { fatalError() }
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
 
   // MARK: Internal
 
+  struct Style: Hashable {
+  }
+
+  typealias Content = ToolCollectionCellViewModel
+
+  static var height: CGFloat {
+    48
+  }
+
   weak var delegate: ToolCollectionCellDelegate?
+
+  func setContent(_ content: Content, animated: Bool) {
+    let title = NSAttributedString(
+      string: "~" + (content.price ?? "0.00"),
+      font: Font.with(size: 20, design: .round, traits: .bold),
+      textColor: .white,
+      paragraphAlignment: .center)
+
+    priceButton.setAttributedTitle(title, for: .normal)
+    likeButton.isSelected = content.isLiked
+  }
 
   // MARK: Private
 
-  private let shareButton = UIButton()
+  private let style: Style
+  private let shareButton = UIButton(type: .system)
   private let likeButton = UIButton()
   private let priceButton = UIButton()
 
@@ -113,22 +138,5 @@ final class ToolCollectionCell: UICollectionViewCell, Reusable {
   private func didTapLikeButton(_ button: UIButton) {
     button.isSelected = !button.isSelected
     delegate?.didTapLike(button)
-  }
-}
-
-// MARK: Decoratable
-
-extension ToolCollectionCell: Decoratable {
-  typealias ViewModel = ToolCollectionCellViewModel
-
-  func decorate(model: ViewModel) {
-    let title = NSAttributedString(
-      string: "~" + (model.price ?? "0.00"),
-      font: Font.with(size: 20, design: .round, traits: .bold),
-      textColor: .white,
-      paragraphAlignment: .center)
-
-    priceButton.setAttributedTitle(title, for: .normal)
-    likeButton.isSelected = model.isLiked
   }
 }
