@@ -111,7 +111,7 @@ final class WineDetailPresenter {
 
     if let dishes = wine.dishCompatibility, !dishes.isEmpty {
       dishes.forEach { dish in
-        servingTips.append(.imageOption(content: .init(image: UIImage(named: dish.imageName), titleText: dish.localized, isSelected: false)))
+        servingTips.append(.imageOption(content: .init(image: UIImage(named: dish.imageName)?.withTintColor(.dark), titleText: dish.localized, isSelected: false)))
       }
     }
 
@@ -149,24 +149,24 @@ final class WineDetailPresenter {
 
     if reviewCellViewModels.isEmpty {
       return [
-        .ratingAndReview([
-          .init(
+        .ratingAndReview(
+          itemID: .titleReviews,
+          content: .init(
             titleText: localized("reviews").firstLetterUppercased(),
             moreText: localized("see_all").firstLetterUppercased(),
-            shouldShowMoreText: reviewCellViewModels.count >= 5),
-        ]),
+            shouldShowMoreText: reviewCellViewModels.count >= 5)),
 
         .text(itemID: .noReviewsYet, localized("wine_has_no_reviews_yet").firstLetterUppercased()),
       ]
     }
 
     return [
-      .ratingAndReview([
-        .init(
+      .ratingAndReview(
+        itemID: .titleReviews,
+        content: .init(
           titleText: localized("reviews").firstLetterUppercased(),
           moreText: localized("see_all").firstLetterUppercased(),
-          shouldShowMoreText: reviewCellViewModels.count >= 5),
-      ]),
+          shouldShowMoreText: reviewCellViewModels.count >= 5)),
       .reviews(itemID: .reviews, content: reviewCellViewModels),
     ]
   }

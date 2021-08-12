@@ -100,13 +100,11 @@ final class ToolView: UIView, EpoxyableView {
 
   typealias Content = ToolCollectionCellViewModel
 
-
   static var height: CGFloat {
     48
   }
 
   weak var delegate: ToolCollectionCellDelegate?
-
 
   func setContent(_ content: Content, animated: Bool) {
     let title = NSAttributedString(
@@ -122,7 +120,7 @@ final class ToolView: UIView, EpoxyableView {
   // MARK: Private
 
   private let style: Style
-  private let shareButton = UIButton()
+  private let shareButton = UIButton(type: .system)
   private let likeButton = UIButton()
   private let priceButton = UIButton()
 

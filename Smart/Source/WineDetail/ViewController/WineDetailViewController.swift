@@ -80,6 +80,7 @@ final class WineDetailViewController: CollectionViewController {
     let collectionView = super.makeCollectionView()
     collectionView.backgroundColor = .mainBackground
     collectionView.delaysContentTouches = false
+    collectionView.scrollDelegate = self
     return collectionView
   }
 
@@ -99,8 +100,8 @@ final class WineDetailViewController: CollectionViewController {
 
   // MARK: Private
 
-  private let noteButton = UIButton()
-  private let moreButton = UIButton()
+  private let noteButton = UIButton(type: .system)
+  private let moreButton = UIButton(type: .system)
 
   private var viewModel: WineDetailViewModel = .init(navigationTitle: nil, sections: [], isGeneralInfoCollapsed: false)
 
@@ -315,7 +316,7 @@ final class WineDetailViewController: CollectionViewController {
             style: .style(with: .miniBold, textAligment: .center))
         }
         .flowLayoutItemSize(.init(width: width, height: height))
-        .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 8, right: 24))
+        .flowLayoutSectionInset(.init(top: 8, left: 24, bottom: 16, right: 24))
 
       case .tool(let itemID, let content):
         let width: CGFloat = view.frame.width - 48
@@ -345,8 +346,19 @@ final class WineDetailViewController: CollectionViewController {
           .flowLayoutSectionInset(.zero)
           .flowLayoutMinimumLineSpacing(0)
 
-      case .ratingAndReview(_):
-        return nil
+      case .ratingAndReview(let itemID, let content):
+        let width: CGFloat = view.frame.width - 48
+        let height: CGFloat = TitleAndMoreView.height(width: width, content: content)
+        return SectionModel(dataID: section.dataID) {
+          TitleAndMoreView.itemModel(
+            dataID: itemID,
+            content: content,
+            style: .init())
+        }
+        .flowLayoutItemSize(.init(width: width, height: height))
+        .flowLayoutSectionInset(.init(top: 16, left: 24, bottom: 8, right: 24))
+
+
       case .reviews(let itemID, let content):
         return SectionModel(dataID: section.dataID) {
           ReviewsCollectionView.itemModel(
@@ -368,7 +380,7 @@ final class WineDetailViewController: CollectionViewController {
             style: .init())
         }
         .flowLayoutItemSize(.init(width: view.frame.width, height: 100))
-        .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 16, right: 0))
+        .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 8, right: 0))
 
       case .button(let itemID, let content):
         let width: CGFloat = view.frame.width - 48
@@ -497,7 +509,7 @@ final class WineDetailViewController: CollectionViewController {
   }
 }
 
-// MARK: UICollectionViewDelegate
+// MARK: UIScrollViewDelegate
 
 //extension WineDetailViewController: UICollectionViewDataSource {
 //  func numberOfSections(in _: UICollectionView) -> Int {
@@ -685,7 +697,7 @@ final class WineDetailViewController: CollectionViewController {
 //  }
 //}
 
-extension WineDetailViewController: UICollectionViewDelegate {
+extension WineDetailViewController: UIScrollViewDelegate {
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     navigationItem.title = scrollView.contentOffset.y > 300 ? viewModel.navigationTitle : nil
   }
@@ -784,9 +796,9 @@ extension WineDetailViewController: WineDetailViewControllerProtocol {
   }
 }
 
-// MARK: RatingsAndReviewsCellDelegate
+// MARK: TitleAndMoreViewDelegate
 
-extension WineDetailViewController: RatingsAndReviewsCellDelegate {
+extension WineDetailViewController: TitleAndMoreViewDelegate {
   func didTapSeeAllReview() {
     interactor?.didTapSeeAllReviews()
   }
