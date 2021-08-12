@@ -87,13 +87,12 @@ final class WineDetailViewController: CollectionViewController {
   override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
     super.viewWillTransition(to: size, with: coordinator)
     coordinator.animate(alongsideTransition: { _ in
-      self.collectionView.collectionViewLayout.invalidateLayout()
+      self.setSections(self.sections, animated: false)
     })
   }
 
   override func viewWillLayoutSubviews() {
     super.viewWillLayoutSubviews()
-    collectionView.contentInset = .init(top: 0, left: 0, bottom: 15, right: 0)
     noteButton.layer.cornerRadius = noteButton.bounds.width / 2
     moreButton.layer.cornerRadius = moreButton.bounds.width / 2
   }

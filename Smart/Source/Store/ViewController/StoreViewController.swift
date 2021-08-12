@@ -57,6 +57,13 @@ final class StoreViewController: CollectionViewController {
     interactor?.viewDidLoad()
   }
 
+  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    super.viewWillTransition(to: size, with: coordinator)
+    coordinator.animate(alongsideTransition: { _ in
+      self.setSections(self.sections, animated: false)
+    })
+  }
+
   // MARK: Private
 
   private var supplementaryView: UIView?
