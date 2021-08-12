@@ -105,147 +105,6 @@ final class WineDetailViewController: CollectionViewController {
 
   private var viewModel: WineDetailViewModel = .init(navigationTitle: nil, sections: [], isGeneralInfoCollapsed: false)
 
-//  private lazy var layout = UICollectionViewCompositionalLayout { [weak self] sectionNumber, _ -> NSCollectionLayoutSection? in
-//
-//    guard let self = self else { return nil }
-//
-//    guard let type = self.viewModel?.sections[sectionNumber] else {
-//      return nil
-//    }
-//
-//    switch type {
-//    case .gallery:
-//      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-//      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(300)), subitems: [item])
-//      let section = NSCollectionLayoutSection(group: group)
-//      section.contentInsets = .init(top: 0, leading: 0, bottom: 15, trailing: 0)
-//      return section
-//
-//    case .winery:
-//      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(15)))
-//      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(15)), subitems: [item])
-//      let section = NSCollectionLayoutSection(group: group)
-//      section.contentInsets = .init(top: 15, leading: 15, bottom: 0, trailing: 15)
-//      return section
-//
-//    case .title, .text:
-//      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(15)))
-//      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(15)), subitems: [item])
-//      let section = NSCollectionLayoutSection(group: group)
-//      section.contentInsets = .init(top: 5, leading: 15, bottom: 0, trailing: 15)
-//      return section
-//
-//    case .rate:
-//      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(15)))
-//      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(15)), subitems: [item])
-//      let section = NSCollectionLayoutSection(group: group)
-//      section.contentInsets = .init(top: 5, leading: 15, bottom: 0, trailing: 15)
-//      return section
-//
-//    case .tool:
-//      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-//      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(50)), subitems: [item])
-//      let section = NSCollectionLayoutSection(group: group)
-//      section.contentInsets = .init(top: 15, leading: 15, bottom: 0, trailing: 15)
-//      return section
-//
-//    case .list, .whereToBuy:
-//      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)))
-//      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)), subitems: [item])
-//      let section = NSCollectionLayoutSection(group: group)
-//      section.contentInsets = .init(top: 15, leading: 0, bottom: 5, trailing: 0)
-//      return section
-//
-//    case .ratingAndReview:
-//      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(44)))
-//      let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(44)), subitems: [item])
-//      let section = NSCollectionLayoutSection(group: group)
-//      section.contentInsets = .init(top: 10, leading: 15, bottom: 0, trailing: 15)
-//      return section
-//
-//    case .tapToRate:
-//      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(30)))
-//      let group = NSCollectionLayoutGroup.vertical(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(30)), subitems: [item])
-//      let section = NSCollectionLayoutSection(group: group)
-//      section.contentInsets = .init(top: 0, leading: 15, bottom: 0, trailing: 15)
-//      return section
-//
-//    case .reviews:
-//      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-//      let width: CGFloat = UIScreen.main.bounds.width > 320 ? 300 : 285
-//      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(width), heightDimension: .absolute(200)), subitems: [item])
-//      let section = NSCollectionLayoutSection(group: group)
-//      section.orthogonalScrollingBehavior = .continuous
-//      section.contentInsets = .init(top: 0, leading: 15, bottom: 0, trailing: 15)
-//      section.interGroupSpacing = 10
-//      return section
-//
-//    case .servingTips:
-//      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .estimated(135), heightDimension: .fractionalHeight(1)))
-//      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .estimated(135), heightDimension: .absolute(100)), subitems: [item])
-//      let section = NSCollectionLayoutSection(group: group)
-//      section.orthogonalScrollingBehavior = .continuous
-//      section.contentInsets = .init(top: 15, leading: 15, bottom: 0, trailing: 15)
-//      section.interGroupSpacing = 10
-//      return section
-//
-//    case .button:
-//      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-//      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(48)), subitems: [item])
-//      let section = NSCollectionLayoutSection(group: group)
-//      section.contentInsets = .init(top: 20, leading: 16, bottom: 20, trailing: 16)
-//      return section
-//
-//    case .ad:
-//      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)))
-//      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)), subitems: [item])
-//      let section = NSCollectionLayoutSection(group: group)
-//      section.contentInsets = .init(top: 15, leading: 0, bottom: 10, trailing: 0)
-//      return section
-//
-//    case .similarWines:
-//      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(250)))
-//      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(250)), subitems: [item])
-//      let section = NSCollectionLayoutSection(group: group)
-//      section.contentInsets = .init(top: 15, leading: 0, bottom: 0, trailing: 0)
-//      return section
-//
-//    case .expandCollapse:
-//      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(30)))
-//      let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(30)), subitems: [item])
-//      let section = NSCollectionLayoutSection(group: group)
-//      section.contentInsets = .init(top: 0, leading: 0, bottom: 10, trailing: 0)
-//      return section
-//    }
-//  }
-//  private lazy var collectionView: WineDetailCollectionView = {
-//    let collectionView = WineDetailCollectionView(frame: .zero, collectionViewLayout: layout)
-//    collectionView.backgroundColor = .mainBackground
-//    collectionView.dataSource = self
-//    collectionView.delegate = self
-//    collectionView.delaysContentTouches = false
-//
-//    collectionView.register(
-//      GalleryCell.self,
-//      TitleCopyableCell.self,
-//      TextCollectionCell.self,
-//      StarRatingControlCollectionCell.self,
-//      ToolCollectionCell.self,
-//      ShortInfoCollectionCell.self,
-//      ButtonCollectionCell.self,
-//      ImageOptionCollectionCell.self,
-//      TitleWithSubtitleInfoCollectionViewCell.self,
-//      BigAdCollectionCell.self,
-//      VinchySimpleConiniousCaruselCollectionCell.self,
-//      ReviewCell.self,
-//      RatingsAndReviewsCell.self,
-//      TapToRateCell.self,
-//      ExpandCollapseCell.self,
-//      WhereToBuyCell.self)
-//
-//    return collectionView
-//  }()
-
   @SectionModelBuilder
   private var sections: [SectionModel] {
     viewModel.sections.compactMap({ section in
@@ -258,6 +117,22 @@ final class WineDetailViewController: CollectionViewController {
             style: .init())
             .flowLayoutItemSize(.init(width: view.frame.width, height: GalleryView.height))
         }
+        .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 16, right: 0))
+
+      case .name(let itemID, let content):
+        let width: CGFloat = view.frame.width - 48
+        let height: CGFloat = Label.height(
+          for: content,
+          width: width,
+          style: .style(with: .lagerTitle))
+        return SectionModel(dataID: section.dataID) {
+          Label.itemModel(
+            dataID: itemID,
+            content: content,
+            style: .style(with: .lagerTitle))
+        }
+        .flowLayoutItemSize(.init(width: width, height: height))
+        .flowLayoutSectionInset(.init(top: 8, left: 24, bottom: 8, right: 24))
 
       case .title(let itemID, let content):
         let width: CGFloat = view.frame.width - 48
@@ -354,10 +229,12 @@ final class WineDetailViewController: CollectionViewController {
             dataID: itemID,
             content: content,
             style: .init())
+            .setBehaviors { [weak self] context in
+              context.view.delegate = self
+            }
         }
         .flowLayoutItemSize(.init(width: width, height: height))
         .flowLayoutSectionInset(.init(top: 16, left: 24, bottom: 8, right: 24))
-
 
       case .reviews(let itemID, let content):
         return SectionModel(dataID: section.dataID) {
@@ -494,7 +371,7 @@ final class WineDetailViewController: CollectionViewController {
     sourceViewFrame: CGRect)
     -> Bool
   {
-    let availiableWidth = collectionView.bounds.size.width - 32
+    let availiableWidth = collectionView.bounds.size.width - 48
     guard
       let tutorialViewController = TutorialViewController.build(
         with: viewModel,
@@ -511,192 +388,6 @@ final class WineDetailViewController: CollectionViewController {
 
 // MARK: UIScrollViewDelegate
 
-//extension WineDetailViewController: UICollectionViewDataSource {
-//  func numberOfSections(in _: UICollectionView) -> Int {
-//    viewModel?.sections.count ?? 0
-//  }
-//
-//  func collectionView(_: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//    guard let type = viewModel?.sections[safe: section] else {
-//      return 0
-//    }
-//
-//    switch type {
-//    case .gallery(let model):
-//      return model.count
-//
-//    case .title(let model):
-//      return model.count
-//
-//    case .rate(let model):
-//      return model.count
-//
-//    case .winery(let model):
-//      return model.count
-//
-//    case .text(let model):
-//      return model.count
-//
-//    case .tool(let model):
-//      return model.count
-//
-//    case .list(let model):
-//      return model.count
-//
-//    case .ratingAndReview(let model):
-//      return model.count
-//
-//    case .tapToRate(let model):
-//      return model.count
-//
-//    case .reviews(let model):
-//      return model.count
-//
-//    case .servingTips(let model):
-//      return model.count
-//
-//    case .button(let model):
-//      return model.count
-//
-//    case .ad(let model):
-//      return model.count
-//
-//    case .similarWines(let model):
-//      return model.count
-//
-//    case .expandCollapse(let model):
-//      return model.count
-//
-//    case .whereToBuy(let model):
-//      return model.count
-//    }
-//  }
-//
-//  func collectionView(
-//    _ collectionView: UICollectionView,
-//    cellForItemAt indexPath: IndexPath)
-//    -> UICollectionViewCell
-//  {
-//    guard let type = viewModel?.sections[indexPath.section] else {
-//      return .init()
-//    }
-//
-//    switch type {
-//    case .gallery(let model):
-//      // swiftlint:disable:next force_cast
-//      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: GalleryCell.reuseId, for: indexPath) as! GalleryCell
-//      cell.decorate(model: model[indexPath.row])
-//      return cell
-//
-//    case .title(let model):
-//      // swiftlint:disable:next force_cast
-//      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TitleCopyableCell.reuseId, for: indexPath) as! TitleCopyableCell
-//      cell.decorate(model: model[indexPath.row])
-//      return cell
-//
-//    case .rate(let model):
-//      // swiftlint:disable:next force_cast
-//      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StarRatingControlCollectionCell.reuseId, for: indexPath) as! StarRatingControlCollectionCell
-//      cell.decorate(model: model[indexPath.row])
-//      cell.delegate = self
-//      return cell
-//
-//    case .winery(let model), .text(let model):
-//      // swiftlint:disable:next force_cast
-//      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseId, for: indexPath) as! TextCollectionCell
-//      cell.decorate(model: model[indexPath.row])
-//      return cell
-//
-//    case .tool(let model):
-//      // swiftlint:disable:next force_cast
-//      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ToolCollectionCell.reuseId, for: indexPath) as! ToolCollectionCell
-//      cell.decorate(model: model[indexPath.row])
-//      cell.delegate = self
-//      return cell
-//
-//    case .list(let model):
-//      // swiftlint:disable:next force_cast
-//      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TitleWithSubtitleInfoCollectionViewCell.reuseId, for: indexPath) as! TitleWithSubtitleInfoCollectionViewCell
-//      cell.decorate(model: model[indexPath.row])
-//      cell.backgroundColor = indexPath.row.isMultiple(of: 2) ? .option : .mainBackground
-//      return cell
-//
-//    case .ratingAndReview(let model):
-//      // swiftlint:disable:next force_cast
-//      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: RatingsAndReviewsCell.reuseId, for: indexPath) as! RatingsAndReviewsCell
-//      cell.decorate(model: model[indexPath.row])
-//      cell.delegate = self
-//      return cell
-//
-//    case .tapToRate(let model):
-//      // swiftlint:disable:next force_cast
-//      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TapToRateCell.reuseId, for: indexPath) as! TapToRateCell
-//      cell.decorate(model: model[indexPath.row])
-//      return cell
-//
-//    case .reviews(let model):
-//      // swiftlint:disable:next force_cast
-//      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ReviewCell.reuseId, for: indexPath) as! ReviewCell
-//      cell.decorate(model: model[indexPath.row])
-//      return cell
-//
-//    case .servingTips(let model):
-//      let item = model[indexPath.row]
-//      switch item {
-//      case .titleTextAndImage(let imageName, let titleText):
-//        // swiftlint:disable:next force_cast
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ImageOptionCollectionCell.reuseId, for: indexPath) as! ImageOptionCollectionCell
-//        cell.decorate(model: .init(image: UIImage(named: imageName)?.withTintColor(.dark, renderingMode: .alwaysOriginal), titleText: titleText, isSelected: false))
-//        return cell
-//
-//      case .titleTextAndSubtitleText(let titleText, let subtitleText):
-//        // swiftlint:disable:next force_cast
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShortInfoCollectionCell.reuseId, for: indexPath) as! ShortInfoCollectionCell
-//        let title = NSAttributedString(string: titleText ?? "", font: Font.semibold(22), textColor: .dark)
-//        let subtitle = NSAttributedString(string: subtitleText ?? "", font: Font.with(size: 18, design: .round, traits: .bold), textColor: .dark)
-//        cell.decorate(model: .init(title: title, subtitle: subtitle))
-//        return cell
-//      }
-//
-//    case .button(let model):
-//      // swiftlint:disable:next force_cast
-//      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ButtonCollectionCell.reuseId, for: indexPath) as! ButtonCollectionCell
-//      cell.decorate(model: model[indexPath.row])
-//      cell.delegate = self
-//      return cell
-//
-//    case .ad: // TODO: - configure string key
-//      // swiftlint:disable:next force_cast
-//      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: BigAdCollectionCell.reuseId, for: indexPath) as! BigAdCollectionCell
-//      cell.adBanner.rootViewController = self
-//      return cell
-//
-//    case .similarWines(let model):
-//      let cell = collectionView.dequeueReusableCell(
-//        withReuseIdentifier: VinchySimpleConiniousCaruselCollectionCell.reuseId,
-//        for: indexPath) as! VinchySimpleConiniousCaruselCollectionCell // swiftlint:disable:this force_cast
-//      cell.decorate(model: model[indexPath.row])
-//      cell.delegate = self
-//      return cell
-//
-//    case .expandCollapse(let model):
-//      let cell = collectionView.dequeueReusableCell(
-//        withReuseIdentifier: ExpandCollapseCell.reuseId,
-//        for: indexPath) as! ExpandCollapseCell // swiftlint:disable:this force_cast
-//      cell.decorate(model: model[indexPath.row])
-//      return cell
-//
-//    case .whereToBuy(let model):
-//      let cell = collectionView.dequeueReusableCell(
-//        withReuseIdentifier: WhereToBuyCell.reuseId,
-//        for: indexPath) as! WhereToBuyCell // swiftlint:disable:this force_cast
-//      cell.decorate(model: model[indexPath.row])
-//      cell.backgroundColor = indexPath.row.isMultiple(of: 2) ? .option : .mainBackground
-//      return cell
-//    }
-//  }
-//}
-
 extension WineDetailViewController: UIScrollViewDelegate {
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     navigationItem.title = scrollView.contentOffset.y > 300 ? viewModel.navigationTitle : nil
@@ -711,32 +402,6 @@ extension WineDetailViewController: UIScrollViewDelegate {
       interactor?.didScrollStopped()
     }
   }
-
-//  func collectionView(
-//    _: UICollectionView,
-//    didSelectItemAt indexPath: IndexPath)
-//  {
-//    guard let type = viewModel?.sections[indexPath.section] else {
-//      return
-//    }
-//
-//    switch type {
-//    case .gallery, .title, .rate, .winery, .text, .tool, .list, .ratingAndReview, .tapToRate, .servingTips, .button, .ad, .similarWines:
-//      break
-//
-//    case .expandCollapse:
-//      interactor?.didTapExpandOrCollapseGeneralInfo()
-//
-//    case .whereToBuy(let model):
-//      guard let affilatedId = model[safe: indexPath.row]?.affilatedId else {
-//        return
-//      }
-//      interactor?.didSelectStore(affilatedId: affilatedId)
-//
-//    case .reviews(let model):
-//      interactor?.didTapReview(reviewID: model[indexPath.row].id)
-//    }
-//  }
 }
 
 // MARK: ButtonCollectionCellDelegate
@@ -765,24 +430,17 @@ extension WineDetailViewController: ToolCollectionCellDelegate {
 
 // MARK: WineDetailViewControllerProtocol
 
-//extension WineDetailViewController: VinchySimpleConiniousCaruselCollectionCellDelegate {
-//  func didTapCompilationCell(wines _: [ShortWine], title _: String?) {}
-//
-//  func didTapBottleCell(wineID: Int64) {
-//    interactor?.didTapSimilarWine(wineID: wineID)
-//  }
-//}
-
 extension WineDetailViewController: WineDetailViewControllerProtocol {
 
   func showReviewButtonTutorial(viewModel: DeliveryTutorialViewModel) {
-//    for visibleCell in collectionView.visibleCells {
-//      guard
-//        let indexPath = collectionView.indexPath(for: visibleCell),
-//        let restaurantCell = visibleCell as? ButtonView
-//      else { continue }
-//      showDeliveryTutorialIfCan(at: indexPath, collectionCell: restaurantCell, viewModel: viewModel)
-//    }
+    for visibleCell in collectionView.visibleCells {
+      guard
+        let indexPath = collectionView.indexPath(for: visibleCell),
+        let restaurantCell = (visibleCell as? CollectionViewCell),
+        restaurantCell.view as? ButtonView != nil
+      else { continue }
+      showDeliveryTutorialIfCan(at: indexPath, collectionCell: restaurantCell, viewModel: viewModel)
+    }
   }
 
   func updateGeneralInfoSectionAndExpandOrCollapseCell(viewModel: WineDetailViewModel) { // TODO: - only updateUI

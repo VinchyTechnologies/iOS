@@ -47,12 +47,12 @@ final class StoreViewController: CollectionViewController {
     collectionView.delaysContentTouches = false
     collectionView.scrollDelegate = self
 
-    let filterBarButtonItem = UIBarButtonItem(
-      image: UIImage(named: "edit")?.withRenderingMode(.alwaysTemplate),
-      style: .plain,
-      target: self,
-      action: nil)
-    navigationItem.rightBarButtonItems = [filterBarButtonItem]
+//    let filterBarButtonItem = UIBarButtonItem(
+//      image: UIImage(named: "edit")?.withRenderingMode(.alwaysTemplate),
+//      style: .plain,
+//      target: self,
+//      action: nil)
+//    navigationItem.rightBarButtonItems = [filterBarButtonItem]
 
     interactor?.viewDidLoad()
   }

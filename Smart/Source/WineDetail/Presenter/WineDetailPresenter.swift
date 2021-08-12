@@ -185,18 +185,12 @@ final class WineDetailPresenter {
 
     if let wineryTitle = wine.winery?.title {
       sections += [
-        .winery(
-          itemID: .winery, wineryTitle
-//          .init(titleText: NSAttributedString(
-//            string: wineryTitle,
-//            font: Font.medium(18),
-//            textColor: .blueGray)),
-        ),
+        .winery(itemID: .winery, wineryTitle),
       ]
     }
 
     sections += [
-      .title(itemID: .titleItem, wine.title),
+      .name(itemID: .name, wine.title),
     ]
 
     if isReviewAvailable {

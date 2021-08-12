@@ -78,13 +78,11 @@ final class TitleAndMoreView: UIView, EpoxyableView {
 
   weak var delegate: TitleAndMoreViewDelegate?
 
-
   static func height(width: CGFloat, content: Content) -> CGFloat {
     let buttonWidth = content.moreText?.width(usingFont: Font.medium(16)) ?? 0
     let titleWidth = width - buttonWidth - 5
     return content.titleText?.height(forWidth: titleWidth, font: Font.heavy(20)) ?? 0
   }
-
 
   func setContent(_ content: Content, animated: Bool) {
     titleLabel.text = content.titleText

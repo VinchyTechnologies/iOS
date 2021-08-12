@@ -63,14 +63,12 @@ final class TitleWithSubtitleInfoView: UIView, EpoxyableView {
 
   typealias Content = TitleWithSubtitleInfoCollectionViewCellViewModel
 
-
   static func height(width: CGFloat, content: Content) -> CGFloat {
     let titleHeight = (content.titleText ?? "").height(forWidth: width - 48, font: Font.medium(20))
     let subtitleHeight = (content.subtitleText ?? "").height(forWidth: width - 48, font: Font.regular(14))
 
     return titleHeight + subtitleHeight + 7 + 7 + 2
   }
-
 
   func setContent(_ content: Content, animated: Bool) {
     titleLabel.attributedText = NSAttributedString(string: content.titleText ?? "", font: Font.medium(20), textColor: .dark)

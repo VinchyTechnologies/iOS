@@ -54,7 +54,6 @@ final class ButtonView: UIView, EpoxyableView {
 
   typealias Content = ButtonCollectionCellViewModel
 
-
   static var height: CGFloat {
     48
   }
