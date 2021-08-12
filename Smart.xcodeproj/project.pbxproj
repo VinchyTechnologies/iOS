@@ -1196,13 +1196,13 @@
 		748586B126C0426300F5CBEA /* Stores */ = {
 			isa = PBXGroup;
 			children = (
-				748586B226C0426300F5CBEA /* ViewModel */,
-				748586B426C0426300F5CBEA /* Input */,
 				748586B626C0426300F5CBEA /* Assembly */,
-				748586B826C0426300F5CBEA /* Presenter */,
-				748586BB26C0426300F5CBEA /* ViewController */,
+				748586B426C0426300F5CBEA /* Input */,
 				748586BE26C0426300F5CBEA /* Interactor */,
+				748586B826C0426300F5CBEA /* Presenter */,
 				748586C126C0426300F5CBEA /* Router */,
+				748586BB26C0426300F5CBEA /* ViewController */,
+				748586B226C0426300F5CBEA /* ViewModel */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -1234,8 +1234,8 @@
 		748586B826C0426300F5CBEA /* Presenter */ = {
 			isa = PBXGroup;
 			children = (
-				748586B926C0426300F5CBEA /* StoresPresenterProtocol.swift */,
 				748586BA26C0426300F5CBEA /* StoresPresenter.swift */,
+				748586B926C0426300F5CBEA /* StoresPresenterProtocol.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -1252,8 +1252,8 @@
 		748586BE26C0426300F5CBEA /* Interactor */ = {
 			isa = PBXGroup;
 			children = (
-				748586BF26C0426300F5CBEA /* StoresInteractorProtocol.swift */,
 				748586C026C0426300F5CBEA /* StoresInteractor.swift */,
+				748586BF26C0426300F5CBEA /* StoresInteractorProtocol.swift */,
 			);
 			path = Interactor;
 			sourceTree = "<group>";
@@ -1261,8 +1261,8 @@
 		748586C126C0426300F5CBEA /* Router */ = {
 			isa = PBXGroup;
 			children = (
-				748586C226C0426300F5CBEA /* StoresRouterProtocol.swift */,
 				748586C326C0426300F5CBEA /* StoresRouter.swift */,
+				748586C226C0426300F5CBEA /* StoresRouterProtocol.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
