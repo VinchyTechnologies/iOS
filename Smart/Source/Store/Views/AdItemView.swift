@@ -32,10 +32,9 @@ final class AdItemView: UIView, EpoxyableView {
       adBanner.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -20),
     ])
 
-    adBanner.load(GADRequest())
-
     adBanner.delegate = self
   }
+
   required init?(coder: NSCoder) { fatalError() }
 
   // MARK: Internal
@@ -55,6 +54,11 @@ final class AdItemView: UIView, EpoxyableView {
   // MARK: ContentConfigurableView
 
   func setContent(_ content: Content, animated: Bool) {
+    adBanner.load(GADRequest())
+    isUserInteractionEnabled = true
+    adBanner.isUserInteractionEnabled = true
+    setNeedsLayout()
+    layoutIfNeeded()
   }
 
   // MARK: Private
