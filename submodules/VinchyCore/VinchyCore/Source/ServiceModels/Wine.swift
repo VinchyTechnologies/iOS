@@ -23,7 +23,8 @@ public struct Wine: Decodable {
     let desc = try? container.decodeIfPresent(String.self, forKey: .desc)
     let price = try? container.decodeIfPresent(Int64.self, forKey: .price)
     let alcoholPercent = try? container.decodeIfPresent(Double.self, forKey: .alcoholPercent)
-    let servingTemperature = try? container.decodeIfPresent(Double.self, forKey: .servingTemperature)
+    let maxServingTemperature = try? container.decodeIfPresent(Double.self, forKey: .maxServingTemperature)
+    let minServingTemperature = try? container.decodeIfPresent(Double.self, forKey: .minServingTemperature)
     let dishCompatibilityFromBackend = try? container.decodeIfPresent([DishCompatibility].self, forKey: .dishCompatibility)
 
     var dishCompatibility: [DishCompatibility] = []
@@ -44,7 +45,6 @@ public struct Wine: Decodable {
     let type = try? container.decodeIfPresent(WineType.self, forKey: .type)
     let sugar = try? container.decodeIfPresent(Sugar.self, forKey: .sugar)
     let similarWines = try? container.decodeIfPresent([ShortWine].self, forKey: .similarWines)
-    let reviews = (try? container.decodeIfPresent([Review].self, forKey: .reviews)) ?? []
     let rating = try? container.decodeIfPresent(Double.self, forKey: .rating)
 
     self.id = id
@@ -56,7 +56,8 @@ public struct Wine: Decodable {
     self.desc = desc
     self.price = price
     self.alcoholPercent = alcoholPercent
-    self.servingTemperature = servingTemperature
+    self.maxServingTemperature = maxServingTemperature
+    self.minServingTemperature = minServingTemperature
     self.dishCompatibility = dishCompatibility
     self.year = year
     self.grapes = grapes
@@ -64,7 +65,6 @@ public struct Wine: Decodable {
     self.type = type
     self.sugar = sugar
     self.similarWines = similarWines
-    self.reviews = reviews
     self.rating = rating
   }
 
@@ -106,7 +106,8 @@ public struct Wine: Decodable {
   public let desc: String?
   public let price: Int64?
   public let alcoholPercent: Double?
-  public let servingTemperature: Double?
+  public let maxServingTemperature: Double?
+  public let minServingTemperature: Double?
   public let dishCompatibility: [DishCompatibility]?
   public let year: Int?
   public let grapes: [String]?
@@ -114,7 +115,6 @@ public struct Wine: Decodable {
   public let type: WineType?
   public let sugar: Sugar?
   public let similarWines: [ShortWine]?
-  public let reviews: [Review]
   public let rating: Double?
 
   // MARK: Private
@@ -128,7 +128,8 @@ public struct Wine: Decodable {
     case imageURLs = "image_url_list"
     case price
     case alcoholPercent = "alcohol_percent"
-    case servingTemperature = "serving_temperature"
+    case maxServingTemperature = "max_serving_temperature"
+    case minServingTemperature = "min_serving_temperature"
     case desc = "description"
     case dishCompatibility = "dish_list"
     case year

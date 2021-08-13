@@ -46,7 +46,7 @@ final class RootRouterImpl: RootRouter {
   }
 
   func routeToOnboarding(delegate: OnboardingViewControllerOutput?) {
-    let vc = GeoOnboardingViewController() //OnboardingModuleFactory().makeOnboardingViewController(delegate: delegate)
+    let vc = OnboardingModuleFactory().makeOnboardingViewController(delegate: delegate)
     window.rootViewController = vc
   }
 

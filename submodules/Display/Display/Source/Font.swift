@@ -159,9 +159,17 @@ extension String {
   }
 
   public func width(usingFont font: UIFont) -> CGFloat {
-    let fontAttributes = [NSAttributedString.Key.font: font]
-    let size = self.size(withAttributes: fontAttributes)
-    return size.width
+    ceil(self.size(withAttributes: [.font: font]).width)
+  }
+  
+  public func size(for font: UIFont) -> CGSize {
+    let availableSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
+    let result = self.boundingRect( // swiftformat:disable all
+      with: availableSize,
+      options: [.usesLineFragmentOrigin],
+      attributes: [.font: font],
+      context: nil)
+    return CGSize(width: ceil(result.width), height: ceil(result.height))
   }
 }
 

@@ -47,7 +47,7 @@ final class WineDetailPresenter {
     }
 
     if !imageURLs.isEmpty {
-      return [.gallery([.init(urls: imageURLs)])]
+      return [.gallery(itemID: .gallery, .init(urls: imageURLs))]
     } else {
       return []
     }
@@ -80,11 +80,21 @@ final class WineDetailPresenter {
       shortDescriptions.append(.init(titleText: region, subtitleText: localized("region").firstLetterUppercased()))
     }
 
+    if let grapes = wine.grapes, !grapes.isEmpty {
+      let grapesString = grapes.joined(separator: ", ")
+      shortDescriptions.append(
+        .init(
+          titleText: grapesString,
+          subtitleText: localizedPlural(
+            "sortsOfGrape",
+            count: UInt(grapes.count)).firstLetterUppercased()))
+    }
+
     if !shortDescriptions.isEmpty {
       if let prefix = prefix {
-        return (sections: [.list(Array(shortDescriptions.prefix(prefix)))], count: shortDescriptions.count)
+        return (sections: [.list(itemID: .list, content: Array(shortDescriptions.prefix(prefix)))], count: shortDescriptions.count)
       } else {
-        return (sections: [.list(shortDescriptions)], count: shortDescriptions.count)
+        return (sections: [.list(itemID: .list, content: shortDescriptions)], count: shortDescriptions.count)
       }
     } else {
       return (sections: [], count: 0)
@@ -92,34 +102,31 @@ final class WineDetailPresenter {
   }
 
   private func buildServingTips(wine: Wine) -> [WineDetailViewModel.Section] {
-    var servingTips = [WineDetailViewModel.ShortInfoModel]()
+    var servingTips = [ServingTipsCollectionViewItem]()
 
-    if let servingTemperature = localizedTemperature(wine.servingTemperature) {
-      servingTips.append(.titleTextAndSubtitleText(titleText: servingTemperature, subtitleText: localized("serving_temperature").firstLetterUppercased()))
+    if let servingTemperature = localizedTemperature(wine.minServingTemperature, wine.maxServingTemperature) {
+      let subtitle = localized("serving_temperature").firstLetterUppercased()
+      servingTips.append(.titleOption(content: .init(titleText: servingTemperature, subtitleText: subtitle)))
     }
 
     if let dishes = wine.dishCompatibility, !dishes.isEmpty {
       dishes.forEach { dish in
-        servingTips.append(.titleTextAndImage(imageName: dish.imageName, titleText: dish.localized))
+        servingTips.append(.imageOption(content: .init(image: UIImage(named: dish.imageName)?.withTintColor(.dark), titleText: dish.localized, isSelected: false)))
       }
     }
 
     if !servingTips.isEmpty {
       return [
-        .title([.init(
-          titleText: NSAttributedString(
-            string: localized("serving_tips").firstLetterUppercased(),
-            font: Font.heavy(20),
-            textColor: .dark))]),
-        .servingTips(servingTips),
+        .title(itemID: .servingTipsTitle, localized("serving_tips").firstLetterUppercased()),
+        .servingTips(itemID: .servingTips, content: .init(items: servingTips)),
       ]
     } else {
       return []
     }
   }
 
-  private func buildReview(wine: Wine) -> [WineDetailViewModel.Section] {
-    let reviewCellViewModels: [ReviewCellViewModel] = wine.reviews.compactMap {
+  private func buildReview(reviews: [Review]) -> [WineDetailViewModel.Section] {
+    let reviewCellViewModels: [ReviewView.Content] = reviews.compactMap {
       if $0.comment?.isEmpty == true || $0.comment == nil {
         return nil
       }
@@ -132,7 +139,7 @@ final class WineDetailPresenter {
         dateText = $0.updateDate.toDate()
       }
 
-      return ReviewCellViewModel(
+      return ReviewView.Content(
         id: $0.id,
         userNameText: nil,
         dateText: dateText,
@@ -141,47 +148,49 @@ final class WineDetailPresenter {
     }
 
     if reviewCellViewModels.isEmpty {
-      return []
+      return [
+        .ratingAndReview(
+          itemID: .titleReviews,
+          content: .init(
+            titleText: localized("reviews").firstLetterUppercased(),
+            moreText: localized("see_all").firstLetterUppercased(),
+            shouldShowMoreText: reviewCellViewModels.count >= 5)),
+
+        .text(itemID: .noReviewsYet, localized("wine_has_no_reviews_yet").firstLetterUppercased()),
+      ]
     }
 
     return [
-      .ratingAndReview([
-        .init(
+      .ratingAndReview(
+        itemID: .titleReviews,
+        content: .init(
           titleText: localized("reviews").firstLetterUppercased(),
           moreText: localized("see_all").firstLetterUppercased(),
-          shouldShowMoreText: reviewCellViewModels.count >= 5),
-      ]),
-      .reviews(reviewCellViewModels),
+          shouldShowMoreText: reviewCellViewModels.count >= 5)),
+      .reviews(itemID: .reviews, content: reviewCellViewModels),
     ]
   }
 
   private func buildStarRateControl(rate: Double) -> [WineDetailViewModel.Section] {
     let rateViewModel = StarRatingControlCollectionViewCellViewModel(rate: rate)
-    return [.rate([rateViewModel])]
+    return [.rate(itemID: .rate, content: rateViewModel)]
   }
 
-  private func generateAllSections(wine: Wine, isLiked: Bool, isDisliked: Bool, rate: Double, currency: String) -> [WineDetailViewModel.Section] {
+  private func generateAllSections(wine: Wine, reviews: [Review]?, isLiked: Bool, isDisliked: Bool, rate: Double, currency: String, stores: [PartnerInfo]?, isGeneralInfoCollapsed: Bool) -> [WineDetailViewModel.Section] {
     var sections: [WineDetailViewModel.Section] = []
 
     sections += buildCaruselImages(wine: wine)
 
+    /// Winery
+
     if let wineryTitle = wine.winery?.title {
       sections += [
-        .winery([
-          .init(titleText: NSAttributedString(
-            string: wineryTitle,
-            font: Font.medium(18),
-            textColor: .blueGray)),
-        ]),
+        .winery(itemID: .winery, wineryTitle),
       ]
     }
 
     sections += [
-      .title([.init(
-        titleText: NSAttributedString(
-          string: wine.title,
-          font: Font.heavy(20),
-          textColor: .dark))]),
+      .name(itemID: .name, wine.title),
     ]
 
     if isReviewAvailable {
@@ -193,73 +202,87 @@ final class WineDetailPresenter {
     }
 
     sections += [
-      .tool([.init(
-        price: formatCurrencyAmount(
-          wine.price ?? 0, currency: currency),
-        isLiked: isLiked)]),
+      .tool(
+        itemID: .tool,
+        content: .init(
+          price: formatCurrencyAmount(
+            wine.price ?? 0, currency: currency),
+          isLiked: isLiked)),
     ]
 
-    if isDescriptionInWineDetailEnabled {
-      sections += [
-        .text([.init(
-          titleText: NSAttributedString(
-            string: wine.desc ?? "",
-            font: Font.light(18),
-            textColor: .dark))]),
-      ]
-    }
+//    if isDescriptionInWineDetailEnabled {
+//      sections += [
+//        .text([.init(
+//          titleText: NSAttributedString(
+//            string: wine.desc ?? "",
+//            font: Font.light(18),
+//            textColor: .dark))]),
+//      ]
+//    }
 
     let generalInfoRows = buildGeneralInfo(wine: wine, prefix: C.numberOfNonHiddenRowsInGeneralInfoSection)
     sections += generalInfoRows.sections
 
     if generalInfoRows.count > C.numberOfNonHiddenRowsInGeneralInfoSection {
-      sections += [.expandCollapse([.init(chevronDirection: .down, titleText: localized("expand").firstLetterUppercased(), animated: false)])]
+      let titleText = isGeneralInfoCollapsed
+        ? localized("expand").firstLetterUppercased()
+        : localized("collapse").firstLetterUppercased()
+      sections += [
+        .expandCollapse(itemID: .expandCollapse, content: .init(chevronDirection: isGeneralInfoCollapsed ? .down : .up, titleText: titleText, animated: false)),
+      ]
     }
 
     sections += buildServingTips(wine: wine)
 
     if isReviewAvailable {
-//      sections += [.tapToRate([.init(titleText: "Tap to Rate:", rate: 0)])]
-      sections += buildReview(wine: wine)
-      sections += [.button([.init(buttonText: localized("write_review").firstLetterUppercased())])]
+      if let reviews = reviews {
+        sections += buildReview(reviews: reviews)
+        sections += [.button(itemID: .writeReviewButton, content: .init(buttonText: localized("write_review").firstLetterUppercased()))]
+      }
     }
 
+    /// Ad
+
     if isAdAvailable {
-      sections += [.ad([1])] // TODO: - Add Real Model
+      sections += [.ad(itemID: .ad)]
     }
 
     /// where to buy
 
-//    sections += [
-//
-//      .title([.init(
-//        titleText: NSAttributedString(
-//          string: localized("Where to buy?").firstLetterUppercased(),
-//          font: Font.heavy(20),
-//          textColor: .dark))]),
-//    ]
-//
-//    sections += [
-//      .whereToBuy([
-//        .init(imageURL: "https://buninave.ru/wp-content/uploads/2018/05/logo_5ka.png", titleText: "Пятерочка", subtitleText: nil),
-//        .init(imageURL: "https://buninave.ru/wp-content/uploads/2018/05/logo_5ka.png", titleText: "Пятерочка", subtitleText: nil),
-//        .init(imageURL: "https://buninave.ru/wp-content/uploads/2018/05/logo_5ka.png", titleText: "Пятерочка", subtitleText: nil),
-//        .init(imageURL: "https://buninave.ru/wp-content/uploads/2018/05/logo_5ka.png", titleText: "Пятерочка", subtitleText: nil),
-//        .init(imageURL: "https://buninave.ru/wp-content/uploads/2018/05/logo_5ka.png", titleText: "Пятерочка", subtitleText: nil),
-//      ]),
-//    ]
+    if let stores = stores, !stores.isEmpty {
+      sections += [
+        .title(itemID: .whereToBuyTitle, localized("where_to_buy").firstLetterUppercased()),
+      ]
 
-    var wineList: [CollectionItem] = []
+      let storeViewModels: [WhereToBuyCellViewModel] = stores.compactMap { partner in
+        .init(affilatedId: partner.affiliatedStoreId, imageURL: partner.logoURL, titleText: partner.title, subtitleText: nil)
+      }
+
+      sections += [
+        .whereToBuy(itemID: .whereToBuy, content: storeViewModels),
+      ]
+    }
+
+    /// Similar wines
 
     if let similarWines = wine.similarWines {
+
+      var wineList: [WineBottleView.Content] = []
+
       similarWines.forEach { shortWine in
-        wineList.append(.wine(wine: shortWine))
+        wineList.append(
+          .init(
+            wineID: shortWine.id,
+            imageURL: shortWine.mainImageUrl?.toURL,
+            titleText: shortWine.title,
+            subtitleText: countryNameFromLocaleCode(countryCode: shortWine.winery?.countryCode)))
       }
-      let collections: [Collection] = [Collection(wineList: wineList)]
 
-      sections += [.title([.init(titleText: NSAttributedString(string: localized("similar_wines").firstLetterUppercased(), font: Font.heavy(20), textColor: .dark))])]
+      sections += [
+        .title(itemID: .similarWinesTitle, localized("similar_wines").firstLetterUppercased()),
+      ]
 
-      sections += [.similarWines([VinchySimpleConiniousCaruselCollectionCellViewModel(type: .bottles, collections: collections)])]
+      sections += [.similarWines(itemID: .similarWines, content: wineList)]
     }
 
     return sections
@@ -269,7 +292,6 @@ final class WineDetailPresenter {
 // MARK: WineDetailPresenterProtocol
 
 extension WineDetailPresenter: WineDetailPresenterProtocol {
-
   var reportAnErrorText: String? {
     localized("tell_about_error").firstLetterUppercased()
   }
@@ -280,6 +302,13 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
 
   var reportAnErrorRecipients: [String] {
     [localized("contact_email")]
+  }
+
+  func showReviewButtonTutorial() {
+    viewController?.showReviewButtonTutorial(
+      viewModel: .init(
+        title: localized("leave_review_more_often").firstLetterUppercased(),
+        content: localized("hint_to_review_button").firstLetterUppercased()))
   }
 
   func expandOrCollapseGeneralInfo(wine: Wine, isGeneralInfoCollapsed: Bool) {
@@ -307,6 +336,24 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
     }
 
     viewModel?.sections[indexOfGeneralInfo] = section
+
+    let indexOfExpandCollapse = viewModel?.sections.firstIndex(where: { section in
+      switch section {
+      case .expandCollapse:
+        return true
+
+      default:
+        return false
+      }
+    })
+
+    if let indexOfExpandCollapse = indexOfExpandCollapse {
+      let titleText = isGeneralInfoCollapsed
+        ? localized("expand").firstLetterUppercased()
+        : localized("collapse").firstLetterUppercased()
+
+      viewModel?.sections[indexOfExpandCollapse] = .expandCollapse(itemID: .expandCollapse, content: .init(chevronDirection: isGeneralInfoCollapsed ? .down : .up, titleText: titleText, animated: false))
+    }
 
     guard var viewModel = viewModel else {
       return
@@ -344,9 +391,9 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
     viewController?.stopLoadingAnimation()
   }
 
-  func update(wine: Wine, isLiked: Bool, isDisliked: Bool, rate: Double, currency: String, isGeneralInfoCollapsed: Bool) {
+  func update(wine: Wine, reviews: [Review]?, isLiked: Bool, isDisliked: Bool, rate: Double, currency: String, stores: [PartnerInfo]?, isGeneralInfoCollapsed: Bool) {
 
-    let sections = generateAllSections(wine: wine, isLiked: isLiked, isDisliked: isDisliked, rate: rate, currency: currency)
+    let sections = generateAllSections(wine: wine, reviews: reviews, isLiked: isLiked, isDisliked: isDisliked, rate: rate, currency: currency, stores: stores, isGeneralInfoCollapsed: isGeneralInfoCollapsed)
 
     let viewModel = WineDetailViewModel(navigationTitle: wine.title, sections: sections, isGeneralInfoCollapsed: isGeneralInfoCollapsed)
 

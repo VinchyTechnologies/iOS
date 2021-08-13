@@ -6,6 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import FittedSheets
 import UIKit
 
 // MARK: - MapDetailStoreRouter
@@ -34,4 +35,9 @@ final class MapDetailStoreRouter {
 
 // MARK: MapDetailStoreRouterProtocol
 
-extension MapDetailStoreRouter: MapDetailStoreRouterProtocol {}
+extension MapDetailStoreRouter: MapDetailStoreRouterProtocol {
+  func dismiss(completion: (() -> Void)?) {
+    viewController?.sheetViewController?.attemptDismiss(animated: true)
+    completion?()
+  }
+}

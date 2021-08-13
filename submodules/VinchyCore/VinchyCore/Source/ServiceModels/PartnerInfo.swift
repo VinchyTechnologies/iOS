@@ -16,11 +16,12 @@ public struct PartnerInfo: Decodable {
   public let title: String
   public let latitude: Double?
   public let longitude: Double?
-  public let affiliatedStoreType: AffiliatedStoreType
+  public let affiliatedStoreType: AffiliatedStoreType?
   public let url: String?
   public let phoneNumber: String?
   public let scheduleOfWork: String?
   public let address: String?
+  public let logoURL: String?
 
   // MARK: Private
 
@@ -34,6 +35,7 @@ public struct PartnerInfo: Decodable {
     case phoneNumber = "phone_number"
     case scheduleOfWork = "schedule_of_work"
     case address
+    case logoURL = "logo_url"
   }
 }
 

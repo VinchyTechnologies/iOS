@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "Epoxy",
+        "repositoryURL": "https://github.com/airbnb/epoxy-ios.git",
+        "state": {
+          "branch": null,
+          "revision": "539caf525e05f143b217df3bc7f202833dea1181",
+          "version": "0.5.0"
+        }
+      },
+      {
         "package": "FittedSheets",
         "repositoryURL": "https://github.com/gordontucker/FittedSheets.git",
         "state": {

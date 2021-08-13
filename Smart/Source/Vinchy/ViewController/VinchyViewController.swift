@@ -9,6 +9,7 @@
 import CommonUI
 import Core
 import Display
+import FittedSheets
 import StringFormatting
 import UIKit
 import VinchyCore
@@ -37,12 +38,17 @@ final class VinchyViewController: UIViewController {
     view.addSubview(collectionView)
     collectionView.fill()
 
-    let filterBarButtonItem = UIBarButtonItem(
-      image: UIImage(named: "edit")?.withRenderingMode(.alwaysTemplate),
-      style: .plain,
-      target: self,
-      action: #selector(didTapFilter))
-    navigationItem.rightBarButtonItems = [filterBarButtonItem]
+    filterButton.setImage(UIImage(named: "edit")?.withRenderingMode(.alwaysTemplate), for: [])
+    filterButton.backgroundColor = .option
+    filterButton.imageView?.contentMode = .scaleAspectFit
+    filterButton.imageEdgeInsets = UIEdgeInsets(top: 1, left: 1.5, bottom: 1, right: 1.5)
+    filterButton.contentEdgeInsets = .init(top: 6, left: 6, bottom: 6, right: 6)
+    filterButton.tintColor = .dark
+    filterButton.addTarget(self, action: #selector(didTapFilter), for: .touchUpInside)
+
+    let filterBarButtonItem = UIBarButtonItem(customView: filterButton)
+    navigationItem.rightBarButtonItem = filterBarButtonItem
+
     navigationItem.searchController = searchController
 
     refreshControl.tintColor = .dark
@@ -57,6 +63,35 @@ final class VinchyViewController: UIViewController {
     }
 
     interactor?.viewDidLoad()
+
+//    DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+//      let options = SheetOptions(shrinkPresentingViewController: false)
+//      let controller = AreYouInStoreAssembly.assemblyModule(input: .init())
+//
+//      let bottomButtonsViewModel = BottomButtonsViewModel(
+//        leadingButtonText: "Я не здесь",
+//        trailingButtonText: "Смотреть ещё")
+//
+//      let viewModel = AreYouInStoreViewModel(
+//        sections: [
+//          .title([
+//            .init(titleText: NSAttributedString(string: "Кажется, Вы в магазине \"Пятерочка\"?", font: Font.bold(24), textColor: .dark, paragraphAlignment: .center)),
+//          ]),
+//
+    ////          .title([
+    ////            .init(titleText: NSAttributedString(string: "Рекомендуем обратить внимание", font: Font.regular(16), textColor: .dark)),
+    ////          ]),
+//
+//          .recommendedWines([
+//            .init(type: .bottles, collections: [.init(wineList: [.wine(wine: ShortWine.fake)])]),
+//          ]),
+//        ],
+//        bottomButtonsViewModel: bottomButtonsViewModel)
+//
+//      let height = AreYouInStoreViewController.height(viewModel: viewModel) // TODO: - input
+//      let sheetController = SheetViewController(controller: controller, sizes: [.fixed(height)], options: options)
+//      self.present(sheetController, animated: true, completion: nil)
+//    }
   }
 
   override func viewWillLayoutSubviews() {
@@ -66,6 +101,9 @@ final class VinchyViewController: UIViewController {
       mapButton.clipsToBounds = true
       collectionView.contentInset = .init(top: 0, left: 0, bottom: mapButton.frame.height + 16, right: 0)
     }
+
+    filterButton.layer.cornerRadius = filterButton.frame.height / 2
+    filterButton.clipsToBounds = true
   }
 
   override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -76,6 +114,8 @@ final class VinchyViewController: UIViewController {
   }
 
   // MARK: Private
+
+  private let filterButton = UIButton(type: .system)
 
   private lazy var mapButton: UIButton = {
     let button = UIButton()

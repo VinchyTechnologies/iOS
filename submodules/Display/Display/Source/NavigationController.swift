@@ -139,25 +139,25 @@ open class NavigationController: UINavigationController {
     return nil
   }
 
-  private func getLargeTitleView() -> UIView? {
-    for subview in navigationBar.subviews
-      where NSStringFromClass(subview.classForCoder).contains("UINavigationBarLargeTitleView")
-    {
-      return subview
-    }
+//  private func getLargeTitleView() -> UIView? {
+//    for subview in navigationBar.subviews
+//      where NSStringFromClass(subview.classForCoder).contains("UINavigationBarLargeTitleView")
+//    {
+//      return subview
+//    }
+//
+//    return nil
+//  }
 
-    return nil
-  }
-
-  private func getLargeTitleLabel(largeTitleView: UIView) -> UILabel? {
-    for subview in largeTitleView.subviews
-      where subview.isMember(of: UILabel.self)
-    {
-      return subview as? UILabel
-    }
-
-    return nil
-  }
+//  private func getLargeTitleLabel(largeTitleView: UIView) -> UILabel? {
+//    for subview in largeTitleView.subviews
+//      where subview.isMember(of: UILabel.self)
+//    {
+//      return subview as? UILabel
+//    }
+//
+//    return nil
+//  }
 }
 
 // MARK: - BackBarButtonItem

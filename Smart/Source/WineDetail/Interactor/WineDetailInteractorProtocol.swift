@@ -6,7 +6,7 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit // TODO: - delete UIKit
+import UIKit // TODO: - delete UIKit?
 
 protocol WineDetailInteractorProtocol: AnyObject {
   func viewDidLoad()
@@ -24,4 +24,7 @@ protocol WineDetailInteractorProtocol: AnyObject {
   func didSuccessfullyLoginOrRegister()
   func didTapStarsRatingControl()
   func didTapExpandOrCollapseGeneralInfo()
+  func didScrollStopped()
+  func didShowTutorial()
+  func didSelectStore(affilatedId: Int)
 }

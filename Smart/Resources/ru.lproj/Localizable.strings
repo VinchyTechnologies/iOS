@@ -77,6 +77,12 @@
 "continue" = "продолжить";
 "expand" = "ещё";
 "collapse" = "скрыть";
+"wine_has_no_reviews_yet" = "У этого вина еще нет отзывов, будьте первым, кто напишет его!";
+"vinchy_recommends" = "vinchy рекомендует";
+"view_assortment" = "посмотреть ассортимент";
+"where_to_buy" = "Где купить?";
+"leave_review_more_often" = "Чаще оставляйте отзывы!";
+"hint_to_review_button" = "Только с помощью Ваших отзывов и оценок мы сможем подобрать вино специально для Вас";
 
 // MARK: - Sugar
 "sugar" = "сахар";
@@ -99,15 +105,15 @@
 "fish" = "рыба";
 "seafood" = "морепродукты";
 "wildfowl" = "дичь";
-"chicken" = "птица";
-"dessert" = "десерт";
+"poultry" = "птица";
+"desserts" = "десерт";
 "bakery" = "выпечка";
 "cheese" = "сыр";
 "fruits" = "фрукты";
 "snacks" = "закуски";
 "shellfish" = "моллюски";
 "vegetarian" = "веган";
-"spicy" = "острое";
+"spicy food" = "острое";
 "mushrooms" = "грибы";
 "aperitif" = "аперетив";
 "pasta" = "паста";

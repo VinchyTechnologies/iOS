@@ -287,7 +287,7 @@ extension ShowcaseViewController: ShowcaseViewControllerProtocol {
 
 extension ShowcaseViewController: ErrorViewDelegate {
   func didTapErrorButton(_: UIButton) {
-    interactor?.viewDidLoad()
+    interactor?.viewDidLoad() // TODO: - not viewdidload
   }
 }
 

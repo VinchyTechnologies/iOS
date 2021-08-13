@@ -16,6 +16,7 @@
 		4495629025E2F8AB005E79DA /* Review.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4495628F25E2F8AB005E79DA /* Review.swift */; };
 		4495629325E2F9EF005E79DA /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4495629225E2F9EF005E79DA /* Reviews.swift */; };
 		8A313C112645B72C009F2165 /* PartnerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313C102645B72C009F2165 /* PartnerInfo.swift */; };
+		8A60593926ADD75F005D609A /* Recommendations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A60593826ADD75F005D609A /* Recommendations.swift */; };
 		8AD7A1D826388801007D4273 /* Partners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7A1D726388801007D4273 /* Partners.swift */; };
 		8AD7A1DB2638894A007D4273 /* PartnerOnMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7A1DA2638894A007D4273 /* PartnerOnMap.swift */; };
 		8AD7A1DE263889E7007D4273 /* AffiliatedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7A1DD263889E7007D4273 /* AffiliatedStore.swift */; };
@@ -46,6 +47,7 @@
 		4495628F25E2F8AB005E79DA /* Review.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Review.swift; sourceTree = "<group>"; };
 		4495629225E2F9EF005E79DA /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
 		8A313C102645B72C009F2165 /* PartnerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerInfo.swift; sourceTree = "<group>"; };
+		8A60593826ADD75F005D609A /* Recommendations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recommendations.swift; sourceTree = "<group>"; };
 		8AD7A1D726388801007D4273 /* Partners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Partners.swift; sourceTree = "<group>"; };
 		8AD7A1DA2638894A007D4273 /* PartnerOnMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerOnMap.swift; sourceTree = "<group>"; };
 		8AD7A1DD263889E7007D4273 /* AffiliatedStore.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AffiliatedStore.swift; sourceTree = "<group>"; };
@@ -172,12 +174,13 @@
 		CA7B825524EC746100991F24 /* Endpoints */ = {
 			isa = PBXGroup;
 			children = (
+				44834CD625C6D36300CD187F /* Accounts.swift */,
 				CA7B825624EC747900991F24 /* Collections.swift */,
 				CA7B825824EC749600991F24 /* CompilationsEndpoint.swift */,
-				CA7B825A24EC74B200991F24 /* Wines.swift */,
-				44834CD625C6D36300CD187F /* Accounts.swift */,
-				4495629225E2F9EF005E79DA /* Reviews.swift */,
 				8AD7A1D726388801007D4273 /* Partners.swift */,
+				8A60593826ADD75F005D609A /* Recommendations.swift */,
+				4495629225E2F9EF005E79DA /* Reviews.swift */,
+				CA7B825A24EC74B200991F24 /* Wines.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -266,6 +269,7 @@
 				CA7A87F0250287BB00AAD10F /* Winery.swift in Sources */,
 				CA7B825224EC742600991F24 /* Sugar.swift in Sources */,
 				4495034125CAE82D006000F8 /* EmptyResponse.swift in Sources */,
+				8A60593926ADD75F005D609A /* Recommendations.swift in Sources */,
 				CA7B824624EC72F500991F24 /* EndpointProtocol.swift in Sources */,
 				CA7B824424EC72CA00991F24 /* API.swift in Sources */,
 				CA7B825424EC744900991F24 /* DishCompatibility.swift in Sources */,
@@ -436,6 +440,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_REFLECTION_METADATA_LEVEL = none;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -462,6 +467,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy.VinchyCore;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_REFLECTION_METADATA_LEVEL = none;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};

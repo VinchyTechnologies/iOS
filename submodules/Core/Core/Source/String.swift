@@ -13,7 +13,7 @@ extension String {
 }
 
 extension Optional where Wrapped == String {
-  var isNilOrEmpty: Bool {
+  public var isNilOrEmpty: Bool {
     if self == nil {
       return true
     } else {

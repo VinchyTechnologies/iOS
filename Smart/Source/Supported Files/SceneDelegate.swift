@@ -49,6 +49,10 @@ extension SceneDelegate: UIWindowSceneDelegate {
     self.window = window
     root.startApp()
 
+//    let mode = StoreInput(mode: .normal(affilatedId: 60))
+//    window.rootViewController = NavigationController(rootViewController: StoreAssembly.assemblyModule(input: mode))
+//    window.makeKeyAndVisible()
+
     if let userActivity = connectionOptions.userActivities.first {
       self.scene(scene, continue: userActivity)
     } else {

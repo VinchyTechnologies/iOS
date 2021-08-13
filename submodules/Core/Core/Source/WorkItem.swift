@@ -8,6 +8,7 @@
 
 import Foundation
 
+@available(*, deprecated, message: "Use Throttler") // TODO: - remove me
 public final class WorkItem {
 
   // MARK: Lifecycle

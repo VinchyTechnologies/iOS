@@ -6,6 +6,6 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import Display
 
-protocol MapDetailStoreRouterProtocol: WineDetailRoutable {}
+protocol MapDetailStoreRouterProtocol: WineDetailRoutable, DismissRoutable { }
