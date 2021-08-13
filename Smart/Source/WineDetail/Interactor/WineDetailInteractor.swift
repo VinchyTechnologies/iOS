@@ -219,7 +219,6 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
 
   func didTapReview(reviewID: Int) {
     guard
-      let wine = wine,
       let review = reviews?.first(where: { $0.id == reviewID })
     else {
       return
