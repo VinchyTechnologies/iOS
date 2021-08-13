@@ -67,6 +67,8 @@ final class WineDetailInteractor {
 
   private func loadWineInfo() {
 
+    var error: Error?
+
     if wine == nil {
       dispatchGroup.enter()
       Wines.shared.getDetailWine(wineID: input.wineID) { [weak self]
@@ -76,8 +78,8 @@ final class WineDetailInteractor {
         case .success(let response):
           self.wine = response
 
-        case .failure(let error):
-          self.presenter.showNetworkErrorAlert(error: error)
+        case .failure(let errorResponse):
+          error = errorResponse
         }
         self.dispatchGroup.leave()
       }
@@ -114,12 +116,18 @@ final class WineDetailInteractor {
     }
 
     dispatchGroup.notify(queue: .main) {
+      self.dispatchWorkItemHud.cancel()
+
       if let wine = self.wine {
         self.presenter.update(wine: wine, reviews: self.reviews, isLiked: self.isFavourite(wine: wine), isDisliked: self.isDisliked(wine: wine), rate: self.rate ?? 0, currency: UserDefaultsConfig.currency, stores: self.stores, isGeneralInfoCollapsed: self.isGeneralInfoCollapsed)
-        self.dispatchWorkItemHud.cancel()
-        DispatchQueue.main.async {
-          self.presenter.stopLoading()
-        }
+      }
+
+      if let error = error {
+        self.presenter.showNetworkErrorAlert(error: error)
+      }
+
+      DispatchQueue.main.async {
+        self.presenter.stopLoading()
       }
     }
   }
