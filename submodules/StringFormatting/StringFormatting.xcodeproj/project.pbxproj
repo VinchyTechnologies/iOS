@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4495629625E30327005E79DA /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4495629525E30327005E79DA /* DateFormatter.swift */; };
 		44A7259D25924C8000A7552B /* EmailValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A7259C25924C8000A7552B /* EmailValidation.swift */; };
+		740EC935268F85360000718B /* NumericValidation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740EC934268F85360000718B /* NumericValidation.swift */; };
 		8A447058266235AD000A1769 /* Distance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A447057266235AD000A1769 /* Distance.swift */; };
 		8A44705A26623862000A1769 /* Time.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A44705926623862000A1769 /* Time.swift */; };
 		CA015C1C24C47BC4008DF01D /* Localized.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA015C1B24C47BC4008DF01D /* Localized.swift */; };
@@ -23,6 +24,7 @@
 /* Begin PBXFileReference section */
 		4495629525E30327005E79DA /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateFormatter.swift; sourceTree = "<group>"; };
 		44A7259C25924C8000A7552B /* EmailValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmailValidation.swift; sourceTree = "<group>"; };
+		740EC934268F85360000718B /* NumericValidation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NumericValidation.swift; sourceTree = "<group>"; };
 		8A447057266235AD000A1769 /* Distance.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Distance.swift; sourceTree = "<group>"; };
 		8A44705926623862000A1769 /* Time.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Time.swift; sourceTree = "<group>"; };
 		CA015C1B24C47BC4008DF01D /* Localized.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Localized.swift; sourceTree = "<group>"; };
@@ -88,6 +90,7 @@
 				4495629525E30327005E79DA /* DateFormatter.swift */,
 				8A447057266235AD000A1769 /* Distance.swift */,
 				8A44705926623862000A1769 /* Time.swift */,
+				740EC934268F85360000718B /* NumericValidation.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -179,6 +182,7 @@
 				44A7259D25924C8000A7552B /* EmailValidation.swift in Sources */,
 				CA7A87F22502896C00AAD10F /* CountryCodeFormatter.swift in Sources */,
 				CA7A87F62502915C00AAD10F /* Temperature.swift in Sources */,
+				740EC935268F85360000718B /* NumericValidation.swift in Sources */,
 				CAF24ACB24C322C10057547F /* FirstLetterUppercased.swift in Sources */,
 				CA015C1C24C47BC4008DF01D /* Localized.swift in Sources */,
 				CAF24AC924C322990057547F /* CurrencyFormatterEntry.swift in Sources */,

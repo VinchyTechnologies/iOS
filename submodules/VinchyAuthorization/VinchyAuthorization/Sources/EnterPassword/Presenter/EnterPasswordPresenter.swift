@@ -55,12 +55,6 @@ extension EnterPasswordPresenter: EnterPasswordPresenterProtocol {
       titleText: nil,
       subtitleText: localized(
         "enter_the_code_received_by_email",
-        bundle: Bundle(for: type(of: self))),
-      enterPasswordTextFiledPlaceholderText: localized(
-        "enter_the_code",
-        bundle: Bundle(for: type(of: self))),
-      enterPasswordTextFiledTopPlaceholderText: localized(
-        "code",
         bundle: Bundle(for: type(of: self))))
 
     viewController?.updateUI(viewModel: viewModel)

@@ -10,6 +10,4 @@ import Foundation
 struct EnterPasswordViewModel {
   let titleText: String?
   let subtitleText: String?
-  let enterPasswordTextFiledPlaceholderText: String?
-  let enterPasswordTextFiledTopPlaceholderText: String?
 }

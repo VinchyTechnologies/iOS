@@ -41,6 +41,7 @@ final class AuthorizationInteractor {
 
 extension AuthorizationInteractor: AuthorizationInteractorProtocol {
   func didTapContinueButton(_ email: String?, password: String?) {
+
     guard let email = email else {
       presenter.updateInvalidEmailAndPassword()
       return
@@ -55,8 +56,8 @@ extension AuthorizationInteractor: AuthorizationInteractorProtocol {
       DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
         self.dispatchWorkItemHud.perform()
       }
-
-//      presenter.updateValidEmailAndPassword()
+      
+      presenter.updateValidEmailAndPassword()
 
       switch input.mode {
       case .register:
