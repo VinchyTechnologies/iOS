@@ -63,7 +63,11 @@ final class OTPTextField: UITextField {
     }
   }
 
-  override func caretRect(for _: UITextPosition) -> CGRect {
+  override func selectionRects(for range: UITextRange) -> [UITextSelectionRect] {
+    []
+  }
+
+  override func caretRect(for position: UITextPosition) -> CGRect {
     .zero
   }
 
@@ -99,5 +103,4 @@ final class OTPTextField: UITextField {
       view.trailingAnchor.constraint(equalTo: trailingAnchor),
     ])
   }
-
 }

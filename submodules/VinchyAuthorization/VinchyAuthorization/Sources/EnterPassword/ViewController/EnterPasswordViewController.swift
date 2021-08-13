@@ -78,7 +78,7 @@ final class EnterPasswordViewController: UIViewController {
     view.addSubview(passwordTextField)
     passwordTextField.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      passwordTextField.widthAnchor.constraint(equalToConstant: 300),
+      passwordTextField.widthAnchor.constraint(equalToConstant: 280),
       passwordTextField.centerXAnchor.constraint(equalTo: view.centerXAnchor),
       passwordTextField.topAnchor.constraint(equalTo: subtitleLabel.bottomAnchor, constant: 16),
       passwordTextField.bottomAnchor.constraint(lessThanOrEqualTo: continueButton.topAnchor, constant: -8),
@@ -155,6 +155,7 @@ final class EnterPasswordViewController: UIViewController {
 
   @objc
   private func didTapSendAgainButton(_: UIButton) {
+    passwordTextField.clear()
     interactor?.didTapSendCodeAgainButton()
   }
 }

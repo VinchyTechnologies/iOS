@@ -38,11 +38,18 @@ final class OTPStackView: UIStackView {
     fatalError("init(coder:) has not been implemented")
   }
 
-  // MARK: Public
+  // MARK: Internal
 
-  public let numberOfFields: Int = C.defaultNumberOfFields
+  weak var delegate: OTPDelegate?
 
-  public final func getOTP() -> String {
+  // MARK: Private
+
+  private let numberOfFields: Int = C.defaultNumberOfFields
+
+  private var textFieldsCollection: [OTPTextField] = []
+  private var remainingStringsStack: [Character] = []
+
+  private func getOTP() -> String {
     var OTP = String()
     for textField in textFieldsCollection {
       guard let text = textField.text else {
@@ -52,15 +59,6 @@ final class OTPStackView: UIStackView {
     }
     return OTP
   }
-
-  // MARK: Internal
-
-  weak var delegate: OTPDelegate?
-
-  // MARK: Private
-
-  private var textFieldsCollection: [OTPTextField] = []
-  private var remainingStringsStack: [Character] = []
 
   private final func setupStackView() {
     backgroundColor = .clear
@@ -72,7 +70,7 @@ final class OTPStackView: UIStackView {
     spacing = C.defaultSpacing
   }
 
-  private final func addOTPFields() {
+  private func addOTPFields() {
     for index in 0 ..< numberOfFields {
       let field = OTPTextField()
       setupTextField(field)
@@ -88,7 +86,7 @@ final class OTPStackView: UIStackView {
     textFieldsCollection.first?.becomeFirstResponder()
   }
 
-  private final func setupTextField(_ textField: OTPTextField) {
+  private func setupTextField(_ textField: OTPTextField) {
     textField.delegate = self
     textField.translatesAutoresizingMaskIntoConstraints = false
     textField.textAlignment = .center
@@ -99,7 +97,7 @@ final class OTPStackView: UIStackView {
     textField.delegateOTP = self
   }
 
-  private final func autoFillTextField(with string: String) {
+  private func autoFillTextField(with string: String) {
     remainingStringsStack = string.reversed().compactMap { $0 }
     for textField in textFieldsCollection {
       if let charToAdd = remainingStringsStack.popLast() {
@@ -116,6 +114,16 @@ final class OTPStackView: UIStackView {
 // MARK: UITextFieldDelegate
 
 extension OTPStackView: UITextFieldDelegate {
+
+  // MARK: Public
+
+  public func clear() {
+    textFieldsCollection.forEach({ $0.text = nil })
+    textFieldsCollection.first?.becomeFirstResponder()
+  }
+
+  // MARK: Internal
+
   func textField(
     _ textField: UITextField,
     shouldChangeCharactersIn range: NSRange,
