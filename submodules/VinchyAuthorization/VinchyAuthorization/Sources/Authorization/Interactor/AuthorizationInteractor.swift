@@ -56,7 +56,7 @@ extension AuthorizationInteractor: AuthorizationInteractorProtocol {
       DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
         self.dispatchWorkItemHud.perform()
       }
-      
+
       presenter.updateValidEmailAndPassword()
 
       switch input.mode {
