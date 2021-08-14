@@ -19,6 +19,10 @@ final class IconView: UIImageView, EpoxyableView {
     super.init(image: nil)
     translatesAutoresizingMaskIntoConstraints = false
     tintColor = style.tintColor
+    if style.isRounded {
+      layer.cornerRadius = size.height / 2
+      clipsToBounds = true
+    }
     setContentHuggingPriority(.required, for: .vertical)
     setContentHuggingPriority(.required, for: .horizontal)
     setContentCompressionResistancePriority(.required, for: .horizontal)
@@ -39,15 +43,16 @@ final class IconView: UIImageView, EpoxyableView {
   struct Style: Hashable {
     var size: CGSize
     var tintColor: UIColor = .systemBlue
+    var isRounded: Bool = false
     // TODO: - imageConfig
 
     func hash(into hasher: inout Hasher) {
       hasher.combine(size.width)
       hasher.combine(size.height)
       hasher.combine(tintColor)
+      hasher.combine(isRounded)
     }
   }
-
   struct Content: Equatable {
     enum Image {
       case local(UIImage?)

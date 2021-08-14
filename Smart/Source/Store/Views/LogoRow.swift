@@ -53,7 +53,7 @@ final class LogoRow: UIView, EpoxyableView {
         IconView.groupItem(
           dataID: DataID.image,
           content: .init(image: .remote(url: logoURL)),
-          style: .init(size: .init(width: 48, height: 48), tintColor: .accent))
+          style: .init(size: .init(width: 48, height: 48), tintColor: .accent, isRounded: true))
       }
 
       VGroupItem.init(
