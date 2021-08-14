@@ -50,6 +50,7 @@ final class MainSubtitleCollectionCell: HighlightCollectionCell, Reusable {
       subtitleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 5),
       subtitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
       subtitleLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
+      subtitleLabel.heightAnchor.constraint(equalToConstant: 16),
       imageView.topAnchor.constraint(equalTo: topAnchor),
       imageView.leadingAnchor.constraint(equalTo: leadingAnchor),
       imageView.trailingAnchor.constraint(equalTo: trailingAnchor),
