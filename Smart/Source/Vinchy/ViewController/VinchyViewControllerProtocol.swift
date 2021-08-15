@@ -9,7 +9,7 @@
 import Display
 import VinchyCore
 
-protocol VinchyViewControllerProtocol: Loadable, Alertable {
+protocol VinchyViewControllerProtocol: Loadable, Alertable, ScrollableToTop {
   func updateSearchSuggestions(suggestions: [Wine])
   func updateUI(viewModel: VinchyViewControllerViewModel)
   func updateUI(didFindWines: [ShortWine])
