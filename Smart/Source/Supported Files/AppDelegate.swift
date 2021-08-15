@@ -91,7 +91,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 func encodeText(_ string: String, _ key: Int) -> String {
   var result = ""
   for c in string.unicodeScalars {
-    result.append(Character(UnicodeScalar(UInt32(Int(c.value) + key))!))
+    result.append(Character(UnicodeScalar(UInt32(Int(c.value) + key))!)) // swiftlint:disable:this force_unwrapping
   }
   return result
 }
