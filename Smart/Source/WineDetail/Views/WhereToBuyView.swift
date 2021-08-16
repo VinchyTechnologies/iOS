@@ -103,12 +103,12 @@ final class WhereToBuyView: UIView, EpoxyableView {
     }
 
     height = ceil(height)
-    return max(height + 7 + 7, 50)
+    return max(height + 7 + 7, 50 + 7 + 7)
   }
 
   override func layoutSubviews() {
     super.layoutSubviews()
-    imageView.layer.cornerRadius = imageView.frame.height / 2
+    imageView.layer.cornerRadius = hStackView.frame.height / 2
     imageView.clipsToBounds = true
   }
 
