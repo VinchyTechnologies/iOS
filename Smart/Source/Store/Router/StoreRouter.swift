@@ -6,6 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import Display
 import UIKit
 
 // MARK: - StoreRouter
@@ -37,4 +38,11 @@ final class StoreRouter {
 
 extension StoreRouter: StoreRouterProtocol {
 
+  func presentFilter() {
+    let controller = AdvancedSearchAssembly.assemblyModule(
+      input: .init(mode: .asView(preselectedFilters: [])))
+    let navController = AdvancedSearchNavigationController(rootViewController: controller)
+    navController.advancedSearchOutputDelegate = interactor
+    viewController?.present(navController, animated: true, completion: nil)
+  }
 }

@@ -14,4 +14,5 @@ protocol StorePresenterProtocol: AnyObject {
   func stopLoading()
   func showErrorAlert(error: Error)
   func showInitiallyLoadingError(error: Error)
+  func setLoadingFilters(data: StoreInteractorData)
 }

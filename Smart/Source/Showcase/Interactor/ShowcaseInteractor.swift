@@ -104,6 +104,7 @@ final class ShowcaseInteractor {
       Partners.shared.getPartnerWines(
         partnerId: partnerID,
         affilatedId: affilatedID,
+        filters: [],
         limit: C.limit,
         offset: offset) { [weak self] result in
           guard let self = self else { return }

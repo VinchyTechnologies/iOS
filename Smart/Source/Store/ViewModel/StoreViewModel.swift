@@ -29,7 +29,7 @@ struct StoreViewModel {
     case address(itemID: ItemID = .addressItem, Label.Content)
     case wines(itemID: ItemID = .winesItem, BottlesCollectionView.Content)
     case assortiment(headerDataID: ItemID = .headerAssortimentItem, header: FiltersCollectionView.Content, content: [AssortimentContent])
-    case loading(itemID: ItemID = .loadingItem)
+    case loading(itemID: ItemID = .loadingItem, shouldCallWillDisplay: Bool)
 
     // MARK: Internal
 
@@ -56,9 +56,10 @@ struct StoreViewModel {
     }
   }
 
-  static let empty: Self = .init(sections: [], navigationTitleText: nil)
+  static let empty: Self = .init(sections: [], navigationTitleText: nil, shouldResetContentOffset: false)
 
   let sections: [Section]
   let navigationTitleText: String?
+  let shouldResetContentOffset: Bool
 
 }

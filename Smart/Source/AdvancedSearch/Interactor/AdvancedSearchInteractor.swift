@@ -15,9 +15,11 @@ final class AdvancedSearchInteractor {
   // MARK: Lifecycle
 
   init(
+    input: AdvancedSearchInput,
     router: AdvancedSearchRouterProtocol,
     presenter: AdvancedSearchPresenterProtocol)
   {
+    self.input = input
     self.router = router
     self.presenter = presenter
     initialFilters = loadFilters()
@@ -26,6 +28,7 @@ final class AdvancedSearchInteractor {
 
   // MARK: Private
 
+  private let input: AdvancedSearchInput
   private let router: AdvancedSearchRouterProtocol
   private let presenter: AdvancedSearchPresenterProtocol
   private let initialFilters: [Filter]
@@ -99,12 +102,19 @@ extension AdvancedSearchInteractor: AdvancedSearchInteractorProtocol {
   }
 
   func didTapConfirmSearchButton() {
-    guard !selectedFilters.isEmpty else {
-      return // TODO: - alert no one filter selected
-    }
 
-    let params: [(String, String)] = selectedFilters.compactMap { ($0.category.serverName, $0.title) }
-    router.pushToShowcaseViewController(input: .init(title: nil, mode: .advancedSearch(params: params)))
+    switch input.mode {
+    case .normal:
+      guard !selectedFilters.isEmpty else {
+        return // TODO: - alert no one filter selected
+      }
+      let params: [(String, String)] = selectedFilters.compactMap { ($0.category.serverName, $0.title) }
+      router.pushToShowcaseViewController(input: .init(title: nil, mode: .advancedSearch(params: params)))
+
+    case .asView:
+      let params: [(String, String)] = selectedFilters.compactMap { ($0.category.serverName, $0.title) }
+      router.dismiss(selectedFilters: params)
+    }
   }
 
   func didTapResetAllFiltersButton() {
