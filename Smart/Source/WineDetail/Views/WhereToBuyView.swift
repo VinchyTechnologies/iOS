@@ -39,8 +39,8 @@ final class WhereToBuyView: UIView, EpoxyableView {
 
     backgroundColor = style.backgroundColor
 
-    titleLabel.numberOfLines = 0
-    subtitleLabel.numberOfLines = 0
+    titleLabel.numberOfLines = 2
+    subtitleLabel.numberOfLines = 2
 
     stackView.axis = .vertical
     stackView.spacing = 2
@@ -75,10 +75,10 @@ final class WhereToBuyView: UIView, EpoxyableView {
     var height: CGFloat = 0
     if content.imageURL == nil {
       if let titleText = content.titleText {
-        height += titleText.height(forWidth: width - 12 - 4 - 48, font: Font.medium(20))
+        height += titleText.height(forWidth: width - 12 - 4 - 48, font: Font.medium(20), numberOfLines: 2)
       }
-      if let subtitleText = content.titleText {
-        height += subtitleText.height(forWidth: width - 12 - 4 - 48, font: Font.regular(14))
+      if let subtitleText = content.subtitleText {
+        height += subtitleText.height(forWidth: width - 12 - 4 - 48, font: Font.regular(14), numberOfLines: 2)
       }
 
       if content.titleText != nil && content.subtitleText != nil {
@@ -87,10 +87,10 @@ final class WhereToBuyView: UIView, EpoxyableView {
 
     } else {
       if let titleText = content.titleText {
-        height += titleText.height(forWidth: width - 12 - 4 - 50 - 4 - 48, font: Font.medium(20))
+        height += titleText.height(forWidth: width - 12 - 4 - 50 - 4 - 48, font: Font.medium(20), numberOfLines: 2)
       }
-      if let subtitleText = content.titleText {
-        height += subtitleText.height(forWidth: width - 12 - 4 - 50 - 4 - 48, font: Font.regular(14))
+      if let subtitleText = content.subtitleText {
+        height += subtitleText.height(forWidth: width - 12 - 4 - 50 - 4 - 48, font: Font.regular(14), numberOfLines: 2)
       }
 
       if content.titleText != nil && content.subtitleText != nil {
@@ -102,7 +102,14 @@ final class WhereToBuyView: UIView, EpoxyableView {
       return 0
     }
 
-    return max(height + 7 + 7, 50)
+    height = ceil(height)
+    return max(height + 7 + 7, 50 + 7 + 7)
+  }
+
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    imageView.layer.cornerRadius = hStackView.frame.height / 2
+    imageView.clipsToBounds = true
   }
 
   func setContent(_ content: Content, animated: Bool) {
