@@ -17,7 +17,7 @@ final class SimpleContinuosCarouselCollectionCellRouter {
 
   init(
     input: SimpleContinuosCarouselCollectionCellInput,
-    viewController: UIViewController)
+    viewController: UIViewController?)
   {
     self.input = input
     self.viewController = viewController

@@ -12,5 +12,5 @@ public protocol Configurator {
   associatedtype Input
   associatedtype View
   associatedtype ViewController
-  func configure(view: View, with input: Input, sender: ViewController)
+  func configure(view: View, with input: Input, sender: ViewController?)
 }
