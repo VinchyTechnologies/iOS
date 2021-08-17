@@ -84,7 +84,10 @@ final class MapDetailStoreViewController: UIViewController {
     didSet {
       collectionView.reloadData()
       collectionView.performBatchUpdates({
-        let sheetSize = SheetSize.fixed(self.layout.collectionViewContentSize.height + 24 /* pull Bar height */ + (UIApplication.shared.asKeyWindow?.safeAreaInsets.bottom ?? 0))
+        let safeAreaBottomInset: CGFloat = UIApplication.shared.asKeyWindow?.safeAreaInsets.bottom ?? 0
+        let sheetHeight: CGFloat =
+          self.layout.collectionViewContentSize.height + .pullBarHeight + .bottomInset + safeAreaBottomInset
+        let sheetSize = SheetSize.fixed(sheetHeight)
         self.sheetViewController?.sizes = [sheetSize]
         self.sheetViewController?.resize(to: [sheetSize][0], duration: 0.5)
       }, completion: nil) // This blocks layoutIfNeeded animation
@@ -263,4 +266,9 @@ extension MapDetailStoreViewController: AssortmentCollectionCellDelegate {
   func didTapSeeAssortmentButton(_ button: UIButton) {
     delegate?.didTapAssortmentButton(button)
   }
+}
+
+extension CGFloat {
+  fileprivate static let pullBarHeight: Self = 24
+  fileprivate static let bottomInset: Self = 10
 }
