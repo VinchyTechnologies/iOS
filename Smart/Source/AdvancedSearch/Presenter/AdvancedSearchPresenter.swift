@@ -44,7 +44,8 @@ final class AdvancedSearchPresenter {
 
   // MARK: Lifecycle
 
-  init(viewController: AdvancedSearchViewControllerProtocol) {
+  init(input: AdvancedSearchInput, viewController: AdvancedSearchViewControllerProtocol) {
+    self.input = input
     self.viewController = viewController
   }
 
@@ -55,6 +56,9 @@ final class AdvancedSearchPresenter {
   // MARK: Private
 
   private typealias ViewModel = AdvancedSearchViewModel
+
+  private let input: AdvancedSearchInput
+
 }
 
 // MARK: AdvancedSearchPresenterProtocol
@@ -116,10 +120,20 @@ extension AdvancedSearchPresenter: AdvancedSearchPresenterProtocol {
       leadingButtonText: localized("reset").firstLetterUppercased(),
       trailingButtonText: localized("search").firstLetterUppercased())
 
+    var isBottomButtonsViewHidden: Bool
+
+    switch input.mode {
+    case .normal:
+      isBottomButtonsViewHidden = selectedFilters.isEmpty
+
+    case .asView:
+      isBottomButtonsViewHidden = false
+    }
+
     let viewModel = ViewModel(
       sections: sections,
       navigationTitle: C.navigationTitle,
-      bottomButtonsViewModel: bottomButtonsViewModel, isBottomButtonsViewHidden: selectedFilters.isEmpty)
+      bottomButtonsViewModel: bottomButtonsViewModel, isBottomButtonsViewHidden: isBottomButtonsViewHidden)
     viewController?.updateUI(viewModel: viewModel, sec: sec)
   }
 }

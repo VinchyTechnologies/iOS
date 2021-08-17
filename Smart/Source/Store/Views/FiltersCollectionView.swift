@@ -53,7 +53,7 @@ final class FiltersCollectionView: CollectionView, EpoxyableView {
 
   private var layoutSection: NSCollectionLayoutSection? {
     let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .estimated(50), heightDimension: .estimated(50)))
-    let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .estimated(50)), subitems: [item])
+    let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .estimated(50), heightDimension: .estimated(50)), subitems: [item])
     let section = NSCollectionLayoutSection(group: group)
     section.interGroupSpacing = 8
     section.orthogonalScrollingBehavior = .continuous

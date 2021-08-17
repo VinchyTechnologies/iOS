@@ -15,6 +15,7 @@ struct StoreInteractorData {
   let partnerInfo: PartnerInfo
   var recommendedWines: [ShortWine] = []
   var assortimentWines: [ShortWine] = []
+  var selectedFilters: [(String, String)] = []
 }
 
 // MARK: - StoreInteractorError
@@ -63,6 +64,7 @@ final class StoreInteractor {
   private var partnerInfo: PartnerInfo?
   private var assortimentWines: [ShortWine] = []
   private var personalRecommendedWines: [ShortWine]?
+  private var selectedFilters: [(String, String)] = []
 
   private func configureStateMachine() {
     stateMachine.observe { [weak self] oldState, newState, _ in
@@ -130,6 +132,7 @@ final class StoreInteractor {
       Partners.shared.getPartnerWines(
         partnerId: 1,
         affilatedId: affilatedId,
+        filters: selectedFilters,
         limit: C.limit,
         offset: offset) { [weak self] result in
           guard let self = self else { return }
@@ -138,7 +141,6 @@ final class StoreInteractor {
             self.assortimentWines += response
 
           case .failure(let error):
-            print(error)
             if self.assortimentWines.isEmpty {
               generalError = .initialLoading(error)
             } else {
@@ -153,7 +155,8 @@ final class StoreInteractor {
           let data = StoreInteractorData(
             partnerInfo: partnerInfo,
             recommendedWines: self.personalRecommendedWines ?? [],
-            assortimentWines: self.assortimentWines)
+            assortimentWines: self.assortimentWines,
+            selectedFilters: self.selectedFilters)
           self.data = data
           self.stateMachine.invokeSuccess(with: data)
         } else {
@@ -217,6 +220,21 @@ final class StoreInteractor {
 // MARK: StoreInteractorProtocol
 
 extension StoreInteractor: StoreInteractorProtocol {
+
+  func didChoose(_ filters: [(String, String)]) {
+    guard let partnerInfo = partnerInfo else {
+      return
+    }
+    presenter.setLoadingFilters(data: .init(partnerInfo: partnerInfo, recommendedWines: personalRecommendedWines ?? [], assortimentWines: []))
+    selectedFilters = filters
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.95) {
+      self.loadInitData()
+    }
+  }
+
+  func didTapFilterButton() {
+    router.presentFilter(preselectedFilters: selectedFilters)
+  }
 
   func didTapReloadButton() {
     dispatchWorkItemHud.perform()

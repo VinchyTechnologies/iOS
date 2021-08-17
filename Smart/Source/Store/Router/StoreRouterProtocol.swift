@@ -9,5 +9,5 @@
 import Foundation
 
 protocol StoreRouterProtocol: WineDetailRoutable {
-
+  func presentFilter(preselectedFilters: [(String, String)])
 }
