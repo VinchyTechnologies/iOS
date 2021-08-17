@@ -49,6 +49,7 @@ struct AboutView: View {
           .foregroundColor(Color(.dark))
       }
     }
+    .background(Color(.mainBackground))
   }
 
   // MARK: Private

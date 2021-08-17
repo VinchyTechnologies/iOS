@@ -26,6 +26,7 @@ final class DidnotFindTheWineTableCell: UITableViewCell, Reusable {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
 
     selectionStyle = .none
+    backgroundColor = .mainBackground
 
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
     titleLabel.text = localized("did_not_find_the_wine")
