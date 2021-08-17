@@ -47,7 +47,7 @@ final class WhereToBuyView: UIView, EpoxyableView {
 
     hStackView.axis = .horizontal
     hStackView.alignment = .center
-    hStackView.spacing = 4
+    hStackView.spacing = .hStackSpacing
 
     addSubview(hStackView)
     hStackView.translatesAutoresizingMaskIntoConstraints = false
@@ -75,10 +75,10 @@ final class WhereToBuyView: UIView, EpoxyableView {
     var height: CGFloat = 0
     if content.imageURL == nil {
       if let titleText = content.titleText {
-        height += titleText.height(forWidth: width - 12 - 4 - 48, font: Font.medium(20), numberOfLines: 2)
+        height += titleText.height(forWidth: width - 12 - .hStackSpacing - 48, font: Font.medium(20), numberOfLines: 2)
       }
       if let subtitleText = content.subtitleText {
-        height += subtitleText.height(forWidth: width - 12 - 4 - 48, font: Font.regular(14), numberOfLines: 2)
+        height += subtitleText.height(forWidth: width - 12 - .hStackSpacing - 48, font: Font.regular(14), numberOfLines: 2)
       }
 
       if content.titleText != nil && content.subtitleText != nil {
@@ -87,10 +87,10 @@ final class WhereToBuyView: UIView, EpoxyableView {
 
     } else {
       if let titleText = content.titleText {
-        height += titleText.height(forWidth: width - 12 - 4 - 50 - 4 - 48, font: Font.medium(20), numberOfLines: 2)
+        height += titleText.height(forWidth: width - 12 - .hStackSpacing - 50 - .hStackSpacing - 48, font: Font.medium(20), numberOfLines: 2)
       }
       if let subtitleText = content.subtitleText {
-        height += subtitleText.height(forWidth: width - 12 - 4 - 50 - 4 - 48, font: Font.regular(14), numberOfLines: 2)
+        height += subtitleText.height(forWidth: width - 12 - .hStackSpacing - 50 - .hStackSpacing - 48, font: Font.regular(14), numberOfLines: 2)
       }
 
       if content.titleText != nil && content.subtitleText != nil {
@@ -176,4 +176,8 @@ extension WhereToBuyView: HighlightableView {
         : .identity
     }
   }
+}
+
+extension CGFloat {
+  fileprivate static let hStackSpacing: Self = 10
 }
