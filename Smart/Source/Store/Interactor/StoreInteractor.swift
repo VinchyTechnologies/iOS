@@ -15,7 +15,7 @@ struct StoreInteractorData {
   let partnerInfo: PartnerInfo
   var recommendedWines: [ShortWine] = []
   var assortimentWines: [ShortWine] = []
-  var selectedFilters: [String] = []
+  var selectedFilters: [(String, String)] = []
 }
 
 // MARK: - StoreInteractorError
@@ -156,7 +156,7 @@ final class StoreInteractor {
             partnerInfo: partnerInfo,
             recommendedWines: self.personalRecommendedWines ?? [],
             assortimentWines: self.assortimentWines,
-            selectedFilters: self.selectedFilters.compactMap({ $0.1 }))
+            selectedFilters: self.selectedFilters)
           self.data = data
           self.stateMachine.invokeSuccess(with: data)
         } else {
@@ -233,7 +233,7 @@ extension StoreInteractor: StoreInteractorProtocol {
   }
 
   func didTapFilterButton() {
-    router.presentFilter()
+    router.presentFilter(preselectedFilters: selectedFilters)
   }
 
   func didTapReloadButton() {

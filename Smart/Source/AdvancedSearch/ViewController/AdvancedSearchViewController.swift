@@ -147,12 +147,10 @@ final class AdvancedSearchViewController: UIViewController {
     return view
   }()
 
-
   @objc
   private func didTapCloseBarButtonItem(_ barButtonItem: UIBarButtonItem) {
     dismiss(animated: true)
   }
-
 }
 
 // MARK: AdvancedSearchViewControllerProtocol

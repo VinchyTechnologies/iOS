@@ -24,6 +24,21 @@ final class AdvancedSearchInteractor {
     self.presenter = presenter
     initialFilters = loadFilters()
     filters = loadFilters() // TODO: - may be via input
+
+    switch input.mode {
+    case .normal:
+      selectedFilters = []
+
+    case .asView(let preselectedFilters):
+      var selectedFilters: [FilterItem] = []
+      preselectedFilters.forEach { category, value in
+        let filterItems = initialFilters.first(where: { $0.category.serverName == category })
+        if let item = filterItems?.items.first(where: { $0.title == value }) {
+          selectedFilters.append(item)
+        }
+      }
+      self.selectedFilters = selectedFilters
+    }
   }
 
   // MARK: Private

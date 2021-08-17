@@ -130,7 +130,13 @@ extension StorePresenter: StorePresenterProtocol {
       if data.selectedFilters.isEmpty {
         sections += [.assortiment(header: [localized("all").firstLetterUppercased()], content: assortmentsContent)]
       } else {
-        let header: [String] = data.selectedFilters.compactMap({ localized($0).firstLetterUppercased() })
+        let header: [String] = data.selectedFilters.compactMap({
+          if $0.0 == "country_code" {
+            return countryNameFromLocaleCode(countryCode: $0.1)
+          } else {
+            return localized($0.1).firstLetterUppercased()
+          }
+        })
         sections += [.assortiment(header: header, content: assortmentsContent)]
       }
 

@@ -38,9 +38,9 @@ final class StoreRouter {
 
 extension StoreRouter: StoreRouterProtocol {
 
-  func presentFilter() {
+  func presentFilter(preselectedFilters: [(String, String)]) {
     let controller = AdvancedSearchAssembly.assemblyModule(
-      input: .init(mode: .asView(preselectedFilters: [])))
+      input: .init(mode: .asView(preselectedFilters: preselectedFilters)))
     let navController = AdvancedSearchNavigationController(rootViewController: controller)
     navController.advancedSearchOutputDelegate = interactor
     viewController?.present(navController, animated: true, completion: nil)
