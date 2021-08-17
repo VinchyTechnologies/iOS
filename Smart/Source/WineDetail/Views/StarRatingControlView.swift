@@ -102,6 +102,7 @@ final class StarRatingControlView: UIView, EpoxyableView {
 
   private lazy var ratingView: StarsRatingView = {
     $0.settings.filledColor = .accent
+    $0.settings.filledBorderColor = .accent
     $0.settings.emptyBorderColor = .accent
     $0.settings.starSize = 32
     $0.settings.starMargin = 0

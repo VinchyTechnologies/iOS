@@ -42,6 +42,7 @@ final class StoreViewController: CollectionViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    view.backgroundColor = .mainBackground
     collectionView.backgroundColor = .mainBackground
 
     navigationItem.largeTitleDisplayMode = .never
