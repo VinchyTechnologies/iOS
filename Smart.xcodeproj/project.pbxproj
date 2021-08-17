@@ -62,6 +62,18 @@
 		44EFDB7725E263E00076ED6D /* ReviewDetailInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6B25E263E00076ED6D /* ReviewDetailInteractorProtocol.swift */; };
 		44EFDB7825E263E00076ED6D /* ReviewDetailRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6D25E263E00076ED6D /* ReviewDetailRouterProtocol.swift */; };
 		44EFDB7925E263E00076ED6D /* ReviewDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6E25E263E00076ED6D /* ReviewDetailRouter.swift */; };
+		748586FD26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586EC26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellViewModel.swift */; };
+		748586FE26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586EE26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellInput.swift */; };
+		748586FF26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586F026C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellAssembly.swift */; };
+		7485870026C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586F226C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellPresenter.swift */; };
+		7485870126C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586F326C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellPresenterProtocol.swift */; };
+		7485870226C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586F526C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellView.swift */; };
+		7485870326C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellViewProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586F626C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellViewProtocol.swift */; };
+		7485870426C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586F826C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellInteractorProtocol.swift */; };
+		7485870526C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586F926C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellInteractor.swift */; };
+		7485870626C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586FB26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellRouter.swift */; };
+		7485870726C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586FC26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellRouterProtocol.swift */; };
+		7485877A26CC068700F5CBEA /* Configurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7485877926CC068600F5CBEA /* Configurator.swift */; };
 		8A079300269239C0000ACA2B /* DocumentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0792EF269239C0000ACA2B /* DocumentsViewModel.swift */; };
 		8A079301269239C1000ACA2B /* DocumentsInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0792F1269239C0000ACA2B /* DocumentsInput.swift */; };
 		8A079302269239C1000ACA2B /* DocumentsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0792F3269239C0000ACA2B /* DocumentsAssembly.swift */; };
@@ -254,7 +266,6 @@
 		CA51BBEF254094B000208F71 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA51BBEE254094B000208F71 /* AppTrackingTransparency.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		CA5B901B250FF22E006BC638 /* MoreBounceDecoratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5B901A250FF22E006BC638 /* MoreBounceDecoratorView.swift */; };
 		CA63A12B249A23C100144320 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA63A129249A23C100144320 /* Localizable.strings */; };
-		CA7A87E62500169100AAD10F /* VinchySimpleConiniousCaruselCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87E52500169100AAD10F /* VinchySimpleConiniousCaruselCollectionCell.swift */; };
 		CA7A87FA2506B9D600AAD10F /* ShareUsCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87F92506B9D600AAD10F /* ShareUsCollectionCell.swift */; };
 		CA7A87FC2507ED7800AAD10F /* AdsCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87FB2507ED7800AAD10F /* AdsCollectionViewCell.swift */; };
 		CA7B835824EED1B100991F24 /* VinchyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B835724EED1B100991F24 /* VinchyViewController.swift */; };
@@ -448,6 +459,18 @@
 		44EFDB6B25E263E00076ED6D /* ReviewDetailInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailInteractorProtocol.swift; sourceTree = "<group>"; };
 		44EFDB6D25E263E00076ED6D /* ReviewDetailRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailRouterProtocol.swift; sourceTree = "<group>"; };
 		44EFDB6E25E263E00076ED6D /* ReviewDetailRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailRouter.swift; sourceTree = "<group>"; };
+		748586EC26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleContinuosCarouselCollectionCellViewModel.swift; sourceTree = "<group>"; };
+		748586EE26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleContinuosCarouselCollectionCellInput.swift; sourceTree = "<group>"; };
+		748586F026C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleContinuosCarouselCollectionCellAssembly.swift; sourceTree = "<group>"; };
+		748586F226C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleContinuosCarouselCollectionCellPresenter.swift; sourceTree = "<group>"; };
+		748586F326C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleContinuosCarouselCollectionCellPresenterProtocol.swift; sourceTree = "<group>"; };
+		748586F526C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleContinuosCarouselCollectionCellView.swift; sourceTree = "<group>"; };
+		748586F626C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellViewProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleContinuosCarouselCollectionCellViewProtocol.swift; sourceTree = "<group>"; };
+		748586F826C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleContinuosCarouselCollectionCellInteractorProtocol.swift; sourceTree = "<group>"; };
+		748586F926C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleContinuosCarouselCollectionCellInteractor.swift; sourceTree = "<group>"; };
+		748586FB26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleContinuosCarouselCollectionCellRouter.swift; sourceTree = "<group>"; };
+		748586FC26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleContinuosCarouselCollectionCellRouterProtocol.swift; sourceTree = "<group>"; };
+		7485877926CC068600F5CBEA /* Configurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurator.swift; sourceTree = "<group>"; };
 		8A0792EF269239C0000ACA2B /* DocumentsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsViewModel.swift; sourceTree = "<group>"; };
 		8A0792F1269239C0000ACA2B /* DocumentsInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsInput.swift; sourceTree = "<group>"; };
 		8A0792F3269239C0000ACA2B /* DocumentsAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsAssembly.swift; sourceTree = "<group>"; };
@@ -632,7 +655,6 @@
 		CA63A12C249A244300144320 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA63A12D249A249300144320 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA78E28325751D97000ECDA8 /* Vinchy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Vinchy.entitlements; sourceTree = "<group>"; };
-		CA7A87E52500169100AAD10F /* VinchySimpleConiniousCaruselCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchySimpleConiniousCaruselCollectionCell.swift; sourceTree = "<group>"; };
 		CA7A87F92506B9D600AAD10F /* ShareUsCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareUsCollectionCell.swift; sourceTree = "<group>"; };
 		CA7A87FB2507ED7800AAD10F /* AdsCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdsCollectionViewCell.swift; sourceTree = "<group>"; };
 		CA7B825C24EC750300991F24 /* VinchyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1169,6 +1191,80 @@
 				EA78FE8971307D6D1C5D8B17 /* Pods_SmartTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		748586EA26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCell */ = {
+			isa = PBXGroup;
+			children = (
+				748586EB26C7CB2300F5CBEA /* ViewModel */,
+				748586ED26C7CB2300F5CBEA /* Input */,
+				748586EF26C7CB2300F5CBEA /* Configurator */,
+				748586F126C7CB2300F5CBEA /* Presenter */,
+				748586F426C7CB2300F5CBEA /* View */,
+				748586F726C7CB2300F5CBEA /* Interactor */,
+				748586FA26C7CB2300F5CBEA /* Router */,
+			);
+			path = SimpleContinuosCarouselCollectionCell;
+			sourceTree = "<group>";
+		};
+		748586EB26C7CB2300F5CBEA /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				748586EC26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		748586ED26C7CB2300F5CBEA /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				748586EE26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellInput.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		748586EF26C7CB2300F5CBEA /* Configurator */ = {
+			isa = PBXGroup;
+			children = (
+				748586F026C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellAssembly.swift */,
+			);
+			path = Configurator;
+			sourceTree = "<group>";
+		};
+		748586F126C7CB2300F5CBEA /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				748586F226C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellPresenter.swift */,
+				748586F326C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellPresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		748586F426C7CB2300F5CBEA /* View */ = {
+			isa = PBXGroup;
+			children = (
+				748586F526C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellView.swift */,
+				748586F626C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellViewProtocol.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		748586F726C7CB2300F5CBEA /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				748586F826C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellInteractorProtocol.swift */,
+				748586F926C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		748586FA26C7CB2300F5CBEA /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				748586FB26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellRouter.swift */,
+				748586FC26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellRouterProtocol.swift */,
+			);
+			path = Router;
 			sourceTree = "<group>";
 		};
 		8A0792ED269239C0000ACA2B /* Documents */ = {
@@ -2039,6 +2135,7 @@
 				CA7B838724F451C700991F24 /* WineDetail */,
 				CA4D51022549F5F600A6FD0B /* WriteNote */,
 				4437AA4825E3A7CD00F6E838 /* WriteReview */,
+				748586EA26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCell */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -2056,6 +2153,7 @@
 				CA878A872572E59700B51FF1 /* ActionSheetAppearence.swift */,
 				8AD49F2B26752B4B0094E157 /* AnalyticsTrackable.swift */,
 				8A07930B26924DAF000ACA2B /* Document.swift */,
+				7485877926CC068600F5CBEA /* Configurator.swift */,
 			);
 			path = "Supported Files";
 			sourceTree = "<group>";
@@ -2170,7 +2268,6 @@
 				CA7B835A24EED6E600991F24 /* StoryCollectionCell.swift */,
 				CA7B835F24EF109200991F24 /* MainSubtitleCollectionCell.swift */,
 				CA7B836124F0237100991F24 /* SuggestionCollectionCell.swift */,
-				CA7A87E52500169100AAD10F /* VinchySimpleConiniousCaruselCollectionCell.swift */,
 				CA7A87F92506B9D600AAD10F /* ShareUsCollectionCell.swift */,
 				CA8CD67525096EC100FDB7AF /* Smart-Bridging-Header.h */,
 				CA46DC97252A44180007819E /* SmartFilterCollectionCell.swift */,
@@ -2938,6 +3035,7 @@
 				8AA5E5132615053D00935B5E /* AboutView.swift in Sources */,
 				CA46DC98252A44180007819E /* SmartFilterCollectionCell.swift in Sources */,
 				CE58DEC325ED70DC00B5BDF9 /* CurrencyAssembly.swift in Sources */,
+				748586FE26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellInput.swift in Sources */,
 				CED7A23A25D1B31C00BB25FF /* StarRatingControlView.swift in Sources */,
 				8A915C9E26887D9500240B18 /* ExpandCollapseView.swift in Sources */,
 				CA015C1A24C44925008DF01D /* DidnotFindTheWineTableCell.swift in Sources */,
@@ -2976,6 +3074,7 @@
 				447C354225EEAA5700105A35 /* MapRouterProtocol.swift in Sources */,
 				CA819848253864080056A1C6 /* WineDetailPresenterProtocol.swift in Sources */,
 				CE388DDA2612C1CF00C34B47 /* ShowcasePresenterProtocol.swift in Sources */,
+				748586FD26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellViewModel.swift in Sources */,
 				8AF966C62678F194001891B2 /* EditProfileInteractor.swift in Sources */,
 				CA819847253864080056A1C6 /* WineDetailPresenter.swift in Sources */,
 				CAF514212461C52400667ED0 /* MorePresenter.swift in Sources */,
@@ -2994,6 +3093,7 @@
 				44EFDB7925E263E00076ED6D /* ReviewDetailRouter.swift in Sources */,
 				8A9554682692284B00F1C5AE /* DocumentsViewController.swift in Sources */,
 				CA81984E253864080056A1C6 /* WineDetailRouter.swift in Sources */,
+				7485870726C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellRouterProtocol.swift in Sources */,
 				8A079F30269E2E34000ACA2B /* FiltersCollectionView.swift in Sources */,
 				CACA7EA2254C57CC0099E622 /* WriteNoteRouterProtocol.swift in Sources */,
 				CA48577C2517BEAB00EDA4CE /* VinchyRouter.swift in Sources */,
@@ -3016,6 +3116,7 @@
 				8A916026268CE66C00240B18 /* AreYouInStorePresenterProtocol.swift in Sources */,
 				449F81AC25DD023A00585364 /* RootInteractor.swift in Sources */,
 				8A91611B268E27EB00240B18 /* SearchPresenter.swift in Sources */,
+				7485870326C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellViewProtocol.swift in Sources */,
 				447C354025EEAA5700105A35 /* MapInteractorProtocol.swift in Sources */,
 				CAA9DC67250EA05F00F996A8 /* AdvancedSearchCaruselCollectionCell.swift in Sources */,
 				8A916027268CE66C00240B18 /* AreYouInStoreViewController.swift in Sources */,
@@ -3028,6 +3129,7 @@
 				8A91600C268CC3AE00240B18 /* WhereToBuyView.swift in Sources */,
 				4437AA6225E3A7CE00F6E838 /* WriteReviewInteractorProtocol.swift in Sources */,
 				8A91611C268E27EB00240B18 /* SearchPresenterProtocol.swift in Sources */,
+				7485870126C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellPresenterProtocol.swift in Sources */,
 				44EFDB3725E177220076ED6D /* ReviewsViewModel.swift in Sources */,
 				CA49A219251E8CFE00FBE269 /* TitleWithSubtitleInfoView.swift in Sources */,
 				CA070C1625250AEC00C3D9EC /* OnboardViewController.swift in Sources */,
@@ -3058,6 +3160,7 @@
 				CA819844253864080056A1C6 /* WineDetailViewModel.swift in Sources */,
 				8A0794D526936141000ACA2B /* StorePresenterProtocol.swift in Sources */,
 				447C353E25EEAA5700105A35 /* MapViewControllerProtocol.swift in Sources */,
+				7485870626C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellRouter.swift in Sources */,
 				8A916122268E27EB00240B18 /* SearchRouterProtocol.swift in Sources */,
 				8A079302269239C1000ACA2B /* DocumentsAssembly.swift in Sources */,
 				4437AA6125E3A7CE00F6E838 /* WriteReviewViewControllerProtocol.swift in Sources */,
@@ -3104,11 +3207,13 @@
 				CA472AC0245EDE2F009149FF /* AppDelegate.swift in Sources */,
 				8A1034592648596100F7CA81 /* AssortmentCollectionCell.swift in Sources */,
 				CA2C22E12554464F002469E4 /* AdvancedSearchInteractor.swift in Sources */,
+				7485870026C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellPresenter.swift in Sources */,
 				8AD49F16267520F90094E157 /* ReviewsInteractorProtocol.swift in Sources */,
 				8AD49F192675210D0094E157 /* ReviewsRouterProtocol.swift in Sources */,
 				8A313C0726447042009F2165 /* MapDetailStoreInteractorProtocol.swift in Sources */,
 				8AE7880F2684E8D60056A84B /* NotesPresenter.swift in Sources */,
 				CA81984C253864080056A1C6 /* WineDetailInteractorProtocol.swift in Sources */,
+				748586FF26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellAssembly.swift in Sources */,
 				8AE788122684E8D60056A84B /* NotesInteractorProtocol.swift in Sources */,
 				44EFDB3A25E177220076ED6D /* ReviewsPresenterProtocol.swift in Sources */,
 				8A079308269239C1000ACA2B /* DocumentsInteractorProtocol.swift in Sources */,
@@ -3125,6 +3230,7 @@
 				CACA7E9C254C57CC0099E622 /* WriteNotePresenter.swift in Sources */,
 				8AE788152684E8D60056A84B /* NotesRouter.swift in Sources */,
 				4437AA5C25E3A7CE00F6E838 /* WriteReviewInput.swift in Sources */,
+				7485870426C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellInteractorProtocol.swift in Sources */,
 				CA472AC2245EDE2F009149FF /* SceneDelegate.swift in Sources */,
 				8A916023268CE66C00240B18 /* AreYouInStoreInput.swift in Sources */,
 				8A91611E268E27EB00240B18 /* SearchViewControllerProtocol.swift in Sources */,
@@ -3159,14 +3265,15 @@
 				8AE788F6268636500056A84B /* GeoOnboardingViewController.swift in Sources */,
 				CAEBD788251A6D6200210F3B /* AgreementsViewController.swift in Sources */,
 				8A313C0526447042009F2165 /* MapDetailStoreViewControllerProtocol.swift in Sources */,
-				CA7A87E62500169100AAD10F /* VinchySimpleConiniousCaruselCollectionCell.swift in Sources */,
 				8A313C0326447042009F2165 /* MapDetailStorePresenter.swift in Sources */,
+				7485870526C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellInteractor.swift in Sources */,
 				447C353825EEAA5700105A35 /* MapViewModel.swift in Sources */,
 				8AE788142684E8D60056A84B /* NotesRouterProtocol.swift in Sources */,
 				4437AA6025E3A7CE00F6E838 /* WriteReviewViewController.swift in Sources */,
 				CACA7E9D254C57CC0099E622 /* WriteNotePresenterProtocol.swift in Sources */,
 				CA7CBDF3257FE4AD00C81476 /* WineDetailRoutable.swift in Sources */,
 				CE7E3F1225F06AE50045A759 /* CurrencyViewControllerModel.swift in Sources */,
+				7485870226C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellView.swift in Sources */,
 				CA8CD68325097AD500FDB7AF /* GADTMediumTemplateView.m in Sources */,
 				447C353F25EEAA5700105A35 /* MapInteractor.swift in Sources */,
 				8A91611A268E27EB00240B18 /* SearchAssembly.swift in Sources */,
@@ -3182,6 +3289,7 @@
 				8A0794D726936141000ACA2B /* StoreViewControllerProtocol.swift in Sources */,
 				CE8FF82A25FAD75C004D4F37 /* ShowcaseAssembly.swift in Sources */,
 				CA46DBE7252518230007819E /* OnboardingRepository.swift in Sources */,
+				7485877A26CC068700F5CBEA /* Configurator.swift in Sources */,
 				CACA7E9F254C57CC0099E622 /* WriteNoteViewControllerProtocol.swift in Sources */,
 				449F81BD25DD039A00585364 /* TabBarBuilder.swift in Sources */,
 				CAEBD7F3251A7F5000210F3B /* SwitcherWithText.swift in Sources */,

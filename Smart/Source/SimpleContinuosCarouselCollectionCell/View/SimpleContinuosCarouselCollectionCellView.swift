@@ -1,9 +1,9 @@
 //
-//  VinchySimpleConiniousCaruselCollectionCell.swift
+//  SimpleContinuosCarouselCollectionCellViewController.swift
 //  Smart
 //
-//  Created by Aleksei Smirnov on 02.09.2020.
-//  Copyright © 2020 Aleksei Smirnov. All rights reserved.
+//  Created by Михаил Исаченко on 14.08.2021.
+//  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
 import CommonUI
@@ -13,28 +13,9 @@ import StringFormatting
 import UIKit
 import VinchyCore
 
-// MARK: - VinchySimpleConiniousCaruselCollectionCellDelegate
+// MARK: - SimpleContinuousCaruselCollectionCellView
 
-protocol VinchySimpleConiniousCaruselCollectionCellDelegate: AnyObject {
-  func didTapBottleCell(wineID: Int64)
-  func didTapCompilationCell(wines: [ShortWine], title: String?)
-}
-
-// MARK: - VinchySimpleConiniousCaruselCollectionCellViewModel
-
-struct VinchySimpleConiniousCaruselCollectionCellViewModel: ViewModelProtocol {
-  fileprivate let type: CollectionType
-  fileprivate let collections: [Collection]
-
-  public init(type: CollectionType, collections: [Collection]) {
-    self.type = type
-    self.collections = collections
-  }
-}
-
-// MARK: - VinchySimpleConiniousCaruselCollectionCell
-
-final class VinchySimpleConiniousCaruselCollectionCell: UICollectionViewCell, Reusable {
+final class SimpleContinuousCaruselCollectionCellView: UICollectionViewCell, Reusable {
 
   // MARK: Lifecycle
 
@@ -48,13 +29,20 @@ final class VinchySimpleConiniousCaruselCollectionCell: UICollectionViewCell, Re
       collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
     ])
   }
-
   @available(*, unavailable)
   required init?(coder _: NSCoder) { fatalError() }
 
+  // MARK: Public
+
+  public func viewDidLoad() {
+    interactor?.viewDidLoad()
+  }
+
   // MARK: Internal
 
-  weak var delegate: VinchySimpleConiniousCaruselCollectionCellDelegate?
+  private(set) var loadingIndicator = ActivityIndicatorView()
+
+  var interactor: SimpleContinuosCarouselCollectionCellInteractorProtocol?
 
   static func height(viewModel: ViewModel?) -> CGFloat {
     guard let viewModel = viewModel else {
@@ -109,11 +97,51 @@ final class VinchySimpleConiniousCaruselCollectionCell: UICollectionViewCell, Re
       collectionView.reloadData()
     }
   }
+
+  private func configureContextMenu(wineID: Int64) -> UIContextMenuConfiguration{
+    let context = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ -> UIMenu? in
+
+      let writeNote = UIAction(title: localized("write_note").firstLetterUppercased(), image: UIImage(systemName: "square.and.pencil"), identifier: nil, discoverabilityTitle: nil, state: .off) { [weak self] _ in
+        guard let self = self else { return }
+        self.interactor?.didTapWriteNoteContextMenu(wineID: wineID)
+      }
+
+      let leaveReview = UIAction(title: localized("write_review").firstLetterUppercased(), image: UIImage(systemName: "text.bubble"), identifier: nil, discoverabilityTitle: nil, state: .off) { [weak self] _ in
+        guard let self = self else { return }
+        self.interactor?.didTapLeaveReviewContextMenu(wineID: wineID)
+      }
+      let share = UIAction(title: localized("share_link").firstLetterUppercased(), image: UIImage(systemName: "square.and.arrow.up"), identifier: nil, discoverabilityTitle: nil, state: .off) { [weak self] _ in
+        guard let self = self else { return }
+        self.interactor?.didTapShareContextMenu(wineID: wineID)
+      }
+
+      return UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: [leaveReview, writeNote, share])
+    }
+    return context
+  }
 }
 
 // MARK: UICollectionViewDataSource
 
-extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDataSource {
+extension SimpleContinuousCaruselCollectionCellView: UICollectionViewDataSource {
+  func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
+    switch type {
+    case .bottles:
+      guard let collection = collections.first, let collectionItem = collection.wineList[safe: indexPath.row] else {
+        return nil
+      }
+      switch collectionItem {
+      case .wine(let wine):
+        return configureContextMenu(wineID: wine.id)
+      case .ads:
+        break
+      }
+    default:
+      break
+    }
+    return nil
+  }
+
   func collectionView(
     _: UICollectionView,
     numberOfItemsInSection _: Int)
@@ -172,11 +200,11 @@ extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDataSource
 
 // MARK: UICollectionViewDelegateFlowLayout
 
-extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDelegateFlowLayout {
+extension SimpleContinuousCaruselCollectionCellView: UICollectionViewDelegateFlowLayout {
   func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     switch type {
     case .mini, .big, .promo:
-      delegate?.didTapCompilationCell(wines: collections[indexPath.row].wineList.compactMap { collectionItem -> ShortWine? in
+      interactor?.didTapCompilationCell(wines: collections[indexPath.row].wineList.compactMap { collectionItem -> ShortWine? in
         switch collectionItem {
         case .wine(let wine):
           return wine
@@ -191,7 +219,7 @@ extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDelegateFl
       }
       switch collectionItem {
       case .wine(let wine):
-        delegate?.didTapBottleCell(wineID: wine.id)
+        interactor?.didTapBottleCell(wineID: wine.id)
       case .ads:
         break
       }
@@ -238,7 +266,7 @@ extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDelegateFl
 
 // MARK: UICollectionViewDataSourcePrefetching
 
-extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDataSourcePrefetching {
+extension SimpleContinuousCaruselCollectionCellView: UICollectionViewDataSourcePrefetching {
   func collectionView(
     _ collectionView: UICollectionView,
     prefetchItemsAt indexPaths: [IndexPath])
@@ -309,13 +337,26 @@ extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDataSource
   }
 }
 
-// MARK: Decoratable
+// MARK: SimpleContinuosCarouselCollectionCellViewProtocol
 
-extension VinchySimpleConiniousCaruselCollectionCell: Decoratable {
-  typealias ViewModel = VinchySimpleConiniousCaruselCollectionCellViewModel
+//extension SimpleContinuousCaruselCollectionCellView: Decoratable {
+//  typealias ViewModel = SimpleContinuousCaruselCollectionCellViewModel
+//
+//  func decorate(model: ViewModel) {
+//    type = model.type
+//    collections = model.collections
+//  }
+//}
 
-  func decorate(model: ViewModel) {
-    type = model.type
-    collections = model.collections
+extension SimpleContinuousCaruselCollectionCellView: SimpleContinuosCarouselCollectionCellViewProtocol {
+
+  typealias ViewModel = SimpleContinuousCaruselCollectionCellViewModel
+
+  func showAlert(title: String, message: String) {
+    (window?.rootViewController as? Alertable)?.showAlert(title: title, message: message)
+  }
+  func updateUI(viewModel: ViewModel) {
+    type = viewModel.type
+    collections = viewModel.collections
   }
 }

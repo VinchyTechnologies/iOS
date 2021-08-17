@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol VinchyInteractorProtocol: VinchySimpleConiniousCaruselCollectionCellDelegate {
+protocol VinchyInteractorProtocol: AnyObject {
   func viewDidLoad()
   func didPullToRefresh()
   func didTapFilter()
