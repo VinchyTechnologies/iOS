@@ -83,9 +83,9 @@ extension NSCollectionLayoutSection {
   }
 
   public static func list(layoutEnvironment: NSCollectionLayoutEnvironment) -> NSCollectionLayoutSection {
-    if #available(iOS 14, *) {
-      return .list(using: .init(appearance: .plain), layoutEnvironment: layoutEnvironment)
-    }
+//    if #available(iOS 14, *) {
+//      return .list(using: .init(appearance: .plain), layoutEnvironment: layoutEnvironment)
+//    }
 
     let item = NSCollectionLayoutItem(
       layoutSize: .init(widthDimension: .fractionalWidth(1.0), heightDimension: .estimated(50)))

@@ -35,6 +35,8 @@ public final class WineTableCell: UITableViewCell, Reusable {
   override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
 
+    backgroundColor = .mainBackground
+
     bottleImageView.contentMode = .scaleAspectFit
 
     addSubview(bottleImageView)

@@ -16,8 +16,7 @@ final class DocumentsViewController: CollectionViewController {
   // MARK: Lifecycle
 
   init() {
-    let layout = UICollectionViewCompositionalLayout
-      .list
+    let layout = UICollectionViewCompositionalLayout.list
     super.init(layout: layout)
   }
 
@@ -40,10 +39,19 @@ final class DocumentsViewController: CollectionViewController {
     })
   }
 
+  override func makeCollectionView() -> CollectionView {
+    let collectionView = super.makeCollectionView()
+    collectionView.delaysContentTouches = false
+    collectionView.backgroundColor = .mainBackground
+    return collectionView
+  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
+    view.backgroundColor = .mainBackground
+    collectionView.backgroundColor = .mainBackground
     navigationItem.largeTitleDisplayMode = .never
-    collectionView.delaysContentTouches = false
+    view.backgroundColor = .mainBackground
     interactor?.viewDidLoad()
   }
 

@@ -458,6 +458,11 @@ extension VinchyViewController: DidnotFindTheWineTableCellProtocol {
 // MARK: VinchyViewControllerProtocol
 
 extension VinchyViewController: VinchyViewControllerProtocol {
+
+  var scrollableToTopScrollView: UIScrollView {
+    collectionView
+  }
+
   func stopPullRefreshing() {
     refreshControl.endRefreshing()
   }

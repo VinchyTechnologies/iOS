@@ -28,6 +28,15 @@ final class AdvancedSearchViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    if isModal {
+      let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
+      navigationItem.leftBarButtonItem = UIBarButtonItem(
+        image: UIImage(systemName: "chevron.down", withConfiguration: imageConfig),
+        style: .plain,
+        target: self,
+        action: #selector(didTapCloseBarButtonItem(_:)))
+    }
+
     navigationItem.largeTitleDisplayMode = .never
 
     view.addSubview(collectionView)
@@ -43,7 +52,6 @@ final class AdvancedSearchViewController: UIViewController {
 
     interactor?.viewDidLoad()
   }
-
   override func viewSafeAreaInsetsDidChange() {
     super.viewSafeAreaInsetsDidChange()
 
@@ -138,6 +146,11 @@ final class AdvancedSearchViewController: UIViewController {
     view.delegate = self
     return view
   }()
+
+  @objc
+  private func didTapCloseBarButtonItem(_ barButtonItem: UIBarButtonItem) {
+    dismiss(animated: true)
+  }
 }
 
 // MARK: AdvancedSearchViewControllerProtocol
@@ -208,7 +221,6 @@ extension AdvancedSearchViewController: UICollectionViewDataSource {
     -> UICollectionReusableView
   {
     guard let viewModel = viewModel else { return .init() }
-
     switch viewModel.sections[indexPath.section] {
     case .carusel(let viewModel, _):
       if kind == C.categoryHeaderID {

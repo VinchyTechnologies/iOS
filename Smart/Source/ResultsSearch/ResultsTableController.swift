@@ -22,6 +22,8 @@ final class ResultsTableController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    view.backgroundColor = .mainBackground
+    tableView.backgroundColor = .mainBackground
     view.addSubview(tableView)
     tableView.fill()
 
