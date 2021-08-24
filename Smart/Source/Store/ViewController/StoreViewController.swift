@@ -164,6 +164,13 @@ final class StoreViewController: CollectionViewController {
                   context.view.adBanner.rootViewController = self
                 }
                 .flowLayoutItemSize(.init(width: view.frame.width, height: AdItemView.height))
+
+            case .empty(let itemID, let content):
+              return EmptyView.itemModel(
+                dataID: itemID.rawValue,
+                content: content,
+                style: .init())
+                .flowLayoutItemSize(.init(width: view.frame.width, height: 250)) // TODO: - height
             }
           }))
           .supplementaryItems(ofKind: UICollectionView.elementKindSectionHeader, [

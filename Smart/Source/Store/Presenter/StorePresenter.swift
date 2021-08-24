@@ -143,6 +143,27 @@ extension StorePresenter: StorePresenterProtocol {
       if needLoadMore {
         sections += [.loading(itemID: .loadingItem, shouldCallWillDisplay: true)]
       }
+    } else {
+
+      if !data.selectedFilters.isEmpty {
+
+        let assortmentsContent: [StoreViewModel.AssortimentContent] = [
+          .empty(itemID: .strongFilters,
+                 content: EmptyView.Content(
+                  titleText: localized("nothing_found").firstLetterUppercased(),
+                  subtitleText: nil,
+                  buttonText: nil))
+        ]
+
+        let header: [String] = data.selectedFilters.compactMap({
+          if $0.0 == "country_code" {
+            return countryNameFromLocaleCode(countryCode: $0.1)
+          } else {
+            return localized($0.1).firstLetterUppercased()
+          }
+        })
+        sections += [.assortiment(header: header, content: assortmentsContent)]
+      }
     }
 
     let viewModel = StoreViewModel(sections: sections, navigationTitleText: data.partnerInfo.title, shouldResetContentOffset: false)

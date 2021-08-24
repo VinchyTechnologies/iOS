@@ -15,12 +15,13 @@ struct StoreViewModel {
   }
 
   enum ItemID: String {
-    case logoItem, titleItem, addressItem, winesItem, headerAssortimentItem, loadingItem, ad
+    case logoItem, titleItem, addressItem, winesItem, headerAssortimentItem, loadingItem, ad, strongFilters
   }
 
   enum AssortimentContent {
     case horizontalWine(HorizontalWineView.Content)
     case ad(itemID: ItemID = .ad)
+    case empty(itemID: ItemID, content: EmptyView.Content)
   }
 
   enum Section {
