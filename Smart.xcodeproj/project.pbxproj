@@ -62,6 +62,7 @@
 		44EFDB7725E263E00076ED6D /* ReviewDetailInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6B25E263E00076ED6D /* ReviewDetailInteractorProtocol.swift */; };
 		44EFDB7825E263E00076ED6D /* ReviewDetailRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6D25E263E00076ED6D /* ReviewDetailRouterProtocol.swift */; };
 		44EFDB7925E263E00076ED6D /* ReviewDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6E25E263E00076ED6D /* ReviewDetailRouter.swift */; };
+		74139A0126D59BB500C5D1A5 /* WriteNoteRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74139A0026D59BB500C5D1A5 /* WriteNoteRoutable.swift */; };
 		748586FD26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586EC26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellViewModel.swift */; };
 		748586FE26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586EE26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellInput.swift */; };
 		748586FF26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586F026C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellAssembly.swift */; };
@@ -462,6 +463,7 @@
 		44EFDB6B25E263E00076ED6D /* ReviewDetailInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailInteractorProtocol.swift; sourceTree = "<group>"; };
 		44EFDB6D25E263E00076ED6D /* ReviewDetailRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailRouterProtocol.swift; sourceTree = "<group>"; };
 		44EFDB6E25E263E00076ED6D /* ReviewDetailRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailRouter.swift; sourceTree = "<group>"; };
+		74139A0026D59BB500C5D1A5 /* WriteNoteRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteNoteRoutable.swift; sourceTree = "<group>"; };
 		748586EC26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleContinuosCarouselCollectionCellViewModel.swift; sourceTree = "<group>"; };
 		748586EE26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleContinuosCarouselCollectionCellInput.swift; sourceTree = "<group>"; };
 		748586F026C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleContinuosCarouselCollectionCellAssembly.swift; sourceTree = "<group>"; };
@@ -1197,6 +1199,14 @@
 				EA78FE8971307D6D1C5D8B17 /* Pods_SmartTests.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		741399FF26D59B8D00C5D1A5 /* Routable */ = {
+			isa = PBXGroup;
+			children = (
+				74139A0026D59BB500C5D1A5 /* WriteNoteRoutable.swift */,
+			);
+			path = Routable;
 			sourceTree = "<group>";
 		};
 		748586EA26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCell */ = {
@@ -2241,6 +2251,7 @@
 				CACA7E89254C57CC0099E622 /* Input */,
 				CACA7E93254C57CC0099E622 /* Interactor */,
 				CACA7E8D254C57CC0099E622 /* Presenter */,
+				741399FF26D59B8D00C5D1A5 /* Routable */,
 				CACA7E96254C57CC0099E622 /* Router */,
 				CACA7E90254C57CC0099E622 /* ViewController */,
 				CACA7E87254C57CC0099E622 /* ViewModel */,
@@ -3226,6 +3237,7 @@
 				8A0794D926936141000ACA2B /* StoreInteractorProtocol.swift in Sources */,
 				CA472AC0245EDE2F009149FF /* AppDelegate.swift in Sources */,
 				8A1034592648596100F7CA81 /* AssortmentCollectionCell.swift in Sources */,
+				74139A0126D59BB500C5D1A5 /* WriteNoteRoutable.swift in Sources */,
 				CA2C22E12554464F002469E4 /* AdvancedSearchInteractor.swift in Sources */,
 				7485870026C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellPresenter.swift in Sources */,
 				8AD49F16267520F90094E157 /* ReviewsInteractorProtocol.swift in Sources */,

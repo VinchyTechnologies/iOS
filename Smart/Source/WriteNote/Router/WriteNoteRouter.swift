@@ -36,6 +36,7 @@ final class WriteNoteRouter {
 
 extension WriteNoteRouter: WriteNoteRouterProtocol {
   func pop() {
+    viewController?.dismiss(animated: true, completion: nil)
     viewController?.navigationController?.popViewController(animated: true)
   }
 }

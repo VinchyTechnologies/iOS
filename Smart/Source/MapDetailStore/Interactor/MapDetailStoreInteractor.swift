@@ -100,8 +100,4 @@ extension MapDetailStoreInteractor: MapDetailStoreInteractorProtocol {
       }
     }
   }
-
-  func didTapRecommendedWine(wineID: Int64) {
-    router.presentWineDetailViewController(wineID: wineID)
-  }
 }

@@ -16,7 +16,6 @@ final class NotesAssembly {
     let interactor = NotesInteractor(router: router, presenter: presenter)
 
     viewController.interactor = interactor
-    router.interactor = interactor
 
     return viewController
   }

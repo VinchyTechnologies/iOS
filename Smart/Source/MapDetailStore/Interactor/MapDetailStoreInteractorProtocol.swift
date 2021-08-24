@@ -10,5 +10,4 @@ import Foundation
 
 protocol MapDetailStoreInteractorProtocol: AnyObject {
   func viewDidLoad()
-  func didTapRecommendedWine(wineID: Int64)
 }

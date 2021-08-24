@@ -23,9 +23,13 @@ extension WineDetailRoutable {
     if UIDevice.current.userInterfaceIdiom == .pad {
       presentWineDetailViewController(wineID: wineID)
     } else {
+      guard let navigationController = viewController?.navigationController else {
+        presentWineDetailViewController(wineID: wineID)
+        return
+      }
       let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID))
       controller.hidesBottomBarWhenPushed = true
-      viewController?.navigationController?.pushViewController(
+      navigationController.pushViewController(
         controller,
         animated: true)
     }
@@ -39,8 +43,5 @@ extension WineDetailRoutable {
       navigationController,
       animated: true,
       completion: nil)
-//    viewController?.present(
-//      navigationController,
-//      animated: true)
   }
 }

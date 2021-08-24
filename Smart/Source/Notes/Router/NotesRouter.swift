@@ -23,15 +23,8 @@ final class NotesRouter {
   // MARK: Internal
 
   weak var viewController: UIViewController?
-  weak var interactor: NotesInteractorProtocol?
-
 }
 
 // MARK: NotesRouterProtocol
 
-extension NotesRouter: NotesRouterProtocol {
-  func pushToWriteViewController(note: VNote) {
-    let controller = Assembly.buildWriteNoteViewController(for: note)
-    viewController?.navigationController?.pushViewController(controller, animated: true)
-  }
-}
+extension NotesRouter: NotesRouterProtocol {}

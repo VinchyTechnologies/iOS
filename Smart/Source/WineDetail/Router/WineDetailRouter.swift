@@ -65,16 +65,6 @@ extension WineDetailRouter: WineDetailRouterProtocol {
     viewController?.present(emailController, animated: true, completion: nil)
   }
 
-  func pushToWriteViewController(note: VNote) {
-    let controller = Assembly.buildWriteNoteViewController(for: note)
-    viewController?.navigationController?.pushViewController(controller, animated: true)
-  }
-
-  func pushToWriteViewController(wine: Wine) {
-    let controller = Assembly.buildWriteNoteViewController(for: wine)
-    viewController?.navigationController?.pushViewController(controller, animated: true)
-  }
-
   func presentActivityViewController(items: [Any], button: UIButton) {
     let controller = UIActivityViewController(activityItems: items, applicationActivities: nil)
     if let popoverController = controller.popoverPresentationController {

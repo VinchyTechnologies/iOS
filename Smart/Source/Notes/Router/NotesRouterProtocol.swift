@@ -9,6 +9,4 @@
 import Database
 import Foundation
 
-protocol NotesRouterProtocol: AnyObject {
-  func pushToWriteViewController(note: VNote)
-}
+protocol NotesRouterProtocol: WriteNoteRoutable {}
