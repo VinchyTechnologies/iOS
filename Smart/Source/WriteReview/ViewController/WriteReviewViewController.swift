@@ -85,6 +85,7 @@ final class WriteReviewViewController: UIViewController {
     var view = StarsRatingView()
     view.settings.filledColor = .accent
     view.settings.emptyBorderColor = .accent
+    view.settings.filledBorderColor = .accent
     view.settings.starSize = 40
     view.settings.fillMode = .half
     view.settings.minTouchRating = 0.5

@@ -23,6 +23,8 @@ final class CurrencyViewController: UIViewController {
 
     navigationItem.largeTitleDisplayMode = .never
 
+    view.backgroundColor = .mainBackground
+    tableView.backgroundColor = .mainBackground
     view.addSubview(tableView)
     tableView.fill()
 

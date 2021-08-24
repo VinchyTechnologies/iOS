@@ -131,6 +131,7 @@ public final class ReviewView: UIView, EpoxyableView {
     view.translatesAutoresizingMaskIntoConstraints = false
     view.settings.filledColor = .accent
     view.settings.emptyBorderColor = .accent
+    view.settings.filledBorderColor = .accent
     view.settings.starSize = 24
     view.settings.fillMode = .half
     view.settings.minTouchRating = 0

@@ -30,9 +30,19 @@ final class StoreViewController: CollectionViewController {
   private(set) var loadingIndicator = ActivityIndicatorView()
   var interactor: StoreInteractorProtocol?
 
+  override func makeCollectionView() -> CollectionView {
+    CollectionView(
+      layout: layout,
+      configuration: .init(
+        usesBatchUpdatesForAllReloads: false,
+        usesCellPrefetching: true,
+        usesAccurateScrollToItem: true))
+  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    view.backgroundColor = .mainBackground
     collectionView.backgroundColor = .mainBackground
 
     navigationItem.largeTitleDisplayMode = .never
@@ -49,12 +59,12 @@ final class StoreViewController: CollectionViewController {
     collectionView.delaysContentTouches = false
     collectionView.scrollDelegate = self
 
-//    let filterBarButtonItem = UIBarButtonItem(
-//      image: UIImage(named: "edit")?.withRenderingMode(.alwaysTemplate),
-//      style: .plain,
-//      target: self,
-//      action: nil)
-//    navigationItem.rightBarButtonItems = [filterBarButtonItem]
+    let filterBarButtonItem = UIBarButtonItem(
+      image: UIImage(named: "edit")?.withRenderingMode(.alwaysTemplate),
+      style: .plain,
+      target: self,
+      action: #selector(didTapFilterButton(_:)))
+    navigationItem.rightBarButtonItems = [filterBarButtonItem]
 
     interactor?.viewDidLoad()
   }
@@ -167,12 +177,14 @@ final class StoreViewController: CollectionViewController {
           ])
           .flowLayoutHeaderReferenceSize(.init(width: view.frame.width, height: 50))
 
-      case .loading(let itemID):
+      case .loading(let itemID, let shouldCallWillDisplay):
         return SectionModel(dataID: section.dataID) {
           LoadingView.itemModel(dataID: itemID)
         }
         .willDisplay { [weak self] _ in
-          self?.interactor?.willDisplayLoadingView()
+          if shouldCallWillDisplay {
+            self?.interactor?.willDisplayLoadingView()
+          }
         }
         .flowLayoutItemSize(.init(width: view.frame.width, height: LoadingView.height))
         .flowLayoutSectionInset(.init(top: 16, left: 0, bottom: 16, right: 0))
@@ -195,6 +207,11 @@ final class StoreViewController: CollectionViewController {
   @objc
   private func didTapCloseBarButtonItem(_: UIBarButtonItem) {
     dismiss(animated: true, completion: nil)
+  }
+
+  @objc
+  private func didTapFilterButton(_ button: UIButton) {
+    interactor?.didTapFilterButton()
   }
 }
 
@@ -250,7 +267,18 @@ extension StoreViewController: StoreViewControllerProtocol {
       heightBeforeSupplementaryHeader = resultHeight
     }
 
-    setSections(sections, animated: false)
+    if viewModel.shouldResetContentOffset {
+      UIView.animate(withDuration: 0.5, delay: 0, options: [.beginFromCurrentState, .curveEaseOut]) {
+        let scrollToTopIfPossibleSelector = Selector(encodeText("`tdspmmUpUpqJgQpttjcmf;", -1))
+        if (self.collectionView as UIScrollView).responds(to: scrollToTopIfPossibleSelector) {
+          (self.collectionView as UIScrollView).perform(scrollToTopIfPossibleSelector)
+        }
+      } completion: { _ in
+        self.setSections(self.sections, animated: false)
+      }
+    } else {
+      setSections(sections, animated: false)
+    }
   }
 }
 

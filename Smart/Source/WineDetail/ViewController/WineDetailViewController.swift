@@ -114,12 +114,12 @@ final class WineDetailViewController: CollectionViewController {
             dataID: itemID,
             content: content,
             style: .init())
-            .flowLayoutItemSize(.init(width: view.frame.width, height: GalleryView.height))
+            .flowLayoutItemSize(.init(width: collectionView.frame.width, height: GalleryView.height))
         }
         .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 16, right: 0))
 
       case .name(let itemID, let content):
-        let width: CGFloat = view.frame.width - 48
+        let width: CGFloat = collectionView.frame.width - 48
         let height: CGFloat = Label.height(
           for: content,
           width: width,
@@ -134,7 +134,7 @@ final class WineDetailViewController: CollectionViewController {
         .flowLayoutSectionInset(.init(top: 8, left: 24, bottom: 8, right: 24))
 
       case .title(let itemID, let content):
-        let width: CGFloat = view.frame.width - 48
+        let width: CGFloat = collectionView.frame.width - 48
         let height: CGFloat = Label.height(
           for: content,
           width: width,
@@ -149,7 +149,7 @@ final class WineDetailViewController: CollectionViewController {
         .flowLayoutSectionInset(.init(top: 16, left: 24, bottom: 8, right: 24))
 
       case .rate(let itemID, let content):
-        let width: CGFloat = view.frame.width - 48
+        let width: CGFloat = collectionView.frame.width - 48
         return SectionModel(dataID: section.dataID) {
           StarRatingControlView.itemModel(
             dataID: itemID,
@@ -163,7 +163,7 @@ final class WineDetailViewController: CollectionViewController {
         .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 16, right: 24))
 
       case .winery(let itemID, let content):
-        let width: CGFloat = view.frame.width - 48
+        let width: CGFloat = collectionView.frame.width - 48
         let height: CGFloat = Label.height(
           for: content,
           width: width,
@@ -178,7 +178,7 @@ final class WineDetailViewController: CollectionViewController {
         .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 0, right: 24))
 
       case .text(let itemID, let content):
-        let width: CGFloat = view.frame.width - 48
+        let width: CGFloat = collectionView.frame.width - 48
         let height: CGFloat = Label.height(
           for: content,
           width: width,
@@ -193,7 +193,7 @@ final class WineDetailViewController: CollectionViewController {
         .flowLayoutSectionInset(.init(top: 8, left: 24, bottom: 16, right: 24))
 
       case .tool(let itemID, let content):
-        let width: CGFloat = view.frame.width - 48
+        let width: CGFloat = collectionView.frame.width - 48
         return SectionModel(dataID: section.dataID) {
           ToolView.itemModel(
             dataID: itemID,
@@ -207,7 +207,7 @@ final class WineDetailViewController: CollectionViewController {
         .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 16, right: 24))
 
       case .list(let itemID, let rows):
-        let width: CGFloat = view.frame.width
+        let width: CGFloat = collectionView.frame.width
         return SectionModel(
           dataID: section.dataID,
           items: rows.enumerated().compactMap({ index, content in
@@ -221,7 +221,7 @@ final class WineDetailViewController: CollectionViewController {
           .flowLayoutMinimumLineSpacing(0)
 
       case .ratingAndReview(let itemID, let content):
-        let width: CGFloat = view.frame.width - 48
+        let width: CGFloat = collectionView.frame.width - 48
         let height: CGFloat = TitleAndMoreView.height(width: width, content: content)
         return SectionModel(dataID: section.dataID) {
           TitleAndMoreView.itemModel(
@@ -245,7 +245,7 @@ final class WineDetailViewController: CollectionViewController {
             }),
             style: .init())
         }
-        .flowLayoutItemSize(.init(width: view.frame.width, height: 200))
+        .flowLayoutItemSize(.init(width: collectionView.frame.width, height: 200))
         .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 16, right: 0))
 
       case .servingTips(let itemID, let content):
@@ -255,11 +255,11 @@ final class WineDetailViewController: CollectionViewController {
             content: content,
             style: .init())
         }
-        .flowLayoutItemSize(.init(width: view.frame.width, height: 100))
+        .flowLayoutItemSize(.init(width: collectionView.frame.width, height: 100))
         .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 8, right: 0))
 
       case .button(let itemID, let content):
-        let width: CGFloat = view.frame.width - 48
+        let width: CGFloat = collectionView.frame.width - 48
         return SectionModel(dataID: section.dataID) {
           ButtonView.itemModel(
             dataID: itemID,
@@ -281,7 +281,7 @@ final class WineDetailViewController: CollectionViewController {
             .setBehaviors { [weak self] context in
               context.view.adBanner.rootViewController = self
             }
-            .flowLayoutItemSize(.init(width: view.frame.width, height: AdItemView.height))
+            .flowLayoutItemSize(.init(width: collectionView.frame.width, height: AdItemView.height))
         }
 
       case .similarWines(let itemID, let content):
@@ -294,7 +294,7 @@ final class WineDetailViewController: CollectionViewController {
             }),
             style: .init())
         }
-        .flowLayoutItemSize(.init(width: view.frame.width, height: 250))
+        .flowLayoutItemSize(.init(width: collectionView.frame.width, height: 250))
         .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 16, right: 0))
 
       case .expandCollapse(let itemID, let content):
@@ -306,11 +306,11 @@ final class WineDetailViewController: CollectionViewController {
             .didSelect { [weak self] _ in
               self?.interactor?.didTapExpandOrCollapseGeneralInfo()
             }
-            .flowLayoutItemSize(.init(width: view.frame.width, height: 44))
+            .flowLayoutItemSize(.init(width: collectionView.frame.width, height: 44))
         }
 
       case .whereToBuy(let itemID, let rows):
-        let width: CGFloat = view.frame.width
+        let width: CGFloat = collectionView.frame.width
         return SectionModel(
           dataID: section.dataID,
           items: rows.enumerated().compactMap({ index, content in

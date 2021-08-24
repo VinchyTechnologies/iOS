@@ -23,6 +23,8 @@ final class NotesViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    tableView.backgroundColor = .mainBackground
+
     navigationItem.searchController = searchController
     navigationItem.hidesSearchBarWhenScrolling = false
     navigationController?.navigationBar.sizeToFit()

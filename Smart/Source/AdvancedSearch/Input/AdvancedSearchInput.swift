@@ -8,4 +8,11 @@
 
 import Foundation
 
-struct AdvancedSearchInput {}
+struct AdvancedSearchInput {
+  enum Mode {
+    case normal
+    case asView(preselectedFilters: [(String, String)])
+  }
+
+  let mode: Mode
+}

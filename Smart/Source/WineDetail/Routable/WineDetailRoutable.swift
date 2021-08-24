@@ -34,7 +34,7 @@ extension WineDetailRoutable {
   func presentWineDetailViewController(wineID: Int64) {
     let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID))
     let navigationController = NavigationController(rootViewController: controller)
-    navigationController.modalPresentationStyle = .fullScreen
+    navigationController.modalPresentationStyle = .overFullScreen
     UIApplication.topViewController()?.present(
       navigationController,
       animated: true,
