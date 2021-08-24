@@ -203,7 +203,7 @@ open class ContextMenu: NSObject {
       customView.addSubview(blurEffectView)
     }
     if MenuConstants.BlurEffectEnabled {
-      blurEffectView.effect = MenuConstants.BlurEffectDefault
+      blurEffectView.effect = UIApplication.shared.asKeyWindow?.traitCollection.userInterfaceStyle == .dark ? MenuConstants.BlurEffectDefault : UIBlurEffect.init(style: .light)
       blurEffectView.backgroundColor = .clear
     }else{
       blurEffectView.effect = nil
