@@ -72,7 +72,7 @@ final class MapDetailStoreViewController: UIViewController {
       TextCollectionCell.self,
       WorkingHoursCollectionCell.self,
       AssortmentCollectionCell.self,
-      VinchySimpleConiniousCaruselCollectionCell.self)
+      SimpleContinuousCaruselCollectionCellView.self)
     $0.register(
       MapNavigationBarCollectionCell.self,
       forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
@@ -145,10 +145,11 @@ extension MapDetailStoreViewController: UICollectionViewDataSource {
 
       case .recommendedWines(let model):
         let cell = collectionView.dequeueReusableCell(
-          withReuseIdentifier: VinchySimpleConiniousCaruselCollectionCell.reuseId,
-          for: indexPath) as! VinchySimpleConiniousCaruselCollectionCell // swiftlint:disable:this force_cast
-        cell.decorate(model: model)
-        cell.delegate = self
+          withReuseIdentifier: SimpleContinuousCaruselCollectionCellView.reuseId,
+          for: indexPath) as! SimpleContinuousCaruselCollectionCellView // swiftlint:disable:this force_cast
+        let configurator = SimpleContinuosCarouselCollectionCellConfigurator()
+        configurator.configure(view: cell, with: SimpleContinuosCarouselCollectionCellInput(model: model), sender: self)
+        cell.viewDidLoad()
         return cell
       }
 
@@ -235,16 +236,6 @@ extension MapDetailStoreViewController: MapDetailStoreViewControllerProtocol {
   func updateUI(viewModel: MapDetailStoreViewModel) {
     self.viewModel = viewModel
   }
-}
-
-// MARK: VinchySimpleConiniousCaruselCollectionCellDelegate
-
-extension MapDetailStoreViewController: VinchySimpleConiniousCaruselCollectionCellDelegate {
-  func didTapBottleCell(wineID: Int64) {
-    interactor?.didTapRecommendedWine(wineID: wineID)
-  }
-
-  func didTapCompilationCell(wines _: [ShortWine], title _: String?) {}
 }
 
 // MARK: MapNavigationBarDelegate

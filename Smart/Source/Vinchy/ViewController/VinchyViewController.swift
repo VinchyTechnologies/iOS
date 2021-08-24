@@ -143,7 +143,7 @@ final class VinchyViewController: UIViewController {
 
     collectionView.register(
       SuggestionCollectionCell.self,
-      VinchySimpleConiniousCaruselCollectionCell.self,
+      SimpleContinuousCaruselCollectionCellView.self,
       ShareUsCollectionCell.self,
       WineCollectionViewCell.self,
       AdsCollectionViewCell.self,
@@ -258,7 +258,7 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
       case .stories(let model), .promo(let model), .big(let model), .bottles(let model):
         return .init(
           width: collectionView.frame.width,
-          height: VinchySimpleConiniousCaruselCollectionCell.height(viewModel: model[safe: indexPath.row]))
+          height: SimpleContinuousCaruselCollectionCellView.height(viewModel: model[safe: indexPath.row]))
 
       case .suggestions:
         return .init(width: collectionView.frame.width, height: 44)
@@ -376,14 +376,16 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
 
       case .stories(let model), .promo(let model), .big(let model), .bottles(let model):
         collectionView.register(
-          VinchySimpleConiniousCaruselCollectionCell.self,
-          forCellWithReuseIdentifier: VinchySimpleConiniousCaruselCollectionCell.reuseId + "\(indexPath.section)")
+          SimpleContinuousCaruselCollectionCellView.self,
+          forCellWithReuseIdentifier: SimpleContinuousCaruselCollectionCellView.reuseId + "\(indexPath.section)")
 
         let cell = collectionView.dequeueReusableCell(
-          withReuseIdentifier: VinchySimpleConiniousCaruselCollectionCell.reuseId + "\(indexPath.section)",
-          for: indexPath) as! VinchySimpleConiniousCaruselCollectionCell // swiftlint:disable:this force_cast
-        cell.decorate(model: model[indexPath.row])
-        cell.delegate = interactor
+          withReuseIdentifier: SimpleContinuousCaruselCollectionCellView.reuseId + "\(indexPath.section)",
+          for: indexPath) as! SimpleContinuousCaruselCollectionCellView // swiftlint:disable:this force_cast
+
+        let configurator = SimpleContinuosCarouselCollectionCellConfigurator()
+        configurator.configure(view: cell, with: SimpleContinuosCarouselCollectionCellInput(model: model[indexPath.row]), sender: self)
+        cell.viewDidLoad()
         return cell
 
       case .suggestions(let model):

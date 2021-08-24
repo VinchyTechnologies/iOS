@@ -148,11 +148,12 @@ extension StorePresenter: StorePresenterProtocol {
       if !data.selectedFilters.isEmpty {
 
         let assortmentsContent: [StoreViewModel.AssortimentContent] = [
-          .empty(itemID: .strongFilters,
-                 content: EmptyView.Content(
-                  titleText: localized("nothing_found").firstLetterUppercased(),
-                  subtitleText: nil,
-                  buttonText: nil))
+          .empty(
+            itemID: .strongFilters,
+            content: EmptyView.Content(
+              titleText: localized("nothing_found").firstLetterUppercased(),
+              subtitleText: nil,
+              buttonText: nil)),
         ]
 
         let header: [String] = data.selectedFilters.compactMap({

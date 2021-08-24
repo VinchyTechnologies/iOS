@@ -14,7 +14,7 @@ struct MapDetailStoreViewModel {
     case address(TextCollectionCellViewModel)
     case workingHours(WorkingHoursCollectionCellViewModel)
     case assortment(AssortmentCollectionCellViewModel)
-    case recommendedWines(VinchySimpleConiniousCaruselCollectionCellViewModel)
+    case recommendedWines(SimpleContinuousCaruselCollectionCellViewModel)
   }
 
   enum Section {

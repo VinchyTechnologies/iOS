@@ -98,7 +98,7 @@ final class AreYouInStoreViewController: UIViewController {
     $0.delegate = self
     $0.register(
       TextCollectionCell.self,
-      VinchySimpleConiniousCaruselCollectionCell.self)
+      SimpleContinuousCaruselCollectionCellView.self)
     return $0
   }(UICollectionView(frame: .zero, collectionViewLayout: layout))
 
@@ -152,10 +152,11 @@ extension AreYouInStoreViewController: UICollectionViewDataSource {
 
     case .recommendedWines(let model):
       let cell = collectionView.dequeueReusableCell(
-        withReuseIdentifier: VinchySimpleConiniousCaruselCollectionCell.reuseId,
-        for: indexPath) as! VinchySimpleConiniousCaruselCollectionCell // swiftlint:disable:this force_cast
-      cell.decorate(model: model[indexPath.row])
-//      cell.delegate = self
+        withReuseIdentifier: SimpleContinuousCaruselCollectionCellView.reuseId,
+        for: indexPath) as! SimpleContinuousCaruselCollectionCellView // swiftlint:disable:this force_cast
+      let configurator = SimpleContinuosCarouselCollectionCellConfigurator()
+      configurator.configure(view: cell, with: SimpleContinuosCarouselCollectionCellInput(model: model[indexPath.row]), sender: self)
+      cell.viewDidLoad()
       return cell
 
     case .none:
