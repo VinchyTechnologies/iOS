@@ -9,12 +9,18 @@
 import UIKit
 
 // MARK: - ContextMenuItem
+public typealias ActionClosure = (() -> Void)
+
+// MARK: - ContextMenuItem
 
 public protocol ContextMenuItem {
   var title: String {
     get
   }
   var image: UIImage? {
+    get
+  }
+  var action: ActionClosure? {
     get
   }
 }
@@ -25,39 +31,18 @@ extension ContextMenuItem {
   }
 }
 
-// MARK: - String + ContextMenuItem
-
-extension String: ContextMenuItem {
-  public var title: String {
-    get {
-      "\(self)"
-    }
-  }
-}
-
 // MARK: - ContextMenuItemWithImage
 
 public struct ContextMenuItemWithImage: ContextMenuItem {
   public var title: String
   public var image: UIImage?
+  public var action: ActionClosure?
 
-  public init(title: String, image: UIImage) {
+  public init(title: String, image: UIImage, action: @escaping ActionClosure) {
     self.title = title
     self.image = image
+    self.action = action
   }
-}
-
-// MARK: - ContextMenuDelegate
-
-public protocol ContextMenuDelegate: AnyObject {
-  func contextMenuDidSelect(_ contextMenu: ContextMenu, cell: ContextMenuCell, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int) -> Bool
-  func contextMenuDidDeselect(_ contextMenu: ContextMenu, cell: ContextMenuCell, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int)
-  func contextMenuDidAppear(_ contextMenu: ContextMenu)
-  func contextMenuDidDisappear(_ contextMenu: ContextMenu)
-}
-extension ContextMenuDelegate {
-  func contextMenuDidAppear(_ contextMenu: ContextMenu){}
-  func contextMenuDidDisappear(_ contextMenu: ContextMenu){}
 }
 
 public var CM = ContextMenu()
@@ -137,10 +122,9 @@ open class ContextMenu: NSObject {
   open var items = [ContextMenuItem]()
 
   // MARK:- Show, Change, Update Menu Functions
-  open func showMenu(viewTargeted: UIView, delegate: ContextMenuDelegate, animated: Bool = true){
+  open func showMenu(viewTargeted: UIView, animated: Bool = true){
     NotificationCenter.default.addObserver(self, selector: #selector(rotated), name: UIDevice.orientationDidChangeNotification, object: nil)
     DispatchQueue.main.async {
-      self.delegate = delegate
       self.viewTargeted = viewTargeted
       if !self.items.isEmpty {
         self.menuHeight = (CGFloat(self.items.count) * self.MenuConstants.ItemDefaultHeight) + (self.headerView?.frame.height ?? 0) + (self.footerView?.frame.height ?? 0) // + CGFloat(self.items.count - 1)
@@ -335,8 +319,6 @@ open class ContextMenu: NSObject {
     }
     updateTargetedImageViewPosition(animated: animated)
     onViewAppear?(viewTargeted)
-
-    delegate?.contextMenuDidAppear(self)
   }
 
   func closeAllViews(){
@@ -363,7 +345,6 @@ open class ContextMenu: NSObject {
         }
       }
       self.onViewDismiss?(self.viewTargeted)
-      self.delegate?.contextMenuDidDisappear(self)
     }
   }
 
@@ -390,7 +371,6 @@ open class ContextMenu: NSObject {
         }
       }
       self.onViewDismiss?(self.viewTargeted)
-      self.delegate?.contextMenuDidDisappear(self)
     }
   }
 
@@ -676,9 +656,6 @@ open class ContextMenu: NSObject {
 
   // MARK: Private
 
-  // MARK:- Private Variables
-  private weak var delegate: ContextMenuDelegate?
-
   private var mainViewRect: CGRect
   private var customView = UIView()
   private var blurEffectView = UIVisualEffectView()
@@ -728,15 +705,10 @@ extension ContextMenu: UITableViewDataSource, UITableViewDelegate {
     if onItemTap?(indexPath.row, item) ?? false {
       closeAllViews()
     }
-    // swiftlint:disable:next force_cast
-    if delegate?.contextMenuDidSelect(self, cell: tableView.cellForRow(at: indexPath) as! ContextMenuCell, targetedView: viewTargeted, didSelect: items[indexPath.row], forRowAt: indexPath.row) ?? false {
-      closeAllViews()
+    closeAllViews()
+    if let action = item.action {
+      action()
     }
-  }
-
-  open func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
-    // swiftlint:disable:next force_cast
-    delegate?.contextMenuDidDeselect(self, cell: tableView.cellForRow(at: indexPath) as! ContextMenuCell, targetedView: viewTargeted, didSelect: items[indexPath.row], forRowAt: indexPath.row)
   }
 
   open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

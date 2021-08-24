@@ -6,12 +6,20 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import AudioToolbox
 import CommonUI
+import CoreHaptics
 import Database
 import Display
 import StringFormatting
 import UIKit
 import VinchyCore
+
+// MARK: - Constants
+
+private enum Constants {
+  static let vibrationSoundId: SystemSoundID = 1519
+}
 
 // MARK: - SimpleContinuousCaruselCollectionCellView
 
@@ -93,8 +101,7 @@ final class SimpleContinuousCaruselCollectionCellView: UICollectionViewCell, Reu
     return collectionView
   }()
 
-
-  private var contextMenuWineID: Int64?
+  private lazy var hapticGenerator = UISelectionFeedbackGenerator()
 
   private var collections: [Collection] = [] {
     didSet {
@@ -104,7 +111,7 @@ final class SimpleContinuousCaruselCollectionCellView: UICollectionViewCell, Reu
 
   private func setupLongGestureRecognizerOnCollection() {
     let longPressedGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureRecognizer:)))
-    longPressedGesture.minimumPressDuration = 1
+    longPressedGesture.minimumPressDuration = 0.6
     longPressedGesture.delegate = self
     collectionView.addGestureRecognizer(longPressedGesture)
   }
@@ -114,6 +121,7 @@ final class SimpleContinuousCaruselCollectionCellView: UICollectionViewCell, Reu
     if gestureRecognizer.state != .began {
       return
     }
+
     let point = gestureRecognizer.location(in: collectionView)
     if let indexPath = collectionView.indexPathForItem(at: point) {
       switch type {
@@ -123,13 +131,27 @@ final class SimpleContinuousCaruselCollectionCellView: UICollectionViewCell, Reu
         }
         switch collectionItem {
         case .wine(let wine):
-          contextMenuWineID = wine.id
+          if CHHapticEngine.capabilitiesForHardware().supportsHaptics {
+            hapticGenerator.selectionChanged()
+          } else {
+            AudioServicesPlaySystemSound(Constants.vibrationSoundId)
+          }
           let cell = collectionView.cellForItem(at: indexPath)!
-          let writeNote = ContextMenuItemWithImage(title: localized("write_note").firstLetterUppercased(), image: UIImage(systemName: "square.and.pencil")!)
-          let leaveReview = ContextMenuItemWithImage(title: localized("write_review").firstLetterUppercased(), image: UIImage(systemName: "text.bubble")!)
-          let share = ContextMenuItemWithImage(title: localized("share_link").firstLetterUppercased(), image: UIImage(systemName: "square.and.arrow.up")!)
+          let writeNote = ContextMenuItemWithImage(title: localized("write_note").firstLetterUppercased(), image: UIImage(systemName: "square.and.pencil")!) { [weak self] in
+
+            self?.interactor?.didTapWriteNoteContextMenu(wineID: wine.id)
+          }
+          let leaveReview = ContextMenuItemWithImage(title: localized("write_review").firstLetterUppercased(), image: UIImage(systemName: "text.bubble")!) { [weak self] in
+
+            self?.interactor?.didTapLeaveReviewContextMenu(wineID: wine.id)
+          }
+          let share = ContextMenuItemWithImage(title: localized("share_link").firstLetterUppercased(), image: UIImage(systemName: "square.and.arrow.up")!) { [weak self] in
+
+            self?.interactor?.didTapShareContextMenu(wineID: wine.id)
+          }
+
           CM.items = [writeNote, leaveReview, share]
-          CM.showMenu(viewTargeted: cell, delegate: self, animated: true)
+          CM.showMenu(viewTargeted: cell, animated: true)
           break
         default:
           break
@@ -201,29 +223,6 @@ extension SimpleContinuousCaruselCollectionCellView: UICollectionViewDataSource 
   }
 }
 
-// MARK: ContextMenuDelegate
-
-extension SimpleContinuousCaruselCollectionCellView: ContextMenuDelegate {
-  func contextMenuDidSelect(_ contextMenu: ContextMenu, cell: ContextMenuCell, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int) -> Bool {
-    guard let wineID = contextMenuWineID else {
-      return true
-    }
-    switch index {
-    case 0:
-      interactor?.didTapWriteNoteContextMenu(wineID: wineID)
-    case 1:
-      interactor?.didTapLeaveReviewContextMenu(wineID: wineID)
-    case 2:
-      interactor?.didTapShareContextMenu(wineID: wineID)
-    default:
-      return true
-    }
-    return true
-  }
-
-  func contextMenuDidDeselect(_ contextMenu: ContextMenu, cell: ContextMenuCell, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int) {
-  }
-}
 
 // MARK: UICollectionViewDelegateFlowLayout
 
@@ -365,15 +364,6 @@ extension SimpleContinuousCaruselCollectionCellView: UICollectionViewDataSourceP
 }
 
 // MARK: SimpleContinuosCarouselCollectionCellViewProtocol
-
-//extension SimpleContinuousCaruselCollectionCellView: Decoratable {
-//  typealias ViewModel = SimpleContinuousCaruselCollectionCellViewModel
-//
-//  func decorate(model: ViewModel) {
-//    type = model.type
-//    collections = model.collections
-//  }
-//}
 
 extension SimpleContinuousCaruselCollectionCellView: SimpleContinuosCarouselCollectionCellViewProtocol {
 
