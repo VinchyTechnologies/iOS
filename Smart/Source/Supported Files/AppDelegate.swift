@@ -8,7 +8,6 @@
 
 import Firebase
 import GoogleMobileAds
-import Sheeeeeeeeet
 import SwiftUI
 import UIKit
 

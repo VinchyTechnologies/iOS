@@ -42,6 +42,11 @@ final class WineDetailViewController: CollectionViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    if isModal {
+      navigationController?.becomeLazy(for: .dismiss)
+      allowedOrientations = [.leftToRight, .topToBottom]
+    }
+
     navigationItem.largeTitleDisplayMode = .never
 
     noteButton.setImage(UIImage(systemName: "square.and.pencil", withConfiguration: C.imageConfig), for: .normal)

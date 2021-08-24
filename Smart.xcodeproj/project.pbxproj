@@ -165,6 +165,27 @@
 		8A9554662692280800F1C5AE /* Epoxy in Frameworks */ = {isa = PBXBuildFile; productRef = 8A9554652692280800F1C5AE /* Epoxy */; };
 		8A9554682692284B00F1C5AE /* DocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9554672692284B00F1C5AE /* DocumentsViewController.swift */; };
 		8AA5E5132615053D00935B5E /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA5E5122615053D00935B5E /* AboutView.swift */; };
+		8AA98AA126CFCAAC00C32358 /* UIPanGestureRecognizerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA98A7526CFCAAC00C32358 /* UIPanGestureRecognizerExtensions.swift */; };
+		8AA98AA226CFCAAC00C32358 /* UIScrollViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA98A7626CFCAAC00C32358 /* UIScrollViewExtensions.swift */; };
+		8AA98AA326CFCAAC00C32358 /* PopAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA98A7726CFCAAC00C32358 /* PopAnimator.swift */; };
+		8AA98AA426CFCAAC00C32358 /* LazyTransitioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA98A7826CFCAAC00C32358 /* LazyTransitioner.swift */; };
+		8AA98AA526CFCAAC00C32358 /* TransitionerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA98A7A26CFCAAC00C32358 /* TransitionerProtocols.swift */; };
+		8AA98AA626CFCAAC00C32358 /* TransitionProgressCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA98A7B26CFCAAC00C32358 /* TransitionProgressCalculator.swift */; };
+		8AA98AA726CFCAAC00C32358 /* ScrollableGestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA98A7C26CFCAAC00C32358 /* ScrollableGestureHandler.swift */; };
+		8AA98AA826CFCAAC00C32358 /* StaticViewGestureHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA98A7D26CFCAAC00C32358 /* StaticViewGestureHandler.swift */; };
+		8AA98AA926CFCAAC00C32358 /* TransitionAnimatorType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA98A7E26CFCAAC00C32358 /* TransitionAnimatorType.swift */; };
+		8AA98AAA26CFCAAC00C32358 /* InteractiveTransitioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA98A7F26CFCAAC00C32358 /* InteractiveTransitioner.swift */; };
+		8AA98AAB26CFCAAC00C32358 /* PartialTransitioner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA98A8026CFCAAC00C32358 /* PartialTransitioner.swift */; };
+		8AA98AAC26CFCAAC00C32358 /* TransitionCombinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA98A8126CFCAAC00C32358 /* TransitionCombinator.swift */; };
+		8AA98AAD26CFCAAC00C32358 /* UIViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA98A8226CFCAAC00C32358 /* UIViewControllerExtensions.swift */; };
+		8AA98AAE26CFCAAC00C32358 /* TransitionGestureHandlerType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA98A8326CFCAAC00C32358 /* TransitionGestureHandlerType.swift */; };
+		8AA98AAF26CFCAAC00C32358 /* UIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA98A8426CFCAAC00C32358 /* UIViewExtensions.swift */; };
+		8AA98ABA26CFCAAC00C32358 /* PartialTransitionAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA98A9026CFCAAC00C32358 /* PartialTransitionAnimator.swift */; };
+		8AA98ABB26CFCAAC00C32358 /* ScrollableProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA98A9126CFCAAC00C32358 /* ScrollableProtocol.swift */; };
+		8AA98ABC26CFCAAC00C32358 /* ProtocolInterceptor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA98A9226CFCAAC00C32358 /* ProtocolInterceptor.swift */; };
+		8AA98ABD26CFCAAC00C32358 /* OptionalExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA98A9326CFCAAC00C32358 /* OptionalExtensions.swift */; };
+		8AA98ABE26CFCAAC00C32358 /* TransitionInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA98A9426CFCAAC00C32358 /* TransitionInteractor.swift */; };
+		8AA98AC026CFCAAC00C32358 /* DismissAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA98A9626CFCAAC00C32358 /* DismissAnimator.swift */; };
 		8AD49F16267520F90094E157 /* ReviewsInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB3225E177220076ED6D /* ReviewsInteractorProtocol.swift */; };
 		8AD49F17267521040094E157 /* ReviewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB2D25E177220076ED6D /* ReviewsPresenter.swift */; };
 		8AD49F182675210A0094E157 /* ReviewsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB3525E177220076ED6D /* ReviewsRouter.swift */; };
@@ -534,6 +555,27 @@
 		8A916117268E27EB00240B18 /* SearchRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRouterProtocol.swift; sourceTree = "<group>"; };
 		8A9554672692284B00F1C5AE /* DocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsViewController.swift; sourceTree = "<group>"; };
 		8AA5E5122615053D00935B5E /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
+		8AA98A7526CFCAAC00C32358 /* UIPanGestureRecognizerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIPanGestureRecognizerExtensions.swift; sourceTree = "<group>"; };
+		8AA98A7626CFCAAC00C32358 /* UIScrollViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIScrollViewExtensions.swift; sourceTree = "<group>"; };
+		8AA98A7726CFCAAC00C32358 /* PopAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PopAnimator.swift; sourceTree = "<group>"; };
+		8AA98A7826CFCAAC00C32358 /* LazyTransitioner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LazyTransitioner.swift; sourceTree = "<group>"; };
+		8AA98A7A26CFCAAC00C32358 /* TransitionerProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionerProtocols.swift; sourceTree = "<group>"; };
+		8AA98A7B26CFCAAC00C32358 /* TransitionProgressCalculator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionProgressCalculator.swift; sourceTree = "<group>"; };
+		8AA98A7C26CFCAAC00C32358 /* ScrollableGestureHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableGestureHandler.swift; sourceTree = "<group>"; };
+		8AA98A7D26CFCAAC00C32358 /* StaticViewGestureHandler.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StaticViewGestureHandler.swift; sourceTree = "<group>"; };
+		8AA98A7E26CFCAAC00C32358 /* TransitionAnimatorType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionAnimatorType.swift; sourceTree = "<group>"; };
+		8AA98A7F26CFCAAC00C32358 /* InteractiveTransitioner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InteractiveTransitioner.swift; sourceTree = "<group>"; };
+		8AA98A8026CFCAAC00C32358 /* PartialTransitioner.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartialTransitioner.swift; sourceTree = "<group>"; };
+		8AA98A8126CFCAAC00C32358 /* TransitionCombinator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionCombinator.swift; sourceTree = "<group>"; };
+		8AA98A8226CFCAAC00C32358 /* UIViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtensions.swift; sourceTree = "<group>"; };
+		8AA98A8326CFCAAC00C32358 /* TransitionGestureHandlerType.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionGestureHandlerType.swift; sourceTree = "<group>"; };
+		8AA98A8426CFCAAC00C32358 /* UIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewExtensions.swift; sourceTree = "<group>"; };
+		8AA98A9026CFCAAC00C32358 /* PartialTransitionAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PartialTransitionAnimator.swift; sourceTree = "<group>"; };
+		8AA98A9126CFCAAC00C32358 /* ScrollableProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScrollableProtocol.swift; sourceTree = "<group>"; };
+		8AA98A9226CFCAAC00C32358 /* ProtocolInterceptor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProtocolInterceptor.swift; sourceTree = "<group>"; };
+		8AA98A9326CFCAAC00C32358 /* OptionalExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OptionalExtensions.swift; sourceTree = "<group>"; };
+		8AA98A9426CFCAAC00C32358 /* TransitionInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TransitionInteractor.swift; sourceTree = "<group>"; };
+		8AA98A9626CFCAAC00C32358 /* DismissAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DismissAnimator.swift; sourceTree = "<group>"; };
 		8AD49F2B26752B4B0094E157 /* AnalyticsTrackable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsTrackable.swift; sourceTree = "<group>"; };
 		8AD7A37D2639D31A007D4273 /* PartnerAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerAnnotationView.swift; sourceTree = "<group>"; };
 		8AD7A454263B2A98007D4273 /* ClusterAnnotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClusterAnnotationView.swift; sourceTree = "<group>"; };
@@ -1616,6 +1658,34 @@
 			path = ViewController;
 			sourceTree = "<group>";
 		};
+		8AA98A7426CFCAAC00C32358 /* LazyTransitions */ = {
+			isa = PBXGroup;
+			children = (
+				8AA98A7526CFCAAC00C32358 /* UIPanGestureRecognizerExtensions.swift */,
+				8AA98A7626CFCAAC00C32358 /* UIScrollViewExtensions.swift */,
+				8AA98A7726CFCAAC00C32358 /* PopAnimator.swift */,
+				8AA98A7826CFCAAC00C32358 /* LazyTransitioner.swift */,
+				8AA98A7A26CFCAAC00C32358 /* TransitionerProtocols.swift */,
+				8AA98A7B26CFCAAC00C32358 /* TransitionProgressCalculator.swift */,
+				8AA98A7C26CFCAAC00C32358 /* ScrollableGestureHandler.swift */,
+				8AA98A7D26CFCAAC00C32358 /* StaticViewGestureHandler.swift */,
+				8AA98A7E26CFCAAC00C32358 /* TransitionAnimatorType.swift */,
+				8AA98A7F26CFCAAC00C32358 /* InteractiveTransitioner.swift */,
+				8AA98A8026CFCAAC00C32358 /* PartialTransitioner.swift */,
+				8AA98A8126CFCAAC00C32358 /* TransitionCombinator.swift */,
+				8AA98A8226CFCAAC00C32358 /* UIViewControllerExtensions.swift */,
+				8AA98A8326CFCAAC00C32358 /* TransitionGestureHandlerType.swift */,
+				8AA98A8426CFCAAC00C32358 /* UIViewExtensions.swift */,
+				8AA98A9026CFCAAC00C32358 /* PartialTransitionAnimator.swift */,
+				8AA98A9126CFCAAC00C32358 /* ScrollableProtocol.swift */,
+				8AA98A9226CFCAAC00C32358 /* ProtocolInterceptor.swift */,
+				8AA98A9326CFCAAC00C32358 /* OptionalExtensions.swift */,
+				8AA98A9426CFCAAC00C32358 /* TransitionInteractor.swift */,
+				8AA98A9626CFCAAC00C32358 /* DismissAnimator.swift */,
+			);
+			path = LazyTransitions;
+			sourceTree = "<group>";
+		};
 		8AD7A37C2639D2FB007D4273 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -2059,6 +2129,7 @@
 		CA472B3F245EDEDB009149FF /* Supported Files */ = {
 			isa = PBXGroup;
 			children = (
+				8AA98A7426CFCAAC00C32358 /* LazyTransitions */,
 				8A0794DF26936AB6000ACA2B /* EpoxyViews */,
 				CA472ABF245EDE2F009149FF /* AppDelegate.swift */,
 				CA472B40245EDEDB009149FF /* Assembly.swift */,
@@ -2944,6 +3015,7 @@
 				8A916029268CE66C00240B18 /* AreYouInStoreInteractorProtocol.swift in Sources */,
 				CACA7EA3254C57CC0099E622 /* WriteNoteRouter.swift in Sources */,
 				447C353B25EEAA5700105A35 /* MapPresenter.swift in Sources */,
+				8AA98AAE26CFCAAC00C32358 /* TransitionGestureHandlerType.swift in Sources */,
 				8A0D9CB926872CF60076A7EC /* NewAgreementsBottomView.swift in Sources */,
 				8A4ACBBC26CAB9490021215E /* AdvancedSearchNavigationController.swift in Sources */,
 				8A0794D426936141000ACA2B /* StorePresenter.swift in Sources */,
@@ -2952,6 +3024,7 @@
 				CA2C22DB2554464F002469E4 /* AdvancedSearchAssembly.swift in Sources */,
 				8AA5E5132615053D00935B5E /* AboutView.swift in Sources */,
 				CA46DC98252A44180007819E /* SmartFilterCollectionCell.swift in Sources */,
+				8AA98AA626CFCAAC00C32358 /* TransitionProgressCalculator.swift in Sources */,
 				CE58DEC325ED70DC00B5BDF9 /* CurrencyAssembly.swift in Sources */,
 				CED7A23A25D1B31C00BB25FF /* StarRatingControlView.swift in Sources */,
 				8A915C9E26887D9500240B18 /* ExpandCollapseView.swift in Sources */,
@@ -2960,6 +3033,7 @@
 				8A07930A269239C1000ACA2B /* DocumentsRouterProtocol.swift in Sources */,
 				CA4857782517BEA000EDA4CE /* VinchyPresenter.swift in Sources */,
 				8A4ACBBA26CAB8CC0021215E /* AdvancedSearchOutputDelegate.swift in Sources */,
+				8AA98AA426CFCAAC00C32358 /* LazyTransitioner.swift in Sources */,
 				CACA7E9B254C57CC0099E622 /* WriteNoteAssembly.swift in Sources */,
 				44EFDB7225E263E00076ED6D /* ReviewDetailPresenterProtocol.swift in Sources */,
 				8AF94419269228F5003EB76A /* TextRow.swift in Sources */,
@@ -2977,6 +3051,7 @@
 				CE404B0F2589D4C200917544 /* MoreRouterProtocol.swift in Sources */,
 				449F81B225DD025900585364 /* RootRouter.swift in Sources */,
 				8A0BBEDF26A8578C0049DA74 /* LoadingView.swift in Sources */,
+				8AA98ABD26CFCAAC00C32358 /* OptionalExtensions.swift in Sources */,
 				8A446CDF2660123B000A1769 /* RoutingToolBar.swift in Sources */,
 				CA7A87FA2506B9D600AAD10F /* ShareUsCollectionCell.swift in Sources */,
 				449F81C425DD049B00585364 /* DeeplinkFlow.swift in Sources */,
@@ -2986,9 +3061,11 @@
 				CE58DEDF25ED73E200B5BDF9 /* CurrencyViewControllerProtocol.swift in Sources */,
 				CA7B838924F451FA00991F24 /* WineDetailViewController.swift in Sources */,
 				8A0794DB26936141000ACA2B /* StoreRouter.swift in Sources */,
+				8AA98AA226CFCAAC00C32358 /* UIScrollViewExtensions.swift in Sources */,
 				8AE7880B2684E8D60056A84B /* NotesViewModel.swift in Sources */,
 				440C284725E13F9D009911EE /* WineDetailCollectionView.swift in Sources */,
 				8A916024268CE66C00240B18 /* AreYouInStoreAssembly.swift in Sources */,
+				8AA98AC026CFCAAC00C32358 /* DismissAnimator.swift in Sources */,
 				447C354225EEAA5700105A35 /* MapRouterProtocol.swift in Sources */,
 				CA819848253864080056A1C6 /* WineDetailPresenterProtocol.swift in Sources */,
 				CE388DDA2612C1CF00C34B47 /* ShowcasePresenterProtocol.swift in Sources */,
@@ -3010,7 +3087,9 @@
 				44EFDB7925E263E00076ED6D /* ReviewDetailRouter.swift in Sources */,
 				8A9554682692284B00F1C5AE /* DocumentsViewController.swift in Sources */,
 				CA81984E253864080056A1C6 /* WineDetailRouter.swift in Sources */,
+				8AA98AA926CFCAAC00C32358 /* TransitionAnimatorType.swift in Sources */,
 				8A079F30269E2E34000ACA2B /* FiltersCollectionView.swift in Sources */,
+				8AA98AAB26CFCAAC00C32358 /* PartialTransitioner.swift in Sources */,
 				CACA7EA2254C57CC0099E622 /* WriteNoteRouterProtocol.swift in Sources */,
 				CA48577C2517BEAB00EDA4CE /* VinchyRouter.swift in Sources */,
 				8AE788102684E8D60056A84B /* NotesViewController.swift in Sources */,
@@ -3036,6 +3115,7 @@
 				CAA9DC67250EA05F00F996A8 /* AdvancedSearchCaruselCollectionCell.swift in Sources */,
 				8A916027268CE66C00240B18 /* AreYouInStoreViewController.swift in Sources */,
 				CEF7AE672602D5220098FB9D /* ShowcaseRouter.swift in Sources */,
+				8AA98AA726CFCAAC00C32358 /* ScrollableGestureHandler.swift in Sources */,
 				44EFDB3925E177220076ED6D /* ReviewsAssembly.swift in Sources */,
 				8A53D6E026C2E3DB001D9535 /* ServingTipsCollectionView.swift in Sources */,
 				CA8198C0253CB0490056A1C6 /* ErrorDescription.swift in Sources */,
@@ -3084,6 +3164,7 @@
 				8A916022268CE66C00240B18 /* AreYouInStoreViewModel.swift in Sources */,
 				44EFDB4F25E17FD60076ED6D /* ReviewsRoutable.swift in Sources */,
 				CE8FF84525FADB84004D4F37 /* ShowcaseViewControllerProtocol.swift in Sources */,
+				8AA98AA526CFCAAC00C32358 /* TransitionerProtocols.swift in Sources */,
 				CA81984D253864080056A1C6 /* WineDetailRouterProtocol.swift in Sources */,
 				8A0794DA26936141000ACA2B /* StoreRouterProtocol.swift in Sources */,
 				CE6AB01F261BD2A40011F771 /* ShowcaseInput.swift in Sources */,
@@ -3095,6 +3176,7 @@
 				4437AA6E25E3BE7300F6E838 /* WriteReviewRoutable.swift in Sources */,
 				CACA7E9A254C57CC0099E622 /* WriteNoteInput.swift in Sources */,
 				8A251E3226B0065C00DAED2D /* AdItemView.swift in Sources */,
+				8AA98AAF26CFCAAC00C32358 /* UIViewExtensions.swift in Sources */,
 				44EFDB3D25E177220076ED6D /* ReviewsViewController.swift in Sources */,
 				CA48578F2517C74700EDA4CE /* VinchyRouterProtocol.swift in Sources */,
 				CA472B2C245EDEA0009149FF /* HeaderReusableView.swift in Sources */,
@@ -3109,13 +3191,17 @@
 				CE404B072589D41200917544 /* MoreInteractorProtocol.swift in Sources */,
 				CE58DED725ED73B300B5BDF9 /* CurrencyInteractorProtocol.swift in Sources */,
 				8A079306269239C1000ACA2B /* DocumentsViewControllerProtocol.swift in Sources */,
+				8AA98AA126CFCAAC00C32358 /* UIPanGestureRecognizerExtensions.swift in Sources */,
+				8AA98ABB26CFCAAC00C32358 /* ScrollableProtocol.swift in Sources */,
 				8A313C1626468678009F2165 /* WorkingHoursCollectionCell.swift in Sources */,
 				8A0794D826936141000ACA2B /* StoreInteractor.swift in Sources */,
 				CAA9DC3C250BD20400F996A8 /* AdvancedHeader.swift in Sources */,
 				8AF966CB267908F6001891B2 /* CommonEditCollectionViewCell.swift in Sources */,
+				8AA98ABC26CFCAAC00C32358 /* ProtocolInterceptor.swift in Sources */,
 				8A0794D626936141000ACA2B /* StoreViewController.swift in Sources */,
 				CA4857832517C67700EDA4CE /* VinchyInteractorProtocol.swift in Sources */,
 				8AD49F17267521040094E157 /* ReviewsPresenter.swift in Sources */,
+				8AA98AAD26CFCAAC00C32358 /* UIViewControllerExtensions.swift in Sources */,
 				8A0794D926936141000ACA2B /* StoreInteractorProtocol.swift in Sources */,
 				CA472AC0245EDE2F009149FF /* AppDelegate.swift in Sources */,
 				8A1034592648596100F7CA81 /* AssortmentCollectionCell.swift in Sources */,
@@ -3148,6 +3234,7 @@
 				CE4254EB258157DC001158D2 /* MoreViewControllerModel.swift in Sources */,
 				8AF9441D26922D77003EB76A /* IconView.swift in Sources */,
 				8A0D9CB726871D9D0076A7EC /* NewAgreementViewController.swift in Sources */,
+				8AA98ABA26CFCAAC00C32358 /* PartialTransitionAnimator.swift in Sources */,
 				8A079301269239C1000ACA2B /* DocumentsInput.swift in Sources */,
 				CA3C981F257260BC0036F7D9 /* StatusAlertable.swift in Sources */,
 				CA3837CC246FCF3C00AD5FCC /* TabBarController.swift in Sources */,
@@ -3173,10 +3260,12 @@
 				CE404B0B2589D47C00917544 /* MorePresenterProtocol.swift in Sources */,
 				CA2C22DC2554464F002469E4 /* AdvancedSearchPresenter.swift in Sources */,
 				8AE788F6268636500056A84B /* GeoOnboardingViewController.swift in Sources */,
+				8AA98AA326CFCAAC00C32358 /* PopAnimator.swift in Sources */,
 				CAEBD788251A6D6200210F3B /* AgreementsViewController.swift in Sources */,
 				8A313C0526447042009F2165 /* MapDetailStoreViewControllerProtocol.swift in Sources */,
 				CA7A87E62500169100AAD10F /* VinchySimpleConiniousCaruselCollectionCell.swift in Sources */,
 				8A313C0326447042009F2165 /* MapDetailStorePresenter.swift in Sources */,
+				8AA98ABE26CFCAAC00C32358 /* TransitionInteractor.swift in Sources */,
 				447C353825EEAA5700105A35 /* MapViewModel.swift in Sources */,
 				8AE788142684E8D60056A84B /* NotesRouterProtocol.swift in Sources */,
 				4437AA6025E3A7CE00F6E838 /* WriteReviewViewController.swift in Sources */,
@@ -3196,6 +3285,7 @@
 				8A313C0126447042009F2165 /* MapDetailStoreAssembly.swift in Sources */,
 				CAF5146B2468172900667ED0 /* LoveViewController.swift in Sources */,
 				8A0794D726936141000ACA2B /* StoreViewControllerProtocol.swift in Sources */,
+				8AA98AAA26CFCAAC00C32358 /* InteractiveTransitioner.swift in Sources */,
 				CE8FF82A25FAD75C004D4F37 /* ShowcaseAssembly.swift in Sources */,
 				CA46DBE7252518230007819E /* OnboardingRepository.swift in Sources */,
 				CACA7E9F254C57CC0099E622 /* WriteNoteViewControllerProtocol.swift in Sources */,
@@ -3212,6 +3302,7 @@
 				8AF966C72678F194001891B2 /* EditProfileRouter.swift in Sources */,
 				8A079304269239C1000ACA2B /* DocumentsPresenter.swift in Sources */,
 				8A91611F268E27EB00240B18 /* SearchInteractorProtocol.swift in Sources */,
+				8AA98AAC26CFCAAC00C32358 /* TransitionCombinator.swift in Sources */,
 				CAF514272461C52400667ED0 /* SocialMediaCell.swift in Sources */,
 				8A0799182699A06C000ACA2B /* FilterItemView.swift in Sources */,
 				8A313C0926447042009F2165 /* MapDetailStoreRouterProtocol.swift in Sources */,
@@ -3220,6 +3311,7 @@
 				8AF966BE2678F194001891B2 /* EditProfileViewModel.swift in Sources */,
 				449F81B625DD027C00585364 /* RootBuilder.swift in Sources */,
 				8A079300269239C0000ACA2B /* DocumentsViewModel.swift in Sources */,
+				8AA98AA826CFCAAC00C32358 /* StaticViewGestureHandler.swift in Sources */,
 				CA7B838C24F4547B00991F24 /* GalleryView.swift in Sources */,
 				8A91611D268E27EB00240B18 /* SearchViewController.swift in Sources */,
 				CE7346382589B75E00028574 /* MoreViewProtocol.swift in Sources */,

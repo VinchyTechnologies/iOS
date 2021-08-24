@@ -25,7 +25,8 @@ final class AreYouInStoreViewController: UIViewController {
       switch section {
       case .title(let model):
         model.forEach { textModel in
-          height += TextCollectionCell.height(viewModel: textModel, width: UIScreen.main.bounds.width - 32)
+          let width = UIScreen.main.bounds.width - 32
+          height += TextCollectionCell.height(viewModel: textModel, width: width)
         }
 
       case .recommendedWines:
