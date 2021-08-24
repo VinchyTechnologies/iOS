@@ -59,7 +59,7 @@ open class ContextMenuCell: UITableViewCell {
     }
     iconImageView.image = item.image
     iconImageView.tintColor = UIColor.dark
-    iconImageView.isHidden = (item.image == nil)
+    iconImageView.isHidden = item.image == nil
   }
 
   // MARK: Internal
@@ -74,7 +74,8 @@ open class ContextMenuCell: UITableViewCell {
   // MARK: Private
 
   private lazy var titleLabel: UILabel = {
-    $0
+    $0.font = Font.bold(14)
+    return $0
   }(UILabel())
 
   private lazy var iconImageView: UIImageView = {

@@ -10,7 +10,6 @@ import StringFormatting
 
 // MARK: - SimpleContinuosCarouselCollectionCellPresenter
 
-
 final class SimpleContinuosCarouselCollectionCellPresenter {
 
   // MARK: Lifecycle

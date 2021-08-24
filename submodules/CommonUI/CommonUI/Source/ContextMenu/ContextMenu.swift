@@ -6,6 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import Display
 import UIKit
 
 // MARK: - ContextMenuItem
@@ -38,7 +39,7 @@ public struct ContextMenuItemWithImage: ContextMenuItem {
   public var image: UIImage?
   public var action: ActionClosure?
 
-  public init(title: String, image: UIImage, action: @escaping ActionClosure) {
+  public init(title: String, image: UIImage?, action: @escaping ActionClosure) {
     self.title = title
     self.image = image
     self.action = action
@@ -60,7 +61,7 @@ public struct ContextMenuConstants {
   public var HorizontalMarginSpace: CGFloat = 20
   public var ItemDefaultHeight: CGFloat = 44
 
-  public var LabelDefaultFont: UIFont = .systemFont(ofSize: 14)
+  public var LabelDefaultFont: UIFont = Font.medium(14)
 
   public var MenuCornerRadius: CGFloat = 12
   public var BlurEffectEnabled: Bool = true
@@ -78,13 +79,13 @@ open class ContextMenu: NSObject {
 
   // MARK:- Init Functions
   public init(window: UIView? = nil) {
-    let wind = window ?? UIApplication.shared.windows.first ?? UIApplication.shared.keyWindow
+    let wind = window ?? UIApplication.shared.windows.first ?? UIApplication.shared.asKeyWindow
     customView = wind!
     mainViewRect = wind!.frame
   }
 
   init?(viewTargeted: UIView, window: UIView? = nil) {
-    if let wind = window ?? UIApplication.shared.windows.first ?? UIApplication.shared.keyWindow {
+    if let wind = window ?? UIApplication.shared.windows.first ?? UIApplication.shared.asKeyWindow {
       customView = wind
       self.viewTargeted = viewTargeted
       mainViewRect = customView.frame
@@ -101,7 +102,6 @@ open class ContextMenu: NSObject {
 
   deinit {
 //        removeTapInteraction()
-    print("Deinit")
   }
 
   // MARK: Open
@@ -128,7 +128,7 @@ open class ContextMenu: NSObject {
       self.viewTargeted = viewTargeted
       if !self.items.isEmpty {
         self.menuHeight = (CGFloat(self.items.count) * self.MenuConstants.ItemDefaultHeight) + (self.headerView?.frame.height ?? 0) + (self.footerView?.frame.height ?? 0) // + CGFloat(self.items.count - 1)
-      }else{
+      } else {
         self.menuHeight = self.MenuConstants.MenuDefaultHeight
       }
       self.addBlurEffectView()
@@ -141,7 +141,6 @@ open class ContextMenu: NSObject {
   open func changeViewTargeted(newView: UIView, animated: Bool = true){
     DispatchQueue.main.async {
       guard self.viewTargeted != nil else{
-        print("targetedView is nil")
         return
       }
       self.viewTargeted.alpha = 1
@@ -160,13 +159,12 @@ open class ContextMenu: NSObject {
   open func updateView(animated: Bool = true){
     DispatchQueue.main.async {
       guard self.viewTargeted != nil else{
-        print("targetedView is nil")
         return
       }
       guard self.customView.subviews.contains(self.targetedImageView) else { return }
       if !self.items.isEmpty {
         self.menuHeight = (CGFloat(self.items.count) * self.MenuConstants.ItemDefaultHeight) + (self.headerView?.frame.height ?? 0) + (self.footerView?.frame.height ?? 0) // + CGFloat(self.items.count - 1)
-      }else{
+      } else {
         self.menuHeight = self.MenuConstants.MenuDefaultHeight
       }
       self.viewTargeted.alpha = 0
@@ -492,15 +490,15 @@ open class ContextMenu: NSObject {
 
       let diffY = mainViewRect.width - (mW + MenuConstants.MenuMarginSpace + tvW + MenuConstants.HorizontalMarginSpace + MenuConstants.HorizontalMarginSpace)
       if diffY > 0 {
-        if (tvX + tvW / 2) > mainViewRect.width/2 { //right
+        if (tvX + tvW / 2) > mainViewRect.width / 2 { //right
           tvX = tvX + leftClippedSpace
           mX = tvX - MenuConstants.MenuMarginSpace - mW
         }else{ //left
           tvX = tvX - rightClippedSpace
           mX = tvX + MenuConstants.MenuMarginSpace + tvW
         }
-      }else{
-        if (tvX + tvW / 2) > mainViewRect.width/2 { //right
+      } else {
+        if (tvX + tvW / 2) > mainViewRect.width / 2 { //right
           tvX = mainViewRect.width - MenuConstants.HorizontalMarginSpace - tvW
           mX = MenuConstants.HorizontalMarginSpace
         }else{ //left
