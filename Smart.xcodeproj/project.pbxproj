@@ -74,6 +74,8 @@
 		7485870626C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586FB26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellRouter.swift */; };
 		7485870726C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586FC26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellRouterProtocol.swift */; };
 		7485877A26CC068700F5CBEA /* Configurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7485877926CC068600F5CBEA /* Configurator.swift */; };
+		7485877F26CD7B3600F5CBEA /* ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7485877E26CD7B3400F5CBEA /* ContextMenu.swift */; };
+		7485878126CD7B6900F5CBEA /* ContextMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7485878026CD7B6900F5CBEA /* ContextMenuCell.swift */; };
 		8A079300269239C0000ACA2B /* DocumentsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0792EF269239C0000ACA2B /* DocumentsViewModel.swift */; };
 		8A079301269239C1000ACA2B /* DocumentsInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0792F1269239C0000ACA2B /* DocumentsInput.swift */; };
 		8A079302269239C1000ACA2B /* DocumentsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0792F3269239C0000ACA2B /* DocumentsAssembly.swift */; };
@@ -471,6 +473,8 @@
 		748586FB26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleContinuosCarouselCollectionCellRouter.swift; sourceTree = "<group>"; };
 		748586FC26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleContinuosCarouselCollectionCellRouterProtocol.swift; sourceTree = "<group>"; };
 		7485877926CC068600F5CBEA /* Configurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurator.swift; sourceTree = "<group>"; };
+		7485877E26CD7B3400F5CBEA /* ContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenu.swift; sourceTree = "<group>"; };
+		7485878026CD7B6900F5CBEA /* ContextMenuCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenuCell.swift; sourceTree = "<group>"; };
 		8A0792EF269239C0000ACA2B /* DocumentsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsViewModel.swift; sourceTree = "<group>"; };
 		8A0792F1269239C0000ACA2B /* DocumentsInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsInput.swift; sourceTree = "<group>"; };
 		8A0792F3269239C0000ACA2B /* DocumentsAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DocumentsAssembly.swift; sourceTree = "<group>"; };
@@ -1243,6 +1247,8 @@
 		748586F426C7CB2300F5CBEA /* View */ = {
 			isa = PBXGroup;
 			children = (
+				7485878026CD7B6900F5CBEA /* ContextMenuCell.swift */,
+				7485877E26CD7B3400F5CBEA /* ContextMenu.swift */,
 				748586F526C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellView.swift */,
 				748586F626C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellViewProtocol.swift */,
 			);
@@ -3046,10 +3052,12 @@
 				44EFDB7225E263E00076ED6D /* ReviewDetailPresenterProtocol.swift in Sources */,
 				8AF94419269228F5003EB76A /* TextRow.swift in Sources */,
 				8AD49F182675210A0094E157 /* ReviewsRouter.swift in Sources */,
+				7485878126CD7B6900F5CBEA /* ContextMenuCell.swift in Sources */,
 				447C353925EEAA5700105A35 /* MapInput.swift in Sources */,
 				8AF966C02678F194001891B2 /* EditProfileAssembly.swift in Sources */,
 				CE58DEDB25ED73C900B5BDF9 /* CurrencyRouterProtocol.swift in Sources */,
 				CA46DBEF252518460007819E /* OnboardingCache.swift in Sources */,
+				7485877F26CD7B3600F5CBEA /* ContextMenu.swift in Sources */,
 				8AF966C22678F194001891B2 /* EditProfilePresenter.swift in Sources */,
 				CA2C22D92554464F002469E4 /* AdvancedSearchViewModel.swift in Sources */,
 				CA81984A253864080056A1C6 /* WineDetailViewControllerProtocol.swift in Sources */,

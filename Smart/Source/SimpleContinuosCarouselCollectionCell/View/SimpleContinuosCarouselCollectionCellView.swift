@@ -15,7 +15,7 @@ import VinchyCore
 
 // MARK: - SimpleContinuousCaruselCollectionCellView
 
-final class SimpleContinuousCaruselCollectionCellView: UICollectionViewCell, Reusable {
+final class SimpleContinuousCaruselCollectionCellView: UICollectionViewCell, Reusable, UIGestureRecognizerDelegate {
 
   // MARK: Lifecycle
 
@@ -28,6 +28,7 @@ final class SimpleContinuousCaruselCollectionCellView: UICollectionViewCell, Reu
       collectionView.topAnchor.constraint(equalTo: topAnchor),
       collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
     ])
+    setupLongGestureRecognizerOnCollection()
   }
   @available(*, unavailable)
   required init?(coder _: NSCoder) { fatalError() }
@@ -92,55 +93,57 @@ final class SimpleContinuousCaruselCollectionCellView: UICollectionViewCell, Reu
     return collectionView
   }()
 
+
+  private var contextMenuWineID: Int64?
+
   private var collections: [Collection] = [] {
     didSet {
       collectionView.reloadData()
     }
   }
 
-  private func configureContextMenu(wineID: Int64) -> UIContextMenuConfiguration{
-    let context = UIContextMenuConfiguration(identifier: nil, previewProvider: nil) { _ -> UIMenu? in
+  private func setupLongGestureRecognizerOnCollection() {
+    let longPressedGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureRecognizer:)))
+    longPressedGesture.minimumPressDuration = 1
+    longPressedGesture.delegate = self
+    collectionView.addGestureRecognizer(longPressedGesture)
+  }
 
-      let writeNote = UIAction(title: localized("write_note").firstLetterUppercased(), image: UIImage(systemName: "square.and.pencil"), identifier: nil, discoverabilityTitle: nil, state: .off) { [weak self] _ in
-        guard let self = self else { return }
-        self.interactor?.didTapWriteNoteContextMenu(wineID: wineID)
-      }
-
-      let leaveReview = UIAction(title: localized("write_review").firstLetterUppercased(), image: UIImage(systemName: "text.bubble"), identifier: nil, discoverabilityTitle: nil, state: .off) { [weak self] _ in
-        guard let self = self else { return }
-        self.interactor?.didTapLeaveReviewContextMenu(wineID: wineID)
-      }
-      let share = UIAction(title: localized("share_link").firstLetterUppercased(), image: UIImage(systemName: "square.and.arrow.up"), identifier: nil, discoverabilityTitle: nil, state: .off) { [weak self] _ in
-        guard let self = self else { return }
-        self.interactor?.didTapShareContextMenu(wineID: wineID)
-      }
-
-      return UIMenu(title: "", image: nil, identifier: nil, options: .displayInline, children: [leaveReview, writeNote, share])
+  @objc
+  private func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
+    if gestureRecognizer.state != .began {
+      return
     }
-    return context
+    let point = gestureRecognizer.location(in: collectionView)
+    if let indexPath = collectionView.indexPathForItem(at: point) {
+      switch type {
+      case .bottles:
+        guard let collection = collections.first, let collectionItem = collection.wineList[safe: indexPath.row] else {
+          return
+        }
+        switch collectionItem {
+        case .wine(let wine):
+          contextMenuWineID = wine.id
+          let cell = collectionView.cellForItem(at: indexPath)!
+          let writeNote = ContextMenuItemWithImage(title: localized("write_note").firstLetterUppercased(), image: UIImage(systemName: "square.and.pencil")!)
+          let leaveReview = ContextMenuItemWithImage(title: localized("write_review").firstLetterUppercased(), image: UIImage(systemName: "text.bubble")!)
+          let share = ContextMenuItemWithImage(title: localized("share_link").firstLetterUppercased(), image: UIImage(systemName: "square.and.arrow.up")!)
+          CM.items = [writeNote, leaveReview, share]
+          CM.showMenu(viewTargeted: cell, delegate: self, animated: true)
+          break
+        default:
+          break
+        }
+      default:
+        break
+      }
+    }
   }
 }
 
 // MARK: UICollectionViewDataSource
 
 extension SimpleContinuousCaruselCollectionCellView: UICollectionViewDataSource {
-  func collectionView(_ collectionView: UICollectionView, contextMenuConfigurationForItemAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-    switch type {
-    case .bottles:
-      guard let collection = collections.first, let collectionItem = collection.wineList[safe: indexPath.row] else {
-        return nil
-      }
-      switch collectionItem {
-      case .wine(let wine):
-        return configureContextMenu(wineID: wine.id)
-      case .ads:
-        break
-      }
-    default:
-      break
-    }
-    return nil
-  }
 
   func collectionView(
     _: UICollectionView,
@@ -195,6 +198,30 @@ extension SimpleContinuousCaruselCollectionCellView: UICollectionViewDataSource 
     case .none, .shareUs, .smartFilter:
       fatalError()
     }
+  }
+}
+
+// MARK: ContextMenuDelegate
+
+extension SimpleContinuousCaruselCollectionCellView: ContextMenuDelegate {
+  func contextMenuDidSelect(_ contextMenu: ContextMenu, cell: ContextMenuCell, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int) -> Bool {
+    guard let wineID = contextMenuWineID else {
+      return true
+    }
+    switch index {
+    case 0:
+      interactor?.didTapWriteNoteContextMenu(wineID: wineID)
+    case 1:
+      interactor?.didTapLeaveReviewContextMenu(wineID: wineID)
+    case 2:
+      interactor?.didTapShareContextMenu(wineID: wineID)
+    default:
+      return true
+    }
+    return true
+  }
+
+  func contextMenuDidDeselect(_ contextMenu: ContextMenu, cell: ContextMenuCell, targetedView: UIView, didSelect item: ContextMenuItem, forRowAt index: Int) {
   }
 }
 
