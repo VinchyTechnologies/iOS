@@ -10,8 +10,6 @@ import UIKit
 
 public class TransitionInteractor: UIPercentDrivenInteractiveTransition {
 
-  // MARK: Public
-
   public static func `default`() -> TransitionInteractor {
     let transitionInteractor = TransitionInteractor()
     transitionInteractor.completionCurve = .easeInOut
@@ -23,14 +21,6 @@ public class TransitionInteractor: UIPercentDrivenInteractiveTransition {
   }
 
   public func setCompletionSpeedForCancel() {
-    // if completionSpeed is not of the default value in iOS 8 it will show a jerky visual glitch.
-    completionSpeed = isiOS9 ? 0.5 : 1.0
+    completionSpeed = 1.0
   }
-
-  // MARK: Fileprivate
-
-  fileprivate let isiOS9: Bool = {
-    if #available(iOS 9.0, *) { return true }
-    return false
-  }()
 }

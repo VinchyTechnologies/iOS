@@ -42,7 +42,6 @@ public struct TransitionProgressCalculator {
       let upwardMovement = abs(fminf(verticalMovement, 0.0))
       progress = fminf(upwardMovement, 1.0)
     case .leftToRight:
-      // что-то тут
       let horizontalMovement = Float(translation.x / view.bounds.width)
       let leftToRightMovement = fmaxf(horizontalMovement, 0.0)
       progress = fminf(leftToRightMovement, 1.0)

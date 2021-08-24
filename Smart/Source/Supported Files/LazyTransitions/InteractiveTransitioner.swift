@@ -14,8 +14,6 @@ public class InteractiveTransitioner: InteractiveTransitionerType {
 
   // MARK: Lifecycle
 
-  //MARK: Initializers
-
   public required init(
     with gestureHandler: TransitionGestureHandlerType,
     with animator: TransitionAnimatorType = DismissAnimator(orientation: .topToBottom),
@@ -29,8 +27,6 @@ public class InteractiveTransitioner: InteractiveTransitionerType {
   }
 
   // MARK: Public
-
-  //MARK: InteractiveTransitioner Protocol
 
   public var gestureHandler: TransitionGestureHandlerType
   public weak var delegate: TransitionerDelegate?

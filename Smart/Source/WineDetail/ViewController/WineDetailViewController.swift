@@ -44,7 +44,7 @@ final class WineDetailViewController: CollectionViewController {
 
     if isModal {
       navigationController?.becomeLazy(for: .dismiss)
-      allowedOrientations = [.leftToRight, .topToBottom]
+      allowedOrientations = [.leftToRight]
     }
 
     navigationItem.largeTitleDisplayMode = .never
@@ -344,6 +344,7 @@ final class WineDetailViewController: CollectionViewController {
 
   @objc
   private func didTapCloseBarButtonItem(_: UIBarButtonItem) {
+    navigationController?.transitioningDelegate = nil
     dismiss(animated: true, completion: nil)
   }
 

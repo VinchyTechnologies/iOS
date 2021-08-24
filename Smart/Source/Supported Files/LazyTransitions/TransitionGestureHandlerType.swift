@@ -37,13 +37,18 @@ extension TransitionGestureHandlerType {
     switch gesture.state {
     case .began:
       didBegin(gesture)
+
     case .changed:
       didChange(gesture)
+
     case .cancelled:
       didCancel(gesture)
+
     case .ended:
       didEnd(gesture)
-    default: break
+
+    default:
+      break
     }
   }
 
@@ -66,7 +71,6 @@ extension TransitionGestureHandlerType {
 
   public func shouldTransitionByQuickSwipe(_ gesture: UIPanGestureRecognizer) -> Bool {
     if !didBegin { return false }
-
     return gesture.isQuickSwipe(for: inProgressTransitionOrientation)
   }
 }

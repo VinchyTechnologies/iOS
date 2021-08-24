@@ -75,7 +75,7 @@ public class TransitionCombinator: TransitionerType {
   }
 
   fileprivate func updateTransitionersDelegate() {
-    transitioners.forEach{ $0.delegate = self }
+    transitioners.forEach { $0.delegate = self }
   }
 
   fileprivate func updateAnimatorsAllowedOrientations() {

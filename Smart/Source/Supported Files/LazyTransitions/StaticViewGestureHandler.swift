@@ -6,7 +6,7 @@
 //  Copyright © 2016 BeardWare. All rights reserved.
 //
 
-import Foundation
+import Display
 
 // MARK: - StaticViewGestureHandler
 
@@ -24,9 +24,10 @@ public class StaticViewGestureHandler: TransitionGestureHandlerType {
   public weak var delegate: TransitionGestureHandlerDelegate?
 
   public func didBegin(_ gesture: UIPanGestureRecognizer) {
+    HapticEffectHelper.vibrate(withEffect: .heavy)
     UIView.animate(withDuration: 0.25) {
       gesture.view?.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner]
-      gesture.view?.layer.cornerRadius = 20
+      gesture.view?.layer.cornerRadius = 15
       gesture.view?.clipsToBounds = true
     }
     inProgressTransitionOrientation = gesture.direction.orientation
@@ -37,13 +38,34 @@ public class StaticViewGestureHandler: TransitionGestureHandlerType {
   public func didChange(_ gesture: UIPanGestureRecognizer) {
     let translation = gesture.translation(in: gesture.view)
 
-    gesture.view?.frame.origin = CGPoint(
-      x: gesture.view!.frame.width + translation.x,
-      y: translation.y)
+    if let gesterView = gesture.view {
+      gesterView.frame.origin = CGPoint(
+        x: gesterView.frame.width + translation.x,
+        y: translation.y)
+    }
 
     let progress = calculateTransitionProgressWithTranslation(translation, on: gesture.view)
     shouldFinish = progress > progressThreshold
-    delegate?.updateInteractiveTransitionWithProgress(progress)
+//    delegate?.updateInteractiveTransitionWithProgress(progress)
+  }
+
+  public func didEnd(_ gesture: UIPanGestureRecognizer) {
+    if shouldFinish || shouldTransitionByQuickSwipe(gesture) {
+      delegate?.finishInteractiveTransition()
+    } else {
+      if let gesterView = gesture.view {
+        UIView.animate(withDuration: 0.25) {
+          gesterView.layer.maskedCorners = [.layerMaxXMaxYCorner, .layerMaxXMinYCorner, .layerMinXMaxYCorner, .layerMinXMinYCorner]
+          gesterView.layer.cornerRadius = 0
+          gesterView.clipsToBounds = true
+          gesterView.frame.origin = .init(x: gesterView.frame.size.width, y: 0)
+        } completion: { _ in
+          self.delegate?.cancelInteractiveTransition()
+        }
+      }
+    }
+
+    didBegin = false
   }
 
   public func calculateTransitionProgressWithTranslation(_ translation: CGPoint, on view: UIView?) -> CGFloat {
@@ -58,6 +80,10 @@ public class StaticViewGestureHandler: TransitionGestureHandlerType {
         with: inProgressTransitionOrientation)
 
     return progress
+  }
+
+  public func shouldTransitionByQuickSwipe(_ gesture: UIPanGestureRecognizer) -> Bool {
+    false
   }
 }
 
