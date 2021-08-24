@@ -172,6 +172,8 @@ final class StoreInteractor {
   }
 
   private func loadInitData() {
+    assortimentWines = []
+    data?.assortimentWines = []
     stateMachine.load(offset: .zero)
   }
 
