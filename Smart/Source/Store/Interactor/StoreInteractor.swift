@@ -109,7 +109,6 @@ final class StoreInteractor {
         dispatchGroup.enter()
         Recommendations.shared.getPersonalRecommendedWines(
           accountId: UserDefaultsConfig.accountID,
-          partnerId: 1,
           affilatedId: affilatedId) { [weak self] result in
             guard let self = self else { return }
             switch result {

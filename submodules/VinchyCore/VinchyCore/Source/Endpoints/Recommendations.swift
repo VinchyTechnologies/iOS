@@ -11,7 +11,7 @@ import Foundation
 // MARK: - RecommendationsEndpoint
 
 private enum RecommendationsEndpoint: EndpointProtocol {
-  case personal(accountId: Int, partnerId: Int, affilatedId: Int)
+  case personal(accountId: Int, affilatedId: Int)
 
   // MARK: Internal
 
@@ -21,8 +21,8 @@ private enum RecommendationsEndpoint: EndpointProtocol {
 
   var path: String {
     switch self {
-    case .personal(_, let partnerId, let affilatedId):
-      return "/partners/" + String(partnerId) + "/stores/" + String(affilatedId) + "/recommendations"
+    case .personal(_, let affilatedId):
+      return "/partners" + "/stores/" + String(affilatedId) + "/recommendations"
     }
   }
 
@@ -35,7 +35,7 @@ private enum RecommendationsEndpoint: EndpointProtocol {
 
   var parameters: Parameters? {
     switch self {
-    case .personal(let accountID, _, _):
+    case .personal(let accountID, _):
       let params: Parameters = [
         ("account_id", String(accountID)),
       ]
@@ -56,11 +56,10 @@ public final class Recommendations {
 
   public static let shared = Recommendations()
 
-  public func getPersonalRecommendedWines(accountId: Int, partnerId: Int, affilatedId: Int, completion: @escaping (Result<[ShortWine], APIError>) -> Void) {
+  public func getPersonalRecommendedWines(accountId: Int, affilatedId: Int, completion: @escaping (Result<[ShortWine], APIError>) -> Void) {
     api.request(
       endpoint: RecommendationsEndpoint.personal(
         accountId: accountId,
-        partnerId: partnerId,
         affilatedId: affilatedId),
       completion: completion)
   }
