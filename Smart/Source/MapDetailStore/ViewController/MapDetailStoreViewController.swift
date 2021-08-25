@@ -54,6 +54,11 @@ final class MapDetailStoreViewController: UIViewController {
     })
   }
 
+  override func viewWillLayoutSubviews() {
+    super.viewWillLayoutSubviews()
+    collectionView.collectionViewLayout.invalidateLayout()
+  }
+
   // MARK: Private
 
   private lazy var layout: UICollectionViewFlowLayout = {

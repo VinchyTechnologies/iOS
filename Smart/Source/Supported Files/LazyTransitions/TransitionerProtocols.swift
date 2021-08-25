@@ -6,9 +6,19 @@
 //  Copyright © 2016 BeardWare. All rights reserved.
 //
 
-import Foundation
+import Display
 
-let progressThreshold: CGFloat = 0.3
+var progressThreshold: CGFloat {
+  if UIDevice.current.userInterfaceIdiom == .pad {
+    if Orientation.isLandscape {
+      return 0.05
+    } else {
+      return 0.15
+    }
+  } else {
+    return 0.3
+  }
+}
 
 // MARK: - TransitionerDelegate
 
