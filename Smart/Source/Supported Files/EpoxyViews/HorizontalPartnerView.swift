@@ -18,17 +18,20 @@ public struct HorizontalPartnerViewViewModel: Equatable {
   fileprivate let imageURL: URL?
   fileprivate let titleText: String
   fileprivate let subtitleText: String?
+  fileprivate let scheduleOfWorkText: String?
 
   public init(
     affiliatedStoreId: Int,
     imageURL: URL?,
     titleText: String,
-    subtitleText: String?)
+    subtitleText: String?,
+    scheduleOfWorkText: String?)
   {
     self.affiliatedStoreId = affiliatedStoreId
     self.imageURL = imageURL
     self.titleText = titleText
     self.subtitleText = subtitleText
+    self.scheduleOfWorkText = scheduleOfWorkText
   }
 }
 
@@ -40,44 +43,57 @@ final class HorizontalPartnerView: UIView, EpoxyableView {
 
   init(style: Style) {
     super.init(frame: .zero)
-    translatesAutoresizingMaskIntoConstraints = false
+    background.backgroundColor = .option
+    background.layer.cornerRadius = 20
+    background.layer.masksToBounds = true
 
-    partnerLogoImageView.contentMode = .scaleAspectFit
+    addSubview(background)
+    background.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      background.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
+      background.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+      background.bottomAnchor.constraint(equalTo: bottomAnchor),
+      background.topAnchor.constraint(equalTo: topAnchor),
+    ])
 
-    addSubview(partnerLogoImageView)
+    partnerLogoImageView.contentMode = .scaleAspectFill
+    partnerLogoImageView.clipsToBounds = true
+    partnerLogoImageView.layer.cornerRadius = 20
+    background.addSubview(partnerLogoImageView)
     partnerLogoImageView.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      partnerLogoImageView.topAnchor.constraint(greaterThanOrEqualTo: topAnchor, constant: 15),
-      partnerLogoImageView.centerYAnchor.constraint(equalTo: centerYAnchor),
-      partnerLogoImageView.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -15),
-      partnerLogoImageView.heightAnchor.constraint(equalToConstant: 100),
-      partnerLogoImageView.widthAnchor.constraint(equalToConstant: 40),
-      partnerLogoImageView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 30),
-    ])
 
-    titleLabel.font = Font.bold(24)
+    NSLayoutConstraint.activate([
+      partnerLogoImageView.topAnchor.constraint(equalTo: background.topAnchor, constant: 10),
+      partnerLogoImageView.bottomAnchor.constraint(equalTo: background.bottomAnchor, constant: -10),
+      partnerLogoImageView.widthAnchor.constraint(equalTo: partnerLogoImageView.heightAnchor),
+      partnerLogoImageView.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: 10),
+    ])
+    titleLabel.font = Font.bold(20)
     titleLabel.numberOfLines = 2
-
-    addSubview(titleLabel)
-    titleLabel.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      titleLabel.leadingAnchor.constraint(equalTo: partnerLogoImageView.trailingAnchor, constant: 27),
-      titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
-      titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-    ])
 
     subtitleLabel.font = Font.medium(16)
     subtitleLabel.textColor = .blueGray
+    subtitleLabel.numberOfLines = 2
 
-    addSubview(subtitleLabel)
-    subtitleLabel.translatesAutoresizingMaskIntoConstraints = false
+    scheduleOfWorkTitle.font = Font.light(16)
+    scheduleOfWorkTitle.textColor = .dark
+    scheduleOfWorkTitle.numberOfLines = 2
+
+    stackView.addArrangedSubview(titleLabel)
+    stackView.addArrangedSubview(subtitleLabel)
+    stackView.addArrangedSubview(scheduleOfWorkTitle)
+    stackView.distribution = .fill
+    stackView.alignment = .top
+    stackView.axis = .vertical
+    stackView.translatesAutoresizingMaskIntoConstraints = false
+    background.addSubview(stackView)
     NSLayoutConstraint.activate([
-      subtitleLabel.leadingAnchor.constraint(equalTo: partnerLogoImageView.trailingAnchor, constant: 27),
-      subtitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 5),
-      subtitleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
+      stackView.topAnchor.constraint(equalTo: background.topAnchor, constant: 10),
+      stackView.bottomAnchor.constraint(equalTo: background.bottomAnchor, constant: -10),
+      stackView.leadingAnchor.constraint(equalTo: partnerLogoImageView.trailingAnchor, constant: 10),
+      stackView.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -10),
     ])
   }
-
   required init?(coder: NSCoder) { fatalError() }
 
   // MARK: Internal
@@ -94,6 +110,7 @@ final class HorizontalPartnerView: UIView, EpoxyableView {
     partnerLogoImageView.loadBottle(url: content.imageURL)
     titleLabel.text = content.titleText
     subtitleLabel.text = content.subtitleText
+    scheduleOfWorkTitle.text = content.scheduleOfWorkText
   }
 
   // MARK: Private
@@ -101,6 +118,9 @@ final class HorizontalPartnerView: UIView, EpoxyableView {
   private let partnerLogoImageView = UIImageView()
   private let titleLabel = UILabel()
   private let subtitleLabel = UILabel()
+  private let background = UIView()
+  private let scheduleOfWorkTitle = UILabel()
+  private let stackView = UIStackView()
 }
 
 // MARK: HighlightableView

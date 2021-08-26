@@ -40,10 +40,10 @@ extension StoresPresenter: StoresPresenterProtocol {
       sections += [.title(localized("all_shops").firstLetterUppercased())]
 
       let partnersContent: [StoresViewModel.PartnersContent] = data.partnersInfo.map({ partner in
-        StoresViewModel.PartnersContent.horizontalPartner(.init(affiliatedStoreId: partner.affiliatedStoreId, imageURL: partner.logoURL?.toURL, titleText: partner.title, subtitleText: partner.address))
+        StoresViewModel.PartnersContent.horizontalPartner(.init(affiliatedStoreId: partner.affiliatedStoreId, imageURL: partner.logoURL?.toURL, titleText: partner.title, subtitleText: partner.address, scheduleOfWorkText: partner.scheduleOfWork))
       })
 
-      sections += [.partners(header: [localized("all").firstLetterUppercased()], content: partnersContent)]
+      sections += [.partners(content: partnersContent)]
 
       if needLoadMore {
         sections += [.loading(itemID: .loadingItem)]

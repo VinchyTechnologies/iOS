@@ -23,7 +23,7 @@ struct StoresViewModel {
 
   enum Section {
     case title(itemID: ItemID = .titleItem, Label.Content)
-    case partners(itemID: ItemID = .partnersItem, header: FiltersCollectionView.Content, content: [PartnersContent])
+    case partners(itemID: ItemID = .partnersItem, content: [PartnersContent])
     case loading(itemID: ItemID = .loadingItem)
 
     var dataID: SectionID {

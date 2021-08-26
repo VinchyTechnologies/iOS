@@ -81,7 +81,7 @@ final class StoresViewController: CollectionViewController {
         }
         .flowLayoutItemSize(.init(width: width, height: height))
         .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 8, right: 24))
-      case .partners(let itemID, let header, let rows):
+      case .partners(let itemID, let rows):
         return SectionModel(
           dataID: section.dataID,
           items: rows.enumerated().compactMap({ index, partnerContent in
@@ -95,20 +95,9 @@ final class StoresViewController: CollectionViewController {
                 .didSelect { [weak self] _ in
                   self?.interactor?.didSelectPartner(affiliatedStoreId: content.affiliatedStoreId)
                 }
-                .flowLayoutItemSize(.init(width: view.frame.width, height: 130))
-
+                .flowLayoutItemSize(.init(width: view.frame.width, height: 150))
             }
-          }))
-          .supplementaryItems(ofKind: UICollectionView.elementKindSectionHeader, [
-            FiltersCollectionView.supplementaryItemModel(
-              dataID: itemID,
-              content: header,
-              style: .init())
-              .setBehaviors { [weak self] context in
-                self?.supplementaryView = context.view
-              },
-          ])
-          .flowLayoutHeaderReferenceSize(.init(width: view.frame.width, height: 50))
+          })).flowLayoutMinimumLineSpacing(10)
 
       case .loading(let itemID):
         return SectionModel(dataID: section.dataID) {
@@ -192,11 +181,8 @@ extension StoresViewController: SeparatorFlowLayoutDelegate {
     -> Bool
   {
     switch viewModel.sections[indexPath.section] {
-    case .title, .loading:
+    case .title, .loading, .partners:
       return false
-
-    case .partners:
-      return true
     }
   }
 }
