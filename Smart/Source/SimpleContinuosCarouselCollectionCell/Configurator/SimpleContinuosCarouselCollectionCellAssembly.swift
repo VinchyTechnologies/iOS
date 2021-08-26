@@ -8,16 +8,28 @@
 
 final class SimpleContinuosCarouselCollectionCellConfigurator: Configurator {
 
+  // MARK: Lifecycle
+
+  init(delegate: SimpleContinuosCarouselCollectionCellInteractorDelegate?) {
+    self.delegate = delegate
+  }
+
+  // MARK: Internal
+
   typealias ViewController = UIViewController
 
   typealias Input = SimpleContinuosCarouselCollectionCellInput
 
   typealias View = SimpleContinuousCaruselCollectionCellView
 
-  func configure(view: SimpleContinuousCaruselCollectionCellView, with input: SimpleContinuosCarouselCollectionCellInput, sender: UIViewController?) {
-    let router = SimpleContinuosCarouselCollectionCellRouter(input: input, viewController: sender)
+
+  weak var delegate: SimpleContinuosCarouselCollectionCellInteractorDelegate?
+
+  func configure(view: SimpleContinuousCaruselCollectionCellView, with input: SimpleContinuosCarouselCollectionCellInput) {
+    let router = SimpleContinuosCarouselCollectionCellRouter(input: input, viewController: nil)
     let presenter = SimpleContinuosCarouselCollectionCellPresenter(view: view)
     let interactor = SimpleContinuosCarouselCollectionCellInteractor(input: input, router: router, presenter: presenter)
+    interactor.delegate = delegate
 
     router.interactor = interactor
     view.interactor = interactor

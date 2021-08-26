@@ -179,3 +179,26 @@ extension VinchyInteractor: VinchyInteractorProtocol {
     router.pushToMapViewController()
   }
 }
+
+// MARK: - VinchySimpleConiniousCaruselCollectionCellDelegate
+
+extension VinchyInteractor {
+  func didTapBottleCell(wineID: Int64) {
+    router.pushToWineDetailViewController(wineID: wineID)
+  }
+
+  func didTapCompilationCell(input: ShowcaseInput) {
+    switch input.mode {
+    case .normal(let wines):
+      guard !wines.isEmpty else {
+        presenter.showAlertEmptyCollection()
+        return
+      }
+
+    case .advancedSearch, .partner:
+      break
+    }
+
+    router.pushToShowcaseViewController(input: input)
+  }
+}

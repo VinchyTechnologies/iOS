@@ -383,8 +383,8 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
           withReuseIdentifier: SimpleContinuousCaruselCollectionCellView.reuseId + "\(indexPath.section)",
           for: indexPath) as! SimpleContinuousCaruselCollectionCellView // swiftlint:disable:this force_cast
 
-        let configurator = SimpleContinuosCarouselCollectionCellConfigurator()
-        configurator.configure(view: cell, with: SimpleContinuosCarouselCollectionCellInput(model: model[indexPath.row]), sender: self)
+        let configurator = SimpleContinuosCarouselCollectionCellConfigurator(delegate: self)
+        configurator.configure(view: cell, with: SimpleContinuosCarouselCollectionCellInput(model: model[indexPath.row]))
         cell.viewDidLoad()
         return cell
 
@@ -491,6 +491,18 @@ extension VinchyViewController: ShareUsCollectionCellDelegate {
       popoverController.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
     }
     present(controller, animated: true)
+  }
+}
+
+// MARK: SimpleContinuosCarouselCollectionCellInteractorDelegate
+
+extension VinchyViewController: SimpleContinuosCarouselCollectionCellInteractorDelegate {
+  func didTapCompilationCell(input: ShowcaseInput) {
+    interactor?.didTapCompilationCell(input: input)
+  }
+
+  func didTapBottleCell(wineID: Int64) {
+    interactor?.didTapBottleCell(wineID: wineID)
   }
 }
 

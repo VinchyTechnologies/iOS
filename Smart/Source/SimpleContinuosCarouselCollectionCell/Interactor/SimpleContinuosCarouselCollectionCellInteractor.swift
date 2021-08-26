@@ -18,6 +18,13 @@ private enum ActionAfterLoginOrRegistration {
   case none
 }
 
+// MARK: - SimpleContinuosCarouselCollectionCellInteractorDelegate
+
+protocol SimpleContinuosCarouselCollectionCellInteractorDelegate: AnyObject {
+  func didTapCompilationCell(input: ShowcaseInput)
+  func didTapBottleCell(wineID: Int64)
+}
+
 // MARK: - SimpleContinuosCarouselCollectionCellInteractor
 
 final class SimpleContinuosCarouselCollectionCellInteractor {
@@ -33,6 +40,10 @@ final class SimpleContinuosCarouselCollectionCellInteractor {
     self.router = router
     self.presenter = presenter
   }
+
+  // MARK: Internal
+
+  weak var delegate: SimpleContinuosCarouselCollectionCellInteractorDelegate?
 
   // MARK: Private
 
@@ -106,11 +117,13 @@ extension SimpleContinuosCarouselCollectionCellInteractor: SimpleContinuosCarous
       presenter.showAlertEmptyCollection()
       return
     }
-    router.pushToShowcaseViewController(input: .init(title: title, mode: .normal(wines: wines)))
+    delegate?.didTapCompilationCell(input: .init(title: title, mode: .normal(wines: wines)))
+//    router.pushToShowcaseViewController(input: .init(title: title, mode: .normal(wines: wines)))
   }
 
   func didTapBottleCell(wineID: Int64) {
-    router.pushToWineDetailViewController(wineID: wineID)
+    delegate?.didTapBottleCell(wineID: wineID)
+//    router.pushToWineDetailViewController(wineID: wineID)
   }
 
   func didTapShareContextMenu(wineID: Int64) {

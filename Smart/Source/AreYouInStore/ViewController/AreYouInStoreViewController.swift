@@ -154,8 +154,8 @@ extension AreYouInStoreViewController: UICollectionViewDataSource {
       let cell = collectionView.dequeueReusableCell(
         withReuseIdentifier: SimpleContinuousCaruselCollectionCellView.reuseId,
         for: indexPath) as! SimpleContinuousCaruselCollectionCellView // swiftlint:disable:this force_cast
-      let configurator = SimpleContinuosCarouselCollectionCellConfigurator()
-      configurator.configure(view: cell, with: SimpleContinuosCarouselCollectionCellInput(model: model[indexPath.row]), sender: self)
+      let configurator = SimpleContinuosCarouselCollectionCellConfigurator(delegate: nil)
+      configurator.configure(view: cell, with: SimpleContinuosCarouselCollectionCellInput(model: model[indexPath.row]))
       cell.viewDidLoad()
       return cell
 

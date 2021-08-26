@@ -19,4 +19,6 @@ protocol VinchyInteractorProtocol: AnyObject {
   func searchBarCancelButtonClicked()
   func didTapSuggestionCell(at indexPath: IndexPath)
   func didTapMapButton()
+  func didTapBottleCell(wineID: Int64)
+  func didTapCompilationCell(input: ShowcaseInput)
 }

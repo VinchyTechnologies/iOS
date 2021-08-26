@@ -36,7 +36,7 @@ final class SimpleContinuousCaruselCollectionCellView: UICollectionViewCell, Reu
       collectionView.topAnchor.constraint(equalTo: topAnchor),
       collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
     ])
-    setupLongGestureRecognizerOnCollection()
+//    setupLongGestureRecognizerOnCollection()
   }
   @available(*, unavailable)
   required init?(coder _: NSCoder) { fatalError() }
@@ -233,14 +233,17 @@ extension SimpleContinuousCaruselCollectionCellView: UICollectionViewDelegateFlo
   func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     switch type {
     case .mini, .big, .promo:
-      interactor?.didTapCompilationCell(wines: collections[indexPath.row].wineList.compactMap { collectionItem -> ShortWine? in
-        switch collectionItem {
-        case .wine(let wine):
-          return wine
-        case .ads:
-          return nil
-        }
-      }, title: collections[indexPath.row].title)
+      interactor?.didTapCompilationCell(
+        wines: collections[indexPath.row].wineList.compactMap { collectionItem -> ShortWine? in
+          switch collectionItem {
+          case .wine(let wine):
+            return wine
+
+          case .ads:
+            return nil
+          }
+        },
+        title: collections[indexPath.row].title)
 
     case .bottles:
       guard let collection = collections.first, let collectionItem = collection.wineList[safe: indexPath.row] else {

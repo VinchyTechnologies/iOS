@@ -147,8 +147,8 @@ extension MapDetailStoreViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCell(
           withReuseIdentifier: SimpleContinuousCaruselCollectionCellView.reuseId,
           for: indexPath) as! SimpleContinuousCaruselCollectionCellView // swiftlint:disable:this force_cast
-        let configurator = SimpleContinuosCarouselCollectionCellConfigurator()
-        configurator.configure(view: cell, with: SimpleContinuosCarouselCollectionCellInput(model: model), sender: self)
+        let configurator = SimpleContinuosCarouselCollectionCellConfigurator(delegate: self)
+        configurator.configure(view: cell, with: SimpleContinuosCarouselCollectionCellInput(model: model))
         cell.viewDidLoad()
         return cell
       }
@@ -256,6 +256,16 @@ extension MapDetailStoreViewController: MapNavigationBarDelegate {
 extension MapDetailStoreViewController: AssortmentCollectionCellDelegate {
   func didTapSeeAssortmentButton(_ button: UIButton) {
     delegate?.didTapAssortmentButton(button)
+  }
+}
+
+// MARK: SimpleContinuosCarouselCollectionCellInteractorDelegate
+
+extension MapDetailStoreViewController: SimpleContinuosCarouselCollectionCellInteractorDelegate {
+  func didTapCompilationCell(input: ShowcaseInput) { }
+
+  func didTapBottleCell(wineID: Int64) {
+    interactor?.didTapRecommendedWine(wineID: wineID)
   }
 }
 
