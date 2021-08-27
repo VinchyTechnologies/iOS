@@ -15,7 +15,13 @@ import UIKit
 
 extension UIColor {
   public final class var mainBackground: UIColor {
-    .systemBackground
+    UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
+      if UITraitCollection.userInterfaceStyle == .dark {
+        return UIColor(red: 28 / 255, green: 28 / 255, blue: 30 / 255, alpha: 1.0)
+      } else {
+        return .white
+      }
+    }
   }
 
   public final class var blueGray: UIColor {

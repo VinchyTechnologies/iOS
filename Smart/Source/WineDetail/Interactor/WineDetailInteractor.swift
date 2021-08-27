@@ -49,6 +49,7 @@ final class WineDetailInteractor {
   private let presenter: WineDetailPresenterProtocol
   private let input: WineDetailInput
   private var isGeneralInfoCollapsed: Bool = true
+  private let dispatchGroup = DispatchGroup()
 
   private lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
     guard let self = self else { return }
@@ -60,32 +61,73 @@ final class WineDetailInteractor {
   private let emailService = EmailService()
 
   private var wine: Wine?
-
+  private var reviews: [Review]?
+  private var stores: [PartnerInfo]?
   private var actionAfterAuthorization: ActionAfterLoginOrRegistration = .none
 
   private func loadWineInfo() {
-    Wines.shared.getDetailWine(wineID: input.wineID) { [weak self] result in
 
-      guard let self = self else { return }
+    var error: Error?
 
+    if wine == nil {
+      dispatchGroup.enter()
+      Wines.shared.getDetailWine(wineID: input.wineID) { [weak self]
+        result in
+        guard let self = self else { return }
+        switch result {
+        case .success(let response):
+          self.wine = response
+
+        case .failure(let errorResponse):
+          error = errorResponse
+        }
+        self.dispatchGroup.leave()
+      }
+    }
+
+    if reviews == nil {
+      dispatchGroup.enter()
+      Reviews.shared.getReviews(wineID: input.wineID, accountID: nil, offset: 0, limit: 5) { [weak self] result in
+        guard let self = self else { return }
+        switch result {
+        case .success(let response):
+          self.reviews = response
+
+        case .failure:
+          self.reviews = nil
+        }
+        self.dispatchGroup.leave()
+      }
+    }
+
+    if stores == nil {
+      dispatchGroup.enter()
+      Partners.shared.getPartnersByWine(wineID: input.wineID, latitude: 55.755786, longitude: 37.617633, limit: 5, offset: 0) { [weak self] result in // TODO: - user location
+        guard let self = self else { return }
+        switch result {
+        case .success(let response):
+          self.stores = response
+
+        case .failure:
+          break
+        }
+        self.dispatchGroup.leave()
+      }
+    }
+
+    dispatchGroup.notify(queue: .main) {
       self.dispatchWorkItemHud.cancel()
-      DispatchQueue.main.async {
-        self.presenter.stopLoading()
+
+      if let wine = self.wine {
+        self.presenter.update(wine: wine, reviews: self.reviews, isLiked: self.isFavourite(wine: wine), isDisliked: self.isDisliked(wine: wine), rate: self.rate ?? 0, currency: UserDefaultsConfig.currency, stores: self.stores, isGeneralInfoCollapsed: self.isGeneralInfoCollapsed)
       }
 
-      switch result {
-      case .success(let wine):
-        self.presenter.update(
-          wine: wine,
-          isLiked: self.isFavourite(wine: wine),
-          isDisliked: self.isDisliked(wine: wine),
-          rate: self.rate ?? 0,
-          currency: UserDefaultsConfig.currency,
-          isGeneralInfoCollapsed: self.isGeneralInfoCollapsed)
-        self.wine = wine
-
-      case .failure(let error):
+      if let error = error {
         self.presenter.showNetworkErrorAlert(error: error)
+      }
+
+      DispatchQueue.main.async {
+        self.presenter.stopLoading()
       }
     }
   }
@@ -147,6 +189,10 @@ final class WineDetailInteractor {
 
 extension WineDetailInteractor: WineDetailInteractorProtocol {
 
+  func didSelectStore(affilatedId: Int) {
+    router.presentStore(affilatedId: affilatedId)
+  }
+
   func didShowTutorial() {
     UserDefaultsConfig.userHasSeenTutorialForReviewButton = true
   }
@@ -181,8 +227,7 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
 
   func didTapReview(reviewID: Int) {
     guard
-      let wine = wine,
-      let review = wine.reviews.first(where: { $0.id == reviewID })
+      let review = reviews?.first(where: { $0.id == reviewID })
     else {
       return
     }

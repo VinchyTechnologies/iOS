@@ -63,7 +63,6 @@ final class MapDetailStoreInteractor {
 
       Recommendations.shared.getPersonalRecommendedWines(
         accountId: UserDefaultsConfig.accountID,
-        partnerId: self.input.partnerId,
         affilatedId: self.input.affilatedId) { [weak self] result in
           guard let self = self else { return }
           switch result {

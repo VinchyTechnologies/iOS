@@ -13,7 +13,7 @@ import UIKit
 // MARK: - TextStyle
 
 enum TextStyle {
-  case lagerTitle, miniBold, regular
+  case lagerTitle, miniBold, regular, subtitle
 }
 
 // MARK: - Label
@@ -126,6 +126,16 @@ extension Label.Style {
         isRounded: isRoundedCorners,
         textAligment: textAligment,
         textColor: textColor)
+
+    case .subtitle:
+      return .init(
+        font: Font.medium(18),
+        showLabelBackground: true,
+        numberOfLines: numberOfLines,
+        backgroundColor: backgroundColor,
+        isRounded: isRoundedCorners,
+        textAligment: textAligment,
+        textColor: .blueGray)
     }
   }
 }

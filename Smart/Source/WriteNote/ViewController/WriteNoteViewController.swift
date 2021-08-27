@@ -37,6 +37,7 @@ final class WriteNoteViewController: UIViewController {
     navigationItem.largeTitleDisplayMode = .never
     navigationItem.rightBarButtonItem = UIBarButtonItem(customView: saveButton)
     view.addSubview(textView)
+    textView.backgroundColor = .mainBackground
     textView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       textView.topAnchor.constraint(equalTo: view.topAnchor),

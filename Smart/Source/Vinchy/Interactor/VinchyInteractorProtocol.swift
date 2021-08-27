@@ -8,9 +8,11 @@
 
 import Foundation
 
-protocol VinchyInteractorProtocol: VinchySimpleConiniousCaruselCollectionCellDelegate, ResultsSearchDelegate {
+protocol VinchyInteractorProtocol: ResultsSearchDelegate {
   func viewDidLoad()
   func didPullToRefresh()
   func didTapFilter()
   func didTapMapButton()
+  func didTapBottleCell(wineID: Int64)
+  func didTapCompilationCell(input: ShowcaseInput)
 }

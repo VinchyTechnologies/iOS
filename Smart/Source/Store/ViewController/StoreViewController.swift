@@ -30,10 +30,31 @@ final class StoreViewController: CollectionViewController {
   private(set) var loadingIndicator = ActivityIndicatorView()
   var interactor: StoreInteractorProtocol?
 
+  override func makeCollectionView() -> CollectionView {
+    CollectionView(
+      layout: layout,
+      configuration: .init(
+        usesBatchUpdatesForAllReloads: false,
+        usesCellPrefetching: true,
+        usesAccurateScrollToItem: true))
+  }
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    view.backgroundColor = .mainBackground
+    collectionView.backgroundColor = .mainBackground
+
     navigationItem.largeTitleDisplayMode = .never
+
+    if isModal {
+      let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
+      navigationItem.leftBarButtonItem = UIBarButtonItem(
+        image: UIImage(systemName: "chevron.down", withConfiguration: imageConfig),
+        style: .plain,
+        target: self,
+        action: #selector(didTapCloseBarButtonItem(_:)))
+    }
 
     collectionView.delaysContentTouches = false
     collectionView.scrollDelegate = self
@@ -42,10 +63,17 @@ final class StoreViewController: CollectionViewController {
       image: UIImage(named: "edit")?.withRenderingMode(.alwaysTemplate),
       style: .plain,
       target: self,
-      action: nil)
+      action: #selector(didTapFilterButton(_:)))
     navigationItem.rightBarButtonItems = [filterBarButtonItem]
 
     interactor?.viewDidLoad()
+  }
+
+  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    super.viewWillTransition(to: size, with: coordinator)
+    coordinator.animate(alongsideTransition: { _ in
+      self.setSections(self.sections, animated: false)
+    })
   }
 
   // MARK: Private
@@ -136,6 +164,13 @@ final class StoreViewController: CollectionViewController {
                   context.view.adBanner.rootViewController = self
                 }
                 .flowLayoutItemSize(.init(width: view.frame.width, height: AdItemView.height))
+
+            case .empty(let itemID, let content):
+              return EmptyView.itemModel(
+                dataID: itemID.rawValue,
+                content: content,
+                style: .init())
+                .flowLayoutItemSize(.init(width: view.frame.width, height: 250)) // TODO: - height
             }
           }))
           .supplementaryItems(ofKind: UICollectionView.elementKindSectionHeader, [
@@ -149,12 +184,14 @@ final class StoreViewController: CollectionViewController {
           ])
           .flowLayoutHeaderReferenceSize(.init(width: view.frame.width, height: 50))
 
-      case .loading(let itemID):
+      case .loading(let itemID, let shouldCallWillDisplay):
         return SectionModel(dataID: section.dataID) {
           LoadingView.itemModel(dataID: itemID)
         }
         .willDisplay { [weak self] _ in
-          self?.interactor?.willDisplayLoadingView()
+          if shouldCallWillDisplay {
+            self?.interactor?.willDisplayLoadingView()
+          }
         }
         .flowLayoutItemSize(.init(width: view.frame.width, height: LoadingView.height))
         .flowLayoutSectionInset(.init(top: 16, left: 0, bottom: 16, right: 0))
@@ -172,6 +209,16 @@ final class StoreViewController: CollectionViewController {
 
   private func hideErrorView() {
     collectionView.backgroundView = nil
+  }
+
+  @objc
+  private func didTapCloseBarButtonItem(_: UIBarButtonItem) {
+    dismiss(animated: true, completion: nil)
+  }
+
+  @objc
+  private func didTapFilterButton(_ button: UIButton) {
+    interactor?.didTapFilterButton()
   }
 }
 
@@ -227,7 +274,18 @@ extension StoreViewController: StoreViewControllerProtocol {
       heightBeforeSupplementaryHeader = resultHeight
     }
 
-    setSections(sections, animated: false)
+    if viewModel.shouldResetContentOffset {
+      UIView.animate(withDuration: 0.5, delay: 0, options: [.beginFromCurrentState, .curveEaseOut]) {
+        let scrollToTopIfPossibleSelector = Selector(encodeText("`tdspmmUpUpqJgQpttjcmf;", -1))
+        if (self.collectionView as UIScrollView).responds(to: scrollToTopIfPossibleSelector) {
+          (self.collectionView as UIScrollView).perform(scrollToTopIfPossibleSelector)
+        }
+      } completion: { _ in
+        self.setSections(self.sections, animated: false)
+      }
+    } else {
+      setSections(sections, animated: false)
+    }
   }
 }
 

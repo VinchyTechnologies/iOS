@@ -15,17 +15,76 @@ final class AdvancedSearchInteractor {
   // MARK: Lifecycle
 
   init(
+    input: AdvancedSearchInput,
     router: AdvancedSearchRouterProtocol,
     presenter: AdvancedSearchPresenterProtocol)
   {
+    self.input = input
     self.router = router
     self.presenter = presenter
     initialFilters = loadFilters()
     filters = loadFilters() // TODO: - may be via input
+
+    switch input.mode {
+    case .normal:
+      filters = loadFilters()
+      selectedFilters = []
+
+    case .asView(let preselectedFilters):
+      filters = loadFilters()
+
+      var selectedFilters: [FilterItem] = []
+      preselectedFilters.forEach { category, value in
+        let filterItems = initialFilters.first(where: { $0.category.serverName == category })
+        if let item = filterItems?.items.first(where: { $0.title == value }) {
+          selectedFilters.append(item)
+        }
+      }
+      self.selectedFilters = selectedFilters
+
+      let countryItems = initialFilters.first(where: { $0.category == .country })?.items.compactMap({ $0.title })
+      let countryPreselectedFilters = preselectedFilters.filter({ $0.0 == "country_code" }).compactMap({ $0.1 })
+      if !countryPreselectedFilters.allSatisfy({ countryItems?.contains($0) == true }) {
+        var filterItems: [FilterItem] = []
+        selectedFilters.removeAll(where: { $0.category == .country })
+        countryPreselectedFilters.forEach { code in
+          let filterItem = FilterItem(title: code, imageName: code, category: .country)
+          filterItems.append(filterItem)
+          if !selectedFilters.contains(filterItem) {
+            selectedFilters.append(filterItem)
+          }
+        }
+
+        let items: [FilterItem] = {
+          if filterItems.isEmpty {
+            selectedFilters.removeAll(where: { $0.category == .country })
+            return initialFilters.first(where: { $0.category == .country })?.items ?? []
+          }
+          return filterItems
+        }()
+
+        let filter = Filter(category: .country, items: items)
+
+        if let index = filters.firstIndex(where: { $0.category == .country }) {
+          filters[index] = filter
+        }
+      }
+
+      preselectedFilters.forEach { category, value in
+        let filterItems = initialFilters.first(where: { $0.category.serverName == category })
+        if let item = filterItems?.items.first(where: { $0.title == value }) {
+          if !selectedFilters.contains(item) {
+            selectedFilters.append(item)
+          }
+        }
+      }
+      self.selectedFilters = selectedFilters
+    }
   }
 
   // MARK: Private
 
+  private let input: AdvancedSearchInput
   private let router: AdvancedSearchRouterProtocol
   private let presenter: AdvancedSearchPresenterProtocol
   private let initialFilters: [Filter]
@@ -99,12 +158,19 @@ extension AdvancedSearchInteractor: AdvancedSearchInteractorProtocol {
   }
 
   func didTapConfirmSearchButton() {
-    guard !selectedFilters.isEmpty else {
-      return // TODO: - alert no one filter selected
-    }
 
-    let params: [(String, String)] = selectedFilters.compactMap { ($0.category.serverName, $0.title) }
-    router.pushToShowcaseViewController(input: .init(title: nil, mode: .advancedSearch(params: params)))
+    switch input.mode {
+    case .normal:
+      guard !selectedFilters.isEmpty else {
+        return // TODO: - alert no one filter selected
+      }
+      let params: [(String, String)] = selectedFilters.compactMap { ($0.category.serverName, $0.title) }
+      router.pushToShowcaseViewController(input: .init(title: nil, mode: .advancedSearch(params: params)))
+
+    case .asView:
+      let params: [(String, String)] = selectedFilters.compactMap { ($0.category.serverName, $0.title) }
+      router.dismiss(selectedFilters: params)
+    }
   }
 
   func didTapResetAllFiltersButton() {

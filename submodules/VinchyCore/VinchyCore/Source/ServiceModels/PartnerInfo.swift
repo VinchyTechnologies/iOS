@@ -16,7 +16,7 @@ public struct PartnerInfo: Decodable {
   public let title: String
   public let latitude: Double?
   public let longitude: Double?
-  public let affiliatedStoreType: AffiliatedStoreType
+  public let affiliatedStoreType: AffiliatedStoreType?
   public let url: String?
   public let phoneNumber: String?
   public let scheduleOfWork: String?

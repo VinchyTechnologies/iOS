@@ -71,6 +71,7 @@ public final class BottomButtonsView: UIView {
 
   private lazy var leadingButton: UIButton = {
     let button = UIButton()
+    button.startAnimatingPressActions()
     button.backgroundColor = .option
     button.setTitleColor(.blueGray, for: .normal)
     button.layer.cornerRadius = 16
@@ -82,6 +83,7 @@ public final class BottomButtonsView: UIView {
 
   private lazy var trailingButton: UIButton = {
     let button = UIButton()
+    button.startAnimatingPressActions()
     button.backgroundColor = .accent
     button.setTitleColor(.white, for: .normal)
     button.layer.cornerRadius = 16

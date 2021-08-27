@@ -11,7 +11,8 @@
 private enum PartnersEndpoint: EndpointProtocol {
   case map(latitude: Double, longitude: Double, radius: Int)
   case storeInfo(partnerId: Int, affilatedId: Int)
-  case wines(partnerId: Int, affilatedId: Int, limit: Int, offset: Int)
+  case wines(partnerId: Int, affilatedId: Int, filters: [(String, String)], limit: Int, offset: Int)
+  case partnersByWine(wineID: Int64, latitude: Double, longitude: Double, limit: Int, offset: Int)
 
   // MARK: Internal
 
@@ -27,14 +28,17 @@ private enum PartnersEndpoint: EndpointProtocol {
     case .storeInfo(let partnerId, let affilatedId):
       return "/partners/" + String(partnerId) + "/stores/" + String(affilatedId)
 
-    case .wines(let partnerId, let affilatedId, _, _):
+    case .wines(let partnerId, let affilatedId, _, _, _):
       return "/partners/" + String(partnerId) + "/stores/" + String(affilatedId) + "/wines"
+
+    case .partnersByWine(let wineID, _, _, _, _):
+      return "/partners/" + String(wineID)
     }
   }
 
   var method: HTTPMethod {
     switch self {
-    case .map, .storeInfo, .wines:
+    case .map, .storeInfo, .wines, .partnersByWine:
       return .get
     }
   }
@@ -52,11 +56,20 @@ private enum PartnersEndpoint: EndpointProtocol {
     case .storeInfo:
       return nil
 
-    case .wines(_, _, let limit, let offset):
-      return [
+    case .wines(_, _, let filters, let limit, let offset):
+      return filters + [
         ("offset", String(offset)),
         ("limit", String(limit)),
       ]
+
+    case .partnersByWine(_, let latitude, let longitude, let limit, let offset):
+      let params: Parameters = [
+        ("lat", String(latitude)),
+        ("lon", String(longitude)),
+        ("offset", String(offset)),
+        ("limit", String(limit)),
+      ]
+      return params
     }
   }
 }
@@ -72,6 +85,24 @@ public final class Partners {
   // MARK: Public
 
   public static let shared = Partners()
+
+  public func getPartnersByWine(
+    wineID: Int64,
+    latitude: Double,
+    longitude: Double,
+    limit: Int,
+    offset: Int,
+    completion: @escaping (Result<[PartnerInfo], APIError>) -> Void)
+  {
+    api.request(
+      endpoint: PartnersEndpoint.partnersByWine(
+        wineID: wineID,
+        latitude: latitude,
+        longitude: longitude,
+        limit: limit,
+        offset: offset),
+      completion: completion)
+  }
 
   public func getPartnersOnMap(
     latitude: Double,
@@ -99,11 +130,12 @@ public final class Partners {
       completion: completion)
   }
 
-  public func getPartnerWines(partnerId: Int, affilatedId: Int, limit: Int, offset: Int, completion: @escaping (Result<[ShortWine], APIError>) -> Void) {
+  public func getPartnerWines(partnerId: Int, affilatedId: Int, filters: [(String, String)], limit: Int, offset: Int, completion: @escaping (Result<[ShortWine], APIError>) -> Void) {
     api.request(
       endpoint: PartnersEndpoint.wines(
         partnerId: partnerId,
         affilatedId: affilatedId,
+        filters: filters,
         limit: limit,
         offset: offset),
       completion: completion)

@@ -29,6 +29,37 @@ final class StorePresenter {
 
 extension StorePresenter: StorePresenterProtocol {
 
+  func setLoadingFilters(data: StoreInteractorData) {
+    var sections: [StoreViewModel.Section] = []
+
+    sections += [
+      .logo(itemID: .logoItem, .init(title: data.partnerInfo.title, logoURL: data.partnerInfo.logoURL)),
+    ]
+
+    if let addressText = data.partnerInfo.address {
+      sections += [.address(addressText)]
+    }
+
+    if !data.recommendedWines.isEmpty {
+      sections += [.title(localized("vinchy_recommends").firstLetterUppercased())]
+
+      let winesContent = data.recommendedWines.map { wine in
+        WineBottleView.Content(
+          wineID: wine.id,
+          imageURL: wine.mainImageUrl?.toURL,
+          titleText: wine.title,
+          subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode))
+      }
+
+      sections += [.wines(winesContent)]
+    }
+
+    sections += [.loading(itemID: .loadingItem, shouldCallWillDisplay: false)]
+
+    let viewModel = StoreViewModel(sections: sections, navigationTitleText: data.partnerInfo.title, shouldResetContentOffset: true)
+    viewController?.updateUI(viewModel: viewModel)
+  }
+
   func showErrorAlert(error: Error) {
     viewController?.showAlert(
       title: localized("error").firstLetterUppercased(),
@@ -65,7 +96,7 @@ extension StorePresenter: StorePresenterProtocol {
     }
 
     if !data.recommendedWines.isEmpty {
-      sections += [.title("Vinchy recommends")] // TODO: - localize
+      sections += [.title(localized("vinchy_recommends").firstLetterUppercased())]
 
       let winesContent = data.recommendedWines.map { wine in
         WineBottleView.Content(
@@ -96,14 +127,47 @@ extension StorePresenter: StorePresenterProtocol {
         assortmentsContent.append(.horizontalWine(wineContent))
       }
 
-      sections += [.assortiment(header: ["Весь ассортмент"], content: assortmentsContent)]
+      if data.selectedFilters.isEmpty {
+        sections += [.assortiment(header: [localized("all").firstLetterUppercased()], content: assortmentsContent)]
+      } else {
+        let header: [String] = data.selectedFilters.compactMap({
+          if $0.0 == "country_code" {
+            return countryNameFromLocaleCode(countryCode: $0.1)
+          } else {
+            return localized($0.1).firstLetterUppercased()
+          }
+        })
+        sections += [.assortiment(header: header, content: assortmentsContent)]
+      }
 
       if needLoadMore {
-        sections += [.loading(itemID: .loadingItem)]
+        sections += [.loading(itemID: .loadingItem, shouldCallWillDisplay: true)]
+      }
+    } else {
+
+      if !data.selectedFilters.isEmpty {
+
+        let assortmentsContent: [StoreViewModel.AssortimentContent] = [
+          .empty(
+            itemID: .strongFilters,
+            content: EmptyView.Content(
+              titleText: localized("nothing_found").firstLetterUppercased(),
+              subtitleText: nil,
+              buttonText: nil)),
+        ]
+
+        let header: [String] = data.selectedFilters.compactMap({
+          if $0.0 == "country_code" {
+            return countryNameFromLocaleCode(countryCode: $0.1)
+          } else {
+            return localized($0.1).firstLetterUppercased()
+          }
+        })
+        sections += [.assortiment(header: header, content: assortmentsContent)]
       }
     }
 
-    let viewModel = StoreViewModel(sections: sections, navigationTitleText: data.partnerInfo.title)
+    let viewModel = StoreViewModel(sections: sections, navigationTitleText: data.partnerInfo.title, shouldResetContentOffset: false)
     viewController?.updateUI(viewModel: viewModel)
   }
 }

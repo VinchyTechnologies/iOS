@@ -17,6 +17,12 @@ protocol TabBarDeeplinkable {
   func openWineDetail(wineID: Int64) -> AnyPublisher<TabBarDeeplinkable, Never>
 }
 
+// MARK: - ScrollableToTop
+
+protocol ScrollableToTop {
+  var scrollableToTopScrollView: UIScrollView { get }
+}
+
 // MARK: - TabBarController
 
 final class TabBarController: UITabBarController, UITabBarControllerDelegate {
@@ -111,6 +117,26 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
     }
 
     viewControllers = [main, love, map, notes, profile]
+  }
+
+  func tabBarController(
+    _ tabBarController: UITabBarController,
+    shouldSelect viewController: UIViewController)
+    -> Bool
+  {
+    if
+      let index = viewControllers?.firstIndex(where: { $0 === viewController }),
+      selectedIndex == index,
+      let navViewController = viewController as? UINavigationController,
+      let firstVC = navViewController.viewControllers.first as? ScrollableToTop
+    {
+      let scrollView = firstVC.scrollableToTopScrollView
+      let scrollToTopIfPossibleSelector = Selector(encodeText("`tdspmmUpUpqJgQpttjcmf;", -1))
+      if scrollView.responds(to: scrollToTopIfPossibleSelector) {
+        firstVC.scrollableToTopScrollView.perform(scrollToTopIfPossibleSelector)
+      }
+    }
+    return true
   }
 }
 

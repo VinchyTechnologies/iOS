@@ -1,40 +1,29 @@
 //
-//  VinchySimpleConiniousCaruselCollectionCell.swift
+//  SimpleContinuosCarouselCollectionCellViewController.swift
 //  Smart
 //
-//  Created by Aleksei Smirnov on 02.09.2020.
-//  Copyright © 2020 Aleksei Smirnov. All rights reserved.
+//  Created by Михаил Исаченко on 14.08.2021.
+//  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import AudioToolbox
 import CommonUI
+import CoreHaptics
 import Database
 import Display
 import StringFormatting
 import UIKit
 import VinchyCore
 
-// MARK: - VinchySimpleConiniousCaruselCollectionCellDelegate
+// MARK: - Constants
 
-protocol VinchySimpleConiniousCaruselCollectionCellDelegate: AnyObject {
-  func didTapBottleCell(wineID: Int64)
-  func didTapCompilationCell(wines: [ShortWine], title: String?)
+private enum Constants {
+  static let vibrationSoundId: SystemSoundID = 1519
 }
 
-// MARK: - VinchySimpleConiniousCaruselCollectionCellViewModel
+// MARK: - SimpleContinuousCaruselCollectionCellView
 
-struct VinchySimpleConiniousCaruselCollectionCellViewModel: ViewModelProtocol {
-  fileprivate let type: CollectionType
-  fileprivate let collections: [Collection]
-
-  public init(type: CollectionType, collections: [Collection]) {
-    self.type = type
-    self.collections = collections
-  }
-}
-
-// MARK: - VinchySimpleConiniousCaruselCollectionCell
-
-final class VinchySimpleConiniousCaruselCollectionCell: UICollectionViewCell, Reusable {
+final class SimpleContinuousCaruselCollectionCellView: UICollectionViewCell, Reusable, UIGestureRecognizerDelegate {
 
   // MARK: Lifecycle
 
@@ -47,14 +36,22 @@ final class VinchySimpleConiniousCaruselCollectionCell: UICollectionViewCell, Re
       collectionView.topAnchor.constraint(equalTo: topAnchor),
       collectionView.bottomAnchor.constraint(equalTo: bottomAnchor),
     ])
+//    setupLongGestureRecognizerOnCollection()
   }
-
   @available(*, unavailable)
   required init?(coder _: NSCoder) { fatalError() }
 
+  // MARK: Public
+
+  public func viewDidLoad() {
+    interactor?.viewDidLoad()
+  }
+
   // MARK: Internal
 
-  weak var delegate: VinchySimpleConiniousCaruselCollectionCellDelegate?
+  private(set) var loadingIndicator = ActivityIndicatorView()
+
+  var interactor: SimpleContinuosCarouselCollectionCellInteractorProtocol?
 
   static func height(viewModel: ViewModel?) -> CGFloat {
     guard let viewModel = viewModel else {
@@ -104,16 +101,76 @@ final class VinchySimpleConiniousCaruselCollectionCell: UICollectionViewCell, Re
     return collectionView
   }()
 
+  private lazy var hapticGenerator = UISelectionFeedbackGenerator()
+
   private var collections: [Collection] = [] {
     didSet {
       collectionView.reloadData()
+    }
+  }
+
+  private func setupLongGestureRecognizerOnCollection() {
+    let longPressedGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureRecognizer:)))
+    longPressedGesture.minimumPressDuration = 0.45
+    longPressedGesture.delegate = self
+    collectionView.addGestureRecognizer(longPressedGesture)
+  }
+
+  @objc
+  private func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
+    if gestureRecognizer.state != .began {
+      return
+    }
+
+    let point = gestureRecognizer.location(in: collectionView)
+    if let indexPath = collectionView.indexPathForItem(at: point) {
+      switch type {
+      case .bottles:
+        guard let collection = collections.first, let collectionItem = collection.wineList[safe: indexPath.row] else {
+          return
+        }
+
+        switch collectionItem {
+        case .wine(let wine):
+          if let cell = collectionView.cellForItem(at: indexPath) {
+            if CHHapticEngine.capabilitiesForHardware().supportsHaptics {
+              HapticEffectHelper.vibrate(withEffect: .heavy)
+            } else {
+              AudioServicesPlaySystemSound(Constants.vibrationSoundId)
+            }
+
+            let writeNote = ContextMenuItemWithImage(title: localized("write_note").firstLetterUppercased(), image: UIImage(systemName: "square.and.pencil")) { [weak self] in
+
+              self?.interactor?.didTapWriteNoteContextMenu(wineID: wine.id)
+            }
+            let leaveReview = ContextMenuItemWithImage(title: localized("write_review").firstLetterUppercased(), image: UIImage(systemName: "text.bubble")) { [weak self] in
+
+              self?.interactor?.didTapLeaveReviewContextMenu(wineID: wine.id)
+            }
+            let share = ContextMenuItemWithImage(title: localized("share_link").firstLetterUppercased(), image: UIImage(systemName: "square.and.arrow.up")) { [weak self] in
+
+              self?.interactor?.didTapShareContextMenu(wineID: wine.id)
+            }
+
+            CM.items = [writeNote, leaveReview, share]
+            CM.showMenu(viewTargeted: cell, animated: true)
+          }
+
+        case .ads:
+          break
+        }
+
+      case .big, .mini, .promo, .shareUs, .smartFilter, .none:
+        break
+      }
     }
   }
 }
 
 // MARK: UICollectionViewDataSource
 
-extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDataSource {
+extension SimpleContinuousCaruselCollectionCellView: UICollectionViewDataSource {
+
   func collectionView(
     _: UICollectionView,
     numberOfItemsInSection _: Int)
@@ -172,18 +229,21 @@ extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDataSource
 
 // MARK: UICollectionViewDelegateFlowLayout
 
-extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDelegateFlowLayout {
+extension SimpleContinuousCaruselCollectionCellView: UICollectionViewDelegateFlowLayout {
   func collectionView(_: UICollectionView, didSelectItemAt indexPath: IndexPath) {
     switch type {
     case .mini, .big, .promo:
-      delegate?.didTapCompilationCell(wines: collections[indexPath.row].wineList.compactMap { collectionItem -> ShortWine? in
-        switch collectionItem {
-        case .wine(let wine):
-          return wine
-        case .ads:
-          return nil
-        }
-      }, title: collections[indexPath.row].title)
+      interactor?.didTapCompilationCell(
+        wines: collections[indexPath.row].wineList.compactMap { collectionItem -> ShortWine? in
+          switch collectionItem {
+          case .wine(let wine):
+            return wine
+
+          case .ads:
+            return nil
+          }
+        },
+        title: collections[indexPath.row].title)
 
     case .bottles:
       guard let collection = collections.first, let collectionItem = collection.wineList[safe: indexPath.row] else {
@@ -191,7 +251,7 @@ extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDelegateFl
       }
       switch collectionItem {
       case .wine(let wine):
-        delegate?.didTapBottleCell(wineID: wine.id)
+        interactor?.didTapBottleCell(wineID: wine.id)
       case .ads:
         break
       }
@@ -238,7 +298,7 @@ extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDelegateFl
 
 // MARK: UICollectionViewDataSourcePrefetching
 
-extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDataSourcePrefetching {
+extension SimpleContinuousCaruselCollectionCellView: UICollectionViewDataSourcePrefetching {
   func collectionView(
     _ collectionView: UICollectionView,
     prefetchItemsAt indexPaths: [IndexPath])
@@ -309,13 +369,17 @@ extension VinchySimpleConiniousCaruselCollectionCell: UICollectionViewDataSource
   }
 }
 
-// MARK: Decoratable
+// MARK: SimpleContinuosCarouselCollectionCellViewProtocol
 
-extension VinchySimpleConiniousCaruselCollectionCell: Decoratable {
-  typealias ViewModel = VinchySimpleConiniousCaruselCollectionCellViewModel
+extension SimpleContinuousCaruselCollectionCellView: SimpleContinuosCarouselCollectionCellViewProtocol {
 
-  func decorate(model: ViewModel) {
-    type = model.type
-    collections = model.collections
+  typealias ViewModel = SimpleContinuousCaruselCollectionCellViewModel
+
+  func showAlert(title: String, message: String) {
+    (window?.rootViewController as? Alertable)?.showAlert(title: title, message: message)
+  }
+  func updateUI(viewModel: ViewModel) {
+    type = viewModel.type
+    collections = viewModel.collections
   }
 }

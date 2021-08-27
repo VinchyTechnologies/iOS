@@ -72,7 +72,7 @@ final class MapDetailStoreViewController: UIViewController {
       TextCollectionCell.self,
       WorkingHoursCollectionCell.self,
       AssortmentCollectionCell.self,
-      VinchySimpleConiniousCaruselCollectionCell.self)
+      SimpleContinuousCaruselCollectionCellView.self)
     $0.register(
       MapNavigationBarCollectionCell.self,
       forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader,
@@ -84,7 +84,10 @@ final class MapDetailStoreViewController: UIViewController {
     didSet {
       collectionView.reloadData()
       collectionView.performBatchUpdates({
-        let sheetSize = SheetSize.fixed(self.layout.collectionViewContentSize.height + 24 /* pull Bar height */ + (UIApplication.shared.asKeyWindow?.safeAreaInsets.bottom ?? 0))
+        let safeAreaBottomInset: CGFloat = UIApplication.shared.asKeyWindow?.safeAreaInsets.bottom ?? 0
+        let sheetHeight: CGFloat =
+          self.layout.collectionViewContentSize.height + .pullBarHeight + .bottomInset + safeAreaBottomInset
+        let sheetSize = SheetSize.fixed(sheetHeight)
         self.sheetViewController?.sizes = [sheetSize]
         self.sheetViewController?.resize(to: [sheetSize][0], duration: 0.5)
       }, completion: nil) // This blocks layoutIfNeeded animation
@@ -142,10 +145,11 @@ extension MapDetailStoreViewController: UICollectionViewDataSource {
 
       case .recommendedWines(let model):
         let cell = collectionView.dequeueReusableCell(
-          withReuseIdentifier: VinchySimpleConiniousCaruselCollectionCell.reuseId,
-          for: indexPath) as! VinchySimpleConiniousCaruselCollectionCell // swiftlint:disable:this force_cast
-        cell.decorate(model: model)
-        cell.delegate = self
+          withReuseIdentifier: SimpleContinuousCaruselCollectionCellView.reuseId,
+          for: indexPath) as! SimpleContinuousCaruselCollectionCellView // swiftlint:disable:this force_cast
+        let configurator = SimpleContinuosCarouselCollectionCellConfigurator(delegate: self)
+        configurator.configure(view: cell, with: SimpleContinuosCarouselCollectionCellInput(model: model))
+        cell.viewDidLoad()
         return cell
       }
 
@@ -234,16 +238,6 @@ extension MapDetailStoreViewController: MapDetailStoreViewControllerProtocol {
   }
 }
 
-// MARK: VinchySimpleConiniousCaruselCollectionCellDelegate
-
-extension MapDetailStoreViewController: VinchySimpleConiniousCaruselCollectionCellDelegate {
-  func didTapBottleCell(wineID: Int64) {
-    interactor?.didTapRecommendedWine(wineID: wineID)
-  }
-
-  func didTapCompilationCell(wines _: [ShortWine], title _: String?) {}
-}
-
 // MARK: MapNavigationBarDelegate
 
 extension MapDetailStoreViewController: MapNavigationBarDelegate {
@@ -263,4 +257,19 @@ extension MapDetailStoreViewController: AssortmentCollectionCellDelegate {
   func didTapSeeAssortmentButton(_ button: UIButton) {
     delegate?.didTapAssortmentButton(button)
   }
+}
+
+// MARK: SimpleContinuosCarouselCollectionCellInteractorDelegate
+
+extension MapDetailStoreViewController: SimpleContinuosCarouselCollectionCellInteractorDelegate {
+  func didTapCompilationCell(input: ShowcaseInput) { }
+
+  func didTapBottleCell(wineID: Int64) {
+    interactor?.didTapRecommendedWine(wineID: wineID)
+  }
+}
+
+extension CGFloat {
+  fileprivate static let pullBarHeight: Self = 24
+  fileprivate static let bottomInset: Self = 10
 }

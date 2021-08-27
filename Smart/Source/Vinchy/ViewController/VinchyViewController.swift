@@ -142,7 +142,7 @@ final class VinchyViewController: UIViewController {
     collectionView.backgroundColor = .mainBackground
 
     collectionView.register(
-      VinchySimpleConiniousCaruselCollectionCell.self,
+      SimpleContinuousCaruselCollectionCellView.self,
       ShareUsCollectionCell.self,
       WineCollectionViewCell.self,
       AdsCollectionViewCell.self,
@@ -239,7 +239,7 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
       case .stories(let model), .promo(let model), .big(let model), .bottles(let model):
         return .init(
           width: collectionView.frame.width,
-          height: VinchySimpleConiniousCaruselCollectionCell.height(viewModel: model[safe: indexPath.row]))
+          height: SimpleContinuousCaruselCollectionCellView.height(viewModel: model[safe: indexPath.row]))
 
       case .shareUs:
         let width = collectionView.frame.width - 2 * C.horizontalInset
@@ -348,14 +348,16 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
 
       case .stories(let model), .promo(let model), .big(let model), .bottles(let model):
         collectionView.register(
-          VinchySimpleConiniousCaruselCollectionCell.self,
-          forCellWithReuseIdentifier: VinchySimpleConiniousCaruselCollectionCell.reuseId + "\(indexPath.section)")
+          SimpleContinuousCaruselCollectionCellView.self,
+          forCellWithReuseIdentifier: SimpleContinuousCaruselCollectionCellView.reuseId + "\(indexPath.section)")
 
         let cell = collectionView.dequeueReusableCell(
-          withReuseIdentifier: VinchySimpleConiniousCaruselCollectionCell.reuseId + "\(indexPath.section)",
-          for: indexPath) as! VinchySimpleConiniousCaruselCollectionCell // swiftlint:disable:this force_cast
-        cell.decorate(model: model[indexPath.row])
-        cell.delegate = interactor
+          withReuseIdentifier: SimpleContinuousCaruselCollectionCellView.reuseId + "\(indexPath.section)",
+          for: indexPath) as! SimpleContinuousCaruselCollectionCellView // swiftlint:disable:this force_cast
+
+        let configurator = SimpleContinuosCarouselCollectionCellConfigurator(delegate: self)
+        configurator.configure(view: cell, with: SimpleContinuosCarouselCollectionCellInput(model: model[indexPath.row]))
+        cell.viewDidLoad()
         return cell
 
       case .shareUs(let model):
@@ -378,6 +380,11 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
 // MARK: VinchyViewControllerProtocol
 
 extension VinchyViewController: VinchyViewControllerProtocol {
+
+  var scrollableToTopScrollView: UIScrollView {
+    collectionView
+  }
+
   func stopPullRefreshing() {
     refreshControl.endRefreshing()
   }
@@ -398,6 +405,18 @@ extension VinchyViewController: ShareUsCollectionCellDelegate {
       popoverController.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
     }
     present(controller, animated: true)
+  }
+}
+
+// MARK: SimpleContinuosCarouselCollectionCellInteractorDelegate
+
+extension VinchyViewController: SimpleContinuosCarouselCollectionCellInteractorDelegate {
+  func didTapCompilationCell(input: ShowcaseInput) {
+    interactor?.didTapCompilationCell(input: input)
+  }
+
+  func didTapBottleCell(wineID: Int64) {
+    interactor?.didTapBottleCell(wineID: wineID)
   }
 }
 

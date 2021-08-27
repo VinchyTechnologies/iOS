@@ -16,10 +16,10 @@ struct VinchyViewControllerViewModel {
 
   enum Section {
     case title([TextCollectionCellViewModel])
-    case stories([VinchySimpleConiniousCaruselCollectionCellViewModel])
-    case promo([VinchySimpleConiniousCaruselCollectionCellViewModel])
-    case big([VinchySimpleConiniousCaruselCollectionCellViewModel])
-    case bottles([VinchySimpleConiniousCaruselCollectionCellViewModel])
+    case stories([SimpleContinuousCaruselCollectionCellViewModel])
+    case promo([SimpleContinuousCaruselCollectionCellViewModel])
+    case big([SimpleContinuousCaruselCollectionCellViewModel])
+    case bottles([SimpleContinuousCaruselCollectionCellViewModel])
     case shareUs([ShareUsCollectionCellViewModel])
     case smartFilter([SmartFilterCollectionCellViewModel])
   }

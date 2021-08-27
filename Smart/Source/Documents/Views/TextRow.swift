@@ -18,6 +18,7 @@ final class TextRow: UIView, EpoxyableView {
   init(style: Style) {
     self.style = style
     super.init(frame: .zero)
+    backgroundColor = .mainBackground
     translatesAutoresizingMaskIntoConstraints = false
     layoutMargins = UIEdgeInsets(top: 16, left: 24, bottom: 16, right: 24)
     group.install(in: self)
