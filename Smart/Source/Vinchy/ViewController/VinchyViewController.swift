@@ -142,7 +142,6 @@ final class VinchyViewController: UIViewController {
     collectionView.backgroundColor = .mainBackground
 
     collectionView.register(
-      SuggestionCollectionCell.self,
       SimpleContinuousCaruselCollectionCellView.self,
       ShareUsCollectionCell.self,
       WineCollectionViewCell.self,
@@ -161,23 +160,11 @@ final class VinchyViewController: UIViewController {
 
   private let refreshControl = UIRefreshControl()
 
-  private lazy var searchController: UISearchController = {
-    let resultsTableController = ResultsTableController()
-    resultsTableController.set(delegate: self)
-    resultsTableController.didnotFindTheWineTableCellDelegate = self
-
-    let searchController = UISearchController(searchResultsController: resultsTableController)
-    searchController.obscuresBackgroundDuringPresentation = false
-    searchController.searchBar.autocapitalizationType = .none
-    searchController.searchBar.delegate = self
-    searchController.searchBar.searchTextField.font = Font.medium(20)
-    searchController.searchBar.searchTextField.layer.cornerRadius = 20
-    searchController.searchBar.searchTextField.layer.masksToBounds = true
-    searchController.searchBar.searchTextField.layer.cornerCurve = .continuous
+  private lazy var searchController: SearchViewController = {
+    let searchController = SearchAssembly.assemblyModule()
+    (searchController.searchResultsController as? ResultsSearchViewController)?.resultsSearchDelegate = interactor
     return searchController
   }()
-
-  private var suggestions: [Wine] = []
 
   private var viewModel: VinchyViewControllerViewModel = .init(state: .fake(sections: [])) {
     didSet {
@@ -212,12 +199,6 @@ final class VinchyViewController: UIViewController {
 // MARK: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout
 
 extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-  func collectionView(
-    _: UICollectionView,
-    didSelectItemAt indexPath: IndexPath)
-  {
-    interactor?.didTapSuggestionCell(at: indexPath)
-  }
 
   func collectionView(
     _ collectionView: UICollectionView,
@@ -260,9 +241,6 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
           width: collectionView.frame.width,
           height: SimpleContinuousCaruselCollectionCellView.height(viewModel: model[safe: indexPath.row]))
 
-      case .suggestions:
-        return .init(width: collectionView.frame.width, height: 44)
-
       case .shareUs:
         let width = collectionView.frame.width - 2 * C.horizontalInset
         let height: CGFloat = 150 // TODO: -
@@ -296,9 +274,6 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
       switch sections[section] {
       case .title:
         return .init(top: 10, left: C.horizontalInset, bottom: 8, right: C.horizontalInset)
-
-      case .suggestions:
-        return .init(top: 0, left: C.horizontalInset, bottom: 0, right: C.horizontalInset)
 
       case .shareUs, .smartFilter:
         return .init(top: 15, left: C.horizontalInset, bottom: 10, right: C.horizontalInset)
@@ -337,9 +312,6 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
         return model.count
 
       case .stories(let model), .promo(let model), .big(let model), .bottles(let model):
-        return model.count
-
-      case .suggestions(let model):
         return model.count
 
       case .shareUs(let model):
@@ -388,12 +360,6 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
         cell.viewDidLoad()
         return cell
 
-      case .suggestions(let model):
-        // swiftlint:disable:next force_cast
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SuggestionCollectionCell.reuseId, for: indexPath) as! SuggestionCollectionCell
-        cell.decorate(model: model[indexPath.row])
-        return cell
-
       case .shareUs(let model):
         // swiftlint:disable:next force_cast
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShareUsCollectionCell.reuseId, for: indexPath) as! ShareUsCollectionCell
@@ -411,50 +377,6 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
   }
 }
 
-// MARK: UISearchBarDelegate
-
-extension VinchyViewController: UISearchBarDelegate {
-  func searchBar(
-    _: UISearchBar,
-    textDidChange searchText: String)
-  {
-    interactor?.didEnterSearchText(searchText)
-  }
-
-  func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
-    searchBar.resignFirstResponder()
-    interactor?.didTapSearchButton(searchText: searchBar.text)
-  }
-
-  func searchBarTextDidBeginEditing(_: UISearchBar) {
-    interactor?.searchBarTextDidBeginEditing()
-  }
-
-  func searchBarCancelButtonClicked(_: UISearchBar) {
-    interactor?.searchBarCancelButtonClicked()
-  }
-}
-
-// MARK: UITableViewDelegate
-
-extension VinchyViewController: UITableViewDelegate {
-  func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-    tableView.deselectRow(at: indexPath, animated: true)
-    guard let wineID = (searchController.searchResultsController as? ResultsTableController)?.getWines()[safe: indexPath.row]?.id else { return }
-    navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wineID), animated: true)
-  }
-}
-
-// MARK: DidnotFindTheWineTableCellProtocol
-
-extension VinchyViewController: DidnotFindTheWineTableCellProtocol {
-  func didTapWriteUsButton(_: UIButton) {
-    let searchText = searchController.searchBar.searchTextField.text
-    interactor?.didTapDidnotFindWineFromSearch(
-      searchText: searchText)
-  }
-}
-
 // MARK: VinchyViewControllerProtocol
 
 extension VinchyViewController: VinchyViewControllerProtocol {
@@ -467,16 +389,8 @@ extension VinchyViewController: VinchyViewControllerProtocol {
     refreshControl.endRefreshing()
   }
 
-  func updateUI(didFindWines: [ShortWine]) {
-    (searchController.searchResultsController as? ResultsTableController)?.set(wines: didFindWines)
-  }
-
   func updateUI(viewModel: VinchyViewControllerViewModel) {
     self.viewModel = viewModel
-  }
-
-  func updateSearchSuggestions(suggestions: [Wine]) {
-    self.suggestions = suggestions
   }
 }
 

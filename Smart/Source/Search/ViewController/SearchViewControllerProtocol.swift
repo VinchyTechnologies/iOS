@@ -6,8 +6,6 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import Display
 
-protocol SearchViewControllerProtocol: AnyObject {
-  func updateUI(viewModel: SearchViewModel)
-}
+protocol SearchViewControllerProtocol: Alertable {}

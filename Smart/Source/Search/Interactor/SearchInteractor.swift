@@ -6,7 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import Core
 
 // MARK: - SearchInteractor
 
@@ -26,14 +26,24 @@ final class SearchInteractor {
 
   private let router: SearchRouterProtocol
   private let presenter: SearchPresenterProtocol
+  private let emailService = EmailService()
 
 }
 
 // MARK: SearchInteractorProtocol
 
 extension SearchInteractor: SearchInteractorProtocol {
+  func didTapDidnotFindWineFromSearch(searchText: String?) {
+    guard let searchText = searchText else {
+      return
+    }
 
-  func viewDidLoad() {
-
+    if emailService.canSend {
+      router.presentEmailController(
+        HTMLText: presenter.cantFindWineText + searchText,
+        recipients: presenter.cantFindWineRecipients)
+    } else {
+      presenter.showAlertCantOpenEmail()
+    }
   }
 }

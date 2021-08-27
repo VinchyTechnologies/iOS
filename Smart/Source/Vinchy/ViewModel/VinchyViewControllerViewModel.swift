@@ -20,7 +20,6 @@ struct VinchyViewControllerViewModel {
     case promo([SimpleContinuousCaruselCollectionCellViewModel])
     case big([SimpleContinuousCaruselCollectionCellViewModel])
     case bottles([SimpleContinuousCaruselCollectionCellViewModel])
-    case suggestions([SuggestionCollectionCellViewModel])
     case shareUs([ShareUsCollectionCellViewModel])
     case smartFilter([SmartFilterCollectionCellViewModel])
   }

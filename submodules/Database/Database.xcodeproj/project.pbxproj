@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		447C346F25EEA24F00105A35 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 447C346E25EEA24F00105A35 /* Core.framework */; };
+		740EC95F269DA5C30000718B /* SearchedWinesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740EC95E269DA5C30000718B /* SearchedWinesRepository.swift */; };
 		8A2F32DE2673B7D7002DE6C1 /* SingleRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F32D52673B7D6002DE6C1 /* SingleRepository.swift */; };
 		8A2F32DF2673B7D7002DE6C1 /* InMemoryRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F32D62673B7D7002DE6C1 /* InMemoryRepository.swift */; };
 		8A2F32E02673B7D7002DE6C1 /* InMemoryStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F32D82673B7D7002DE6C1 /* InMemoryStorage.swift */; };
@@ -23,6 +24,7 @@
 
 /* Begin PBXFileReference section */
 		447C346E25EEA24F00105A35 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		740EC95E269DA5C30000718B /* SearchedWinesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchedWinesRepository.swift; sourceTree = "<group>"; };
 		8A2F32D52673B7D6002DE6C1 /* SingleRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleRepository.swift; sourceTree = "<group>"; };
 		8A2F32D62673B7D7002DE6C1 /* InMemoryRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InMemoryRepository.swift; sourceTree = "<group>"; };
 		8A2F32D82673B7D7002DE6C1 /* InMemoryStorage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InMemoryStorage.swift; sourceTree = "<group>"; };
@@ -108,6 +110,7 @@
 				8A2F32D72673B7D7002DE6C1 /* Storage */,
 				8A2F32E62673E4FA002DE6C1 /* NotesRepository.swift */,
 				8AD49F14267516BB0094E157 /* WinesRepository.swift */,
+				740EC95E269DA5C30000718B /* SearchedWinesRepository.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 				8A2F32E12673B7D7002DE6C1 /* FileStorage.swift in Sources */,
 				8A2F32DF2673B7D7002DE6C1 /* InMemoryRepository.swift in Sources */,
 				8A2F32DE2673B7D7002DE6C1 /* SingleRepository.swift in Sources */,
+				740EC95F269DA5C30000718B /* SearchedWinesRepository.swift in Sources */,
 				8A2F32E02673B7D7002DE6C1 /* InMemoryStorage.swift in Sources */,
 				8A2F32E32673B7D7002DE6C1 /* InMemoryStorageWithFilePersistance.swift in Sources */,
 				8AD49F15267516BB0094E157 /* WinesRepository.swift in Sources */,

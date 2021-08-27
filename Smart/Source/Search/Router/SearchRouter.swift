@@ -6,7 +6,9 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import Core
 import UIKit
+import VinchyCore
 
 // MARK: - SearchRouter
 
@@ -15,10 +17,8 @@ final class SearchRouter {
   // MARK: Lifecycle
 
   init(
-    input: SearchInput,
     viewController: UIViewController)
   {
-    self.input = input
     self.viewController = viewController
   }
 
@@ -29,12 +29,17 @@ final class SearchRouter {
 
   // MARK: Private
 
-  private let input: SearchInput
+  private let emailService = EmailService()
 
 }
 
 // MARK: SearchRouterProtocol
 
 extension SearchRouter: SearchRouterProtocol {
-
+  func presentEmailController(HTMLText: String?, recipients: [String]) {
+    let emailController = emailService.getEmailController(
+      HTMLText: HTMLText,
+      recipients: recipients)
+    viewController?.present(emailController, animated: true, completion: nil)
+  }
 }

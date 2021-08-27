@@ -8,11 +8,4 @@
 
 import CommonUI
 
-struct SearchViewModel {
-
-  enum Section {
-    case recentlySearched([WineCollectionViewCellViewModel])
-  }
-
-  let sections: [Section]
-}
+struct SearchViewModel {}

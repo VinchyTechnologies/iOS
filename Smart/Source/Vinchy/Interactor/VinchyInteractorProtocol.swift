@@ -8,16 +8,10 @@
 
 import Foundation
 
-protocol VinchyInteractorProtocol: AnyObject {
+protocol VinchyInteractorProtocol: ResultsSearchDelegate {
   func viewDidLoad()
   func didPullToRefresh()
   func didTapFilter()
-  func didTapDidnotFindWineFromSearch(searchText: String?)
-  func didTapSearchButton(searchText: String?)
-  func didEnterSearchText(_ searchText: String?)
-  func searchBarTextDidBeginEditing()
-  func searchBarCancelButtonClicked()
-  func didTapSuggestionCell(at indexPath: IndexPath)
   func didTapMapButton()
   func didTapBottleCell(wineID: Int64)
   func didTapCompilationCell(input: ShowcaseInput)

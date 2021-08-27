@@ -9,13 +9,7 @@
 import VinchyCore
 
 protocol VinchyPresenterProtocol: AnyObject {
-  var cantFindWineText: String { get }
-  var cantFindWineRecipients: [String] { get }
-
-  func update(compilations: [Compilation], isSearchingMode: Bool)
-  func update(suggestions: [Wine])
-  func update(didFindWines: [ShortWine])
-  func showAlertCantOpenEmail()
+  func update(compilations: [Compilation])
   func startShimmer()
   func stopPullRefreshing()
   func showAlertEmptyCollection()
