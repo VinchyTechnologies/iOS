@@ -2368,7 +2368,6 @@
 				CA8CD67E25097A9A00FDB7AF /* Ads */,
 				CA7B835A24EED6E600991F24 /* StoryCollectionCell.swift */,
 				CA7B835F24EF109200991F24 /* MainSubtitleCollectionCell.swift */,
-				CA7A87E52500169100AAD10F /* VinchySimpleConiniousCaruselCollectionCell.swift */,
 				CA7B836124F0237100991F24 /* SuggestionCollectionCell.swift */,
 				CA7A87F92506B9D600AAD10F /* ShareUsCollectionCell.swift */,
 				CA8CD67525096EC100FDB7AF /* Smart-Bridging-Header.h */,
