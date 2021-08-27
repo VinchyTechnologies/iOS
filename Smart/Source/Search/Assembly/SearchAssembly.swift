@@ -11,16 +11,16 @@ import Foundation
 final class SearchAssembly {
 
   static func assemblyModule() -> SearchViewController {
-    let viewController = SearchViewController()
+    let resultsController = ResultsSearchAssembly.assemblyModule()
+    let viewController = SearchViewController(searchResultsController: resultsController)
+    resultsController.didnotFindTheWineCollectionCellDelegate = viewController
 
-    let router = SearchRouter(input: .init(), viewController: viewController)
+    let router = SearchRouter(viewController: viewController)
     let presenter = SearchPresenter(viewController: viewController)
     let interactor = SearchInteractor(router: router, presenter: presenter)
 
     router.interactor = interactor
     viewController.interactor = interactor
-
     return viewController
   }
-
 }

@@ -36,6 +36,13 @@ final class AdvancedSearchRouter {
 // MARK: AdvancedSearchRouterProtocol
 
 extension AdvancedSearchRouter: AdvancedSearchRouterProtocol {
+
+  func dismiss(selectedFilters: [(String, String)]) {
+    viewController?.dismiss(animated: true, completion: {
+      (self.viewController?.navigationController as? AdvancedSearchNavigationController)?.advancedSearchOutputDelegate?.didChoose(selectedFilters)
+    })
+  }
+
   func presentAllCountries(preSelectedCountryCodes: [String]) {
     viewController?.present(
       Assembly.buildChooseCountiesModule(

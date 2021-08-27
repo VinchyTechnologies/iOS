@@ -36,6 +36,7 @@ final class AdItemView: UIView, EpoxyableView {
 
     adBanner.delegate = self
   }
+
   required init?(coder: NSCoder) { fatalError() }
 
   // MARK: Internal
@@ -55,6 +56,10 @@ final class AdItemView: UIView, EpoxyableView {
   // MARK: ContentConfigurableView
 
   func setContent(_ content: Content, animated: Bool) {
+    isUserInteractionEnabled = true
+    adBanner.isUserInteractionEnabled = true
+    setNeedsLayout()
+    layoutIfNeeded()
   }
 
   // MARK: Private

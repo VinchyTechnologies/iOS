@@ -1,5 +1,5 @@
 //
-//  StarRatingControlCollectionCell .swift
+//  StarRatingControlView .swift
 //  Smart
 //
 //  Created by Tatiana Ampilogova on 2/8/21.
@@ -8,6 +8,7 @@
 
 import CommonUI
 import Display
+import Epoxy
 import UIKit
 
 // MARK: - StarRatingControlCollectionCellDelegate
@@ -18,7 +19,7 @@ protocol StarRatingControlCollectionCellDelegate: AnyObject {
 
 // MARK: - StarRatingControlCollectionViewCellViewModel
 
-struct StarRatingControlCollectionViewCellViewModel: ViewModelProtocol {
+struct StarRatingControlCollectionViewCellViewModel: ViewModelProtocol, Equatable {
 
   fileprivate let rate: Double
 
@@ -27,14 +28,16 @@ struct StarRatingControlCollectionViewCellViewModel: ViewModelProtocol {
   }
 }
 
-// MARK: - StarRatingControlCollectionCell
+// MARK: - StarRatingControlView
 
-final class StarRatingControlCollectionCell: UICollectionViewCell, Reusable {
+final class StarRatingControlView: UIView, EpoxyableView {
 
   // MARK: Lifecycle
 
-  override init(frame: CGRect) {
-    super.init(frame: frame)
+  init(style: Style) {
+    self.style = style
+    super.init(frame: .zero)
+    translatesAutoresizingMaskIntoConstraints = false
 
     let hStack = UIStackView()
     hStack.axis = .horizontal
@@ -46,27 +49,50 @@ final class StarRatingControlCollectionCell: UICollectionViewCell, Reusable {
     hStack.addArrangedSubview(UIView())
 
     hStack.translatesAutoresizingMaskIntoConstraints = false
-    contentView.addSubview(hStack)
+    addSubview(hStack)
     NSLayoutConstraint.activate([
-      hStack.topAnchor.constraint(equalTo: contentView.topAnchor),
-      hStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-      hStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-      hStack.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+      hStack.topAnchor.constraint(equalTo: topAnchor),
+      hStack.leadingAnchor.constraint(equalTo: leadingAnchor),
+      hStack.bottomAnchor.constraint(equalTo: bottomAnchor),
+      hStack.trailingAnchor.constraint(equalTo: trailingAnchor),
     ])
 
     let tap = UITapGestureRecognizer(target: self, action: #selector(didTapStarRatingControl))
     addGestureRecognizer(tap)
+
   }
 
-  @available(*, unavailable)
-  required init?(coder _: NSCoder) { fatalError() }
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
 
   // MARK: Internal
 
+  struct Style: Hashable {
+
+  }
+
+  typealias Content = StarRatingControlCollectionViewCellViewModel
+
+  static var height: CGFloat {
+    32
+  }
+
   weak var delegate: StarRatingControlCollectionCellDelegate?
+
+  func setContent(_ content: Content, animated: Bool) {
+    if content.rate != 0.0 {
+      rateLabel.text = String(format: "%.1f", content.rate)
+      rateLabel.isHidden = false
+    } else {
+      rateLabel.isHidden = true
+    }
+    ratingView.rating = content.rate
+  }
 
   // MARK: Private
 
+  private let style: Style
   private let rateLabel: UILabel = {
     $0.translatesAutoresizingMaskIntoConstraints = false
     $0.font = Font.with(size: 35, design: .round, traits: .bold)
@@ -76,6 +102,7 @@ final class StarRatingControlCollectionCell: UICollectionViewCell, Reusable {
 
   private lazy var ratingView: StarsRatingView = {
     $0.settings.filledColor = .accent
+    $0.settings.filledBorderColor = .accent
     $0.settings.emptyBorderColor = .accent
     $0.settings.starSize = 32
     $0.settings.starMargin = 0
@@ -88,21 +115,5 @@ final class StarRatingControlCollectionCell: UICollectionViewCell, Reusable {
   @objc
   private func didTapStarRatingControl() {
     delegate?.didTapStarRatingControl()
-  }
-}
-
-// MARK: Decoratable
-
-extension StarRatingControlCollectionCell: Decoratable {
-  typealias ViewModel = StarRatingControlCollectionViewCellViewModel
-
-  func decorate(model: ViewModel) {
-    if model.rate != 0.0 {
-      rateLabel.text = String(format: "%.1f", model.rate)
-      rateLabel.isHidden = false
-    } else {
-      rateLabel.isHidden = true
-    }
-    ratingView.rating = model.rate
   }
 }

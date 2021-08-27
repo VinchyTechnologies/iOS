@@ -24,6 +24,7 @@ final class AboutViewController: UIViewController {
     let logoText = Bundle.main.infoDictionary![kCFBundleNameKey as String] as? String
     let childView = UIHostingController(rootView: AboutView(viewModel: AboutViewModel(logoText: logoText, versionText: versionText)))
     addChild(childView)
+    childView.view.backgroundColor = .mainBackground
     view.addSubview(childView.view)
     childView.view.fill()
     childView.didMove(toParent: self)

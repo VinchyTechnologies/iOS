@@ -64,6 +64,7 @@
 "will_recommend_less" = "We'll stop recommending more like this";
 "similar_wines" = "similar wines";
 "write_review" = "leave a review";
+"write_note" = "write a note";
 "update_review" = "update a review";
 "review_placeholder" = "Review (Optional)";
 "did_update_rating" = "we have updated your review";
@@ -78,6 +79,7 @@
 "continue" = "continue";
 "expand" = "more";
 "collapse" = "less";
+"recently_searched" = "вы недавно искали";
 "wine_has_no_reviews_yet" = "This wine has no reviews yet, be the first to write it!";
 "vinchy_recommends" = "vinchy recommends";
 "view_assortment" = "view assortment";

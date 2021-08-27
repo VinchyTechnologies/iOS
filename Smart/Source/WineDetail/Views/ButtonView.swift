@@ -1,5 +1,5 @@
 //
-//  ButtonCollectionCell.swift
+//  ButtonView.swift
 //  Smart
 //
 //  Created by Aleksei Smirnov on 26.08.2020.
@@ -7,6 +7,7 @@
 //
 
 import Display
+import Epoxy
 import UIKit
 
 // MARK: - ButtonCollectionCellDelegate
@@ -17,7 +18,7 @@ protocol ButtonCollectionCellDelegate: AnyObject {
 
 // MARK: - ButtonCollectionCellViewModel
 
-struct ButtonCollectionCellViewModel: ViewModelProtocol {
+struct ButtonCollectionCellViewModel: ViewModelProtocol, Equatable {
   fileprivate let buttonText: String?
 
   public init(buttonText: String?) {
@@ -25,15 +26,16 @@ struct ButtonCollectionCellViewModel: ViewModelProtocol {
   }
 }
 
-// MARK: - ButtonCollectionCell
+// MARK: - ButtonView
 
-final class ButtonCollectionCell: UICollectionViewCell, Reusable {
+final class ButtonView: UIView, EpoxyableView {
 
   // MARK: Lifecycle
 
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-
+  init(style: Style) {
+    self.style = style
+    super.init(frame: .zero)
+    translatesAutoresizingMaskIntoConstraints = false
     button.enable()
     button.addTarget(self, action: #selector(didTap(_:)), for: .touchUpInside)
     addSubview(button)
@@ -41,12 +43,26 @@ final class ButtonCollectionCell: UICollectionViewCell, Reusable {
     button.fill()
   }
 
-  @available(*, unavailable)
-  required init?(coder _: NSCoder) { fatalError() }
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
 
   // MARK: Internal
 
+  struct Style: Hashable {
+  }
+
+  typealias Content = ButtonCollectionCellViewModel
+
+  static var height: CGFloat {
+    48
+  }
+
   weak var delegate: ButtonCollectionCellDelegate?
+
+  func setContent(_ content: Content, animated: Bool) {
+    button.setTitle(content.buttonText, for: [])
+  }
 
   override func layoutSubviews() {
     super.layoutSubviews()
@@ -56,20 +72,11 @@ final class ButtonCollectionCell: UICollectionViewCell, Reusable {
 
   // MARK: Private
 
+  private let style: Style
   private let button = Button()
 
   @objc
   private func didTap(_ button: UIButton) {
     delegate?.didTapReviewButton(button)
-  }
-}
-
-// MARK: Decoratable
-
-extension ButtonCollectionCell: Decoratable {
-  typealias ViewModel = ButtonCollectionCellViewModel
-
-  func decorate(model: ViewModel) {
-    button.setTitle(model.buttonText, for: .normal)
   }
 }

@@ -6,7 +6,9 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+// MARK: - SearchPresenter
+
+import StringFormatting
 
 // MARK: - SearchPresenter
 
@@ -31,5 +33,17 @@ final class SearchPresenter {
 // MARK: SearchPresenterProtocol
 
 extension SearchPresenter: SearchPresenterProtocol {
+  var cantFindWineText: String {
+    localized("email_did_not_find_wine")
+  }
 
+  var cantFindWineRecipients: [String] {
+    [localized("contact_email")]
+  }
+
+  func showAlertCantOpenEmail() {
+    viewController?.showAlert(
+      title: localized("error"),
+      message: localized("open_mail_error"))
+  }
 }

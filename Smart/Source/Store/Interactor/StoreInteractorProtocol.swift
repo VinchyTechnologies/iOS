@@ -8,9 +8,10 @@
 
 import Foundation
 
-protocol StoreInteractorProtocol: AnyObject {
+protocol StoreInteractorProtocol: AdvancedSearchOutputDelegate {
   func viewDidLoad()
   func didSelectWine(wineID: Int64)
   func willDisplayLoadingView()
   func didTapReloadButton()
+  func didTapFilterButton()
 }

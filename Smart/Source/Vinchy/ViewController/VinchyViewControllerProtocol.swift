@@ -9,9 +9,7 @@
 import Display
 import VinchyCore
 
-protocol VinchyViewControllerProtocol: Loadable, Alertable {
-  func updateSearchSuggestions(suggestions: [Wine])
+protocol VinchyViewControllerProtocol: Loadable, Alertable, ScrollableToTop {
   func updateUI(viewModel: VinchyViewControllerViewModel)
-  func updateUI(didFindWines: [ShortWine])
   func stopPullRefreshing()
 }

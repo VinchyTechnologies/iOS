@@ -10,4 +10,5 @@ import Foundation
 
 protocol AdvancedSearchRouterProtocol: ShowcaseRoutable {
   func presentAllCountries(preSelectedCountryCodes: [String])
+  func dismiss(selectedFilters: [(String, String)])
 }

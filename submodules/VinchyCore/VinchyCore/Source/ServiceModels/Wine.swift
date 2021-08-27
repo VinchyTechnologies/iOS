@@ -45,7 +45,6 @@ public struct Wine: Decodable {
     let type = try? container.decodeIfPresent(WineType.self, forKey: .type)
     let sugar = try? container.decodeIfPresent(Sugar.self, forKey: .sugar)
     let similarWines = try? container.decodeIfPresent([ShortWine].self, forKey: .similarWines)
-    let reviews = (try? container.decodeIfPresent([Review].self, forKey: .reviews)) ?? []
     let rating = try? container.decodeIfPresent(Double.self, forKey: .rating)
 
     self.id = id

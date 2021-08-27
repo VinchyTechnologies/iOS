@@ -12,7 +12,7 @@ struct AreYouInStoreViewModel {
 
   enum Section {
     case title([TextCollectionCellViewModel])
-    case recommendedWines([VinchySimpleConiniousCaruselCollectionCellViewModel])
+    case recommendedWines([SimpleContinuousCaruselCollectionCellViewModel])
   }
 
   let sections: [Section]
