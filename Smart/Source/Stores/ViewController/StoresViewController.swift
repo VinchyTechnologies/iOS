@@ -19,10 +19,7 @@ final class StoresViewController: CollectionViewController {
   // MARK: Lifecycle
 
   init() {
-    let layout = SeparatorFlowLayout()
-    layout.sectionHeadersPinToVisibleBounds = true
-    super.init(layout: layout)
-    layout.delegate = self
+    super.init(layout: UICollectionViewFlowLayout())
   }
 
   // MARK: Internal
@@ -43,15 +40,9 @@ final class StoresViewController: CollectionViewController {
         action: #selector(didTapCloseBarButtonItem(_:)))
     }
 
+    collectionView.backgroundColor = .mainBackground
     collectionView.delaysContentTouches = false
     collectionView.scrollDelegate = self
-
-    let filterBarButtonItem = UIBarButtonItem(
-      image: UIImage(named: "edit")?.withRenderingMode(.alwaysTemplate),
-      style: .plain,
-      target: self,
-      action: nil)
-    navigationItem.rightBarButtonItems = [filterBarButtonItem]
     interactor?.viewDidLoad()
   }
 
@@ -80,13 +71,13 @@ final class StoresViewController: CollectionViewController {
             style: .style(with: .lagerTitle))
         }
         .flowLayoutItemSize(.init(width: width, height: height))
-        .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 8, right: 24))
-      case .partners(let itemID, let rows):
+        .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 16, right: 24))
+
+      case .partners(_, let rows):
         return SectionModel(
           dataID: section.dataID,
           items: rows.enumerated().compactMap({ index, partnerContent in
             switch partnerContent {
-
             case .horizontalPartner(let content):
               return HorizontalPartnerView.itemModel(
                 dataID: content.affiliatedStoreId + index,
@@ -95,9 +86,10 @@ final class StoresViewController: CollectionViewController {
                 .didSelect { [weak self] _ in
                   self?.interactor?.didSelectPartner(affiliatedStoreId: content.affiliatedStoreId)
                 }
-                .flowLayoutItemSize(.init(width: view.frame.width, height: 150))
+                .flowLayoutItemSize(.init(width: view.frame.width, height: 160))
             }
-          })).flowLayoutMinimumLineSpacing(10)
+          }))
+          .flowLayoutMinimumLineSpacing(10)
 
       case .loading(let itemID):
         return SectionModel(dataID: section.dataID) {
@@ -109,14 +101,6 @@ final class StoresViewController: CollectionViewController {
         .flowLayoutItemSize(.init(width: view.frame.width, height: LoadingView.height))
         .flowLayoutSectionInset(.init(top: 16, left: 0, bottom: 16, right: 0))
       }
-    }
-  }
-
-  private func updateShadowSupplementaryHeaderView(offset: CGFloat) {
-    if let heightBeforeSupplementaryHeader = heightBeforeSupplementaryHeader {
-      let value: CGFloat = offset - heightBeforeSupplementaryHeader + 50
-      let alpha = min(1, max(0, value / 10))
-      supplementaryView?.layer.shadowOpacity = Float(alpha / 2.0)
     }
   }
 
@@ -171,34 +155,14 @@ extension StoresViewController: StoresViewControllerProtocol {
   }
 }
 
-// MARK: SeparatorFlowLayoutDelegate
-
-extension StoresViewController: SeparatorFlowLayoutDelegate {
-  func collectionView(
-    _ collectionView: UICollectionView,
-    layout collectionViewLayout: SeparatorFlowLayout,
-    shouldShowSeparatorBelowItemAt indexPath: IndexPath)
-    -> Bool
-  {
-    switch viewModel.sections[indexPath.section] {
-    case .title, .loading, .partners:
-      return false
-    }
-  }
-}
-
 // MARK: UIScrollViewDelegate
 
 extension StoresViewController: UIScrollViewDelegate {
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
-    if scrollView.contentOffset.y > 50 { // TODO: -
+    if scrollView.contentOffset.y > 25 { // TODO: -
       navigationItem.title = viewModel.navigationTitleText
     } else {
       navigationItem.title = nil
-    }
-
-    if heightBeforeSupplementaryHeader != nil {
-      updateShadowSupplementaryHeaderView(offset: scrollView.contentOffset.y)
     }
   }
 }

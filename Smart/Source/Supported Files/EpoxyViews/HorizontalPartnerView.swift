@@ -82,9 +82,10 @@ final class HorizontalPartnerView: UIView, EpoxyableView {
     stackView.addArrangedSubview(titleLabel)
     stackView.addArrangedSubview(subtitleLabel)
     stackView.addArrangedSubview(scheduleOfWorkTitle)
-    stackView.distribution = .fill
+    stackView.addArrangedSubview(UIView())
     stackView.alignment = .top
     stackView.axis = .vertical
+    stackView.spacing = 4
     stackView.translatesAutoresizingMaskIntoConstraints = false
     background.addSubview(stackView)
     NSLayoutConstraint.activate([
@@ -94,7 +95,10 @@ final class HorizontalPartnerView: UIView, EpoxyableView {
       stackView.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -10),
     ])
   }
-  required init?(coder: NSCoder) { fatalError() }
+
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
 
   // MARK: Internal
 

@@ -189,6 +189,10 @@ final class WineDetailInteractor {
 
 extension WineDetailInteractor: WineDetailInteractorProtocol {
 
+  func didTapSeeAllStores() {
+    router.pushToSeeAllStores(wineID: input.wineID)
+  }
+
   func didSelectStore(affilatedId: Int) {
     router.presentStore(affilatedId: affilatedId)
   }

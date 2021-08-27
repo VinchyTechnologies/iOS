@@ -8,6 +8,7 @@
 
 import CommonUI
 import StringFormatting
+import VinchyCore
 
 // MARK: - StoresPresenter
 
@@ -32,14 +33,14 @@ final class StoresPresenter {
 
 extension StoresPresenter: StoresPresenterProtocol {
 
-  func update(data: StoresInteractorData, needLoadMore: Bool) {
+  func update(partnersInfo: [PartnerInfo], needLoadMore: Bool) {
 
     var sections: [StoresViewModel.Section] = []
 
-    if !data.partnersInfo.isEmpty {
+    if !partnersInfo.isEmpty {
       sections += [.title(localized("all_shops").firstLetterUppercased())]
 
-      let partnersContent: [StoresViewModel.PartnersContent] = data.partnersInfo.map({ partner in
+      let partnersContent: [StoresViewModel.PartnersContent] = partnersInfo.map({ partner in
         StoresViewModel.PartnersContent.horizontalPartner(.init(affiliatedStoreId: partner.affiliatedStoreId, imageURL: partner.logoURL?.toURL, titleText: partner.title, subtitleText: partner.address, scheduleOfWorkText: partner.scheduleOfWork))
       })
 
@@ -50,7 +51,7 @@ extension StoresPresenter: StoresPresenterProtocol {
       }
     }
 
-    let viewModel = StoresViewModel(sections: sections, navigationTitleText: "название вина")
+    let viewModel = StoresViewModel(sections: sections, navigationTitleText: localized("all_shops").firstLetterUppercased())
     viewController?.updateUI(viewModel: viewModel)
   }
 

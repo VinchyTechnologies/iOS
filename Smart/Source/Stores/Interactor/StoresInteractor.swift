@@ -15,12 +15,6 @@ fileprivate enum C {
   static let limit: Int = 40
 }
 
-// MARK: - StoresInteractorData
-
-struct StoresInteractorData {
-  let partnersInfo: [PartnerInfo]
-}
-
 // MARK: - StoresInteractorError
 
 enum StoresInteractorError: Error {
@@ -55,10 +49,8 @@ final class StoresInteractor {
   private let router: StoresRouterProtocol
   private let presenter: StoresPresenterProtocol
   private let input: StoresInput
-  private let stateMachine = PagingStateMachine<StoresInteractorData>()
-  private let dispatchGroup = DispatchGroup()
-  private var partnersInfo: [PartnerInfo]?
-  private var data: StoresInteractorData?
+  private let stateMachine = PagingStateMachine<[PartnerInfo]>()
+  private var partnersInfo: [PartnerInfo] = []
 
   private func configureStateMachine() {
     stateMachine.observe { [weak self] oldState, newState, _ in
@@ -79,14 +71,14 @@ final class StoresInteractor {
     }
   }
 
-  private func handleLoadedData(_ data: StoresInteractorData, oldState: PagingState<StoresInteractorData>) {
+  private func handleLoadedData(_ data: [PartnerInfo], oldState: PagingState<[PartnerInfo]>) {
     var needLoadMore: Bool
     switch oldState {
     case .error, .loaded, .initial:
       needLoadMore = false
 
     case .loading(let offset):
-      needLoadMore = (self.data?.partnersInfo.count ?? 0) == offset + C.limit
+      needLoadMore = partnersInfo.count == offset + C.limit
     }
 
     showData(needLoadMore: needLoadMore)
@@ -108,62 +100,48 @@ final class StoresInteractor {
       }
 
     } else {
-      guard let data = data else {
-        return
-      }
-      presenter.update(data: data, needLoadMore: needLoadMore)
+      presenter.update(partnersInfo: partnersInfo, needLoadMore: needLoadMore)
     }
   }
 
   private func loadData(offset: Int) {
-    var generalError: StoresInteractorError?
-    if partnersInfo == nil {
-      dispatchGroup.enter()
-      Partners.shared.getPartnersByWine(wineID: input.wineID, latitude: 55.755786, longitude: 37.617633, limit: C.limit, offset: offset) { [weak self] result in
+    Partners.shared.getPartnersByWine(
+      wineID: input.wineID,
+      latitude: 55.755786,
+      longitude: 37.617633,
+      limit: C.limit,
+      offset: offset) { [weak self] result in
         guard let self = self else { return }
         switch result {
         case .success(let response):
-          self.partnersInfo = response
-        case .failure(let error):
-          generalError = .initialLoading(error)
-          print(error.localizedDescription)
-        }
-        self.dispatchGroup.leave()
-      }
-    }
+          self.partnersInfo += response
+          self.stateMachine.invokeSuccess(with: self.partnersInfo)
 
-    dispatchGroup.notify(queue: .main) {
-      if let partnersInfo = self.partnersInfo {
-        let data = StoresInteractorData(partnersInfo: partnersInfo)
-        self.data = data
-        self.stateMachine.invokeSuccess(with: data)
-      } else {
-        if let error = generalError {
+        case .failure(let error):
           self.stateMachine.fail(with: error)
         }
-      }
     }
   }
+
   private func loadInitData() {
     stateMachine.load(offset: .zero)
   }
 
   private func loadMoreData() {
-    guard let data = data else { return }
-    stateMachine.load(offset: data.partnersInfo.count)
+    stateMachine.load(offset: partnersInfo.count)
   }
 }
 
 // MARK: StoresInteractorProtocol
 
 extension StoresInteractor: StoresInteractorProtocol {
+
   func didSelectPartner(affiliatedStoreId: Int) {
     router.presentStore(affilatedId: affiliatedStoreId)
   }
 
   func willDisplayLoadingView() {
     loadMoreData()
-
   }
 
   func didTapReloadButton() {

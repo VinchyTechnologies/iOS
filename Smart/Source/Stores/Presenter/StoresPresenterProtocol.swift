@@ -6,10 +6,10 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import VinchyCore
 
 protocol StoresPresenterProtocol: AnyObject {
-  func update(data: StoresInteractorData, needLoadMore: Bool)
+  func update(partnersInfo: [PartnerInfo], needLoadMore: Bool)
   func startLoading()
   func stopLoading()
   func showErrorAlert(error: Error)

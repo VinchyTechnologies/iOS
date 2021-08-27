@@ -251,7 +251,12 @@ final class WineDetailPresenter {
 
     if let stores = stores, !stores.isEmpty {
       sections += [
-        .title(itemID: .whereToBuyTitle, localized("where_to_buy").firstLetterUppercased()),
+        .ratingAndReview(
+          itemID: .whereToBuyTitle,
+          content: TitleAndMoreView.Content(
+            titleText: localized("where_to_buy").firstLetterUppercased(),
+            moreText: localized("see_all").firstLetterUppercased(),
+            shouldShowMoreText: stores.count >= 5)),
       ]
 
       let storeViewModels: [WhereToBuyCellViewModel] = stores.compactMap { partner in

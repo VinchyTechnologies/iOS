@@ -27,4 +27,5 @@ protocol WineDetailInteractorProtocol: AnyObject {
   func didScrollStopped()
   func didShowTutorial()
   func didSelectStore(affilatedId: Int)
+  func didTapSeeAllStores()
 }
