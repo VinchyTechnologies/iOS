@@ -6,13 +6,22 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import AudioToolbox
 import CommonUI
+import CoreHaptics
 import Display
 import Epoxy
+import StringFormatting
+
+// MARK: - Constants
+
+private enum Constants {
+  static let vibrationSoundId: SystemSoundID = 1519
+}
 
 // MARK: - WineBottleView
 
-final class WineBottleView: UIView, EpoxyableView {
+final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDelegate {
 
   // MARK: Lifecycle
 
@@ -61,8 +70,12 @@ final class WineBottleView: UIView, EpoxyableView {
       stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
       stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5),
     ])
-  }
 
+    let longPressedGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureRecognizer:)))
+    longPressedGesture.minimumPressDuration = 0.45
+    longPressedGesture.delegate = self
+    addGestureRecognizer(longPressedGesture)
+  }
   required init?(coder: NSCoder) { fatalError() }
 
   // MARK: Internal
@@ -70,10 +83,20 @@ final class WineBottleView: UIView, EpoxyableView {
   struct Style: Hashable {
 
   }
-
+  struct Behaviors {
+    var didTapShareContextMenu: ((_ wineID: Int64) -> Void)?
+    var didTapLeaveReviewContextMenu: ((_ wineID: Int64) -> Void)?
+    var didTapWriteNoteContextMenu: ((_ wineID: Int64) -> Void)?
+  }
   // MARK: ContentConfigurableView
 
   typealias Content = WineCollectionViewCellViewModel
+
+  func setBehaviors(_ behaviors: Behaviors?) {
+    didTapShareContextMenu = behaviors!.didTapShareContextMenu
+    didTapWriteNoteContextMenu = behaviors?.didTapWriteNoteContextMenu
+    didTapLeaveReviewContextMenu = behaviors?.didTapLeaveReviewContextMenu
+  }
 
   func setContent(_ content: Content, animated: Bool) {
     bottleImageView.loadBottle(url: content.imageURL)
@@ -91,9 +114,19 @@ final class WineBottleView: UIView, EpoxyableView {
     } else {
       subtitleLabel.isHidden = true
     }
+
+    wineID = content.wineID
   }
 
   // MARK: Private
+
+  private var didTapWriteNoteContextMenu: ((_ wineID: Int64) -> Void)?
+  private var didTapLeaveReviewContextMenu: ((_ wineID: Int64) -> Void)?
+  private var didTapShareContextMenu: ((_ wineID: Int64) -> Void)?
+
+  private lazy var hapticGenerator = UISelectionFeedbackGenerator()
+
+  private var wineID: Int64?
 
   private let background = UIView()
 
@@ -118,6 +151,34 @@ final class WineBottleView: UIView, EpoxyableView {
     label.textAlignment = .center
     return label
   }()
+
+  @objc
+  private func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
+    if gestureRecognizer.state != .began {
+      return
+    }
+    if CHHapticEngine.capabilitiesForHardware().supportsHaptics {
+      HapticEffectHelper.vibrate(withEffect: .heavy)
+    } else {
+      AudioServicesPlaySystemSound(Constants.vibrationSoundId)
+    }
+    let writeNote = ContextMenuItemWithImage(title: localized("write_note").firstLetterUppercased(), image: UIImage(systemName: "square.and.pencil")) { [weak self] in
+      guard let wineID = self?.wineID else { return }
+      self?.didTapWriteNoteContextMenu?(wineID)
+    }
+    let leaveReview = ContextMenuItemWithImage(title: localized("write_review").firstLetterUppercased(), image: UIImage(systemName: "text.bubble")) { [weak self] in
+      guard let wineID = self?.wineID else { return }
+      self?.didTapLeaveReviewContextMenu?(wineID)
+    }
+
+    let share = ContextMenuItemWithImage(title: localized("share_link").firstLetterUppercased(), image: UIImage(systemName: "square.and.arrow.up")) { [weak self] in
+      guard let wineID = self?.wineID else { return }
+      self?.didTapShareContextMenu?(wineID)
+    }
+
+    CM.items = [writeNote, leaveReview, share]
+    CM.showMenu(viewTargeted: self, animated: true)
+  }
 }
 
 // MARK: HighlightableView

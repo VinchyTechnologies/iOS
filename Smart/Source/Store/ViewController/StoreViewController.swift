@@ -132,9 +132,20 @@ final class StoreViewController: CollectionViewController {
           BottlesCollectionView.itemModel(
             dataID: itemID,
             content: content,
-            behaviors: .init(didTap: { [weak self] wineID in
-              self?.interactor?.didSelectWine(wineID: wineID)
-            }),
+            behaviors: .init(
+              didTap: { [weak self] wineID in
+                self?.interactor?.didSelectWine(wineID: wineID)
+              },
+              didTapShareContextMenu: { [weak self] wineID in
+                print("share")
+//              self?.interactor?.didTapShareContextMenu(wineID: wineID)
+              },
+              didTapLeaveReviewContextMenu: { [weak self] wineID in
+//              self?.interactor?.didTapLeaveReviewContextMenu(wineID: wineID)
+              },
+              didTapWriteNoteContextMenu: { [weak self] wineID in
+//              self?.interactor?.didTapWriteNoteContextMenu(wineID: wineID)
+              }),
             style: .init())
         }
         .flowLayoutItemSize(.init(width: view.frame.width, height: 250))

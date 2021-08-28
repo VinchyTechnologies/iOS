@@ -8,6 +8,8 @@
 
 import Epoxy
 
+// MARK: - BottlesCollectionView
+
 final class BottlesCollectionView: CollectionView, EpoxyableView {
 
   // MARK: Lifecycle
@@ -21,6 +23,9 @@ final class BottlesCollectionView: CollectionView, EpoxyableView {
 
   struct Behaviors {
     var didTap: ((_ wineID: Int64) -> Void)?
+    var didTapShareContextMenu: ((_ wineID: Int64) -> Void)?
+    var didTapLeaveReviewContextMenu: ((_ wineID: Int64) -> Void)?
+    var didTapWriteNoteContextMenu: ((_ wineID: Int64) -> Void)?
   }
   struct Style: Hashable {
 
@@ -30,6 +35,9 @@ final class BottlesCollectionView: CollectionView, EpoxyableView {
 
   func setBehaviors(_ behaviors: Behaviors?) {
     didTap = behaviors?.didTap
+    didTapShareContextMenu = behaviors?.didTapShareContextMenu
+    didTapWriteNoteContextMenu = behaviors?.didTapWriteNoteContextMenu
+    didTapLeaveReviewContextMenu = behaviors?.didTapLeaveReviewContextMenu
   }
 
   func setContent(_ content: Content, animated: Bool) {
@@ -39,6 +47,7 @@ final class BottlesCollectionView: CollectionView, EpoxyableView {
         WineBottleView.itemModel(
           dataID: index,
           content: wineCollectionViewCellViewModel,
+          behaviors: .init(didTapShareContextMenu: didTapShareContextMenu, didTapLeaveReviewContextMenu: didTapLeaveReviewContextMenu, didTapWriteNoteContextMenu: didTapWriteNoteContextMenu),
           style: .init())
           .didSelect { [weak self] _ in
             self?.didTap?(wineCollectionViewCellViewModel.wineID)
@@ -57,6 +66,9 @@ final class BottlesCollectionView: CollectionView, EpoxyableView {
   }
 
   private var didTap: ((_ wineID: Int64) -> Void)?
+  private var didTapWriteNoteContextMenu: ((_ wineID: Int64) -> Void)?
+  private var didTapLeaveReviewContextMenu: ((_ wineID: Int64) -> Void)?
+  private var didTapShareContextMenu: ((_ wineID: Int64) -> Void)?
 
   private var layoutSection: NSCollectionLayoutSection? {
     let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .absolute(150), heightDimension: .absolute(250)))
