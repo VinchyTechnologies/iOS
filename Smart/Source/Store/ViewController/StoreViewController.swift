@@ -141,10 +141,10 @@ final class StoreViewController: CollectionViewController {
 //              self?.interactor?.didTapShareContextMenu(wineID: wineID)
               },
               didTapLeaveReviewContextMenu: { [weak self] wineID in
-//              self?.interactor?.didTapLeaveReviewContextMenu(wineID: wineID)
+                print("Review")
               },
               didTapWriteNoteContextMenu: { [weak self] wineID in
-//              self?.interactor?.didTapWriteNoteContextMenu(wineID: wineID)
+                print("Note")
               }),
             style: .init())
         }

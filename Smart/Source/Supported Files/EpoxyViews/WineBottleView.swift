@@ -93,7 +93,7 @@ final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDelegate {
   typealias Content = WineCollectionViewCellViewModel
 
   func setBehaviors(_ behaviors: Behaviors?) {
-    didTapShareContextMenu = behaviors!.didTapShareContextMenu
+    didTapShareContextMenu = behaviors?.didTapShareContextMenu
     didTapWriteNoteContextMenu = behaviors?.didTapWriteNoteContextMenu
     didTapLeaveReviewContextMenu = behaviors?.didTapLeaveReviewContextMenu
   }
