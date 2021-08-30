@@ -289,17 +289,6 @@ final class WineDetailViewController: CollectionViewController {
           BottlesCollectionView.itemModel(
             dataID: itemID,
             content: content,
-            behaviors: .init(
-              didTap: { [weak self] wineID in
-                self?.interactor?.didTapSimilarWine(wineID: wineID)
-              },
-              didTapShareContextMenu: { [weak self] wineID in
-                print("share")
-              }, didTapLeaveReviewContextMenu: { [weak self] wineID in
-                print("review")
-              }, didTapWriteNoteContextMenu: { [weak self] wineID in
-                print("note")
-              }),
             style: .init())
         }
         .flowLayoutItemSize(.init(width: collectionView.frame.width, height: 250))

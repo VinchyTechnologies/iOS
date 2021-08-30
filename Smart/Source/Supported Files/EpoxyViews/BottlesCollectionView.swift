@@ -21,24 +21,27 @@ final class BottlesCollectionView: CollectionView, EpoxyableView {
 
   // MARK: Internal
 
-  struct Behaviors {
-    var didTap: ((_ wineID: Int64) -> Void)?
-    var didTapShareContextMenu: ((_ wineID: Int64) -> Void)?
-    var didTapLeaveReviewContextMenu: ((_ wineID: Int64) -> Void)?
-    var didTapWriteNoteContextMenu: ((_ wineID: Int64) -> Void)?
-  }
+//  struct Behaviors {
+//    var didTap: ((_ wineID: Int64) -> Void)?
+//    var didTapShareContextMenu: ((_ wineID: Int64) -> Void)?
+//    var didTapLeaveReviewContextMenu: ((_ wineID: Int64) -> Void)?
+//    var didTapWriteNoteContextMenu: ((_ wineID: Int64) -> Void)?
+//  }
   struct Style: Hashable {
 
   }
 
   typealias Content = [WineBottleView.Content]
 
-  func setBehaviors(_ behaviors: Behaviors?) {
-    didTap = behaviors?.didTap
-    didTapShareContextMenu = behaviors?.didTapShareContextMenu
-    didTapWriteNoteContextMenu = behaviors?.didTapWriteNoteContextMenu
-    didTapLeaveReviewContextMenu = behaviors?.didTapLeaveReviewContextMenu
-  }
+
+  weak var contextMenuDelegate: WineBottleViewDelegate?
+
+//  func setBehaviors(_ behaviors: Behaviors?) {
+//    didTap = behaviors?.didTap
+//    didTapShareContextMenuClosure = behaviors?.didTapShareContextMenu
+//    didTapWriteNoteContextMenu = behaviors?.didTapWriteNoteContextMenu
+//    didTapLeaveReviewContextMenu = behaviors?.didTapLeaveReviewContextMenu
+//  }
 
   func setContent(_ content: Content, animated: Bool) {
 
@@ -47,8 +50,10 @@ final class BottlesCollectionView: CollectionView, EpoxyableView {
         WineBottleView.itemModel(
           dataID: index,
           content: wineCollectionViewCellViewModel,
-          behaviors: .init(didTapShareContextMenu: didTapShareContextMenu, didTapLeaveReviewContextMenu: didTapLeaveReviewContextMenu, didTapWriteNoteContextMenu: didTapWriteNoteContextMenu),
           style: .init())
+          .setBehaviors({ [weak self] context in
+            context.view.delegate = self?.contextMenuDelegate
+          })
           .didSelect { [weak self] _ in
             self?.didTap?(wineCollectionViewCellViewModel.wineID)
           }
@@ -68,7 +73,7 @@ final class BottlesCollectionView: CollectionView, EpoxyableView {
   private var didTap: ((_ wineID: Int64) -> Void)?
   private var didTapWriteNoteContextMenu: ((_ wineID: Int64) -> Void)?
   private var didTapLeaveReviewContextMenu: ((_ wineID: Int64) -> Void)?
-  private var didTapShareContextMenu: ((_ wineID: Int64) -> Void)?
+  private var didTapShareContextMenuClosure: ((_ wineID: Int64) -> Void)?
 
   private var layoutSection: NSCollectionLayoutSection? {
     let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .absolute(150), heightDimension: .absolute(250)))
@@ -78,5 +83,13 @@ final class BottlesCollectionView: CollectionView, EpoxyableView {
     section.orthogonalScrollingBehavior = .continuous
     section.contentInsets = .init(top: 0, leading: 24, bottom: 0, trailing: 24)
     return section
+  }
+}
+
+// MARK: WineBottleViewDelegate
+
+extension BottlesCollectionView: WineBottleViewDelegate {
+  func didTapShareContextMenu(wineID: Int64) {
+    contextMenuDelegate?.didTapShareContextMenu(wineID: wineID)
   }
 }

@@ -132,21 +132,10 @@ final class StoreViewController: CollectionViewController {
           BottlesCollectionView.itemModel(
             dataID: itemID,
             content: content,
-            behaviors: .init(
-              didTap: { [weak self] wineID in
-                self?.interactor?.didSelectWine(wineID: wineID)
-              },
-              didTapShareContextMenu: { [weak self] wineID in
-                print("share")
-//              self?.interactor?.didTapShareContextMenu(wineID: wineID)
-              },
-              didTapLeaveReviewContextMenu: { [weak self] wineID in
-                print("Review")
-              },
-              didTapWriteNoteContextMenu: { [weak self] wineID in
-                print("Note")
-              }),
             style: .init())
+            .setBehaviors({ [weak self] context in
+              context.view.contextMenuDelegate = self
+            })
         }
         .flowLayoutItemSize(.init(width: view.frame.width, height: 250))
         .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 16, right: 0))
@@ -349,5 +338,13 @@ extension StoreViewController: Loadable {
   func startLoadingAnimation() {
     hideErrorView()
     loadingIndicator.isAnimating = true
+  }
+}
+
+// MARK: WineBottleViewDelegate
+
+extension StoreViewController: WineBottleViewDelegate {
+  func didTapShareContextMenu(wineID: Int64) {
+    print("sdglnl")
   }
 }

@@ -13,6 +13,12 @@ import Display
 import Epoxy
 import StringFormatting
 
+// MARK: - WineBottleViewDelegate
+
+protocol WineBottleViewDelegate: AnyObject {
+  func didTapShareContextMenu(wineID: Int64)
+}
+
 // MARK: - Constants
 
 private enum Constants {
@@ -76,6 +82,7 @@ final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDelegate {
     longPressedGesture.delegate = self
     addGestureRecognizer(longPressedGesture)
   }
+
   required init?(coder: NSCoder) { fatalError() }
 
   // MARK: Internal
@@ -83,20 +90,26 @@ final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDelegate {
   struct Style: Hashable {
 
   }
-  struct Behaviors {
-    var didTapShareContextMenu: ((_ wineID: Int64) -> Void)?
-    var didTapLeaveReviewContextMenu: ((_ wineID: Int64) -> Void)?
-    var didTapWriteNoteContextMenu: ((_ wineID: Int64) -> Void)?
-  }
+//  struct Behaviors {
+//    var didTapShareContextMenu: ((_ wineID: Int64) -> Void)?
+//    var didTapLeaveReviewContextMenu: ((_ wineID: Int64) -> Void)?
+//    var didTapWriteNoteContextMenu: ((_ wineID: Int64) -> Void)?
+//  }
   // MARK: ContentConfigurableView
 
   typealias Content = WineCollectionViewCellViewModel
 
-  func setBehaviors(_ behaviors: Behaviors?) {
-    didTapShareContextMenu = behaviors?.didTapShareContextMenu
-    didTapWriteNoteContextMenu = behaviors?.didTapWriteNoteContextMenu
-    didTapLeaveReviewContextMenu = behaviors?.didTapLeaveReviewContextMenu
-  }
+
+  weak var delegate: WineBottleViewDelegate?
+
+//  func setBehaviors(_ behaviors: Behaviors?) {
+//
+//    print(behaviors == nil, behaviors?.didTapWriteNoteContextMenu == nil)
+//
+//    didTapShareContextMenu = behaviors?.didTapShareContextMenu
+//    didTapWriteNoteContextMenu = behaviors?.didTapWriteNoteContextMenu
+//    didTapLeaveReviewContextMenu = behaviors?.didTapLeaveReviewContextMenu
+//  }
 
   func setContent(_ content: Content, animated: Bool) {
     bottleImageView.loadBottle(url: content.imageURL)
@@ -173,7 +186,8 @@ final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDelegate {
 
     let share = ContextMenuItemWithImage(title: localized("share_link").firstLetterUppercased(), image: UIImage(systemName: "square.and.arrow.up")) { [weak self] in
       guard let wineID = self?.wineID else { return }
-      self?.didTapShareContextMenu?(wineID)
+      self?.delegate?.didTapShareContextMenu(wineID: wineID)
+//      self?.didTapShareContextMenu?(wineID)
     }
 
     CM.items = [writeNote, leaveReview, share]
