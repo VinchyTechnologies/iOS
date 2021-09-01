@@ -77,7 +77,8 @@ final class ProfileCell: UICollectionViewCell, Reusable {
 
   private let accessoryIndicatorView: UIImageView = {
     $0.translatesAutoresizingMaskIntoConstraints = false
-    $0.image = UIImage(named: "fill1Copy")
+    let imageConfig = UIImage.SymbolConfiguration(pointSize: 10, weight: .semibold, scale: .default)
+    $0.image = UIImage(systemName: "chevron.right", withConfiguration: imageConfig)?.withTintColor(.blueGray, renderingMode: .alwaysOriginal)
     $0.contentMode = .scaleAspectFit
     return $0
   }(UIImageView())
