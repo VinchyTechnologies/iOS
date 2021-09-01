@@ -67,6 +67,7 @@ final class MapDetailStoreViewController: UIViewController {
     $0.dataSource = self
     $0.delegate = self
     $0.clipsToBounds = true
+    $0.delaysContentTouches = false
     $0.contentInset = .init(top: 0 /* pull Bar height */, left: 0, bottom: 10, right: 0)
     $0.register(
       TextCollectionCell.self,

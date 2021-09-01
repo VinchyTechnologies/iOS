@@ -104,7 +104,7 @@ final class TitleAndMoreView: UIView, EpoxyableView {
 
   private let style: Style
   private let titleLabel = UILabel()
-  private let moreButton = UIButton()
+  private let moreButton = UIButton(type: .system)
 
   @objc
   private func didTapSeeAllButton(_: UIButton) {
