@@ -80,7 +80,7 @@ final class StoresViewController: CollectionViewController {
             switch partnerContent {
             case .horizontalPartner(let content):
               return HorizontalPartnerView.itemModel(
-                dataID: content.affiliatedStoreId + index,
+                dataID: content.affiliatedStoreId + index * index,
                 content: content,
                 style: .init())
                 .didSelect { [weak self] _ in
