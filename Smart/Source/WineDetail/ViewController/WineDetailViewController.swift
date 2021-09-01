@@ -227,13 +227,19 @@ final class WineDetailViewController: CollectionViewController {
           TitleAndMoreView.itemModel(
             dataID: itemID,
             content: content,
+            behaviors: .init(didTap: { [weak self] in
+              if itemID == .whereToBuyTitle {
+                self?.interactor?.didTapSeeAllStores()
+              }
+
+              if itemID == .titleReviews {
+                self?.interactor?.didTapSeeAllReviews()
+              }
+            }),
             style: .init())
-            .setBehaviors { [weak self] context in
-              context.view.delegate = self
-            }
         }
         .flowLayoutItemSize(.init(width: width, height: height))
-        .flowLayoutSectionInset(.init(top: 16, left: 24, bottom: 8, right: 24))
+        .flowLayoutSectionInset(.init(top: 16, left: 24, bottom: 16, right: 24))
 
       case .reviews(let itemID, let content):
         return SectionModel(dataID: section.dataID) {

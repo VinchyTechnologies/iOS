@@ -1,0 +1,15 @@
+//
+//  StoresViewControllerProtocol.swift
+//  Smart
+//
+//  Created by Михаил Исаченко on 08.08.2021.
+//  Copyright © 2021 Aleksei Smirnov. All rights reserved.
+//
+
+import CommonUI
+import Display
+
+protocol StoresViewControllerProtocol: Loadable, Alertable {
+  func updateUI(viewModel: StoresViewModel)
+  func updateUI(errorViewModel: ErrorViewModel)
+}

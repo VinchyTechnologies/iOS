@@ -18,4 +18,5 @@ protocol WineDetailRouterProtocol: WineDetailRoutable, ReviewsRoutable, ReviewDe
   func presentEmailController(HTMLText: String?, recipients: [String])
   func showMoreActionSheet(menuItems: [MenuItem], appearance: ActionSheetAppearance, button: UIButton)
   func presentStore(affilatedId: Int)
+  func pushToSeeAllStores(wineID: Int64)
 }
