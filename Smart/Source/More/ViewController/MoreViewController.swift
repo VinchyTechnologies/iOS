@@ -33,7 +33,13 @@ final class MoreViewController: UIViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    navigationController?.setNavigationBarHidden(true, animated: true)
     interactor?.viewDidLoad()
+  }
+
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    navigationController?.setNavigationBarHidden(false, animated: true)
   }
 
   override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -62,6 +68,7 @@ final class MoreViewController: UIViewController {
 
     collectionView.dataSource = self
     collectionView.delegate = self
+    collectionView.contentInset = .init(top: 16, left: 0, bottom: 0, right: 0)
 
     return collectionView
   }()

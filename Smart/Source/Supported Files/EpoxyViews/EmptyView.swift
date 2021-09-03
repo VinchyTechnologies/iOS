@@ -94,11 +94,9 @@ public final class EmptyView: UIView, EpoxyableView {
 
   }
 
-
   public typealias Content = EmptyViewModel
 
   public weak var delegate: EmptyViewDelegate?
-
 
   public func setContent(_ content: Content, animated: Bool) {
     titleLabel.text = content.titleText

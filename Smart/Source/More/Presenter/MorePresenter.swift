@@ -93,7 +93,7 @@ final class MorePresenter {
 
     return MoreViewControllerModel(
       sections: sections,
-      navigationTitle: localized("info").firstLetterUppercased())
+      navigationTitle: nil)
   }
 }
 

@@ -22,7 +22,6 @@ final class SimpleContinuosCarouselCollectionCellConfigurator: Configurator {
 
   typealias View = SimpleContinuousCaruselCollectionCellView
 
-
   weak var delegate: SimpleContinuosCarouselCollectionCellInteractorDelegate?
 
   func configure(view: SimpleContinuousCaruselCollectionCellView, with input: SimpleContinuosCarouselCollectionCellInput) {

@@ -44,7 +44,7 @@ final class ProfileCell: UICollectionViewCell, Reusable {
       vStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
       vStack.topAnchor.constraint(equalTo: contentView.topAnchor),
       vStack.trailingAnchor.constraint(equalTo: accessoryIndicatorView.leadingAnchor, constant: -5),
-      vStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+      vStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
     ])
   }
 

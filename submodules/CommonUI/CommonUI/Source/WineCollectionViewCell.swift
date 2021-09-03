@@ -17,7 +17,6 @@ public struct WineCollectionViewCellViewModel: ViewModelProtocol, Hashable {
   public let titleText: String?
   public let subtitleText: String?
 
-
   public init(wineID: Int64, imageURL: URL?, titleText: String?, subtitleText: String?) {
     self.wineID = wineID
     self.imageURL = imageURL
