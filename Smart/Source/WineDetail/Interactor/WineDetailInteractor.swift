@@ -20,14 +20,12 @@ enum WineDetailMoreActions {
   case dislike
 }
 
-// MARK: - ActionAfterLoginOrRegistration
-
-private enum ActionAfterLoginOrRegistration {
-  case writeReview
-  case none
-}
-
 // MARK: - WineDetailInteractor
+
+//private enum ActionAfterLoginOrRegistration {
+//  case writeReview
+//  case none
+//}
 
 final class WineDetailInteractor {
 

@@ -28,6 +28,11 @@ final class StorePresenter {
 // MARK: StorePresenterProtocol
 
 extension StorePresenter: StorePresenterProtocol {
+  func showNetworkErrorAlert(error: Error) {
+    viewController?.showAlert(
+      title: localized("error").firstLetterUppercased(),
+      message: error.localizedDescription)
+  }
 
   func setLoadingFilters(data: StoreInteractorData) {
     var sections: [StoreViewModel.Section] = []

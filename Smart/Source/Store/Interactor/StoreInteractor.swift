@@ -48,18 +48,24 @@ final class StoreInteractor {
     configureStateMachine()
   }
 
-  // MARK: Private
+  // MARK: Internal
 
-  private lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
+  internal lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
     guard let self = self else { return }
     self.presenter.startLoading()
   }
 
+  internal let dispatchGroup = DispatchGroup()
+
+  var contextMenuWine: Wine?
+
+  // MARK: Private
+
+  private var presenter: StorePresenterProtocol
+
   private let input: StoreInput
   private let router: StoreRouterProtocol
-  private let presenter: StorePresenterProtocol
   private let stateMachine = PagingStateMachine<StoreInteractorData>()
-  private let dispatchGroup = DispatchGroup()
   private var data: StoreInteractorData?
   private var partnerInfo: PartnerInfo?
   private var assortimentWines: [ShortWine] = []

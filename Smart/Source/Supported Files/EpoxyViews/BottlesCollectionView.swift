@@ -8,6 +8,15 @@
 
 import Epoxy
 
+// MARK: - BottlesCollectionViewDelegate
+
+protocol BottlesCollectionViewDelegate: AnyObject {
+  func didTapShareContextMenu(wineID: Int64)
+  func didTapLeaveReviewContextMenu(wineID: Int64)
+  func didTapWriteNoteContextMenu(wineID: Int64)
+  func didTap(wineID: Int64)
+}
+
 // MARK: - BottlesCollectionView
 
 final class BottlesCollectionView: CollectionView, EpoxyableView {
@@ -33,8 +42,7 @@ final class BottlesCollectionView: CollectionView, EpoxyableView {
 
   typealias Content = [WineBottleView.Content]
 
-
-  weak var contextMenuDelegate: WineBottleViewDelegate?
+  weak var bottlesCollectionViewDelegate: BottlesCollectionViewDelegate?
 
 //  func setBehaviors(_ behaviors: Behaviors?) {
 //    didTap = behaviors?.didTap
@@ -52,10 +60,10 @@ final class BottlesCollectionView: CollectionView, EpoxyableView {
           content: wineCollectionViewCellViewModel,
           style: .init())
           .setBehaviors({ [weak self] context in
-            context.view.delegate = self?.contextMenuDelegate
+            context.view.delegate = self
           })
           .didSelect { [weak self] _ in
-            self?.didTap?(wineCollectionViewCellViewModel.wineID)
+            self?.bottlesCollectionViewDelegate?.didTap(wineID: wineCollectionViewCellViewModel.wineID)
           }
       }
     }
@@ -71,9 +79,6 @@ final class BottlesCollectionView: CollectionView, EpoxyableView {
   }
 
   private var didTap: ((_ wineID: Int64) -> Void)?
-  private var didTapWriteNoteContextMenu: ((_ wineID: Int64) -> Void)?
-  private var didTapLeaveReviewContextMenu: ((_ wineID: Int64) -> Void)?
-  private var didTapShareContextMenuClosure: ((_ wineID: Int64) -> Void)?
 
   private var layoutSection: NSCollectionLayoutSection? {
     let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .absolute(150), heightDimension: .absolute(250)))
@@ -89,7 +94,15 @@ final class BottlesCollectionView: CollectionView, EpoxyableView {
 // MARK: WineBottleViewDelegate
 
 extension BottlesCollectionView: WineBottleViewDelegate {
+  func didTapLeaveReviewContextMenu(wineID: Int64) {
+    bottlesCollectionViewDelegate?.didTapLeaveReviewContextMenu(wineID: wineID)
+  }
+
+  func didTapWriteNoteContextMenu(wineID: Int64) {
+    bottlesCollectionViewDelegate?.didTapWriteNoteContextMenu(wineID: wineID)
+  }
+
   func didTapShareContextMenu(wineID: Int64) {
-    contextMenuDelegate?.didTapShareContextMenu(wineID: wineID)
+    bottlesCollectionViewDelegate?.didTapShareContextMenu(wineID: wineID)
   }
 }

@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol StorePresenterProtocol: AnyObject {
+protocol StorePresenterProtocol: ShowNetworkAlertPresentable {
   func update(data: StoreInteractorData, needLoadMore: Bool)
   func startLoading()
   func stopLoading()

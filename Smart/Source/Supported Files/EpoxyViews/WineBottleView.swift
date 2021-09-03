@@ -17,6 +17,8 @@ import StringFormatting
 
 protocol WineBottleViewDelegate: AnyObject {
   func didTapShareContextMenu(wineID: Int64)
+  func didTapLeaveReviewContextMenu(wineID: Int64)
+  func didTapWriteNoteContextMenu(wineID: Int64)
 }
 
 // MARK: - Constants
@@ -90,26 +92,10 @@ final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDelegate {
   struct Style: Hashable {
 
   }
-//  struct Behaviors {
-//    var didTapShareContextMenu: ((_ wineID: Int64) -> Void)?
-//    var didTapLeaveReviewContextMenu: ((_ wineID: Int64) -> Void)?
-//    var didTapWriteNoteContextMenu: ((_ wineID: Int64) -> Void)?
-//  }
-  // MARK: ContentConfigurableView
 
   typealias Content = WineCollectionViewCellViewModel
 
-
   weak var delegate: WineBottleViewDelegate?
-
-//  func setBehaviors(_ behaviors: Behaviors?) {
-//
-//    print(behaviors == nil, behaviors?.didTapWriteNoteContextMenu == nil)
-//
-//    didTapShareContextMenu = behaviors?.didTapShareContextMenu
-//    didTapWriteNoteContextMenu = behaviors?.didTapWriteNoteContextMenu
-//    didTapLeaveReviewContextMenu = behaviors?.didTapLeaveReviewContextMenu
-//  }
 
   func setContent(_ content: Content, animated: Bool) {
     bottleImageView.loadBottle(url: content.imageURL)
@@ -132,10 +118,6 @@ final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDelegate {
   }
 
   // MARK: Private
-
-  private var didTapWriteNoteContextMenu: ((_ wineID: Int64) -> Void)?
-  private var didTapLeaveReviewContextMenu: ((_ wineID: Int64) -> Void)?
-  private var didTapShareContextMenu: ((_ wineID: Int64) -> Void)?
 
   private lazy var hapticGenerator = UISelectionFeedbackGenerator()
 
@@ -177,17 +159,16 @@ final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDelegate {
     }
     let writeNote = ContextMenuItemWithImage(title: localized("write_note").firstLetterUppercased(), image: UIImage(systemName: "square.and.pencil")) { [weak self] in
       guard let wineID = self?.wineID else { return }
-      self?.didTapWriteNoteContextMenu?(wineID)
+      self?.delegate?.didTapWriteNoteContextMenu(wineID: wineID)
     }
     let leaveReview = ContextMenuItemWithImage(title: localized("write_review").firstLetterUppercased(), image: UIImage(systemName: "text.bubble")) { [weak self] in
       guard let wineID = self?.wineID else { return }
-      self?.didTapLeaveReviewContextMenu?(wineID)
+      self?.delegate?.didTapLeaveReviewContextMenu(wineID: wineID)
     }
 
     let share = ContextMenuItemWithImage(title: localized("share_link").firstLetterUppercased(), image: UIImage(systemName: "square.and.arrow.up")) { [weak self] in
       guard let wineID = self?.wineID else { return }
       self?.delegate?.didTapShareContextMenu(wineID: wineID)
-//      self?.didTapShareContextMenu?(wineID)
     }
 
     CM.items = [writeNote, leaveReview, share]

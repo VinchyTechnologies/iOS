@@ -134,7 +134,7 @@ final class StoreViewController: CollectionViewController {
             content: content,
             style: .init())
             .setBehaviors({ [weak self] context in
-              context.view.contextMenuDelegate = self
+              context.view.bottlesCollectionViewDelegate = self
             })
         }
         .flowLayoutItemSize(.init(width: view.frame.width, height: 250))
@@ -341,10 +341,23 @@ extension StoreViewController: Loadable {
   }
 }
 
-// MARK: WineBottleViewDelegate
+// MARK: BottlesCollectionViewDelegate
 
-extension StoreViewController: WineBottleViewDelegate {
-  func didTapShareContextMenu(wineID: Int64) {
-    print("sdglnl")
+extension StoreViewController: BottlesCollectionViewDelegate {
+  func didTap(wineID: Int64) {
+    interactor?.didSelectWine(wineID: wineID)
   }
+
+  func didTapLeaveReviewContextMenu(wineID: Int64) {
+    interactor?.didTapLeaveReviewContextMenu(wineID: wineID)
+  }
+
+  func didTapWriteNoteContextMenu(wineID: Int64) {
+    interactor?.didTapWriteNoteContextMenu(wineID: wineID)
+  }
+
+  func didTapShareContextMenu(wineID: Int64) {
+    interactor?.didTapShareContextMenu(wineID: wineID)
+  }
+
 }

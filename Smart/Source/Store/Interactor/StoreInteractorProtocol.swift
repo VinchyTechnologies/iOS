@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol StoreInteractorProtocol: AdvancedSearchOutputDelegate {
+protocol StoreInteractorProtocol: AdvancedSearchOutputDelegate, WineViewContextMenuTappable {
   func viewDidLoad()
   func didSelectWine(wineID: Int64)
   func willDisplayLoadingView()
