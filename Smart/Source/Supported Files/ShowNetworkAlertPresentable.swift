@@ -11,6 +11,6 @@ import StringFormatting
 
 // MARK: - ShowAlertPresentable
 
-protocol ShowNetworkAlertPresentable {
+protocol ShowNetworkAlertPresentable: AnyObject {
   func showNetworkErrorAlert(error: Error)
 }

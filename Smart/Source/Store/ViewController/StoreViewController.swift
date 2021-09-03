@@ -344,17 +344,25 @@ extension StoreViewController: Loadable {
 // MARK: BottlesCollectionViewDelegate
 
 extension StoreViewController: BottlesCollectionViewDelegate {
+  func didTapLeaveReviewContextMenu(wineID: Int64) {
+
+  }
+
+  func didTapWriteNoteContextMenu(wineID: Int64) {
+
+  }
+
   func didTap(wineID: Int64) {
     interactor?.didSelectWine(wineID: wineID)
   }
 
-  func didTapLeaveReviewContextMenu(wineID: Int64) {
-    interactor?.didTapLeaveReviewContextMenu(wineID: wineID)
-  }
-
-  func didTapWriteNoteContextMenu(wineID: Int64) {
-    interactor?.didTapWriteNoteContextMenu(wineID: wineID)
-  }
+//  func didTapLeaveReviewContextMenu(wineID: Int64) {
+//    interactor?.didTapLeaveReviewContextMenu(wineID: wineID)
+//  }
+//
+//  func didTapWriteNoteContextMenu(wineID: Int64) {
+//    interactor?.didTapWriteNoteContextMenu(wineID: wineID)
+//  }
 
   func didTapShareContextMenu(wineID: Int64) {
     interactor?.didTapShareContextMenu(wineID: wineID)

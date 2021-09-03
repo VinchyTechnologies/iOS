@@ -57,8 +57,6 @@ final class StoreInteractor {
 
   internal let dispatchGroup = DispatchGroup()
 
-  var contextMenuWine: Wine?
-
   // MARK: Private
 
   private var presenter: StorePresenterProtocol
@@ -227,6 +225,10 @@ final class StoreInteractor {
 // MARK: StoreInteractorProtocol
 
 extension StoreInteractor: StoreInteractorProtocol {
+  
+  var contextMenuRouter: ActivityRoutable {
+    router
+  }
 
   func didChoose(_ filters: [(String, String)]) {
     guard let partnerInfo = partnerInfo else {
