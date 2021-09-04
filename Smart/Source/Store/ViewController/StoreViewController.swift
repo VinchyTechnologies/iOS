@@ -11,6 +11,7 @@ import Database
 import Display
 import Epoxy
 import UIKit
+import VinchyAuthorization
 
 // MARK: - StoreViewController
 
@@ -345,10 +346,11 @@ extension StoreViewController: Loadable {
 
 extension StoreViewController: BottlesCollectionViewDelegate {
   func didTapLeaveReviewContextMenu(wineID: Int64) {
-
+    interactor?.didTapLeaveReviewContextMenu(wineID: wineID)
   }
 
   func didTapWriteNoteContextMenu(wineID: Int64) {
+    interactor?.didTapWriteNoteContextMenu(wineID: wineID)
 
   }
 
@@ -356,16 +358,7 @@ extension StoreViewController: BottlesCollectionViewDelegate {
     interactor?.didSelectWine(wineID: wineID)
   }
 
-//  func didTapLeaveReviewContextMenu(wineID: Int64) {
-//    interactor?.didTapLeaveReviewContextMenu(wineID: wineID)
-//  }
-//
-//  func didTapWriteNoteContextMenu(wineID: Int64) {
-//    interactor?.didTapWriteNoteContextMenu(wineID: wineID)
-//  }
-
   func didTapShareContextMenu(wineID: Int64) {
     interactor?.didTapShareContextMenu(wineID: wineID)
   }
-
 }

@@ -7,6 +7,7 @@
 //
 
 import Core
+import VinchyAuthorization
 import VinchyCore
 
 // MARK: - StoreInteractorData
@@ -225,8 +226,7 @@ final class StoreInteractor {
 // MARK: StoreInteractorProtocol
 
 extension StoreInteractor: StoreInteractorProtocol {
-  
-  var contextMenuRouter: ActivityRoutable {
+  var contextMenuRouter: ActivityRoutable & WriteNoteRoutable & WriteReviewRoutable & AuthorizationRoutable {
     router
   }
 
