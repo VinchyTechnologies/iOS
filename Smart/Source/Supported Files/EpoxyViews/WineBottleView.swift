@@ -115,6 +115,7 @@ final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDelegate {
     }
 
     wineID = content.wineID
+    contextMenuViewModels = content.contextMenuViewModels
   }
 
   // MARK: Private
@@ -122,6 +123,7 @@ final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDelegate {
   private lazy var hapticGenerator = UISelectionFeedbackGenerator()
 
   private var wineID: Int64?
+  private var contextMenuViewModels: [ContextMenuViewModel]?
 
   private let background = UIView()
 
@@ -157,21 +159,36 @@ final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDelegate {
     } else {
       AudioServicesPlaySystemSound(Constants.vibrationSoundId)
     }
-    let writeNote = ContextMenuItemWithImage(title: localized("write_note").firstLetterUppercased(), image: UIImage(systemName: "square.and.pencil")) { [weak self] in
-      guard let wineID = self?.wineID else { return }
-      self?.delegate?.didTapWriteNoteContextMenu(wineID: wineID)
+    var contextMenuItems: [ContextMenuItemWithImage] = []
+    contextMenuViewModels?.forEach {
+      switch $0 {
+      case .share(let content):
+        guard let title = content.title else {
+          return
+        }
+        contextMenuItems.append(.init(title: title, image: UIImage(systemName: "square.and.arrow.up")){ [weak self] in
+          guard let wineID = self?.wineID else { return }
+          self?.delegate?.didTapShareContextMenu(wineID: wineID)
+        })
+      case .leaveReview(let content):
+        guard let title = content.title else {
+          return
+        }
+        contextMenuItems.append(.init(title: title, image: UIImage(systemName: "text.bubble")){ [weak self] in
+          guard let wineID = self?.wineID else { return }
+          self?.delegate?.didTapLeaveReviewContextMenu(wineID: wineID)
+        })
+      case .writeNote(let content):
+        guard let title = content.title else {
+          return
+        }
+        contextMenuItems.append(.init(title: title, image: UIImage(systemName: "square.and.pencil")){ [weak self] in
+          guard let wineID = self?.wineID else { return }
+          self?.delegate?.didTapWriteNoteContextMenu(wineID: wineID)
+        })
+      }
     }
-    let leaveReview = ContextMenuItemWithImage(title: localized("write_review").firstLetterUppercased(), image: UIImage(systemName: "text.bubble")) { [weak self] in
-      guard let wineID = self?.wineID else { return }
-      self?.delegate?.didTapLeaveReviewContextMenu(wineID: wineID)
-    }
-
-    let share = ContextMenuItemWithImage(title: localized("share_link").firstLetterUppercased(), image: UIImage(systemName: "square.and.arrow.up")) { [weak self] in
-      guard let wineID = self?.wineID else { return }
-      self?.delegate?.didTapShareContextMenu(wineID: wineID)
-    }
-
-    CM.items = [writeNote, leaveReview, share]
+    CM.items = contextMenuItems
     CM.showMenu(viewTargeted: self, animated: true)
   }
 }

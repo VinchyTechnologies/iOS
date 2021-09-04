@@ -23,6 +23,13 @@ final class StorePresenter {
 
   weak var viewController: StoreViewControllerProtocol?
 
+  // MARK: Private
+
+  private var contextMenuViewModels: [ContextMenuViewModel] = [
+    .share(content: .init(title: localized("share_link").firstLetterUppercased())),
+    .leaveReview(content: .init(title: localized("write_review").firstLetterUppercased())),
+    .writeNote(content: .init(title: localized("write_note").firstLetterUppercased())),
+  ]
 }
 
 // MARK: StorePresenterProtocol
@@ -53,7 +60,8 @@ extension StorePresenter: StorePresenterProtocol {
           wineID: wine.id,
           imageURL: wine.mainImageUrl?.toURL,
           titleText: wine.title,
-          subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode))
+          subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode),
+          contextMenuViewModels: contextMenuViewModels)
       }
 
       sections += [.wines(winesContent)]
@@ -108,7 +116,7 @@ extension StorePresenter: StorePresenterProtocol {
           wineID: wine.id,
           imageURL: wine.mainImageUrl?.toURL,
           titleText: wine.title,
-          subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode))
+          subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode), contextMenuViewModels: contextMenuViewModels)
       }
 
       sections += [.wines(winesContent)]

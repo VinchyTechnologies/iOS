@@ -30,12 +30,6 @@ final class BottlesCollectionView: CollectionView, EpoxyableView {
 
   // MARK: Internal
 
-//  struct Behaviors {
-//    var didTap: ((_ wineID: Int64) -> Void)?
-//    var didTapShareContextMenu: ((_ wineID: Int64) -> Void)?
-//    var didTapLeaveReviewContextMenu: ((_ wineID: Int64) -> Void)?
-//    var didTapWriteNoteContextMenu: ((_ wineID: Int64) -> Void)?
-//  }
   struct Style: Hashable {
 
   }
@@ -43,13 +37,6 @@ final class BottlesCollectionView: CollectionView, EpoxyableView {
   typealias Content = [WineBottleView.Content]
 
   weak var bottlesCollectionViewDelegate: BottlesCollectionViewDelegate?
-
-//  func setBehaviors(_ behaviors: Behaviors?) {
-//    didTap = behaviors?.didTap
-//    didTapShareContextMenuClosure = behaviors?.didTapShareContextMenu
-//    didTapWriteNoteContextMenu = behaviors?.didTapWriteNoteContextMenu
-//    didTapLeaveReviewContextMenu = behaviors?.didTapLeaveReviewContextMenu
-//  }
 
   func setContent(_ content: Content, animated: Bool) {
 

@@ -27,6 +27,13 @@ final class ResultsSearchPresenter {
 
   weak var viewController: ResultsSearchViewControllerProtocol?
 
+  // MARK: Private
+
+  private var contextMenuViewModels: [ContextMenuViewModel] = [
+    .share(content: .init(title: localized("share_link").firstLetterUppercased())),
+    .leaveReview(content: .init(title: localized("write_review").firstLetterUppercased())),
+    .writeNote(content: .init(title: localized("write_note").firstLetterUppercased())),
+  ]
 }
 
 // MARK: ResultsSearchPresenterProtocol
@@ -68,7 +75,8 @@ extension ResultsSearchPresenter: ResultsSearchPresenterProtocol {
           wineID: wine.wineID,
           imageURL: imageURL(from: wine.wineID).toURL,
           titleText: wine.title,
-          subtitleText: nil))
+          subtitleText: nil,
+          contextMenuViewModels: contextMenuViewModels))
     }
 
     if !wineCollectionViewCellViewModels.isEmpty {

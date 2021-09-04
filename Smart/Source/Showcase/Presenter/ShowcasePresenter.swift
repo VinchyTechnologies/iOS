@@ -23,6 +23,11 @@ final class ShowcasePresenter {
 
   // MARK: Private
 
+  private var contextMenuViewModels: [ContextMenuViewModel] = [
+    .share(content: .init(title: localized("share_link").firstLetterUppercased())),
+    .leaveReview(content: .init(title: localized("write_review").firstLetterUppercased())),
+    .writeNote(content: .init(title: localized("write_note").firstLetterUppercased())),
+  ]
   private var input: ShowcaseInput
   private weak var viewController: ShowcaseViewControllerProtocol?
 }
@@ -49,7 +54,7 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
           wineID: wine.id,
           imageURL: wine.mainImageUrl?.toURL,
           titleText: wine.title,
-          subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode))
+          subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode), contextMenuViewModels: contextMenuViewModels)
       }
       sections = [.shelf(title: localized("all").firstLetterUppercased(), wines: wines)]
       if needLoadMore {
@@ -74,7 +79,7 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
             wineID: wine.id,
             imageURL: wine.mainImageUrl?.toURL,
             titleText: wine.title,
-            subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode))
+            subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode), contextMenuViewModels: contextMenuViewModels)
         }
         return .shelf(
           title: countryNameFromLocaleCode(
