@@ -22,11 +22,6 @@ enum WineDetailMoreActions {
 
 // MARK: - WineDetailInteractor
 
-//private enum ActionAfterLoginOrRegistration {
-//  case writeReview
-//  case none
-//}
-
 final class WineDetailInteractor {
 
   // MARK: Lifecycle
@@ -186,6 +181,14 @@ final class WineDetailInteractor {
 // MARK: WineDetailInteractorProtocol
 
 extension WineDetailInteractor: WineDetailInteractorProtocol {
+
+  var contextMenuRouter: ActivityRoutable & WriteNoteRoutable & WriteReviewRoutable & AuthorizationRoutable {
+    router
+  }
+
+  func didSelectWine(wineID: Int64) {
+    router.pushToWineDetailViewController(wineID: wineID)
+  }
 
   func didSelectStore(affilatedId: Int) {
     router.presentStore(affilatedId: affilatedId)
