@@ -116,7 +116,8 @@ extension StorePresenter: StorePresenterProtocol {
           wineID: wine.id,
           imageURL: wine.mainImageUrl?.toURL,
           titleText: wine.title,
-          subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode), contextMenuViewModels: contextMenuViewModels)
+          subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode),
+          contextMenuViewModels: contextMenuViewModels)
       }
 
       sections += [.wines(winesContent)]

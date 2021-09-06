@@ -69,6 +69,7 @@ extension WineViewContextMenuTappable {
         } else {
           self.contextMenuRouter.pushToWriteViewController(wine: contextMenuWine)
         }
+
       case .failure(let errorResponse):
         print(errorResponse)
       }

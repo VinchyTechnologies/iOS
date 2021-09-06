@@ -433,7 +433,7 @@ open class ContextMenu: NSObject {
       if menuHeight > backgroundHeight {
         menuHeight = backgroundHeight + MenuConstants.MenuMarginSpace
       }
-    }else{
+    } else {
 
       let zoomFactorHorizontalWithMenu = backgroundWidth / updatedWidth
       let zoomFactorVerticalWithMenu = backgroundHeight / (updatedHeight + menuHeight + MenuConstants.MenuMarginSpace)

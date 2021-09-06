@@ -51,14 +51,14 @@ final class StoreInteractor {
 
   // MARK: Internal
 
-  internal lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
-    guard let self = self else { return }
-    self.presenter.startLoading()
-  }
-
   internal let dispatchGroup = DispatchGroup()
 
   // MARK: Private
+
+  private lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
+    guard let self = self else { return }
+    self.presenter.startLoading()
+  }
 
   private var presenter: StorePresenterProtocol
 

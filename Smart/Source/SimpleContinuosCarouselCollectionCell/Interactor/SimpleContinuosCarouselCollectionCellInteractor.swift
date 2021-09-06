@@ -13,11 +13,6 @@ import VinchyCore
 
 // MARK: - SimpleContinuosCarouselCollectionCellInteractorDelegate
 
-//private enum ActionAfterLoginOrRegistration {
-//  case writeReview
-//  case none
-//}
-
 protocol SimpleContinuosCarouselCollectionCellInteractorDelegate: AnyObject {
   func didTapCompilationCell(input: ShowcaseInput)
   func didTapBottleCell(wineID: Int64)

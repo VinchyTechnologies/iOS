@@ -17,10 +17,12 @@ public protocol LoadingPresentable: AnyObject {
 }
 
 extension LoadingPresentable {
+
   func startLoading() {
     viewController?.startLoadingAnimation()
     viewController?.addLoader()
   }
+
   func stopLoading() {
     viewController?.startLoadingAnimation()
     viewController?.addLoader()

@@ -49,7 +49,8 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
           wineID: wine.id,
           imageURL: wine.mainImageUrl?.toURL,
           titleText: wine.title,
-          subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode), contextMenuViewModels: [])
+          subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode),
+          contextMenuViewModels: [])
       }
       sections = [.shelf(title: localized("all").firstLetterUppercased(), wines: wines)]
       if needLoadMore {
@@ -74,7 +75,8 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
             wineID: wine.id,
             imageURL: wine.mainImageUrl?.toURL,
             titleText: wine.title,
-            subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode), contextMenuViewModels: [])
+            subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode),
+            contextMenuViewModels: [])
         }
         return .shelf(
           title: countryNameFromLocaleCode(

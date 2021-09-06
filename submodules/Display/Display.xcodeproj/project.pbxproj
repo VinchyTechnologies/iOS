@@ -12,7 +12,6 @@
 		44A7255D2592290B00A7552B /* TextFieldWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A7255C2592290B00A7552B /* TextFieldWithIcon.swift */; };
 		44A72594259230C600A7552B /* Button.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A72593259230C600A7552B /* Button.swift */; };
 		44DE6C1625DB9E980008695D /* Orientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44DE6C1525DB9E980008695D /* Orientation.swift */; };
-		74DAD04E26D9B3E300055AE7 /* BottleContextMenuShowable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DAD04D26D9B3E300055AE7 /* BottleContextMenuShowable.swift */; };
 		8A0793E4269350AB000ACA2B /* UICollectionViewCompositionalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0793E3269350AB000ACA2B /* UICollectionViewCompositionalLayout.swift */; };
 		8A079F2C269E0961000ACA2B /* SeparatorFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A079F2B269E0961000ACA2B /* SeparatorFlowLayout.swift */; };
 		8A251E3C26B0589600DAED2D /* DeliveryTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A251E3826B0589600DAED2D /* DeliveryTutorialView.swift */; };
@@ -53,7 +52,6 @@
 		44A7255C2592290B00A7552B /* TextFieldWithIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithIcon.swift; sourceTree = "<group>"; };
 		44A72593259230C600A7552B /* Button.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
 		44DE6C1525DB9E980008695D /* Orientation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Orientation.swift; sourceTree = "<group>"; };
-		74DAD04D26D9B3E300055AE7 /* BottleContextMenuShowable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottleContextMenuShowable.swift; sourceTree = "<group>"; };
 		8A0793E3269350AB000ACA2B /* UICollectionViewCompositionalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCompositionalLayout.swift; sourceTree = "<group>"; };
 		8A079F2B269E0961000ACA2B /* SeparatorFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorFlowLayout.swift; sourceTree = "<group>"; };
 		8A251E3826B0589600DAED2D /* DeliveryTutorialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryTutorialView.swift; sourceTree = "<group>"; };
@@ -158,7 +156,6 @@
 				CA99E65A24F7D79B00C36BEE /* ActivityIndicator.swift */,
 				CA53B12424E039F1009A0F85 /* Alertable.swift */,
 				CABDBA9524C31FAC00AD96D6 /* ASPageControl.swift */,
-				74DAD04D26D9B3E300055AE7 /* BottleContextMenuShowable.swift */,
 				44A72593259230C600A7552B /* Button.swift */,
 				CAA9DC68250EA24900F996A8 /* DecoratorFlowLayout.swift */,
 				4410AE3225E5632400A84FF9 /* DismissRoutable.swift */,
@@ -300,7 +297,6 @@
 				CAA8918D250AB69400ADBFF9 /* HighlightCollectionCell.swift in Sources */,
 				CA7A87EC25026FA700AAD10F /* LoadingCollectionFooter.swift in Sources */,
 				CA30393F2568339E00C3A461 /* Haptic.swift in Sources */,
-				74DAD04E26D9B3E300055AE7 /* BottleContextMenuShowable.swift in Sources */,
 				CAA9DC69250EA24900F996A8 /* DecoratorFlowLayout.swift in Sources */,
 				CA7A87E324FEE1B200AAD10F /* Loadable.swift in Sources */,
 				8A2F30492671FA13002DE6C1 /* OverlayPresentationCenter.swift in Sources */,

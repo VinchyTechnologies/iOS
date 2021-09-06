@@ -170,6 +170,7 @@ final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDelegate {
           guard let wineID = self?.wineID else { return }
           self?.delegate?.didTapShareContextMenu(wineID: wineID)
         })
+
       case .leaveReview(let content):
         guard let title = content.title else {
           return
@@ -178,6 +179,7 @@ final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDelegate {
           guard let wineID = self?.wineID else { return }
           self?.delegate?.didTapLeaveReviewContextMenu(wineID: wineID)
         })
+
       case .writeNote(let content):
         guard let title = content.title else {
           return

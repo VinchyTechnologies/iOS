@@ -490,7 +490,6 @@ extension WineDetailViewController: BottlesCollectionViewDelegate {
 
   func didTapWriteNoteContextMenu(wineID: Int64) {
     interactor?.didTapWriteNoteContextMenu(wineID: wineID)
-
   }
 
   func didTap(wineID: Int64) {
