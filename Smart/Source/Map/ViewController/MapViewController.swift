@@ -46,6 +46,12 @@ final class MapViewController: UIViewController, OpenURLProtocol {
       routingToolBar.heightAnchor.constraint(equalToConstant: 48),
     ])
 
+    view.addSubview(findMeButton)
+    NSLayoutConstraint.activate([
+      findMeButton.bottomAnchor.constraint(equalTo: routingToolBar.topAnchor, constant: -16),
+      findMeButton.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -16),
+    ])
+
     view.addSubview(searchInThisAreaButton)
     searchInThisAreaButton.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
@@ -101,6 +107,22 @@ final class MapViewController: UIViewController, OpenURLProtocol {
     return mapView
   }()
 
+  private lazy var findMeButton: UIButton = {
+    $0.translatesAutoresizingMaskIntoConstraints = false
+    $0.widthAnchor.constraint(equalToConstant: 60).isActive = true
+    $0.heightAnchor.constraint(equalToConstant: 60).isActive = true
+    $0.layer.cornerRadius = 30
+    $0.layer.shadowColor = UIColor.black.cgColor
+    $0.layer.shadowOpacity = 0.2
+    $0.layer.shadowOffset = .init(width: 2, height: 2)
+    $0.layer.shadowRadius = 5
+    $0.backgroundColor = .mainBackground
+    $0.setImage(UIImage(systemName: "location.fill"), for: [])
+    $0.tintColor = .accent
+    $0.addTarget(self, action: #selector(didTapFindMeButton(_:)), for: .touchUpInside)
+    return $0
+  }(UIButton(type: .system))
+
   private lazy var routingToolBar: RoutingToolBar = {
     $0.delegate = self
     $0.isHidden = true
@@ -124,6 +146,11 @@ final class MapViewController: UIViewController, OpenURLProtocol {
     $0.startAnimatingPressActions()
     return $0
   }(UIButton())
+
+  @objc
+  private func didTapFindMeButton(_ button: UIButton) {
+    mapView.setCenter(mapView.userLocation.coordinate, animated: true)
+  }
 
   /*
    private lazy var backButton: UIButton = {
