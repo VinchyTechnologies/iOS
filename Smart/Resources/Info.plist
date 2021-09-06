@@ -95,5 +95,16 @@
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
 	</array>
+  <key>INAlternativeAppNames</key>
+  <array>
+      <dict>
+        <key>INAlternativeAppName</key>
+        <string>ORIGINAL_APP_NAME</string>
+      </dict>
+      <dict>
+        <key>INAlternativeAppName</key>
+        <string>LOCALIZED_APP_NAME</string>
+      </dict>
+  </array>
 </dict>
 </plist>
