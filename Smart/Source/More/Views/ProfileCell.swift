@@ -42,9 +42,9 @@ final class ProfileCell: UICollectionViewCell, Reusable {
     vStack.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       vStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-      vStack.topAnchor.constraint(equalTo: contentView.topAnchor),
+      vStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
       vStack.trailingAnchor.constraint(equalTo: accessoryIndicatorView.leadingAnchor, constant: -5),
-      vStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5),
+      vStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
     ])
   }
 
@@ -54,7 +54,7 @@ final class ProfileCell: UICollectionViewCell, Reusable {
   // MARK: Internal
 
   static func height() -> CGFloat {
-    54
+    70
   }
 
   // MARK: Private
@@ -85,7 +85,7 @@ final class ProfileCell: UICollectionViewCell, Reusable {
 
   private lazy var vStack: UIStackView = {
     $0.axis = .vertical
-    $0.distribution = .fillEqually
+    $0.distribution = .fillProportionally
     return $0
   }(UIStackView(arrangedSubviews: [nameLabel, emailLabel]))
 }

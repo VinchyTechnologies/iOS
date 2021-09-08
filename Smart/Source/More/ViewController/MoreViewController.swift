@@ -10,6 +10,7 @@ import CommonUI
 import Display
 import StringFormatting
 import UIKit
+import VinchyAuthorization
 
 // MARK: - C
 
@@ -34,7 +35,7 @@ final class MoreViewController: UIViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     navigationController?.setNavigationBarHidden(true, animated: true)
-    interactor?.viewDidLoad()
+    interactor?.viewDidLoad() // TODO: - incorrect logic
   }
 
   override func viewWillDisappear(_ animated: Bool) {
@@ -297,5 +298,17 @@ extension MoreViewController: UICollectionViewDelegateFlowLayout {
 extension MoreViewController: MoreViewControllerProtocol {
   func updateUI(viewModel: MoreViewControllerModel) {
     self.viewModel = viewModel
+  }
+}
+
+// MARK: AuthorizationOutputDelegate
+
+extension MoreViewController: AuthorizationOutputDelegate {
+  func didSuccessfullyRegister(output: AuthorizationOutputModel?) {
+    interactor?.viewDidLoad()
+  }
+
+  func didSuccessfullyLogin(output: AuthorizationOutputModel?) {
+    interactor?.viewDidLoad()
   }
 }

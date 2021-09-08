@@ -35,10 +35,18 @@ final class MorePresenter {
   private func createViewModel(isRussianLocale: Bool, currency: String) -> MoreViewControllerModel {
     var sections: [MoreViewControllerModel.Section] = []
 
-    if UserDefaultsConfig.accountID != 0, UserDefaultsConfig.accountEmail != "" {
+    // TODO: - Interactor
+
+    if UserDefaultsConfig.accountID != 0 && UserDefaultsConfig.accountEmail != "" {
       let profileViewModel = ProfileCellViewModel(
-        nameUser: UserDefaultsConfig.userName == "" ? "What's your name?" : UserDefaultsConfig.userName,
+        nameUser: UserDefaultsConfig.userName == "" ? localized("what_is_your_name") : UserDefaultsConfig.userName,
         emailUser: UserDefaultsConfig.accountEmail)
+      sections.append(.profile([profileViewModel]))
+      sections.append(.separator)
+    } else {
+      let profileViewModel = ProfileCellViewModel(
+        nameUser: localized("sign_in_or_register").firstLetterUppercased(),
+        emailUser: nil)
       sections.append(.profile([profileViewModel]))
       sections.append(.separator)
     }

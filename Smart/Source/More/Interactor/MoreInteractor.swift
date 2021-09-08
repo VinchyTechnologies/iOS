@@ -42,8 +42,13 @@ final class MoreInteractor {
 // MARK: MoreInteractorProtocol
 
 extension MoreInteractor: MoreInteractorProtocol {
+
   func didTapProfile() {
-    router.presentShowEditProfileViewController()
+    if UserDefaultsConfig.accountID != 0 {
+      router.presentShowEditProfileViewController()
+    } else {
+      router.presentAuthorizationViewController()
+    }
   }
 
   func didTapCurrency() {
