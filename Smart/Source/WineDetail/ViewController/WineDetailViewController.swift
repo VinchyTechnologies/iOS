@@ -496,7 +496,7 @@ extension WineDetailViewController: BottlesCollectionViewDelegate {
     interactor?.didSelectWine(wineID: wineID)
   }
 
-  func didTapShareContextMenu(wineID: Int64) {
-    interactor?.didTapShareContextMenu(wineID: wineID)
+  func didTapShareContextMenu(wineID: Int64, source: UIView) {
+    interactor?.didTapShareContextMenu(wineID: wineID, source: source)
   }
 }

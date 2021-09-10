@@ -23,7 +23,7 @@ enum ActionAfterLoginOrRegistration {
 
 protocol WineViewContextMenuTappable: AnyObject {
   var contextMenuRouter: ActivityRoutable & WriteNoteRoutable & WriteReviewRoutable & AuthorizationRoutable { get }
-  func didTapShareContextMenu(wineID: Int64)
+  func didTapShareContextMenu(wineID: Int64, source: UIView)
   func didTapWriteNoteContextMenu(wineID: Int64)
   func didTapLeaveReviewContextMenu(wineID: Int64)
 }
@@ -76,7 +76,7 @@ extension WineViewContextMenuTappable {
     }
   }
 
-  func didTapShareContextMenu(wineID: Int64) {
+  func didTapShareContextMenu(wineID: Int64, source: UIView) {
     Wines.shared.getDetailWine(wineID: wineID) { [weak self] result in
       guard let self = self else { return }
       switch result {
@@ -115,7 +115,7 @@ extension WineViewContextMenuTappable {
           guard let url = url else { return }
 
           let items = [contextMenuWine.title, url] as [Any]
-          self?.contextMenuRouter.presentActivityViewController(items: items)
+          self?.contextMenuRouter.presentActivityViewController(items: items, source: source)
         }
 
       case .failure(let errorResponse):

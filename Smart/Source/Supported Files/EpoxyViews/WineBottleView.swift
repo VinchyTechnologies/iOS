@@ -16,7 +16,7 @@ import StringFormatting
 // MARK: - WineBottleViewDelegate
 
 protocol WineBottleViewDelegate: AnyObject {
-  func didTapShareContextMenu(wineID: Int64)
+  func didTapShareContextMenu(wineID: Int64, source: UIView)
   func didTapLeaveReviewContextMenu(wineID: Int64)
   func didTapWriteNoteContextMenu(wineID: Int64)
 }
@@ -167,8 +167,9 @@ final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDelegate {
           return
         }
         contextMenuItems.append(.init(title: title, image: UIImage(systemName: "square.and.arrow.up")){ [weak self] in
-          guard let wineID = self?.wineID else { return }
-          self?.delegate?.didTapShareContextMenu(wineID: wineID)
+          guard let self = self else { return }
+          guard let wineID = self.wineID else { return }
+          self.delegate?.didTapShareContextMenu(wineID: wineID, source: self)
         })
 
       case .leaveReview(let content):
