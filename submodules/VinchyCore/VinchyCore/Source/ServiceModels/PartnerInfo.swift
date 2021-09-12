@@ -22,6 +22,7 @@ public struct PartnerInfo: Decodable {
   public let scheduleOfWork: String?
   public let address: String?
   public let logoURL: String?
+  public let partnerWine: PartnerWine?
 
   // MARK: Private
 
@@ -36,6 +37,7 @@ public struct PartnerInfo: Decodable {
     case scheduleOfWork = "schedule_of_work"
     case address
     case logoURL = "logo_url"
+    case partnerWine = "partner_wine"
   }
 }
 
