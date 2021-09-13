@@ -90,9 +90,9 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
     let profile = Assembly.buildProfileModule()
     profile.tabBarItem = UITabBarItem(
-      title: localized("info"),
-      image: UIImage(systemName: "circle.grid.3x3", withConfiguration: imageConfig)?.withTintColor(.blueGray, renderingMode: .alwaysOriginal),
-      selectedImage: UIImage(systemName: "circle.grid.3x3", withConfiguration: imageConfig)?.withTintColor(.accent, renderingMode: .alwaysOriginal))
+      title: localized("profile").firstLetterUppercased(),
+      image: UIImage(systemName: "person.circle", withConfiguration: imageConfig)?.withTintColor(.blueGray, renderingMode: .alwaysOriginal),
+      selectedImage: UIImage(systemName: "person.circle", withConfiguration: imageConfig)?.withTintColor(.accent, renderingMode: .alwaysOriginal))
 
     /*
      let chat = NavigationController(rootViewController: BasicExampleViewController())
@@ -111,10 +111,10 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
       image: UIImage(systemName: "map", withConfiguration: imageConfig)?.withTintColor(.blueGray, renderingMode: .alwaysOriginal),
       selectedImage: UIImage(systemName: "map", withConfiguration: imageConfig)?.withTintColor(.accent, renderingMode: .alwaysOriginal))
 
-    [main, love, notes, profile].forEach { controller in
-      controller.tabBarItem.titlePositionAdjustment = .init(horizontal: 0, vertical: -3)
-      controller.tabBarItem.imageInsets = .init(top: 10, left: 0, bottom: 0, right: 0)
-    }
+//    [main, love, notes, profile].forEach { controller in
+//      controller.tabBarItem.titlePositionAdjustment = .init(horizontal: 0, vertical: -3)
+//      controller.tabBarItem.imageInsets = .init(top: 10, left: 0, bottom: 0, right: 0)
+//    }
 
     viewControllers = [main, love, map, notes, profile]
   }
