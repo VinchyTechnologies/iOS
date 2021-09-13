@@ -13,6 +13,7 @@ private enum PartnersEndpoint: EndpointProtocol {
   case storeInfo(partnerId: Int, affilatedId: Int)
   case wines(partnerId: Int, affilatedId: Int, filters: [(String, String)], limit: Int, offset: Int)
   case partnersByWine(wineID: Int64, latitude: Double, longitude: Double, limit: Int, offset: Int)
+  case nearest(numberOfPartners: Int, latitude: Double, longitude: Double, radius: Int, accountID: Int)
 
   // MARK: Internal
 
@@ -33,12 +34,15 @@ private enum PartnersEndpoint: EndpointProtocol {
 
     case .partnersByWine(let wineID, _, _, _, _):
       return "/partners/" + String(wineID)
+      
+    case .nearest(let numberOfPartners, _, _, _, _):
+      return "/nearest/" + String(numberOfPartners) + "/partners/recommendations"
     }
   }
 
   var method: HTTPMethod {
     switch self {
-    case .map, .storeInfo, .wines, .partnersByWine:
+    case .map, .storeInfo, .wines, .partnersByWine, .nearest:
       return .get
     }
   }
@@ -68,6 +72,15 @@ private enum PartnersEndpoint: EndpointProtocol {
         ("lon", String(longitude)),
         ("offset", String(offset)),
         ("limit", String(limit)),
+      ]
+      return params
+      
+    case .nearest(_, let latitude, let longitude, let radius, let accountID):
+      let params: Parameters = [
+        ("latitude", String(latitude)),
+        ("longitude", String(longitude)),
+        ("radius", String(radius)),
+        ("account_id", String(accountID)),
       ]
       return params
     }
@@ -138,6 +151,24 @@ public final class Partners {
         filters: filters,
         limit: limit,
         offset: offset),
+      completion: completion)
+  }
+
+  public func getNearestPartners(
+    numberOfPartners: Int,
+    latitude: Double,
+    longitude: Double,
+    radius: Int,
+    accountID: Int,
+    completion: @escaping (Result<[NearestPartner], APIError>) -> Void)
+  {
+    api.request(
+      endpoint: PartnersEndpoint.nearest(
+        numberOfPartners: numberOfPartners,
+        latitude: latitude,
+        longitude: longitude,
+        radius: radius,
+        accountID: accountID),
       completion: completion)
   }
 
