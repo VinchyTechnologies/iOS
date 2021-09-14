@@ -11,8 +11,7 @@ import Epoxy
 // MARK: - BottlesCollectionViewDelegate
 
 protocol BottlesCollectionViewDelegate: AnyObject {
-  func didTapShareContextMenu(wineID: Int64, source: UIView)
-  func didTapLeaveReviewContextMenu(wineID: Int64)
+  func didTapShareContextMenu(wineID: Int64, sourceView: UIView)
   func didTapWriteNoteContextMenu(wineID: Int64)
   func didTap(wineID: Int64)
 }
@@ -81,15 +80,11 @@ final class BottlesCollectionView: CollectionView, EpoxyableView {
 // MARK: WineBottleViewDelegate
 
 extension BottlesCollectionView: WineBottleViewDelegate {
-  func didTapLeaveReviewContextMenu(wineID: Int64) {
-    bottlesCollectionViewDelegate?.didTapLeaveReviewContextMenu(wineID: wineID)
-  }
-
   func didTapWriteNoteContextMenu(wineID: Int64) {
     bottlesCollectionViewDelegate?.didTapWriteNoteContextMenu(wineID: wineID)
   }
 
-  func didTapShareContextMenu(wineID: Int64, source: UIView) {
-    bottlesCollectionViewDelegate?.didTapShareContextMenu(wineID: wineID, source: source)
+  func didTapShareContextMenu(wineID: Int64, sourceView: UIView) {
+    bottlesCollectionViewDelegate?.didTapShareContextMenu(wineID: wineID, sourceView: sourceView)
   }
 }

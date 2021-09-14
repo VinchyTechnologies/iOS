@@ -484,10 +484,6 @@ extension WineDetailViewController: StarRatingControlCollectionCellDelegate {
 // MARK: BottlesCollectionViewDelegate
 
 extension WineDetailViewController: BottlesCollectionViewDelegate {
-  func didTapLeaveReviewContextMenu(wineID: Int64) {
-    interactor?.didTapLeaveReviewContextMenu(wineID: wineID)
-  }
-
   func didTapWriteNoteContextMenu(wineID: Int64) {
     interactor?.didTapWriteNoteContextMenu(wineID: wineID)
   }
@@ -496,7 +492,7 @@ extension WineDetailViewController: BottlesCollectionViewDelegate {
     interactor?.didSelectWine(wineID: wineID)
   }
 
-  func didTapShareContextMenu(wineID: Int64, source: UIView) {
-    interactor?.didTapShareContextMenu(wineID: wineID, source: source)
+  func didTapShareContextMenu(wineID: Int64, sourceView: UIView) {
+    interactor?.didTapShareContextMenu(wineID: wineID, sourceView: sourceView)
   }
 }

@@ -226,7 +226,7 @@ final class StoreInteractor {
 // MARK: StoreInteractorProtocol
 
 extension StoreInteractor: StoreInteractorProtocol {
-  var contextMenuRouter: ActivityRoutable & WriteNoteRoutable & WriteReviewRoutable & AuthorizationRoutable {
+  var contextMenuRouter: ActivityRoutable & WriteNoteRoutable {
     router
   }
 

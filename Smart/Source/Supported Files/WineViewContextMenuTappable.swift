@@ -9,55 +9,17 @@
 import Core
 import Database
 import FirebaseDynamicLinks
-import VinchyAuthorization
 import VinchyCore
-
-// MARK: - ActionAfterLoginOrRegistration
-
-enum ActionAfterLoginOrRegistration {
-  case writeReview
-  case none
-}
 
 // MARK: - WineViewContextMenuTappable
 
 protocol WineViewContextMenuTappable: AnyObject {
-  var contextMenuRouter: ActivityRoutable & WriteNoteRoutable & WriteReviewRoutable & AuthorizationRoutable { get }
-  func didTapShareContextMenu(wineID: Int64, source: UIView)
+  var contextMenuRouter: ActivityRoutable & WriteNoteRoutable { get }
+  func didTapShareContextMenu(wineID: Int64, sourceView: UIView)
   func didTapWriteNoteContextMenu(wineID: Int64)
-  func didTapLeaveReviewContextMenu(wineID: Int64)
 }
 
 extension WineViewContextMenuTappable {
-  func didTapLeaveReviewContextMenu(wineID: Int64) {
-    if UserDefaultsConfig.accountID != 0 {
-      Reviews.shared.getReviews(
-        wineID: wineID,
-        accountID: UserDefaultsConfig.accountID,
-        offset: 0,
-        limit: 1) { [weak self] result in
-          guard let self = self else { return }
-          switch result {
-          case .success(let model):
-            guard let review = model.first else {
-              self.contextMenuRouter.presentWriteReviewViewController(reviewID: nil, wineID: wineID, rating: 0, reviewText: nil)
-              return
-            }
-            self.contextMenuRouter.presentWriteReviewViewController(
-              reviewID: review.id,
-              wineID: wineID,
-              rating: review.rating,
-              reviewText: review.comment)
-
-          case .failure:
-            self.contextMenuRouter.presentWriteReviewViewController(reviewID: nil, wineID: wineID, rating: 0, reviewText: nil)
-          }
-      }
-    } else {
-      contextMenuRouter.presentAuthorizationViewController()
-    }
-  }
-
   func didTapWriteNoteContextMenu(wineID: Int64) {
     Wines.shared.getDetailWine(wineID: wineID) { [weak self] result in
       guard let self = self else { return }
@@ -76,7 +38,7 @@ extension WineViewContextMenuTappable {
     }
   }
 
-  func didTapShareContextMenu(wineID: Int64, source: UIView) {
+  func didTapShareContextMenu(wineID: Int64, sourceView: UIView) {
     Wines.shared.getDetailWine(wineID: wineID) { [weak self] result in
       guard let self = self else { return }
       switch result {
@@ -115,7 +77,7 @@ extension WineViewContextMenuTappable {
           guard let url = url else { return }
 
           let items = [contextMenuWine.title, url] as [Any]
-          self?.contextMenuRouter.presentActivityViewController(items: items, source: source)
+          self?.contextMenuRouter.presentActivityViewController(items: items, source: sourceView)
         }
 
       case .failure(let errorResponse):

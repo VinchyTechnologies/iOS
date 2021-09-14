@@ -39,7 +39,6 @@ final class WineDetailPresenter {
 
   private var contextMenuViewModels: [ContextMenuViewModel] = [
     .share(content: .init(title: localized("share_link").firstLetterUppercased())),
-    .leaveReview(content: .init(title: localized("write_review").firstLetterUppercased())),
     .writeNote(content: .init(title: localized("write_note").firstLetterUppercased())),
   ]
 

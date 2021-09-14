@@ -8,6 +8,6 @@
 
 import VinchyAuthorization
 
-protocol StoreRouterProtocol: WineDetailRoutable, ActivityRoutable, WriteNoteRoutable, WriteReviewRoutable, AuthorizationRoutable {
+protocol StoreRouterProtocol: WineDetailRoutable, ActivityRoutable, WriteNoteRoutable {
   func presentFilter(preselectedFilters: [(String, String)])
 }

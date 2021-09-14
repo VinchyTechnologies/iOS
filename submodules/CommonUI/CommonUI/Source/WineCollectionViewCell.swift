@@ -14,7 +14,6 @@ import UIKit
 public enum ContextMenuViewModel {
   case share(content: ContextMenuItemViewModel)
   case writeNote(content: ContextMenuItemViewModel)
-  case leaveReview(content: ContextMenuItemViewModel)
 }
 
 // MARK: - ContextMenuItemViewModel

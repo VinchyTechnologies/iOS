@@ -20,6 +20,13 @@ enum WineDetailMoreActions {
   case dislike
 }
 
+// MARK: - ActionAfterLoginOrRegistration
+
+enum ActionAfterLoginOrRegistration {
+  case writeReview
+  case none
+}
+
 // MARK: - WineDetailInteractor
 
 final class WineDetailInteractor {
@@ -182,7 +189,7 @@ final class WineDetailInteractor {
 
 extension WineDetailInteractor: WineDetailInteractorProtocol {
 
-  var contextMenuRouter: ActivityRoutable & WriteNoteRoutable & WriteReviewRoutable & AuthorizationRoutable {
+  var contextMenuRouter: ActivityRoutable & WriteNoteRoutable {
     router
   }
 
