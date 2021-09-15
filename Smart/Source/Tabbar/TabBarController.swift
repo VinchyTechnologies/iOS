@@ -67,6 +67,8 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
     tabBarItemAppearance.selected.titleTextAttributes = attributesSelected
     tabBarItemAppearance.normal.titleTextAttributes = attributesNormal
     appearance.stackedLayoutAppearance = tabBarItemAppearance
+    appearance.compactInlineLayoutAppearance = tabBarItemAppearance
+    appearance.inlineLayoutAppearance = tabBarItemAppearance
 
     tabBar.standardAppearance = appearance
     if #available(iOS 15.0, *) {
