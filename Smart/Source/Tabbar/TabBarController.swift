@@ -60,13 +60,21 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
       NSAttributedString.Key.font: titleFontAll,
     ]
 
-    UITabBar.appearance().barTintColor = .mainBackground
-    UITabBar.appearance().unselectedItemTintColor = .blueGray
-    UITabBarItem.appearance().setTitleTextAttributes(attributesNormal, for: .normal)
-    UITabBarItem.appearance().setTitleTextAttributes(attributesSelected, for: .selected)
-    delegate = self
+    let appearance = UITabBarAppearance()
+    appearance.configureWithOpaqueBackground()
+    appearance.backgroundColor = .mainBackground
+    let tabBarItemAppearance = UITabBarItemAppearance()
+    tabBarItemAppearance.selected.titleTextAttributes = attributesSelected
+    tabBarItemAppearance.normal.titleTextAttributes = attributesNormal
+    appearance.stackedLayoutAppearance = tabBarItemAppearance
 
+    tabBar.standardAppearance = appearance
+    if #available(iOS 15.0, *) {
+      tabBar.scrollEdgeAppearance = appearance
+    }
     tabBar.isTranslucent = false
+
+    delegate = self
 
     let imageConfig = UIImage.SymbolConfiguration(pointSize: 22, weight: .medium, scale: .default)
 

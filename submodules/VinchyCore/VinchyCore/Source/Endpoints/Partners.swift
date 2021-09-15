@@ -34,7 +34,7 @@ private enum PartnersEndpoint: EndpointProtocol {
 
     case .partnersByWine(let wineID, _, _, _, _):
       return "/partners/" + String(wineID)
-      
+
     case .nearest(let numberOfPartners, _, _, _, _):
       return "/nearest/" + String(numberOfPartners) + "/partners/recommendations"
     }
@@ -74,7 +74,7 @@ private enum PartnersEndpoint: EndpointProtocol {
         ("limit", String(limit)),
       ]
       return params
-      
+
     case .nearest(_, let latitude, let longitude, let radius, let accountID):
       let params: Parameters = [
         ("latitude", String(latitude)),
