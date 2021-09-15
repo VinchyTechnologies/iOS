@@ -69,8 +69,19 @@ extension VinchyPresenter: VinchyPresenterProtocol {
     viewController?.startLoadingAnimation()
   }
 
-  func update(compilations: [Compilation]) {
+  func update(compilations: [Compilation], nearestPartners: [NearestPartner]) {
     viewController?.stopLoadingAnimation()
+
+    var compilations = compilations
+
+    print(compilations.count)
+    nearestPartners.reversed().forEach { nearestPartner in
+      let winesList = nearestPartner.recommendedWines.compactMap({ CollectionItem.wine(wine: $0) })
+      let compilation = Compilation(id: nearestPartner.partner.affiliatedStoreId, type: .partnerBottles, imageURL: nearestPartner.partner.logoURL, title: nearestPartner.partner.title, collectionList: [Collection(wineList: winesList)])
+      compilations.insert(compilation, at: 1)
+    }
+
+    print(compilations.count)
 
     var sections: [VinchyViewControllerViewModel.Section] = []
 
@@ -134,6 +145,24 @@ extension VinchyPresenter: VinchyPresenterProtocol {
                 textColor: .dark)),
             ]))
           }
+
+          sections.append(.bottles([
+            .init(
+              type: compilation.type,
+              collections: compilation.collectionList),
+          ]))
+        }
+
+      case .partnerBottles:
+        if
+          compilation.collectionList.first?.wineList != nil,
+          let firstCollectionList = compilation.collectionList.first, !firstCollectionList.wineList.isEmpty
+        {
+//          if let title = compilation.title {
+          sections.append(.storeTitle([
+            .init(affilatedId: compilation.id, imageURL: compilation.imageURL, titleText: compilation.title, moreText: localized("see_all")),
+          ]))
+//          }
 
           sections.append(.bottles([
             .init(

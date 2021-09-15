@@ -9,7 +9,7 @@
 import VinchyCore
 
 protocol VinchyPresenterProtocol: AnyObject {
-  func update(compilations: [Compilation])
+  func update(compilations: [Compilation], nearestPartners: [NearestPartner])
   func startShimmer()
   func stopPullRefreshing()
   func showAlertEmptyCollection()

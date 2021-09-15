@@ -29,6 +29,13 @@ final class VinchyRouter {
 // MARK: VinchyRouterProtocol
 
 extension VinchyRouter: VinchyRouterProtocol {
+
+  func pushToStoreViewController(affilatedId: Int) {
+    viewController?.navigationController?.pushViewController(
+      StoreAssembly.assemblyModule(input: .init(mode: .normal(affilatedId: affilatedId))),
+      animated: true)
+  }
+
   func pushToAdvancedFilterViewController() {
     viewController?.navigationController?.pushViewController(
       Assembly.buildFiltersModule(), animated: true)

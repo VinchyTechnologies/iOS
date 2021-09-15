@@ -148,7 +148,8 @@ final class VinchyViewController: UIViewController {
       AdsCollectionViewCell.self,
       SmartFilterCollectionCell.self,
       TextCollectionCell.self,
-      FakeVinchyCollectionCell.self)
+      FakeVinchyCollectionCell.self,
+      StoreTitleCollectionCell.self)
 
     collectionView.dataSource = self
     collectionView.delegate = self
@@ -250,6 +251,11 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
         let width = collectionView.frame.width - 2 * C.horizontalInset
         let height: CGFloat = 170 // TODO: -
         return .init(width: width, height: height)
+
+      case .storeTitle(let model):
+        let width = collectionView.frame.width - 2 * C.horizontalInset
+        let height: CGFloat = StoreTitleCollectionCell.height(viewModel: model[safe: indexPath.row], for: width)
+        return .init(width: width, height: height)
       }
     }
   }
@@ -280,6 +286,9 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
 
       case .stories, .promo, .big, .bottles:
         return .zero
+
+      case .storeTitle:
+        return .init(top: 16, left: 0, bottom: 8, right: 0)
       }
     }
   }
@@ -318,6 +327,9 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
         return model.count
 
       case .smartFilter(let model):
+        return model.count
+
+      case .storeTitle(let model):
         return model.count
       }
     }
@@ -372,6 +384,13 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SmartFilterCollectionCell.reuseId, for: indexPath) as! SmartFilterCollectionCell
         cell.decorate(model: model[indexPath.row])
         return cell
+
+      case .storeTitle(let model):
+        // swiftlint:disable:next force_cast
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StoreTitleCollectionCell.reuseId, for: indexPath) as! StoreTitleCollectionCell
+        cell.decorate(model: model[indexPath.row])
+        cell.delegate = self
+        return cell
       }
     }
   }
@@ -417,6 +436,14 @@ extension VinchyViewController: SimpleContinuosCarouselCollectionCellInteractorD
 
   func didTapBottleCell(wineID: Int64) {
     interactor?.didTapBottleCell(wineID: wineID)
+  }
+}
+
+// MARK: StoreTitleCollectionCellDelegate
+
+extension VinchyViewController: StoreTitleCollectionCellDelegate {
+  func didTapSeeAllStore(affilatedId: Int) {
+    interactor?.didTapSeeStore(affilatedId: affilatedId)
   }
 }
 

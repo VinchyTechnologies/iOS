@@ -15,7 +15,7 @@ public protocol AdsProtocol: AnyObject {}
 // MARK: - CollectionType
 
 public enum CollectionType: String, Decodable {
-  case mini, big, promo, bottles, shareUs, smartFilter
+  case mini, big, promo, bottles, shareUs, smartFilter, partnerBottles
 }
 
 // MARK: - CollectionItem

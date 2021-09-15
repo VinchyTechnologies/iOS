@@ -68,7 +68,7 @@ final class SimpleContinuousCaruselCollectionCellView: UICollectionViewCell, Reu
     case .promo:
       return 120
 
-    case .bottles:
+    case .bottles, .partnerBottles:
       return 250
 
     case .shareUs:
@@ -109,62 +109,62 @@ final class SimpleContinuousCaruselCollectionCellView: UICollectionViewCell, Reu
     }
   }
 
-  private func setupLongGestureRecognizerOnCollection() {
-    let longPressedGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureRecognizer:)))
-    longPressedGesture.minimumPressDuration = 0.45
-    longPressedGesture.delegate = self
-    collectionView.addGestureRecognizer(longPressedGesture)
-  }
-
-  @objc
-  private func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
-    if gestureRecognizer.state != .began {
-      return
-    }
-
-    let point = gestureRecognizer.location(in: collectionView)
-    if let indexPath = collectionView.indexPathForItem(at: point) {
-      switch type {
-      case .bottles:
-        guard let collection = collections.first, let collectionItem = collection.wineList[safe: indexPath.row] else {
-          return
-        }
-
-        switch collectionItem {
-        case .wine(let wine):
-          if let cell = collectionView.cellForItem(at: indexPath) {
-            if CHHapticEngine.capabilitiesForHardware().supportsHaptics {
-              HapticEffectHelper.vibrate(withEffect: .heavy)
-            } else {
-              AudioServicesPlaySystemSound(Constants.vibrationSoundId)
-            }
-
-            let writeNote = ContextMenuItemWithImage(title: localized("write_note").firstLetterUppercased(), image: UIImage(systemName: "square.and.pencil")) { [weak self] in
-
-              self?.interactor?.didTapWriteNoteContextMenu(wineID: wine.id)
-            }
-            let leaveReview = ContextMenuItemWithImage(title: localized("write_review").firstLetterUppercased(), image: UIImage(systemName: "text.bubble")) { [weak self] in
-
-              self?.interactor?.didTapLeaveReviewContextMenu(wineID: wine.id)
-            }
-            let share = ContextMenuItemWithImage(title: localized("share_link").firstLetterUppercased(), image: UIImage(systemName: "square.and.arrow.up")) { [weak self] in
-
-              self?.interactor?.didTapShareContextMenu(wineID: wine.id)
-            }
-
-            CM.items = [writeNote, leaveReview, share]
-            CM.showMenu(viewTargeted: cell, animated: true)
-          }
-
-        case .ads:
-          break
-        }
-
-      case .big, .mini, .promo, .shareUs, .smartFilter, .none:
-        break
-      }
-    }
-  }
+//  private func setupLongGestureRecognizerOnCollection() {
+//    let longPressedGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureRecognizer:)))
+//    longPressedGesture.minimumPressDuration = 0.45
+//    longPressedGesture.delegate = self
+//    collectionView.addGestureRecognizer(longPressedGesture)
+//  }
+//
+//  @objc
+//  private func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
+//    if gestureRecognizer.state != .began {
+//      return
+//    }
+//
+//    let point = gestureRecognizer.location(in: collectionView)
+//    if let indexPath = collectionView.indexPathForItem(at: point) {
+//      switch type {
+//      case .bottles, .partnerBottles:
+//        guard let collection = collections.first, let collectionItem = collection.wineList[safe: indexPath.row] else {
+//          return
+//        }
+//
+//        switch collectionItem {
+//        case .wine(let wine):
+//          if let cell = collectionView.cellForItem(at: indexPath) {
+//            if CHHapticEngine.capabilitiesForHardware().supportsHaptics {
+//              HapticEffectHelper.vibrate(withEffect: .heavy)
+//            } else {
+//              AudioServicesPlaySystemSound(Constants.vibrationSoundId)
+//            }
+//
+//            let writeNote = ContextMenuItemWithImage(title: localized("write_note").firstLetterUppercased(), image: UIImage(systemName: "square.and.pencil")) { [weak self] in
+//
+//              self?.interactor?.didTapWriteNoteContextMenu(wineID: wine.id)
+//            }
+//            let leaveReview = ContextMenuItemWithImage(title: localized("write_review").firstLetterUppercased(), image: UIImage(systemName: "text.bubble")) { [weak self] in
+//
+//              self?.interactor?.didTapLeaveReviewContextMenu(wineID: wine.id)
+//            }
+//            let share = ContextMenuItemWithImage(title: localized("share_link").firstLetterUppercased(), image: UIImage(systemName: "square.and.arrow.up")) { [weak self] in
+//
+//              self?.interactor?.didTapShareContextMenu(wineID: wine.id)
+//            }
+//
+//            CM.items = [writeNote, leaveReview, share]
+//            CM.showMenu(viewTargeted: cell, animated: true)
+//          }
+//
+//        case .ads:
+//          break
+//        }
+//
+//      case .big, .mini, .promo, .shareUs, .smartFilter, .none:
+//        break
+//      }
+//    }
+//  }
 }
 
 // MARK: UICollectionViewDataSource
@@ -176,7 +176,7 @@ extension SimpleContinuousCaruselCollectionCellView: UICollectionViewDataSource 
     numberOfItemsInSection _: Int)
     -> Int
   {
-    if type == .bottles {
+    if type == .bottles || type == .partnerBottles {
       return collections.first?.wineList.count ?? 0
     }
 
@@ -203,7 +203,7 @@ extension SimpleContinuousCaruselCollectionCellView: UICollectionViewDataSource 
       cell.decorate(model: .init(subtitleText: collections[safe: indexPath.row]?.title, imageURL: collections[safe: indexPath.row]?.imageURL?.toURL))
       return cell
 
-    case .bottles:
+    case .bottles, .partnerBottles:
       guard
         let collection = collections.first,
         let collectionItem = collection.wineList[safe: indexPath.row]
@@ -217,6 +217,7 @@ extension SimpleContinuousCaruselCollectionCellView: UICollectionViewDataSource 
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as! WineCollectionViewCell
         cell.decorate(model: .init(wineID: wine.id, imageURL: wine.mainImageUrl?.toURL, titleText: wine.title, subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode)))
         return cell
+
       case .ads:
         return .init()
       }
@@ -245,13 +246,14 @@ extension SimpleContinuousCaruselCollectionCellView: UICollectionViewDelegateFlo
         },
         title: collections[indexPath.row].title)
 
-    case .bottles:
+    case .bottles, .partnerBottles:
       guard let collection = collections.first, let collectionItem = collection.wineList[safe: indexPath.row] else {
         return
       }
       switch collectionItem {
       case .wine(let wine):
         interactor?.didTapBottleCell(wineID: wine.id)
+
       case .ads:
         break
       }
@@ -279,7 +281,7 @@ extension SimpleContinuousCaruselCollectionCellView: UICollectionViewDelegateFlo
     case .promo:
       width = 290
 
-    case .bottles:
+    case .bottles, .partnerBottles:
       width = 150
 
     case .shareUs:
@@ -311,7 +313,7 @@ extension SimpleContinuousCaruselCollectionCellView: UICollectionViewDataSourceP
           urls.append(url)
         }
 
-      case .bottles:
+      case .bottles, .partnerBottles:
         if
           let collection = collections.first,
           let collectionItem = collection.wineList[safe: indexPath.row]
@@ -344,7 +346,7 @@ extension SimpleContinuousCaruselCollectionCellView: UICollectionViewDataSourceP
           urls.append(url)
         }
 
-      case .bottles:
+      case .bottles, .partnerBottles:
         if
           let collection = collections.first,
           let collectionItem = collection.wineList[safe: indexPath.row]
@@ -378,6 +380,7 @@ extension SimpleContinuousCaruselCollectionCellView: SimpleContinuosCarouselColl
   func showAlert(title: String, message: String) {
     (window?.rootViewController as? Alertable)?.showAlert(title: title, message: message)
   }
+
   func updateUI(viewModel: ViewModel) {
     type = viewModel.type
     collections = viewModel.collections
