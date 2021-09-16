@@ -25,24 +25,23 @@ final class AreYouInStoreViewController: UIViewController {
       switch section {
       case .title(let model):
         model.forEach { textModel in
-          height += TextCollectionCell.height(viewModel: textModel, width: UIScreen.main.bounds.width - 32)
+          height += TextCollectionCell.height(viewModel: textModel, width: UIScreen.main.bounds.width - 32) + 16
         }
 
       case .recommendedWines:
-        height += 250
+        height += 250 + 16
       }
     }
 
-    let bottomViewHeight: CGFloat = (UIApplication.shared.asKeyWindow?.safeAreaInsets.bottom ?? 0) + 48 + 20 + 10
+    let bottomViewHeight: CGFloat = (UIApplication.shared.asKeyWindow?.safeAreaInsets.bottom ?? 0) + 48 + 20
 
-    return height + bottomViewHeight + 24 /* pull bar height */
+    return height + bottomViewHeight + 24 /* pull bar height */+ 20
   }
 
   override func viewDidLoad() {
     super.viewDidLoad()
 
     let bottomViewHeight = (UIApplication.shared.asKeyWindow?.safeAreaInsets.bottom ?? 0) + 48 + 20
-//    collectionView.contentInset.bottom = bottomViewHeight + 10
 
     view.addSubview(bottomButtonsView)
     bottomButtonsView.translatesAutoresizingMaskIntoConstraints = false
@@ -58,7 +57,7 @@ final class AreYouInStoreViewController: UIViewController {
     NSLayoutConstraint.activate([
       collectionView.topAnchor.constraint(equalTo: view.topAnchor, constant: 24/* pull bar height */),
       collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
-      collectionView.bottomAnchor.constraint(equalTo: bottomButtonsView.topAnchor, constant: -10),
+      collectionView.bottomAnchor.constraint(equalTo: bottomButtonsView.topAnchor),
       collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
     ])
 
@@ -74,16 +73,11 @@ final class AreYouInStoreViewController: UIViewController {
     })
   }
 
-  override func viewDidLayoutSubviews() {
-    super.viewDidLayoutSubviews()
-//    collectionView.layoutIfNeeded()
-  }
-
   // MARK: Private
 
   private lazy var bottomButtonsView: BottomButtonsView = {
-//    $0.delegate = self
-    $0
+    $0.delegate = self
+    return $0
   }(BottomButtonsView())
 
   private let layout: UICollectionViewFlowLayout = {
@@ -99,6 +93,7 @@ final class AreYouInStoreViewController: UIViewController {
     $0.register(
       TextCollectionCell.self,
       SimpleContinuousCaruselCollectionCellView.self)
+    $0.contentInset = .init(top: 0, left: 0, bottom: 10, right: 0)
     return $0
   }(UICollectionView(frame: .zero, collectionViewLayout: layout))
 
@@ -154,13 +149,31 @@ extension AreYouInStoreViewController: UICollectionViewDataSource {
       let cell = collectionView.dequeueReusableCell(
         withReuseIdentifier: SimpleContinuousCaruselCollectionCellView.reuseId,
         for: indexPath) as! SimpleContinuousCaruselCollectionCellView // swiftlint:disable:this force_cast
-      let configurator = SimpleContinuosCarouselCollectionCellConfigurator(delegate: nil)
+      let configurator = SimpleContinuosCarouselCollectionCellConfigurator(delegate: self)
       configurator.configure(view: cell, with: SimpleContinuosCarouselCollectionCellInput(model: model[indexPath.row]))
       cell.viewDidLoad()
       return cell
 
     case .none:
       return .init()
+    }
+  }
+
+  func collectionView(
+    _ collectionView: UICollectionView,
+    layout collectionViewLayout: UICollectionViewLayout,
+    insetForSectionAt section: Int)
+    -> UIEdgeInsets
+  {
+    switch viewModel?.sections[safe: section] {
+    case .title:
+      return .init(top: 16, left: 0, bottom: 0, right: 0)
+
+    case .recommendedWines:
+      return .init(top: 16, left: 0, bottom: 0, right: 0)
+
+    case .none:
+      return .zero
     }
   }
 }
@@ -195,5 +208,28 @@ extension AreYouInStoreViewController: UICollectionViewDelegateFlowLayout {
 extension AreYouInStoreViewController: AreYouInStoreViewControllerProtocol {
   func updateUI(viewModel: AreYouInStoreViewModel) {
     self.viewModel = viewModel
+  }
+}
+
+// MARK: BottomButtonsViewDelegate
+
+extension AreYouInStoreViewController: BottomButtonsViewDelegate {
+  func didTapLeadingButton(_ button: UIButton) {
+    dismiss(animated: true, completion: nil)
+  }
+
+  func didTapTrailingButton(_ button: UIButton) {
+    interactor?.didTapStoreButton()
+  }
+}
+
+// MARK: SimpleContinuosCarouselCollectionCellInteractorDelegate
+
+extension AreYouInStoreViewController: SimpleContinuosCarouselCollectionCellInteractorDelegate {
+  func didTapCompilationCell(input: ShowcaseInput) {
+  }
+
+  func didTapBottleCell(wineID: Int64) {
+    interactor?.didTapBottle(wineID: wineID)
   }
 }

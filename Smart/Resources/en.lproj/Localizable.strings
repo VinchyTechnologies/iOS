@@ -177,3 +177,9 @@
 "map" = "map";
 "apple_maps" = "Apple Maps";
 "search_this_area" = "Search this area";
+
+// MARK: - AreYouInStore
+"AreYouInStore.RecommendToBuy" = "We recommend to buy";
+"AreYouInStore.SeemsYouAreIn" = "It seems you are in the\n";
+"AreYouInStore.NotHere" = "I'm not here";
+"AreYouInStore.SeeMore" = "See more";

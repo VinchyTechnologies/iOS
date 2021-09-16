@@ -8,6 +8,7 @@
 
 import CommonUI
 import Display
+import StringFormatting
 import VinchyCore
 
 // MARK: - AreYouInStorePresenter
@@ -16,7 +17,8 @@ final class AreYouInStorePresenter {
 
   // MARK: Lifecycle
 
-  init(viewController: AreYouInStoreViewControllerProtocol) {
+  init(input: AreYouInStoreInput, viewController: AreYouInStoreViewControllerProtocol) {
+    self.input = input
     self.viewController = viewController
   }
 
@@ -24,29 +26,40 @@ final class AreYouInStorePresenter {
 
   weak var viewController: AreYouInStoreViewControllerProtocol?
 
+  // MARK: Private
+
+  private var input: AreYouInStoreInput
+
 }
 
 // MARK: AreYouInStorePresenterProtocol
 
 extension AreYouInStorePresenter: AreYouInStorePresenterProtocol {
-  func update(title: String?) {
+  func update() {
 
     let bottomButtonsViewModel = BottomButtonsViewModel(
-      leadingButtonText: "Я не здесь",
-      trailingButtonText: "Смотреть ещё")
+      leadingButtonText: localized("AreYouInStore.NotHere"),
+      trailingButtonText: localized("AreYouInStore.SeeMore"))
+
+    let recommendedWines = input.partner.recommendedWines.compactMap({ CollectionItem.wine(wine: $0) })
+
+    let storeTitle = input.partner.partner.title.quoted
+    let fullStoreText = NSMutableAttributedString(string: localized("AreYouInStore.SeemsYouAreIn") + storeTitle, font: Font.bold(24), textColor: .dark)
+    let range = ((localized("AreYouInStore.SeemsYouAreIn") + storeTitle) as NSString).range(of: storeTitle)
+    fullStoreText.addAttribute(.foregroundColor, value: UIColor.accent, range: range)
 
     let viewModel = AreYouInStoreViewModel(
       sections: [
         .title([
-          .init(titleText: NSAttributedString(string: title ?? "", font: Font.bold(24), textColor: .dark, paragraphAlignment: .center)),
+          .init(titleText: fullStoreText),
         ]),
 
-//        .title([
-//          .init(titleText: NSAttributedString(string: "Рекомендуем обратить внимание", font: Font.regular(16), textColor: .dark)),
-//        ]),
+        .title([
+          .init(titleText: NSAttributedString(string: localized("AreYouInStore.RecommendToBuy"), font: Font.heavy(20), textColor: .dark)),
+        ]),
 
         .recommendedWines([
-          .init(type: .bottles, collections: [.init(wineList: [.wine(wine: ShortWine.fake)])]),
+          .init(type: .bottles, collections: [.init(wineList: recommendedWines)]),
         ]),
       ],
       bottomButtonsViewModel: bottomButtonsViewModel)

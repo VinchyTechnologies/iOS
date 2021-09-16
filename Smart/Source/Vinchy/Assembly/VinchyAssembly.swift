@@ -6,7 +6,7 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import LocationUI
 
 final class VinchyAssembly {
   static func assemblyModule() -> VinchyViewController {
@@ -14,7 +14,8 @@ final class VinchyAssembly {
 
     let router = VinchyRouter(viewController: viewController)
     let presenter = VinchyPresenter(viewController: viewController)
-    let interactor = VinchyInteractor(router: router, presenter: presenter)
+    let repository = VinchyRepository(locationService: LocationService())
+    let interactor = VinchyInteractor(router: router, presenter: presenter, repository: repository)
 
     router.interactor = interactor
     viewController.interactor = interactor

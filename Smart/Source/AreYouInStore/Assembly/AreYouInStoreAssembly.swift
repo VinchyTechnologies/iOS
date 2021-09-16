@@ -12,8 +12,8 @@ final class AreYouInStoreAssembly {
   static func assemblyModule(input: AreYouInStoreInput) -> AreYouInStoreViewController {
     let viewController = AreYouInStoreViewController()
     let router = AreYouInStoreRouter(input: input, viewController: viewController)
-    let presenter = AreYouInStorePresenter(viewController: viewController)
-    let interactor = AreYouInStoreInteractor(router: router, presenter: presenter)
+    let presenter = AreYouInStorePresenter(input: input, viewController: viewController)
+    let interactor = AreYouInStoreInteractor(input: input, router: router, presenter: presenter)
 
     router.interactor = interactor
     viewController.interactor = interactor

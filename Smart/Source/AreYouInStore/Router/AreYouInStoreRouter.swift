@@ -6,6 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import Display
 import UIKit
 
 // MARK: - AreYouInStoreRouter
@@ -37,4 +38,10 @@ final class AreYouInStoreRouter {
 
 extension AreYouInStoreRouter: AreYouInStoreRouterProtocol {
 
+  func presentStore(affilatedId: Int) {
+    let controller = StoreAssembly.assemblyModule(input: .init(mode: .normal(affilatedId: affilatedId)))
+    let navigationController = NavigationController(rootViewController: controller)
+    navigationController.modalPresentationStyle = .overCurrentContext
+    viewController?.present(navigationController, animated: true, completion: nil)
+  }
 }
