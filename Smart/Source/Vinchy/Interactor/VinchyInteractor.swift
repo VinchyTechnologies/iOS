@@ -124,9 +124,9 @@ final class VinchyInteractor {
             return
           }
 
-//          if nearestStore.1 <= 100 {
-          self.router.presentAreYouInStoreBottomSheet(nearestPartner: nearestStore.0)
-//          }
+          if nearestStore.1 <= 100 {
+            self.router.presentAreYouInStoreBottomSheet(nearestPartner: nearestStore.0)
+          }
         }
       }
     }
