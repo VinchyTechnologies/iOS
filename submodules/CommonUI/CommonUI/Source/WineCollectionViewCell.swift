@@ -9,19 +9,50 @@
 import Display
 import UIKit
 
+// MARK: - ContextMenuViewModel
+
+public enum ContextMenuViewModel {
+  case share(content: ContextMenuItemViewModel)
+  case writeNote(content: ContextMenuItemViewModel)
+}
+
+// MARK: - ContextMenuItemViewModel
+
+public struct ContextMenuItemViewModel {
+  public let title: String?
+  public init(title: String?) {
+    self.title = title
+  }
+}
+
 // MARK: - WineCollectionViewCellViewModel
 
 public struct WineCollectionViewCellViewModel: ViewModelProtocol, Hashable {
-  public let wineID: Int64
-  public let imageURL: URL?
-  public let titleText: String?
-  public let subtitleText: String?
 
-  public init(wineID: Int64, imageURL: URL?, titleText: String?, subtitleText: String?) {
+  // MARK: Lifecycle
+
+  public init(wineID: Int64, imageURL: URL?, titleText: String?, subtitleText: String?, contextMenuViewModels: [ContextMenuViewModel]?) {
     self.wineID = wineID
     self.imageURL = imageURL
     self.titleText = titleText
     self.subtitleText = subtitleText
+    self.contextMenuViewModels = contextMenuViewModels
+  }
+
+  // MARK: Public
+
+  public let wineID: Int64
+  public let imageURL: URL?
+  public let titleText: String?
+  public let subtitleText: String?
+  public let contextMenuViewModels: [ContextMenuViewModel]?
+
+  public static func == (lhs: WineCollectionViewCellViewModel, rhs: WineCollectionViewCellViewModel) -> Bool {
+    lhs.wineID == rhs.wineID
+  }
+
+  public func hash(into hasher: inout Hasher) {
+    hasher.combine(wineID)
   }
 }
 

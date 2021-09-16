@@ -16,6 +16,7 @@ open class ContextMenuCell: UITableViewCell {
   public override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
 
+    backgroundColor = .mainBackground
     let stackView = UIStackView(arrangedSubviews: [titleLabel, iconImageView])
 
     contentView.addSubview(stackView)

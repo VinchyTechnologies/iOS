@@ -68,7 +68,8 @@ extension ResultsSearchPresenter: ResultsSearchPresenterProtocol {
           wineID: wine.wineID,
           imageURL: imageURL(from: wine.wineID).toURL,
           titleText: wine.title,
-          subtitleText: nil))
+          subtitleText: nil,
+          contextMenuViewModels: []))
     }
 
     if !wineCollectionViewCellViewModels.isEmpty {

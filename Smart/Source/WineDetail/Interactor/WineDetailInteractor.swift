@@ -22,7 +22,7 @@ enum WineDetailMoreActions {
 
 // MARK: - ActionAfterLoginOrRegistration
 
-private enum ActionAfterLoginOrRegistration {
+enum ActionAfterLoginOrRegistration {
   case writeReview
   case none
 }
@@ -188,6 +188,14 @@ final class WineDetailInteractor {
 // MARK: WineDetailInteractorProtocol
 
 extension WineDetailInteractor: WineDetailInteractorProtocol {
+
+  var contextMenuRouter: ActivityRoutable & WriteNoteRoutable {
+    router
+  }
+
+  func didSelectWine(wineID: Int64) {
+    router.pushToWineDetailViewController(wineID: wineID)
+  }
 
   func didTapSeeAllStores() {
     router.pushToSeeAllStores(wineID: input.wineID)

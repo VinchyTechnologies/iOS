@@ -295,10 +295,10 @@ final class WineDetailViewController: CollectionViewController {
           BottlesCollectionView.itemModel(
             dataID: itemID,
             content: content,
-            behaviors: .init(didTap: { [weak self] wineID in
-              self?.interactor?.didTapSimilarWine(wineID: wineID)
-            }),
             style: .init())
+            .setBehaviors({ [weak self] context in
+              context.view.bottlesCollectionViewDelegate = self
+            })
         }
         .flowLayoutItemSize(.init(width: collectionView.frame.width, height: 250))
         .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 16, right: 0))
@@ -484,5 +484,21 @@ extension WineDetailViewController: AuthorizationOutputDelegate {
 extension WineDetailViewController: StarRatingControlCollectionCellDelegate {
   func didTapStarRatingControl() {
     interactor?.didTapStarsRatingControl()
+  }
+}
+
+// MARK: BottlesCollectionViewDelegate
+
+extension WineDetailViewController: BottlesCollectionViewDelegate {
+  func didTapWriteNoteContextMenu(wineID: Int64) {
+    interactor?.didTapWriteNoteContextMenu(wineID: wineID)
+  }
+
+  func didTap(wineID: Int64) {
+    interactor?.didSelectWine(wineID: wineID)
+  }
+
+  func didTapShareContextMenu(wineID: Int64, sourceView: UIView) {
+    interactor?.didTapShareContextMenu(wineID: wineID, sourceView: sourceView)
   }
 }

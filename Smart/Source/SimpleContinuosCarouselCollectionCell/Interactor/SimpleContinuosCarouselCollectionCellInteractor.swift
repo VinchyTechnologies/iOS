@@ -11,13 +11,6 @@ import Database
 import FirebaseDynamicLinks
 import VinchyCore
 
-// MARK: - ActionAfterLoginOrRegistration
-
-private enum ActionAfterLoginOrRegistration {
-  case writeReview
-  case none
-}
-
 // MARK: - SimpleContinuosCarouselCollectionCellInteractorDelegate
 
 protocol SimpleContinuosCarouselCollectionCellInteractorDelegate: AnyObject {

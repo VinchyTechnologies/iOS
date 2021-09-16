@@ -37,6 +37,11 @@ final class WineDetailPresenter {
 
   // MARK: Private
 
+  private var contextMenuViewModels: [ContextMenuViewModel] = [
+    .share(content: .init(title: localized("share_link").firstLetterUppercased())),
+    .writeNote(content: .init(title: localized("write_note").firstLetterUppercased())),
+  ]
+
   // TODO: - Make Factory Pattern
 
   private func buildCaruselImages(wine: Wine) -> [WineDetailViewModel.Section] {
@@ -280,7 +285,8 @@ final class WineDetailPresenter {
             wineID: shortWine.id,
             imageURL: shortWine.mainImageUrl?.toURL,
             titleText: shortWine.title,
-            subtitleText: countryNameFromLocaleCode(countryCode: shortWine.winery?.countryCode)))
+            subtitleText: countryNameFromLocaleCode(countryCode: shortWine.winery?.countryCode),
+            contextMenuViewModels: contextMenuViewModels))
       }
 
       sections += [

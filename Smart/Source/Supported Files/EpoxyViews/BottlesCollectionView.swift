@@ -8,6 +8,16 @@
 
 import Epoxy
 
+// MARK: - BottlesCollectionViewDelegate
+
+protocol BottlesCollectionViewDelegate: AnyObject {
+  func didTapShareContextMenu(wineID: Int64, sourceView: UIView)
+  func didTapWriteNoteContextMenu(wineID: Int64)
+  func didTap(wineID: Int64)
+}
+
+// MARK: - BottlesCollectionView
+
 final class BottlesCollectionView: CollectionView, EpoxyableView {
 
   // MARK: Lifecycle
@@ -19,18 +29,13 @@ final class BottlesCollectionView: CollectionView, EpoxyableView {
 
   // MARK: Internal
 
-  struct Behaviors {
-    var didTap: ((_ wineID: Int64) -> Void)?
-  }
   struct Style: Hashable {
 
   }
 
   typealias Content = [WineBottleView.Content]
 
-  func setBehaviors(_ behaviors: Behaviors?) {
-    didTap = behaviors?.didTap
-  }
+  weak var bottlesCollectionViewDelegate: BottlesCollectionViewDelegate?
 
   func setContent(_ content: Content, animated: Bool) {
 
@@ -40,8 +45,11 @@ final class BottlesCollectionView: CollectionView, EpoxyableView {
           dataID: index,
           content: wineCollectionViewCellViewModel,
           style: .init())
+          .setBehaviors({ [weak self] context in
+            context.view.delegate = self
+          })
           .didSelect { [weak self] _ in
-            self?.didTap?(wineCollectionViewCellViewModel.wineID)
+            self?.bottlesCollectionViewDelegate?.didTap(wineID: wineCollectionViewCellViewModel.wineID)
           }
       }
     }
@@ -66,5 +74,17 @@ final class BottlesCollectionView: CollectionView, EpoxyableView {
     section.orthogonalScrollingBehavior = .continuous
     section.contentInsets = .init(top: 0, leading: 24, bottom: 0, trailing: 24)
     return section
+  }
+}
+
+// MARK: WineBottleViewDelegate
+
+extension BottlesCollectionView: WineBottleViewDelegate {
+  func didTapWriteNoteContextMenu(wineID: Int64) {
+    bottlesCollectionViewDelegate?.didTapWriteNoteContextMenu(wineID: wineID)
+  }
+
+  func didTapShareContextMenu(wineID: Int64, sourceView: UIView) {
+    bottlesCollectionViewDelegate?.didTapShareContextMenu(wineID: wineID, sourceView: sourceView)
   }
 }

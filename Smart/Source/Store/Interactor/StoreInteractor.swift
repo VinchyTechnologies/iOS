@@ -7,6 +7,7 @@
 //
 
 import Core
+import VinchyAuthorization
 import VinchyCore
 
 // MARK: - StoreInteractorData
@@ -48,6 +49,10 @@ final class StoreInteractor {
     configureStateMachine()
   }
 
+  // MARK: Internal
+
+  internal let dispatchGroup = DispatchGroup()
+
   // MARK: Private
 
   private lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
@@ -55,11 +60,11 @@ final class StoreInteractor {
     self.presenter.startLoading()
   }
 
+  private var presenter: StorePresenterProtocol
+
   private let input: StoreInput
   private let router: StoreRouterProtocol
-  private let presenter: StorePresenterProtocol
   private let stateMachine = PagingStateMachine<StoreInteractorData>()
-  private let dispatchGroup = DispatchGroup()
   private var data: StoreInteractorData?
   private var partnerInfo: PartnerInfo?
   private var assortimentWines: [ShortWine] = []
@@ -221,6 +226,9 @@ final class StoreInteractor {
 // MARK: StoreInteractorProtocol
 
 extension StoreInteractor: StoreInteractorProtocol {
+  var contextMenuRouter: ActivityRoutable & WriteNoteRoutable {
+    router
+  }
 
   func didChoose(_ filters: [(String, String)]) {
     guard let partnerInfo = partnerInfo else {

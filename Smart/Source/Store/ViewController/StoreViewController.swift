@@ -11,6 +11,7 @@ import Database
 import Display
 import Epoxy
 import UIKit
+import VinchyAuthorization
 
 // MARK: - StoreViewController
 
@@ -132,10 +133,10 @@ final class StoreViewController: CollectionViewController {
           BottlesCollectionView.itemModel(
             dataID: itemID,
             content: content,
-            behaviors: .init(didTap: { [weak self] wineID in
-              self?.interactor?.didSelectWine(wineID: wineID)
-            }),
             style: .init())
+            .setBehaviors({ [weak self] context in
+              context.view.bottlesCollectionViewDelegate = self
+            })
         }
         .flowLayoutItemSize(.init(width: view.frame.width, height: 250))
         .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 16, right: 0))
@@ -338,5 +339,21 @@ extension StoreViewController: Loadable {
   func startLoadingAnimation() {
     hideErrorView()
     loadingIndicator.isAnimating = true
+  }
+}
+
+// MARK: BottlesCollectionViewDelegate
+
+extension StoreViewController: BottlesCollectionViewDelegate {
+  func didTapWriteNoteContextMenu(wineID: Int64) {
+    interactor?.didTapWriteNoteContextMenu(wineID: wineID)
+  }
+
+  func didTap(wineID: Int64) {
+    interactor?.didSelectWine(wineID: wineID)
+  }
+
+  func didTapShareContextMenu(wineID: Int64, sourceView: UIView) {
+    interactor?.didTapShareContextMenu(wineID: wineID, sourceView: sourceView)
   }
 }

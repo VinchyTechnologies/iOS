@@ -6,13 +6,29 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import AudioToolbox
 import CommonUI
+import CoreHaptics
 import Display
 import Epoxy
+import StringFormatting
+
+// MARK: - WineBottleViewDelegate
+
+protocol WineBottleViewDelegate: AnyObject {
+  func didTapShareContextMenu(wineID: Int64, sourceView: UIView)
+  func didTapWriteNoteContextMenu(wineID: Int64)
+}
+
+// MARK: - Constants
+
+private enum Constants {
+  static let vibrationSoundId: SystemSoundID = 1519
+}
 
 // MARK: - WineBottleView
 
-final class WineBottleView: UIView, EpoxyableView {
+final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDelegate {
 
   // MARK: Lifecycle
 
@@ -61,6 +77,11 @@ final class WineBottleView: UIView, EpoxyableView {
       stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
       stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5),
     ])
+
+    let longPressedGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureRecognizer:)))
+    longPressedGesture.minimumPressDuration = 0.45
+    longPressedGesture.delegate = self
+    addGestureRecognizer(longPressedGesture)
   }
 
   required init?(coder: NSCoder) { fatalError() }
@@ -71,9 +92,9 @@ final class WineBottleView: UIView, EpoxyableView {
 
   }
 
-  // MARK: ContentConfigurableView
-
   typealias Content = WineCollectionViewCellViewModel
+
+  weak var delegate: WineBottleViewDelegate?
 
   func setContent(_ content: Content, animated: Bool) {
     bottleImageView.loadBottle(url: content.imageURL)
@@ -91,9 +112,17 @@ final class WineBottleView: UIView, EpoxyableView {
     } else {
       subtitleLabel.isHidden = true
     }
+
+    wineID = content.wineID
+    contextMenuViewModels = content.contextMenuViewModels
   }
 
   // MARK: Private
+
+  private lazy var hapticGenerator = UISelectionFeedbackGenerator()
+
+  private var wineID: Int64?
+  private var contextMenuViewModels: [ContextMenuViewModel]?
 
   private let background = UIView()
 
@@ -118,6 +147,43 @@ final class WineBottleView: UIView, EpoxyableView {
     label.textAlignment = .center
     return label
   }()
+
+  @objc
+  private func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {
+    if gestureRecognizer.state != .began {
+      return
+    }
+    if CHHapticEngine.capabilitiesForHardware().supportsHaptics {
+      HapticEffectHelper.vibrate(withEffect: .heavy)
+    } else {
+      AudioServicesPlaySystemSound(Constants.vibrationSoundId)
+    }
+    var contextMenuItems: [ContextMenuItemWithImage] = []
+    contextMenuViewModels?.forEach {
+      switch $0 {
+      case .share(let content):
+        guard let title = content.title else {
+          return
+        }
+        contextMenuItems.append(.init(title: title, image: UIImage(systemName: "square.and.arrow.up")){ [weak self] in
+          guard let self = self else { return }
+          guard let wineID = self.wineID else { return }
+          self.delegate?.didTapShareContextMenu(wineID: wineID, sourceView: self)
+        })
+
+      case .writeNote(let content):
+        guard let title = content.title else {
+          return
+        }
+        contextMenuItems.append(.init(title: title, image: UIImage(systemName: "square.and.pencil")){ [weak self] in
+          guard let wineID = self?.wineID else { return }
+          self?.delegate?.didTapWriteNoteContextMenu(wineID: wineID)
+        })
+      }
+    }
+    CM.items = contextMenuItems
+    CM.showMenu(viewTargeted: self, animated: true)
+  }
 }
 
 // MARK: HighlightableView

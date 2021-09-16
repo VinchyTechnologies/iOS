@@ -189,7 +189,8 @@ extension LoveViewController: UICollectionViewDataSource {
           wineID: wineID,
           imageURL: imageURL(from: wineID).toURL,
           titleText: title,
-          subtitleText: nil))
+          subtitleText: nil,
+          contextMenuViewModels: []))
     }
 
     return cell

@@ -75,6 +75,11 @@
 		7485870626C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586FB26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellRouter.swift */; };
 		7485870726C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586FC26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellRouterProtocol.swift */; };
 		7485877A26CC068700F5CBEA /* Configurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7485877926CC068600F5CBEA /* Configurator.swift */; };
+		74DAD09D26E0B54F00055AE7 /* WineViewContextMenuTappable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DAD09C26E0B54E00055AE7 /* WineViewContextMenuTappable.swift */; };
+		74DAD09F26E0D4F400055AE7 /* LoadingPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DAD09E26E0D4F400055AE7 /* LoadingPresentable.swift */; };
+		74DAD0A126E0D99300055AE7 /* ActivityRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DAD0A026E0D99300055AE7 /* ActivityRoutable.swift */; };
+		74DAD0A426E0E05100055AE7 /* WriteNoteRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DAD0A326E0E05100055AE7 /* WriteNoteRoutable.swift */; };
+		74DAD0A626E0E12400055AE7 /* ShowNetworkAlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DAD0A526E0E12400055AE7 /* ShowNetworkAlertPresentable.swift */; };
 		74E55FA726AACE2C0086C159 /* ResultsSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E55F9626AACE2C0086C159 /* ResultsSearchViewModel.swift */; };
 		74E55FA926AACE2C0086C159 /* ResultsSearchAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E55F9A26AACE2C0086C159 /* ResultsSearchAssembly.swift */; };
 		74E55FAA26AACE2C0086C159 /* ResultsSearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E55F9C26AACE2C0086C159 /* ResultsSearchPresenter.swift */; };
@@ -496,6 +501,11 @@
 		748586FB26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleContinuosCarouselCollectionCellRouter.swift; sourceTree = "<group>"; };
 		748586FC26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleContinuosCarouselCollectionCellRouterProtocol.swift; sourceTree = "<group>"; };
 		7485877926CC068600F5CBEA /* Configurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurator.swift; sourceTree = "<group>"; };
+		74DAD09C26E0B54E00055AE7 /* WineViewContextMenuTappable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineViewContextMenuTappable.swift; sourceTree = "<group>"; };
+		74DAD09E26E0D4F400055AE7 /* LoadingPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPresentable.swift; sourceTree = "<group>"; };
+		74DAD0A026E0D99300055AE7 /* ActivityRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRoutable.swift; sourceTree = "<group>"; };
+		74DAD0A326E0E05100055AE7 /* WriteNoteRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteNoteRoutable.swift; sourceTree = "<group>"; };
+		74DAD0A526E0E12400055AE7 /* ShowNetworkAlertPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowNetworkAlertPresentable.swift; sourceTree = "<group>"; };
 		74E55F9626AACE2C0086C159 /* ResultsSearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsSearchViewModel.swift; sourceTree = "<group>"; };
 		74E55F9A26AACE2C0086C159 /* ResultsSearchAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsSearchAssembly.swift; sourceTree = "<group>"; };
 		74E55F9C26AACE2C0086C159 /* ResultsSearchPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsSearchPresenter.swift; sourceTree = "<group>"; };
@@ -1313,6 +1323,14 @@
 				748586FC26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellRouterProtocol.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		74DAD0A226E0E03600055AE7 /* Routable */ = {
+			isa = PBXGroup;
+			children = (
+				74DAD0A326E0E05100055AE7 /* WriteNoteRoutable.swift */,
+			);
+			path = Routable;
 			sourceTree = "<group>";
 		};
 		74E55F9426AACE2C0086C159 /* ResultsSearch */ = {
@@ -2354,6 +2372,10 @@
 				8AD49F2B26752B4B0094E157 /* AnalyticsTrackable.swift */,
 				8A07930B26924DAF000ACA2B /* Document.swift */,
 				7485877926CC068600F5CBEA /* Configurator.swift */,
+				74DAD09C26E0B54E00055AE7 /* WineViewContextMenuTappable.swift */,
+				74DAD09E26E0D4F400055AE7 /* LoadingPresentable.swift */,
+				74DAD0A026E0D99300055AE7 /* ActivityRoutable.swift */,
+				74DAD0A526E0E12400055AE7 /* ShowNetworkAlertPresentable.swift */,
 			);
 			path = "Supported Files";
 			sourceTree = "<group>";
@@ -2426,6 +2448,7 @@
 				CACA7E93254C57CC0099E622 /* Interactor */,
 				CACA7E8D254C57CC0099E622 /* Presenter */,
 				CACA7E96254C57CC0099E622 /* Router */,
+				74DAD0A226E0E03600055AE7 /* Routable */,
 				CACA7E90254C57CC0099E622 /* ViewController */,
 				CACA7E87254C57CC0099E622 /* ViewModel */,
 			);
@@ -3236,6 +3259,7 @@
 				8AF966C12678F194001891B2 /* EditProfilePresenterProtocol.swift in Sources */,
 				74E55FA726AACE2C0086C159 /* ResultsSearchViewModel.swift in Sources */,
 				CA2C22DB2554464F002469E4 /* AdvancedSearchAssembly.swift in Sources */,
+				74DAD09F26E0D4F400055AE7 /* LoadingPresentable.swift in Sources */,
 				8AA5E5132615053D00935B5E /* AboutView.swift in Sources */,
 				CA46DC98252A44180007819E /* SmartFilterCollectionCell.swift in Sources */,
 				CE58DEC325ED70DC00B5BDF9 /* CurrencyAssembly.swift in Sources */,
@@ -3346,6 +3370,7 @@
 				CA070C1625250AEC00C3D9EC /* OnboardViewController.swift in Sources */,
 				CE388DD92612C1CF00C34B47 /* ShowcasePresenter.swift in Sources */,
 				44EFDB6F25E263E00076ED6D /* ReviewDetailViewModel.swift in Sources */,
+				74DAD09D26E0B54F00055AE7 /* WineViewContextMenuTappable.swift in Sources */,
 				8A079309269239C1000ACA2B /* DocumentsRouter.swift in Sources */,
 				44EFDB7825E263E00076ED6D /* ReviewDetailRouterProtocol.swift in Sources */,
 				CA490141252F7EDC00066A98 /* VinchyViewControllerViewModel.swift in Sources */,
@@ -3380,6 +3405,7 @@
 				44465EC025F39400005B3F06 /* MapRepository.swift in Sources */,
 				44EFDB7125E263E00076ED6D /* ReviewDetailAssembly.swift in Sources */,
 				8A079F2E269E151F000ACA2B /* BottlesCollectionView.swift in Sources */,
+				74DAD0A126E0D99300055AE7 /* ActivityRoutable.swift in Sources */,
 				CAF514102461C51400667ED0 /* AboutViewController.swift in Sources */,
 				8A916022268CE66C00240B18 /* AreYouInStoreViewModel.swift in Sources */,
 				44EFDB4F25E17FD60076ED6D /* ReviewsRoutable.swift in Sources */,
@@ -3407,6 +3433,7 @@
 				8A079307269239C1000ACA2B /* DocumentsInteractor.swift in Sources */,
 				44EFDB7025E263E00076ED6D /* ReviewDetailInput.swift in Sources */,
 				74E55FB426AAD25E0086C159 /* WineCollectionCell.swift in Sources */,
+				74DAD0A426E0E05100055AE7 /* WriteNoteRoutable.swift in Sources */,
 				CA81984B253864080056A1C6 /* WineDetailInteractor.swift in Sources */,
 				CA4857742517BE8E00EDA4CE /* VinchyInteractor.swift in Sources */,
 				CE404B072589D41200917544 /* MoreInteractorProtocol.swift in Sources */,
@@ -3548,6 +3575,7 @@
 				44EFDB7325E263E00076ED6D /* ReviewDetailPresenter.swift in Sources */,
 				8AE788112684E8D60056A84B /* NotesViewControllerProtocol.swift in Sources */,
 				CAA060D2252BC05C002C15B5 /* DeveloperFeatureToggles.swift in Sources */,
+				74DAD0A626E0E12400055AE7 /* ShowNetworkAlertPresentable.swift in Sources */,
 				CA7A87FC2507ED7800AAD10F /* AdsCollectionViewCell.swift in Sources */,
 				CAF514252461C52400667ED0 /* ContactCell.swift in Sources */,
 				8AF966C82678F194001891B2 /* EditProfileRouterProtocol.swift in Sources */,
