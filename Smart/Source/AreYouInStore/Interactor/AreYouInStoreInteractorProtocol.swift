@@ -10,4 +10,6 @@ import Foundation
 
 protocol AreYouInStoreInteractorProtocol: AnyObject {
   func viewDidLoad()
+  func didTapStoreButton()
+  func didTapBottle(wineID: Int64)
 }

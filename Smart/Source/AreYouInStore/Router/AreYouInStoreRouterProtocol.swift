@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol AreYouInStoreRouterProtocol: AnyObject {
-
+protocol AreYouInStoreRouterProtocol: WineDetailRoutable {
+  func presentStore(affilatedId: Int)
 }

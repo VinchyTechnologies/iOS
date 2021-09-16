@@ -7,7 +7,8 @@
 //
 
 import Foundation
+import VinchyCore
 
 struct AreYouInStoreInput {
-
+  let partner: NearestPartner
 }

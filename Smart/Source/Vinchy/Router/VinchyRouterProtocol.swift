@@ -12,4 +12,5 @@ protocol VinchyRouterProtocol: WineDetailRoutable, MapRoutable, ShowcaseRoutable
   func pushToAdvancedFilterViewController()
   func pushToDetailCollection(searchText: String)
   func pushToStoreViewController(affilatedId: Int)
+  func presentAreYouInStoreBottomSheet(nearestPartner: NearestPartner)
 }

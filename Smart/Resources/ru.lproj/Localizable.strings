@@ -177,3 +177,9 @@
 "map" = "карта";
 "apple_maps" = "Apple Карты";
 "search_this_area" = "Искать в этом районе";
+
+// MARK: - AreYouInStore
+"AreYouInStore.RecommendToBuy" = "Рекомендуем к покупке";
+"AreYouInStore.SeemsYouAreIn" = "Кажется, Вы в магазине\n";
+"AreYouInStore.NotHere" = "Я не здесь";
+"AreYouInStore.SeeMore" = "Смотреть всё";

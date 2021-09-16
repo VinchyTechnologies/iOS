@@ -9,5 +9,5 @@
 import Foundation
 
 protocol AreYouInStorePresenterProtocol: AnyObject {
-  func update(title: String?)
+  func update()
 }

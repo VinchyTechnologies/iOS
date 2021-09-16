@@ -120,7 +120,6 @@ final class StoreTitleCollectionCell: UICollectionViewCell, Reusable {
       delegate?.didTapSeeAllStore(affilatedId: affilatedId)
     }
   }
-
 }
 
 // MARK: Decoratable

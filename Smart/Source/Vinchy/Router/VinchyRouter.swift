@@ -6,7 +6,11 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
+import CommonUI
 import Core
+import Display
+import FittedSheets
+import StringFormatting
 import UIKit
 import VinchyCore
 
@@ -29,6 +33,37 @@ final class VinchyRouter {
 // MARK: VinchyRouterProtocol
 
 extension VinchyRouter: VinchyRouterProtocol {
+
+  func presentAreYouInStoreBottomSheet(nearestPartner: NearestPartner) {
+    let options = SheetOptions(shrinkPresentingViewController: false)
+    let controller = AreYouInStoreAssembly.assemblyModule(input: .init(partner: nearestPartner))
+
+    let bottomButtonsViewModel = BottomButtonsViewModel(
+      leadingButtonText: localized("AreYouInStore.NotHere"),
+      trailingButtonText: localized("AreYouInStore.SeeMore"))
+
+    let recommendedWines = nearestPartner.recommendedWines.compactMap({ CollectionItem.wine(wine: $0) })
+
+    let viewModel = AreYouInStoreViewModel(
+      sections: [
+        .title([
+          .init(titleText: NSAttributedString(string: localized("AreYouInStore.SeemsYouAreIn") + nearestPartner.partner.title.quoted, font: Font.bold(24), textColor: .dark, paragraphAlignment: .center)),
+        ]),
+
+        .title([
+          .init(titleText: NSAttributedString(string: localized("AreYouInStore.RecommendToBuy"), font: Font.regular(16), textColor: .dark)),
+        ]),
+
+        .recommendedWines([
+          .init(type: .bottles, collections: [.init(wineList: recommendedWines)]),
+        ]),
+      ],
+      bottomButtonsViewModel: bottomButtonsViewModel)
+
+    let height = AreYouInStoreViewController.height(viewModel: viewModel) // TODO: - input
+    let sheetController = SheetViewController(controller: controller, sizes: [.fixed(height)], options: options)
+    viewController?.present(sheetController, animated: true)
+  }
 
   func pushToStoreViewController(affilatedId: Int) {
     viewController?.navigationController?.pushViewController(

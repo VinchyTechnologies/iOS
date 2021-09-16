@@ -39,6 +39,7 @@ final class VinchyInteractor {
 
   private var compilations: [Compilation] = []
   private var nearestPartners: [NearestPartner] = []
+  private var userLocation: CLLocationCoordinate2D?
 
   private func fetchData() {
 
@@ -60,6 +61,7 @@ final class VinchyInteractor {
 
     dispatchGroup.enter()
     repository.requestUserLocation { [weak self] userLocation in
+      self?.userLocation = userLocation
       self?.repository.requestNearestPartners(
         userLocation: userLocation,
         radius: 10000) { [weak self] result in
@@ -107,6 +109,26 @@ final class VinchyInteractor {
 
       self.compilations = compilations
       self.presenter.update(compilations: compilations, nearestPartners: nearestPartners)
+
+      DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+        if self.userLocation != nil {
+          let partnersAndDistances: [(NearestPartner, CLLocationDistance)] = nearestPartners.compactMap { nearestPartner in
+
+            guard let latitude = nearestPartner.partner.latitude, let longitude = nearestPartner.partner.longitude else {
+              return nil
+            }
+            return (nearestPartner, CLLocation.distance(from: self.userLocation!, to: CLLocationCoordinate2D(latitude: latitude, longitude: longitude)))
+          }
+
+          guard let nearestStore = partnersAndDistances.min(by: { $0.1 < $1.1 }) else {
+            return
+          }
+
+//          if nearestStore.1 <= 100 {
+          self.router.presentAreYouInStoreBottomSheet(nearestPartner: nearestStore.0)
+//          }
+        }
+      }
     }
   }
 }
