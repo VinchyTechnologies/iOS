@@ -7,7 +7,8 @@
 //
 
 import Display
+import VinchyAuthorization
 
-protocol MoreViewControllerProtocol: CantOpenURLAlertable, CantOpenEmailAlertable {
+protocol MoreViewControllerProtocol: CantOpenURLAlertable, CantOpenEmailAlertable, AuthorizationOutputDelegate {
   func updateUI(viewModel: MoreViewControllerModel)
 }

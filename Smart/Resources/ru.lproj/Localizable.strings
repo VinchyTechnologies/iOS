@@ -38,6 +38,7 @@
 "write_us" = "напишите нам";
 "search_results" = "результаты поиска";
 "all" = "все";
+"all_shops" = "все магазины";
 "back" = "назад";
 "reload" = "обновить";
 "serving_temperature" = "температура подачи";
@@ -135,6 +136,7 @@
 "contact_phone_url" = "tel://+79102433638";
 "contact_phone" = "+ 7 (910) 243-36-38";
 "currency" = "Валюта";
+"sign_in_or_register" = "Войти";
 
 // MARK: - Currency
 "select_currency" = "Выберите валюту";

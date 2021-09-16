@@ -9,3 +9,5 @@ NSLocationWhenInUseUsageDescription = "Разрешите доступ к гео
 NSCameraUsageDescription = "Разрешите доступ к камере для сканирования";
 CFBundleDisplayName = "Vinchy";
 NSUserTrackingUsageDescription = "Этот идентификатор будет использоваться для показа вам персонализированной рекламы.";
+ORIGINAL_APP_NAME = "Vinchy";
+LOCALIZED_APP_NAME = "Винчи";

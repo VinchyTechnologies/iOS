@@ -23,7 +23,7 @@ final class MoreRouter {
 
   // MARK: Internal
 
-  weak var viewController: MoreViewController?
+  weak var viewController: UIViewController?
   weak var interactor: MoreInteractorProtocol?
 
   // MARK: Private

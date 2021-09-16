@@ -63,8 +63,8 @@ final class InfoCurrencyCell: UICollectionViewCell, Reusable {
     NSLayoutConstraint.activate([
       cursorView.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
       cursorView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -24),
-      cursorView.widthAnchor.constraint(equalToConstant: 6),
-      cursorView.heightAnchor.constraint(equalToConstant: 10),
+      cursorView.widthAnchor.constraint(equalToConstant: 15),
+      cursorView.heightAnchor.constraint(equalToConstant: 15),
     ])
   }
 
@@ -106,7 +106,8 @@ final class InfoCurrencyCell: UICollectionViewCell, Reusable {
   private let cursorView: UIImageView = {
     let imageView = UIImageView()
     imageView.translatesAutoresizingMaskIntoConstraints = false
-    imageView.image = UIImage(named: "fill1Copy")
+    let imageConfig = UIImage.SymbolConfiguration(pointSize: 15, weight: .semibold, scale: .default)
+    imageView.image = UIImage(systemName: "chevron.right", withConfiguration: imageConfig)?.withTintColor(.blueGray, renderingMode: .alwaysOriginal)
     imageView.contentMode = .scaleAspectFit
     return imageView
   }()

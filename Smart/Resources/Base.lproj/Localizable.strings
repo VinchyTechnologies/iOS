@@ -38,6 +38,7 @@
 "write_us" = "write us";
 "search_results" = "search results";
 "all" = "all";
+"all_shops" = "all shops";
 "back" = "back";
 "reload" = "reload";
 "serving_temperature" = "serving temperature";
@@ -135,6 +136,7 @@
 "contact_phone_url" = "tel://+79102433638";
 "contact_phone" = "+ 7 (910) 243-36-38";
 "currency" = "Currency";
+"sign_in_or_register" = "Sign in / Register";
 
 // MARK: - Currency
 "select_currency" = "Select currency";

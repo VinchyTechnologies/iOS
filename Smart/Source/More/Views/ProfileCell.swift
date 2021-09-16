@@ -42,9 +42,9 @@ final class ProfileCell: UICollectionViewCell, Reusable {
     vStack.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       vStack.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 16),
-      vStack.topAnchor.constraint(equalTo: contentView.topAnchor),
+      vStack.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
       vStack.trailingAnchor.constraint(equalTo: accessoryIndicatorView.leadingAnchor, constant: -5),
-      vStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+      vStack.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -10),
     ])
   }
 
@@ -54,7 +54,7 @@ final class ProfileCell: UICollectionViewCell, Reusable {
   // MARK: Internal
 
   static func height() -> CGFloat {
-    54
+    70
   }
 
   // MARK: Private
@@ -77,14 +77,15 @@ final class ProfileCell: UICollectionViewCell, Reusable {
 
   private let accessoryIndicatorView: UIImageView = {
     $0.translatesAutoresizingMaskIntoConstraints = false
-    $0.image = UIImage(named: "fill1Copy")
+    let imageConfig = UIImage.SymbolConfiguration(pointSize: 10, weight: .semibold, scale: .default)
+    $0.image = UIImage(systemName: "chevron.right", withConfiguration: imageConfig)?.withTintColor(.blueGray, renderingMode: .alwaysOriginal)
     $0.contentMode = .scaleAspectFit
     return $0
   }(UIImageView())
 
   private lazy var vStack: UIStackView = {
     $0.axis = .vertical
-    $0.distribution = .fillEqually
+    $0.distribution = .fillProportionally
     return $0
   }(UIStackView(arrangedSubviews: [nameLabel, emailLabel]))
 }

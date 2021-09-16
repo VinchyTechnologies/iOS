@@ -197,6 +197,10 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
     router.pushToWineDetailViewController(wineID: wineID)
   }
 
+  func didTapSeeAllStores() {
+    router.pushToSeeAllStores(wineID: input.wineID)
+  }
+
   func didSelectStore(affilatedId: Int) {
     router.presentStore(affilatedId: affilatedId)
   }
@@ -386,11 +390,13 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
 
     if let dbWine = winesRepository.findAll().filter({ $0.isLiked == true }).first(where: { $0.wineID == wine.id }) {
       dataBase.remove(dbWine)
+      trackEvent("wine_detail_did_tap_like_button", params: ["isInitiallyLiked": true])
     } else {
       let maxId = winesRepository.findAll().map { $0.id }.max() ?? 0
       let id = maxId + 1
       winesRepository.append(VWine(id: id, wineID: wine.id, title: wine.title, isLiked: true, isDisliked: false))
       presenter.showStatusAlertDidLikedSuccessfully()
+      trackEvent("wine_detail_did_tap_like_button", params: ["isInitiallyLiked": false])
     }
   }
 

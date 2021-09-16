@@ -6,7 +6,9 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-protocol MoreRouterProtocol: AnyObject {
+import VinchyAuthorization
+
+protocol MoreRouterProtocol: AuthorizationRoutable {
   func present(_ viewController: UIViewController, completion: (() -> Void)?)
   func presentEmailController(HTMLText: String?, recipients: [String])
   func pushToDocController()

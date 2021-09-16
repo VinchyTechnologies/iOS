@@ -60,13 +60,23 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
       NSAttributedString.Key.font: titleFontAll,
     ]
 
-    UITabBar.appearance().barTintColor = .mainBackground
-    UITabBar.appearance().unselectedItemTintColor = .blueGray
-    UITabBarItem.appearance().setTitleTextAttributes(attributesNormal, for: .normal)
-    UITabBarItem.appearance().setTitleTextAttributes(attributesSelected, for: .selected)
-    delegate = self
+    let appearance = UITabBarAppearance()
+    appearance.configureWithOpaqueBackground()
+    appearance.backgroundColor = .mainBackground
+    let tabBarItemAppearance = UITabBarItemAppearance()
+    tabBarItemAppearance.selected.titleTextAttributes = attributesSelected
+    tabBarItemAppearance.normal.titleTextAttributes = attributesNormal
+    appearance.stackedLayoutAppearance = tabBarItemAppearance
+    appearance.compactInlineLayoutAppearance = tabBarItemAppearance
+    appearance.inlineLayoutAppearance = tabBarItemAppearance
 
+    tabBar.standardAppearance = appearance
+    if #available(iOS 15.0, *) {
+      tabBar.scrollEdgeAppearance = appearance
+    }
     tabBar.isTranslucent = false
+
+    delegate = self
 
     let imageConfig = UIImage.SymbolConfiguration(pointSize: 22, weight: .medium, scale: .default)
 
@@ -90,9 +100,9 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
     let profile = Assembly.buildProfileModule()
     profile.tabBarItem = UITabBarItem(
-      title: localized("info"),
-      image: UIImage(systemName: "circle.grid.3x3", withConfiguration: imageConfig)?.withTintColor(.blueGray, renderingMode: .alwaysOriginal),
-      selectedImage: UIImage(systemName: "circle.grid.3x3", withConfiguration: imageConfig)?.withTintColor(.accent, renderingMode: .alwaysOriginal))
+      title: localized("profile").firstLetterUppercased(),
+      image: UIImage(systemName: "person.circle", withConfiguration: imageConfig)?.withTintColor(.blueGray, renderingMode: .alwaysOriginal),
+      selectedImage: UIImage(systemName: "person.circle", withConfiguration: imageConfig)?.withTintColor(.accent, renderingMode: .alwaysOriginal))
 
     /*
      let chat = NavigationController(rootViewController: BasicExampleViewController())
@@ -111,10 +121,10 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
       image: UIImage(systemName: "map", withConfiguration: imageConfig)?.withTintColor(.blueGray, renderingMode: .alwaysOriginal),
       selectedImage: UIImage(systemName: "map", withConfiguration: imageConfig)?.withTintColor(.accent, renderingMode: .alwaysOriginal))
 
-    [main, love, notes, profile].forEach { controller in
-      controller.tabBarItem.titlePositionAdjustment = .init(horizontal: 0, vertical: -3)
-      controller.tabBarItem.imageInsets = .init(top: 10, left: 0, bottom: 0, right: 0)
-    }
+//    [main, love, notes, profile].forEach { controller in
+//      controller.tabBarItem.titlePositionAdjustment = .init(horizontal: 0, vertical: -3)
+//      controller.tabBarItem.imageInsets = .init(top: 10, left: 0, bottom: 0, right: 0)
+//    }
 
     viewControllers = [main, love, map, notes, profile]
   }

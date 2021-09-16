@@ -32,6 +32,7 @@ final class FiltersCollectionView: CollectionView, EpoxyableView {
 
   func setContent(_ content: Content, animated: Bool) {
 
+    setContentOffset(.zero, animated: false)
     let sectionModel = SectionModel(dataID: SectionID.filtersCollectionViewSection) {
       content.enumerated().map { index, filterItemViewViewModel in
         FilterItemView.itemModel(

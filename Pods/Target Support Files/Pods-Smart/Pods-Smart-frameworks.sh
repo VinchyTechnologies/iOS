@@ -175,7 +175,6 @@ code_sign_if_enabled() {
 }
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/CocoaDebug/CocoaDebug.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseABTesting/FirebaseABTesting.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework"

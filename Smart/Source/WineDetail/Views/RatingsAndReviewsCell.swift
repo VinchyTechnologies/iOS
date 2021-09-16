@@ -71,6 +71,10 @@ final class TitleAndMoreView: UIView, EpoxyableView {
 
   // MARK: Internal
 
+  struct Behaviors {
+    var didTap: (() -> Void)?
+  }
+
   struct Style: Hashable {
   }
 
@@ -84,6 +88,10 @@ final class TitleAndMoreView: UIView, EpoxyableView {
     return content.titleText?.height(forWidth: titleWidth, font: Font.heavy(20)) ?? 0
   }
 
+  func setBehaviors(_ behaviors: Behaviors?) {
+    didTap = behaviors?.didTap
+  }
+
   func setContent(_ content: Content, animated: Bool) {
     titleLabel.text = content.titleText
     moreButton.setTitle(content.moreText, for: .normal)
@@ -92,12 +100,14 @@ final class TitleAndMoreView: UIView, EpoxyableView {
 
   // MARK: Private
 
+  private var didTap: (() -> Void)?
+
   private let style: Style
   private let titleLabel = UILabel()
-  private let moreButton = UIButton()
+  private let moreButton = UIButton(type: .system)
 
   @objc
   private func didTapSeeAllButton(_: UIButton) {
-    delegate?.didTapSeeAllReview()
+    didTap?()
   }
 }

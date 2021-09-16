@@ -80,7 +80,7 @@ public enum DishCompatibility: String, Decodable, CaseIterable {
       return StringFormatting.localized("meat").firstLetterUppercased()
 
     case .poultry:
-      return StringFormatting.localized("chicken").firstLetterUppercased()
+      return StringFormatting.localized("poultry").firstLetterUppercased()
 
     case .shellfish:
       return StringFormatting.localized("shellfish").firstLetterUppercased()
