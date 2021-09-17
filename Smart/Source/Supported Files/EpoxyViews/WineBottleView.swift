@@ -78,7 +78,7 @@ final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDelegate {
       stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5),
     ])
 
-    if UIDevice.current.userInterfaceIdiom != .pad {
+    if UIDevice.current.userInterfaceIdiom == .phone {
       let longPressedGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureRecognizer:)))
       longPressedGesture.minimumPressDuration = 0.45
       longPressedGesture.delegate = self
