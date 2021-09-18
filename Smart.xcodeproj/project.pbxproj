@@ -3283,8 +3283,6 @@
 				CED7A23A25D1B31C00BB25FF /* StarRatingControlView.swift in Sources */,
 				8A915C9E26887D9500240B18 /* ExpandCollapseView.swift in Sources */,
 				748586FE26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellInput.swift in Sources */,
-				CED7A23A25D1B31C00BB25FF /* StarRatingControlView.swift in Sources */,
-				8A915C9E26887D9500240B18 /* ExpandCollapseView.swift in Sources */,
 				44EFDB3C25E177220076ED6D /* ReviewsViewControllerProtocol.swift in Sources */,
 				8A07930A269239C1000ACA2B /* DocumentsRouterProtocol.swift in Sources */,
 				8AF5656226F2341500C58E2C /* VinchyRepositoryProtocol.swift in Sources */,

@@ -41,8 +41,8 @@ extension EditProfilePresenter: EditProfilePresenterProtocol {
 
     sections += [
       .commonEditCell([
-        .title(text: NSAttributedString(string: "UserName", font: Font.medium(16), textColor: .dark)),
-        .textField(model: .init(recognizableIdentificator: EditProfileTextFieldType.name.rawValue, text: userName, placeholder: "Add", isEditable: true)),
+        .title(text: NSAttributedString(string: localized("username").firstLetterUppercased(), font: Font.medium(16), textColor: .dark)),
+        .textField(model: .init(recognizableIdentificator: EditProfileTextFieldType.name.rawValue, text: userName, placeholder: localized("add").firstLetterUppercased(), isEditable: true)),
       ]),
     ]
 
@@ -53,7 +53,7 @@ extension EditProfilePresenter: EditProfilePresenterProtocol {
       ]),
     ]
 
-    let viewModel = EditProfileViewModel(sections: sections, navigationTitle: "Edit profile", saveButtonText: localized("save").firstLetterUppercased())
+    let viewModel = EditProfileViewModel(sections: sections, navigationTitle: localized("edit_profile"), saveButtonText: localized("save").firstLetterUppercased())
     viewController?.updateUI(viewModel: viewModel)
   }
 }

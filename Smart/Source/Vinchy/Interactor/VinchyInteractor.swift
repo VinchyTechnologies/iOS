@@ -41,6 +41,31 @@ final class VinchyInteractor {
   private var nearestPartners: [NearestPartner] = []
   private var userLocation: CLLocationCoordinate2D?
 
+  private func convertToFiveNearestStores(
+    nearestPartners: [NearestPartner],
+    userLocation: CLLocationCoordinate2D?) -> [NearestPartner]
+  {
+    let userLocation = userLocation ?? CLLocationCoordinate2D(latitude: 55.755786, longitude: 37.617633)
+    let nearestPartnersTulp: [(NearestPartner, Double)] = nearestPartners.compactMap { store in
+      if let latitude = store.partner.latitude, let longitude = store.partner.longitude {
+        return (store, CLLocation.distance(from: CLLocationCoordinate2D(latitude: latitude, longitude: longitude), to: userLocation))
+      }
+      return nil
+    }
+
+    var result = [NearestPartner]()
+
+    for partner in nearestPartnersTulp {
+      if !result.contains(where: { $0.partner.title == partner.0.partner.title }) {
+        result.append(partner.0)
+      }
+    }
+
+    result = Array(result.prefix(5))
+
+    return result
+  }
+
   private func fetchData() {
 
     var compilations: [Compilation] = []
@@ -65,28 +90,30 @@ final class VinchyInteractor {
       self?.repository.requestNearestPartners(
         userLocation: userLocation,
         radius: 10000) { [weak self] result in
+          guard let self = self else { return }
           switch result {
           case .success(let response):
-            nearestPartners = response
-            self?.dispatchGroup.leave()
+            nearestPartners = self.convertToFiveNearestStores(nearestPartners: response, userLocation: userLocation)
+            self.dispatchGroup.leave()
 
           case .failure(let error):
             if case MapError.locationPermissionDenied = error { // TODO: - move all to repository
-              self?.repository.requestNearestPartners(
+              self.repository.requestNearestPartners(
                 userLocation: CLLocationCoordinate2D(latitude: 55.755786, longitude: 37.617633),
                 radius: 10000) { [weak self] result in
+                  guard let self = self else { return }
                   switch result {
                   case .success(let response):
-                    nearestPartners = response
+                    nearestPartners = self.convertToFiveNearestStores(nearestPartners: response, userLocation: userLocation)
 
                   case .failure(let error):
                     print(error.localizedDescription)
                   }
-                  self?.dispatchGroup.leave()
+                  self.dispatchGroup.leave()
               }
             } else {
               print(error.localizedDescription)
-              self?.dispatchGroup.leave()
+              self.dispatchGroup.leave()
             }
           }
       }

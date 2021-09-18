@@ -8,7 +8,7 @@
 
 import UIKit // TODO: - delete UIKit?
 
-protocol WineDetailInteractorProtocol: AnyObject, AnalyticsTrackable, WineViewContextMenuTappable {
+protocol WineDetailInteractorProtocol: AnalyticsTrackable, WineViewContextMenuTappable {
   func viewDidLoad()
   func didTapLikeButton(_ button: UIButton)
   func didTapDislikeButton()

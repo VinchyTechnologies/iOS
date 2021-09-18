@@ -137,6 +137,8 @@
 "contact_phone" = "+ 7 (910) 243-36-38";
 "currency" = "Валюта";
 "sign_in_or_register" = "Войти";
+"edit_profile" = "Редактировать Профиль";
+"username" = "Имя пользователя";
 
 // MARK: - Currency
 "select_currency" = "Выберите валюту";

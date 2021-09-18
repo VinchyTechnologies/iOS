@@ -48,7 +48,7 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
     let colorNormal = UIColor.blueGray
     let colorSelected = UIColor.dark
-    let titleFontAll: UIFont = Font.semibold(12)
+    let titleFontAll: UIFont = Font.semibold(11)
 
     let attributesNormal = [
       NSAttributedString.Key.foregroundColor: colorNormal,
