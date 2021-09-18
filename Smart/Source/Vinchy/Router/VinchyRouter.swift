@@ -66,8 +66,10 @@ extension VinchyRouter: VinchyRouterProtocol {
   }
 
   func pushToStoreViewController(affilatedId: Int) {
+    let controller = StoreAssembly.assemblyModule(input: .init(mode: .normal(affilatedId: affilatedId)))
+    controller.hidesBottomBarWhenPushed = true
     viewController?.navigationController?.pushViewController(
-      StoreAssembly.assemblyModule(input: .init(mode: .normal(affilatedId: affilatedId))),
+      controller,
       animated: true)
   }
 

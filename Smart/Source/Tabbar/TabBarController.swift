@@ -48,7 +48,7 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
     let colorNormal = UIColor.blueGray
     let colorSelected = UIColor.dark
-    let titleFontAll: UIFont = Font.semibold(13)
+    let titleFontAll: UIFont = Font.semibold(12)
 
     let attributesNormal = [
       NSAttributedString.Key.foregroundColor: colorNormal,
@@ -71,9 +71,11 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
     appearance.inlineLayoutAppearance = tabBarItemAppearance
 
     tabBar.standardAppearance = appearance
+    #if compiler(>=5.5) // Comes with Xcode 13
     if #available(iOS 15.0, *) {
-//      tabBar.scrollEdgeAppearance = appearance
+      tabBar.scrollEdgeAppearance = appearance
     }
+    #endif
     tabBar.isTranslucent = false
 
     delegate = self
