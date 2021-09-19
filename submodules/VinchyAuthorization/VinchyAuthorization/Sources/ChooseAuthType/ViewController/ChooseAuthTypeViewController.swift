@@ -8,6 +8,7 @@
 import Display
 import StringFormatting
 import UIKit
+import AuthenticationServices
 
 // MARK: - ChooseAuthTypeViewController
 
@@ -63,6 +64,15 @@ final class ChooseAuthTypeViewController: UIViewController {
       registerButton.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
       registerButton.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
       registerButton.heightAnchor.constraint(equalToConstant: 48),
+    ])
+    
+    view.addSubview(appleIDButton)
+    appleIDButton.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      appleIDButton.bottomAnchor.constraint(equalTo: registerButton.topAnchor, constant: -8),
+      appleIDButton.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+      appleIDButton.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+      appleIDButton.heightAnchor.constraint(equalToConstant: 48),
     ])
 
     if UIDevice.current.userInterfaceIdiom == .pad {
@@ -131,10 +141,29 @@ final class ChooseAuthTypeViewController: UIViewController {
     button.addTarget(self, action: #selector(didTapLoginButton(_:)), for: .touchUpInside)
     return button
   }()
+  
+  private lazy var appleIDButton: ASAuthorizationAppleIDButton = {
+    let appleIDButton = ASAuthorizationAppleIDButton()
+    appleIDButton.layer.cornerRadius = 24
+    appleIDButton.clipsToBounds = true
+    appleIDButton.addTarget(self, action: #selector(didTapAppleIDButton), for: .touchUpInside)
+    return appleIDButton
+  }()
 
   @objc
   private func closeSelf() {
     dismiss(animated: true)
+  }
+  
+  @objc
+  private func didTapAppleIDButton(_: UIButton) {
+    let provider = ASAuthorizationAppleIDProvider()
+    let request = provider.createRequest()
+    request.requestedScopes = [.email, .fullName]
+    let controller = ASAuthorizationController(authorizationRequests: [request])
+    controller.delegate = self
+    controller.presentationContextProvider = self
+    controller.performRequests()
   }
 
   @objc
@@ -176,5 +205,26 @@ extension ChooseAuthTypeViewController: ChooseAuthTypeViewControllerProtocol {
 //    subtitleLabel.text = viewModel.subtitleText
     loginButton.setTitle(viewModel.loginButtonText, for: .normal)
     registerButton.setTitle(viewModel.registerButtonText, for: .normal)
+  }
+}
+
+extension ChooseAuthTypeViewController: ASAuthorizationControllerDelegate {
+  func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+    switch authorization.credential {
+    case let credentials as ASAuthorizationAppleIDCredential:
+      print(credentials.user)
+      break
+    default:
+      break
+    }
+  }
+  func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
+    print(error.localizedDescription)
+  }
+}
+
+extension ChooseAuthTypeViewController: ASAuthorizationControllerPresentationContextProviding {
+  func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
+    return view.window!
   }
 }

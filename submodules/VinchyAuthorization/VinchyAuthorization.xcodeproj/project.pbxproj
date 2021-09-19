@@ -167,6 +167,7 @@
 		554E2FC96295A4F8F9FE9A68 /* Pods-VinchyAuthorizationApp.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyAuthorizationApp.release.xcconfig"; path = "Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp.release.xcconfig"; sourceTree = "<group>"; };
 		740EC930268DF5890000718B /* OTPStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPStackView.swift; sourceTree = "<group>"; };
 		740EC932268DF6BC0000718B /* OTPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPTextField.swift; sourceTree = "<group>"; };
+		74515F9C26F79064008F789C /* VinchyAuthorizationApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VinchyAuthorizationApp.entitlements; sourceTree = "<group>"; };
 		89253731F2C742635398AF8F /* Pods_VinchyAuthorizationApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinchyAuthorizationApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0142329D2F9663DDB44D2E0 /* Pods-VinchyAuthorizationApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyAuthorizationApp.debug.xcconfig"; path = "Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -353,6 +354,7 @@
 		443F0B0D2591282C00E15437 /* VinchyAuthorizationApp */ = {
 			isa = PBXGroup;
 			children = (
+				74515F9C26F79064008F789C /* VinchyAuthorizationApp.entitlements */,
 				443F0B0E2591282C00E15437 /* AppDelegate.swift */,
 				443F0B102591282C00E15437 /* SceneDelegate.swift */,
 				443F0B122591282C00E15437 /* ViewController.swift */,
@@ -1091,6 +1093,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = VinchyAuthorizationApp/VinchyAuthorizationApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				INFOPLIST_FILE = VinchyAuthorizationApp/Info.plist;
@@ -1112,6 +1115,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CODE_SIGN_ENTITLEMENTS = VinchyAuthorizationApp/VinchyAuthorizationApp.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				INFOPLIST_FILE = VinchyAuthorizationApp/Info.plist;
