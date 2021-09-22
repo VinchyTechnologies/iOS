@@ -52,6 +52,7 @@ final class VinchyInteractor {
       }
       return nil
     }
+    .sorted(by: { $0.1 < $1.1 })
 
     var result = [NearestPartner]()
 
