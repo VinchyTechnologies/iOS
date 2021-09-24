@@ -7,6 +7,7 @@
 //
 
 import CommonUI
+import Display
 import StringFormatting
 import VinchyCore
 
@@ -94,7 +95,17 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
       title = localized("search_results").firstLetterUppercased()
     }
 
-    let viewModel = ShowcaseViewModel(navigationTitle: title, sections: sections)
+    let tabViewModel: TabViewModel = .init(items: sections.compactMap({ sec in
+      switch sec {
+      case .shelf(let title, _):
+        return .init(titleText: title)
+
+      case .loading:
+        return nil
+      }
+    }), initiallySelectedIndex: 0)
+
+    let viewModel = ShowcaseViewModel(navigationTitle: title, sections: sections, tabViewModel: tabViewModel)
     viewController?.updateUI(viewModel: viewModel)
   }
 

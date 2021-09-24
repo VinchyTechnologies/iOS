@@ -55,8 +55,23 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
         action: #selector(didTapCloseBarButtonItem(_:)))
     }
 
+    view.addSubview(tabView)
+    tabView.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      tabView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+      tabView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+      tabView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+      tabView.heightAnchor.constraint(equalToConstant: 56),
+    ])
+
     view.addSubview(collectionView)
-    collectionView.fill()
+    collectionView.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      collectionView.topAnchor.constraint(equalTo: tabView.bottomAnchor),
+      collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+      collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+      collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+    ])
 
     interactor?.viewDidLoad()
   }
@@ -70,6 +85,11 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
 
   // MARK: Private
 
+  private lazy var tabView: TabView = {
+    $0.delegate = self
+    return $0
+  }(TabView())
+
   private lazy var collectionView: UICollectionView = {
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.dataSource = self
@@ -82,13 +102,12 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
     collectionView.register(HeaderReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: HeaderReusableView.reuseId)
     collectionView.delaysContentTouches = false
     collectionView.contentInset = .init(top: 0, left: 0, bottom: 10, right: 0)
-
     return collectionView
   }()
 
   private let layout: UICollectionViewFlowLayout = {
     let layout = UICollectionViewFlowLayout()
-    layout.sectionHeadersPinToVisibleBounds = true
+    layout.sectionHeadersPinToVisibleBounds = false
     layout.sectionInset = UIEdgeInsets(top: 0, left: C.inset, bottom: 0, right: C.inset)
     layout.minimumLineSpacing = C.inset
     layout.minimumInteritemSpacing = 0
@@ -100,6 +119,11 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
   private var viewModel: ShowcaseViewModel? {
     didSet {
       navigationItem.title = viewModel?.navigationTitle
+      if let tabViewModel = viewModel?.tabViewModel {
+        if tabViewModel != oldValue?.tabViewModel {
+          tabView.configure(with: tabViewModel)
+        }
+      }
       collectionView.reloadData()
     }
   }
@@ -325,5 +349,35 @@ extension ShowcaseViewController: UICollectionViewDataSourcePrefetching {
       }
     }
     ImageLoader.shared.cancelPrefetch(Array(Set(urls)))
+  }
+}
+
+// MARK: TabViewDelegate
+
+extension ShowcaseViewController: TabViewDelegate {
+  func tabView(_ view: TabView, didSelect item: TabItemViewModel, atIndex index: Int) {
+    guard
+      let rect = collectionView.layoutAttributesForSupplementaryElement(
+        ofKind: UICollectionView.elementKindSectionHeader,
+        at: IndexPath(item: 0, section: index))?.frame
+    else {
+      return
+    }
+    let offset = CGPoint(x: .zero, y: rect.minY)
+    collectionView.setContentOffset(offset, animated: true)
+  }
+}
+
+// MARK: UIScrollViewDelegate
+
+extension ShowcaseViewController: UIScrollViewDelegate {
+  func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    if scrollView === collectionView {
+      if scrollView.isDecelerating || scrollView.isDragging {
+        let visiblePaths = collectionView.indexPathsForVisibleItems.sorted(by: { $0.section < $1.section || $0.row < $1.row })
+        guard let indexPath = visiblePaths.first else { return }
+        tabView.selectItem(atIndex: indexPath.section, animated: true)
+      }
+    }
   }
 }

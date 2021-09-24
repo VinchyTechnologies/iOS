@@ -30,8 +30,8 @@ public final class HeaderReusableView: UICollectionReusableView, Reusable {
 
     backgroundColor = .mainBackground
 
-    label.font = Font.bold(20)
-    label.textColor = .blueGray
+    label.font = Font.heavy(20)
+    label.textColor = .dark
 
     label.frame = CGRect(x: 16, y: 0, width: frame.width - 32, height: frame.height)
     addSubview(label)
