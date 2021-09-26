@@ -148,6 +148,9 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
         firstVC.scrollableToTopScrollView.perform(scrollToTopIfPossibleSelector)
       }
     }
+
+    tabBar.setNeedsLayout()
+    tabBar.layoutIfNeeded()
     return true
   }
 }
