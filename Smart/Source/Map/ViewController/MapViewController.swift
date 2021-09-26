@@ -88,13 +88,13 @@ final class MapViewController: UIViewController, OpenURLProtocol {
     mapView.delegate = self
     mapView.tintColor = .accent
 
-    mapView.register(
-      PartnerAnnotationView.self,
-      forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-
-    mapView.register(
-      LocationDataMapClusterView.self,
-      forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
+//    mapView.register(
+//      PartnerAnnotationView.self,
+//      forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+//
+//    mapView.register(
+//      LocationDataMapClusterView.self,
+//      forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
 
     let pan = UIPanGestureRecognizer(target: self, action: #selector(didDragMap(_:)))
     pan.delegate = self
@@ -323,7 +323,7 @@ extension MapViewController: MKMapViewDelegate {
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
     switch annotation {
     case is PartnerAnnotationViewModel:
-      var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier) as? PartnerAnnotationView
+      var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier) as? PartnerAnnotationView
       if annotationView == nil {
         annotationView = PartnerAnnotationView(
           annotation: annotation,
@@ -340,6 +340,7 @@ extension MapViewController: MKMapViewDelegate {
       if annotationView == nil {
         annotationView = LocationDataMapClusterView(annotation: annotation, reuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
       }
+      annotationView?.markerTintColor = .accent
       return annotationView
 
     default:
