@@ -64,7 +64,12 @@ final class VinchyRepository {
     Deferred {
       Future { promise in
         Partners.shared.getNearestPartners(
-          numberOfPartners: 100500, latitude: userLocation.latitude, longitude: userLocation.longitude, radius: radius, accountID: UserDefaultsConfig.accountID, completion: { result in
+          numberOfPartners: 100500,
+          latitude: userLocation.latitude,
+          longitude: userLocation.longitude,
+          radius: radius,
+          accountID: UserDefaultsConfig.accountID,
+          completion: { result in
             promise(result)
           })
       }
