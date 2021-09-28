@@ -149,8 +149,11 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
       }
     }
 
-    tabBar.setNeedsLayout()
-    tabBar.layoutIfNeeded()
+    tabBar.subviews.forEach { view in
+      view.setNeedsLayout()
+      view.layoutSubviews()
+    }
+
     return true
   }
 }
