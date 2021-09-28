@@ -71,11 +71,9 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
     appearance.inlineLayoutAppearance = tabBarItemAppearance
 
     tabBar.standardAppearance = appearance
-    #if compiler(>=5.5) // Comes with Xcode 13
     if #available(iOS 15.0, *) {
       tabBar.scrollEdgeAppearance = appearance
     }
-    #endif
     tabBar.isTranslucent = false
 
     delegate = self
@@ -131,6 +129,17 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
     viewControllers = [main, love, map, notes, profile]
   }
 
+  override func viewWillLayoutSubviews() {
+    if let items = tabBar.items {
+      items.forEach { item in
+        let viewTabBar = item.value(forKey: "view") as? UIView
+        if let label = viewTabBar?.subviews[safe: 1] as? UILabel {
+          label.sizeToFit()
+        }
+      }
+    }
+  }
+
   func tabBarController(
     _ tabBarController: UITabBarController,
     shouldSelect viewController: UIViewController)
@@ -147,11 +156,6 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
       if scrollView.responds(to: scrollToTopIfPossibleSelector) {
         firstVC.scrollableToTopScrollView.perform(scrollToTopIfPossibleSelector)
       }
-    }
-
-    tabBar.subviews.forEach { view in
-      view.setNeedsLayout()
-      view.layoutSubviews()
     }
 
     return true
