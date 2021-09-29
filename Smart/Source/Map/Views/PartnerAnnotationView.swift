@@ -104,7 +104,7 @@ final class PartnerAnnotationView: MKAnnotationView, Reusable {
   // MARK: Lifecycle
 
   override init(annotation: MKAnnotation?, reuseIdentifier: String?) {
-    super.init(annotation: annotation, reuseIdentifier: reuseIdentifier)
+    super.init(annotation: annotation, reuseIdentifier: nil)
 
     canShowCallout = false
 

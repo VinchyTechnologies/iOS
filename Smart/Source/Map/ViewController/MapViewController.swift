@@ -328,6 +328,8 @@ extension MapViewController: MKMapViewDelegate {
         annotationView = PartnerAnnotationView(
           annotation: annotation,
           reuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+      } else {
+        annotationView?.annotation = annotation
       }
       if (annotation as? PartnerAnnotationViewModel)?.shouldCluster == true {
         annotationView?.clusteringIdentifier = String(describing: PartnerAnnotationView.self)
@@ -339,6 +341,8 @@ extension MapViewController: MKMapViewDelegate {
       var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier) as? LocationDataMapClusterView
       if annotationView == nil {
         annotationView = LocationDataMapClusterView(annotation: annotation, reuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
+      } else {
+        annotationView?.annotation = annotation
       }
       annotationView?.markerTintColor = .accent
       return annotationView
