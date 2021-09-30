@@ -55,8 +55,8 @@ final class ToolView: UIView, EpoxyableView {
     shareButton.addTarget(self, action: #selector(didTapShareButton(_:)), for: .touchUpInside)
 
     addSubview(priceButton)
-    priceButton.backgroundColor = .accent
-    priceButton.contentEdgeInsets = .init(top: 0, left: 18, bottom: 0, right: 18)
+    priceButton.backgroundColor = .clear
+//    priceButton.contentEdgeInsets = .init(top: 0, left: 18, bottom: 0, right: 18)
     priceButton.addTarget(self, action: #selector(didTapPriceButton(_:)), for: .touchUpInside)
 
     let spaceBetweenShareAndPrice = UILayoutGuide()
@@ -69,17 +69,17 @@ final class ToolView: UIView, EpoxyableView {
     likeButton.addTarget(self, action: #selector(didTapLikeButton(_:)), for: .touchUpInside)
 
     NSLayoutConstraint.activate([
-      shareButton.leadingAnchor.constraint(equalTo: leadingAnchor),
+      shareButton.trailingAnchor.constraint(equalTo: trailingAnchor),
       shareButton.heightAnchor.constraint(equalToConstant: 50),
       shareButton.widthAnchor.constraint(equalToConstant: 50),
       shareButton.centerYAnchor.constraint(equalTo: centerYAnchor),
 
-      priceButton.trailingAnchor.constraint(equalTo: trailingAnchor),
+      priceButton.leadingAnchor.constraint(equalTo: leadingAnchor),
       priceButton.heightAnchor.constraint(equalToConstant: 50),
       priceButton.centerYAnchor.constraint(equalTo: centerYAnchor),
 
-      spaceBetweenShareAndPrice.leadingAnchor.constraint(equalTo: shareButton.trailingAnchor),
-      spaceBetweenShareAndPrice.trailingAnchor.constraint(equalTo: priceButton.leadingAnchor),
+      spaceBetweenShareAndPrice.leadingAnchor.constraint(equalTo: priceButton.trailingAnchor),
+      spaceBetweenShareAndPrice.trailingAnchor.constraint(equalTo: shareButton.leadingAnchor),
       spaceBetweenShareAndPrice.heightAnchor.constraint(equalTo: heightAnchor),
 
       likeButton.widthAnchor.constraint(equalToConstant: 50),
@@ -109,8 +109,8 @@ final class ToolView: UIView, EpoxyableView {
   func setContent(_ content: Content, animated: Bool) {
     let title = NSAttributedString(
       string: "~" + (content.price ?? "0.00"),
-      font: Font.with(size: 20, design: .round, traits: .bold),
-      textColor: .white,
+      font: Font.with(size: 25, design: .round, traits: .bold),
+      textColor: .dark,
       paragraphAlignment: .center)
 
     priceButton.setAttributedTitle(title, for: .normal)
