@@ -16,4 +16,5 @@ protocol VinchyInteractorProtocol: ResultsSearchDelegate {
   func didTapBottleCell(wineID: Int64)
   func didTapCompilationCell(input: ShowcaseInput)
   func didTapSeeStore(affilatedId: Int)
+  func didTapChangeAddressButton()
 }

@@ -34,6 +34,11 @@ final class VinchyRouter {
 
 extension VinchyRouter: VinchyRouterProtocol {
 
+  func presentChangeAddressViewController() {
+    let controller = AddressSearchAssembly.assemblyModule()
+    viewController?.present(controller, animated: true, completion: nil)
+  }
+
   func presentAreYouInStoreBottomSheet(nearestPartner: NearestPartner) {
     let options = SheetOptions(shrinkPresentingViewController: false)
     let controller = AreYouInStoreAssembly.assemblyModule(input: .init(partner: nearestPartner))

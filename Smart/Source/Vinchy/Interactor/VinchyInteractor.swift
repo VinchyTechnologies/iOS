@@ -165,6 +165,10 @@ final class VinchyInteractor {
 
 extension VinchyInteractor: VinchyInteractorProtocol {
 
+  func didTapChangeAddressButton() {
+    router.presentChangeAddressViewController()
+  }
+
   func didTapSeeStore(affilatedId: Int) {
     router.pushToStoreViewController(affilatedId: affilatedId)
   }
