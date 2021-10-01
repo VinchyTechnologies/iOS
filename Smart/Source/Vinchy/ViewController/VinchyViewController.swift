@@ -358,6 +358,7 @@ extension VinchyViewController: VinchyViewControllerProtocol {
   }
 
   func updateUI(viewModel: VinchyViewControllerViewModel) {
+    collectionView.scrollToTopForcingSearchBar()
     self.viewModel = viewModel
   }
 }

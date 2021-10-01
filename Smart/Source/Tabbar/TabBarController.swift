@@ -152,10 +152,7 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
       let firstVC = navViewController.viewControllers.first as? ScrollableToTop
     {
       let scrollView = firstVC.scrollableToTopScrollView
-      let scrollToTopIfPossibleSelector = Selector(encodeText("`tdspmmUpUpqJgQpttjcmf;", -1))
-      if scrollView.responds(to: scrollToTopIfPossibleSelector) {
-        firstVC.scrollableToTopScrollView.perform(scrollToTopIfPossibleSelector)
-      }
+      scrollView.scrollToTopForcingSearchBar()
     }
 
     return true
