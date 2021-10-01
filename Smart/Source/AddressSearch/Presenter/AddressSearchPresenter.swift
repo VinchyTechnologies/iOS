@@ -33,9 +33,14 @@ final class AddressSearchPresenter {
 
 extension AddressSearchPresenter: AddressSearchPresenterProtocol {
   func update(response: [CLPlacemark]?) {
-    let sections = response?.enumerated().compactMap({
+    var sections: [AddressSearchViewModel.Section] = []
+
+    sections += [.currentGeo(.init(id: response?.capacity ?? 0, title: "Current Geo", body: nil, systemImageName: "location.fill"))]
+
+    sections += response?.enumerated().compactMap({
       AddressSearchViewModel.Section.address(.init(id: $0.offset, title: $0.element.name, body: nil))
     }) ?? []
+
     viewController?.updateUI(viewModel: .init(sections: sections, navigationTitleText: localized("address_search")))
   }
 }

@@ -46,6 +46,15 @@ final class AddressSearchViewController: CollectionViewController {
           .didSelect { [weak self] id in
             self?.interactor?.didSelectAddressRow(id: content.id)
           }
+
+      case .currentGeo(let content):
+        return TextRow.itemModel(
+          dataID: content.id,
+          content: content,
+          style: .large)
+          .didSelect { [weak self] id in
+//            self?.interactor?.didSelectAddressRow(id: content.id)
+          }
       }
     })
   }

@@ -55,7 +55,7 @@ extension AddressSearchInteractor: AddressSearchInteractorProtocol {
     throttler.cancel()
 
     throttler.throttle(delay: .milliseconds(600)) { [weak self] in
-      self?.geoCoder.geocodeAddressString(searchText) { response, error in
+      self?.geoCoder.geocodeAddressString(searchText) { response, _ in
         self?.response = response ?? []
         self?.presenter.update(response: response)
       }

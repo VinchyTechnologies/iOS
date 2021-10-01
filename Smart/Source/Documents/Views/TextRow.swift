@@ -37,6 +37,7 @@ final class TextRow: UIView, EpoxyableView {
     var id: Int
     var title: String?
     var body: String?
+    var systemImageName: String = "arrow.up.right.square"
   }
 
   func setContent(_ content: Content, animated: Bool) {
@@ -80,7 +81,7 @@ final class TextRow: UIView, EpoxyableView {
 
       IconView.groupItem(
         dataID: DataID.image,
-        content: .init(image: .local(UIImage(systemName: "arrow.up.right.square"))),
+        content: .init(image: .local(UIImage(systemName: content.systemImageName))),
         style: .init(size: .init(width: 24, height: 24), tintColor: .accent))
     }
   }

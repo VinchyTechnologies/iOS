@@ -12,6 +12,7 @@ struct AddressSearchViewModel {
 
   enum Section {
     case address(TextRow.Content)
+    case currentGeo(TextRow.Content)
   }
 
   let sections: [Section]
