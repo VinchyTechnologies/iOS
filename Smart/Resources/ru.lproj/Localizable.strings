@@ -86,6 +86,8 @@
 "where_to_buy" = "Где купить?";
 "leave_review_more_often" = "Чаще оставляйте отзывы!";
 "hint_to_review_button" = "Только с помощью Ваших отзывов и оценок мы сможем подобрать вино специально для Вас";
+"enter_address" = "Укажите адрес";
+"address_search" = "Поиск адреса";
 
 // MARK: - Sugar
 "sugar" = "сахар";

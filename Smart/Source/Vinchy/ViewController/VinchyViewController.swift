@@ -40,16 +40,7 @@ final class VinchyViewController: UIViewController {
     view.addSubview(collectionView)
     collectionView.fill()
 
-    addressButton.setTitleColor(.dark, for: [])
-    addressButton.titleLabel?.font = Font.bold(18)
-    addressButton.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
-    addressButton.titleLabel?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
-    addressButton.imageView?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
-    addressButton.setInsets(forContentPadding: .zero, imageTitlePadding: 3)
-    addressButton.addTarget(self, action: #selector(didTapChangeAddressButton(_:)), for: .touchUpInside)
-
     filterButton.setImage(UIImage(named: "edit")?.withRenderingMode(.alwaysTemplate), for: [])
-    filterButton.backgroundColor = .option
     filterButton.imageView?.contentMode = .scaleAspectFit
     filterButton.imageEdgeInsets = UIEdgeInsets(top: 1, left: 1.5, bottom: 1, right: 1.5)
     filterButton.contentEdgeInsets = .init(top: 6, left: 6, bottom: 6, right: 6)
@@ -64,25 +55,11 @@ final class VinchyViewController: UIViewController {
     refreshControl.tintColor = .dark
     refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
 
-    if isMapOnVinchyVCAvailable {
-      view.addSubview(mapButton)
-      NSLayoutConstraint.activate([
-        mapButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-        mapButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
-      ])
-    }
-
     interactor?.viewDidLoad()
   }
 
   override func viewWillLayoutSubviews() {
     super.viewWillLayoutSubviews()
-    if isMapOnVinchyVCAvailable {
-      mapButton.layer.cornerRadius = mapButton.frame.height / 2
-      mapButton.clipsToBounds = true
-      collectionView.contentInset = .init(top: 0, left: 0, bottom: mapButton.frame.height + 16, right: 0)
-    }
-
     filterButton.layer.cornerRadius = filterButton.frame.height / 2
     filterButton.clipsToBounds = true
   }
@@ -96,25 +73,7 @@ final class VinchyViewController: UIViewController {
 
   // MARK: Private
 
-  private let addressButton = UIButton(type: .system)
-
   private let filterButton = UIButton(type: .system)
-
-  private lazy var mapButton: UIButton = {
-    let button = UIButton()
-    button.translatesAutoresizingMaskIntoConstraints = false
-    button.backgroundColor = .accent // UIColor(red: 121 / 255, green: 125 / 255, blue: 140 / 255, alpha: 1.0)
-    button.setTitle("Map", for: .normal)
-    let imageConfig = UIImage.SymbolConfiguration(pointSize: 16, weight: .semibold, scale: .default)
-    button.setImage(UIImage(systemName: "map", withConfiguration: imageConfig), for: .normal)
-    button.tintColor = .white
-    button.setTitleColor(.white, for: .normal)
-    button.titleLabel?.font = Font.bold(16)
-    button.contentEdgeInsets = .init(top: 14, left: 18, bottom: 14, right: 18)
-    button.imageEdgeInsets = .init(top: 0, left: -4, bottom: 0, right: 4)
-    button.addTarget(self, action: #selector(didTapMapButton(_:)), for: .touchUpInside)
-    return button
-  }()
 
   private lazy var collectionView: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
@@ -150,19 +109,14 @@ final class VinchyViewController: UIViewController {
     return searchController
   }()
 
-  private var viewModel: VinchyViewControllerViewModel = .init(state: .fake(sections: []), city: nil) {
+  private var viewModel: VinchyViewControllerViewModel = .init(state: .fake(sections: []), leadingAddressButtonViewModel: .loading(text: nil)) {
     didSet {
 
-      addressButton.setTitle(viewModel.city, for: [])
-      if viewModel.city != nil {
-        let imageConfig = UIImage.SymbolConfiguration(pointSize: 12, weight: .semibold, scale: .default)
-        addressButton.setImage(UIImage(systemName: "chevron.down", withConfiguration: imageConfig), for: [])
-      } else {
-        addressButton.setImage(nil, for: [])
+      UIView.performWithoutAnimation {
+        let addressButton = DiscoveryLeadingAddressButton.build(mode: viewModel.leadingAddressButtonViewModel)
+        addressButton.addTarget(self, action: #selector(didTapChangeAddressButton(_:)), for: .touchUpInside)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: addressButton)
       }
-
-      navigationItem.leftBarButtonItem = nil
-      navigationItem.leftBarButtonItem = UIBarButtonItem(customView: addressButton)
 
       switch viewModel.state {
       case .fake:
@@ -189,11 +143,6 @@ final class VinchyViewController: UIViewController {
   @objc
   private func didPullToRefresh() {
     interactor?.didPullToRefresh()
-  }
-
-  @objc
-  private func didTapMapButton(_: UIButton) {
-    interactor?.didTapMapButton()
   }
 }
 
@@ -410,7 +359,6 @@ extension VinchyViewController: VinchyViewControllerProtocol {
 
   func updateUI(viewModel: VinchyViewControllerViewModel) {
     self.viewModel = viewModel
-    print("city", viewModel.city)
   }
 }
 

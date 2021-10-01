@@ -139,6 +139,7 @@
 		8A10F28827063398003463B0 /* AddressSearchInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A10F27C27063398003463B0 /* AddressSearchInteractorProtocol.swift */; };
 		8A10F28927063398003463B0 /* AddressSearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A10F27E27063398003463B0 /* AddressSearchRouter.swift */; };
 		8A10F28A27063398003463B0 /* AddressSearchRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A10F27F27063398003463B0 /* AddressSearchRouterProtocol.swift */; };
+		8A10F65B27074F3A003463B0 /* DiscoveryLeadingAddressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A10F65A27074F3A003463B0 /* DiscoveryLeadingAddressButton.swift */; };
 		8A251E3226B0065C00DAED2D /* AdItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A251E3126B0065C00DAED2D /* AdItemView.swift */; };
 		8A313BFF26447042009F2165 /* MapDetailStoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BEE26447042009F2165 /* MapDetailStoreViewModel.swift */; };
 		8A313C0026447042009F2165 /* MapDetailStoreInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BF026447042009F2165 /* MapDetailStoreInput.swift */; };
@@ -580,6 +581,7 @@
 		8A10F27C27063398003463B0 /* AddressSearchInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressSearchInteractorProtocol.swift; sourceTree = "<group>"; };
 		8A10F27E27063398003463B0 /* AddressSearchRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressSearchRouter.swift; sourceTree = "<group>"; };
 		8A10F27F27063398003463B0 /* AddressSearchRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressSearchRouterProtocol.swift; sourceTree = "<group>"; };
+		8A10F65A27074F3A003463B0 /* DiscoveryLeadingAddressButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryLeadingAddressButton.swift; sourceTree = "<group>"; };
 		8A251E3126B0065C00DAED2D /* AdItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdItemView.swift; sourceTree = "<group>"; };
 		8A313BEE26447042009F2165 /* MapDetailStoreViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreViewModel.swift; sourceTree = "<group>"; };
 		8A313BF026447042009F2165 /* MapDetailStoreInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreInput.swift; sourceTree = "<group>"; };
@@ -2610,6 +2612,7 @@
 				CA46DC97252A44180007819E /* SmartFilterCollectionCell.swift */,
 				8A5401C926EFA894007247E5 /* StoreTitleCollectionCell.swift */,
 				CA7B835A24EED6E600991F24 /* StoryCollectionCell.swift */,
+				8A10F65A27074F3A003463B0 /* DiscoveryLeadingAddressButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3667,6 +3670,7 @@
 				CE8FF82A25FAD75C004D4F37 /* ShowcaseAssembly.swift in Sources */,
 				CA46DBE7252518230007819E /* OnboardingRepository.swift in Sources */,
 				7485877A26CC068700F5CBEA /* Configurator.swift in Sources */,
+				8A10F65B27074F3A003463B0 /* DiscoveryLeadingAddressButton.swift in Sources */,
 				CACA7E9F254C57CC0099E622 /* WriteNoteViewControllerProtocol.swift in Sources */,
 				449F81BD25DD039A00585364 /* TabBarBuilder.swift in Sources */,
 				CAEBD7F3251A7F5000210F3B /* SwitcherWithText.swift in Sources */,

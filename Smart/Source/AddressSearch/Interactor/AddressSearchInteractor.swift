@@ -28,8 +28,8 @@ final class AddressSearchInteractor {
   private let router: AddressSearchRouterProtocol
   private let presenter: AddressSearchPresenterProtocol
   private let throttler = Throttler()
-  private var response: [CLPlacemark]?
-
+  private var response: [CLPlacemark] = []
+  private let geoCoder = CLGeocoder()
 }
 
 // MARK: AddressSearchInteractorProtocol
@@ -37,8 +37,7 @@ final class AddressSearchInteractor {
 extension AddressSearchInteractor: AddressSearchInteractorProtocol {
 
   func didSelectAddressRow(id: Int) {
-    if let response = response, let placeMark = response[safe: id] {
-      print("=====", placeMark.location?.coordinate.latitude, placeMark.location?.coordinate.longitude)
+    if let placeMark = response[safe: id] {
       UserDefaultsConfig.userLatitude = placeMark.location?.coordinate.latitude ?? 0
       UserDefaultsConfig.userLongtitude = placeMark.location?.coordinate.longitude ?? 0
     }
@@ -56,24 +55,8 @@ extension AddressSearchInteractor: AddressSearchInteractorProtocol {
     throttler.cancel()
 
     throttler.throttle(delay: .milliseconds(600)) { [weak self] in
-//      let request = MKLocalSearch.Request()
-//      request.naturalLanguageQuery = searchText
-//      let search = MKLocalSearch(request: request)
-//      search.start { response, _ in
-//        guard let response = response else {
-//          return
-//        }
-//        self?.presenter.update(response: response)
-//      }
-
-
-      let geoCoder = CLGeocoder()
-      geoCoder.geocodeAddressString(searchText) { response, error in
-        self?.response = response
-        guard let response = response else {
-          return
-        }
-        print(response)
+      self?.geoCoder.geocodeAddressString(searchText) { response, error in
+        self?.response = response ?? []
         self?.presenter.update(response: response)
       }
     }

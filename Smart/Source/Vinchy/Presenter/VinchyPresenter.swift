@@ -62,7 +62,7 @@ extension VinchyPresenter: VinchyPresenterProtocol {
           .title(.init(type: .title(count: 1))),
           .promo(.init(type: .big(count: 10))),
         ]),
-        city: nil))
+        leadingAddressButtonViewModel: .loading(text: "Loading...")))
   }
 
   func startLoading() {
@@ -194,6 +194,9 @@ extension VinchyPresenter: VinchyPresenterProtocol {
           paragraphAlignment: .justified)),
     ]))
 
-    viewController?.updateUI(viewModel: VinchyViewControllerViewModel(state: .normal(sections: sections), city: isLocationPermissionDenied ? "Change address" : city))
+    viewController?.updateUI(
+      viewModel: VinchyViewControllerViewModel(
+        state: .normal(sections: sections),
+        leadingAddressButtonViewModel: isLocationPermissionDenied ? .arraw(text: localized("enter_address").firstLetterUppercased()) : .arraw(text: city)))
   }
 }

@@ -33,6 +33,8 @@ final class AddressSearchViewController: CollectionViewController {
 
   weak var delegate: AddressSearchViewControllerDelegate?
 
+  let searchViewController = UISearchController(searchResultsController: nil)
+
   var items: [ItemModeling] {
     viewModel.sections.map({ section in
       switch section {
@@ -54,7 +56,6 @@ final class AddressSearchViewController: CollectionViewController {
     collectionView.backgroundColor = .mainBackground
     return collectionView
   }
-
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -69,8 +70,6 @@ final class AddressSearchViewController: CollectionViewController {
     collectionView.backgroundColor = .mainBackground
     navigationItem.largeTitleDisplayMode = .never
 
-    let searchViewController = UISearchController(searchResultsController: nil)
-
     searchViewController.showsSearchResultsController = true
     searchViewController.obscuresBackgroundDuringPresentation = false
     searchViewController.searchBar.autocapitalizationType = .none
@@ -80,17 +79,17 @@ final class AddressSearchViewController: CollectionViewController {
     searchViewController.searchBar.searchTextField.layer.cornerCurve = .continuous
     searchViewController.searchBar.delegate = self
     searchViewController.hidesNavigationBarDuringPresentation = false
+    searchViewController.delegate = self
 
     navigationItem.searchController = searchViewController
     interactor?.viewDidLoad()
+
   }
 
-//  override func viewWillAppear(_ animated: Bool) {
-//    super.viewWillAppear(animated)
-//    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
-//      self.navigationItem.searchController?.searchBar.becomeFirstResponder()
-//    }
-//  }
+  override func viewDidAppear(_ animated: Bool) {
+    super.viewDidAppear(animated)
+    searchViewController.isActive = true
+  }
 
   // MARK: Private
 
@@ -117,5 +116,15 @@ extension AddressSearchViewController: AddressSearchViewControllerProtocol {
 extension AddressSearchViewController: UISearchBarDelegate {
   func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
     interactor?.didEnterSearchText(searchText)
+  }
+}
+
+// MARK: UISearchControllerDelegate
+
+extension AddressSearchViewController: UISearchControllerDelegate {
+  func didPresentSearchController(_ searchController: UISearchController) {
+    DispatchQueue.main.async {
+      self.searchViewController.searchBar.becomeFirstResponder()
+    }
   }
 }

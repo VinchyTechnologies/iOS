@@ -7,6 +7,7 @@
 //
 
 import MapKit
+import StringFormatting
 
 // MARK: - AddressSearchPresenter
 
@@ -35,6 +36,6 @@ extension AddressSearchPresenter: AddressSearchPresenterProtocol {
     let sections = response?.enumerated().compactMap({
       AddressSearchViewModel.Section.address(.init(id: $0.offset, title: $0.element.name, body: nil))
     }) ?? []
-    viewController?.updateUI(viewModel: .init(sections: sections, navigationTitleText: "Search address"))
+    viewController?.updateUI(viewModel: .init(sections: sections, navigationTitleText: localized("address_search")))
   }
 }
