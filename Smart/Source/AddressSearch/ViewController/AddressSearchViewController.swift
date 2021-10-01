@@ -10,6 +10,12 @@ import Display
 import EpoxyCollectionView
 import UIKit
 
+// MARK: - AddressSearchViewControllerDelegate
+
+protocol AddressSearchViewControllerDelegate: AnyObject {
+  func didChooseAddress()
+}
+
 // MARK: - AddressSearchViewController
 
 final class AddressSearchViewController: CollectionViewController {
@@ -24,6 +30,8 @@ final class AddressSearchViewController: CollectionViewController {
   // MARK: Internal
 
   var interactor: AddressSearchInteractorProtocol?
+
+  weak var delegate: AddressSearchViewControllerDelegate?
 
   var items: [ItemModeling] {
     viewModel.sections.map({ section in
@@ -76,6 +84,13 @@ final class AddressSearchViewController: CollectionViewController {
     navigationItem.searchController = searchViewController
     interactor?.viewDidLoad()
   }
+
+//  override func viewWillAppear(_ animated: Bool) {
+//    super.viewWillAppear(animated)
+//    DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+//      self.navigationItem.searchController?.searchBar.becomeFirstResponder()
+//    }
+//  }
 
   // MARK: Private
 

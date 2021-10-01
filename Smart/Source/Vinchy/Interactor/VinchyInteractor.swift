@@ -198,6 +198,11 @@ final class VinchyInteractor {
 
 extension VinchyInteractor: VinchyInteractorProtocol {
 
+  func didChangeAddress() {
+    presenter.startShimmer()
+    fetchData()
+  }
+
   func didTapChangeAddressButton() {
     router.presentChangeAddressViewController()
   }

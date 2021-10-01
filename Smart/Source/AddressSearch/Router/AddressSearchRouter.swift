@@ -38,5 +38,6 @@ final class AddressSearchRouter {
 extension AddressSearchRouter: AddressSearchRouterProtocol {
   func dismiss() {
     viewController?.navigationController?.dismiss(animated: true, completion: nil)
+    (viewController?.navigationController?.viewControllers.first as? AddressSearchViewController)?.delegate?.didChooseAddress()
   }
 }

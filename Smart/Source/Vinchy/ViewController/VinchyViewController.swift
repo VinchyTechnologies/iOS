@@ -161,6 +161,7 @@ final class VinchyViewController: UIViewController {
         addressButton.setImage(nil, for: [])
       }
 
+      navigationItem.leftBarButtonItem = nil
       navigationItem.leftBarButtonItem = UIBarButtonItem(customView: addressButton)
 
       switch viewModel.state {
