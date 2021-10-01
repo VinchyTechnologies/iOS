@@ -33,8 +33,8 @@ final class AddressSearchViewController: CollectionViewController {
           dataID: content.id,
           content: content,
           style: .large)
-          .didSelect { [weak self] _ in
-//            self?.interactor?.didSelectDocument(documentId: content.id)
+          .didSelect { [weak self] id in
+            self?.interactor?.didSelectAddressRow(id: content.id)
           }
       }
     })
@@ -83,9 +83,8 @@ final class AddressSearchViewController: CollectionViewController {
 
   @objc
   private func didTapCloseBarButtonItem(_ barButtonItem: UIBarButtonItem) {
-    dismiss(animated: true, completion: nil)
+    navigationController?.dismiss(animated: true, completion: nil)
   }
-
 }
 
 // MARK: AddressSearchViewControllerProtocol

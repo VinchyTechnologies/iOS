@@ -28,12 +28,22 @@ final class AddressSearchInteractor {
   private let router: AddressSearchRouterProtocol
   private let presenter: AddressSearchPresenterProtocol
   private let throttler = Throttler()
+  private var response: [CLPlacemark]?
 
 }
 
 // MARK: AddressSearchInteractorProtocol
 
 extension AddressSearchInteractor: AddressSearchInteractorProtocol {
+
+  func didSelectAddressRow(id: Int) {
+    if let response = response, let placeMark = response[safe: id] {
+      print("=====", placeMark.location?.coordinate.latitude, placeMark.location?.coordinate.longitude)
+      UserDefaultsConfig.userLatitude = placeMark.location?.coordinate.latitude ?? 0
+      UserDefaultsConfig.userLongtitude = placeMark.location?.coordinate.longitude ?? 0
+    }
+    router.dismiss()
+  }
 
   func didEnterSearchText(_ text: String?) {
     guard
@@ -59,11 +69,12 @@ extension AddressSearchInteractor: AddressSearchInteractorProtocol {
 
       let geoCoder = CLGeocoder()
       geoCoder.geocodeAddressString(searchText) { response, error in
+        self?.response = response
         guard let response = response else {
           return
         }
+        print(response)
         self?.presenter.update(response: response)
-
       }
     }
   }

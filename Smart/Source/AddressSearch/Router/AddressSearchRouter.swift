@@ -36,5 +36,7 @@ final class AddressSearchRouter {
 // MARK: AddressSearchRouterProtocol
 
 extension AddressSearchRouter: AddressSearchRouterProtocol {
-
+  func dismiss() {
+    viewController?.navigationController?.dismiss(animated: true, completion: nil)
+  }
 }

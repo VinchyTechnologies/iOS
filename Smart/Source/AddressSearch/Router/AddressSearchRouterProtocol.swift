@@ -9,4 +9,5 @@
 import Foundation
 
 protocol AddressSearchRouterProtocol: AnyObject {
+  func dismiss()
 }

@@ -100,20 +100,24 @@ final class VinchyInteractor {
 
           case .failure(let error):
             if case MapError.locationPermissionDenied = error { // TODO: - move all to repository
-              isLocationPermissionDenied = true
-//              self.repository.requestNearestPartners(
-//                userLocation: CLLocationCoordinate2D(latitude: 55.755786, longitude: 37.617633),
-//                radius: 10000) { [weak self] result in
-//                  guard let self = self else { return }
-//                  switch result {
-//                  case .success(let response):
-//                    nearestPartners = self.convertToFiveNearestStores(nearestPartners: response, userLocation: userLocation)
-//
-//                  case .failure(let error):
-//                    print(error.localizedDescription)
-//                  }
-              self.dispatchGroup.leave()
-//              }
+              isLocationPermissionDenied = UserDefaultsConfig.userLatitude == 0 && UserDefaultsConfig.userLongtitude == 0
+              if isLocationPermissionDenied {
+                self.dispatchGroup.leave()
+              } else {
+                self.repository.requestNearestPartners(
+                  userLocation: CLLocationCoordinate2D(latitude: UserDefaultsConfig.userLatitude, longitude: UserDefaultsConfig.userLongtitude),
+                  radius: 10000) { [weak self] result in
+                    guard let self = self else { return }
+                    switch result {
+                    case .success(let response):
+                      nearestPartners = self.convertToFiveNearestStores(nearestPartners: response, userLocation: userLocation)
+
+                    case .failure(let error):
+                      print(error.localizedDescription)
+                    }
+                    self.dispatchGroup.leave()
+                }
+              }
             } else {
               print(error.localizedDescription)
               self.dispatchGroup.leave()
@@ -148,11 +152,23 @@ final class VinchyInteractor {
             isLocationPermissionDenied: isLocationPermissionDenied)
         }
       } else {
-        self.presenter.update(
-          compilations: compilations,
-          nearestPartners: nearestPartners,
-          city: nil,
-          isLocationPermissionDenied: isLocationPermissionDenied)
+        if UserDefaultsConfig.userLatitude != 0 && UserDefaultsConfig.userLongtitude != 0 {
+          CLLocation(
+            latitude: UserDefaultsConfig.userLatitude,
+            longitude: UserDefaultsConfig.userLongtitude).fetchCityAndCountry { city, _, _ in
+            self.presenter.update(
+              compilations: compilations,
+              nearestPartners: nearestPartners,
+              city: city,
+              isLocationPermissionDenied: isLocationPermissionDenied)
+          }
+        } else {
+          self.presenter.update(
+            compilations: compilations,
+            nearestPartners: nearestPartners,
+            city: nil,
+            isLocationPermissionDenied: isLocationPermissionDenied)
+        }
       }
 
       DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
