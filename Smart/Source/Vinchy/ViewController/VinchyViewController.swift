@@ -40,18 +40,13 @@ final class VinchyViewController: UIViewController {
     view.addSubview(collectionView)
     collectionView.fill()
 
-    let addressButton = UIButton(type: .system)
     addressButton.setTitleColor(.dark, for: [])
-    addressButton.setTitle("Edit address", for: [])
     addressButton.titleLabel?.font = Font.bold(18)
-    let imageConfig = UIImage.SymbolConfiguration(pointSize: 12, weight: .semibold, scale: .default)
-    addressButton.setImage(UIImage(systemName: "chevron.down", withConfiguration: imageConfig), for: [])
-    addressButton.semanticContentAttribute = UIApplication.shared
-      .userInterfaceLayoutDirection == .rightToLeft ? .forceLeftToRight : .forceRightToLeft
-    addressButton.setInsets(forContentPadding: .zero, imageTitlePadding: -3)
+    addressButton.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+    addressButton.titleLabel?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+    addressButton.imageView?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+    addressButton.setInsets(forContentPadding: .zero, imageTitlePadding: 3)
     addressButton.addTarget(self, action: #selector(didTapChangeAddressButton(_:)), for: .touchUpInside)
-
-    navigationItem.leftBarButtonItem = UIBarButtonItem(customView: addressButton)
 
     filterButton.setImage(UIImage(named: "edit")?.withRenderingMode(.alwaysTemplate), for: [])
     filterButton.backgroundColor = .option
@@ -100,6 +95,8 @@ final class VinchyViewController: UIViewController {
   }
 
   // MARK: Private
+
+  private let addressButton = UIButton(type: .system)
 
   private let filterButton = UIButton(type: .system)
 
@@ -153,8 +150,19 @@ final class VinchyViewController: UIViewController {
     return searchController
   }()
 
-  private var viewModel: VinchyViewControllerViewModel = .init(state: .fake(sections: [])) {
+  private var viewModel: VinchyViewControllerViewModel = .init(state: .fake(sections: []), city: nil) {
     didSet {
+
+      addressButton.setTitle(viewModel.city, for: [])
+      if viewModel.city != nil {
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 12, weight: .semibold, scale: .default)
+        addressButton.setImage(UIImage(systemName: "chevron.down", withConfiguration: imageConfig), for: [])
+      } else {
+        addressButton.setImage(nil, for: [])
+      }
+
+      navigationItem.leftBarButtonItem = UIBarButtonItem(customView: addressButton)
+
       switch viewModel.state {
       case .fake:
         collectionView.isScrollEnabled = false
@@ -401,6 +409,7 @@ extension VinchyViewController: VinchyViewControllerProtocol {
 
   func updateUI(viewModel: VinchyViewControllerViewModel) {
     self.viewModel = viewModel
+    print("city", viewModel.city)
   }
 }
 

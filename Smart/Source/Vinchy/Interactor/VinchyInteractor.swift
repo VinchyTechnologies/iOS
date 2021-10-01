@@ -71,6 +71,7 @@ final class VinchyInteractor {
 
     var compilations: [Compilation] = []
     var nearestPartners: [NearestPartner] = []
+    var isLocationPermissionDenied: Bool = false
 
     dispatchGroup.enter()
     Compilations.shared.getCompilations { [weak self] result in
@@ -99,19 +100,20 @@ final class VinchyInteractor {
 
           case .failure(let error):
             if case MapError.locationPermissionDenied = error { // TODO: - move all to repository
-              self.repository.requestNearestPartners(
-                userLocation: CLLocationCoordinate2D(latitude: 55.755786, longitude: 37.617633),
-                radius: 10000) { [weak self] result in
-                  guard let self = self else { return }
-                  switch result {
-                  case .success(let response):
-                    nearestPartners = self.convertToFiveNearestStores(nearestPartners: response, userLocation: userLocation)
-
-                  case .failure(let error):
-                    print(error.localizedDescription)
-                  }
-                  self.dispatchGroup.leave()
-              }
+              isLocationPermissionDenied = true
+//              self.repository.requestNearestPartners(
+//                userLocation: CLLocationCoordinate2D(latitude: 55.755786, longitude: 37.617633),
+//                radius: 10000) { [weak self] result in
+//                  guard let self = self else { return }
+//                  switch result {
+//                  case .success(let response):
+//                    nearestPartners = self.convertToFiveNearestStores(nearestPartners: response, userLocation: userLocation)
+//
+//                  case .failure(let error):
+//                    print(error.localizedDescription)
+//                  }
+              self.dispatchGroup.leave()
+//              }
             } else {
               print(error.localizedDescription)
               self.dispatchGroup.leave()
@@ -136,7 +138,22 @@ final class VinchyInteractor {
       self.nearestPartners = nearestPartners
 
       self.compilations = compilations
-      self.presenter.update(compilations: compilations, nearestPartners: nearestPartners)
+
+      if let userLocation = self.userLocation {
+        CLLocation(latitude: userLocation.latitude, longitude: userLocation.longitude).fetchCityAndCountry { city, _, _ in
+          self.presenter.update(
+            compilations: compilations,
+            nearestPartners: nearestPartners,
+            city: city,
+            isLocationPermissionDenied: isLocationPermissionDenied)
+        }
+      } else {
+        self.presenter.update(
+          compilations: compilations,
+          nearestPartners: nearestPartners,
+          city: nil,
+          isLocationPermissionDenied: isLocationPermissionDenied)
+      }
 
       DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
         if self.userLocation != nil {
@@ -220,5 +237,15 @@ extension VinchyInteractor {
     }
 
     router.pushToShowcaseViewController(input: input)
+  }
+}
+
+extension CLLocation {
+  func fetchCityAndCountry(
+    completion: @escaping (_ city: String?, _ country: String?, _ error: Error?) -> Void)
+  {
+    CLGeocoder().reverseGeocodeLocation(self) {
+      completion($0?.first?.locality, $0?.first?.country, $1)
+    }
   }
 }
