@@ -93,7 +93,7 @@
 "let_us_know_your_location" = "let us determine your current location to suggest the nearest stores. You can configure this in the settings.";
 "settings" = "settings";
 "current_geo" = "current location";
-"loading" = "locading...";
+"loading" = "loading...";
 
 // MARK: - Sugar
 "sugar" = "sugar";
