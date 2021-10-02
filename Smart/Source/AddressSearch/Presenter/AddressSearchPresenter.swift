@@ -34,25 +34,25 @@ final class AddressSearchPresenter {
 extension AddressSearchPresenter: AddressSearchPresenterProtocol {
 
   var alertLocationServiceSettingsTitleText: String? {
-    "Мы не знаем где вы..."
+    localized("we_donot_know_where_you_are").firstLetterUppercased()
   }
 
   var alertLocationServiceSettingSubtitleText: String? {
-    "Это включается в настройках"
+    localized("let_us_know_your_location").firstLetterUppercased()
   }
 
   var alertLocationServiceSettingsLeadingButtonText: String? {
-    "Потом"
+    localized("later").firstLetterUppercased()
   }
 
   var alertLocationServiceSettingsTrailingButtonText: String? {
-    "Hастройки"
+    localized("settings").firstLetterUppercased()
   }
 
   func update(response: [CLPlacemark]?) {
     var sections: [AddressSearchViewModel.Section] = []
 
-    sections += [.currentGeo(.init(id: response?.capacity ?? 0, title: "Current Geo", body: nil, systemImageName: "location.fill"))]
+    sections += [.currentGeo(.init(id: response?.capacity ?? 0, title: localized("current_geo").firstLetterUppercased(), body: nil, systemImageName: "location.fill"))]
 
     sections += response?.enumerated().compactMap({
       AddressSearchViewModel.Section.address(

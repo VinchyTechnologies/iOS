@@ -62,7 +62,7 @@ extension VinchyPresenter: VinchyPresenterProtocol {
           .title(.init(type: .title(count: 1))),
           .promo(.init(type: .big(count: 10))),
         ]),
-        leadingAddressButtonViewModel: .loading(text: "Loading...")))
+        leadingAddressButtonViewModel: .loading(text: localized("loading").firstLetterUppercased())))
   }
 
   func startLoading() {
