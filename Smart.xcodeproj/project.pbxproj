@@ -128,6 +128,18 @@
 		8A0D9CB926872CF60076A7EC /* NewAgreementsBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0D9CB826872CF60076A7EC /* NewAgreementsBottomView.swift */; };
 		8A1034592648596100F7CA81 /* AssortmentCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1034582648596100F7CA81 /* AssortmentCollectionCell.swift */; };
 		8A1036CA264D7E1200F7CA81 /* MapNavigationBarCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1036C9264D7E1200F7CA81 /* MapNavigationBarCollectionCell.swift */; };
+		8A10F28027063398003463B0 /* AddressSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A10F26F27063398003463B0 /* AddressSearchViewModel.swift */; };
+		8A10F28127063398003463B0 /* AddressSearchInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A10F27127063398003463B0 /* AddressSearchInput.swift */; };
+		8A10F28227063398003463B0 /* AddressSearchAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A10F27327063398003463B0 /* AddressSearchAssembly.swift */; };
+		8A10F28327063398003463B0 /* AddressSearchPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A10F27527063398003463B0 /* AddressSearchPresenterProtocol.swift */; };
+		8A10F28427063398003463B0 /* AddressSearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A10F27627063398003463B0 /* AddressSearchPresenter.swift */; };
+		8A10F28527063398003463B0 /* AddressSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A10F27827063398003463B0 /* AddressSearchViewController.swift */; };
+		8A10F28627063398003463B0 /* AddressSearchViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A10F27927063398003463B0 /* AddressSearchViewControllerProtocol.swift */; };
+		8A10F28727063398003463B0 /* AddressSearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A10F27B27063398003463B0 /* AddressSearchInteractor.swift */; };
+		8A10F28827063398003463B0 /* AddressSearchInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A10F27C27063398003463B0 /* AddressSearchInteractorProtocol.swift */; };
+		8A10F28927063398003463B0 /* AddressSearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A10F27E27063398003463B0 /* AddressSearchRouter.swift */; };
+		8A10F28A27063398003463B0 /* AddressSearchRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A10F27F27063398003463B0 /* AddressSearchRouterProtocol.swift */; };
+		8A10F65B27074F3A003463B0 /* DiscoveryLeadingAddressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A10F65A27074F3A003463B0 /* DiscoveryLeadingAddressButton.swift */; };
 		8A251E3226B0065C00DAED2D /* AdItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A251E3126B0065C00DAED2D /* AdItemView.swift */; };
 		8A313BFF26447042009F2165 /* MapDetailStoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BEE26447042009F2165 /* MapDetailStoreViewModel.swift */; };
 		8A313C0026447042009F2165 /* MapDetailStoreInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BF026447042009F2165 /* MapDetailStoreInput.swift */; };
@@ -558,6 +570,18 @@
 		8A0D9CB826872CF60076A7EC /* NewAgreementsBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAgreementsBottomView.swift; sourceTree = "<group>"; };
 		8A1034582648596100F7CA81 /* AssortmentCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssortmentCollectionCell.swift; sourceTree = "<group>"; };
 		8A1036C9264D7E1200F7CA81 /* MapNavigationBarCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapNavigationBarCollectionCell.swift; sourceTree = "<group>"; };
+		8A10F26F27063398003463B0 /* AddressSearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressSearchViewModel.swift; sourceTree = "<group>"; };
+		8A10F27127063398003463B0 /* AddressSearchInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressSearchInput.swift; sourceTree = "<group>"; };
+		8A10F27327063398003463B0 /* AddressSearchAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressSearchAssembly.swift; sourceTree = "<group>"; };
+		8A10F27527063398003463B0 /* AddressSearchPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressSearchPresenterProtocol.swift; sourceTree = "<group>"; };
+		8A10F27627063398003463B0 /* AddressSearchPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressSearchPresenter.swift; sourceTree = "<group>"; };
+		8A10F27827063398003463B0 /* AddressSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressSearchViewController.swift; sourceTree = "<group>"; };
+		8A10F27927063398003463B0 /* AddressSearchViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressSearchViewControllerProtocol.swift; sourceTree = "<group>"; };
+		8A10F27B27063398003463B0 /* AddressSearchInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressSearchInteractor.swift; sourceTree = "<group>"; };
+		8A10F27C27063398003463B0 /* AddressSearchInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressSearchInteractorProtocol.swift; sourceTree = "<group>"; };
+		8A10F27E27063398003463B0 /* AddressSearchRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressSearchRouter.swift; sourceTree = "<group>"; };
+		8A10F27F27063398003463B0 /* AddressSearchRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressSearchRouterProtocol.swift; sourceTree = "<group>"; };
+		8A10F65A27074F3A003463B0 /* DiscoveryLeadingAddressButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryLeadingAddressButton.swift; sourceTree = "<group>"; };
 		8A251E3126B0065C00DAED2D /* AdItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdItemView.swift; sourceTree = "<group>"; };
 		8A313BEE26447042009F2165 /* MapDetailStoreViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreViewModel.swift; sourceTree = "<group>"; };
 		8A313BF026447042009F2165 /* MapDetailStoreInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreInput.swift; sourceTree = "<group>"; };
@@ -1599,6 +1623,80 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		8A10F26D27063398003463B0 /* AddressSearch */ = {
+			isa = PBXGroup;
+			children = (
+				8A10F27227063398003463B0 /* Assembly */,
+				8A10F27027063398003463B0 /* Input */,
+				8A10F27A27063398003463B0 /* Interactor */,
+				8A10F27427063398003463B0 /* Presenter */,
+				8A10F27D27063398003463B0 /* Router */,
+				8A10F27727063398003463B0 /* ViewController */,
+				8A10F26E27063398003463B0 /* ViewModel */,
+			);
+			path = AddressSearch;
+			sourceTree = "<group>";
+		};
+		8A10F26E27063398003463B0 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8A10F26F27063398003463B0 /* AddressSearchViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8A10F27027063398003463B0 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				8A10F27127063398003463B0 /* AddressSearchInput.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		8A10F27227063398003463B0 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				8A10F27327063398003463B0 /* AddressSearchAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		8A10F27427063398003463B0 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8A10F27527063398003463B0 /* AddressSearchPresenterProtocol.swift */,
+				8A10F27627063398003463B0 /* AddressSearchPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		8A10F27727063398003463B0 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8A10F27827063398003463B0 /* AddressSearchViewController.swift */,
+				8A10F27927063398003463B0 /* AddressSearchViewControllerProtocol.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		8A10F27A27063398003463B0 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				8A10F27B27063398003463B0 /* AddressSearchInteractor.swift */,
+				8A10F27C27063398003463B0 /* AddressSearchInteractorProtocol.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		8A10F27D27063398003463B0 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				8A10F27E27063398003463B0 /* AddressSearchRouter.swift */,
+				8A10F27F27063398003463B0 /* AddressSearchRouterProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
 		8A313BEC26447042009F2165 /* MapDetailStore */ = {
 			isa = PBXGroup;
 			children = (
@@ -2340,6 +2438,7 @@
 			isa = PBXGroup;
 			children = (
 				CAF5140E2461C51300667ED0 /* About */,
+				8A10F26D27063398003463B0 /* AddressSearch */,
 				CA79545024F92E930040224C /* AdvancedSearch */,
 				CA07097E2523146200C3D9EC /* Agreement */,
 				8A91600F268CE66C00240B18 /* AreYouInStore */,
@@ -2513,6 +2612,7 @@
 				CA46DC97252A44180007819E /* SmartFilterCollectionCell.swift */,
 				8A5401C926EFA894007247E5 /* StoreTitleCollectionCell.swift */,
 				CA7B835A24EED6E600991F24 /* StoryCollectionCell.swift */,
+				8A10F65A27074F3A003463B0 /* DiscoveryLeadingAddressButton.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3269,6 +3369,7 @@
 				CACA7EA3254C57CC0099E622 /* WriteNoteRouter.swift in Sources */,
 				447C353B25EEAA5700105A35 /* MapPresenter.swift in Sources */,
 				8A0D9CB926872CF60076A7EC /* NewAgreementsBottomView.swift in Sources */,
+				8A10F28527063398003463B0 /* AddressSearchViewController.swift in Sources */,
 				8A4ACBBC26CAB9490021215E /* AdvancedSearchNavigationController.swift in Sources */,
 				8AA990A826D91FE000C32358 /* StoresViewControllerProtocol.swift in Sources */,
 				8A0794D426936141000ACA2B /* StorePresenter.swift in Sources */,
@@ -3276,6 +3377,7 @@
 				8AF966C12678F194001891B2 /* EditProfilePresenterProtocol.swift in Sources */,
 				74E55FA726AACE2C0086C159 /* ResultsSearchViewModel.swift in Sources */,
 				CA2C22DB2554464F002469E4 /* AdvancedSearchAssembly.swift in Sources */,
+				8A10F28727063398003463B0 /* AddressSearchInteractor.swift in Sources */,
 				74DAD09F26E0D4F400055AE7 /* LoadingPresentable.swift in Sources */,
 				8AA5E5132615053D00935B5E /* AboutView.swift in Sources */,
 				CA46DC98252A44180007819E /* SmartFilterCollectionCell.swift in Sources */,
@@ -3297,6 +3399,7 @@
 				8AF966C02678F194001891B2 /* EditProfileAssembly.swift in Sources */,
 				CE58DEDB25ED73C900B5BDF9 /* CurrencyRouterProtocol.swift in Sources */,
 				CA46DBEF252518460007819E /* OnboardingCache.swift in Sources */,
+				8A10F28A27063398003463B0 /* AddressSearchRouterProtocol.swift in Sources */,
 				8AF966C22678F194001891B2 /* EditProfilePresenter.swift in Sources */,
 				CA2C22D92554464F002469E4 /* AdvancedSearchViewModel.swift in Sources */,
 				CA81984A253864080056A1C6 /* WineDetailViewControllerProtocol.swift in Sources */,
@@ -3331,6 +3434,7 @@
 				8AD7A455263B2A98007D4273 /* ClusterAnnotationView.swift in Sources */,
 				CA99E65724F6EDDD00C36BEE /* ButtonView.swift in Sources */,
 				449F81CE25DD050400585364 /* DeeplinkRouter.swift in Sources */,
+				8A10F28127063398003463B0 /* AddressSearchInput.swift in Sources */,
 				CE69652825E4372E00CD414D /* CurrencyViewController.swift in Sources */,
 				CAF514282461C52400667ED0 /* DocCell.swift in Sources */,
 				74E55FAB26AACE2C0086C159 /* ResultsSearchPresenterProtocol.swift in Sources */,
@@ -3406,9 +3510,11 @@
 				8AE788132684E8D60056A84B /* NotesInteractor.swift in Sources */,
 				CA99E65324F59CAA00C36BEE /* ShortInfoCollectionCell.swift in Sources */,
 				8A53D42926C0531A001D9535 /* ReviewsCollectionView.swift in Sources */,
+				8A10F28627063398003463B0 /* AddressSearchViewControllerProtocol.swift in Sources */,
 				8AF9441B2692295D003EB76A /* Label.swift in Sources */,
 				74E55FAA26AACE2C0086C159 /* ResultsSearchPresenter.swift in Sources */,
 				8A0795B726943DD6000ACA2B /* FeaturesOnboardingViewController.swift in Sources */,
+				8A10F28927063398003463B0 /* AddressSearchRouter.swift in Sources */,
 				8AF966C32678F194001891B2 /* EditProfileViewController.swift in Sources */,
 				44EFDB3F25E177220076ED6D /* ReviewsInteractor.swift in Sources */,
 				CA7B836024EF109200991F24 /* MainSubtitleCollectionCell.swift in Sources */,
@@ -3421,6 +3527,7 @@
 				4437AA6125E3A7CE00F6E838 /* WriteReviewViewControllerProtocol.swift in Sources */,
 				44465EC025F39400005B3F06 /* MapRepository.swift in Sources */,
 				44EFDB7125E263E00076ED6D /* ReviewDetailAssembly.swift in Sources */,
+				8A10F28427063398003463B0 /* AddressSearchPresenter.swift in Sources */,
 				8A079F2E269E151F000ACA2B /* BottlesCollectionView.swift in Sources */,
 				74DAD0A126E0D99300055AE7 /* ActivityRoutable.swift in Sources */,
 				CAF514102461C51400667ED0 /* AboutViewController.swift in Sources */,
@@ -3471,6 +3578,7 @@
 				7485870026C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellPresenter.swift in Sources */,
 				8AD49F16267520F90094E157 /* ReviewsInteractorProtocol.swift in Sources */,
 				8AA990AC26D91FE000C32358 /* StoresRouter.swift in Sources */,
+				8A10F28827063398003463B0 /* AddressSearchInteractorProtocol.swift in Sources */,
 				8AD49F192675210D0094E157 /* ReviewsRouterProtocol.swift in Sources */,
 				74E55FAF26AACE2C0086C159 /* ResultsSearchInteractorProtocol.swift in Sources */,
 				74E55FAC26AACE2C0086C159 /* ResultsSearchViewControllerProtocol.swift in Sources */,
@@ -3522,10 +3630,13 @@
 				8A916118268E27EB00240B18 /* SearchViewModel.swift in Sources */,
 				CEB0A6222609442B00B07B87 /* ShowcaseRouterProtocol.swift in Sources */,
 				44EFDB7625E263E00076ED6D /* ReviewDetailInteractor.swift in Sources */,
+				8A10F28327063398003463B0 /* AddressSearchPresenterProtocol.swift in Sources */,
 				CE8FF83925FADABF004D4F37 /* ShowcaseInteractorProtocol.swift in Sources */,
 				447C353D25EEAA5700105A35 /* MapViewController.swift in Sources */,
 				8A916119268E27EB00240B18 /* SearchInput.swift in Sources */,
 				4437AA5F25E3A7CE00F6E838 /* WriteReviewPresenterProtocol.swift in Sources */,
+				8A10F28227063398003463B0 /* AddressSearchAssembly.swift in Sources */,
+				8A10F28027063398003463B0 /* AddressSearchViewModel.swift in Sources */,
 				8AA990A526D91FE000C32358 /* StoresPresenterProtocol.swift in Sources */,
 				CE404B0B2589D47C00917544 /* MorePresenterProtocol.swift in Sources */,
 				CA2C22DC2554464F002469E4 /* AdvancedSearchPresenter.swift in Sources */,
@@ -3559,6 +3670,7 @@
 				CE8FF82A25FAD75C004D4F37 /* ShowcaseAssembly.swift in Sources */,
 				CA46DBE7252518230007819E /* OnboardingRepository.swift in Sources */,
 				7485877A26CC068700F5CBEA /* Configurator.swift in Sources */,
+				8A10F65B27074F3A003463B0 /* DiscoveryLeadingAddressButton.swift in Sources */,
 				CACA7E9F254C57CC0099E622 /* WriteNoteViewControllerProtocol.swift in Sources */,
 				449F81BD25DD039A00585364 /* TabBarBuilder.swift in Sources */,
 				CAEBD7F3251A7F5000210F3B /* SwitcherWithText.swift in Sources */,

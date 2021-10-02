@@ -34,6 +34,15 @@ public enum UserDefaultsConfig {
 
   @UserDefault("userName", defaultValue: "")
   public static var userName: String
+
+  @UserDefault("userLatitude", defaultValue: 0.0)
+  public static var userLatitude: Double
+
+  @UserDefault("userLongtitude", defaultValue: 0.0)
+  public static var userLongtitude: Double
+
+  @UserDefault("shouldUseCurrentGeo", defaultValue: true)
+  public static var shouldUseCurrentGeo: Bool
 }
 
 // MARK: - UserDefault

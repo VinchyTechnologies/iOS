@@ -33,13 +33,15 @@ final class VinchyViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    definesPresentationContext = true
+    navigationItem.largeTitleDisplayMode = .never
 
     view.addSubview(collectionView)
     collectionView.fill()
 
+    filterButton.translatesAutoresizingMaskIntoConstraints = false
+    filterButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+    filterButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
     filterButton.setImage(UIImage(named: "edit")?.withRenderingMode(.alwaysTemplate), for: [])
-    filterButton.backgroundColor = .option
     filterButton.imageView?.contentMode = .scaleAspectFit
     filterButton.imageEdgeInsets = UIEdgeInsets(top: 1, left: 1.5, bottom: 1, right: 1.5)
     filterButton.contentEdgeInsets = .init(top: 6, left: 6, bottom: 6, right: 6)
@@ -54,27 +56,7 @@ final class VinchyViewController: UIViewController {
     refreshControl.tintColor = .dark
     refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
 
-    if isMapOnVinchyVCAvailable {
-      view.addSubview(mapButton)
-      NSLayoutConstraint.activate([
-        mapButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-        mapButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -16),
-      ])
-    }
-
     interactor?.viewDidLoad()
-  }
-
-  override func viewWillLayoutSubviews() {
-    super.viewWillLayoutSubviews()
-    if isMapOnVinchyVCAvailable {
-      mapButton.layer.cornerRadius = mapButton.frame.height / 2
-      mapButton.clipsToBounds = true
-      collectionView.contentInset = .init(top: 0, left: 0, bottom: mapButton.frame.height + 16, right: 0)
-    }
-
-    filterButton.layer.cornerRadius = filterButton.frame.height / 2
-    filterButton.clipsToBounds = true
   }
 
   override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -87,22 +69,6 @@ final class VinchyViewController: UIViewController {
   // MARK: Private
 
   private let filterButton = UIButton(type: .system)
-
-  private lazy var mapButton: UIButton = {
-    let button = UIButton()
-    button.translatesAutoresizingMaskIntoConstraints = false
-    button.backgroundColor = .accent // UIColor(red: 121 / 255, green: 125 / 255, blue: 140 / 255, alpha: 1.0)
-    button.setTitle("Map", for: .normal)
-    let imageConfig = UIImage.SymbolConfiguration(pointSize: 16, weight: .semibold, scale: .default)
-    button.setImage(UIImage(systemName: "map", withConfiguration: imageConfig), for: .normal)
-    button.tintColor = .white
-    button.setTitleColor(.white, for: .normal)
-    button.titleLabel?.font = Font.bold(16)
-    button.contentEdgeInsets = .init(top: 14, left: 18, bottom: 14, right: 18)
-    button.imageEdgeInsets = .init(top: 0, left: -4, bottom: 0, right: 4)
-    button.addTarget(self, action: #selector(didTapMapButton(_:)), for: .touchUpInside)
-    return button
-  }()
 
   private lazy var collectionView: UICollectionView = {
     let layout = UICollectionViewFlowLayout()
@@ -138,8 +104,15 @@ final class VinchyViewController: UIViewController {
     return searchController
   }()
 
-  private var viewModel: VinchyViewControllerViewModel = .init(state: .fake(sections: [])) {
+  private var viewModel: VinchyViewControllerViewModel = .init(state: .fake(sections: []), leadingAddressButtonViewModel: .loading(text: nil)) {
     didSet {
+
+      UIView.performWithoutAnimation {
+        let addressButton = DiscoveryLeadingAddressButton.build(mode: viewModel.leadingAddressButtonViewModel)
+        addressButton.addTarget(self, action: #selector(didTapChangeAddressButton(_:)), for: .touchUpInside)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: addressButton)
+      }
+
       switch viewModel.state {
       case .fake:
         collectionView.isScrollEnabled = false
@@ -153,6 +126,11 @@ final class VinchyViewController: UIViewController {
   }
 
   @objc
+  private func didTapChangeAddressButton(_ button: UIButton) {
+    interactor?.didTapChangeAddressButton()
+  }
+
+  @objc
   private func didTapFilter() {
     interactor?.didTapFilter()
   }
@@ -160,11 +138,6 @@ final class VinchyViewController: UIViewController {
   @objc
   private func didPullToRefresh() {
     interactor?.didPullToRefresh()
-  }
-
-  @objc
-  private func didTapMapButton(_: UIButton) {
-    interactor?.didTapMapButton()
   }
 }
 
@@ -380,6 +353,7 @@ extension VinchyViewController: VinchyViewControllerProtocol {
   }
 
   func updateUI(viewModel: VinchyViewControllerViewModel) {
+    collectionView.scrollToTopForcingSearchBar()
     self.viewModel = viewModel
   }
 }

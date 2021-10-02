@@ -71,7 +71,6 @@ final class MapInteractor {
       case .success(let partnersOnMap):
         self.partnersOnMap = Set<PartnerOnMap>(partnersOnMap)
         if self.throttler?.label == label {
-          print(self.partnersOnMap.count)
           self.presenter.didReceive(partnersOnMap: self.partnersOnMap, userLocation: position)
         }
 
@@ -175,17 +174,45 @@ extension MapInteractor: MapInteractorProtocol {
   }
 
   func viewDidLoad() {
-    repository.requestUserLocation { userLocation in
-      if let userLocation = userLocation {
-        self.presenter.updateUserLocationAndRegion(userLocation, radius: C.defaultRadius)
-      }
 
-      self.repository.requestPartners(userLocation: userLocation, radius: Int(C.defaultRadius)) { [weak self] result in
+    if UserDefaultsConfig.shouldUseCurrentGeo {
+      repository.requestUserLocation { userLocation in
+        if let userLocation = userLocation {
+          self.presenter.updateUserLocationAndRegion(userLocation, radius: C.defaultRadius)
+        }
+
+        self.repository.requestPartners(userLocation: userLocation, radius: Int(C.defaultRadius)) { [weak self] result in
+          guard let self = self else { return }
+          switch result {
+          case .success(let partnersOnMap):
+            self.partnersOnMap = Set<PartnerOnMap>(partnersOnMap)
+            self.presenter.didReceive(partnersOnMap: self.partnersOnMap, userLocation: userLocation)
+
+          case .failure(let error):
+            self.presenter.showAlert(error: error)
+          }
+        }
+      }
+    } else if UserDefaultsConfig.userLatitude != 0 && UserDefaultsConfig.userLongtitude != 0 {
+      repository.requestPartners(userLocation: CLLocationCoordinate2D(latitude: UserDefaultsConfig.userLatitude, longitude: UserDefaultsConfig.userLongtitude), radius: Int(C.defaultRadius)) { [weak self] result in
         guard let self = self else { return }
         switch result {
         case .success(let partnersOnMap):
           self.partnersOnMap = Set<PartnerOnMap>(partnersOnMap)
-          self.presenter.didReceive(partnersOnMap: self.partnersOnMap, userLocation: userLocation)
+          self.presenter.didReceive(partnersOnMap: self.partnersOnMap, userLocation: CLLocationCoordinate2D(latitude: UserDefaultsConfig.userLatitude, longitude: UserDefaultsConfig.userLongtitude))
+
+        case .failure(let error):
+          self.presenter.showAlert(error: error)
+        }
+      }
+    } else {
+      repository.requestPartners(userLocation: CLLocationCoordinate2D(latitude: 55.751244, longitude: 37.618423), radius: Int(C.defaultRadius)) { [weak self] result in
+        guard let self = self else { return }
+        switch result {
+        case .success(let partnersOnMap):
+          self.partnersOnMap = Set<PartnerOnMap>(partnersOnMap)
+          self.presenter.didReceive(partnersOnMap: self.partnersOnMap, userLocation: CLLocationCoordinate2D(latitude: 55.751244, longitude: 37.618423))
+          self.presenter.updateUserLocationAndRegion(CLLocationCoordinate2D(latitude: 55.751244, longitude: 37.618423), radius: C.defaultRadius)
 
         case .failure(let error):
           self.presenter.showAlert(error: error)

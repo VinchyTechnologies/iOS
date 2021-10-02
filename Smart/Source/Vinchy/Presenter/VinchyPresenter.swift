@@ -61,7 +61,8 @@ extension VinchyPresenter: VinchyPresenterProtocol {
           .promo(.init(type: .big(count: 10))),
           .title(.init(type: .title(count: 1))),
           .promo(.init(type: .big(count: 10))),
-        ])))
+        ]),
+        leadingAddressButtonViewModel: .loading(text: localized("loading").firstLetterUppercased())))
   }
 
   func startLoading() {
@@ -69,19 +70,16 @@ extension VinchyPresenter: VinchyPresenterProtocol {
     viewController?.startLoadingAnimation()
   }
 
-  func update(compilations: [Compilation], nearestPartners: [NearestPartner]) {
+  func update(compilations: [Compilation], nearestPartners: [NearestPartner], city: String?, isLocationPermissionDenied: Bool) {
     viewController?.stopLoadingAnimation()
 
     var compilations = compilations
 
-    print(compilations.count)
     nearestPartners.reversed().forEach { nearestPartner in
       let winesList = nearestPartner.recommendedWines.compactMap({ CollectionItem.wine(wine: $0) })
       let compilation = Compilation(id: nearestPartner.partner.affiliatedStoreId, type: .partnerBottles, imageURL: nearestPartner.partner.logoURL, title: nearestPartner.partner.title, collectionList: [Collection(wineList: winesList)])
       compilations.insert(compilation, at: 1)
     }
-
-    print(compilations.count)
 
     var sections: [VinchyViewControllerViewModel.Section] = []
 
@@ -196,6 +194,9 @@ extension VinchyPresenter: VinchyPresenterProtocol {
           paragraphAlignment: .justified)),
     ]))
 
-    viewController?.updateUI(viewModel: VinchyViewControllerViewModel(state: .normal(sections: sections)))
+    viewController?.updateUI(
+      viewModel: VinchyViewControllerViewModel(
+        state: .normal(sections: sections),
+        leadingAddressButtonViewModel: isLocationPermissionDenied ? .arraw(text: localized("enter_address").firstLetterUppercased()) : .arraw(text: city)))
   }
 }

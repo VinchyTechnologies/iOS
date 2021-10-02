@@ -86,6 +86,14 @@
 "where_to_buy" = "where to buy?";
 "leave_review_more_often" = "Leave feedback more often!";
 "hint_to_review_button" = "Only with the help of your reviews and ratings we will be able to recommend a wine especially for you";
+"enter_address" = "enter your address";
+"address_search" = "Address search";
+"later" = "later";
+"we_donot_know_where_you_are" = "we don't know where you are ...";
+"let_us_know_your_location" = "let us determine your current location to suggest the nearest stores. You can configure this in the settings.";
+"settings" = "settings";
+"current_geo" = "current location";
+"loading" = "locading...";
 
 // MARK: - Sugar
 "sugar" = "sugar";
