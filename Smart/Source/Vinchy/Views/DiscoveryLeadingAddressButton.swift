@@ -28,6 +28,8 @@ final class DiscoveryLeadingAddressButton: UIButton {
     addressButton.titleLabel?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
     addressButton.imageView?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
     addressButton.setInsets(forContentPadding: .zero, imageTitlePadding: 3)
+    addressButton.titleLabel?.adjustsFontSizeToFitWidth = true
+    addressButton.titleLabel?.minimumScaleFactor = 0.8
 
     switch mode {
     case .loading(let text):

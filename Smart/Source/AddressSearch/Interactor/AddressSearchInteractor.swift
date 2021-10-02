@@ -35,6 +35,36 @@ final class AddressSearchInteractor {
 // MARK: AddressSearchInteractorProtocol
 
 extension AddressSearchInteractor: AddressSearchInteractorProtocol {
+  func didTapGoToSettingToTurnOnLocationService() {
+    if
+      let bundleId = Bundle.main.bundleIdentifier,
+      let url = URL(string: "\(UIApplication.openSettingsURLString)&path=LOCATION/\(bundleId)")
+    {
+      UIApplication.shared.open(url, options: [:], completionHandler: nil)
+    }
+  }
+
+  func didSelectCurrentGeo() {
+
+    switch CLLocationManager.authorizationStatus() {
+    case .notDetermined, .restricted:
+      return
+
+    case .denied:
+      router.showAlertTurnOnLocationViaSettingOnly(
+        titleText: presenter.alertLocationServiceSettingsTitleText,
+        subtitleText: presenter.alertLocationServiceSettingSubtitleText,
+        leadingButtonText: presenter.alertLocationServiceSettingsLeadingButtonText,
+        trailingButtonText: presenter.alertLocationServiceSettingsTrailingButtonText)
+
+    case .authorizedAlways, .authorizedWhenInUse:
+      UserDefaultsConfig.shouldUseCurrentGeo = true
+      router.dismiss()
+
+    @unknown default:
+      return
+    }
+  }
 
   func didSelectAddressRow(id: Int) {
     if let placeMark = response[safe: id] {

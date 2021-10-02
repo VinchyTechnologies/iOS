@@ -266,7 +266,7 @@ extension CLLocation {
     completion: @escaping (_ city: String?, _ country: String?, _ error: Error?) -> Void)
   {
     CLGeocoder().reverseGeocodeLocation(self) {
-      completion($0?.first?.locality, $0?.first?.country, $1)
+      completion($0?.first?.name, $0?.first?.country, $1)
     }
   }
 }

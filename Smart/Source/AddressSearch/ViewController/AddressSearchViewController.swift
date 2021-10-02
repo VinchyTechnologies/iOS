@@ -52,8 +52,8 @@ final class AddressSearchViewController: CollectionViewController {
           dataID: content.id,
           content: content,
           style: .large)
-          .didSelect { [weak self] id in
-//            self?.interactor?.didSelectAddressRow(id: content.id)
+          .didSelect { [weak self] _ in
+            self?.interactor?.didSelectCurrentGeo()
           }
       }
     })

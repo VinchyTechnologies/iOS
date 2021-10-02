@@ -12,4 +12,6 @@ protocol AddressSearchInteractorProtocol: AnyObject {
   func viewDidLoad()
   func didEnterSearchText(_ text: String?)
   func didSelectAddressRow(id: Int)
+  func didSelectCurrentGeo()
+  func didTapGoToSettingToTurnOnLocationService()
 }

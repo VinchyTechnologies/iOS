@@ -40,6 +40,9 @@ public enum UserDefaultsConfig {
 
   @UserDefault("userLongtitude", defaultValue: 0.0)
   public static var userLongtitude: Double
+
+  @UserDefault("shouldUseCurrentGeo", defaultValue: false)
+  public static var shouldUseCurrentGeo: Bool
 }
 
 // MARK: - UserDefault

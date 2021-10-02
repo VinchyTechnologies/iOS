@@ -10,4 +10,5 @@ import Foundation
 
 protocol AddressSearchRouterProtocol: AnyObject {
   func dismiss()
+  func showAlertTurnOnLocationViaSettingOnly(titleText: String?, subtitleText: String?, leadingButtonText: String?, trailingButtonText: String?)
 }

@@ -35,11 +35,12 @@ final class VinchyViewController: UIViewController {
 
     navigationItem.largeTitleDisplayMode = .never
 
-    definesPresentationContext = true
-
     view.addSubview(collectionView)
     collectionView.fill()
 
+    filterButton.translatesAutoresizingMaskIntoConstraints = false
+    filterButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
+    filterButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
     filterButton.setImage(UIImage(named: "edit")?.withRenderingMode(.alwaysTemplate), for: [])
     filterButton.imageView?.contentMode = .scaleAspectFit
     filterButton.imageEdgeInsets = UIEdgeInsets(top: 1, left: 1.5, bottom: 1, right: 1.5)
@@ -56,12 +57,6 @@ final class VinchyViewController: UIViewController {
     refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
 
     interactor?.viewDidLoad()
-  }
-
-  override func viewWillLayoutSubviews() {
-    super.viewWillLayoutSubviews()
-    filterButton.layer.cornerRadius = filterButton.frame.height / 2
-    filterButton.clipsToBounds = true
   }
 
   override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
