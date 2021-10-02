@@ -41,7 +41,7 @@ public enum UserDefaultsConfig {
   @UserDefault("userLongtitude", defaultValue: 0.0)
   public static var userLongtitude: Double
 
-  @UserDefault("shouldUseCurrentGeo", defaultValue: false)
+  @UserDefault("shouldUseCurrentGeo", defaultValue: true)
   public static var shouldUseCurrentGeo: Bool
 }
 

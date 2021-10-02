@@ -41,6 +41,7 @@ final class VinchyInteractor {
   private var nearestPartners: [NearestPartner] = []
   private var userLocation: CLLocationCoordinate2D?
 
+
   private func convertToFiveNearestStores(
     nearestPartners: [NearestPartner],
     userLocation: CLLocationCoordinate2D?) -> [NearestPartner]
@@ -71,7 +72,6 @@ final class VinchyInteractor {
 
     var compilations: [Compilation] = []
     var nearestPartners: [NearestPartner] = []
-    var isLocationPermissionDenied: Bool = false
 
     dispatchGroup.enter()
     Compilations.shared.getCompilations { [weak self] result in
@@ -86,43 +86,43 @@ final class VinchyInteractor {
       self?.dispatchGroup.leave()
     }
 
-    dispatchGroup.enter()
-    repository.requestUserLocation { [weak self] userLocation in
-      self?.userLocation = userLocation
-      self?.repository.requestNearestPartners(
-        userLocation: userLocation,
-        radius: 10000) { [weak self] result in
-          guard let self = self else { return }
-          switch result {
-          case .success(let response):
-            nearestPartners = self.convertToFiveNearestStores(nearestPartners: response, userLocation: userLocation)
-            self.dispatchGroup.leave()
+    if UserDefaultsConfig.shouldUseCurrentGeo {
+      dispatchGroup.enter()
+      repository.requestUserLocation { [weak self] userLocation in
+        self?.userLocation = userLocation
+        self?.repository.requestNearestPartners(
+          userLocation: userLocation,
+          radius: 10000) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+              nearestPartners = self.convertToFiveNearestStores(nearestPartners: response, userLocation: userLocation)
+              self.dispatchGroup.leave()
 
-          case .failure(let error):
-            if case MapError.locationPermissionDenied = error { // TODO: - move all to repository
-              isLocationPermissionDenied = UserDefaultsConfig.userLatitude == 0 && UserDefaultsConfig.userLongtitude == 0
-              if isLocationPermissionDenied {
-                self.dispatchGroup.leave()
-              } else {
-                self.repository.requestNearestPartners(
-                  userLocation: CLLocationCoordinate2D(latitude: UserDefaultsConfig.userLatitude, longitude: UserDefaultsConfig.userLongtitude),
-                  radius: 10000) { [weak self] result in
-                    guard let self = self else { return }
-                    switch result {
-                    case .success(let response):
-                      nearestPartners = self.convertToFiveNearestStores(nearestPartners: response, userLocation: userLocation)
-
-                    case .failure(let error):
-                      print(error.localizedDescription)
-                    }
-                    self.dispatchGroup.leave()
-                }
+            case .failure(let error):
+              if case MapError.locationPermissionDenied = error { // TODO: - move all to repository
+                UserDefaultsConfig.shouldUseCurrentGeo = false
               }
-            } else {
-              print(error.localizedDescription)
               self.dispatchGroup.leave()
             }
-          }
+        }
+      }
+    } else {
+      if !(UserDefaultsConfig.userLatitude == 0 && UserDefaultsConfig.userLongtitude == 0) {
+        dispatchGroup.enter()
+        repository.requestNearestPartners(
+          userLocation: CLLocationCoordinate2D(latitude: UserDefaultsConfig.userLatitude, longitude: UserDefaultsConfig.userLongtitude),
+          radius: 10000) { [weak self] result in
+            guard let self = self else { return }
+            switch result {
+            case .success(let response):
+              nearestPartners = self.convertToFiveNearestStores(nearestPartners: response, userLocation: CLLocationCoordinate2D(latitude: UserDefaultsConfig.userLatitude, longitude: UserDefaultsConfig.userLongtitude))
+
+            case .failure(let error):
+              print(error.localizedDescription)
+            }
+            self.dispatchGroup.leave()
+        }
       }
     }
 
@@ -143,13 +143,13 @@ final class VinchyInteractor {
 
       self.compilations = compilations
 
-      if let userLocation = self.userLocation {
+      if let userLocation = self.userLocation, UserDefaultsConfig.shouldUseCurrentGeo {
         CLLocation(latitude: userLocation.latitude, longitude: userLocation.longitude).fetchCityAndCountry { city, _, _ in
           self.presenter.update(
             compilations: compilations,
             nearestPartners: nearestPartners,
             city: city,
-            isLocationPermissionDenied: isLocationPermissionDenied)
+            isLocationPermissionDenied: false)
         }
       } else {
         if UserDefaultsConfig.userLatitude != 0 && UserDefaultsConfig.userLongtitude != 0 {
@@ -160,14 +160,14 @@ final class VinchyInteractor {
               compilations: compilations,
               nearestPartners: nearestPartners,
               city: city,
-              isLocationPermissionDenied: isLocationPermissionDenied)
+              isLocationPermissionDenied: false)
           }
         } else {
           self.presenter.update(
             compilations: compilations,
             nearestPartners: nearestPartners,
             city: nil,
-            isLocationPermissionDenied: isLocationPermissionDenied)
+            isLocationPermissionDenied: true)
         }
       }
 

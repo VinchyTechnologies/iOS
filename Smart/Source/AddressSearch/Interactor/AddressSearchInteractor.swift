@@ -70,6 +70,7 @@ extension AddressSearchInteractor: AddressSearchInteractorProtocol {
     if let placeMark = response[safe: id] {
       UserDefaultsConfig.userLatitude = placeMark.location?.coordinate.latitude ?? 0
       UserDefaultsConfig.userLongtitude = placeMark.location?.coordinate.longitude ?? 0
+      UserDefaultsConfig.shouldUseCurrentGeo = false
     }
     router.dismiss()
   }
