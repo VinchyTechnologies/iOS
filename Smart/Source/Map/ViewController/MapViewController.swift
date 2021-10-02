@@ -149,7 +149,17 @@ final class MapViewController: UIViewController, OpenURLProtocol {
 
   @objc
   private func didTapFindMeButton(_ button: UIButton) {
-    mapView.setCenter(mapView.userLocation.coordinate, animated: true)
+
+    if UserDefaultsConfig.shouldUseCurrentGeo {
+      mapView.setCenter(mapView.userLocation.coordinate, animated: true)
+    } else {
+      if UserDefaultsConfig.userLatitude != 0 && UserDefaultsConfig.userLongtitude != 0 {
+        mapView.setCenter(CLLocationCoordinate2D(latitude: UserDefaultsConfig.userLatitude, longitude: UserDefaultsConfig.userLongtitude), animated: true)
+      } else {
+        mapView.setCenter(CLLocationCoordinate2D(latitude: 55.751244, longitude: 37.618423), animated: true)
+      }
+    }
+
   }
 
   /*

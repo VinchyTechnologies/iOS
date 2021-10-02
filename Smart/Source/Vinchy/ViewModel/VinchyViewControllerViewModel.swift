@@ -33,4 +33,5 @@ struct VinchyViewControllerViewModel {
   }
 
   let state: State
+  let leadingAddressButtonViewModel: DiscoveryLeadingAddressButtonMode
 }
