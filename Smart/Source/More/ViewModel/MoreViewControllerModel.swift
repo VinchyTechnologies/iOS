@@ -5,6 +5,7 @@
 //  Created by Tatiana Ampilogova on 12/9/20.
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
+
 import CommonUI
 
 struct MoreViewControllerModel {
@@ -20,6 +21,7 @@ struct MoreViewControllerModel {
     case aboutApp([DocCellViewModel])
     case doc([DocCellViewModel])
     case separator
+    case logout([LogOutCellViewModel])
   }
 
   let sections: [Section]

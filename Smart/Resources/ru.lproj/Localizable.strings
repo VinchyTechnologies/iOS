@@ -94,6 +94,11 @@
 "settings" = "Настройки";
 "current_geo" = "текущее местоположение";
 "loading" = "Загрузка...";
+"more" = "Ещё";
+"logout" = "Выйти из профиля";
+"alert_sure_logout_title" = "Выход из профиля";
+"alert_sure_logout_subtitle" = "Вы действительно хотите выйти из профиля?";
+"alert_sure_logout_trailing_button_text" = "Да";
 
 // MARK: - Sugar
 "sugar" = "сахар";

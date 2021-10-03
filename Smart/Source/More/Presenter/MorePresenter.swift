@@ -99,6 +99,12 @@ final class MorePresenter {
       icon: UIImage(named: "info"))
     sections.append(.aboutApp([aboutAppViewModel]))
 
+    if UserDefaultsConfig.accountID != 0 && UserDefaultsConfig.accountEmail != "" {
+      let logoutViewModel = LogOutCellViewModel(
+        titleText: localized("logout").firstLetterUppercased())
+      sections.append(.logout([logoutViewModel]))
+    }
+
     return MoreViewControllerModel(
       sections: sections,
       navigationTitle: nil)
@@ -108,6 +114,23 @@ final class MorePresenter {
 // MARK: MorePresenterProtocol
 
 extension MorePresenter: MorePresenterProtocol {
+
+  var logoutAlertTitleText: String? {
+    localized("alert_sure_logout_title").firstLetterUppercased()
+  }
+
+  var logoutAlertSubtitleText: String? {
+    localized("alert_sure_logout_subtitle").firstLetterUppercased()
+  }
+
+  var logoutAlretLeadingButtonText: String? {
+    localized("cancel").firstLetterUppercased()
+  }
+
+  var logoutAlretTrailingButtonText: String? {
+    localized("alert_sure_logout_trailing_button_text").firstLetterUppercased()
+  }
+
   var phoneURL: String {
     localized("contact_phone_url")
   }

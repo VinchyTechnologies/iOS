@@ -37,11 +37,30 @@ final class MoreInteractor {
       presenter.showOpenURLErrorAlert()
     }
   }
+
+  private func logout() {
+    UserDefaultsConfig.accountEmail = ""
+    UserDefaultsConfig.accountID = 0
+    UserDefaultsConfig.userName = ""
+    viewDidLoad()
+  }
 }
 
 // MARK: MoreInteractorProtocol
 
 extension MoreInteractor: MoreInteractorProtocol {
+
+  func didTapLogoutOnAlert() {
+    logout()
+  }
+
+  func didTapLogout() {
+    router.presentAlertAreYouSureLogout(
+      titleText: presenter.logoutAlertTitleText,
+      subtitleText: presenter.logoutAlertSubtitleText,
+      leadingButtonText: presenter.logoutAlretLeadingButtonText,
+      trailingButtonText: presenter.logoutAlretTrailingButtonText)
+  }
 
   func didTapProfile() {
     if UserDefaultsConfig.accountID != 0 {

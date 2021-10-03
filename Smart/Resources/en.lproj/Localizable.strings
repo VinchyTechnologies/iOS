@@ -94,6 +94,11 @@
 "settings" = "settings";
 "current_geo" = "current location";
 "loading" = "loading...";
+"more" = "more";
+"logout" = "Logout";
+"alert_sure_logout_title" = "Logout";
+"alert_sure_logout_subtitle" = "Are you sure you want to logout?";
+"alert_sure_logout_trailing_button_text" = "Yes";
 
 // MARK: - Sugar
 "sugar" = "sugar";

@@ -12,6 +12,11 @@ protocol MorePresenterProtocol: OpenURLProtocol {
   var sendEmailRecipients: [String] { get }
   var phoneURL: String { get }
 
+  var logoutAlertTitleText: String? { get }
+  var logoutAlertSubtitleText: String? { get }
+  var logoutAlretLeadingButtonText: String? { get }
+  var logoutAlretTrailingButtonText: String? { get }
+
   func update(isRussianLocale: Bool, currency: String)
   func showAlertCantOpenEmail()
   func showOpenURLErrorAlert()

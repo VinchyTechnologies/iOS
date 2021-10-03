@@ -181,6 +181,7 @@
 		8A63CCBF26754635003B1D4D /* VinchyAuthorization.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44D3CDE725E42E0B00FFFCD5 /* VinchyAuthorization.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A63CCC026754638003B1D4D /* VinchyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; };
 		8A63CCC126754638003B1D4D /* VinchyCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8A8FE7332708D9F8002EE088 /* LogOutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8FE7322708D9F8002EE088 /* LogOutCell.swift */; };
 		8A915C9E26887D9500240B18 /* ExpandCollapseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A915C9D26887D9500240B18 /* ExpandCollapseView.swift */; };
 		8A91600C268CC3AE00240B18 /* WhereToBuyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A91600B268CC3AE00240B18 /* WhereToBuyView.swift */; };
 		8A916022268CE66C00240B18 /* AreYouInStoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916011268CE66C00240B18 /* AreYouInStoreViewModel.swift */; };
@@ -604,6 +605,7 @@
 		8A53D6E126C2E4AF001D9535 /* ImageOptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageOptionView.swift; sourceTree = "<group>"; };
 		8A53D6E526C2EB71001D9535 /* ShortInfoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShortInfoView.swift; sourceTree = "<group>"; };
 		8A5401C926EFA894007247E5 /* StoreTitleCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTitleCollectionCell.swift; sourceTree = "<group>"; };
+		8A8FE7322708D9F8002EE088 /* LogOutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutCell.swift; sourceTree = "<group>"; };
 		8A915C9D26887D9500240B18 /* ExpandCollapseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExpandCollapseView.swift; sourceTree = "<group>"; };
 		8A91600B268CC3AE00240B18 /* WhereToBuyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhereToBuyView.swift; sourceTree = "<group>"; };
 		8A916011268CE66C00240B18 /* AreYouInStoreViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AreYouInStoreViewModel.swift; sourceTree = "<group>"; };
@@ -2851,6 +2853,7 @@
 				CAF5141C2461C52400667ED0 /* RateAppCell.swift */,
 				CAF5141D2461C52400667ED0 /* SocialMediaCell.swift */,
 				CAF5141E2461C52400667ED0 /* DocCell.swift */,
+				8A8FE7322708D9F8002EE088 /* LogOutCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3442,6 +3445,7 @@
 				CA472B69245EDEF9009149FF /* ShowcaseViewModel.swift in Sources */,
 				8AF5656426F2341D00C58E2C /* VinchyRepository.swift in Sources */,
 				CA2C22E02554464F002469E4 /* AdvancedSearchInteractorProtocol.swift in Sources */,
+				8A8FE7332708D9F8002EE088 /* LogOutCell.swift in Sources */,
 				4437AA5E25E3A7CE00F6E838 /* WriteReviewPresenter.swift in Sources */,
 				8A91602C268CE66C00240B18 /* AreYouInStoreRouterProtocol.swift in Sources */,
 				4407196F25F015F1000531B7 /* MapRoutable.swift in Sources */,

@@ -41,7 +41,6 @@ final class VinchyInteractor {
   private var nearestPartners: [NearestPartner] = []
   private var userLocation: CLLocationCoordinate2D?
 
-
   private func convertToFiveNearestStores(
     nearestPartners: [NearestPartner],
     userLocation: CLLocationCoordinate2D?) -> [NearestPartner]
@@ -63,7 +62,7 @@ final class VinchyInteractor {
       }
     }
 
-    result = Array(result.prefix(5))
+    result = Array(result.prefix(3))
 
     return result
   }

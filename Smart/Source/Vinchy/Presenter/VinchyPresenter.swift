@@ -158,7 +158,7 @@ extension VinchyPresenter: VinchyPresenterProtocol {
         {
 //          if let title = compilation.title {
           sections.append(.storeTitle([
-            .init(affilatedId: compilation.id, imageURL: compilation.imageURL, titleText: compilation.title, moreText: localized("see_all")),
+            .init(affilatedId: compilation.id, imageURL: compilation.imageURL, titleText: compilation.title, moreText: localized("more").firstLetterUppercased()),
           ]))
 //          }
 
