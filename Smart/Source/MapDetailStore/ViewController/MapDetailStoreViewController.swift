@@ -7,6 +7,7 @@
 //
 
 import CommonUI
+import CoreLocation
 import Display
 import FittedSheets
 import UIKit
@@ -15,7 +16,8 @@ import VinchyCore
 // MARK: - MapDetailStoreViewControllerDelegate
 
 protocol MapDetailStoreViewControllerDelegate: AnyObject {
-  func didTapRouteButton(_ button: UIButton)
+  func deselectSelectedPin()
+  func didTapRouteButton(coordinate: CLLocationCoordinate2D)
   func didTapAssortmentButton(_ button: UIButton)
 }
 
@@ -244,7 +246,8 @@ extension MapDetailStoreViewController: MapDetailStoreViewControllerProtocol {
 extension MapDetailStoreViewController: MapNavigationBarDelegate {
   func didTapLeadingButton(_ button: UIButton) {
     sheetViewController?.attemptDismiss(animated: true)
-    delegate?.didTapRouteButton(button)
+
+    interactor?.didTapRouteButton(button)
   }
 
   func didTapTrailingButton(_: UIButton) {

@@ -6,6 +6,9 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import CoreLocation
 import Display
 
-protocol MapDetailStoreRouterProtocol: WineDetailRoutable, DismissRoutable { }
+protocol MapDetailStoreRouterProtocol: WineDetailRoutable, DismissRoutable {
+  func showRoutesActionSheet(storeTitleText: String?, coordinate: CLLocationCoordinate2D, button: UIButton)
+}

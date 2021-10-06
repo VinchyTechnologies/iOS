@@ -73,7 +73,7 @@
 "send" = "send";
 "tap_a_star_to_rate" = "Tap a star to rate";
 "zero_rating_error" = "Rating cannot be zero";
-"open_in_app" = "Open in another application";
+"open_in_app" = "Build in Vinchy";
 "region" = "region";
 "save" = "save";
 "continue" = "continue";
@@ -99,6 +99,9 @@
 "alert_sure_logout_title" = "Logout";
 "alert_sure_logout_subtitle" = "Are you sure you want to logout?";
 "alert_sure_logout_trailing_button_text" = "Yes";
+"yandex_maps" = "Yandex.Maps";
+"google_maps" = "Google Maps";
+"build_route" = "Build the route";
 
 // MARK: - Sugar
 "sugar" = "sugar";

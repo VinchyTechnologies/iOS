@@ -382,10 +382,8 @@ extension MapViewController: MapDetailStoreViewControllerDelegate {
     }
   }
 
-  func didTapRouteButton(_: UIButton) {
-    if let coordinate = selectedAnnotation?.coordinate {
-      interactor?.didTapShowRouteOnBottomSheet(coordinate: coordinate)
-    }
+  func didTapRouteButton(coordinate: CLLocationCoordinate2D) {
+    interactor?.didTapShowRouteOnBottomSheet(coordinate: coordinate)
   }
 }
 
@@ -396,25 +394,5 @@ extension MapViewController: RoutingToolBarDelegate {
     routingToolBar.isHidden = true
     interactor?.didTapXMarkButtonOnRoutingToolBar()
     interactor?.didTapSearchThisAreaButton(position: mapView.centerCoordinate, radius: mapView.currentRadius())
-  }
-
-  func didTapOpenInAppButton(_ button: UIButton) {
-    if let pin = selectedAnnotation as? PartnerAnnotationViewModel {
-      let alert = UIAlertController(title: localized("open_in_app").firstLetterUppercased(), message: nil, preferredStyle: .actionSheet)
-      alert.addAction(UIAlertAction(title: localized("apple_maps").firstLetterUppercased(), style: .default, handler: { _ in
-        let appleURL = "http://maps.apple.com/?ll=\(pin.coordinate.latitude),\(pin.coordinate.longitude)&q=\(pin.title ?? "Vinchy")&z=15"
-        self.open(urlString: appleURL, errorCompletion: {})
-      }))
-
-      alert.addAction(UIAlertAction(title: localized("cancel").firstLetterUppercased(), style: .cancel, handler: { _ in
-      }))
-
-      alert.view.tintColor = .accent
-
-      alert.popoverPresentationController?.sourceView = button
-      alert.popoverPresentationController?.permittedArrowDirections = .up
-
-      present(alert, animated: true)
-    }
   }
 }

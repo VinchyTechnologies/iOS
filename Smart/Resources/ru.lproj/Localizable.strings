@@ -73,7 +73,7 @@
 "send" = "отправить";
 "tap_a_star_to_rate" = "Коснитесь для оценки";
 "zero_rating_error" = "Рейтинг не может быть нулевым";
-"open_in_app" = "Открыть в приложении";
+"open_in_app" = "В Vinchy";
 "region" = "регион";
 "save" = "сохранить";
 "continue" = "продолжить";
@@ -99,6 +99,9 @@
 "alert_sure_logout_title" = "Выход из профиля";
 "alert_sure_logout_subtitle" = "Вы действительно хотите выйти из профиля?";
 "alert_sure_logout_trailing_button_text" = "Да";
+"yandex_maps" = "Яндекс.Карты";
+"google_maps" = "Google Карты";
+"build_route" = "Построить маршрут";
 
 // MARK: - Sugar
 "sugar" = "сахар";
