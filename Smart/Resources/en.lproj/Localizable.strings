@@ -73,7 +73,7 @@
 "send" = "send";
 "tap_a_star_to_rate" = "Tap a star to rate";
 "zero_rating_error" = "Rating cannot be zero";
-"open_in_app" = "Open in another application";
+"open_in_app" = "Build in Vinchy";
 "region" = "region";
 "save" = "save";
 "continue" = "continue";
@@ -86,6 +86,22 @@
 "where_to_buy" = "where to buy?";
 "leave_review_more_often" = "Leave feedback more often!";
 "hint_to_review_button" = "Only with the help of your reviews and ratings we will be able to recommend a wine especially for you";
+"enter_address" = "enter your address";
+"address_search" = "Address search";
+"later" = "later";
+"we_donot_know_where_you_are" = "we don't know where you are ...";
+"let_us_know_your_location" = "let us determine your current location to suggest the nearest stores. You can configure this in the settings.";
+"settings" = "settings";
+"current_geo" = "current location";
+"loading" = "loading...";
+"more" = "more";
+"logout" = "Logout";
+"alert_sure_logout_title" = "Logout";
+"alert_sure_logout_subtitle" = "Are you sure you want to logout?";
+"alert_sure_logout_trailing_button_text" = "Yes";
+"yandex_maps" = "Yandex.Maps";
+"google_maps" = "Google Maps";
+"build_route" = "Build the route";
 
 // MARK: - Sugar
 "sugar" = "sugar";
@@ -151,7 +167,7 @@
 
 // MARK: - ConfirmToStartViewController
 "legal_age" = "You are older than minimum legal drinking age in your country.";
-"terms_of_use_agreement" = "By clicking the \"Continue\" button, you acknowledge that you are older than the minimum legal drinking age in your country and agree to the Terms & Conditions.";
+"terms_of_use_agreement" = "By clicking the \"Continue\" button, you acknowledge that you are older than the minimum legal drinking age in your country and agree to the\nTerms & Conditions.";
 "terms_of_use" = "Terms & Conditions.";
 "before_we_start" = "A little formalities at the beginning";
 
@@ -185,3 +201,12 @@
 "AreYouInStore.SeemsYouAreIn" = "It seems you are in the\n";
 "AreYouInStore.NotHere" = "I'm not here";
 "AreYouInStore.SeeMore" = "See more";
+
+// MARK: - Onboarding
+"onboarding_feature_one" = "Smart Wine Recommendations";
+"onboarding_feature_two" = "Prices and assortment of shops";
+"onboarding_feature_three" = "Real reviews and ratings";
+"onboarding_geo_title" = "Find the nearest shop";
+"onboarding_geo_subtitle" = "Allow access to your geolocation and we'll show the shops where your favorite wines are available";
+"onboarding_let_us_use_geo" = "Allow";
+"onboarding_next" = "Next";

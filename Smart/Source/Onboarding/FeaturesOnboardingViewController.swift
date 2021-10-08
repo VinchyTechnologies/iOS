@@ -7,6 +7,7 @@
 //
 
 import Display
+import StringFormatting
 import UIKit
 
 final class FeaturesOnboardingViewController: UICollectionViewCell, Reusable {
@@ -85,7 +86,7 @@ final class FeaturesOnboardingViewController: UICollectionViewCell, Reusable {
   // MARK: Private
 
   private lazy var continueButton: Button = {
-    $0.setTitle("Дальше", for: [])
+    $0.setTitle(localized("onboarding_next"), for: [])
     return $0
   }(Button())
 

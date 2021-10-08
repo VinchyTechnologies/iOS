@@ -28,7 +28,6 @@ final class Assembly {
 
   static func buildMainModule() -> NavigationController {
     let controller = VinchyAssembly.assemblyModule()
-    controller.title = localized("explore").firstLetterUppercased()
     let navController = NavigationController(rootViewController: controller)
     return navController
   }

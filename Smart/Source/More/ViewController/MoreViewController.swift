@@ -65,7 +65,8 @@ final class MoreViewController: UIViewController {
       InfoCurrencyCell.self,
       DocCell.self,
       TextCollectionCell.self,
-      SeparatorCell.self)
+      SeparatorCell.self,
+      LogOutCell.self)
 
     collectionView.dataSource = self
     collectionView.delegate = self
@@ -131,6 +132,9 @@ extension MoreViewController: UICollectionViewDataSource {
     case .separator:
       return 1
 
+    case .logout(let model):
+      return model.count
+
     case .none:
       return 0
     }
@@ -182,6 +186,11 @@ extension MoreViewController: UICollectionViewDataSource {
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SeparatorCell.reuseId, for: indexPath) as! SeparatorCell // swiftlint:disable:this force_cast
       return cell
 
+    case .logout(let model):
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LogOutCell.reuseId, for: indexPath) as! LogOutCell // swiftlint:disable:this force_cast
+      cell.decorate(model: model[indexPath.row])
+      return cell
+
     case .none:
       fatalError()
     }
@@ -229,6 +238,9 @@ extension MoreViewController: UICollectionViewDelegateFlowLayout {
     case .separator:
       return .init(width: collectionView.frame.width, height: 1)
 
+    case .logout:
+      return .init(width: collectionView.frame.width, height: LogOutCell.height())
+
     case .none:
       return .zero
     }
@@ -247,7 +259,7 @@ extension MoreViewController: UICollectionViewDelegateFlowLayout {
     case .separator:
       return .init(top: 0, left: 0, bottom: 10, right: 0)
 
-    case .profile, .phone, .email, .partner, .rate, .currency, .social, .doc, .aboutApp, .none:
+    case .profile, .phone, .email, .partner, .rate, .currency, .social, .doc, .aboutApp, .none, .logout:
       return .zero
     }
   }
@@ -287,6 +299,9 @@ extension MoreViewController: UICollectionViewDelegateFlowLayout {
     case .social, .separator:
       break
 
+    case .logout:
+      interactor?.didTapLogout()
+
     case .none:
       fatalError()
     }
@@ -310,5 +325,13 @@ extension MoreViewController: AuthorizationOutputDelegate {
 
   func didSuccessfullyLogin(output: AuthorizationOutputModel?) {
     interactor?.viewDidLoad()
+  }
+}
+
+// MARK: ScrollableToTop
+
+extension MoreViewController: ScrollableToTop {
+  var scrollableToTopScrollView: UIScrollView {
+    collectionView
   }
 }

@@ -34,6 +34,20 @@ final class MoreRouter {
 // MARK: MoreRouterProtocol
 
 extension MoreRouter: MoreRouterProtocol {
+
+  func presentAlertAreYouSureLogout(titleText: String?, subtitleText: String?, leadingButtonText: String?, trailingButtonText: String?) {
+    let alert = UIAlertController(title: titleText, message: subtitleText, preferredStyle: .alert)
+    alert.view.tintColor = .accent
+
+    alert.addAction(UIAlertAction(title: trailingButtonText, style: .default, handler: { [weak self] _ in
+      self?.interactor?.didTapLogoutOnAlert()
+    }))
+
+    alert.addAction(UIAlertAction(title: leadingButtonText, style: .cancel, handler: nil))
+
+    viewController?.present(alert, animated: true, completion: nil)
+  }
+
   func presentShowEditProfileViewController() {
     let rootViewController = EditProfileAssembly.assemblyModule(input: EditProfileInput(onDismiss: { [weak self] in
       self?.interactor?.viewDidLoad()

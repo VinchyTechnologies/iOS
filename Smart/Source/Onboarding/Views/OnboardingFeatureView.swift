@@ -7,6 +7,7 @@
 //
 
 import Display
+import StringFormatting
 import UIKit
 
 // MARK: - OnboardingFeatureViewViewModel
@@ -54,7 +55,7 @@ final class OnboardingFeatureView: UIView {
 
   private let titleLabel: UILabel = {
     $0.setContentCompressionResistancePriority(.required, for: .vertical)
-    $0.font = Font.regular(18)
+    $0.font = Font.bold(18)
     $0.numberOfLines = 0
     $0.textAlignment = .center
     $0.text = "Подобрать вино по любому случаю"
@@ -71,15 +72,15 @@ extension OnboardingFeatureView: Decoratable {
     switch model.style {
     case .bottles:
       imageView.image = UIImage(named: "onboadingThreeBottles")
-      titleLabel.text = "Умные рекомендации вина"
+      titleLabel.text = localized("onboarding_feature_one")
 
     case .geo:
       imageView.image = UIImage(named: "onboardingFeatureGeo")
-      titleLabel.text = "Цены и ассортимент магазинов"
+      titleLabel.text = localized("onboarding_feature_two")
 
     case .rating:
       imageView.image = UIImage(named: "onboardingFeatureRating")
-      titleLabel.text = "Реальные отзывы и рейтинги"
+      titleLabel.text = localized("onboarding_feature_three")
     }
   }
 }

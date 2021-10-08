@@ -7,6 +7,7 @@
 //
 
 import CommonUI
+import Display
 
 struct ShowcaseViewModel {
   enum Section {
@@ -16,4 +17,5 @@ struct ShowcaseViewModel {
 
   let navigationTitle: String?
   let sections: [Section]
+  let tabViewModel: TabViewModel
 }

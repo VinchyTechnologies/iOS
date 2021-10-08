@@ -122,7 +122,7 @@ final class ToolView: UIView, EpoxyableView {
   private let style: Style
   private let shareButton = UIButton(type: .system)
   private let likeButton = UIButton()
-  private let priceButton = UIButton()
+  private let priceButton = Button()
 
   @objc
   private func didTapShareButton(_ button: UIButton) {

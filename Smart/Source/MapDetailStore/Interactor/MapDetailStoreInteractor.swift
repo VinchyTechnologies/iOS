@@ -7,6 +7,7 @@
 //
 
 import Core
+import CoreLocation
 import VinchyCore
 
 // MARK: - MapDetailStoreInteractor
@@ -102,5 +103,14 @@ extension MapDetailStoreInteractor: MapDetailStoreInteractorProtocol {
 
   func didTapRecommendedWine(wineID: Int64) {
     router.presentWineDetailViewController(wineID: wineID)
+  }
+
+  func didTapRouteButton(_ button: UIButton) {
+    if let lat = storeInfo?.latitude, let lon = storeInfo?.longitude {
+      router.showRoutesActionSheet(
+        storeTitleText: storeInfo?.title,
+        coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon),
+        button: button)
+    }
   }
 }

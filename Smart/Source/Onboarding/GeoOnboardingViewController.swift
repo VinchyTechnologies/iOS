@@ -6,7 +6,10 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import Core
+import CoreLocation
 import Display
+import StringFormatting
 import UIKit
 
 // MARK: - GeoOnboardingViewController
@@ -74,13 +77,15 @@ final class GeoOnboardingViewController: UICollectionViewCell, Reusable {
 
   // MARK: Private
 
+  private let locationManager = CLLocationManager()
+
   private lazy var bottomView: OnboardingBottomView = {
     let view = OnboardingBottomView()
     view.decorate(
       model: .init(
-        titleText: "Найдем ближайший магазин",
-        subtitleText: "Разрешите доступ к геолокации и мы покажем магазины,  где есть в наличие ваши любимые вина",
-        buttonText: "Разрешить"))
+        titleText: localized("onboarding_geo_title"),
+        subtitleText: localized("onboarding_geo_subtitle"),
+        buttonText: localized("onboarding_let_us_use_geo")))
     view.delegate = self
     return view
   }()
@@ -101,6 +106,48 @@ final class GeoOnboardingViewController: UICollectionViewCell, Reusable {
 
 extension GeoOnboardingViewController: OnboardingBottomViewDelegate {
   func didTapYellowButton(_ button: UIButton) {
+    switch CLLocationManager.authorizationStatus() {
+    case .authorizedAlways, .authorizedWhenInUse, .authorized:
+      delegate?.didTapNexButton()
+
+    case .notDetermined:
+      locationManager.delegate = self
+      locationManager.requestWhenInUseAuthorization()
+
+    case .denied:
+      UserDefaultsConfig.shouldUseCurrentGeo = false
+      delegate?.didTapNexButton()
+
+    case .restricted:
+      delegate?.didTapNexButton()
+
+    @unknown default:
+      delegate?.didTapNexButton()
+    }
+  }
+}
+
+// MARK: CLLocationManagerDelegate
+
+extension GeoOnboardingViewController: CLLocationManagerDelegate {
+  func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    switch status {
+    case .notDetermined:
+      break
+
+    case .restricted:
+      break
+
+    case .denied:
+      UserDefaultsConfig.shouldUseCurrentGeo = false
+
+    case .authorized, .authorizedWhenInUse, .authorizedAlways:
+      break
+
+    @unknown default:
+      break
+    }
+
     delegate?.didTapNexButton()
   }
 }

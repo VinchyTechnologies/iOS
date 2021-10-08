@@ -16,7 +16,7 @@ let remoteConfig: RemoteConfig = {
   return remoteConfig
 }()
 
-let isOnboardingAvailable = false
+let isOnboardingAvailable = true
 let isSmartFilterAvailable = false
 let isShareUsEnabled = true
 let isDescriptionInWineDetailEnabled = false

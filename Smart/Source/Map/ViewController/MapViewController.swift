@@ -88,13 +88,13 @@ final class MapViewController: UIViewController, OpenURLProtocol {
     mapView.delegate = self
     mapView.tintColor = .accent
 
-    mapView.register(
-      PartnerAnnotationView.self,
-      forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
-
-    mapView.register(
-      LocationDataMapClusterView.self,
-      forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
+//    mapView.register(
+//      PartnerAnnotationView.self,
+//      forAnnotationViewWithReuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+//
+//    mapView.register(
+//      LocationDataMapClusterView.self,
+//      forAnnotationViewWithReuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
 
     let pan = UIPanGestureRecognizer(target: self, action: #selector(didDragMap(_:)))
     pan.delegate = self
@@ -149,7 +149,17 @@ final class MapViewController: UIViewController, OpenURLProtocol {
 
   @objc
   private func didTapFindMeButton(_ button: UIButton) {
-    mapView.setCenter(mapView.userLocation.coordinate, animated: true)
+
+    if UserDefaultsConfig.shouldUseCurrentGeo {
+      mapView.setCenter(mapView.userLocation.coordinate, animated: true)
+    } else {
+      if UserDefaultsConfig.userLatitude != 0 && UserDefaultsConfig.userLongtitude != 0 {
+        mapView.setCenter(CLLocationCoordinate2D(latitude: UserDefaultsConfig.userLatitude, longitude: UserDefaultsConfig.userLongtitude), animated: true)
+      } else {
+        mapView.setCenter(CLLocationCoordinate2D(latitude: 55.751244, longitude: 37.618423), animated: true)
+      }
+    }
+
   }
 
   /*
@@ -323,11 +333,13 @@ extension MapViewController: MKMapViewDelegate {
   func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
     switch annotation {
     case is PartnerAnnotationViewModel:
-      var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier) as? PartnerAnnotationView
+      var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier) as? PartnerAnnotationView
       if annotationView == nil {
         annotationView = PartnerAnnotationView(
           annotation: annotation,
           reuseIdentifier: MKMapViewDefaultAnnotationViewReuseIdentifier)
+      } else {
+        annotationView?.annotation = annotation
       }
       if (annotation as? PartnerAnnotationViewModel)?.shouldCluster == true {
         annotationView?.clusteringIdentifier = String(describing: PartnerAnnotationView.self)
@@ -339,7 +351,10 @@ extension MapViewController: MKMapViewDelegate {
       var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier) as? LocationDataMapClusterView
       if annotationView == nil {
         annotationView = LocationDataMapClusterView(annotation: annotation, reuseIdentifier: MKMapViewDefaultClusterAnnotationViewReuseIdentifier)
+      } else {
+        annotationView?.annotation = annotation
       }
+      annotationView?.markerTintColor = .accent
       return annotationView
 
     default:
@@ -367,10 +382,8 @@ extension MapViewController: MapDetailStoreViewControllerDelegate {
     }
   }
 
-  func didTapRouteButton(_: UIButton) {
-    if let coordinate = selectedAnnotation?.coordinate {
-      interactor?.didTapShowRouteOnBottomSheet(coordinate: coordinate)
-    }
+  func didTapRouteButton(coordinate: CLLocationCoordinate2D) {
+    interactor?.didTapShowRouteOnBottomSheet(coordinate: coordinate)
   }
 }
 
@@ -381,25 +394,5 @@ extension MapViewController: RoutingToolBarDelegate {
     routingToolBar.isHidden = true
     interactor?.didTapXMarkButtonOnRoutingToolBar()
     interactor?.didTapSearchThisAreaButton(position: mapView.centerCoordinate, radius: mapView.currentRadius())
-  }
-
-  func didTapOpenInAppButton(_ button: UIButton) {
-    if let pin = selectedAnnotation as? PartnerAnnotationViewModel {
-      let alert = UIAlertController(title: localized("open_in_app").firstLetterUppercased(), message: nil, preferredStyle: .actionSheet)
-      alert.addAction(UIAlertAction(title: localized("apple_maps").firstLetterUppercased(), style: .default, handler: { _ in
-        let appleURL = "http://maps.apple.com/?ll=\(pin.coordinate.latitude),\(pin.coordinate.longitude)&q=\(pin.title ?? "Vinchy")&z=15"
-        self.open(urlString: appleURL, errorCompletion: {})
-      }))
-
-      alert.addAction(UIAlertAction(title: localized("cancel").firstLetterUppercased(), style: .cancel, handler: { _ in
-      }))
-
-      alert.view.tintColor = .accent
-
-      alert.popoverPresentationController?.sourceView = button
-      alert.popoverPresentationController?.permittedArrowDirections = .up
-
-      present(alert, animated: true)
-    }
   }
 }

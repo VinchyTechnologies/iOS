@@ -18,7 +18,7 @@ private enum C {
 
 // MARK: - LocationDataMapClusterView
 
-final class LocationDataMapClusterView: MKAnnotationView {
+final class LocationDataMapClusterView: MKMarkerAnnotationView {
 
   // MARK: Lifecycle
 
@@ -29,8 +29,12 @@ final class LocationDataMapClusterView: MKAnnotationView {
 
     collisionMode = .circle
 
-    addSubview(countLabel)
-    countLabel.fill()
+    animatesWhenAdded = true
+
+    markerTintColor = .accent
+
+//    addSubview(countLabel)
+//    countLabel.fill()
   }
 
   @available(*, unavailable)
@@ -38,45 +42,46 @@ final class LocationDataMapClusterView: MKAnnotationView {
 
   // MARK: Internal
 
-  override var annotation: MKAnnotation? {
-    didSet {
-      guard let annotation = annotation as? MKClusterAnnotation else {
-        return
-      }
-      let text = getCountText(count: annotation.memberAnnotations.count)
-      countLabel.text = text
-      let side: CGFloat = max(36, text.width(usingFont: C.font) + 8)
-      frame = CGRect(
-        x: 0,
-        y: 0,
-        width: side,
-        height: side)
-      layer.cornerRadius = side / 2
-      clipsToBounds = true
-    }
-  }
+//  override var annotation: MKAnnotation? {
+//    didSet {
+//      guard let annotation = annotation as? MKClusterAnnotation else {
+//        return
+//      }
+//      let text = getCountText(count: annotation.memberAnnotations.count)
+//      glyphText = text
+//      countLabel.text = text
+//      let side: CGFloat = max(36, text.width(usingFont: C.font) + 8)
+//      frame = CGRect(
+//        x: 0,
+//        y: 0,
+//        width: side,
+//        height: side)
+//      layer.cornerRadius = side / 2
+//      clipsToBounds = true
+//    }
+//  }
 
-  override func layoutSubviews() {
-    super.layoutSubviews()
-    countLabel.layer.cornerRadius = countLabel.frame.height / 2
-    countLabel.clipsToBounds = true
-    centerOffset = CGPoint(x: 0, y: -frame.size.height / 2)
-  }
+//  override func layoutSubviews() {
+//    super.layoutSubviews()
+//    countLabel.layer.cornerRadius = countLabel.frame.height / 2
+//    countLabel.clipsToBounds = true
+//    centerOffset = CGPoint(x: 0, y: -frame.size.height / 2)
+//  }
 
   override func willMove(toSuperview newSuperview: UIView?) {
     super.willMove(toSuperview: newSuperview)
-    addBounceAnnimation()
+//    addBounceAnnimation()
   }
 
   // MARK: Private
 
-  private let countLabel: UILabel = {
-    $0.backgroundColor = .accent
-    $0.textColor = .white
-    $0.textAlignment = .center
-    $0.font = C.font
-    return $0
-  }(UILabel())
+//  private let countLabel: UILabel = {
+//    $0.backgroundColor = .accent
+//    $0.textColor = .white
+//    $0.textAlignment = .center
+//    $0.font = C.font
+//    return $0
+//  }(UILabel())
 
   private func getCountText(count: Int) -> String {
     if count > 500 {
@@ -94,20 +99,20 @@ final class LocationDataMapClusterView: MKAnnotationView {
     }
   }
 
-  private func addBounceAnnimation() {
-    let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
-
-    bounceAnimation.values = [NSNumber(value: 0.05), NSNumber(value: 1.1), NSNumber(value: 0.9), NSNumber(value: 1)]
-    bounceAnimation.duration = 0.6
-
-    var timingFunctions = [AnyHashable](repeating: 0, count: bounceAnimation.values?.count ?? 0)
-    for _ in 0 ..< (bounceAnimation.values?.count ?? 0) {
-      timingFunctions.append(CAMediaTimingFunction(name: .easeInEaseOut))
-    }
-    bounceAnimation.timingFunctions = timingFunctions as? [CAMediaTimingFunction]
-
-    bounceAnimation.isRemovedOnCompletion = false
-
-    layer.add(bounceAnimation, forKey: "bounce")
-  }
+//  private func addBounceAnnimation() {
+//    let bounceAnimation = CAKeyframeAnimation(keyPath: "transform.scale")
+//
+//    bounceAnimation.values = [NSNumber(value: 0.05), NSNumber(value: 1.1), NSNumber(value: 0.9), NSNumber(value: 1)]
+//    bounceAnimation.duration = 0.6
+//
+//    var timingFunctions = [AnyHashable](repeating: 0, count: bounceAnimation.values?.count ?? 0)
+//    for _ in 0 ..< (bounceAnimation.values?.count ?? 0) {
+//      timingFunctions.append(CAMediaTimingFunction(name: .easeInEaseOut))
+//    }
+//    bounceAnimation.timingFunctions = timingFunctions as? [CAMediaTimingFunction]
+//
+//    bounceAnimation.isRemovedOnCompletion = false
+//
+//    layer.add(bounceAnimation, forKey: "bounce")
+//  }
 }

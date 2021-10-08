@@ -34,6 +34,12 @@ final class VinchyRouter {
 
 extension VinchyRouter: VinchyRouterProtocol {
 
+  func presentChangeAddressViewController() {
+    let controller = AddressSearchAssembly.assemblyModule()
+    ((controller as? NavigationController)?.viewControllers.first as? AddressSearchViewController)?.delegate = self
+    viewController?.present(controller, animated: true, completion: nil)
+  }
+
   func presentAreYouInStoreBottomSheet(nearestPartner: NearestPartner) {
     let options = SheetOptions(shrinkPresentingViewController: false)
     let controller = AreYouInStoreAssembly.assemblyModule(input: .init(partner: nearestPartner))
@@ -81,5 +87,13 @@ extension VinchyRouter: VinchyRouterProtocol {
   func pushToDetailCollection(searchText: String) {
     let input = ShowcaseInput(title: nil, mode: .advancedSearch(params: [("title", searchText)]))
     pushToShowcaseViewController(input: input)
+  }
+}
+
+// MARK: AddressSearchViewControllerDelegate
+
+extension VinchyRouter: AddressSearchViewControllerDelegate {
+  func didChooseAddress() {
+    interactor?.didChangeAddress()
   }
 }

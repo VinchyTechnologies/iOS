@@ -13,7 +13,6 @@ import UIKit
 
 protocol RoutingToolBarDelegate: AnyObject {
   func didTapXMarkButton(_ button: UIButton)
-  func didTapOpenInAppButton(_ button: UIButton)
 }
 
 // MARK: - RoutingToolBarViewModel
@@ -37,15 +36,6 @@ final class RoutingToolBar: UIView {
 
     backgroundColor = .mainBackground
 
-    addSubview(appsButton)
-    appsButton.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      appsButton.centerYAnchor.constraint(equalTo: centerYAnchor),
-      appsButton.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-      appsButton.widthAnchor.constraint(equalToConstant: 24),
-      appsButton.heightAnchor.constraint(equalToConstant: 24),
-    ])
-
     addSubview(xMarkButton)
     xMarkButton.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
@@ -59,7 +49,7 @@ final class RoutingToolBar: UIView {
     distanceLabel.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       distanceLabel.topAnchor.constraint(equalTo: topAnchor),
-      distanceLabel.leadingAnchor.constraint(equalTo: appsButton.trailingAnchor, constant: 10),
+      distanceLabel.centerXAnchor.constraint(equalTo: centerXAnchor),
       distanceLabel.trailingAnchor.constraint(equalTo: xMarkButton.leadingAnchor, constant: -10),
       distanceLabel.bottomAnchor.constraint(equalTo: bottomAnchor),
     ])
@@ -79,14 +69,6 @@ final class RoutingToolBar: UIView {
 
   // MARK: Private
 
-  private lazy var appsButton: UIButton = {
-    let imageConfig = UIImage.SymbolConfiguration(pointSize: 18, weight: .medium, scale: .default)
-    $0.setImage(UIImage(systemName: "arrow.up.right.square", withConfiguration: imageConfig), for: .normal)
-    $0.tintColor = .dark
-    $0.addTarget(self, action: #selector(didTapOpenInAppButton(_:)), for: .touchUpInside)
-    return $0
-  }(UIButton())
-
   private lazy var xMarkButton: UIButton = {
     $0.setImage(UIImage(systemName: "xmark.circle.fill"), for: .normal)
     $0.tintColor = .dark
@@ -100,11 +82,6 @@ final class RoutingToolBar: UIView {
     $0.textAlignment = .center
     return $0
   }(UILabel())
-
-  @objc
-  private func didTapOpenInAppButton(_ button: UIButton) {
-    delegate?.didTapOpenInAppButton(button)
-  }
 
   @objc
   private func didTapXMarkButton(_ button: UIButton) {

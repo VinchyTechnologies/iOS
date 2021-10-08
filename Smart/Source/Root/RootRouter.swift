@@ -47,13 +47,33 @@ final class RootRouterImpl: RootRouter {
 
   func routeToOnboarding(delegate: OnboardingViewControllerOutput?) {
     let vc = OnboardingModuleFactory().makeOnboardingViewController(delegate: delegate)
-    window.rootViewController = vc
+//    window.rootViewController = vc
+    setRootViewController(window: window, viewController: vc)
   }
 
   // MARK: Private
 
   private let window: UIWindow
   private let tabBarBuilder: TabBarBuilder
+
+  private func setRootViewController(window: UIWindow, viewController: UIViewController, animated: Bool = true) {
+    guard animated else {
+      window.rootViewController = viewController
+      window.makeKeyAndVisible()
+      return
+    }
+
+    // TODO: - animation push
+
+    window.rootViewController = viewController
+    window.makeKeyAndVisible()
+    UIView.transition(
+      with: window,
+      duration: 0.3,
+      options: .transitionCrossDissolve,
+      animations: nil,
+      completion: nil)
+  }
 }
 
 // MARK: - AgreementsModuleFactory
