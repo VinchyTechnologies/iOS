@@ -3,6 +3,7 @@
 //  OnboardKit
 //
 
+import CoreLocation
 import FSPagerView
 import UIKit
 
@@ -58,10 +59,11 @@ public class OnboardViewController: UIViewController {
   }(UICollectionView(frame: .zero, collectionViewLayout: layout))
 
   private var viewControllers: [UICollectionViewCell] {
-    [
-      FeaturesOnboardingViewController(),
-//      GeoOnboardingViewController(),
-    ]
+    var result: [UICollectionViewCell] = [FeaturesOnboardingViewController()]
+    if CLLocationManager.authorizationStatus() == .notDetermined {
+      result += [GeoOnboardingViewController()]
+    }
+    return result
   }
 }
 

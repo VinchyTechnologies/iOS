@@ -54,7 +54,7 @@ final class OnboardingFeatureView: UIView {
 
   private let titleLabel: UILabel = {
     $0.setContentCompressionResistancePriority(.required, for: .vertical)
-    $0.font = Font.regular(18)
+    $0.font = Font.bold(18)
     $0.numberOfLines = 0
     $0.textAlignment = .center
     $0.text = "Подобрать вино по любому случаю"

@@ -167,7 +167,7 @@
 
 // MARK: - ConfirmToStartViewController
 "legal_age" = "You are older than minimum legal drinking age in your country.";
-"terms_of_use_agreement" = "By clicking the \"Continue\" button, you acknowledge that you are older than the minimum legal drinking age in your country and agree to the Terms & Conditions.";
+"terms_of_use_agreement" = "By clicking the \"Continue\" button, you acknowledge that you are older than the minimum legal drinking age in your country and agree to the\nTerms & Conditions.";
 "terms_of_use" = "Terms & Conditions.";
 "before_we_start" = "A little formalities at the beginning";
 

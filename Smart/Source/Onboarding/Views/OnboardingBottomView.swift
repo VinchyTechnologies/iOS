@@ -80,8 +80,8 @@ final class OnboardingBottomView: UIView {
 
     NSLayoutConstraint.activate([
       stackView.topAnchor.constraint(equalTo: topAnchor, constant: 24),
-      stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
-      stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
+      stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 24),
+      stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -24),
       stackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor, constant: -20),
     ])
   }

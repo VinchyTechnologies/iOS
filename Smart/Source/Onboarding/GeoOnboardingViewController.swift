@@ -6,6 +6,8 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import Core
+import CoreLocation
 import Display
 import UIKit
 
@@ -74,6 +76,8 @@ final class GeoOnboardingViewController: UICollectionViewCell, Reusable {
 
   // MARK: Private
 
+  private let locationManager = CLLocationManager()
+
   private lazy var bottomView: OnboardingBottomView = {
     let view = OnboardingBottomView()
     view.decorate(
@@ -101,6 +105,48 @@ final class GeoOnboardingViewController: UICollectionViewCell, Reusable {
 
 extension GeoOnboardingViewController: OnboardingBottomViewDelegate {
   func didTapYellowButton(_ button: UIButton) {
+    switch CLLocationManager.authorizationStatus() {
+    case .authorizedAlways, .authorizedWhenInUse, .authorized:
+      delegate?.didTapNexButton()
+
+    case .notDetermined:
+      locationManager.delegate = self
+      locationManager.requestWhenInUseAuthorization()
+
+    case .denied:
+      UserDefaultsConfig.shouldUseCurrentGeo = false
+      delegate?.didTapNexButton()
+
+    case .restricted:
+      delegate?.didTapNexButton()
+
+    @unknown default:
+      delegate?.didTapNexButton()
+    }
+  }
+}
+
+// MARK: CLLocationManagerDelegate
+
+extension GeoOnboardingViewController: CLLocationManagerDelegate {
+  func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus) {
+    switch status {
+    case .notDetermined:
+      break
+
+    case .restricted:
+      break
+
+    case .denied:
+      UserDefaultsConfig.shouldUseCurrentGeo = false
+
+    case .authorized, .authorizedWhenInUse, .authorizedAlways:
+      break
+
+    @unknown default:
+      break
+    }
+
     delegate?.didTapNexButton()
   }
 }
