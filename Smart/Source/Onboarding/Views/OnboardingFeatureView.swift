@@ -7,6 +7,7 @@
 //
 
 import Display
+import StringFormatting
 import UIKit
 
 // MARK: - OnboardingFeatureViewViewModel
@@ -71,15 +72,15 @@ extension OnboardingFeatureView: Decoratable {
     switch model.style {
     case .bottles:
       imageView.image = UIImage(named: "onboadingThreeBottles")
-      titleLabel.text = "Умные рекомендации вина"
+      titleLabel.text = localized("onboarding_feature_one")
 
     case .geo:
       imageView.image = UIImage(named: "onboardingFeatureGeo")
-      titleLabel.text = "Цены и ассортимент магазинов"
+      titleLabel.text = localized("onboarding_feature_two")
 
     case .rating:
       imageView.image = UIImage(named: "onboardingFeatureRating")
-      titleLabel.text = "Реальные отзывы и рейтинги"
+      titleLabel.text = localized("onboarding_feature_three")
     }
   }
 }

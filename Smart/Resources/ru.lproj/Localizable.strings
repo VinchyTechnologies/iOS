@@ -201,3 +201,12 @@
 "AreYouInStore.SeemsYouAreIn" = "Кажется, Вы в магазине\n";
 "AreYouInStore.NotHere" = "Я не здесь";
 "AreYouInStore.SeeMore" = "Смотреть всё";
+
+// MARK: - Onboarding
+"onboarding_feature_one" = "Умные рекомендации вина";
+"onboarding_feature_two" = "Цены и ассортимент магазинов";
+"onboarding_feature_three" = "Реальные отзывы и рейтинги";
+"onboarding_geo_title" = "Найдем ближайший магазин";
+"onboarding_geo_subtitle" = "Разрешите доступ к геолокации и мы покажем магазины, где есть в наличие ваши любимые вина";
+"onboarding_let_us_use_geo" = "Разрешить";
+"onboarding_next" = "Дальше";

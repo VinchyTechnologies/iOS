@@ -201,3 +201,12 @@
 "AreYouInStore.SeemsYouAreIn" = "It seems you are in the\n";
 "AreYouInStore.NotHere" = "I'm not here";
 "AreYouInStore.SeeMore" = "See more";
+
+// MARK: - Onboarding
+"onboarding_feature_one" = "Smart Wine Recommendations";
+"onboarding_feature_two" = "Prices and assortment of shops";
+"onboarding_feature_three" = "Real reviews and ratings";
+"onboarding_geo_title" = "Find the nearest shop";
+"onboarding_geo_subtitle" = "Allow access to your geolocation and we'll show the shops where your favorite wines are available";
+"onboarding_let_us_use_geo" = "Allow";
+"onboarding_next" = "Next";

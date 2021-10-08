@@ -9,6 +9,7 @@
 import Core
 import CoreLocation
 import Display
+import StringFormatting
 import UIKit
 
 // MARK: - GeoOnboardingViewController
@@ -82,9 +83,9 @@ final class GeoOnboardingViewController: UICollectionViewCell, Reusable {
     let view = OnboardingBottomView()
     view.decorate(
       model: .init(
-        titleText: "Найдем ближайший магазин",
-        subtitleText: "Разрешите доступ к геолокации и мы покажем магазины,  где есть в наличие ваши любимые вина",
-        buttonText: "Разрешить"))
+        titleText: localized("onboarding_geo_title"),
+        subtitleText: localized("onboarding_geo_subtitle"),
+        buttonText: localized("onboarding_let_us_use_geo")))
     view.delegate = self
     return view
   }()
