@@ -437,6 +437,13 @@ extension WineDetailViewController: ToolCollectionCellDelegate {
 
 extension WineDetailViewController: WineDetailViewControllerProtocol {
 
+  func scrollToWhereToBuySections(itemDataID: AnyHashable, dataID: AnyHashable) {
+    collectionView.scrollToItem(
+      at: ItemPath(itemDataID: itemDataID, section: .dataID(dataID)),
+      position: .top,
+      animated: true)
+  }
+
   func showReviewButtonTutorial(viewModel: DeliveryTutorialViewModel) {
     for visibleCell in collectionView.visibleCells {
       guard

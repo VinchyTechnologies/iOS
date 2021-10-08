@@ -208,3 +208,11 @@ extension NotesViewController: Alertable {
     .eraseToAnyPublisher()
   }
 }
+
+// MARK: ScrollableToTop
+
+extension NotesViewController: ScrollableToTop {
+  var scrollableToTopScrollView: UIScrollView {
+    tableView
+  }
+}

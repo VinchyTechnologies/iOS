@@ -293,7 +293,11 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
     router.showMoreActionSheet(menuItems: menuItems, appearance: VinchyActionSheetAppearance(), button: button)
   }
 
-  func didTapPriceButton() { }
+  func didTapPriceButton() {
+    if !(stores?.isEmpty == true) {
+      presenter.scrollToWhereToBuySections()
+    }
+  }
 
   func didTapReportAnError() {
     guard let wine = wine else { return }

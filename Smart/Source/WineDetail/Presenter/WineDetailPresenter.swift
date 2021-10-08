@@ -303,6 +303,7 @@ final class WineDetailPresenter {
 // MARK: WineDetailPresenterProtocol
 
 extension WineDetailPresenter: WineDetailPresenterProtocol {
+
   var reportAnErrorText: String? {
     localized("tell_about_error").firstLetterUppercased()
   }
@@ -375,6 +376,12 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
     viewController?.updateGeneralInfoSectionAndExpandOrCollapseCell(viewModel: viewModel)
 
     self.viewModel = viewModel
+  }
+
+  func scrollToWhereToBuySections() {
+    viewController?.scrollToWhereToBuySections(
+      itemDataID: WineDetailViewModel.ItemID.whereToBuyTitle,
+      dataID: WineDetailViewModel.SectionID.ratingAndReview)
   }
 
   func showAlertWineAlreadyDisliked() {

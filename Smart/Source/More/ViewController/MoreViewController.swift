@@ -327,3 +327,11 @@ extension MoreViewController: AuthorizationOutputDelegate {
     interactor?.viewDidLoad()
   }
 }
+
+// MARK: ScrollableToTop
+
+extension MoreViewController: ScrollableToTop {
+  var scrollableToTopScrollView: UIScrollView {
+    collectionView
+  }
+}

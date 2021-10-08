@@ -24,22 +24,22 @@ struct WineDetailViewModel {
   }
 
   enum Section {
-    case gallery(itemID: ItemID, GalleryView.Content) // done
-    case title(itemID: ItemID, Label.Content) // done
+    case gallery(itemID: ItemID, GalleryView.Content)
+    case title(itemID: ItemID, Label.Content)
     case name(itemID: ItemID, Label.Content)
-    case rate(itemID: ItemID, content: StarRatingControlView.Content) // done
-    case winery(itemID: ItemID, Label.Content) // done
-    case text(itemID: ItemID, Label.Content) // done
-    case tool(itemID: ItemID, content: ToolView.Content) // done
-    case list(itemID: ItemID, content: [TitleWithSubtitleInfoView.Content]) // done
+    case rate(itemID: ItemID, content: StarRatingControlView.Content)
+    case winery(itemID: ItemID, Label.Content)
+    case text(itemID: ItemID, Label.Content)
+    case tool(itemID: ItemID, content: ToolView.Content)
+    case list(itemID: ItemID, content: [TitleWithSubtitleInfoView.Content])
     case ratingAndReview(itemID: ItemID, content: TitleAndMoreView.Content)
     case reviews(itemID: ItemID, content: ReviewsCollectionView.Content)
     case servingTips(itemID: ItemID, content: ServingTipsCollectionView.Content)
-    case button(itemID: ItemID, content: ButtonView.Content) // done
+    case button(itemID: ItemID, content: ButtonView.Content)
     case ad(itemID: ItemID) // done
-    case similarWines(itemID: ItemID, content: BottlesCollectionView.Content) // done
-    case expandCollapse(itemID: ItemID, content: ExpandCollapseView.Content) // done
-    case whereToBuy(itemID: ItemID, content: [WhereToBuyView.Content]) // done
+    case similarWines(itemID: ItemID, content: BottlesCollectionView.Content)
+    case expandCollapse(itemID: ItemID, content: ExpandCollapseView.Content)
+    case whereToBuy(itemID: ItemID, content: [WhereToBuyView.Content])
 
     // MARK: Internal
 

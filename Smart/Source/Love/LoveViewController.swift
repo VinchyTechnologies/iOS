@@ -216,3 +216,11 @@ extension LoveViewController: ErrorViewDelegate {
     tabBarController?.selectedIndex = 0
   }
 }
+
+// MARK: ScrollableToTop
+
+extension LoveViewController: ScrollableToTop {
+  var scrollableToTopScrollView: UIScrollView {
+    collectionView
+  }
+}
