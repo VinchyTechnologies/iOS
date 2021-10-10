@@ -24,7 +24,12 @@ struct StoreTitleCollectionCellViewModel: ViewModelProtocol {
   fileprivate let titleText: String?
   fileprivate let moreText: String?
 
-  init(affilatedId: Int?, imageURL: String?, titleText: String?, moreText: String?) {
+  init(
+    affilatedId: Int?,
+    imageURL: String?,
+    titleText: String?,
+    moreText: String?)
+  {
     self.affilatedId = affilatedId
     self.imageURL = imageURL
     self.titleText = titleText
@@ -94,6 +99,7 @@ final class StoreTitleCollectionCell: UICollectionViewCell, Reusable {
     $0.font = Font.heavy(20)
     $0.numberOfLines = 0
     $0.textColor = .dark
+    $0.setContentCompressionResistancePriority(.required, for: .horizontal)
     return $0
   }(UILabel())
 
