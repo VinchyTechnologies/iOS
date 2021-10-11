@@ -12,5 +12,5 @@ struct WriteReviewInput {
   let reviewID: Int?
   let wineID: Int64
   let rating: Double?
-  let comment: String?
+  let comment: String
 }

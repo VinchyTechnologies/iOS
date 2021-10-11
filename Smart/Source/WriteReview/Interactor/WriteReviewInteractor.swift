@@ -47,6 +47,16 @@ extension WriteReviewInteractor: WriteReviewInteractorProtocol {
     }
   }
 
+  func didChangeContent(comment: String?, rating: Double?) {
+    if rating == 0 || rating == nil {
+      presenter.setSendButtonEnabled(false)
+      return
+    }
+
+    let flag = !(input.rating == rating && input.comment == comment)
+    presenter.setSendButtonEnabled(flag)
+  }
+
   func didTapSend(rating: Double, comment: String?) {
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
       self.dispatchWorkItemHud.perform()

@@ -11,4 +11,5 @@ import Display
 protocol WriteReviewViewControllerProtocol: Alertable, Loadable {
   func setPlaceholder(placeholder: String?)
   func updateUI(viewModel: WriteReviewViewModel)
+  func setSendButtonEnabled(_ flag: Bool)
 }

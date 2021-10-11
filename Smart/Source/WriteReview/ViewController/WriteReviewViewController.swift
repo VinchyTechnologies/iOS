@@ -37,10 +37,14 @@ final class WriteReviewViewController: UIViewController {
     view.backgroundColor = .mainBackground
 
     navigationItem.largeTitleDisplayMode = .never
-    navigationItem.leftBarButtonItem = .init(
-      barButtonSystemItem: .cancel,
+    let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
+    navigationItem.leftBarButtonItem = UIBarButtonItem(
+      image: UIImage(systemName: "xmark", withConfiguration: imageConfig),
+      style: .plain,
       target: self,
       action: #selector(closeSelf))
+
+    navigationItem.rightBarButtonItem = .init(customView: sendButton)
 
     view.addSubview(ratingView)
     ratingView.translatesAutoresizingMaskIntoConstraints = false
@@ -90,6 +94,9 @@ final class WriteReviewViewController: UIViewController {
     view.settings.fillMode = .half
     view.settings.minTouchRating = 0.5
     view.settings.emptyBorderWidth = 1.0
+    view.didFinishTouchingCosmos = { [weak self] value in
+      self?.interactor?.didChangeContent(comment: self?.textView.text, rating: value)
+    }
     return view
   }()
 
@@ -103,7 +110,7 @@ final class WriteReviewViewController: UIViewController {
   private lazy var textView: PlaceholderTextView = {
     let textView = PlaceholderTextView()
     textView.font = Font.dinAlternateBold(18)
-//    textView.customDelegate = self
+    textView.customDelegate = self
     textView.keyboardDismissMode = .interactive
     textView.showsVerticalScrollIndicator = false
     textView.alwaysBounceVertical = true
@@ -111,6 +118,12 @@ final class WriteReviewViewController: UIViewController {
     textView.textContainerInset = .init(top: 16, left: 16, bottom: 16, right: 16)
     return textView
   }()
+
+  private lazy var sendButton: Button = {
+    $0.disable()
+    $0.addTarget(self, action: #selector(didTapSendButton(_:)), for: .touchUpInside)
+    return $0
+  }(Button())
 
   private lazy var bottomConstraint = NSLayoutConstraint(
     item: textView,
@@ -141,8 +154,16 @@ final class WriteReviewViewController: UIViewController {
   }
 
   @objc
-  private func didTapSend() {
+  private func didTapSendButton(_ button: UIButton) {
     interactor?.didTapSend(rating: ratingView.rating, comment: textView.text)
+  }
+}
+
+// MARK: UITextViewDelegate
+
+extension WriteReviewViewController: UITextViewDelegate {
+  func textViewDidChange(_ textView: UITextView) {
+    interactor?.didChangeContent(comment: textView.text, rating: ratingView.rating)
   }
 }
 
@@ -153,15 +174,15 @@ extension WriteReviewViewController: WriteReviewViewControllerProtocol {
     ratingView.rating = viewModel.rating ?? 0
     textView.text = viewModel.reviewText
     navigationItem.title = viewModel.navigationTitle
-    navigationItem.rightBarButtonItem = .init(
-      title: viewModel.rightBarButtonText,
-      style: .plain,
-      target: self,
-      action: #selector(didTapSend))
+    sendButton.setTitle(viewModel.rightBarButtonText, for: [])
     ratingHintLabel.text = viewModel.underStarText
   }
 
   func setPlaceholder(placeholder: String?) {
     textView.placeholder = placeholder ?? ""
+  }
+
+  func setSendButtonEnabled(_ flag: Bool) {
+    flag ? sendButton.enable() : sendButton.disable()
   }
 }
