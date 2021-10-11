@@ -117,7 +117,18 @@ final class StoreTitleCollectionCell: UICollectionViewCell, Reusable {
   }(UIImageView())
 
   private lazy var moreButton: UIButton = {
-    $0
+    let imageConfig = UIImage.SymbolConfiguration(pointSize: 15, weight: .semibold, scale: .default)
+    $0.setImage(
+      UIImage(
+        systemName: "chevron.right",
+        withConfiguration: imageConfig)?.withTintColor(.accent, renderingMode: .alwaysOriginal),
+      for: [])
+    $0.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+    $0.titleLabel?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+    $0.imageView?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+    $0.setInsets(forContentPadding: .zero, imageTitlePadding: 1)
+    $0.tintColor = .accent
+    return $0
   }(UIButton(type: .system))
 
   @objc
