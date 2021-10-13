@@ -41,7 +41,7 @@ final class StoryCollectionCell: HighlightCollectionCell, Reusable {
     imageView.contentMode = .scaleAspectFill
     addSubview(imageView)
 
-    titleLabel.font = Font.bold(18)
+    titleLabel.font = Font.bold(16)
     titleLabel.textColor = .white
     titleLabel.numberOfLines = 2
 
@@ -50,7 +50,7 @@ final class StoryCollectionCell: HighlightCollectionCell, Reusable {
     NSLayoutConstraint.activate([
       titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 12),
       titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -12),
-      titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -12),
+      titleLabel.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -14),
     ])
 
     let gradientView = GradientView(frame: .zero)
