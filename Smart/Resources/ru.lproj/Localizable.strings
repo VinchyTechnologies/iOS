@@ -102,6 +102,7 @@
 "yandex_maps" = "Яндекс.Карты";
 "google_maps" = "Google Карты";
 "build_route" = "Построить маршрут";
+"nearest_stores" = "Ближайшие магазины";
 
 // MARK: - Sugar
 "sugar" = "сахар";
