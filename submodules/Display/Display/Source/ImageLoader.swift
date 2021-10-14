@@ -55,7 +55,7 @@ public final class ImageLoader {
   fileprivate func loadBottle(url: URL, imageView: UIImageView) {
     var options = ImageLoadingOptions(
       placeholder: nil,
-      failureImage: UIImage(named: "empty_image_bottle")?.withTintColor(.blueGray),
+      failureImage: UIImage(named: "bottleBackground"),
       contentModes: nil,
       tintColors: nil)
     options.transition = .fadeIn(duration: 0.25)
@@ -91,7 +91,7 @@ extension UIImageView {
     guard let url = url else {
       return
     }
-    load(url, failureImage: UIImage(named: "empty_image_bottle")?.withTintColor(.blueGray))
+    load(url, failureImage: UIImage(named: "bottleBackground"))
 //    ImageLoader.shared.loadBottle(url: url, imageView: self)
   }
 
