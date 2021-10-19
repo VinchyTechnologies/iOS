@@ -22,12 +22,20 @@ struct StoreTitleCollectionCellViewModel: ViewModelProtocol {
   let affilatedId: Int?
   fileprivate let imageURL: String?
   fileprivate let titleText: String?
+  fileprivate let subtitleText: String?
   fileprivate let moreText: String?
 
-  init(affilatedId: Int?, imageURL: String?, titleText: String?, moreText: String?) {
+  init(
+    affilatedId: Int?,
+    imageURL: String?,
+    titleText: String?,
+    subtitleText: String?,
+    moreText: String?)
+  {
     self.affilatedId = affilatedId
     self.imageURL = imageURL
     self.titleText = titleText
+    self.subtitleText = subtitleText
     self.moreText = moreText
   }
 }
@@ -77,23 +85,42 @@ final class StoreTitleCollectionCell: UICollectionViewCell, Reusable {
     }
 
     let width = width - (viewModel.imageURL == nil ? 0 : 48 + 8) - (viewModel.moreText?.width(usingFont: Font.medium(16)) ?? 0) + 8
-    let height = viewModel.titleText?.height(forWidth: width, font: Font.heavy(20), numberOfLines: 0) ?? 0
+    var height = viewModel.titleText?.height(forWidth: width, font: Font.heavy(20), numberOfLines: 0) ?? 0
+//    let vSpace: CGFloat = 4
+//    let subtitleHeight = viewModel.titleText?.height(forWidth: width, font: Font.regular(16), numberOfLines: 0) ?? 0
+//    height += vSpace + subtitleHeight
     return max(48, height)
   }
 
   // MARK: Private
 
   private var affilatedId: Int?
+
+  private lazy var vStackView: UIStackView = {
+    $0.axis = .vertical
+    $0.spacing = 4
+    return $0
+  }(UIStackView(arrangedSubviews: [titleLabel /*subtitleLabel*/]))
+
   private lazy var hStackView: UIStackView = {
     $0.axis = .horizontal
     $0.spacing = 8
     return $0
-  }(UIStackView(arrangedSubviews: [imageView, titleLabel]))
+  }(UIStackView(arrangedSubviews: [imageView, vStackView]))
 
   private let titleLabel: UILabel = {
     $0.font = Font.heavy(20)
     $0.numberOfLines = 0
     $0.textColor = .dark
+    $0.setContentCompressionResistancePriority(.required, for: .horizontal)
+    return $0
+  }(UILabel())
+
+  private let subtitleLabel: UILabel = {
+    $0.font = Font.regular(14)
+    $0.numberOfLines = 0
+    $0.textColor = .blueGray
+    $0.setContentCompressionResistancePriority(.required, for: .horizontal)
     return $0
   }(UILabel())
 
@@ -111,7 +138,18 @@ final class StoreTitleCollectionCell: UICollectionViewCell, Reusable {
   }(UIImageView())
 
   private lazy var moreButton: UIButton = {
-    $0
+    let imageConfig = UIImage.SymbolConfiguration(pointSize: 15, weight: .semibold, scale: .default)
+    $0.setImage(
+      UIImage(
+        systemName: "chevron.right",
+        withConfiguration: imageConfig)?.withTintColor(.accent, renderingMode: .alwaysOriginal),
+      for: [])
+    $0.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+    $0.titleLabel?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+    $0.imageView?.transform = CGAffineTransform(scaleX: -1.0, y: 1.0)
+    $0.setInsets(forContentPadding: .zero, imageTitlePadding: 1)
+    $0.tintColor = .accent
+    return $0
   }(UIButton(type: .system))
 
   @objc
@@ -133,6 +171,7 @@ extension StoreTitleCollectionCell: Decoratable {
     imageView.loadImage(url: model.imageURL?.toURL)
     imageView.isHidden = model.imageURL == nil
     titleLabel.text = model.titleText
+//    subtitleLabel.text = model.subtitleText
     moreButton.setTitle(model.moreText, for: [])
   }
 }

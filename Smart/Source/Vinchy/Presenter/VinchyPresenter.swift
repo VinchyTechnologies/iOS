@@ -81,6 +81,8 @@ extension VinchyPresenter: VinchyPresenterProtocol {
       compilations.insert(compilation, at: 1)
     }
 
+    var didAddTitleAllStores = false
+
     var sections: [VinchyViewControllerViewModel.Section] = []
 
     for compilation in compilations {
@@ -156,9 +158,15 @@ extension VinchyPresenter: VinchyPresenterProtocol {
           compilation.collectionList.first?.wineList != nil,
           let firstCollectionList = compilation.collectionList.first, !firstCollectionList.wineList.isEmpty
         {
+
+          if !didAddTitleAllStores {
+            sections.append(.title([.init(titleText: NSAttributedString(string: localized("nearest_stores"), font: Font.bold(22), textColor: .dark))]))
+            didAddTitleAllStores = true
+          }
+
 //          if let title = compilation.title {
           sections.append(.storeTitle([
-            .init(affilatedId: compilation.id, imageURL: compilation.imageURL, titleText: compilation.title, moreText: localized("more").firstLetterUppercased()),
+            .init(affilatedId: compilation.id, imageURL: compilation.imageURL, titleText: compilation.title, subtitleText: "400м • 5 мин. пешком", moreText: localized("more").firstLetterUppercased()),
           ]))
 //          }
 

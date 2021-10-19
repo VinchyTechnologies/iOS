@@ -82,7 +82,6 @@ final class VinchyViewController: UIViewController {
       SimpleContinuousCaruselCollectionCellView.self,
       ShareUsCollectionCell.self,
       WineCollectionViewCell.self,
-      AdsCollectionViewCell.self,
       SmartFilterCollectionCell.self,
       TextCollectionCell.self,
       FakeVinchyCollectionCell.self,
@@ -223,12 +222,15 @@ extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDele
     case .normal(let sections):
       switch sections[section] {
       case .title:
-        return .init(top: 10, left: C.horizontalInset, bottom: 8, right: C.horizontalInset)
+        return .init(top: 16, left: C.horizontalInset, bottom: 8, right: C.horizontalInset)
 
       case .shareUs, .smartFilter:
         return .init(top: 15, left: C.horizontalInset, bottom: 10, right: C.horizontalInset)
 
-      case .stories, .promo, .big, .bottles:
+      case .stories:
+        return .init(top: 0, left: 0, bottom: 8, right: 0)
+
+      case .promo, .big, .bottles:
         return .zero
 
       case .storeTitle:

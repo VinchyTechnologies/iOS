@@ -18,4 +18,5 @@ protocol WriteReviewPresenterProtocol: AnyObject {
   func showAlertZeroRating()
   func startLoading()
   func stopLoading()
+  func setSendButtonEnabled(_ flag: Bool)
 }

@@ -102,6 +102,7 @@
 "yandex_maps" = "Yandex.Maps";
 "google_maps" = "Google Maps";
 "build_route" = "Build the route";
+"nearest_stores" = "Nearest stores";
 
 // MARK: - Sugar
 "sugar" = "sugar";

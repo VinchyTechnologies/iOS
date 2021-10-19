@@ -28,7 +28,7 @@ extension WriteReviewRoutable {
     reviewText: String?)
   {
     let controller = WriteReviewAssembly.assemblyModule(
-      input: .init(reviewID: reviewID, wineID: wineID, rating: rating, comment: reviewText))
+      input: .init(reviewID: reviewID, wineID: wineID, rating: rating, comment: reviewText ?? ""))
     let navController = NavigationController(rootViewController: controller)
     viewController?.present(
       navController,

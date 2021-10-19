@@ -28,6 +28,7 @@ final class WriteReviewPresenter {
 // MARK: WriteReviewPresenterProtocol
 
 extension WriteReviewPresenter: WriteReviewPresenterProtocol {
+
   var statusAlertViewModelAfterCreate: StatusAlertViewModel {
     .init(
       image: UIImage(systemName: "star.fill"),
@@ -80,5 +81,9 @@ extension WriteReviewPresenter: WriteReviewPresenterProtocol {
 
   func setPlaceholder() {
     viewController?.setPlaceholder(placeholder: localized("review_placeholder"))
+  }
+
+  func setSendButtonEnabled(_ flag: Bool) {
+    viewController?.setSendButtonEnabled(flag)
   }
 }
