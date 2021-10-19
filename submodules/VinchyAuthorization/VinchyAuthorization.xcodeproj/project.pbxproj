@@ -60,6 +60,7 @@
 		44E83A4B25D1B03D00711490 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 44E83A4D25D1B03D00711490 /* Localizable.strings */; };
 		740EC931268DF58A0000718B /* OTPStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740EC930268DF5890000718B /* OTPStackView.swift */; };
 		740EC933268DF6BC0000718B /* OTPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740EC932268DF6BC0000718B /* OTPTextField.swift */; };
+		8ACE34E2271EE6610035BE47 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACE34E1271EE6610035BE47 /* AuthService.swift */; };
 		8AFD837C26F7A118003DF360 /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A724E22591351C00A7552B /* Display.framework */; };
 		8AFD837D26F7A118003DF360 /* Display.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44A724E22591351C00A7552B /* Display.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8AFD837E26F7A11B003DF360 /* StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AFD837926F7A101003DF360 /* StringFormatting.framework */; };
@@ -178,6 +179,7 @@
 		740EC932268DF6BC0000718B /* OTPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPTextField.swift; sourceTree = "<group>"; };
 		74515F9C26F79064008F789C /* VinchyAuthorizationApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VinchyAuthorizationApp.entitlements; sourceTree = "<group>"; };
 		89253731F2C742635398AF8F /* Pods_VinchyAuthorizationApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinchyAuthorizationApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8ACE34E1271EE6610035BE47 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		8AFD837926F7A101003DF360 /* StringFormatting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StringFormatting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AFD838226F7A192003DF360 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0142329D2F9663DDB44D2E0 /* Pods-VinchyAuthorizationApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyAuthorizationApp.debug.xcconfig"; path = "Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp.debug.xcconfig"; sourceTree = "<group>"; };
@@ -282,6 +284,7 @@
 		443F0AE32591242C00E15437 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				8ACE34E0271EE6490035BE47 /* AuthService */,
 				44D3CDEC25E42EB900FFFCD5 /* Routable */,
 				443601DB25CEF59600ABA7F1 /* Output */,
 				443F0AE8259126F200E15437 /* Authorization */,
@@ -585,6 +588,14 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		8ACE34E0271EE6490035BE47 /* AuthService */ = {
+			isa = PBXGroup;
+			children = (
+				8ACE34E1271EE6610035BE47 /* AuthService.swift */,
+			);
+			path = AuthService;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -810,6 +821,7 @@
 				441F760825D19ADA008DC46B /* AuthorizationNavigationController.swift in Sources */,
 				443F0B05259126F200E15437 /* AuthorizationRouterProtocol.swift in Sources */,
 				44E2163425CD2D5F00FE31CE /* ChooseAuthTypePresenterProtocol.swift in Sources */,
+				8ACE34E2271EE6610035BE47 /* AuthService.swift in Sources */,
 				443F0B00259126F200E15437 /* AuthorizationViewController.swift in Sources */,
 				44AD9A7D25936CDB001A5188 /* EnterPasswordInput.swift in Sources */,
 				443F0B03259126F200E15437 /* AuthorizationInteractorProtocol.swift in Sources */,

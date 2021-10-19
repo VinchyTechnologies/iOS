@@ -5,10 +5,11 @@
 //  Created by Алексей Смирнов on 05.02.2021.
 //
 
+import AuthenticationServices
+import Core
 import Display
 import StringFormatting
 import UIKit
-import AuthenticationServices
 
 // MARK: - ChooseAuthTypeViewController
 
@@ -48,32 +49,32 @@ final class ChooseAuthTypeViewController: UIViewController {
       subtitleLabel.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
     ])
 
-    view.addSubview(loginButton)
-    loginButton.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      loginButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8),
-      loginButton.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-      loginButton.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
-      loginButton.heightAnchor.constraint(equalToConstant: 48),
-    ])
-
-    view.addSubview(registerButton)
-    registerButton.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      registerButton.bottomAnchor.constraint(equalTo: loginButton.topAnchor, constant: -8),
-      registerButton.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
-      registerButton.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
-      registerButton.heightAnchor.constraint(equalToConstant: 48),
-    ])
-    
     view.addSubview(appleIDButton)
     appleIDButton.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      appleIDButton.bottomAnchor.constraint(equalTo: registerButton.topAnchor, constant: -8),
+      appleIDButton.bottomAnchor.constraint(equalTo: view.safeAreaLayoutGuide.bottomAnchor, constant: -8),
       appleIDButton.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
       appleIDButton.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
       appleIDButton.heightAnchor.constraint(equalToConstant: 48),
     ])
+
+//    view.addSubview(registerButton)
+//    registerButton.translatesAutoresizingMaskIntoConstraints = false
+//    NSLayoutConstraint.activate([
+//      registerButton.bottomAnchor.constraint(equalTo: loginButton.topAnchor, constant: -8),
+//      registerButton.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+//      registerButton.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+//      registerButton.heightAnchor.constraint(equalToConstant: 48),
+//    ])
+//
+//    view.addSubview(appleIDButton)
+//    appleIDButton.translatesAutoresizingMaskIntoConstraints = false
+//    NSLayoutConstraint.activate([
+//      appleIDButton.bottomAnchor.constraint(equalTo: registerButton.topAnchor, constant: -8),
+//      appleIDButton.leadingAnchor.constraint(equalTo: titleLabel.leadingAnchor),
+//      appleIDButton.trailingAnchor.constraint(equalTo: titleLabel.trailingAnchor),
+//      appleIDButton.heightAnchor.constraint(equalToConstant: 48),
+//    ])
 
     if UIDevice.current.userInterfaceIdiom == .pad {
       let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeDown(_:)))
@@ -120,28 +121,28 @@ final class ChooseAuthTypeViewController: UIViewController {
     return label
   }()
 
-  private lazy var registerButton: Button = {
-    let button = Button()
-    button.translatesAutoresizingMaskIntoConstraints = false
-    button.enable()
-    button.addTarget(self, action: #selector(didTapRegisterButton(_:)), for: .touchUpInside)
-    return button
-  }()
+//  private lazy var registerButton: Button = {
+//    let button = Button()
+//    button.translatesAutoresizingMaskIntoConstraints = false
+//    button.enable()
+//    button.addTarget(self, action: #selector(didTapRegisterButton(_:)), for: .touchUpInside)
+//    return button
+//  }()
+//
+//  private lazy var loginButton: UIButton = {
+//    let button = UIButton()
+//    button.backgroundColor = .clear
+//    button.setTitleColor(.accent, for: .normal)
+//    button.titleLabel?.font = Font.bold(18)
+//    button.clipsToBounds = true
+//    button.layer.cornerCurve = .continuous
+//    button.layer.cornerRadius = 24
+//    button.layer.borderWidth = 2
+//    button.layer.borderColor = UIColor.accent.cgColor
+//    button.addTarget(self, action: #selector(didTapLoginButton(_:)), for: .touchUpInside)
+//    return button
+//  }()
 
-  private lazy var loginButton: UIButton = {
-    let button = UIButton()
-    button.backgroundColor = .clear
-    button.setTitleColor(.accent, for: .normal)
-    button.titleLabel?.font = Font.bold(18)
-    button.clipsToBounds = true
-    button.layer.cornerCurve = .continuous
-    button.layer.cornerRadius = 24
-    button.layer.borderWidth = 2
-    button.layer.borderColor = UIColor.accent.cgColor
-    button.addTarget(self, action: #selector(didTapLoginButton(_:)), for: .touchUpInside)
-    return button
-  }()
-  
   private lazy var appleIDButton: ASAuthorizationAppleIDButton = {
     let appleIDButton = ASAuthorizationAppleIDButton()
     appleIDButton.layer.cornerRadius = 24
@@ -154,7 +155,7 @@ final class ChooseAuthTypeViewController: UIViewController {
   private func closeSelf() {
     dismiss(animated: true)
   }
-  
+
   @objc
   private func didTapAppleIDButton(_: UIButton) {
     let provider = ASAuthorizationAppleIDProvider()
@@ -203,28 +204,60 @@ extension ChooseAuthTypeViewController: ChooseAuthTypeViewControllerProtocol {
   func updateUI(viewModel: ChooseAuthTypeViewModel) {
     titleLabel.text = viewModel.titleText
 //    subtitleLabel.text = viewModel.subtitleText
-    loginButton.setTitle(viewModel.loginButtonText, for: .normal)
-    registerButton.setTitle(viewModel.registerButtonText, for: .normal)
+//    loginButton.setTitle(viewModel.loginButtonText, for: .normal)
+//    registerButton.setTitle(viewModel.registerButtonText, for: .normal)
   }
 }
 
+// MARK: ASAuthorizationControllerDelegate
+
 extension ChooseAuthTypeViewController: ASAuthorizationControllerDelegate {
-  func authorizationController(controller: ASAuthorizationController, didCompleteWithAuthorization authorization: ASAuthorization) {
+  func authorizationController(
+    controller: ASAuthorizationController,
+    didCompleteWithAuthorization authorization: ASAuthorization)
+  {
     switch authorization.credential {
     case let credentials as ASAuthorizationAppleIDCredential:
-      print(credentials.user)
-      break
+
+      guard let credentialsAuthorizationCode = credentials.authorizationCode else {
+        fatalError("credentials.authorizationCode is nil")
+      }
+
+      guard let authorizationCode = String(data: credentialsAuthorizationCode, encoding: .utf8) else {
+        fatalError("Can't read authorizationCode")
+      }
+
+      AuthService.shared.loginWithApple(
+        email: credentials.email,
+        fullName: credentials.fullName,
+        appleUserId: credentials.user,
+        authorizationCode: authorizationCode) { [weak self] result in
+          switch result {
+          case .success(let accountInfo):
+            UserDefaultsConfig.accountID = accountInfo.accountID
+            Keychain.shared.accessToken = accountInfo.accessToken
+            Keychain.shared.refreshToken = accountInfo.refreshToken
+            (self?.navigationController as? AuthorizationNavigationController)?.authOutputDelegate?.didSuccessfullyLogin(output: .init(accountID: accountInfo.accountID, email: accountInfo.email))
+
+          case .failure(let error):
+            self?.showAlert(title: localized("error").firstLetterUppercased(), message: error.localizedDescription)
+          }
+      }
+
     default:
       break
     }
   }
+
   func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-    print(error.localizedDescription)
+    showAlert(title: localized("error").firstLetterUppercased(), message: error.localizedDescription)
   }
 }
 
+// MARK: ASAuthorizationControllerPresentationContextProviding
+
 extension ChooseAuthTypeViewController: ASAuthorizationControllerPresentationContextProviding {
   func presentationAnchor(for controller: ASAuthorizationController) -> ASPresentationAnchor {
-    return view.window!
+    view.window! // swiftlint:disable:this force_unwrapping
   }
 }

@@ -131,9 +131,9 @@ public final class Reviews {
     comment: String?,
     completion: @escaping (Result<Review, APIError>) -> Void)
   {
-    let refreshTokenCompletion = mapToRefreshTokenCompletion(accountID: accountID, completion: completion) { [weak self] in
-      self?.createReview(wineID: wineID, accountID: accountID, rating: rating, comment: comment, completion: completion)
-    }
+//    let refreshTokenCompletion = mapToRefreshTokenCompletion(accountID: accountID, completion: completion) { [weak self] in
+//      self?.createReview(wineID: wineID, accountID: accountID, rating: rating, comment: comment, completion: completion)
+//    }
 
     api.request(
       endpoint: ReviewsEndpoint.create(
@@ -141,7 +141,7 @@ public final class Reviews {
         accountID: accountID,
         rating: rating,
         comment: comment),
-      completion: refreshTokenCompletion)
+      completion: completion)
   }
 
   public func updateReview(
@@ -150,14 +150,14 @@ public final class Reviews {
     comment: String?,
     completion: @escaping (Result<Review, APIError>) -> Void)
   {
-    let accountID = UserDefaultsConfig.accountID
-    let refreshTokenCompletion = mapToRefreshTokenCompletion(accountID: accountID, completion: completion) { [weak self] in
-      self?.updateReview(reviewID: reviewID, rating: rating, comment: comment, completion: completion)
-    }
+//    let accountID = UserDefaultsConfig.accountID
+//    let refreshTokenCompletion = mapToRefreshTokenCompletion(accountID: accountID, completion: completion) { [weak self] in
+//      self?.updateReview(reviewID: reviewID, rating: rating, comment: comment, completion: completion)
+//    }
 
     api.request(
       endpoint: ReviewsEndpoint.update(reviewID: reviewID, rating: rating, comment: comment),
-      completion: refreshTokenCompletion)
+      completion: completion)
   }
 
   // MARK: Private

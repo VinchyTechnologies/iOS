@@ -18,6 +18,7 @@ private enum AccountEndpoint: EndpointProtocol {
   case updateTokens(accountID: Int, refreshToken: String)
   case checkConfirmationCode(accountID: Int, confirmationCode: String)
   case sendConfirmationCode(accountID: Int)
+  case signInWithApple(email: String, fullName: String, authCode: String, deviceId: String, appleUserId: String)
 
   // MARK: Internal
 
@@ -47,6 +48,9 @@ private enum AccountEndpoint: EndpointProtocol {
 
     case .sendConfirmationCode(let accountID):
       return "/accounts/" + String(accountID) + "/codes"
+
+    case .signInWithApple:
+      return "/sign_in_with_apple"
     }
   }
 
@@ -71,6 +75,9 @@ private enum AccountEndpoint: EndpointProtocol {
       return .get
 
     case .sendConfirmationCode:
+      return .post
+
+    case .signInWithApple:
       return .post
     }
   }
@@ -113,6 +120,15 @@ private enum AccountEndpoint: EndpointProtocol {
 
     case .sendConfirmationCode:
       return nil
+
+    case .signInWithApple(let email, let fullName, let authCode, let deviceId, let appleUserId):
+      return [
+        ("email", email),
+        ("account_name", fullName),
+        ("device_id", deviceId),
+        ("apple_user_id", appleUserId),
+        ("code", authCode),
+      ]
     }
   }
 
@@ -138,6 +154,9 @@ private enum AccountEndpoint: EndpointProtocol {
 
     case .sendConfirmationCode:
       return .httpBody
+
+    case .signInWithApple:
+      return .queryString
     }
   }
 }
@@ -219,6 +238,24 @@ public final class Accounts {
     completion: @escaping (Result<EmptyResponse, APIError>) -> Void)
   {
     api.request(endpoint: AccountEndpoint.sendConfirmationCode(accountID: accountID), completion: completion)
+  }
+
+  public func signInWithApple(
+    email: String,
+    fullName: String,
+    authCode: String,
+    deviceId: String,
+    appleUserId: String,
+    completion: @escaping (Result<AccountInfo, APIError>) -> Void)
+  {
+    api.request(
+      endpoint: AccountEndpoint.signInWithApple(
+        email: email,
+        fullName: fullName,
+        authCode: authCode,
+        deviceId: deviceId,
+        appleUserId: appleUserId),
+      completion: completion)
   }
 
   // MARK: Private
