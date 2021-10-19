@@ -74,7 +74,7 @@ final class MorePresenter {
 
     let partnerViewModel = ContactCellViewModel(
       titleText: localized("looking_for_partners").firstLetterUppercased(),
-      icon: UIImage(named: "job"),
+      icon: UIImage(systemName: "case.fill"),
       detailText: localized("become_a_part_of_a_wine_startup").firstLetterUppercased())
     sections.append(.partner([partnerViewModel]))
 
