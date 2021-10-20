@@ -14,7 +14,7 @@ protocol WineDetailPresenterProtocol: AnyObject {
   var dislikeText: String? { get }
   func startLoading()
   func stopLoading()
-  func update(wine: Wine, reviews: [Review]?, isLiked: Bool, isDisliked: Bool, rate: Double, currency: String, stores: [PartnerInfo]?, isGeneralInfoCollapsed: Bool)
+  func update(wine: Wine, reviews: [Review]?, isLiked: Bool, isDisliked: Bool, rating: Rating?, currency: String, stores: [PartnerInfo]?, isGeneralInfoCollapsed: Bool)
   func showAlertCantOpenEmail()
   func showNetworkErrorAlert(error: Error)
   func showAlertWineAlreadyDisliked()

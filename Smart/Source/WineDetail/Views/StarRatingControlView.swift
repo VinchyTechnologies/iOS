@@ -22,9 +22,11 @@ protocol StarRatingControlCollectionCellDelegate: AnyObject {
 struct StarRatingControlCollectionViewCellViewModel: ViewModelProtocol, Equatable {
 
   fileprivate let rate: Double
+  fileprivate let count: Int
 
-  init(rate: Double) {
+  init(rate: Double, count: Int) {
     self.rate = rate
+    self.count = count
   }
 }
 
@@ -87,6 +89,13 @@ final class StarRatingControlView: UIView, EpoxyableView {
     } else {
       rateLabel.isHidden = true
     }
+
+    if content.count != 0 {
+      ratingView.text = "(" + String(content.count) + ")"
+    } else {
+      ratingView.text = nil
+    }
+
     ratingView.rating = content.rate
   }
 
@@ -109,6 +118,8 @@ final class StarRatingControlView: UIView, EpoxyableView {
     $0.settings.updateOnTouch = false
     $0.settings.fillMode = .precise
     $0.settings.emptyBorderWidth = 1.0
+    $0.settings.textFont = Font.regular(18)
+    $0.settings.textColor = .blueGray
     return $0
   }(StarsRatingView())
 

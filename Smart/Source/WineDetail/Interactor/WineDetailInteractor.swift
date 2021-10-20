@@ -56,7 +56,7 @@ final class WineDetailInteractor {
     self.presenter.startLoading()
   }
 
-  private var rate: Double?
+  private var rating: Rating?
   private let dataBase = winesRepository
   private let emailService = EmailService()
 
@@ -98,6 +98,18 @@ final class WineDetailInteractor {
         }
         self.dispatchGroup.leave()
       }
+
+      dispatchGroup.enter()
+      Reviews.shared.getRating(wineID: input.wineID) { [weak self] result in
+        switch result {
+        case .success(let response):
+          self?.rating = response
+
+        case .failure:
+          break
+        }
+        self?.dispatchGroup.leave()
+      }
     }
 
     if stores == nil {
@@ -119,7 +131,7 @@ final class WineDetailInteractor {
       self.dispatchWorkItemHud.cancel()
 
       if let wine = self.wine {
-        self.presenter.update(wine: wine, reviews: self.reviews, isLiked: self.isFavourite(wine: wine), isDisliked: self.isDisliked(wine: wine), rate: self.rate ?? 0, currency: UserDefaultsConfig.currency, stores: self.stores, isGeneralInfoCollapsed: self.isGeneralInfoCollapsed)
+        self.presenter.update(wine: wine, reviews: self.reviews, isLiked: self.isFavourite(wine: wine), isDisliked: self.isDisliked(wine: wine), rating: self.rating, currency: UserDefaultsConfig.currency, stores: self.stores, isGeneralInfoCollapsed: self.isGeneralInfoCollapsed)
       }
 
       if let error = error {
