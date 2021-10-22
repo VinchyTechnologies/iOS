@@ -157,13 +157,13 @@
 				748491E126EE185C006A8851 /* NearestPartner.swift */,
 				8A313C102645B72C009F2165 /* PartnerInfo.swift */,
 				8AD7A1DA2638894A007D4273 /* PartnerOnMap.swift */,
+				8ACE3AEF27205D930035BE47 /* Rating.swift */,
 				4495628F25E2F8AB005E79DA /* Review.swift */,
 				CA7CBC25257F82D400C81476 /* ShortWine.swift */,
 				CA7B825124EC742600991F24 /* Sugar.swift */,
 				4410AE2F25E5479400A84FF9 /* UpdateTokensResponse.swift */,
 				CA7B824824EC738500991F24 /* Wine.swift */,
 				CA7A87EF250287BB00AAD10F /* Winery.swift */,
-				8ACE3AEF27205D930035BE47 /* Rating.swift */,
 			);
 			path = ServiceModels;
 			sourceTree = "<group>";

@@ -16,7 +16,7 @@ public final class Winery: Decodable {
   /// Name of the winery
   public let title: String?
 
-  /// Country code the winery locates in
+  /// Country code of the winery locates in
   public let countryCode: String?
 
   /// Name of the region the winery locates in
