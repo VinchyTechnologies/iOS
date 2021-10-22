@@ -16,6 +16,7 @@ private enum ReviewsEndpoint: EndpointProtocol {
   case all(wineID: Int64, accountID: Int?, offset: Int, limit: Int)
   case create(wineID: Int64, accountID: Int, rating: Double, comment: String?)
   case update(reviewID: Int, rating: Double, comment: String?)
+  case rating(wineID: Int64)
 
   // MARK: Internal
 
@@ -30,6 +31,9 @@ private enum ReviewsEndpoint: EndpointProtocol {
 
     case .update(let reviewID, _, _):
       return "/reviews/" + String(reviewID)
+
+    case .rating:
+      return "/rating"
     }
   }
 
@@ -43,6 +47,9 @@ private enum ReviewsEndpoint: EndpointProtocol {
 
     case .update:
       return .put
+
+    case .rating:
+      return .get
     }
   }
 
@@ -73,12 +80,15 @@ private enum ReviewsEndpoint: EndpointProtocol {
         ("rating", rating),
         ("comment", comment as Any),
       ]
+
+    case .rating(let wineID):
+      return [("wine_id", String(wineID))]
     }
   }
 
   var headers: HTTPHeaders? {
     switch self {
-    case .all:
+    case .all, .rating:
       return [
         "Authorization": "VFAXGm53nG7zBtEuF5DVAhK9YKuHBJ9xTjuCeFyHDxbP4s6gj6",
         "accept-language": Locale.current.languageCode ?? "en",
@@ -158,6 +168,13 @@ public final class Reviews {
     api.request(
       endpoint: ReviewsEndpoint.update(reviewID: reviewID, rating: rating, comment: comment),
       completion: completion)
+  }
+
+  public func getRating(
+    wineID: Int64,
+    completion: @escaping (Result<Rating, APIError>) -> Void)
+  {
+    api.request(endpoint: ReviewsEndpoint.rating(wineID: wineID), completion: completion)
   }
 
   // MARK: Private

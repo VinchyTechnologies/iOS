@@ -74,7 +74,7 @@ final class MorePresenter {
 
     let partnerViewModel = ContactCellViewModel(
       titleText: localized("looking_for_partners").firstLetterUppercased(),
-      icon: UIImage(named: "job"),
+      icon: UIImage(systemName: "case.fill"),
       detailText: localized("become_a_part_of_a_wine_startup").firstLetterUppercased())
     sections.append(.partner([partnerViewModel]))
 
@@ -91,12 +91,12 @@ final class MorePresenter {
 
     let docViewModel = DocCellViewModel(
       titleText: localized("legal_documents").firstLetterUppercased(),
-      icon: UIImage(named: "document"))
+      icon: UIImage(systemName: "doc.fill"))
     sections.append(.doc([docViewModel]))
 
     let aboutAppViewModel = DocCellViewModel(
       titleText: localized("about_the_app").firstLetterUppercased(),
-      icon: UIImage(named: "info"))
+      icon: UIImage(systemName: "info.circle.fill"))
     sections.append(.aboutApp([aboutAppViewModel]))
 
     if UserDefaultsConfig.accountID != 0 && UserDefaultsConfig.accountEmail != "" {
