@@ -6,6 +6,8 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import Core
+
 private let authDomain = "auth.vinchy.tech"
 
 // MARK: - AccountEndpoint
@@ -14,7 +16,7 @@ private enum AccountEndpoint: EndpointProtocol {
   case auth(email: String, password: String)
   case create(email: String, password: String)
   case activate(accountID: Int, confirmationCode: String)
-  case update(accountID: Int, refreshToken: String, accountName: String?, password: String?)
+  case update(accountID: Int, accountName: String?)
   case updateTokens(accountID: Int, refreshToken: String)
   case checkConfirmationCode(accountID: Int, confirmationCode: String)
   case sendConfirmationCode(accountID: Int)
@@ -37,7 +39,7 @@ private enum AccountEndpoint: EndpointProtocol {
     case .activate(let accountID, _):
       return "/accounts/" + String(accountID)
 
-    case .update(let accountID, _, _, _):
+    case .update(let accountID, _):
       return "/accounts/" + String(accountID)
 
     case .updateTokens(let accountID, _):
@@ -101,11 +103,9 @@ private enum AccountEndpoint: EndpointProtocol {
         ("confirmation_code", confirmationCode),
       ]
 
-    case .update(_, let refreshToken, let accountName, let password):
+    case .update(_, let accountName):
       return [
-        ("access_token", refreshToken),
-        ("account_name", accountName as Any),
-//        ("password", password as Any),
+        ("account_name", accountName ?? ""),
       ]
 
     case .updateTokens(_, let refreshToken):
@@ -144,7 +144,7 @@ private enum AccountEndpoint: EndpointProtocol {
       return .httpBody
 
     case .update:
-      return .httpBody
+      return .queryString
 
     case .updateTokens:
       return .httpBody
@@ -157,6 +157,25 @@ private enum AccountEndpoint: EndpointProtocol {
 
     case .signInWithApple:
       return .queryString
+    }
+  }
+
+  var headers: HTTPHeaders? {
+    switch self {
+    case .auth, .create, .updateTokens, .signInWithApple, .activate, .checkConfirmationCode, .sendConfirmationCode:
+      return [
+        "Authorization": "VFAXGm53nG7zBtEuF5DVAhK9YKuHBJ9xTjuCeFyHDxbP4s6gj6",
+        "accept-language": Locale.current.languageCode ?? "en",
+        "x-currency": Locale.current.currencyCode ?? "USD",
+      ]
+
+    case .update:
+      return [
+        "Authorization": "VFAXGm53nG7zBtEuF5DVAhK9YKuHBJ9xTjuCeFyHDxbP4s6gj6",
+        "accept-language": Locale.current.languageCode ?? "en",
+        "x-currency": Locale.current.currencyCode ?? "USD",
+        "x-jwt-token": Keychain.shared.accessToken ?? "",
+      ]
     }
   }
 }
@@ -201,14 +220,16 @@ public final class Accounts {
 
   public func updateAccount(
     accountID: Int,
-    refreshToken: String,
     accountName: String?,
-    password: String?,
-    completion: @escaping (Result<[Collection], APIError>) -> Void)
+    completion: @escaping (Result<AccountInfo, APIError>) -> Void)
   {
+    let refreshTokenCompletion = mapToRefreshTokenCompletion(accountID: accountID, completion: completion) { [weak self] in
+      self?.updateAccount(accountID: accountID, accountName: accountName, completion: completion)
+    }
+
     api.request(
-      endpoint: AccountEndpoint.update(accountID: accountID, refreshToken: refreshToken, accountName: accountName, password: password),
-      completion: completion)
+      endpoint: AccountEndpoint.update(accountID: accountID, accountName: accountName),
+      completion: refreshTokenCompletion)
   }
 
   public func updateTokens(

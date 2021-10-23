@@ -9,10 +9,14 @@ import AuthenticationServices
 import Core
 import VinchyCore
 
+// MARK: - User
+
 public struct User {
   public let accountID: Int
   public let name: String
 }
+
+// MARK: - AuthService
 
 public final class AuthService {
 
@@ -24,11 +28,11 @@ public final class AuthService {
   // MARK: Public
 
   public static let shared = AuthService()
-  
+
   public var isAuthorized: Bool {
     UserDefaultsConfig.accountID != 0
   }
-  
+
   public var currentUser: User? {
     if isAuthorized {
       return .init(
@@ -36,7 +40,7 @@ public final class AuthService {
         name: UserDefaultsConfig.userName)
     } else {
       return nil
-    }    
+    }
   }
 
   public func loginWithApple(
