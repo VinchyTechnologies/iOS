@@ -144,7 +144,9 @@ final class ChooseAuthTypeViewController: UIViewController {
 //  }()
 
   private lazy var appleIDButton: ASAuthorizationAppleIDButton = {
-    let appleIDButton = ASAuthorizationAppleIDButton()
+    let appleIDButton = ASAuthorizationAppleIDButton(
+      authorizationButtonType: .default,
+      authorizationButtonStyle: UITraitCollection.current.userInterfaceStyle == .dark ? .white : .black)
     appleIDButton.layer.cornerRadius = 24
     appleIDButton.clipsToBounds = true
     appleIDButton.addTarget(self, action: #selector(didTapAppleIDButton), for: .touchUpInside)
@@ -256,7 +258,33 @@ extension ChooseAuthTypeViewController: ASAuthorizationControllerDelegate {
   }
 
   func authorizationController(controller: ASAuthorizationController, didCompleteWithError error: Error) {
-    showAlert(title: localized("error").firstLetterUppercased(), message: error.localizedDescription)
+
+    if let error = error as? ASAuthorizationError {
+      switch error.code {
+      case .unknown:
+        showAlert(title: localized("error").firstLetterUppercased(), message: error.localizedDescription)
+
+      case .canceled:
+        break
+
+      case .invalidResponse:
+        showAlert(title: localized("error").firstLetterUppercased(), message: error.localizedDescription)
+
+      case .notHandled:
+        showAlert(title: localized("error").firstLetterUppercased(), message: error.localizedDescription)
+
+      case .failed:
+        showAlert(title: localized("error").firstLetterUppercased(), message: error.localizedDescription)
+
+      case .notInteractive:
+        showAlert(title: localized("error").firstLetterUppercased(), message: error.localizedDescription)
+
+      @unknown default:
+        showAlert(title: localized("error").firstLetterUppercased(), message: error.localizedDescription)
+      }
+    } else {
+      showAlert(title: localized("error").firstLetterUppercased(), message: error.localizedDescription)
+    }
   }
 }
 

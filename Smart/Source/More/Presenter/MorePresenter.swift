@@ -37,7 +37,7 @@ final class MorePresenter {
 
     // TODO: - Interactor
 
-    if UserDefaultsConfig.accountID != 0 && UserDefaultsConfig.accountEmail != "" {
+    if UserDefaultsConfig.accountID != 0 {
       let profileViewModel = ProfileCellViewModel(
         nameUser: UserDefaultsConfig.userName == "" ? localized("what_is_your_name") : UserDefaultsConfig.userName,
         emailUser: UserDefaultsConfig.accountEmail)
