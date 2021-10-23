@@ -99,7 +99,7 @@ final class MorePresenter {
       icon: UIImage(systemName: "info.circle.fill"))
     sections.append(.aboutApp([aboutAppViewModel]))
 
-    if UserDefaultsConfig.accountID != 0 && UserDefaultsConfig.accountEmail != "" {
+    if UserDefaultsConfig.accountID != 0 {
       let logoutViewModel = LogOutCellViewModel(
         titleText: localized("logout").firstLetterUppercased())
       sections.append(.logout([logoutViewModel]))

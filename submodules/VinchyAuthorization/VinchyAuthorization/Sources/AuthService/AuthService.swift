@@ -20,7 +20,6 @@ public final class AuthService {
 
   public static let shared = AuthService()
 
-
   public func loginWithApple(
     email: String?,
     fullName: PersonNameComponents?,
@@ -32,7 +31,7 @@ public final class AuthService {
     let email = email ?? UserDefaultsConfig.accountEmail
     let userName: String
     if fullName != nil {
-      userName = (fullName?.givenName ?? "") + (fullName?.familyName ?? "")
+      userName = (fullName?.givenName ?? "") + " " + (fullName?.familyName ?? "")
     } else {
       userName = UserDefaultsConfig.userName
     }
