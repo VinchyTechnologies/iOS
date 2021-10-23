@@ -41,7 +41,7 @@ extension EditProfileInteractor: EditProfileInteractorProtocol {
     UserDefaultsConfig.userName = currentEditingName ?? ""
 
     Accounts.shared.updateAccount(
-      accountID: UserDefaultsConfig.accountID,
+      accountID: authService.currentUser?.accountID ?? 0,
       accountName: currentEditingName) { result in
         switch result {
         case .success:

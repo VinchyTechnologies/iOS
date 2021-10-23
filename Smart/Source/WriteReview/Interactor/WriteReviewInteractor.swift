@@ -7,6 +7,7 @@
 //
 
 import Core
+import VinchyAuthorization
 import VinchyCore
 
 // MARK: - WriteReviewInteractor
@@ -30,6 +31,7 @@ final class WriteReviewInteractor {
   private let input: WriteReviewInput
   private let router: WriteReviewRouterProtocol
   private let presenter: WriteReviewPresenterProtocol
+  private let authService = AuthService.shared
 
   private lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
     guard let self = self else { return }
@@ -76,7 +78,7 @@ extension WriteReviewInteractor: WriteReviewInteractorProtocol {
       return
     }
 
-    let accountID = UserDefaultsConfig.accountID
+    let accountID = authService.currentUser?.accountID ?? 0
     let comment = comment == "" ? nil : comment
 
     if let reviewID = input.reviewID {

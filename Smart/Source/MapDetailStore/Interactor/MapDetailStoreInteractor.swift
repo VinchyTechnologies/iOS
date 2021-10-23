@@ -8,6 +8,7 @@
 
 import Core
 import CoreLocation
+import VinchyAuthorization
 import VinchyCore
 
 // MARK: - MapDetailStoreInteractor
@@ -32,6 +33,7 @@ final class MapDetailStoreInteractor {
   private let router: MapDetailStoreRouterProtocol
   private let presenter: MapDetailStorePresenterProtocol
   private let dispatchGroup = DispatchGroup()
+  private let authService = AuthService.shared
 
   private var storeInfo: PartnerInfo?
   private var recommendedWines: [ShortWine] = []
@@ -63,7 +65,7 @@ final class MapDetailStoreInteractor {
       }
 
       Recommendations.shared.getPersonalRecommendedWines(
-        accountId: UserDefaultsConfig.accountID,
+        accountId: self.authService.currentUser?.accountID ?? 0,
         affilatedId: self.input.affilatedId) { [weak self] result in
           guard let self = self else { return }
           switch result {

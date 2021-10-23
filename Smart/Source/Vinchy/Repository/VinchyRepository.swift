@@ -10,6 +10,7 @@ import Combine
 import Core
 import CoreLocation
 import LocationUI
+import VinchyAuthorization
 import VinchyCore
 
 // MARK: - VinchyRepository
@@ -18,13 +19,15 @@ final class VinchyRepository {
 
   // MARK: Lifecycle
 
-  init(locationService: LocationService) {
+  init(locationService: LocationService, authService: AuthService) {
     self.locationService = locationService
+    self.authService = authService
   }
 
   // MARK: Private
 
   private let locationService: LocationService
+  private let authService: AuthService
   private var subscriptions = Set<AnyCancellable>()
 
   private func requestNearestPartnersData(

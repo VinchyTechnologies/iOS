@@ -7,6 +7,7 @@
 //
 
 import LocationUI
+import VinchyAuthorization
 
 final class VinchyAssembly {
   static func assemblyModule() -> VinchyViewController {
@@ -14,7 +15,7 @@ final class VinchyAssembly {
 
     let router = VinchyRouter(viewController: viewController)
     let presenter = VinchyPresenter(viewController: viewController)
-    let repository = VinchyRepository(locationService: LocationService())
+    let repository = VinchyRepository(locationService: LocationService(), authService: AuthService.shared)
     let interactor = VinchyInteractor(router: router, presenter: presenter, repository: repository)
 
     router.interactor = interactor

@@ -67,4 +67,14 @@ public final class AuthService {
       appleUserId: appleUserId,
       completion: completion)
   }
+
+  public func logout() {
+    UserDefaultsConfig.accountEmail = ""
+    UserDefaultsConfig.accountID = 0
+    UserDefaultsConfig.userName = ""
+    UserDefaultsConfig.appleUserId = ""
+    Keychain.shared.accessToken = nil
+    Keychain.shared.refreshToken = nil
+    Keychain.shared.password = nil
+  }
 }

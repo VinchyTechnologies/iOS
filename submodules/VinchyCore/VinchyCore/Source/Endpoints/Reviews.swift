@@ -160,7 +160,7 @@ public final class Reviews {
     comment: String?,
     completion: @escaping (Result<Review, APIError>) -> Void)
   {
-    let accountID = UserDefaultsConfig.accountID
+    let accountID = UserDefaultsConfig.accountID // TODO: - remove from core
     let refreshTokenCompletion = mapToRefreshTokenCompletion(accountID: accountID, completion: completion) { [weak self] in
       self?.updateReview(reviewID: reviewID, rating: rating, comment: comment, completion: completion)
     }
