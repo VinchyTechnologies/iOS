@@ -50,6 +50,7 @@ final class WineDetailInteractor {
   private let input: WineDetailInput
   private var isGeneralInfoCollapsed: Bool = true
   private let dispatchGroup = DispatchGroup()
+  private let authService = AuthService.shared
 
   private lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
     guard let self = self else { return }
@@ -160,10 +161,10 @@ final class WineDetailInteractor {
       self.dispatchWorkItemHud.perform()
     }
 
-    if UserDefaultsConfig.accountID != 0 {
+    if authService.isAuthorized {
       Reviews.shared.getReviews(
         wineID: wineID,
-        accountID: UserDefaultsConfig.accountID,
+        accountID: authService.currentUser?.accountID,
         offset: 0,
         limit: 1) { [weak self] result in
 
