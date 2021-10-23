@@ -7,6 +7,7 @@
 //
 
 import Core
+import UIKit.UIDevice
 
 private let authDomain = "auth.vinchy.tech"
 
@@ -106,11 +107,13 @@ private enum AccountEndpoint: EndpointProtocol {
     case .update(_, let accountName):
       return [
         ("account_name", accountName ?? ""),
+        ("device_id", UIDevice.current.identifierForVendor?.uuidString ?? "None"),
       ]
 
     case .updateTokens(_, let refreshToken):
       return [
         ("refresh_token", refreshToken),
+        ("device_id", UIDevice.current.identifierForVendor?.uuidString ?? "None"),
       ]
 
     case .checkConfirmationCode(_, let confirmationCode):
