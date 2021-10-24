@@ -44,8 +44,10 @@ extension EditProfileInteractor: EditProfileInteractorProtocol {
       accountID: authService.currentUser?.accountID ?? 0,
       accountName: currentEditingName) { result in
         switch result {
-        case .success:
-          break
+        case .success(let accountInfo):
+          UserDefaultsConfig.userName = accountInfo.accountName ?? ""
+          Keychain.shared.accessToken = accountInfo.accessToken
+          Keychain.shared.refreshToken = accountInfo.refreshToken
 
         case .failure:
           break
