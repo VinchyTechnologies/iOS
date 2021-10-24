@@ -9,6 +9,7 @@
 
 import Core
 import StringFormatting
+import VinchyAuthorization
 
 // MARK: - MoreInteractor
 
@@ -30,6 +31,7 @@ final class MoreInteractor {
   private let vkURL = "https://vk.com"
 
   private let emailService: EmailServiceProtocol = EmailService()
+  private let authService = AuthService.shared
   private let router: MoreRouterProtocol
 
   private func openUrl(urlString: String) {
@@ -39,9 +41,7 @@ final class MoreInteractor {
   }
 
   private func logout() {
-    UserDefaultsConfig.accountEmail = ""
-    UserDefaultsConfig.accountID = 0
-    UserDefaultsConfig.userName = ""
+    authService.logout()
     viewDidLoad()
   }
 }
@@ -63,7 +63,7 @@ extension MoreInteractor: MoreInteractorProtocol {
   }
 
   func didTapProfile() {
-    if UserDefaultsConfig.accountID != 0 {
+    if authService.isAuthorized {
       router.presentShowEditProfileViewController()
     } else {
       router.presentAuthorizationViewController()

@@ -61,6 +61,7 @@ final class StoreInteractor {
   }
 
   private var presenter: StorePresenterProtocol
+  private let authService = AuthService.shared
 
   private let input: StoreInput
   private let router: StoreRouterProtocol
@@ -113,7 +114,7 @@ final class StoreInteractor {
       if personalRecommendedWines == nil {
         dispatchGroup.enter()
         Recommendations.shared.getPersonalRecommendedWines(
-          accountId: UserDefaultsConfig.accountID,
+          accountId: authService.currentUser?.accountID ?? 0,
           affilatedId: affilatedId) { [weak self] result in
             guard let self = self else { return }
             switch result {

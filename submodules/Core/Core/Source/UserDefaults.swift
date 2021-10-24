@@ -43,6 +43,9 @@ public enum UserDefaultsConfig {
 
   @UserDefault("shouldUseCurrentGeo", defaultValue: true)
   public static var shouldUseCurrentGeo: Bool
+
+  @UserDefault("appleUserId", defaultValue: "")
+  public static var appleUserId: String
 }
 
 // MARK: - UserDefault

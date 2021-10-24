@@ -13,6 +13,17 @@ func mapToRefreshTokenCompletion<T: Decodable>(
   completion: @escaping (Result<T, APIError>) -> Void,
   fun: @escaping (() -> Void)) -> ((Result<T, APIError>) -> Void)
 {
+
+  func logout() {
+    UserDefaultsConfig.accountEmail = ""
+    UserDefaultsConfig.accountID = 0
+    UserDefaultsConfig.userName = ""
+    UserDefaultsConfig.appleUserId = ""
+    Keychain.shared.accessToken = nil
+    Keychain.shared.refreshToken = nil
+    Keychain.shared.password = nil
+  }
+
   let com: ((Result<T, APIError>) -> Void) = { result in
     switch result {
     case .success(let model):
@@ -25,7 +36,7 @@ func mapToRefreshTokenCompletion<T: Decodable>(
 
       case .incorrectStatusCode(let code):
         if code == 401 {
-          if let refreshToken = Keychain.shared.refreshToken, let password = Keychain.shared.password {
+          if let refreshToken = Keychain.shared.refreshToken {
             Accounts.shared.updateTokens(accountID: accountID, refreshToken: refreshToken) { result in
               switch result {
               case .success(let model):
@@ -34,31 +45,12 @@ func mapToRefreshTokenCompletion<T: Decodable>(
                 fun()
 
               case .failure:
-                // autologin
-                Accounts.shared.auth(email: UserDefaultsConfig.accountEmail, password: password) { result in
-                  switch result {
-                  case .success(let model):
-                    Keychain.shared.accessToken = model.accessToken
-                    Keychain.shared.refreshToken = model.refreshToken
-                    fun()
-
-                  case .failure(let error):
-                    UserDefaultsConfig.accountID = 0
-                    UserDefaultsConfig.accountEmail = ""
-                    Keychain.shared.accessToken = nil
-                    Keychain.shared.refreshToken = nil
-                    Keychain.shared.password = nil
-                    completion(.failure(error))
-                  }
-                }
+                logout()
+                completion(.failure(.updateTokensErrorShouldShowAuthScreen)) // auth
               }
             }
           } else {
-            UserDefaultsConfig.accountID = 0
-            UserDefaultsConfig.accountEmail = ""
-            Keychain.shared.accessToken = nil
-            Keychain.shared.refreshToken = nil
-            Keychain.shared.password = nil
+            logout()
             completion(.failure(.updateTokensErrorShouldShowAuthScreen)) // auth
           }
         } else {
@@ -66,11 +58,7 @@ func mapToRefreshTokenCompletion<T: Decodable>(
         }
 
       case .updateTokensErrorShouldShowAuthScreen:
-        UserDefaultsConfig.accountID = 0
-        UserDefaultsConfig.accountEmail = ""
-        Keychain.shared.accessToken = nil
-        Keychain.shared.refreshToken = nil
-        Keychain.shared.password = nil
+        logout()
         completion(.failure(.updateTokensErrorShouldShowAuthScreen))
       }
     }
