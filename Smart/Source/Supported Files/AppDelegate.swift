@@ -18,6 +18,7 @@ import AppTrackingTransparency
 
 #if canImport(AdSupport)
 import AdSupport
+import Core
 #endif
 
 // MARK: - AppDelegate
@@ -62,6 +63,11 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     // swiftlint:disable:next force_cast
     GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [kGADSimulatorID as! String]
     #endif
+    
+    if UserDefaultsConfig.deviceId == "" {
+      UserDefaultsConfig.deviceId = UIDevice.current.identifierForVendor?.uuidString ?? ""
+    }
+    
     return true
   }
 

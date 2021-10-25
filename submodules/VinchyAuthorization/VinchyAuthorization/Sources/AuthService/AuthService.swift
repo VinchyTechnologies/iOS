@@ -50,7 +50,7 @@ public final class AuthService {
     authorizationCode: String,
     completion: @escaping (Result<AccountInfo, APIError>) -> Void)
   {
-    let deviceId = UIDevice.current.identifierForVendor?.uuidString ?? ""
+    let deviceId = UserDefaultsConfig.deviceId
     let email = email ?? UserDefaultsConfig.accountEmail
     let userName: String
     if fullName != nil {

@@ -46,6 +46,9 @@ public enum UserDefaultsConfig {
 
   @UserDefault("appleUserId", defaultValue: "")
   public static var appleUserId: String
+  
+  @UserDefault("deviceId", defaultValue: "")
+  public static var deviceId: String
 }
 
 // MARK: - UserDefault
