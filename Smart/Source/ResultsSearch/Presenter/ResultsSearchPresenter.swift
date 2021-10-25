@@ -69,6 +69,7 @@ extension ResultsSearchPresenter: ResultsSearchPresenterProtocol {
           imageURL: imageURL(from: wine.wineID).toURL,
           titleText: wine.title,
           subtitleText: nil,
+          rating: nil,
           contextMenuViewModels: []))
     }
 

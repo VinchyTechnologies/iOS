@@ -16,11 +16,13 @@ public struct ShortWine: Decodable {
     let mainImageURL = try? container.decodeIfPresent(String.self, forKey: .mainImageURL)
     let title = try container.decode(String.self, forKey: .title)
     let winery = try? container.decodeIfPresent(Winery.self, forKey: .winery)
+    let rating = try? container.decodeIfPresent(Double.self, forKey: .rating)
 
     self.id = id
     mainImageUrl = mainImageURL
     self.title = title
     self.winery = winery
+    self.rating = rating
   }
 
   // MARK: Public
@@ -56,6 +58,8 @@ public struct ShortWine: Decodable {
 
   public let winery: Winery?
 
+  public let rating: Double?
+
   // MARK: Private
 
   private enum CodingKeys: String, CodingKey {
@@ -63,5 +67,6 @@ public struct ShortWine: Decodable {
     case title
     case mainImageURL = "bottle_image_url"
     case winery
+    case rating
   }
 }

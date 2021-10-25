@@ -60,6 +60,7 @@ extension StorePresenter: StorePresenterProtocol {
           imageURL: wine.mainImageUrl?.toURL,
           titleText: wine.title,
           subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode),
+          rating: wine.rating,
           contextMenuViewModels: contextMenuViewModels)
       }
 
@@ -116,6 +117,7 @@ extension StorePresenter: StorePresenterProtocol {
           imageURL: wine.mainImageUrl?.toURL,
           titleText: wine.title,
           subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode),
+          rating: wine.rating,
           contextMenuViewModels: contextMenuViewModels)
       }
 

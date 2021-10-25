@@ -284,6 +284,7 @@ final class WineDetailPresenter {
             imageURL: shortWine.mainImageUrl?.toURL,
             titleText: shortWine.title,
             subtitleText: countryNameFromLocaleCode(countryCode: shortWine.winery?.countryCode),
+            rating: shortWine.rating,
             contextMenuViewModels: contextMenuViewModels))
       }
 
