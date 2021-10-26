@@ -9,7 +9,6 @@
 import Display
 import Epoxy
 
-
 // MARK: - StoreTitleCollectionCellDelegate
 
 protocol StoreTitleCollectionCellDelegate: AnyObject {

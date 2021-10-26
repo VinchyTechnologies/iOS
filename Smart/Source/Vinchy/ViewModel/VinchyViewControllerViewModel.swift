@@ -10,35 +10,27 @@ import CommonUI
 
 struct VinchyViewControllerViewModel {
 
-  enum SectionID: Hashable {
-    case fakemini, faketitle
-  }
-
-  enum FakeItemID: String, Hashable {
-    case mini, title
-  }
-
   enum State {
     case fake(sections: [FakeSection])
     case normal(sections: [Section])
   }
 
   enum Section {
-    case title(Label.Content)
+    case title(content: Label.Content)
     case stories(content: [StoryView.Content])
-//    case promo([SimpleContinuousCaruselCollectionCellViewModel])
-//    case big([SimpleContinuousCaruselCollectionCellViewModel])
+    case commonSubtitle(content: [MainSubtitleView.Content], style: BigCollectionView.Style)
     case bottles(content: [WineBottleView.Content])
-//    case shareUs([ShareUsCollectionCellViewModel])
-//    case smartFilter([SmartFilterCollectionCellViewModel])
+    case shareUs(content: ShareUsView.Content)
     case storeTitle(content: StoreTitleView.Content)
+    case nearestStoreTitle(content: Label.Content)
+    case harmfullToYourHealthTitle(content: Label.Content)
   }
 
   enum FakeSection {
-    case stories(itemID: FakeItemID, content: FakeVinchyCollectionCellViewModel)
-    case promo(itemID: FakeItemID, content: FakeVinchyCollectionCellViewModel)
-    case title(itemID: FakeItemID, content: FakeVinchyCollectionCellViewModel)
-    case big(itemID: FakeItemID, content: FakeVinchyCollectionCellViewModel)
+    case stories(content: FakeVinchyCollectionCellViewModel)
+    case promo(content: FakeVinchyCollectionCellViewModel)
+    case title(content: FakeVinchyCollectionCellViewModel)
+    case big(content: FakeVinchyCollectionCellViewModel)
   }
 
   static let empty: Self = .init(state: .fake(sections: []), leadingAddressButtonViewModel: .loading(text: nil))

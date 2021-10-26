@@ -50,15 +50,15 @@ extension VinchyPresenter: VinchyPresenterProtocol {
     viewController?.updateUI(
       viewModel: VinchyViewControllerViewModel(
         state: .fake(sections: [
-          .stories(itemID: .mini, content: .init(type: .stories(count: 10))),
-          .title(itemID: .title, content: .init(type: .title(count: 1))),
-          .promo(itemID: .mini, content: .init(type: .promo(count: 10))),
-          .title(itemID: .title, content: .init(type: .title(count: 1))),
-          .big(itemID: .mini, content: .init(type: .big(count: 10))),
-          .title(itemID: .title, content: .init(type: .title(count: 1))),
-          .promo(itemID: .mini, content: .init(type: .promo(count: 10))),
-          .title(itemID: .title, content: .init(type: .title(count: 1))),
-          .big(itemID: .mini, content: .init(type: .big(count: 10))),
+          .stories(content: .init(type: .stories(count: 10))),
+          .title(content: .init(type: .title(count: 1))),
+          .promo(content: .init(type: .promo(count: 10))),
+          .title(content: .init(type: .title(count: 1))),
+          .big(content: .init(type: .big(count: 10))),
+          .title(content: .init(type: .title(count: 1))),
+          .promo(content: .init(type: .promo(count: 10))),
+          .title(content: .init(type: .title(count: 1))),
+          .big(content: .init(type: .big(count: 10))),
         ]),
         leadingAddressButtonViewModel: .loading(text: localized("loading").firstLetterUppercased())))
   }
@@ -67,15 +67,19 @@ extension VinchyPresenter: VinchyPresenterProtocol {
 
     var sections: [VinchyViewControllerViewModel.Section] = []
 
-    if let storiesCompilation = compilations.first(where: {
-      $0.type == .mini && ($0.title == nil || $0.title == "")
-    }) {
+    if
+      let storiesCompilation = compilations.first(where: {
+        $0.type == .mini && ($0.title == nil || $0.title == "")
+      })
+    {
       sections.append(.stories(content: storiesCompilation.collectionList.compactMap({ collection in
         .init(imageURL: collection.imageURL?.toURL, titleText: collection.title)
       })))
     }
 
-    // TODO: - Nearest Stores
+    if !nearestPartners.isEmpty {
+      sections.append(.nearestStoreTitle(content: localized("nearest_stores")))
+    }
 
     nearestPartners.forEach { nearestPartner in
       sections.append(.storeTitle(content: .init(affilatedId: nearestPartner.partner.affiliatedStoreId, imageURL: nearestPartner.partner.logoURL, titleText: nearestPartner.partner.title, subtitleText: "", moreText: localized("more").firstLetterUppercased())))
@@ -85,53 +89,46 @@ extension VinchyPresenter: VinchyPresenterProtocol {
       })))
     }
 
-    for compilation in compilations {
+    for (index, compilation) in compilations.enumerated() {
+
+      if index == 3 {
+        sections.append(.shareUs(
+          content: .init(titleText: localized("like_vinchy"))))
+      }
+
       switch compilation.type {
       case .mini:
         if let title = compilation.title {
-          sections.append(.title(title))
+          sections.append(.title(content: title))
           sections.append(.stories(content: compilation.collectionList.compactMap({ collection in
             .init(imageURL: collection.imageURL?.toURL, titleText: collection.title)
           })))
         }
 
-//      case .big:
-//        if let title = compilation.title {
-//          sections.append(.title([
-//            .init(titleText: NSAttributedString(
-//              string: title,
-//              font: Font.heavy(20),
-//              textColor: .dark)),
-//          ]))
-//        }
-//        sections.append(.big([
-//          .init(
-//            type: compilation.type,
-//            collections: compilation.collectionList),
-//        ]))
-//
-//      case .promo:
-//        if let title = compilation.title {
-//          sections.append(.title([
-//            .init(titleText: NSAttributedString(
-//              string: title,
-//              font: Font.heavy(20),
-//              textColor: .dark)),
-//          ]))
-//        }
-//        sections.append(.promo([
-//          .init(
-//            type: compilation.type,
-//            collections: compilation.collectionList),
-//        ]))
+      case .big:
+        if let title = compilation.title {
+          sections.append(.title(content: title))
+        }
+        sections.append(.commonSubtitle(content: compilation.collectionList.compactMap({
+          .init(subtitleText: $0.title, imageURL: $0.imageURL?.toURL)
+        }), style: .init(kind: .big)))
+
+      case .promo:
+        if let title = compilation.title {
+          sections.append(.title(content: title))
+        }
+        sections.append(.commonSubtitle(content: compilation.collectionList.compactMap({
+          .init(subtitleText: $0.title, imageURL: $0.imageURL?.toURL)
+        }), style: .init(kind: .promo)))
 
       case .bottles:
         if
           compilation.collectionList.first?.wineList != nil,
           let firstCollectionList = compilation.collectionList.first,
-          !firstCollectionList.wineList.isEmpty {
+          !firstCollectionList.wineList.isEmpty
+        {
           if let title = compilation.title {
-            sections.append(.title(title))
+            sections.append(.title(content: title))
           }
 
           sections.append(.bottles(content: firstCollectionList.wineList.compactMap({
@@ -147,55 +144,12 @@ extension VinchyPresenter: VinchyPresenterProtocol {
 
       default:
         break
-
-//      case .partnerBottles:
-//        if
-//          compilation.collectionList.first?.wineList != nil,
-//          let firstCollectionList = compilation.collectionList.first, !firstCollectionList.wineList.isEmpty
-//        {
-//
-//          if !didAddTitleAllStores {
-//            sections.append(.title([.init(titleText: NSAttributedString(string: localized("nearest_stores"), font: Font.bold(22), textColor: .dark))]))
-//            didAddTitleAllStores = true
-//          }
-//
-        ////          if let title = compilation.title {
-//          sections.append(.storeTitle([
-//            .init(affilatedId: compilation.id, imageURL: compilation.imageURL, titleText: compilation.title, subtitleText: "400м • 5 мин. пешком", moreText: localized("more").firstLetterUppercased()),
-//          ]))
-        ////          }
-//
-//          sections.append(.bottles([
-//            .init(
-//              type: compilation.type,
-//              collections: compilation.collectionList),
-//          ]))
-//        }
-
-//      case .shareUs:
-//        sections.append(.shareUs([
-//          .init(titleText: localized("like_vinchy")),
-//        ]))
-
-//      case .smartFilter:
-//        sections.append(.smartFilter([
-//          .init(
-//            accentText: "New in Vinchy".uppercased(),
-//            boldText: "Personal compilations",
-//            subtitleText: "Answer on 3 questions & we find for you best wines.",
-//            buttonText: "Try now"),
-//        ]))
       }
     }
 
-//    sections.append(.title([
-//      .init(titleText:
-//        NSAttributedString(
-//          string: C.harmfulToYourHealthText,
-//          font: Font.light(15),
-//          textColor: .blueGray,
-//          paragraphAlignment: .justified)),
-//    ]))
+    sections.append(.harmfullToYourHealthTitle(content: C.harmfulToYourHealthText))
+
+    // TODO: - if all empty
 
     viewController?.updateUI(
       viewModel: VinchyViewControllerViewModel(

@@ -6,7 +6,6 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-
 import Display
 import Epoxy
 import UIKit
@@ -76,7 +75,6 @@ final class StoryView: UIView, EpoxyableView {
 
   typealias Content = StoryViewViewModel
 
-
   func setContent(_ content: Content, animated: Bool) {
     setAttributedText(string: content.titleText)
     imageView.loadImage(url: content.imageURL)
@@ -99,5 +97,21 @@ final class StoryView: UIView, EpoxyableView {
       range: NSRange(location: 0, length: attributedString.length))
 
     titleLabel.attributedText = attributedString
+  }
+}
+
+// MARK: HighlightableView
+
+extension StoryView: HighlightableView {
+  func didHighlight(_ isHighlighted: Bool) {
+    UIView.animate(
+      withDuration: 0.15,
+      delay: 0,
+      options: [.beginFromCurrentState, .allowUserInteraction])
+    {
+      self.transform = isHighlighted
+        ? CGAffineTransform(scaleX: 0.95, y: 0.95)
+        : .identity
+    }
   }
 }

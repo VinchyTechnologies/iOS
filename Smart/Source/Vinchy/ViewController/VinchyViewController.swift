@@ -6,11 +6,8 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import CommonUI
-import Core
 import Display
 import Epoxy
-import FittedSheets
 import StringFormatting
 import UIKit
 import VinchyCore
@@ -84,13 +81,12 @@ final class VinchyViewController: CollectionViewController {
     return searchController
   }()
 
-//  @SectionModelBuilder
   private var sections: [SectionModel] {
     switch viewModel.state {
     case .fake(let sections):
       return sections.compactMap { section in
         switch section {
-        case .stories(_, let content), .title(_, let content), .promo(_, let content), .big(_, let content):
+        case .stories(let content), .title(let content), .promo(let content), .big(let content):
           let width: CGFloat = view.frame.width
           let height: CGFloat = FakeVinchyCollectionCell.height(viewModel: content)
           return SectionModel(dataID: UUID()) {
@@ -133,7 +129,7 @@ final class VinchyViewController: CollectionViewController {
               style: style)
           }
           .flowLayoutItemSize(.init(width: width, height: height))
-          .flowLayoutSectionInset(.init(top: 0, left: C.horizontalInset, bottom: 8, right: C.horizontalInset))
+          .flowLayoutSectionInset(.init(top: 8, left: C.horizontalInset, bottom: 8, right: C.horizontalInset))
 
         case .stories(let content):
           let width: CGFloat = view.frame.width
@@ -155,9 +151,74 @@ final class VinchyViewController: CollectionViewController {
               dataID: UUID(),
               content: content,
               style: .init())
+              .setBehaviors { [weak self] context in
+                context.view.delegate = self
+              }
           }
           .flowLayoutItemSize(.init(width: width, height: height))
           .flowLayoutSectionInset(.init(top: 0, left: C.horizontalInset, bottom: 8, right: C.horizontalInset))
+
+        case .commonSubtitle(let content, let style):
+          let width: CGFloat = view.frame.width
+          let height: CGFloat = BigCollectionView.height(for: style)
+          return SectionModel(dataID: UUID()) {
+            BigCollectionView.itemModel(
+              dataID: UUID(),
+              content: content,
+              style: style)
+              .setBehaviors { [weak self] context in
+                context.view.
+              }
+          }
+          .flowLayoutItemSize(.init(width: width, height: height))
+          .flowLayoutSectionInset(.init(top: 0, left: C.horizontalInset, bottom: 8, right: C.horizontalInset))
+
+        case .shareUs(let content):
+          let width: CGFloat = view.frame.width - 2 * C.horizontalInset
+          let height: CGFloat = 160
+          return SectionModel(dataID: UUID()) {
+            ShareUsView.itemModel(
+              dataID: UUID(),
+              content: content,
+              style: .init())
+          }
+          .flowLayoutItemSize(.init(width: width, height: height))
+          .flowLayoutSectionInset(.init(top: 16, left: C.horizontalInset, bottom: 8, right: C.horizontalInset))
+
+        case .nearestStoreTitle(let content):
+          let style: Label.Style = .init(
+            font: Font.bold(22),
+            showLabelBackground: true,
+            backgroundColor: .mainBackground,
+            textColor: .dark)
+          let width: CGFloat = view.frame.width - C.horizontalInset * 2
+          let height: CGFloat = Label.height(for: content, width: width, style: style)
+          return SectionModel(dataID: UUID()) {
+            Label.itemModel(
+              dataID: UUID(),
+              content: content,
+              style: style)
+          }
+          .flowLayoutItemSize(.init(width: width, height: height))
+          .flowLayoutSectionInset(.init(top: 16, left: C.horizontalInset, bottom: 16, right: C.horizontalInset))
+
+        case .harmfullToYourHealthTitle(let content):
+          let style: Label.Style = .init(
+            font: Font.light(15),
+            showLabelBackground: true,
+            backgroundColor: .mainBackground,
+            textAligment: .justified,
+            textColor: .blueGray)
+          let width: CGFloat = view.frame.width - C.horizontalInset * 2
+          let height: CGFloat = Label.height(for: content, width: width, style: style)
+          return SectionModel(dataID: UUID()) {
+            Label.itemModel(
+              dataID: UUID(),
+              content: content,
+              style: style)
+          }
+          .flowLayoutItemSize(.init(width: width, height: height))
+          .flowLayoutSectionInset(.init(top: 8, left: C.horizontalInset, bottom: 8, right: C.horizontalInset))
         }
       }
     }
@@ -201,206 +262,6 @@ final class VinchyViewController: CollectionViewController {
 
 // MARK: VinchyViewControllerProtocol
 
-//extension VinchyViewController: UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
-//
-//  func collectionView(
-//    _ collectionView: UICollectionView,
-//    layout _: UICollectionViewLayout,
-//    sizeForItemAt indexPath: IndexPath)
-//    -> CGSize
-//  {
-//    switch viewModel.state {
-//    case .fake(let sections):
-//      let type: FakeVinchyCollectionCellViewModel?
-//      switch sections[safe: indexPath.section] {
-//      case .stories(let viewModel):
-//        type = viewModel
-//
-//      case .promo(let viewModel):
-//        type = viewModel
-//
-//      case .title(let viewModel):
-//        type = viewModel
-//
-//      case .big(let viewModel):
-//        type = viewModel
-//
-//      case .none:
-//        type = nil
-//      }
-//
-//      let height = FakeVinchyCollectionCell.height(viewModel: type)
-//      return .init(width: collectionView.frame.width, height: height)
-//
-//    case .normal(let sections):
-//      switch sections[indexPath.section] {
-//      case .title(let model):
-//        let width = collectionView.frame.width - 2 * C.horizontalInset
-//        let height = TextCollectionCell.height(viewModel: model[indexPath.row], width: width)
-//        return .init(width: width, height: height)
-//
-//      case .stories(let model), .promo(let model), .big(let model), .bottles(let model):
-//        return .init(
-//          width: collectionView.frame.width,
-//          height: SimpleContinuousCaruselCollectionCellView.height(viewModel: model[safe: indexPath.row]))
-//
-//      case .shareUs:
-//        let width = collectionView.frame.width - 2 * C.horizontalInset
-//        let height: CGFloat = 150 // TODO: -
-//        return .init(width: width, height: height)
-//
-//      case .smartFilter:
-//        let width = collectionView.frame.width - 2 * C.horizontalInset
-//        let height: CGFloat = 170 // TODO: -
-//        return .init(width: width, height: height)
-//
-//      case .storeTitle(let model):
-//        let width = collectionView.frame.width - 2 * C.horizontalInset
-//        let height: CGFloat = StoreTitleCollectionCell.height(viewModel: model[safe: indexPath.row], for: width)
-//        return .init(width: width, height: height)
-//      }
-//    }
-//  }
-//
-//  func collectionView(
-//    _: UICollectionView,
-//    layout _: UICollectionViewLayout,
-//    insetForSectionAt section: Int)
-//    -> UIEdgeInsets
-//  {
-//    switch viewModel.state {
-//    case .fake(let sections):
-//      switch sections[section] {
-//      case .stories, .big, .promo:
-//        return .zero
-//
-//      case .title:
-//        return .init(top: 10, left: 0, bottom: 10, right: 0)
-//      }
-//
-//    case .normal(let sections):
-//      switch sections[section] {
-//      case .title:
-//        return .init(top: 16, left: C.horizontalInset, bottom: 8, right: C.horizontalInset)
-//
-//      case .shareUs, .smartFilter:
-//        return .init(top: 15, left: C.horizontalInset, bottom: 10, right: C.horizontalInset)
-//
-//      case .stories:
-//        return .init(top: 0, left: 0, bottom: 8, right: 0)
-//
-//      case .promo, .big, .bottles:
-//        return .zero
-//
-//      case .storeTitle:
-//        return .init(top: 16, left: 0, bottom: 8, right: 0)
-//      }
-//    }
-//  }
-//
-//  func numberOfSections(in _: UICollectionView) -> Int {
-//    switch viewModel.state {
-//    case .fake(let sections):
-//      return sections.count
-//
-//    case .normal(let sections):
-//      return sections.count
-//    }
-//  }
-//
-//  func collectionView(
-//    _: UICollectionView,
-//    numberOfItemsInSection section: Int)
-//    -> Int
-//  {
-//    switch viewModel.state {
-//    case .fake(let sections):
-//      switch sections[section] {
-//      case .stories, .promo, .title, .big:
-//        return 1
-//      }
-//
-//    case .normal(sections: let sections):
-//      switch sections[section] {
-//      case .title(let model):
-//        return model.count
-//
-//      case .stories(let model), .promo(let model), .big(let model), .bottles(let model):
-//        return model.count
-//
-//      case .shareUs(let model):
-//        return model.count
-//
-//      case .smartFilter(let model):
-//        return model.count
-//
-//      case .storeTitle(let model):
-//        return model.count
-//      }
-//    }
-//  }
-//
-//  func collectionView(
-//    _ collectionView: UICollectionView,
-//    cellForItemAt indexPath: IndexPath)
-//    -> UICollectionViewCell
-//  {
-//    switch viewModel.state {
-//    case .fake(let sections):
-//      switch sections[indexPath.section] {
-//      case .stories(let model), .promo(let model), .title(let model), .big(let model):
-//        // swiftlint:disable:next force_cast
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: FakeVinchyCollectionCell.reuseId, for: indexPath) as! FakeVinchyCollectionCell
-//        cell.decorate(model: model)
-//        return cell
-//      }
-//
-//    case .normal(let sections):
-//      switch sections[indexPath.section] {
-//      case .title(let model):
-//        // swiftlint:disable:next force_cast
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseId, for: indexPath) as! TextCollectionCell
-//        cell.decorate(model: model[indexPath.row])
-//        return cell
-//
-//      case .stories(let model), .promo(let model), .big(let model), .bottles(let model):
-//        collectionView.register(
-//          SimpleContinuousCaruselCollectionCellView.self,
-//          forCellWithReuseIdentifier: SimpleContinuousCaruselCollectionCellView.reuseId + "\(indexPath.section)")
-//
-//        let cell = collectionView.dequeueReusableCell(
-//          withReuseIdentifier: SimpleContinuousCaruselCollectionCellView.reuseId + "\(indexPath.section)",
-//          for: indexPath) as! SimpleContinuousCaruselCollectionCellView // swiftlint:disable:this force_cast
-//
-//        let configurator = SimpleContinuosCarouselCollectionCellConfigurator(delegate: self)
-//        configurator.configure(view: cell, with: SimpleContinuosCarouselCollectionCellInput(model: model[indexPath.row]))
-//        cell.viewDidLoad()
-//        return cell
-//
-//      case .shareUs(let model):
-//        // swiftlint:disable:next force_cast
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: ShareUsCollectionCell.reuseId, for: indexPath) as! ShareUsCollectionCell
-//        cell.decorate(model: model[indexPath.row])
-//        cell.delegate = self
-//        return cell
-//
-//      case .smartFilter(let model):
-//        // swiftlint:disable:next force_cast
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SmartFilterCollectionCell.reuseId, for: indexPath) as! SmartFilterCollectionCell
-//        cell.decorate(model: model[indexPath.row])
-//        return cell
-//
-//      case .storeTitle(let model):
-//        // swiftlint:disable:next force_cast
-//        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: StoreTitleCollectionCell.reuseId, for: indexPath) as! StoreTitleCollectionCell
-//        cell.decorate(model: model[indexPath.row])
-//        cell.delegate = self
-//        return cell
-//      }
-//    }
-//  }
-//}
-
 extension VinchyViewController: VinchyViewControllerProtocol {
 
   var scrollableToTopScrollView: UIScrollView {
@@ -432,16 +293,6 @@ extension VinchyViewController: ShareUsCollectionCellDelegate {
 }
 
 // MARK: BottlesCollectionViewDelegate
-
-//extension VinchyViewController: SimpleContinuosCarouselCollectionCellInteractorDelegate {
-//  func didTapCompilationCell(input: ShowcaseInput) {
-//    interactor?.didTapCompilationCell(input: input)
-//  }
-//
-//  func didTapBottleCell(wineID: Int64) {
-//    interactor?.didTapBottleCell(wineID: wineID)
-//  }
-//}
 
 extension VinchyViewController: BottlesCollectionViewDelegate {
   func didTapShareContextMenu(wineID: Int64, sourceView: UIView) {

@@ -7,12 +7,12 @@
 //
 
 import Display
+import Epoxy
 import StringFormatting
-import UIKit
 
-// MARK: - ShareUsCollectionCellViewModel
+// MARK: - ShareUsViewViewModel
 
-public struct ShareUsCollectionCellViewModel: ViewModelProtocol, Hashable {
+public struct ShareUsViewViewModel: Equatable {
   fileprivate let titleText: String?
 
   public init(titleText: String?) {
@@ -26,16 +26,17 @@ protocol ShareUsCollectionCellDelegate: AnyObject {
   func didTapShareUs(_ button: UIButton)
 }
 
-// MARK: - ShareUsCollectionCell
+// MARK: - ShareUsView
 
-final class ShareUsCollectionCell: UICollectionViewCell, Reusable {
+final class ShareUsView: UIView, EpoxyableView {
 
   // MARK: Lifecycle
 
-  override init(frame: CGRect) {
-    super.init(frame: frame)
+  init(style: Style) {
+    self.style = style
+    super.init(frame: .zero)
 
-    backgroundColor = .option // .mainBackground
+    backgroundColor = .option
 
     layer.cornerRadius = 12
     clipsToBounds = true
@@ -49,7 +50,7 @@ final class ShareUsCollectionCell: UICollectionViewCell, Reusable {
     titleLabel.font = Font.with(size: 24, design: .round, traits: .bold)
     titleLabel.textColor = .dark
 
-    subtitleLabel.text = localized("tell_the_whole_world_about_us")
+    subtitleLabel.text = localized("tell_the_whole_world_about_us") // TODO: -
     subtitleLabel.font = Font.bold(18)
     subtitleLabel.textColor = .blueGray
 
@@ -75,12 +76,22 @@ final class ShareUsCollectionCell: UICollectionViewCell, Reusable {
     ])
   }
 
-  @available(*, unavailable)
-  required init?(coder _: NSCoder) { fatalError() }
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
 
   // MARK: Internal
 
+  struct Style: Hashable {
+  }
+
+  typealias Content = ShareUsViewViewModel
+
   weak var delegate: ShareUsCollectionCellDelegate?
+
+  func setContent(_ content: Content, animated: Bool) {
+    titleLabel.text = content.titleText
+  }
 
   @objc
   func didTapShareUs(_ button: UIButton) {
@@ -89,17 +100,8 @@ final class ShareUsCollectionCell: UICollectionViewCell, Reusable {
 
   // MARK: Private
 
+  private let style: Style
   private let titleLabel = UILabel()
   private let subtitleLabel = UILabel()
   private let button = Button()
-}
-
-// MARK: Decoratable
-
-extension ShareUsCollectionCell: Decoratable {
-  typealias ViewModel = ShareUsCollectionCellViewModel
-
-  func decorate(model: ViewModel) {
-    titleLabel.text = model.titleText
-  }
 }
