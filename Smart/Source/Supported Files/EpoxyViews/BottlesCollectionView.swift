@@ -23,6 +23,7 @@ final class BottlesCollectionView: CollectionView, EpoxyableView {
   // MARK: Lifecycle
 
   init(style: Style) {
+    self.style = style
     super.init(layout: UICollectionViewCompositionalLayout.epoxy)
     delaysContentTouches = false
   }
@@ -31,6 +32,15 @@ final class BottlesCollectionView: CollectionView, EpoxyableView {
 
   struct Style: Hashable {
 
+    enum Offset {
+      case normal, small
+    }
+
+    let offset: Offset
+
+    init(offset: Offset = .normal) {
+      self.offset = offset
+    }
   }
 
   typealias Content = [WineBottleView.Content]
@@ -64,6 +74,9 @@ final class BottlesCollectionView: CollectionView, EpoxyableView {
     case bottlesCollectionViewSectionBottles
   }
 
+
+  private let style: Style
+
   private var didTap: ((_ wineID: Int64) -> Void)?
 
   private var layoutSection: NSCollectionLayoutSection? {
@@ -72,7 +85,14 @@ final class BottlesCollectionView: CollectionView, EpoxyableView {
     let section = NSCollectionLayoutSection(group: group)
     section.interGroupSpacing = 8
     section.orthogonalScrollingBehavior = .continuous
-    section.contentInsets = .init(top: 0, leading: 24, bottom: 0, trailing: 24)
+
+    switch style.offset {
+    case .normal:
+      section.contentInsets = .init(top: 0, leading: 24, bottom: 0, trailing: 24)
+
+    case .small:
+      section.contentInsets = .init(top: 0, leading: 16, bottom: 0, trailing: 16)
+    }
     return section
   }
 }

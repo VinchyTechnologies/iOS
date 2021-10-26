@@ -206,21 +206,15 @@ extension SimpleContinuousCaruselCollectionCellView: UICollectionViewDataSource 
     case .bottles, .partnerBottles:
       guard
         let collection = collections.first,
-        let collectionItem = collection.wineList[safe: indexPath.row]
+        let wine = collection.wineList[safe: indexPath.row]
       else {
         fatalError()
       }
 
-      switch collectionItem {
-      case .wine(let wine):
-        // swiftlint:disable:next force_cast
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as! WineCollectionViewCell
-        cell.decorate(model: .init(wineID: wine.id, imageURL: wine.mainImageUrl?.toURL, titleText: wine.title, subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode), rating: wine.rating, contextMenuViewModels: []))
-        return cell
-
-      case .ads:
-        return .init()
-      }
+      // swiftlint:disable:next force_cast
+      let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as! WineCollectionViewCell
+      cell.decorate(model: .init(wineID: wine.id, imageURL: wine.mainImageUrl?.toURL, titleText: wine.title, subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode), rating: wine.rating, contextMenuViewModels: []))
+      return cell
 
     case .none, .shareUs, .smartFilter:
       fatalError()
@@ -235,28 +229,14 @@ extension SimpleContinuousCaruselCollectionCellView: UICollectionViewDelegateFlo
     switch type {
     case .mini, .big, .promo:
       interactor?.didTapCompilationCell(
-        wines: collections[indexPath.row].wineList.compactMap { collectionItem -> ShortWine? in
-          switch collectionItem {
-          case .wine(let wine):
-            return wine
-
-          case .ads:
-            return nil
-          }
-        },
+        wines: collections[indexPath.row].wineList,
         title: collections[indexPath.row].title)
 
     case .bottles, .partnerBottles:
-      guard let collection = collections.first, let collectionItem = collection.wineList[safe: indexPath.row] else {
+      guard let collection = collections.first, let wine = collection.wineList[safe: indexPath.row] else {
         return
       }
-      switch collectionItem {
-      case .wine(let wine):
-        interactor?.didTapBottleCell(wineID: wine.id)
-
-      case .ads:
-        break
-      }
+      interactor?.didTapBottleCell(wineID: wine.id)
 
     case .none, .shareUs, .smartFilter:
       break
@@ -316,16 +296,10 @@ extension SimpleContinuousCaruselCollectionCellView: UICollectionViewDataSourceP
       case .bottles, .partnerBottles:
         if
           let collection = collections.first,
-          let collectionItem = collection.wineList[safe: indexPath.row]
+          let wine = collection.wineList[safe: indexPath.row]
         {
-          switch collectionItem {
-          case .wine(let wine):
-            if let url = imageURL(from: wine.id).toURL {
-              urls.append(url)
-            }
-
-          case .ads:
-            break
+          if let url = imageURL(from: wine.id).toURL {
+            urls.append(url)
           }
         }
 
@@ -349,16 +323,10 @@ extension SimpleContinuousCaruselCollectionCellView: UICollectionViewDataSourceP
       case .bottles, .partnerBottles:
         if
           let collection = collections.first,
-          let collectionItem = collection.wineList[safe: indexPath.row]
+          let wine = collection.wineList[safe: indexPath.row]
         {
-          switch collectionItem {
-          case .wine(let wine):
-            if let url = imageURL(from: wine.id).toURL {
-              urls.append(url)
-            }
-
-          case .ads:
-            break
+          if let url = imageURL(from: wine.id).toURL {
+            urls.append(url)
           }
         }
 

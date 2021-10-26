@@ -73,7 +73,7 @@ extension VinchyPresenter: VinchyPresenterProtocol {
       })
     {
       sections.append(.stories(content: storiesCompilation.collectionList.compactMap({ collection in
-        .init(imageURL: collection.imageURL?.toURL, titleText: collection.title)
+        .init(imageURL: collection.imageURL?.toURL, titleText: collection.title, wines: collection.wineList)
       })))
     }
 
@@ -101,7 +101,7 @@ extension VinchyPresenter: VinchyPresenterProtocol {
         if let title = compilation.title {
           sections.append(.title(content: title))
           sections.append(.stories(content: compilation.collectionList.compactMap({ collection in
-            .init(imageURL: collection.imageURL?.toURL, titleText: collection.title)
+            .init(imageURL: collection.imageURL?.toURL, titleText: collection.title, wines: collection.wineList)
           })))
         }
 
@@ -110,7 +110,7 @@ extension VinchyPresenter: VinchyPresenterProtocol {
           sections.append(.title(content: title))
         }
         sections.append(.commonSubtitle(content: compilation.collectionList.compactMap({
-          .init(subtitleText: $0.title, imageURL: $0.imageURL?.toURL)
+          .init(subtitleText: $0.title, imageURL: $0.imageURL?.toURL, wines: $0.wineList)
         }), style: .init(kind: .big)))
 
       case .promo:
@@ -118,7 +118,7 @@ extension VinchyPresenter: VinchyPresenterProtocol {
           sections.append(.title(content: title))
         }
         sections.append(.commonSubtitle(content: compilation.collectionList.compactMap({
-          .init(subtitleText: $0.title, imageURL: $0.imageURL?.toURL)
+          .init(subtitleText: $0.title, imageURL: $0.imageURL?.toURL, wines: $0.wineList)
         }), style: .init(kind: .promo)))
 
       case .bottles:
@@ -131,14 +131,9 @@ extension VinchyPresenter: VinchyPresenterProtocol {
             sections.append(.title(content: title))
           }
 
-          sections.append(.bottles(content: firstCollectionList.wineList.compactMap({
-            switch $0 {
-            case .wine(let wine):
-              return .init(wineID: wine.id, imageURL: wine.mainImageUrl?.toURL, titleText: wine.title, subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode), rating: wine.rating, contextMenuViewModels: [])
+          sections.append(.bottles(content: firstCollectionList.wineList.compactMap({ wine in
+            .init(wineID: wine.id, imageURL: wine.mainImageUrl?.toURL, titleText: wine.title, subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode), rating: wine.rating, contextMenuViewModels: [])
 
-            case .ads: // TODO: - very legacy needs to delete
-              return nil
-            }
           })))
         }
 

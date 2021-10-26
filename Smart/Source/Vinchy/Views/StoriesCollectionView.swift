@@ -7,11 +7,12 @@
 //
 
 import Epoxy
+import VinchyCore
 
 // MARK: - StoriesCollectionViewDelegate
 
 protocol StoriesCollectionViewDelegate: AnyObject {
-  func didTapStory(id: Int)
+  func didTapStory(title: String?, shortWines: [ShortWine])
 }
 
 // MARK: - StoriesCollectionView
@@ -32,7 +33,7 @@ final class StoriesCollectionView: CollectionView, EpoxyableView {
 
   typealias Content = [StoryView.Content]
 
-  weak var bottlesCollectionViewDelegate: StoriesCollectionViewDelegate?
+  weak var storiesCollectionViewDelegate: StoriesCollectionViewDelegate?
 
   func setContent(_ content: Content, animated: Bool) {
 
@@ -43,7 +44,7 @@ final class StoriesCollectionView: CollectionView, EpoxyableView {
           content: storyViewViewModel,
           style: .init())
           .didSelect { [weak self] _ in
-//            self?.storiesCollectionViewDelegate?.didTap(wineID: storyViewViewModel.id)
+            self?.storiesCollectionViewDelegate?.didTapStory(title: storyViewViewModel.titleText, shortWines: storyViewViewModel.wines)
           }
       }
     }
@@ -57,8 +58,6 @@ final class StoriesCollectionView: CollectionView, EpoxyableView {
   private enum SectionID {
     case storiesCollectionViewSection
   }
-
-  private var didTap: ((_ wineID: Int64) -> Void)?
 
   private var layoutSection: NSCollectionLayoutSection? {
     let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .absolute(135), heightDimension: .absolute(135)))

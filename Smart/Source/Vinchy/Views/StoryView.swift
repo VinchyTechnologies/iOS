@@ -9,16 +9,19 @@
 import Display
 import Epoxy
 import UIKit
+import VinchyCore
 
 // MARK: - StoryViewViewModel
 
 struct StoryViewViewModel: Equatable {
   fileprivate let imageURL: URL?
-  fileprivate let titleText: String?
+  let titleText: String?
+  let wines: [ShortWine]
 
-  public init(imageURL: URL?, titleText: String?) {
+  public init(imageURL: URL?, titleText: String?, wines: [ShortWine]) {
     self.imageURL = imageURL
     self.titleText = titleText
+    self.wines = wines
   }
 }
 

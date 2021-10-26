@@ -110,7 +110,7 @@ final class VinchyViewController: CollectionViewController {
             BottlesCollectionView.itemModel(
               dataID: UUID(),
               content: content,
-              style: .init())
+              style: .init(offset: .small))
               .setBehaviors({ [weak self] context in
                 context.view.bottlesCollectionViewDelegate = self
               })
@@ -139,6 +139,9 @@ final class VinchyViewController: CollectionViewController {
               dataID: UUID(),
               content: content,
               style: .init())
+              .setBehaviors { [weak self] context in
+                context.view.storiesCollectionViewDelegate = self
+              }
           }
           .flowLayoutItemSize(.init(width: width, height: height))
           .flowLayoutSectionInset(.init(top: 0, left: C.horizontalInset, bottom: 8, right: C.horizontalInset))
@@ -167,7 +170,7 @@ final class VinchyViewController: CollectionViewController {
               content: content,
               style: style)
               .setBehaviors { [weak self] context in
-                context.view.
+                context.view.storiesCollectionViewDelegate = self
               }
           }
           .flowLayoutItemSize(.init(width: width, height: height))
@@ -181,6 +184,9 @@ final class VinchyViewController: CollectionViewController {
               dataID: UUID(),
               content: content,
               style: .init())
+              .setBehaviors { [weak self] context in
+                context.view.delegate = self
+              }
           }
           .flowLayoutItemSize(.init(width: width, height: height))
           .flowLayoutSectionInset(.init(top: 16, left: C.horizontalInset, bottom: 8, right: C.horizontalInset))
@@ -313,6 +319,14 @@ extension VinchyViewController: BottlesCollectionViewDelegate {
 extension VinchyViewController: StoreTitleCollectionCellDelegate {
   func didTapSeeAllStore(affilatedId: Int) {
     interactor?.didTapSeeStore(affilatedId: affilatedId)
+  }
+}
+
+// MARK: StoriesCollectionViewDelegate
+
+extension VinchyViewController: StoriesCollectionViewDelegate {
+  func didTapStory(title: String?, shortWines: [ShortWine]) {
+    interactor?.didTapCompilationCell(input: .init(title: title, mode: .normal(wines: shortWines)))
   }
 }
 

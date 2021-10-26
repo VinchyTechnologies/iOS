@@ -8,6 +8,7 @@
 
 import Display
 import Epoxy
+import VinchyCore
 
 // MARK: - BigCollectionView
 
@@ -37,6 +38,8 @@ final class BigCollectionView: CollectionView, EpoxyableView {
 
   typealias Content = [MainSubtitleView.Content]
 
+  weak var storiesCollectionViewDelegate: StoriesCollectionViewDelegate?
+
   static func height(for style: Style) -> CGFloat {
     switch style.kind {
     case .big:
@@ -46,8 +49,6 @@ final class BigCollectionView: CollectionView, EpoxyableView {
       return 120
     }
   }
-
-  weak var storiesCollectionViewDelegate: StoriesCollectionViewDelegate?
 
   func setContent(_ content: Content, animated: Bool) {
 
@@ -60,7 +61,7 @@ final class BigCollectionView: CollectionView, EpoxyableView {
             content: storyViewViewModel,
             style: .init(kind: .big))
             .didSelect { [weak self] _ in
-              //            self?.storiesCollectionViewDelegate?.didTap(wineID: storyViewViewModel.id)
+              self?.storiesCollectionViewDelegate?.didTapStory(title: storyViewViewModel.subtitleText, shortWines: storyViewViewModel.wines)
             }
 
         case .promo:
@@ -69,7 +70,7 @@ final class BigCollectionView: CollectionView, EpoxyableView {
             content: storyViewViewModel,
             style: .init(kind: .promo))
             .didSelect { [weak self] _ in
-              //            self?.storiesCollectionViewDelegate?.didTap(wineID: storyViewViewModel.id)
+              self?.storiesCollectionViewDelegate?.didTapStory(title: storyViewViewModel.subtitleText, shortWines: storyViewViewModel.wines)
             }
         }
       }
@@ -86,8 +87,6 @@ final class BigCollectionView: CollectionView, EpoxyableView {
   }
 
   private let style: Style
-
-  private var didTap: ((_ wineID: Int64) -> Void)?
 
   private var layoutSection: NSCollectionLayoutSection? {
 
@@ -116,12 +115,14 @@ final class BigCollectionView: CollectionView, EpoxyableView {
 // MARK: - MainSubtitleViewViewModel
 
 struct MainSubtitleViewViewModel: Equatable {
-  fileprivate let subtitleText: String?
+  let subtitleText: String?
   fileprivate let imageURL: URL?
+  let wines: [ShortWine]
 
-  public init(subtitleText: String?, imageURL: URL?) {
+  public init(subtitleText: String?, imageURL: URL?, wines: [ShortWine]) {
     self.subtitleText = subtitleText
     self.imageURL = imageURL
+    self.wines = wines
   }
 }
 
