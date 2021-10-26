@@ -105,7 +105,21 @@ final class VinchyViewController: CollectionViewController {
       }
 
     case .normal(let sections):
-      return []
+      return sections.compactMap { section in
+        switch section {
+        case .bottles(let content):
+          let width: CGFloat = view.frame.width
+          let height: CGFloat = 250
+          return SectionModel(dataID: UUID()) {
+            BottlesCollectionView.itemModel(
+              dataID: UUID(),
+              content: content,
+              style: .init())
+          }
+          .flowLayoutItemSize(.init(width: width, height: height))
+          .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 8, right: 24))
+        }
+      }
     }
   }
 

@@ -61,8 +61,6 @@ final class FakeVinchyCollectionCell: UIView, EpoxyableView {
 
   typealias Content = FakeVinchyCollectionCellViewModel
 
-  private let style: Style
-
   static func height(viewModel: FakeVinchyCollectionCellViewModel?) -> CGFloat {
     guard let type = viewModel?.type else {
       return 0
@@ -88,6 +86,8 @@ final class FakeVinchyCollectionCell: UIView, EpoxyableView {
   }
 
   // MARK: Private
+
+  private let style: Style
 
   private lazy var collectionView: UICollectionView = {
     let layout = UICollectionViewFlowLayout()

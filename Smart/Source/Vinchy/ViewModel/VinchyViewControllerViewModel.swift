@@ -24,14 +24,14 @@ struct VinchyViewControllerViewModel {
   }
 
   enum Section {
-    case title([TextCollectionCellViewModel])
-    case stories([SimpleContinuousCaruselCollectionCellViewModel])
-    case promo([SimpleContinuousCaruselCollectionCellViewModel])
-    case big([SimpleContinuousCaruselCollectionCellViewModel])
-    case bottles([SimpleContinuousCaruselCollectionCellViewModel])
-    case shareUs([ShareUsCollectionCellViewModel])
-    case smartFilter([SmartFilterCollectionCellViewModel])
-    case storeTitle([StoreTitleCollectionCellViewModel])
+//    case title([TextCollectionCellViewModel])
+//    case stories([SimpleContinuousCaruselCollectionCellViewModel])
+//    case promo([SimpleContinuousCaruselCollectionCellViewModel])
+//    case big([SimpleContinuousCaruselCollectionCellViewModel])
+    case bottles(content: [WineBottleView.Content])
+//    case shareUs([ShareUsCollectionCellViewModel])
+//    case smartFilter([SmartFilterCollectionCellViewModel])
+//    case storeTitle([StoreTitleCollectionCellViewModel])
   }
 
   enum FakeSection {
