@@ -65,35 +65,36 @@ extension VinchyPresenter: VinchyPresenterProtocol {
 
   func update(compilations: [Compilation], nearestPartners: [NearestPartner], city: String?, isLocationPermissionDenied: Bool) {
 
-    var compilations = compilations
+    var sections: [VinchyViewControllerViewModel.Section] = []
 
-    nearestPartners.reversed().forEach { nearestPartner in
-      let winesList = nearestPartner.recommendedWines.compactMap({ CollectionItem.wine(wine: $0) })
-      let compilation = Compilation(id: nearestPartner.partner.affiliatedStoreId, type: .partnerBottles, imageURL: nearestPartner.partner.logoURL, title: nearestPartner.partner.title, collectionList: [Collection(wineList: winesList)])
-      compilations.insert(compilation, at: 1)
+    if let storiesCompilation = compilations.first(where: {
+      $0.type == .mini && ($0.title == nil || $0.title == "")
+    }) {
+      sections.append(.stories(content: storiesCompilation.collectionList.compactMap({ collection in
+        .init(imageURL: collection.imageURL?.toURL, titleText: collection.title)
+      })))
     }
 
-    var didAddTitleAllStores = false
+    // TODO: - Nearest Stores
 
-    var sections: [VinchyViewControllerViewModel.Section] = []
+    nearestPartners.forEach { nearestPartner in
+      sections.append(.storeTitle(content: .init(affilatedId: nearestPartner.partner.affiliatedStoreId, imageURL: nearestPartner.partner.logoURL, titleText: nearestPartner.partner.title, subtitleText: "", moreText: localized("more").firstLetterUppercased())))
+
+      sections.append(.bottles(content: nearestPartner.recommendedWines.compactMap({
+        .init(wineID: $0.id, imageURL: $0.mainImageUrl?.toURL, titleText: $0.title, subtitleText: countryNameFromLocaleCode(countryCode: $0.winery?.countryCode), rating: $0.rating, contextMenuViewModels: [])
+      })))
+    }
 
     for compilation in compilations {
       switch compilation.type {
-//      case .mini:
-//        if let title = compilation.title {
-//          sections.append(.title([
-//            .init(titleText: NSAttributedString(
-//              string: title,
-//              font: Font.heavy(20),
-//              textColor: .dark)),
-//          ]))
-//        }
-//        sections.append(.stories([
-//          .init(
-//            type: compilation.type,
-//            collections: compilation.collectionList),
-//        ]))
-//
+      case .mini:
+        if let title = compilation.title {
+          sections.append(.title(title))
+          sections.append(.stories(content: compilation.collectionList.compactMap({ collection in
+            .init(imageURL: collection.imageURL?.toURL, titleText: collection.title)
+          })))
+        }
+
 //      case .big:
 //        if let title = compilation.title {
 //          sections.append(.title([
@@ -127,22 +128,11 @@ extension VinchyPresenter: VinchyPresenterProtocol {
       case .bottles:
         if
           compilation.collectionList.first?.wineList != nil,
-          let firstCollectionList = compilation.collectionList.first, !firstCollectionList.wineList.isEmpty
-        {
-//          if let title = compilation.title {
-//            sections.append(.title([
-//              .init(titleText: NSAttributedString(
-//                string: title,
-//                font: Font.heavy(20),
-//                textColor: .dark)),
-//            ]))
-//          }
-
-//          sections.append(.bottles([
-//            .init(
-//              type: compilation.type,
-//              collections: compilation.collectionList),
-//          ]))
+          let firstCollectionList = compilation.collectionList.first,
+          !firstCollectionList.wineList.isEmpty {
+          if let title = compilation.title {
+            sections.append(.title(title))
+          }
 
           sections.append(.bottles(content: firstCollectionList.wineList.compactMap({
             switch $0 {
@@ -157,7 +147,6 @@ extension VinchyPresenter: VinchyPresenterProtocol {
 
       default:
         break
-
 
 //      case .partnerBottles:
 //        if

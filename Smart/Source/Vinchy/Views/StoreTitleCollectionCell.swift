@@ -7,7 +7,8 @@
 //
 
 import Display
-import UIKit
+import Epoxy
+
 
 // MARK: - StoreTitleCollectionCellDelegate
 
@@ -15,9 +16,9 @@ protocol StoreTitleCollectionCellDelegate: AnyObject {
   func didTapSeeAllStore(affilatedId: Int)
 }
 
-// MARK: - StoreTitleCollectionCellViewModel
+// MARK: - StoreTitleViewViewModel
 
-struct StoreTitleCollectionCellViewModel: ViewModelProtocol {
+struct StoreTitleViewViewModel: Equatable {
 
   let affilatedId: Int?
   fileprivate let imageURL: String?
@@ -40,45 +41,51 @@ struct StoreTitleCollectionCellViewModel: ViewModelProtocol {
   }
 }
 
-// MARK: - StoreTitleCollectionCell
+// MARK: - StoreTitleView
 
-final class StoreTitleCollectionCell: UICollectionViewCell, Reusable {
+final class StoreTitleView: UIView, EpoxyableView {
 
   // MARK: Lifecycle
 
-  override init(frame: CGRect) {
-    super.init(frame: frame)
+  init(style: Style) {
+    self.style = style
+    super.init(frame: .zero)
 
     moreButton.titleLabel?.font = Font.medium(16)
     moreButton.setTitleColor(.accent, for: .normal)
     moreButton.addTarget(self, action: #selector(didTapSeeAllButton(_:)), for: .touchUpInside)
 
-    contentView.addSubview(moreButton)
+    addSubview(moreButton)
     moreButton.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      moreButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
-      moreButton.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+      moreButton.trailingAnchor.constraint(equalTo: trailingAnchor),
+      moreButton.centerYAnchor.constraint(equalTo: centerYAnchor),
     ])
 
-    contentView.addSubview(hStackView)
+    addSubview(hStackView)
     hStackView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      hStackView.topAnchor.constraint(equalTo: contentView.topAnchor),
-      hStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-      hStackView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
+      hStackView.topAnchor.constraint(equalTo: topAnchor),
+      hStackView.leadingAnchor.constraint(equalTo: leadingAnchor),
+      hStackView.bottomAnchor.constraint(equalTo: bottomAnchor),
       hStackView.trailingAnchor.constraint(lessThanOrEqualTo: moreButton.leadingAnchor, constant: -8),
     ])
   }
-
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
   // MARK: Internal
 
+  struct Style: Hashable {
+
+  }
+
+  typealias Content = StoreTitleViewViewModel
+
   weak var delegate: StoreTitleCollectionCellDelegate?
 
-  static func height(viewModel: ViewModel?, for width: CGFloat) -> CGFloat {
+  static func height(viewModel: Content?, for width: CGFloat) -> CGFloat {
 
     guard let viewModel = viewModel else {
       return 0
@@ -92,7 +99,19 @@ final class StoreTitleCollectionCell: UICollectionViewCell, Reusable {
     return max(48, height)
   }
 
+
+  func setContent(_ content: Content, animated: Bool) {
+    affilatedId = content.affilatedId
+    imageView.loadImage(url: content.imageURL?.toURL)
+    imageView.isHidden = content.imageURL == nil
+    titleLabel.text = content.titleText
+//    subtitleLabel.text = content.subtitleText
+    moreButton.setTitle(content.moreText, for: [])
+  }
+
   // MARK: Private
+
+  private let style: Style
 
   private var affilatedId: Int?
 
@@ -157,21 +176,5 @@ final class StoreTitleCollectionCell: UICollectionViewCell, Reusable {
     if let affilatedId = affilatedId {
       delegate?.didTapSeeAllStore(affilatedId: affilatedId)
     }
-  }
-}
-
-// MARK: Decoratable
-
-extension StoreTitleCollectionCell: Decoratable {
-
-  typealias ViewModel = StoreTitleCollectionCellViewModel
-
-  func decorate(model: ViewModel) {
-    affilatedId = model.affilatedId
-    imageView.loadImage(url: model.imageURL?.toURL)
-    imageView.isHidden = model.imageURL == nil
-    titleLabel.text = model.titleText
-//    subtitleLabel.text = model.subtitleText
-    moreButton.setTitle(model.moreText, for: [])
   }
 }

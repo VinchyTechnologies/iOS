@@ -100,7 +100,7 @@ final class VinchyViewController: CollectionViewController {
               style: .init())
           }
           .flowLayoutItemSize(.init(width: width, height: height))
-          .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 8, right: 24))
+          .flowLayoutSectionInset(.init(top: 0, left: C.horizontalInset, bottom: 8, right: C.horizontalInset))
         }
       }
 
@@ -115,9 +115,49 @@ final class VinchyViewController: CollectionViewController {
               dataID: UUID(),
               content: content,
               style: .init())
+              .setBehaviors({ [weak self] context in
+                context.view.bottlesCollectionViewDelegate = self
+              })
           }
           .flowLayoutItemSize(.init(width: width, height: height))
-          .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 8, right: 24))
+          .flowLayoutSectionInset(.init(top: 0, left: C.horizontalInset, bottom: 8, right: C.horizontalInset))
+
+        case .title(let content):
+          let style: Label.Style = .style(with: TextStyle.lagerTitle)
+          let width: CGFloat = view.frame.width - C.horizontalInset * 2
+          let height: CGFloat = Label.height(for: content, width: width, style: style)
+          return SectionModel(dataID: UUID()) {
+            Label.itemModel(
+              dataID: UUID(),
+              content: content,
+              style: style)
+          }
+          .flowLayoutItemSize(.init(width: width, height: height))
+          .flowLayoutSectionInset(.init(top: 0, left: C.horizontalInset, bottom: 8, right: C.horizontalInset))
+
+        case .stories(let content):
+          let width: CGFloat = view.frame.width
+          let height: CGFloat = 135
+          return SectionModel(dataID: UUID()) {
+            StoriesCollectionView.itemModel(
+              dataID: UUID(),
+              content: content,
+              style: .init())
+          }
+          .flowLayoutItemSize(.init(width: width, height: height))
+          .flowLayoutSectionInset(.init(top: 0, left: C.horizontalInset, bottom: 8, right: C.horizontalInset))
+
+        case .storeTitle(let content):
+          let width: CGFloat = view.frame.width - 2 * C.horizontalInset
+          let height: CGFloat = StoreTitleView.height(viewModel: content, for: width)
+          return SectionModel(dataID: UUID()) {
+            StoreTitleView.itemModel(
+              dataID: UUID(),
+              content: content,
+              style: .init())
+          }
+          .flowLayoutItemSize(.init(width: width, height: height))
+          .flowLayoutSectionInset(.init(top: 0, left: C.horizontalInset, bottom: 8, right: C.horizontalInset))
         }
       }
     }
@@ -391,14 +431,28 @@ extension VinchyViewController: ShareUsCollectionCellDelegate {
   }
 }
 
-// MARK: SimpleContinuosCarouselCollectionCellInteractorDelegate
+// MARK: BottlesCollectionViewDelegate
 
-extension VinchyViewController: SimpleContinuosCarouselCollectionCellInteractorDelegate {
-  func didTapCompilationCell(input: ShowcaseInput) {
-    interactor?.didTapCompilationCell(input: input)
+//extension VinchyViewController: SimpleContinuosCarouselCollectionCellInteractorDelegate {
+//  func didTapCompilationCell(input: ShowcaseInput) {
+//    interactor?.didTapCompilationCell(input: input)
+//  }
+//
+//  func didTapBottleCell(wineID: Int64) {
+//    interactor?.didTapBottleCell(wineID: wineID)
+//  }
+//}
+
+extension VinchyViewController: BottlesCollectionViewDelegate {
+  func didTapShareContextMenu(wineID: Int64, sourceView: UIView) {
+
   }
 
-  func didTapBottleCell(wineID: Int64) {
+  func didTapWriteNoteContextMenu(wineID: Int64) {
+
+  }
+
+  func didTap(wineID: Int64) {
     interactor?.didTapBottleCell(wineID: wineID)
   }
 }

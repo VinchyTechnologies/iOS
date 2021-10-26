@@ -155,6 +155,7 @@
 		8A313C1626468678009F2165 /* WorkingHoursCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313C1526468678009F2165 /* WorkingHoursCollectionCell.swift */; };
 		8A446CDF2660123B000A1769 /* RoutingToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A446CDE2660123B000A1769 /* RoutingToolBar.swift */; };
 		8A4749AF2728271E0091B493 /* StoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4749AE2728271E0091B493 /* StoryView.swift */; };
+		8A4749B1272832700091B493 /* StoriesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4749B0272832700091B493 /* StoriesCollectionView.swift */; };
 		8A4ACBBA26CAB8CC0021215E /* AdvancedSearchOutputDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4ACBB926CAB8CC0021215E /* AdvancedSearchOutputDelegate.swift */; };
 		8A4ACBBC26CAB9490021215E /* AdvancedSearchNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4ACBBB26CAB9490021215E /* AdvancedSearchNavigationController.swift */; };
 		8A53D42926C0531A001D9535 /* ReviewsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A53D42826C0531A001D9535 /* ReviewsCollectionView.swift */; };
@@ -599,6 +600,7 @@
 		8A313C1526468678009F2165 /* WorkingHoursCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingHoursCollectionCell.swift; sourceTree = "<group>"; };
 		8A446CDE2660123B000A1769 /* RoutingToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingToolBar.swift; sourceTree = "<group>"; };
 		8A4749AE2728271E0091B493 /* StoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryView.swift; sourceTree = "<group>"; };
+		8A4749B0272832700091B493 /* StoriesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesCollectionView.swift; sourceTree = "<group>"; };
 		8A4ACBB926CAB8CC0021215E /* AdvancedSearchOutputDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSearchOutputDelegate.swift; sourceTree = "<group>"; };
 		8A4ACBBB26CAB9490021215E /* AdvancedSearchNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSearchNavigationController.swift; sourceTree = "<group>"; };
 		8A53D42826C0531A001D9535 /* ReviewsCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsCollectionView.swift; sourceTree = "<group>"; };
@@ -2618,6 +2620,7 @@
 				CA7B835A24EED6E600991F24 /* StoryCollectionCell.swift */,
 				8A10F65A27074F3A003463B0 /* DiscoveryLeadingAddressButton.swift */,
 				8A4749AE2728271E0091B493 /* StoryView.swift */,
+				8A4749B0272832700091B493 /* StoriesCollectionView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3426,6 +3429,7 @@
 				CE58DEDF25ED73E200B5BDF9 /* CurrencyViewControllerProtocol.swift in Sources */,
 				CA7B838924F451FA00991F24 /* WineDetailViewController.swift in Sources */,
 				8A0794DB26936141000ACA2B /* StoreRouter.swift in Sources */,
+				8A4749B1272832700091B493 /* StoriesCollectionView.swift in Sources */,
 				8AE7880B2684E8D60056A84B /* NotesViewModel.swift in Sources */,
 				440C284725E13F9D009911EE /* WineDetailCollectionView.swift in Sources */,
 				8A916024268CE66C00240B18 /* AreYouInStoreAssembly.swift in Sources */,
