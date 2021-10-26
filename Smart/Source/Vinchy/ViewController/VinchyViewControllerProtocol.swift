@@ -9,7 +9,7 @@
 import Display
 import VinchyCore
 
-protocol VinchyViewControllerProtocol: Loadable, Alertable, ScrollableToTop {
+protocol VinchyViewControllerProtocol: Alertable, ScrollableToTop {
   func updateUI(viewModel: VinchyViewControllerViewModel)
   func stopPullRefreshing()
 }

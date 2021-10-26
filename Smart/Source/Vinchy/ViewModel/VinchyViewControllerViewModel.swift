@@ -9,6 +9,15 @@
 import CommonUI
 
 struct VinchyViewControllerViewModel {
+
+  enum SectionID: Hashable {
+    case fakemini, faketitle
+  }
+
+  enum FakeItemID: String, Hashable {
+    case mini, title
+  }
+
   enum State {
     case fake(sections: [FakeSection])
     case normal(sections: [Section])
@@ -26,11 +35,13 @@ struct VinchyViewControllerViewModel {
   }
 
   enum FakeSection {
-    case stories(FakeVinchyCollectionCellViewModel)
-    case promo(FakeVinchyCollectionCellViewModel)
-    case title(FakeVinchyCollectionCellViewModel)
-    case big(FakeVinchyCollectionCellViewModel)
+    case stories(itemID: FakeItemID, content: FakeVinchyCollectionCellViewModel)
+    case promo(itemID: FakeItemID, content: FakeVinchyCollectionCellViewModel)
+    case title(itemID: FakeItemID, content: FakeVinchyCollectionCellViewModel)
+    case big(itemID: FakeItemID, content: FakeVinchyCollectionCellViewModel)
   }
+
+  static let empty: Self = .init(state: .fake(sections: []), leadingAddressButtonViewModel: .loading(text: nil))
 
   let state: State
   let leadingAddressButtonViewModel: DiscoveryLeadingAddressButtonMode

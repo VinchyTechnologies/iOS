@@ -50,28 +50,20 @@ extension VinchyPresenter: VinchyPresenterProtocol {
     viewController?.updateUI(
       viewModel: VinchyViewControllerViewModel(
         state: .fake(sections: [
-          .stories(.init(type: .stories(count: 10))),
-          .title(.init(type: .title(count: 1))),
-          .promo(.init(type: .promo(count: 10))),
-          .title(.init(type: .title(count: 1))),
-          .promo(.init(type: .big(count: 10))),
-          .title(.init(type: .title(count: 1))),
-          .promo(.init(type: .big(count: 10))),
-          .title(.init(type: .title(count: 1))),
-          .promo(.init(type: .big(count: 10))),
-          .title(.init(type: .title(count: 1))),
-          .promo(.init(type: .big(count: 10))),
+          .stories(itemID: .mini, content: .init(type: .stories(count: 10))),
+          .title(itemID: .title, content: .init(type: .title(count: 1))),
+          .promo(itemID: .mini, content: .init(type: .promo(count: 10))),
+          .title(itemID: .title, content: .init(type: .title(count: 1))),
+          .big(itemID: .mini, content: .init(type: .big(count: 10))),
+          .title(itemID: .title, content: .init(type: .title(count: 1))),
+          .promo(itemID: .mini, content: .init(type: .promo(count: 10))),
+          .title(itemID: .title, content: .init(type: .title(count: 1))),
+          .big(itemID: .mini, content: .init(type: .big(count: 10))),
         ]),
         leadingAddressButtonViewModel: .loading(text: localized("loading").firstLetterUppercased())))
   }
 
-  func startLoading() {
-    viewController?.addLoader()
-    viewController?.startLoadingAnimation()
-  }
-
   func update(compilations: [Compilation], nearestPartners: [NearestPartner], city: String?, isLocationPermissionDenied: Bool) {
-    viewController?.stopLoadingAnimation()
 
     var compilations = compilations
 

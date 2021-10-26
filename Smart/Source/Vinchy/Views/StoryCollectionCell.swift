@@ -40,6 +40,7 @@ final class StoryCollectionCell: HighlightCollectionCell, Reusable {
 
     imageView.contentMode = .scaleAspectFill
     addSubview(imageView)
+    imageView.fill()
 
     titleLabel.font = Font.bold(16)
     titleLabel.textColor = .white
@@ -62,13 +63,6 @@ final class StoryCollectionCell: HighlightCollectionCell, Reusable {
       gradientView.trailingAnchor.constraint(equalTo: trailingAnchor),
       gradientView.bottomAnchor.constraint(equalTo: bottomAnchor),
     ])
-  }
-
-  // MARK: Internal
-
-  override func layoutSubviews() {
-    super.layoutSubviews()
-    imageView.frame = bounds
   }
 
   // MARK: Private

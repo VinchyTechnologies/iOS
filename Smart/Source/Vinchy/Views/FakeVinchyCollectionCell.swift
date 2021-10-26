@@ -7,11 +7,12 @@
 //
 
 import Display
+import Epoxy
 import UIKit
 
 // MARK: - FakeVinchyCollectionCellType
 
-enum FakeVinchyCollectionCellType {
+enum FakeVinchyCollectionCellType: Equatable {
   case stories(count: Int)
   case promo(count: Int)
   case title(count: Int)
@@ -20,7 +21,8 @@ enum FakeVinchyCollectionCellType {
 
 // MARK: - FakeVinchyCollectionCellViewModel
 
-struct FakeVinchyCollectionCellViewModel: ViewModelProtocol {
+struct FakeVinchyCollectionCellViewModel: Equatable {
+
   fileprivate let type: FakeVinchyCollectionCellType
 
   public init(type: FakeVinchyCollectionCellType) {
@@ -30,13 +32,16 @@ struct FakeVinchyCollectionCellViewModel: ViewModelProtocol {
 
 // MARK: - FakeVinchyCollectionCell
 
-final class FakeVinchyCollectionCell: UICollectionViewCell, Reusable {
+final class FakeVinchyCollectionCell: UIView, EpoxyableView {
 
   // MARK: Lifecycle
 
-  override init(frame: CGRect) {
-    super.init(frame: frame)
+  init(style: Style) {
+    self.style = style
+    super.init(frame: .zero)
+
     addSubview(collectionView)
+    collectionView.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
       collectionView.leadingAnchor.constraint(equalTo: leadingAnchor),
       collectionView.trailingAnchor.constraint(equalTo: trailingAnchor),
@@ -45,10 +50,18 @@ final class FakeVinchyCollectionCell: UICollectionViewCell, Reusable {
     ])
   }
 
-  @available(*, unavailable)
-  required init?(coder _: NSCoder) { fatalError() }
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
 
   // MARK: Internal
+
+  struct Style: Hashable {
+  }
+
+  typealias Content = FakeVinchyCollectionCellViewModel
+
+  private let style: Style
 
   static func height(viewModel: FakeVinchyCollectionCellViewModel?) -> CGFloat {
     guard let type = viewModel?.type else {
@@ -66,8 +79,12 @@ final class FakeVinchyCollectionCell: UICollectionViewCell, Reusable {
       return 25
 
     case .big:
-      return 250
+      return 150
     }
+  }
+
+  func setContent(_ content: Content, animated: Bool) {
+    type = content.type
   }
 
   // MARK: Private
@@ -150,15 +167,5 @@ extension FakeVinchyCollectionCell: UICollectionViewDelegateFlowLayout {
     case .big:
       return .init(width: UIScreen.main.bounds.width - 100, height: collectionView.frame.height)
     }
-  }
-}
-
-// MARK: Decoratable
-
-extension FakeVinchyCollectionCell: Decoratable {
-  typealias ViewModel = FakeVinchyCollectionCellViewModel
-
-  func decorate(model: ViewModel) {
-    type = model.type
   }
 }
