@@ -8,7 +8,7 @@
 
 // MARK: - PartnerInfo
 
-public struct PartnerInfo: Decodable {
+public struct PartnerInfo: Decodable, Equatable {
 
   // MARK: Public
 
@@ -22,6 +22,11 @@ public struct PartnerInfo: Decodable {
   public let scheduleOfWork: String?
   public let address: String?
   public let logoURL: String?
+
+
+  public static func == (lhs: PartnerInfo, rhs: PartnerInfo) -> Bool {
+    lhs.affiliatedStoreId == rhs.affiliatedStoreId
+  }
 
   // MARK: Private
 

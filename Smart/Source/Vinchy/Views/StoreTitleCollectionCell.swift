@@ -40,6 +40,13 @@ struct StoreTitleViewViewModel: Equatable {
   }
 }
 
+// MARK: - C
+
+fileprivate enum C {
+  static let subtitleFont = Font.medium(14)
+  static let vSpacing: CGFloat = 0
+}
+
 // MARK: - StoreTitleView
 
 final class StoreTitleView: UIView, EpoxyableView {
@@ -92,19 +99,23 @@ final class StoreTitleView: UIView, EpoxyableView {
 
     let width = width - (viewModel.imageURL == nil ? 0 : 48 + 8) - (viewModel.moreText?.width(usingFont: Font.medium(16)) ?? 0) + 8
     var height = viewModel.titleText?.height(forWidth: width, font: Font.heavy(20), numberOfLines: 0) ?? 0
-//    let vSpace: CGFloat = 4
-//    let subtitleHeight = viewModel.titleText?.height(forWidth: width, font: Font.regular(16), numberOfLines: 0) ?? 0
-//    height += vSpace + subtitleHeight
+    
+    if viewModel.subtitleText != nil && viewModel.subtitleText != "" {
+      let vSpace: CGFloat = C.vSpacing
+      let subtitleHeight = viewModel.titleText?.height(forWidth: width, font: C.subtitleFont, numberOfLines: 0) ?? 0
+      height += vSpace + subtitleHeight
+    }
+    
     return max(48, height)
   }
-
 
   func setContent(_ content: Content, animated: Bool) {
     affilatedId = content.affilatedId
     imageView.loadImage(url: content.imageURL?.toURL)
     imageView.isHidden = content.imageURL == nil
     titleLabel.text = content.titleText
-//    subtitleLabel.text = content.subtitleText
+    subtitleLabel.text = content.subtitleText
+    subtitleLabel.isHidden = content.subtitleText == nil || content.subtitleText == ""
     moreButton.setTitle(content.moreText, for: [])
   }
 
@@ -116,9 +127,9 @@ final class StoreTitleView: UIView, EpoxyableView {
 
   private lazy var vStackView: UIStackView = {
     $0.axis = .vertical
-    $0.spacing = 4
+    $0.spacing = C.vSpacing
     return $0
-  }(UIStackView(arrangedSubviews: [titleLabel /*subtitleLabel*/]))
+  }(UIStackView(arrangedSubviews: [titleLabel, subtitleLabel]))
 
   private lazy var hStackView: UIStackView = {
     $0.axis = .horizontal
@@ -135,7 +146,7 @@ final class StoreTitleView: UIView, EpoxyableView {
   }(UILabel())
 
   private let subtitleLabel: UILabel = {
-    $0.font = Font.regular(14)
+    $0.font = C.subtitleFont
     $0.numberOfLines = 0
     $0.textColor = .blueGray
     $0.setContentCompressionResistancePriority(.required, for: .horizontal)
@@ -150,8 +161,6 @@ final class StoreTitleView: UIView, EpoxyableView {
     ])
     $0.layer.cornerRadius = 24
     $0.clipsToBounds = true
-    $0.layer.borderColor = UIColor.option.cgColor
-    $0.layer.borderWidth = 1 / UIScreen.main.scale
     return $0
   }(UIImageView())
 

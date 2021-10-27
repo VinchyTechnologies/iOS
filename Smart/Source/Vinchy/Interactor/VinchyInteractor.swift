@@ -148,7 +148,8 @@ final class VinchyInteractor {
             compilations: compilations,
             nearestPartners: nearestPartners,
             city: city,
-            isLocationPermissionDenied: false)
+            isLocationPermissionDenied: false,
+            userLocation: userLocation)
         }
       } else {
         if UserDefaultsConfig.userLatitude != 0 && UserDefaultsConfig.userLongtitude != 0 {
@@ -159,14 +160,16 @@ final class VinchyInteractor {
               compilations: compilations,
               nearestPartners: nearestPartners,
               city: city,
-              isLocationPermissionDenied: false)
+              isLocationPermissionDenied: false,
+              userLocation: CLLocationCoordinate2D(latitude: UserDefaultsConfig.userLatitude, longitude: UserDefaultsConfig.userLongtitude))
           }
         } else {
           self.presenter.update(
             compilations: compilations,
             nearestPartners: nearestPartners,
             city: nil,
-            isLocationPermissionDenied: true)
+            isLocationPermissionDenied: true,
+            userLocation: nil)
         }
       }
 

@@ -137,7 +137,7 @@ final class MainSubtitleView: UIView, EpoxyableView {
     super.init(frame: .zero)
     imageView.translatesAutoresizingMaskIntoConstraints = false
     imageView.backgroundColor = .option
-    imageView.contentMode = .scaleAspectFill
+    imageView.contentMode = .scaleToFill
     imageView.layer.cornerRadius = 15
     imageView.clipsToBounds = true
 

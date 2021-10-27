@@ -38,6 +38,7 @@ final class VinchyViewController: CollectionViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
+    view.backgroundColor = .mainBackground
     navigationItem.largeTitleDisplayMode = .never
 
     filterButton.translatesAutoresizingMaskIntoConstraints = false
@@ -60,6 +61,7 @@ final class VinchyViewController: CollectionViewController {
     collectionView.delaysContentTouches = false
     collectionView.keyboardDismissMode = .onDrag
 
+    collectionView.backgroundColor = .mainBackground
     interactor?.viewDidLoad()
   }
   override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -129,7 +131,7 @@ final class VinchyViewController: CollectionViewController {
               style: style)
           }
           .flowLayoutItemSize(.init(width: width, height: height))
-          .flowLayoutSectionInset(.init(top: 8, left: C.horizontalInset, bottom: 8, right: C.horizontalInset))
+          .flowLayoutSectionInset(.init(top: 16, left: C.horizontalInset, bottom: 8, right: C.horizontalInset))
 
         case .stories(let content):
           let width: CGFloat = view.frame.width
@@ -159,7 +161,7 @@ final class VinchyViewController: CollectionViewController {
               }
           }
           .flowLayoutItemSize(.init(width: width, height: height))
-          .flowLayoutSectionInset(.init(top: 0, left: C.horizontalInset, bottom: 8, right: C.horizontalInset))
+          .flowLayoutSectionInset(.init(top: 8, left: C.horizontalInset, bottom: 16, right: C.horizontalInset))
 
         case .commonSubtitle(let content, let style):
           let width: CGFloat = view.frame.width
