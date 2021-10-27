@@ -52,9 +52,6 @@ final class VinchyViewController: CollectionViewController {
     navigationItem.rightBarButtonItem = filterBarButtonItem
     navigationItem.searchController = searchController
 
-    refreshControl.tintColor = .dark
-    refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
-
     interactor?.viewDidLoad()
   }
 
@@ -63,8 +60,11 @@ final class VinchyViewController: CollectionViewController {
     collectionView.backgroundColor = .mainBackground
     collectionView.delaysContentTouches = false
     collectionView.keyboardDismissMode = .onDrag
-//    collectionView.refreshControl = refreshControl
     collectionView.pullToRefreshEnabled = true
+    collectionView.pullToRefreshControl.tintColor = .dark
+    collectionView.didTriggerPullToRefresh = { [weak self] _ in
+      self?.didPullToRefresh()
+    }
 
     return collectionView
   }
@@ -79,7 +79,6 @@ final class VinchyViewController: CollectionViewController {
   // MARK: Private
 
   private let filterButton = UIButton(type: .system)
-  private let refreshControl = UIRefreshControl()
 
   private lazy var searchController: SearchViewController = {
     let searchController = SearchAssembly.assemblyModule()
@@ -247,11 +246,11 @@ final class VinchyViewController: CollectionViewController {
 
       switch viewModel.state {
       case .fake:
-        collectionView.isScrollEnabled = false
+        collectionView.isUserInteractionEnabled = false
         setSections(sections, animated: true)
 
       case .normal:
-        collectionView.isScrollEnabled = true
+        collectionView.isUserInteractionEnabled = true
         setSections(sections, animated: true)
       }
     }
@@ -267,7 +266,6 @@ final class VinchyViewController: CollectionViewController {
     interactor?.didTapFilter()
   }
 
-  @objc
   private func didPullToRefresh() {
     interactor?.didPullToRefresh()
   }
@@ -282,7 +280,7 @@ extension VinchyViewController: VinchyViewControllerProtocol {
   }
 
   func stopPullRefreshing() {
-    refreshControl.endRefreshing()
+    collectionView.pullToRefreshControl.endRefreshing()
   }
 
   func updateUI(viewModel: VinchyViewControllerViewModel) {

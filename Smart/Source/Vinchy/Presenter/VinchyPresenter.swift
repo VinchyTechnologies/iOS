@@ -155,7 +155,7 @@ extension VinchyPresenter: VinchyPresenterProtocol {
         leadingAddressButtonViewModel: .loading(text: localized("loading").firstLetterUppercased())))
   }
 
-  func update(compilations: [Compilation], nearestPartners: [NearestPartner], city: String?, isLocationPermissionDenied: Bool, userLocation: CLLocationCoordinate2D?) {
+  func update(compilations: [Compilation], nearestPartners: [NearestPartner], city: String?, isLocationPermissionDenied: Bool, userLocation: CLLocationCoordinate2D?, didUsePullToRefresh: Bool) {
     getDistanceArray(userLocation: userLocation, nearestPartners: nearestPartners) { [weak self] result in
       var sections: [VinchyViewControllerViewModel.Section] = []
 
@@ -241,6 +241,9 @@ extension VinchyPresenter: VinchyPresenterProtocol {
         viewModel: VinchyViewControllerViewModel(
           state: .normal(sections: sections),
           leadingAddressButtonViewModel: isLocationPermissionDenied ? .arraw(text: localized("enter_address").firstLetterUppercased()) : .arraw(text: city)))
+      if didUsePullToRefresh {
+        self?.viewController?.stopPullRefreshing()
+      }
     }
   }
 }
