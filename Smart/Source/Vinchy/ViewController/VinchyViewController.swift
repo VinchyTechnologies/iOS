@@ -25,10 +25,7 @@ final class VinchyViewController: CollectionViewController {
   // MARK: Lifecycle
 
   init() {
-    let layout = UICollectionViewFlowLayout()
-    layout.minimumLineSpacing = 0
-    layout.scrollDirection = .vertical
-    super.init(layout: layout)
+    super.init(layout: UICollectionViewFlowLayout())
   }
 
   // MARK: Internal
@@ -57,24 +54,31 @@ final class VinchyViewController: CollectionViewController {
 
     refreshControl.tintColor = .dark
     refreshControl.addTarget(self, action: #selector(didPullToRefresh), for: .valueChanged)
-    collectionView.refreshControl = refreshControl
-    collectionView.delaysContentTouches = false
-    collectionView.keyboardDismissMode = .onDrag
 
-    collectionView.backgroundColor = .mainBackground
     interactor?.viewDidLoad()
   }
+
+  override func makeCollectionView() -> CollectionView {
+    let collectionView = super.makeCollectionView()
+    collectionView.backgroundColor = .mainBackground
+    collectionView.delaysContentTouches = false
+    collectionView.keyboardDismissMode = .onDrag
+//    collectionView.refreshControl = refreshControl
+    collectionView.pullToRefreshEnabled = true
+
+    return collectionView
+  }
+
   override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
     super.viewWillTransition(to: size, with: coordinator)
     coordinator.animate(alongsideTransition: { _ in
-      self.collectionView.collectionViewLayout.invalidateLayout()
+      self.setSections(self.sections, animated: false)
     })
   }
 
   // MARK: Private
 
   private let filterButton = UIButton(type: .system)
-
   private let refreshControl = UIRefreshControl()
 
   private lazy var searchController: SearchViewController = {
@@ -83,10 +87,11 @@ final class VinchyViewController: CollectionViewController {
     return searchController
   }()
 
+  @SectionModelBuilder
   private var sections: [SectionModel] {
     switch viewModel.state {
     case .fake(let sections):
-      return sections.compactMap { section in
+      sections.compactMap { section in
         switch section {
         case .stories(let content), .title(let content), .promo(let content), .big(let content):
           let width: CGFloat = view.frame.width
@@ -98,12 +103,12 @@ final class VinchyViewController: CollectionViewController {
               style: .init())
           }
           .flowLayoutItemSize(.init(width: width, height: height))
-          .flowLayoutSectionInset(.init(top: 0, left: C.horizontalInset, bottom: 8, right: C.horizontalInset))
+          .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 8, right: 0))
         }
       }
 
     case .normal(let sections):
-      return sections.compactMap { section in
+      sections.compactMap { section in
         switch section {
         case .bottles(let content):
           let width: CGFloat = view.frame.width
@@ -118,11 +123,11 @@ final class VinchyViewController: CollectionViewController {
               })
           }
           .flowLayoutItemSize(.init(width: width, height: height))
-          .flowLayoutSectionInset(.init(top: 0, left: C.horizontalInset, bottom: 8, right: C.horizontalInset))
+          .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 8, right: 0))
 
         case .title(let content):
           let style: Label.Style = .style(with: TextStyle.lagerTitle)
-          let width: CGFloat = view.frame.width - C.horizontalInset * 2
+          let width: CGFloat = view.frame.width - 2 * C.horizontalInset
           let height: CGFloat = Label.height(for: content, width: width, style: style)
           return SectionModel(dataID: UUID()) {
             Label.itemModel(
@@ -144,13 +149,13 @@ final class VinchyViewController: CollectionViewController {
               .setBehaviors { [weak self] context in
                 context.view.storiesCollectionViewDelegate = self
               }
+              .flowLayoutItemSize(.init(width: width, height: height))
           }
-          .flowLayoutItemSize(.init(width: width, height: height))
-          .flowLayoutSectionInset(.init(top: 0, left: C.horizontalInset, bottom: 8, right: C.horizontalInset))
+          .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 8, right: 0))
 
         case .storeTitle(let content):
           let width: CGFloat = view.frame.width - 2 * C.horizontalInset
-          let height: CGFloat = StoreTitleView.height(viewModel: content, for: width)
+          let height: CGFloat = content.height(for: width)
           return SectionModel(dataID: UUID()) {
             StoreTitleView.itemModel(
               dataID: UUID(),
@@ -159,8 +164,8 @@ final class VinchyViewController: CollectionViewController {
               .setBehaviors { [weak self] context in
                 context.view.delegate = self
               }
+              .flowLayoutItemSize(.init(width: width, height: height))
           }
-          .flowLayoutItemSize(.init(width: width, height: height))
           .flowLayoutSectionInset(.init(top: 8, left: C.horizontalInset, bottom: 16, right: C.horizontalInset))
 
         case .commonSubtitle(let content, let style):
@@ -174,9 +179,9 @@ final class VinchyViewController: CollectionViewController {
               .setBehaviors { [weak self] context in
                 context.view.storiesCollectionViewDelegate = self
               }
+              .flowLayoutItemSize(.init(width: width, height: height))
           }
-          .flowLayoutItemSize(.init(width: width, height: height))
-          .flowLayoutSectionInset(.init(top: 0, left: C.horizontalInset, bottom: 8, right: C.horizontalInset))
+          .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 8, right: 0))
 
         case .shareUs(let content):
           let width: CGFloat = view.frame.width - 2 * C.horizontalInset
@@ -189,8 +194,8 @@ final class VinchyViewController: CollectionViewController {
               .setBehaviors { [weak self] context in
                 context.view.delegate = self
               }
+              .flowLayoutItemSize(.init(width: width, height: height))
           }
-          .flowLayoutItemSize(.init(width: width, height: height))
           .flowLayoutSectionInset(.init(top: 16, left: C.horizontalInset, bottom: 8, right: C.horizontalInset))
 
         case .nearestStoreTitle(let content):
@@ -199,15 +204,15 @@ final class VinchyViewController: CollectionViewController {
             showLabelBackground: true,
             backgroundColor: .mainBackground,
             textColor: .dark)
-          let width: CGFloat = view.frame.width - C.horizontalInset * 2
+          let width: CGFloat = view.frame.width - 2 * C.horizontalInset
           let height: CGFloat = Label.height(for: content, width: width, style: style)
           return SectionModel(dataID: UUID()) {
             Label.itemModel(
               dataID: UUID(),
               content: content,
               style: style)
+              .flowLayoutItemSize(.init(width: width, height: height))
           }
-          .flowLayoutItemSize(.init(width: width, height: height))
           .flowLayoutSectionInset(.init(top: 16, left: C.horizontalInset, bottom: 16, right: C.horizontalInset))
 
         case .harmfullToYourHealthTitle(let content):
@@ -217,15 +222,15 @@ final class VinchyViewController: CollectionViewController {
             backgroundColor: .mainBackground,
             textAligment: .justified,
             textColor: .blueGray)
-          let width: CGFloat = view.frame.width - C.horizontalInset * 2
+          let width: CGFloat = view.frame.width - 2 * C.horizontalInset
           let height: CGFloat = Label.height(for: content, width: width, style: style)
           return SectionModel(dataID: UUID()) {
             Label.itemModel(
               dataID: UUID(),
               content: content,
               style: style)
+              .flowLayoutItemSize(.init(width: width, height: height))
           }
-          .flowLayoutItemSize(.init(width: width, height: height))
           .flowLayoutSectionInset(.init(top: 8, left: C.horizontalInset, bottom: 8, right: C.horizontalInset))
         }
       }

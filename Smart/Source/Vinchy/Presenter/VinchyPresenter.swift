@@ -28,7 +28,29 @@ final class VinchyPresenter {
 
   weak var viewController: VinchyViewControllerProtocol?
 
-  func getDistance(location1: CLLocation, location2: CLLocation, completion: @escaping (MKRoute?) -> Void) {
+  // MARK: Private
+
+  private enum C {
+    static let harmfulToYourHealthText = localized("harmful_to_your_health")
+  }
+
+  private func map(route: MKRoute?) -> String? {
+    guard let route = route else {
+      return nil
+    }
+    let subtitle: String = (route.distance.toDistance() ?? "")
+      + " • "
+      + (route.expectedTravelTime.toString() ?? "")
+      + " " + localized("walking")
+
+    return subtitle
+  }
+
+  private func getDistance(
+    location1: CLLocation,
+    location2: CLLocation,
+    completion: @escaping (MKRoute?) -> Void)
+  {
     let coordinates1 = location1.coordinate
     let placemark1 = MKPlacemark(coordinate: coordinates1)
     let sourceItem = MKMapItem(placemark: placemark1)
@@ -54,19 +76,16 @@ final class VinchyPresenter {
     }
   }
 
-  // MARK: Private
-
-  private enum C {
-    static let harmfulToYourHealthText = localized("harmful_to_your_health")
-  }
-
-  private func getDistanceArray(userLocation: CLLocationCoordinate2D?, nearestPartners: [NearestPartner], completion: @escaping ([(NearestPartner, String?)]) -> Void) {
-
+  private func getDistanceArray(
+    userLocation: CLLocationCoordinate2D?,
+    nearestPartners: [NearestPartner],
+    completion: @escaping ([(NearestPartner, String?)]) -> Void)
+  {
     if let userLocation = userLocation
     {
       let uLocation = CLLocation(latitude: userLocation.latitude, longitude: userLocation.longitude)
       let group = DispatchGroup()
-      var distanceArray: [(NearestPartner, String?)] = []
+      var distanceArray: [(NearestPartner, MKRoute?)] = []
 
       for partner in nearestPartners {
 
@@ -74,13 +93,7 @@ final class VinchyPresenter {
           let storeLocation = CLLocation(latitude: lat, longitude: lon)
           group.enter()
           getDistance(location1: storeLocation, location2: uLocation) { route in
-
-            let subtitle: String = (route?.distance.toDistance() ?? "")
-              + " • "
-              + (route?.expectedTravelTime.toString() ?? "")
-              + " " + localized("walking")
-
-            distanceArray.append((partner, subtitle))
+            distanceArray.append((partner, route))
             group.leave()
           }
         } else {
@@ -89,7 +102,16 @@ final class VinchyPresenter {
         }
       }
 
-      group.notify(queue: .main) {
+      group.notify(queue: .main) { [weak self] in
+        let distanceArray = distanceArray.sorted { arg1, arg2 in
+          guard let route1 = arg1.1, let route2 = arg2.1 else {
+            return false
+          }
+          return route1.expectedTravelTime < route2.expectedTravelTime
+        }.map { arg -> (NearestPartner, String?) in
+          (arg.0, self?.map(route: arg.1))
+        }
+
         completion(distanceArray)
       }
     }
@@ -123,12 +145,18 @@ extension VinchyPresenter: VinchyPresenterProtocol {
           .promo(content: .init(type: .promo(count: 10))),
           .title(content: .init(type: .title(count: 1))),
           .big(content: .init(type: .big(count: 10))),
+          .title(content: .init(type: .title(count: 1))),
+          .big(content: .init(type: .big(count: 10))),
+          .title(content: .init(type: .title(count: 1))),
+          .promo(content: .init(type: .promo(count: 10))),
+          .title(content: .init(type: .title(count: 1))),
+          .big(content: .init(type: .big(count: 10))),
         ]),
         leadingAddressButtonViewModel: .loading(text: localized("loading").firstLetterUppercased())))
   }
 
   func update(compilations: [Compilation], nearestPartners: [NearestPartner], city: String?, isLocationPermissionDenied: Bool, userLocation: CLLocationCoordinate2D?) {
-    getDistanceArray(userLocation: userLocation, nearestPartners: nearestPartners) { result in
+    getDistanceArray(userLocation: userLocation, nearestPartners: nearestPartners) { [weak self] result in
       var sections: [VinchyViewControllerViewModel.Section] = []
 
       if
@@ -145,9 +173,8 @@ extension VinchyPresenter: VinchyPresenterProtocol {
         sections.append(.nearestStoreTitle(content: localized("nearest_stores")))
       }
 
-      nearestPartners.forEach { nearestPartner in
-        let subtitle = result.first(where: { $0.0.partner == nearestPartner.partner })?.1
-        sections.append(.storeTitle(content: .init(affilatedId: nearestPartner.partner.affiliatedStoreId, imageURL: nearestPartner.partner.logoURL, titleText: nearestPartner.partner.title, subtitleText: subtitle, moreText: localized("more").firstLetterUppercased())))
+      result.forEach { nearestPartner, subtitleText in
+        sections.append(.storeTitle(content: .init(affilatedId: nearestPartner.partner.affiliatedStoreId, titleText: nearestPartner.partner.title, logoURL: nearestPartner.partner.logoURL, subtitleText: subtitleText, moreText: localized("more").firstLetterUppercased())))
 
         sections.append(.bottles(content: nearestPartner.recommendedWines.compactMap({
           .init(wineID: $0.id, imageURL: $0.mainImageUrl?.toURL, titleText: $0.title, subtitleText: countryNameFromLocaleCode(countryCode: $0.winery?.countryCode), rating: $0.rating, contextMenuViewModels: [])
@@ -210,7 +237,7 @@ extension VinchyPresenter: VinchyPresenterProtocol {
 
       // TODO: - if all empty
 
-      self.viewController?.updateUI(
+      self?.viewController?.updateUI(
         viewModel: VinchyViewControllerViewModel(
           state: .normal(sections: sections),
           leadingAddressButtonViewModel: isLocationPermissionDenied ? .arraw(text: localized("enter_address").firstLetterUppercased()) : .arraw(text: city)))
