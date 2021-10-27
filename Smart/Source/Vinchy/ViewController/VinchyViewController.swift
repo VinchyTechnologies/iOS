@@ -95,7 +95,7 @@ final class VinchyViewController: CollectionViewController {
         case .stories(let content), .title(let content), .promo(let content), .big(let content):
           let width: CGFloat = view.frame.width
           let height: CGFloat = FakeVinchyCollectionCell.height(viewModel: content)
-          return SectionModel(dataID: UUID()) {
+          return SectionModel(dataID: section.dataID) {
             FakeVinchyCollectionCell.itemModel(
               dataID: UUID(),
               content: content,

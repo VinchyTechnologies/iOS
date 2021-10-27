@@ -27,10 +27,34 @@ struct VinchyViewControllerViewModel {
   }
 
   enum FakeSection {
+
     case stories(content: FakeVinchyCollectionCellViewModel)
     case promo(content: FakeVinchyCollectionCellViewModel)
     case title(content: FakeVinchyCollectionCellViewModel)
     case big(content: FakeVinchyCollectionCellViewModel)
+
+    // MARK: Internal
+
+    enum DataID: Hashable {
+      case title, stories, promo, big
+    }
+
+
+    var dataID: DataID {
+      switch self {
+      case .stories:
+        return .stories
+
+      case .promo:
+        return .promo
+
+      case .title:
+        return .title
+
+      case .big:
+        return .big
+      }
+    }
   }
 
   static let empty: Self = .init(state: .fake(sections: []), leadingAddressButtonViewModel: .loading(text: nil))
