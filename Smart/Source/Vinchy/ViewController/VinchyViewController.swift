@@ -6,6 +6,7 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
+import CommonUI
 import Display
 import Epoxy
 import StringFormatting
@@ -89,6 +90,25 @@ final class VinchyViewController: CollectionViewController {
   @SectionModelBuilder
   private var sections: [SectionModel] {
     switch viewModel.state {
+    case .error(let sections):
+      sections.compactMap { section in
+        switch section {
+        case .common(let content):
+          let height = view.frame.height - (navigationController?.navigationBar.frame.height ?? 0) - (tabBarController?.tabBar.frame.height ?? 0)
+          return SectionModel(dataID: UUID()) {
+            EpoxyErrorView.itemModel(
+              dataID: UUID(),
+              content: content,
+              style: .init())
+              .setBehaviors { [weak self] context in
+                context.view.delegate = self
+              }
+          }
+          .flowLayoutItemSize(.init(width: view.frame.width, height: height))
+          .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 8, right: 0))
+        }
+      }
+
     case .fake(let sections):
       sections.compactMap { section in
         switch section {
@@ -249,7 +269,7 @@ final class VinchyViewController: CollectionViewController {
         collectionView.isUserInteractionEnabled = false
         setSections(sections, animated: true)
 
-      case .normal:
+      case .normal, .error:
         collectionView.isUserInteractionEnabled = true
         setSections(sections, animated: true)
       }
@@ -332,6 +352,14 @@ extension VinchyViewController: StoreTitleCollectionCellDelegate {
 extension VinchyViewController: StoriesCollectionViewDelegate {
   func didTapStory(title: String?, shortWines: [ShortWine]) {
     interactor?.didTapCompilationCell(input: .init(title: title, mode: .normal(wines: shortWines)))
+  }
+}
+
+// MARK: EpoxyErrorViewDelegate
+
+extension VinchyViewController: EpoxyErrorViewDelegate {
+  func didTapErrorButton(_ button: UIButton) {
+    interactor?.viewDidLoad()
   }
 }
 

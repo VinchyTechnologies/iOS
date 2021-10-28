@@ -10,7 +10,7 @@ import CoreLocation
 import VinchyCore
 
 protocol VinchyPresenterProtocol: AnyObject {
-  func update(compilations: [Compilation], nearestPartners: [NearestPartner], city: String?, isLocationPermissionDenied: Bool, userLocation: CLLocationCoordinate2D?, didUsePullToRefresh: Bool)
+  func update(compilations: [Compilation], nearestPartners: [NearestPartner], city: String?, isLocationPermissionDenied: Bool, userLocation: CLLocationCoordinate2D?, didUsePullToRefresh: Bool, error: Error?)
   func startShimmer()
   func stopPullRefreshing()
   func showAlertEmptyCollection()

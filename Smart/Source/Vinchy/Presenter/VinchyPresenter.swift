@@ -147,14 +147,33 @@ extension VinchyPresenter: VinchyPresenterProtocol {
           .big(content: Array(repeating: FakeView.Content(), count: 10)),
           .title(content: Array(repeating: FakeView.Content(), count: 1)),
           .promo(content: Array(repeating: FakeView.Content(), count: 10)),
-//          .title(content: Array(repeating: FakeView.Content(), count: 1)),
-//          .big(content: Array(repeating: FakeView.Content(), count: 10)),
-//          .title(content: Array(repeating: FakeView.Content(), count: 1)),
         ]),
         leadingAddressButtonViewModel: .loading(text: localized("loading").firstLetterUppercased())))
   }
 
-  func update(compilations: [Compilation], nearestPartners: [NearestPartner], city: String?, isLocationPermissionDenied: Bool, userLocation: CLLocationCoordinate2D?, didUsePullToRefresh: Bool) {
+  func update(
+    compilations: [Compilation],
+    nearestPartners: [NearestPartner],
+    city: String?,
+    isLocationPermissionDenied: Bool,
+    userLocation: CLLocationCoordinate2D?,
+    didUsePullToRefresh: Bool, error: Error?)
+  {
+    if error != nil {
+      viewController?.updateUI(viewModel: .init(
+        state: .error(
+          sections: [
+            .common(content: .init(
+              titleText: localized("error").firstLetterUppercased(),
+              subtitleText: error?.localizedDescription,
+              buttonText: localized("reload").firstLetterUppercased())),
+          ]), leadingAddressButtonViewModel: .loading(text: localized("undefined").firstLetterUppercased())))
+      if didUsePullToRefresh {
+        viewController?.stopPullRefreshing()
+      }
+      return
+    }
+
     getDistanceArray(userLocation: userLocation, nearestPartners: nearestPartners) { [weak self] result in
       var sections: [VinchyViewControllerViewModel.Section] = []
 
