@@ -104,6 +104,7 @@
 "build_route" = "Построить маршрут";
 "nearest_stores" = "Ближайшие магазины";
 "walking" = "пешком";
+"undefined" = "не определено";
 
 // MARK: - Sugar
 "sugar" = "сахар";

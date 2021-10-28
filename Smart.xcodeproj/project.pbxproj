@@ -213,6 +213,7 @@
 		8A916122268E27EB00240B18 /* SearchRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916117268E27EB00240B18 /* SearchRouterProtocol.swift */; };
 		8A9554662692280800F1C5AE /* Epoxy in Frameworks */ = {isa = PBXBuildFile; productRef = 8A9554652692280800F1C5AE /* Epoxy */; };
 		8A9554682692284B00F1C5AE /* DocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9554672692284B00F1C5AE /* DocumentsViewController.swift */; };
+		8A9865E8272B27FA00DE4D8F /* EpoxyErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9865E7272B27FA00DE4D8F /* EpoxyErrorView.swift */; };
 		8AA5E5132615053D00935B5E /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA5E5122615053D00935B5E /* AboutView.swift */; };
 		8AA98B9626D5436500C32358 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA98B9526D5436500C32358 /* EmptyView.swift */; };
 		8AA990A226D91FE000C32358 /* StoresViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA9909126D91FE000C32358 /* StoresViewModel.swift */; };
@@ -640,6 +641,7 @@
 		8A916116268E27EB00240B18 /* SearchRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
 		8A916117268E27EB00240B18 /* SearchRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRouterProtocol.swift; sourceTree = "<group>"; };
 		8A9554672692284B00F1C5AE /* DocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsViewController.swift; sourceTree = "<group>"; };
+		8A9865E7272B27FA00DE4D8F /* EpoxyErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpoxyErrorView.swift; sourceTree = "<group>"; };
 		8AA5E5122615053D00935B5E /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		8AA98B9526D5436500C32358 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		8AA9909126D91FE000C32358 /* StoresViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoresViewModel.swift; sourceTree = "<group>"; };
@@ -1622,6 +1624,7 @@
 				748586CF26C1B69A00F5CBEA /* HorizontalPartnerView.swift */,
 				8AA98B9526D5436500C32358 /* EmptyView.swift */,
 				8A474E2427298B740091B493 /* LinkButton.swift */,
+				8A9865E7272B27FA00DE4D8F /* EpoxyErrorView.swift */,
 			);
 			path = EpoxyViews;
 			sourceTree = "<group>";
@@ -3652,6 +3655,7 @@
 				44EFDB7625E263E00076ED6D /* ReviewDetailInteractor.swift in Sources */,
 				8A10F28327063398003463B0 /* AddressSearchPresenterProtocol.swift in Sources */,
 				CE8FF83925FADABF004D4F37 /* ShowcaseInteractorProtocol.swift in Sources */,
+				8A9865E8272B27FA00DE4D8F /* EpoxyErrorView.swift in Sources */,
 				447C353D25EEAA5700105A35 /* MapViewController.swift in Sources */,
 				8A916119268E27EB00240B18 /* SearchInput.swift in Sources */,
 				4437AA5F25E3A7CE00F6E838 /* WriteReviewPresenterProtocol.swift in Sources */,
