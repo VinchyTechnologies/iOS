@@ -94,12 +94,12 @@ final class VinchyViewController: CollectionViewController {
         switch section {
         case .stories(let content), .title(let content), .promo(let content), .big(let content):
           let width: CGFloat = view.frame.width
-          let height: CGFloat = FakeVinchyCollectionCell.height(viewModel: content)
+          let height: CGFloat = FakeCollectionView.height(for: section.style)
           return SectionModel(dataID: section.dataID) {
-            FakeVinchyCollectionCell.itemModel(
+            FakeCollectionView.itemModel(
               dataID: UUID(),
               content: content,
-              style: .init())
+              style: section.style)
           }
           .flowLayoutItemSize(.init(width: width, height: height))
           .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 8, right: 0))

@@ -28,10 +28,10 @@ struct VinchyViewControllerViewModel {
 
   enum FakeSection {
 
-    case stories(content: FakeVinchyCollectionCellViewModel)
-    case promo(content: FakeVinchyCollectionCellViewModel)
-    case title(content: FakeVinchyCollectionCellViewModel)
-    case big(content: FakeVinchyCollectionCellViewModel)
+    case stories(content: FakeCollectionView.Content)
+    case promo(content: FakeCollectionView.Content)
+    case title(content: FakeCollectionView.Content)
+    case big(content: FakeCollectionView.Content)
 
     // MARK: Internal
 
@@ -39,6 +39,21 @@ struct VinchyViewControllerViewModel {
       case title, stories, promo, big
     }
 
+    var style: FakeCollectionView.Style {
+      switch self {
+      case .stories:
+        return .init(kind: .mini)
+
+      case .promo:
+        return .init(kind: .promo)
+
+      case .title:
+        return .init(kind: .title)
+
+      case .big:
+        return .init(kind: .big)
+      }
+    }
 
     var dataID: DataID {
       switch self {

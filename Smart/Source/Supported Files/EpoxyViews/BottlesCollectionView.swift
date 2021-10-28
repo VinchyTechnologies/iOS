@@ -74,7 +74,6 @@ final class BottlesCollectionView: CollectionView, EpoxyableView {
     case bottlesCollectionViewSectionBottles
   }
 
-
   private let style: Style
 
   private var didTap: ((_ wineID: Int64) -> Void)?
