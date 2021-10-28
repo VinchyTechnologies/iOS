@@ -121,7 +121,7 @@
 "quiet" = "still";
 
 // MARK: - Compatibility
-"compatibility" = "compatibility"; // ???
+"compatibility" = "pairing";
 "meat" = "meat";
 "fish" = "fish";
 "seafood" = "seafood";

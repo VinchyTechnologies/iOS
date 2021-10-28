@@ -121,7 +121,7 @@
 "quiet" = "тихое";
 
 // MARK: - Compatibility
-"compatibility" = "сочетаемость"; // ???
+"compatibility" = "сочетаемость";
 "meat" = "мясо";
 "fish" = "рыба";
 "seafood" = "морепродукты";
