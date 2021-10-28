@@ -6,7 +6,7 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-public final class Winery: Decodable {
+public final class Winery: Decodable, Equatable {
 
   // MARK: Public
 
@@ -21,6 +21,10 @@ public final class Winery: Decodable {
 
   /// Name of the region the winery locates in
   public let region: String?
+
+  public static func == (lhs: Winery, rhs: Winery) -> Bool {
+    lhs.id == rhs.id
+  }
 
   // MARK: Private
 

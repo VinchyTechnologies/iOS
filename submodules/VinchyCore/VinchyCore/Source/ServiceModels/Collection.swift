@@ -8,21 +8,10 @@
 
 import UIKit
 
-// MARK: - AdsProtocol
-
-public protocol AdsProtocol: AnyObject {}
-
 // MARK: - CollectionType
 
 public enum CollectionType: String, Decodable {
   case mini, big, promo, bottles, shareUs, smartFilter, partnerBottles
-}
-
-// MARK: - CollectionItem
-
-public enum CollectionItem {
-  case wine(wine: ShortWine)
-  case ads(ad: AdsProtocol)
 }
 
 // MARK: - Collection
@@ -38,17 +27,13 @@ public struct Collection: Decodable {
     let imageURL = try container.decodeIfPresent(String.self, forKey: .imageURL)
     let wineList = try? container.decode([ShortWine].self, forKey: .wineList)
 
-    let wines = wineList?.compactMap { wine -> CollectionItem in
-      .wine(wine: wine)
-    }
-
     self.id = id
     self.title = title
     self.imageURL = imageURL
-    self.wineList = wines ?? []
+    self.wineList = wineList ?? []
   }
 
-  public init(wineList: [CollectionItem]) {
+  public init(wineList: [ShortWine]) {
     id = nil
     title = nil
     imageURL = nil
@@ -67,7 +52,7 @@ public struct Collection: Decodable {
   public let id: Int64?
   public let title: String?
   public let imageURL: String?
-  public var wineList: [CollectionItem]
+  public var wineList: [ShortWine]
 
   // MARK: Private
 

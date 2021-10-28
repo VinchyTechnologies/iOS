@@ -1,38 +1,39 @@
 //
-//  StoryCollectionCell.swift
+//  StoryView.swift
 //  Smart
 //
-//  Created by Aleksei Smirnov on 20.08.2020.
-//  Copyright © 2020 Aleksei Smirnov. All rights reserved.
+//  Created by Алексей Смирнов on 26.10.2021.
+//  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
 import Display
+import Epoxy
 import UIKit
+import VinchyCore
 
-// MARK: - StoryCollectionCellViewModel
+// MARK: - StoryViewViewModel
 
-struct StoryCollectionCellViewModel: ViewModelProtocol, Hashable {
+struct StoryViewViewModel: Equatable {
   fileprivate let imageURL: URL?
-  fileprivate let titleText: String?
+  let titleText: String?
+  let wines: [ShortWine]
 
-  private let identifier = UUID()
-
-  public init(imageURL: URL?, titleText: String?) {
+  public init(imageURL: URL?, titleText: String?, wines: [ShortWine]) {
     self.imageURL = imageURL
     self.titleText = titleText
+    self.wines = wines
   }
 }
 
-// MARK: - StoryCollectionCell
+// MARK: - StoryView
 
-final class StoryCollectionCell: HighlightCollectionCell, Reusable {
+final class StoryView: UIView, EpoxyableView {
 
   // MARK: Lifecycle
 
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-
-    highlightStyle = .scale
+  init(style: Style) {
+    self.style = style
+    super.init(frame: .zero)
 
     backgroundColor = .option
     layer.cornerRadius = 12
@@ -65,8 +66,26 @@ final class StoryCollectionCell: HighlightCollectionCell, Reusable {
     ])
   }
 
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
+  // MARK: Internal
+
+  struct Style: Hashable {
+
+  }
+
+  typealias Content = StoryViewViewModel
+
+  func setContent(_ content: Content, animated: Bool) {
+    setAttributedText(string: content.titleText)
+    imageView.loadImage(url: content.imageURL)
+  }
+
   // MARK: Private
 
+  private let style: Style
   private let imageView = UIImageView()
   private let titleLabel = UILabel()
 
@@ -84,13 +103,18 @@ final class StoryCollectionCell: HighlightCollectionCell, Reusable {
   }
 }
 
-// MARK: Decoratable
+// MARK: HighlightableView
 
-extension StoryCollectionCell: Decoratable {
-  typealias ViewModel = StoryCollectionCellViewModel
-
-  func decorate(model: ViewModel) {
-    setAttributedText(string: model.titleText)
-    imageView.loadImage(url: model.imageURL)
+extension StoryView: HighlightableView {
+  func didHighlight(_ isHighlighted: Bool) {
+    UIView.animate(
+      withDuration: 0.15,
+      delay: 0,
+      options: [.beginFromCurrentState, .allowUserInteraction])
+    {
+      self.transform = isHighlighted
+        ? CGAffineTransform(scaleX: 0.95, y: 0.95)
+        : .identity
+    }
   }
 }

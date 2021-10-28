@@ -103,6 +103,7 @@
 "google_maps" = "Google Maps";
 "build_route" = "Build the route";
 "nearest_stores" = "Nearest stores";
+"walking" = "walking";
 
 // MARK: - Sugar
 "sugar" = "sugar";

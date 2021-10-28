@@ -64,7 +64,7 @@ extension MapDetailStorePresenter: MapDetailStorePresenterProtocol {
           .init(
             type: .bottles,
             collections: [
-              .init(wineList: recommendedWines.compactMap({ .wine(wine: $0) })),
+              .init(wineList: recommendedWines),
             ])),
       ]
     }

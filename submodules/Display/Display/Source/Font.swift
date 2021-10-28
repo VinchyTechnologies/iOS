@@ -155,7 +155,7 @@ extension String {
   public func height(forWidth width: CGFloat, font: UIFont, numberOfLines: Int) -> CGFloat {
     let result = height(forWidth: width, font: font)
     let maxHeight = font.lineHeight * CGFloat(numberOfLines)
-    return min(result, maxHeight)
+    return numberOfLines == 0 ? result : min(result, maxHeight)
   }
 
   public func width(usingFont font: UIFont) -> CGFloat {

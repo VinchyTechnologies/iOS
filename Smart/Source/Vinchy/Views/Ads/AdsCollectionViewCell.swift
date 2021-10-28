@@ -11,10 +11,6 @@ import GoogleMobileAds
 import UIKit
 import VinchyCore
 
-// MARK: - GADUnifiedNativeAd + AdsProtocol
-
-extension GADUnifiedNativeAd: AdsProtocol {}
-
 // MARK: - AdsCollectionViewCell
 
 final class AdsCollectionViewCell: UICollectionViewCell, Reusable {

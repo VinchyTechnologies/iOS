@@ -41,7 +41,7 @@ extension AreYouInStorePresenter: AreYouInStorePresenterProtocol {
       leadingButtonText: localized("AreYouInStore.NotHere"),
       trailingButtonText: localized("AreYouInStore.SeeMore"))
 
-    let recommendedWines = input.partner.recommendedWines.compactMap({ CollectionItem.wine(wine: $0) })
+    let recommendedWines = input.partner.recommendedWines
 
     let storeTitle = input.partner.partner.title.quoted
     let fullStoreText = NSMutableAttributedString(string: localized("AreYouInStore.SeemsYouAreIn") + storeTitle, font: Font.bold(24), textColor: .dark)

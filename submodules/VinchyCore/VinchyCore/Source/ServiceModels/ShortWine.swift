@@ -6,7 +6,7 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-public struct ShortWine: Decodable {
+public struct ShortWine: Decodable, Equatable {
 
   // MARK: Lifecycle
 

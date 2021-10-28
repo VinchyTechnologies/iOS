@@ -67,7 +67,7 @@ final class VinchyInteractor {
     return result
   }
 
-  private func fetchData() {
+  private func fetchData(isViaPullToRefresh: Bool) {
 
     var compilations: [Compilation] = []
     var nearestPartners: [NearestPartner] = []
@@ -148,7 +148,9 @@ final class VinchyInteractor {
             compilations: compilations,
             nearestPartners: nearestPartners,
             city: city,
-            isLocationPermissionDenied: false)
+            isLocationPermissionDenied: false,
+            userLocation: userLocation,
+            didUsePullToRefresh: isViaPullToRefresh)
         }
       } else {
         if UserDefaultsConfig.userLatitude != 0 && UserDefaultsConfig.userLongtitude != 0 {
@@ -159,14 +161,18 @@ final class VinchyInteractor {
               compilations: compilations,
               nearestPartners: nearestPartners,
               city: city,
-              isLocationPermissionDenied: false)
+              isLocationPermissionDenied: false,
+              userLocation: CLLocationCoordinate2D(latitude: UserDefaultsConfig.userLatitude, longitude: UserDefaultsConfig.userLongtitude),
+              didUsePullToRefresh: isViaPullToRefresh)
           }
         } else {
           self.presenter.update(
             compilations: compilations,
             nearestPartners: nearestPartners,
             city: nil,
-            isLocationPermissionDenied: true)
+            isLocationPermissionDenied: true,
+            userLocation: nil,
+            didUsePullToRefresh: isViaPullToRefresh)
         }
       }
 
@@ -199,7 +205,7 @@ extension VinchyInteractor: VinchyInteractorProtocol {
 
   func didChangeAddress() {
     presenter.startShimmer()
-    fetchData()
+    fetchData(isViaPullToRefresh: false)
   }
 
   func didTapChangeAddressButton() {
@@ -220,12 +226,12 @@ extension VinchyInteractor: VinchyInteractorProtocol {
 
   func viewDidLoad() {
     presenter.startShimmer()
-    fetchData()
+    fetchData(isViaPullToRefresh: false)
   }
 
   func didPullToRefresh() {
-    fetchData()
-    presenter.stopPullRefreshing()
+    presenter.startShimmer()
+    fetchData(isViaPullToRefresh: true)
   }
 
   func didTapFilter() {

@@ -48,7 +48,7 @@ extension VinchyRouter: VinchyRouterProtocol {
       leadingButtonText: localized("AreYouInStore.NotHere"),
       trailingButtonText: localized("AreYouInStore.SeeMore"))
 
-    let recommendedWines = nearestPartner.recommendedWines.compactMap({ CollectionItem.wine(wine: $0) })
+    let recommendedWines = nearestPartner.recommendedWines
 
     let viewModel = AreYouInStoreViewModel(
       sections: [
