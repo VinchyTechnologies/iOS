@@ -93,7 +93,6 @@ final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDelegate {
     ])
 
     if UIDevice.current.userInterfaceIdiom == .phone {
-      let longPressedGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureRecognizer:)))
       longPressedGesture.minimumPressDuration = 0.45
       longPressedGesture.delegate = self
       addGestureRecognizer(longPressedGesture)
@@ -130,6 +129,13 @@ final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDelegate {
     }
 
     wineID = content.wineID
+
+    if content.contextMenuViewModels?.isEmpty == true || content.contextMenuViewModels == nil {
+      longPressedGesture.isEnabled = false
+    } else {
+      longPressedGesture.isEnabled = true
+    }
+
     contextMenuViewModels = content.contextMenuViewModels
 
     if content.rating == nil || content.rating == 0 {
@@ -145,6 +151,7 @@ final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDelegate {
 
   // MARK: Private
 
+  private lazy var longPressedGesture = UILongPressGestureRecognizer(target: self, action: #selector(handleLongPress(gestureRecognizer:)))
   private lazy var hapticGenerator = UISelectionFeedbackGenerator()
 
   private var wineID: Int64?
