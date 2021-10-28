@@ -71,6 +71,7 @@ final class VinchyInteractor {
 
     var compilations: [Compilation] = []
     var nearestPartners: [NearestPartner] = []
+    var error: Error?
 
     dispatchGroup.enter()
     Compilations.shared.getCompilations { [weak self] result in
@@ -78,8 +79,8 @@ final class VinchyInteractor {
       case .success(let model):
         compilations = model
 
-      case .failure(let error):
-        print(error.localizedDescription)
+      case .failure(let errorResponse):
+        error = errorResponse
       }
 
       self?.dispatchGroup.leave()
@@ -128,16 +129,6 @@ final class VinchyInteractor {
     dispatchGroup.notify(queue: .main) { [weak self] in
       guard let self = self else { return }
 
-      if isShareUsEnabled {
-        let shareUs = Compilation(type: .shareUs, imageURL: nil, title: nil, collectionList: [])
-        compilations.insert(shareUs, at: compilations.isEmpty ? 0 : min(3, compilations.count - 1))
-      }
-
-      if isSmartFilterAvailable {
-        let smartFilter = Compilation(type: .smartFilter, imageURL: nil, title: nil, collectionList: [])
-        compilations.insert(smartFilter, at: 1)
-      }
-
       self.nearestPartners = nearestPartners
 
       self.compilations = compilations
@@ -150,7 +141,8 @@ final class VinchyInteractor {
             city: city,
             isLocationPermissionDenied: false,
             userLocation: userLocation,
-            didUsePullToRefresh: isViaPullToRefresh)
+            didUsePullToRefresh: isViaPullToRefresh,
+            error: error)
         }
       } else {
         if UserDefaultsConfig.userLatitude != 0 && UserDefaultsConfig.userLongtitude != 0 {
@@ -163,7 +155,8 @@ final class VinchyInteractor {
               city: city,
               isLocationPermissionDenied: false,
               userLocation: CLLocationCoordinate2D(latitude: UserDefaultsConfig.userLatitude, longitude: UserDefaultsConfig.userLongtitude),
-              didUsePullToRefresh: isViaPullToRefresh)
+              didUsePullToRefresh: isViaPullToRefresh,
+              error: error)
           }
         } else {
           self.presenter.update(
@@ -172,7 +165,8 @@ final class VinchyInteractor {
             city: nil,
             isLocationPermissionDenied: true,
             userLocation: nil,
-            didUsePullToRefresh: isViaPullToRefresh)
+            didUsePullToRefresh: isViaPullToRefresh,
+            error: error)
         }
       }
 

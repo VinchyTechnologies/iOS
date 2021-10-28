@@ -13,6 +13,7 @@ struct VinchyViewControllerViewModel {
   enum State {
     case fake(sections: [FakeSection])
     case normal(sections: [Section])
+    case error(sections: [ErrorSection])
   }
 
   enum Section {
@@ -70,6 +71,10 @@ struct VinchyViewControllerViewModel {
         return .big
       }
     }
+  }
+
+  enum ErrorSection {
+    case common(content: EpoxyErrorView.Content)
   }
 
   static let empty: Self = .init(state: .fake(sections: []), leadingAddressButtonViewModel: .loading(text: nil))

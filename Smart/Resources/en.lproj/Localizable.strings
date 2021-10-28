@@ -104,6 +104,7 @@
 "build_route" = "Build the route";
 "nearest_stores" = "Nearest stores";
 "walking" = "walking";
+"undefined" = "undefined";
 
 // MARK: - Sugar
 "sugar" = "sugar";
