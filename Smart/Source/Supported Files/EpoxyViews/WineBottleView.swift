@@ -57,6 +57,20 @@ final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDelegate {
       bottleImageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1 / 4),
     ])
 
+    background.addSubview(ratingView)
+    ratingView.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      ratingView.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: 20),
+      ratingView.topAnchor.constraint(equalTo: background.topAnchor, constant: 15),
+      ratingView.widthAnchor.constraint(equalToConstant: 20),
+      ratingView.heightAnchor.constraint(equalToConstant: 20),
+    ])
+
+    background.addSubview(ratingLabel)
+    ratingLabel.translatesAutoresizingMaskIntoConstraints = false
+    ratingLabel.centerXAnchor.constraint(equalTo: ratingView.centerXAnchor).isActive = true
+    ratingLabel.topAnchor.constraint(equalTo: ratingView.bottomAnchor, constant: 4).isActive = true
+
     let stackView = UIStackView()
     stackView.axis = .vertical
     stackView.distribution = .equalCentering
@@ -117,6 +131,16 @@ final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDelegate {
 
     wineID = content.wineID
     contextMenuViewModels = content.contextMenuViewModels
+
+    if content.rating == nil || content.rating == 0 {
+      ratingView.isHidden = true
+      ratingLabel.isHidden = true
+    } else {
+      ratingView.rating = (content.rating ?? 0) / 5
+      ratingLabel.text = String(format: "%.1f", content.rating ?? 0)
+      ratingView.isHidden = false
+      ratingLabel.isHidden = false
+    }
   }
 
   // MARK: Private
@@ -149,6 +173,26 @@ final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDelegate {
     label.textAlignment = .center
     return label
   }()
+
+  private lazy var ratingView: StarsRatingView = {
+    $0.settings.filledColor = .accent
+    $0.settings.emptyBorderColor = .accent
+    $0.settings.filledBorderColor = .accent
+    $0.settings.starSize = 24
+    $0.settings.fillMode = .precise
+    $0.settings.minTouchRating = 0
+    $0.settings.starMargin = 0
+    $0.isUserInteractionEnabled = false
+    $0.settings.totalStars = 1
+    return $0
+  }(StarsRatingView())
+
+  private let ratingLabel: UILabel = {
+    $0.font = Font.with(size: 14, design: .round, traits: .bold)
+    $0.textColor = .dark
+    $0.textAlignment = .center
+    return $0
+  }(UILabel())
 
   @objc
   private func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {

@@ -1294,6 +1294,7 @@
 		748586EA26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCell */ = {
 			isa = PBXGroup;
 			children = (
+				CA7B835A24EED6E600991F24 /* StoryCollectionCell.swift */,
 				748586EB26C7CB2300F5CBEA /* ViewModel */,
 				748586ED26C7CB2300F5CBEA /* Input */,
 				748586EF26C7CB2300F5CBEA /* Configurator */,
@@ -2625,7 +2626,6 @@
 				CA46DC97252A44180007819E /* SmartFilterCollectionCell.swift */,
 				8A5401C926EFA894007247E5 /* StoreTitleView.swift */,
 				8A4749B0272832700091B493 /* StoriesCollectionView.swift */,
-				CA7B835A24EED6E600991F24 /* StoryCollectionCell.swift */,
 				8A4749AE2728271E0091B493 /* StoryView.swift */,
 			);
 			path = Views;

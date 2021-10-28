@@ -49,6 +49,8 @@ public struct WineCollectionViewCellViewModel: ViewModelProtocol, Hashable {
   public let imageURL: URL?
   public let subtitleText: String?
 
+  public let rating: Double?
+
   public static func == (lhs: WineCollectionViewCellViewModel, rhs: WineCollectionViewCellViewModel) -> Bool {
     lhs.wineID == rhs.wineID
   }
@@ -57,9 +59,6 @@ public struct WineCollectionViewCellViewModel: ViewModelProtocol, Hashable {
     hasher.combine(wineID)
   }
 
-  // MARK: Fileprivate
-
-  fileprivate let rating: Double?
 }
 
 // MARK: - WineCollectionViewCell
@@ -204,7 +203,7 @@ extension WineCollectionViewCell: Decoratable {
       ratingLabel.isHidden = true
     } else {
       ratingView.rating = (model.rating ?? 0) / 5
-      ratingLabel.text = String(model.rating ?? 0)
+      ratingLabel.text = String(format: "%.1f", model.rating ?? 0)
       ratingView.isHidden = false
       ratingLabel.isHidden = false
     }
