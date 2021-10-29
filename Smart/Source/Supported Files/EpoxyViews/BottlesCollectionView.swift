@@ -9,6 +9,7 @@
 import CommonUI
 import Display
 import Epoxy
+import Foundation
 
 // MARK: - BottlesCollectionViewDelegate
 
@@ -39,9 +40,11 @@ final class BottlesCollectionView: CollectionView, EpoxyableView {
       case normal, small
     }
 
+    let id: String
     let offset: Offset
 
-    init(offset: Offset = .normal) {
+    init(id: String = UUID().uuidString, offset: Offset = .normal) {
+      self.id = id
       self.offset = offset
     }
   }

@@ -9,6 +9,7 @@
 import Display
 import Epoxy
 import VinchyCore
+import Foundation
 
 // MARK: - StoriesCollectionViewDelegate
 
@@ -31,6 +32,11 @@ final class StoriesCollectionView: CollectionView, EpoxyableView {
   // MARK: Internal
 
   struct Style: Hashable {
+    let id: String
+
+    init(id: String = UUID().uuidString) {
+      self.id = id
+    }
   }
 
   typealias Content = [StoryView.Content]
