@@ -6,6 +6,8 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import CommonUI
+import Display
 import Epoxy
 
 // MARK: - BottlesCollectionViewDelegate
@@ -26,6 +28,7 @@ final class BottlesCollectionView: CollectionView, EpoxyableView {
     self.style = style
     super.init(layout: UICollectionViewCompositionalLayout.epoxy)
     delaysContentTouches = false
+    prefetchDelegate = self
   }
 
   // MARK: Internal
@@ -105,5 +108,28 @@ extension BottlesCollectionView: WineBottleViewDelegate {
 
   func didTapShareContextMenu(wineID: Int64, sourceView: UIView) {
     bottlesCollectionViewDelegate?.didTapShareContextMenu(wineID: wineID, sourceView: sourceView)
+  }
+}
+
+// MARK: CollectionViewPrefetchingDelegate
+
+extension BottlesCollectionView: CollectionViewPrefetchingDelegate {
+  func collectionView(_ collectionView: CollectionView, prefetch items: [AnyItemModel]) {
+    for item in items {
+      if let content = (item.model as? ItemModel<WineBottleView>)?.erasedContent as? WineCollectionViewCellViewModel {
+        ImageLoader.shared.prefetch(url: content.imageURL)
+      }
+    }
+  }
+
+  func collectionView(_ collectionView: CollectionView, cancelPrefetchingOf items: [AnyItemModel]) {
+    for item in items {
+      if
+        let content = (item.model as? ItemModel<WineBottleView>)?.erasedContent as? WineCollectionViewCellViewModel,
+        let url = content.imageURL
+      {
+        ImageLoader.shared.cancelPrefetch([url])
+      }
+    }
   }
 }
