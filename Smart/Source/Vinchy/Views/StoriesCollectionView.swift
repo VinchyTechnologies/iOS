@@ -8,8 +8,8 @@
 
 import Display
 import Epoxy
-import VinchyCore
 import Foundation
+import VinchyCore
 
 // MARK: - StoriesCollectionViewDelegate
 

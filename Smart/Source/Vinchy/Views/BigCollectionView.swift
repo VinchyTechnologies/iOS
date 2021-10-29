@@ -8,8 +8,8 @@
 
 import Display
 import Epoxy
-import VinchyCore
 import Foundation
+import VinchyCore
 
 // MARK: - BigCollectionView
 
@@ -37,7 +37,7 @@ final class BigCollectionView: CollectionView, EpoxyableView {
 
     let id: String
     let kind: Kind
-    
+
     init(id: String = UUID().uuidString, kind: Kind) {
       self.id = id
       self.kind = kind
