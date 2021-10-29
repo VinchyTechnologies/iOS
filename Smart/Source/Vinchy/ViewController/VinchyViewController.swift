@@ -327,11 +327,11 @@ extension VinchyViewController: ShareUsCollectionCellDelegate {
 
 extension VinchyViewController: BottlesCollectionViewDelegate {
   func didTapShareContextMenu(wineID: Int64, sourceView: UIView) {
-
+    interactor?.didTapShareContextMenu(wineID: wineID, sourceView: sourceView)
   }
 
   func didTapWriteNoteContextMenu(wineID: Int64) {
-
+    interactor?.didTapWriteNoteContextMenu(wineID: wineID)
   }
 
   func didTap(wineID: Int64) {

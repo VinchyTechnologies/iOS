@@ -197,6 +197,11 @@ final class VinchyInteractor {
 
 extension VinchyInteractor: VinchyInteractorProtocol {
 
+  var contextMenuRouter: ActivityRoutable & WriteNoteRoutable {
+    router
+  }
+
+
   func didChangeAddress() {
     presenter.startShimmer()
     fetchData(isViaPullToRefresh: false)

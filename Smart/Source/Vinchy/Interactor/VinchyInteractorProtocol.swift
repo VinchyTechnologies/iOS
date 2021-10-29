@@ -8,7 +8,7 @@
 
 import Foundation
 
-protocol VinchyInteractorProtocol: ResultsSearchDelegate {
+protocol VinchyInteractorProtocol: ResultsSearchDelegate, WineViewContextMenuTappable {
   func viewDidLoad()
   func didPullToRefresh()
   func didTapFilter()

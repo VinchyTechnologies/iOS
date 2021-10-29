@@ -6,6 +6,7 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
+import CommonUI
 import Core
 import CoreLocation
 import Display
@@ -33,6 +34,11 @@ final class VinchyPresenter {
   private enum C {
     static let harmfulToYourHealthText = localized("harmful_to_your_health")
   }
+
+  private let contextMenuViewModels: [ContextMenuViewModel] = [
+    .share(content: .init(title: localized("share_link").firstLetterUppercased())),
+    .writeNote(content: .init(title: localized("write_note").firstLetterUppercased())),
+  ]
 
   private func map(route: MKRoute?) -> String? {
     guard let route = route else {
@@ -195,7 +201,7 @@ extension VinchyPresenter: VinchyPresenterProtocol {
         sections.append(.storeTitle(content: .init(affilatedId: nearestPartner.partner.affiliatedStoreId, titleText: nearestPartner.partner.title, logoURL: nearestPartner.partner.logoURL, subtitleText: subtitleText, moreText: localized("more").firstLetterUppercased())))
 
         sections.append(.bottles(content: nearestPartner.recommendedWines.compactMap({
-          .init(wineID: $0.id, imageURL: $0.mainImageUrl?.toURL, titleText: $0.title, subtitleText: countryNameFromLocaleCode(countryCode: $0.winery?.countryCode), rating: $0.rating, contextMenuViewModels: [])
+          .init(wineID: $0.id, imageURL: $0.mainImageUrl?.toURL, titleText: $0.title, subtitleText: countryNameFromLocaleCode(countryCode: $0.winery?.countryCode), rating: $0.rating, contextMenuViewModels: self?.contextMenuViewModels ?? [])
         })))
       }
 
@@ -242,7 +248,7 @@ extension VinchyPresenter: VinchyPresenterProtocol {
             }
 
             sections.append(.bottles(content: firstCollectionList.wineList.compactMap({ wine in
-              .init(wineID: wine.id, imageURL: wine.mainImageUrl?.toURL, titleText: wine.title, subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode), rating: wine.rating, contextMenuViewModels: [])
+              .init(wineID: wine.id, imageURL: wine.mainImageUrl?.toURL, titleText: wine.title, subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode), rating: wine.rating, contextMenuViewModels: self?.contextMenuViewModels ?? [])
             })))
           }
 
