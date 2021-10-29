@@ -45,7 +45,7 @@ final class StoriesCollectionView: CollectionView, EpoxyableView {
 
   func setContent(_ content: Content, animated: Bool) {
 
-    let sectionModel = SectionModel(dataID: SectionID.storiesCollectionViewSection) {
+    let sectionModel = SectionModel(dataID: UUID()) {
       content.enumerated().map { index, storyViewViewModel in
         StoryView.itemModel(
           dataID: index,
@@ -62,10 +62,6 @@ final class StoriesCollectionView: CollectionView, EpoxyableView {
   }
 
   // MARK: Private
-
-  private enum SectionID {
-    case storiesCollectionViewSection
-  }
 
   private var layoutSection: NSCollectionLayoutSection? {
     let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .absolute(135), heightDimension: .absolute(135)))
