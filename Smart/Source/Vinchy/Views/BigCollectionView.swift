@@ -24,6 +24,7 @@ final class BigCollectionView: CollectionView, EpoxyableView {
     self.style = style
     super.init(layout: UICollectionViewCompositionalLayout.epoxy)
     delaysContentTouches = false
+    prefetchDelegate = self
   }
 
   // MARK: Internal
@@ -108,6 +109,29 @@ final class BigCollectionView: CollectionView, EpoxyableView {
       section.orthogonalScrollingBehavior = .continuous
       section.contentInsets = .init(top: 0, leading: 16, bottom: 0, trailing: 16)
       return section
+    }
+  }
+}
+
+// MARK: CollectionViewPrefetchingDelegate
+
+extension BigCollectionView: CollectionViewPrefetchingDelegate {
+  func collectionView(_ collectionView: CollectionView, prefetch items: [AnyItemModel]) {
+    for item in items {
+      if let content = (item.model as? ItemModel<MainSubtitleView>)?.erasedContent as? MainSubtitleViewViewModel {
+        ImageLoader.shared.prefetch(url: content.imageURL)
+      }
+    }
+  }
+
+  func collectionView(_ collectionView: CollectionView, cancelPrefetchingOf items: [AnyItemModel]) {
+    for item in items {
+      if
+        let content = (item.model as? ItemModel<MainSubtitleView>)?.erasedContent as? MainSubtitleViewViewModel,
+        let url = content.imageURL
+      {
+        ImageLoader.shared.cancelPrefetch([url])
+      }
     }
   }
 }

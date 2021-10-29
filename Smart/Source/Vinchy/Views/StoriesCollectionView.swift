@@ -6,6 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import Display
 import Epoxy
 import VinchyCore
 
@@ -24,6 +25,7 @@ final class StoriesCollectionView: CollectionView, EpoxyableView {
   init(style: Style) {
     super.init(layout: UICollectionViewCompositionalLayout.epoxy)
     delaysContentTouches = false
+    prefetchDelegate = self
   }
 
   // MARK: Internal
@@ -67,5 +69,28 @@ final class StoriesCollectionView: CollectionView, EpoxyableView {
     section.orthogonalScrollingBehavior = .continuous
     section.contentInsets = .init(top: 0, leading: 16, bottom: 0, trailing: 16)
     return section
+  }
+}
+
+// MARK: CollectionViewPrefetchingDelegate
+
+extension StoriesCollectionView: CollectionViewPrefetchingDelegate {
+  func collectionView(_ collectionView: CollectionView, prefetch items: [AnyItemModel]) {
+    for item in items {
+      if let content = (item.model as? ItemModel<StoryView>)?.erasedContent as? StoryViewViewModel {
+        ImageLoader.shared.prefetch(url: content.imageURL)
+      }
+    }
+  }
+
+  func collectionView(_ collectionView: CollectionView, cancelPrefetchingOf items: [AnyItemModel]) {
+    for item in items {
+      if
+        let content = (item.model as? ItemModel<StoryView>)?.erasedContent as? StoryViewViewModel,
+        let url = content.imageURL
+      {
+        ImageLoader.shared.cancelPrefetch([url])
+      }
+    }
   }
 }
