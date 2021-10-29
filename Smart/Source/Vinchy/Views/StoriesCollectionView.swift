@@ -6,7 +6,9 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import Display
 import Epoxy
+import Foundation
 import VinchyCore
 
 // MARK: - StoriesCollectionViewDelegate
@@ -24,11 +26,17 @@ final class StoriesCollectionView: CollectionView, EpoxyableView {
   init(style: Style) {
     super.init(layout: UICollectionViewCompositionalLayout.epoxy)
     delaysContentTouches = false
+    prefetchDelegate = self
   }
 
   // MARK: Internal
 
   struct Style: Hashable {
+    let id: String
+
+    init(id: String = UUID().uuidString) {
+      self.id = id
+    }
   }
 
   typealias Content = [StoryView.Content]
@@ -37,7 +45,7 @@ final class StoriesCollectionView: CollectionView, EpoxyableView {
 
   func setContent(_ content: Content, animated: Bool) {
 
-    let sectionModel = SectionModel(dataID: SectionID.storiesCollectionViewSection) {
+    let sectionModel = SectionModel(dataID: UUID()) {
       content.enumerated().map { index, storyViewViewModel in
         StoryView.itemModel(
           dataID: index,
@@ -55,10 +63,6 @@ final class StoriesCollectionView: CollectionView, EpoxyableView {
 
   // MARK: Private
 
-  private enum SectionID {
-    case storiesCollectionViewSection
-  }
-
   private var layoutSection: NSCollectionLayoutSection? {
     let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .absolute(135), heightDimension: .absolute(135)))
     let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(135), heightDimension: .absolute(135)), subitems: [item])
@@ -67,5 +71,28 @@ final class StoriesCollectionView: CollectionView, EpoxyableView {
     section.orthogonalScrollingBehavior = .continuous
     section.contentInsets = .init(top: 0, leading: 16, bottom: 0, trailing: 16)
     return section
+  }
+}
+
+// MARK: CollectionViewPrefetchingDelegate
+
+extension StoriesCollectionView: CollectionViewPrefetchingDelegate {
+  func collectionView(_ collectionView: CollectionView, prefetch items: [AnyItemModel]) {
+    for item in items {
+      if let content = (item.model as? ItemModel<StoryView>)?.erasedContent as? StoryViewViewModel {
+        ImageLoader.shared.prefetch(url: content.imageURL)
+      }
+    }
+  }
+
+  func collectionView(_ collectionView: CollectionView, cancelPrefetchingOf items: [AnyItemModel]) {
+    for item in items {
+      if
+        let content = (item.model as? ItemModel<StoryView>)?.erasedContent as? StoryViewViewModel,
+        let url = content.imageURL
+      {
+        ImageLoader.shared.cancelPrefetch([url])
+      }
+    }
   }
 }

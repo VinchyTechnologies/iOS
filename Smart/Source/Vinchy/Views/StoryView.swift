@@ -14,7 +14,7 @@ import VinchyCore
 // MARK: - StoryViewViewModel
 
 struct StoryViewViewModel: Equatable {
-  fileprivate let imageURL: URL?
+  let imageURL: URL?
   let titleText: String?
   let wines: [ShortWine]
 

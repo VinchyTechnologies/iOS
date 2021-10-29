@@ -12,11 +12,11 @@
       },
       {
         "package": "Epoxy",
-        "repositoryURL": "https://github.com/airbnb/epoxy-ios.git",
+        "repositoryURL": "https://github.com/VinchyTechnologies/epoxy-ios",
         "state": {
           "branch": null,
-          "revision": "539caf525e05f143b217df3bc7f202833dea1181",
-          "version": "0.5.0"
+          "revision": "8eda3540917f067530227b12f7fac8a2d1afa249",
+          "version": "0.6.0"
         }
       },
       {

@@ -8,6 +8,7 @@
 
 import Display
 import Epoxy
+import Foundation
 import VinchyCore
 
 // MARK: - BigCollectionView
@@ -24,6 +25,7 @@ final class BigCollectionView: CollectionView, EpoxyableView {
     self.style = style
     super.init(layout: UICollectionViewCompositionalLayout.epoxy)
     delaysContentTouches = false
+    prefetchDelegate = self
   }
 
   // MARK: Internal
@@ -33,7 +35,13 @@ final class BigCollectionView: CollectionView, EpoxyableView {
       case big, promo
     }
 
+    let id: String
     let kind: Kind
+
+    init(id: String = UUID().uuidString, kind: Kind) {
+      self.id = id
+      self.kind = kind
+    }
   }
 
   typealias Content = [MainSubtitleView.Content]
@@ -51,8 +59,7 @@ final class BigCollectionView: CollectionView, EpoxyableView {
   }
 
   func setContent(_ content: Content, animated: Bool) {
-
-    let sectionModel = SectionModel(dataID: SectionID.storiesCollectionViewSection) {
+    let sectionModel = SectionModel(dataID: UUID()) {
       content.enumerated().map { index, storyViewViewModel in
         switch style.kind {
         case .big:
@@ -82,14 +89,9 @@ final class BigCollectionView: CollectionView, EpoxyableView {
 
   // MARK: Private
 
-  private enum SectionID {
-    case storiesCollectionViewSection
-  }
-
   private let style: Style
 
   private var layoutSection: NSCollectionLayoutSection? {
-
     switch style.kind {
     case .big:
       let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .absolute(250), heightDimension: .absolute(155)))
@@ -108,6 +110,29 @@ final class BigCollectionView: CollectionView, EpoxyableView {
       section.orthogonalScrollingBehavior = .continuous
       section.contentInsets = .init(top: 0, leading: 16, bottom: 0, trailing: 16)
       return section
+    }
+  }
+}
+
+// MARK: CollectionViewPrefetchingDelegate
+
+extension BigCollectionView: CollectionViewPrefetchingDelegate {
+  func collectionView(_ collectionView: CollectionView, prefetch items: [AnyItemModel]) {
+    for item in items {
+      if let content = (item.model as? ItemModel<MainSubtitleView>)?.erasedContent as? MainSubtitleViewViewModel {
+        ImageLoader.shared.prefetch(url: content.imageURL)
+      }
+    }
+  }
+
+  func collectionView(_ collectionView: CollectionView, cancelPrefetchingOf items: [AnyItemModel]) {
+    for item in items {
+      if
+        let content = (item.model as? ItemModel<MainSubtitleView>)?.erasedContent as? MainSubtitleViewViewModel,
+        let url = content.imageURL
+      {
+        ImageLoader.shared.cancelPrefetch([url])
+      }
     }
   }
 }
