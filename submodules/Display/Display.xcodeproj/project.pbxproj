@@ -17,6 +17,7 @@
 		8A10F65D270757EF003463B0 /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A10F65C270757EF003463B0 /* UIScrollView.swift */; };
 		8A1587F2272EFEB10002CA28 /* StarsRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1587F1272EFEB10002CA28 /* StarsRatingView.swift */; };
 		8A1587F5272EFF0E0002CA28 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 8A1587F4272EFF0E0002CA28 /* Cosmos */; };
+		8A1587F7272EFFC30002CA28 /* ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1587F6272EFFC30002CA28 /* ContextMenu.swift */; };
 		8A251E3C26B0589600DAED2D /* DeliveryTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A251E3826B0589600DAED2D /* DeliveryTutorialView.swift */; };
 		8A251E3D26B0589600DAED2D /* DeliveryTutorialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A251E3926B0589600DAED2D /* DeliveryTutorialView.xib */; };
 		8A251E3E26B0589600DAED2D /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A251E3A26B0589600DAED2D /* TutorialViewController.swift */; };
@@ -62,6 +63,7 @@
 		8A079F2B269E0961000ACA2B /* SeparatorFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorFlowLayout.swift; sourceTree = "<group>"; };
 		8A10F65C270757EF003463B0 /* UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollView.swift; sourceTree = "<group>"; };
 		8A1587F1272EFEB10002CA28 /* StarsRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarsRatingView.swift; sourceTree = "<group>"; };
+		8A1587F6272EFFC30002CA28 /* ContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenu.swift; sourceTree = "<group>"; };
 		8A251E3826B0589600DAED2D /* DeliveryTutorialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryTutorialView.swift; sourceTree = "<group>"; };
 		8A251E3926B0589600DAED2D /* DeliveryTutorialView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeliveryTutorialView.xib; sourceTree = "<group>"; };
 		8A251E3A26B0589600DAED2D /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				CA53B12424E039F1009A0F85 /* Alertable.swift */,
 				CABDBA9524C31FAC00AD96D6 /* ASPageControl.swift */,
 				44A72593259230C600A7552B /* Button.swift */,
+				8A1587F6272EFFC30002CA28 /* ContextMenu.swift */,
 				CAA9DC68250EA24900F996A8 /* DecoratorFlowLayout.swift */,
 				4410AE3225E5632400A84FF9 /* DismissRoutable.swift */,
 				8A9866E1272EEF5600DE4D8F /* EpoxyErrorView.swift */,
@@ -302,6 +305,7 @@
 				44A7255D2592290B00A7552B /* TextFieldWithIcon.swift in Sources */,
 				8A079F2C269E0961000ACA2B /* SeparatorFlowLayout.swift in Sources */,
 				8A2F304B2671FAF7002DE6C1 /* FadingInfoViewController.swift in Sources */,
+				8A1587F7272EFFC30002CA28 /* ContextMenu.swift in Sources */,
 				CA3C97EF2572533E0036F7D9 /* GradientView.swift in Sources */,
 				8A251E3C26B0589600DAED2D /* DeliveryTutorialView.swift in Sources */,
 				CA18220424C0F88B00280DD4 /* NavigationController.swift in Sources */,
