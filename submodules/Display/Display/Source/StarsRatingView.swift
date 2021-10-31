@@ -1,8 +1,8 @@
 //
 //  StarsRatingView.swift
-//  CommonUI
+//  Display
 //
-//  Created by Алексей Смирнов on 22.06.2021.
+//  Created by Алексей Смирнов on 31.10.2021.
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 

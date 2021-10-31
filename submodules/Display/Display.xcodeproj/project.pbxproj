@@ -15,6 +15,8 @@
 		8A0793E4269350AB000ACA2B /* UICollectionViewCompositionalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0793E3269350AB000ACA2B /* UICollectionViewCompositionalLayout.swift */; };
 		8A079F2C269E0961000ACA2B /* SeparatorFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A079F2B269E0961000ACA2B /* SeparatorFlowLayout.swift */; };
 		8A10F65D270757EF003463B0 /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A10F65C270757EF003463B0 /* UIScrollView.swift */; };
+		8A1587F2272EFEB10002CA28 /* StarsRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1587F1272EFEB10002CA28 /* StarsRatingView.swift */; };
+		8A1587F5272EFF0E0002CA28 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 8A1587F4272EFF0E0002CA28 /* Cosmos */; };
 		8A251E3C26B0589600DAED2D /* DeliveryTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A251E3826B0589600DAED2D /* DeliveryTutorialView.swift */; };
 		8A251E3D26B0589600DAED2D /* DeliveryTutorialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A251E3926B0589600DAED2D /* DeliveryTutorialView.xib */; };
 		8A251E3E26B0589600DAED2D /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A251E3A26B0589600DAED2D /* TutorialViewController.swift */; };
@@ -59,6 +61,7 @@
 		8A0793E3269350AB000ACA2B /* UICollectionViewCompositionalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCompositionalLayout.swift; sourceTree = "<group>"; };
 		8A079F2B269E0961000ACA2B /* SeparatorFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorFlowLayout.swift; sourceTree = "<group>"; };
 		8A10F65C270757EF003463B0 /* UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollView.swift; sourceTree = "<group>"; };
+		8A1587F1272EFEB10002CA28 /* StarsRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarsRatingView.swift; sourceTree = "<group>"; };
 		8A251E3826B0589600DAED2D /* DeliveryTutorialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryTutorialView.swift; sourceTree = "<group>"; };
 		8A251E3926B0589600DAED2D /* DeliveryTutorialView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeliveryTutorialView.xib; sourceTree = "<group>"; };
 		8A251E3A26B0589600DAED2D /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +102,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A1587F5272EFF0E0002CA28 /* Cosmos in Frameworks */,
 				CA103AE4251690F200B0324F /* StringFormatting.framework in Frameworks */,
 				CAD0C9D6258C9B1400142FE5 /* Core.framework in Frameworks */,
 				8A9866E0272EEE9600DE4D8F /* Epoxy in Frameworks */,
@@ -186,6 +190,7 @@
 				8A079F2B269E0961000ACA2B /* SeparatorFlowLayout.swift */,
 				CA276D51256AC5830061BEBE /* ShimmeringView.swift */,
 				8AD49F1A267525840094E157 /* SkyFloatingLabelTextField.swift */,
+				8A1587F1272EFEB10002CA28 /* StarsRatingView.swift */,
 				8A85586026FB9C0300F6F9C8 /* TabView.swift */,
 				44A7255C2592290B00A7552B /* TextFieldWithIcon.swift */,
 				8A251E3726B0589600DAED2D /* Tutorials */,
@@ -229,6 +234,7 @@
 			packageProductDependencies = (
 				8A6951FA267CC12800F14902 /* Nuke */,
 				8A9866DF272EEE9600DE4D8F /* Epoxy */,
+				8A1587F4272EFF0E0002CA28 /* Cosmos */,
 			);
 			productName = Display;
 			productReference = CAE8869824C0E5F800E33E16 /* Display.framework */;
@@ -261,6 +267,7 @@
 			packageReferences = (
 				8A6951F9267CC12800F14902 /* XCRemoteSwiftPackageReference "Nuke" */,
 				8A9866DE272EEE9600DE4D8F /* XCRemoteSwiftPackageReference "epoxy-ios" */,
+				8A1587F3272EFF0E0002CA28 /* XCRemoteSwiftPackageReference "Cosmos" */,
 			);
 			productRefGroup = CAE8869924C0E5F800E33E16 /* Products */;
 			projectDirPath = "";
@@ -304,6 +311,7 @@
 				4404888D25D8390600019081 /* UITapGestureRecognizer.swift in Sources */,
 				8A0793E4269350AB000ACA2B /* UICollectionViewCompositionalLayout.swift in Sources */,
 				8A10F65D270757EF003463B0 /* UIScrollView.swift in Sources */,
+				8A1587F2272EFEB10002CA28 /* StarsRatingView.swift in Sources */,
 				CA18220624C0F8CE00280DD4 /* UIColor.swift in Sources */,
 				8AD49F1B267525840094E157 /* SkyFloatingLabelTextField.swift in Sources */,
 				CABDBA9624C31FAC00AD96D6 /* ASPageControl.swift in Sources */,
@@ -529,6 +537,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		8A1587F3272EFF0E0002CA28 /* XCRemoteSwiftPackageReference "Cosmos" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/evgenyneu/Cosmos";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 23.0.0;
+			};
+		};
 		8A6951F9267CC12800F14902 /* XCRemoteSwiftPackageReference "Nuke" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Nuke.git";
@@ -548,6 +564,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		8A1587F4272EFF0E0002CA28 /* Cosmos */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A1587F3272EFF0E0002CA28 /* XCRemoteSwiftPackageReference "Cosmos" */;
+			productName = Cosmos;
+		};
 		8A6951FA267CC12800F14902 /* Nuke */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8A6951F9267CC12800F14902 /* XCRemoteSwiftPackageReference "Nuke" */;

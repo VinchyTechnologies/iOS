@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 52;
+	objectVersion = 50;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -12,8 +12,6 @@
 		44F2B15825E7874800DE9674 /* SeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F2B15725E7874800DE9674 /* SeparatorCell.swift */; };
 		741399F826D5715100C5D1A5 /* ContextMenuCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741399F726D5715100C5D1A5 /* ContextMenuCell.swift */; };
 		741399FE26D571BA00C5D1A5 /* ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 741399FD26D571BA00C5D1A5 /* ContextMenu.swift */; };
-		8A69570E2682511000F14902 /* StarsRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A69570D2682511000F14902 /* StarsRatingView.swift */; };
-		8A6957112682520000F14902 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 8A6957102682520000F14902 /* Cosmos */; };
 		CA103ADD2516904C00B0324F /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA103ADC2516904C00B0324F /* Display.framework */; };
 		CA3C97DC257239F70036F7D9 /* CopyableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3C97DB257239F70036F7D9 /* CopyableLabel.swift */; };
 		CA3CEFA6251143EB00AAA692 /* CountriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3CEFA5251143EB00AAA692 /* CountriesViewController.swift */; };
@@ -34,7 +32,6 @@
 		44F2B15725E7874800DE9674 /* SeparatorCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeparatorCell.swift; sourceTree = "<group>"; };
 		741399F726D5715100C5D1A5 /* ContextMenuCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextMenuCell.swift; sourceTree = "<group>"; };
 		741399FD26D571BA00C5D1A5 /* ContextMenu.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContextMenu.swift; sourceTree = "<group>"; };
-		8A69570D2682511000F14902 /* StarsRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarsRatingView.swift; sourceTree = "<group>"; };
 		CA103ADC2516904C00B0324F /* Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA3C97DB257239F70036F7D9 /* CopyableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyableLabel.swift; sourceTree = "<group>"; };
 		CA3CEFA5251143EB00AAA692 /* CountriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewController.swift; sourceTree = "<group>"; };
@@ -57,7 +54,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A6957112682520000F14902 /* Cosmos in Frameworks */,
 				CA103ADD2516904C00B0324F /* Display.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -133,7 +129,6 @@
 				44EFDB5425E194950076ED6D /* LoadingIndicatorCell.swift */,
 				4474E3BF25E02F22001C5DE3 /* ReviewCell.swift */,
 				44F2B15725E7874800DE9674 /* SeparatorCell.swift */,
-				8A69570D2682511000F14902 /* StarsRatingView.swift */,
 				CAF24AF424C32DA30057547F /* TableViewHeader.swift */,
 				CA99E64E24F56B6300C36BEE /* TextCollectionCell.swift */,
 				CA7A87F725040C4F00AAD10F /* WineCollectionViewCell.swift */,
@@ -171,7 +166,6 @@
 			);
 			name = CommonUI;
 			packageProductDependencies = (
-				8A6957102682520000F14902 /* Cosmos */,
 			);
 			productName = CommonUI;
 			productReference = CAF24ADF24C32A730057547F /* CommonUI.framework */;
@@ -202,7 +196,6 @@
 			);
 			mainGroup = CAF24AD524C32A730057547F;
 			packageReferences = (
-				8A69570F2682520000F14902 /* XCRemoteSwiftPackageReference "Cosmos" */,
 			);
 			productRefGroup = CAF24AE024C32A730057547F /* Products */;
 			projectDirPath = "";
@@ -240,7 +233,6 @@
 				CA99E65924F79E4A00C36BEE /* ImageOptionCollectionCell.swift in Sources */,
 				44EFDB5525E194950076ED6D /* LoadingIndicatorCell.swift in Sources */,
 				CAF24AF324C32CF50057547F /* ErrorView.swift in Sources */,
-				8A69570E2682511000F14902 /* StarsRatingView.swift in Sources */,
 				741399F826D5715100C5D1A5 /* ContextMenuCell.swift in Sources */,
 				CAF24AEE24C32B0D0057547F /* WineTableCell.swift in Sources */,
 				4474E3C025E02F22001C5DE3 /* ReviewCell.swift in Sources */,
@@ -449,25 +441,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCRemoteSwiftPackageReference section */
-		8A69570F2682520000F14902 /* XCRemoteSwiftPackageReference "Cosmos" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/evgenyneu/Cosmos.git";
-			requirement = {
-				kind = exactVersion;
-				version = 23.0.0;
-			};
-		};
-/* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		8A6957102682520000F14902 /* Cosmos */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8A69570F2682520000F14902 /* XCRemoteSwiftPackageReference "Cosmos" */;
-			productName = Cosmos;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = CAF24AD624C32A730057547F /* Project object */;
 }
