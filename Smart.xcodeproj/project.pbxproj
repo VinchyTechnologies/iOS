@@ -115,7 +115,6 @@
 		8A0794DA26936141000ACA2B /* StoreRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0794CF26936141000ACA2B /* StoreRouterProtocol.swift */; };
 		8A0794DB26936141000ACA2B /* StoreRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0794D026936141000ACA2B /* StoreRouter.swift */; };
 		8A0794DE26936A8E000ACA2B /* LogoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0794DD26936A8E000ACA2B /* LogoRow.swift */; };
-		8A0794E126938394000ACA2B /* WineBottleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0794E026938394000ACA2B /* WineBottleView.swift */; };
 		8A0795B726943DD6000ACA2B /* FeaturesOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0795B626943DD6000ACA2B /* FeaturesOnboardingViewController.swift */; };
 		8A0795BA26943E85000ACA2B /* OnboardingFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0795B926943E85000ACA2B /* OnboardingFeatureView.swift */; };
 		8A07983B269750A0000ACA2B /* PluralLocalizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 8A07983D269750A0000ACA2B /* PluralLocalizable.stringsdict */; };
@@ -561,7 +560,6 @@
 		8A0794CF26936141000ACA2B /* StoreRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreRouterProtocol.swift; sourceTree = "<group>"; };
 		8A0794D026936141000ACA2B /* StoreRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreRouter.swift; sourceTree = "<group>"; };
 		8A0794DD26936A8E000ACA2B /* LogoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoRow.swift; sourceTree = "<group>"; };
-		8A0794E026938394000ACA2B /* WineBottleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineBottleView.swift; sourceTree = "<group>"; };
 		8A0795B626943DD6000ACA2B /* FeaturesOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesOnboardingViewController.swift; sourceTree = "<group>"; };
 		8A0795B926943E85000ACA2B /* OnboardingFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFeatureView.swift; sourceTree = "<group>"; };
 		8A07983C269750A0000ACA2B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/PluralLocalizable.stringsdict; sourceTree = "<group>"; };
@@ -1615,7 +1613,6 @@
 			children = (
 				8AF9441A2692295D003EB76A /* Label.swift */,
 				8AF9441C26922D77003EB76A /* IconView.swift */,
-				8A0794E026938394000ACA2B /* WineBottleView.swift */,
 				8A07991326998363000ACA2B /* HorizontalWineView.swift */,
 				8A079F2D269E151F000ACA2B /* BottlesCollectionView.swift */,
 				8A0BBEDE26A8578C0049DA74 /* LoadingView.swift */,
@@ -3731,7 +3728,6 @@
 				8AF966C82678F194001891B2 /* EditProfileRouterProtocol.swift in Sources */,
 				8A07930C26924DAF000ACA2B /* Document.swift in Sources */,
 				8AA990A626D91FE000C32358 /* StoresPresenter.swift in Sources */,
-				8A0794E126938394000ACA2B /* WineBottleView.swift in Sources */,
 				CAF514262461C52400667ED0 /* RateAppCell.swift in Sources */,
 				CA4D51042549F62500A6FD0B /* WriteNoteViewController.swift in Sources */,
 			);

@@ -1,21 +1,36 @@
 //
 //  WineBottleView.swift
-//  Smart
+//  Display
 //
-//  Created by Алексей Смирнов on 05.07.2021.
+//  Created by Алексей Смирнов on 31.10.2021.
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
 import AudioToolbox
-import CommonUI
 import CoreHaptics
-import Display
 import Epoxy
 import StringFormatting
+import UIKit
+
+// MARK: - ContextMenuViewModel
+
+public enum ContextMenuViewModel {
+  case share(content: ContextMenuItemViewModel)
+  case writeNote(content: ContextMenuItemViewModel)
+}
+
+// MARK: - ContextMenuItemViewModel
+
+public struct ContextMenuItemViewModel {
+  public let title: String?
+  public init(title: String?) {
+    self.title = title
+  }
+}
 
 // MARK: - WineBottleViewDelegate
 
-protocol WineBottleViewDelegate: AnyObject {
+public protocol WineBottleViewDelegate: AnyObject {
   func didTapShareContextMenu(wineID: Int64, sourceView: UIView)
   func didTapWriteNoteContextMenu(wineID: Int64)
 }
@@ -28,11 +43,11 @@ private enum Constants {
 
 // MARK: - WineBottleView
 
-final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDelegate {
+public final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDelegate {
 
   // MARK: Lifecycle
 
-  init(style: Style) {
+  public init(style: Style) {
     super.init(frame: .zero)
     translatesAutoresizingMaskIntoConstraints = false
 
@@ -101,17 +116,46 @@ final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDelegate {
 
   required init?(coder: NSCoder) { fatalError() }
 
-  // MARK: Internal
+  // MARK: Public
 
-  struct Style: Hashable {
+  public struct Style: Hashable {
+    public init() {
 
+    }
   }
 
-  typealias Content = WineCollectionViewCellViewModel
+  public struct Content: Equatable {
 
-  weak var delegate: WineBottleViewDelegate?
+    // MARK: Lifecycle
 
-  func setContent(_ content: Content, animated: Bool) {
+    public init(wineID: Int64, imageURL: URL?, titleText: String?, subtitleText: String?, rating: Double?, contextMenuViewModels: [ContextMenuViewModel]?) {
+      self.wineID = wineID
+      self.imageURL = imageURL
+      self.titleText = titleText
+      self.subtitleText = subtitleText
+      self.rating = rating
+      self.contextMenuViewModels = contextMenuViewModels
+    }
+
+    // MARK: Public
+
+    public let contextMenuViewModels: [ContextMenuViewModel]?
+
+    public let wineID: Int64
+    public let titleText: String?
+    public let imageURL: URL?
+    public let subtitleText: String?
+
+    public let rating: Double?
+
+    public static func == (lhs: Content, rhs: Content) -> Bool {
+      lhs.wineID == rhs.wineID
+    }
+  }
+
+  public weak var delegate: WineBottleViewDelegate?
+
+  public func setContent(_ content: Content, animated: Bool) {
     bottleImageView.loadBottle(url: content.imageURL)
 
     if let title = content.titleText {
@@ -242,7 +286,7 @@ final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDelegate {
 // MARK: HighlightableView
 
 extension WineBottleView: HighlightableView {
-  func didHighlight(_ isHighlighted: Bool) {
+  public func didHighlight(_ isHighlighted: Bool) {
     UIView.animate(
       withDuration: 0.15,
       delay: 0,
