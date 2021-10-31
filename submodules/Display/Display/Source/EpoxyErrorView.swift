@@ -1,13 +1,13 @@
 //
 //  EpoxyErrorView.swift
-//  Smart
+//  Display
 //
-//  Created by Алексей Смирнов on 28.10.2021.
+//  Created by Алексей Смирнов on 31.10.2021.
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Display
 import Epoxy
+import UIKit
 
 // MARK: - EpoxyErrorViewDelegate
 
@@ -17,11 +17,11 @@ public protocol EpoxyErrorViewDelegate: AnyObject {
 
 // MARK: - EpoxyErrorView
 
-final class EpoxyErrorView: UIView, EpoxyableView {
+public final class EpoxyErrorView: UIView, EpoxyableView {
 
   // MARK: Lifecycle
 
-  init(style: Style) {
+  public init(style: Style) {
     super.init(frame: .zero)
 
     let spacer1 = UIView()
@@ -73,22 +73,26 @@ final class EpoxyErrorView: UIView, EpoxyableView {
 
   // MARK: Public
 
+  public struct Style: Hashable {
+    public init() {
+    }
+  }
+
+  public struct Content: Equatable {
+    fileprivate let titleText: String?
+    fileprivate let subtitleText: String?
+    fileprivate let buttonText: String?
+
+    public init(titleText: String?, subtitleText: String?, buttonText: String?) {
+      self.titleText = titleText
+      self.subtitleText = subtitleText
+      self.buttonText = buttonText
+    }
+  }
+
   public weak var delegate: EpoxyErrorViewDelegate?
 
-  // MARK: Internal
-
-  struct Style: Hashable {
-
-  }
-
-  struct Content: Equatable {
-    let titleText: String?
-    let subtitleText: String?
-    let buttonText: String?
-  }
-
-
-  func setContent(_ content: Content, animated: Bool) {
+  public func setContent(_ content: Content, animated: Bool) {
     titleLabel.text = content.titleText
     titleLabel.isHidden = content.titleText == nil
 
@@ -104,7 +108,6 @@ final class EpoxyErrorView: UIView, EpoxyableView {
   private let titleLabel = UILabel()
   private let subtitleLabel = UILabel()
   private let button = Button()
-
 
   @objc
   private func didTapErrorButton(_ button: UIButton) {

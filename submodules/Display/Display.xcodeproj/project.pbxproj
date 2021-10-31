@@ -22,6 +22,8 @@
 		8A2F304B2671FAF7002DE6C1 /* FadingInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F304A2671FAF7002DE6C1 /* FadingInfoViewController.swift */; };
 		8A6951FB267CC12800F14902 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 8A6951FA267CC12800F14902 /* Nuke */; };
 		8A85586126FB9C0300F6F9C8 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A85586026FB9C0300F6F9C8 /* TabView.swift */; };
+		8A9866E0272EEE9600DE4D8F /* Epoxy in Frameworks */ = {isa = PBXBuildFile; productRef = 8A9866DF272EEE9600DE4D8F /* Epoxy */; };
+		8A9866E2272EEF5600DE4D8F /* EpoxyErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9866E1272EEF5600DE4D8F /* EpoxyErrorView.swift */; };
 		8AD49F1B267525840094E157 /* SkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD49F1A267525840094E157 /* SkyFloatingLabelTextField.swift */; };
 		CA103AE4251690F200B0324F /* StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA103AE3251690F200B0324F /* StringFormatting.framework */; };
 		CA1821A224C0E72A00280DD4 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1821A124C0E72A00280DD4 /* Font.swift */; };
@@ -63,6 +65,7 @@
 		8A2F30482671FA13002DE6C1 /* OverlayPresentationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayPresentationCenter.swift; sourceTree = "<group>"; };
 		8A2F304A2671FAF7002DE6C1 /* FadingInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadingInfoViewController.swift; sourceTree = "<group>"; };
 		8A85586026FB9C0300F6F9C8 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
+		8A9866E1272EEF5600DE4D8F /* EpoxyErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpoxyErrorView.swift; sourceTree = "<group>"; };
 		8AD49F1A267525840094E157 /* SkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
 		CA103AE3251690F200B0324F /* StringFormatting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StringFormatting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA1821A124C0E72A00280DD4 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
@@ -98,6 +101,7 @@
 			files = (
 				CA103AE4251690F200B0324F /* StringFormatting.framework in Frameworks */,
 				CAD0C9D6258C9B1400142FE5 /* Core.framework in Frameworks */,
+				8A9866E0272EEE9600DE4D8F /* Epoxy in Frameworks */,
 				8A6951FB267CC12800F14902 /* Nuke in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -162,6 +166,7 @@
 				44A72593259230C600A7552B /* Button.swift */,
 				CAA9DC68250EA24900F996A8 /* DecoratorFlowLayout.swift */,
 				4410AE3225E5632400A84FF9 /* DismissRoutable.swift */,
+				8A9866E1272EEF5600DE4D8F /* EpoxyErrorView.swift */,
 				8A2F304A2671FAF7002DE6C1 /* FadingInfoViewController.swift */,
 				CA1821A124C0E72A00280DD4 /* Font.swift */,
 				CA81987A25387CA80056A1C6 /* Gradient.swift */,
@@ -223,6 +228,7 @@
 			name = Display;
 			packageProductDependencies = (
 				8A6951FA267CC12800F14902 /* Nuke */,
+				8A9866DF272EEE9600DE4D8F /* Epoxy */,
 			);
 			productName = Display;
 			productReference = CAE8869824C0E5F800E33E16 /* Display.framework */;
@@ -254,6 +260,7 @@
 			mainGroup = CAE8868E24C0E5F800E33E16;
 			packageReferences = (
 				8A6951F9267CC12800F14902 /* XCRemoteSwiftPackageReference "Nuke" */,
+				8A9866DE272EEE9600DE4D8F /* XCRemoteSwiftPackageReference "epoxy-ios" */,
 			);
 			productRefGroup = CAE8869924C0E5F800E33E16 /* Products */;
 			projectDirPath = "";
@@ -283,6 +290,7 @@
 				CA7A87EA2502582C00AAD10F /* PaddingLabel.swift in Sources */,
 				44DE6C1625DB9E980008695D /* Orientation.swift in Sources */,
 				CA53B12524E039F1009A0F85 /* Alertable.swift in Sources */,
+				8A9866E2272EEF5600DE4D8F /* EpoxyErrorView.swift in Sources */,
 				CAD904EE257BADEC009FE71F /* ImageLoader.swift in Sources */,
 				44A7255D2592290B00A7552B /* TextFieldWithIcon.swift in Sources */,
 				8A079F2C269E0961000ACA2B /* SeparatorFlowLayout.swift in Sources */,
@@ -529,6 +537,14 @@
 				minimumVersion = 10.3.0;
 			};
 		};
+		8A9866DE272EEE9600DE4D8F /* XCRemoteSwiftPackageReference "epoxy-ios" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/VinchyTechnologies/epoxy-ios";
+			requirement = {
+				kind = upToNextMinorVersion;
+				minimumVersion = 0.6.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -536,6 +552,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8A6951F9267CC12800F14902 /* XCRemoteSwiftPackageReference "Nuke" */;
 			productName = Nuke;
+		};
+		8A9866DF272EEE9600DE4D8F /* Epoxy */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A9866DE272EEE9600DE4D8F /* XCRemoteSwiftPackageReference "epoxy-ios" */;
+			productName = Epoxy;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
