@@ -11,15 +11,6 @@
         }
       },
       {
-        "package": "Epoxy",
-        "repositoryURL": "https://github.com/VinchyTechnologies/epoxy-ios",
-        "state": {
-          "branch": null,
-          "revision": "8eda3540917f067530227b12f7fac8a2d1afa249",
-          "version": "0.6.0"
-        }
-      },
-      {
         "package": "FittedSheets",
         "repositoryURL": "https://github.com/gordontucker/FittedSheets.git",
         "state": {

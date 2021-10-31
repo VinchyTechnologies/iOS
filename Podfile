@@ -13,6 +13,7 @@ def commonPods
   pod 'Firebase/DynamicLinks'
   pod 'Firebase/RemoteConfig'
   pod 'Firebase/Analytics'
+  pod 'Epoxy'
 end
 
 target 'Smart' do
@@ -26,6 +27,16 @@ target 'Smart' do
 
   target 'SmartUITests' do
   end
+end
+
+target 'Display' do
+  project 'submodules/Display/Display'
+  pod 'Epoxy'
+end
+
+target 'CommonUI' do
+  project 'submodules/CommonUI/CommonUI'
+  pod 'Epoxy'
 end
 
 target 'VinchyAuthorizationApp' do

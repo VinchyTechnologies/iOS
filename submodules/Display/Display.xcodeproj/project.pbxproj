@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3606C710D4617062D8C69885 /* Pods_Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08332BF0307816EC11B3EA50 /* Pods_Display.framework */; };
 		4404888D25D8390600019081 /* UITapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404888C25D8390600019081 /* UITapGestureRecognizer.swift */; };
 		4410AE3325E5632400A84FF9 /* DismissRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410AE3225E5632400A84FF9 /* DismissRoutable.swift */; };
 		44A7255D2592290B00A7552B /* TextFieldWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A7255C2592290B00A7552B /* TextFieldWithIcon.swift */; };
@@ -19,6 +20,7 @@
 		8A1587F5272EFF0E0002CA28 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 8A1587F4272EFF0E0002CA28 /* Cosmos */; };
 		8A1587F7272EFFC30002CA28 /* ContextMenu.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1587F6272EFFC30002CA28 /* ContextMenu.swift */; };
 		8A1587F9272F01130002CA28 /* WineBottleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1587F8272F01130002CA28 /* WineBottleView.swift */; };
+		8A158800272F04B60002CA28 /* BottlesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1587FF272F04B60002CA28 /* BottlesCollectionView.swift */; };
 		8A251E3C26B0589600DAED2D /* DeliveryTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A251E3826B0589600DAED2D /* DeliveryTutorialView.swift */; };
 		8A251E3D26B0589600DAED2D /* DeliveryTutorialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A251E3926B0589600DAED2D /* DeliveryTutorialView.xib */; };
 		8A251E3E26B0589600DAED2D /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A251E3A26B0589600DAED2D /* TutorialViewController.swift */; };
@@ -26,7 +28,6 @@
 		8A2F304B2671FAF7002DE6C1 /* FadingInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F304A2671FAF7002DE6C1 /* FadingInfoViewController.swift */; };
 		8A6951FB267CC12800F14902 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 8A6951FA267CC12800F14902 /* Nuke */; };
 		8A85586126FB9C0300F6F9C8 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A85586026FB9C0300F6F9C8 /* TabView.swift */; };
-		8A9866E0272EEE9600DE4D8F /* Epoxy in Frameworks */ = {isa = PBXBuildFile; productRef = 8A9866DF272EEE9600DE4D8F /* Epoxy */; };
 		8A9866E2272EEF5600DE4D8F /* EpoxyErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9866E1272EEF5600DE4D8F /* EpoxyErrorView.swift */; };
 		8AD49F1B267525840094E157 /* SkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD49F1A267525840094E157 /* SkyFloatingLabelTextField.swift */; };
 		CA103AE4251690F200B0324F /* StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA103AE3251690F200B0324F /* StringFormatting.framework */; };
@@ -55,6 +56,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		08332BF0307816EC11B3EA50 /* Pods_Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		22C8868B911E1129CFE706A2 /* Pods-Display.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Display.debug.xcconfig"; path = "Target Support Files/Pods-Display/Pods-Display.debug.xcconfig"; sourceTree = "<group>"; };
 		4404888C25D8390600019081 /* UITapGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITapGestureRecognizer.swift; sourceTree = "<group>"; };
 		4410AE3225E5632400A84FF9 /* DismissRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissRoutable.swift; sourceTree = "<group>"; };
 		44A7255C2592290B00A7552B /* TextFieldWithIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithIcon.swift; sourceTree = "<group>"; };
@@ -66,6 +69,7 @@
 		8A1587F1272EFEB10002CA28 /* StarsRatingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StarsRatingView.swift; sourceTree = "<group>"; };
 		8A1587F6272EFFC30002CA28 /* ContextMenu.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContextMenu.swift; sourceTree = "<group>"; };
 		8A1587F8272F01130002CA28 /* WineBottleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineBottleView.swift; sourceTree = "<group>"; };
+		8A1587FF272F04B60002CA28 /* BottlesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottlesCollectionView.swift; sourceTree = "<group>"; };
 		8A251E3826B0589600DAED2D /* DeliveryTutorialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryTutorialView.swift; sourceTree = "<group>"; };
 		8A251E3926B0589600DAED2D /* DeliveryTutorialView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeliveryTutorialView.xib; sourceTree = "<group>"; };
 		8A251E3A26B0589600DAED2D /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +103,7 @@
 		CAE8869B24C0E5F800E33E16 /* Display.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Display.h; sourceTree = "<group>"; };
 		CAE8869C24C0E5F800E33E16 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CE8D930F25BA2878004792C6 /* PlaceholderTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceholderTextView.swift; sourceTree = "<group>"; };
+		EE1FE58479CCE0E00EA3AAD3 /* Pods-Display.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Display.release.xcconfig"; path = "Target Support Files/Pods-Display/Pods-Display.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -109,14 +114,24 @@
 				8A1587F5272EFF0E0002CA28 /* Cosmos in Frameworks */,
 				CA103AE4251690F200B0324F /* StringFormatting.framework in Frameworks */,
 				CAD0C9D6258C9B1400142FE5 /* Core.framework in Frameworks */,
-				8A9866E0272EEE9600DE4D8F /* Epoxy in Frameworks */,
 				8A6951FB267CC12800F14902 /* Nuke in Frameworks */,
+				3606C710D4617062D8C69885 /* Pods_Display.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		01665E1EAE967F871ED16F00 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				22C8868B911E1129CFE706A2 /* Pods-Display.debug.xcconfig */,
+				EE1FE58479CCE0E00EA3AAD3 /* Pods-Display.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../../Pods;
+			sourceTree = "<group>";
+		};
 		8A251E3726B0589600DAED2D /* Tutorials */ = {
 			isa = PBXGroup;
 			children = (
@@ -132,6 +147,7 @@
 			children = (
 				CAD0C9D5258C9B1400142FE5 /* Core.framework */,
 				CA103AE3251690F200B0324F /* StringFormatting.framework */,
+				08332BF0307816EC11B3EA50 /* Pods_Display.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -142,6 +158,7 @@
 				CAE8869A24C0E5F800E33E16 /* Display */,
 				CAE8869924C0E5F800E33E16 /* Products */,
 				BFF9333AE32420B9D271FD47 /* Frameworks */,
+				01665E1EAE967F871ED16F00 /* Pods */,
 			);
 			indentWidth = 2;
 			sourceTree = "<group>";
@@ -171,6 +188,7 @@
 				CA99E65A24F7D79B00C36BEE /* ActivityIndicator.swift */,
 				CA53B12424E039F1009A0F85 /* Alertable.swift */,
 				CABDBA9524C31FAC00AD96D6 /* ASPageControl.swift */,
+				8A1587FF272F04B60002CA28 /* BottlesCollectionView.swift */,
 				44A72593259230C600A7552B /* Button.swift */,
 				8A1587F6272EFFC30002CA28 /* ContextMenu.swift */,
 				CAA9DC68250EA24900F996A8 /* DecoratorFlowLayout.swift */,
@@ -227,6 +245,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = CAE886A024C0E5F800E33E16 /* Build configuration list for PBXNativeTarget "Display" */;
 			buildPhases = (
+				AF8BF94DCE2E0A8CEFF15388 /* [CP] Check Pods Manifest.lock */,
 				CAE8869324C0E5F800E33E16 /* Headers */,
 				CAE8869424C0E5F800E33E16 /* Sources */,
 				CAE8869524C0E5F800E33E16 /* Frameworks */,
@@ -239,7 +258,6 @@
 			name = Display;
 			packageProductDependencies = (
 				8A6951FA267CC12800F14902 /* Nuke */,
-				8A9866DF272EEE9600DE4D8F /* Epoxy */,
 				8A1587F4272EFF0E0002CA28 /* Cosmos */,
 			);
 			productName = Display;
@@ -271,8 +289,7 @@
 			);
 			mainGroup = CAE8868E24C0E5F800E33E16;
 			packageReferences = (
-				8A6951F9267CC12800F14902 /* XCRemoteSwiftPackageReference "Nuke" */,
-				8A9866DE272EEE9600DE4D8F /* XCRemoteSwiftPackageReference "epoxy-ios" */,
+				8A6951F9267CC12800F14902 /* XCRemoteSwiftPackageReference "Nuke.git" */,
 				8A1587F3272EFF0E0002CA28 /* XCRemoteSwiftPackageReference "Cosmos" */,
 			);
 			productRefGroup = CAE8869924C0E5F800E33E16 /* Products */;
@@ -295,6 +312,31 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		AF8BF94DCE2E0A8CEFF15388 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Display-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		CAE8869424C0E5F800E33E16 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -303,6 +345,7 @@
 				CA7A87EA2502582C00AAD10F /* PaddingLabel.swift in Sources */,
 				44DE6C1625DB9E980008695D /* Orientation.swift in Sources */,
 				CA53B12524E039F1009A0F85 /* Alertable.swift in Sources */,
+				8A158800272F04B60002CA28 /* BottlesCollectionView.swift in Sources */,
 				8A9866E2272EEF5600DE4D8F /* EpoxyErrorView.swift in Sources */,
 				CAD904EE257BADEC009FE71F /* ImageLoader.swift in Sources */,
 				44A7255D2592290B00A7552B /* TextFieldWithIcon.swift in Sources */,
@@ -468,6 +511,7 @@
 		};
 		CAE886A124C0E5F800E33E16 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 22C8868B911E1129CFE706A2 /* Pods-Display.debug.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -496,6 +540,7 @@
 		};
 		CAE886A224C0E5F800E33E16 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = EE1FE58479CCE0E00EA3AAD3 /* Pods-Display.release.xcconfig */;
 			buildSettings = {
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
@@ -553,20 +598,12 @@
 				minimumVersion = 23.0.0;
 			};
 		};
-		8A6951F9267CC12800F14902 /* XCRemoteSwiftPackageReference "Nuke" */ = {
+		8A6951F9267CC12800F14902 /* XCRemoteSwiftPackageReference "Nuke.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Nuke.git";
 			requirement = {
 				kind = upToNextMajorVersion;
 				minimumVersion = 10.3.0;
-			};
-		};
-		8A9866DE272EEE9600DE4D8F /* XCRemoteSwiftPackageReference "epoxy-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/VinchyTechnologies/epoxy-ios";
-			requirement = {
-				kind = upToNextMinorVersion;
-				minimumVersion = 0.6.0;
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
@@ -579,13 +616,8 @@
 		};
 		8A6951FA267CC12800F14902 /* Nuke */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8A6951F9267CC12800F14902 /* XCRemoteSwiftPackageReference "Nuke" */;
+			package = 8A6951F9267CC12800F14902 /* XCRemoteSwiftPackageReference "Nuke.git" */;
 			productName = Nuke;
-		};
-		8A9866DF272EEE9600DE4D8F /* Epoxy */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8A9866DE272EEE9600DE4D8F /* XCRemoteSwiftPackageReference "epoxy-ios" */;
-			productName = Epoxy;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

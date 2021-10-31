@@ -211,7 +211,6 @@
 		8A916121268E27EB00240B18 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916116268E27EB00240B18 /* SearchRouter.swift */; };
 		8A916122268E27EB00240B18 /* SearchRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916117268E27EB00240B18 /* SearchRouterProtocol.swift */; };
 		8A9554682692284B00F1C5AE /* DocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9554672692284B00F1C5AE /* DocumentsViewController.swift */; };
-		8A9865ED272C2D6D00DE4D8F /* Epoxy in Frameworks */ = {isa = PBXBuildFile; productRef = 8A9865EC272C2D6D00DE4D8F /* Epoxy */; };
 		8AA5E5132615053D00935B5E /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA5E5122615053D00935B5E /* AboutView.swift */; };
 		8AA98B9626D5436500C32358 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA98B9526D5436500C32358 /* EmptyView.swift */; };
 		8AA990A226D91FE000C32358 /* StoresViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA9909126D91FE000C32358 /* StoresViewModel.swift */; };
@@ -858,7 +857,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A9865ED272C2D6D00DE4D8F /* Epoxy in Frameworks */,
 				CA51BBEF254094B000208F71 /* AppTrackingTransparency.framework in Frameworks */,
 				8A63CCB62675462C003B1D4D /* Database.framework in Frameworks */,
 				CA51BBED254094A100208F71 /* AdSupport.framework in Frameworks */,
@@ -3099,7 +3097,6 @@
 				8A63CC8A26753046003B1D4D /* FittedSheets */,
 				8A63CC8D2675308B003B1D4D /* Sheeeeeeeeet */,
 				8A63CC932675322D003B1D4D /* SPAlert */,
-				8A9865EC272C2D6D00DE4D8F /* Epoxy */,
 			);
 			productName = Smart;
 			productReference = CA472ABC245EDE2F009149FF /* Vinchy.app */;
@@ -3182,7 +3179,6 @@
 				8A63CC8926753046003B1D4D /* XCRemoteSwiftPackageReference "FittedSheets" */,
 				8A63CC8C2675308B003B1D4D /* XCRemoteSwiftPackageReference "Sheeeeeeeeet" */,
 				8A63CC922675322D003B1D4D /* XCRemoteSwiftPackageReference "SPAlert" */,
-				8A9865EB272C2D6D00DE4D8F /* XCRemoteSwiftPackageReference "epoxy-ios" */,
 			);
 			productRefGroup = CA472ABD245EDE2F009149FF /* Products */;
 			projectDirPath = "";
@@ -4146,14 +4142,6 @@
 				version = 2.1.4;
 			};
 		};
-		8A9865EB272C2D6D00DE4D8F /* XCRemoteSwiftPackageReference "epoxy-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/VinchyTechnologies/epoxy-ios";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.6.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -4171,11 +4159,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8A63CC922675322D003B1D4D /* XCRemoteSwiftPackageReference "SPAlert" */;
 			productName = SPAlert;
-		};
-		8A9865EC272C2D6D00DE4D8F /* Epoxy */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8A9865EB272C2D6D00DE4D8F /* XCRemoteSwiftPackageReference "epoxy-ios" */;
-			productName = Epoxy;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
