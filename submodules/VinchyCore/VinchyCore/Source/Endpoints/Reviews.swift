@@ -92,14 +92,14 @@ private enum ReviewsEndpoint: EndpointProtocol {
       return [
         "Authorization": "VFAXGm53nG7zBtEuF5DVAhK9YKuHBJ9xTjuCeFyHDxbP4s6gj6",
         "accept-language": Locale.current.languageCode ?? "en",
-        "x-currency": Locale.current.currencyCode ?? "USD",
+        "x-currency": UserDefaultsConfig.currency,
       ]
 
     case .create, .update:
       return [
         "Authorization": "VFAXGm53nG7zBtEuF5DVAhK9YKuHBJ9xTjuCeFyHDxbP4s6gj6",
         "accept-language": Locale.current.languageCode ?? "en",
-        "x-currency": Locale.current.currencyCode ?? "USD",
+        "x-currency": UserDefaultsConfig.currency,
         "x-jwt-token": Keychain.shared.accessToken ?? "",
       ]
     }

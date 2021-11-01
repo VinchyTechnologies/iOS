@@ -23,7 +23,7 @@ public enum UserDefaultsConfig {
   @UserDefault("lastSeenOnboardingVersion", defaultValue: 0)
   public static var lastSeenOnboardingVersion: Int
 
-  @UserDefault("currency", defaultValue: Locale.current.currencyCode ?? "USD")
+  @UserDefault("currency", defaultValue: defaultCurrency)
   public static var currency: String
 
   @UserDefault("accountID", defaultValue: 0)
