@@ -40,7 +40,7 @@ final class MapRouter {
 
 extension MapRouter: MapRouterProtocol {
   func showMapDetailStore(partnerId: Int, affilatedId: Int) {
-    let options = SheetOptions(shrinkPresentingViewController: false, useInlineMode: true)
+    let options = SheetOptions(shrinkPresentingViewController: false)
     let mapDetailStore = MapDetailStoreAssembly.assemblyModule(input: .init(partnerId: partnerId, affilatedId: affilatedId))
     mapDetailStore.delegate = viewController as? MapViewController
     let sheetController = SheetViewController(
@@ -53,7 +53,7 @@ extension MapRouter: MapRouterProtocol {
     }
 
     if let tabbarController = UIApplication.topViewController()?.tabBarController {
-      sheetController.animateIn(to: tabbarController.view, in: tabbarController)
+      tabbarController.present(sheetController, animated: true, completion: nil)
     }
   }
 

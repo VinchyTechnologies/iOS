@@ -51,17 +51,18 @@ public final class AuthService {
     completion: @escaping (Result<AccountInfo, APIError>) -> Void)
   {
     let deviceId = UserDefaultsConfig.deviceId
-    let email = email ?? UserDefaultsConfig.accountEmail
-    let userName: String
-    if fullName != nil {
-      userName = (fullName?.givenName ?? "") + " " + (fullName?.familyName ?? "")
-    } else {
-      userName = UserDefaultsConfig.userName
+
+    if let email = email {
+      UserDefaultsConfig.accountEmail = email
+    }
+
+    if let fullName = fullName {
+      UserDefaultsConfig.userName = (fullName.givenName ?? "") + " " + (fullName.familyName ?? "")
     }
 
     Accounts.shared.signInWithApple(
-      email: email,
-      fullName: userName,
+      email: UserDefaultsConfig.accountEmail,
+      fullName: UserDefaultsConfig.userName,
       authCode: authorizationCode,
       deviceId: deviceId,
       appleUserId: appleUserId,

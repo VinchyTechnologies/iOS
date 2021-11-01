@@ -55,7 +55,7 @@ extension WineDetailRouter: WineDetailRouterProtocol {
     let controller = StoreAssembly.assemblyModule(input: .init(mode: .normal(affilatedId: affilatedId)))
     let navigationController = NavigationController(rootViewController: controller)
     navigationController.modalPresentationStyle = .overCurrentContext
-    viewController?.present(navigationController, animated: true, completion: nil)
+    viewController?.navigationController?.present(navigationController, animated: true, completion: nil)
   }
 
   func presentEmailController(HTMLText: String?, recipients: [String]) {

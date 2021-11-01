@@ -82,6 +82,6 @@ extension MapDetailStoreRouter: MapDetailStoreRouterProtocol {
     alert.popoverPresentationController?.sourceView = button
     alert.popoverPresentationController?.permittedArrowDirections = .up
 
-    viewController?.present(alert, animated: true, completion: nil)
+    viewController?.sheetViewController?.present(alert, animated: true, completion: nil)
   }
 }

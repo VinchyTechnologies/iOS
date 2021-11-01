@@ -15,6 +15,8 @@ import UIKit
 
 protocol TabBarDeeplinkable {
   func openWineDetail(wineID: Int64) -> AnyPublisher<TabBarDeeplinkable, Never>
+  func selectSecondTab() -> AnyPublisher<TabBarDeeplinkable, Never>
+  func makeSearchBarFirstResponder() -> AnyPublisher<TabBarDeeplinkable, Never>
 }
 
 // MARK: - ScrollableToTop
@@ -157,11 +159,48 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
     return true
   }
+
+  // MARK: Private
+
+  private func popToRoot() {
+    if let tabPresentedController = presentedViewController {
+      tabPresentedController.dismiss(animated: false, completion: nil)
+    }
+
+    if let viewController = viewControllers?[safe: selectedIndex] {
+      if let presentedViewController = viewController.presentedViewController {
+        presentedViewController.dismiss(animated: false, completion: nil)
+      }
+      if let navViewController = viewController as? UINavigationController {
+        navViewController.popToRootViewController(animated: false)
+      }
+    }
+  }
 }
 
 // MARK: TabBarDeeplinkable
 
 extension TabBarController: TabBarDeeplinkable {
+
+  func selectSecondTab() -> AnyPublisher<TabBarDeeplinkable, Never> {
+    popToRoot()
+    selectedIndex = .love
+    return Just(self)
+      .eraseToAnyPublisher()
+  }
+
+  func makeSearchBarFirstResponder() -> AnyPublisher<TabBarDeeplinkable, Never> {
+    popToRoot()
+    selectedIndex = .main
+    if let viewController = viewControllers?[safe: selectedIndex] as? NavigationController {
+      if let vinchyViewController = viewController.topViewController as? SearchBarSelectable {
+        vinchyViewController.searchBarBecomeFirstResponder()
+      }
+    }
+    return Just(self)
+      .eraseToAnyPublisher()
+  }
+
   func openWineDetail(wineID: Int64) -> AnyPublisher<TabBarDeeplinkable, Never> {
     if let viewController = viewControllers?[safe: selectedIndex] as? NavigationController {
       viewController.pushViewController(Assembly.buildDetailModule(wineID: wineID), animated: true)

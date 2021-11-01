@@ -8,6 +8,42 @@
 
 import Combine
 
+// MARK: - OpenGlobalSearchFlow
+
+final class OpenGlobalSearchFlow: DeeplinkFlow<RootDeeplinkable> {
+
+  override init() {
+    super.init()
+    onStep { root in
+      root.openTabBar()
+    }
+    .onStep { tabBar in
+      tabBar.makeSearchBarFirstResponder()
+    }
+    .commit()
+  }
+
+  // MARK: Internal
+}
+
+// MARK: - OpenSecondTabFlow
+
+final class OpenSecondTabFlow: DeeplinkFlow<RootDeeplinkable> {
+
+  override init() {
+    super.init()
+    onStep { root in
+      root.openTabBar()
+    }
+    .onStep { tabBar in
+      tabBar.selectSecondTab()
+    }
+    .commit()
+  }
+
+  // MARK: Internal
+}
+
 // MARK: - OpenWineDetailFlow
 
 final class OpenWineDetailFlow: DeeplinkFlow<RootDeeplinkable> {
@@ -52,6 +88,8 @@ final class DeeplinkRouterImpl {
 
   enum Flow {
     case openWineDetail(flow: OpenWineDetailFlow)
+    case openSecondTabBarItem(flow: OpenSecondTabFlow)
+    case openGlobalSearch(flow: OpenGlobalSearchFlow)
   }
 
   // MARK: Private
@@ -60,6 +98,14 @@ final class DeeplinkRouterImpl {
   private let root: RootDeeplinkable
 
   private func createFlow(url: URL) -> Flow? {
+    if url.absoluteString == "vinchy://search" {
+      return .openGlobalSearch(flow: .init())
+    }
+
+    if url.absoluteString == "vinchy://secondTab" {
+      return .openSecondTabBarItem(flow: .init())
+    }
+
     guard !url.pathComponents.isEmpty else { return nil }
     if
       let word = url.pathComponents[safe: url.pathComponents.count - 2],
@@ -83,6 +129,12 @@ extension DeeplinkRouterImpl: DeeplinkRouter {
   func route(url: URL) {
     switch createFlow(url: url) {
     case .openWineDetail(let flow):
+      subscribtions = flow.subcscribe(root)
+
+    case .openSecondTabBarItem(let flow):
+      subscribtions = flow.subcscribe(root)
+
+    case .openGlobalSearch(let flow):
       subscribtions = flow.subcscribe(root)
 
     case .none:

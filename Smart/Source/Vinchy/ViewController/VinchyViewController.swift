@@ -19,6 +19,12 @@ private enum C {
   static let horizontalInset: CGFloat = 16
 }
 
+// MARK: - SearchBarSelectable
+
+protocol SearchBarSelectable: AnyObject {
+  func searchBarBecomeFirstResponder()
+}
+
 // MARK: - VinchyViewController
 
 final class VinchyViewController: CollectionViewController {
@@ -360,6 +366,17 @@ extension VinchyViewController: StoriesCollectionViewDelegate {
 extension VinchyViewController: EpoxyErrorViewDelegate {
   func didTapErrorButton(_ button: UIButton) {
     interactor?.viewDidLoad()
+  }
+}
+
+// MARK: SearchBarSelectable
+
+extension VinchyViewController: SearchBarSelectable {
+  func searchBarBecomeFirstResponder() {
+    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
+      self.searchController.isActive = true
+      self.searchController.searchBar.becomeFirstResponder()
+    }
   }
 }
 
