@@ -15,7 +15,7 @@ import Epoxy
 public struct HorizontalWineViewViewModel: Equatable {
 
   public let wineID: Int64
-  fileprivate let imageURL: URL?
+  public let imageURL: URL?
   fileprivate let titleText: String
   fileprivate let subtitleText: String?
 
