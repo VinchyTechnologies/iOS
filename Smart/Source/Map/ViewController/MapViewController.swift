@@ -309,7 +309,7 @@ extension MapViewController: MKMapViewDelegate {
         view.transform = .identity
     } completion: { _ in
     }
-//    selectedAnnotation = nil
+    selectedAnnotation = nil
   }
 
   func mapView(_: MKMapView, didSelect view: MKAnnotationView) {
