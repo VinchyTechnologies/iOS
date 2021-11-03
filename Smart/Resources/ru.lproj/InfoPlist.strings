@@ -11,3 +11,5 @@ CFBundleDisplayName = "Vinchy";
 NSUserTrackingUsageDescription = "Этот идентификатор будет использоваться для показа вам персонализированной рекламы.";
 ORIGINAL_APP_NAME = "Vinchy";
 LOCALIZED_APP_NAME = "Винчи";
+SHORTCUTITEM_SEARCH = "Поиск";
+SHORTCUTITEM_LOVE = "Любимые";

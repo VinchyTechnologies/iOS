@@ -11,3 +11,5 @@ CFBundleDisplayName = "Vinchy";
 NSUserTrackingUsageDescription = "This identifier will be used to deliver personalized ads to you.";
 ORIGINAL_APP_NAME = "Vinchy";
 LOCALIZED_APP_NAME = "Vinchy";
+SHORTCUTITEM_SEARCH = "Search";
+SHORTCUTITEM_LOVE = "Saved";

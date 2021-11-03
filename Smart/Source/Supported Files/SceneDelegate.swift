@@ -16,12 +16,11 @@ final class SceneDelegate: UIResponder {
 
   // MARK: Internal
 
-  // MARK: - Interanl Properties
-
   var window: UIWindow?
 
   // MARK: Private
 
+  private var savedShortCutItem: UIApplicationShortcutItem?
   private lazy var root: (RootInteractor & RootDeeplinkable) = {
     RootBuilderImpl(tabBarBuilder: TabBarBuilderImpl())
       .build(input: RootBuilderInput(window: window!)) // swiftlint:disable:this force_unwrapping
@@ -30,6 +29,18 @@ final class SceneDelegate: UIResponder {
   private lazy var deeplinkRouter: DeeplinkRouter = {
     DeeplinkRouterImpl(root: root)
   }()
+
+  @discardableResult
+  private func handleShortCutItem(shortcutItem: UIApplicationShortcutItem) -> Bool {
+    /**
+     In this sample an alert is being shown to indicate that the action has been triggered,
+     but in real code the functionality for the quick action would be triggered.
+     */
+    if let url = URL(string: shortcutItem.userInfo?["url"] as? String ?? "") {
+      deeplinkRouter.route(url: url)
+    }
+    return true
+  }
 }
 
 // MARK: UIWindowSceneDelegate
@@ -37,6 +48,25 @@ final class SceneDelegate: UIResponder {
 extension SceneDelegate: UIWindowSceneDelegate {
 
   // MARK: Internal
+
+  /** Called when the user activates your application by selecting a shortcut on the Home Screen,
+   and the window scene is already connected.
+   */
+  /// - Tag: PerformAction
+  func windowScene(
+    _ windowScene: UIWindowScene,
+    performActionFor shortcutItem: UIApplicationShortcutItem,
+    completionHandler: @escaping (Bool) -> Void)
+  {
+    let handled = handleShortCutItem(shortcutItem: shortcutItem)
+    completionHandler(handled)
+  }
+
+//  func sceneDidBecomeActive(_ scene: UIScene) {
+//    if let savedShortCutItem = savedShortCutItem {
+//      handleShortCutItem(shortcutItem: savedShortCutItem)
+//    }
+//  }
 
   func scene(
     _ scene: UIScene,
@@ -49,15 +79,20 @@ extension SceneDelegate: UIWindowSceneDelegate {
     self.window = window
     root.startApp()
 
-//    let mode = StoresInput(wineID: 891)
-//    window.rootViewController = NavigationController(rootViewController: StoresAssembly.assemblyModule(input: mode))
-//    window.makeKeyAndVisible()
+    //    let mode = StoresInput(wineID: 891)
+    //    window.rootViewController = NavigationController(rootViewController: StoresAssembly.assemblyModule(input: mode))
+    //    window.makeKeyAndVisible()
 
     if let userActivity = connectionOptions.userActivities.first {
       self.scene(scene, continue: userActivity)
     } else {
       self.scene(scene, openURLContexts: connectionOptions.urlContexts)
     }
+
+//    if let shortcutItem = connectionOptions.shortcutItem {
+//      // Save it off for later when we become active.
+//      savedShortCutItem = shortcutItem
+//    }
   }
 
   func scene(

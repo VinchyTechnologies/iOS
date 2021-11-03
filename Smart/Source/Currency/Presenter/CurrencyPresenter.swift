@@ -32,41 +32,7 @@ final class CurrencyPresenter {
 
   // MARK: Private
 
-  private let currencyFilter = Set(
-    [
-      "AUD",
-      "BGN",
-      "BRL",
-      "CAD",
-      "CHF",
-      "CNY",
-      "CZK",
-      "DKK",
-      "GBR",
-      "HKD",
-      "HRK",
-      "HUF",
-//      "IDR",
-      "ILS",
-      "INR",
-//      "ISK",
-//      "JPY",
-//      "KRW",
-      "MXN",
-      "MYR",
-      "NOK",
-      "NZD",
-      "PHP",
-      "PLN",
-      "RON",
-      "RUB",
-      "SEK",
-      "SGD",
-      "THB",
-      "TRY",
-      "USD",
-      "ZAR",
-    ])
+  private let currencyFilter = availableCurrencyCodes
 
   private func createViewModel(selectedCurrency: String) -> CurrencyViewControllerModel {
     var currenciesModels: [CurrencyCellViewModel] = []

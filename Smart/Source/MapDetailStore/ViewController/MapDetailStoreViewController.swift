@@ -227,6 +227,7 @@ extension MapDetailStoreViewController: UICollectionViewDelegateFlowLayout {
       case .none:
         return .zero
       }
+
     case .none:
       return .zero
     }
@@ -245,8 +246,6 @@ extension MapDetailStoreViewController: MapDetailStoreViewControllerProtocol {
 
 extension MapDetailStoreViewController: MapNavigationBarDelegate {
   func didTapLeadingButton(_ button: UIButton) {
-    sheetViewController?.attemptDismiss(animated: true)
-
     interactor?.didTapRouteButton(button)
   }
 

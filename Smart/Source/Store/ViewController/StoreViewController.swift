@@ -33,12 +33,14 @@ final class StoreViewController: CollectionViewController {
   var interactor: StoreInteractorProtocol?
 
   override func makeCollectionView() -> CollectionView {
-    CollectionView(
+    let collectionView = CollectionView(
       layout: layout,
       configuration: .init(
         usesBatchUpdatesForAllReloads: false,
         usesCellPrefetching: true,
         usesAccurateScrollToItem: true))
+    collectionView.prefetchDelegate = self
+    return collectionView
   }
 
   override func viewDidLoad() {
@@ -356,5 +358,28 @@ extension StoreViewController: BottlesCollectionViewDelegate {
 
   func didTapShareContextMenu(wineID: Int64, sourceView: UIView) {
     interactor?.didTapShareContextMenu(wineID: wineID, sourceView: sourceView)
+  }
+}
+
+// MARK: CollectionViewPrefetchingDelegate
+
+extension StoreViewController: CollectionViewPrefetchingDelegate {
+  func collectionView(_ collectionView: CollectionView, prefetch items: [AnyItemModel]) {
+    for item in items {
+      if let content = (item.model as? ItemModel<HorizontalWineView>)?.erasedContent as? HorizontalWineView.Content {
+        ImageLoader.shared.prefetch(url: content.imageURL)
+      }
+    }
+  }
+
+  func collectionView(_ collectionView: CollectionView, cancelPrefetchingOf items: [AnyItemModel]) {
+    for item in items {
+      if
+        let content = (item.model as? ItemModel<HorizontalWineView>)?.erasedContent as? HorizontalWineView.Content,
+        let url = content.imageURL
+      {
+        ImageLoader.shared.cancelPrefetch([url])
+      }
+    }
   }
 }
