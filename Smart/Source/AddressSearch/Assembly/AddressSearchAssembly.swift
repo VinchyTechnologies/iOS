@@ -18,6 +18,6 @@ final class AddressSearchAssembly {
     viewController.interactor = interactor
     router.interactor = interactor
 
-    return NavigationController(rootViewController: viewController)
+    return VinchyNavigationController(rootViewController: viewController)
   }
 }

@@ -88,13 +88,13 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
       image: UIImage(systemName: "square.grid.2x2", withConfiguration: imageConfig)?.withTintColor(.blueGray, renderingMode: .alwaysOriginal),
       selectedImage: UIImage(systemName: "square.grid.2x2", withConfiguration: imageConfig)?.withTintColor(.accent, renderingMode: .alwaysOriginal))
 
-    let love = Assembly.buildLoveModule()
+    let love = VinchyNavigationController(rootViewController: SavedAssembly.assemblyModule(input: .init())) //Assembly.buildLoveModule()
     love.tabBarItem = UITabBarItem(
       title: localized("favourites").firstLetterUppercased(),
       image: UIImage(systemName: "heart", withConfiguration: imageConfig)?.withTintColor(.blueGray, renderingMode: .alwaysOriginal),
       selectedImage: UIImage(systemName: "heart", withConfiguration: imageConfig)?.withTintColor(.accent, renderingMode: .alwaysOriginal))
 
-    let notes = NavigationController(rootViewController: NotesAssembly.assemblyModule())
+    let notes = VinchyNavigationController(rootViewController: NotesAssembly.assemblyModule())
     notes.tabBarItem = UITabBarItem(
       title: localized("notes").firstLetterUppercased(),
       image: UIImage(systemName: "square.and.pencil", withConfiguration: imageConfig)?.withTintColor(.blueGray, renderingMode: .alwaysOriginal),
@@ -192,7 +192,7 @@ extension TabBarController: TabBarDeeplinkable {
   func makeSearchBarFirstResponder() -> AnyPublisher<TabBarDeeplinkable, Never> {
     popToRoot()
     selectedIndex = .main
-    if let viewController = viewControllers?[safe: selectedIndex] as? NavigationController {
+    if let viewController = viewControllers?[safe: selectedIndex] as? VinchyNavigationController {
       if let vinchyViewController = viewController.topViewController as? SearchBarSelectable {
         vinchyViewController.searchBarBecomeFirstResponder()
       }
@@ -202,7 +202,7 @@ extension TabBarController: TabBarDeeplinkable {
   }
 
   func openWineDetail(wineID: Int64) -> AnyPublisher<TabBarDeeplinkable, Never> {
-    if let viewController = viewControllers?[safe: selectedIndex] as? NavigationController {
+    if let viewController = viewControllers?[safe: selectedIndex] as? VinchyNavigationController {
       viewController.pushViewController(Assembly.buildDetailModule(wineID: wineID), animated: true)
     }
     return Just(self)

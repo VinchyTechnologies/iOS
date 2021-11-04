@@ -9,9 +9,9 @@
 import Core
 import UIKit
 
-// MARK: - NavigationController
+// MARK: - VinchyNavigationController
 
-open class NavigationController: UINavigationController {
+open class VinchyNavigationController: UINavigationController {
 
   // MARK: Lifecycle
 

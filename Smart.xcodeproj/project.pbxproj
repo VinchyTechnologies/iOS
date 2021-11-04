@@ -152,6 +152,18 @@
 		8A313C0826447042009F2165 /* MapDetailStoreRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BFD26447042009F2165 /* MapDetailStoreRouter.swift */; };
 		8A313C0926447042009F2165 /* MapDetailStoreRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BFE26447042009F2165 /* MapDetailStoreRouterProtocol.swift */; };
 		8A313C1626468678009F2165 /* WorkingHoursCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313C1526468678009F2165 /* WorkingHoursCollectionCell.swift */; };
+		8A3C0F502732D08E00947085 /* SavedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C0F3F2732D08E00947085 /* SavedViewModel.swift */; };
+		8A3C0F512732D08E00947085 /* SavedInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C0F412732D08E00947085 /* SavedInput.swift */; };
+		8A3C0F522732D08E00947085 /* SavedAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C0F432732D08E00947085 /* SavedAssembly.swift */; };
+		8A3C0F532732D08E00947085 /* SavedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C0F452732D08E00947085 /* SavedPresenter.swift */; };
+		8A3C0F542732D08E00947085 /* SavedPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C0F462732D08E00947085 /* SavedPresenterProtocol.swift */; };
+		8A3C0F552732D08E00947085 /* SavedViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C0F482732D08E00947085 /* SavedViewControllerProtocol.swift */; };
+		8A3C0F562732D08E00947085 /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C0F492732D08E00947085 /* SavedViewController.swift */; };
+		8A3C0F572732D08E00947085 /* SavedInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C0F4B2732D08E00947085 /* SavedInteractorProtocol.swift */; };
+		8A3C0F582732D08E00947085 /* SavedInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C0F4C2732D08E00947085 /* SavedInteractor.swift */; };
+		8A3C0F592732D08E00947085 /* SavedRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C0F4E2732D08E00947085 /* SavedRouter.swift */; };
+		8A3C0F5A2732D08E00947085 /* SavedRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C0F4F2732D08E00947085 /* SavedRouterProtocol.swift */; };
+		8A3C0F5D2732D38500947085 /* ControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C0F5C2732D38500947085 /* ControllerCell.swift */; };
 		8A446CDF2660123B000A1769 /* RoutingToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A446CDE2660123B000A1769 /* RoutingToolBar.swift */; };
 		8A4749AF2728271E0091B493 /* StoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4749AE2728271E0091B493 /* StoryView.swift */; };
 		8A4749B1272832700091B493 /* StoriesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4749B0272832700091B493 /* StoriesCollectionView.swift */; };
@@ -597,6 +609,18 @@
 		8A313BFD26447042009F2165 /* MapDetailStoreRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreRouter.swift; sourceTree = "<group>"; };
 		8A313BFE26447042009F2165 /* MapDetailStoreRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreRouterProtocol.swift; sourceTree = "<group>"; };
 		8A313C1526468678009F2165 /* WorkingHoursCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingHoursCollectionCell.swift; sourceTree = "<group>"; };
+		8A3C0F3F2732D08E00947085 /* SavedViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedViewModel.swift; sourceTree = "<group>"; };
+		8A3C0F412732D08E00947085 /* SavedInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedInput.swift; sourceTree = "<group>"; };
+		8A3C0F432732D08E00947085 /* SavedAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedAssembly.swift; sourceTree = "<group>"; };
+		8A3C0F452732D08E00947085 /* SavedPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedPresenter.swift; sourceTree = "<group>"; };
+		8A3C0F462732D08E00947085 /* SavedPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedPresenterProtocol.swift; sourceTree = "<group>"; };
+		8A3C0F482732D08E00947085 /* SavedViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedViewControllerProtocol.swift; sourceTree = "<group>"; };
+		8A3C0F492732D08E00947085 /* SavedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
+		8A3C0F4B2732D08E00947085 /* SavedInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedInteractorProtocol.swift; sourceTree = "<group>"; };
+		8A3C0F4C2732D08E00947085 /* SavedInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedInteractor.swift; sourceTree = "<group>"; };
+		8A3C0F4E2732D08E00947085 /* SavedRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedRouter.swift; sourceTree = "<group>"; };
+		8A3C0F4F2732D08E00947085 /* SavedRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedRouterProtocol.swift; sourceTree = "<group>"; };
+		8A3C0F5C2732D38500947085 /* ControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerCell.swift; sourceTree = "<group>"; };
 		8A446CDE2660123B000A1769 /* RoutingToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingToolBar.swift; sourceTree = "<group>"; };
 		8A4749AE2728271E0091B493 /* StoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryView.swift; sourceTree = "<group>"; };
 		8A4749B0272832700091B493 /* StoriesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesCollectionView.swift; sourceTree = "<group>"; };
@@ -1789,6 +1813,89 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		8A3C0F3D2732D08E00947085 /* Saved */ = {
+			isa = PBXGroup;
+			children = (
+				8A3C0F5B2732D37100947085 /* Views */,
+				8A3C0F422732D08E00947085 /* Assembly */,
+				8A3C0F402732D08E00947085 /* Input */,
+				8A3C0F4A2732D08E00947085 /* Interactor */,
+				8A3C0F442732D08E00947085 /* Presenter */,
+				8A3C0F4D2732D08E00947085 /* Router */,
+				8A3C0F472732D08E00947085 /* ViewController */,
+				8A3C0F3E2732D08E00947085 /* ViewModel */,
+			);
+			path = Saved;
+			sourceTree = "<group>";
+		};
+		8A3C0F3E2732D08E00947085 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8A3C0F3F2732D08E00947085 /* SavedViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8A3C0F402732D08E00947085 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				8A3C0F412732D08E00947085 /* SavedInput.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		8A3C0F422732D08E00947085 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				8A3C0F432732D08E00947085 /* SavedAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		8A3C0F442732D08E00947085 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8A3C0F452732D08E00947085 /* SavedPresenter.swift */,
+				8A3C0F462732D08E00947085 /* SavedPresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		8A3C0F472732D08E00947085 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8A3C0F482732D08E00947085 /* SavedViewControllerProtocol.swift */,
+				8A3C0F492732D08E00947085 /* SavedViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		8A3C0F4A2732D08E00947085 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				8A3C0F4B2732D08E00947085 /* SavedInteractorProtocol.swift */,
+				8A3C0F4C2732D08E00947085 /* SavedInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		8A3C0F4D2732D08E00947085 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				8A3C0F4E2732D08E00947085 /* SavedRouter.swift */,
+				8A3C0F4F2732D08E00947085 /* SavedRouterProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		8A3C0F5B2732D37100947085 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8A3C0F5C2732D38500947085 /* ControllerCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		8A4ACBB826CAB8A60021215E /* Output */ = {
 			isa = PBXGroup;
 			children = (
@@ -2464,6 +2571,7 @@
 				44EFDB5C25E263E00076ED6D /* ReviewDetail */,
 				44EFDB2425E177220076ED6D /* Reviews */,
 				449F81AA25DD022000585364 /* Root */,
+				8A3C0F3D2732D08E00947085 /* Saved */,
 				8A916105268E27EB00240B18 /* Search */,
 				CA0A352324785A0900C400F5 /* Showcase */,
 				748586EA26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCell */,
@@ -3410,6 +3518,7 @@
 				8A10F28A27063398003463B0 /* AddressSearchRouterProtocol.swift in Sources */,
 				8AF966C22678F194001891B2 /* EditProfilePresenter.swift in Sources */,
 				CA2C22D92554464F002469E4 /* AdvancedSearchViewModel.swift in Sources */,
+				8A3C0F532732D08E00947085 /* SavedPresenter.swift in Sources */,
 				CA81984A253864080056A1C6 /* WineDetailViewControllerProtocol.swift in Sources */,
 				74E55FB626AADB350086C159 /* DidnotFindTheWineCollectionCell.swift in Sources */,
 				CA2C22E32554464F002469E4 /* AdvancedSearchRouterProtocol.swift in Sources */,
@@ -3433,6 +3542,7 @@
 				440C284725E13F9D009911EE /* WineDetailCollectionView.swift in Sources */,
 				8A916024268CE66C00240B18 /* AreYouInStoreAssembly.swift in Sources */,
 				447C354225EEAA5700105A35 /* MapRouterProtocol.swift in Sources */,
+				8A3C0F502732D08E00947085 /* SavedViewModel.swift in Sources */,
 				CA819848253864080056A1C6 /* WineDetailPresenterProtocol.swift in Sources */,
 				CE388DDA2612C1CF00C34B47 /* ShowcasePresenterProtocol.swift in Sources */,
 				748586FD26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellViewModel.swift in Sources */,
@@ -3444,11 +3554,13 @@
 				CA99E65724F6EDDD00C36BEE /* ButtonView.swift in Sources */,
 				449F81CE25DD050400585364 /* DeeplinkRouter.swift in Sources */,
 				8A474E2527298B740091B493 /* LinkButton.swift in Sources */,
+				8A3C0F562732D08E00947085 /* SavedViewController.swift in Sources */,
 				8A10F28127063398003463B0 /* AddressSearchInput.swift in Sources */,
 				CE69652825E4372E00CD414D /* CurrencyViewController.swift in Sources */,
 				CAF514282461C52400667ED0 /* DocCell.swift in Sources */,
 				74E55FAB26AACE2C0086C159 /* ResultsSearchPresenterProtocol.swift in Sources */,
 				8A0795BA26943E85000ACA2B /* OnboardingFeatureView.swift in Sources */,
+				8A3C0F512732D08E00947085 /* SavedInput.swift in Sources */,
 				CA472B69245EDEF9009149FF /* ShowcaseViewModel.swift in Sources */,
 				8AF5656426F2341D00C58E2C /* VinchyRepository.swift in Sources */,
 				CA2C22E02554464F002469E4 /* AdvancedSearchInteractorProtocol.swift in Sources */,
@@ -3473,6 +3585,7 @@
 				449F81CA25DD04B400585364 /* DeeplinkStep.swift in Sources */,
 				CA7B835B24EED6E600991F24 /* StoryCollectionCell.swift in Sources */,
 				4437AA5B25E3A7CE00F6E838 /* WriteReviewViewModel.swift in Sources */,
+				8A3C0F5D2732D38500947085 /* ControllerCell.swift in Sources */,
 				4437AA5D25E3A7CE00F6E838 /* WriteReviewAssembly.swift in Sources */,
 				CA8CD67C25096EE100FDB7AF /* GADTTemplateView.m in Sources */,
 				8A313C0626447042009F2165 /* MapDetailStoreInteractor.swift in Sources */,
@@ -3480,6 +3593,7 @@
 				4437AA6325E3A7CE00F6E838 /* WriteReviewInteractor.swift in Sources */,
 				8A313C0826447042009F2165 /* MapDetailStoreRouter.swift in Sources */,
 				8A916026268CE66C00240B18 /* AreYouInStorePresenterProtocol.swift in Sources */,
+				8A3C0F522732D08E00947085 /* SavedAssembly.swift in Sources */,
 				449F81AC25DD023A00585364 /* RootInteractor.swift in Sources */,
 				8A91611B268E27EB00240B18 /* SearchPresenter.swift in Sources */,
 				7485870326C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellViewProtocol.swift in Sources */,
@@ -3595,6 +3709,7 @@
 				74E55FAC26AACE2C0086C159 /* ResultsSearchViewControllerProtocol.swift in Sources */,
 				8A313C0726447042009F2165 /* MapDetailStoreInteractorProtocol.swift in Sources */,
 				8AE7880F2684E8D60056A84B /* NotesPresenter.swift in Sources */,
+				8A3C0F572732D08E00947085 /* SavedInteractorProtocol.swift in Sources */,
 				CA81984C253864080056A1C6 /* WineDetailInteractorProtocol.swift in Sources */,
 				8A474E27272A837C0091B493 /* FakeCollectionView.swift in Sources */,
 				748586FF26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellAssembly.swift in Sources */,
@@ -3608,6 +3723,7 @@
 				CAA9DC65250E99DB00F996A8 /* SeparatorFooter.swift in Sources */,
 				44EFDB7525E263E00076ED6D /* ReviewDetailViewControllerProtocol.swift in Sources */,
 				8AF966C42678F194001891B2 /* EditProfileViewControllerProtocol.swift in Sources */,
+				8A3C0F5A2732D08E00947085 /* SavedRouterProtocol.swift in Sources */,
 				8A313C0026447042009F2165 /* MapDetailStoreInput.swift in Sources */,
 				8A91602A268CE66C00240B18 /* AreYouInStoreInteractor.swift in Sources */,
 				CAF514292461C52400667ED0 /* MoreRouter.swift in Sources */,
@@ -3618,6 +3734,7 @@
 				7485870426C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellInteractorProtocol.swift in Sources */,
 				CA472AC2245EDE2F009149FF /* SceneDelegate.swift in Sources */,
 				8A916023268CE66C00240B18 /* AreYouInStoreInput.swift in Sources */,
+				8A3C0F592732D08E00947085 /* SavedRouter.swift in Sources */,
 				8A91611E268E27EB00240B18 /* SearchViewControllerProtocol.swift in Sources */,
 				CE69649D25E07BDE00CD414D /* InfoCurrencyCell.swift in Sources */,
 				8AA990A326D91FE000C32358 /* StoresInput.swift in Sources */,
@@ -3704,9 +3821,12 @@
 				8A313C0926447042009F2165 /* MapDetailStoreRouterProtocol.swift in Sources */,
 				CA2C22DE2554464F002469E4 /* AdvancedSearchViewControllerProtocol.swift in Sources */,
 				CA2C22DF2554464F002469E4 /* AdvancedSearchViewController.swift in Sources */,
+				8A3C0F552732D08E00947085 /* SavedViewControllerProtocol.swift in Sources */,
 				8AF966BE2678F194001891B2 /* EditProfileViewModel.swift in Sources */,
 				449F81B625DD027C00585364 /* RootBuilder.swift in Sources */,
+				8A3C0F542732D08E00947085 /* SavedPresenterProtocol.swift in Sources */,
 				8A079300269239C0000ACA2B /* DocumentsViewModel.swift in Sources */,
+				8A3C0F582732D08E00947085 /* SavedInteractor.swift in Sources */,
 				CA7B838C24F4547B00991F24 /* GalleryView.swift in Sources */,
 				8A91611D268E27EB00240B18 /* SearchViewController.swift in Sources */,
 				CE7346382589B75E00028574 /* MoreViewProtocol.swift in Sources */,

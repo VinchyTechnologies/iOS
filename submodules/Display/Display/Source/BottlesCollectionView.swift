@@ -6,8 +6,8 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-@_exported import EpoxyCollectionView
-@_exported import EpoxyCore
+import EpoxyCollectionView
+import EpoxyCore
 import UIKit
 
 // MARK: - BottlesCollectionViewDelegate

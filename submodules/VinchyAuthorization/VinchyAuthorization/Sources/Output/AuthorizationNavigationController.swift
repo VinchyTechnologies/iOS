@@ -8,6 +8,6 @@
 import Display
 import UIKit
 
-public final class AuthorizationNavigationController: NavigationController {
+public final class AuthorizationNavigationController: VinchyNavigationController {
   public weak var authOutputDelegate: AuthorizationOutputDelegate?
 }

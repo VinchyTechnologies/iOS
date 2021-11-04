@@ -43,7 +43,7 @@ extension WriteNoteRoutable {
 
   func presentWriteViewController(wine: Wine) {
     let controller = Assembly.buildWriteNoteViewController(for: wine)
-    let navigationController = NavigationController(rootViewController: controller)
+    let navigationController = VinchyNavigationController(rootViewController: controller)
     navigationController.modalPresentationStyle = .pageSheet
     UIApplication.topViewController()?.present(
       navigationController,
@@ -53,7 +53,7 @@ extension WriteNoteRoutable {
 
   func presentWriteViewController(note: VNote) {
     let controller = Assembly.buildWriteNoteViewController(for: note)
-    let navigationController = NavigationController(rootViewController: controller)
+    let navigationController = VinchyNavigationController(rootViewController: controller)
     navigationController.modalPresentationStyle = .pageSheet
     UIApplication.topViewController()?.present(
       navigationController,
