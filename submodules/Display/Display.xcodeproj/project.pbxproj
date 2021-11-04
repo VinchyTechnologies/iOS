@@ -24,6 +24,7 @@
 		8A251E3C26B0589600DAED2D /* DeliveryTutorialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A251E3826B0589600DAED2D /* DeliveryTutorialView.swift */; };
 		8A251E3D26B0589600DAED2D /* DeliveryTutorialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A251E3926B0589600DAED2D /* DeliveryTutorialView.xib */; };
 		8A251E3E26B0589600DAED2D /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A251E3A26B0589600DAED2D /* TutorialViewController.swift */; };
+		8A27E9F427342D85005A13C6 /* TopTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27E9F327342D85005A13C6 /* TopTabBarView.swift */; };
 		8A2F30492671FA13002DE6C1 /* OverlayPresentationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F30482671FA13002DE6C1 /* OverlayPresentationCenter.swift */; };
 		8A2F304B2671FAF7002DE6C1 /* FadingInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F304A2671FAF7002DE6C1 /* FadingInfoViewController.swift */; };
 		8A6951FB267CC12800F14902 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 8A6951FA267CC12800F14902 /* Nuke */; };
@@ -32,7 +33,7 @@
 		8AD49F1B267525840094E157 /* SkyFloatingLabelTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD49F1A267525840094E157 /* SkyFloatingLabelTextField.swift */; };
 		CA103AE4251690F200B0324F /* StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA103AE3251690F200B0324F /* StringFormatting.framework */; };
 		CA1821A224C0E72A00280DD4 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA1821A124C0E72A00280DD4 /* Font.swift */; };
-		CA18220424C0F88B00280DD4 /* NavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18220324C0F88B00280DD4 /* NavigationController.swift */; };
+		CA18220424C0F88B00280DD4 /* VinchyNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18220324C0F88B00280DD4 /* VinchyNavigationController.swift */; };
 		CA18220624C0F8CE00280DD4 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18220524C0F8CE00280DD4 /* UIColor.swift */; };
 		CA18220824C0FE2300280DD4 /* UIKitUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA18220724C0FE2300280DD4 /* UIKitUtils.swift */; };
 		CA276D52256AC5830061BEBE /* ShimmeringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA276D51256AC5830061BEBE /* ShimmeringView.swift */; };
@@ -73,6 +74,7 @@
 		8A251E3826B0589600DAED2D /* DeliveryTutorialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DeliveryTutorialView.swift; sourceTree = "<group>"; };
 		8A251E3926B0589600DAED2D /* DeliveryTutorialView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeliveryTutorialView.xib; sourceTree = "<group>"; };
 		8A251E3A26B0589600DAED2D /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
+		8A27E9F327342D85005A13C6 /* TopTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabBarView.swift; sourceTree = "<group>"; };
 		8A2F30482671FA13002DE6C1 /* OverlayPresentationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayPresentationCenter.swift; sourceTree = "<group>"; };
 		8A2F304A2671FAF7002DE6C1 /* FadingInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadingInfoViewController.swift; sourceTree = "<group>"; };
 		8A85586026FB9C0300F6F9C8 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
@@ -80,7 +82,7 @@
 		8AD49F1A267525840094E157 /* SkyFloatingLabelTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkyFloatingLabelTextField.swift; sourceTree = "<group>"; };
 		CA103AE3251690F200B0324F /* StringFormatting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StringFormatting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA1821A124C0E72A00280DD4 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
-		CA18220324C0F88B00280DD4 /* NavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationController.swift; sourceTree = "<group>"; };
+		CA18220324C0F88B00280DD4 /* VinchyNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyNavigationController.swift; sourceTree = "<group>"; };
 		CA18220524C0F8CE00280DD4 /* UIColor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
 		CA18220724C0FE2300280DD4 /* UIKitUtils.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIKitUtils.swift; sourceTree = "<group>"; };
 		CA276D51256AC5830061BEBE /* ShimmeringView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmeringView.swift; sourceTree = "<group>"; };
@@ -204,7 +206,6 @@
 				CAD904ED257BADEC009FE71F /* ImageLoader.swift */,
 				CA7A87E224FEE1B200AAD10F /* Loadable.swift */,
 				CA7A87EB25026FA700AAD10F /* LoadingCollectionFooter.swift */,
-				CA18220324C0F88B00280DD4 /* NavigationController.swift */,
 				44DE6C1525DB9E980008695D /* Orientation.swift */,
 				8A2F30482671FA13002DE6C1 /* OverlayPresentationCenter.swift */,
 				CA7A87E92502582C00AAD10F /* PaddingLabel.swift */,
@@ -222,7 +223,9 @@
 				CA18220724C0FE2300280DD4 /* UIKitUtils.swift */,
 				8A10F65C270757EF003463B0 /* UIScrollView.swift */,
 				4404888C25D8390600019081 /* UITapGestureRecognizer.swift */,
+				CA18220324C0F88B00280DD4 /* VinchyNavigationController.swift */,
 				8A1587F8272F01130002CA28 /* WineBottleView.swift */,
+				8A27E9F327342D85005A13C6 /* TopTabBarView.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -289,7 +292,7 @@
 			);
 			mainGroup = CAE8868E24C0E5F800E33E16;
 			packageReferences = (
-				8A6951F9267CC12800F14902 /* XCRemoteSwiftPackageReference "Nuke.git" */,
+				8A6951F9267CC12800F14902 /* XCRemoteSwiftPackageReference "Nuke" */,
 				8A1587F3272EFF0E0002CA28 /* XCRemoteSwiftPackageReference "Cosmos" */,
 			);
 			productRefGroup = CAE8869924C0E5F800E33E16 /* Products */;
@@ -354,7 +357,7 @@
 				8A1587F7272EFFC30002CA28 /* ContextMenu.swift in Sources */,
 				CA3C97EF2572533E0036F7D9 /* GradientView.swift in Sources */,
 				8A251E3C26B0589600DAED2D /* DeliveryTutorialView.swift in Sources */,
-				CA18220424C0F88B00280DD4 /* NavigationController.swift in Sources */,
+				CA18220424C0F88B00280DD4 /* VinchyNavigationController.swift in Sources */,
 				CA5B9019250FEF51006BC638 /* ScrollViewBounceDecorator.swift in Sources */,
 				8A1587F9272F01130002CA28 /* WineBottleView.swift in Sources */,
 				CE8D931025BA2878004792C6 /* PlaceholderTextView.swift in Sources */,
@@ -374,6 +377,7 @@
 				CA30393F2568339E00C3A461 /* Haptic.swift in Sources */,
 				CAA9DC69250EA24900F996A8 /* DecoratorFlowLayout.swift in Sources */,
 				CA7A87E324FEE1B200AAD10F /* Loadable.swift in Sources */,
+				8A27E9F427342D85005A13C6 /* TopTabBarView.swift in Sources */,
 				8A2F30492671FA13002DE6C1 /* OverlayPresentationCenter.swift in Sources */,
 				CA276D52256AC5830061BEBE /* ShimmeringView.swift in Sources */,
 				4410AE3325E5632400A84FF9 /* DismissRoutable.swift in Sources */,
@@ -598,7 +602,7 @@
 				minimumVersion = 23.0.0;
 			};
 		};
-		8A6951F9267CC12800F14902 /* XCRemoteSwiftPackageReference "Nuke.git" */ = {
+		8A6951F9267CC12800F14902 /* XCRemoteSwiftPackageReference "Nuke" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Nuke.git";
 			requirement = {
@@ -616,7 +620,7 @@
 		};
 		8A6951FA267CC12800F14902 /* Nuke */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8A6951F9267CC12800F14902 /* XCRemoteSwiftPackageReference "Nuke.git" */;
+			package = 8A6951F9267CC12800F14902 /* XCRemoteSwiftPackageReference "Nuke" */;
 			productName = Nuke;
 		};
 /* End XCSwiftPackageProductDependency section */

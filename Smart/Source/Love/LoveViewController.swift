@@ -41,12 +41,12 @@ final class LoveViewController: UIViewController {
     super.viewDidLoad()
 
 //    navigationItem.largeTitleDisplayMode = .never
-//    currentState = .like
+    currentState = .like
 //    navigationItem.titleView = segmentedControl
 
     view.addSubview(collectionView)
     collectionView.fill()
-    collectionView.backgroundColor = .green//.mainBackground
+    collectionView.backgroundColor = .mainBackground
     collectionView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
     collectionView.delaysContentTouches = false
   }

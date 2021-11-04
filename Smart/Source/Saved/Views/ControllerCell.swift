@@ -66,12 +66,3 @@ final class ControllerCell: UIView, EpoxyableView {
   private let style: Style
 
 }
-
-extension UIViewController {
-  func display(contentController controller: UIViewController, on view: UIView) {
-    addChild(controller)
-//    controller.view.frame = view.bounds
-//    view.addSubview(controller.view)
-    controller.didMove(toParent: self)
-  }
-}

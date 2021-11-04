@@ -6,7 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import Display
 
 struct SavedViewModel {
 
@@ -17,6 +17,7 @@ struct SavedViewModel {
 
   let sections: [Section]
   let navigationTitleText: String?
+  let topTabBarViewModel: TopTabBarView.Content
 
-  static let empty: Self = .init(sections: [], navigationTitleText: nil)
+  static let empty: Self = .init(sections: [], navigationTitleText: nil, topTabBarViewModel: .init(items: [], initiallySelectedIndex: 0))
 }
