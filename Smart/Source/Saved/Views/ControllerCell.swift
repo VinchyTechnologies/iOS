@@ -6,7 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import EpoxyCore
+import Epoxy
 import UIKit
 
 // MARK: - ControllerCell
@@ -18,23 +18,11 @@ final class ControllerCell: UIView, EpoxyableView {
   init(style: Style) {
     self.style = style
     super.init(frame: .zero)
-
-//    let view = UIView()
-//    addSubview(view)
-//    view.translatesAutoresizingMaskIntoConstraints = false
-//    view.backgroundColor = .red
-//    view.fill()
-//
-//    let view1 = UIView()
-//    view1.backgroundColor = .gray
-//    view.addSubview(view1)
-//    view1.translatesAutoresizingMaskIntoConstraints = false
-//    view1.centerXAnchor.constraint(equalTo: centerXAnchor).isActive = true
-//    view1.centerYAnchor.constraint(equalTo: centerYAnchor).isActive = true
-//    view1.widthAnchor.constraint(equalToConstant: 50).isActive = true
-//    view1.heightAnchor.constraint(equalToConstant: 50).isActive = true
+    translatesAutoresizingMaskIntoConstraints = false
+    directionalLayoutMargins = .zero
     addSubview(vc.view)
-    vc.view.frame = bounds
+    vc.view.translatesAutoresizingMaskIntoConstraints = false
+    vc.view.constrainToMargins()
   }
 
   required init?(coder: NSCoder) {
@@ -51,7 +39,7 @@ final class ControllerCell: UIView, EpoxyableView {
     let id: String
   }
 
-  let vc = LoveViewController()//DocumentsAssembly.assemblyModule()//LoveViewController()
+  let vc = WineDetailAssembly.assemblyModule(input: .init(wineID: 891))//DocumentsAssembly.assemblyModule()//LoveViewController()
 
   func setContent(_ content: Content, animated: Bool) {
 //    guard let addedView = content.viewController.view else {
