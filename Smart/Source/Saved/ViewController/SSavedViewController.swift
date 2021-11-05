@@ -10,7 +10,7 @@ import Display
 import Epoxy
 import UIKit
 
-// MARK: - SSavedViewController
+// MARK: - BarScrollPercentageCoordinating
 
 //final class SSavedViewController: UIViewController {
 //
@@ -159,8 +159,6 @@ import UIKit
 //  }
 //}
 //
-//// MARK: - SavedViewController + UIScrollViewDelegate
-//
 //extension SavedViewController: UIScrollViewDelegate {
 //  func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
 //    let index = Int(scrollView.contentOffset.x / view.frame.width)
@@ -168,65 +166,63 @@ import UIKit
 //    topBarInstaller.scrollPercentage = CGFloat(index)
 //  }
 //}
-//
-//// MARK: - BarScrollPercentageCoordinating
-//
-//public protocol BarScrollPercentageCoordinating: AnyObject {
-//  var scrollPercentage: CGFloat { get set }
-//}
-//
-//extension BarCoordinatorProperty {
-//  fileprivate static var scrollPercentage: BarCoordinatorProperty<CGFloat> {
-//    .init(keyPath: \BarScrollPercentageCoordinating.scrollPercentage, default: 0)
-//  }
-//}
-//
-//// MARK: - TopBarInstaller + BarScrollPercentageCoordinating
-//
-//extension TopBarInstaller: BarScrollPercentageCoordinating {
-//  public var scrollPercentage: CGFloat {
-//    get { self[.scrollPercentage] }
-//    set { self[.scrollPercentage] = newValue }
-//  }
-//}
-//
-//// MARK: - ScrollPercentageBarCoordinator
-//
-//final class ScrollPercentageBarCoordinator: BarCoordinating, BarScrollPercentageCoordinating {
-//
-//  // MARK: Lifecycle
-//
-//  public init(updateBarModel: @escaping (_ animated: Bool) -> Void) {}
-//
-//  // MARK: Public
-//
-//  public var scrollPercentage: CGFloat = 0 {
-//    didSet {
-//      updateScrollPercentage()
-//    }
-//  }
-//
-//  public func barModel(for model: BarModel<TopTabBarView>) -> BarModeling {
-//    model.willDisplay { [weak self] view in
-//      self?.view = view.view
-//    }
-//  }
-//
-//  // MARK: Private
-//
-//  private weak var view: TopTabBarView? {
-//    didSet {
-//      updateScrollPercentage()
-//    }
-//  }
-//
-//  private func updateScrollPercentage() {
-//    view?.scrollPercentage = scrollPercentage
-//  }
-//}
-//
-//// MARK: - SavedViewController + EpoxyCollectionViewDelegateFlowLayout
-//
+
+public protocol BarScrollPercentageCoordinating: AnyObject {
+  var scrollPercentage: CGFloat { get set }
+}
+
+extension BarCoordinatorProperty {
+  fileprivate static var scrollPercentage: BarCoordinatorProperty<CGFloat> {
+    .init(keyPath: \BarScrollPercentageCoordinating.scrollPercentage, default: 0)
+  }
+}
+
+// MARK: - TopBarInstaller + BarScrollPercentageCoordinating
+
+extension TopBarInstaller: BarScrollPercentageCoordinating {
+  public var scrollPercentage: CGFloat {
+    get { self[.scrollPercentage] }
+    set { self[.scrollPercentage] = newValue }
+  }
+}
+
+// MARK: - ScrollPercentageBarCoordinator
+
+final class ScrollPercentageBarCoordinator: BarCoordinating, BarScrollPercentageCoordinating {
+
+  // MARK: Lifecycle
+
+  public init(updateBarModel: @escaping (_ animated: Bool) -> Void) {}
+
+  // MARK: Public
+
+  public var scrollPercentage: CGFloat = 0 {
+    didSet {
+      updateScrollPercentage()
+    }
+  }
+
+  public func barModel(for model: BarModel<TopTabBarView>) -> BarModeling {
+    model.willDisplay { [weak self] view in
+      self?.view = view.view
+    }
+  }
+
+  // MARK: Private
+
+  private weak var view: TopTabBarView? {
+    didSet {
+      updateScrollPercentage()
+    }
+  }
+
+  private func updateScrollPercentage() {
+    view?.scrollPercentage = scrollPercentage
+  }
+}
+
+// MARK: - SavedViewController + EpoxyCollectionViewDelegateFlowLayout
+
 //extension SavedViewController: EpoxyCollectionViewDelegateFlowLayout {
 //  func collectionView(
 //    _ collectionView: UICollectionView,

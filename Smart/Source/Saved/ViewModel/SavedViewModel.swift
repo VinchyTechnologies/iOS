@@ -12,7 +12,7 @@ struct SavedViewModel {
 
   enum Section {
     case liked
-//    case rates(content: Any)
+    case rates
   }
 
   let sections: [Section]

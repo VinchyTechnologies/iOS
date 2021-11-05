@@ -7,6 +7,7 @@
 //
 
 import Display
+import Epoxy
 import UIKit
 
 // MARK: - SavedViewController
@@ -17,13 +18,16 @@ final class SavedViewController: UIViewController, SavedViewControllerProtocol {
 
   var interactor: SavedInteractorProtocol?
 
+  var viewControllers: [UIViewController] = [DocumentsAssembly.assemblyModule(), WineDetailAssembly.assemblyModule(input: .init(wineID: 891))]
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
     navigationItem.title = "Saved"
     navigationItem.largeTitleDisplayMode = .never
 
-    let pagingViewController = PagingViewController(viewControllers: viewControllers)
+
+    pagingViewController.collectionView.delaysContentTouches = false
 
     addChild(pagingViewController)
     view.addSubview(pagingViewController.view)
@@ -34,15 +38,88 @@ final class SavedViewController: UIViewController, SavedViewControllerProtocol {
       pagingViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       pagingViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
       pagingViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-      pagingViewController.view.topAnchor.constraint(equalTo: view.topAnchor),
+      pagingViewController.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 56),
     ])
+
+    topBarInstaller.install()
+
+    updateUI(viewModel: .init(sections: [.liked, .rates], navigationTitleText: "Saved", topTabBarViewModel: .init(items: [.init(titleText: "Liked"), .init(titleText: "Rated")], initiallySelectedIndex: 0)))
+
   }
 
   // MARK: Private
 
-  private let viewControllers = [DocumentsAssembly.assemblyModule(), WineDetailAssembly.assemblyModule(input: .init(wineID: 891))]
-
   private lazy var pagingViewController: PagingViewController = {
-    $0
+    $0.delegate = self
+    $0.dataSource = self
+    return $0
   }(PagingViewController())
+
+  private var viewModel: SavedViewModel = .empty
+
+  private lazy var topBarInstaller = TopBarInstaller(
+    viewController: self,
+    bars: bars)
+
+  @BarModelBuilder
+  private var bars: [BarModeling] {
+    [
+      TopTabBarView.barModel(
+        dataID: nil,
+        content: viewModel.topTabBarViewModel,
+        behaviors: .init(didSelect: { [weak self] index in
+          self?.pagingViewController.select(index: index)
+        }),
+        style: .init())
+        .makeCoordinator(ScrollPercentageBarCoordinator.init),
+    ]
+  }
+}
+
+// MARK: PagingViewControllerDataSource
+
+extension SavedViewController: PagingViewControllerDataSource {
+
+  func pagingViewController(_: PagingViewController, pagingItemAt index: Int) -> PagingItem {
+    PagingIndexItem(index: index, title: "")
+  }
+
+  func pagingViewController(_: PagingViewController, viewControllerAt index: Int) -> UIViewController {
+    switch viewModel.sections[safe: index] {
+    case .liked:
+      return DocumentsAssembly.assemblyModule()
+
+    case .rates:
+      return WineDetailAssembly.assemblyModule(input: .init(wineID: 891))
+
+    case .none:
+      return UIViewController()
+    }
+  }
+
+  func numberOfViewControllers(in pagingViewController: PagingViewController) -> Int {
+    viewModel.sections.count
+  }
+}
+
+// MARK: PagingViewControllerDelegate
+
+extension SavedViewController: PagingViewControllerDelegate {
+  func pagingViewController(_ pagingViewController: PagingViewController, didScrollToItem pagingItem: PagingItem, startingViewController: UIViewController?, destinationViewController: UIViewController, transitionSuccessful: Bool) {
+    guard
+      let index = viewControllers.firstIndex(
+        where: { $0 === destinationViewController })
+    else {
+      return
+    }
+    topBarInstaller.scrollPercentage = CGFloat(index)
+  }
+}
+
+extension SavedViewController {
+  func updateUI(viewModel: SavedViewModel) {
+    self.viewModel = viewModel
+    pagingViewController.reloadData()
+    topBarInstaller.setBars(bars, animated: true)
+  }
 }
