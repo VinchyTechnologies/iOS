@@ -26,7 +26,6 @@ final class SavedViewController: UIViewController, SavedViewControllerProtocol {
     navigationItem.title = "Saved"
     navigationItem.largeTitleDisplayMode = .never
 
-
     pagingViewController.collectionView.delaysContentTouches = false
 
     addChild(pagingViewController)
@@ -38,7 +37,7 @@ final class SavedViewController: UIViewController, SavedViewControllerProtocol {
       pagingViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       pagingViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
       pagingViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-      pagingViewController.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 56),
+      pagingViewController.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
     ])
 
     topBarInstaller.install()
@@ -85,20 +84,11 @@ extension SavedViewController: PagingViewControllerDataSource {
   }
 
   func pagingViewController(_: PagingViewController, viewControllerAt index: Int) -> UIViewController {
-    switch viewModel.sections[safe: index] {
-    case .liked:
-      return DocumentsAssembly.assemblyModule()
-
-    case .rates:
-      return WineDetailAssembly.assemblyModule(input: .init(wineID: 891))
-
-    case .none:
-      return UIViewController()
-    }
+    viewControllers[safe: index] ?? UIViewController()
   }
 
   func numberOfViewControllers(in pagingViewController: PagingViewController) -> Int {
-    viewModel.sections.count
+    viewControllers.count
   }
 }
 
@@ -119,7 +109,19 @@ extension SavedViewController: PagingViewControllerDelegate {
 extension SavedViewController {
   func updateUI(viewModel: SavedViewModel) {
     self.viewModel = viewModel
-    pagingViewController.reloadData()
+
+//    viewControllers = viewModel.sections.compactMap { section in
+//      switch section {
+//      case .liked:
+//        return DocumentsAssembly.assemblyModule()
+//
+//      case .rates:
+//        return WineDetailAssembly.assemblyModule(input: .init(wineID: 891))
+//      }
+//    }
+    // TODO: - Doesn't work
+
     topBarInstaller.setBars(bars, animated: true)
+//    pagingViewController.reloadData()
   }
 }
