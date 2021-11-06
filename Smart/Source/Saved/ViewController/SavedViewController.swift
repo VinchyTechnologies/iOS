@@ -18,7 +18,7 @@ final class SavedViewController: UIViewController, SavedViewControllerProtocol {
 
   var interactor: SavedInteractorProtocol?
 
-  var viewControllers: [UIViewController] = [DocumentsAssembly.assemblyModule(), WineDetailAssembly.assemblyModule(input: .init(wineID: 891))]
+  var viewControllers: [UIViewController] = [NotesAssembly.assemblyModule(), WineDetailAssembly.assemblyModule(input: .init(wineID: 891))]
 
   override func viewDidLoad() {
     super.viewDidLoad()
