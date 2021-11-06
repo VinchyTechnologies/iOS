@@ -157,7 +157,7 @@ final class WineDetailViewController: CollectionViewController {
           StarRatingControlView.itemModel(
             dataID: itemID,
             content: content,
-            style: .init())
+            style: .init(kind: .normal))
             .setBehaviors { [weak self] context in
               context.view.delegate = self
             }

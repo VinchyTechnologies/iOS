@@ -202,6 +202,19 @@
 		8A27EA73273564E3005A13C6 /* PagingMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA36273564E3005A13C6 /* PagingMenuDelegate.swift */; };
 		8A27EA74273564E3005A13C6 /* PagingLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA37273564E3005A13C6 /* PagingLayout.swift */; };
 		8A27EA7627357245005A13C6 /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA7527357245005A13C6 /* SavedViewController.swift */; };
+		8A27EA8C27365B86005A13C6 /* RatesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA7B27365B86005A13C6 /* RatesViewModel.swift */; };
+		8A27EA8D27365B86005A13C6 /* RatesInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA7D27365B86005A13C6 /* RatesInput.swift */; };
+		8A27EA8E27365B86005A13C6 /* RatesAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA7F27365B86005A13C6 /* RatesAssembly.swift */; };
+		8A27EA8F27365B86005A13C6 /* RatesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA8127365B86005A13C6 /* RatesPresenter.swift */; };
+		8A27EA9027365B86005A13C6 /* RatesPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA8227365B86005A13C6 /* RatesPresenterProtocol.swift */; };
+		8A27EA9127365B86005A13C6 /* RatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA8427365B86005A13C6 /* RatesViewController.swift */; };
+		8A27EA9227365B86005A13C6 /* RatesViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA8527365B86005A13C6 /* RatesViewControllerProtocol.swift */; };
+		8A27EA9327365B86005A13C6 /* RatesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA8727365B86005A13C6 /* RatesInteractor.swift */; };
+		8A27EA9427365B86005A13C6 /* RatesInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA8827365B86005A13C6 /* RatesInteractorProtocol.swift */; };
+		8A27EA9527365B86005A13C6 /* RatesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA8A27365B86005A13C6 /* RatesRouter.swift */; };
+		8A27EA9627365B86005A13C6 /* RatesRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA8B27365B86005A13C6 /* RatesRouterProtocol.swift */; };
+		8A27EA9927366264005A13C6 /* LoadingIndicatorTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA9827366264005A13C6 /* LoadingIndicatorTableCell.swift */; };
+		8A27EA9B27366716005A13C6 /* WineRateTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA9A27366716005A13C6 /* WineRateTableCell.swift */; };
 		8A313BFF26447042009F2165 /* MapDetailStoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BEE26447042009F2165 /* MapDetailStoreViewModel.swift */; };
 		8A313C0026447042009F2165 /* MapDetailStoreInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BF026447042009F2165 /* MapDetailStoreInput.swift */; };
 		8A313C0126447042009F2165 /* MapDetailStoreAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BF226447042009F2165 /* MapDetailStoreAssembly.swift */; };
@@ -721,6 +734,19 @@
 		8A27EA36273564E3005A13C6 /* PagingMenuDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingMenuDelegate.swift; sourceTree = "<group>"; };
 		8A27EA37273564E3005A13C6 /* PagingLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingLayout.swift; sourceTree = "<group>"; };
 		8A27EA7527357245005A13C6 /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
+		8A27EA7B27365B86005A13C6 /* RatesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatesViewModel.swift; sourceTree = "<group>"; };
+		8A27EA7D27365B86005A13C6 /* RatesInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatesInput.swift; sourceTree = "<group>"; };
+		8A27EA7F27365B86005A13C6 /* RatesAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatesAssembly.swift; sourceTree = "<group>"; };
+		8A27EA8127365B86005A13C6 /* RatesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatesPresenter.swift; sourceTree = "<group>"; };
+		8A27EA8227365B86005A13C6 /* RatesPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatesPresenterProtocol.swift; sourceTree = "<group>"; };
+		8A27EA8427365B86005A13C6 /* RatesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatesViewController.swift; sourceTree = "<group>"; };
+		8A27EA8527365B86005A13C6 /* RatesViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatesViewControllerProtocol.swift; sourceTree = "<group>"; };
+		8A27EA8727365B86005A13C6 /* RatesInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatesInteractor.swift; sourceTree = "<group>"; };
+		8A27EA8827365B86005A13C6 /* RatesInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatesInteractorProtocol.swift; sourceTree = "<group>"; };
+		8A27EA8A27365B86005A13C6 /* RatesRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatesRouter.swift; sourceTree = "<group>"; };
+		8A27EA8B27365B86005A13C6 /* RatesRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatesRouterProtocol.swift; sourceTree = "<group>"; };
+		8A27EA9827366264005A13C6 /* LoadingIndicatorTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorTableCell.swift; sourceTree = "<group>"; };
+		8A27EA9A27366716005A13C6 /* WineRateTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineRateTableCell.swift; sourceTree = "<group>"; };
 		8A313BEE26447042009F2165 /* MapDetailStoreViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreViewModel.swift; sourceTree = "<group>"; };
 		8A313BF026447042009F2165 /* MapDetailStoreInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreInput.swift; sourceTree = "<group>"; };
 		8A313BF226447042009F2165 /* MapDetailStoreAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreAssembly.swift; sourceTree = "<group>"; };
@@ -1960,6 +1986,90 @@
 			path = Protocols;
 			sourceTree = "<group>";
 		};
+		8A27EA7927365B86005A13C6 /* Rates */ = {
+			isa = PBXGroup;
+			children = (
+				8A27EA7E27365B86005A13C6 /* Assembly */,
+				8A27EA7C27365B86005A13C6 /* Input */,
+				8A27EA8627365B86005A13C6 /* Interactor */,
+				8A27EA8027365B86005A13C6 /* Presenter */,
+				8A27EA8927365B86005A13C6 /* Router */,
+				8A27EA8327365B86005A13C6 /* ViewController */,
+				8A27EA7A27365B86005A13C6 /* ViewModel */,
+				8A27EA972736623D005A13C6 /* Views */,
+			);
+			path = Rates;
+			sourceTree = "<group>";
+		};
+		8A27EA7A27365B86005A13C6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8A27EA7B27365B86005A13C6 /* RatesViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8A27EA7C27365B86005A13C6 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				8A27EA7D27365B86005A13C6 /* RatesInput.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		8A27EA7E27365B86005A13C6 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				8A27EA7F27365B86005A13C6 /* RatesAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		8A27EA8027365B86005A13C6 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8A27EA8127365B86005A13C6 /* RatesPresenter.swift */,
+				8A27EA8227365B86005A13C6 /* RatesPresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		8A27EA8327365B86005A13C6 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8A27EA8427365B86005A13C6 /* RatesViewController.swift */,
+				8A27EA8527365B86005A13C6 /* RatesViewControllerProtocol.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		8A27EA8627365B86005A13C6 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				8A27EA8727365B86005A13C6 /* RatesInteractor.swift */,
+				8A27EA8827365B86005A13C6 /* RatesInteractorProtocol.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		8A27EA8927365B86005A13C6 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				8A27EA8A27365B86005A13C6 /* RatesRouter.swift */,
+				8A27EA8B27365B86005A13C6 /* RatesRouterProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		8A27EA972736623D005A13C6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8A27EA9827366264005A13C6 /* LoadingIndicatorTableCell.swift */,
+				8A27EA9A27366716005A13C6 /* WineRateTableCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		8A313BEC26447042009F2165 /* MapDetailStore */ = {
 			isa = PBXGroup;
 			children = (
@@ -2784,7 +2894,6 @@
 		CA472B2D245EDEC7009149FF /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				8A27E9F5273564D2005A13C6 /* Parchment */,
 				CAF5140E2461C51300667ED0 /* About */,
 				8A10F26D27063398003463B0 /* AddressSearch */,
 				CA79545024F92E930040224C /* AdvancedSearch */,
@@ -2801,6 +2910,8 @@
 				CAF5140D2461C4ED00667ED0 /* More */,
 				8AE787F82684E8D60056A84B /* Notes */,
 				CA070A762523D77000C3D9EC /* Onboarding */,
+				8A27E9F5273564D2005A13C6 /* Parchment */,
+				8A27EA7927365B86005A13C6 /* Rates */,
 				74E55F9426AACE2C0086C159 /* ResultsSearch */,
 				44EFDB5C25E263E00076ED6D /* ReviewDetail */,
 				44EFDB2425E177220076ED6D /* Reviews */,
@@ -3728,6 +3839,7 @@
 				8AF966C12678F194001891B2 /* EditProfilePresenterProtocol.swift in Sources */,
 				74E55FA726AACE2C0086C159 /* ResultsSearchViewModel.swift in Sources */,
 				CA2C22DB2554464F002469E4 /* AdvancedSearchAssembly.swift in Sources */,
+				8A27EA9327365B86005A13C6 /* RatesInteractor.swift in Sources */,
 				8A10F28727063398003463B0 /* AddressSearchInteractor.swift in Sources */,
 				74DAD09F26E0D4F400055AE7 /* LoadingPresentable.swift in Sources */,
 				8AA5E5132615053D00935B5E /* AboutView.swift in Sources */,
@@ -3759,6 +3871,7 @@
 				CA46DBEF252518460007819E /* OnboardingCache.swift in Sources */,
 				8A10F28A27063398003463B0 /* AddressSearchRouterProtocol.swift in Sources */,
 				8AF966C22678F194001891B2 /* EditProfilePresenter.swift in Sources */,
+				8A27EA9227365B86005A13C6 /* RatesViewControllerProtocol.swift in Sources */,
 				CA2C22D92554464F002469E4 /* AdvancedSearchViewModel.swift in Sources */,
 				8A3C0F532732D08E00947085 /* SavedPresenter.swift in Sources */,
 				CA81984A253864080056A1C6 /* WineDetailViewControllerProtocol.swift in Sources */,
@@ -3813,6 +3926,7 @@
 				CA472B69245EDEF9009149FF /* ShowcaseViewModel.swift in Sources */,
 				8AF5656426F2341D00C58E2C /* VinchyRepository.swift in Sources */,
 				CA2C22E02554464F002469E4 /* AdvancedSearchInteractorProtocol.swift in Sources */,
+				8A27EA9627365B86005A13C6 /* RatesRouterProtocol.swift in Sources */,
 				8A8FE7332708D9F8002EE088 /* LogOutCell.swift in Sources */,
 				4437AA5E25E3A7CE00F6E838 /* WriteReviewPresenter.swift in Sources */,
 				8A91602C268CE66C00240B18 /* AreYouInStoreRouterProtocol.swift in Sources */,
@@ -3846,6 +3960,7 @@
 				8A313C0826447042009F2165 /* MapDetailStoreRouter.swift in Sources */,
 				8A916026268CE66C00240B18 /* AreYouInStorePresenterProtocol.swift in Sources */,
 				8A27EA56273564E3005A13C6 /* PagingTitleCell.swift in Sources */,
+				8A27EA8C27365B86005A13C6 /* RatesViewModel.swift in Sources */,
 				8A3C0F522732D08E00947085 /* SavedAssembly.swift in Sources */,
 				449F81AC25DD023A00585364 /* RootInteractor.swift in Sources */,
 				8A91611B268E27EB00240B18 /* SearchPresenter.swift in Sources */,
@@ -3891,10 +4006,12 @@
 				CA878A882572E59700B51FF1 /* ActionSheetAppearence.swift in Sources */,
 				8AE788132684E8D60056A84B /* NotesInteractor.swift in Sources */,
 				CA99E65324F59CAA00C36BEE /* ShortInfoCollectionCell.swift in Sources */,
+				8A27EA9527365B86005A13C6 /* RatesRouter.swift in Sources */,
 				8A27EA6C273564E3005A13C6 /* CollectionView.swift in Sources */,
 				8A53D42926C0531A001D9535 /* ReviewsCollectionView.swift in Sources */,
 				8A27EA5F273564E3005A13C6 /* PagingSizeCache.swift in Sources */,
 				8A27EA4D273564E3005A13C6 /* PagingDirection.swift in Sources */,
+				8A27EA9427365B86005A13C6 /* RatesInteractorProtocol.swift in Sources */,
 				8A10F28627063398003463B0 /* AddressSearchViewControllerProtocol.swift in Sources */,
 				8AF9441B2692295D003EB76A /* Label.swift in Sources */,
 				74E55FAA26AACE2C0086C159 /* ResultsSearchPresenter.swift in Sources */,
@@ -3925,6 +4042,7 @@
 				CA81984D253864080056A1C6 /* WineDetailRouterProtocol.swift in Sources */,
 				8A0794DA26936141000ACA2B /* StoreRouterProtocol.swift in Sources */,
 				CE6AB01F261BD2A40011F771 /* ShowcaseInput.swift in Sources */,
+				8A27EA8E27365B86005A13C6 /* RatesAssembly.swift in Sources */,
 				4437AA6425E3A7CE00F6E838 /* WriteReviewRouterProtocol.swift in Sources */,
 				4437AA6525E3A7CE00F6E838 /* WriteReviewRouter.swift in Sources */,
 				449D63B225E1054700CBBD1D /* RatingsAndReviewsCell.swift in Sources */,
@@ -4004,6 +4122,7 @@
 				CAF514292461C52400667ED0 /* MoreRouter.swift in Sources */,
 				CACA7E9C254C57CC0099E622 /* WriteNotePresenter.swift in Sources */,
 				8AE788152684E8D60056A84B /* NotesRouter.swift in Sources */,
+				8A27EA9127365B86005A13C6 /* RatesViewController.swift in Sources */,
 				8A27EA48273564E3005A13C6 /* PagingMenuPosition.swift in Sources */,
 				4437AA5C25E3A7CE00F6E838 /* WriteReviewInput.swift in Sources */,
 				8A4749B32728464B0091B493 /* BigCollectionView.swift in Sources */,
@@ -4022,11 +4141,13 @@
 				8A079301269239C1000ACA2B /* DocumentsInput.swift in Sources */,
 				8A27EA4C273564E3005A13C6 /* PagingIndicatorOptions.swift in Sources */,
 				CA3C981F257260BC0036F7D9 /* StatusAlertable.swift in Sources */,
+				8A27EA8F27365B86005A13C6 /* RatesPresenter.swift in Sources */,
 				CA3837CC246FCF3C00AD5FCC /* TabBarController.swift in Sources */,
 				CA99E65124F58A6000C36BEE /* ToolView.swift in Sources */,
 				8AA990AA26D91FE000C32358 /* StoresInteractor.swift in Sources */,
 				8A27EA3F273564E3005A13C6 /* PagingNavigationOrientation.swift in Sources */,
 				8A916025268CE66C00240B18 /* AreYouInStorePresenter.swift in Sources */,
+				8A27EA8D27365B86005A13C6 /* RatesInput.swift in Sources */,
 				8A07991426998363000ACA2B /* HorizontalWineView.swift in Sources */,
 				447C353C25EEAA5700105A35 /* MapPresenterProtocol.swift in Sources */,
 				8A916121268E27EB00240B18 /* SearchRouter.swift in Sources */,
@@ -4048,6 +4169,7 @@
 				447C353D25EEAA5700105A35 /* MapViewController.swift in Sources */,
 				8A916119268E27EB00240B18 /* SearchInput.swift in Sources */,
 				4437AA5F25E3A7CE00F6E838 /* WriteReviewPresenterProtocol.swift in Sources */,
+				8A27EA9B27366716005A13C6 /* WineRateTableCell.swift in Sources */,
 				8A10F28227063398003463B0 /* AddressSearchAssembly.swift in Sources */,
 				8A10F28027063398003463B0 /* AddressSearchViewModel.swift in Sources */,
 				8AA990A526D91FE000C32358 /* StoresPresenterProtocol.swift in Sources */,
@@ -4075,6 +4197,7 @@
 				447C353F25EEAA5700105A35 /* MapInteractor.swift in Sources */,
 				8A91611A268E27EB00240B18 /* SearchAssembly.swift in Sources */,
 				44EFDB7425E263E00076ED6D /* ReviewDetailViewController.swift in Sources */,
+				8A27EA9027365B86005A13C6 /* RatesPresenterProtocol.swift in Sources */,
 				8A0794D326936141000ACA2B /* StoreAssembly.swift in Sources */,
 				8AA990AB26D91FE000C32358 /* StoresRouterProtocol.swift in Sources */,
 				44465EC625F3940E005B3F06 /* MapRepositoryProtocol.swift in Sources */,
@@ -4132,6 +4255,7 @@
 				8A0794DE26936A8E000ACA2B /* LogoRow.swift in Sources */,
 				44EFDB7325E263E00076ED6D /* ReviewDetailPresenter.swift in Sources */,
 				8AE788112684E8D60056A84B /* NotesViewControllerProtocol.swift in Sources */,
+				8A27EA9927366264005A13C6 /* LoadingIndicatorTableCell.swift in Sources */,
 				CAA060D2252BC05C002C15B5 /* DeveloperFeatureToggles.swift in Sources */,
 				74DAD0A626E0E12400055AE7 /* ShowNetworkAlertPresentable.swift in Sources */,
 				CA7A87FC2507ED7800AAD10F /* AdsCollectionViewCell.swift in Sources */,

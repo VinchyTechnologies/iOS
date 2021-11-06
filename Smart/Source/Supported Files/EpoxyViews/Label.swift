@@ -54,13 +54,13 @@ final class Label: UILabel, EpoxyableView {
 
   typealias Content = String
 
-  static func height(for content: Content?, width: CGFloat, style: Style) -> CGFloat {
+  static func height(for content: Content?, width: CGFloat, style: Style, numberOfLines: Int = 0) -> CGFloat {
     guard let content = content else {
       return 0
     }
     // swiftlint:disable:next force_cast
     let font = style.font
-    let height = content.height(forWidth: width, font: font)
+    let height = content.height(forWidth: width, font: font, numberOfLines: numberOfLines)
     return height
   }
 
@@ -105,7 +105,7 @@ extension Label.Style {
   {
     switch textStyle {
     case .lagerTitle:
-      return .init(font: Font.heavy(20), showLabelBackground: true)
+      return .init(font: Font.heavy(20), showLabelBackground: true, backgroundColor: backgroundColor)
 
     case .miniBold:
       return .init(

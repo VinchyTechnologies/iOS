@@ -18,16 +18,21 @@ final class SavedViewController: UIViewController, SavedViewControllerProtocol {
 
   var interactor: SavedInteractorProtocol?
 
-  var viewControllers: [UIViewController] = [NotesAssembly.assemblyModule(), WineDetailAssembly.assemblyModule(input: .init(wineID: 891))]
+  var viewControllers: [UIViewController] = [
+    LoveViewController(),
+    RatesAssembly.assemblyModule(input: .init()),
+  ]
 
   override func viewDidLoad() {
     super.viewDidLoad()
+
+    view.backgroundColor = .mainBackground
 
     navigationItem.title = "Saved"
     navigationItem.largeTitleDisplayMode = .never
 
     pagingViewController.collectionView.delaysContentTouches = false
-
+    pagingViewController.collectionView.backgroundColor = .mainBackground
     addChild(pagingViewController)
     view.addSubview(pagingViewController.view)
     pagingViewController.didMove(toParent: self)
@@ -37,7 +42,7 @@ final class SavedViewController: UIViewController, SavedViewControllerProtocol {
       pagingViewController.view.leadingAnchor.constraint(equalTo: view.leadingAnchor),
       pagingViewController.view.trailingAnchor.constraint(equalTo: view.trailingAnchor),
       pagingViewController.view.bottomAnchor.constraint(equalTo: view.bottomAnchor),
-      pagingViewController.view.topAnchor.constraint(equalTo: view.topAnchor, constant: 0),
+      pagingViewController.view.topAnchor.constraint(equalTo: view.topAnchor),
     ])
 
     topBarInstaller.install()
@@ -102,7 +107,10 @@ extension SavedViewController: PagingViewControllerDelegate {
     else {
       return
     }
-    topBarInstaller.scrollPercentage = CGFloat(index)
+
+    if transitionSuccessful {
+      topBarInstaller.scrollPercentage = CGFloat(index)
+    }
   }
 }
 
