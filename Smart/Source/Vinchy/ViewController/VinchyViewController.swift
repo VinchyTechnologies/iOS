@@ -75,15 +75,17 @@ final class VinchyViewController: CollectionViewController {
 
     return collectionView
   }
-
   override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
     super.viewWillTransition(to: size, with: coordinator)
     coordinator.animate(alongsideTransition: { _ in
+      self.collectionViewSize = size
       self.setSections(self.sections, animated: false)
     })
   }
 
   // MARK: Private
+
+  private lazy var collectionViewSize: CGSize = view.frame.size
 
   private let filterButton = UIButton(type: .system)
 
@@ -100,7 +102,7 @@ final class VinchyViewController: CollectionViewController {
       sections.compactMap { section in
         switch section {
         case .common(let content):
-          let height = view.frame.height - (navigationController?.navigationBar.frame.height ?? 0) - (tabBarController?.tabBar.frame.height ?? 0)
+          let height = collectionViewSize.height - (navigationController?.navigationBar.frame.height ?? 0) - (tabBarController?.tabBar.frame.height ?? 0)
           return SectionModel(dataID: UUID()) {
             EpoxyErrorView.itemModel(
               dataID: UUID(),
@@ -110,7 +112,7 @@ final class VinchyViewController: CollectionViewController {
                 context.view.delegate = self
               }
           }
-          .flowLayoutItemSize(.init(width: view.frame.width, height: height))
+          .flowLayoutItemSize(.init(width: collectionViewSize.width, height: height))
           .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 8, right: 0))
         }
       }
@@ -119,7 +121,7 @@ final class VinchyViewController: CollectionViewController {
       sections.compactMap { section in
         switch section {
         case .stories(let content), .title(let content), .promo(let content), .big(let content):
-          let width: CGFloat = view.frame.width
+          let width: CGFloat = collectionViewSize.width
           let height: CGFloat = FakeCollectionView.height(for: section.style)
           return SectionModel(dataID: section.dataID) {
             FakeCollectionView.itemModel(
@@ -136,7 +138,7 @@ final class VinchyViewController: CollectionViewController {
       sections.compactMap { section in
         switch section {
         case .bottles(let content):
-          let width: CGFloat = view.frame.width
+          let width: CGFloat = collectionViewSize.width
           let height: CGFloat = 250
           return SectionModel(dataID: UUID()) {
             BottlesCollectionView.itemModel(
@@ -152,7 +154,7 @@ final class VinchyViewController: CollectionViewController {
 
         case .title(let content):
           let style: Label.Style = .style(with: TextStyle.lagerTitle)
-          let width: CGFloat = view.frame.width - 2 * C.horizontalInset
+          let width: CGFloat = collectionViewSize.width - 2 * C.horizontalInset
           let height: CGFloat = Label.height(for: content, width: width, style: style)
           return SectionModel(dataID: UUID()) {
             Label.itemModel(
@@ -164,7 +166,7 @@ final class VinchyViewController: CollectionViewController {
           .flowLayoutSectionInset(.init(top: 16, left: C.horizontalInset, bottom: 8, right: C.horizontalInset))
 
         case .stories(let content):
-          let width: CGFloat = view.frame.width
+          let width: CGFloat = collectionViewSize.width
           let height: CGFloat = 135
           return SectionModel(dataID: UUID()) {
             StoriesCollectionView.itemModel(
@@ -179,7 +181,7 @@ final class VinchyViewController: CollectionViewController {
           .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 8, right: 0))
 
         case .storeTitle(let content):
-          let width: CGFloat = view.frame.width - 2 * C.horizontalInset
+          let width: CGFloat = collectionViewSize.width - 2 * C.horizontalInset
           let height: CGFloat = content.height(for: width)
           return SectionModel(dataID: UUID()) {
             StoreTitleView.itemModel(
@@ -194,7 +196,7 @@ final class VinchyViewController: CollectionViewController {
           .flowLayoutSectionInset(.init(top: 8, left: C.horizontalInset, bottom: 16, right: C.horizontalInset))
 
         case .commonSubtitle(let content, let style):
-          let width: CGFloat = view.frame.width
+          let width: CGFloat = collectionViewSize.width
           let height: CGFloat = BigCollectionView.height(for: style)
           return SectionModel(dataID: UUID()) {
             BigCollectionView.itemModel(
@@ -209,7 +211,7 @@ final class VinchyViewController: CollectionViewController {
           .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 8, right: 0))
 
         case .shareUs(let content):
-          let width: CGFloat = view.frame.width - 2 * C.horizontalInset
+          let width: CGFloat = collectionViewSize.width - 2 * C.horizontalInset
           let height: CGFloat = 160
           return SectionModel(dataID: UUID()) {
             ShareUsView.itemModel(
@@ -229,7 +231,7 @@ final class VinchyViewController: CollectionViewController {
             showLabelBackground: true,
             backgroundColor: .mainBackground,
             textColor: .dark)
-          let width: CGFloat = view.frame.width - 2 * C.horizontalInset
+          let width: CGFloat = collectionViewSize.width - 2 * C.horizontalInset
           let height: CGFloat = Label.height(for: content, width: width, style: style)
           return SectionModel(dataID: UUID()) {
             Label.itemModel(
@@ -247,7 +249,7 @@ final class VinchyViewController: CollectionViewController {
             backgroundColor: .mainBackground,
             textAligment: .justified,
             textColor: .blueGray)
-          let width: CGFloat = view.frame.width - 2 * C.horizontalInset
+          let width: CGFloat = collectionViewSize.width - 2 * C.horizontalInset
           let height: CGFloat = Label.height(for: content, width: width, style: style)
           return SectionModel(dataID: UUID()) {
             Label.itemModel(

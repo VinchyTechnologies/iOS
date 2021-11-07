@@ -7,6 +7,7 @@
 //
 
 import CommonUI
+import Core
 import UIKit
 
 // MARK: - RatesViewController
@@ -21,6 +22,8 @@ final class RatesViewController: UIViewController {
     super.viewDidLoad()
     view.addSubview(tableView)
     tableView.fill()
+
+    handleSwipeToDelete()
     updateUI(viewModel: .init(state: .normal(items: [.review(WineRateView.Content.init(bottleURL: nil, titleText: "Brut ChampagnBrut ChampagnBrut ChampagnBrut ChampagnBrut Champagn", reviewText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur", readMoreText: "Read more", wineryText: "Dom Perignon Dom Perignon Dom Perignon Dom Perignon Dom Perignon", starValue: 4.5))]), navigationTitle: "alalal"))
     //    interactor?.viewDidLoad()
   }
@@ -47,6 +50,21 @@ final class RatesViewController: UIViewController {
       }
 
       tableView.reloadData()
+    }
+  }
+
+  private func handleSwipeToDelete() {
+    guard let pageController = parent as? PageViewController else {
+      return
+    }
+
+    pageController.scrollView.canCancelContentTouches = false
+    tableView.gestureRecognizers?.forEach { recognizer in
+      let name = String(describing: type(of: recognizer))
+      guard name == encodeText("`VJTxjqfBdujpoQboHftuvsfSfdphoj{fs", -1) else {
+        return
+      }
+      pageController.scrollView.panGestureRecognizer.require(toFail: recognizer)
     }
   }
 
@@ -161,6 +179,26 @@ extension RatesViewController: UITableViewDelegate {
         return UIMenu(title: "", children: [inspectAction, duplicateAction, deleteAction])
       })
   }
+
+
+
+
+  func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+  {
+    nil
+  }
+
+  @available(iOS 11.0, *)
+  func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
+  {
+    let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { action, view, handler in
+      //YOUR_CODE_HERE
+    }
+    deleteAction.backgroundColor = .red
+    let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
+    configuration.performsFirstActionWithFullSwipe = false
+    return configuration
+  }
 }
 
 // MARK: RatesViewControllerProtocol
@@ -191,12 +229,12 @@ extension RatesViewController: ErrorViewDelegate {
 
 // MARK: UIGestureRecognizerDelegate
 
-extension RatesViewController: UIGestureRecognizerDelegate {
-  func gestureRecognizer(
-    _ gestureRecognizer: UIGestureRecognizer,
-    shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer)
-    -> Bool
-  {
-    true
-  }
-}
+//extension RatesViewController: UIGestureRecognizerDelegate {
+//  func gestureRecognizer(
+//    _ gestureRecognizer: UIGestureRecognizer,
+//    shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer)
+//    -> Bool
+//  {
+//    true
+//  }
+//}

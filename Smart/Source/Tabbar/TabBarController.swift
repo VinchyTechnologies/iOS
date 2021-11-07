@@ -202,9 +202,13 @@ extension TabBarController: TabBarDeeplinkable {
   }
 
   func openWineDetail(wineID: Int64) -> AnyPublisher<TabBarDeeplinkable, Never> {
-    if let viewController = viewControllers?[safe: selectedIndex] as? VinchyNavigationController {
-      viewController.pushViewController(Assembly.buildDetailModule(wineID: wineID), animated: true)
-    }
+    let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID))
+    let navigationController = VinchyNavigationController(rootViewController: controller)
+    navigationController.modalPresentationStyle = .overFullScreen
+    UIApplication.topViewController(base: self)?.present(
+      navigationController,
+      animated: true,
+      completion: nil)
     return Just(self)
       .eraseToAnyPublisher()
   }
