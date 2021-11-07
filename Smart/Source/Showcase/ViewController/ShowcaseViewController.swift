@@ -89,7 +89,6 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
     $0.delegate = self
     return $0
   }(TabView())
-
   private lazy var collectionView: UICollectionView = {
     let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
     collectionView.dataSource = self
@@ -126,6 +125,12 @@ final class ShowcaseViewController: UIViewController, UICollectionViewDelegate, 
       }
       collectionView.reloadData()
     }
+  }
+
+  private func updateShadowSupplementaryHeaderView(offset: CGFloat) {
+    let value: CGFloat = offset
+    let alpha = min(1, max(0, value / 10))
+    tabView.layer.shadowOpacity = Float(alpha / 2.0)
   }
 
   @objc
@@ -378,6 +383,7 @@ extension ShowcaseViewController: UIScrollViewDelegate {
         guard let indexPath = visiblePaths.first else { return }
         tabView.selectItem(atIndex: indexPath.section, animated: true)
       }
+      updateShadowSupplementaryHeaderView(offset: scrollView.contentOffset.y)
     }
   }
 }
