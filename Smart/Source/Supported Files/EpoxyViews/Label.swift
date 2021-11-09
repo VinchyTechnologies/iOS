@@ -6,6 +6,8 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+// CopyLabel and Label MUST BE THE SAME!!!
+
 import Display
 import EpoxyCore
 import UIKit
@@ -54,13 +56,22 @@ final class Label: UILabel, EpoxyableView {
 
   typealias Content = String
 
-  static func height(for content: Content?, width: CGFloat, style: Style) -> CGFloat {
+  static func width(for content: Content?, maxWidth: CGFloat, style: Style) -> CGFloat {
+    guard let content = content else {
+      return 0
+    }
+    let font = style.font
+    let width = content.width(usingFont: font)
+    return min(maxWidth, width)
+  }
+
+  static func height(for content: Content?, width: CGFloat, style: Style, numberOfLines: Int = 0) -> CGFloat {
     guard let content = content else {
       return 0
     }
     // swiftlint:disable:next force_cast
     let font = style.font
-    let height = content.height(forWidth: width, font: font)
+    let height = content.height(forWidth: width, font: font, numberOfLines: numberOfLines)
     return height
   }
 
@@ -105,7 +116,7 @@ extension Label.Style {
   {
     switch textStyle {
     case .lagerTitle:
-      return .init(font: Font.heavy(20), showLabelBackground: true)
+      return .init(font: Font.heavy(20), showLabelBackground: true, backgroundColor: backgroundColor)
 
     case .miniBold:
       return .init(
@@ -136,6 +147,119 @@ extension Label.Style {
         isRounded: isRoundedCorners,
         textAligment: textAligment,
         textColor: .blueGray)
+    }
+  }
+}
+
+// MARK: - CopyLabel
+
+final class CopyLabel: CopyableLabel, EpoxyableView {
+
+  // MARK: Lifecycle
+
+  init(style: Style) {
+    self.style = style
+    super.init(frame: .zero)
+    translatesAutoresizingMaskIntoConstraints = false
+    font = style.font
+    numberOfLines = style.numberOfLines
+    if style.showLabelBackground {
+      backgroundColor = style.backgroundColor
+    }
+    textAlignment = style.textAligment
+    textColor = style.textColor
+  }
+
+  required init?(coder: NSCoder) { fatalError() }
+
+  // MARK: Internal
+
+  typealias Style = Label.Style
+
+  // MARK: ContentConfigurableView
+
+  typealias Content = String
+
+  static func width(for content: Content?, maxWidth: CGFloat, style: Style) -> CGFloat {
+    guard let content = content else {
+      return 0
+    }
+    let font = style.font
+    let width = content.width(usingFont: font)
+    return min(maxWidth, width)
+  }
+
+  static func height(for content: Content?, width: CGFloat, style: Style, numberOfLines: Int = 0) -> CGFloat {
+    guard let content = content else {
+      return 0
+    }
+    let font = style.font
+    let height = content.height(forWidth: width, font: font, numberOfLines: numberOfLines)
+    return height
+  }
+
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    if style.isRounded {
+      layer.cornerRadius = frame.height / 2
+      clipsToBounds = true
+    }
+  }
+
+  func setContent(_ content: String, animated: Bool) {
+    text = content
+  }
+
+  // MARK: Private
+
+  private let style: Style
+
+}
+
+// MARK: - CopyableLabel
+
+class CopyableLabel: UILabel {
+
+  // MARK: Lifecycle
+
+  override public init(frame: CGRect) {
+    super.init(frame: frame)
+    isUserInteractionEnabled = true
+    addGestureRecognizer(UILongPressGestureRecognizer(
+      target: self,
+      action: #selector(showCopyMenu(sender:))))
+  }
+
+  @available(*, unavailable)
+  required public init?(coder _: NSCoder) { fatalError() }
+
+  // MARK: Public
+
+  override public var canBecomeFirstResponder: Bool {
+    true
+  }
+
+  override public func copy(_: Any?) {
+    UIPasteboard.general.string = text
+    UIMenuController.shared.hideMenu()
+  }
+
+  override public func canPerformAction(
+    _ action: Selector,
+    withSender _: Any?)
+    -> Bool
+  {
+    action == #selector(copy(_:))
+  }
+
+  // MARK: Private
+
+  @objc
+  private func showCopyMenu(sender _: Any?) {
+    becomeFirstResponder()
+    let menu = UIMenuController.shared
+    if !menu.isMenuVisible {
+      menu.showMenu(from: self, rect: bounds)
     }
   }
 }

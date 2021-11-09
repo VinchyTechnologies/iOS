@@ -52,7 +52,7 @@ extension MoreRouter: MoreRouterProtocol {
     let rootViewController = EditProfileAssembly.assemblyModule(input: EditProfileInput(onDismiss: { [weak self] in
       self?.interactor?.viewDidLoad()
     }))
-    let controller = NavigationController(rootViewController: rootViewController)
+    let controller = VinchyNavigationController(rootViewController: rootViewController)
     viewController?.present(controller, animated: true)
   }
 

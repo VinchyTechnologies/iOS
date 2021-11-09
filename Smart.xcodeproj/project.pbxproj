@@ -115,7 +115,6 @@
 		8A0794DA26936141000ACA2B /* StoreRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0794CF26936141000ACA2B /* StoreRouterProtocol.swift */; };
 		8A0794DB26936141000ACA2B /* StoreRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0794D026936141000ACA2B /* StoreRouter.swift */; };
 		8A0794DE26936A8E000ACA2B /* LogoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0794DD26936A8E000ACA2B /* LogoRow.swift */; };
-		8A0794E126938394000ACA2B /* WineBottleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0794E026938394000ACA2B /* WineBottleView.swift */; };
 		8A0795B726943DD6000ACA2B /* FeaturesOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0795B626943DD6000ACA2B /* FeaturesOnboardingViewController.swift */; };
 		8A0795BA26943E85000ACA2B /* OnboardingFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0795B926943E85000ACA2B /* OnboardingFeatureView.swift */; };
 		8A07983B269750A0000ACA2B /* PluralLocalizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 8A07983D269750A0000ACA2B /* PluralLocalizable.stringsdict */; };
@@ -141,6 +140,81 @@
 		8A10F28A27063398003463B0 /* AddressSearchRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A10F27F27063398003463B0 /* AddressSearchRouterProtocol.swift */; };
 		8A10F65B27074F3A003463B0 /* DiscoveryLeadingAddressButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A10F65A27074F3A003463B0 /* DiscoveryLeadingAddressButton.swift */; };
 		8A251E3226B0065C00DAED2D /* AdItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A251E3126B0065C00DAED2D /* AdItemView.swift */; };
+		8A27EA38273564E3005A13C6 /* PagingDistance.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27E9F7273564E2005A13C6 /* PagingDistance.swift */; };
+		8A27EA39273564E3005A13C6 /* PagingIndicatorMetric.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27E9F8273564E2005A13C6 /* PagingIndicatorMetric.swift */; };
+		8A27EA3A273564E3005A13C6 /* PagingDiff.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27E9F9273564E2005A13C6 /* PagingDiff.swift */; };
+		8A27EA3B273564E3005A13C6 /* PagingItems.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27E9FA273564E2005A13C6 /* PagingItems.swift */; };
+		8A27EA3C273564E3005A13C6 /* PagingCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27E9FB273564E2005A13C6 /* PagingCellViewModel.swift */; };
+		8A27EA3D273564E3005A13C6 /* AnyPagingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27E9FC273564E2005A13C6 /* AnyPagingItem.swift */; };
+		8A27EA3E273564E3005A13C6 /* PagingTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27E9FD273564E2005A13C6 /* PagingTransition.swift */; };
+		8A27EA3F273564E3005A13C6 /* PagingNavigationOrientation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27E9FE273564E2005A13C6 /* PagingNavigationOrientation.swift */; };
+		8A27EA40273564E3005A13C6 /* PagingIndexItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27E9FF273564E2005A13C6 /* PagingIndexItem.swift */; };
+		8A27EA41273564E3005A13C6 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA00273564E2005A13C6 /* PageView.swift */; };
+		8A27EA42273564E3005A13C6 /* PageViewDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA02273564E2005A13C6 /* PageViewDirection.swift */; };
+		8A27EA43273564E3005A13C6 /* PagingMenuInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA03273564E2005A13C6 /* PagingMenuInteraction.swift */; };
+		8A27EA44273564E3005A13C6 /* PagingMenuItemSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA04273564E2005A13C6 /* PagingMenuItemSize.swift */; };
+		8A27EA45273564E3005A13C6 /* PagingSelectedScrollPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA05273564E2005A13C6 /* PagingSelectedScrollPosition.swift */; };
+		8A27EA46273564E3005A13C6 /* InvalidationState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA06273564E2005A13C6 /* InvalidationState.swift */; };
+		8A27EA47273564E3005A13C6 /* PagingMenuTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA07273564E2005A13C6 /* PagingMenuTransition.swift */; };
+		8A27EA48273564E3005A13C6 /* PagingMenuPosition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA08273564E2005A13C6 /* PagingMenuPosition.swift */; };
+		8A27EA49273564E3005A13C6 /* PageViewState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA09273564E2005A13C6 /* PageViewState.swift */; };
+		8A27EA4A273564E3005A13C6 /* PagingContentInteraction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA0A273564E2005A13C6 /* PagingContentInteraction.swift */; };
+		8A27EA4B273564E3005A13C6 /* PagingMenuHorizontalAlignment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA0B273564E2005A13C6 /* PagingMenuHorizontalAlignment.swift */; };
+		8A27EA4C273564E3005A13C6 /* PagingIndicatorOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA0C273564E2005A13C6 /* PagingIndicatorOptions.swift */; };
+		8A27EA4D273564E3005A13C6 /* PagingDirection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA0D273564E2005A13C6 /* PagingDirection.swift */; };
+		8A27EA4E273564E3005A13C6 /* PagingBorderOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA0E273564E2005A13C6 /* PagingBorderOptions.swift */; };
+		8A27EA4F273564E3005A13C6 /* PagingState.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA0F273564E2005A13C6 /* PagingState.swift */; };
+		8A27EA50273564E3005A13C6 /* PagingMenuItemSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA10273564E2005A13C6 /* PagingMenuItemSource.swift */; };
+		8A27EA51273564E3005A13C6 /* UIColor+interpolation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA12273564E2005A13C6 /* UIColor+interpolation.swift */; };
+		8A27EA52273564E3005A13C6 /* UIView+constraints.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA13273564E2005A13C6 /* UIView+constraints.swift */; };
+		8A27EA53273564E3005A13C6 /* UIEdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA14273564E2005A13C6 /* UIEdgeInsets.swift */; };
+		8A27EA54273564E3005A13C6 /* PagingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA16273564E3005A13C6 /* PagingViewController.swift */; };
+		8A27EA55273564E3005A13C6 /* PageViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA17273564E3005A13C6 /* PageViewManager.swift */; };
+		8A27EA56273564E3005A13C6 /* PagingTitleCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA18273564E3005A13C6 /* PagingTitleCell.swift */; };
+		8A27EA57273564E3005A13C6 /* PagingIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA19273564E3005A13C6 /* PagingIndicatorView.swift */; };
+		8A27EA58273564E3005A13C6 /* PagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA1A273564E3005A13C6 /* PagingView.swift */; };
+		8A27EA59273564E3005A13C6 /* PagingCellLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA1B273564E3005A13C6 /* PagingCellLayoutAttributes.swift */; };
+		8A27EA5A273564E3005A13C6 /* PagingIndicatorLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA1C273564E3005A13C6 /* PagingIndicatorLayoutAttributes.swift */; };
+		8A27EA5B273564E3005A13C6 /* PagingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA1D273564E3005A13C6 /* PagingController.swift */; };
+		8A27EA5C273564E3005A13C6 /* PagingCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA1E273564E3005A13C6 /* PagingCell.swift */; };
+		8A27EA5D273564E3005A13C6 /* PagingStaticDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA1F273564E3005A13C6 /* PagingStaticDataSource.swift */; };
+		8A27EA5E273564E3005A13C6 /* PagingInvalidationContext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA20273564E3005A13C6 /* PagingInvalidationContext.swift */; };
+		8A27EA5F273564E3005A13C6 /* PagingSizeCache.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA21273564E3005A13C6 /* PagingSizeCache.swift */; };
+		8A27EA60273564E3005A13C6 /* PagingCollectionViewLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA22273564E3005A13C6 /* PagingCollectionViewLayout.swift */; };
+		8A27EA61273564E3005A13C6 /* PagingBorderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA23273564E3005A13C6 /* PagingBorderView.swift */; };
+		8A27EA62273564E3005A13C6 /* PagingOptions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA24273564E3005A13C6 /* PagingOptions.swift */; };
+		8A27EA63273564E3005A13C6 /* PageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA25273564E3005A13C6 /* PageViewController.swift */; };
+		8A27EA64273564E3005A13C6 /* PagingFiniteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA26273564E3005A13C6 /* PagingFiniteDataSource.swift */; };
+		8A27EA65273564E3005A13C6 /* PagingBorderLayoutAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA27273564E3005A13C6 /* PagingBorderLayoutAttributes.swift */; };
+		8A27EA66273564E3005A13C6 /* PagingMenuView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA28273564E3005A13C6 /* PagingMenuView.swift */; };
+		8A27EA67273564E3005A13C6 /* PagingMenuDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA2A273564E3005A13C6 /* PagingMenuDataSource.swift */; };
+		8A27EA68273564E3005A13C6 /* PagingViewControllerInfiniteDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA2B273564E3005A13C6 /* PagingViewControllerInfiniteDataSource.swift */; };
+		8A27EA69273564E3005A13C6 /* Tween.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA2C273564E3005A13C6 /* Tween.swift */; };
+		8A27EA6A273564E3005A13C6 /* PagingItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA2D273564E3005A13C6 /* PagingItem.swift */; };
+		8A27EA6B273564E3005A13C6 /* PageViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA2E273564E3005A13C6 /* PageViewControllerDataSource.swift */; };
+		8A27EA6C273564E3005A13C6 /* CollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA2F273564E3005A13C6 /* CollectionView.swift */; };
+		8A27EA6D273564E3005A13C6 /* PageViewManagerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA30273564E3005A13C6 /* PageViewManagerDelegate.swift */; };
+		8A27EA6E273564E3005A13C6 /* PageViewManagerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA31273564E3005A13C6 /* PageViewManagerDataSource.swift */; };
+		8A27EA6F273564E3005A13C6 /* PagingViewControllerSizeDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA32273564E3005A13C6 /* PagingViewControllerSizeDelegate.swift */; };
+		8A27EA70273564E3005A13C6 /* PagingViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA33273564E3005A13C6 /* PagingViewControllerDelegate.swift */; };
+		8A27EA71273564E3005A13C6 /* PageViewControllerDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA34273564E3005A13C6 /* PageViewControllerDelegate.swift */; };
+		8A27EA72273564E3005A13C6 /* PagingViewControllerDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA35273564E3005A13C6 /* PagingViewControllerDataSource.swift */; };
+		8A27EA73273564E3005A13C6 /* PagingMenuDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA36273564E3005A13C6 /* PagingMenuDelegate.swift */; };
+		8A27EA74273564E3005A13C6 /* PagingLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA37273564E3005A13C6 /* PagingLayout.swift */; };
+		8A27EA7627357245005A13C6 /* SavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA7527357245005A13C6 /* SavedViewController.swift */; };
+		8A27EA8C27365B86005A13C6 /* RatesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA7B27365B86005A13C6 /* RatesViewModel.swift */; };
+		8A27EA8D27365B86005A13C6 /* RatesInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA7D27365B86005A13C6 /* RatesInput.swift */; };
+		8A27EA8E27365B86005A13C6 /* RatesAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA7F27365B86005A13C6 /* RatesAssembly.swift */; };
+		8A27EA8F27365B86005A13C6 /* RatesPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA8127365B86005A13C6 /* RatesPresenter.swift */; };
+		8A27EA9027365B86005A13C6 /* RatesPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA8227365B86005A13C6 /* RatesPresenterProtocol.swift */; };
+		8A27EA9127365B86005A13C6 /* RatesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA8427365B86005A13C6 /* RatesViewController.swift */; };
+		8A27EA9227365B86005A13C6 /* RatesViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA8527365B86005A13C6 /* RatesViewControllerProtocol.swift */; };
+		8A27EA9327365B86005A13C6 /* RatesInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA8727365B86005A13C6 /* RatesInteractor.swift */; };
+		8A27EA9427365B86005A13C6 /* RatesInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA8827365B86005A13C6 /* RatesInteractorProtocol.swift */; };
+		8A27EA9527365B86005A13C6 /* RatesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA8A27365B86005A13C6 /* RatesRouter.swift */; };
+		8A27EA9627365B86005A13C6 /* RatesRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA8B27365B86005A13C6 /* RatesRouterProtocol.swift */; };
+		8A27EA9927366264005A13C6 /* LoadingIndicatorTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA9827366264005A13C6 /* LoadingIndicatorTableCell.swift */; };
+		8A27EA9B27366716005A13C6 /* WineRateTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA9A27366716005A13C6 /* WineRateTableCell.swift */; };
 		8A313BFF26447042009F2165 /* MapDetailStoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BEE26447042009F2165 /* MapDetailStoreViewModel.swift */; };
 		8A313C0026447042009F2165 /* MapDetailStoreInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BF026447042009F2165 /* MapDetailStoreInput.swift */; };
 		8A313C0126447042009F2165 /* MapDetailStoreAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BF226447042009F2165 /* MapDetailStoreAssembly.swift */; };
@@ -153,6 +227,18 @@
 		8A313C0826447042009F2165 /* MapDetailStoreRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BFD26447042009F2165 /* MapDetailStoreRouter.swift */; };
 		8A313C0926447042009F2165 /* MapDetailStoreRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BFE26447042009F2165 /* MapDetailStoreRouterProtocol.swift */; };
 		8A313C1626468678009F2165 /* WorkingHoursCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313C1526468678009F2165 /* WorkingHoursCollectionCell.swift */; };
+		8A3C0F502732D08E00947085 /* SavedViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C0F3F2732D08E00947085 /* SavedViewModel.swift */; };
+		8A3C0F512732D08E00947085 /* SavedInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C0F412732D08E00947085 /* SavedInput.swift */; };
+		8A3C0F522732D08E00947085 /* SavedAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C0F432732D08E00947085 /* SavedAssembly.swift */; };
+		8A3C0F532732D08E00947085 /* SavedPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C0F452732D08E00947085 /* SavedPresenter.swift */; };
+		8A3C0F542732D08E00947085 /* SavedPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C0F462732D08E00947085 /* SavedPresenterProtocol.swift */; };
+		8A3C0F552732D08E00947085 /* SavedViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C0F482732D08E00947085 /* SavedViewControllerProtocol.swift */; };
+		8A3C0F562732D08E00947085 /* SSavedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C0F492732D08E00947085 /* SSavedViewController.swift */; };
+		8A3C0F572732D08E00947085 /* SavedInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C0F4B2732D08E00947085 /* SavedInteractorProtocol.swift */; };
+		8A3C0F582732D08E00947085 /* SavedInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C0F4C2732D08E00947085 /* SavedInteractor.swift */; };
+		8A3C0F592732D08E00947085 /* SavedRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C0F4E2732D08E00947085 /* SavedRouter.swift */; };
+		8A3C0F5A2732D08E00947085 /* SavedRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C0F4F2732D08E00947085 /* SavedRouterProtocol.swift */; };
+		8A3C0F5D2732D38500947085 /* ControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C0F5C2732D38500947085 /* ControllerCell.swift */; };
 		8A446CDF2660123B000A1769 /* RoutingToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A446CDE2660123B000A1769 /* RoutingToolBar.swift */; };
 		8A4749AF2728271E0091B493 /* StoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4749AE2728271E0091B493 /* StoryView.swift */; };
 		8A4749B1272832700091B493 /* StoriesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4749B0272832700091B493 /* StoriesCollectionView.swift */; };
@@ -212,8 +298,6 @@
 		8A916121268E27EB00240B18 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916116268E27EB00240B18 /* SearchRouter.swift */; };
 		8A916122268E27EB00240B18 /* SearchRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916117268E27EB00240B18 /* SearchRouterProtocol.swift */; };
 		8A9554682692284B00F1C5AE /* DocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9554672692284B00F1C5AE /* DocumentsViewController.swift */; };
-		8A9865E8272B27FA00DE4D8F /* EpoxyErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9865E7272B27FA00DE4D8F /* EpoxyErrorView.swift */; };
-		8A9865ED272C2D6D00DE4D8F /* Epoxy in Frameworks */ = {isa = PBXBuildFile; productRef = 8A9865EC272C2D6D00DE4D8F /* Epoxy */; };
 		8AA5E5132615053D00935B5E /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA5E5122615053D00935B5E /* AboutView.swift */; };
 		8AA98B9626D5436500C32358 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA98B9526D5436500C32358 /* EmptyView.swift */; };
 		8AA990A226D91FE000C32358 /* StoresViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA9909126D91FE000C32358 /* StoresViewModel.swift */; };
@@ -562,7 +646,6 @@
 		8A0794CF26936141000ACA2B /* StoreRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreRouterProtocol.swift; sourceTree = "<group>"; };
 		8A0794D026936141000ACA2B /* StoreRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreRouter.swift; sourceTree = "<group>"; };
 		8A0794DD26936A8E000ACA2B /* LogoRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogoRow.swift; sourceTree = "<group>"; };
-		8A0794E026938394000ACA2B /* WineBottleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineBottleView.swift; sourceTree = "<group>"; };
 		8A0795B626943DD6000ACA2B /* FeaturesOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturesOnboardingViewController.swift; sourceTree = "<group>"; };
 		8A0795B926943E85000ACA2B /* OnboardingFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFeatureView.swift; sourceTree = "<group>"; };
 		8A07983C269750A0000ACA2B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/PluralLocalizable.stringsdict; sourceTree = "<group>"; };
@@ -589,6 +672,81 @@
 		8A10F27F27063398003463B0 /* AddressSearchRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddressSearchRouterProtocol.swift; sourceTree = "<group>"; };
 		8A10F65A27074F3A003463B0 /* DiscoveryLeadingAddressButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DiscoveryLeadingAddressButton.swift; sourceTree = "<group>"; };
 		8A251E3126B0065C00DAED2D /* AdItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdItemView.swift; sourceTree = "<group>"; };
+		8A27E9F7273564E2005A13C6 /* PagingDistance.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingDistance.swift; sourceTree = "<group>"; };
+		8A27E9F8273564E2005A13C6 /* PagingIndicatorMetric.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingIndicatorMetric.swift; sourceTree = "<group>"; };
+		8A27E9F9273564E2005A13C6 /* PagingDiff.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingDiff.swift; sourceTree = "<group>"; };
+		8A27E9FA273564E2005A13C6 /* PagingItems.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingItems.swift; sourceTree = "<group>"; };
+		8A27E9FB273564E2005A13C6 /* PagingCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingCellViewModel.swift; sourceTree = "<group>"; };
+		8A27E9FC273564E2005A13C6 /* AnyPagingItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AnyPagingItem.swift; sourceTree = "<group>"; };
+		8A27E9FD273564E2005A13C6 /* PagingTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingTransition.swift; sourceTree = "<group>"; };
+		8A27E9FE273564E2005A13C6 /* PagingNavigationOrientation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingNavigationOrientation.swift; sourceTree = "<group>"; };
+		8A27E9FF273564E2005A13C6 /* PagingIndexItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingIndexItem.swift; sourceTree = "<group>"; };
+		8A27EA00273564E2005A13C6 /* PageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
+		8A27EA02273564E2005A13C6 /* PageViewDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewDirection.swift; sourceTree = "<group>"; };
+		8A27EA03273564E2005A13C6 /* PagingMenuInteraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingMenuInteraction.swift; sourceTree = "<group>"; };
+		8A27EA04273564E2005A13C6 /* PagingMenuItemSize.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingMenuItemSize.swift; sourceTree = "<group>"; };
+		8A27EA05273564E2005A13C6 /* PagingSelectedScrollPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingSelectedScrollPosition.swift; sourceTree = "<group>"; };
+		8A27EA06273564E2005A13C6 /* InvalidationState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InvalidationState.swift; sourceTree = "<group>"; };
+		8A27EA07273564E2005A13C6 /* PagingMenuTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingMenuTransition.swift; sourceTree = "<group>"; };
+		8A27EA08273564E2005A13C6 /* PagingMenuPosition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingMenuPosition.swift; sourceTree = "<group>"; };
+		8A27EA09273564E2005A13C6 /* PageViewState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewState.swift; sourceTree = "<group>"; };
+		8A27EA0A273564E2005A13C6 /* PagingContentInteraction.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingContentInteraction.swift; sourceTree = "<group>"; };
+		8A27EA0B273564E2005A13C6 /* PagingMenuHorizontalAlignment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingMenuHorizontalAlignment.swift; sourceTree = "<group>"; };
+		8A27EA0C273564E2005A13C6 /* PagingIndicatorOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingIndicatorOptions.swift; sourceTree = "<group>"; };
+		8A27EA0D273564E2005A13C6 /* PagingDirection.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingDirection.swift; sourceTree = "<group>"; };
+		8A27EA0E273564E2005A13C6 /* PagingBorderOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingBorderOptions.swift; sourceTree = "<group>"; };
+		8A27EA0F273564E2005A13C6 /* PagingState.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingState.swift; sourceTree = "<group>"; };
+		8A27EA10273564E2005A13C6 /* PagingMenuItemSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingMenuItemSource.swift; sourceTree = "<group>"; };
+		8A27EA12273564E2005A13C6 /* UIColor+interpolation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+interpolation.swift"; sourceTree = "<group>"; };
+		8A27EA13273564E2005A13C6 /* UIView+constraints.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+constraints.swift"; sourceTree = "<group>"; };
+		8A27EA14273564E2005A13C6 /* UIEdgeInsets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIEdgeInsets.swift; sourceTree = "<group>"; };
+		8A27EA16273564E3005A13C6 /* PagingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingViewController.swift; sourceTree = "<group>"; };
+		8A27EA17273564E3005A13C6 /* PageViewManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewManager.swift; sourceTree = "<group>"; };
+		8A27EA18273564E3005A13C6 /* PagingTitleCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingTitleCell.swift; sourceTree = "<group>"; };
+		8A27EA19273564E3005A13C6 /* PagingIndicatorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingIndicatorView.swift; sourceTree = "<group>"; };
+		8A27EA1A273564E3005A13C6 /* PagingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingView.swift; sourceTree = "<group>"; };
+		8A27EA1B273564E3005A13C6 /* PagingCellLayoutAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingCellLayoutAttributes.swift; sourceTree = "<group>"; };
+		8A27EA1C273564E3005A13C6 /* PagingIndicatorLayoutAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingIndicatorLayoutAttributes.swift; sourceTree = "<group>"; };
+		8A27EA1D273564E3005A13C6 /* PagingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingController.swift; sourceTree = "<group>"; };
+		8A27EA1E273564E3005A13C6 /* PagingCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingCell.swift; sourceTree = "<group>"; };
+		8A27EA1F273564E3005A13C6 /* PagingStaticDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingStaticDataSource.swift; sourceTree = "<group>"; };
+		8A27EA20273564E3005A13C6 /* PagingInvalidationContext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingInvalidationContext.swift; sourceTree = "<group>"; };
+		8A27EA21273564E3005A13C6 /* PagingSizeCache.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingSizeCache.swift; sourceTree = "<group>"; };
+		8A27EA22273564E3005A13C6 /* PagingCollectionViewLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingCollectionViewLayout.swift; sourceTree = "<group>"; };
+		8A27EA23273564E3005A13C6 /* PagingBorderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingBorderView.swift; sourceTree = "<group>"; };
+		8A27EA24273564E3005A13C6 /* PagingOptions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingOptions.swift; sourceTree = "<group>"; };
+		8A27EA25273564E3005A13C6 /* PageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewController.swift; sourceTree = "<group>"; };
+		8A27EA26273564E3005A13C6 /* PagingFiniteDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingFiniteDataSource.swift; sourceTree = "<group>"; };
+		8A27EA27273564E3005A13C6 /* PagingBorderLayoutAttributes.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingBorderLayoutAttributes.swift; sourceTree = "<group>"; };
+		8A27EA28273564E3005A13C6 /* PagingMenuView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingMenuView.swift; sourceTree = "<group>"; };
+		8A27EA2A273564E3005A13C6 /* PagingMenuDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingMenuDataSource.swift; sourceTree = "<group>"; };
+		8A27EA2B273564E3005A13C6 /* PagingViewControllerInfiniteDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingViewControllerInfiniteDataSource.swift; sourceTree = "<group>"; };
+		8A27EA2C273564E3005A13C6 /* Tween.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Tween.swift; sourceTree = "<group>"; };
+		8A27EA2D273564E3005A13C6 /* PagingItem.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingItem.swift; sourceTree = "<group>"; };
+		8A27EA2E273564E3005A13C6 /* PageViewControllerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewControllerDataSource.swift; sourceTree = "<group>"; };
+		8A27EA2F273564E3005A13C6 /* CollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionView.swift; sourceTree = "<group>"; };
+		8A27EA30273564E3005A13C6 /* PageViewManagerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewManagerDelegate.swift; sourceTree = "<group>"; };
+		8A27EA31273564E3005A13C6 /* PageViewManagerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewManagerDataSource.swift; sourceTree = "<group>"; };
+		8A27EA32273564E3005A13C6 /* PagingViewControllerSizeDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingViewControllerSizeDelegate.swift; sourceTree = "<group>"; };
+		8A27EA33273564E3005A13C6 /* PagingViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingViewControllerDelegate.swift; sourceTree = "<group>"; };
+		8A27EA34273564E3005A13C6 /* PageViewControllerDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewControllerDelegate.swift; sourceTree = "<group>"; };
+		8A27EA35273564E3005A13C6 /* PagingViewControllerDataSource.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingViewControllerDataSource.swift; sourceTree = "<group>"; };
+		8A27EA36273564E3005A13C6 /* PagingMenuDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingMenuDelegate.swift; sourceTree = "<group>"; };
+		8A27EA37273564E3005A13C6 /* PagingLayout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PagingLayout.swift; sourceTree = "<group>"; };
+		8A27EA7527357245005A13C6 /* SavedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedViewController.swift; sourceTree = "<group>"; };
+		8A27EA7B27365B86005A13C6 /* RatesViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatesViewModel.swift; sourceTree = "<group>"; };
+		8A27EA7D27365B86005A13C6 /* RatesInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatesInput.swift; sourceTree = "<group>"; };
+		8A27EA7F27365B86005A13C6 /* RatesAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatesAssembly.swift; sourceTree = "<group>"; };
+		8A27EA8127365B86005A13C6 /* RatesPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatesPresenter.swift; sourceTree = "<group>"; };
+		8A27EA8227365B86005A13C6 /* RatesPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatesPresenterProtocol.swift; sourceTree = "<group>"; };
+		8A27EA8427365B86005A13C6 /* RatesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatesViewController.swift; sourceTree = "<group>"; };
+		8A27EA8527365B86005A13C6 /* RatesViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatesViewControllerProtocol.swift; sourceTree = "<group>"; };
+		8A27EA8727365B86005A13C6 /* RatesInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatesInteractor.swift; sourceTree = "<group>"; };
+		8A27EA8827365B86005A13C6 /* RatesInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatesInteractorProtocol.swift; sourceTree = "<group>"; };
+		8A27EA8A27365B86005A13C6 /* RatesRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatesRouter.swift; sourceTree = "<group>"; };
+		8A27EA8B27365B86005A13C6 /* RatesRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatesRouterProtocol.swift; sourceTree = "<group>"; };
+		8A27EA9827366264005A13C6 /* LoadingIndicatorTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorTableCell.swift; sourceTree = "<group>"; };
+		8A27EA9A27366716005A13C6 /* WineRateTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineRateTableCell.swift; sourceTree = "<group>"; };
 		8A313BEE26447042009F2165 /* MapDetailStoreViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreViewModel.swift; sourceTree = "<group>"; };
 		8A313BF026447042009F2165 /* MapDetailStoreInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreInput.swift; sourceTree = "<group>"; };
 		8A313BF226447042009F2165 /* MapDetailStoreAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreAssembly.swift; sourceTree = "<group>"; };
@@ -601,6 +759,18 @@
 		8A313BFD26447042009F2165 /* MapDetailStoreRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreRouter.swift; sourceTree = "<group>"; };
 		8A313BFE26447042009F2165 /* MapDetailStoreRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreRouterProtocol.swift; sourceTree = "<group>"; };
 		8A313C1526468678009F2165 /* WorkingHoursCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkingHoursCollectionCell.swift; sourceTree = "<group>"; };
+		8A3C0F3F2732D08E00947085 /* SavedViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedViewModel.swift; sourceTree = "<group>"; };
+		8A3C0F412732D08E00947085 /* SavedInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedInput.swift; sourceTree = "<group>"; };
+		8A3C0F432732D08E00947085 /* SavedAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedAssembly.swift; sourceTree = "<group>"; };
+		8A3C0F452732D08E00947085 /* SavedPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedPresenter.swift; sourceTree = "<group>"; };
+		8A3C0F462732D08E00947085 /* SavedPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedPresenterProtocol.swift; sourceTree = "<group>"; };
+		8A3C0F482732D08E00947085 /* SavedViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedViewControllerProtocol.swift; sourceTree = "<group>"; };
+		8A3C0F492732D08E00947085 /* SSavedViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SSavedViewController.swift; sourceTree = "<group>"; };
+		8A3C0F4B2732D08E00947085 /* SavedInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedInteractorProtocol.swift; sourceTree = "<group>"; };
+		8A3C0F4C2732D08E00947085 /* SavedInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedInteractor.swift; sourceTree = "<group>"; };
+		8A3C0F4E2732D08E00947085 /* SavedRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedRouter.swift; sourceTree = "<group>"; };
+		8A3C0F4F2732D08E00947085 /* SavedRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SavedRouterProtocol.swift; sourceTree = "<group>"; };
+		8A3C0F5C2732D38500947085 /* ControllerCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ControllerCell.swift; sourceTree = "<group>"; };
 		8A446CDE2660123B000A1769 /* RoutingToolBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingToolBar.swift; sourceTree = "<group>"; };
 		8A4749AE2728271E0091B493 /* StoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoryView.swift; sourceTree = "<group>"; };
 		8A4749B0272832700091B493 /* StoriesCollectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoriesCollectionView.swift; sourceTree = "<group>"; };
@@ -641,7 +811,6 @@
 		8A916116268E27EB00240B18 /* SearchRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
 		8A916117268E27EB00240B18 /* SearchRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRouterProtocol.swift; sourceTree = "<group>"; };
 		8A9554672692284B00F1C5AE /* DocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsViewController.swift; sourceTree = "<group>"; };
-		8A9865E7272B27FA00DE4D8F /* EpoxyErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpoxyErrorView.swift; sourceTree = "<group>"; };
 		8AA5E5122615053D00935B5E /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		8AA98B9526D5436500C32358 /* EmptyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		8AA9909126D91FE000C32358 /* StoresViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoresViewModel.swift; sourceTree = "<group>"; };
@@ -862,7 +1031,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A9865ED272C2D6D00DE4D8F /* Epoxy in Frameworks */,
 				CA51BBEF254094B000208F71 /* AppTrackingTransparency.framework in Frameworks */,
 				8A63CCB62675462C003B1D4D /* Database.framework in Frameworks */,
 				CA51BBED254094A100208F71 /* AdSupport.framework in Frameworks */,
@@ -1617,14 +1785,12 @@
 			children = (
 				8AF9441A2692295D003EB76A /* Label.swift */,
 				8AF9441C26922D77003EB76A /* IconView.swift */,
-				8A0794E026938394000ACA2B /* WineBottleView.swift */,
 				8A07991326998363000ACA2B /* HorizontalWineView.swift */,
 				8A079F2D269E151F000ACA2B /* BottlesCollectionView.swift */,
 				8A0BBEDE26A8578C0049DA74 /* LoadingView.swift */,
 				748586CF26C1B69A00F5CBEA /* HorizontalPartnerView.swift */,
 				8AA98B9526D5436500C32358 /* EmptyView.swift */,
 				8A474E2427298B740091B493 /* LinkButton.swift */,
-				8A9865E7272B27FA00DE4D8F /* EpoxyErrorView.swift */,
 			);
 			path = EpoxyViews;
 			sourceTree = "<group>";
@@ -1712,6 +1878,198 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		8A27E9F5273564D2005A13C6 /* Parchment */ = {
+			isa = PBXGroup;
+			children = (
+				8A27EA15273564E3005A13C6 /* Classes */,
+				8A27EA01273564E2005A13C6 /* Enums */,
+				8A27EA11273564E2005A13C6 /* Extensions */,
+				8A27EA29273564E3005A13C6 /* Protocols */,
+				8A27E9F6273564E2005A13C6 /* Structs */,
+			);
+			path = Parchment;
+			sourceTree = "<group>";
+		};
+		8A27E9F6273564E2005A13C6 /* Structs */ = {
+			isa = PBXGroup;
+			children = (
+				8A27E9F7273564E2005A13C6 /* PagingDistance.swift */,
+				8A27E9F8273564E2005A13C6 /* PagingIndicatorMetric.swift */,
+				8A27E9F9273564E2005A13C6 /* PagingDiff.swift */,
+				8A27E9FA273564E2005A13C6 /* PagingItems.swift */,
+				8A27E9FB273564E2005A13C6 /* PagingCellViewModel.swift */,
+				8A27E9FC273564E2005A13C6 /* AnyPagingItem.swift */,
+				8A27E9FD273564E2005A13C6 /* PagingTransition.swift */,
+				8A27E9FE273564E2005A13C6 /* PagingNavigationOrientation.swift */,
+				8A27E9FF273564E2005A13C6 /* PagingIndexItem.swift */,
+				8A27EA00273564E2005A13C6 /* PageView.swift */,
+			);
+			path = Structs;
+			sourceTree = "<group>";
+		};
+		8A27EA01273564E2005A13C6 /* Enums */ = {
+			isa = PBXGroup;
+			children = (
+				8A27EA02273564E2005A13C6 /* PageViewDirection.swift */,
+				8A27EA03273564E2005A13C6 /* PagingMenuInteraction.swift */,
+				8A27EA04273564E2005A13C6 /* PagingMenuItemSize.swift */,
+				8A27EA05273564E2005A13C6 /* PagingSelectedScrollPosition.swift */,
+				8A27EA06273564E2005A13C6 /* InvalidationState.swift */,
+				8A27EA07273564E2005A13C6 /* PagingMenuTransition.swift */,
+				8A27EA08273564E2005A13C6 /* PagingMenuPosition.swift */,
+				8A27EA09273564E2005A13C6 /* PageViewState.swift */,
+				8A27EA0A273564E2005A13C6 /* PagingContentInteraction.swift */,
+				8A27EA0B273564E2005A13C6 /* PagingMenuHorizontalAlignment.swift */,
+				8A27EA0C273564E2005A13C6 /* PagingIndicatorOptions.swift */,
+				8A27EA0D273564E2005A13C6 /* PagingDirection.swift */,
+				8A27EA0E273564E2005A13C6 /* PagingBorderOptions.swift */,
+				8A27EA0F273564E2005A13C6 /* PagingState.swift */,
+				8A27EA10273564E2005A13C6 /* PagingMenuItemSource.swift */,
+			);
+			path = Enums;
+			sourceTree = "<group>";
+		};
+		8A27EA11273564E2005A13C6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				8A27EA12273564E2005A13C6 /* UIColor+interpolation.swift */,
+				8A27EA13273564E2005A13C6 /* UIView+constraints.swift */,
+				8A27EA14273564E2005A13C6 /* UIEdgeInsets.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		8A27EA15273564E3005A13C6 /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+				8A27EA16273564E3005A13C6 /* PagingViewController.swift */,
+				8A27EA17273564E3005A13C6 /* PageViewManager.swift */,
+				8A27EA18273564E3005A13C6 /* PagingTitleCell.swift */,
+				8A27EA19273564E3005A13C6 /* PagingIndicatorView.swift */,
+				8A27EA1A273564E3005A13C6 /* PagingView.swift */,
+				8A27EA1B273564E3005A13C6 /* PagingCellLayoutAttributes.swift */,
+				8A27EA1C273564E3005A13C6 /* PagingIndicatorLayoutAttributes.swift */,
+				8A27EA1D273564E3005A13C6 /* PagingController.swift */,
+				8A27EA1E273564E3005A13C6 /* PagingCell.swift */,
+				8A27EA1F273564E3005A13C6 /* PagingStaticDataSource.swift */,
+				8A27EA20273564E3005A13C6 /* PagingInvalidationContext.swift */,
+				8A27EA21273564E3005A13C6 /* PagingSizeCache.swift */,
+				8A27EA22273564E3005A13C6 /* PagingCollectionViewLayout.swift */,
+				8A27EA23273564E3005A13C6 /* PagingBorderView.swift */,
+				8A27EA24273564E3005A13C6 /* PagingOptions.swift */,
+				8A27EA25273564E3005A13C6 /* PageViewController.swift */,
+				8A27EA26273564E3005A13C6 /* PagingFiniteDataSource.swift */,
+				8A27EA27273564E3005A13C6 /* PagingBorderLayoutAttributes.swift */,
+				8A27EA28273564E3005A13C6 /* PagingMenuView.swift */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		8A27EA29273564E3005A13C6 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				8A27EA2A273564E3005A13C6 /* PagingMenuDataSource.swift */,
+				8A27EA2B273564E3005A13C6 /* PagingViewControllerInfiniteDataSource.swift */,
+				8A27EA2C273564E3005A13C6 /* Tween.swift */,
+				8A27EA2D273564E3005A13C6 /* PagingItem.swift */,
+				8A27EA2E273564E3005A13C6 /* PageViewControllerDataSource.swift */,
+				8A27EA2F273564E3005A13C6 /* CollectionView.swift */,
+				8A27EA30273564E3005A13C6 /* PageViewManagerDelegate.swift */,
+				8A27EA31273564E3005A13C6 /* PageViewManagerDataSource.swift */,
+				8A27EA32273564E3005A13C6 /* PagingViewControllerSizeDelegate.swift */,
+				8A27EA33273564E3005A13C6 /* PagingViewControllerDelegate.swift */,
+				8A27EA34273564E3005A13C6 /* PageViewControllerDelegate.swift */,
+				8A27EA35273564E3005A13C6 /* PagingViewControllerDataSource.swift */,
+				8A27EA36273564E3005A13C6 /* PagingMenuDelegate.swift */,
+				8A27EA37273564E3005A13C6 /* PagingLayout.swift */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		8A27EA7927365B86005A13C6 /* Rates */ = {
+			isa = PBXGroup;
+			children = (
+				8A27EA7E27365B86005A13C6 /* Assembly */,
+				8A27EA7C27365B86005A13C6 /* Input */,
+				8A27EA8627365B86005A13C6 /* Interactor */,
+				8A27EA8027365B86005A13C6 /* Presenter */,
+				8A27EA8927365B86005A13C6 /* Router */,
+				8A27EA8327365B86005A13C6 /* ViewController */,
+				8A27EA7A27365B86005A13C6 /* ViewModel */,
+				8A27EA972736623D005A13C6 /* Views */,
+			);
+			path = Rates;
+			sourceTree = "<group>";
+		};
+		8A27EA7A27365B86005A13C6 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8A27EA7B27365B86005A13C6 /* RatesViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8A27EA7C27365B86005A13C6 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				8A27EA7D27365B86005A13C6 /* RatesInput.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		8A27EA7E27365B86005A13C6 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				8A27EA7F27365B86005A13C6 /* RatesAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		8A27EA8027365B86005A13C6 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8A27EA8127365B86005A13C6 /* RatesPresenter.swift */,
+				8A27EA8227365B86005A13C6 /* RatesPresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		8A27EA8327365B86005A13C6 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8A27EA8427365B86005A13C6 /* RatesViewController.swift */,
+				8A27EA8527365B86005A13C6 /* RatesViewControllerProtocol.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		8A27EA8627365B86005A13C6 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				8A27EA8727365B86005A13C6 /* RatesInteractor.swift */,
+				8A27EA8827365B86005A13C6 /* RatesInteractorProtocol.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		8A27EA8927365B86005A13C6 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				8A27EA8A27365B86005A13C6 /* RatesRouter.swift */,
+				8A27EA8B27365B86005A13C6 /* RatesRouterProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		8A27EA972736623D005A13C6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8A27EA9827366264005A13C6 /* LoadingIndicatorTableCell.swift */,
+				8A27EA9A27366716005A13C6 /* WineRateTableCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		8A313BEC26447042009F2165 /* MapDetailStore */ = {
 			isa = PBXGroup;
 			children = (
@@ -1793,6 +2151,90 @@
 				8A313C1526468678009F2165 /* WorkingHoursCollectionCell.swift */,
 				8A1034582648596100F7CA81 /* AssortmentCollectionCell.swift */,
 				8A1036C9264D7E1200F7CA81 /* MapNavigationBarCollectionCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8A3C0F3D2732D08E00947085 /* Saved */ = {
+			isa = PBXGroup;
+			children = (
+				8A3C0F5B2732D37100947085 /* Views */,
+				8A3C0F422732D08E00947085 /* Assembly */,
+				8A3C0F402732D08E00947085 /* Input */,
+				8A3C0F4A2732D08E00947085 /* Interactor */,
+				8A3C0F442732D08E00947085 /* Presenter */,
+				8A3C0F4D2732D08E00947085 /* Router */,
+				8A3C0F472732D08E00947085 /* ViewController */,
+				8A3C0F3E2732D08E00947085 /* ViewModel */,
+			);
+			path = Saved;
+			sourceTree = "<group>";
+		};
+		8A3C0F3E2732D08E00947085 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8A3C0F3F2732D08E00947085 /* SavedViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8A3C0F402732D08E00947085 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				8A3C0F412732D08E00947085 /* SavedInput.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		8A3C0F422732D08E00947085 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				8A3C0F432732D08E00947085 /* SavedAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		8A3C0F442732D08E00947085 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8A3C0F452732D08E00947085 /* SavedPresenter.swift */,
+				8A3C0F462732D08E00947085 /* SavedPresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		8A3C0F472732D08E00947085 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8A3C0F482732D08E00947085 /* SavedViewControllerProtocol.swift */,
+				8A3C0F492732D08E00947085 /* SSavedViewController.swift */,
+				8A27EA7527357245005A13C6 /* SavedViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		8A3C0F4A2732D08E00947085 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				8A3C0F4B2732D08E00947085 /* SavedInteractorProtocol.swift */,
+				8A3C0F4C2732D08E00947085 /* SavedInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		8A3C0F4D2732D08E00947085 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				8A3C0F4E2732D08E00947085 /* SavedRouter.swift */,
+				8A3C0F4F2732D08E00947085 /* SavedRouterProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		8A3C0F5B2732D37100947085 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8A3C0F5C2732D38500947085 /* ControllerCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2468,10 +2910,13 @@
 				CAF5140D2461C4ED00667ED0 /* More */,
 				8AE787F82684E8D60056A84B /* Notes */,
 				CA070A762523D77000C3D9EC /* Onboarding */,
+				8A27E9F5273564D2005A13C6 /* Parchment */,
+				8A27EA7927365B86005A13C6 /* Rates */,
 				74E55F9426AACE2C0086C159 /* ResultsSearch */,
 				44EFDB5C25E263E00076ED6D /* ReviewDetail */,
 				44EFDB2425E177220076ED6D /* Reviews */,
 				449F81AA25DD022000585364 /* Root */,
+				8A3C0F3D2732D08E00947085 /* Saved */,
 				8A916105268E27EB00240B18 /* Search */,
 				CA0A352324785A0900C400F5 /* Showcase */,
 				748586EA26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCell */,
@@ -3105,7 +3550,6 @@
 				8A63CC8A26753046003B1D4D /* FittedSheets */,
 				8A63CC8D2675308B003B1D4D /* Sheeeeeeeeet */,
 				8A63CC932675322D003B1D4D /* SPAlert */,
-				8A9865EC272C2D6D00DE4D8F /* Epoxy */,
 			);
 			productName = Smart;
 			productReference = CA472ABC245EDE2F009149FF /* Vinchy.app */;
@@ -3188,7 +3632,6 @@
 				8A63CC8926753046003B1D4D /* XCRemoteSwiftPackageReference "FittedSheets" */,
 				8A63CC8C2675308B003B1D4D /* XCRemoteSwiftPackageReference "Sheeeeeeeeet" */,
 				8A63CC922675322D003B1D4D /* XCRemoteSwiftPackageReference "SPAlert" */,
-				8A9865EB272C2D6D00DE4D8F /* XCRemoteSwiftPackageReference "epoxy-ios" */,
 			);
 			productRefGroup = CA472ABD245EDE2F009149FF /* Products */;
 			projectDirPath = "";
@@ -3389,12 +3832,14 @@
 				8A0D9CB926872CF60076A7EC /* NewAgreementsBottomView.swift in Sources */,
 				8A10F28527063398003463B0 /* AddressSearchViewController.swift in Sources */,
 				8A4ACBBC26CAB9490021215E /* AdvancedSearchNavigationController.swift in Sources */,
+				8A27EA49273564E3005A13C6 /* PageViewState.swift in Sources */,
 				8AA990A826D91FE000C32358 /* StoresViewControllerProtocol.swift in Sources */,
 				8A0794D426936141000ACA2B /* StorePresenter.swift in Sources */,
 				CA4857892517C71200EDA4CE /* VinchyPresenterProtocol.swift in Sources */,
 				8AF966C12678F194001891B2 /* EditProfilePresenterProtocol.swift in Sources */,
 				74E55FA726AACE2C0086C159 /* ResultsSearchViewModel.swift in Sources */,
 				CA2C22DB2554464F002469E4 /* AdvancedSearchAssembly.swift in Sources */,
+				8A27EA9327365B86005A13C6 /* RatesInteractor.swift in Sources */,
 				8A10F28727063398003463B0 /* AddressSearchInteractor.swift in Sources */,
 				74DAD09F26E0D4F400055AE7 /* LoadingPresentable.swift in Sources */,
 				8AA5E5132615053D00935B5E /* AboutView.swift in Sources */,
@@ -3403,14 +3848,21 @@
 				CED7A23A25D1B31C00BB25FF /* StarRatingControlView.swift in Sources */,
 				8A915C9E26887D9500240B18 /* ExpandCollapseView.swift in Sources */,
 				748586FE26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellInput.swift in Sources */,
+				8A27EA43273564E3005A13C6 /* PagingMenuInteraction.swift in Sources */,
 				44EFDB3C25E177220076ED6D /* ReviewsViewControllerProtocol.swift in Sources */,
 				8A07930A269239C1000ACA2B /* DocumentsRouterProtocol.swift in Sources */,
 				8AF5656226F2341500C58E2C /* VinchyRepositoryProtocol.swift in Sources */,
 				CA4857782517BEA000EDA4CE /* VinchyPresenter.swift in Sources */,
 				8A4ACBBA26CAB8CC0021215E /* AdvancedSearchOutputDelegate.swift in Sources */,
+				8A27EA59273564E3005A13C6 /* PagingCellLayoutAttributes.swift in Sources */,
+				8A27EA46273564E3005A13C6 /* InvalidationState.swift in Sources */,
+				8A27EA3E273564E3005A13C6 /* PagingTransition.swift in Sources */,
+				8A27EA63273564E3005A13C6 /* PageViewController.swift in Sources */,
+				8A27EA42273564E3005A13C6 /* PageViewDirection.swift in Sources */,
 				8AA990A426D91FE000C32358 /* StoresAssembly.swift in Sources */,
 				CACA7E9B254C57CC0099E622 /* WriteNoteAssembly.swift in Sources */,
 				44EFDB7225E263E00076ED6D /* ReviewDetailPresenterProtocol.swift in Sources */,
+				8A27EA39273564E3005A13C6 /* PagingIndicatorMetric.swift in Sources */,
 				8AF94419269228F5003EB76A /* TextRow.swift in Sources */,
 				8AD49F182675210A0094E157 /* ReviewsRouter.swift in Sources */,
 				447C353925EEAA5700105A35 /* MapInput.swift in Sources */,
@@ -3419,9 +3871,13 @@
 				CA46DBEF252518460007819E /* OnboardingCache.swift in Sources */,
 				8A10F28A27063398003463B0 /* AddressSearchRouterProtocol.swift in Sources */,
 				8AF966C22678F194001891B2 /* EditProfilePresenter.swift in Sources */,
+				8A27EA9227365B86005A13C6 /* RatesViewControllerProtocol.swift in Sources */,
 				CA2C22D92554464F002469E4 /* AdvancedSearchViewModel.swift in Sources */,
+				8A3C0F532732D08E00947085 /* SavedPresenter.swift in Sources */,
 				CA81984A253864080056A1C6 /* WineDetailViewControllerProtocol.swift in Sources */,
+				8A27EA5B273564E3005A13C6 /* PagingController.swift in Sources */,
 				74E55FB626AADB350086C159 /* DidnotFindTheWineCollectionCell.swift in Sources */,
+				8A27EA72273564E3005A13C6 /* PagingViewControllerDataSource.swift in Sources */,
 				CA2C22E32554464F002469E4 /* AdvancedSearchRouterProtocol.swift in Sources */,
 				CA472B54245EDEDB009149FF /* Assembly.swift in Sources */,
 				CAF514232461C52400667ED0 /* MoreInteractor.swift in Sources */,
@@ -3429,21 +3885,27 @@
 				74E55FB126AACE2C0086C159 /* ResultsSearchRouter.swift in Sources */,
 				449F81B225DD025900585364 /* RootRouter.swift in Sources */,
 				8A0BBEDF26A8578C0049DA74 /* LoadingView.swift in Sources */,
+				8A27EA4A273564E3005A13C6 /* PagingContentInteraction.swift in Sources */,
 				8A446CDF2660123B000A1769 /* RoutingToolBar.swift in Sources */,
 				CA7A87FA2506B9D600AAD10F /* ShareUsView.swift in Sources */,
 				449F81C425DD049B00585364 /* DeeplinkFlow.swift in Sources */,
 				CEF2087C25E8297900C413EA /* CurrencyCell.swift in Sources */,
+				8A27EA73273564E3005A13C6 /* PagingMenuDelegate.swift in Sources */,
 				CA819846253864080056A1C6 /* WineDetailAssembly.swift in Sources */,
 				CA8CD67725096EC200FDB7AF /* GADTSmallTemplateView.m in Sources */,
 				CE58DEDF25ED73E200B5BDF9 /* CurrencyViewControllerProtocol.swift in Sources */,
 				CA7B838924F451FA00991F24 /* WineDetailViewController.swift in Sources */,
+				8A27EA6B273564E3005A13C6 /* PageViewControllerDataSource.swift in Sources */,
 				8A0794DB26936141000ACA2B /* StoreRouter.swift in Sources */,
 				8A4749B1272832700091B493 /* StoriesCollectionView.swift in Sources */,
 				8AE7880B2684E8D60056A84B /* NotesViewModel.swift in Sources */,
 				440C284725E13F9D009911EE /* WineDetailCollectionView.swift in Sources */,
 				8A916024268CE66C00240B18 /* AreYouInStoreAssembly.swift in Sources */,
+				8A27EA7627357245005A13C6 /* SavedViewController.swift in Sources */,
 				447C354225EEAA5700105A35 /* MapRouterProtocol.swift in Sources */,
+				8A3C0F502732D08E00947085 /* SavedViewModel.swift in Sources */,
 				CA819848253864080056A1C6 /* WineDetailPresenterProtocol.swift in Sources */,
+				8A27EA3C273564E3005A13C6 /* PagingCellViewModel.swift in Sources */,
 				CE388DDA2612C1CF00C34B47 /* ShowcasePresenterProtocol.swift in Sources */,
 				748586FD26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellViewModel.swift in Sources */,
 				8AF966C62678F194001891B2 /* EditProfileInteractor.swift in Sources */,
@@ -3454,14 +3916,17 @@
 				CA99E65724F6EDDD00C36BEE /* ButtonView.swift in Sources */,
 				449F81CE25DD050400585364 /* DeeplinkRouter.swift in Sources */,
 				8A474E2527298B740091B493 /* LinkButton.swift in Sources */,
+				8A3C0F562732D08E00947085 /* SSavedViewController.swift in Sources */,
 				8A10F28127063398003463B0 /* AddressSearchInput.swift in Sources */,
 				CE69652825E4372E00CD414D /* CurrencyViewController.swift in Sources */,
 				CAF514282461C52400667ED0 /* DocCell.swift in Sources */,
 				74E55FAB26AACE2C0086C159 /* ResultsSearchPresenterProtocol.swift in Sources */,
 				8A0795BA26943E85000ACA2B /* OnboardingFeatureView.swift in Sources */,
+				8A3C0F512732D08E00947085 /* SavedInput.swift in Sources */,
 				CA472B69245EDEF9009149FF /* ShowcaseViewModel.swift in Sources */,
 				8AF5656426F2341D00C58E2C /* VinchyRepository.swift in Sources */,
 				CA2C22E02554464F002469E4 /* AdvancedSearchInteractorProtocol.swift in Sources */,
+				8A27EA9627365B86005A13C6 /* RatesRouterProtocol.swift in Sources */,
 				8A8FE7332708D9F8002EE088 /* LogOutCell.swift in Sources */,
 				4437AA5E25E3A7CE00F6E838 /* WriteReviewPresenter.swift in Sources */,
 				8A91602C268CE66C00240B18 /* AreYouInStoreRouterProtocol.swift in Sources */,
@@ -3480,18 +3945,26 @@
 				CAF514222461C52400667ED0 /* MoreViewController.swift in Sources */,
 				CA5B901B250FF22E006BC638 /* MoreBounceDecoratorView.swift in Sources */,
 				8A0794D226936141000ACA2B /* StoreInput.swift in Sources */,
+				8A27EA53273564E3005A13C6 /* UIEdgeInsets.swift in Sources */,
 				449F81CA25DD04B400585364 /* DeeplinkStep.swift in Sources */,
 				CA7B835B24EED6E600991F24 /* StoryCollectionCell.swift in Sources */,
 				4437AA5B25E3A7CE00F6E838 /* WriteReviewViewModel.swift in Sources */,
+				8A3C0F5D2732D38500947085 /* ControllerCell.swift in Sources */,
 				4437AA5D25E3A7CE00F6E838 /* WriteReviewAssembly.swift in Sources */,
 				CA8CD67C25096EE100FDB7AF /* GADTTemplateView.m in Sources */,
 				8A313C0626447042009F2165 /* MapDetailStoreInteractor.swift in Sources */,
 				8AD49F2C26752B4B0094E157 /* AnalyticsTrackable.swift in Sources */,
+				8A27EA6A273564E3005A13C6 /* PagingItem.swift in Sources */,
+				8A27EA71273564E3005A13C6 /* PageViewControllerDelegate.swift in Sources */,
 				4437AA6325E3A7CE00F6E838 /* WriteReviewInteractor.swift in Sources */,
 				8A313C0826447042009F2165 /* MapDetailStoreRouter.swift in Sources */,
 				8A916026268CE66C00240B18 /* AreYouInStorePresenterProtocol.swift in Sources */,
+				8A27EA56273564E3005A13C6 /* PagingTitleCell.swift in Sources */,
+				8A27EA8C27365B86005A13C6 /* RatesViewModel.swift in Sources */,
+				8A3C0F522732D08E00947085 /* SavedAssembly.swift in Sources */,
 				449F81AC25DD023A00585364 /* RootInteractor.swift in Sources */,
 				8A91611B268E27EB00240B18 /* SearchPresenter.swift in Sources */,
+				8A27EA67273564E3005A13C6 /* PagingMenuDataSource.swift in Sources */,
 				7485870326C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellViewProtocol.swift in Sources */,
 				447C354025EEAA5700105A35 /* MapInteractorProtocol.swift in Sources */,
 				CAA9DC67250EA05F00F996A8 /* AdvancedSearchCaruselCollectionCell.swift in Sources */,
@@ -3514,7 +3987,9 @@
 				44EFDB6F25E263E00076ED6D /* ReviewDetailViewModel.swift in Sources */,
 				74DAD09D26E0B54F00055AE7 /* WineViewContextMenuTappable.swift in Sources */,
 				8A079309269239C1000ACA2B /* DocumentsRouter.swift in Sources */,
+				8A27EA55273564E3005A13C6 /* PageViewManager.swift in Sources */,
 				44EFDB7825E263E00076ED6D /* ReviewDetailRouterProtocol.swift in Sources */,
+				8A27EA5D273564E3005A13C6 /* PagingStaticDataSource.swift in Sources */,
 				CA490141252F7EDC00066A98 /* VinchyViewControllerViewModel.swift in Sources */,
 				CA48579B2517CA5200EDA4CE /* VinchyViewControllerProtocol.swift in Sources */,
 				8AE7880E2684E8D60056A84B /* NotesPresenterProtocol.swift in Sources */,
@@ -3526,11 +4001,17 @@
 				CE58DECB25ED712900B5BDF9 /* CurrencyPresenter.swift in Sources */,
 				74E55FAD26AACE2C0086C159 /* ResultsSearchViewController.swift in Sources */,
 				CE6AAFD82617CEC80011F771 /* ShowcaseRoutable.swift in Sources */,
+				8A27EA6F273564E3005A13C6 /* PagingViewControllerSizeDelegate.swift in Sources */,
 				44EFDB3825E177220076ED6D /* ReviewsInput.swift in Sources */,
 				CA878A882572E59700B51FF1 /* ActionSheetAppearence.swift in Sources */,
 				8AE788132684E8D60056A84B /* NotesInteractor.swift in Sources */,
 				CA99E65324F59CAA00C36BEE /* ShortInfoCollectionCell.swift in Sources */,
+				8A27EA9527365B86005A13C6 /* RatesRouter.swift in Sources */,
+				8A27EA6C273564E3005A13C6 /* CollectionView.swift in Sources */,
 				8A53D42926C0531A001D9535 /* ReviewsCollectionView.swift in Sources */,
+				8A27EA5F273564E3005A13C6 /* PagingSizeCache.swift in Sources */,
+				8A27EA4D273564E3005A13C6 /* PagingDirection.swift in Sources */,
+				8A27EA9427365B86005A13C6 /* RatesInteractorProtocol.swift in Sources */,
 				8A10F28627063398003463B0 /* AddressSearchViewControllerProtocol.swift in Sources */,
 				8AF9441B2692295D003EB76A /* Label.swift in Sources */,
 				74E55FAA26AACE2C0086C159 /* ResultsSearchPresenter.swift in Sources */,
@@ -3541,6 +4022,8 @@
 				CA7B836024EF109200991F24 /* MainSubtitleCollectionCell.swift in Sources */,
 				CA819844253864080056A1C6 /* WineDetailViewModel.swift in Sources */,
 				8A0794D526936141000ACA2B /* StorePresenterProtocol.swift in Sources */,
+				8A27EA66273564E3005A13C6 /* PagingMenuView.swift in Sources */,
+				8A27EA51273564E3005A13C6 /* UIColor+interpolation.swift in Sources */,
 				447C353E25EEAA5700105A35 /* MapViewControllerProtocol.swift in Sources */,
 				7485870626C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellRouter.swift in Sources */,
 				8A916122268E27EB00240B18 /* SearchRouterProtocol.swift in Sources */,
@@ -3549,6 +4032,7 @@
 				44465EC025F39400005B3F06 /* MapRepository.swift in Sources */,
 				44EFDB7125E263E00076ED6D /* ReviewDetailAssembly.swift in Sources */,
 				8A10F28427063398003463B0 /* AddressSearchPresenter.swift in Sources */,
+				8A27EA5E273564E3005A13C6 /* PagingInvalidationContext.swift in Sources */,
 				8A079F2E269E151F000ACA2B /* BottlesCollectionView.swift in Sources */,
 				74DAD0A126E0D99300055AE7 /* ActivityRoutable.swift in Sources */,
 				CAF514102461C51400667ED0 /* AboutViewController.swift in Sources */,
@@ -3558,10 +4042,12 @@
 				CA81984D253864080056A1C6 /* WineDetailRouterProtocol.swift in Sources */,
 				8A0794DA26936141000ACA2B /* StoreRouterProtocol.swift in Sources */,
 				CE6AB01F261BD2A40011F771 /* ShowcaseInput.swift in Sources */,
+				8A27EA8E27365B86005A13C6 /* RatesAssembly.swift in Sources */,
 				4437AA6425E3A7CE00F6E838 /* WriteReviewRouterProtocol.swift in Sources */,
 				4437AA6525E3A7CE00F6E838 /* WriteReviewRouter.swift in Sources */,
 				449D63B225E1054700CBBD1D /* RatingsAndReviewsCell.swift in Sources */,
 				8AD7A37E2639D31A007D4273 /* PartnerAnnotationView.swift in Sources */,
+				8A27EA50273564E3005A13C6 /* PagingMenuItemSource.swift in Sources */,
 				CA2C22DD2554464F002469E4 /* AdvancedSearchPresenterProtocol.swift in Sources */,
 				4437AA6E25E3BE7300F6E838 /* WriteReviewRoutable.swift in Sources */,
 				8AA990A226D91FE000C32358 /* StoresViewModel.swift in Sources */,
@@ -3575,21 +4061,26 @@
 				8A53D6E626C2EB71001D9535 /* ShortInfoView.swift in Sources */,
 				CE58DED325ED739200B5BDF9 /* CurrencyPresenterProtocol.swift in Sources */,
 				8A079307269239C1000ACA2B /* DocumentsInteractor.swift in Sources */,
+				8A27EA5A273564E3005A13C6 /* PagingIndicatorLayoutAttributes.swift in Sources */,
 				44EFDB7025E263E00076ED6D /* ReviewDetailInput.swift in Sources */,
 				74E55FB426AAD25E0086C159 /* WineCollectionCell.swift in Sources */,
 				74DAD0A426E0E05100055AE7 /* WriteNoteRoutable.swift in Sources */,
 				CA81984B253864080056A1C6 /* WineDetailInteractor.swift in Sources */,
+				8A27EA3B273564E3005A13C6 /* PagingItems.swift in Sources */,
 				CA4857742517BE8E00EDA4CE /* VinchyInteractor.swift in Sources */,
+				8A27EA60273564E3005A13C6 /* PagingCollectionViewLayout.swift in Sources */,
 				CE404B072589D41200917544 /* MoreInteractorProtocol.swift in Sources */,
 				8A4749AF2728271E0091B493 /* StoryView.swift in Sources */,
 				CE58DED725ED73B300B5BDF9 /* CurrencyInteractorProtocol.swift in Sources */,
 				74E55FA926AACE2C0086C159 /* ResultsSearchAssembly.swift in Sources */,
+				8A27EA69273564E3005A13C6 /* Tween.swift in Sources */,
 				8A079306269239C1000ACA2B /* DocumentsViewControllerProtocol.swift in Sources */,
 				8A313C1626468678009F2165 /* WorkingHoursCollectionCell.swift in Sources */,
 				8A0794D826936141000ACA2B /* StoreInteractor.swift in Sources */,
 				CAA9DC3C250BD20400F996A8 /* AdvancedHeader.swift in Sources */,
 				8AF966CB267908F6001891B2 /* CommonEditCollectionViewCell.swift in Sources */,
 				8A0794D626936141000ACA2B /* StoreViewController.swift in Sources */,
+				8A27EA68273564E3005A13C6 /* PagingViewControllerInfiniteDataSource.swift in Sources */,
 				CA4857832517C67700EDA4CE /* VinchyInteractorProtocol.swift in Sources */,
 				8AD49F17267521040094E157 /* ReviewsPresenter.swift in Sources */,
 				8A0794D926936141000ACA2B /* StoreInteractorProtocol.swift in Sources */,
@@ -3597,37 +4088,50 @@
 				8A1034592648596100F7CA81 /* AssortmentCollectionCell.swift in Sources */,
 				CA2C22E12554464F002469E4 /* AdvancedSearchInteractor.swift in Sources */,
 				7485870026C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellPresenter.swift in Sources */,
+				8A27EA41273564E3005A13C6 /* PageView.swift in Sources */,
 				8AD49F16267520F90094E157 /* ReviewsInteractorProtocol.swift in Sources */,
 				8AA990AC26D91FE000C32358 /* StoresRouter.swift in Sources */,
 				8A10F28827063398003463B0 /* AddressSearchInteractorProtocol.swift in Sources */,
 				8AD49F192675210D0094E157 /* ReviewsRouterProtocol.swift in Sources */,
+				8A27EA52273564E3005A13C6 /* UIView+constraints.swift in Sources */,
 				74E55FAF26AACE2C0086C159 /* ResultsSearchInteractorProtocol.swift in Sources */,
 				74E55FAC26AACE2C0086C159 /* ResultsSearchViewControllerProtocol.swift in Sources */,
 				8A313C0726447042009F2165 /* MapDetailStoreInteractorProtocol.swift in Sources */,
 				8AE7880F2684E8D60056A84B /* NotesPresenter.swift in Sources */,
+				8A3C0F572732D08E00947085 /* SavedInteractorProtocol.swift in Sources */,
 				CA81984C253864080056A1C6 /* WineDetailInteractorProtocol.swift in Sources */,
 				8A474E27272A837C0091B493 /* FakeCollectionView.swift in Sources */,
 				748586FF26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellAssembly.swift in Sources */,
 				8AE788122684E8D60056A84B /* NotesInteractorProtocol.swift in Sources */,
+				8A27EA62273564E3005A13C6 /* PagingOptions.swift in Sources */,
+				8A27EA4B273564E3005A13C6 /* PagingMenuHorizontalAlignment.swift in Sources */,
 				44EFDB3A25E177220076ED6D /* ReviewsPresenterProtocol.swift in Sources */,
 				8A079308269239C1000ACA2B /* DocumentsInteractorProtocol.swift in Sources */,
 				CA2C22DA2554464F002469E4 /* AdvancedSearchInput.swift in Sources */,
 				CA070C2425250C1800C3D9EC /* OnboardingModuleFactory.swift in Sources */,
+				8A27EA5C273564E3005A13C6 /* PagingCell.swift in Sources */,
 				8AE7880D2684E8D60056A84B /* NotesAssembly.swift in Sources */,
+				8A27EA6D273564E3005A13C6 /* PageViewManagerDelegate.swift in Sources */,
 				CA2C22E22554464F002469E4 /* AdvancedSearchRouter.swift in Sources */,
 				CAA9DC65250E99DB00F996A8 /* SeparatorFooter.swift in Sources */,
 				44EFDB7525E263E00076ED6D /* ReviewDetailViewControllerProtocol.swift in Sources */,
 				8AF966C42678F194001891B2 /* EditProfileViewControllerProtocol.swift in Sources */,
+				8A3C0F5A2732D08E00947085 /* SavedRouterProtocol.swift in Sources */,
 				8A313C0026447042009F2165 /* MapDetailStoreInput.swift in Sources */,
 				8A91602A268CE66C00240B18 /* AreYouInStoreInteractor.swift in Sources */,
 				CAF514292461C52400667ED0 /* MoreRouter.swift in Sources */,
 				CACA7E9C254C57CC0099E622 /* WriteNotePresenter.swift in Sources */,
 				8AE788152684E8D60056A84B /* NotesRouter.swift in Sources */,
+				8A27EA9127365B86005A13C6 /* RatesViewController.swift in Sources */,
+				8A27EA48273564E3005A13C6 /* PagingMenuPosition.swift in Sources */,
 				4437AA5C25E3A7CE00F6E838 /* WriteReviewInput.swift in Sources */,
 				8A4749B32728464B0091B493 /* BigCollectionView.swift in Sources */,
+				8A27EA40273564E3005A13C6 /* PagingIndexItem.swift in Sources */,
+				8A27EA4F273564E3005A13C6 /* PagingState.swift in Sources */,
 				7485870426C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellInteractorProtocol.swift in Sources */,
 				CA472AC2245EDE2F009149FF /* SceneDelegate.swift in Sources */,
 				8A916023268CE66C00240B18 /* AreYouInStoreInput.swift in Sources */,
+				8A3C0F592732D08E00947085 /* SavedRouter.swift in Sources */,
 				8A91611E268E27EB00240B18 /* SearchViewControllerProtocol.swift in Sources */,
 				CE69649D25E07BDE00CD414D /* InfoCurrencyCell.swift in Sources */,
 				8AA990A326D91FE000C32358 /* StoresInput.swift in Sources */,
@@ -3635,17 +4139,23 @@
 				8AF9441D26922D77003EB76A /* IconView.swift in Sources */,
 				8A0D9CB726871D9D0076A7EC /* NewAgreementViewController.swift in Sources */,
 				8A079301269239C1000ACA2B /* DocumentsInput.swift in Sources */,
+				8A27EA4C273564E3005A13C6 /* PagingIndicatorOptions.swift in Sources */,
 				CA3C981F257260BC0036F7D9 /* StatusAlertable.swift in Sources */,
+				8A27EA8F27365B86005A13C6 /* RatesPresenter.swift in Sources */,
 				CA3837CC246FCF3C00AD5FCC /* TabBarController.swift in Sources */,
 				CA99E65124F58A6000C36BEE /* ToolView.swift in Sources */,
 				8AA990AA26D91FE000C32358 /* StoresInteractor.swift in Sources */,
+				8A27EA3F273564E3005A13C6 /* PagingNavigationOrientation.swift in Sources */,
 				8A916025268CE66C00240B18 /* AreYouInStorePresenter.swift in Sources */,
+				8A27EA8D27365B86005A13C6 /* RatesInput.swift in Sources */,
 				8A07991426998363000ACA2B /* HorizontalWineView.swift in Sources */,
 				447C353C25EEAA5700105A35 /* MapPresenterProtocol.swift in Sources */,
 				8A916121268E27EB00240B18 /* SearchRouter.swift in Sources */,
 				8A91602B268CE66C00240B18 /* AreYouInStoreRouter.swift in Sources */,
 				8A313C0426447042009F2165 /* MapDetailStoreViewController.swift in Sources */,
 				CA276D55256AC6720061BEBE /* FakeCell.swift in Sources */,
+				8A27EA65273564E3005A13C6 /* PagingBorderLayoutAttributes.swift in Sources */,
+				8A27EA61273564E3005A13C6 /* PagingBorderView.swift in Sources */,
 				8A079303269239C1000ACA2B /* DocumentsPresenterProtocol.swift in Sources */,
 				CACA7EA0254C57CC0099E622 /* WriteNoteInteractorProtocol.swift in Sources */,
 				8AE788F8268638CD0056A84B /* OnboardingBottomView.swift in Sources */,
@@ -3655,10 +4165,11 @@
 				44EFDB7625E263E00076ED6D /* ReviewDetailInteractor.swift in Sources */,
 				8A10F28327063398003463B0 /* AddressSearchPresenterProtocol.swift in Sources */,
 				CE8FF83925FADABF004D4F37 /* ShowcaseInteractorProtocol.swift in Sources */,
-				8A9865E8272B27FA00DE4D8F /* EpoxyErrorView.swift in Sources */,
+				8A27EA74273564E3005A13C6 /* PagingLayout.swift in Sources */,
 				447C353D25EEAA5700105A35 /* MapViewController.swift in Sources */,
 				8A916119268E27EB00240B18 /* SearchInput.swift in Sources */,
 				4437AA5F25E3A7CE00F6E838 /* WriteReviewPresenterProtocol.swift in Sources */,
+				8A27EA9B27366716005A13C6 /* WineRateTableCell.swift in Sources */,
 				8A10F28227063398003463B0 /* AddressSearchAssembly.swift in Sources */,
 				8A10F28027063398003463B0 /* AddressSearchViewModel.swift in Sources */,
 				8AA990A526D91FE000C32358 /* StoresPresenterProtocol.swift in Sources */,
@@ -3669,18 +4180,24 @@
 				8A313C0526447042009F2165 /* MapDetailStoreViewControllerProtocol.swift in Sources */,
 				8A313C0326447042009F2165 /* MapDetailStorePresenter.swift in Sources */,
 				7485870526C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellInteractor.swift in Sources */,
+				8A27EA58273564E3005A13C6 /* PagingView.swift in Sources */,
 				447C353825EEAA5700105A35 /* MapViewModel.swift in Sources */,
 				8AE788142684E8D60056A84B /* NotesRouterProtocol.swift in Sources */,
 				4437AA6025E3A7CE00F6E838 /* WriteReviewViewController.swift in Sources */,
 				748586D026C1B69A00F5CBEA /* HorizontalPartnerView.swift in Sources */,
+				8A27EA6E273564E3005A13C6 /* PageViewManagerDataSource.swift in Sources */,
+				8A27EA47273564E3005A13C6 /* PagingMenuTransition.swift in Sources */,
 				CACA7E9D254C57CC0099E622 /* WriteNotePresenterProtocol.swift in Sources */,
 				CA7CBDF3257FE4AD00C81476 /* WineDetailRoutable.swift in Sources */,
+				8A27EA38273564E3005A13C6 /* PagingDistance.swift in Sources */,
+				8A27EA64273564E3005A13C6 /* PagingFiniteDataSource.swift in Sources */,
 				CE7E3F1225F06AE50045A759 /* CurrencyViewControllerModel.swift in Sources */,
 				7485870226C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellView.swift in Sources */,
 				CA8CD68325097AD500FDB7AF /* GADTMediumTemplateView.m in Sources */,
 				447C353F25EEAA5700105A35 /* MapInteractor.swift in Sources */,
 				8A91611A268E27EB00240B18 /* SearchAssembly.swift in Sources */,
 				44EFDB7425E263E00076ED6D /* ReviewDetailViewController.swift in Sources */,
+				8A27EA9027365B86005A13C6 /* RatesPresenterProtocol.swift in Sources */,
 				8A0794D326936141000ACA2B /* StoreAssembly.swift in Sources */,
 				8AA990AB26D91FE000C32358 /* StoresRouterProtocol.swift in Sources */,
 				44465EC625F3940E005B3F06 /* MapRepositoryProtocol.swift in Sources */,
@@ -3710,24 +4227,35 @@
 				8A079304269239C1000ACA2B /* DocumentsPresenter.swift in Sources */,
 				8A91611F268E27EB00240B18 /* SearchInteractorProtocol.swift in Sources */,
 				CAF514272461C52400667ED0 /* SocialMediaCell.swift in Sources */,
+				8A27EA54273564E3005A13C6 /* PagingViewController.swift in Sources */,
 				74E55FAE26AACE2C0086C159 /* ResultsSearchInteractor.swift in Sources */,
 				8A0799182699A06C000ACA2B /* FilterItemView.swift in Sources */,
 				8A313C0926447042009F2165 /* MapDetailStoreRouterProtocol.swift in Sources */,
 				CA2C22DE2554464F002469E4 /* AdvancedSearchViewControllerProtocol.swift in Sources */,
+				8A27EA44273564E3005A13C6 /* PagingMenuItemSize.swift in Sources */,
 				CA2C22DF2554464F002469E4 /* AdvancedSearchViewController.swift in Sources */,
+				8A27EA57273564E3005A13C6 /* PagingIndicatorView.swift in Sources */,
+				8A3C0F552732D08E00947085 /* SavedViewControllerProtocol.swift in Sources */,
 				8AF966BE2678F194001891B2 /* EditProfileViewModel.swift in Sources */,
 				449F81B625DD027C00585364 /* RootBuilder.swift in Sources */,
+				8A3C0F542732D08E00947085 /* SavedPresenterProtocol.swift in Sources */,
 				8A079300269239C0000ACA2B /* DocumentsViewModel.swift in Sources */,
+				8A27EA3A273564E3005A13C6 /* PagingDiff.swift in Sources */,
+				8A27EA3D273564E3005A13C6 /* AnyPagingItem.swift in Sources */,
+				8A3C0F582732D08E00947085 /* SavedInteractor.swift in Sources */,
 				CA7B838C24F4547B00991F24 /* GalleryView.swift in Sources */,
 				8A91611D268E27EB00240B18 /* SearchViewController.swift in Sources */,
 				CE7346382589B75E00028574 /* MoreViewProtocol.swift in Sources */,
 				8A313BFF26447042009F2165 /* MapDetailStoreViewModel.swift in Sources */,
+				8A27EA45273564E3005A13C6 /* PagingSelectedScrollPosition.swift in Sources */,
 				8AF966C52678F194001891B2 /* EditProfileInteractorProtocol.swift in Sources */,
 				8A53D6E226C2E4AF001D9535 /* ImageOptionView.swift in Sources */,
+				8A27EA4E273564E3005A13C6 /* PagingBorderOptions.swift in Sources */,
 				8A916120268E27EB00240B18 /* SearchInteractor.swift in Sources */,
 				8A0794DE26936A8E000ACA2B /* LogoRow.swift in Sources */,
 				44EFDB7325E263E00076ED6D /* ReviewDetailPresenter.swift in Sources */,
 				8AE788112684E8D60056A84B /* NotesViewControllerProtocol.swift in Sources */,
+				8A27EA9927366264005A13C6 /* LoadingIndicatorTableCell.swift in Sources */,
 				CAA060D2252BC05C002C15B5 /* DeveloperFeatureToggles.swift in Sources */,
 				74DAD0A626E0E12400055AE7 /* ShowNetworkAlertPresentable.swift in Sources */,
 				CA7A87FC2507ED7800AAD10F /* AdsCollectionViewCell.swift in Sources */,
@@ -3735,9 +4263,9 @@
 				8AF966C82678F194001891B2 /* EditProfileRouterProtocol.swift in Sources */,
 				8A07930C26924DAF000ACA2B /* Document.swift in Sources */,
 				8AA990A626D91FE000C32358 /* StoresPresenter.swift in Sources */,
-				8A0794E126938394000ACA2B /* WineBottleView.swift in Sources */,
 				CAF514262461C52400667ED0 /* RateAppCell.swift in Sources */,
 				CA4D51042549F62500A6FD0B /* WriteNoteViewController.swift in Sources */,
+				8A27EA70273564E3005A13C6 /* PagingViewControllerDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4154,14 +4682,6 @@
 				version = 2.1.4;
 			};
 		};
-		8A9865EB272C2D6D00DE4D8F /* XCRemoteSwiftPackageReference "epoxy-ios" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/VinchyTechnologies/epoxy-ios";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.6.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -4179,11 +4699,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 8A63CC922675322D003B1D4D /* XCRemoteSwiftPackageReference "SPAlert" */;
 			productName = SPAlert;
-		};
-		8A9865EC272C2D6D00DE4D8F /* Epoxy */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8A9865EB272C2D6D00DE4D8F /* XCRemoteSwiftPackageReference "epoxy-ios" */;
-			productName = Epoxy;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

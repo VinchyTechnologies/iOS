@@ -40,7 +40,7 @@ extension AreYouInStoreRouter: AreYouInStoreRouterProtocol {
 
   func presentStore(affilatedId: Int) {
     let controller = StoreAssembly.assemblyModule(input: .init(mode: .normal(affilatedId: affilatedId)))
-    let navigationController = NavigationController(rootViewController: controller)
+    let navigationController = VinchyNavigationController(rootViewController: controller)
     navigationController.modalPresentationStyle = .overCurrentContext
     viewController?.present(navigationController, animated: true, completion: nil)
   }

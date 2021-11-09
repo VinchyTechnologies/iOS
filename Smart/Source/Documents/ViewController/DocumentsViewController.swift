@@ -11,7 +11,7 @@ import Epoxy
 
 // MARK: - DocumentsViewController
 
-final class DocumentsViewController: CollectionViewController {
+final class DocumentsViewController: Epoxy.CollectionViewController {
 
   // MARK: Lifecycle
 

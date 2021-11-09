@@ -49,11 +49,14 @@ final class StoresViewController: CollectionViewController {
   override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
     super.viewWillTransition(to: size, with: coordinator)
     coordinator.animate(alongsideTransition: { _ in
+      self.collectionViewSize = size
       self.setSections(self.sections, animated: false)
     })
   }
 
   // MARK: Private
+
+  private lazy var collectionViewSize: CGSize = view.frame.size
 
   private var heightBeforeSupplementaryHeader: CGFloat?
 
@@ -66,7 +69,7 @@ final class StoresViewController: CollectionViewController {
     viewModel.sections.compactMap { section in
       switch section {
       case .title(let itemID, let content):
-        let width: CGFloat = view.frame.width - 48
+        let width: CGFloat = collectionViewSize.width - 48
         let height: CGFloat = Label.height(
           for: content,
           width: width,
@@ -93,7 +96,7 @@ final class StoresViewController: CollectionViewController {
                 .didSelect { [weak self] _ in
                   self?.interactor?.didSelectPartner(affiliatedStoreId: content.affiliatedStoreId)
                 }
-                .flowLayoutItemSize(.init(width: view.frame.width, height: 160))
+                .flowLayoutItemSize(.init(width: collectionViewSize.width, height: 160))
             }
           }))
           .flowLayoutMinimumLineSpacing(10)
@@ -105,7 +108,7 @@ final class StoresViewController: CollectionViewController {
         .willDisplay { [weak self] _ in
           self?.interactor?.willDisplayLoadingView()
         }
-        .flowLayoutItemSize(.init(width: view.frame.width, height: LoadingView.height))
+        .flowLayoutItemSize(.init(width: collectionViewSize.width, height: LoadingView.height))
         .flowLayoutSectionInset(.init(top: 16, left: 0, bottom: 16, right: 0))
       }
     }

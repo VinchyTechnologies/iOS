@@ -3,20 +3,11 @@
     "pins": [
       {
         "package": "Cosmos",
-        "repositoryURL": "https://github.com/evgenyneu/Cosmos.git",
+        "repositoryURL": "https://github.com/evgenyneu/Cosmos",
         "state": {
           "branch": null,
           "revision": "cce521e734d0090494bd4afab5fd2e2f2465c1af",
           "version": "23.0.0"
-        }
-      },
-      {
-        "package": "Epoxy",
-        "repositoryURL": "https://github.com/VinchyTechnologies/epoxy-ios",
-        "state": {
-          "branch": null,
-          "revision": "8eda3540917f067530227b12f7fac8a2d1afa249",
-          "version": "0.6.0"
         }
       },
       {

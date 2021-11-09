@@ -9,22 +9,6 @@
 import Display
 import UIKit
 
-// MARK: - ContextMenuViewModel
-
-public enum ContextMenuViewModel {
-  case share(content: ContextMenuItemViewModel)
-  case writeNote(content: ContextMenuItemViewModel)
-}
-
-// MARK: - ContextMenuItemViewModel
-
-public struct ContextMenuItemViewModel {
-  public let title: String?
-  public init(title: String?) {
-    self.title = title
-  }
-}
-
 // MARK: - WineCollectionViewCellViewModel
 
 public struct WineCollectionViewCellViewModel: ViewModelProtocol, Hashable {

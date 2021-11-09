@@ -1,5 +1,23 @@
 PODS:
   - CocoaDebug (1.5.8)
+  - Epoxy (0.6.0):
+    - EpoxyBars (= 0.6.0)
+    - EpoxyCollectionView (= 0.6.0)
+    - EpoxyCore (= 0.6.0)
+    - EpoxyLayoutGroups (= 0.6.0)
+    - EpoxyNavigationController (= 0.6.0)
+    - EpoxyPresentations (= 0.6.0)
+  - EpoxyBars (0.6.0):
+    - EpoxyCore (= 0.6.0)
+  - EpoxyCollectionView (0.6.0):
+    - EpoxyCore (= 0.6.0)
+  - EpoxyCore (0.6.0)
+  - EpoxyLayoutGroups (0.6.0):
+    - EpoxyCore (= 0.6.0)
+  - EpoxyNavigationController (0.6.0):
+    - EpoxyCore (= 0.6.0)
+  - EpoxyPresentations (0.6.0):
+    - EpoxyCore (= 0.6.0)
   - Firebase/Analytics (7.1.0):
     - Firebase/Core
   - Firebase/Core (7.1.0):
@@ -88,6 +106,7 @@ PODS:
 
 DEPENDENCIES:
   - CocoaDebug
+  - Epoxy
   - Firebase/Analytics
   - Firebase/DynamicLinks
   - Firebase/RemoteConfig
@@ -98,6 +117,13 @@ DEPENDENCIES:
 SPEC REPOS:
   trunk:
     - CocoaDebug
+    - Epoxy
+    - EpoxyBars
+    - EpoxyCollectionView
+    - EpoxyCore
+    - EpoxyLayoutGroups
+    - EpoxyNavigationController
+    - EpoxyPresentations
     - Firebase
     - FirebaseABTesting
     - FirebaseAnalytics
@@ -118,6 +144,13 @@ SPEC REPOS:
 
 SPEC CHECKSUMS:
   CocoaDebug: fcf58698e6cebe8a4ea81b7c5aca44cfbd181d9c
+  Epoxy: aa5a151f8810697b92ef19a02f7f734d72d1d056
+  EpoxyBars: c875a4ea51e4f9f5fc06ec82c4d3a0f762e51ebd
+  EpoxyCollectionView: 6d09d615e5dcfe53f8d37856e8718921d8ce6efb
+  EpoxyCore: 2a6a356297b876de6f7afa738cfc4ca852637278
+  EpoxyLayoutGroups: 5e2c6085e85cd2e0a8dcdc7e081e2e335f90dae7
+  EpoxyNavigationController: cb98048d51d19371e1e5a1cbe3615b3fc5cd7339
+  EpoxyPresentations: 6ac8a52816b1e9d9f092d25ad215b19deee47206
   Firebase: 78e8dd2e39d653de6270432ad84fe8b59f7bf4e8
   FirebaseABTesting: aaea04ea67858a4a9dce0d22ef645477dff50146
   FirebaseAnalytics: 7f165a56dea86ddd5b8ce02af3bee982c683405c
@@ -136,6 +169,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
 
-PODFILE CHECKSUM: f60645dccdb71270410cee94ed07677c972ff1f4
+PODFILE CHECKSUM: 52fb67d7509683e00d7f4d7314f900c2e834411a
 
 COCOAPODS: 1.11.2

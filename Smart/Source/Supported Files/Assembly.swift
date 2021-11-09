@@ -26,27 +26,27 @@ final class Assembly {
     return controller
   }
 
-  static func buildMainModule() -> NavigationController {
+  static func buildMainModule() -> VinchyNavigationController {
     let controller = VinchyAssembly.assemblyModule()
-    let navController = NavigationController(rootViewController: controller)
+    let navController = VinchyNavigationController(rootViewController: controller)
     return navController
   }
 
-  static func buildLoveModule() -> NavigationController {
+  static func buildLoveModule() -> VinchyNavigationController {
     let controller = LoveViewController()
-    let navController = NavigationController(rootViewController: controller)
+    let navController = VinchyNavigationController(rootViewController: controller)
     return navController
   }
 
-  static func buildProfileModule() -> NavigationController {
+  static func buildProfileModule() -> VinchyNavigationController {
     let controller = MoreAssembly.assemblyModule()
-    let navController = NavigationController(rootViewController: controller)
+    let navController = VinchyNavigationController(rootViewController: controller)
     return navController
   }
 
-  static func buildChooseCountiesModule(preSelectedCountryCodes: [String], delegate: CountriesViewControllerDelegate) -> NavigationController {
+  static func buildChooseCountiesModule(preSelectedCountryCodes: [String], delegate: CountriesViewControllerDelegate) -> VinchyNavigationController {
     let controller = CountriesViewController(preSelectedCountryCodes: preSelectedCountryCodes, delegate: delegate)
-    let navController = NavigationController(rootViewController: controller)
+    let navController = VinchyNavigationController(rootViewController: controller)
     return navController
   }
 

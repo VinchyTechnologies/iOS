@@ -66,7 +66,7 @@ extension MapRouter: MapRouterProtocol {
 
   func showAssortmentViewController(partnerId: Int, affilatedId: Int, title: String?) {
     let controller = StoreAssembly.assemblyModule(input: .init(mode: .normal(affilatedId: affilatedId)))
-    let navigationController = NavigationController(rootViewController: controller)
+    let navigationController = VinchyNavigationController(rootViewController: controller)
     navigationController.modalPresentationStyle = .overCurrentContext
     UIApplication.topViewController()?.present(navigationController, animated: true, completion: nil)
   }

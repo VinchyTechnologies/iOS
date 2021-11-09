@@ -46,6 +46,14 @@ final class StarRatingControlView: UIView, EpoxyableView {
     hStack.alignment = .center
     hStack.spacing = 6
 
+    if style.kind == .small {
+      rateLabel.font = Font.with(size: 24, design: .round, traits: .bold)
+      ratingView.settings.starSize = 22
+    } else {
+      rateLabel.font = Font.with(size: 35, design: .round, traits: .bold)
+      ratingView.settings.starSize = 32
+    }
+
     hStack.addArrangedSubview(rateLabel)
     hStack.addArrangedSubview(ratingView)
     hStack.addArrangedSubview(UIView())
@@ -71,7 +79,11 @@ final class StarRatingControlView: UIView, EpoxyableView {
   // MARK: Internal
 
   struct Style: Hashable {
+    enum Kind {
+      case small, normal
+    }
 
+    let kind: Kind
   }
 
   typealias Content = StarRatingControlCollectionViewCellViewModel

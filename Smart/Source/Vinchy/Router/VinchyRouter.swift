@@ -36,7 +36,7 @@ extension VinchyRouter: VinchyRouterProtocol {
 
   func presentChangeAddressViewController() {
     let controller = AddressSearchAssembly.assemblyModule()
-    ((controller as? NavigationController)?.viewControllers.first as? AddressSearchViewController)?.delegate = self
+    ((controller as? VinchyNavigationController)?.viewControllers.first as? AddressSearchViewController)?.delegate = self
     viewController?.present(controller, animated: true, completion: nil)
   }
 

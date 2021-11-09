@@ -18,6 +18,12 @@ private enum LoveViewControllerState: Int {
   case like = 0, dislike
 }
 
+// MARK: - C
+
+fileprivate enum C {
+  static let inset: CGFloat = 10
+}
+
 // MARK: - LoveViewController
 
 final class LoveViewController: UIViewController {
@@ -40,9 +46,9 @@ final class LoveViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    navigationItem.largeTitleDisplayMode = .never
+//    navigationItem.largeTitleDisplayMode = .never
     currentState = .like
-    navigationItem.titleView = segmentedControl
+//    navigationItem.titleView = segmentedControl
 
     view.addSubview(collectionView)
     collectionView.fill()
@@ -67,17 +73,11 @@ final class LoveViewController: UIViewController {
   // MARK: Private
 
   private static let collectionViewLayout: UICollectionViewLayout = {
-    let rowCount: CGFloat = UIDevice.current.userInterfaceIdiom == .pad ? 3 : 2
-    let inset: CGFloat = 10
-    let itemWidth = Int((UIScreen.main.bounds.width - inset * (rowCount + 1)) / rowCount)
-    let itemHeight = Int(Double(itemWidth) * 1.4)
-
     let layout = UICollectionViewFlowLayout()
-    let sectionInset = UIEdgeInsets(top: 0, left: inset, bottom: 0, right: inset)
+    let sectionInset = UIEdgeInsets(top: 0, left: C.inset, bottom: 0, right: C.inset)
     layout.sectionInset = sectionInset
-    layout.minimumLineSpacing = inset
+    layout.minimumLineSpacing = C.inset
     layout.minimumInteritemSpacing = 0
-    layout.itemSize = CGSize(width: itemWidth, height: itemHeight)
 
     return layout
   }()
@@ -85,30 +85,6 @@ final class LoveViewController: UIViewController {
   private let dataBase = winesRepository
 
   private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
-  private lazy var segmentedControl: UISegmentedControl = {
-    let segmentedControl = UISegmentedControl(items: [
-      localized("you_liked").firstLetterUppercased(),
-      localized("you_disliked").firstLetterUppercased(),
-    ])
-    segmentedControl.selectedSegmentIndex = currentState.rawValue
-    segmentedControl.backgroundColor = .option
-    segmentedControl.selectedSegmentTintColor = .accent
-    segmentedControl.setTitleTextAttributes([
-      NSAttributedString.Key.foregroundColor: UIColor.white,
-      NSAttributedString.Key.font: Font.bold(14),
-    ], for: .selected)
-    segmentedControl.setTitleTextAttributes([
-      NSAttributedString.Key.foregroundColor: UIColor.blueGray,
-      NSAttributedString.Key.font: Font.bold(14),
-    ], for: .normal)
-    segmentedControl.frame.size.height = 35
-    segmentedControl.frame.size.width = widthSegmentedControl()
-    segmentedControl.addTarget(
-      self,
-      action: #selector(didChangeIndexSegmantedControl(_:)),
-      for: .valueChanged)
-    return segmentedControl
-  }()
 
   private var currentState: LoveViewControllerState = .like {
     didSet {
@@ -140,26 +116,6 @@ final class LoveViewController: UIViewController {
         buttonText: localized("add").firstLetterUppercased()))
     errorView.delegate = self
     collectionView.backgroundView = errorView
-  }
-
-  @objc
-  private func didChangeIndexSegmantedControl(
-    _ segmentedControl: UISegmentedControl)
-  {
-    currentState = LoveViewControllerState(
-      rawValue: segmentedControl.selectedSegmentIndex) ?? .like
-    HapticEffectHelper.vibrate(withEffect: .selection)
-  }
-
-  private func widthSegmentedControl() -> CGFloat {
-    let maxWorldWidth = max(
-      localized("you_liked").firstLetterUppercased().width(usingFont: Font.medium(16)),
-      localized("you_liked").firstLetterUppercased().width(usingFont: Font.medium(16)))
-
-    let maxWidth: CGFloat = view.frame.width - 40
-    let actualWidth: CGFloat = (maxWorldWidth + 20) * CGFloat(2)
-
-    return max(min(maxWidth, actualWidth), 200)
   }
 }
 
@@ -198,15 +154,38 @@ extension LoveViewController: UICollectionViewDataSource {
   }
 }
 
-// MARK: UICollectionViewDelegate
+// MARK: UICollectionViewDelegateFlowLayout
 
-extension LoveViewController: UICollectionViewDelegate {
+extension LoveViewController: UICollectionViewDelegateFlowLayout {
   func collectionView(
     _: UICollectionView,
     didSelectItemAt indexPath: IndexPath)
   {
     guard let wineID = wines[safe: indexPath.row]?.wineID else { return }
     navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wineID), animated: true)
+  }
+
+  func collectionView(
+    _ collectionView: UICollectionView,
+    layout collectionViewLayout: UICollectionViewLayout,
+    sizeForItemAt indexPath: IndexPath)
+    -> CGSize
+  {
+    let rowCount: Int = {
+      if UIDevice.current.userInterfaceIdiom == .pad {
+        if Orientation.isLandscape {
+          return 4
+        } else {
+          return 3
+        }
+      } else {
+        return 2
+      }
+    }()
+
+    let itemWidth = Int((UIScreen.main.bounds.width - C.inset * CGFloat(rowCount + 1)) / CGFloat(rowCount))
+    let itemHeight = Int(Double(itemWidth) * 1.5)
+    return CGSize(width: itemWidth, height: itemHeight)
   }
 }
 
