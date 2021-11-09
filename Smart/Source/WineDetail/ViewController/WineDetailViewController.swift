@@ -123,6 +123,8 @@ final class WineDetailViewController: CollectionViewController {
 
       case .name(let itemID, let content):
         let maxWidth: CGFloat = collectionViewSize.width - 48
+        let width: CGFloat = Label.width(for: content, maxWidth: maxWidth, style: .style(with: .lagerTitle))
+        let trailingInset: CGFloat = width > maxWidth ? 24 : maxWidth - width + 24
         let height: CGFloat = Label.height(
           for: content,
           width: maxWidth,
@@ -133,8 +135,8 @@ final class WineDetailViewController: CollectionViewController {
             content: content,
             style: .style(with: .lagerTitle))
         }
-        .flowLayoutItemSize(.init(width: Label.width(for: content, maxWidth: maxWidth, style: .style(with: .lagerTitle)), height: height))
-        .flowLayoutSectionInset(.init(top: 8, left: 24, bottom: 8, right: 24))
+        .flowLayoutItemSize(.init(width: width, height: height))
+        .flowLayoutSectionInset(.init(top: 8, left: 24, bottom: 8, right: trailingInset))
 
       case .title(let itemID, let content):
         let width: CGFloat = collectionViewSize.width - 48
@@ -167,6 +169,8 @@ final class WineDetailViewController: CollectionViewController {
 
       case .winery(let itemID, let content):
         let maxWidth: CGFloat = collectionViewSize.width - 48
+        let width = Label.width(for: content, maxWidth: maxWidth, style: .style(with: .subtitle))
+        let trailingInset: CGFloat = width > maxWidth ? 24 : maxWidth - width + 24
         let height: CGFloat = Label.height(
           for: content,
           width: maxWidth,
@@ -177,8 +181,8 @@ final class WineDetailViewController: CollectionViewController {
             content: content,
             style: .style(with: .subtitle))
         }
-        .flowLayoutItemSize(.init(width: Label.width(for: content, maxWidth: maxWidth, style: .style(with: .subtitle)), height: height))
-        .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 0, right: 24))
+        .flowLayoutItemSize(.init(width: width, height: height))
+        .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 0, right: trailingInset))
 
       case .text(let itemID, let content):
         let width: CGFloat = collectionViewSize.width - 48

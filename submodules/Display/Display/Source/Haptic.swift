@@ -6,7 +6,15 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
+import AudioToolbox
+import CoreHaptics
 import UIKit
+
+// MARK: - Constants
+
+fileprivate enum Constants {
+  static let vibrationSoundId: SystemSoundID = 1519
+}
 
 // MARK: - HapticEffect
 
@@ -63,6 +71,10 @@ public class HapticEffectHelper {
   }
 
   public final class func vibrate(withEffect effect: HapticEffect) {
-    effect.vibrate()
+    if CHHapticEngine.capabilitiesForHardware().supportsHaptics {
+      effect.vibrate()
+    } else {
+      AudioServicesPlaySystemSound(Constants.vibrationSoundId)
+    }
   }
 }

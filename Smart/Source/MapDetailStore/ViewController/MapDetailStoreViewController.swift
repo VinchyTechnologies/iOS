@@ -94,6 +94,7 @@ final class MapDetailStoreViewController: UIViewController {
         self.sheetViewController?.sizes = [sheetSize]
         self.sheetViewController?.resize(to: [sheetSize][0], duration: 0.5)
       }, completion: nil) // This blocks layoutIfNeeded animation
+      HapticEffectHelper.vibrate(withEffect: .heavy)
     }
   }
 }
