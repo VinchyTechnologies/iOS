@@ -20,6 +20,7 @@ struct StoreViewModel {
 
   enum AssortimentContent {
     case horizontalWine(HorizontalWineView.Content)
+    case contentCoulBeNotRight(content: Label.Content)
     case ad(itemID: ItemID = .ad)
     case empty(itemID: ItemID, content: EmptyView.Content)
   }

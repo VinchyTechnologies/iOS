@@ -136,6 +136,9 @@ extension StorePresenter: StorePresenterProtocol {
       })
 
       var assortmentsContent = [StoreViewModel.AssortimentContent]()
+
+      assortmentsContent.append(.contentCoulBeNotRight(content: localized("wines_assortiment_could_be_not_right").firstLetterUppercased()))
+
       winesContent.enumerated().forEach { index, wineContent in
         if index % 10 == 0 && index != 0 && isAdAvailable {
           assortmentsContent.append(.ad(itemID: .ad))

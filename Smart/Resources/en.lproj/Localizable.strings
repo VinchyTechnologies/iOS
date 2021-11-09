@@ -105,6 +105,7 @@
 "nearest_stores" = "Nearest stores";
 "walking" = "walking";
 "undefined" = "undefined";
+"wines_assortiment_could_be_not_right" = "Some of the wines presented in the App may not be available in the store. Ask the seller for availability";
 
 // MARK: - Sugar
 "sugar" = "sugar";

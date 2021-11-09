@@ -159,6 +159,18 @@ final class StoreViewController: CollectionViewController {
                 }
                 .flowLayoutItemSize(.init(width: view.frame.width, height: 130))
 
+            case .contentCoulBeNotRight(let content):
+              let width: CGFloat = view.frame.width - 48
+              let height: CGFloat = Label.height(
+                for: content,
+                width: width,
+                style: .style(with: .miniBold, textAligment: .center))
+              return Label.itemModel(
+                dataID: UUID(),
+                content: content,
+                style: .style(with: .miniBold, textAligment: .center))
+                .flowLayoutItemSize(.init(width: width, height: height))
+
             case .ad(let itemID):
               return AdItemView.itemModel(
                 dataID: itemID.rawValue + String(index),
@@ -323,6 +335,9 @@ extension StoreViewController: SeparatorFlowLayoutDelegate {
       return false
 
     case .assortiment:
+      if indexPath.row == 1 {
+        return false
+      }
       return true
     }
   }

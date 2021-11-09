@@ -201,7 +201,6 @@ extension VinchyInteractor: VinchyInteractorProtocol {
     router
   }
 
-
   func didChangeAddress() {
     presenter.startShimmer()
     fetchData(isViaPullToRefresh: false)
