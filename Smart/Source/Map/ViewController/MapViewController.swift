@@ -159,7 +159,11 @@ final class MapViewController: UIViewController, OpenURLProtocol {
         mapView.setCenter(CLLocationCoordinate2D(latitude: 55.751244, longitude: 37.618423), animated: true)
       }
     }
-
+    if searchInThisAreaButton.alpha == 0.0 {
+      UIView.animate(withDuration: 0.25) {
+        self.searchInThisAreaButton.alpha = 1.0
+      }
+    }
   }
 
   /*
