@@ -122,18 +122,18 @@ final class WineDetailViewController: CollectionViewController {
         .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 16, right: 0))
 
       case .name(let itemID, let content):
-        let width: CGFloat = collectionViewSize.width - 48
+        let maxWidth: CGFloat = collectionViewSize.width - 48
         let height: CGFloat = Label.height(
           for: content,
-          width: width,
+          width: maxWidth,
           style: .style(with: .lagerTitle))
         return SectionModel(dataID: section.dataID) {
-          Label.itemModel(
+          CopyLabel.itemModel(
             dataID: itemID,
             content: content,
             style: .style(with: .lagerTitle))
         }
-        .flowLayoutItemSize(.init(width: width, height: height))
+        .flowLayoutItemSize(.init(width: Label.width(for: content, maxWidth: maxWidth, style: .style(with: .lagerTitle)), height: height))
         .flowLayoutSectionInset(.init(top: 8, left: 24, bottom: 8, right: 24))
 
       case .title(let itemID, let content):
@@ -166,18 +166,18 @@ final class WineDetailViewController: CollectionViewController {
         .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 16, right: 24))
 
       case .winery(let itemID, let content):
-        let width: CGFloat = collectionViewSize.width - 48
+        let maxWidth: CGFloat = collectionViewSize.width - 48
         let height: CGFloat = Label.height(
           for: content,
-          width: width,
+          width: maxWidth,
           style: .style(with: .subtitle))
         return SectionModel(dataID: section.dataID) {
-          Label.itemModel(
+          CopyLabel.itemModel(
             dataID: itemID,
             content: content,
             style: .style(with: .subtitle))
         }
-        .flowLayoutItemSize(.init(width: width, height: height))
+        .flowLayoutItemSize(.init(width: Label.width(for: content, maxWidth: maxWidth, style: .style(with: .subtitle)), height: height))
         .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 0, right: 24))
 
       case .text(let itemID, let content):

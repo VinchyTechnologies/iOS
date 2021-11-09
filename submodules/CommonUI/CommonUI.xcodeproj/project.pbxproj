@@ -12,7 +12,6 @@
 		44F2B15825E7874800DE9674 /* SeparatorCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F2B15725E7874800DE9674 /* SeparatorCell.swift */; };
 		65789C086974E15A9FDEAE2E /* Pods_CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C2304A57F5AD9DD8BE97FC1B /* Pods_CommonUI.framework */; };
 		CA103ADD2516904C00B0324F /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA103ADC2516904C00B0324F /* Display.framework */; };
-		CA3C97DC257239F70036F7D9 /* CopyableLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3C97DB257239F70036F7D9 /* CopyableLabel.swift */; };
 		CA3CEFA6251143EB00AAA692 /* CountriesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3CEFA5251143EB00AAA692 /* CountriesViewController.swift */; };
 		CA3CEFAA25114A2000AAA692 /* CountryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3CEFA925114A2000AAA692 /* CountryTableViewCell.swift */; };
 		CA46D304255C43C000A523AF /* BottomButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46D303255C43C000A523AF /* BottomButtonsView.swift */; };
@@ -32,7 +31,6 @@
 		789DA01D55FDC50806E07A23 /* Pods-CommonUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-CommonUI.release.xcconfig"; path = "Target Support Files/Pods-CommonUI/Pods-CommonUI.release.xcconfig"; sourceTree = "<group>"; };
 		C2304A57F5AD9DD8BE97FC1B /* Pods_CommonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_CommonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA103ADC2516904C00B0324F /* Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		CA3C97DB257239F70036F7D9 /* CopyableLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CopyableLabel.swift; sourceTree = "<group>"; };
 		CA3CEFA5251143EB00AAA692 /* CountriesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountriesViewController.swift; sourceTree = "<group>"; };
 		CA3CEFA925114A2000AAA692 /* CountryTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CountryTableViewCell.swift; sourceTree = "<group>"; };
 		CA46D303255C43C000A523AF /* BottomButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BottomButtonsView.swift; sourceTree = "<group>"; };
@@ -125,7 +123,6 @@
 			isa = PBXGroup;
 			children = (
 				CA46D303255C43C000A523AF /* BottomButtonsView.swift */,
-				CA3C97DB257239F70036F7D9 /* CopyableLabel.swift */,
 				CA3CEFA4251143C300AAA692 /* Countries */,
 				CAF24AF224C32CF50057547F /* ErrorView.swift */,
 				CA99E65824F79E4A00C36BEE /* ImageOptionCollectionCell.swift */,
@@ -252,7 +249,6 @@
 				CA3CEFAA25114A2000AAA692 /* CountryTableViewCell.swift in Sources */,
 				44F2B15825E7874800DE9674 /* SeparatorCell.swift in Sources */,
 				CA3CEFA6251143EB00AAA692 /* CountriesViewController.swift in Sources */,
-				CA3C97DC257239F70036F7D9 /* CopyableLabel.swift in Sources */,
 				CA46D304255C43C000A523AF /* BottomButtonsView.swift in Sources */,
 				CA99E65924F79E4A00C36BEE /* ImageOptionCollectionCell.swift in Sources */,
 				44EFDB5525E194950076ED6D /* LoadingIndicatorCell.swift in Sources */,
