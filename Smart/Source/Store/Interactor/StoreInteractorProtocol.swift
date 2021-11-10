@@ -6,7 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 protocol StoreInteractorProtocol: AdvancedSearchOutputDelegate, WineViewContextMenuTappable {
   func viewDidLoad()
@@ -14,4 +14,5 @@ protocol StoreInteractorProtocol: AdvancedSearchOutputDelegate, WineViewContextM
   func willDisplayLoadingView()
   func didTapReloadButton()
   func didTapFilterButton()
+  func didTapMapButton(button: UIButton)
 }

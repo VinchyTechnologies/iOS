@@ -7,6 +7,8 @@
 //
 
 import Core
+import CoreLocation
+import UIKit
 import VinchyAuthorization
 import VinchyCore
 
@@ -227,10 +229,19 @@ final class StoreInteractor {
 // MARK: StoreInteractorProtocol
 
 extension StoreInteractor: StoreInteractorProtocol {
+
   var contextMenuRouter: ActivityRoutable & WriteNoteRoutable {
     router
   }
 
+  func didTapMapButton(button: UIButton) {
+    if let lat = partnerInfo?.latitude, let lon = partnerInfo?.longitude {
+      router.showRoutesActionSheet(
+        storeTitleText: partnerInfo?.title,
+        coordinate: CLLocationCoordinate2D(latitude: lat, longitude: lon),
+        button: button)
+    }
+  }
   func didChoose(_ filters: [(String, String)]) {
     guard let partnerInfo = partnerInfo else {
       return

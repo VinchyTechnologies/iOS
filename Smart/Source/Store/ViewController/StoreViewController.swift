@@ -98,7 +98,7 @@ final class StoreViewController: CollectionViewController {
             content: content,
             style: .large)
         }
-        .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 16, right: 0))
+        .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 8, right: 0))
         .flowLayoutItemSize(.init(width: view.frame.width, height: content.height(for: width)))
 
       case .title(let itemID, let content):
@@ -118,15 +118,15 @@ final class StoreViewController: CollectionViewController {
 
       case .address(let itemID, let content):
         let width: CGFloat = view.frame.width - 48
-        let height: CGFloat = Label.height(
-          for: content,
-          width: width,
-          style: .style(with: .regular, textColor: .blueGray))
+        let height: CGFloat = content.height(for: width)
         return SectionModel(dataID: section.dataID) {
-          Label.itemModel(
+          StoreMapRow.itemModel(
             dataID: itemID,
             content: content,
-            style: .style(with: .regular, textColor: .blueGray))
+            behaviors: .init(didTapMap: { [weak self] button in
+              self?.interactor?.didTapMapButton(button: button)
+            }),
+            style: .init())
         }
         .flowLayoutItemSize(.init(width: width, height: height))
         .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 16, right: 24))
@@ -261,7 +261,7 @@ extension StoreViewController: StoreViewControllerProtocol {
         case .logo(_, let content):
           let width = view.frame.width - 48
           let height = content.height(for: width)
-          resultHeight += height + 16
+          resultHeight += height + 8
 
         case .title(_, let content):
           let width: CGFloat = view.frame.width - 48
@@ -273,10 +273,7 @@ extension StoreViewController: StoreViewControllerProtocol {
 
         case .address(_, let content):
           let width: CGFloat = view.frame.width - 48
-          let height: CGFloat = Label.height(
-            for: content,
-            width: width,
-            style: .style(with: .regular, textColor: .blueGray))
+          let height: CGFloat = content.height(for: width)
           resultHeight += height + 16
 
         case .wines:

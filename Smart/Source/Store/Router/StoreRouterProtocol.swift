@@ -6,8 +6,12 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import Core
+import CoreLocation
+import UIKit.UIButton
 import VinchyAuthorization
 
-protocol StoreRouterProtocol: WineDetailRoutable, ActivityRoutable, WriteNoteRoutable {
+protocol StoreRouterProtocol: WineDetailRoutable, ActivityRoutable, WriteNoteRoutable, OpenURLProtocol {
   func presentFilter(preselectedFilters: [(String, String)])
+  func showRoutesActionSheet(storeTitleText: String?, coordinate: CLLocationCoordinate2D, button: UIButton)
 }

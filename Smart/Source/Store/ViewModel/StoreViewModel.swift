@@ -28,7 +28,7 @@ struct StoreViewModel {
   enum Section {
     case logo(itemID: ItemID = .logoItem, LogoRow.Content)
     case title(itemID: ItemID = .titleItem, Label.Content)
-    case address(itemID: ItemID = .addressItem, Label.Content)
+    case address(itemID: ItemID = .addressItem, StoreMapRow.Content)
     case wines(itemID: ItemID = .winesItem, BottlesCollectionView.Content)
     case assortiment(headerDataID: ItemID = .headerAssortimentItem, header: FiltersCollectionView.Content, content: [AssortimentContent])
     case loading(itemID: ItemID = .loadingItem, shouldCallWillDisplay: Bool)

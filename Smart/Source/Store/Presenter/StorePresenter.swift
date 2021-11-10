@@ -49,7 +49,7 @@ extension StorePresenter: StorePresenterProtocol {
     ]
 
     if let addressText = data.partnerInfo.address {
-      sections += [.address(addressText)]
+      sections += [.address(StoreMapRow.Content(title: addressText))]
     }
 
     if !data.recommendedWines.isEmpty {
@@ -106,7 +106,7 @@ extension StorePresenter: StorePresenterProtocol {
     ]
 
     if let addressText = data.partnerInfo.address {
-      sections += [.address(addressText)]
+      sections += [.address(StoreMapRow.Content(title: addressText))]
     }
 
     if !data.recommendedWines.isEmpty {
