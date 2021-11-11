@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 51;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -60,6 +60,7 @@
 		44E83A4B25D1B03D00711490 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 44E83A4D25D1B03D00711490 /* Localizable.strings */; };
 		740EC931268DF58A0000718B /* OTPStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740EC930268DF5890000718B /* OTPStackView.swift */; };
 		740EC933268DF6BC0000718B /* OTPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740EC932268DF6BC0000718B /* OTPTextField.swift */; };
+		8A7D7921273D26ED005F075A /* FittedSheets in Frameworks */ = {isa = PBXBuildFile; productRef = 8A7D7920273D26ED005F075A /* FittedSheets */; };
 		8ACE34E2271EE6610035BE47 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACE34E1271EE6610035BE47 /* AuthService.swift */; };
 		8AFD837C26F7A118003DF360 /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A724E22591351C00A7552B /* Display.framework */; };
 		8AFD837D26F7A118003DF360 /* Display.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44A724E22591351C00A7552B /* Display.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -191,6 +192,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				44E83A0425D1A23600711490 /* VinchyCore.framework in Frameworks */,
+				8A7D7921273D26ED005F075A /* FittedSheets in Frameworks */,
 				44E83A0125D1A23400711490 /* Display.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -624,6 +626,9 @@
 			dependencies = (
 			);
 			name = VinchyAuthorization;
+			packageProductDependencies = (
+				8A7D7920273D26ED005F075A /* FittedSheets */,
+			);
 			productName = VinchyAuthorization;
 			productReference = 443F0AD7259123FE00E15437 /* VinchyAuthorization.framework */;
 			productType = "com.apple.product-type.framework";
@@ -721,6 +726,9 @@
 				ru,
 			);
 			mainGroup = 443F0ACD259123FD00E15437;
+			packageReferences = (
+				8A7D791F273D26ED005F075A /* XCRemoteSwiftPackageReference "FittedSheets" */,
+			);
 			productRefGroup = 443F0AD8259123FE00E15437 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -1292,6 +1300,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		8A7D791F273D26ED005F075A /* XCRemoteSwiftPackageReference "FittedSheets" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/gordontucker/FittedSheets";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 2.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		8A7D7920273D26ED005F075A /* FittedSheets */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 8A7D791F273D26ED005F075A /* XCRemoteSwiftPackageReference "FittedSheets" */;
+			productName = FittedSheets;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 443F0ACE259123FD00E15437 /* Project object */;
 }
