@@ -83,6 +83,8 @@ final class MorePresenter {
       emojiLabel: "👍")
     sections.append(.rate([rateViewModel]))
 
+//    sections.append(.social([.init(titleText: "title")]))
+
     let currencyViewModel = InfoCurrencyCellViewModel(
       titleText: localized("currency").firstLetterUppercased(),
       symbolText: currency,

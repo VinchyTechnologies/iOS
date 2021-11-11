@@ -22,25 +22,6 @@ public struct StandartImageViewModel: ViewModelProtocol, Hashable {
   }
 }
 
-// MARK: - StandartImageView
-
-final class StandartImageView: UIImageView {
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-    translatesAutoresizingMaskIntoConstraints = false
-    contentMode = .scaleAspectFit
-  }
-
-  override init(image: UIImage?) {
-    super.init(image: image)
-    translatesAutoresizingMaskIntoConstraints = false
-    contentMode = .scaleAspectFit
-  }
-
-  @available(*, unavailable)
-  required init?(coder _: NSCoder) { fatalError() }
-}
-
 // MARK: - SocialMediaCellDelegate
 
 protocol SocialMediaCellDelegate: AnyObject {
@@ -54,9 +35,8 @@ final class SocialMediaCell: UICollectionViewCell, Reusable {
 
   // MARK: Lifecycle
 
-  init(delegate: SocialMediaCellDelegate) {
-    super.init(frame: .zero)
-    self.delegate = delegate
+  override init(frame: CGRect) {
+    super.init(frame: frame)
 
     let tapVK = UITapGestureRecognizer(target: self, action: #selector(actionVK))
     vk.addGestureRecognizer(tapVK)
@@ -74,14 +54,24 @@ final class SocialMediaCell: UICollectionViewCell, Reusable {
     vk.tintColor = .dark
     instagram.tintColor = .dark
 
-    vk.heightAnchor.constraint(equalToConstant: 80).isActive = true
-    instagram.heightAnchor.constraint(equalToConstant: 70).isActive = true
+    vk.heightAnchor.constraint(equalToConstant: 40).isActive = true
+    instagram.heightAnchor.constraint(equalToConstant: 40).isActive = true
+
+    telegram.heightAnchor.constraint(equalToConstant: 40).isActive = true
 
     vk.isUserInteractionEnabled = true
     instagram.isUserInteractionEnabled = true
     isUserInteractionEnabled = true
 
-    let stackView = UIStackView(arrangedSubviews: [vk, instagram])
+    vk.tintColor = .accent
+    vk.contentMode = .scaleAspectFit
+    instagram.tintColor = .accent
+    instagram.contentMode = .scaleAspectFit
+
+    telegram.tintColor = .accent
+    telegram.contentMode = .scaleAspectFit
+
+    let stackView = UIStackView(arrangedSubviews: [instagram, vk, telegram])
     stackView.translatesAutoresizingMaskIntoConstraints = false
     stackView.alignment = .center
     stackView.axis = .horizontal
@@ -90,11 +80,11 @@ final class SocialMediaCell: UICollectionViewCell, Reusable {
 
     addSubview(stackView)
     NSLayoutConstraint.activate([
-      stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
+      stackView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 10),
       stackView.leadingAnchor.constraint(equalTo: leadingAnchor),
       stackView.trailingAnchor.constraint(equalTo: trailingAnchor),
       stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
-      stackView.heightAnchor.constraint(equalToConstant: 80),
+      stackView.heightAnchor.constraint(equalToConstant: 40),
     ])
   }
 
@@ -106,7 +96,7 @@ final class SocialMediaCell: UICollectionViewCell, Reusable {
   weak var delegate: SocialMediaCellDelegate?
 
   static func height() -> CGFloat {
-    60
+    100
   }
 
   // MARK: Private
@@ -121,9 +111,11 @@ final class SocialMediaCell: UICollectionViewCell, Reusable {
     return label
   }()
 
-  private let vk = StandartImageView(image: UIImage(named: "vk3")!.withRenderingMode(.alwaysTemplate))
+  private let vk = UIImageView(image: UIImage(named: "facebook")!.withRenderingMode(.alwaysTemplate))
 
-  private let instagram = StandartImageView(image: UIImage(named: "inst2")!.withRenderingMode(.alwaysTemplate))
+  private let instagram = UIImageView(image: UIImage(named: "inst2")!.withRenderingMode(.alwaysTemplate))
+
+  private let telegram = UIImageView(image: UIImage(named: "telegram")!.withRenderingMode(.alwaysTemplate))
 
   @objc
   private func actionVK() {
@@ -142,6 +134,6 @@ extension SocialMediaCell: Decoratable {
   typealias ViewModel = StandartImageViewModel
 
   func decorate(model: ViewModel) {
-    titleLabel.text = model.titleText
+    titleLabel.text = localized("we_are_in_social_networks").firstLetterUppercased() //model.titleText
   }
 }

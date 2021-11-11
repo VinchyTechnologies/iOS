@@ -66,7 +66,8 @@ final class MoreViewController: UIViewController {
       DocCell.self,
       TextCollectionCell.self,
       SeparatorCell.self,
-      LogOutCell.self)
+      LogOutCell.self,
+      SocialMediaCell.self)
 
     collectionView.dataSource = self
     collectionView.delegate = self
