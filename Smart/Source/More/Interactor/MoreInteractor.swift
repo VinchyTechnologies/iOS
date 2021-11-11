@@ -30,7 +30,6 @@ final class MoreInteractor {
 
   private let vkURL = "https://vk.com"
 
-  private let emailService: EmailServiceProtocol = EmailService()
   private let authService = AuthService.shared
   private let router: MoreRouterProtocol
 
