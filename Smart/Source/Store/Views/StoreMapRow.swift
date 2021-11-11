@@ -101,7 +101,8 @@ final class StoreMapRow: UIView, EpoxyableView {
         return button
       },
       setContent: { context, _ in
-        context.constrainable.setImage(UIImage(systemName: "map"), for: [])
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 22, weight: .medium, scale: .default)
+        context.constrainable.setImage(UIImage(systemName: "map", withConfiguration: imageConfig), for: [])
         context.constrainable.tintColor = .accent
       })
       .setBehaviors { [weak self] context in
