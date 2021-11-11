@@ -30,6 +30,7 @@ final class ResultsSearchViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    edgesForExtendedLayout = [] // this fixes offset on iPad
     view.addSubview(collectionView)
     collectionView.fill()
     collectionView.backgroundColor = .mainBackground
