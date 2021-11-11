@@ -242,6 +242,12 @@ extension ResultsSearchViewController: UICollectionViewDataSource, UICollectionV
 // MARK: UISearchBarDelegate
 
 extension ResultsSearchViewController: UISearchBarDelegate {
+
+  func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+    collectionView.contentOffset = .zero
+    dismiss(animated: true)
+  }
+
   func searchBar(
     _: UISearchBar,
     textDidChange searchText: String)
