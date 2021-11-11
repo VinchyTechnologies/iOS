@@ -106,6 +106,13 @@
 "walking" = "walking";
 "undefined" = "undefined";
 "wines_assortiment_could_be_not_right" = "Some of the wines presented in the App may not be available in the store. Ask the seller for availability";
+"google_mail" = "Gmail";
+"system_mail" = "System mail";
+"outlook_mail" = "Outlook";
+"spark_mail" = "Spark";
+"yahoo_mail" = "Yahoo Mail";
+"telegram" = "Telegram";
+"copy" = "copy";
 
 // MARK: - Sugar
 "sugar" = "sugar";

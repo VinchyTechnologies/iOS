@@ -44,6 +44,10 @@ final class MoreInteractor {
     authService.logout()
     viewDidLoad()
   }
+
+  private func didTapSendEmail(HTMLText: String?, includingThirdPartyApps: Bool, sourceView: UIView) {
+    router.presentContactActionSheet(to: localized("contact_email"), subject: "", body: "", includingThirdPartyApps: includingThirdPartyApps, sourceView: sourceView)
+  }
 }
 
 // MARK: MoreInteractorProtocol
@@ -107,19 +111,11 @@ extension MoreInteractor: MoreInteractorProtocol {
     router.pushToDocController()
   }
 
-  func didTapworkWithUs() {
-    didTapSendEmail(HTMLText: nil)
+  func didTapworkWithUs(sourceView: UIView) {
+    didTapSendEmail(HTMLText: nil, includingThirdPartyApps: true, sourceView: sourceView)
   }
 
-  func didTapEmailUs() {
-    didTapSendEmail(HTMLText: nil)
-  }
-
-  func didTapSendEmail(HTMLText: String?) {
-    if emailService.canSend {
-      router.presentEmailController(HTMLText: HTMLText, recipients: presenter.sendEmailRecipients)
-    } else {
-      presenter.showAlertCantOpenEmail()
-    }
+  func didTapEmailUs(sourceView: UIView) {
+    didTapSendEmail(HTMLText: nil, includingThirdPartyApps: false, sourceView: sourceView)
   }
 }

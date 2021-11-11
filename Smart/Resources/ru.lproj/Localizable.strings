@@ -106,6 +106,13 @@
 "walking" = "пешком";
 "undefined" = "не определено";
 "wines_assortiment_could_be_not_right" = "Некоторые вина представленные в приложени могут отсутствовать в магазине. Наличие уточняйте у продавца";
+"google_mail" = "Gmail";
+"system_mail" = "Системная почта";
+"outlook_mail" = "Outlook";
+"spark_mail" = "Spark";
+"yahoo_mail" = "Yahoo Mail";
+"telegram" = "Telegram";
+"copy" = "Скопировать";
 
 // MARK: - Sugar
 "sugar" = "сахар";

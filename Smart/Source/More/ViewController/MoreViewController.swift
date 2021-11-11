@@ -279,10 +279,16 @@ extension MoreViewController: UICollectionViewDelegateFlowLayout {
       interactor?.didTapCallUs()
 
     case .email:
-      interactor?.didTapEmailUs()
+      guard let sourceView = collectionView.cellForItem(at: indexPath) else {
+        return
+      }
+      interactor?.didTapEmailUs(sourceView: sourceView)
 
     case .partner:
-      interactor?.didTapworkWithUs()
+      guard let sourceView = collectionView.cellForItem(at: indexPath) else {
+        return
+      }
+      interactor?.didTapworkWithUs(sourceView: sourceView)
 
     case .rate:
       interactor?.didTapRateApp()
