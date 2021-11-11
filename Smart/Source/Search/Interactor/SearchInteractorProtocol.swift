@@ -6,6 +6,8 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import UIKit.UIView
+
 protocol SearchInteractorProtocol: AnyObject {
-  func didTapDidnotFindWineFromSearch(searchText: String?)
+  func didTapDidnotFindWineFromSearch(searchText: String?, sourceView: UIView)
 }

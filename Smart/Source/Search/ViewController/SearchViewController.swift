@@ -47,9 +47,9 @@ extension SearchViewController: SearchViewControllerProtocol {}
 // MARK: DidnotFindTheWineCollectionCellProtocol
 
 extension SearchViewController: DidnotFindTheWineCollectionCellProtocol {
-  func didTapWriteUsButton(_: UIButton) {
+  func didTapWriteUsButton(_ button: UIButton) {
     let searchText = searchBar.searchTextField.text
     interactor?.didTapDidnotFindWineFromSearch(
-      searchText: searchText)
+      searchText: searchText, sourceView: button)
   }
 }

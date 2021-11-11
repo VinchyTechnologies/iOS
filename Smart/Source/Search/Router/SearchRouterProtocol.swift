@@ -6,6 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-protocol SearchRouterProtocol: AnyObject {
-  func presentEmailController(HTMLText: String?, recipients: [String])
+import Display
+
+protocol SearchRouterProtocol: ContactUsRoutable {
 }

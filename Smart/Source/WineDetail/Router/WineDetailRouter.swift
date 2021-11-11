@@ -36,7 +36,6 @@ final class WineDetailRouter {
   // MARK: Private
 
   private let input: WineDetailInput
-  private let emailService = EmailService()
 }
 
 // MARK: WineDetailRouterProtocol
@@ -57,13 +56,6 @@ extension WineDetailRouter: WineDetailRouterProtocol {
 //    navigationController.modalPresentationStyle = .overCurrentContext
 //    viewController?.navigationController?.present(navigationController, animated: true, completion: nil)
     viewController?.navigationController?.pushViewController(controller, animated: true)
-  }
-
-  func presentEmailController(HTMLText: String?, recipients: [String]) {
-    let emailController = emailService.getEmailController(
-      HTMLText: HTMLText,
-      recipients: recipients)
-    viewController?.present(emailController, animated: true, completion: nil)
   }
 
   func presentActivityViewController(items: [Any], button: UIButton) {
@@ -92,7 +84,7 @@ extension WineDetailRouter: WineDetailRouterProtocol {
           self.interactor?.didTapDislikeButton()
 
         case .reportAnError:
-          self.interactor?.didTapReportAnError()
+          self.interactor?.didTapReportAnError(sourceView: button)
         }
       }
     }

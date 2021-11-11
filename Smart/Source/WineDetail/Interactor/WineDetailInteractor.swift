@@ -59,7 +59,6 @@ final class WineDetailInteractor {
 
   private var rating: Rating?
   private let dataBase = winesRepository
-  private let emailService = EmailService()
 
   private var wine: Wine?
   private var reviews: [Review]?
@@ -312,14 +311,16 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
     }
   }
 
-  func didTapReportAnError() {
-    guard let wine = wine else { return }
+  func didTapReportAnError(sourceView: UIView) {
+    guard let wine = wine, let to = presenter.reportAnErrorRecipients.first else { return }
 
-    if emailService.canSend {
-      router.presentEmailController(HTMLText: wine.title, recipients: presenter.reportAnErrorRecipients)
-    } else {
-      presenter.showAlertCantOpenEmail()
-    }
+
+    router.presentContactActionSheet(to: to, subject: "", body: wine.title, includingThirdPartyApps: false, sourceView: sourceView)
+//    if emailService.canSend {
+//      router.presentEmailController(HTMLText: wine.title, recipients: presenter.reportAnErrorRecipients)
+//    } else {
+//      presenter.showAlertCantOpenEmail()
+//    }
   }
 
   func didTapDislikeButton() {

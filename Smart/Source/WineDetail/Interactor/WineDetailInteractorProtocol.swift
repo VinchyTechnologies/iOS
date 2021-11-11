@@ -16,7 +16,7 @@ protocol WineDetailInteractorProtocol: AnalyticsTrackable, WineViewContextMenuTa
   func didTapNotes()
   func didTapMore(_ button: UIButton)
   func didTapPriceButton()
-  func didTapReportAnError()
+  func didTapReportAnError(sourceView: UIView)
   func didTapSimilarWine(wineID: Int64)
   func didTapWriteReviewButton()
   func didTapSeeAllReviews()

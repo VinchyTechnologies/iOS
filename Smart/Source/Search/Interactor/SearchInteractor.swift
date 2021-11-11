@@ -7,6 +7,7 @@
 //
 
 import Core
+import UIKit.UIView
 
 // MARK: - SearchInteractor
 
@@ -26,24 +27,18 @@ final class SearchInteractor {
 
   private let router: SearchRouterProtocol
   private let presenter: SearchPresenterProtocol
-  private let emailService = EmailService()
-
 }
 
 // MARK: SearchInteractorProtocol
 
 extension SearchInteractor: SearchInteractorProtocol {
-  func didTapDidnotFindWineFromSearch(searchText: String?) {
+  func didTapDidnotFindWineFromSearch(searchText: String?, sourceView: UIView) {
     guard let searchText = searchText else {
       return
     }
 
-    if emailService.canSend {
-      router.presentEmailController(
-        HTMLText: presenter.cantFindWineText + searchText,
-        recipients: presenter.cantFindWineRecipients)
-    } else {
-      presenter.showAlertCantOpenEmail()
+    if let to = presenter.cantFindWineRecipients.first {
+      router.presentContactActionSheet(to: to, subject: "", body: presenter.cantFindWineText + searchText, includingThirdPartyApps: false, sourceView: sourceView)
     }
   }
 }

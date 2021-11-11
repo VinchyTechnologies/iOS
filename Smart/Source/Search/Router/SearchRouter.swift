@@ -27,19 +27,9 @@ final class SearchRouter {
   weak var viewController: UIViewController?
   weak var interactor: SearchInteractorProtocol?
 
-  // MARK: Private
-
-  private let emailService = EmailService()
-
 }
 
 // MARK: SearchRouterProtocol
 
 extension SearchRouter: SearchRouterProtocol {
-  func presentEmailController(HTMLText: String?, recipients: [String]) {
-    let emailController = emailService.getEmailController(
-      HTMLText: HTMLText,
-      recipients: recipients)
-    viewController?.present(emailController, animated: true, completion: nil)
-  }
 }
