@@ -5,6 +5,7 @@
 //  Created by Алексей Смирнов on 22.02.2021.
 //
 
+import FittedSheets
 import UIKit
 
 // MARK: - AuthorizationRoutable
@@ -19,9 +20,15 @@ extension AuthorizationRoutable {
   public func presentAuthorizationViewController() {
     let controller: AuthorizationNavigationController = ChooseAuthTypeAssembly.assemblyModule()
     controller.authOutputDelegate = viewController as? AuthorizationOutputDelegate
-    if UIDevice.current.userInterfaceIdiom == .pad {
-      controller.modalPresentationStyle = .overFullScreen
-    }
-    viewController?.present(controller, animated: true, completion: nil)
+    let options = SheetOptions(shrinkPresentingViewController: false)
+    let sheetController = SheetViewController(
+      controller: controller,
+      sizes: [.fixed(350)],
+      options: options)
+
+//    if UIDevice.current.userInterfaceIdiom == .pad {
+//      controller.modalPresentationStyle = .overFullScreen
+//    }
+    viewController?.present(sheetController, animated: true, completion: nil)
   }
 }

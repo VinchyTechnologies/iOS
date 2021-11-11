@@ -76,11 +76,11 @@ final class ChooseAuthTypeViewController: UIViewController {
 //      appleIDButton.heightAnchor.constraint(equalToConstant: 48),
 //    ])
 
-    if UIDevice.current.userInterfaceIdiom == .pad {
-      let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeDown(_:)))
-      swipeDown.direction = .down
-      view.addGestureRecognizer(swipeDown)
-    }
+//    if UIDevice.current.userInterfaceIdiom == .pad {
+//      let swipeDown = UISwipeGestureRecognizer(target: self, action: #selector(didSwipeDown(_:)))
+//      swipeDown.direction = .down
+//      view.addGestureRecognizer(swipeDown)
+//    }
 
     interactor?.viewDidLoad()
   }
