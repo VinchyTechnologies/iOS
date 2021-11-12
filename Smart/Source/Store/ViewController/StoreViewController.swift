@@ -76,11 +76,14 @@ final class StoreViewController: CollectionViewController {
   override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
     super.viewWillTransition(to: size, with: coordinator)
     coordinator.animate(alongsideTransition: { _ in
+      self.collectionViewSize = size
       self.setSections(self.sections, animated: false)
     })
   }
 
   // MARK: Private
+
+  private lazy var collectionViewSize: CGSize = view.frame.size
 
   private var supplementaryView: UIView?
   private var heightBeforeSupplementaryHeader: CGFloat?
@@ -91,7 +94,7 @@ final class StoreViewController: CollectionViewController {
     viewModel.sections.compactMap { section in
       switch section {
       case .logo(let itemID, let content):
-        let width = view.frame.width - 48
+        let width = collectionViewSize.width - 48
         return SectionModel(dataID: section.dataID) {
           LogoRow.itemModel(
             dataID: itemID,
@@ -99,10 +102,10 @@ final class StoreViewController: CollectionViewController {
             style: .large)
         }
         .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 8, right: 0))
-        .flowLayoutItemSize(.init(width: view.frame.width, height: content.height(for: width)))
+        .flowLayoutItemSize(.init(width: collectionViewSize.width, height: content.height(for: width)))
 
       case .title(let itemID, let content):
-        let width: CGFloat = view.frame.width - 48
+        let width: CGFloat = collectionViewSize.width - 48
         let height: CGFloat = Label.height(
           for: content,
           width: width,
@@ -117,7 +120,7 @@ final class StoreViewController: CollectionViewController {
         .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 8, right: 24))
 
       case .address(let itemID, let content):
-        let width: CGFloat = view.frame.width - 48
+        let width: CGFloat = collectionViewSize.width - 48
         let height: CGFloat = content.height(for: width)
         return SectionModel(dataID: section.dataID) {
           StoreMapRow.itemModel(
@@ -141,7 +144,7 @@ final class StoreViewController: CollectionViewController {
               context.view.bottlesCollectionViewDelegate = self
             })
         }
-        .flowLayoutItemSize(.init(width: view.frame.width, height: 250))
+        .flowLayoutItemSize(.init(width: collectionViewSize.width, height: 250))
         .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 16, right: 0))
 
       case .assortiment(let headerItemID, let header, let rows):
@@ -157,10 +160,10 @@ final class StoreViewController: CollectionViewController {
                 .didSelect { [weak self] _ in
                   self?.interactor?.didSelectWine(wineID: content.wineID)
                 }
-                .flowLayoutItemSize(.init(width: view.frame.width, height: 130))
+                .flowLayoutItemSize(.init(width: collectionViewSize.width, height: 130))
 
             case .contentCoulBeNotRight(let content):
-              let width: CGFloat = view.frame.width - 48
+              let width: CGFloat = collectionViewSize.width - 48
               let height: CGFloat = Label.height(
                 for: content,
                 width: width,
@@ -179,14 +182,14 @@ final class StoreViewController: CollectionViewController {
                 .setBehaviors { [weak self] context in
                   context.view.adBanner.rootViewController = self
                 }
-                .flowLayoutItemSize(.init(width: view.frame.width, height: AdItemView.height))
+                .flowLayoutItemSize(.init(width: collectionViewSize.width, height: AdItemView.height))
 
             case .empty(let itemID, let content):
               return EmptyView.itemModel(
                 dataID: itemID.rawValue,
                 content: content,
                 style: .init())
-                .flowLayoutItemSize(.init(width: view.frame.width, height: 250)) // TODO: - height
+                .flowLayoutItemSize(.init(width: collectionViewSize.width, height: 250)) // TODO: - height
             }
           }))
           .supplementaryItems(ofKind: UICollectionView.elementKindSectionHeader, [
@@ -198,7 +201,7 @@ final class StoreViewController: CollectionViewController {
                 self?.supplementaryView = context.view
               },
           ])
-          .flowLayoutHeaderReferenceSize(.init(width: view.frame.width, height: 50))
+          .flowLayoutHeaderReferenceSize(.init(width: collectionViewSize.width, height: 50))
 
       case .loading(let itemID, let shouldCallWillDisplay):
         return SectionModel(dataID: section.dataID) {
@@ -209,7 +212,7 @@ final class StoreViewController: CollectionViewController {
             self?.interactor?.willDisplayLoadingView()
           }
         }
-        .flowLayoutItemSize(.init(width: view.frame.width, height: LoadingView.height))
+        .flowLayoutItemSize(.init(width: collectionViewSize.width, height: LoadingView.height))
         .flowLayoutSectionInset(.init(top: 16, left: 0, bottom: 16, right: 0))
       }
     }
@@ -259,12 +262,12 @@ extension StoreViewController: StoreViewControllerProtocol {
       viewModel.sections.forEach { section in
         switch section {
         case .logo(_, let content):
-          let width = view.frame.width - 48
+          let width = collectionViewSize.width - 48
           let height = content.height(for: width)
           resultHeight += height + 8
 
         case .title(_, let content):
-          let width: CGFloat = view.frame.width - 48
+          let width: CGFloat = collectionViewSize.width - 48
           let height: CGFloat = Label.height(
             for: content,
             width: width,
@@ -272,7 +275,7 @@ extension StoreViewController: StoreViewControllerProtocol {
           resultHeight += height + 8
 
         case .address(_, let content):
-          let width: CGFloat = view.frame.width - 48
+          let width: CGFloat = collectionViewSize.width - 48
           let height: CGFloat = content.height(for: width)
           resultHeight += height + 16
 
