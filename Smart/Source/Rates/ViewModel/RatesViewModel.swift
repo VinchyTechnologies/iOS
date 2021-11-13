@@ -10,7 +10,6 @@ import CommonUI
 
 struct RatesViewModel {
   enum State {
-//    case fake(sections: [FakeSection])
     case normal(items: [Item])
   }
 

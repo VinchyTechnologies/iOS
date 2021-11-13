@@ -24,8 +24,7 @@ final class RatesViewController: UIViewController {
     tableView.fill()
 
     handleSwipeToDelete()
-    updateUI(viewModel: .init(state: .normal(items: [.review(WineRateView.Content.init(bottleURL: nil, titleText: "Brut ChampagnBrut ChampagnBrut ChampagnBrut ChampagnBrut Champagn", reviewText: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur", readMoreText: "Read more", wineryText: "Dom Perignon Dom Perignon Dom Perignon Dom Perignon Dom Perignon", starValue: 4.5))]), navigationTitle: "alalal"))
-    //    interactor?.viewDidLoad()
+    interactor?.viewDidLoad()
   }
 
   // MARK: Private
@@ -35,7 +34,6 @@ final class RatesViewController: UIViewController {
     tableView.delegate = self
     tableView.dataSource = self
     tableView.backgroundColor = .mainBackground
-    tableView.delaysContentTouches = false
     tableView.register(LoadingIndicatorTableCell.self, forCellReuseIdentifier: LoadingIndicatorTableCell.reuseId)
     tableView.register(WineRateTableCell.self, forCellReuseIdentifier: WineRateTableCell.reuseId)
     return tableView
@@ -98,6 +96,7 @@ extension RatesViewController: UITableViewDataSource {
       case .review(let model):
         // swiftlint:disable:next force_cast
         let cell = tableView.dequeueReusableCell(withIdentifier: WineRateTableCell.reuseId, for: indexPath) as! WineRateTableCell
+        cell.delegate = self
         cell.decorate(model: model)
         return cell
       }
@@ -115,8 +114,7 @@ extension RatesViewController: UITableViewDelegate {
     case .normal(let sections):
       switch sections[indexPath.row] {
       case .review(let model):
-        return
-//        interactor?.didSelectReview(id: model.id)
+        interactor?.didSelectReview(wineID: model.wineID)
 
       case .loading:
         return
@@ -154,32 +152,6 @@ extension RatesViewController: UITableViewDelegate {
     }
   }
 
-  func tableView(_ tableView: UITableView, contextMenuConfigurationForRowAt indexPath: IndexPath, point: CGPoint) -> UIContextMenuConfiguration? {
-    UIContextMenuConfiguration(
-      identifier: nil,
-      previewProvider: nil,
-      actionProvider: {
-        suggestedActions in
-        let inspectAction =
-          UIAction(
-            title: NSLocalizedString("InspectTitle", comment: ""),
-            image: UIImage(systemName: "arrow.up.square")) { action in
-          }
-        let duplicateAction =
-          UIAction(
-            title: NSLocalizedString("DuplicateTitle", comment: ""),
-            image: UIImage(systemName: "plus.square.on.square")) { action in
-          }
-        let deleteAction =
-          UIAction(
-            title: "Delete",
-            image: UIImage(systemName: "trash"),
-            attributes: .destructive) { action in
-          }
-        return UIMenu(title: "", children: [inspectAction, duplicateAction, deleteAction])
-      })
-  }
-
   func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
   {
     nil
@@ -188,13 +160,39 @@ extension RatesViewController: UITableViewDelegate {
   @available(iOS 11.0, *)
   func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration?
   {
-    let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { action, view, handler in
-      //YOUR_CODE_HERE
+    switch viewModel.state {
+    case .normal(let sections):
+      switch sections[indexPath.row] {
+      case .review(let model):
+        let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .semibold, scale: .default)
+
+        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] _, _, _ in
+          self?.interactor?.didSwipeToDelete(reviewID: model.reviewID)
+        }
+        deleteAction.backgroundColor = .systemRed
+        deleteAction.image = UIImage(systemName: "trash", withConfiguration: imageConfig)
+
+        let editAction = UIContextualAction(style: .destructive, title: "Edit") { [weak self] _, _, _ in
+          self?.interactor?.didSwipeToEdit(reviewID: model.reviewID)
+        }
+        editAction.image = UIImage(systemName: "pencil", withConfiguration: imageConfig)
+        editAction.backgroundColor = .systemOrange
+
+        let shareAction = UIContextualAction(style: .destructive, title: "Share") { [weak self] _, _, _ in
+          guard let sourceView = tableView.cellForRow(at: indexPath) else { return }
+          self?.interactor?.didSwipeToShare(reviewID: model.reviewID, sourceView: sourceView)
+        }
+        shareAction.image = UIImage(systemName: "square.and.arrow.up", withConfiguration: imageConfig)
+        shareAction.backgroundColor = .systemBlue
+
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction, editAction, shareAction])
+        configuration.performsFirstActionWithFullSwipe = false
+        return configuration
+
+      case .loading:
+        return nil
+      }
     }
-    deleteAction.backgroundColor = .red
-    let configuration = UISwipeActionsConfiguration(actions: [deleteAction])
-    configuration.performsFirstActionWithFullSwipe = false
-    return configuration
   }
 }
 
@@ -224,14 +222,10 @@ extension RatesViewController: ErrorViewDelegate {
   }
 }
 
-// MARK: UIGestureRecognizerDelegate
+// MARK: WineRateTableCellDelegate
 
-//extension RatesViewController: UIGestureRecognizerDelegate {
-//  func gestureRecognizer(
-//    _ gestureRecognizer: UIGestureRecognizer,
-//    shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer)
-//    -> Bool
-//  {
-//    true
-//  }
-//}
+extension RatesViewController: WineRateTableCellDelegate {
+  func didTapMore(reviewID: Int) {
+    interactor?.didTapMore(reviewID: reviewID)
+  }
+}

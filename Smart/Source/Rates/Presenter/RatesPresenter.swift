@@ -24,9 +24,6 @@ final class RatesPresenter {
 
   weak var viewController: RatesViewControllerProtocol?
 
-  // MARK: Private
-
-  private typealias ViewModel = RatesViewModel
 }
 
 // MARK: RatesPresenterProtocol
@@ -52,33 +49,33 @@ extension RatesPresenter: RatesPresenterProtocol {
 //    ]), navigationTitle: localized("reviews").firstLetterUppercased()))
   }
 
-  func update(reviews: [Review], needLoadMore: Bool) {
-//    var items: [ReviewsViewModel.Item] = reviews.map { review -> ReviewsViewModel.Item in
-//
-//      let dateText: String?
-//
-//      if review.updateDate == nil {
-//        dateText = review.publicationDate.toDate()
-//      } else {
-//        dateText = review.updateDate.toDate()
-//      }
-//
-//      return .review(
-//        ReviewCellViewModel(
-//          id: review.id,
-//          userNameText: nil,
-//          dateText: dateText,
-//          reviewText: review.comment,
-//          rate: review.rating))
-//    }
-//
-//    if needLoadMore {
-//      items.append(.loading)
-//    }
-//
-//    let viewModel = RatesViewModel(
-//      state: .normal(items: items),
-//      navigationTitle: localized("reviews").firstLetterUppercased())
-//    viewController?.updateUI(viewModel: viewModel)
+  func update(reviews: [ReviewedWine], needLoadMore: Bool) {
+    var items: [RatesViewModel.Item] = reviews.compactMap { reviewedWine -> RatesViewModel.Item? in
+      if
+        let review = reviewedWine.review,
+        let wine = reviewedWine.wine
+      {
+        return .review(
+          WineRateView.Content.init(
+            wineID: wine.id,
+            reviewID: review.id,
+            bottleURL: wine.mainImageUrl,
+            titleText: wine.title,
+            reviewText: review.comment,
+            readMoreText: localized("more").firstLetterUppercased(),
+            wineryText: wine.winery?.title,
+            starValue: wine.rating))
+      }
+      return nil
+    }
+
+    if needLoadMore {
+      items.append(.loading)
+    }
+
+    let viewModel = RatesViewModel(
+      state: .normal(items: items),
+      navigationTitle: localized("reviews").firstLetterUppercased())
+    viewController?.updateUI(viewModel: viewModel)
   }
 }

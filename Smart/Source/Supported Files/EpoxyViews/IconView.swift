@@ -23,7 +23,7 @@ final class IconView: UIImageView, EpoxyableView {
       layer.cornerRadius = size.height / 2
       clipsToBounds = true
     }
-    contentMode = .scaleAspectFill
+    contentMode = .scaleAspectFit
     setContentHuggingPriority(.required, for: .vertical)
     setContentHuggingPriority(.required, for: .horizontal)
     setContentCompressionResistancePriority(.required, for: .horizontal)
@@ -58,6 +58,7 @@ final class IconView: UIImageView, EpoxyableView {
     enum Image {
       case local(UIImage?)
       case remote(url: String?)
+      case bottle(url: String?)
       case none
     }
 
@@ -69,6 +70,9 @@ final class IconView: UIImageView, EpoxyableView {
         return lhsImage == rhsImage
 
       case (.remote(let lhsURL), .remote(let rhsURL)):
+        return lhsURL == rhsURL
+
+      case (.bottle(let lhsURL), .bottle(let rhsURL)):
         return lhsURL == rhsURL
 
       default:
@@ -91,6 +95,9 @@ final class IconView: UIImageView, EpoxyableView {
 
     case .remote(let url):
       loadImage(url: url?.toURL)
+
+    case .bottle(let url):
+      loadBottle(url: url?.toURL)
 
     case .none:
       image = nil

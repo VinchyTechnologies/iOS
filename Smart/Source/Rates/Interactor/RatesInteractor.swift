@@ -7,6 +7,8 @@
 //
 
 import Core
+import FirebaseDynamicLinks
+import VinchyAuthorization
 import VinchyCore
 
 // MARK: - C
@@ -34,11 +36,12 @@ final class RatesInteractor {
 
   // MARK: Private
 
+  private let authService = AuthService.shared
   private let input: RatesInput
   private let router: RatesRouterProtocol
   private let presenter: RatesPresenterProtocol
-  private let stateMachine = PagingStateMachine<[Review]>()
-  private var reviews: [Review] = []
+  private let stateMachine = PagingStateMachine<[ReviewedWine]>()
+  private var reviews: [ReviewedWine] = []
 
   private func configureStateMachine() {
     stateMachine.observe { [weak self] oldState, newState, _ in
@@ -60,18 +63,16 @@ final class RatesInteractor {
   }
 
   private func loadData(offset: Int) {
-//    Reviews.shared.getReviews(
-//      wineID: nil,
-//      accountID: UserDefaultsConfig.accountID,
-//      offset: offset,
-//      limit: C.limit) { [weak self] result in
-//        switch result {
-//        case .success(let data):
-//          self?.stateMachine.invokeSuccess(with: data)
-//
-//        case .failure(let error):
-//          self?.stateMachine.fail(with: error)
-//        }
+//    if let accountId = authService.currentUser?.accountID {
+    Wines.shared.getReviewedWines(accountId: 78, offset: offset, limit: C.limit) { [weak self] result in
+      switch result {
+      case .success(let data):
+        self?.stateMachine.invokeSuccess(with: data)
+
+      case .failure(let error):
+        self?.stateMachine.fail(with: error)
+      }
+    }
 //    }
   }
 
@@ -83,7 +84,7 @@ final class RatesInteractor {
     stateMachine.load(offset: reviews.count)
   }
 
-  private func handleLoadedData(_ data: [Review], oldState: PagingState<[Review]>) {
+  private func handleLoadedData(_ data: [ReviewedWine], oldState: PagingState<[ReviewedWine]>) {
     reviews += data
     let needLoadMore: Bool
     switch oldState {
@@ -91,7 +92,7 @@ final class RatesInteractor {
       needLoadMore = false
 
     case .loading(let offset):
-      needLoadMore = reviews.count == offset + C.limit
+      needLoadMore = !data.isEmpty//reviews.count == offset + C.limit
     }
 
     showData(needLoadMore: needLoadMore)
@@ -114,17 +115,75 @@ final class RatesInteractor {
 // MARK: RatesInteractorProtocol
 
 extension RatesInteractor: RatesInteractorProtocol {
-  func viewDidLoad() {
-    presenter.startShimmer()
-    loadInitData()
+
+  func didPullToRefresh() {
+
   }
 
-  func willDisplayLoadingView() {
-    loadMoreData()
+  func didSwipeToShare(reviewID: Int, sourceView: UIView) {
+    guard let wine = reviews.first(where: { $0.review?.id == reviewID })?.wine else { return }
+
+    var components = URLComponents()
+    components.scheme = Scheme.https.rawValue
+    components.host = domain
+    components.path = "/wines/" + String(wine.id)
+
+    guard let linkParameter = components.url else {
+      return
+    }
+
+    guard
+      let shareLink = DynamicLinkComponents(
+        link: linkParameter,
+        domainURIPrefix: "https://vinchy.page.link")
+    else {
+      return
+    }
+
+    if let bundleID = Bundle.main.bundleIdentifier {
+      shareLink.iOSParameters = DynamicLinkIOSParameters(bundleID: bundleID)
+    }
+    shareLink.iOSParameters?.appStoreID = "1536720416"
+    shareLink.socialMetaTagParameters = DynamicLinkSocialMetaTagParameters()
+    shareLink.socialMetaTagParameters?.title = wine.title
+    shareLink.socialMetaTagParameters?.imageURL = wine.mainImageUrl?.toURL
+
+    shareLink.shorten { [weak self] url, _, error in
+      if error != nil {
+        return
+      }
+
+      guard let url = url else { return }
+
+      let items = [wine.title, url] as [Any]
+      self?.router.presentActivityViewController(items: items, sourceView: sourceView)
+    }
   }
 
-  func didSelectReview(id: Int) {
-    guard let review = reviews.first(where: { $0.id == id }) else {
+  func didSwipeToEdit(reviewID: Int) {
+    guard
+      let review = reviews.first(where: { $0.review?.id == reviewID }),
+      let wineID = review.wine?.id
+    else {
+      return
+    }
+
+    router.presentWriteReviewViewController(
+      reviewID: review.review?.id,
+      wineID: wineID,
+      rating: review.review?.rating ?? 0,
+      reviewText: review.review?.comment)
+  }
+
+  func didSwipeToDelete(reviewID: Int) {
+    Reviews.shared
+  }
+
+  func didTapMore(reviewID: Int) {
+    guard
+      let reviewedWine = reviews.first(where: { $0.review?.id == reviewID }),
+      let review = reviewedWine.review
+    else {
       return
     }
 
@@ -142,5 +201,18 @@ extension RatesInteractor: RatesInteractorProtocol {
         author: nil, // TODO: - Author
         date: dateText,
         reviewText: review.comment))
+  }
+
+  func viewDidLoad() {
+    presenter.startShimmer()
+    loadInitData()
+  }
+
+  func willDisplayLoadingView() {
+    loadMoreData()
+  }
+
+  func didSelectReview(wineID: Int64) {
+    router.pushToWineDetailViewController(wineID: wineID)
   }
 }

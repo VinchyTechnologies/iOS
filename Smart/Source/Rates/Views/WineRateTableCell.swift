@@ -11,6 +11,12 @@ import Display
 import Epoxy
 import UIKit
 
+// MARK: - WineRateTableCellDelegate
+
+public protocol WineRateTableCellDelegate: AnyObject {
+  func didTapMore(reviewID: Int)
+}
+
 // MARK: - WineRateTableCell
 
 public final class WineRateTableCell: UITableViewCell, Reusable {
@@ -19,6 +25,8 @@ public final class WineRateTableCell: UITableViewCell, Reusable {
 
   override public init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
+
+    selectionStyle = .none
 
     backgroundColor = .mainBackground
     contentView.addSubview(view)
@@ -30,12 +38,24 @@ public final class WineRateTableCell: UITableViewCell, Reusable {
       view.topAnchor.constraint(greaterThanOrEqualTo: contentView.topAnchor, constant: 0),
       view.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: 0),
     ])
+
+    view.setBehaviors(.init(didTapMore: { [weak self] reviewID in
+      self?.delegate?.didTapMore(reviewID: reviewID)
+    }))
   }
 
   @available(*, unavailable)
   required init?(coder _: NSCoder) { fatalError() }
 
+  // MARK: Public
+
+  public override func setHighlighted(_ highlighted: Bool, animated: Bool) {
+    backgroundColor = highlighted ? .option : .mainBackground
+  }
+
   // MARK: Internal
+
+  weak var delegate: WineRateTableCellDelegate?
 
   static func height(for content: WineRateView.Content, width: CGFloat) -> CGFloat {
     WineRateView.height(for: content, width: width)
@@ -83,7 +103,9 @@ public final class WineRateView: UIView, EpoxyableView {
   }
 
   public struct Content: Equatable, ViewModelProtocol {
-    let bottleURL: URL?
+    let wineID: Int64
+    let reviewID: Int
+    let bottleURL: String?
     let titleText: String?
     let reviewText: String?
     let readMoreText: String?
@@ -95,13 +117,17 @@ public final class WineRateView: UIView, EpoxyableView {
     case bottle, title, message, read, contentGroup, nameGroup, topSpacer, bottomSpacer, winery, star
   }
 
+  public struct Behaviours {
+    public var didTapMore: ((_ reviewID: Int) -> Void)?
+  }
+
   public static var vSpacing: CGFloat {
     UIDevice.current.userInterfaceIdiom == .pad ? 8 : 4
   }
 
   public static func height(for content: Content, width: CGFloat) -> CGFloat {
 
-    var width = width - 56 - 24 - 24
+    let width = width - 56 - 24 - 24
     var height: CGFloat = 0
 
     if let wineryText = content.wineryText {
@@ -131,12 +157,13 @@ public final class WineRateView: UIView, EpoxyableView {
 
     height += 24 + 24
 
-    return max(250, height)
+    return max(150, height)
   }
 
   public func setContent(_ content: Content, animated: Bool) {
+    reviewId = content.reviewID
     group.setItems {
-      avatar
+      avatar(url: content.bottleURL)
       VGroupItem(
         dataID: DataID.contentGroup,
         style: .init(alignment: .leading, spacing: Self.vSpacing))
@@ -157,23 +184,29 @@ public final class WineRateView: UIView, EpoxyableView {
           messagePreview(reviewText)
         }
 
-        if let readMoreText = content.readMoreText {
+        if let readMoreText = content.readMoreText, content.reviewText != nil {
           seenText(readMoreText)
         }
       }
     }
   }
 
+  public func setBehaviors(_ behaviors: Behaviours) {
+    didTapMore = behaviors.didTapMore
+  }
+
   // MARK: Private
 
-  private let group = HGroup(alignment: .bottom, spacing: 24)
+  private var reviewId: Int?
+  private var didTapMore: ((_ reviewID: Int) -> Void)?
+  private let group = HGroup(alignment: .center, spacing: 24)
   private let style: Style
 
-  private var avatar: GroupItemModeling {
+  private func avatar(url: String?) -> GroupItemModeling {
     IconView.groupItem(
       dataID: DataID.bottle,
-      content: .init(image: .remote(url: imageURL(from: 891))),
-      style: .init(size: .init(width: 56, height: 200)))
+      content: .init(image: .bottle(url: url)),
+      style: .init(size: .init(width: 56, height: 120)))
   }
 
   private func stars(_ value: Double) -> GroupItemModeling {
@@ -212,7 +245,10 @@ public final class WineRateView: UIView, EpoxyableView {
       dataID: DataID.read,
       content: LinkButton.Content.init(title: seenText),
       behaviors: .init(didTap: { [weak self] _ in
-        print("123")
+        guard let reviewId = self?.reviewId else {
+          return
+        }
+        self?.didTapMore?(reviewId)
       }),
       style: LinkButton.Style.init(kind: .normal))
   }

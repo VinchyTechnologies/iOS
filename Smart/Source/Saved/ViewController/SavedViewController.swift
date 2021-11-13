@@ -8,6 +8,7 @@
 
 import Display
 import Epoxy
+import StringFormatting
 import UIKit
 
 // MARK: - SavedViewController
@@ -27,8 +28,6 @@ final class SavedViewController: UIViewController, SavedViewControllerProtocol {
     super.viewDidLoad()
 
     view.backgroundColor = .mainBackground
-
-    navigationItem.title = "Saved"
     navigationItem.largeTitleDisplayMode = .never
 
     pagingViewController.collectionView.delaysContentTouches = false
@@ -47,7 +46,12 @@ final class SavedViewController: UIViewController, SavedViewControllerProtocol {
 
     topBarInstaller.install()
 
-    updateUI(viewModel: .init(sections: [.liked, .rates], navigationTitleText: "Saved", topTabBarViewModel: .init(items: [.init(titleText: "Liked"), .init(titleText: "Rated")], initiallySelectedIndex: 0)))
+    updateUI(viewModel: .init(
+      sections: [.liked, .rates],
+      navigationTitleText: localized("favourites").firstLetterUppercased(),
+      topTabBarViewModel: .init(
+        items: [.init(titleText: "Liked"), .init(titleText: "Rated")],
+        initiallySelectedIndex: 0)))
 
   }
 
@@ -72,7 +76,7 @@ final class SavedViewController: UIViewController, SavedViewControllerProtocol {
         dataID: nil,
         content: viewModel.topTabBarViewModel,
         behaviors: .init(didSelect: { [weak self] index in
-          self?.pagingViewController.select(index: index)
+          self?.pagingViewController.select(index: index, animated: true)
         }),
         style: .init())
         .makeCoordinator(ScrollPercentageBarCoordinator.init),
@@ -117,6 +121,7 @@ extension SavedViewController: PagingViewControllerDelegate {
 extension SavedViewController {
   func updateUI(viewModel: SavedViewModel) {
     self.viewModel = viewModel
+    navigationItem.title = viewModel.navigationTitleText
 
 //    viewControllers = viewModel.sections.compactMap { section in
 //      switch section {

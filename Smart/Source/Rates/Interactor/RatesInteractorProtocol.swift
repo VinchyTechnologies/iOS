@@ -6,10 +6,15 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import UIKit.UIView
 
 protocol RatesInteractorProtocol: AnyObject {
   func viewDidLoad()
   func willDisplayLoadingView()
-  func didSelectReview(id: Int)
+  func didSelectReview(wineID: Int64)
+  func didTapMore(reviewID: Int)
+  func didSwipeToDelete(reviewID: Int)
+  func didSwipeToEdit(reviewID: Int)
+  func didSwipeToShare(reviewID: Int, sourceView: UIView)
+  func didPullToRefresh()
 }

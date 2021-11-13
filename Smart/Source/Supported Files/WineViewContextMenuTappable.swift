@@ -77,7 +77,7 @@ extension WineViewContextMenuTappable {
           guard let url = url else { return }
 
           let items = [contextMenuWine.title, url] as [Any]
-          self?.contextMenuRouter.presentActivityViewController(items: items, source: sourceView)
+          self?.contextMenuRouter.presentActivityViewController(items: items, sourceView: sourceView)
         }
 
       case .failure(let errorResponse):

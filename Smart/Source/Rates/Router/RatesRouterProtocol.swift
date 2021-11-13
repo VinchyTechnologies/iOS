@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol RatesRouterProtocol: ReviewDetailRoutable {
+protocol RatesRouterProtocol: ReviewDetailRoutable, WineDetailRoutable, WriteReviewRoutable, ActivityRoutable {
 
 }

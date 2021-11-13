@@ -18,6 +18,7 @@
 		748491E226EE185C006A8851 /* NearestPartner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748491E126EE185C006A8851 /* NearestPartner.swift */; };
 		8A313C112645B72C009F2165 /* PartnerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313C102645B72C009F2165 /* PartnerInfo.swift */; };
 		8A60593926ADD75F005D609A /* Recommendations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A60593826ADD75F005D609A /* Recommendations.swift */; };
+		8A7D7925273ED7E7005F075A /* ReviewedWine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D7924273ED7E7005F075A /* ReviewedWine.swift */; };
 		8ACE3AF027205D930035BE47 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACE3AEF27205D930035BE47 /* Rating.swift */; };
 		8AD7A1D826388801007D4273 /* Partners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7A1D726388801007D4273 /* Partners.swift */; };
 		8AD7A1DB2638894A007D4273 /* PartnerOnMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7A1DA2638894A007D4273 /* PartnerOnMap.swift */; };
@@ -51,6 +52,7 @@
 		748491E126EE185C006A8851 /* NearestPartner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestPartner.swift; sourceTree = "<group>"; };
 		8A313C102645B72C009F2165 /* PartnerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerInfo.swift; sourceTree = "<group>"; };
 		8A60593826ADD75F005D609A /* Recommendations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recommendations.swift; sourceTree = "<group>"; };
+		8A7D7924273ED7E7005F075A /* ReviewedWine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewedWine.swift; sourceTree = "<group>"; };
 		8ACE3AEF27205D930035BE47 /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		8AD7A1D726388801007D4273 /* Partners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Partners.swift; sourceTree = "<group>"; };
 		8AD7A1DA2638894A007D4273 /* PartnerOnMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerOnMap.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 				8AD7A1DA2638894A007D4273 /* PartnerOnMap.swift */,
 				8ACE3AEF27205D930035BE47 /* Rating.swift */,
 				4495628F25E2F8AB005E79DA /* Review.swift */,
+				8A7D7924273ED7E7005F075A /* ReviewedWine.swift */,
 				CA7CBC25257F82D400C81476 /* ShortWine.swift */,
 				CA7B825124EC742600991F24 /* Sugar.swift */,
 				4410AE2F25E5479400A84FF9 /* UpdateTokensResponse.swift */,
@@ -274,6 +277,7 @@
 				CA7B825B24EC74B200991F24 /* Wines.swift in Sources */,
 				CA7A87F0250287BB00AAD10F /* Winery.swift in Sources */,
 				CA7B825224EC742600991F24 /* Sugar.swift in Sources */,
+				8A7D7925273ED7E7005F075A /* ReviewedWine.swift in Sources */,
 				4495034125CAE82D006000F8 /* EmptyResponse.swift in Sources */,
 				8A60593926ADD75F005D609A /* Recommendations.swift in Sources */,
 				CA7B824624EC72F500991F24 /* EndpointProtocol.swift in Sources */,

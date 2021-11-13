@@ -12,4 +12,4 @@ NSUserTrackingUsageDescription = "Этот идентификатор будет
 ORIGINAL_APP_NAME = "Vinchy";
 LOCALIZED_APP_NAME = "Винчи";
 SHORTCUTITEM_SEARCH = "Поиск";
-SHORTCUTITEM_LOVE = "Любимые";
+SHORTCUTITEM_LOVE = "Вишлист";

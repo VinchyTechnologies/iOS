@@ -13,6 +13,7 @@ private enum WinesEndpoint: EndpointProtocol {
   case detail(wineID: Int64)
   case filter(param: [(String, String)])
   case search(title: String, offset: Int, limit: Int)
+  case reviewdWines(accountId: Int, offset: Int, limit: Int)
 
   // MARK: Internal
 
@@ -33,12 +34,15 @@ private enum WinesEndpoint: EndpointProtocol {
 
     case .search:
       return "/wines"
+
+    case .reviewdWines:
+      return "/reviewed_wines"
     }
   }
 
   var method: HTTPMethod {
     switch self {
-    case .detail, .random, .filter, .search:
+    case .detail, .random, .filter, .search, .reviewdWines:
       return .get
     }
   }
@@ -57,6 +61,13 @@ private enum WinesEndpoint: EndpointProtocol {
     case .search(let title, let offset, let limit):
       return [
         ("title", title),
+        ("offset", String(offset)),
+        ("limit", String(limit)),
+      ]
+
+    case .reviewdWines(let accountId, let offset, let limit):
+      return [
+        ("account_id", String(accountId)),
         ("offset", String(offset)),
         ("limit", String(limit)),
       ]
@@ -90,6 +101,20 @@ public final class Wines {
 
   public func getWineBy(title: String, offset: Int, limit: Int, completion: @escaping (Result<[ShortWine], APIError>) -> Void) {
     api.request(endpoint: WinesEndpoint.search(title: title, offset: offset, limit: limit), completion: completion)
+  }
+
+  public func getReviewedWines(
+    accountId: Int,
+    offset: Int,
+    limit: Int,
+    completion: @escaping(Result<[ReviewedWine], APIError>) -> Void)
+  {
+    api.request(
+      endpoint: WinesEndpoint.reviewdWines(
+        accountId: accountId,
+        offset: offset,
+        limit: limit),
+      completion: completion)
   }
 
   // MARK: Private
