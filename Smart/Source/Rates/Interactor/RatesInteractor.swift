@@ -34,6 +34,11 @@ final class RatesInteractor {
     configureStateMachine()
   }
 
+  // MARK: Internal
+
+  var needLoadMore: Bool = true
+  var numberDeletedReview = 0
+
   // MARK: Private
 
   private let authService = AuthService.shared
@@ -50,11 +55,11 @@ final class RatesInteractor {
       case .loaded(let data):
         self.handleLoadedData(data, oldState: oldState)
 
-      case .loading(let offset):
+      case .loading(let offset, _):
         self.loadData(offset: offset)
 
       case .error(let error):
-        self.showData(error: error, needLoadMore: false)
+        self.showData(error: error, needLoadMore: false, wasUsedRefreshControl: false)
 
       case .initial:
         break
@@ -76,38 +81,41 @@ final class RatesInteractor {
 //    }
   }
 
-  private func loadInitData() {
-    stateMachine.load(offset: .zero)
+  private func loadInitData(usingRefreshControl: Bool) {
+    stateMachine.load(offset: .zero, usingRefreshControl: usingRefreshControl)
   }
 
-  private func loadMoreData() {
+  private func loadMoreData(usingRefreshControl: Bool) {
     stateMachine.load(offset: reviews.count)
   }
 
   private func handleLoadedData(_ data: [ReviewedWine], oldState: PagingState<[ReviewedWine]>) {
     reviews += data
+    var wasUsedRefreshControl: Bool = false
     let needLoadMore: Bool
     switch oldState {
     case .error, .loaded, .initial:
       needLoadMore = false
 
-    case .loading(let offset):
-      needLoadMore = !data.isEmpty//reviews.count == offset + C.limit
+    case .loading(let offset, let usingRefreshControl):
+      wasUsedRefreshControl = usingRefreshControl
+      needLoadMore = reviews.count == offset + C.limit + numberDeletedReview //!data.isEmpty//reviews.count == offset + C.limit
     }
 
-    showData(needLoadMore: needLoadMore)
+    self.needLoadMore = needLoadMore
+    showData(needLoadMore: needLoadMore, wasUsedRefreshControl: wasUsedRefreshControl)
   }
 
-  private func showData(error: Error? = nil, needLoadMore: Bool) {
+  private func showData(error: Error? = nil, needLoadMore: Bool, wasUsedRefreshControl: Bool) {
     if let error = error {
-      presenter.update(reviews: reviews, needLoadMore: needLoadMore)
+      presenter.update(reviews: reviews, needLoadMore: needLoadMore, wasUsedRefreshControl: wasUsedRefreshControl)
       if reviews.isEmpty {
         presenter.showInitiallyLoadingError(error: error)
       } else {
         presenter.showErrorAlert(error: error)
       }
     } else {
-      presenter.update(reviews: reviews, needLoadMore: needLoadMore)
+      presenter.update(reviews: reviews, needLoadMore: needLoadMore, wasUsedRefreshControl: wasUsedRefreshControl)
     }
   }
 }
@@ -117,7 +125,8 @@ final class RatesInteractor {
 extension RatesInteractor: RatesInteractorProtocol {
 
   func didPullToRefresh() {
-
+    reviews.removeAll()
+    loadInitData(usingRefreshControl: true)
   }
 
   func didSwipeToShare(reviewID: Int, sourceView: UIView) {
@@ -176,7 +185,17 @@ extension RatesInteractor: RatesInteractorProtocol {
   }
 
   func didSwipeToDelete(reviewID: Int) {
-    Reviews.shared
+    Reviews.shared.deleteReview(reviewID: reviewID) { [weak self] result in
+      guard let self = self else { return }
+      switch result {
+      case .success:
+        self.reviews.removeAll(where: { $0.review?.id == reviewID })
+        self.showData(needLoadMore: self.needLoadMore, wasUsedRefreshControl: false)
+
+      case .failure(let error):
+        self.showData(error: error, needLoadMore: self.needLoadMore, wasUsedRefreshControl: false)
+      }
+    }
   }
 
   func didTapMore(reviewID: Int) {
@@ -205,11 +224,11 @@ extension RatesInteractor: RatesInteractorProtocol {
 
   func viewDidLoad() {
     presenter.startShimmer()
-    loadInitData()
+    loadInitData(usingRefreshControl: false)
   }
 
   func willDisplayLoadingView() {
-    loadMoreData()
+    loadMoreData(usingRefreshControl: false)
   }
 
   func didSelectReview(wineID: Int64) {

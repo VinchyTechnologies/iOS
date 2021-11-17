@@ -59,7 +59,7 @@ final class StoresInteractor {
       case .loaded(let data):
         self.handleLoadedData(data, oldState: oldState)
 
-      case .loading(let offset):
+      case .loading(let offset, _):
         self.loadData(offset: offset)
 
       case .error(let error):
@@ -77,7 +77,7 @@ final class StoresInteractor {
     case .error, .loaded, .initial:
       needLoadMore = false
 
-    case .loading(let offset):
+    case .loading(let offset, _):
       needLoadMore = partnersInfo.count == offset + C.limit
     }
 

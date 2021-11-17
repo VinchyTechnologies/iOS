@@ -14,6 +14,17 @@ import UIKit
 
 final class RatesViewController: UIViewController {
 
+  // MARK: Public
+
+  public lazy var pullToRefreshControl: UIRefreshControl = {
+    let refreshControl = UIRefreshControl()
+    refreshControl.addTarget(
+      self,
+      action: #selector(didTriggerPullToRefreshControl),
+      for: .valueChanged)
+    return refreshControl
+  }()
+
   // MARK: Internal
 
   var interactor: RatesInteractorProtocol?
@@ -36,6 +47,7 @@ final class RatesViewController: UIViewController {
     tableView.backgroundColor = .mainBackground
     tableView.register(LoadingIndicatorTableCell.self, forCellReuseIdentifier: LoadingIndicatorTableCell.reuseId)
     tableView.register(WineRateTableCell.self, forCellReuseIdentifier: WineRateTableCell.reuseId)
+    tableView.refreshControl = pullToRefreshControl
     return tableView
   }()
 
@@ -49,6 +61,11 @@ final class RatesViewController: UIViewController {
 
       tableView.reloadData()
     }
+  }
+
+  @objc
+  private func didTriggerPullToRefreshControl() {
+    interactor?.didPullToRefresh()
   }
 
   private func handleSwipeToDelete() {
@@ -199,6 +216,11 @@ extension RatesViewController: UITableViewDelegate {
 // MARK: RatesViewControllerProtocol
 
 extension RatesViewController: RatesViewControllerProtocol {
+
+  func stopPullRefreshing() {
+    pullToRefreshControl.endRefreshing()
+  }
+
   func updateUI(errorViewModel: ErrorViewModel) {
     DispatchQueue.main.async {
       let errorView = ErrorView(frame: self.view.frame)

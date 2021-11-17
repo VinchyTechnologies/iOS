@@ -68,7 +68,6 @@ final class VinchyViewController: CollectionViewController {
     collectionView.delaysContentTouches = false
     collectionView.keyboardDismissMode = .onDrag
     collectionView.pullToRefreshEnabled = true
-    collectionView.pullToRefreshControl.tintColor = .dark
     collectionView.didTriggerPullToRefresh = { [weak self] _ in
       self?.didPullToRefresh()
     }
@@ -103,7 +102,7 @@ final class VinchyViewController: CollectionViewController {
       sections.compactMap { section in
         switch section {
         case .common(let content):
-          let height = collectionViewSize.height - (navigationController?.navigationBar.frame.height ?? 0) - (tabBarController?.tabBar.frame.height ?? 0)
+          let height = collectionViewSize.height - (navigationController?.navigationBar.frame.height ?? 0) //- (tabBarController?.tabBar.frame.height ?? 0)
           return SectionModel(dataID: UUID()) {
             EpoxyErrorView.itemModel(
               dataID: UUID(),

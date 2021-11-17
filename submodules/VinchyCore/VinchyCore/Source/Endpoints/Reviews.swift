@@ -17,6 +17,7 @@ private enum ReviewsEndpoint: EndpointProtocol {
   case create(wineID: Int64, accountID: Int, rating: Double, comment: String?)
   case update(reviewID: Int, rating: Double, comment: String?)
   case rating(wineID: Int64)
+  case delete(reviewID: Int)
 
   // MARK: Internal
 
@@ -30,6 +31,9 @@ private enum ReviewsEndpoint: EndpointProtocol {
       return "/reviews"
 
     case .update(let reviewID, _, _):
+      return "/reviews/" + String(reviewID)
+
+    case .delete(let reviewID):
       return "/reviews/" + String(reviewID)
 
     case .rating:
@@ -50,6 +54,9 @@ private enum ReviewsEndpoint: EndpointProtocol {
 
     case .rating:
       return .get
+
+    case .delete:
+      return .delete
     }
   }
 
@@ -83,6 +90,9 @@ private enum ReviewsEndpoint: EndpointProtocol {
 
     case .rating(let wineID):
       return [("wine_id", String(wineID))]
+
+    case .delete(let reviewID):
+      return [("review_id", reviewID)]
     }
   }
 
@@ -95,7 +105,7 @@ private enum ReviewsEndpoint: EndpointProtocol {
         "x-currency": UserDefaultsConfig.currency,
       ]
 
-    case .create, .update:
+    case .create, .update, .delete:
       return [
         "Authorization": "VFAXGm53nG7zBtEuF5DVAhK9YKuHBJ9xTjuCeFyHDxbP4s6gj6",
         "accept-language": Locale.current.languageCode ?? "en",
@@ -175,6 +185,20 @@ public final class Reviews {
     completion: @escaping (Result<Rating, APIError>) -> Void)
   {
     api.request(endpoint: ReviewsEndpoint.rating(wineID: wineID), completion: completion)
+  }
+
+  public func deleteReview(
+    reviewID: Int,
+    completion: @escaping (Result<Rating, APIError>) -> Void)
+  {
+    let accountID = UserDefaultsConfig.accountID // TODO: - remove from core
+    let refreshTokenCompletion = mapToRefreshTokenCompletion(accountID: accountID, completion: completion) { [weak self] in
+      self?.deleteReview(reviewID: reviewID, completion: completion)
+    }
+
+    api.request(
+      endpoint: ReviewsEndpoint.delete(reviewID: reviewID),
+      completion: refreshTokenCompletion)
   }
 
   // MARK: Private

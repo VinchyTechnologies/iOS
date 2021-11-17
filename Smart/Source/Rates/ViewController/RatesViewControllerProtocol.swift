@@ -12,4 +12,5 @@ import Display
 protocol RatesViewControllerProtocol: Alertable {
   func updateUI(viewModel: RatesViewModel)
   func updateUI(errorViewModel: ErrorViewModel)
+  func stopPullRefreshing()
 }

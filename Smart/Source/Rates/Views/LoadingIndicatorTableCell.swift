@@ -16,6 +16,8 @@ public final class LoadingIndicatorTableCell: UITableViewCell, Loadable, Reusabl
   override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
     super.init(style: style, reuseIdentifier: reuseIdentifier)
     selectionStyle = .none
+    contentView.backgroundColor = .mainBackground
+    backgroundColor = .mainBackground
     addLoader()
     startLoadingAnimation()
   }

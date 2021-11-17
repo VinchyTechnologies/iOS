@@ -49,7 +49,7 @@ extension RatesPresenter: RatesPresenterProtocol {
 //    ]), navigationTitle: localized("reviews").firstLetterUppercased()))
   }
 
-  func update(reviews: [ReviewedWine], needLoadMore: Bool) {
+  func update(reviews: [ReviewedWine], needLoadMore: Bool, wasUsedRefreshControl: Bool) {
     var items: [RatesViewModel.Item] = reviews.compactMap { reviewedWine -> RatesViewModel.Item? in
       if
         let review = reviewedWine.review,
@@ -77,5 +77,8 @@ extension RatesPresenter: RatesPresenterProtocol {
       state: .normal(items: items),
       navigationTitle: localized("reviews").firstLetterUppercased())
     viewController?.updateUI(viewModel: viewModel)
+//    if wasUsedRefreshControl {
+    viewController?.stopPullRefreshing()
+//    }
   }
 }

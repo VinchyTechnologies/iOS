@@ -11,14 +11,14 @@
 public enum PagingState<Data> {
   case initial
   case loaded(Data)
-  case loading(offset: Int)
+  case loading(offset: Int, usingRefreshControl: Bool = false)
   case error(Error)
 }
 
 // MARK: - PagingEvent
 
 public enum PagingEvent<Data> {
-  case load(offset: Int)
+  case load(offset: Int, usingRefreshControl: Bool = false)
   case success(Data)
   case fail(Error)
 }
@@ -32,14 +32,14 @@ public final class PagingStateMachine<Data>: StateMachine<PagingState<Data>, Pag
   public init() {
     super.init(state: .initial) { currentState, event in
       switch (currentState, event) {
-      case (.initial, .load(let offset)):
-        return .loading(offset: offset)
+      case (.initial, .load(let offset, let usingRefreshControl)):
+        return .loading(offset: offset, usingRefreshControl: usingRefreshControl)
 
-      case (.loaded, .load(let offset)):
-        return .loading(offset: offset)
+      case (.loaded, .load(let offset, let usingRefreshControl)):
+        return .loading(offset: offset, usingRefreshControl: usingRefreshControl)
 
-      case (.error, .load(let offset)):
-        return .loading(offset: offset)
+      case (.error, .load(let offset, let usingRefreshControl)):
+        return .loading(offset: offset, usingRefreshControl: usingRefreshControl)
 
       case (.loading, .success(let data)):
         return .loaded(data)
@@ -55,8 +55,8 @@ public final class PagingStateMachine<Data>: StateMachine<PagingState<Data>, Pag
 
   // MARK: Public
 
-  public func load(offset: Int) {
-    process(event: .load(offset: offset))
+  public func load(offset: Int, usingRefreshControl: Bool = false) {
+    process(event: .load(offset: offset, usingRefreshControl: usingRefreshControl))
   }
 
   public func invokeSuccess(with data: Data) {

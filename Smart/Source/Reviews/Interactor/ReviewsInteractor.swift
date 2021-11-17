@@ -47,7 +47,7 @@ final class ReviewsInteractor {
       case .loaded(let data):
         self.handleLoadedData(data, oldState: oldState)
 
-      case .loading(let offset):
+      case .loading(let offset, _):
         self.loadData(offset: offset)
 
       case .error(let error):
@@ -90,7 +90,7 @@ final class ReviewsInteractor {
     case .error, .loaded, .initial:
       needLoadMore = false
 
-    case .loading(let offset):
+    case .loading(let offset, _):
       needLoadMore = reviews.count == offset + C.limit
     }
 
