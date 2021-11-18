@@ -64,6 +64,7 @@ PODS:
     - FirebaseInstallations (~> 7.0)
     - GoogleUtilities/Environment (~> 7.0)
     - "GoogleUtilities/NSData+zlib (~> 7.0)"
+  - FittedSheets (2.4.2)
   - FSPagerView (0.8.3)
   - Google-Mobile-Ads-SDK (7.68.0):
     - GoogleAppMeasurement (~> 7.0)
@@ -110,6 +111,7 @@ DEPENDENCIES:
   - Firebase/Analytics
   - Firebase/DynamicLinks
   - Firebase/RemoteConfig
+  - FittedSheets
   - FSPagerView
   - Google-Mobile-Ads-SDK
   - SwiftLint
@@ -132,6 +134,7 @@ SPEC REPOS:
     - FirebaseDynamicLinks
     - FirebaseInstallations
     - FirebaseRemoteConfig
+    - FittedSheets
     - FSPagerView
     - Google-Mobile-Ads-SDK
     - GoogleAppMeasurement
@@ -159,6 +162,7 @@ SPEC CHECKSUMS:
   FirebaseDynamicLinks: dadf4564851de0ecdad2dab7fc2d1c401dcaa406
   FirebaseInstallations: 3de38553e86171b5f81d83cdeef63473d37bfdb0
   FirebaseRemoteConfig: 04cd72851dad51780aa66f05b01a7dd0b85cdbf5
+  FittedSheets: 661408776eb4ff514a31da75b3600bd7222b2b3d
   FSPagerView: 670405b2f18e2a87fa37f20b00de783e562c25a8
   Google-Mobile-Ads-SDK: 29bbdb182d69ff606cc0301da1590b40be8d2205
   GoogleAppMeasurement: 89e1a64593f968713b0506ba1b53b38a154bf9a5
@@ -169,6 +173,6 @@ SPEC CHECKSUMS:
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
 
-PODFILE CHECKSUM: 52fb67d7509683e00d7f4d7314f900c2e834411a
+PODFILE CHECKSUM: 9472b5f71026985df6bb79aee7387c6ee683d14a
 
 COCOAPODS: 1.11.2

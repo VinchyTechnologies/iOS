@@ -14,6 +14,7 @@ def commonPods
   pod 'Firebase/RemoteConfig'
   pod 'Firebase/Analytics'
   pod 'Epoxy'
+  pod 'FittedSheets'
 end
 
 target 'Smart' do
@@ -39,9 +40,15 @@ target 'CommonUI' do
   pod 'Epoxy'
 end
 
+target 'VinchyAuthorization' do
+  project 'submodules/VinchyAuthorization/VinchyAuthorization'
+  pod 'FittedSheets'
+end
+
 target 'VinchyAuthorizationApp' do
   project 'submodules/VinchyAuthorization/VinchyAuthorization'
   pod 'CocoaDebug', :configurations => ['Debug']
+  pod 'FittedSheets'
 end
 
 post_install do |installer|

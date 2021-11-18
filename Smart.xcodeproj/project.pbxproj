@@ -253,7 +253,6 @@
 		8A53D6E226C2E4AF001D9535 /* ImageOptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A53D6E126C2E4AF001D9535 /* ImageOptionView.swift */; };
 		8A53D6E626C2EB71001D9535 /* ShortInfoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A53D6E526C2EB71001D9535 /* ShortInfoView.swift */; };
 		8A5401CA26EFA894007247E5 /* StoreTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5401C926EFA894007247E5 /* StoreTitleView.swift */; };
-		8A63CC8B26753046003B1D4D /* FittedSheets in Frameworks */ = {isa = PBXBuildFile; productRef = 8A63CC8A26753046003B1D4D /* FittedSheets */; };
 		8A63CC8E2675308B003B1D4D /* Sheeeeeeeeet in Frameworks */ = {isa = PBXBuildFile; productRef = 8A63CC8D2675308B003B1D4D /* Sheeeeeeeeet */; };
 		8A63CC942675322D003B1D4D /* SPAlert in Frameworks */ = {isa = PBXBuildFile; productRef = 8A63CC932675322D003B1D4D /* SPAlert */; };
 		8A63CCB126754628003B1D4D /* CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24AEA24C32AE90057547F /* CommonUI.framework */; };
@@ -1040,7 +1039,6 @@
 				8A63CCB82675462E003B1D4D /* Display.framework in Frameworks */,
 				8A63CC8E2675308B003B1D4D /* Sheeeeeeeeet in Frameworks */,
 				8A63CCB42675462A003B1D4D /* Core.framework in Frameworks */,
-				8A63CC8B26753046003B1D4D /* FittedSheets in Frameworks */,
 				8A63CCC026754638003B1D4D /* VinchyCore.framework in Frameworks */,
 				8A63CCB126754628003B1D4D /* CommonUI.framework in Frameworks */,
 				8A63CCBA26754630003B1D4D /* LocationUI.framework in Frameworks */,
@@ -3550,7 +3548,6 @@
 			);
 			name = Smart;
 			packageProductDependencies = (
-				8A63CC8A26753046003B1D4D /* FittedSheets */,
 				8A63CC8D2675308B003B1D4D /* Sheeeeeeeeet */,
 				8A63CC932675322D003B1D4D /* SPAlert */,
 			);
@@ -3632,7 +3629,6 @@
 			);
 			mainGroup = CA472AB3245EDE2F009149FF;
 			packageReferences = (
-				8A63CC8926753046003B1D4D /* XCRemoteSwiftPackageReference "FittedSheets" */,
 				8A63CC8C2675308B003B1D4D /* XCRemoteSwiftPackageReference "Sheeeeeeeeet" */,
 				8A63CC922675322D003B1D4D /* XCRemoteSwiftPackageReference "SPAlert" */,
 			);
@@ -4662,14 +4658,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		8A63CC8926753046003B1D4D /* XCRemoteSwiftPackageReference "FittedSheets" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/gordontucker/FittedSheets.git";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 2.4.0;
-			};
-		};
 		8A63CC8C2675308B003B1D4D /* XCRemoteSwiftPackageReference "Sheeeeeeeeet" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/danielsaidi/Sheeeeeeeeet.git";
@@ -4689,11 +4677,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8A63CC8A26753046003B1D4D /* FittedSheets */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8A63CC8926753046003B1D4D /* XCRemoteSwiftPackageReference "FittedSheets" */;
-			productName = FittedSheets;
-		};
 		8A63CC8D2675308B003B1D4D /* Sheeeeeeeeet */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8A63CC8C2675308B003B1D4D /* XCRemoteSwiftPackageReference "Sheeeeeeeeet" */;
