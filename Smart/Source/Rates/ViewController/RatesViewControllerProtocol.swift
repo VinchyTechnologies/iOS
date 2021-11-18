@@ -9,8 +9,7 @@
 import CommonUI
 import Display
 
-protocol RatesViewControllerProtocol: Alertable {
+protocol RatesViewControllerProtocol: Alertable, Loadable {
   func updateUI(viewModel: RatesViewModel)
-  func updateUI(errorViewModel: ErrorViewModel)
   func stopPullRefreshing()
 }

@@ -283,13 +283,13 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
 
     let imageName = isDisliked(wine: wine) ? "heart.slash.fill" : "heart.slash"
 
-    let dislikeMenuItem = MenuItem(
-      title: presenter.dislikeText ?? "",
-      subtitle: nil,
-      value: WineDetailMoreActions.dislike,
-      image: UIImage(systemName: imageName),
-      isEnabled: true,
-      tapBehavior: .none)
+//    let dislikeMenuItem = MenuItem(
+//      title: presenter.dislikeText ?? "",
+//      subtitle: nil,
+//      value: WineDetailMoreActions.dislike,
+//      image: UIImage(systemName: imageName),
+//      isEnabled: true,
+//      tapBehavior: .none)
 
     let reportAnErrorMenuItem = MenuItem(
       title: presenter.reportAnErrorText ?? "",
@@ -299,7 +299,7 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
       isEnabled: true,
       tapBehavior: .none)
 
-    menuItems.append(dislikeMenuItem)
+//    menuItems.append(dislikeMenuItem)
     menuItems.append(reportAnErrorMenuItem)
 
     router.showMoreActionSheet(menuItems: menuItems, appearance: VinchyActionSheetAppearance(), button: button)

@@ -8,7 +8,9 @@
 
 import CommonUI
 import Core
+import Display
 import UIKit
+import VinchyAuthorization
 
 // MARK: - RatesViewController
 
@@ -26,6 +28,8 @@ final class RatesViewController: UIViewController {
   }()
 
   // MARK: Internal
+
+  private(set) var loadingIndicator = ActivityIndicatorView()
 
   var interactor: RatesInteractorProtocol?
 
@@ -56,7 +60,11 @@ final class RatesViewController: UIViewController {
       navigationItem.title = viewModel.navigationTitle
       switch viewModel.state {
       case .normal:
+        hideErrorView()
         tableView.isScrollEnabled = true
+
+      case .noLogin(let model), .error(let model), .noContent(let model):
+        updateUI(errorViewModel: model)
       }
 
       tableView.reloadData()
@@ -98,6 +106,9 @@ extension RatesViewController: UITableViewDataSource {
     switch viewModel.state {
     case .normal(let sections):
       return sections.count
+
+    case .noLogin, .error, .noContent:
+      return 0
     }
   }
 
@@ -117,6 +128,9 @@ extension RatesViewController: UITableViewDataSource {
         cell.decorate(model: model)
         return cell
       }
+
+    case .noLogin, .error, .noContent:
+      return UITableViewCell()
     }
   }
 }
@@ -136,6 +150,9 @@ extension RatesViewController: UITableViewDelegate {
       case .loading:
         return
       }
+
+    case .error, .noLogin, .noContent:
+      return
     }
   }
 
@@ -149,6 +166,9 @@ extension RatesViewController: UITableViewDelegate {
       case .loading:
         return 48
       }
+
+    case .noLogin, .error, .noContent:
+      return 0
     }
   }
 
@@ -166,6 +186,9 @@ extension RatesViewController: UITableViewDelegate {
       case .loading:
         interactor?.willDisplayLoadingView()
       }
+
+    case .error, .noLogin, .noContent:
+      return
     }
   }
 
@@ -209,6 +232,9 @@ extension RatesViewController: UITableViewDelegate {
       case .loading:
         return nil
       }
+
+    case .noLogin, .error, .noContent:
+      return nil
     }
   }
 }
@@ -231,7 +257,6 @@ extension RatesViewController: RatesViewControllerProtocol {
   }
 
   func updateUI(viewModel: RatesViewModel) {
-    hideErrorView()
     self.viewModel = viewModel
   }
 }
@@ -240,7 +265,16 @@ extension RatesViewController: RatesViewControllerProtocol {
 
 extension RatesViewController: ErrorViewDelegate {
   func didTapErrorButton(_: UIButton) {
-    interactor?.viewDidLoad()
+    switch viewModel.state {
+    case .normal, .noContent:
+      return // impossible case
+
+    case .noLogin:
+      interactor?.didTapLoginButton()
+
+    case .error:
+      interactor?.viewDidLoad()
+    }
   }
 }
 
@@ -249,5 +283,17 @@ extension RatesViewController: ErrorViewDelegate {
 extension RatesViewController: WineRateTableCellDelegate {
   func didTapMore(reviewID: Int) {
     interactor?.didTapMore(reviewID: reviewID)
+  }
+}
+
+// MARK: AuthorizationOutputDelegate
+
+extension RatesViewController: AuthorizationOutputDelegate {
+  func didSuccessfullyRegister(output: AuthorizationOutputModel?) {
+    interactor?.viewDidLoad()
+  }
+
+  func didSuccessfullyLogin(output: AuthorizationOutputModel?) {
+    interactor?.viewDidLoad()
   }
 }

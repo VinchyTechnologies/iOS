@@ -29,12 +29,38 @@ final class RatesPresenter {
 // MARK: RatesPresenterProtocol
 
 extension RatesPresenter: RatesPresenterProtocol {
-  func showInitiallyLoadingError(error: Error) {
+
+  func showNoContentError() {
+    let errorModel = ErrorViewModel(
+      titleText: localized("Пока пусто").firstLetterUppercased(),
+      subtitleText: "Вы не оценили ни одного вина :(",
+      buttonText: nil)
     viewController?.updateUI(
-      errorViewModel: ErrorViewModel(
-        titleText: localized("error").firstLetterUppercased(),
-        subtitleText: error.localizedDescription,
-        buttonText: localized("reload").firstLetterUppercased()))
+      viewModel: .init(
+        state: .noContent(errorViewModel: errorModel),
+        navigationTitle: localized("reviews").firstLetterUppercased()))
+  }
+
+  func showNeedsLoginError() {
+    let errorModel = ErrorViewModel(
+      titleText: localized("Здесь будут ваши оценки").firstLetterUppercased(),
+      subtitleText: "Для этого необходимо авторизоваться",
+      buttonText: localized("login").firstLetterUppercased())
+    viewController?.updateUI(
+      viewModel: .init(
+        state: .noLogin(errorViewModel: errorModel),
+        navigationTitle: localized("reviews").firstLetterUppercased()))
+  }
+
+  func showInitiallyLoadingError(error: Error) {
+    let errorModel = ErrorViewModel(
+      titleText: localized("error").firstLetterUppercased(),
+      subtitleText: error.localizedDescription,
+      buttonText: localized("reload").firstLetterUppercased())
+    viewController?.updateUI(
+      viewModel: .init(
+        state: .error(errorViewModel: errorModel),
+        navigationTitle: localized("reviews").firstLetterUppercased()))
   }
 
   func showErrorAlert(error: Error) {
@@ -43,10 +69,13 @@ extension RatesPresenter: RatesPresenterProtocol {
       message: error.localizedDescription)
   }
 
-  func startShimmer() {
-//    viewController?.updateUI(viewModel: .init(state: .fake(sections: [
-//      .review(Array(repeating: 1, count: 20)),
-//    ]), navigationTitle: localized("reviews").firstLetterUppercased()))
+  func startLoading() {
+    viewController?.startLoadingAnimation()
+    viewController?.addLoader()
+  }
+
+  func stopLoading() {
+    viewController?.stopLoadingAnimation()
   }
 
   func update(reviews: [ReviewedWine], needLoadMore: Bool, wasUsedRefreshControl: Bool) {

@@ -25,10 +25,6 @@ extension AuthorizationRoutable {
       controller: controller,
       sizes: [.fixed(350)],
       options: options)
-
-//    if UIDevice.current.userInterfaceIdiom == .pad {
-//      controller.modalPresentationStyle = .overFullScreen
-//    }
     viewController?.present(sheetController, animated: true, completion: nil)
   }
 }

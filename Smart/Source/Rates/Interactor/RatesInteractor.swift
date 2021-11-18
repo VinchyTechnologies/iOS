@@ -48,6 +48,11 @@ final class RatesInteractor {
   private let stateMachine = PagingStateMachine<[ReviewedWine]>()
   private var reviews: [ReviewedWine] = []
 
+  private lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
+    guard let self = self else { return }
+    self.presenter.startLoading()
+  }
+
   private func configureStateMachine() {
     stateMachine.observe { [weak self] oldState, newState, _ in
       guard let self = self else { return }
@@ -55,8 +60,8 @@ final class RatesInteractor {
       case .loaded(let data):
         self.handleLoadedData(data, oldState: oldState)
 
-      case .loading(let offset, _):
-        self.loadData(offset: offset)
+      case .loading(let offset, let usingRefreshControl):
+        self.loadData(offset: offset, usingRefreshControl: usingRefreshControl)
 
       case .error(let error):
         self.showData(error: error, needLoadMore: false, wasUsedRefreshControl: false)
@@ -67,18 +72,26 @@ final class RatesInteractor {
     }
   }
 
-  private func loadData(offset: Int) {
-//    if let accountId = authService.currentUser?.accountID {
-    Wines.shared.getReviewedWines(accountId: 78, offset: offset, limit: C.limit) { [weak self] result in
-      switch result {
-      case .success(let data):
-        self?.stateMachine.invokeSuccess(with: data)
-
-      case .failure(let error):
-        self?.stateMachine.fail(with: error)
+  private func loadData(offset: Int, usingRefreshControl: Bool) {
+    if let accountId = authService.currentUser?.accountID {
+      if offset == .zero && !usingRefreshControl {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+          self.dispatchWorkItemHud.perform()
+        }
       }
+
+      Wines.shared.getReviewedWines(accountId: accountId, offset: offset, limit: C.limit) { [weak self] result in
+        switch result {
+        case .success(let data):
+          self?.stateMachine.invokeSuccess(with: data)
+
+        case .failure(let error):
+          self?.stateMachine.fail(with: error)
+        }
+      }
+    } else {
+      presenter.showNeedsLoginError()
     }
-//    }
   }
 
   private func loadInitData(usingRefreshControl: Bool) {
@@ -100,6 +113,12 @@ final class RatesInteractor {
     case .loading(let offset, let usingRefreshControl):
       wasUsedRefreshControl = usingRefreshControl
       needLoadMore = reviews.count == offset + C.limit + numberDeletedReview //!data.isEmpty//reviews.count == offset + C.limit
+      if offset == .zero {
+        dispatchWorkItemHud.cancel()
+        DispatchQueue.main.async {
+          self.presenter.stopLoading()
+        }
+      }
     }
 
     self.needLoadMore = needLoadMore
@@ -115,7 +134,15 @@ final class RatesInteractor {
         presenter.showErrorAlert(error: error)
       }
     } else {
-      presenter.update(reviews: reviews, needLoadMore: needLoadMore, wasUsedRefreshControl: wasUsedRefreshControl)
+      if reviews.isEmpty {
+        presenter.showNoContentError()
+      } else {
+        presenter.update(reviews: reviews, needLoadMore: needLoadMore, wasUsedRefreshControl: wasUsedRefreshControl)
+      }
+    }
+    dispatchWorkItemHud.cancel()
+    DispatchQueue.main.async {
+      self.presenter.stopLoading()
     }
   }
 }
@@ -123,6 +150,10 @@ final class RatesInteractor {
 // MARK: RatesInteractorProtocol
 
 extension RatesInteractor: RatesInteractorProtocol {
+
+  func didTapLoginButton() {
+    router.presentAuthorizationViewController()
+  }
 
   func didPullToRefresh() {
     reviews.removeAll()
@@ -223,7 +254,6 @@ extension RatesInteractor: RatesInteractorProtocol {
   }
 
   func viewDidLoad() {
-    presenter.startShimmer()
     loadInitData(usingRefreshControl: false)
   }
 

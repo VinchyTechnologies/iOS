@@ -9,8 +9,11 @@
 import VinchyCore
 
 protocol RatesPresenterProtocol: AnyObject {
-  func startShimmer()
+  func startLoading()
+  func stopLoading()
   func update(reviews: [ReviewedWine], needLoadMore: Bool, wasUsedRefreshControl: Bool)
   func showErrorAlert(error: Error)
   func showInitiallyLoadingError(error: Error)
+  func showNeedsLoginError()
+  func showNoContentError()
 }

@@ -11,6 +11,9 @@ import CommonUI
 struct RatesViewModel {
   enum State {
     case normal(items: [Item])
+    case noLogin(errorViewModel: ErrorViewModel)
+    case error(errorViewModel: ErrorViewModel)
+    case noContent(errorViewModel: ErrorViewModel)
   }
 
   enum Item {

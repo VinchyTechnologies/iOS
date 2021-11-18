@@ -23,7 +23,6 @@ public struct PartnerInfo: Decodable, Equatable {
   public let address: String?
   public let logoURL: String?
 
-
   public static func == (lhs: PartnerInfo, rhs: PartnerInfo) -> Bool {
     lhs.affiliatedStoreId == rhs.affiliatedStoreId
   }

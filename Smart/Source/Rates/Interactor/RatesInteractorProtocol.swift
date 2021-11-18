@@ -17,4 +17,5 @@ protocol RatesInteractorProtocol: AnyObject {
   func didSwipeToEdit(reviewID: Int)
   func didSwipeToShare(reviewID: Int, sourceView: UIView)
   func didPullToRefresh()
+  func didTapLoginButton()
 }
