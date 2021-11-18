@@ -42,6 +42,11 @@ final class RatesViewController: UIViewController {
     handleSwipeToDelete()
     interactor?.viewDidLoad()
   }
+  
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    interactor?.viewWillAppear()
+  }
 
   // MARK: Private
 
@@ -262,6 +267,7 @@ extension RatesViewController: RatesViewControllerProtocol {
 
   func updateUI(viewModel: RatesViewModel) {
     self.viewModel = viewModel
+    stopPullRefreshing()
   }
 }
 

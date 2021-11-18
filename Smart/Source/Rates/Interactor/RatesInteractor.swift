@@ -90,6 +90,7 @@ final class RatesInteractor {
         }
       }
     } else {
+      reviews.removeAll()
       presenter.showNeedsLoginError()
     }
   }
@@ -150,6 +151,13 @@ final class RatesInteractor {
 // MARK: RatesInteractorProtocol
 
 extension RatesInteractor: RatesInteractorProtocol {
+  
+  func viewWillAppear() {
+    if !authService.isAuthorized {
+      reviews.removeAll()
+      presenter.showNeedsLoginError()
+    }
+  }
 
   func didTapLoginButton() {
     router.presentAuthorizationViewController()

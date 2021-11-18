@@ -10,6 +10,7 @@ import UIKit.UIView
 
 protocol RatesInteractorProtocol: AnyObject {
   func viewDidLoad()
+  func viewWillAppear()
   func willDisplayLoadingView()
   func didSelectReview(wineID: Int64)
   func didTapMore(reviewID: Int)
