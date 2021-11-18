@@ -32,8 +32,8 @@ extension RatesPresenter: RatesPresenterProtocol {
 
   func showNoContentError() {
     let errorModel = ErrorViewModel(
-      titleText: localized("Пока пусто").firstLetterUppercased(),
-      subtitleText: "Вы не оценили ни одного вина :(",
+      titleText: localized("nothing_here").firstLetterUppercased(),
+      subtitleText: localized("you_have_not_rated_any_wine").firstLetterUppercased(),
       buttonText: nil)
     viewController?.updateUI(
       viewModel: .init(
@@ -43,9 +43,9 @@ extension RatesPresenter: RatesPresenterProtocol {
 
   func showNeedsLoginError() {
     let errorModel = ErrorViewModel(
-      titleText: localized("Здесь будут ваши оценки").firstLetterUppercased(),
-      subtitleText: "Для этого необходимо авторизоваться",
-      buttonText: localized("login").firstLetterUppercased())
+      titleText: localized("your_rated_wines_will_be_here").firstLetterUppercased(),
+      subtitleText: localized("you_need_to_login_first").firstLetterUppercased(),
+      buttonText: localized("sign_in_or_register").firstLetterUppercased())
     viewController?.updateUI(
       viewModel: .init(
         state: .noLogin(errorViewModel: errorModel),

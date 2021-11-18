@@ -122,12 +122,12 @@ public final class WineRateView: UIView, EpoxyableView {
   }
 
   public static var vSpacing: CGFloat {
-    UIDevice.current.userInterfaceIdiom == .pad ? 8 : 4
+    UIDevice.current.userInterfaceIdiom == .pad ? 8 : 6
   }
 
   public static func height(for content: Content, width: CGFloat) -> CGFloat {
 
-    let width = width - 56 - 24 - 24
+    let width = width - 56 - 24 - 24 - 24
     var height: CGFloat = 0
 
     if let wineryText = content.wineryText {

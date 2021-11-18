@@ -9,6 +9,7 @@
 import CommonUI
 import Core
 import Display
+import StringFormatting
 import UIKit
 import VinchyAuthorization
 
@@ -206,26 +207,29 @@ extension RatesViewController: UITableViewDelegate {
       case .review(let model):
         let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .semibold, scale: .default)
 
-        let deleteAction = UIContextualAction(style: .destructive, title: "Delete") { [weak self] _, _, _ in
+        let deleteAction = UIContextualAction(style: .destructive, title: localized("delete").firstLetterUppercased()) { [weak self] _, _, complete in
           self?.interactor?.didSwipeToDelete(reviewID: model.reviewID)
+          complete(true)
         }
         deleteAction.backgroundColor = .systemRed
         deleteAction.image = UIImage(systemName: "trash", withConfiguration: imageConfig)
 
-        let editAction = UIContextualAction(style: .destructive, title: "Edit") { [weak self] _, _, _ in
+        let editAction = UIContextualAction(style: .destructive, title: localized("edit").firstLetterUppercased()) { [weak self] _, _, complete in
           self?.interactor?.didSwipeToEdit(reviewID: model.reviewID)
+          complete(true)
         }
         editAction.image = UIImage(systemName: "pencil", withConfiguration: imageConfig)
         editAction.backgroundColor = .systemOrange
 
-        let shareAction = UIContextualAction(style: .destructive, title: "Share") { [weak self] _, _, _ in
+        let shareAction = UIContextualAction(style: .destructive, title: localized("share").firstLetterUppercased()) { [weak self] _, _, complete in
           guard let sourceView = tableView.cellForRow(at: indexPath) else { return }
           self?.interactor?.didSwipeToShare(reviewID: model.reviewID, sourceView: sourceView)
+          complete(true)
         }
         shareAction.image = UIImage(systemName: "square.and.arrow.up", withConfiguration: imageConfig)
         shareAction.backgroundColor = .systemBlue
 
-        let configuration = UISwipeActionsConfiguration(actions: [deleteAction, editAction, shareAction])
+        let configuration = UISwipeActionsConfiguration(actions: [/*deleteAction,*/ editAction, shareAction])
         configuration.performsFirstActionWithFullSwipe = false
         return configuration
 

@@ -50,7 +50,7 @@ final class SavedViewController: UIViewController, SavedViewControllerProtocol {
       sections: [.liked, .rates],
       navigationTitleText: localized("favourites").firstLetterUppercased(),
       topTabBarViewModel: .init(
-        items: [.init(titleText: "Liked"), .init(titleText: "Rated")],
+        items: [.init(titleText: localized("♥︎").firstLetterUppercased()), .init(titleText: localized("rated").firstLetterUppercased())],
         initiallySelectedIndex: 0)))
 
   }

@@ -113,6 +113,13 @@
 "yahoo_mail" = "Yahoo Mail";
 "telegram" = "Telegram";
 "copy" = "copy";
+"edit" = "edit";
+"share" = "share";
+"liked" = "liked";
+"rated" = "rated";
+"you_have_not_rated_any_wine" = "You haven't rated any wine :(";
+"your_rated_wines_will_be_here" = "Your rated wines will be here";
+"you_need_to_login_first" = "you need to login first";
 
 // MARK: - Sugar
 "sugar" = "sugar";

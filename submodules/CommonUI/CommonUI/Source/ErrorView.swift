@@ -51,6 +51,7 @@ public final class ErrorView: UIView {
       $0.translatesAutoresizingMaskIntoConstraints = false
     }
 
+    titleLabel.numberOfLines = 2
     titleLabel.font = Font.bold(24)
     titleLabel.textAlignment = .center
     titleLabel.widthAnchor.constraint(lessThanOrEqualToConstant: UIScreen.main.bounds.width - 40).isActive = true
@@ -70,7 +71,7 @@ public final class ErrorView: UIView {
     let stackView = UIStackView(arrangedSubviews: views)
     stackView.axis = .vertical
 
-    stackView.distribution = .equalCentering
+    stackView.distribution = .fillProportionally
     stackView.spacing = 8
     stackView.alignment = .center
     stackView.translatesAutoresizingMaskIntoConstraints = false

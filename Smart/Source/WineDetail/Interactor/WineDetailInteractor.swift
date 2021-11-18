@@ -314,7 +314,6 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
   func didTapReportAnError(sourceView: UIView) {
     guard let wine = wine, let to = presenter.reportAnErrorRecipients.first else { return }
 
-
     router.presentContactActionSheet(to: to, subject: "", body: wine.title, includingThirdPartyApps: false, sourceView: sourceView)
 //    if emailService.canSend {
 //      router.presentEmailController(HTMLText: wine.title, recipients: presenter.reportAnErrorRecipients)
