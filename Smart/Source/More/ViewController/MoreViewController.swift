@@ -331,6 +331,7 @@ extension MoreViewController: AuthorizationOutputDelegate {
   }
 
   func didSuccessfullyLogin(output: AuthorizationOutputModel?) {
+    ratesRepository.state = .needsReload
     interactor?.viewDidLoad()
   }
 }

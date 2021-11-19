@@ -485,6 +485,7 @@ extension WineDetailViewController: TitleAndMoreViewDelegate {
 
 extension WineDetailViewController: AuthorizationOutputDelegate {
   func didSuccessfullyLogin(output _: AuthorizationOutputModel?) {
+    ratesRepository.state = .needsReload
     interactor?.didSuccessfullyLoginOrRegister()
   }
 

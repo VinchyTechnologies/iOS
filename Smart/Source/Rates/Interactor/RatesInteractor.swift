@@ -14,7 +14,7 @@ import VinchyCore
 // MARK: - C
 
 private enum C {
-  static let limit = 20
+  static let limit = 12
 }
 
 // MARK: - RatesInteractor
@@ -113,7 +113,7 @@ final class RatesInteractor {
 
     case .loading(let offset, let usingRefreshControl):
       wasUsedRefreshControl = usingRefreshControl
-      needLoadMore = reviews.count == offset + C.limit + numberDeletedReview //!data.isEmpty//reviews.count == offset + C.limit
+      needLoadMore = !data.isEmpty
       if offset == .zero {
         dispatchWorkItemHud.cancel()
         DispatchQueue.main.async {
@@ -153,9 +153,11 @@ final class RatesInteractor {
 extension RatesInteractor: RatesInteractorProtocol {
 
   func viewWillAppear() {
-    if !authService.isAuthorized {
+    print("===== viewwillappear")
+    if ratesRepository.state == .needsReload {
       reviews.removeAll()
-      presenter.showNeedsLoginError()
+      loadInitData(usingRefreshControl: false)
+      ratesRepository.state = .normal
     }
   }
 

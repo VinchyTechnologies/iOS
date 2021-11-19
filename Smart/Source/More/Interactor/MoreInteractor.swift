@@ -42,6 +42,7 @@ final class MoreInteractor {
   private func logout() {
     authService.logout()
     viewDidLoad()
+    ratesRepository.state = .needsReload
   }
 
   private func didTapSendEmail(HTMLText: String?, includingThirdPartyApps: Bool, sourceView: UIView) {

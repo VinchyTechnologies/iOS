@@ -236,13 +236,6 @@ extension ChooseAuthTypeViewController: ASAuthorizationControllerDelegate {
         authorizationCode: authorizationCode) { [weak self] result in
           switch result {
           case .success(let accountInfo):
-            UserDefaultsConfig.accountID = accountInfo.accountID
-            UserDefaultsConfig.accountEmail = accountInfo.email
-            UserDefaultsConfig.userName = accountInfo.accountName ?? ""
-            UserDefaultsConfig.appleUserId = credentials.user
-            Keychain.shared.accessToken = accountInfo.accessToken
-            Keychain.shared.refreshToken = accountInfo.refreshToken
-
             self?.navigationController?.dismiss(animated: true, completion: {
               (self?.navigationController as? AuthorizationNavigationController)?.authOutputDelegate?.didSuccessfullyLogin(output: .init(accountID: accountInfo.accountID, email: accountInfo.email))
             })

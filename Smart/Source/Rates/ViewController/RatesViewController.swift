@@ -58,6 +58,7 @@ final class RatesViewController: UIViewController {
     tableView.register(LoadingIndicatorTableCell.self, forCellReuseIdentifier: LoadingIndicatorTableCell.reuseId)
     tableView.register(WineRateTableCell.self, forCellReuseIdentifier: WineRateTableCell.reuseId)
     tableView.refreshControl = pullToRefreshControl
+    tableView.tableFooterView = UIView()
     return tableView
   }()
 
@@ -235,8 +236,8 @@ extension RatesViewController: UITableViewDelegate {
         shareAction.image = UIImage(systemName: "square.and.arrow.up", withConfiguration: imageConfig)
         shareAction.backgroundColor = .systemBlue
 
-        let configuration = UISwipeActionsConfiguration(actions: [/*deleteAction,*/ editAction, shareAction])
-        configuration.performsFirstActionWithFullSwipe = false
+        let configuration = UISwipeActionsConfiguration(actions: [deleteAction, editAction, shareAction])
+        configuration.performsFirstActionWithFullSwipe = true
         return configuration
 
       case .loading:
@@ -305,6 +306,7 @@ extension RatesViewController: AuthorizationOutputDelegate {
   }
 
   func didSuccessfullyLogin(output: AuthorizationOutputModel?) {
-    interactor?.viewDidLoad()
+    ratesRepository.state = .needsReload
+    interactor?.viewWillAppear()
   }
 }

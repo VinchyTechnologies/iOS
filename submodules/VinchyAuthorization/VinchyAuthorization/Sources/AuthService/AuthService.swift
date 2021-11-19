@@ -60,13 +60,29 @@ public final class AuthService {
       UserDefaultsConfig.userName = (fullName.givenName ?? "") + " " + (fullName.familyName ?? "")
     }
 
+    let com: (Result<AccountInfo, APIError>) -> Void = { result in
+      switch result {
+      case .success(let response):
+        UserDefaultsConfig.accountID = response.accountID
+        UserDefaultsConfig.accountEmail = response.email
+        UserDefaultsConfig.userName = response.accountName ?? ""
+        UserDefaultsConfig.appleUserId = appleUserId
+        Keychain.shared.accessToken = response.accessToken
+        Keychain.shared.refreshToken = response.refreshToken
+        completion(.success(response))
+
+      case .failure(let error):
+        completion(.failure(error))
+      }
+    }
+
     Accounts.shared.signInWithApple(
       email: UserDefaultsConfig.accountEmail,
       fullName: UserDefaultsConfig.userName,
       authCode: authorizationCode,
       deviceId: deviceId,
       appleUserId: appleUserId,
-      completion: completion)
+      completion: com)
   }
 
   public func logout() {

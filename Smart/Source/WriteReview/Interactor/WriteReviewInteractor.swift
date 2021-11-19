@@ -94,6 +94,7 @@ extension WriteReviewInteractor: WriteReviewInteractorProtocol {
 
         case .failure(let error):
           if case APIError.updateTokensErrorShouldShowAuthScreen = error {
+            ratesRepository.state = .needsReload
             self.router.presentAuthorizationViewController()
           } else {
             self.presenter.showAlertErrorWhileUpdatingReview(error: error)
@@ -117,6 +118,7 @@ extension WriteReviewInteractor: WriteReviewInteractorProtocol {
 
           case .failure(let error):
             if case APIError.updateTokensErrorShouldShowAuthScreen = error {
+              ratesRepository.state = .needsReload
               self.router.presentAuthorizationViewController()
             } else {
               self.presenter.showAlertErrorWhileCreatingReview(error: error)

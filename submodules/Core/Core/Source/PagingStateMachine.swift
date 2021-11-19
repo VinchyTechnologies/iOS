@@ -47,8 +47,26 @@ public final class PagingStateMachine<Data>: StateMachine<PagingState<Data>, Pag
       case (.loading, .fail(let error)):
         return .error(error)
 
-      default:
-        return nil
+      case (.loading, .load(let offset, let usingRefreshControl)):
+        return .loading(offset: offset, usingRefreshControl: usingRefreshControl)
+
+      case (.error(_), .success(let data)):
+        return .loaded(data)
+
+      case (.error(_), .fail(let error)):
+        return .error(error)
+
+      case (.loaded(_), .success(let data)):
+        return .loaded(data)
+
+      case (.loaded(_), .fail(let error)):
+        return .error(error)
+
+      case (.initial, .success(let data)):
+        return .loaded(data)
+
+      case (.initial, .fail(let error)):
+        return .error(error)
       }
     }
   }
