@@ -42,7 +42,7 @@ final class RatesViewController: UIViewController {
     handleSwipeToDelete()
     interactor?.viewDidLoad()
   }
-  
+
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     interactor?.viewWillAppear()
@@ -71,6 +71,7 @@ final class RatesViewController: UIViewController {
 
       case .noLogin(let model), .error(let model), .noContent(let model):
         updateUI(errorViewModel: model)
+        tableView.isScrollEnabled = false
       }
 
       tableView.reloadData()

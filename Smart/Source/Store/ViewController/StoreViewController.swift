@@ -95,9 +95,9 @@ final class StoreViewController: CollectionViewController {
       switch section {
       case .logo(let itemID, let content):
         let width = collectionViewSize.width - 48
-        return SectionModel(dataID: section.dataID) {
+        return SectionModel(dataID: UUID()) {
           LogoRow.itemModel(
-            dataID: itemID,
+            dataID: UUID(),
             content: content,
             style: .large)
         }
@@ -110,9 +110,9 @@ final class StoreViewController: CollectionViewController {
           for: content,
           width: width,
           style: .style(with: .lagerTitle))
-        return SectionModel(dataID: section.dataID) {
+        return SectionModel(dataID: UUID()) {
           Label.itemModel(
-            dataID: itemID,
+            dataID: UUID(),
             content: content,
             style: .style(with: .lagerTitle))
         }
@@ -122,9 +122,9 @@ final class StoreViewController: CollectionViewController {
       case .address(let itemID, let content):
         let width: CGFloat = collectionViewSize.width - 48
         let height: CGFloat = content.height(for: width)
-        return SectionModel(dataID: section.dataID) {
+        return SectionModel(dataID: UUID()) {
           StoreMapRow.itemModel(
-            dataID: itemID,
+            dataID: UUID(),
             content: content,
             behaviors: .init(didTapMap: { [weak self] button in
               self?.interactor?.didTapMapButton(button: button)
@@ -135,7 +135,7 @@ final class StoreViewController: CollectionViewController {
         .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 16, right: 24))
 
       case .wines(let itemID, let content):
-        return SectionModel(dataID: section.dataID) {
+        return SectionModel(dataID: UUID()) {
           BottlesCollectionView.itemModel(
             dataID: itemID,
             content: content,
@@ -149,12 +149,12 @@ final class StoreViewController: CollectionViewController {
 
       case .assortiment(let headerItemID, let header, let rows):
         return SectionModel(
-          dataID: section.dataID,
+          dataID: UUID(),
           items: rows.enumerated().compactMap({ index, assortmentContent in
             switch assortmentContent {
             case .horizontalWine(let content):
               return HorizontalWineView.itemModel(
-                dataID: content.wineID + Int64(index),
+                dataID: UUID(),
                 content: content,
                 style: .init())
                 .didSelect { [weak self] _ in
@@ -176,7 +176,7 @@ final class StoreViewController: CollectionViewController {
 
             case .ad(let itemID):
               return AdItemView.itemModel(
-                dataID: itemID.rawValue + String(index),
+                dataID: UUID(),
                 content: .init(),
                 style: .init())
                 .setBehaviors { [weak self] context in
@@ -186,7 +186,7 @@ final class StoreViewController: CollectionViewController {
 
             case .empty(let itemID, let content):
               return EmptyView.itemModel(
-                dataID: itemID.rawValue,
+                dataID: UUID(),
                 content: content,
                 style: .init())
                 .flowLayoutItemSize(.init(width: collectionViewSize.width, height: 250)) // TODO: - height
@@ -204,7 +204,7 @@ final class StoreViewController: CollectionViewController {
           .flowLayoutHeaderReferenceSize(.init(width: collectionViewSize.width, height: 50))
 
       case .loading(let itemID, let shouldCallWillDisplay):
-        return SectionModel(dataID: section.dataID) {
+        return SectionModel(dataID: UUID()) {
           LoadingView.itemModel(dataID: itemID)
         }
         .willDisplay { [weak self] _ in

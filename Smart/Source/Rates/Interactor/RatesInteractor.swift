@@ -151,7 +151,7 @@ final class RatesInteractor {
 // MARK: RatesInteractorProtocol
 
 extension RatesInteractor: RatesInteractorProtocol {
-  
+
   func viewWillAppear() {
     if !authService.isAuthorized {
       reviews.removeAll()
