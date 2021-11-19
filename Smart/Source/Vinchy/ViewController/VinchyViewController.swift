@@ -77,10 +77,12 @@ final class VinchyViewController: CollectionViewController {
 
   override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
     super.viewWillTransition(to: size, with: coordinator)
-    coordinator.animate(alongsideTransition: { _ in
-      self.collectionViewSize = size
-      self.setSections(self.sections, animated: false)
-    })
+    if UIApplication.shared.applicationState != .background {
+      coordinator.animate(alongsideTransition: { _ in
+        self.collectionViewSize = size
+        self.setSections(self.sections, animated: false)
+      })
+    }
   }
 
   // MARK: Private
