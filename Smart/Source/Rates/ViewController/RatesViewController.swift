@@ -34,6 +34,18 @@ final class RatesViewController: UIViewController {
 
   var interactor: RatesInteractorProtocol?
 
+  private(set) lazy var tableView: UITableView = {
+    let tableView = UITableView()
+    tableView.delegate = self
+    tableView.dataSource = self
+    tableView.backgroundColor = .mainBackground
+    tableView.register(LoadingIndicatorTableCell.self, forCellReuseIdentifier: LoadingIndicatorTableCell.reuseId)
+    tableView.register(WineRateTableCell.self, forCellReuseIdentifier: WineRateTableCell.reuseId)
+    tableView.refreshControl = pullToRefreshControl
+    tableView.tableFooterView = UIView()
+    return tableView
+  }()
+
   override func viewDidLoad() {
     super.viewDidLoad()
     view.addSubview(tableView)
@@ -49,18 +61,6 @@ final class RatesViewController: UIViewController {
   }
 
   // MARK: Private
-
-  private lazy var tableView: UITableView = {
-    let tableView = UITableView()
-    tableView.delegate = self
-    tableView.dataSource = self
-    tableView.backgroundColor = .mainBackground
-    tableView.register(LoadingIndicatorTableCell.self, forCellReuseIdentifier: LoadingIndicatorTableCell.reuseId)
-    tableView.register(WineRateTableCell.self, forCellReuseIdentifier: WineRateTableCell.reuseId)
-    tableView.refreshControl = pullToRefreshControl
-    tableView.tableFooterView = UIView()
-    return tableView
-  }()
 
   private var viewModel: RatesViewModel = .init(state: .normal(items: []), navigationTitle: nil) {
     didSet {

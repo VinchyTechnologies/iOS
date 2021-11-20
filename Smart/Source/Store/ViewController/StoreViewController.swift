@@ -137,7 +137,7 @@ final class StoreViewController: CollectionViewController {
       case .wines(let itemID, let content):
         return SectionModel(dataID: UUID()) {
           BottlesCollectionView.itemModel(
-            dataID: itemID,
+            dataID: UUID(),
             content: content,
             style: .init())
             .setBehaviors({ [weak self] context in
@@ -205,7 +205,7 @@ final class StoreViewController: CollectionViewController {
 
       case .loading(let itemID, let shouldCallWillDisplay):
         return SectionModel(dataID: UUID()) {
-          LoadingView.itemModel(dataID: itemID)
+          LoadingView.itemModel(dataID: UUID())
         }
         .willDisplay { [weak self] _ in
           if shouldCallWillDisplay {

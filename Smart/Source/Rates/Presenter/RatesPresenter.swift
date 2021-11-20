@@ -93,7 +93,7 @@ extension RatesPresenter: RatesPresenterProtocol {
             reviewText: review.comment,
             readMoreText: localized("more").firstLetterUppercased(),
             wineryText: wine.winery?.title,
-            starValue: wine.rating))
+            starValue: review.rating))
       }
       return nil
     }

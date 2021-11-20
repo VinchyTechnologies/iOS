@@ -43,6 +43,8 @@ final class LoveViewController: UIViewController {
 
   // MARK: Internal
 
+  let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
@@ -83,8 +85,6 @@ final class LoveViewController: UIViewController {
   }()
 
   private let dataBase = winesRepository
-
-  private let collectionView = UICollectionView(frame: .zero, collectionViewLayout: collectionViewLayout)
 
   private var currentState: LoveViewControllerState = .like {
     didSet {

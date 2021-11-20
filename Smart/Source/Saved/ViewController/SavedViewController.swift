@@ -13,7 +13,7 @@ import UIKit
 
 // MARK: - SavedViewController
 
-final class SavedViewController: UIViewController, SavedViewControllerProtocol {
+final class SavedViewController: UIViewController, SavedViewControllerProtocol, ScrollableToTop {
 
   // MARK: Internal
 
@@ -23,6 +23,16 @@ final class SavedViewController: UIViewController, SavedViewControllerProtocol {
     LoveViewController(),
     RatesAssembly.assemblyModule(input: .init()),
   ]
+
+  var scrollableToTopScrollView: UIScrollView {
+    if let loveVC = viewControllers[safe: currentIndex] as? LoveViewController {
+      return loveVC.collectionView
+    } else if let ratesVC = viewControllers[safe: currentIndex] as? RatesViewController {
+      return ratesVC.tableView
+    } else {
+      return UIScrollView()
+    }
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -57,6 +67,8 @@ final class SavedViewController: UIViewController, SavedViewControllerProtocol {
 
   // MARK: Private
 
+  private var currentIndex = 0
+
   private lazy var pagingViewController: PagingViewController = {
     $0.delegate = self
     $0.dataSource = self
@@ -76,6 +88,7 @@ final class SavedViewController: UIViewController, SavedViewControllerProtocol {
         dataID: nil,
         content: viewModel.topTabBarViewModel,
         behaviors: .init(didSelect: { [weak self] index in
+          self?.currentIndex = index
           self?.pagingViewController.select(index: index, animated: true)
         }),
         style: .init())
@@ -113,6 +126,7 @@ extension SavedViewController: PagingViewControllerDelegate {
     }
 
     if transitionSuccessful {
+      currentIndex = index
       topBarInstaller.scrollPercentage = CGFloat(index)
     }
   }

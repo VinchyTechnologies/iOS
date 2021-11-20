@@ -153,7 +153,6 @@ final class RatesInteractor {
 extension RatesInteractor: RatesInteractorProtocol {
 
   func viewWillAppear() {
-    print("===== viewwillappear")
     if ratesRepository.state == .needsReload {
       reviews.removeAll()
       loadInitData(usingRefreshControl: false)
