@@ -13,7 +13,6 @@ import Display
 import StringFormatting
 import UIKit
 
-let instagramURL = "https://www.instagram.com"
 let openAppStoreURL = localized("appstore_link")
 
 // MARK: - MorePresenter
@@ -83,7 +82,7 @@ final class MorePresenter {
       emojiLabel: "👍")
     sections.append(.rate([rateViewModel]))
 
-//    sections.append(.social([.init(titleText: "title")]))
+//    sections.append(.social([.init(titleText: localized("we_are_in_social_networks").firstLetterUppercased())]))
 
     let currencyViewModel = InfoCurrencyCellViewModel(
       titleText: localized("currency").firstLetterUppercased(),

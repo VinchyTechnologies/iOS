@@ -12,6 +12,9 @@
 "open_appstore" = "Open AppStore";
 "appstore_link" = "itms-apps://itunes.apple.com/app/id1536720416";
 "discovery_link" = "https://vinchy.page.link/discover";
+"instagram_link" = "https://www.instagram.com/vinchy.wine";
+"telegram_link" = "https://t.me/vinchy_wine";
+"facebook_link" = "https://www.facebook.com/vinchy.wine";
 "add" = "add";
 "rate_our_app" = "Rate our App";
 "error" = "error";

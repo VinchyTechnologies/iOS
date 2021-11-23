@@ -84,18 +84,6 @@ final class MoreViewController: UIViewController {
   }
 }
 
-// MARK: SocialMediaCellDelegate
-
-extension MoreViewController: SocialMediaCellDelegate {
-  func didClickVK() {
-    interactor?.didTapOpenVk()
-  }
-
-  func didClickInstagram() {
-    interactor?.didTapOpenInstagram()
-  }
-}
-
 // MARK: UICollectionViewDataSource
 
 extension MoreViewController: UICollectionViewDataSource {
@@ -176,6 +164,7 @@ extension MoreViewController: UICollectionViewDataSource {
     case .social(let model):
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: SocialMediaCell.reuseId, for: indexPath) as! SocialMediaCell // swiftlint:disable:this force_cast
       cell.decorate(model: model[indexPath.row])
+      cell.delegate = self
       return cell
 
     case .doc(let model), .aboutApp(let model):
@@ -341,5 +330,21 @@ extension MoreViewController: AuthorizationOutputDelegate {
 extension MoreViewController: ScrollableToTop {
   var scrollableToTopScrollView: UIScrollView {
     collectionView
+  }
+}
+
+// MARK: SocialMediaCellDelegate
+
+extension MoreViewController: SocialMediaCellDelegate {
+  func didTapInstagram() {
+    interactor?.didTapOpenInstagram()
+  }
+
+  func didTapTelegram() {
+    interactor?.didTapOpenTelegram()
+  }
+
+  func didTapFacebook() {
+    interactor?.didTapOpenFacebook()
   }
 }

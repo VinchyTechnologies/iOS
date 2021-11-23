@@ -1,0 +1,15 @@
+{
+  "images" : [
+    {
+      "filename" : "free-icon-telegram-2111644.png",
+      "idiom" : "universal"
+    }
+  ],
+  "info" : {
+    "author" : "xcode",
+    "version" : 1
+  },
+  "properties" : {
+    "preserves-vector-representation" : true
+  }
+}

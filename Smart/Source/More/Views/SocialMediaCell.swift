@@ -7,7 +7,6 @@
 //
 
 import Display
-import StringFormatting
 import UIKit
 
 // MARK: - StandartImageViewModel
@@ -25,8 +24,9 @@ public struct StandartImageViewModel: ViewModelProtocol, Hashable {
 // MARK: - SocialMediaCellDelegate
 
 protocol SocialMediaCellDelegate: AnyObject {
-  func didClickVK()
-  func didClickInstagram()
+  func didTapInstagram()
+  func didTapTelegram()
+  func didTapFacebook()
 }
 
 // MARK: - SocialMediaCell
@@ -38,11 +38,17 @@ final class SocialMediaCell: UICollectionViewCell, Reusable {
   override init(frame: CGRect) {
     super.init(frame: frame)
 
-    let tapVK = UITapGestureRecognizer(target: self, action: #selector(actionVK))
-    vk.addGestureRecognizer(tapVK)
+//    let tapVK = UITapGestureRecognizer(target: self, action: #selector(actionVK))
+//    vk.addGestureRecognizer(tapVK)
 
     let tapInstagram = UITapGestureRecognizer(target: self, action: #selector(actionInstagram))
     instagram.addGestureRecognizer(tapInstagram)
+
+    let tapTelegram = UITapGestureRecognizer(target: self, action: #selector(didTapTelegram))
+    telegram.addGestureRecognizer(tapTelegram)
+
+    let tapFacebook = UITapGestureRecognizer(target: self, action: #selector(didTapFacebook))
+    fb.addGestureRecognizer(tapFacebook)
 
     addSubview(titleLabel)
     NSLayoutConstraint.activate([
@@ -51,32 +57,35 @@ final class SocialMediaCell: UICollectionViewCell, Reusable {
       titleLabel.trailingAnchor.constraint(equalTo: trailingAnchor),
     ])
 
-    vk.tintColor = .dark
+    fb.tintColor = .dark
     instagram.tintColor = .dark
 
-    vk.heightAnchor.constraint(equalToConstant: 40).isActive = true
+    fb.heightAnchor.constraint(equalToConstant: 40).isActive = true
     instagram.heightAnchor.constraint(equalToConstant: 40).isActive = true
 
-    telegram.heightAnchor.constraint(equalToConstant: 40).isActive = true
+    telegram.heightAnchor.constraint(equalToConstant: 30).isActive = true
+    telegram.widthAnchor.constraint(equalToConstant: 30).isActive = true
 
-    vk.isUserInteractionEnabled = true
+    fb.isUserInteractionEnabled = true
     instagram.isUserInteractionEnabled = true
+    telegram.isUserInteractionEnabled = true
     isUserInteractionEnabled = true
 
-    vk.tintColor = .accent
-    vk.contentMode = .scaleAspectFit
+    fb.tintColor = .accent
+    fb.contentMode = .scaleAspectFit
     instagram.tintColor = .accent
     instagram.contentMode = .scaleAspectFit
 
     telegram.tintColor = .accent
     telegram.contentMode = .scaleAspectFit
 
-    let stackView = UIStackView(arrangedSubviews: [instagram, vk, telegram])
+    let stackView = UIStackView(arrangedSubviews: [instagram, fb, telegram])
     stackView.translatesAutoresizingMaskIntoConstraints = false
     stackView.alignment = .center
     stackView.axis = .horizontal
     stackView.distribution = .fillEqually
     stackView.isUserInteractionEnabled = true
+    stackView.spacing = 8
 
     addSubview(stackView)
     NSLayoutConstraint.activate([
@@ -105,26 +114,30 @@ final class SocialMediaCell: UICollectionViewCell, Reusable {
     let label = UILabel()
     label.translatesAutoresizingMaskIntoConstraints = false
     label.font = Font.bold(20)
-    label.text = localized("we_are_in_social_networks").firstLetterUppercased()
     label.textColor = .dark
 
     return label
   }()
 
-  private let vk = UIImageView(image: UIImage(named: "facebook")!.withRenderingMode(.alwaysTemplate))
+  private let fb = UIImageView(image: UIImage(named: "fb")!.withRenderingMode(.alwaysTemplate))
 
-  private let instagram = UIImageView(image: UIImage(named: "inst2")!.withRenderingMode(.alwaysTemplate))
+  private let instagram = UIImageView(image: UIImage(named: "insta")!.withRenderingMode(.alwaysTemplate))
 
-  private let telegram = UIImageView(image: UIImage(named: "telegram")!.withRenderingMode(.alwaysTemplate))
-
-  @objc
-  private func actionVK() {
-    delegate?.didClickVK()
-  }
+  private let telegram = UIImageView(image: UIImage(named: "tg")!.withRenderingMode(.alwaysTemplate))
 
   @objc
   private func actionInstagram() {
-    delegate?.didClickInstagram()
+    delegate?.didTapInstagram()
+  }
+
+  @objc
+  private func didTapTelegram() {
+    delegate?.didTapTelegram()
+  }
+
+  @objc
+  private func didTapFacebook() {
+    delegate?.didTapFacebook()
   }
 }
 
@@ -134,6 +147,6 @@ extension SocialMediaCell: Decoratable {
   typealias ViewModel = StandartImageViewModel
 
   func decorate(model: ViewModel) {
-    titleLabel.text = localized("we_are_in_social_networks").firstLetterUppercased() //model.titleText
+    titleLabel.text = model.titleText
   }
 }

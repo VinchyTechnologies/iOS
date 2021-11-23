@@ -28,8 +28,6 @@ final class MoreInteractor {
 
   // MARK: Private
 
-  private let vkURL = "https://vk.com"
-
   private let authService = AuthService.shared
   private let router: MoreRouterProtocol
 
@@ -53,6 +51,18 @@ final class MoreInteractor {
 // MARK: MoreInteractorProtocol
 
 extension MoreInteractor: MoreInteractorProtocol {
+
+  func didTapOpenInstagram() {
+    openUrl(urlString: localized("instagram_link"))
+  }
+
+  func didTapOpenTelegram() {
+    openUrl(urlString: localized("telegram_link"))
+  }
+
+  func didTapOpenFacebook() {
+    openUrl(urlString: localized("facebook_link"))
+  }
 
   func didTapLogoutOnAlert() {
     logout()
@@ -89,18 +99,10 @@ extension MoreInteractor: MoreInteractorProtocol {
     openUrl(urlString: openAppStoreURL)
   }
 
-  func didTapOpenVk() {
-    openUrl(urlString: vkURL)
-  }
-
   func didTapCallUs() {
     open(urlString: presenter.phoneURL) {
       presenter.showOpenURLErrorAlert()
     }
-  }
-
-  func didTapOpenInstagram() {
-    openUrl(urlString: instagramURL)
   }
 
   func didTapAboutApp() {
