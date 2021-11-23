@@ -291,12 +291,13 @@ extension StoreViewController: StoreViewControllerProtocol {
     }
 
     if viewModel.shouldResetContentOffset {
-      UIView.animate(withDuration: 0.5, delay: 0, options: [.beginFromCurrentState, .curveEaseOut]) {
+      if collectionView.contentOffset.y > 0 {
         let scrollToTopIfPossibleSelector = Selector(encodeText("`tdspmmUpUpqJgQpttjcmf;", -1))
-        if (self.collectionView as UIScrollView).responds(to: scrollToTopIfPossibleSelector) {
-          (self.collectionView as UIScrollView).perform(scrollToTopIfPossibleSelector)
+        if (collectionView as UIScrollView).responds(to: scrollToTopIfPossibleSelector) {
+          (collectionView as UIScrollView).perform(scrollToTopIfPossibleSelector)
         }
-      } completion: { _ in
+      }
+      DispatchQueue.main.asyncAfter(deadline: .now() + (collectionView.contentOffset.y > 0 ? .milliseconds(500) : .milliseconds(100))) {
         self.setSections(self.sections, animated: false)
       }
     } else {
