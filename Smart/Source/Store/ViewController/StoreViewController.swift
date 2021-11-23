@@ -37,7 +37,7 @@ final class StoreViewController: CollectionViewController {
       layout: layout,
       configuration: .init(
         usesBatchUpdatesForAllReloads: false,
-        usesCellPrefetching: true,
+        usesCellPrefetching: false,
         usesAccurateScrollToItem: true))
     collectionView.prefetchDelegate = self
     return collectionView
@@ -297,9 +297,9 @@ extension StoreViewController: StoreViewControllerProtocol {
           (collectionView as UIScrollView).perform(scrollToTopIfPossibleSelector)
         }
       }
-      DispatchQueue.main.asyncAfter(deadline: .now() + (collectionView.contentOffset.y > 0 ? .milliseconds(500) : .milliseconds(100))) {
-        self.setSections(self.sections, animated: false)
-      }
+//      DispatchQueue.main.asyncAfter(deadline: .now() + (collectionView.contentOffset.y > 0 ? .milliseconds(500) : .milliseconds(100))) {
+      setSections(sections, animated: false)
+//      }
     } else {
       setSections(sections, animated: false)
     }
