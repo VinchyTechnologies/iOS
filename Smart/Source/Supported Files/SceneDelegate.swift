@@ -6,6 +6,7 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
+import CoreSpotlight
 import Display
 import FirebaseDynamicLinks
 import UIKit
@@ -105,6 +106,12 @@ extension SceneDelegate: UIWindowSceneDelegate {
         guard error == nil, let dynamicLink = dynamicLink else { return }
         self.handleIncomingDynamicLink(dynamicLink)
       }
+    } else if
+      userActivity.activityType == CSSearchableItemActionType,
+      let uniqueIdentifier = userActivity.userInfo?[CSSearchableItemActivityIdentifier] as? String,
+      let url = URL(string: uniqueIdentifier)
+    {
+      deeplinkRouter.route(url: url)
     }
   }
 

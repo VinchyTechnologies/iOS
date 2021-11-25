@@ -20,6 +20,9 @@
          location = "group:submodules/LocationUI/LocationUI.xcodeproj">
       </FileRef>
       <FileRef
+         location = "group:submodules/Spotlight/Spotlight.xcodeproj">
+      </FileRef>
+      <FileRef
          location = "group:submodules/StringFormatting/StringFormatting.xcodeproj">
       </FileRef>
       <FileRef

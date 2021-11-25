@@ -10,6 +10,7 @@ import Core
 import CoreLocation
 import Database
 import LocationUI
+import Spotlight
 import VinchyCore
 
 // MARK: - VinchyInteractor
@@ -97,6 +98,9 @@ final class VinchyInteractor {
             switch result {
             case .success(let response):
               nearestPartners = self.convertToFiveNearestStores(nearestPartners: response, userLocation: userLocation)
+              nearestPartners.forEach { nearestPartner in
+                SpotlightService.shared.addStore(affilatedId: nearestPartner.partner.affiliatedStoreId, title: nearestPartner.partner.title, subtitle: nearestPartner.partner.address)
+              }
               self.dispatchGroup.leave()
 
             case .failure(let error):
@@ -117,6 +121,9 @@ final class VinchyInteractor {
             switch result {
             case .success(let response):
               nearestPartners = self.convertToFiveNearestStores(nearestPartners: response, userLocation: CLLocationCoordinate2D(latitude: UserDefaultsConfig.userLatitude, longitude: UserDefaultsConfig.userLongtitude))
+              nearestPartners.forEach { nearestPartner in
+                SpotlightService.shared.addStore(affilatedId: nearestPartner.partner.affiliatedStoreId, title: nearestPartner.partner.title, subtitle: nearestPartner.partner.address)
+              }
 
             case .failure(let error):
               print(error.localizedDescription)

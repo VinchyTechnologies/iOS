@@ -49,6 +49,9 @@ public enum UserDefaultsConfig {
 
   @UserDefault("deviceId", defaultValue: "")
   public static var deviceId: String
+
+  @UserDefault("spotlightUpdateDate", defaultValue: "")
+  public static var spotlightUpdateDate: String
 }
 
 // MARK: - UserDefault

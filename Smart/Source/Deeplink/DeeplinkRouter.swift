@@ -68,6 +68,30 @@ final class OpenWineDetailFlow: DeeplinkFlow<RootDeeplinkable> {
   }
 }
 
+// MARK: - OpenStoreFlow
+
+final class OpenStoreFlow: DeeplinkFlow<RootDeeplinkable> {
+
+  // MARK: Lifecycle
+
+  init(input: Input) {
+    super.init()
+    onStep { root in
+      root.openTabBar()
+    }
+    .onStep { tabBar in
+      tabBar.openStoreDetail(affilatedId: input.affilatedId)
+    }
+    .commit()
+  }
+
+  // MARK: Internal
+
+  struct Input {
+    let affilatedId: Int
+  }
+}
+
 // MARK: - DeeplinkRouter
 
 protocol DeeplinkRouter {
@@ -90,6 +114,7 @@ final class DeeplinkRouterImpl {
     case openWineDetail(flow: OpenWineDetailFlow)
     case openSecondTabBarItem(flow: OpenSecondTabFlow)
     case openGlobalSearch(flow: OpenGlobalSearchFlow)
+    case openStore(flow: OpenStoreFlow)
   }
 
   // MARK: Private
@@ -108,18 +133,24 @@ final class DeeplinkRouterImpl {
 
     guard !url.pathComponents.isEmpty else { return nil }
     if
-      let word = url.pathComponents[safe: url.pathComponents.count - 2],
-      word == "wines"
+      let word = url.pathComponents[safe: url.pathComponents.count - 2]
     {
-      guard
-        let id = url.pathComponents.last,
-        let wineID = Int64(id)
-      else { return nil }
-      return .openWineDetail(flow: OpenWineDetailFlow(input: .init(wineID: wineID)))
+      if word == "wines" {
+        guard
+          let id = url.pathComponents.last,
+          let wineID = Int64(id)
+        else { return nil }
+        return .openWineDetail(flow: OpenWineDetailFlow(input: .init(wineID: wineID)))
 
-    } else {
-      return nil
+      } else if word == "store" {
+        guard
+          let id = url.pathComponents.last,
+          let affilatedId = Int(id)
+        else { return nil }
+        return .openStore(flow: OpenStoreFlow(input: .init(affilatedId: affilatedId)))
+      }
     }
+    return nil
   }
 }
 
@@ -135,6 +166,9 @@ extension DeeplinkRouterImpl: DeeplinkRouter {
       subscribtions = flow.subcscribe(root)
 
     case .openGlobalSearch(let flow):
+      subscribtions = flow.subcscribe(root)
+
+    case .openStore(let flow):
       subscribtions = flow.subcscribe(root)
 
     case .none:

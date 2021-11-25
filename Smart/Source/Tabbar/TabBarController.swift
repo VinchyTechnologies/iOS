@@ -15,6 +15,7 @@ import UIKit
 
 protocol TabBarDeeplinkable {
   func openWineDetail(wineID: Int64) -> AnyPublisher<TabBarDeeplinkable, Never>
+  func openStoreDetail(affilatedId: Int) -> AnyPublisher<TabBarDeeplinkable, Never>
   func selectSecondTab() -> AnyPublisher<TabBarDeeplinkable, Never>
   func makeSearchBarFirstResponder() -> AnyPublisher<TabBarDeeplinkable, Never>
 }
@@ -181,6 +182,18 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
 // MARK: TabBarDeeplinkable
 
 extension TabBarController: TabBarDeeplinkable {
+
+  func openStoreDetail(affilatedId: Int) -> AnyPublisher<TabBarDeeplinkable, Never> {
+    let controller = StoreAssembly.assemblyModule(input: .init(mode: .normal(affilatedId: affilatedId)))
+    let navigationController = VinchyNavigationController(rootViewController: controller)
+    navigationController.modalPresentationStyle = .overFullScreen
+    UIApplication.topViewController(base: self)?.present(
+      navigationController,
+      animated: true,
+      completion: nil)
+    return Just(self)
+      .eraseToAnyPublisher()
+  }
 
   func selectSecondTab() -> AnyPublisher<TabBarDeeplinkable, Never> {
     popToRoot()
