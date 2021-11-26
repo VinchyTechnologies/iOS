@@ -8,6 +8,7 @@
 
 import Core
 import CoreLocation
+import Spotlight
 import UIKit
 import VinchyAuthorization
 import VinchyCore
@@ -104,6 +105,7 @@ final class StoreInteractor {
           switch result {
           case .success(let response):
             self.partnerInfo = response
+            SpotlightService.shared.addStore(affilatedId: affilatedId, title: response.title, subtitle: response.address)
 
           case .failure(let error):
             generalError = .initialLoading(error)

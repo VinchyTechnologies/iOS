@@ -215,6 +215,8 @@
 		8A27EA9627365B86005A13C6 /* RatesRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA8B27365B86005A13C6 /* RatesRouterProtocol.swift */; };
 		8A27EA9927366264005A13C6 /* LoadingIndicatorTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA9827366264005A13C6 /* LoadingIndicatorTableCell.swift */; };
 		8A27EA9B27366716005A13C6 /* WineRateTableCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27EA9A27366716005A13C6 /* WineRateTableCell.swift */; };
+		8A299EF3274FB7B400355602 /* Spotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A299EF2274FB7B400355602 /* Spotlight.framework */; };
+		8A299EF4274FB7B400355602 /* Spotlight.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A299EF2274FB7B400355602 /* Spotlight.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A313BFF26447042009F2165 /* MapDetailStoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BEE26447042009F2165 /* MapDetailStoreViewModel.swift */; };
 		8A313C0026447042009F2165 /* MapDetailStoreInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BF026447042009F2165 /* MapDetailStoreInput.swift */; };
 		8A313C0126447042009F2165 /* MapDetailStoreAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313BF226447042009F2165 /* MapDetailStoreAssembly.swift */; };
@@ -521,6 +523,7 @@
 				8A63CCBF26754635003B1D4D /* VinchyAuthorization.framework in Embed Frameworks */,
 				8A63CCB226754628003B1D4D /* CommonUI.framework in Embed Frameworks */,
 				8A63CCB52675462A003B1D4D /* Core.framework in Embed Frameworks */,
+				8A299EF4274FB7B400355602 /* Spotlight.framework in Embed Frameworks */,
 				8A63CCB92675462E003B1D4D /* Display.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
@@ -748,6 +751,7 @@
 		8A27EA8B27365B86005A13C6 /* RatesRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RatesRouterProtocol.swift; sourceTree = "<group>"; };
 		8A27EA9827366264005A13C6 /* LoadingIndicatorTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingIndicatorTableCell.swift; sourceTree = "<group>"; };
 		8A27EA9A27366716005A13C6 /* WineRateTableCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineRateTableCell.swift; sourceTree = "<group>"; };
+		8A299EF2274FB7B400355602 /* Spotlight.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Spotlight.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A313BEE26447042009F2165 /* MapDetailStoreViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreViewModel.swift; sourceTree = "<group>"; };
 		8A313BF026447042009F2165 /* MapDetailStoreInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreInput.swift; sourceTree = "<group>"; };
 		8A313BF226447042009F2165 /* MapDetailStoreAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapDetailStoreAssembly.swift; sourceTree = "<group>"; };
@@ -1043,6 +1047,7 @@
 				8A63CCB42675462A003B1D4D /* Core.framework in Frameworks */,
 				8A63CCC026754638003B1D4D /* VinchyCore.framework in Frameworks */,
 				8A63CCB126754628003B1D4D /* CommonUI.framework in Frameworks */,
+				8A299EF3274FB7B400355602 /* Spotlight.framework in Frameworks */,
 				8A63CCBA26754630003B1D4D /* LocationUI.framework in Frameworks */,
 				8A63CC942675322D003B1D4D /* SPAlert in Frameworks */,
 				8A63CCBC26754633003B1D4D /* StringFormatting.framework in Frameworks */,
@@ -1444,6 +1449,7 @@
 		46483F371463D95E22014241 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8A299EF2274FB7B400355602 /* Spotlight.framework */,
 				44D3CDE725E42E0B00FFFCD5 /* VinchyAuthorization.framework */,
 				4474E36425E02486001C5DE3 /* VinchyAnalytics.framework */,
 				CA51BBEE254094B000208F71 /* AppTrackingTransparency.framework */,

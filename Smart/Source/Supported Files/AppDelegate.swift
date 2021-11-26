@@ -9,6 +9,7 @@
 import Firebase
 import GoogleMobileAds
 import Sheeeeeeeeet
+import Spotlight
 import SwiftUI
 import UIKit
 
@@ -67,6 +68,8 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     if UserDefaultsConfig.deviceId == "" {
       UserDefaultsConfig.deviceId = UIDevice.current.identifierForVendor?.uuidString ?? ""
     }
+
+    SpotlightService.shared.configure()
 
     return true
   }
