@@ -26,7 +26,7 @@ public final class SpotlightService {
       UserDefaultsConfig.spotlightUpdateDate = spotlightUpdateDate
     } else {
       if let date = dateFormatter.date(from: UserDefaultsConfig.spotlightUpdateDate) {
-        if date.days(from: Date()) > 7 {
+        if Date().days(from: date) > 7 {
           CSSearchableIndex.default().deleteAllSearchableItems(completionHandler: nil)
           let spotlightUpdateDate = dateFormatter.string(from: Date())
           UserDefaultsConfig.spotlightUpdateDate = spotlightUpdateDate
@@ -41,7 +41,7 @@ public final class SpotlightService {
   public func addStore(affilatedId: Int, title: String, subtitle: String?) {
     let attributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeData as String)
 
-    let identifier = "vinchy://vinchy.tech/store/\(affilatedId)"
+    let identifier = "https://vinchy.tech/store/\(affilatedId)"
     attributeSet.identifier = identifier
     attributeSet.title = title
     attributeSet.contentDescription = subtitle
