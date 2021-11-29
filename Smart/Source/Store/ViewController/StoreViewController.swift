@@ -68,7 +68,14 @@ final class StoreViewController: CollectionViewController {
       style: .plain,
       target: self,
       action: #selector(didTapFilterButton(_:)))
-    navigationItem.rightBarButtonItems = [filterBarButtonItem]
+
+    let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .medium, scale: .default)
+    let searchBarButtonItem = UIBarButtonItem(
+      image: UIImage(systemName: "magnifyingglass", withConfiguration: imageConfig),
+      style: .plain,
+      target: self,
+      action: #selector(didTapSearchButton(_:)))
+    navigationItem.rightBarButtonItems = [filterBarButtonItem, searchBarButtonItem]
 
     interactor?.viewDidLoad()
   }
@@ -236,8 +243,13 @@ final class StoreViewController: CollectionViewController {
   }
 
   @objc
-  private func didTapFilterButton(_ button: UIButton) {
+  private func didTapFilterButton(_ button: UIBarButtonItem) {
     interactor?.didTapFilterButton()
+  }
+
+  @objc
+  private func didTapSearchButton(_ button: UIBarButtonItem) {
+
   }
 }
 
