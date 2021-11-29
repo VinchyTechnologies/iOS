@@ -26,7 +26,7 @@ public final class SpotlightService {
       UserDefaultsConfig.spotlightUpdateDate = spotlightUpdateDate
     } else {
       if let date = dateFormatter.date(from: UserDefaultsConfig.spotlightUpdateDate) {
-        if date.days(from: Date()) > 7 {
+        if Date().days(from: date) > 7 {
           CSSearchableIndex.default().deleteAllSearchableItems(completionHandler: nil)
           let spotlightUpdateDate = dateFormatter.string(from: Date())
           UserDefaultsConfig.spotlightUpdateDate = spotlightUpdateDate
