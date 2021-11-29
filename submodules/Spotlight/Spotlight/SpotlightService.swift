@@ -41,7 +41,7 @@ public final class SpotlightService {
   public func addStore(affilatedId: Int, title: String, subtitle: String?) {
     let attributeSet = CSSearchableItemAttributeSet(itemContentType: kUTTypeData as String)
 
-    let identifier = "vinchy://vinchy.tech/store/\(affilatedId)"
+    let identifier = "https://vinchy.tech/store/\(affilatedId)"
     attributeSet.identifier = identifier
     attributeSet.title = title
     attributeSet.contentDescription = subtitle
