@@ -7,7 +7,10 @@
 //
 
 import CommonUI
+import Display
+import Epoxy
 import StringFormatting
+import UIKit
 import VinchyCore
 
 // MARK: - ResultsSearchDelegate
@@ -21,6 +24,17 @@ protocol ResultsSearchDelegate: AnyObject {
 
 final class ResultsSearchViewController: UIViewController {
 
+  // MARK: Lifecycle
+
+  init(input: ResultsSearchInput) {
+    self.input = input
+    super.init(nibName: nil, bundle: nil)
+  }
+
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
   // MARK: Internal
 
   var interactor: ResultsSearchInteractorProtocol?
@@ -31,9 +45,35 @@ final class ResultsSearchViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     edgesForExtendedLayout = [] // this fixes offset on iPad
-    view.addSubview(collectionView)
-    collectionView.fill()
-    collectionView.backgroundColor = .mainBackground
+
+    switch input.mode {
+    case .normal:
+      view.addSubview(collectionView)
+      collectionView.fill()
+      collectionView.backgroundColor = .mainBackground
+
+    case .storeDetail:
+      collectionView.backgroundColor = .clear
+      view.backgroundColor = .clear
+
+      let blurEffect = UIBlurEffect(style: .light)
+      let blurEffectView = UIVisualEffectView(effect: blurEffect)
+      view.addSubview(blurEffectView)
+      blurEffectView.translatesAutoresizingMaskIntoConstraints = false
+      blurEffectView.constrainToSuperview()
+
+      topBarInstaller.install()
+      if let container = topBarInstaller.container {
+        view.addSubview(collectionView)
+        collectionView.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+          collectionView.topAnchor.constraint(equalTo: container.bottomAnchor),
+          collectionView.leadingAnchor.constraint(equalTo: view.leadingAnchor),
+          collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+          collectionView.trailingAnchor.constraint(equalTo: view.trailingAnchor),
+        ])
+      }
+    }
   }
 
   override func viewWillAppear(_ animated: Bool) {
@@ -43,7 +83,14 @@ final class ResultsSearchViewController: UIViewController {
 
   // MARK: Private
 
-  private lazy var layout = UICollectionViewCompositionalLayout { [weak self] sectionNumber, _ -> NSCollectionLayoutSection? in
+  private lazy var topBarInstaller = TopBarInstaller(
+    viewController: self,
+    bars: bars)
+
+  private let input: ResultsSearchInput
+
+  // swiftformat:disable:next redundantType
+  private lazy var layout: UICollectionViewCompositionalLayout = UICollectionViewCompositionalLayout { [weak self] sectionNumber, _ -> NSCollectionLayoutSection? in
 
     guard let self = self else { return nil }
 
@@ -110,6 +157,22 @@ final class ResultsSearchViewController: UIViewController {
 
     return collectionView
   }()
+
+  @BarModelBuilder
+  private var bars: [BarModeling] {
+    [
+      SearchBar.barModel(
+        dataID: nil,
+        content: .init(),
+        behaviors: .init(didTapCancel: { [weak self] in
+          self?.dismiss(animated: true)
+        }),
+        style: .init())
+        .willDisplay { context in
+          context.view.searchBar.becomeFirstResponder()
+        },
+    ]
+  }
 
   private var viewModel: ResultsSearchViewModel? {
     didSet {

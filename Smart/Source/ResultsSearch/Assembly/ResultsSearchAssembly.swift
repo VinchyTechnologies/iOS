@@ -10,12 +10,12 @@ import Foundation
 
 final class ResultsSearchAssembly {
 
-  static func assemblyModule() -> ResultsSearchViewController {
-    let viewController = ResultsSearchViewController()
+  static func assemblyModule(input: ResultsSearchInput) -> ResultsSearchViewController {
+    let viewController = ResultsSearchViewController(input: input)
 
     let router = ResultsSearchRouter(viewController: viewController)
     let presenter = ResultsSearchPresenter(viewController: viewController)
-    let interactor = ResultsSearchInteractor(router: router, presenter: presenter)
+    let interactor = ResultsSearchInteractor(input: input, router: router, presenter: presenter)
 
     router.interactor = interactor
     viewController.interactor = interactor

@@ -9,5 +9,5 @@
 import Foundation
 
 struct SearchInput {
-
+  let resultSearchInput: ResultsSearchInput
 }

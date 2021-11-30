@@ -84,7 +84,7 @@ final class StoreMapRow: UIView, EpoxyableView {
 
   private var didTapMap: ((UIButton) -> Void)?
   private let style: Style
-  private let group = HGroup(alignment: .center, spacing: 8)
+  private let group = HGroup(style: .init(alignment: .center, accessibilityAlignment: .leading, spacing: 8, reflowsForAccessibilityTypeSizes: false, forceVerticalAccessibilityLayout: false), items: [])
 
   private func mapButton() -> GroupItemModeling {
 

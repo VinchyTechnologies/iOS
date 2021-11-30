@@ -23,27 +23,28 @@ final class ResultsSearchInteractor {
   // MARK: Lifecycle
 
   init(
+    input: ResultsSearchInput,
     router: ResultsSearchRouterProtocol,
     presenter: ResultsSearchPresenterProtocol)
   {
+    self.input = input
     self.router = router
     self.presenter = presenter
   }
 
-  // MARK: Internal
-
-  func fetchSearchedWines() {
-    recentlySearchedWines = searchedWinesRepository.findAll()
-    presenter.update(searchedWines: recentlySearchedWines)
-  }
-
   // MARK: Private
 
+  private let input: ResultsSearchInput
   private let router: ResultsSearchRouterProtocol
   private let presenter: ResultsSearchPresenterProtocol
   private let throttler = Throttler()
 
   private var recentlySearchedWines: [VSearchedWine] = []
+
+  private func fetchSearchedWines() {
+    recentlySearchedWines = searchedWinesRepository.findAll()
+    presenter.update(searchedWines: recentlySearchedWines)
+  }
 }
 
 // MARK: ResultsSearchInteractorProtocol

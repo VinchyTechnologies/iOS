@@ -55,6 +55,7 @@ public final class TopTabBarView: UIView, EpoxyableView {
   public func setBehaviors(_ behaviors: Behaviors?) {
     didSelect = behaviors?.didSelect
   }
+
   public func setContent(_ content: Content, animated: Bool) {
     tabView.configure(with: content)
   }

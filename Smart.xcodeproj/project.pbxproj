@@ -333,6 +333,7 @@
 		8AE788152684E8D60056A84B /* NotesRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE7880A2684E8D60056A84B /* NotesRouter.swift */; };
 		8AE788F6268636500056A84B /* GeoOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE788F5268636500056A84B /* GeoOnboardingViewController.swift */; };
 		8AE788F8268638CD0056A84B /* OnboardingBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE788F7268638CD0056A84B /* OnboardingBottomView.swift */; };
+		8AE95A3D27554198007F01CE /* ResultsSearchInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AE95A3C27554198007F01CE /* ResultsSearchInput.swift */; };
 		8AF5656226F2341500C58E2C /* VinchyRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF5656126F2341500C58E2C /* VinchyRepositoryProtocol.swift */; };
 		8AF5656426F2341D00C58E2C /* VinchyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF5656326F2341D00C58E2C /* VinchyRepository.swift */; };
 		8AF94419269228F5003EB76A /* TextRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF94418269228F5003EB76A /* TextRow.swift */; };
@@ -846,6 +847,7 @@
 		8AE7880A2684E8D60056A84B /* NotesRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotesRouter.swift; sourceTree = "<group>"; };
 		8AE788F5268636500056A84B /* GeoOnboardingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeoOnboardingViewController.swift; sourceTree = "<group>"; };
 		8AE788F7268638CD0056A84B /* OnboardingBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingBottomView.swift; sourceTree = "<group>"; };
+		8AE95A3C27554198007F01CE /* ResultsSearchInput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsSearchInput.swift; sourceTree = "<group>"; };
 		8AF5656126F2341500C58E2C /* VinchyRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyRepositoryProtocol.swift; sourceTree = "<group>"; };
 		8AF5656326F2341D00C58E2C /* VinchyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyRepository.swift; sourceTree = "<group>"; };
 		8AF94418269228F5003EB76A /* TextRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRow.swift; sourceTree = "<group>"; };
@@ -1555,6 +1557,7 @@
 		74E55F9426AACE2C0086C159 /* ResultsSearch */ = {
 			isa = PBXGroup;
 			children = (
+				8AE95A3B27554182007F01CE /* Input */,
 				74E55F9926AACE2C0086C159 /* Assembly */,
 				74E55FA126AACE2C0086C159 /* Interactor */,
 				74E55F9B26AACE2C0086C159 /* Presenter */,
@@ -2577,6 +2580,14 @@
 				8AE7880A2684E8D60056A84B /* NotesRouter.swift */,
 			);
 			path = Router;
+			sourceTree = "<group>";
+		};
+		8AE95A3B27554182007F01CE /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				8AE95A3C27554198007F01CE /* ResultsSearchInput.swift */,
+			);
+			path = Input;
 			sourceTree = "<group>";
 		};
 		8AF5656026F233ED00C58E2C /* Repository */ = {
@@ -4092,6 +4103,7 @@
 				74E55FA926AACE2C0086C159 /* ResultsSearchAssembly.swift in Sources */,
 				8A27EA69273564E3005A13C6 /* Tween.swift in Sources */,
 				8A079306269239C1000ACA2B /* DocumentsViewControllerProtocol.swift in Sources */,
+				8AE95A3D27554198007F01CE /* ResultsSearchInput.swift in Sources */,
 				8A313C1626468678009F2165 /* WorkingHoursCollectionCell.swift in Sources */,
 				8A0794D826936141000ACA2B /* StoreInteractor.swift in Sources */,
 				CAA9DC3C250BD20400F996A8 /* AdvancedHeader.swift in Sources */,

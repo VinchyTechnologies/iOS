@@ -10,8 +10,8 @@ import Foundation
 
 final class SearchAssembly {
 
-  static func assemblyModule() -> SearchViewController {
-    let resultsController = ResultsSearchAssembly.assemblyModule()
+  static func assemblyModule(input: SearchInput) -> SearchViewController {
+    let resultsController = ResultsSearchAssembly.assemblyModule(input: input.resultSearchInput)
     let viewController = SearchViewController(searchResultsController: resultsController)
     resultsController.didnotFindTheWineCollectionCellDelegate = viewController
 

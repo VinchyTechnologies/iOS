@@ -123,7 +123,7 @@ final class StoreTitleView: UIView, EpoxyableView {
       if let moreText = content.moreText {
         HGroupItem(
           dataID: DataID.more,
-          style: .init(alignment: .center, spacing: 0))
+          style: .init(alignment: .center, spacing: 0, reflowsForAccessibilityTypeSizes: false))
         {
           SpacerItem(dataID: DataID.spacer)
           LinkButton.groupItem(
@@ -153,7 +153,7 @@ final class StoreTitleView: UIView, EpoxyableView {
   }
 
   private let style: Style
-  private let hGroup = HGroup(alignment: .center, spacing: C.hSpacing)
+  private let hGroup = HGroup(style: .init(alignment: .center, accessibilityAlignment: .center, spacing: C.hSpacing, reflowsForAccessibilityTypeSizes: false, forceVerticalAccessibilityLayout: false), items: [])
 
   private var disclosureIndicator: GroupItemModeling {
     IconView.groupItem(

@@ -14,4 +14,5 @@ import VinchyAuthorization
 protocol StoreRouterProtocol: WineDetailRoutable, ActivityRoutable, WriteNoteRoutable, OpenURLProtocol {
   func presentFilter(preselectedFilters: [(String, String)])
   func showRoutesActionSheet(storeTitleText: String?, coordinate: CLLocationCoordinate2D, button: UIButton)
+  func pushToResultsSearchController(affilatedId: Int)
 }

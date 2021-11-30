@@ -40,6 +40,13 @@ final class StoreRouter {
 
 extension StoreRouter: StoreRouterProtocol {
 
+  func pushToResultsSearchController(affilatedId: Int) {
+    let controller = ResultsSearchAssembly.assemblyModule(
+      input: .init(mode: .storeDetail(affilatedId: affilatedId)))
+    controller.modalPresentationStyle = .overCurrentContext
+    viewController?.present(controller, animated: true, completion: nil)
+  }
+
   func presentFilter(preselectedFilters: [(String, String)]) {
     let controller = AdvancedSearchAssembly.assemblyModule(
       input: .init(mode: .asView(preselectedFilters: preselectedFilters)))

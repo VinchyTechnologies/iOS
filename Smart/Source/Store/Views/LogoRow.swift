@@ -65,8 +65,6 @@ final class LogoRow: UIView, EpoxyableView {
             dataID: DataID.title,
             content: title,
             style: .style(with: .lagerTitle))
-            .adjustsFontForContentSizeCategory(true)
-            .textColor(UIColor.label)
         }
       }
     }
@@ -81,5 +79,5 @@ final class LogoRow: UIView, EpoxyableView {
   }
 
   private let style: Style
-  private let group = HGroup(alignment: .center, spacing: 8)
+  private let group = HGroup.init(style: .init(alignment: .center, accessibilityAlignment: .leading, spacing: 8, reflowsForAccessibilityTypeSizes: false, forceVerticalAccessibilityLayout: false), items: [])
 }

@@ -249,7 +249,7 @@ final class StoreViewController: CollectionViewController {
 
   @objc
   private func didTapSearchButton(_ button: UIBarButtonItem) {
-
+    interactor?.didTapSearchButton()
   }
 }
 

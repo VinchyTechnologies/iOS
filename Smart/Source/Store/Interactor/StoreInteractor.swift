@@ -231,9 +231,18 @@ final class StoreInteractor {
 // MARK: StoreInteractorProtocol
 
 extension StoreInteractor: StoreInteractorProtocol {
-
   var contextMenuRouter: ActivityRoutable & WriteNoteRoutable {
     router
+  }
+
+  func didTapSearchButton() {
+    switch input.mode {
+    case .normal(let affilatedId):
+      router.pushToResultsSearchController(affilatedId: affilatedId)
+
+    case .hasPersonalRecommendations(let affilatedId, _):
+      router.pushToResultsSearchController(affilatedId: affilatedId)
+    }
   }
 
   func didTapMapButton(button: UIButton) {

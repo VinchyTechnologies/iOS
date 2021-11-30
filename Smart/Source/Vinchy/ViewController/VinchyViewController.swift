@@ -92,7 +92,8 @@ final class VinchyViewController: CollectionViewController {
   private let filterButton = UIButton(type: .system)
 
   private lazy var searchController: SearchViewController = {
-    let searchController = SearchAssembly.assemblyModule()
+    let searchController = SearchAssembly.assemblyModule(
+      input: .init(resultSearchInput: .init(mode: .normal)))
     (searchController.searchResultsController as? ResultsSearchViewController)?.resultsSearchDelegate = interactor
     return searchController
   }()

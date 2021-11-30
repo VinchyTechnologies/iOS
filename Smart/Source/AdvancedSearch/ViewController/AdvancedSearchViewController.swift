@@ -52,6 +52,7 @@ final class AdvancedSearchViewController: UIViewController {
 
     interactor?.viewDidLoad()
   }
+
   override func viewSafeAreaInsetsDidChange() {
     super.viewSafeAreaInsetsDidChange()
 
