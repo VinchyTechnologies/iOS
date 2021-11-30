@@ -52,11 +52,16 @@ final class ResultsSearchInteractor {
 extension ResultsSearchInteractor: ResultsSearchInteractorProtocol {
 
   func viewWillAppear() {
-    fetchSearchedWines()
+    switch input.mode {
+    case .normal:
+      fetchSearchedWines()
+
+    case .storeDetail:
+      break
+    }
   }
 
   func didSelectResultCell(wineID: Int64, title: String) {
-
     let count = searchedWinesRepository.findAll().count
     let maxId = searchedWinesRepository.findAll().map { $0.id }.max() ?? 0
     let id = maxId + 1
@@ -78,24 +83,45 @@ extension ResultsSearchInteractor: ResultsSearchInteractorProtocol {
       let searchText = searchText,
       !searchText.isEmpty
     else {
-      throttler.throttle(delay: .milliseconds(600)) { [weak self] in
-        self?.fetchSearchedWines()
+      switch input.mode {
+      case .normal:
+        throttler.throttle(delay: .milliseconds(600)) { [weak self] in
+          self?.fetchSearchedWines()
+        }
+
+      case .storeDetail:
+        break
       }
+
       return
     }
     throttler.cancel()
 
     throttler.throttle(delay: .milliseconds(600)) { [weak self] in
-      Wines.shared.getWineBy(title: searchText, offset: 0, limit: 40) { [weak self] result in
-        switch result {
-        case .success(let wines):
-          self?.presenter.update(didFindWines: wines)
+      guard let self = self else { return }
+      switch self.input.mode {
+      case .normal:
+        Wines.shared.getWineBy(title: searchText, offset: 0, limit: 40) { [weak self] result in
+          switch result {
+          case .success(let wines):
+            self?.presenter.update(didFindWines: wines)
 
-        case .failure:
-          self?.presenter.update(didFindWines: [])
+          case .failure:
+            self?.presenter.update(didFindWines: [])
+          }
+        }
+
+      case .storeDetail(let affilatedId):
+        Partners.shared.getPartnerWines(partnerId: 1, affilatedId: affilatedId, filters: [("title", searchText)], limit: 10, offset: 0) { [weak self] result in
+          switch result {
+          case .success(let wines):
+            self?.presenter.update(didFindWines: wines)
+
+          case .failure:
+            self?.presenter.update(didFindWines: [])
+          }
         }
       }
     }
   }
-
 }

@@ -55,9 +55,6 @@ final class ResultsSearchViewController: UIViewController {
     case .storeDetail:
       collectionView.backgroundColor = .clear
       view.backgroundColor = .clear
-
-      let blurEffect = UIBlurEffect(style: .light)
-      let blurEffectView = UIVisualEffectView(effect: blurEffect)
       view.addSubview(blurEffectView)
       blurEffectView.translatesAutoresizingMaskIntoConstraints = false
       blurEffectView.constrainToSuperview()
@@ -81,7 +78,15 @@ final class ResultsSearchViewController: UIViewController {
     interactor?.viewWillAppear()
   }
 
+  override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    super.traitCollectionDidChange(previousTraitCollection)
+    let blurEffect = UIBlurEffect(style: traitCollection.userInterfaceStyle == .dark ? .dark : .light)
+    blurEffectView.effect = blurEffect
+  }
+
   // MARK: Private
+
+  private lazy var blurEffectView = UIVisualEffectView()
 
   private lazy var topBarInstaller = TopBarInstaller(
     viewController: self,
@@ -166,6 +171,8 @@ final class ResultsSearchViewController: UIViewController {
         content: .init(),
         behaviors: .init(didTapCancel: { [weak self] in
           self?.dismiss(animated: true)
+        }, didEnterSearchText: { [weak self] searchText in
+          self?.interactor?.didEnterSearchText(searchText)
         }),
         style: .init())
         .willDisplay { context in
