@@ -6,7 +6,7 @@ workspace 'Smart'
 
 def commonPods
   pod 'FSPagerView' # no spm...
-  pod 'CocoaDebug', :configurations => ['Debug']
+#  pod 'CocoaDebug', :configurations => ['Debug']
   pod 'SwiftLint'
   
   pod 'Google-Mobile-Ads-SDK'

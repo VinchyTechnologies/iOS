@@ -6,21 +6,13 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
+import Core
 import Firebase
 import GoogleMobileAds
 import Sheeeeeeeeet
 import Spotlight
 import SwiftUI
 import UIKit
-
-#if canImport(AppTrackingTransparency)
-import AppTrackingTransparency
-#endif
-
-#if canImport(AdSupport)
-import AdSupport
-import Core
-#endif
 
 // MARK: - AppDelegate
 
@@ -47,14 +39,6 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
         self.showForceUpdateScreen(versions: remoteConfig.configValue(forKey: "force_update_versions").jsonValue as! [String]) // swiftlint:disable:this force_cast
       }
-    }
-
-    if #available(iOS 14, *) {
-      ATTrackingManager.requestTrackingAuthorization(completionHandler: { _ in
-        GADMobileAds.sharedInstance().start(completionHandler: nil)
-      })
-    } else {
-      GADMobileAds.sharedInstance().start(completionHandler: nil)
     }
 
     //        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "7d99d4164fe23a45e4802010db93f214" ];

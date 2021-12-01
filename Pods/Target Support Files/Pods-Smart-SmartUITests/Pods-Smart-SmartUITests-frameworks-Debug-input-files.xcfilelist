@@ -1,5 +1,4 @@
 ${PODS_ROOT}/Target Support Files/Pods-Smart-SmartUITests/Pods-Smart-SmartUITests-frameworks.sh
-${BUILT_PRODUCTS_DIR}/CocoaDebug/CocoaDebug.framework
 ${BUILT_PRODUCTS_DIR}/Epoxy/Epoxy.framework
 ${BUILT_PRODUCTS_DIR}/EpoxyBars/EpoxyBars.framework
 ${BUILT_PRODUCTS_DIR}/EpoxyCollectionView/EpoxyCollectionView.framework

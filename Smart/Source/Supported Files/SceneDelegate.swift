@@ -10,6 +10,14 @@ import CoreSpotlight
 import Display
 import FirebaseDynamicLinks
 import UIKit
+#if canImport(AppTrackingTransparency)
+import AppTrackingTransparency
+#endif
+
+#if canImport(AdSupport)
+import AdSupport
+import Core
+#endif
 
 // MARK: - SceneDelegate
 
@@ -94,6 +102,18 @@ extension SceneDelegate: UIWindowSceneDelegate {
 //      // Save it off for later when we become active.
 //      savedShortCutItem = shortcutItem
 //    }
+  }
+
+  func sceneDidBecomeActive(_ scene: UIScene) {
+    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { // + 1.0 very important
+      if #available(iOS 14, *) {
+        ATTrackingManager.requestTrackingAuthorization(completionHandler: { _ in
+          GADMobileAds.sharedInstance().start(completionHandler: nil)
+        })
+      } else {
+        GADMobileAds.sharedInstance().start(completionHandler: nil)
+      }
+    }
   }
 
   func scene(

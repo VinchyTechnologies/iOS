@@ -176,7 +176,6 @@ code_sign_if_enabled() {
 }
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/CocoaDebug/CocoaDebug.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/Epoxy/Epoxy.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/EpoxyBars/EpoxyBars.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/EpoxyCollectionView/EpoxyCollectionView.framework"
