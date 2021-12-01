@@ -7,9 +7,9 @@
 //
 
 import CommonUI
-import Display
 import FittedSheets
 import UIKit
+import VinchyUI
 
 // MARK: - AreYouInStoreViewController
 

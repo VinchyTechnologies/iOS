@@ -6,19 +6,22 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import VinchyUI
 
-final class AdvancedSearchAssembly {
-  static func assemblyModule(input: AdvancedSearchInput) -> AdvancedSearchViewController {
+// MARK: - AdvancedSearchAssembly
+
+public final class AdvancedSearchAssembly {
+
+  public typealias Coordinator = ShowcaseRoutable
+
+  public static func assemblyModule(input: AdvancedSearchInput, coordinator: Coordinator) -> UIViewController {
     let viewController = AdvancedSearchViewController()
-
-    let router = AdvancedSearchRouter(input: input, viewController: viewController)
+    let router = AdvancedSearchRouter(input: input, viewController: viewController, coordinator: coordinator)
     let presenter = AdvancedSearchPresenter(input: input, viewController: viewController)
     let interactor = AdvancedSearchInteractor(input: input, router: router, presenter: presenter)
-
     router.interactor = interactor
     viewController.interactor = interactor
-
     return viewController
   }
 }

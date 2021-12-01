@@ -9,6 +9,6 @@
 import Display
 import UIKit
 
-final class AdvancedSearchNavigationController: VinchyNavigationController {
-  weak var advancedSearchOutputDelegate: AdvancedSearchOutputDelegate?
+public final class AdvancedSearchNavigationController: VinchyNavigationController {
+  public weak var advancedSearchOutputDelegate: AdvancedSearchOutputDelegate?
 }

@@ -12,6 +12,7 @@ import Database
 import LocationUI
 import Spotlight
 import VinchyCore
+import VinchyUI
 
 // MARK: - VinchyInteractor
 

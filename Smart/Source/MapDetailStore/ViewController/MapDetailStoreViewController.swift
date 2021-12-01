@@ -12,6 +12,7 @@ import Display
 import FittedSheets
 import UIKit
 import VinchyCore
+import VinchyUI
 
 // MARK: - MapDetailStoreViewControllerDelegate
 

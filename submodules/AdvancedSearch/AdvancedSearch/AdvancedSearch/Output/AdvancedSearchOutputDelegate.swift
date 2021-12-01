@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol AdvancedSearchOutputDelegate: AnyObject {
+public protocol AdvancedSearchOutputDelegate: AnyObject {
   func didChoose(_ filters: [(String, String)])
 }

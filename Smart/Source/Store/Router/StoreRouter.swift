@@ -6,6 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import AdvancedSearch
 import CoreLocation
 import Display
 import StringFormatting
@@ -42,7 +43,7 @@ extension StoreRouter: StoreRouterProtocol {
 
   func presentFilter(preselectedFilters: [(String, String)]) {
     let controller = AdvancedSearchAssembly.assemblyModule(
-      input: .init(mode: .asView(preselectedFilters: preselectedFilters)))
+      input: .init(mode: .asView(preselectedFilters: preselectedFilters)), coordinator: Coordinator.shared)
     let navController = AdvancedSearchNavigationController(rootViewController: controller)
     navController.advancedSearchOutputDelegate = interactor
     viewController?.present(navController, animated: true, completion: nil)

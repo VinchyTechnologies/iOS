@@ -8,7 +8,7 @@
 
 import CommonUI
 
-struct AdvancedSearchViewModel {
+public struct AdvancedSearchViewModel {
   enum Section {
     case carusel(headerViewModel: AdvancedHeaderViewModel, items: [AdvancedSearchCaruselCollectionCellViewModel])
   }

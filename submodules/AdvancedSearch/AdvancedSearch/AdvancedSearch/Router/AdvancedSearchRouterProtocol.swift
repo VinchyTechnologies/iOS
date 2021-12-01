@@ -6,7 +6,7 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import VinchyUI
 
 protocol AdvancedSearchRouterProtocol: ShowcaseRoutable {
   func presentAllCountries(preSelectedCountryCodes: [String])

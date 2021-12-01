@@ -9,6 +9,7 @@
 import Database
 import VinchyAuthorization
 import VinchyCore
+import VinchyUI
 
 protocol SimpleContinuosCarouselCollectionCellRouterProtocol: WriteReviewRoutable, AuthorizationRoutable, ShowcaseRoutable, WineDetailRoutable {
   func pushToWriteViewController(note: VNote)

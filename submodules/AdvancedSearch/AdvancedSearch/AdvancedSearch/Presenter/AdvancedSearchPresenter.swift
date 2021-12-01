@@ -9,6 +9,7 @@
 import CommonUI
 import Core
 import StringFormatting
+import UIKit.UIImage
 
 extension FilterCategory {
   fileprivate var title: String {

@@ -8,6 +8,6 @@
 
 import Core
 
-protocol AdvancedSearchPresenterProtocol: AnyObject {
+public protocol AdvancedSearchPresenterProtocol: AnyObject {
   func update(filters: [Filter], selectedFilters: [FilterItem], sec: Int?)
 }

@@ -10,6 +10,7 @@ import Core
 import Database
 import FirebaseDynamicLinks
 import VinchyCore
+import VinchyUI
 
 // MARK: - SimpleContinuosCarouselCollectionCellInteractorDelegate
 

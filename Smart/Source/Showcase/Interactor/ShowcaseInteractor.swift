@@ -8,6 +8,7 @@
 
 import Core
 import VinchyCore
+import VinchyUI
 
 // MARK: - C
 
@@ -66,7 +67,7 @@ final class ShowcaseInteractor {
   private func loadData(offset: Int) {
     switch input.mode {
     case .normal(let data):
-      stateMachine.invokeSuccess(with: data)
+      stateMachine.invokeSuccess(with: (data as? [ShortWine]) ?? [])
 
     case .advancedSearch(var params):
       if offset == .zero {

@@ -12,6 +12,7 @@ import Epoxy
 import StringFormatting
 import UIKit
 import VinchyCore
+import VinchyUI
 
 // MARK: - C
 

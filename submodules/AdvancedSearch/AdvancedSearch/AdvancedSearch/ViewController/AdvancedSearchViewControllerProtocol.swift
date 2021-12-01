@@ -8,6 +8,6 @@
 
 import Foundation
 
-protocol AdvancedSearchViewControllerProtocol: AnyObject {
+public protocol AdvancedSearchViewControllerProtocol: AnyObject {
   func updateUI(viewModel: AdvancedSearchViewModel, sec: Int?)
 }

@@ -7,7 +7,9 @@
 //
 
 import CommonUI
+import Display
 import UIKit
+import VinchyUI
 
 // MARK: - AdvancedSearchRouter
 
@@ -17,16 +19,19 @@ final class AdvancedSearchRouter {
 
   init(
     input: AdvancedSearchInput,
-    viewController: UIViewController)
+    viewController: UIViewController,
+    coordinator: AdvancedSearchAssembly.Coordinator)
   {
     self.input = input
     self.viewController = viewController
+    self.coordinator = coordinator
   }
 
   // MARK: Internal
 
   weak var viewController: UIViewController?
   weak var interactor: AdvancedSearchInteractorProtocol?
+  var coordinator: AdvancedSearchAssembly.Coordinator
 
   // MARK: Private
 
@@ -37,6 +42,10 @@ final class AdvancedSearchRouter {
 
 extension AdvancedSearchRouter: AdvancedSearchRouterProtocol {
 
+  func pushToShowcaseViewController(input: ShowcaseInput) {
+    coordinator.pushToShowcaseViewController(input: input)
+  }
+
   func dismiss(selectedFilters: [(String, String)]) {
     viewController?.dismiss(animated: true, completion: {
       (self.viewController?.navigationController as? AdvancedSearchNavigationController)?.advancedSearchOutputDelegate?.didChoose(selectedFilters)
@@ -44,10 +53,10 @@ extension AdvancedSearchRouter: AdvancedSearchRouterProtocol {
   }
 
   func presentAllCountries(preSelectedCountryCodes: [String]) {
+    let controller = CountriesViewController(preSelectedCountryCodes: preSelectedCountryCodes, delegate: self)
+    let navController = VinchyNavigationController(rootViewController: controller)
     viewController?.present(
-      Assembly.buildChooseCountiesModule(
-        preSelectedCountryCodes: preSelectedCountryCodes,
-        delegate: self),
+      navController,
       animated: true,
       completion: nil)
   }

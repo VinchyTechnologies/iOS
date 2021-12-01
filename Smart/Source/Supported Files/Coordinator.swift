@@ -1,16 +1,17 @@
 //
-//  ShowcaseRoutable.swift
+//  Coordinator.swift
 //  Smart
 //
-//  Created by Tatiana Ampilogova on 4/2/21.
+//  Created by Алексей Смирнов on 01.12.2021.
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
 import VinchyUI
 
-// MARK: - ShowcaseRoutable
+final class Coordinator: ShowcaseRoutable {
 
-extension ShowcaseRoutable {
+  static let shared = Coordinator()
+
   func pushToShowcaseViewController(input: ShowcaseInput) {
     let controller = ShowcaseAssembly.assemblyModule(input: input)
     controller.hidesBottomBarWhenPushed = true

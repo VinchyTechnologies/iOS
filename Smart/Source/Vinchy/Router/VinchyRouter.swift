@@ -13,6 +13,7 @@ import FittedSheets
 import StringFormatting
 import UIKit
 import VinchyCore
+import VinchyUI
 
 // MARK: - VinchyRouter
 

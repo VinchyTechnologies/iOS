@@ -21,11 +21,9 @@ private enum C {
 
 final class AdvancedSearchViewController: UIViewController {
 
-  // MARK: Internal
+  // MARK: Public
 
-  var interactor: AdvancedSearchInteractorProtocol?
-
-  override func viewDidLoad() {
+  public override func viewDidLoad() {
     super.viewDidLoad()
 
     if isModal {
@@ -52,6 +50,12 @@ final class AdvancedSearchViewController: UIViewController {
 
     interactor?.viewDidLoad()
   }
+
+  // MARK: Internal
+
+  var interactor: AdvancedSearchInteractorProtocol?
+
+
   override func viewSafeAreaInsetsDidChange() {
     super.viewSafeAreaInsetsDidChange()
 
@@ -156,7 +160,7 @@ final class AdvancedSearchViewController: UIViewController {
 // MARK: AdvancedSearchViewControllerProtocol
 
 extension AdvancedSearchViewController: AdvancedSearchViewControllerProtocol {
-  func updateUI(viewModel: AdvancedSearchViewModel, sec: Int?) {
+  public func updateUI(viewModel: AdvancedSearchViewModel, sec: Int?) {
     self.viewModel = viewModel
     navigationItem.title = viewModel.navigationTitle
     bottomButtonsView.decorate(model: viewModel.bottomButtonsViewModel)
@@ -176,12 +180,12 @@ extension AdvancedSearchViewController: AdvancedSearchViewControllerProtocol {
 // MARK: UICollectionViewDataSource
 
 extension AdvancedSearchViewController: UICollectionViewDataSource {
-  func numberOfSections(in _: UICollectionView) -> Int {
+  public func numberOfSections(in _: UICollectionView) -> Int {
     guard let viewModel = viewModel else { return 0 }
     return viewModel.sections.count
   }
 
-  func collectionView(
+  public func collectionView(
     _: UICollectionView,
     numberOfItemsInSection section: Int)
     -> Int
@@ -193,7 +197,7 @@ extension AdvancedSearchViewController: UICollectionViewDataSource {
     }
   }
 
-  func collectionView(
+  public func collectionView(
     _ collectionView: UICollectionView,
     cellForItemAt indexPath: IndexPath)
     -> UICollectionViewCell
@@ -214,7 +218,7 @@ extension AdvancedSearchViewController: UICollectionViewDataSource {
     }
   }
 
-  func collectionView(
+  public func collectionView(
     _ collectionView: UICollectionView,
     viewForSupplementaryElementOfKind kind: String,
     at indexPath: IndexPath)
@@ -242,7 +246,7 @@ extension AdvancedSearchViewController: UICollectionViewDataSource {
 // MARK: AdvancedSearchCaruselCollectionCellDelegate
 
 extension AdvancedSearchViewController: AdvancedSearchCaruselCollectionCellDelegate {
-  func didSelectItem(at indexPath: IndexPath) {
+  public func didSelectItem(at indexPath: IndexPath) {
     interactor?.didSelectItem(at: indexPath)
     HapticEffectHelper.vibrate(withEffect: .medium)
   }
@@ -259,11 +263,11 @@ extension AdvancedSearchViewController: AdvancedHeaderDelegate {
 // MARK: BottomButtonsViewDelegate
 
 extension AdvancedSearchViewController: BottomButtonsViewDelegate {
-  func didTapLeadingButton(_: UIButton) {
+  public func didTapLeadingButton(_: UIButton) {
     interactor?.didTapResetAllFiltersButton()
   }
 
-  func didTapTrailingButton(_: UIButton) {
+  public func didTapTrailingButton(_: UIButton) {
     interactor?.didTapConfirmSearchButton()
   }
 }

@@ -10,6 +10,8 @@ import CommonUI
 import Display
 import StringFormatting
 import VinchyCore
+import VinchyUI
+
 
 // MARK: - ShowcasePresenter
 
