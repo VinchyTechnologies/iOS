@@ -13,6 +13,7 @@ import Sheeeeeeeeet
 import UIKit
 import VinchyAuthorization
 import VinchyCore
+import VinchyStore
 
 // MARK: - WineDetailRouter
 
@@ -51,7 +52,7 @@ extension WineDetailRouter: WineDetailRouterProtocol {
   }
 
   func presentStore(affilatedId: Int) {
-    let controller = StoreAssembly.assemblyModule(input: .init(mode: .normal(affilatedId: affilatedId)))
+    let controller = StoreAssembly.assemblyModule(input: .init(mode: .normal(affilatedId: affilatedId)), coordinator: Coordinator.shared)
 //    let navigationController = NavigationController(rootViewController: controller)
 //    navigationController.modalPresentationStyle = .overCurrentContext
 //    viewController?.navigationController?.present(navigationController, animated: true, completion: nil)

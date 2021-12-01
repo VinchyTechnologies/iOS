@@ -10,12 +10,10 @@
 		8A51442B2757B66800DC45CD /* AdvancedSearch.docc in Sources */ = {isa = PBXBuildFile; fileRef = 8A51442A2757B66800DC45CD /* AdvancedSearch.docc */; };
 		8A51442C2757B66800DC45CD /* AdvancedSearch.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A5144292757B66800DC45CD /* AdvancedSearch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A51444D2757B6F500DC45CD /* AdvancedSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5144342757B6F500DC45CD /* AdvancedSearchViewModel.swift */; };
-		8A51444E2757B6F500DC45CD /* AdvancedSearchInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5144362757B6F500DC45CD /* AdvancedSearchInput.swift */; };
 		8A51444F2757B6F500DC45CD /* AdvancedSearchAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5144382757B6F500DC45CD /* AdvancedSearchAssembly.swift */; };
 		8A5144502757B6F500DC45CD /* AdvancedSearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A51443A2757B6F500DC45CD /* AdvancedSearchPresenter.swift */; };
 		8A5144512757B6F500DC45CD /* AdvancedSearchPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A51443B2757B6F500DC45CD /* AdvancedSearchPresenterProtocol.swift */; };
 		8A5144522757B6F500DC45CD /* AdvancedSearchNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A51443D2757B6F500DC45CD /* AdvancedSearchNavigationController.swift */; };
-		8A5144532757B6F500DC45CD /* AdvancedSearchOutputDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A51443E2757B6F500DC45CD /* AdvancedSearchOutputDelegate.swift */; };
 		8A5144542757B6F500DC45CD /* AdvancedSearchViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5144402757B6F500DC45CD /* AdvancedSearchViewControllerProtocol.swift */; };
 		8A5144552757B6F500DC45CD /* AdvancedSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5144412757B6F500DC45CD /* AdvancedSearchViewController.swift */; };
 		8A5144562757B6F500DC45CD /* AdvancedSearchCaruselCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5144432757B6F500DC45CD /* AdvancedSearchCaruselCollectionCell.swift */; };
@@ -38,12 +36,10 @@
 		8A5144292757B66800DC45CD /* AdvancedSearch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdvancedSearch.h; sourceTree = "<group>"; };
 		8A51442A2757B66800DC45CD /* AdvancedSearch.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = AdvancedSearch.docc; sourceTree = "<group>"; };
 		8A5144342757B6F500DC45CD /* AdvancedSearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSearchViewModel.swift; sourceTree = "<group>"; };
-		8A5144362757B6F500DC45CD /* AdvancedSearchInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSearchInput.swift; sourceTree = "<group>"; };
 		8A5144382757B6F500DC45CD /* AdvancedSearchAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSearchAssembly.swift; sourceTree = "<group>"; };
 		8A51443A2757B6F500DC45CD /* AdvancedSearchPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSearchPresenter.swift; sourceTree = "<group>"; };
 		8A51443B2757B6F500DC45CD /* AdvancedSearchPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSearchPresenterProtocol.swift; sourceTree = "<group>"; };
 		8A51443D2757B6F500DC45CD /* AdvancedSearchNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSearchNavigationController.swift; sourceTree = "<group>"; };
-		8A51443E2757B6F500DC45CD /* AdvancedSearchOutputDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSearchOutputDelegate.swift; sourceTree = "<group>"; };
 		8A5144402757B6F500DC45CD /* AdvancedSearchViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSearchViewControllerProtocol.swift; sourceTree = "<group>"; };
 		8A5144412757B6F500DC45CD /* AdvancedSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSearchViewController.swift; sourceTree = "<group>"; };
 		8A5144432757B6F500DC45CD /* AdvancedSearchCaruselCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSearchCaruselCollectionCell.swift; sourceTree = "<group>"; };
@@ -110,7 +106,6 @@
 			isa = PBXGroup;
 			children = (
 				8A5144372757B6F500DC45CD /* Assembly */,
-				8A5144352757B6F500DC45CD /* Input */,
 				8A5144472757B6F500DC45CD /* Interactor */,
 				8A51443C2757B6F500DC45CD /* Output */,
 				8A5144392757B6F500DC45CD /* Presenter */,
@@ -128,14 +123,6 @@
 				8A5144342757B6F500DC45CD /* AdvancedSearchViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		8A5144352757B6F500DC45CD /* Input */ = {
-			isa = PBXGroup;
-			children = (
-				8A5144362757B6F500DC45CD /* AdvancedSearchInput.swift */,
-			);
-			path = Input;
 			sourceTree = "<group>";
 		};
 		8A5144372757B6F500DC45CD /* Assembly */ = {
@@ -159,7 +146,6 @@
 			isa = PBXGroup;
 			children = (
 				8A51443D2757B6F500DC45CD /* AdvancedSearchNavigationController.swift */,
-				8A51443E2757B6F500DC45CD /* AdvancedSearchOutputDelegate.swift */,
 			);
 			path = Output;
 			sourceTree = "<group>";
@@ -299,10 +285,8 @@
 				8A5144572757B6F500DC45CD /* SeparatorFooter.swift in Sources */,
 				8A5144582757B6F500DC45CD /* MoreBounceDecoratorView.swift in Sources */,
 				8A5144522757B6F500DC45CD /* AdvancedSearchNavigationController.swift in Sources */,
-				8A5144532757B6F500DC45CD /* AdvancedSearchOutputDelegate.swift in Sources */,
 				8A51444D2757B6F500DC45CD /* AdvancedSearchViewModel.swift in Sources */,
 				8A5144562757B6F500DC45CD /* AdvancedSearchCaruselCollectionCell.swift in Sources */,
-				8A51444E2757B6F500DC45CD /* AdvancedSearchInput.swift in Sources */,
 				8A5144552757B6F500DC45CD /* AdvancedSearchViewController.swift in Sources */,
 				8A5144512757B6F500DC45CD /* AdvancedSearchPresenterProtocol.swift in Sources */,
 				8A5144542757B6F500DC45CD /* AdvancedSearchViewControllerProtocol.swift in Sources */,

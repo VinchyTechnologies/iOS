@@ -13,6 +13,7 @@ import FittedSheets
 import StringFormatting
 import UIKit
 import VinchyCore
+import VinchyStore
 import VinchyUI
 
 // MARK: - VinchyRouter
@@ -73,7 +74,7 @@ extension VinchyRouter: VinchyRouterProtocol {
   }
 
   func pushToStoreViewController(affilatedId: Int) {
-    let controller = StoreAssembly.assemblyModule(input: .init(mode: .normal(affilatedId: affilatedId)))
+    let controller = StoreAssembly.assemblyModule(input: .init(mode: .normal(affilatedId: affilatedId)), coordinator: Coordinator.shared)
     controller.hidesBottomBarWhenPushed = true
     viewController?.navigationController?.pushViewController(
       controller,

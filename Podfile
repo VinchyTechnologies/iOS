@@ -33,11 +33,22 @@ end
 target 'Display' do
   project 'submodules/Display/Display'
   pod 'Epoxy'
+  pod 'Google-Mobile-Ads-SDK'
+end
+
+target 'VinchyStore' do
+  project 'submodules/VinchyStore/VinchyStore'
+  pod 'Epoxy'
 end
 
 target 'CommonUI' do
   project 'submodules/CommonUI/CommonUI'
   pod 'Epoxy'
+end
+
+target 'VinchyUI' do
+  project 'submodules/VinchyUI/VinchyUI'
+  pod 'Firebase/DynamicLinks'
 end
 
 target 'VinchyAuthorization' do

@@ -7,6 +7,7 @@
 //
 
 import VinchyAuthorization
+import VinchyUI
 
 protocol RatesRouterProtocol: ReviewDetailRoutable, WineDetailRoutable, WriteReviewRoutable, ActivityRoutable, AuthorizationRoutable {
 

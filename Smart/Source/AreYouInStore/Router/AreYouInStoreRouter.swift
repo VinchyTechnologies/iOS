@@ -8,6 +8,7 @@
 
 import Display
 import UIKit
+import VinchyStore
 
 // MARK: - AreYouInStoreRouter
 
@@ -39,7 +40,7 @@ final class AreYouInStoreRouter {
 extension AreYouInStoreRouter: AreYouInStoreRouterProtocol {
 
   func presentStore(affilatedId: Int) {
-    let controller = StoreAssembly.assemblyModule(input: .init(mode: .normal(affilatedId: affilatedId)))
+    let controller = StoreAssembly.assemblyModule(input: .init(mode: .normal(affilatedId: affilatedId)), coordinator: Coordinator.shared)
     let navigationController = VinchyNavigationController(rootViewController: controller)
     navigationController.modalPresentationStyle = .overCurrentContext
     viewController?.present(navigationController, animated: true, completion: nil)

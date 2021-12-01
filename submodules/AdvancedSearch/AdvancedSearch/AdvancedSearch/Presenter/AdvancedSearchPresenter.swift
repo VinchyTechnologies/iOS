@@ -10,6 +10,7 @@ import CommonUI
 import Core
 import StringFormatting
 import UIKit.UIImage
+import VinchyUI
 
 extension FilterCategory {
   fileprivate var title: String {

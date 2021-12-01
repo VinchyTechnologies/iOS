@@ -7,7 +7,7 @@
 //
 
 import Display
-import UIKit
+import VinchyUI
 
 public final class AdvancedSearchNavigationController: VinchyNavigationController {
   public weak var advancedSearchOutputDelegate: AdvancedSearchOutputDelegate?

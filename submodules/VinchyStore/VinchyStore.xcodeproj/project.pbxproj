@@ -7,14 +7,62 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		282D951F0ACBDCD1BF10056D /* Pods_VinchyStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FCC70846409724216C1E5DB /* Pods_VinchyStore.framework */; };
 		8A5144152757B5F000DC45CD /* VinchyStore.docc in Sources */ = {isa = PBXBuildFile; fileRef = 8A5144142757B5F000DC45CD /* VinchyStore.docc */; };
 		8A5144162757B5F000DC45CD /* VinchyStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A5144132757B5F000DC45CD /* VinchyStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		8A5145A12757D3DD00DC45CD /* StoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A51458A2757D3DD00DC45CD /* StoreViewModel.swift */; };
+		8A5145A22757D3DD00DC45CD /* StoreInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A51458C2757D3DD00DC45CD /* StoreInput.swift */; };
+		8A5145A32757D3DD00DC45CD /* StoreAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A51458E2757D3DD00DC45CD /* StoreAssembly.swift */; };
+		8A5145A42757D3DD00DC45CD /* StorePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145902757D3DD00DC45CD /* StorePresenter.swift */; };
+		8A5145A52757D3DD00DC45CD /* StorePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145912757D3DD00DC45CD /* StorePresenterProtocol.swift */; };
+		8A5145A62757D3DD00DC45CD /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145932757D3DD00DC45CD /* StoreViewController.swift */; };
+		8A5145A72757D3DD00DC45CD /* StoreViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145942757D3DD00DC45CD /* StoreViewControllerProtocol.swift */; };
+		8A5145A82757D3DD00DC45CD /* LogoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145962757D3DD00DC45CD /* LogoRow.swift */; };
+		8A5145A92757D3DD00DC45CD /* FilterItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145972757D3DD00DC45CD /* FilterItemView.swift */; };
+		8A5145AA2757D3DD00DC45CD /* StoreMapRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145982757D3DD00DC45CD /* StoreMapRow.swift */; };
+		8A5145AB2757D3DD00DC45CD /* FiltersCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145992757D3DD00DC45CD /* FiltersCollectionView.swift */; };
+		8A5145AD2757D3DD00DC45CD /* StoreInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A51459C2757D3DD00DC45CD /* StoreInteractor.swift */; };
+		8A5145AE2757D3DD00DC45CD /* StoreInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A51459D2757D3DD00DC45CD /* StoreInteractorProtocol.swift */; };
+		8A5145AF2757D3DD00DC45CD /* StoreRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A51459F2757D3DD00DC45CD /* StoreRouterProtocol.swift */; };
+		8A5145B02757D3DD00DC45CD /* StoreRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145A02757D3DD00DC45CD /* StoreRouter.swift */; };
+		8A5145C32757E3AF00DC45CD /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5145C22757E3AF00DC45CD /* Display.framework */; };
+		8A5145C72757E3C000DC45CD /* StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5145C62757E3C000DC45CD /* StringFormatting.framework */; };
+		8A5145CB2757E44B00DC45CD /* VinchyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5145CA2757E44B00DC45CD /* VinchyCore.framework */; };
+		8A5145CF2757E46700DC45CD /* Spotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5145CE2757E46700DC45CD /* Spotlight.framework */; };
+		8A5145D32757E48400DC45CD /* VinchyAuthorization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5145D22757E48400DC45CD /* VinchyAuthorization.framework */; };
+		8A5145D72757E4BF00DC45CD /* CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5145D62757E4BF00DC45CD /* CommonUI.framework */; };
+		8A5145DB2757E4D300DC45CD /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5145DA2757E4D300DC45CD /* Database.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		30CE802AA55F763D8624076B /* Pods-VinchyStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyStore.release.xcconfig"; path = "Target Support Files/Pods-VinchyStore/Pods-VinchyStore.release.xcconfig"; sourceTree = "<group>"; };
+		4FCC70846409724216C1E5DB /* Pods_VinchyStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinchyStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5144102757B5F000DC45CD /* VinchyStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VinchyStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5144132757B5F000DC45CD /* VinchyStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VinchyStore.h; sourceTree = "<group>"; };
 		8A5144142757B5F000DC45CD /* VinchyStore.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = VinchyStore.docc; sourceTree = "<group>"; };
+		8A51458A2757D3DD00DC45CD /* StoreViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreViewModel.swift; sourceTree = "<group>"; };
+		8A51458C2757D3DD00DC45CD /* StoreInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreInput.swift; sourceTree = "<group>"; };
+		8A51458E2757D3DD00DC45CD /* StoreAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreAssembly.swift; sourceTree = "<group>"; };
+		8A5145902757D3DD00DC45CD /* StorePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorePresenter.swift; sourceTree = "<group>"; };
+		8A5145912757D3DD00DC45CD /* StorePresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorePresenterProtocol.swift; sourceTree = "<group>"; };
+		8A5145932757D3DD00DC45CD /* StoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
+		8A5145942757D3DD00DC45CD /* StoreViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreViewControllerProtocol.swift; sourceTree = "<group>"; };
+		8A5145962757D3DD00DC45CD /* LogoRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoRow.swift; sourceTree = "<group>"; };
+		8A5145972757D3DD00DC45CD /* FilterItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterItemView.swift; sourceTree = "<group>"; };
+		8A5145982757D3DD00DC45CD /* StoreMapRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreMapRow.swift; sourceTree = "<group>"; };
+		8A5145992757D3DD00DC45CD /* FiltersCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersCollectionView.swift; sourceTree = "<group>"; };
+		8A51459C2757D3DD00DC45CD /* StoreInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreInteractor.swift; sourceTree = "<group>"; };
+		8A51459D2757D3DD00DC45CD /* StoreInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreInteractorProtocol.swift; sourceTree = "<group>"; };
+		8A51459F2757D3DD00DC45CD /* StoreRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreRouterProtocol.swift; sourceTree = "<group>"; };
+		8A5145A02757D3DD00DC45CD /* StoreRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreRouter.swift; sourceTree = "<group>"; };
+		8A5145C22757E3AF00DC45CD /* Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A5145C62757E3C000DC45CD /* StringFormatting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StringFormatting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A5145CA2757E44B00DC45CD /* VinchyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A5145CE2757E46700DC45CD /* Spotlight.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Spotlight.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A5145D22757E48400DC45CD /* VinchyAuthorization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyAuthorization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A5145D62757E4BF00DC45CD /* CommonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A5145DA2757E4D300DC45CD /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9096DFFB618EF42EBD5962D7 /* Pods-VinchyStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyStore.debug.xcconfig"; path = "Target Support Files/Pods-VinchyStore/Pods-VinchyStore.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -22,6 +70,14 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A5145C72757E3C000DC45CD /* StringFormatting.framework in Frameworks */,
+				282D951F0ACBDCD1BF10056D /* Pods_VinchyStore.framework in Frameworks */,
+				8A5145D72757E4BF00DC45CD /* CommonUI.framework in Frameworks */,
+				8A5145DB2757E4D300DC45CD /* Database.framework in Frameworks */,
+				8A5145CB2757E44B00DC45CD /* VinchyCore.framework in Frameworks */,
+				8A5145CF2757E46700DC45CD /* Spotlight.framework in Frameworks */,
+				8A5145C32757E3AF00DC45CD /* Display.framework in Frameworks */,
+				8A5145D32757E48400DC45CD /* VinchyAuthorization.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -33,8 +89,12 @@
 			children = (
 				8A5144122757B5F000DC45CD /* VinchyStore */,
 				8A5144112757B5F000DC45CD /* Products */,
+				E76318102876478BC4A48CA2 /* Pods */,
+				E94AC55A1CC12A813A7EEF98 /* Frameworks */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		8A5144112757B5F000DC45CD /* Products */ = {
 			isa = PBXGroup;
@@ -47,10 +107,122 @@
 		8A5144122757B5F000DC45CD /* VinchyStore */ = {
 			isa = PBXGroup;
 			children = (
+				8A5145882757D3DD00DC45CD /* Store */,
 				8A5144132757B5F000DC45CD /* VinchyStore.h */,
 				8A5144142757B5F000DC45CD /* VinchyStore.docc */,
 			);
 			path = VinchyStore;
+			sourceTree = "<group>";
+		};
+		8A5145882757D3DD00DC45CD /* Store */ = {
+			isa = PBXGroup;
+			children = (
+				8A51458D2757D3DD00DC45CD /* Assembly */,
+				8A51458B2757D3DD00DC45CD /* Input */,
+				8A51459B2757D3DD00DC45CD /* Interactor */,
+				8A51458F2757D3DD00DC45CD /* Presenter */,
+				8A51459E2757D3DD00DC45CD /* Router */,
+				8A5145922757D3DD00DC45CD /* ViewController */,
+				8A5145892757D3DD00DC45CD /* ViewModel */,
+				8A5145952757D3DD00DC45CD /* Views */,
+			);
+			path = Store;
+			sourceTree = "<group>";
+		};
+		8A5145892757D3DD00DC45CD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8A51458A2757D3DD00DC45CD /* StoreViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8A51458B2757D3DD00DC45CD /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				8A51458C2757D3DD00DC45CD /* StoreInput.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		8A51458D2757D3DD00DC45CD /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				8A51458E2757D3DD00DC45CD /* StoreAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		8A51458F2757D3DD00DC45CD /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8A5145902757D3DD00DC45CD /* StorePresenter.swift */,
+				8A5145912757D3DD00DC45CD /* StorePresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		8A5145922757D3DD00DC45CD /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8A5145932757D3DD00DC45CD /* StoreViewController.swift */,
+				8A5145942757D3DD00DC45CD /* StoreViewControllerProtocol.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		8A5145952757D3DD00DC45CD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8A5145962757D3DD00DC45CD /* LogoRow.swift */,
+				8A5145972757D3DD00DC45CD /* FilterItemView.swift */,
+				8A5145982757D3DD00DC45CD /* StoreMapRow.swift */,
+				8A5145992757D3DD00DC45CD /* FiltersCollectionView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8A51459B2757D3DD00DC45CD /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				8A51459C2757D3DD00DC45CD /* StoreInteractor.swift */,
+				8A51459D2757D3DD00DC45CD /* StoreInteractorProtocol.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		8A51459E2757D3DD00DC45CD /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				8A51459F2757D3DD00DC45CD /* StoreRouterProtocol.swift */,
+				8A5145A02757D3DD00DC45CD /* StoreRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		E76318102876478BC4A48CA2 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				9096DFFB618EF42EBD5962D7 /* Pods-VinchyStore.debug.xcconfig */,
+				30CE802AA55F763D8624076B /* Pods-VinchyStore.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../../Pods;
+			sourceTree = "<group>";
+		};
+		E94AC55A1CC12A813A7EEF98 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				8A5145DA2757E4D300DC45CD /* Database.framework */,
+				8A5145D62757E4BF00DC45CD /* CommonUI.framework */,
+				8A5145D22757E48400DC45CD /* VinchyAuthorization.framework */,
+				8A5145CE2757E46700DC45CD /* Spotlight.framework */,
+				8A5145CA2757E44B00DC45CD /* VinchyCore.framework */,
+				8A5145C62757E3C000DC45CD /* StringFormatting.framework */,
+				8A5145C22757E3AF00DC45CD /* Display.framework */,
+				4FCC70846409724216C1E5DB /* Pods_VinchyStore.framework */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,6 +243,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 8A5144192757B5F000DC45CD /* Build configuration list for PBXNativeTarget "VinchyStore" */;
 			buildPhases = (
+				C8EDEA54F6D9B56BCA2752EF /* [CP] Check Pods Manifest.lock */,
 				8A51440B2757B5F000DC45CD /* Headers */,
 				8A51440C2757B5F000DC45CD /* Sources */,
 				8A51440D2757B5F000DC45CD /* Frameworks */,
@@ -127,12 +300,52 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		C8EDEA54F6D9B56BCA2752EF /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VinchyStore-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		8A51440C2757B5F000DC45CD /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A5145A82757D3DD00DC45CD /* LogoRow.swift in Sources */,
+				8A5145B02757D3DD00DC45CD /* StoreRouter.swift in Sources */,
+				8A5145A22757D3DD00DC45CD /* StoreInput.swift in Sources */,
+				8A5145AD2757D3DD00DC45CD /* StoreInteractor.swift in Sources */,
+				8A5145AB2757D3DD00DC45CD /* FiltersCollectionView.swift in Sources */,
+				8A5145AF2757D3DD00DC45CD /* StoreRouterProtocol.swift in Sources */,
+				8A5145A12757D3DD00DC45CD /* StoreViewModel.swift in Sources */,
+				8A5145AE2757D3DD00DC45CD /* StoreInteractorProtocol.swift in Sources */,
 				8A5144152757B5F000DC45CD /* VinchyStore.docc in Sources */,
+				8A5145A32757D3DD00DC45CD /* StoreAssembly.swift in Sources */,
+				8A5145A92757D3DD00DC45CD /* FilterItemView.swift in Sources */,
+				8A5145A52757D3DD00DC45CD /* StorePresenterProtocol.swift in Sources */,
+				8A5145A42757D3DD00DC45CD /* StorePresenter.swift in Sources */,
+				8A5145AA2757D3DD00DC45CD /* StoreMapRow.swift in Sources */,
+				8A5145A72757D3DD00DC45CD /* StoreViewControllerProtocol.swift in Sources */,
+				8A5145A62757D3DD00DC45CD /* StoreViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -263,6 +476,7 @@
 		};
 		8A51441A2757B5F000DC45CD /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 9096DFFB618EF42EBD5962D7 /* Pods-VinchyStore.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -274,6 +488,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -291,6 +506,7 @@
 		};
 		8A51441B2757B5F000DC45CD /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 30CE802AA55F763D8624076B /* Pods-VinchyStore.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
@@ -302,6 +518,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

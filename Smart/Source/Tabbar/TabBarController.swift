@@ -10,6 +10,7 @@ import Combine
 import Display
 import StringFormatting
 import UIKit
+import VinchyStore
 
 // MARK: - TabBarDeeplinkable
 
@@ -184,7 +185,7 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
 extension TabBarController: TabBarDeeplinkable {
 
   func openStoreDetail(affilatedId: Int) -> AnyPublisher<TabBarDeeplinkable, Never> {
-    let controller = StoreAssembly.assemblyModule(input: .init(mode: .normal(affilatedId: affilatedId)))
+    let controller = StoreAssembly.assemblyModule(input: .init(mode: .normal(affilatedId: affilatedId)), coordinator: Coordinator.shared)
     let navigationController = VinchyNavigationController(rootViewController: controller)
     navigationController.modalPresentationStyle = .overFullScreen
     UIApplication.topViewController(base: self)?.present(

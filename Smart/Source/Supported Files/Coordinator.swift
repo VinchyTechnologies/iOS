@@ -6,11 +6,21 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import AdvancedSearch
 import VinchyUI
 
-final class Coordinator: ShowcaseRoutable {
+final class Coordinator: ShowcaseRoutable, WineDetailRoutable, WriteNoteRoutable, ActivityRoutable, AdvancedSearchRoutable {
 
   static let shared = Coordinator()
+
+  func presentAdvancedSearch(input: AdvancedSearchInput, delegate: AdvancedSearchOutputDelegate?) {
+    let controller = AdvancedSearchAssembly.assemblyModule(
+      input: input,
+      coordinator: Coordinator.shared)
+    let navController = AdvancedSearchNavigationController(rootViewController: controller)
+    navController.advancedSearchOutputDelegate = delegate
+    UIApplication.topViewController()?.present(navController, animated: true, completion: nil)
+  }
 
   func pushToShowcaseViewController(input: ShowcaseInput) {
     let controller = ShowcaseAssembly.assemblyModule(input: input)

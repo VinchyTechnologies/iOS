@@ -50,16 +50,16 @@ public final class PagingStateMachine<Data>: StateMachine<PagingState<Data>, Pag
       case (.loading, .load(let offset, let usingRefreshControl)):
         return .loading(offset: offset, usingRefreshControl: usingRefreshControl)
 
-      case (.error(_), .success(let data)):
+      case (.error, .success(let data)):
         return .loaded(data)
 
-      case (.error(_), .fail(let error)):
+      case (.error, .fail(let error)):
         return .error(error)
 
-      case (.loaded(_), .success(let data)):
+      case (.loaded, .success(let data)):
         return .loaded(data)
 
-      case (.loaded(_), .fail(let error)):
+      case (.loaded, .fail(let error)):
         return .error(error)
 
       case (.initial, .success(let data)):
