@@ -2,6 +2,13 @@
 <Workspace
    version = "1.0">
    <Group
+      location = "group:ThirdParty"
+      name = "third-party">
+      <FileRef
+         location = "group:../third-party/ThirdParty/ThirdParty.xcodeproj">
+      </FileRef>
+   </Group>
+   <Group
       location = "container:"
       name = "submodules">
       <FileRef
