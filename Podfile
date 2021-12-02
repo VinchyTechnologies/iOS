@@ -14,7 +14,9 @@ def commonPods
   pod 'Firebase/RemoteConfig'
   pod 'Firebase/Analytics'
   pod 'Epoxy'
+  pod 'SPAlert', '~> 2.1.4'
   pod 'FittedSheets'
+  pod 'Sheeeeeeeeet'
 end
 
 target 'Smart' do
@@ -48,6 +50,15 @@ end
 
 target 'VinchyUI' do
   project 'submodules/VinchyUI/VinchyUI'
+  pod 'Firebase/DynamicLinks'
+end
+
+target 'WineDetail' do
+  project 'submodules/WineDetail/WineDetail'
+  pod 'FSPagerView' # no spm...
+  pod 'Epoxy'
+  pod 'SPAlert', '~> 2.1.4'
+  pod 'Sheeeeeeeeet'
   pod 'Firebase/DynamicLinks'
 end
 

@@ -8,6 +8,7 @@
 // swiftlint:disable all
 
 import Core
+import Database
 import StringFormatting
 import VinchyAuthorization
 

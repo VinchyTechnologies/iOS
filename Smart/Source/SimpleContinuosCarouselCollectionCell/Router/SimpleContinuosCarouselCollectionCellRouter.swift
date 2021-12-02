@@ -8,6 +8,7 @@
 
 import Database
 import VinchyCore
+import VinchyUI
 
 // MARK: - SimpleContinuosCarouselCollectionCellRouter
 

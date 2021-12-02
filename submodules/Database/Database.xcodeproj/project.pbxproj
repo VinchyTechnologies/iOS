@@ -19,6 +19,7 @@
 		8A2F32E52673B7D7002DE6C1 /* CollectionRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F32DD2673B7D7002DE6C1 /* CollectionRepository.swift */; };
 		8A2F32E72673E4FA002DE6C1 /* NotesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F32E62673E4FA002DE6C1 /* NotesRepository.swift */; };
 		8AD49F15267516BB0094E157 /* WinesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD49F14267516BB0094E157 /* WinesRepository.swift */; };
+		8AEC83B82758E4EB00C80F1E /* RatesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83B72758E4EB00C80F1E /* RatesRepository.swift */; };
 		CA1821F624C0F48600280DD4 /* Database.h in Headers */ = {isa = PBXBuildFile; fileRef = CA1821F424C0F48600280DD4 /* Database.h */; settings = {ATTRIBUTES = (Public, ); }; };
 /* End PBXBuildFile section */
 
@@ -35,6 +36,7 @@
 		8A2F32DD2673B7D7002DE6C1 /* CollectionRepository.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionRepository.swift; sourceTree = "<group>"; };
 		8A2F32E62673E4FA002DE6C1 /* NotesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotesRepository.swift; sourceTree = "<group>"; };
 		8AD49F14267516BB0094E157 /* WinesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WinesRepository.swift; sourceTree = "<group>"; };
+		8AEC83B72758E4EB00C80F1E /* RatesRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatesRepository.swift; sourceTree = "<group>"; };
 		CA1821F124C0F48600280DD4 /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA1821F424C0F48600280DD4 /* Database.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
 		CA1821F524C0F48600280DD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -111,6 +113,7 @@
 				8A2F32E62673E4FA002DE6C1 /* NotesRepository.swift */,
 				8AD49F14267516BB0094E157 /* WinesRepository.swift */,
 				740EC95E269DA5C30000718B /* SearchedWinesRepository.swift */,
+				8AEC83B72758E4EB00C80F1E /* RatesRepository.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -198,6 +201,7 @@
 				8A2F32E72673E4FA002DE6C1 /* NotesRepository.swift in Sources */,
 				8A2F32E52673B7D7002DE6C1 /* CollectionRepository.swift in Sources */,
 				8A2F32E42673B7D7002DE6C1 /* AnyStorage.swift in Sources */,
+				8AEC83B82758E4EB00C80F1E /* RatesRepository.swift in Sources */,
 				8A2F32E12673B7D7002DE6C1 /* FileStorage.swift in Sources */,
 				8A2F32DF2673B7D7002DE6C1 /* InMemoryRepository.swift in Sources */,
 				8A2F32DE2673B7D7002DE6C1 /* SingleRepository.swift in Sources */,

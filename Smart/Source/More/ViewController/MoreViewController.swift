@@ -7,6 +7,7 @@
 //
 
 import CommonUI
+import Database
 import Display
 import StringFormatting
 import UIKit

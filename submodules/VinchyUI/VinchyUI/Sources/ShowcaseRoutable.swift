@@ -31,6 +31,5 @@ public enum ShowcaseMode {
 // MARK: - ShowcaseRoutable
 
 public protocol ShowcaseRoutable: AnyObject {
-//  var viewController: UIViewController? { get }
   func pushToShowcaseViewController(input: ShowcaseInput)
 }

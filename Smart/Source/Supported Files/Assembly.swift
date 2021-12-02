@@ -12,11 +12,12 @@ import Database
 import Display
 import StringFormatting
 import VinchyCore
+import WineDetail
 
 final class Assembly {
   @available(*, deprecated, message: "Use routable")
   static func buildDetailModule(wineID: Int64) -> UIViewController {
-    let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID))
+    let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID), coordinator: Coordinator.shared)
     controller.hidesBottomBarWhenPushed = true
     return controller
   }

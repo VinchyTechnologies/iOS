@@ -7,18 +7,10 @@
 //
 
 import Display
+import UIKit
+import VinchyUI
 
 // MARK: - WriteReviewRoutable
-
-protocol WriteReviewRoutable: AnyObject {
-  var viewController: UIViewController? { get }
-
-  func presentWriteReviewViewController(
-    reviewID: Int?,
-    wineID: Int64,
-    rating: Double,
-    reviewText: String?)
-}
 
 extension WriteReviewRoutable {
   func presentWriteReviewViewController(
@@ -30,7 +22,7 @@ extension WriteReviewRoutable {
     let controller = WriteReviewAssembly.assemblyModule(
       input: .init(reviewID: reviewID, wineID: wineID, rating: rating, comment: reviewText ?? ""))
     let navController = VinchyNavigationController(rootViewController: controller)
-    viewController?.present(
+    UIApplication.topViewController()?.present(
       navController,
       animated: true,
       completion: nil)

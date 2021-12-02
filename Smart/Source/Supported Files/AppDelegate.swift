@@ -9,7 +9,6 @@
 import Core
 import Firebase
 import GoogleMobileAds
-import Sheeeeeeeeet
 import Spotlight
 import SwiftUI
 import UIKit

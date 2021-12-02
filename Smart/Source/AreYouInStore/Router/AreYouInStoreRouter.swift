@@ -9,6 +9,7 @@
 import Display
 import UIKit
 import VinchyStore
+import VinchyUI
 
 // MARK: - AreYouInStoreRouter
 

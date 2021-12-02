@@ -8,9 +8,9 @@
 
 import Foundation
 
-struct ReviewDetailInput {
-  let rate: Double?
-  let author: String?
-  let date: String?
-  let reviewText: String?
-}
+//struct ReviewDetailInput {
+//  let rate: Double?
+//  let author: String?
+//  let date: String?
+//  let reviewText: String?
+//}

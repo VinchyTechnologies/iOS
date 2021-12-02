@@ -12,6 +12,7 @@ import Core
 import Display
 import StringFormatting
 import UIKit
+import VinchyUI
 
 let openAppStoreURL = localized("appstore_link")
 

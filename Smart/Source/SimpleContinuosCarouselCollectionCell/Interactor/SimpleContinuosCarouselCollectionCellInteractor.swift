@@ -11,6 +11,7 @@ import Database
 import FirebaseDynamicLinks
 import VinchyCore
 import VinchyUI
+import WineDetail
 
 // MARK: - SimpleContinuosCarouselCollectionCellInteractorDelegate
 

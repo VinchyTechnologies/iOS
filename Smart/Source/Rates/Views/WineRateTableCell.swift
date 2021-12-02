@@ -10,6 +10,7 @@ import Database
 import Display
 import Epoxy
 import UIKit
+import WineDetail // TODO: - remove
 
 // MARK: - WineRateTableCellDelegate
 

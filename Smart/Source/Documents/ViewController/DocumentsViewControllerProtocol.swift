@@ -6,7 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import WineDetail // TODO: - remove
 
 protocol DocumentsViewControllerProtocol: CantOpenURLAlertable {
   func updateUI(viewModel: DocumentsViewModel)

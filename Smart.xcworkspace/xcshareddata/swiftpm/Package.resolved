@@ -27,24 +27,6 @@
           "revision": "472a03c15f39592007d94f25abe554350bc8aa2b",
           "version": "10.5.1"
         }
-      },
-      {
-        "package": "Sheeeeeeeeet",
-        "repositoryURL": "https://github.com/danielsaidi/Sheeeeeeeeet.git",
-        "state": {
-          "branch": null,
-          "revision": "5f8b6b4fb427b4261023b2c1ff2d986db86b2800",
-          "version": "3.2.1"
-        }
-      },
-      {
-        "package": "SPAlert",
-        "repositoryURL": "https://github.com/ivanvorobei/SPAlert.git",
-        "state": {
-          "branch": null,
-          "revision": "18862409586ac547bcdf8957cd96beb872fbc729",
-          "version": "2.1.4"
-        }
       }
     ]
   },

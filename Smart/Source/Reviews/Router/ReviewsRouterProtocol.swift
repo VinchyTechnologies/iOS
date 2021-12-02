@@ -6,6 +6,6 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import VinchyUI
 
 protocol ReviewsRouterProtocol: ReviewDetailRoutable {}

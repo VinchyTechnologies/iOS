@@ -12,7 +12,6 @@ import StringFormatting
 import VinchyCore
 import VinchyUI
 
-
 // MARK: - ShowcasePresenter
 
 final class ShowcasePresenter {

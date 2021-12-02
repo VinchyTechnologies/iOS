@@ -11,6 +11,7 @@ import Display
 import StringFormatting
 import UIKit
 import VinchyStore
+import WineDetail
 
 // MARK: - TabBarDeeplinkable
 
@@ -216,7 +217,7 @@ extension TabBarController: TabBarDeeplinkable {
   }
 
   func openWineDetail(wineID: Int64) -> AnyPublisher<TabBarDeeplinkable, Never> {
-    let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID))
+    let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID), coordinator: Coordinator.shared)
     let navigationController = VinchyNavigationController(rootViewController: controller)
     navigationController.modalPresentationStyle = .overFullScreen
     UIApplication.topViewController(base: self)?.present(

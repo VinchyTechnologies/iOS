@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import VinchyUI
 
 // MARK: - ReviewDetailRouter
 

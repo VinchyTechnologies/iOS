@@ -11,12 +11,6 @@ import VinchyUI
 
 // MARK: - ReviewsRoutable
 
-protocol ReviewsRoutable: AnyObject {
-  var viewController: UIViewController? { get }
-
-  func pushToReviewsViewController(wineID: Int64)
-}
-
 extension WineDetailRoutable {
   func pushToReviewsViewController(wineID: Int64) {
     let controller = ReviewsAssembly.assemblyModule(input: .init(wineID: wineID))

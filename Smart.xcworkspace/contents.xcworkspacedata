@@ -47,6 +47,9 @@
       <FileRef
          location = "group:submodules/VinchyUI/VinchyUI.xcodeproj">
       </FileRef>
+      <FileRef
+         location = "group:submodules/WineDetail/WineDetail.xcodeproj">
+      </FileRef>
    </Group>
    <Group
       location = "container:"

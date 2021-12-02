@@ -103,6 +103,8 @@ PODS:
   - nanopb/decode (2.30906.0)
   - nanopb/encode (2.30906.0)
   - PromisesObjC (1.2.11)
+  - Sheeeeeeeeet (3.2.1)
+  - SPAlert (2.1.4)
   - SwiftLint (0.41.0)
 
 DEPENDENCIES:
@@ -114,6 +116,8 @@ DEPENDENCIES:
   - FittedSheets
   - FSPagerView
   - Google-Mobile-Ads-SDK
+  - Sheeeeeeeeet
+  - SPAlert (~> 2.1.4)
   - SwiftLint
 
 SPEC REPOS:
@@ -143,6 +147,8 @@ SPEC REPOS:
     - GoogleUtilities
     - nanopb
     - PromisesObjC
+    - Sheeeeeeeeet
+    - SPAlert
     - SwiftLint
 
 SPEC CHECKSUMS:
@@ -171,8 +177,10 @@ SPEC CHECKSUMS:
   GoogleUtilities: 3dc4ff0d5e4840e2fa8eef0889620e8c33d4218c
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   PromisesObjC: 8c196f5a328c2cba3e74624585467a557dcb482f
+  Sheeeeeeeeet: 3f401fddd417333fc9b3196020b479cab87f801a
+  SPAlert: 1a8afa1c6ac86a82ab5b2cfdf7f9a51e68cb6c0c
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
 
-PODFILE CHECKSUM: e3b068773a22de3c659062643859f59452146190
+PODFILE CHECKSUM: dccec44238ff03fe2785501602e80304bae58270
 
 COCOAPODS: 1.11.2

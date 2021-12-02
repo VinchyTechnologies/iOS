@@ -6,6 +6,8 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import VinchyUI
+
 enum ReviewDetailAssembly {
   static func assemblyModule(input: ReviewDetailInput) -> ReviewDetailViewController {
     let viewController = ReviewDetailViewController()
