@@ -43,8 +43,9 @@ extension StoreRouter: StoreRouterProtocol {
   func pushToResultsSearchController(affilatedId: Int) {
     let controller = ResultsSearchAssembly.assemblyModule(
       input: .init(mode: .storeDetail(affilatedId: affilatedId)))
-    controller.modalPresentationStyle = .overCurrentContext
-    viewController?.present(controller, animated: true, completion: nil)
+    let navController = VinchyNavigationController(rootViewController: controller)
+    navController.modalPresentationStyle = .overCurrentContext
+    viewController?.present(navController, animated: true, completion: nil)
   }
 
   func presentFilter(preselectedFilters: [(String, String)]) {

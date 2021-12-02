@@ -75,7 +75,13 @@ final class ResultsSearchViewController: UIViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    navigationController?.setNavigationBarHidden(true, animated: true)
     interactor?.viewWillAppear()
+  }
+
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    navigationController?.setNavigationBarHidden(false, animated: true)
   }
 
   override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
