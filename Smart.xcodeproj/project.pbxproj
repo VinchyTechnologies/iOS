@@ -272,7 +272,6 @@
 		CA276D55256AC6720061BEBE /* FakeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA276D54256AC6720061BEBE /* FakeCell.swift */; };
 		CA3837CC246FCF3C00AD5FCC /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3837CB246FCF3C00AD5FCC /* TabBarController.swift */; };
 		CA3C97E6257245F40036F7D9 /* Countries.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA3C97E8257245F40036F7D9 /* Countries.strings */; };
-		CA3C981F257260BC0036F7D9 /* StatusAlertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3C981E257260BC0036F7D9 /* StatusAlertable.swift */; };
 		CA3CEFB0251288F000AAA692 /* country_codes.json in Resources */ = {isa = PBXBuildFile; fileRef = CA3CEFAF251288F000AAA692 /* country_codes.json */; };
 		CA445F6B24BFA3C20023A09F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA445F6D24BFA3C20023A09F /* InfoPlist.strings */; };
 		CA46DBE7252518230007819E /* OnboardingRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA46DBE6252518230007819E /* OnboardingRepository.swift */; };
@@ -312,7 +311,6 @@
 		CA7B835B24EED6E600991F24 /* StoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B835A24EED6E600991F24 /* StoryCollectionCell.swift */; };
 		CA7B836024EF109200991F24 /* MainSubtitleCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B835F24EF109200991F24 /* MainSubtitleCollectionCell.swift */; };
 		CA8198C0253CB0490056A1C6 /* ErrorDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8198BF253CB0490056A1C6 /* ErrorDescription.swift */; };
-		CA878A882572E59700B51FF1 /* ActionSheetAppearence.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA878A872572E59700B51FF1 /* ActionSheetAppearence.swift */; };
 		CA8CD67725096EC200FDB7AF /* GADTSmallTemplateView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8CD67625096EC200FDB7AF /* GADTSmallTemplateView.m */; };
 		CA8CD67A25096EDA00FDB7AF /* GADTSmallTemplateView.xib in Resources */ = {isa = PBXBuildFile; fileRef = CA8CD67925096EDA00FDB7AF /* GADTSmallTemplateView.xib */; };
 		CA8CD67C25096EE100FDB7AF /* GADTTemplateView.m in Sources */ = {isa = PBXBuildFile; fileRef = CA8CD67B25096EE100FDB7AF /* GADTTemplateView.m */; };
@@ -672,7 +670,6 @@
 		CA3837CB246FCF3C00AD5FCC /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		CA3C97E7257245F40036F7D9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Countries.strings; sourceTree = "<group>"; };
 		CA3C97EB257245FB0036F7D9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Countries.strings; sourceTree = "<group>"; };
-		CA3C981E257260BC0036F7D9 /* StatusAlertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusAlertable.swift; sourceTree = "<group>"; };
 		CA3CEFAF251288F000AAA692 /* country_codes.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = country_codes.json; sourceTree = "<group>"; };
 		CA445F6C24BFA3C20023A09F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		CA445F6E24BFA3CD0023A09F /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/InfoPlist.strings; sourceTree = "<group>"; };
@@ -726,7 +723,6 @@
 		CA7B835F24EF109200991F24 /* MainSubtitleCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainSubtitleCollectionCell.swift; sourceTree = "<group>"; };
 		CA81989A253B897B0056A1C6 /* VinchyRelease.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VinchyRelease.entitlements; sourceTree = "<group>"; };
 		CA8198BF253CB0490056A1C6 /* ErrorDescription.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorDescription.swift; sourceTree = "<group>"; };
-		CA878A872572E59700B51FF1 /* ActionSheetAppearence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActionSheetAppearence.swift; sourceTree = "<group>"; };
 		CA8CD67525096EC100FDB7AF /* Smart-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smart-Bridging-Header.h"; sourceTree = "<group>"; };
 		CA8CD67625096EC200FDB7AF /* GADTSmallTemplateView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GADTSmallTemplateView.m; sourceTree = "<group>"; };
 		CA8CD67825096ECD00FDB7AF /* GADTSmallTemplateView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = GADTSmallTemplateView.h; sourceTree = "<group>"; };
@@ -1246,6 +1242,7 @@
 		748586EA26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCell */ = {
 			isa = PBXGroup;
 			children = (
+				7485877926CC068600F5CBEA /* Configurator.swift */,
 				CA7B835A24EED6E600991F24 /* StoryCollectionCell.swift */,
 				748586EB26C7CB2300F5CBEA /* ViewModel */,
 				748586ED26C7CB2300F5CBEA /* Input */,
@@ -2467,11 +2464,8 @@
 				CAA060D1252BC05C002C15B5 /* DeveloperFeatureToggles.swift */,
 				CA8198BF253CB0490056A1C6 /* ErrorDescription.swift */,
 				CA472AC1245EDE2F009149FF /* SceneDelegate.swift */,
-				CA3C981E257260BC0036F7D9 /* StatusAlertable.swift */,
-				CA878A872572E59700B51FF1 /* ActionSheetAppearence.swift */,
 				8AD49F2B26752B4B0094E157 /* AnalyticsTrackable.swift */,
 				8A07930B26924DAF000ACA2B /* Document.swift */,
-				7485877926CC068600F5CBEA /* Configurator.swift */,
 				74DAD09E26E0D4F400055AE7 /* LoadingPresentable.swift */,
 				74DAD0A026E0D99300055AE7 /* ActivityRoutable.swift */,
 				8A5145682757BEB000DC45CD /* Coordinator.swift */,
@@ -3340,7 +3334,6 @@
 				74E55FAD26AACE2C0086C159 /* ResultsSearchViewController.swift in Sources */,
 				CE6AAFD82617CEC80011F771 /* ShowcaseRoutable.swift in Sources */,
 				44EFDB3825E177220076ED6D /* ReviewsInput.swift in Sources */,
-				CA878A882572E59700B51FF1 /* ActionSheetAppearence.swift in Sources */,
 				8AE788132684E8D60056A84B /* NotesInteractor.swift in Sources */,
 				8A27EA9527365B86005A13C6 /* RatesRouter.swift in Sources */,
 				8A27EA9427365B86005A13C6 /* RatesInteractorProtocol.swift in Sources */,
@@ -3434,7 +3427,6 @@
 				CE4254EB258157DC001158D2 /* MoreViewControllerModel.swift in Sources */,
 				8A0D9CB726871D9D0076A7EC /* NewAgreementViewController.swift in Sources */,
 				8A079301269239C1000ACA2B /* DocumentsInput.swift in Sources */,
-				CA3C981F257260BC0036F7D9 /* StatusAlertable.swift in Sources */,
 				8A27EA8F27365B86005A13C6 /* RatesPresenter.swift in Sources */,
 				CA3837CC246FCF3C00AD5FCC /* TabBarController.swift in Sources */,
 				8AA990AA26D91FE000C32358 /* StoresInteractor.swift in Sources */,
