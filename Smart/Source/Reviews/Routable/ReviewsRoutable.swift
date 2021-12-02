@@ -6,6 +6,9 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import UIKit
+import VinchyUI
+
 // MARK: - ReviewsRoutable
 
 protocol ReviewsRoutable: AnyObject {
@@ -18,7 +21,7 @@ extension WineDetailRoutable {
   func pushToReviewsViewController(wineID: Int64) {
     let controller = ReviewsAssembly.assemblyModule(input: .init(wineID: wineID))
     controller.hidesBottomBarWhenPushed = true
-    viewController?.navigationController?.pushViewController(
+    UIApplication.topViewController()?.navigationController?.pushViewController(
       controller,
       animated: true)
   }

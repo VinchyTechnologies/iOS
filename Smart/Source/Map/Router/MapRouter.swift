@@ -9,6 +9,7 @@
 import Display
 import FittedSheets
 import UIKit
+import VinchyStore
 
 // MARK: - MapRouter
 
@@ -65,7 +66,7 @@ extension MapRouter: MapRouterProtocol {
   }
 
   func showAssortmentViewController(partnerId: Int, affilatedId: Int, title: String?) {
-    let controller = StoreAssembly.assemblyModule(input: .init(mode: .normal(affilatedId: affilatedId)))
+    let controller = StoreAssembly.assemblyModule(input: .init(mode: .normal(affilatedId: affilatedId)), coordinator: Coordinator.shared)
     let navigationController = VinchyNavigationController(rootViewController: controller)
     navigationController.modalPresentationStyle = .overCurrentContext
     UIApplication.topViewController()?.present(navigationController, animated: true, completion: nil)

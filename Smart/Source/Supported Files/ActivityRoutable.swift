@@ -6,14 +6,10 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import UIKit
+import VinchyUI
 
 // MARK: - ActivityRoutable
-
-protocol ActivityRoutable {
-  var viewController: UIViewController? { get }
-  func presentActivityViewController(items: [Any], sourceView: UIView)
-}
 
 extension ActivityRoutable {
   func presentActivityViewController(items: [Any], sourceView: UIView) {
@@ -22,6 +18,6 @@ extension ActivityRoutable {
       popoverController.permittedArrowDirections = UIPopoverArrowDirection(rawValue: 0)
       popoverController.sourceView = sourceView
     }
-    viewController?.present(controller, animated: true)
+    UIApplication.topViewController()?.present(controller, animated: true)
   }
 }

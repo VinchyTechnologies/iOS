@@ -27,6 +27,14 @@
 		8A27E9F427342D85005A13C6 /* TopTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27E9F327342D85005A13C6 /* TopTabBarView.swift */; };
 		8A2F30492671FA13002DE6C1 /* OverlayPresentationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F30482671FA13002DE6C1 /* OverlayPresentationCenter.swift */; };
 		8A2F304B2671FAF7002DE6C1 /* FadingInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F304A2671FAF7002DE6C1 /* FadingInfoViewController.swift */; };
+		8A5145B22757D4CA00DC45CD /* HorizontalWineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145B12757D4CA00DC45CD /* HorizontalWineView.swift */; };
+		8A5145BC2757D57300DC45CD /* Label.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145B52757D57300DC45CD /* Label.swift */; };
+		8A5145BD2757D57300DC45CD /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145B62757D57300DC45CD /* IconView.swift */; };
+		8A5145BE2757D57300DC45CD /* HorizontalPartnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145B72757D57300DC45CD /* HorizontalPartnerView.swift */; };
+		8A5145BF2757D57300DC45CD /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145B82757D57300DC45CD /* EmptyView.swift */; };
+		8A5145C02757D57300DC45CD /* LinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145B92757D57300DC45CD /* LinkButton.swift */; };
+		8A5145C12757D57300DC45CD /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145BA2757D57300DC45CD /* LoadingView.swift */; };
+		8A5145DF2757E51600DC45CD /* AdItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145DE2757E51600DC45CD /* AdItemView.swift */; };
 		8A6951FB267CC12800F14902 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 8A6951FA267CC12800F14902 /* Nuke */; };
 		8A7D7923273D5675005F075A /* ContactUsRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D7922273D5675005F075A /* ContactUsRoutable.swift */; };
 		8A85586126FB9C0300F6F9C8 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A85586026FB9C0300F6F9C8 /* TabView.swift */; };
@@ -79,6 +87,14 @@
 		8A27E9F327342D85005A13C6 /* TopTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabBarView.swift; sourceTree = "<group>"; };
 		8A2F30482671FA13002DE6C1 /* OverlayPresentationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayPresentationCenter.swift; sourceTree = "<group>"; };
 		8A2F304A2671FAF7002DE6C1 /* FadingInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadingInfoViewController.swift; sourceTree = "<group>"; };
+		8A5145B12757D4CA00DC45CD /* HorizontalWineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HorizontalWineView.swift; sourceTree = "<group>"; };
+		8A5145B52757D57300DC45CD /* Label.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Label.swift; sourceTree = "<group>"; };
+		8A5145B62757D57300DC45CD /* IconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
+		8A5145B72757D57300DC45CD /* HorizontalPartnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalPartnerView.swift; sourceTree = "<group>"; };
+		8A5145B82757D57300DC45CD /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
+		8A5145B92757D57300DC45CD /* LinkButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkButton.swift; sourceTree = "<group>"; };
+		8A5145BA2757D57300DC45CD /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
+		8A5145DE2757E51600DC45CD /* AdItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdItemView.swift; sourceTree = "<group>"; };
 		8A7D7922273D5675005F075A /* ContactUsRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsRoutable.swift; sourceTree = "<group>"; };
 		8A85586026FB9C0300F6F9C8 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
 		8A9866E1272EEF5600DE4D8F /* EpoxyErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpoxyErrorView.swift; sourceTree = "<group>"; };
@@ -148,6 +164,20 @@
 			path = Tutorials;
 			sourceTree = "<group>";
 		};
+		8A5145B32757D57300DC45CD /* EpoxyViews */ = {
+			isa = PBXGroup;
+			children = (
+				8A5145B52757D57300DC45CD /* Label.swift */,
+				8A5145B62757D57300DC45CD /* IconView.swift */,
+				8A5145B72757D57300DC45CD /* HorizontalPartnerView.swift */,
+				8A5145B82757D57300DC45CD /* EmptyView.swift */,
+				8A5145B92757D57300DC45CD /* LinkButton.swift */,
+				8A5145BA2757D57300DC45CD /* LoadingView.swift */,
+				8A5145DE2757E51600DC45CD /* AdItemView.swift */,
+			);
+			path = EpoxyViews;
+			sourceTree = "<group>";
+		};
 		BFF9333AE32420B9D271FD47 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -191,6 +221,7 @@
 		CAE886A524C0E6D000E33E16 /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				8A5145B32757D57300DC45CD /* EpoxyViews */,
 				CA99E65A24F7D79B00C36BEE /* ActivityIndicator.swift */,
 				CA53B12424E039F1009A0F85 /* Alertable.swift */,
 				CABDBA9524C31FAC00AD96D6 /* ASPageControl.swift */,
@@ -232,6 +263,7 @@
 				CA18220324C0F88B00280DD4 /* VinchyNavigationController.swift */,
 				8A1587F8272F01130002CA28 /* WineBottleView.swift */,
 				8AE95A3E27555D4B007F01CE /* SearchBar.swift */,
+				8A5145B12757D4CA00DC45CD /* HorizontalWineView.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -354,6 +386,7 @@
 				CA7A87EA2502582C00AAD10F /* PaddingLabel.swift in Sources */,
 				44DE6C1625DB9E980008695D /* Orientation.swift in Sources */,
 				CA53B12524E039F1009A0F85 /* Alertable.swift in Sources */,
+				8A5145DF2757E51600DC45CD /* AdItemView.swift in Sources */,
 				8A158800272F04B60002CA28 /* BottlesCollectionView.swift in Sources */,
 				8A9866E2272EEF5600DE4D8F /* EpoxyErrorView.swift in Sources */,
 				CAD904EE257BADEC009FE71F /* ImageLoader.swift in Sources */,
@@ -363,6 +396,7 @@
 				8A1587F7272EFFC30002CA28 /* ContextMenu.swift in Sources */,
 				CA3C97EF2572533E0036F7D9 /* GradientView.swift in Sources */,
 				8A251E3C26B0589600DAED2D /* DeliveryTutorialView.swift in Sources */,
+				8A5145C12757D57300DC45CD /* LoadingView.swift in Sources */,
 				CA18220424C0F88B00280DD4 /* VinchyNavigationController.swift in Sources */,
 				CA5B9019250FEF51006BC638 /* ScrollViewBounceDecorator.swift in Sources */,
 				8A1587F9272F01130002CA28 /* WineBottleView.swift in Sources */,
@@ -372,10 +406,14 @@
 				8A0793E4269350AB000ACA2B /* UICollectionViewCompositionalLayout.swift in Sources */,
 				8A10F65D270757EF003463B0 /* UIScrollView.swift in Sources */,
 				8A1587F2272EFEB10002CA28 /* StarsRatingView.swift in Sources */,
+				8A5145C02757D57300DC45CD /* LinkButton.swift in Sources */,
+				8A5145BE2757D57300DC45CD /* HorizontalPartnerView.swift in Sources */,
 				CA18220624C0F8CE00280DD4 /* UIColor.swift in Sources */,
 				8A7D7923273D5675005F075A /* ContactUsRoutable.swift in Sources */,
+				8A5145B22757D4CA00DC45CD /* HorizontalWineView.swift in Sources */,
 				8AD49F1B267525840094E157 /* SkyFloatingLabelTextField.swift in Sources */,
 				CABDBA9624C31FAC00AD96D6 /* ASPageControl.swift in Sources */,
+				8A5145BC2757D57300DC45CD /* Label.swift in Sources */,
 				CA99E65B24F7D79B00C36BEE /* ActivityIndicator.swift in Sources */,
 				CAA8918B250AA8D200ADBFF9 /* HighlightableViewProtocol.swift in Sources */,
 				CAA8918D250AB69400ADBFF9 /* HighlightCollectionCell.swift in Sources */,
@@ -390,9 +428,11 @@
 				CA276D52256AC5830061BEBE /* ShimmeringView.swift in Sources */,
 				4410AE3325E5632400A84FF9 /* DismissRoutable.swift in Sources */,
 				CA18220824C0FE2300280DD4 /* UIKitUtils.swift in Sources */,
+				8A5145BD2757D57300DC45CD /* IconView.swift in Sources */,
 				CA1821A224C0E72A00280DD4 /* Font.swift in Sources */,
 				8A251E3E26B0589600DAED2D /* TutorialViewController.swift in Sources */,
 				44A72594259230C600A7552B /* Button.swift in Sources */,
+				8A5145BF2757D57300DC45CD /* EmptyView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

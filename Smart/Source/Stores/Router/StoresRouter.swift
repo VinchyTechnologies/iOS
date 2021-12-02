@@ -8,6 +8,7 @@
 
 import Display
 import UIKit
+import VinchyStore
 
 // MARK: - StoresRouter
 
@@ -37,7 +38,7 @@ final class StoresRouter {
 
 extension StoresRouter: StoresRouterProtocol {
   func presentStore(affilatedId: Int) {
-    let controller = StoreAssembly.assemblyModule(input: .init(mode: .normal(affilatedId: affilatedId)))
+    let controller = StoreAssembly.assemblyModule(input: .init(mode: .normal(affilatedId: affilatedId)), coordinator: Coordinator.shared)
     viewController?.navigationController?.pushViewController(controller, animated: true)
   }
 }

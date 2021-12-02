@@ -5,7 +5,7 @@ GCC_PREPROCESSOR_DEFINITIONS = $(inherited) COCOAPODS=1
 HEADER_SEARCH_PATHS = $(inherited) "${PODS_CONFIGURATION_BUILD_DIR}/CocoaDebug/CocoaDebug.framework/Headers" "${PODS_CONFIGURATION_BUILD_DIR}/FittedSheets/FittedSheets.framework/Headers"
 LD_RUNPATH_SEARCH_PATHS = $(inherited) /usr/lib/swift '@executable_path/Frameworks' '@loader_path/Frameworks'
 LIBRARY_SEARCH_PATHS = $(inherited) "${DT_TOOLCHAIN_DIR}/usr/lib/swift/${PLATFORM_NAME}" /usr/lib/swift
-OTHER_CFLAGS = $(inherited) -isystem "${PODS_CONFIGURATION_BUILD_DIR}/CocoaDebug/CocoaDebug.framework/Headers" -isystem "${PODS_CONFIGURATION_BUILD_DIR}/FittedSheets/FittedSheets.framework/Headers" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/CocoaDebug" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/FittedSheets"
+OTHER_CFLAGS = $(inherited) -isystem "${PODS_CONFIGURATION_BUILD_DIR}/FittedSheets/FittedSheets.framework/Headers" -isystem "${PODS_CONFIGURATION_BUILD_DIR}/CocoaDebug/CocoaDebug.framework/Headers" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/FittedSheets" -iframework "${PODS_CONFIGURATION_BUILD_DIR}/CocoaDebug"
 OTHER_LDFLAGS = $(inherited) -framework "CocoaDebug" -framework "FittedSheets" -framework "Foundation" -framework "UIKit"
 OTHER_SWIFT_FLAGS = $(inherited) -D COCOAPODS
 PODS_BUILD_DIR = ${BUILD_DIR}

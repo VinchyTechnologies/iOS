@@ -8,24 +8,16 @@
 
 import Database
 import Display
+import UIKit
 import VinchyCore
+import VinchyUI
 
 // MARK: - WriteNoteRoutable
-
-protocol WriteNoteRoutable: AnyObject {
-  var viewController: UIViewController? { get }
-
-  func pushToWriteViewController(note: VNote)
-  func presentWriteViewController(note: VNote)
-
-  func pushToWriteViewController(wine: Wine)
-  func presentWriteViewController(wine: Wine)
-}
 
 extension WriteNoteRoutable {
   func pushToWriteViewController(note: VNote) {
     let controller = Assembly.buildWriteNoteViewController(for: note)
-    guard let navigationController = viewController?.navigationController else {
+    guard let navigationController = UIApplication.topViewController()?.navigationController else {
       presentWriteViewController(note: note)
       return
     }
@@ -34,7 +26,7 @@ extension WriteNoteRoutable {
 
   func pushToWriteViewController(wine: Wine) {
     let controller = Assembly.buildWriteNoteViewController(for: wine)
-    guard let navigationController = viewController?.navigationController else {
+    guard let navigationController = UIApplication.topViewController()?.navigationController else {
       presentWriteViewController(wine: wine)
       return
     }

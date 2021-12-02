@@ -10,6 +10,7 @@ import CommonUI
 import Core
 import Display
 import StringFormatting
+import ThirdParty
 import UIKit
 import VinchyAuthorization
 

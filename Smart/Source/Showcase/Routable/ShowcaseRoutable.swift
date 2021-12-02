@@ -6,21 +6,15 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import VinchyUI
 
 // MARK: - ShowcaseRoutable
-
-protocol ShowcaseRoutable: AnyObject {
-  var viewController: UIViewController? { get }
-
-  func pushToShowcaseViewController(input: ShowcaseInput)
-}
 
 extension ShowcaseRoutable {
   func pushToShowcaseViewController(input: ShowcaseInput) {
     let controller = ShowcaseAssembly.assemblyModule(input: input)
     controller.hidesBottomBarWhenPushed = true
-    viewController?.navigationController?.pushViewController(
+    UIApplication.topViewController()?.navigationController?.pushViewController(
       controller,
       animated: true)
   }

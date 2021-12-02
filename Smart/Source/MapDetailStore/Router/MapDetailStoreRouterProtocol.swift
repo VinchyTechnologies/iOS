@@ -8,6 +8,7 @@
 
 import CoreLocation
 import Display
+import VinchyUI
 
 protocol MapDetailStoreRouterProtocol: WineDetailRoutable, DismissRoutable {
   func showRoutesActionSheet(storeTitleText: String?, coordinate: CLLocationCoordinate2D, button: UIButton)

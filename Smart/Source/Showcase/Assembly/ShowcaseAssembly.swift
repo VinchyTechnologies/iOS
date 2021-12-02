@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import VinchyUI
 
 final class ShowcaseAssembly {
   static func assemblyModule(input: ShowcaseInput) -> UIViewController {

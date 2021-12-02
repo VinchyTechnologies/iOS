@@ -6,7 +6,8 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit // TODO: - delete UIKit?
+import UIKit
+import VinchyUI
 
 protocol WineDetailInteractorProtocol: AnalyticsTrackable, WineViewContextMenuTappable {
   func viewDidLoad()

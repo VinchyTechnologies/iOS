@@ -11,6 +11,7 @@ import Display
 import Sheeeeeeeeet
 import VinchyAuthorization
 import VinchyCore
+import VinchyUI
 
 protocol WineDetailRouterProtocol: WineDetailRoutable, ReviewsRoutable, ReviewDetailRoutable, WriteReviewRoutable, AuthorizationRoutable, ActivityRoutable, WriteNoteRoutable, ContactUsRoutable {
   func presentActivityViewController(items: [Any], button: UIButton)

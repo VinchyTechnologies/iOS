@@ -12,6 +12,7 @@ import FirebaseDynamicLinks
 import Sheeeeeeeeet
 import VinchyAuthorization
 import VinchyCore
+import VinchyUI
 
 // MARK: - WineDetailMoreActions
 

@@ -7,6 +7,7 @@
 //
 
 import VinchyCore
+import VinchyUI
 
 protocol VinchyRouterProtocol: WineDetailRoutable, MapRoutable, ShowcaseRoutable, ActivityRoutable, WriteNoteRoutable {
   func pushToAdvancedFilterViewController()

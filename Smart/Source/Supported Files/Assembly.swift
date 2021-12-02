@@ -6,6 +6,7 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
+import AdvancedSearch
 import CommonUI
 import Database
 import Display
@@ -21,7 +22,9 @@ final class Assembly {
   }
 
   static func buildFiltersModule() -> UIViewController {
-    let controller = AdvancedSearchAssembly.assemblyModule(input: .init(mode: .normal))
+    let controller = AdvancedSearchAssembly.assemblyModule(
+      input: .init(mode: .normal),
+      coordinator: Coordinator.shared)
     controller.hidesBottomBarWhenPushed = true
     return controller
   }
@@ -44,11 +47,11 @@ final class Assembly {
     return navController
   }
 
-  static func buildChooseCountiesModule(preSelectedCountryCodes: [String], delegate: CountriesViewControllerDelegate) -> VinchyNavigationController {
-    let controller = CountriesViewController(preSelectedCountryCodes: preSelectedCountryCodes, delegate: delegate)
-    let navController = VinchyNavigationController(rootViewController: controller)
-    return navController
-  }
+//  static func buildChooseCountiesModule(preSelectedCountryCodes: [String], delegate: CountriesViewControllerDelegate) -> VinchyNavigationController {
+//    let controller = CountriesViewController(preSelectedCountryCodes: preSelectedCountryCodes, delegate: delegate)
+//    let navController = VinchyNavigationController(rootViewController: controller)
+//    return navController
+//  }
 
   static func buildWriteNoteViewController(for wine: Wine) -> UIViewController {
     let controller = WriteNoteAssembly.assemblyModule(input: .init(wine: .firstTime(wine: wine)))

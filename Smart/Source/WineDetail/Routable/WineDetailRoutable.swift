@@ -7,16 +7,9 @@
 //
 
 import Display
+import VinchyUI
 
 // MARK: - WineDetailRoutable
-
-protocol WineDetailRoutable: AnyObject {
-  var viewController: UIViewController? { get }
-
-  func pushToWineDetailViewController(wineID: Int64)
-
-  func presentWineDetailViewController(wineID: Int64)
-}
 
 extension WineDetailRoutable {
   func pushToWineDetailViewController(wineID: Int64) {
@@ -25,7 +18,7 @@ extension WineDetailRoutable {
     } else {
       let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID))
       controller.hidesBottomBarWhenPushed = true
-      viewController?.navigationController?.pushViewController(
+      UIApplication.topViewController()?.navigationController?.pushViewController(
         controller,
         animated: true)
     }
@@ -39,8 +32,5 @@ extension WineDetailRoutable {
       navigationController,
       animated: true,
       completion: nil)
-//    viewController?.present(
-//      navigationController,
-//      animated: true)
   }
 }
