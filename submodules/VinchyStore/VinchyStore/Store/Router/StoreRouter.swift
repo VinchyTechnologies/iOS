@@ -47,11 +47,7 @@ final class StoreRouter {
 extension StoreRouter: StoreRouterProtocol {
 
   func pushToResultsSearchController(affilatedId: Int) {
-//    let controller = ResultsSearchAssembly.assemblyModule(
-//      input: .init(mode: .storeDetail(affilatedId: affilatedId)))
-//    let navController = VinchyNavigationController(rootViewController: controller)
-//    navController.modalPresentationStyle = .overCurrentContext
-//    viewController?.present(navController, animated: true, completion: nil)
+    coordinator.pushToResultsSearchController(affilatedId: affilatedId)
   }
 
   func presentActivityViewController(items: [Any], sourceView: UIView) {

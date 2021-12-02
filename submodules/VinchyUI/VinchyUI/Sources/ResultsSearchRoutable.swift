@@ -1,0 +1,11 @@
+//
+//  ResultsSearchRoutable.swift
+//  VinchyUI
+//
+//  Created by Алексей Смирнов on 02.12.2021.
+//  Copyright © 2021 Aleksei Smirnov. All rights reserved.
+//
+
+public protocol ResultsSearchRoutable: AnyObject {
+  func pushToResultsSearchController(affilatedId: Int)
+}

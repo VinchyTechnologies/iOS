@@ -250,6 +250,7 @@
 		8AEC83BD2758E8C700C80F1E /* WineDetailRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83BC2758E8C700C80F1E /* WineDetailRoutable.swift */; };
 		8AEC83C02758F07700C80F1E /* StoresRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83BF2758F07700C80F1E /* StoresRoutable.swift */; };
 		8AEC83C92758F38400C80F1E /* StoreRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83C82758F38400C80F1E /* StoreRoutable.swift */; };
+		8AEC83CD2759588500C80F1E /* ResultsSearchRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83CC2759588500C80F1E /* ResultsSearchRoutable.swift */; };
 		8AF5656226F2341500C58E2C /* VinchyRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF5656126F2341500C58E2C /* VinchyRepositoryProtocol.swift */; };
 		8AF5656426F2341D00C58E2C /* VinchyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF5656326F2341D00C58E2C /* VinchyRepository.swift */; };
 		8AF94419269228F5003EB76A /* TextRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF94418269228F5003EB76A /* TextRow.swift */; };
@@ -645,6 +646,7 @@
 		8AEC83BC2758E8C700C80F1E /* WineDetailRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineDetailRoutable.swift; sourceTree = "<group>"; };
 		8AEC83BF2758F07700C80F1E /* StoresRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoresRoutable.swift; sourceTree = "<group>"; };
 		8AEC83C82758F38400C80F1E /* StoreRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRoutable.swift; sourceTree = "<group>"; };
+		8AEC83CC2759588500C80F1E /* ResultsSearchRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsSearchRoutable.swift; sourceTree = "<group>"; };
 		8AF5656126F2341500C58E2C /* VinchyRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyRepositoryProtocol.swift; sourceTree = "<group>"; };
 		8AF5656326F2341D00C58E2C /* VinchyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyRepository.swift; sourceTree = "<group>"; };
 		8AF94418269228F5003EB76A /* TextRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRow.swift; sourceTree = "<group>"; };
@@ -2471,6 +2473,7 @@
 				8A5145682757BEB000DC45CD /* Coordinator.swift */,
 				8AEC83BC2758E8C700C80F1E /* WineDetailRoutable.swift */,
 				8AEC83C82758F38400C80F1E /* StoreRoutable.swift */,
+				8AEC83CC2759588500C80F1E /* ResultsSearchRoutable.swift */,
 			);
 			path = "Supported Files";
 			sourceTree = "<group>";
@@ -3450,6 +3453,7 @@
 				8A916119268E27EB00240B18 /* SearchInput.swift in Sources */,
 				4437AA5F25E3A7CE00F6E838 /* WriteReviewPresenterProtocol.swift in Sources */,
 				8A27EA9B27366716005A13C6 /* WineRateTableCell.swift in Sources */,
+				8AEC83CD2759588500C80F1E /* ResultsSearchRoutable.swift in Sources */,
 				8A10F28227063398003463B0 /* AddressSearchAssembly.swift in Sources */,
 				8A10F28027063398003463B0 /* AddressSearchViewModel.swift in Sources */,
 				8AA990A526D91FE000C32358 /* StoresPresenterProtocol.swift in Sources */,
