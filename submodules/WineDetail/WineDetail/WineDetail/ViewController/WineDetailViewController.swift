@@ -10,11 +10,11 @@ import CommonUI
 import Database
 import Display
 import Epoxy
-import GoogleMobileAds
 import StringFormatting
 import UIKit
 import VinchyAuthorization
 import VinchyCore
+import StoreKit
 
 // MARK: - C
 
@@ -63,8 +63,11 @@ final class WineDetailViewController: CollectionViewController {
     let moreBarButtonItem = UIBarButtonItem(customView: moreButton)
     let noteBarButtonItem = UIBarButtonItem(customView: noteButton)
     let spacerBarItem = UIBarButtonItem(customView: spacer)
+    #if APPCLIP
+    navigationItem.rightBarButtonItems = [moreBarButtonItem]
+    #else
     navigationItem.rightBarButtonItems = [moreBarButtonItem, spacerBarItem, noteBarButtonItem]
-
+    #endif
     if isModal {
       let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
       navigationItem.leftBarButtonItem = UIBarButtonItem(
@@ -444,6 +447,15 @@ extension WineDetailViewController: ToolCollectionCellDelegate {
 // MARK: WineDetailViewControllerProtocol
 
 extension WineDetailViewController: WineDetailViewControllerProtocol {
+  
+  func showAppClipDownloadFullApp() {
+    if #available(iOS 14.0, *) {
+      guard let scene = view.window?.windowScene else { return }
+      let config = SKOverlay.AppClipConfiguration(position: .bottom)
+      let overlay = SKOverlay(configuration: config)
+      overlay.present(in: scene)
+    }
+  }
 
   func scrollToWhereToBuySections(itemDataID: AnyHashable, dataID: AnyHashable) {
     collectionView.scrollToItem(

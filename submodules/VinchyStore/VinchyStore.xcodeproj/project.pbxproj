@@ -32,6 +32,7 @@
 		8A5145D32757E48400DC45CD /* VinchyAuthorization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5145D22757E48400DC45CD /* VinchyAuthorization.framework */; };
 		8A5145D72757E4BF00DC45CD /* CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5145D62757E4BF00DC45CD /* CommonUI.framework */; };
 		8A5145DB2757E4D300DC45CD /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5145DA2757E4D300DC45CD /* Database.framework */; };
+		8AEC94CC275AA22700C80F1E /* VinchyUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94CB275AA22700C80F1E /* VinchyUI.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -62,6 +63,7 @@
 		8A5145D22757E48400DC45CD /* VinchyAuthorization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyAuthorization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5145D62757E4BF00DC45CD /* CommonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5145DA2757E4D300DC45CD /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AEC94CB275AA22700C80F1E /* VinchyUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9096DFFB618EF42EBD5962D7 /* Pods-VinchyStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyStore.debug.xcconfig"; path = "Target Support Files/Pods-VinchyStore/Pods-VinchyStore.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -78,6 +80,7 @@
 				8A5145CF2757E46700DC45CD /* Spotlight.framework in Frameworks */,
 				8A5145C32757E3AF00DC45CD /* Display.framework in Frameworks */,
 				8A5145D32757E48400DC45CD /* VinchyAuthorization.framework in Frameworks */,
+				8AEC94CC275AA22700C80F1E /* VinchyUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,6 +216,7 @@
 		E94AC55A1CC12A813A7EEF98 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8AEC94CB275AA22700C80F1E /* VinchyUI.framework */,
 				8A5145DA2757E4D300DC45CD /* Database.framework */,
 				8A5145D62757E4BF00DC45CD /* CommonUI.framework */,
 				8A5145D22757E48400DC45CD /* VinchyAuthorization.framework */,
@@ -498,6 +502,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy.VinchyStore;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG APPCLIP";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -528,6 +533,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy.VinchyStore;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = APPCLIP;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

@@ -237,7 +237,11 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
   }
 
   func didTapStarsRatingControl() {
+#if APPCLIP
+    presenter.showAppClipDownloadFullApp()
+#else
     openReviewFlow()
+#endif
   }
 
   func didSuccessfullyLoginOrRegister() {
@@ -275,7 +279,11 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
   }
 
   func didTapWriteReviewButton() {
+#if APPCLIP
+    presenter.showAppClipDownloadFullApp()
+#else
     openReviewFlow()
+#endif
   }
 
   func didTapMore(_ button: UIButton) {
@@ -308,7 +316,9 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
 
   func didTapPriceButton() {
     if !(stores?.isEmpty == true) {
+      #if !APPCLIP
       presenter.scrollToWhereToBuySections()
+      #endif
     }
   }
 
@@ -398,6 +408,9 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
   }
 
   func didTapLikeButton(_ button: UIButton) {
+    #if APPCLIP
+    presenter.showAppClipDownloadFullApp()
+    #else
     guard let wine = wine else { return }
 
     if isDisliked(wine: wine) {
@@ -416,6 +429,7 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
       presenter.showStatusAlertDidLikedSuccessfully()
 //      trackEvent("wine_detail_did_tap_like_button", params: ["isInitiallyLiked": false])
     }
+    #endif
   }
 
   func didTapSimilarWine(wineID: Int64) {

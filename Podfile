@@ -30,6 +30,9 @@ target 'Smart' do
 
   target 'SmartUITests' do
   end
+  
+  target 'VinchyAppClip' do
+  end
 end
 
 target 'Display' do

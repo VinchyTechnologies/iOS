@@ -75,7 +75,7 @@ final class StoreViewController: CollectionViewController {
       style: .plain,
       target: self,
       action: #selector(didTapSearchButton(_:)))
-    navigationItem.rightBarButtonItems = [filterBarButtonItem, searchBarButtonItem]
+    navigationItem.rightBarButtonItems = [filterBarButtonItem/*, searchBarButtonItem*/]
 
     interactor?.viewDidLoad()
   }

@@ -13,4 +13,5 @@ protocol WineDetailViewControllerProtocol: Alertable, StatusAlertable, Loadable 
   func updateGeneralInfoSectionAndExpandOrCollapseCell(viewModel: WineDetailViewModel)
   func showReviewButtonTutorial(viewModel: DeliveryTutorialViewModel)
   func scrollToWhereToBuySections(itemDataID: AnyHashable, dataID: AnyHashable)
+  func showAppClipDownloadFullApp()
 }

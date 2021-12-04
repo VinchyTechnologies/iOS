@@ -38,11 +38,16 @@ final class WineDetailPresenter {
 
   // MARK: Private
 
-  private var contextMenuViewModels: [ContextMenuViewModel] = [
-    .share(content: .init(title: localized("share_link").firstLetterUppercased())),
-    .writeNote(content: .init(title: localized("write_note").firstLetterUppercased())),
-  ]
-
+  private var contextMenuViewModels: [ContextMenuViewModel] {
+    #if APPCLIP
+    []
+    #else
+    [
+      .share(content: .init(title: localized("share_link").firstLetterUppercased())),
+      .writeNote(content: .init(title: localized("write_note").firstLetterUppercased())),
+    ]
+    #endif
+  }
   // TODO: - Make Factory Pattern
 
   private func buildCaruselImages(wine: Wine) -> [WineDetailViewModel.Section] {
@@ -246,6 +251,7 @@ final class WineDetailPresenter {
 
     /// where to buy
 
+    #if !APPCLIP
     if let stores = stores, !stores.isEmpty {
       sections += [
         .ratingAndReview(
@@ -264,6 +270,7 @@ final class WineDetailPresenter {
         .whereToBuy(itemID: .whereToBuy, content: storeViewModels),
       ]
     }
+    #endif
 
     /// Similar wines
 
@@ -296,6 +303,10 @@ final class WineDetailPresenter {
 // MARK: WineDetailPresenterProtocol
 
 extension WineDetailPresenter: WineDetailPresenterProtocol {
+  
+  func showAppClipDownloadFullApp() {
+    viewController?.showAppClipDownloadFullApp()
+  }
 
   var reportAnErrorText: String? {
     localized("tell_about_error").firstLetterUppercased()

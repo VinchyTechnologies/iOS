@@ -136,7 +136,9 @@ final class ToolView: UIView, EpoxyableView {
 
   @objc
   private func didTapLikeButton(_ button: UIButton) {
+    #if !APPCLIP
     button.isSelected = !button.isSelected
+    #endif
     delegate?.didTapLike(button)
   }
 }

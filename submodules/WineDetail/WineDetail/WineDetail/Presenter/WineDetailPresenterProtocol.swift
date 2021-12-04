@@ -24,4 +24,5 @@ protocol WineDetailPresenterProtocol: AnyObject {
   func expandOrCollapseGeneralInfo(wine: Wine, isGeneralInfoCollapsed: Bool)
   func showReviewButtonTutorial()
   func scrollToWhereToBuySections()
+  func showAppClipDownloadFullApp()
 }

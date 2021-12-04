@@ -60,6 +60,7 @@
 		44EFDB7725E263E00076ED6D /* ReviewDetailInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6B25E263E00076ED6D /* ReviewDetailInteractorProtocol.swift */; };
 		44EFDB7825E263E00076ED6D /* ReviewDetailRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6D25E263E00076ED6D /* ReviewDetailRouterProtocol.swift */; };
 		44EFDB7925E263E00076ED6D /* ReviewDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6E25E263E00076ED6D /* ReviewDetailRouter.swift */; };
+		530B575C80F9B9DD0639F6D6 /* Pods_Smart_VinchyAppClip.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7A9D032F1AE97E4C2B52B16 /* Pods_Smart_VinchyAppClip.framework */; };
 		748586FD26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586EC26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellViewModel.swift */; };
 		748586FE26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586EE26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellInput.swift */; };
 		748586FF26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586F026C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellAssembly.swift */; };
@@ -251,6 +252,49 @@
 		8AEC83C02758F07700C80F1E /* StoresRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83BF2758F07700C80F1E /* StoresRoutable.swift */; };
 		8AEC83C92758F38400C80F1E /* StoreRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83C82758F38400C80F1E /* StoreRoutable.swift */; };
 		8AEC83CD2759588500C80F1E /* ResultsSearchRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83CC2759588500C80F1E /* ResultsSearchRoutable.swift */; };
+		8AEC94A7275A914100C80F1E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC94A6275A914100C80F1E /* AppDelegate.swift */; };
+		8AEC94A9275A914100C80F1E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC94A8275A914100C80F1E /* SceneDelegate.swift */; };
+		8AEC94B0275A914300C80F1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AEC94AF275A914300C80F1E /* Assets.xcassets */; };
+		8AEC94B3275A914300C80F1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AEC94B1275A914300C80F1E /* LaunchScreen.storyboard */; };
+		8AEC94B8275A914300C80F1E /* VinchyAppClip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = 8AEC94A4275A914100C80F1E /* VinchyAppClip.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		8AEC94C3275A9E3600C80F1E /* currencies.json in Resources */ = {isa = PBXBuildFile; fileRef = CA4EA6BA24BE3ACD00E6F0C4 /* currencies.json */; };
+		8AEC94C5275AA19F00C80F1E /* VinchyStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94C4275AA19F00C80F1E /* VinchyStore.framework */; };
+		8AEC94C6275AA19F00C80F1E /* VinchyStore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94C4275AA19F00C80F1E /* VinchyStore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8AEC94C9275AA1C400C80F1E /* VinchyUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94C8275AA1C400C80F1E /* VinchyUI.framework */; };
+		8AEC94CA275AA1C400C80F1E /* VinchyUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94C8275AA1C400C80F1E /* VinchyUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8AEC94D0275AA24D00C80F1E /* WineDetail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94CF275AA24D00C80F1E /* WineDetail.framework */; };
+		8AEC94D1275AA24D00C80F1E /* WineDetail.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94CF275AA24D00C80F1E /* WineDetail.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8AEC94D4275AA34200C80F1E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA63A129249A23C100144320 /* Localizable.strings */; };
+		8AEC94D6275B5E5E00C80F1E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC94D5275B5E5E00C80F1E /* Coordinator.swift */; };
+		8AEC94D7275B5FE500C80F1E /* ReviewDetailAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6225E263E00076ED6D /* ReviewDetailAssembly.swift */; };
+		8AEC94D8275B5FF600C80F1E /* ReviewsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB2A25E177220076ED6D /* ReviewsAssembly.swift */; };
+		8AEC94D9275B606000C80F1E /* ReviewsInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB2825E177220076ED6D /* ReviewsInput.swift */; };
+		8AEC94DB275B609200C80F1E /* AdvancedSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94DA275B609200C80F1E /* AdvancedSearch.framework */; };
+		8AEC94DC275B609200C80F1E /* AdvancedSearch.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94DA275B609200C80F1E /* AdvancedSearch.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8AEC94DD275B60C300C80F1E /* ReviewDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6725E263E00076ED6D /* ReviewDetailViewController.swift */; };
+		8AEC94DE275B60D400C80F1E /* ReviewDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6A25E263E00076ED6D /* ReviewDetailInteractor.swift */; };
+		8AEC94DF275B60D700C80F1E /* ReviewDetailInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6B25E263E00076ED6D /* ReviewDetailInteractorProtocol.swift */; };
+		8AEC94E0275B60DB00C80F1E /* ReviewDetailPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6425E263E00076ED6D /* ReviewDetailPresenterProtocol.swift */; };
+		8AEC94E1275B60DE00C80F1E /* ReviewDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6525E263E00076ED6D /* ReviewDetailPresenter.swift */; };
+		8AEC94E2275B60EE00C80F1E /* ReviewDetailRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6D25E263E00076ED6D /* ReviewDetailRouterProtocol.swift */; };
+		8AEC94E3275B60F900C80F1E /* ReviewDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6E25E263E00076ED6D /* ReviewDetailRouter.swift */; };
+		8AEC94E4275B610000C80F1E /* ReviewDetailViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6825E263E00076ED6D /* ReviewDetailViewControllerProtocol.swift */; };
+		8AEC94E5275B610700C80F1E /* ReviewDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB5E25E263E00076ED6D /* ReviewDetailViewModel.swift */; };
+		8AEC94E6275B613A00C80F1E /* ReviewsInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB3225E177220076ED6D /* ReviewsInteractorProtocol.swift */; };
+		8AEC94E7275B613E00C80F1E /* ReviewsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB3325E177220076ED6D /* ReviewsInteractor.swift */; };
+		8AEC94E8275B614300C80F1E /* ReviewsPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB2C25E177220076ED6D /* ReviewsPresenterProtocol.swift */; };
+		8AEC94E9275B614900C80F1E /* ReviewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB2D25E177220076ED6D /* ReviewsPresenter.swift */; };
+		8AEC94EA275B614E00C80F1E /* ReviewsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB3525E177220076ED6D /* ReviewsRouter.swift */; };
+		8AEC94EB275B615100C80F1E /* ReviewsRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB3625E177220076ED6D /* ReviewsRouterProtocol.swift */; };
+		8AEC94EC275B615400C80F1E /* ReviewsViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB2F25E177220076ED6D /* ReviewsViewControllerProtocol.swift */; };
+		8AEC94ED275B615800C80F1E /* ReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB3025E177220076ED6D /* ReviewsViewController.swift */; };
+		8AEC94EE275B615D00C80F1E /* ReviewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB2625E177220076ED6D /* ReviewsViewModel.swift */; };
+		8AEC94EF275B61AC00C80F1E /* FakeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA276D54256AC6720061BEBE /* FakeCell.swift */; };
+		8AEC94F0275B621500C80F1E /* ReviewDetailRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4495625025E2E15A005E79DA /* ReviewDetailRoutable.swift */; };
+		8AEC94F1275B624B00C80F1E /* filters.json in Resources */ = {isa = PBXBuildFile; fileRef = CACC1DC124C5F2980082BD01 /* filters.json */; };
+		8AEC94F2275B627600C80F1E /* country_codes.json in Resources */ = {isa = PBXBuildFile; fileRef = CA3CEFAF251288F000AAA692 /* country_codes.json */; };
+		8AEC94F3275BE86C00C80F1E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CA472AC8245EDE30009149FF /* Assets.xcassets */; };
+		8AEC94F4275BED5300C80F1E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA4D4FE32548A93500A6FD0B /* GoogleService-Info.plist */; };
 		8AF5656226F2341500C58E2C /* VinchyRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF5656126F2341500C58E2C /* VinchyRepositoryProtocol.swift */; };
 		8AF5656426F2341D00C58E2C /* VinchyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF5656326F2341D00C58E2C /* VinchyRepository.swift */; };
 		8AF94419269228F5003EB76A /* TextRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF94418269228F5003EB76A /* TextRow.swift */; };
@@ -374,6 +418,13 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		8AEC94B6275A914300C80F1E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = CA472AB4245EDE2F009149FF /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 8AEC94A3275A914100C80F1E;
+			remoteInfo = VinchyAppClip;
+		};
 		CA472AD3245EDE30009149FF /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = CA472AB4245EDE2F009149FF /* Project object */;
@@ -415,6 +466,31 @@
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		8AEC94B9275A914300C80F1E /* Embed App Clips */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "$(CONTENTS_FOLDER_PATH)/AppClips";
+			dstSubfolderSpec = 16;
+			files = (
+				8AEC94B8275A914300C80F1E /* VinchyAppClip.app in Embed App Clips */,
+			);
+			name = "Embed App Clips";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		8AEC94C7275AA1A000C80F1E /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8AEC94DC275B609200C80F1E /* AdvancedSearch.framework in Embed Frameworks */,
+				8AEC94C6275AA19F00C80F1E /* VinchyStore.framework in Embed Frameworks */,
+				8AEC94CA275AA1C400C80F1E /* VinchyUI.framework in Embed Frameworks */,
+				8AEC94D1275AA24D00C80F1E /* WineDetail.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
@@ -422,6 +498,7 @@
 		1300039515EDBD7F8D6D2225 /* Pods-SmartTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-SmartTests.release.xcconfig"; path = "Target Support Files/Pods-SmartTests/Pods-SmartTests.release.xcconfig"; sourceTree = "<group>"; };
 		29C60E4E95457449E65CA037 /* Pods-Smart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart.release.xcconfig"; path = "Target Support Files/Pods-Smart/Pods-Smart.release.xcconfig"; sourceTree = "<group>"; };
 		2F6606558890D73C23500CD5 /* Pods-Smart-SmartUITests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart-SmartUITests.release.xcconfig"; path = "Target Support Files/Pods-Smart-SmartUITests/Pods-Smart-SmartUITests.release.xcconfig"; sourceTree = "<group>"; };
+		38FF7AB626EA4C87D2A563EC /* Pods-Smart-VinchyAppClip.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart-VinchyAppClip.debug.xcconfig"; path = "Target Support Files/Pods-Smart-VinchyAppClip/Pods-Smart-VinchyAppClip.debug.xcconfig"; sourceTree = "<group>"; };
 		4407196E25F015F1000531B7 /* MapRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapRoutable.swift; sourceTree = "<group>"; };
 		4437AA4A25E3A7CD00F6E838 /* WriteReviewViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteReviewViewModel.swift; sourceTree = "<group>"; };
 		4437AA4C25E3A7CD00F6E838 /* WriteReviewInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteReviewInput.swift; sourceTree = "<group>"; };
@@ -481,6 +558,7 @@
 		44EFDB6B25E263E00076ED6D /* ReviewDetailInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailInteractorProtocol.swift; sourceTree = "<group>"; };
 		44EFDB6D25E263E00076ED6D /* ReviewDetailRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailRouterProtocol.swift; sourceTree = "<group>"; };
 		44EFDB6E25E263E00076ED6D /* ReviewDetailRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewDetailRouter.swift; sourceTree = "<group>"; };
+		63B995158440B725439EB33D /* Pods-Smart-VinchyAppClip.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Smart-VinchyAppClip.release.xcconfig"; path = "Target Support Files/Pods-Smart-VinchyAppClip/Pods-Smart-VinchyAppClip.release.xcconfig"; sourceTree = "<group>"; };
 		748586EC26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleContinuosCarouselCollectionCellViewModel.swift; sourceTree = "<group>"; };
 		748586EE26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleContinuosCarouselCollectionCellInput.swift; sourceTree = "<group>"; };
 		748586F026C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleContinuosCarouselCollectionCellAssembly.swift; sourceTree = "<group>"; };
@@ -647,6 +725,19 @@
 		8AEC83BF2758F07700C80F1E /* StoresRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoresRoutable.swift; sourceTree = "<group>"; };
 		8AEC83C82758F38400C80F1E /* StoreRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRoutable.swift; sourceTree = "<group>"; };
 		8AEC83CC2759588500C80F1E /* ResultsSearchRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsSearchRoutable.swift; sourceTree = "<group>"; };
+		8AEC94A4275A914100C80F1E /* VinchyAppClip.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VinchyAppClip.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AEC94A6275A914100C80F1E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		8AEC94A8275A914100C80F1E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
+		8AEC94AF275A914300C80F1E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		8AEC94B2275A914300C80F1E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
+		8AEC94B4275A914300C80F1E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8AEC94B5275A914300C80F1E /* VinchyAppClip.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VinchyAppClip.entitlements; sourceTree = "<group>"; };
+		8AEC94BE275A998A00C80F1E /* Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AEC94C4275AA19F00C80F1E /* VinchyStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AEC94C8275AA1C400C80F1E /* VinchyUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AEC94CF275AA24D00C80F1E /* WineDetail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = WineDetail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AEC94D5275B5E5E00C80F1E /* Coordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Coordinator.swift; sourceTree = "<group>"; };
+		8AEC94DA275B609200C80F1E /* AdvancedSearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AdvancedSearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AF5656126F2341500C58E2C /* VinchyRepositoryProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyRepositoryProtocol.swift; sourceTree = "<group>"; };
 		8AF5656326F2341D00C58E2C /* VinchyRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyRepository.swift; sourceTree = "<group>"; };
 		8AF94418269228F5003EB76A /* TextRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRow.swift; sourceTree = "<group>"; };
@@ -663,6 +754,7 @@
 		8AF966BD2678F194001891B2 /* EditProfileRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileRouterProtocol.swift; sourceTree = "<group>"; };
 		8AF966CA267908F6001891B2 /* CommonEditCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonEditCollectionViewCell.swift; sourceTree = "<group>"; };
 		A58854690F88929379F0E016 /* Pods_Smart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Smart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		B7A9D032F1AE97E4C2B52B16 /* Pods_Smart_VinchyAppClip.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Smart_VinchyAppClip.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA015C3524C582B2008DF01D /* EmailService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EmailService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA070C1325250AE900C3D9EC /* OnboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardViewController.swift; sourceTree = "<group>"; };
 		CA070C2325250C1800C3D9EC /* OnboardingModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModuleFactory.swift; sourceTree = "<group>"; };
@@ -798,6 +890,18 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8AEC94A1275A914100C80F1E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AEC94DB275B609200C80F1E /* AdvancedSearch.framework in Frameworks */,
+				530B575C80F9B9DD0639F6D6 /* Pods_Smart_VinchyAppClip.framework in Frameworks */,
+				8AEC94C5275AA19F00C80F1E /* VinchyStore.framework in Frameworks */,
+				8AEC94D0275AA24D00C80F1E /* WineDetail.framework in Frameworks */,
+				8AEC94C9275AA1C400C80F1E /* VinchyUI.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CA472AB9245EDE2F009149FF /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -1216,6 +1320,11 @@
 		46483F371463D95E22014241 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8AEC94DA275B609200C80F1E /* AdvancedSearch.framework */,
+				8AEC94CF275AA24D00C80F1E /* WineDetail.framework */,
+				8AEC94C8275AA1C400C80F1E /* VinchyUI.framework */,
+				8AEC94C4275AA19F00C80F1E /* VinchyStore.framework */,
+				8AEC94BE275A998A00C80F1E /* Display.framework */,
 				8AEC83B92758E7BE00C80F1E /* WineDetail.framework */,
 				8A5145E02757EC9000DC45CD /* VinchyStore.framework */,
 				8A5145852757C9A000DC45CD /* VinchyUI.framework */,
@@ -1237,6 +1346,7 @@
 				A58854690F88929379F0E016 /* Pods_Smart.framework */,
 				EFC751EC9AAA672E4A7DF935 /* Pods_Smart_SmartUITests.framework */,
 				EA78FE8971307D6D1C5D8B17 /* Pods_SmartTests.framework */,
+				B7A9D032F1AE97E4C2B52B16 /* Pods_Smart_VinchyAppClip.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -2151,6 +2261,20 @@
 			path = Routable;
 			sourceTree = "<group>";
 		};
+		8AEC94A5275A914100C80F1E /* VinchyAppClip */ = {
+			isa = PBXGroup;
+			children = (
+				8AEC94A6275A914100C80F1E /* AppDelegate.swift */,
+				8AEC94A8275A914100C80F1E /* SceneDelegate.swift */,
+				8AEC94AF275A914300C80F1E /* Assets.xcassets */,
+				8AEC94B1275A914300C80F1E /* LaunchScreen.storyboard */,
+				8AEC94B4275A914300C80F1E /* Info.plist */,
+				8AEC94B5275A914300C80F1E /* VinchyAppClip.entitlements */,
+				8AEC94D5275B5E5E00C80F1E /* Coordinator.swift */,
+			);
+			path = VinchyAppClip;
+			sourceTree = "<group>";
+		};
 		8AF5656026F233ED00C58E2C /* Repository */ = {
 			isa = PBXGroup;
 			children = (
@@ -2374,6 +2498,7 @@
 				CA472ABE245EDE2F009149FF /* Smart */,
 				CA472AD5245EDE30009149FF /* SmartTests */,
 				CA472AE0245EDE30009149FF /* SmartUITests */,
+				8AEC94A5275A914100C80F1E /* VinchyAppClip */,
 				CA472ABD245EDE2F009149FF /* Products */,
 				E126C1F6258946A324BF55F2 /* Pods */,
 				46483F371463D95E22014241 /* Frameworks */,
@@ -2388,6 +2513,7 @@
 				CA472ABC245EDE2F009149FF /* Vinchy.app */,
 				CA472AD2245EDE30009149FF /* SmartTests.xctest */,
 				CA472ADD245EDE30009149FF /* SmartUITests.xctest */,
+				8AEC94A4275A914100C80F1E /* VinchyAppClip.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -2911,6 +3037,8 @@
 				2F6606558890D73C23500CD5 /* Pods-Smart-SmartUITests.release.xcconfig */,
 				F05B39125A009A1556A51DF4 /* Pods-SmartTests.debug.xcconfig */,
 				1300039515EDBD7F8D6D2225 /* Pods-SmartTests.release.xcconfig */,
+				38FF7AB626EA4C87D2A563EC /* Pods-Smart-VinchyAppClip.debug.xcconfig */,
+				63B995158440B725439EB33D /* Pods-Smart-VinchyAppClip.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -2918,6 +3046,26 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8AEC94A3275A914100C80F1E /* VinchyAppClip */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8AEC94BC275A914300C80F1E /* Build configuration list for PBXNativeTarget "VinchyAppClip" */;
+			buildPhases = (
+				E12F9E5B8067D3365D2C29D3 /* [CP] Check Pods Manifest.lock */,
+				8AEC94A0275A914100C80F1E /* Sources */,
+				8AEC94A1275A914100C80F1E /* Frameworks */,
+				8AEC94A2275A914100C80F1E /* Resources */,
+				5F75F6E562485408A3AB4BB9 /* [CP] Embed Pods Frameworks */,
+				8AEC94C7275AA1A000C80F1E /* Embed Frameworks */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VinchyAppClip;
+			productName = VinchyAppClip;
+			productReference = 8AEC94A4275A914100C80F1E /* VinchyAppClip.app */;
+			productType = "com.apple.product-type.application.on-demand-install-capable";
+		};
 		CA472ABB245EDE2F009149FF /* Smart */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = CA472AE6245EDE30009149FF /* Build configuration list for PBXNativeTarget "Smart" */;
@@ -2930,14 +3078,14 @@
 				CA0709CF2523C42700C3D9EC /* Swiftlint */,
 				61111868CBB8EA93EB5BE01B /* [CP] Embed Pods Frameworks */,
 				8A63CCB326754628003B1D4D /* Embed Frameworks */,
+				8AEC94B9275A914300C80F1E /* Embed App Clips */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				8AEC94B7275A914300C80F1E /* PBXTargetDependency */,
 			);
 			name = Smart;
-			packageProductDependencies = (
-			);
 			productName = Smart;
 			productReference = CA472ABC245EDE2F009149FF /* Vinchy.app */;
 			productType = "com.apple.product-type.application";
@@ -2987,10 +3135,13 @@
 		CA472AB4245EDE2F009149FF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1140;
+				LastSwiftUpdateCheck = 1300;
 				LastUpgradeCheck = 1200;
 				ORGANIZATIONNAME = "Aleksei Smirnov";
 				TargetAttributes = {
+					8AEC94A3275A914100C80F1E = {
+						CreatedOnToolsVersion = 13.0;
+					};
 					CA472ABB245EDE2F009149FF = {
 						CreatedOnToolsVersion = 11.4;
 						LastSwiftMigration = 1150;
@@ -3015,8 +3166,6 @@
 				ru,
 			);
 			mainGroup = CA472AB3245EDE2F009149FF;
-			packageReferences = (
-			);
 			productRefGroup = CA472ABD245EDE2F009149FF /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -3024,11 +3173,27 @@
 				CA472ABB245EDE2F009149FF /* Smart */,
 				CA472AD1245EDE30009149FF /* SmartTests */,
 				CA472ADC245EDE30009149FF /* SmartUITests */,
+				8AEC94A3275A914100C80F1E /* VinchyAppClip */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8AEC94A2275A914100C80F1E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AEC94D4275AA34200C80F1E /* Localizable.strings in Resources */,
+				8AEC94F4275BED5300C80F1E /* GoogleService-Info.plist in Resources */,
+				8AEC94B3275A914300C80F1E /* LaunchScreen.storyboard in Resources */,
+				8AEC94B0275A914300C80F1E /* Assets.xcassets in Resources */,
+				8AEC94F1275B624B00C80F1E /* filters.json in Resources */,
+				8AEC94F3275BE86C00C80F1E /* Assets.xcassets in Resources */,
+				8AEC94F2275B627600C80F1E /* country_codes.json in Resources */,
+				8AEC94C3275A9E3600C80F1E /* currencies.json in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CA472ABA245EDE2F009149FF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3081,6 +3246,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Smart-SmartUITests/Pods-Smart-SmartUITests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		5F75F6E562485408A3AB4BB9 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Smart-VinchyAppClip/Pods-Smart-VinchyAppClip-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-Smart-VinchyAppClip/Pods-Smart-VinchyAppClip-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Smart-VinchyAppClip/Pods-Smart-VinchyAppClip-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		61111868CBB8EA93EB5BE01B /* [CP] Embed Pods Frameworks */ = {
@@ -3202,9 +3384,64 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${PODS_ROOT}/SwiftLint/swiftlint\"\n";
 		};
+		E12F9E5B8067D3365D2C29D3 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Smart-VinchyAppClip-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8AEC94A0275A914100C80F1E /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8AEC94A7275A914100C80F1E /* AppDelegate.swift in Sources */,
+				8AEC94ED275B615800C80F1E /* ReviewsViewController.swift in Sources */,
+				8AEC94EE275B615D00C80F1E /* ReviewsViewModel.swift in Sources */,
+				8AEC94E7275B613E00C80F1E /* ReviewsInteractor.swift in Sources */,
+				8AEC94E8275B614300C80F1E /* ReviewsPresenterProtocol.swift in Sources */,
+				8AEC94E3275B60F900C80F1E /* ReviewDetailRouter.swift in Sources */,
+				8AEC94EA275B614E00C80F1E /* ReviewsRouter.swift in Sources */,
+				8AEC94E9275B614900C80F1E /* ReviewsPresenter.swift in Sources */,
+				8AEC94F0275B621500C80F1E /* ReviewDetailRoutable.swift in Sources */,
+				8AEC94EB275B615100C80F1E /* ReviewsRouterProtocol.swift in Sources */,
+				8AEC94A9275A914100C80F1E /* SceneDelegate.swift in Sources */,
+				8AEC94E4275B610000C80F1E /* ReviewDetailViewControllerProtocol.swift in Sources */,
+				8AEC94D9275B606000C80F1E /* ReviewsInput.swift in Sources */,
+				8AEC94DD275B60C300C80F1E /* ReviewDetailViewController.swift in Sources */,
+				8AEC94D7275B5FE500C80F1E /* ReviewDetailAssembly.swift in Sources */,
+				8AEC94D6275B5E5E00C80F1E /* Coordinator.swift in Sources */,
+				8AEC94E2275B60EE00C80F1E /* ReviewDetailRouterProtocol.swift in Sources */,
+				8AEC94D8275B5FF600C80F1E /* ReviewsAssembly.swift in Sources */,
+				8AEC94DE275B60D400C80F1E /* ReviewDetailInteractor.swift in Sources */,
+				8AEC94E5275B610700C80F1E /* ReviewDetailViewModel.swift in Sources */,
+				8AEC94E6275B613A00C80F1E /* ReviewsInteractorProtocol.swift in Sources */,
+				8AEC94E1275B60DE00C80F1E /* ReviewDetailPresenter.swift in Sources */,
+				8AEC94DF275B60D700C80F1E /* ReviewDetailInteractorProtocol.swift in Sources */,
+				8AEC94EC275B615400C80F1E /* ReviewsViewControllerProtocol.swift in Sources */,
+				8AEC94EF275B61AC00C80F1E /* FakeCell.swift in Sources */,
+				8AEC94E0275B60DB00C80F1E /* ReviewDetailPresenterProtocol.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CA472AB8245EDE2F009149FF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -3547,6 +3784,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		8AEC94B7275A914300C80F1E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 8AEC94A3275A914100C80F1E /* VinchyAppClip */;
+			targetProxy = 8AEC94B6275A914300C80F1E /* PBXContainerItemProxy */;
+		};
 		CA472AD4245EDE30009149FF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = CA472ABB245EDE2F009149FF /* Smart */;
@@ -3567,6 +3809,14 @@
 				8A07983E269750A4000ACA2B /* ru */,
 			);
 			name = PluralLocalizable.stringsdict;
+			sourceTree = "<group>";
+		};
+		8AEC94B1275A914300C80F1E /* LaunchScreen.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				8AEC94B2275A914300C80F1E /* Base */,
+			);
+			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
 		};
 		CA3C97E8257245F40036F7D9 /* Countries.strings */ = {
@@ -3610,6 +3860,76 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		8AEC94BA275A914300C80F1E /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 38FF7AB626EA4C87D2A563EC /* Pods-Smart-VinchyAppClip.debug.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = VinchyAppClip/VinchyAppClip.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YKG5C7DUKF;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VinchyAppClip/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Vinchy;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy.Clip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG APPCLIP";
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		8AEC94BB275A914300C80F1E /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 63B995158440B725439EB33D /* Pods-Smart-VinchyAppClip.release.xcconfig */;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = VinchyAppClip/VinchyAppClip.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = YKG5C7DUKF;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VinchyAppClip/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = Vinchy;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy.Clip;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = APPCLIP;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
 		CA472AE4245EDE30009149FF /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -3732,6 +4052,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = EF22D666962C76D1B1B8AFE3 /* Pods-Smart.debug.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Smart/Vinchy.entitlements;
@@ -3762,6 +4083,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 29C60E4E95457449E65CA037 /* Pods-Smart.release.xcconfig */;
 			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_ENTITLEMENTS = Smart/VinchyRelease.entitlements;
@@ -3878,6 +4200,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8AEC94BC275A914300C80F1E /* Build configuration list for PBXNativeTarget "VinchyAppClip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8AEC94BA275A914300C80F1E /* Debug */,
+				8AEC94BB275A914300C80F1E /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		CA472AB7245EDE2F009149FF /* Build configuration list for PBXProject "Smart" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

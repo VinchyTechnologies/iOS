@@ -8,7 +8,7 @@
 
 import VinchyUI
 
-enum ReviewDetailAssembly {
+final class ReviewDetailAssembly {
   static func assemblyModule(input: ReviewDetailInput) -> ReviewDetailViewController {
     let viewController = ReviewDetailViewController()
     let router = ReviewDetailRouter(input: input, viewController: viewController)
