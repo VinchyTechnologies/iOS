@@ -10,11 +10,11 @@ import CommonUI
 import Database
 import Display
 import Epoxy
+import StoreKit
 import StringFormatting
 import UIKit
 import VinchyAuthorization
 import VinchyCore
-import StoreKit
 
 // MARK: - C
 
@@ -447,7 +447,7 @@ extension WineDetailViewController: ToolCollectionCellDelegate {
 // MARK: WineDetailViewControllerProtocol
 
 extension WineDetailViewController: WineDetailViewControllerProtocol {
-  
+
   func showAppClipDownloadFullApp() {
     if #available(iOS 14.0, *) {
       guard let scene = view.window?.windowScene else { return }

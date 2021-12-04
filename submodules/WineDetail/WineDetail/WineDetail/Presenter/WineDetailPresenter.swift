@@ -48,6 +48,7 @@ final class WineDetailPresenter {
     ]
     #endif
   }
+
   // TODO: - Make Factory Pattern
 
   private func buildCaruselImages(wine: Wine) -> [WineDetailViewModel.Section] {
@@ -303,11 +304,6 @@ final class WineDetailPresenter {
 // MARK: WineDetailPresenterProtocol
 
 extension WineDetailPresenter: WineDetailPresenterProtocol {
-  
-  func showAppClipDownloadFullApp() {
-    viewController?.showAppClipDownloadFullApp()
-  }
-
   var reportAnErrorText: String? {
     localized("tell_about_error").firstLetterUppercased()
   }
@@ -318,6 +314,11 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
 
   var reportAnErrorRecipients: [String] {
     [localized("contact_email")]
+  }
+
+
+  func showAppClipDownloadFullApp() {
+    viewController?.showAppClipDownloadFullApp()
   }
 
   func showReviewButtonTutorial() {

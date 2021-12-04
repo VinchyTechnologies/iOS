@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		282D951F0ACBDCD1BF10056D /* Pods_VinchyStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4FCC70846409724216C1E5DB /* Pods_VinchyStore.framework */; };
 		8A5144152757B5F000DC45CD /* VinchyStore.docc in Sources */ = {isa = PBXBuildFile; fileRef = 8A5144142757B5F000DC45CD /* VinchyStore.docc */; };
 		8A5144162757B5F000DC45CD /* VinchyStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A5144132757B5F000DC45CD /* VinchyStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A5145A12757D3DD00DC45CD /* StoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A51458A2757D3DD00DC45CD /* StoreViewModel.swift */; };
@@ -33,11 +32,12 @@
 		8A5145D72757E4BF00DC45CD /* CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5145D62757E4BF00DC45CD /* CommonUI.framework */; };
 		8A5145DB2757E4D300DC45CD /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5145DA2757E4D300DC45CD /* Database.framework */; };
 		8AEC94CC275AA22700C80F1E /* VinchyUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94CB275AA22700C80F1E /* VinchyUI.framework */; };
+		D502406AFE81097E856372FA /* Pods_VinchyStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74F4725EF20796D3941585EF /* Pods_VinchyStore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		30CE802AA55F763D8624076B /* Pods-VinchyStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyStore.release.xcconfig"; path = "Target Support Files/Pods-VinchyStore/Pods-VinchyStore.release.xcconfig"; sourceTree = "<group>"; };
-		4FCC70846409724216C1E5DB /* Pods_VinchyStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinchyStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		74F4725EF20796D3941585EF /* Pods_VinchyStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinchyStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5144102757B5F000DC45CD /* VinchyStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VinchyStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5144132757B5F000DC45CD /* VinchyStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VinchyStore.h; sourceTree = "<group>"; };
 		8A5144142757B5F000DC45CD /* VinchyStore.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = VinchyStore.docc; sourceTree = "<group>"; };
@@ -73,7 +73,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A5145C72757E3C000DC45CD /* StringFormatting.framework in Frameworks */,
-				282D951F0ACBDCD1BF10056D /* Pods_VinchyStore.framework in Frameworks */,
 				8A5145D72757E4BF00DC45CD /* CommonUI.framework in Frameworks */,
 				8A5145DB2757E4D300DC45CD /* Database.framework in Frameworks */,
 				8A5145CB2757E44B00DC45CD /* VinchyCore.framework in Frameworks */,
@@ -81,6 +80,7 @@
 				8A5145C32757E3AF00DC45CD /* Display.framework in Frameworks */,
 				8A5145D32757E48400DC45CD /* VinchyAuthorization.framework in Frameworks */,
 				8AEC94CC275AA22700C80F1E /* VinchyUI.framework in Frameworks */,
+				D502406AFE81097E856372FA /* Pods_VinchyStore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -224,7 +224,7 @@
 				8A5145CA2757E44B00DC45CD /* VinchyCore.framework */,
 				8A5145C62757E3C000DC45CD /* StringFormatting.framework */,
 				8A5145C22757E3AF00DC45CD /* Display.framework */,
-				4FCC70846409724216C1E5DB /* Pods_VinchyStore.framework */,
+				74F4725EF20796D3941585EF /* Pods_VinchyStore.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";

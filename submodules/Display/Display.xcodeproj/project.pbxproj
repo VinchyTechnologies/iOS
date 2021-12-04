@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3606C710D4617062D8C69885 /* Pods_Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 08332BF0307816EC11B3EA50 /* Pods_Display.framework */; };
+		05596D3AC056D6C4568A4F32 /* Pods_Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2A00F0AFA04F8DB549D9A8F8 /* Pods_Display.framework */; };
 		4404888D25D8390600019081 /* UITapGestureRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4404888C25D8390600019081 /* UITapGestureRecognizer.swift */; };
 		4410AE3325E5632400A84FF9 /* DismissRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4410AE3225E5632400A84FF9 /* DismissRoutable.swift */; };
 		44A7255D2592290B00A7552B /* TextFieldWithIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44A7255C2592290B00A7552B /* TextFieldWithIcon.swift */; };
@@ -67,8 +67,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		08332BF0307816EC11B3EA50 /* Pods_Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		22C8868B911E1129CFE706A2 /* Pods-Display.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Display.debug.xcconfig"; path = "Target Support Files/Pods-Display/Pods-Display.debug.xcconfig"; sourceTree = "<group>"; };
+		2A00F0AFA04F8DB549D9A8F8 /* Pods_Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		4404888C25D8390600019081 /* UITapGestureRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UITapGestureRecognizer.swift; sourceTree = "<group>"; };
 		4410AE3225E5632400A84FF9 /* DismissRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DismissRoutable.swift; sourceTree = "<group>"; };
 		44A7255C2592290B00A7552B /* TextFieldWithIcon.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldWithIcon.swift; sourceTree = "<group>"; };
@@ -137,7 +137,7 @@
 				CA103AE4251690F200B0324F /* StringFormatting.framework in Frameworks */,
 				CAD0C9D6258C9B1400142FE5 /* Core.framework in Frameworks */,
 				8A6951FB267CC12800F14902 /* Nuke in Frameworks */,
-				3606C710D4617062D8C69885 /* Pods_Display.framework in Frameworks */,
+				05596D3AC056D6C4568A4F32 /* Pods_Display.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,7 +183,7 @@
 			children = (
 				CAD0C9D5258C9B1400142FE5 /* Core.framework */,
 				CA103AE3251690F200B0324F /* StringFormatting.framework */,
-				08332BF0307816EC11B3EA50 /* Pods_Display.framework */,
+				2A00F0AFA04F8DB549D9A8F8 /* Pods_Display.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -330,7 +330,7 @@
 			);
 			mainGroup = CAE8868E24C0E5F800E33E16;
 			packageReferences = (
-				8A6951F9267CC12800F14902 /* XCRemoteSwiftPackageReference "Nuke" */,
+				8A6951F9267CC12800F14902 /* XCRemoteSwiftPackageReference "Nuke.git" */,
 				8A1587F3272EFF0E0002CA28 /* XCRemoteSwiftPackageReference "Cosmos" */,
 			);
 			productRefGroup = CAE8869924C0E5F800E33E16 /* Products */;
@@ -650,7 +650,7 @@
 				minimumVersion = 23.0.0;
 			};
 		};
-		8A6951F9267CC12800F14902 /* XCRemoteSwiftPackageReference "Nuke" */ = {
+		8A6951F9267CC12800F14902 /* XCRemoteSwiftPackageReference "Nuke.git" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Nuke.git";
 			requirement = {
@@ -668,7 +668,7 @@
 		};
 		8A6951FA267CC12800F14902 /* Nuke */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8A6951F9267CC12800F14902 /* XCRemoteSwiftPackageReference "Nuke" */;
+			package = 8A6951F9267CC12800F14902 /* XCRemoteSwiftPackageReference "Nuke.git" */;
 			productName = Nuke;
 		};
 /* End XCSwiftPackageProductDependency section */

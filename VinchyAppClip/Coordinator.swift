@@ -6,17 +6,20 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import VinchyUI
+import AdvancedSearch
 import Database
-import VinchyCore
-import WineDetail
-import UIKit
 import Display
 import FittedSheets
-import AdvancedSearch
+import UIKit
+import VinchyCore
+import VinchyUI
+import WineDetail
 
 final class Coordinator: WineDetailRoutable, ActivityRoutable, WriteNoteRoutable, AdvancedSearchRoutable, ResultsSearchRoutable, ReviewDetailRoutable, ReviewsRoutable, StoreRoutable, StoresRoutable, WriteReviewRoutable, ShowcaseRoutable {
-  
+
+  static let shared = Coordinator()
+
+
   func presentAdvancedSearch(input: AdvancedSearchInput, delegate: AdvancedSearchOutputDelegate?) {
     let controller = AdvancedSearchAssembly.assemblyModule(
       input: input,
@@ -25,11 +28,11 @@ final class Coordinator: WineDetailRoutable, ActivityRoutable, WriteNoteRoutable
     navController.advancedSearchOutputDelegate = delegate
     UIApplication.topViewController()?.present(navController, animated: true, completion: nil)
   }
-  
+
   func pushToResultsSearchController(affilatedId: Int) {
-    
+
   }
-  
+
   func showBottomSheetReviewDetailViewController(reviewInput: ReviewDetailInput) {
     let options = SheetOptions(shrinkPresentingViewController: false)
     let reviewDetailViewController = ReviewDetailAssembly.assemblyModule(input: reviewInput)
@@ -40,7 +43,7 @@ final class Coordinator: WineDetailRoutable, ActivityRoutable, WriteNoteRoutable
 
     UIApplication.topViewController()?.present(sheet, animated: true, completion: nil)
   }
-  
+
   func pushToReviewsViewController(wineID: Int64) {
     let controller = ReviewsAssembly.assemblyModule(input: .init(wineID: wineID))
     controller.hidesBottomBarWhenPushed = true
@@ -48,7 +51,7 @@ final class Coordinator: WineDetailRoutable, ActivityRoutable, WriteNoteRoutable
       controller,
       animated: true)
   }
-  
+
   func presentWineDetailViewController(wineID: Int64) {
     let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID), coordinator: Coordinator.shared)
     let navigationController = VinchyNavigationController(rootViewController: controller)
@@ -58,7 +61,7 @@ final class Coordinator: WineDetailRoutable, ActivityRoutable, WriteNoteRoutable
       animated: true,
       completion: nil)
   }
-  
+
   func presentActivityViewController(items: [Any], sourceView: UIView) {
     let controller = UIActivityViewController(activityItems: items, applicationActivities: nil)
     if let popoverController = controller.popoverPresentationController {
@@ -67,7 +70,7 @@ final class Coordinator: WineDetailRoutable, ActivityRoutable, WriteNoteRoutable
     }
     UIApplication.topViewController()?.present(controller, animated: true)
   }
-  
+
   func pushToWineDetailViewController(wineID: Int64) {
     if UIDevice.current.userInterfaceIdiom == .pad {
       presentWineDetailViewController(wineID: wineID)
@@ -79,26 +82,24 @@ final class Coordinator: WineDetailRoutable, ActivityRoutable, WriteNoteRoutable
         animated: true)
     }
   }
-  
+
   func pushToStoreViewController(affilatedId: Int) { }
-  
+
   func pushToStoresViewController(wineID: Int64) { }
-  
+
   func presentWriteReviewViewController(
     reviewID: Int?,
     wineID: Int64,
     rating: Double,
     reviewText: String?) { }
-    
+
   func pushToWriteViewController(note: VNote) { }
-  
+
   func presentWriteViewController(note: VNote) { }
-  
+
   func pushToWriteViewController(wine: Wine) { }
-  
+
   func presentWriteViewController(wine: Wine) { }
-  
+
   func pushToShowcaseViewController(input: ShowcaseInput) { }
-  
-  static let shared = Coordinator()
 }

@@ -237,11 +237,11 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
   }
 
   func didTapStarsRatingControl() {
-#if APPCLIP
+    #if APPCLIP
     presenter.showAppClipDownloadFullApp()
-#else
+    #else
     openReviewFlow()
-#endif
+    #endif
   }
 
   func didSuccessfullyLoginOrRegister() {
@@ -279,11 +279,11 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
   }
 
   func didTapWriteReviewButton() {
-#if APPCLIP
+    #if APPCLIP
     presenter.showAppClipDownloadFullApp()
-#else
+    #else
     openReviewFlow()
-#endif
+    #endif
   }
 
   func didTapMore(_ button: UIButton) {
