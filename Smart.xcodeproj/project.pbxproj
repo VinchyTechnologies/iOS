@@ -167,14 +167,10 @@
 		8A41773B275CBF08003E1934 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CABDBA8624C2FAB800AD96D6 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A41773C275CBF09003E1934 /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA1821A324C0E83900280DD4 /* Display.framework */; };
 		8A41773D275CBF09003E1934 /* Display.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA1821A324C0E83900280DD4 /* Display.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8A41773E275CBF0B003E1934 /* LocationUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA4CBAD275CA72A00856FE5 /* LocationUI.framework */; };
-		8A41773F275CBF0B003E1934 /* LocationUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA4CBAD275CA72A00856FE5 /* LocationUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A417740275CBF0E003E1934 /* Spotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A299EF2274FB7B400355602 /* Spotlight.framework */; };
 		8A417741275CBF0E003E1934 /* Spotlight.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A299EF2274FB7B400355602 /* Spotlight.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A417742275CBF10003E1934 /* StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24ACC24C323C90057547F /* StringFormatting.framework */; };
 		8A417743275CBF10003E1934 /* StringFormatting.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24ACC24C323C90057547F /* StringFormatting.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8A417744275CBF11003E1934 /* VinchyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; };
-		8A417745275CBF11003E1934 /* VinchyCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A417746275CBF13003E1934 /* VinchyStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94C4275AA19F00C80F1E /* VinchyStore.framework */; };
 		8A417747275CBF13003E1934 /* VinchyStore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94C4275AA19F00C80F1E /* VinchyStore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A417748275CBF15003E1934 /* VinchyUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94C8275AA1C400C80F1E /* VinchyUI.framework */; };
@@ -241,6 +237,8 @@
 		8A916122268E27EB00240B18 /* SearchRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916117268E27EB00240B18 /* SearchRouterProtocol.swift */; };
 		8A9554682692284B00F1C5AE /* DocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9554672692284B00F1C5AE /* DocumentsViewController.swift */; };
 		8AA5E5132615053D00935B5E /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA5E5122615053D00935B5E /* AboutView.swift */; };
+		8AA7BA78275CDE1B00BF68E8 /* VinchyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; };
+		8AA7BA79275CDE1B00BF68E8 /* VinchyCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8AA990A226D91FE000C32358 /* StoresViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA9909126D91FE000C32358 /* StoresViewModel.swift */; };
 		8AA990A326D91FE000C32358 /* StoresInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA9909326D91FE000C32358 /* StoresInput.swift */; };
 		8AA990A426D91FE000C32358 /* StoresAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA9909526D91FE000C32358 /* StoresAssembly.swift */; };
@@ -466,12 +464,11 @@
 			files = (
 				8A417736275CBF03003E1934 /* AdvancedSearch.framework in Embed Frameworks */,
 				8A417741275CBF0E003E1934 /* Spotlight.framework in Embed Frameworks */,
-				8A417745275CBF11003E1934 /* VinchyCore.framework in Embed Frameworks */,
 				8A889A58275CC8390096A74A /* Database.framework in Embed Frameworks */,
-				8A41773F275CBF0B003E1934 /* LocationUI.framework in Embed Frameworks */,
 				8A41774B275CBF16003E1934 /* WineDetail.framework in Embed Frameworks */,
 				8A417747275CBF13003E1934 /* VinchyStore.framework in Embed Frameworks */,
 				8A417749275CBF15003E1934 /* VinchyUI.framework in Embed Frameworks */,
+				8AA7BA79275CDE1B00BF68E8 /* VinchyCore.framework in Embed Frameworks */,
 				8A41773B275CBF08003E1934 /* Core.framework in Embed Frameworks */,
 				8A417739275CBF06003E1934 /* CommonUI.framework in Embed Frameworks */,
 				8A889A5A275CC8760096A74A /* VinchyAuthorization.framework in Embed Frameworks */,
@@ -919,12 +916,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8AA7BA78275CDE1B00BF68E8 /* VinchyCore.framework in Frameworks */,
 				8A417742275CBF10003E1934 /* StringFormatting.framework in Frameworks */,
 				8A417740275CBF0E003E1934 /* Spotlight.framework in Frameworks */,
 				8A41774A275CBF16003E1934 /* WineDetail.framework in Frameworks */,
 				8A889A59275CC8760096A74A /* VinchyAuthorization.framework in Frameworks */,
-				8A41773E275CBF0B003E1934 /* LocationUI.framework in Frameworks */,
-				8A417744275CBF11003E1934 /* VinchyCore.framework in Frameworks */,
 				8A417748275CBF15003E1934 /* VinchyUI.framework in Frameworks */,
 				8A417735275CBF03003E1934 /* AdvancedSearch.framework in Frameworks */,
 				8A417746275CBF13003E1934 /* VinchyStore.framework in Frameworks */,
