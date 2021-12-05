@@ -7,7 +7,6 @@
 //
 
 import Database
-import VinchyAuthorization
 import VinchyCore
 import VinchyUI
 

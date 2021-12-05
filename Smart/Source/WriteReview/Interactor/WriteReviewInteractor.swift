@@ -8,7 +8,6 @@
 
 import Core
 import Database
-import VinchyAuthorization
 import VinchyCore
 
 // MARK: - WriteReviewInteractor

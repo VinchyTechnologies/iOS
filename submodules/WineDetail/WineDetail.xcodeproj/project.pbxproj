@@ -38,7 +38,6 @@
 		8AEC83922758DFFC00C80F1E /* VinchyActionSheetAppearence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83912758DFFC00C80F1E /* VinchyActionSheetAppearence.swift */; };
 		8AEC83942758E08200C80F1E /* StatusAlertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83932758E08200C80F1E /* StatusAlertable.swift */; };
 		8AEC839C2758E33500C80F1E /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC839B2758E33500C80F1E /* Display.framework */; };
-		8AEC83A02758E33E00C80F1E /* VinchyAuthorization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC839F2758E33E00C80F1E /* VinchyAuthorization.framework */; };
 		8AEC83A42758E34800C80F1E /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC83A32758E34800C80F1E /* Core.framework */; };
 		8AEC83A82758E35000C80F1E /* StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC83A72758E35000C80F1E /* StringFormatting.framework */; };
 		8AEC83AC2758E37800C80F1E /* CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC83AB2758E37800C80F1E /* CommonUI.framework */; };
@@ -99,7 +98,6 @@
 				8AEC839C2758E33500C80F1E /* Display.framework in Frameworks */,
 				8AEC83AC2758E37800C80F1E /* CommonUI.framework in Frameworks */,
 				8AEC83B42758E39A00C80F1E /* VinchyUI.framework in Frameworks */,
-				8AEC83A02758E33E00C80F1E /* VinchyAuthorization.framework in Frameworks */,
 				8AEC83A42758E34800C80F1E /* Core.framework in Frameworks */,
 				1DB373A06DAD56DF3F912263 /* Pods_WineDetail.framework in Frameworks */,
 			);

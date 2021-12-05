@@ -9,7 +9,6 @@
 import Core
 import CoreLocation
 import UIKit.UIButton
-import VinchyAuthorization
 import VinchyCore
 
 // MARK: - MapDetailStoreInteractor

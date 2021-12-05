@@ -6,6 +6,7 @@
 //
 
 import VinchyCore
+import VinchyUI
 
 protocol EnterPasswordRouterProtocol: AnyObject {
   func dismissAndRequestSuccess(output: AuthorizationOutputModel?)

@@ -7,7 +7,6 @@
 //
 
 import Core
-import VinchyAuthorization
 import VinchyCore
 
 // MARK: - EditProfileInteractor

@@ -7,7 +7,7 @@
 //
 
 import LocationUI
-import VinchyAuthorization
+import VinchyCore
 
 final class VinchyAssembly {
   static func assemblyModule() -> VinchyViewController {

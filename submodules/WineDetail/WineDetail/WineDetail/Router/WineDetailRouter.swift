@@ -11,7 +11,6 @@ import Database
 import Display
 import Sheeeeeeeeet
 import UIKit
-import VinchyAuthorization
 import VinchyCore
 import VinchyUI
 
@@ -45,6 +44,10 @@ final class WineDetailRouter {
 // MARK: WineDetailRouterProtocol
 
 extension WineDetailRouter: WineDetailRouterProtocol {
+
+  func presentAuthorizationViewController() {
+    coordinator.presentAuthorizationViewController()
+  }
 
   func pushToStoreViewController(affilatedId: Int) {
     coordinator.pushToStoreViewController(affilatedId: affilatedId)

@@ -7,7 +7,7 @@
 //
 
 import Display
-import VinchyAuthorization
+import VinchyUI
 
 protocol MoreRouterProtocol: AuthorizationRoutable, ContactUsRoutable {
   func pushToDocController()

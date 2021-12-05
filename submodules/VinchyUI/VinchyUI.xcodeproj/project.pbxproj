@@ -18,6 +18,7 @@
 		8A5145F52757FE7C00DC45CD /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5145F42757FE7C00DC45CD /* Core.framework */; };
 		8A5145F9275801D000DC45CD /* ShowNetworkAlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145F8275801D000DC45CD /* ShowNetworkAlertPresentable.swift */; };
 		8A5145FB275807C200DC45CD /* AdvancedSearchRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145FA275807C200DC45CD /* AdvancedSearchRoutable.swift */; };
+		8AA7BA7D275CE7F700BF68E8 /* AuthorizationRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA7BA7C275CE7F700BF68E8 /* AuthorizationRoutable.swift */; };
 		8AEC83962758E12C00C80F1E /* ReviewsRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83952758E12C00C80F1E /* ReviewsRoutable.swift */; };
 		8AEC83982758E1C500C80F1E /* WriteReviewRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83972758E1C500C80F1E /* WriteReviewRoutable.swift */; };
 		8AEC839A2758E21500C80F1E /* ReviewDetailRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83992758E21500C80F1E /* ReviewDetailRoutable.swift */; };
@@ -41,6 +42,7 @@
 		8A5145F42757FE7C00DC45CD /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5145F8275801D000DC45CD /* ShowNetworkAlertPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowNetworkAlertPresentable.swift; sourceTree = "<group>"; };
 		8A5145FA275807C200DC45CD /* AdvancedSearchRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSearchRoutable.swift; sourceTree = "<group>"; };
+		8AA7BA7C275CE7F700BF68E8 /* AuthorizationRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRoutable.swift; sourceTree = "<group>"; };
 		8AEC83952758E12C00C80F1E /* ReviewsRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsRoutable.swift; sourceTree = "<group>"; };
 		8AEC83972758E1C500C80F1E /* WriteReviewRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewRoutable.swift; sourceTree = "<group>"; };
 		8AEC83992758E21500C80F1E /* ReviewDetailRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDetailRoutable.swift; sourceTree = "<group>"; };
@@ -93,6 +95,7 @@
 				8AEC83C12758F09500C80F1E /* StoresRoutable.swift */,
 				8AEC83C62758F35A00C80F1E /* StoreRoutable.swift */,
 				8AEC83CA275957DF00C80F1E /* ResultsSearchRoutable.swift */,
+				8AA7BA7C275CE7F700BF68E8 /* AuthorizationRoutable.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -255,6 +258,7 @@
 				8A5145F9275801D000DC45CD /* ShowNetworkAlertPresentable.swift in Sources */,
 				8AEC83982758E1C500C80F1E /* WriteReviewRoutable.swift in Sources */,
 				8A5145FB275807C200DC45CD /* AdvancedSearchRoutable.swift in Sources */,
+				8AA7BA7D275CE7F700BF68E8 /* AuthorizationRoutable.swift in Sources */,
 				8AEC839A2758E21500C80F1E /* ReviewDetailRoutable.swift in Sources */,
 				8A5145E42757F53B00DC45CD /* WineDetailRoutable.swift in Sources */,
 			);

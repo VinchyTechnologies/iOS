@@ -11,7 +11,7 @@ import Database
 import Display
 import StringFormatting
 import UIKit
-import VinchyAuthorization
+import VinchyUI
 
 // MARK: - C
 

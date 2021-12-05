@@ -28,7 +28,6 @@
 		8A5145C72757E3C000DC45CD /* StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5145C62757E3C000DC45CD /* StringFormatting.framework */; };
 		8A5145CB2757E44B00DC45CD /* VinchyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5145CA2757E44B00DC45CD /* VinchyCore.framework */; };
 		8A5145CF2757E46700DC45CD /* Spotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5145CE2757E46700DC45CD /* Spotlight.framework */; };
-		8A5145D32757E48400DC45CD /* VinchyAuthorization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5145D22757E48400DC45CD /* VinchyAuthorization.framework */; };
 		8A5145D72757E4BF00DC45CD /* CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5145D62757E4BF00DC45CD /* CommonUI.framework */; };
 		8A5145DB2757E4D300DC45CD /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5145DA2757E4D300DC45CD /* Database.framework */; };
 		8AEC94CC275AA22700C80F1E /* VinchyUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94CB275AA22700C80F1E /* VinchyUI.framework */; };
@@ -78,7 +77,6 @@
 				8A5145CB2757E44B00DC45CD /* VinchyCore.framework in Frameworks */,
 				8A5145CF2757E46700DC45CD /* Spotlight.framework in Frameworks */,
 				8A5145C32757E3AF00DC45CD /* Display.framework in Frameworks */,
-				8A5145D32757E48400DC45CD /* VinchyAuthorization.framework in Frameworks */,
 				8AEC94CC275AA22700C80F1E /* VinchyUI.framework in Frameworks */,
 				D502406AFE81097E856372FA /* Pods_VinchyStore.framework in Frameworks */,
 			);

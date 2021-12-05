@@ -10,6 +10,8 @@ import Core
 import Display
 import StringFormatting
 import UIKit
+import VinchyCore
+import VinchyUI
 
 // MARK: - ChooseAuthTypeViewController
 

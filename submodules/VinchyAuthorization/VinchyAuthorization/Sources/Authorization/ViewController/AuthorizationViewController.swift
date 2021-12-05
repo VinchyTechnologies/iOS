@@ -4,7 +4,6 @@
 //
 //  Created by Алексей Смирнов on 21.12.2020.
 //
-#if !APPCLIP
 import Display
 import UIKit
 
@@ -275,4 +274,3 @@ extension AuthorizationViewController: UITextFieldDelegate {
 //    return true
   //  }
 }
-#endif

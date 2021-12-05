@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A07B9C5275CEFF700AF27B0 /* StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A07B9C4275CEFF700AF27B0 /* StringFormatting.framework */; };
 		8A51442B2757B66800DC45CD /* AdvancedSearch.docc in Sources */ = {isa = PBXBuildFile; fileRef = 8A51442A2757B66800DC45CD /* AdvancedSearch.docc */; };
 		8A51442C2757B66800DC45CD /* AdvancedSearch.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A5144292757B66800DC45CD /* AdvancedSearch.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A51444D2757B6F500DC45CD /* AdvancedSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5144342757B6F500DC45CD /* AdvancedSearchViewModel.swift */; };
@@ -32,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8A07B9C4275CEFF700AF27B0 /* StringFormatting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StringFormatting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5144262757B66800DC45CD /* AdvancedSearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AdvancedSearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5144292757B66800DC45CD /* AdvancedSearch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdvancedSearch.h; sourceTree = "<group>"; };
 		8A51442A2757B66800DC45CD /* AdvancedSearch.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = AdvancedSearch.docc; sourceTree = "<group>"; };
@@ -62,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A07B9C5275CEFF700AF27B0 /* StringFormatting.framework in Frameworks */,
 				8A5145822757C90800DC45CD /* VinchyUI.framework in Frameworks */,
 				8A5145772757C2D300DC45CD /* VinchyCore.framework in Frameworks */,
 				8A51457B2757C33000DC45CD /* CommonUI.framework in Frameworks */,
@@ -191,6 +194,7 @@
 		8A51456D2757C29D00DC45CD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8A07B9C4275CEFF700AF27B0 /* StringFormatting.framework */,
 				8A5145812757C90800DC45CD /* VinchyUI.framework */,
 				8A51457A2757C33000DC45CD /* CommonUI.framework */,
 				8A5145762757C2D300DC45CD /* VinchyCore.framework */,

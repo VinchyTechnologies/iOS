@@ -13,7 +13,7 @@ import Display
 import StringFormatting
 import ThirdParty
 import UIKit
-import VinchyAuthorization
+import VinchyUI
 
 // MARK: - RatesViewController
 

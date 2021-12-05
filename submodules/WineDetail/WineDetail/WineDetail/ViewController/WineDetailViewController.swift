@@ -14,8 +14,8 @@ import EpoxyCore
 import StoreKit
 import StringFormatting
 import UIKit
-import VinchyAuthorization
 import VinchyCore
+import VinchyUI
 
 // MARK: - C
 

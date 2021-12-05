@@ -7,6 +7,7 @@
 
 import Display
 import UIKit
+import VinchyUI
 
 public final class AuthorizationNavigationController: VinchyNavigationController {
   public weak var authOutputDelegate: AuthorizationOutputDelegate?

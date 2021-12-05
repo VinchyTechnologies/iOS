@@ -10,7 +10,7 @@
 import Core
 import Database
 import StringFormatting
-import VinchyAuthorization
+import VinchyCore
 
 // MARK: - MoreInteractor
 

@@ -11,7 +11,7 @@ import VinchyUI
 
 public final class WineDetailAssembly {
 
-  public typealias Coordinator = WineDetailRoutable & ReviewsRoutable & ReviewDetailRoutable & WriteReviewRoutable & ActivityRoutable & WriteNoteRoutable & StoresRoutable & StoreRoutable
+  public typealias Coordinator = WineDetailRoutable & ReviewsRoutable & ReviewDetailRoutable & WriteReviewRoutable & ActivityRoutable & WriteNoteRoutable & StoresRoutable & StoreRoutable & AuthorizationRoutable
 
   public static func assemblyModule(input: WineDetailInput, coordinator: Coordinator) -> UIViewController {
     let viewController = WineDetailViewController()

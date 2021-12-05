@@ -10,7 +10,6 @@ import Combine
 import Core
 import CoreLocation
 import LocationUI
-import VinchyAuthorization
 import VinchyCore
 
 // MARK: - VinchyRepository

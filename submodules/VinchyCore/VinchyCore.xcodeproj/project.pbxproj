@@ -20,6 +20,7 @@
 		8A41774D275CBF7E003E1934 /* StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A41774C275CBF7E003E1934 /* StringFormatting.framework */; };
 		8A60593926ADD75F005D609A /* Recommendations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A60593826ADD75F005D609A /* Recommendations.swift */; };
 		8A7D7925273ED7E7005F075A /* ReviewedWine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D7924273ED7E7005F075A /* ReviewedWine.swift */; };
+		8AA7BA7B275CE50000BF68E8 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA7BA7A275CE50000BF68E8 /* AuthService.swift */; };
 		8ACE3AF027205D930035BE47 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACE3AEF27205D930035BE47 /* Rating.swift */; };
 		8AD7A1D826388801007D4273 /* Partners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7A1D726388801007D4273 /* Partners.swift */; };
 		8AD7A1DB2638894A007D4273 /* PartnerOnMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7A1DA2638894A007D4273 /* PartnerOnMap.swift */; };
@@ -54,6 +55,7 @@
 		8A41774C275CBF7E003E1934 /* StringFormatting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StringFormatting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A60593826ADD75F005D609A /* Recommendations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recommendations.swift; sourceTree = "<group>"; };
 		8A7D7924273ED7E7005F075A /* ReviewedWine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewedWine.swift; sourceTree = "<group>"; };
+		8AA7BA7A275CE50000BF68E8 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		8ACE3AEF27205D930035BE47 /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
 		8AD7A1D726388801007D4273 /* Partners.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Partners.swift; sourceTree = "<group>"; };
 		8AD7A1DA2638894A007D4273 /* PartnerOnMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerOnMap.swift; sourceTree = "<group>"; };
@@ -144,6 +146,7 @@
 				CA7B825524EC746100991F24 /* Endpoints */,
 				4410AE2A25E546D600A84FF9 /* Mappers */,
 				CA7B824724EC736A00991F24 /* ServiceModels */,
+				8AA7BA7A275CE50000BF68E8 /* AuthService.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -287,6 +290,7 @@
 				CA7B825424EC744900991F24 /* DishCompatibility.swift in Sources */,
 				4410AE3025E5479400A84FF9 /* UpdateTokensResponse.swift in Sources */,
 				CA7B825024EC73FE00991F24 /* Compilation.swift in Sources */,
+				8AA7BA7B275CE50000BF68E8 /* AuthService.swift in Sources */,
 				CA7B825924EC749600991F24 /* CompilationsEndpoint.swift in Sources */,
 				8AD7A1DB2638894A007D4273 /* PartnerOnMap.swift in Sources */,
 				8AD7A1D826388801007D4273 /* Partners.swift in Sources */,

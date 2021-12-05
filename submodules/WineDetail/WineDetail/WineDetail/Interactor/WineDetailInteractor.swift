@@ -10,7 +10,6 @@ import Core
 import Database
 import FirebaseDynamicLinks
 import Sheeeeeeeeet
-import VinchyAuthorization
 import VinchyCore
 import VinchyUI
 

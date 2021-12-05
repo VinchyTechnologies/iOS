@@ -10,7 +10,6 @@ import Database
 import Display
 import Sheeeeeeeeet
 import UIKit
-import VinchyAuthorization
 import VinchyCore
 import VinchyUI
 

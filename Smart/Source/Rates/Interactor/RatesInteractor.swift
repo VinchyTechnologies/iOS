@@ -9,7 +9,6 @@
 import Core
 import Database
 import FirebaseDynamicLinks
-import VinchyAuthorization
 import VinchyCore
 
 // MARK: - C

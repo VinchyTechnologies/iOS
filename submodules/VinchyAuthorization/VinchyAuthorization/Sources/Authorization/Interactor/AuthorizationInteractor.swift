@@ -5,10 +5,10 @@
 //  Created by Алексей Смирнов on 21.12.2020.
 //
 
-#if !APPCLIP
 import Core
 import StringFormatting
 import VinchyCore
+import VinchyUI
 
 // MARK: - AuthorizationInteractor
 
@@ -119,4 +119,3 @@ extension AuthorizationInteractor: AuthorizationInteractorProtocol {
     presenter.update()
   }
 }
-#endif

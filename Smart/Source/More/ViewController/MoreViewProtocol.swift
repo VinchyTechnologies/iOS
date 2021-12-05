@@ -7,7 +7,7 @@
 //
 
 import Display
-import VinchyAuthorization
+import VinchyUI
 import WineDetail // TODO: - remove
 
 protocol MoreViewControllerProtocol: CantOpenURLAlertable, CantOpenEmailAlertable, AuthorizationOutputDelegate {

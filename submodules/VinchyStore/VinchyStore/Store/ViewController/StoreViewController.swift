@@ -14,7 +14,6 @@ import EpoxyCollectionView
 import EpoxyCore
 import EpoxyLayoutGroups
 import UIKit
-import VinchyAuthorization
 
 // MARK: - StoreViewController
 

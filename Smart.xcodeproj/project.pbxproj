@@ -210,8 +210,6 @@
 		8A7BCD722757B25000B56313 /* ThirdParty.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A7BCD702757B25000B56313 /* ThirdParty.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A889A57275CC8390096A74A /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA1821FE24C0F6F000280DD4 /* Database.framework */; };
 		8A889A58275CC8390096A74A /* Database.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA1821FE24C0F6F000280DD4 /* Database.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8A889A59275CC8760096A74A /* VinchyAuthorization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44D3CDE725E42E0B00FFFCD5 /* VinchyAuthorization.framework */; };
-		8A889A5A275CC8760096A74A /* VinchyAuthorization.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44D3CDE725E42E0B00FFFCD5 /* VinchyAuthorization.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A8FE7332708D9F8002EE088 /* LogOutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8FE7322708D9F8002EE088 /* LogOutCell.swift */; };
 		8A916022268CE66C00240B18 /* AreYouInStoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916011268CE66C00240B18 /* AreYouInStoreViewModel.swift */; };
 		8A916023268CE66C00240B18 /* AreYouInStoreInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916013268CE66C00240B18 /* AreYouInStoreInput.swift */; };
@@ -471,7 +469,6 @@
 				8AA7BA79275CDE1B00BF68E8 /* VinchyCore.framework in Embed Frameworks */,
 				8A41773B275CBF08003E1934 /* Core.framework in Embed Frameworks */,
 				8A417739275CBF06003E1934 /* CommonUI.framework in Embed Frameworks */,
-				8A889A5A275CC8760096A74A /* VinchyAuthorization.framework in Embed Frameworks */,
 				8A417743275CBF10003E1934 /* StringFormatting.framework in Embed Frameworks */,
 				8A41773D275CBF09003E1934 /* Display.framework in Embed Frameworks */,
 			);
@@ -625,6 +622,7 @@
 		8A0795B926943E85000ACA2B /* OnboardingFeatureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFeatureView.swift; sourceTree = "<group>"; };
 		8A07983C269750A0000ACA2B /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = en; path = en.lproj/PluralLocalizable.stringsdict; sourceTree = "<group>"; };
 		8A07983E269750A4000ACA2B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/PluralLocalizable.stringsdict; sourceTree = "<group>"; };
+		8A07B9C1275CEF7700AF27B0 /* VinchyAuthorization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyAuthorization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A0D9CB626871D9D0076A7EC /* NewAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAgreementViewController.swift; sourceTree = "<group>"; };
 		8A0D9CB826872CF60076A7EC /* NewAgreementsBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAgreementsBottomView.swift; sourceTree = "<group>"; };
 		8A1034582648596100F7CA81 /* AssortmentCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssortmentCollectionCell.swift; sourceTree = "<group>"; };
@@ -920,7 +918,6 @@
 				8A417742275CBF10003E1934 /* StringFormatting.framework in Frameworks */,
 				8A417740275CBF0E003E1934 /* Spotlight.framework in Frameworks */,
 				8A41774A275CBF16003E1934 /* WineDetail.framework in Frameworks */,
-				8A889A59275CC8760096A74A /* VinchyAuthorization.framework in Frameworks */,
 				8A417748275CBF15003E1934 /* VinchyUI.framework in Frameworks */,
 				8A417735275CBF03003E1934 /* AdvancedSearch.framework in Frameworks */,
 				8A417746275CBF13003E1934 /* VinchyStore.framework in Frameworks */,
@@ -1350,6 +1347,7 @@
 		46483F371463D95E22014241 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8A07B9C1275CEF7700AF27B0 /* VinchyAuthorization.framework */,
 				8AA4CBAD275CA72A00856FE5 /* LocationUI.framework */,
 				8AEC94DA275B609200C80F1E /* AdvancedSearch.framework */,
 				8AEC94CF275AA24D00C80F1E /* WineDetail.framework */,

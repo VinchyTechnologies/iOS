@@ -10,7 +10,6 @@ import Core
 import CoreLocation
 import Spotlight
 import UIKit
-import VinchyAuthorization
 import VinchyCore
 import VinchyUI
 
