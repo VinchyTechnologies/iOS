@@ -10,6 +10,7 @@
 import Core
 import Database
 import StringFormatting
+import UIKit
 import VinchyCore
 
 // MARK: - MoreInteractor

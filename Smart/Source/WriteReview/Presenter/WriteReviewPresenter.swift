@@ -7,6 +7,7 @@
 //
 
 import StringFormatting
+import UIKit
 import WineDetail // TODO: - remove
 
 // MARK: - WriteReviewPresenter

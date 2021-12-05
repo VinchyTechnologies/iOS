@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		1DB373A06DAD56DF3F912263 /* Pods_WineDetail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5561E695FDBE83E14233E3 /* Pods_WineDetail.framework */; };
-		8A07B9E2275D1B9A00AF27B0 /* AdUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A07B9E1275D1B9A00AF27B0 /* AdUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		8AEC834A2758DCE300C80F1E /* WineDetail.docc in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83492758DCE300C80F1E /* WineDetail.docc */; };
 		8AEC834B2758DCE300C80F1E /* WineDetail.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AEC83482758DCE300C80F1E /* WineDetail.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8AEC83772758DEFB00C80F1E /* WineDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83552758DEFA00C80F1E /* WineDetailViewModel.swift */; };
@@ -100,7 +99,6 @@
 				8AEC839C2758E33500C80F1E /* Display.framework in Frameworks */,
 				8AEC83AC2758E37800C80F1E /* CommonUI.framework in Frameworks */,
 				8AEC83B42758E39A00C80F1E /* VinchyUI.framework in Frameworks */,
-				8A07B9E2275D1B9A00AF27B0 /* AdUI.framework in Frameworks */,
 				8AEC83A42758E34800C80F1E /* Core.framework in Frameworks */,
 				1DB373A06DAD56DF3F912263 /* Pods_WineDetail.framework in Frameworks */,
 			);

@@ -12,7 +12,7 @@ import VinchyUI
 
 extension StoreRoutable {
   func pushToStoreViewController(affilatedId: Int) {
-    let controller = StoreAssembly.assemblyModule(input: .init(mode: .normal(affilatedId: affilatedId)), coordinator: Coordinator.shared)
+    let controller = StoreAssembly.assemblyModule(input: .init(mode: .normal(affilatedId: affilatedId)), coordinator: Coordinator.shared, adFabricProtocol: AdFabric.shared)
     controller.hidesBottomBarWhenPushed = true
     UIApplication.topViewController()?.navigationController?.pushViewController(
       controller,

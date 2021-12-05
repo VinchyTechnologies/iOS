@@ -20,27 +20,29 @@ def commonPods
   epoxy
   pod 'SPAlert', '~> 2.1.4'
   pod 'Sheeeeeeeeet'
+  pod 'FittedSheets'
 end
 
 target 'Smart' do
   project 'Smart'
 
+  pod 'Google-Mobile-Ads-SDK'
+
   commonPods
   pod 'Firebase/RemoteConfig'
-  pod 'FittedSheets'
-  pod 'Google-Mobile-Ads-SDK'
+#  pod 'FittedSheets'
 
   target 'SmartTests' do
     inherit! :search_paths
   end
 
   target 'SmartUITests' do
-  end
-  
-  target 'VinchyAppClip' do
-    use_modular_headers!
-    commonPods
-  end
+  end  
+end
+
+target 'VinchyAppClip' do
+  use_modular_headers!
+  commonPods
 end
 
 target 'Display' do
@@ -50,9 +52,9 @@ end
 
 target 'AdUI' do
   project 'submodules/AdUI/AdUI'
-  pod 'EpoxyCore'
-  pod 'GoogleUtilities'
-  pod 'Google-Mobile-Ads-SDK'
+#  pod 'EpoxyCore'
+#  pod 'GoogleUtilities'
+#  ad
 end
 
 target 'VinchyStore' do
@@ -66,7 +68,8 @@ target 'CommonUI' do
 end
 
 target 'VinchyUI' do
-  project 'submodules/VinchyUI/VinchyUI' # delete
+  project 'submodules/VinchyUI/VinchyUI'
+  epoxy
 end
 
 target 'WineDetail' do

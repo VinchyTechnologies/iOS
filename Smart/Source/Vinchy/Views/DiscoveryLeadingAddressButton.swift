@@ -7,6 +7,7 @@
 //
 
 import Display
+import UIKit
 
 // MARK: - DiscoveryLeadingAddressButtonMode
 

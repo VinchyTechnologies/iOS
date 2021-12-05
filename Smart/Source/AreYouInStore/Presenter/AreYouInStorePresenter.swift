@@ -9,6 +9,7 @@
 import CommonUI
 import Display
 import StringFormatting
+import UIKit
 import VinchyCore
 
 // MARK: - AreYouInStorePresenter

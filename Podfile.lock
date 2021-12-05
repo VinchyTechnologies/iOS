@@ -41,10 +41,10 @@ PODS:
     - "GoogleUtilities/NSData+zlib (~> 7.0)"
   - FittedSheets (2.4.2)
   - FSPagerView (0.8.3)
-  - Google-Mobile-Ads-SDK (7.68.0):
-    - GoogleAppMeasurement (~> 7.0)
-    - GoogleUserMessagingPlatform (~> 1.1)
-  - GoogleAppMeasurement (7.1.0):
+  - Google-Mobile-Ads-SDK (8.13.0):
+    - GoogleAppMeasurement (< 9.0, >= 7.0)
+    - GoogleUserMessagingPlatform (>= 1.1)
+  - GoogleAppMeasurement (7.3.0):
     - GoogleUtilities/AppDelegateSwizzler (~> 7.0)
     - GoogleUtilities/MethodSwizzler (~> 7.0)
     - GoogleUtilities/Network (~> 7.0)
@@ -52,7 +52,7 @@ PODS:
     - nanopb (~> 2.30906.0)
   - GoogleDataTransport (8.1.0):
     - nanopb (~> 2.30906.0)
-  - GoogleUserMessagingPlatform (1.4.0)
+  - GoogleUserMessagingPlatform (2.0.0)
   - GoogleUtilities (7.1.1):
     - GoogleUtilities/AppDelegateSwizzler (= 7.1.1)
     - GoogleUtilities/Environment (= 7.1.1)
@@ -154,10 +154,10 @@ SPEC CHECKSUMS:
   FirebaseRemoteConfig: 826fad8bec5ce1912ef97a124d6ec0ce4dcf6ec1
   FittedSheets: 661408776eb4ff514a31da75b3600bd7222b2b3d
   FSPagerView: 670405b2f18e2a87fa37f20b00de783e562c25a8
-  Google-Mobile-Ads-SDK: 29bbdb182d69ff606cc0301da1590b40be8d2205
-  GoogleAppMeasurement: 89e1a64593f968713b0506ba1b53b38a154bf9a5
+  Google-Mobile-Ads-SDK: 05e5d68bb42a61b2e5bef336a52789785605aa22
+  GoogleAppMeasurement: 8d3c0aeede16ab7764144b5a4ca8e1d4323841b7
   GoogleDataTransport: 116c84c4bdeb76be2a7a46de51244368f9794eab
-  GoogleUserMessagingPlatform: b168e8c46cd8f92aa3e34b584c4ca78a411ce367
+  GoogleUserMessagingPlatform: ab890ce5f6620f293a21b6bdd82e416a2c73aeca
   GoogleUtilities: 3dc4ff0d5e4840e2fa8eef0889620e8c33d4218c
   nanopb: 1bf24dd71191072e120b83dd02d08f3da0d65e53
   PromisesObjC: 3113f7f76903778cf4a0586bd1ab89329a0b7b97
@@ -165,6 +165,6 @@ SPEC CHECKSUMS:
   SPAlert: 1a8afa1c6ac86a82ab5b2cfdf7f9a51e68cb6c0c
   SwiftLint: c585ebd615d9520d7fbdbe151f527977b0534f1e
 
-PODFILE CHECKSUM: 0a8d75ab971acfc46ac288cd77583ccee80c5f8c
+PODFILE CHECKSUM: dda905471d7c7ec1addcb2c2518071841d5643b0
 
 COCOAPODS: 1.11.2

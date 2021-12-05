@@ -7,6 +7,7 @@
 //
 
 import LocationUI
+import UIKit
 
 final class MapAssembly {
   static func assemblyModule() -> UIViewController {

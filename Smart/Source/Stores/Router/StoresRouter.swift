@@ -9,6 +9,7 @@
 import Display
 import UIKit
 import VinchyStore
+import VinchyUI
 
 // MARK: - StoresRouter
 
@@ -18,10 +19,12 @@ final class StoresRouter {
 
   init(
     input: StoresInput,
+    adFabricProtocol: AdFabricProtocol?,
     viewController: UIViewController)
   {
     self.input = input
     self.viewController = viewController
+    self.adFabricProtocol = adFabricProtocol
   }
 
   // MARK: Internal
@@ -31,6 +34,8 @@ final class StoresRouter {
 
   // MARK: Private
 
+  private var adFabricProtocol: AdFabricProtocol?
+
   private let input: StoresInput
 }
 
@@ -38,7 +43,7 @@ final class StoresRouter {
 
 extension StoresRouter: StoresRouterProtocol {
   func presentStore(affilatedId: Int) {
-    let controller = StoreAssembly.assemblyModule(input: .init(mode: .normal(affilatedId: affilatedId)), coordinator: Coordinator.shared)
+    let controller = StoreAssembly.assemblyModule(input: .init(mode: .normal(affilatedId: affilatedId)), coordinator: Coordinator.shared, adFabricProtocol: adFabricProtocol)
     viewController?.navigationController?.pushViewController(controller, animated: true)
   }
 }

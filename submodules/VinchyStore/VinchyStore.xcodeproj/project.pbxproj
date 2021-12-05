@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8A07B9E4275D1BB500AF27B0 /* AdUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A07B9E3275D1BB500AF27B0 /* AdUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		8A5144152757B5F000DC45CD /* VinchyStore.docc in Sources */ = {isa = PBXBuildFile; fileRef = 8A5144142757B5F000DC45CD /* VinchyStore.docc */; };
 		8A5144162757B5F000DC45CD /* VinchyStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A5144132757B5F000DC45CD /* VinchyStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A5145A12757D3DD00DC45CD /* StoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A51458A2757D3DD00DC45CD /* StoreViewModel.swift */; };
@@ -75,7 +74,6 @@
 			files = (
 				8A5145C72757E3C000DC45CD /* StringFormatting.framework in Frameworks */,
 				8A5145D72757E4BF00DC45CD /* CommonUI.framework in Frameworks */,
-				8A07B9E4275D1BB500AF27B0 /* AdUI.framework in Frameworks */,
 				8A5145DB2757E4D300DC45CD /* Database.framework in Frameworks */,
 				8A5145CB2757E44B00DC45CD /* VinchyCore.framework in Frameworks */,
 				8A5145CF2757E46700DC45CD /* Spotlight.framework in Frameworks */,

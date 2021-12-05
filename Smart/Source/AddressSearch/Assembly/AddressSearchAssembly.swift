@@ -7,6 +7,7 @@
 //
 
 import Display
+import UIKit
 
 final class AddressSearchAssembly {
   static func assemblyModule() -> UIViewController {

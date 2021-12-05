@@ -16,9 +16,6 @@ import StringFormatting
 import UIKit
 import VinchyCore
 import VinchyUI
-#if canImport(AdUI)
-import AdUI
-#endif
 
 // MARK: - C
 
@@ -32,8 +29,9 @@ final class WineDetailViewController: CollectionViewController {
 
   // MARK: Lifecycle
 
-  init(input: WineDetailInput) {
+  init(input: WineDetailInput, adGenerator: AdFabricProtocol?) {
     self.input = input
+    self.adGenerator = adGenerator
     super.init(layout: UICollectionViewFlowLayout())
   }
 
@@ -108,6 +106,8 @@ final class WineDetailViewController: CollectionViewController {
   }
 
   // MARK: Private
+
+  private let adGenerator: AdFabricProtocol?
 
   private let input: WineDetailInput
 
@@ -300,20 +300,9 @@ final class WineDetailViewController: CollectionViewController {
         if input.isAppClip {
           return nil
         } else {
-          #if canImport(AdUI)
           return SectionModel(dataID: section.dataID) {
-            AdItemView.itemModel(
-              dataID: itemID,
-              content: .init(),
-              style: .init())
-              .setBehaviors { [weak self] context in
-                context.view.adBanner.rootViewController = self
-              }
-              .flowLayoutItemSize(.init(width: collectionViewSize.width, height: AdItemView.height))
+            adGenerator?.generateGoogleAd(width: collectionViewSize.width, rootcontroller: self) as? ItemModeling
           }
-          #else
-          return nil
-          #endif
         }
 
       case .similarWines(let itemID, let content):

@@ -13,8 +13,8 @@ public final class WineDetailAssembly {
 
   public typealias Coordinator = WineDetailRoutable & ReviewsRoutable & ReviewDetailRoutable & WriteReviewRoutable & ActivityRoutable & WriteNoteRoutable & StoresRoutable & StoreRoutable & AuthorizationRoutable
 
-  public static func assemblyModule(input: WineDetailInput, coordinator: Coordinator) -> UIViewController {
-    let viewController = WineDetailViewController(input: input)
+  public static func assemblyModule(input: WineDetailInput, coordinator: Coordinator, adGenerator: AdFabricProtocol?) -> UIViewController {
+    let viewController = WineDetailViewController(input: input, adGenerator: adGenerator)
     let router = WineDetailRouter(input: input, viewController: viewController, coordinator: coordinator)
     let presenter = WineDetailPresenter(input: input, viewController: viewController)
     let interactor = WineDetailInteractor(input: input, router: router, presenter: presenter)

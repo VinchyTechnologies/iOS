@@ -6,7 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 final class EditProfileAssembly {
   static func assemblyModule(input: EditProfileInput) -> UIViewController {

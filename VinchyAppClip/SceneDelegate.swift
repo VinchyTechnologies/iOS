@@ -56,7 +56,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     window.rootViewController = VinchyNavigationController(
       rootViewController: StoreAssembly.assemblyModule(
         input: .init(mode: .normal(affilatedId: affilatedId)),
-        coordinator: Coordinator.shared))
+        coordinator: Coordinator.shared, adFabricProtocol: nil))
     window.makeKeyAndVisible()
   }
 }

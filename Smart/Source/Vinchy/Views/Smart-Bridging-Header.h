@@ -1,6 +1,6 @@
 //
 //  Use this file to import your target's public headers that you would like to expose to Swift.
 //
-#import "GADTTemplateView.h"
-#import "GADTSmallTemplateView.h"
-#import "GADTMediumTemplateView.h"
+//#import "GADTTemplateView.h"
+//#import "GADTSmallTemplateView.h"
+//#import "GADTMediumTemplateView.h"

@@ -18,6 +18,7 @@ import AppTrackingTransparency
 import AdSupport
 import Core
 #endif
+import GoogleMobileAds
 
 // MARK: - SceneDelegate
 

@@ -8,6 +8,7 @@
 
 import CoreLocation
 import Display
+import UIKit
 import VinchyUI
 
 protocol MapDetailStoreRouterProtocol: WineDetailRoutable, DismissRoutable {

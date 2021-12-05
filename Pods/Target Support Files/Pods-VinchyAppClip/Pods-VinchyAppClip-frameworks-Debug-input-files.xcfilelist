@@ -1,0 +1,16 @@
+${PODS_ROOT}/Target Support Files/Pods-VinchyAppClip/Pods-VinchyAppClip-frameworks.sh
+${BUILT_PRODUCTS_DIR}/EpoxyBars/EpoxyBars.framework
+${BUILT_PRODUCTS_DIR}/EpoxyCollectionView/EpoxyCollectionView.framework
+${BUILT_PRODUCTS_DIR}/EpoxyCore/EpoxyCore.framework
+${BUILT_PRODUCTS_DIR}/EpoxyLayoutGroups/EpoxyLayoutGroups.framework
+${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework
+${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework
+${BUILT_PRODUCTS_DIR}/FirebaseCoreDiagnostics/FirebaseCoreDiagnostics.framework
+${BUILT_PRODUCTS_DIR}/FirebaseDynamicLinks/FirebaseDynamicLinks.framework
+${BUILT_PRODUCTS_DIR}/FittedSheets/FittedSheets.framework
+${BUILT_PRODUCTS_DIR}/GoogleDataTransport/GoogleDataTransport.framework
+${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework
+${BUILT_PRODUCTS_DIR}/PromisesObjC/FBLPromises.framework
+${BUILT_PRODUCTS_DIR}/SPAlert/SPAlert.framework
+${BUILT_PRODUCTS_DIR}/Sheeeeeeeeet/Sheeeeeeeeet.framework
+${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework

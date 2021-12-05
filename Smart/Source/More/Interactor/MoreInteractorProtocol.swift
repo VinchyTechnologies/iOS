@@ -7,6 +7,7 @@
 //
 
 import Core
+import UIKit.UIView
 
 protocol MoreInteractorProtocol: AnyObject, OpenURLProtocol {
   func viewDidLoad()

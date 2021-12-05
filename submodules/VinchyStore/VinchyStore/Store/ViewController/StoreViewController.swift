@@ -14,9 +14,7 @@ import EpoxyCollectionView
 import EpoxyCore
 import EpoxyLayoutGroups
 import UIKit
-#if canImport(AdUI)
-import AdUI
-#endif
+import VinchyUI
 
 // MARK: - StoreViewController
 
@@ -24,7 +22,8 @@ final class StoreViewController: CollectionViewController {
 
   // MARK: Lifecycle
 
-  init() {
+  init(adGenerator: AdFabricProtocol?) {
+    self.adGenerator = adGenerator
     let layout = SeparatorFlowLayout()
     layout.sectionHeadersPinToVisibleBounds = true
     super.init(layout: layout)
@@ -94,6 +93,7 @@ final class StoreViewController: CollectionViewController {
 
   // MARK: Private
 
+  private let adGenerator: AdFabricProtocol?
   private lazy var collectionViewSize: CGSize = view.frame.size
 
   private var supplementaryView: UIView?
@@ -186,18 +186,11 @@ final class StoreViewController: CollectionViewController {
                 .flowLayoutItemSize(.init(width: width, height: height))
 
             case .ad(let itemID):
-              #if canImport(AdUI)
-              return AdItemView.itemModel(
-                dataID: UUID(),
-                content: .init(),
-                style: .init())
-                .setBehaviors { [weak self] context in
-                  context.view.adBanner.rootViewController = self
-                }
-                .flowLayoutItemSize(.init(width: collectionViewSize.width, height: AdItemView.height))
-              #else
-              return nil
-              #endif
+              if let adGenerator = adGenerator {
+                return adGenerator.generateGoogleAd(width: collectionViewSize.width, rootcontroller: self) as? ItemModeling
+              } else {
+                return nil
+              }
 
             case .empty(let itemID, let content):
               return EmptyView.itemModel(

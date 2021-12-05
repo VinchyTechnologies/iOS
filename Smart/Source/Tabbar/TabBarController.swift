@@ -186,7 +186,7 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
 extension TabBarController: TabBarDeeplinkable {
 
   func openStoreDetail(affilatedId: Int) -> AnyPublisher<TabBarDeeplinkable, Never> {
-    let controller = StoreAssembly.assemblyModule(input: .init(mode: .normal(affilatedId: affilatedId)), coordinator: Coordinator.shared)
+    let controller = StoreAssembly.assemblyModule(input: .init(mode: .normal(affilatedId: affilatedId)), coordinator: Coordinator.shared, adFabricProtocol: AdFabric.shared)
     let navigationController = VinchyNavigationController(rootViewController: controller)
     navigationController.modalPresentationStyle = .overFullScreen
     UIApplication.topViewController(base: self)?.present(
@@ -217,7 +217,7 @@ extension TabBarController: TabBarDeeplinkable {
   }
 
   func openWineDetail(wineID: Int64) -> AnyPublisher<TabBarDeeplinkable, Never> {
-    let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID, isAppClip: false), coordinator: Coordinator.shared)
+    let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID, isAppClip: false), coordinator: Coordinator.shared, adGenerator: AdFabric.shared)
     let navigationController = VinchyNavigationController(rootViewController: controller)
     navigationController.modalPresentationStyle = .overFullScreen
     UIApplication.topViewController(base: self)?.present(

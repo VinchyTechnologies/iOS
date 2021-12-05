@@ -6,7 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import UIKit
 
 final class DocumentsAssembly {
   static func assemblyModule() -> UIViewController {

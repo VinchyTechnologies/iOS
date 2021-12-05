@@ -6,6 +6,8 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import UIKit
+
 // MARK: - TabBarBuilder
 
 protocol TabBarBuilder {
