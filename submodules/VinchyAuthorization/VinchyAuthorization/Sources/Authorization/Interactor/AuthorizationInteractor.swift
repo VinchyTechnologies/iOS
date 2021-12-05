@@ -5,6 +5,7 @@
 //  Created by Алексей Смирнов on 21.12.2020.
 //
 
+#if !APPCLIP
 import Core
 import StringFormatting
 import VinchyCore
@@ -118,3 +119,4 @@ extension AuthorizationInteractor: AuthorizationInteractorProtocol {
     presenter.update()
   }
 }
+#endif

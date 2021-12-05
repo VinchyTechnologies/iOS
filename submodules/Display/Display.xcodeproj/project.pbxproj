@@ -330,7 +330,7 @@
 			);
 			mainGroup = CAE8868E24C0E5F800E33E16;
 			packageReferences = (
-				8A6951F9267CC12800F14902 /* XCRemoteSwiftPackageReference "Nuke.git" */,
+				8A6951F9267CC12800F14902 /* XCRemoteSwiftPackageReference "Nuke" */,
 				8A1587F3272EFF0E0002CA28 /* XCRemoteSwiftPackageReference "Cosmos" */,
 			);
 			productRefGroup = CAE8869924C0E5F800E33E16 /* Products */;
@@ -583,6 +583,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy.Display;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG APPCLIP";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_REFLECTION_METADATA_LEVEL = none;
 				SWIFT_VERSION = 5.0;
@@ -612,6 +613,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy.Display;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = APPCLIP;
 				SWIFT_REFLECTION_METADATA_LEVEL = none;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -650,7 +652,7 @@
 				minimumVersion = 23.0.0;
 			};
 		};
-		8A6951F9267CC12800F14902 /* XCRemoteSwiftPackageReference "Nuke.git" */ = {
+		8A6951F9267CC12800F14902 /* XCRemoteSwiftPackageReference "Nuke" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/kean/Nuke.git";
 			requirement = {
@@ -668,7 +670,7 @@
 		};
 		8A6951FA267CC12800F14902 /* Nuke */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 8A6951F9267CC12800F14902 /* XCRemoteSwiftPackageReference "Nuke.git" */;
+			package = 8A6951F9267CC12800F14902 /* XCRemoteSwiftPackageReference "Nuke" */;
 			productName = Nuke;
 		};
 /* End XCSwiftPackageProductDependency section */

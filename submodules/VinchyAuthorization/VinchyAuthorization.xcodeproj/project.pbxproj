@@ -60,6 +60,8 @@
 		740EC931268DF58A0000718B /* OTPStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740EC930268DF5890000718B /* OTPStackView.swift */; };
 		740EC933268DF6BC0000718B /* OTPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740EC932268DF6BC0000718B /* OTPTextField.swift */; };
 		7533A31D914AAECD8AC85663 /* Pods_VinchyAuthorization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE1A4C9AC96A69A11D7530D /* Pods_VinchyAuthorization.framework */; };
+		8A417751275CC313003E1934 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A417750275CC313003E1934 /* Core.framework */; };
+		8A417755275CC32B003E1934 /* StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A417754275CC32B003E1934 /* StringFormatting.framework */; };
 		8ACE34E2271EE6610035BE47 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACE34E1271EE6610035BE47 /* AuthService.swift */; };
 		8AFD837C26F7A118003DF360 /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A724E22591351C00A7552B /* Display.framework */; };
 		8AFD837D26F7A118003DF360 /* Display.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44A724E22591351C00A7552B /* Display.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -179,6 +181,8 @@
 		740EC930268DF5890000718B /* OTPStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPStackView.swift; sourceTree = "<group>"; };
 		740EC932268DF6BC0000718B /* OTPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPTextField.swift; sourceTree = "<group>"; };
 		74515F9C26F79064008F789C /* VinchyAuthorizationApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VinchyAuthorizationApp.entitlements; sourceTree = "<group>"; };
+		8A417750275CC313003E1934 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A417754275CC32B003E1934 /* StringFormatting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StringFormatting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8ACE34E1271EE6610035BE47 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		8AFD837926F7A101003DF360 /* StringFormatting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StringFormatting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AFD838226F7A192003DF360 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -195,8 +199,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				44E83A0425D1A23600711490 /* VinchyCore.framework in Frameworks */,
+				8A417755275CC32B003E1934 /* StringFormatting.framework in Frameworks */,
 				44E83A0125D1A23400711490 /* Display.framework in Frameworks */,
 				7533A31D914AAECD8AC85663 /* Pods_VinchyAuthorization.framework in Frameworks */,
+				8A417751275CC313003E1934 /* Core.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +425,8 @@
 		44A724E12591351C00A7552B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8A417754275CC32B003E1934 /* StringFormatting.framework */,
+				8A417750275CC313003E1934 /* Core.framework */,
 				8AFD838226F7A192003DF360 /* Core.framework */,
 				8AFD837926F7A101003DF360 /* StringFormatting.framework */,
 				44E2161225CC8ED900FE31CE /* VinchyCore.framework */,
@@ -1165,6 +1173,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy.VinchyAuthorizationApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG APPCLIP";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1187,6 +1196,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy.VinchyAuthorizationApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = APPCLIP;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

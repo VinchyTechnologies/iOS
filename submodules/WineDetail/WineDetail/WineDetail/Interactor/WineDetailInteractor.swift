@@ -287,7 +287,7 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
   }
 
   func didTapMore(_ button: UIButton) {
-    guard let wine = wine else { return }
+//    guard let wine = wine else { return }
     var menuItems: [MenuItem] = []
 
 //    let imageName = isDisliked(wine: wine) ? "heart.slash.fill" : "heart.slash"

@@ -4,7 +4,7 @@
 //
 //  Created by Алексей Смирнов on 23.12.2020.
 //
-
+#if !APPCLIP
 import Core
 import VinchyCore
 
@@ -130,3 +130,4 @@ extension String {
     !isEmpty && allSatisfy { $0.isNumber }
   }
 }
+#endif

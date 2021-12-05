@@ -316,7 +316,6 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
     [localized("contact_email")]
   }
 
-
   func showAppClipDownloadFullApp() {
     viewController?.showAppClipDownloadFullApp()
   }

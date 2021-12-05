@@ -14,7 +14,6 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   var window: UIWindow?
 
-
   func scene(
     _ scene: UIScene,
     willConnectTo session: UISceneSession,
@@ -30,9 +29,11 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     else {
       return
     }
-    
-    guard let queryItem = components.queryItems?.first(where: { $0.name == "affilatedId" }),
-    let id = queryItem.value else {
+
+    guard
+      let queryItem = components.queryItems?.first(where: { $0.name == "affilatedId" }),
+      let id = queryItem.value else
+    {
       return
     }
 
@@ -49,4 +50,3 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     window.makeKeyAndVisible()
   }
 }
-

@@ -5,6 +5,7 @@
 //  Created by Алексей Смирнов on 19.10.2021.
 //
 
+#if !APPCLIP
 import AuthenticationServices
 import Core
 import VinchyCore
@@ -95,3 +96,4 @@ public final class AuthService {
     Keychain.shared.password = nil
   }
 }
+#endif

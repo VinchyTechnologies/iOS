@@ -17,13 +17,13 @@
 		4495629325E2F9EF005E79DA /* Reviews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4495629225E2F9EF005E79DA /* Reviews.swift */; };
 		748491E226EE185C006A8851 /* NearestPartner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748491E126EE185C006A8851 /* NearestPartner.swift */; };
 		8A313C112645B72C009F2165 /* PartnerInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A313C102645B72C009F2165 /* PartnerInfo.swift */; };
+		8A41774D275CBF7E003E1934 /* StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A41774C275CBF7E003E1934 /* StringFormatting.framework */; };
 		8A60593926ADD75F005D609A /* Recommendations.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A60593826ADD75F005D609A /* Recommendations.swift */; };
 		8A7D7925273ED7E7005F075A /* ReviewedWine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D7924273ED7E7005F075A /* ReviewedWine.swift */; };
 		8ACE3AF027205D930035BE47 /* Rating.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACE3AEF27205D930035BE47 /* Rating.swift */; };
 		8AD7A1D826388801007D4273 /* Partners.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7A1D726388801007D4273 /* Partners.swift */; };
 		8AD7A1DB2638894A007D4273 /* PartnerOnMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7A1DA2638894A007D4273 /* PartnerOnMap.swift */; };
 		8AD7A1DE263889E7007D4273 /* AffiliatedStore.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD7A1DD263889E7007D4273 /* AffiliatedStore.swift */; };
-		CA103AE92516913B00B0324F /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA103AE82516913B00B0324F /* Display.framework */; };
 		CA7A87F0250287BB00AAD10F /* Winery.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87EF250287BB00AAD10F /* Winery.swift */; };
 		CA7B823C24EC71F300991F24 /* VinchyCore.h in Headers */ = {isa = PBXBuildFile; fileRef = CA7B823A24EC71F300991F24 /* VinchyCore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CA7B824424EC72CA00991F24 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B824324EC72CA00991F24 /* API.swift */; };
@@ -51,6 +51,7 @@
 		4495629225E2F9EF005E79DA /* Reviews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Reviews.swift; sourceTree = "<group>"; };
 		748491E126EE185C006A8851 /* NearestPartner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NearestPartner.swift; sourceTree = "<group>"; };
 		8A313C102645B72C009F2165 /* PartnerInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PartnerInfo.swift; sourceTree = "<group>"; };
+		8A41774C275CBF7E003E1934 /* StringFormatting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StringFormatting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A60593826ADD75F005D609A /* Recommendations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Recommendations.swift; sourceTree = "<group>"; };
 		8A7D7924273ED7E7005F075A /* ReviewedWine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewedWine.swift; sourceTree = "<group>"; };
 		8ACE3AEF27205D930035BE47 /* Rating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rating.swift; sourceTree = "<group>"; };
@@ -81,8 +82,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A41774D275CBF7E003E1934 /* StringFormatting.framework in Frameworks */,
 				CA7B826024EC75DA00991F24 /* Core.framework in Frameworks */,
-				CA103AE92516913B00B0324F /* Display.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -100,6 +101,7 @@
 		5F7998F5E0DE097EACFDCEC0 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8A41774C275CBF7E003E1934 /* StringFormatting.framework */,
 				CA103AE82516913B00B0324F /* Display.framework */,
 				CA7B825F24EC75DA00991F24 /* Core.framework */,
 			);
@@ -451,6 +453,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy.VinchyCore;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG APPCLIP";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_REFLECTION_METADATA_LEVEL = none;
 				SWIFT_VERSION = 5.0;
@@ -479,6 +482,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy.VinchyCore;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = APPCLIP;
 				SWIFT_REFLECTION_METADATA_LEVEL = none;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

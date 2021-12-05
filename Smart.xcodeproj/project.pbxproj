@@ -159,6 +159,28 @@
 		8A3C0F592732D08E00947085 /* SavedRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C0F4E2732D08E00947085 /* SavedRouter.swift */; };
 		8A3C0F5A2732D08E00947085 /* SavedRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C0F4F2732D08E00947085 /* SavedRouterProtocol.swift */; };
 		8A3C0F5D2732D38500947085 /* ControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C0F5C2732D38500947085 /* ControllerCell.swift */; };
+		8A417735275CBF03003E1934 /* AdvancedSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94DA275B609200C80F1E /* AdvancedSearch.framework */; };
+		8A417736275CBF03003E1934 /* AdvancedSearch.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94DA275B609200C80F1E /* AdvancedSearch.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8A417738275CBF06003E1934 /* CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24AEA24C32AE90057547F /* CommonUI.framework */; };
+		8A417739275CBF06003E1934 /* CommonUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24AEA24C32AE90057547F /* CommonUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8A41773A275CBF08003E1934 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CABDBA8624C2FAB800AD96D6 /* Core.framework */; };
+		8A41773B275CBF08003E1934 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CABDBA8624C2FAB800AD96D6 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8A41773C275CBF09003E1934 /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA1821A324C0E83900280DD4 /* Display.framework */; };
+		8A41773D275CBF09003E1934 /* Display.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA1821A324C0E83900280DD4 /* Display.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8A41773E275CBF0B003E1934 /* LocationUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA4CBAD275CA72A00856FE5 /* LocationUI.framework */; };
+		8A41773F275CBF0B003E1934 /* LocationUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8AA4CBAD275CA72A00856FE5 /* LocationUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8A417740275CBF0E003E1934 /* Spotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A299EF2274FB7B400355602 /* Spotlight.framework */; };
+		8A417741275CBF0E003E1934 /* Spotlight.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A299EF2274FB7B400355602 /* Spotlight.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8A417742275CBF10003E1934 /* StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24ACC24C323C90057547F /* StringFormatting.framework */; };
+		8A417743275CBF10003E1934 /* StringFormatting.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24ACC24C323C90057547F /* StringFormatting.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8A417744275CBF11003E1934 /* VinchyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; };
+		8A417745275CBF11003E1934 /* VinchyCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8A417746275CBF13003E1934 /* VinchyStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94C4275AA19F00C80F1E /* VinchyStore.framework */; };
+		8A417747275CBF13003E1934 /* VinchyStore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94C4275AA19F00C80F1E /* VinchyStore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8A417748275CBF15003E1934 /* VinchyUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94C8275AA1C400C80F1E /* VinchyUI.framework */; };
+		8A417749275CBF15003E1934 /* VinchyUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94C8275AA1C400C80F1E /* VinchyUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8A41774A275CBF16003E1934 /* WineDetail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94CF275AA24D00C80F1E /* WineDetail.framework */; };
+		8A41774B275CBF16003E1934 /* WineDetail.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94CF275AA24D00C80F1E /* WineDetail.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A446CDF2660123B000A1769 /* RoutingToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A446CDE2660123B000A1769 /* RoutingToolBar.swift */; };
 		8A4749AF2728271E0091B493 /* StoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4749AE2728271E0091B493 /* StoryView.swift */; };
 		8A4749B1272832700091B493 /* StoriesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A4749B0272832700091B493 /* StoriesCollectionView.swift */; };
@@ -190,6 +212,10 @@
 		8A63CCC126754638003B1D4D /* VinchyCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A7BCD712757B25000B56313 /* ThirdParty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A7BCD702757B25000B56313 /* ThirdParty.framework */; };
 		8A7BCD722757B25000B56313 /* ThirdParty.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A7BCD702757B25000B56313 /* ThirdParty.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8A889A57275CC8390096A74A /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA1821FE24C0F6F000280DD4 /* Database.framework */; };
+		8A889A58275CC8390096A74A /* Database.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA1821FE24C0F6F000280DD4 /* Database.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8A889A59275CC8760096A74A /* VinchyAuthorization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44D3CDE725E42E0B00FFFCD5 /* VinchyAuthorization.framework */; };
+		8A889A5A275CC8760096A74A /* VinchyAuthorization.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44D3CDE725E42E0B00FFFCD5 /* VinchyAuthorization.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A8FE7332708D9F8002EE088 /* LogOutCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8FE7322708D9F8002EE088 /* LogOutCell.swift */; };
 		8A916022268CE66C00240B18 /* AreYouInStoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916011268CE66C00240B18 /* AreYouInStoreViewModel.swift */; };
 		8A916023268CE66C00240B18 /* AreYouInStoreInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916013268CE66C00240B18 /* AreYouInStoreInput.swift */; };
@@ -258,19 +284,11 @@
 		8AEC94B3275A914300C80F1E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AEC94B1275A914300C80F1E /* LaunchScreen.storyboard */; };
 		8AEC94B8275A914300C80F1E /* VinchyAppClip.app in Embed App Clips */ = {isa = PBXBuildFile; fileRef = 8AEC94A4275A914100C80F1E /* VinchyAppClip.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		8AEC94C3275A9E3600C80F1E /* currencies.json in Resources */ = {isa = PBXBuildFile; fileRef = CA4EA6BA24BE3ACD00E6F0C4 /* currencies.json */; };
-		8AEC94C5275AA19F00C80F1E /* VinchyStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94C4275AA19F00C80F1E /* VinchyStore.framework */; };
-		8AEC94C6275AA19F00C80F1E /* VinchyStore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94C4275AA19F00C80F1E /* VinchyStore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8AEC94C9275AA1C400C80F1E /* VinchyUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94C8275AA1C400C80F1E /* VinchyUI.framework */; };
-		8AEC94CA275AA1C400C80F1E /* VinchyUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94C8275AA1C400C80F1E /* VinchyUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8AEC94D0275AA24D00C80F1E /* WineDetail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94CF275AA24D00C80F1E /* WineDetail.framework */; };
-		8AEC94D1275AA24D00C80F1E /* WineDetail.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94CF275AA24D00C80F1E /* WineDetail.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8AEC94D4275AA34200C80F1E /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA63A129249A23C100144320 /* Localizable.strings */; };
 		8AEC94D6275B5E5E00C80F1E /* Coordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC94D5275B5E5E00C80F1E /* Coordinator.swift */; };
 		8AEC94D7275B5FE500C80F1E /* ReviewDetailAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6225E263E00076ED6D /* ReviewDetailAssembly.swift */; };
 		8AEC94D8275B5FF600C80F1E /* ReviewsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB2A25E177220076ED6D /* ReviewsAssembly.swift */; };
 		8AEC94D9275B606000C80F1E /* ReviewsInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB2825E177220076ED6D /* ReviewsInput.swift */; };
-		8AEC94DB275B609200C80F1E /* AdvancedSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94DA275B609200C80F1E /* AdvancedSearch.framework */; };
-		8AEC94DC275B609200C80F1E /* AdvancedSearch.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94DA275B609200C80F1E /* AdvancedSearch.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8AEC94DD275B60C300C80F1E /* ReviewDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6725E263E00076ED6D /* ReviewDetailViewController.swift */; };
 		8AEC94DE275B60D400C80F1E /* ReviewDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6A25E263E00076ED6D /* ReviewDetailInteractor.swift */; };
 		8AEC94DF275B60D700C80F1E /* ReviewDetailInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB6B25E263E00076ED6D /* ReviewDetailInteractorProtocol.swift */; };
@@ -440,6 +458,29 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
+		8A417737275CBF03003E1934 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				8A417736275CBF03003E1934 /* AdvancedSearch.framework in Embed Frameworks */,
+				8A417741275CBF0E003E1934 /* Spotlight.framework in Embed Frameworks */,
+				8A417745275CBF11003E1934 /* VinchyCore.framework in Embed Frameworks */,
+				8A889A58275CC8390096A74A /* Database.framework in Embed Frameworks */,
+				8A41773F275CBF0B003E1934 /* LocationUI.framework in Embed Frameworks */,
+				8A41774B275CBF16003E1934 /* WineDetail.framework in Embed Frameworks */,
+				8A417747275CBF13003E1934 /* VinchyStore.framework in Embed Frameworks */,
+				8A417749275CBF15003E1934 /* VinchyUI.framework in Embed Frameworks */,
+				8A41773B275CBF08003E1934 /* Core.framework in Embed Frameworks */,
+				8A417739275CBF06003E1934 /* CommonUI.framework in Embed Frameworks */,
+				8A889A5A275CC8760096A74A /* VinchyAuthorization.framework in Embed Frameworks */,
+				8A417743275CBF10003E1934 /* StringFormatting.framework in Embed Frameworks */,
+				8A41773D275CBF09003E1934 /* Display.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		8A63CCB326754628003B1D4D /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
@@ -473,20 +514,6 @@
 				8AEC94B8275A914300C80F1E /* VinchyAppClip.app in Embed App Clips */,
 			);
 			name = "Embed App Clips";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		8AEC94C7275AA1A000C80F1E /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				8AEC94DC275B609200C80F1E /* AdvancedSearch.framework in Embed Frameworks */,
-				8AEC94C6275AA19F00C80F1E /* VinchyStore.framework in Embed Frameworks */,
-				8AEC94CA275AA1C400C80F1E /* VinchyUI.framework in Embed Frameworks */,
-				8AEC94D1275AA24D00C80F1E /* WineDetail.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXCopyFilesBuildPhase section */
@@ -691,6 +718,7 @@
 		8A916116268E27EB00240B18 /* SearchRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
 		8A916117268E27EB00240B18 /* SearchRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRouterProtocol.swift; sourceTree = "<group>"; };
 		8A9554672692284B00F1C5AE /* DocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsViewController.swift; sourceTree = "<group>"; };
+		8AA4CBAD275CA72A00856FE5 /* LocationUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LocationUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AA5E5122615053D00935B5E /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		8AA9909126D91FE000C32358 /* StoresViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoresViewModel.swift; sourceTree = "<group>"; };
 		8AA9909326D91FE000C32358 /* StoresInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoresInput.swift; sourceTree = "<group>"; };
@@ -891,11 +919,20 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8AEC94DB275B609200C80F1E /* AdvancedSearch.framework in Frameworks */,
-				8AEC94C5275AA19F00C80F1E /* VinchyStore.framework in Frameworks */,
-				8AEC94D0275AA24D00C80F1E /* WineDetail.framework in Frameworks */,
-				8AEC94C9275AA1C400C80F1E /* VinchyUI.framework in Frameworks */,
+				8A417742275CBF10003E1934 /* StringFormatting.framework in Frameworks */,
+				8A417740275CBF0E003E1934 /* Spotlight.framework in Frameworks */,
+				8A41774A275CBF16003E1934 /* WineDetail.framework in Frameworks */,
+				8A889A59275CC8760096A74A /* VinchyAuthorization.framework in Frameworks */,
+				8A41773E275CBF0B003E1934 /* LocationUI.framework in Frameworks */,
+				8A417744275CBF11003E1934 /* VinchyCore.framework in Frameworks */,
+				8A417748275CBF15003E1934 /* VinchyUI.framework in Frameworks */,
+				8A417735275CBF03003E1934 /* AdvancedSearch.framework in Frameworks */,
+				8A417746275CBF13003E1934 /* VinchyStore.framework in Frameworks */,
+				8A41773A275CBF08003E1934 /* Core.framework in Frameworks */,
+				8A417738275CBF06003E1934 /* CommonUI.framework in Frameworks */,
 				D7CB4E27817F2279BDA27F5B /* Pods_Smart_VinchyAppClip.framework in Frameworks */,
+				8A41773C275CBF09003E1934 /* Display.framework in Frameworks */,
+				8A889A57275CC8390096A74A /* Database.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1317,6 +1354,7 @@
 		46483F371463D95E22014241 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8AA4CBAD275CA72A00856FE5 /* LocationUI.framework */,
 				8AEC94DA275B609200C80F1E /* AdvancedSearch.framework */,
 				8AEC94CF275AA24D00C80F1E /* WineDetail.framework */,
 				8AEC94C8275AA1C400C80F1E /* VinchyUI.framework */,
@@ -3042,8 +3080,8 @@
 				8AEC94A0275A914100C80F1E /* Sources */,
 				8AEC94A1275A914100C80F1E /* Frameworks */,
 				8AEC94A2275A914100C80F1E /* Resources */,
-				8AEC94C7275AA1A000C80F1E /* Embed Frameworks */,
 				68398ADCA479975A0DD1E1B5 /* [CP] Embed Pods Frameworks */,
+				8A417737275CBF03003E1934 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -3856,11 +3894,13 @@
 				CODE_SIGN_ENTITLEMENTS = VinchyAppClip/VinchyAppClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
+				ENABLE_BITCODE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VinchyAppClip/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Vinchy;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow access to geolocation to determine the delivery address";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -3891,11 +3931,13 @@
 				CODE_SIGN_ENTITLEMENTS = VinchyAppClip/VinchyAppClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
+				ENABLE_BITCODE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = VinchyAppClip/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Vinchy;
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "Allow access to geolocation to determine the delivery address";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
@@ -4044,8 +4086,9 @@
 				CODE_SIGN_ENTITLEMENTS = Smart/Vinchy.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Smart/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -4075,8 +4118,9 @@
 				CODE_SIGN_ENTITLEMENTS = Smart/VinchyRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 11;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
+				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Smart/Resources/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (

@@ -19,7 +19,6 @@ final class Coordinator: WineDetailRoutable, ActivityRoutable, WriteNoteRoutable
 
   static let shared = Coordinator()
 
-
   func presentAdvancedSearch(input: AdvancedSearchInput, delegate: AdvancedSearchOutputDelegate?) {
     let controller = AdvancedSearchAssembly.assemblyModule(
       input: input,

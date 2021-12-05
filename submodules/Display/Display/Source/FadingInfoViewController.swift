@@ -7,6 +7,7 @@
 //
 // switlint:disable all
 
+#if !APPCLIP
 import UIKit
 
 // MARK: - FadingInfoViewController
@@ -1115,3 +1116,4 @@ extension BaseSlidingViewController: UIGestureRecognizerDelegate {
   }
 }
 // swiftlint:disable all
+#endif
