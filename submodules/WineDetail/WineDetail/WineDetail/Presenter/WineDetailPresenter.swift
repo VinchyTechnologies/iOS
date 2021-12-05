@@ -26,7 +26,8 @@ final class WineDetailPresenter {
 
   // MARK: Lifecycle
 
-  init(viewController: WineDetailViewControllerProtocol) {
+  init(input: WineDetailInput, viewController: WineDetailViewControllerProtocol) {
+    self.input = input
     self.viewController = viewController
   }
 
@@ -38,15 +39,17 @@ final class WineDetailPresenter {
 
   // MARK: Private
 
+  private let input: WineDetailInput
+
   private var contextMenuViewModels: [ContextMenuViewModel] {
-    #if APPCLIP
-    []
-    #else
-    [
-      .share(content: .init(title: localized("share_link").firstLetterUppercased())),
-      .writeNote(content: .init(title: localized("write_note").firstLetterUppercased())),
-    ]
-    #endif
+    if input.isAppClip {
+      return []
+    } else {
+      return [
+        .share(content: .init(title: localized("share_link").firstLetterUppercased())),
+        .writeNote(content: .init(title: localized("write_note").firstLetterUppercased())),
+      ]
+    }
   }
 
   // TODO: - Make Factory Pattern
@@ -215,7 +218,7 @@ final class WineDetailPresenter {
         content: .init(
           price: formatCurrencyAmount(
             wine.price ?? 0, currency: currency),
-          isLiked: isLiked)),
+          isLiked: isLiked, isAppClip: input.isAppClip)),
     ]
 
 //    if isDescriptionInWineDetailEnabled {
@@ -247,31 +250,31 @@ final class WineDetailPresenter {
       sections += [.button(itemID: .writeReviewButton, content: .init(buttonText: localized("write_review").firstLetterUppercased()))]
     }
 
-    /// Ad
-    sections += [.ad(itemID: .ad)]
+    if !input.isAppClip {
+      /// Ad
+      sections += [.ad(itemID: .ad)]
 
-    /// where to buy
+      /// where to buy
 
-    #if !APPCLIP
-    if let stores = stores, !stores.isEmpty {
-      sections += [
-        .ratingAndReview(
-          itemID: .whereToBuyTitle,
-          content: TitleAndMoreView.Content(
-            titleText: localized("where_to_buy").firstLetterUppercased(),
-            moreText: localized("see_all").firstLetterUppercased(),
-            shouldShowMoreText: stores.count >= 5)),
-      ]
+      if let stores = stores, !stores.isEmpty {
+        sections += [
+          .ratingAndReview(
+            itemID: .whereToBuyTitle,
+            content: TitleAndMoreView.Content(
+              titleText: localized("where_to_buy").firstLetterUppercased(),
+              moreText: localized("see_all").firstLetterUppercased(),
+              shouldShowMoreText: stores.count >= 5)),
+        ]
 
-      let storeViewModels: [WhereToBuyCellViewModel] = stores.compactMap { partner in
-        .init(affilatedId: partner.affiliatedStoreId, imageURL: partner.logoURL, titleText: partner.title, subtitleText: nil)
+        let storeViewModels: [WhereToBuyCellViewModel] = stores.compactMap { partner in
+          .init(affilatedId: partner.affiliatedStoreId, imageURL: partner.logoURL, titleText: partner.title, subtitleText: nil)
+        }
+
+        sections += [
+          .whereToBuy(itemID: .whereToBuy, content: storeViewModels),
+        ]
       }
-
-      sections += [
-        .whereToBuy(itemID: .whereToBuy, content: storeViewModels),
-      ]
     }
-    #endif
 
     /// Similar wines
 

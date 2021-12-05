@@ -34,7 +34,6 @@
 		8A5145BF2757D57300DC45CD /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145B82757D57300DC45CD /* EmptyView.swift */; };
 		8A5145C02757D57300DC45CD /* LinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145B92757D57300DC45CD /* LinkButton.swift */; };
 		8A5145C12757D57300DC45CD /* LoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145BA2757D57300DC45CD /* LoadingView.swift */; };
-		8A5145DF2757E51600DC45CD /* AdItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145DE2757E51600DC45CD /* AdItemView.swift */; };
 		8A6951FB267CC12800F14902 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 8A6951FA267CC12800F14902 /* Nuke */; };
 		8A7D7923273D5675005F075A /* ContactUsRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A7D7922273D5675005F075A /* ContactUsRoutable.swift */; };
 		8A85586126FB9C0300F6F9C8 /* TabView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A85586026FB9C0300F6F9C8 /* TabView.swift */; };
@@ -94,7 +93,6 @@
 		8A5145B82757D57300DC45CD /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		8A5145B92757D57300DC45CD /* LinkButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkButton.swift; sourceTree = "<group>"; };
 		8A5145BA2757D57300DC45CD /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
-		8A5145DE2757E51600DC45CD /* AdItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdItemView.swift; sourceTree = "<group>"; };
 		8A7D7922273D5675005F075A /* ContactUsRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContactUsRoutable.swift; sourceTree = "<group>"; };
 		8A85586026FB9C0300F6F9C8 /* TabView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabView.swift; sourceTree = "<group>"; };
 		8A9866E1272EEF5600DE4D8F /* EpoxyErrorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EpoxyErrorView.swift; sourceTree = "<group>"; };
@@ -173,7 +171,6 @@
 				8A5145B82757D57300DC45CD /* EmptyView.swift */,
 				8A5145B92757D57300DC45CD /* LinkButton.swift */,
 				8A5145BA2757D57300DC45CD /* LoadingView.swift */,
-				8A5145DE2757E51600DC45CD /* AdItemView.swift */,
 			);
 			path = EpoxyViews;
 			sourceTree = "<group>";
@@ -221,7 +218,6 @@
 		CAE886A524C0E6D000E33E16 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				8A5145B32757D57300DC45CD /* EpoxyViews */,
 				CA99E65A24F7D79B00C36BEE /* ActivityIndicator.swift */,
 				CA53B12424E039F1009A0F85 /* Alertable.swift */,
 				CABDBA9524C31FAC00AD96D6 /* ASPageControl.swift */,
@@ -232,6 +228,7 @@
 				CAA9DC68250EA24900F996A8 /* DecoratorFlowLayout.swift */,
 				4410AE3225E5632400A84FF9 /* DismissRoutable.swift */,
 				8A9866E1272EEF5600DE4D8F /* EpoxyErrorView.swift */,
+				8A5145B32757D57300DC45CD /* EpoxyViews */,
 				8A2F304A2671FAF7002DE6C1 /* FadingInfoViewController.swift */,
 				CA1821A124C0E72A00280DD4 /* Font.swift */,
 				CA81987A25387CA80056A1C6 /* Gradient.swift */,
@@ -239,6 +236,7 @@
 				CA30393E2568339E00C3A461 /* Haptic.swift */,
 				CAA8918A250AA8D200ADBFF9 /* HighlightableViewProtocol.swift */,
 				CAA8918C250AB69400ADBFF9 /* HighlightCollectionCell.swift */,
+				8A5145B12757D4CA00DC45CD /* HorizontalWineView.swift */,
 				CAD904ED257BADEC009FE71F /* ImageLoader.swift */,
 				CA7A87E224FEE1B200AAD10F /* Loadable.swift */,
 				CA7A87EB25026FA700AAD10F /* LoadingCollectionFooter.swift */,
@@ -247,6 +245,7 @@
 				CA7A87E92502582C00AAD10F /* PaddingLabel.swift */,
 				CE8D930F25BA2878004792C6 /* PlaceholderTextView.swift */,
 				CA5B9018250FEF51006BC638 /* ScrollViewBounceDecorator.swift */,
+				8AE95A3E27555D4B007F01CE /* SearchBar.swift */,
 				8A079F2B269E0961000ACA2B /* SeparatorFlowLayout.swift */,
 				CA276D51256AC5830061BEBE /* ShimmeringView.swift */,
 				8AD49F1A267525840094E157 /* SkyFloatingLabelTextField.swift */,
@@ -262,8 +261,6 @@
 				4404888C25D8390600019081 /* UITapGestureRecognizer.swift */,
 				CA18220324C0F88B00280DD4 /* VinchyNavigationController.swift */,
 				8A1587F8272F01130002CA28 /* WineBottleView.swift */,
-				8AE95A3E27555D4B007F01CE /* SearchBar.swift */,
-				8A5145B12757D4CA00DC45CD /* HorizontalWineView.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -386,7 +383,6 @@
 				CA7A87EA2502582C00AAD10F /* PaddingLabel.swift in Sources */,
 				44DE6C1625DB9E980008695D /* Orientation.swift in Sources */,
 				CA53B12524E039F1009A0F85 /* Alertable.swift in Sources */,
-				8A5145DF2757E51600DC45CD /* AdItemView.swift in Sources */,
 				8A158800272F04B60002CA28 /* BottlesCollectionView.swift in Sources */,
 				8A9866E2272EEF5600DE4D8F /* EpoxyErrorView.swift in Sources */,
 				CAD904EE257BADEC009FE71F /* ImageLoader.swift in Sources */,
@@ -583,7 +579,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy.Display;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG APPCLIP";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_REFLECTION_METADATA_LEVEL = none;
 				SWIFT_VERSION = 5.0;
@@ -613,7 +609,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy.Display;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = APPCLIP;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_REFLECTION_METADATA_LEVEL = none;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

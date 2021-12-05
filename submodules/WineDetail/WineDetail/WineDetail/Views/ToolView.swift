@@ -15,10 +15,12 @@ import UIKit
 struct ToolCollectionCellViewModel: ViewModelProtocol, Equatable {
   fileprivate let price: String?
   fileprivate let isLiked: Bool
+  fileprivate let isAppClip: Bool
 
-  public init(price: String?, isLiked: Bool) {
+  public init(price: String?, isLiked: Bool, isAppClip: Bool) {
     self.price = price
     self.isLiked = isLiked
+    self.isAppClip = isAppClip
   }
 }
 
@@ -107,6 +109,7 @@ final class ToolView: UIView, EpoxyableView {
   weak var delegate: ToolCollectionCellDelegate?
 
   func setContent(_ content: Content, animated: Bool) {
+    self.content = content
     let title = NSAttributedString(
       string: "~" + (content.price ?? "0.00"),
       font: Font.with(size: 20, design: .round, traits: .bold),
@@ -118,6 +121,8 @@ final class ToolView: UIView, EpoxyableView {
   }
 
   // MARK: Private
+
+  private var content: Content?
 
   private let style: Style
   private let shareButton = UIButton(type: .system)
@@ -136,9 +141,12 @@ final class ToolView: UIView, EpoxyableView {
 
   @objc
   private func didTapLikeButton(_ button: UIButton) {
-    #if !APPCLIP
-    button.isSelected = !button.isSelected
-    #endif
+    guard let content = content else {
+      return
+    }
+    if !content.isAppClip {
+      button.isSelected = !button.isSelected
+    }
     delegate?.didTapLike(button)
   }
 }

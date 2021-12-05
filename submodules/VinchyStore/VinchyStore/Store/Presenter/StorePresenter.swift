@@ -27,14 +27,10 @@ final class StorePresenter {
   // MARK: Private
 
   private var contextMenuViewModels: [ContextMenuViewModel] {
-    #if APPCLIP
-    []
-    #else
     [
-      .share(content: .init(title: localized("share_link").firstLetterUppercased())),
-      .writeNote(content: .init(title: localized("write_note").firstLetterUppercased())),
+      //      .share(content: .init(title: localized("share_link").firstLetterUppercased())),
+//      .writeNote(content: .init(title: localized("write_note").firstLetterUppercased())),
     ]
-    #endif
   }
 }
 

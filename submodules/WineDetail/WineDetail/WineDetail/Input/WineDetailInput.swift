@@ -8,8 +8,10 @@
 
 public struct WineDetailInput {
   public let wineID: Int64
+  public let isAppClip: Bool
 
-  public init(wineID: Int64) {
+  public init(wineID: Int64, isAppClip: Bool) {
     self.wineID = wineID
+    self.isAppClip = isAppClip
   }
 }

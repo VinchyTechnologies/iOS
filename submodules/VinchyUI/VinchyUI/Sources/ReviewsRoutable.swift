@@ -6,8 +6,6 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
-
 public protocol ReviewsRoutable: AnyObject {
   func pushToReviewsViewController(wineID: Int64)
 }

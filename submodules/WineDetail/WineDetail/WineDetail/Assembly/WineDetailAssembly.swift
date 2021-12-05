@@ -14,9 +14,9 @@ public final class WineDetailAssembly {
   public typealias Coordinator = WineDetailRoutable & ReviewsRoutable & ReviewDetailRoutable & WriteReviewRoutable & ActivityRoutable & WriteNoteRoutable & StoresRoutable & StoreRoutable & AuthorizationRoutable
 
   public static func assemblyModule(input: WineDetailInput, coordinator: Coordinator) -> UIViewController {
-    let viewController = WineDetailViewController()
+    let viewController = WineDetailViewController(input: input)
     let router = WineDetailRouter(input: input, viewController: viewController, coordinator: coordinator)
-    let presenter = WineDetailPresenter(viewController: viewController)
+    let presenter = WineDetailPresenter(input: input, viewController: viewController)
     let interactor = WineDetailInteractor(input: input, router: router, presenter: presenter)
     router.interactor = interactor
     viewController.interactor = interactor

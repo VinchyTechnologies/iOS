@@ -16,7 +16,6 @@ def commonPods
 #  pod 'CocoaDebug', :configurations => ['Debug']
   pod 'SwiftLint'
   pod 'GoogleUtilities'
-  pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/DynamicLinks'
   epoxy
   pod 'SPAlert', '~> 2.1.4'
@@ -29,7 +28,7 @@ target 'Smart' do
   commonPods
   pod 'Firebase/RemoteConfig'
   pod 'FittedSheets'
-
+  pod 'Google-Mobile-Ads-SDK'
 
   target 'SmartTests' do
     inherit! :search_paths
@@ -47,6 +46,11 @@ end
 target 'Display' do
   project 'submodules/Display/Display'
   epoxy
+end
+
+target 'AdUI' do
+  project 'submodules/AdUI/AdUI'
+  pod 'EpoxyCore'
   pod 'GoogleUtilities'
   pod 'Google-Mobile-Ads-SDK'
 end
@@ -62,9 +66,7 @@ target 'CommonUI' do
 end
 
 target 'VinchyUI' do
-  project 'submodules/VinchyUI/VinchyUI'
-  pod 'GoogleUtilities'
-  pod 'Firebase/DynamicLinks'
+  project 'submodules/VinchyUI/VinchyUI' # delete
 end
 
 target 'WineDetail' do
@@ -79,7 +81,7 @@ end
 
 target 'VinchyAuthorization' do
   project 'submodules/VinchyAuthorization/VinchyAuthorization'
-  pod 'FittedSheets'
+#  pod 'FittedSheets'
 end
 
 target 'VinchyAuthorizationApp' do

@@ -231,10 +231,18 @@ final class StoreInteractor {
 // MARK: StoreInteractorProtocol
 
 extension StoreInteractor: StoreInteractorProtocol {
+
   var contextMenuRouter: ActivityRoutable & WriteNoteRoutable {
     router
   }
 
+  func didTapShareContextMenu(wineID: Int64, sourceView: UIView) {
+
+  }
+
+  func didTapWriteNoteContextMenu(wineID: Int64) {
+
+  }
   func didTapSearchButton() {
     switch input.mode {
     case .normal(let affilatedId):

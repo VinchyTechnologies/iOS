@@ -200,9 +200,16 @@ final class WineDetailInteractor {
 // MARK: WineDetailInteractorProtocol
 
 extension WineDetailInteractor: WineDetailInteractorProtocol {
-
   var contextMenuRouter: ActivityRoutable & WriteNoteRoutable {
     router
+  }
+
+  func didTapShareContextMenu(wineID: Int64, sourceView: UIView) {
+
+  }
+
+  func didTapWriteNoteContextMenu(wineID: Int64) {
+
   }
 
   func didSelectWine(wineID: Int64) {
@@ -236,11 +243,11 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
   }
 
   func didTapStarsRatingControl() {
-    #if APPCLIP
-    presenter.showAppClipDownloadFullApp()
-    #else
-    openReviewFlow()
-    #endif
+    if input.isAppClip {
+      presenter.showAppClipDownloadFullApp()
+    } else {
+      openReviewFlow()
+    }
   }
 
   func didSuccessfullyLoginOrRegister() {
@@ -278,11 +285,11 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
   }
 
   func didTapWriteReviewButton() {
-    #if APPCLIP
-    presenter.showAppClipDownloadFullApp()
-    #else
-    openReviewFlow()
-    #endif
+    if input.isAppClip {
+      presenter.showAppClipDownloadFullApp()
+    } else {
+      openReviewFlow()
+    }
   }
 
   func didTapMore(_ button: UIButton) {
@@ -314,10 +321,8 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
   }
 
   func didTapPriceButton() {
-    if !(stores?.isEmpty == true) {
-      #if !APPCLIP
+    if !(stores?.isEmpty == true) && !input.isAppClip {
       presenter.scrollToWhereToBuySections()
-      #endif
     }
   }
 
@@ -407,9 +412,11 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
   }
 
   func didTapLikeButton(_ button: UIButton) {
-    #if APPCLIP
-    presenter.showAppClipDownloadFullApp()
-    #else
+    if input.isAppClip {
+      presenter.showAppClipDownloadFullApp()
+      return
+    }
+
     guard let wine = wine else { return }
 
     if isDisliked(wine: wine) {
@@ -428,7 +435,6 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
       presenter.showStatusAlertDidLikedSuccessfully()
 //      trackEvent("wine_detail_did_tap_like_button", params: ["isInitiallyLiked": false])
     }
-    #endif
   }
 
   func didTapSimilarWine(wineID: Int64) {

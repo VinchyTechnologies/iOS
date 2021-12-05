@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8A07B9E4275D1BB500AF27B0 /* AdUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A07B9E3275D1BB500AF27B0 /* AdUI.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		8A5144152757B5F000DC45CD /* VinchyStore.docc in Sources */ = {isa = PBXBuildFile; fileRef = 8A5144142757B5F000DC45CD /* VinchyStore.docc */; };
 		8A5144162757B5F000DC45CD /* VinchyStore.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A5144132757B5F000DC45CD /* VinchyStore.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A5145A12757D3DD00DC45CD /* StoreViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A51458A2757D3DD00DC45CD /* StoreViewModel.swift */; };
@@ -37,6 +38,7 @@
 /* Begin PBXFileReference section */
 		30CE802AA55F763D8624076B /* Pods-VinchyStore.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyStore.release.xcconfig"; path = "Target Support Files/Pods-VinchyStore/Pods-VinchyStore.release.xcconfig"; sourceTree = "<group>"; };
 		74F4725EF20796D3941585EF /* Pods_VinchyStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinchyStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A07B9E3275D1BB500AF27B0 /* AdUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AdUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5144102757B5F000DC45CD /* VinchyStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VinchyStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5144132757B5F000DC45CD /* VinchyStore.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VinchyStore.h; sourceTree = "<group>"; };
 		8A5144142757B5F000DC45CD /* VinchyStore.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = VinchyStore.docc; sourceTree = "<group>"; };
@@ -73,6 +75,7 @@
 			files = (
 				8A5145C72757E3C000DC45CD /* StringFormatting.framework in Frameworks */,
 				8A5145D72757E4BF00DC45CD /* CommonUI.framework in Frameworks */,
+				8A07B9E4275D1BB500AF27B0 /* AdUI.framework in Frameworks */,
 				8A5145DB2757E4D300DC45CD /* Database.framework in Frameworks */,
 				8A5145CB2757E44B00DC45CD /* VinchyCore.framework in Frameworks */,
 				8A5145CF2757E46700DC45CD /* Spotlight.framework in Frameworks */,
@@ -214,6 +217,7 @@
 		E94AC55A1CC12A813A7EEF98 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8A07B9E3275D1BB500AF27B0 /* AdUI.framework */,
 				8AEC94CB275AA22700C80F1E /* VinchyUI.framework */,
 				8A5145DA2757E4D300DC45CD /* Database.framework */,
 				8A5145D62757E4BF00DC45CD /* CommonUI.framework */,
@@ -500,7 +504,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy.VinchyStore;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG APPCLIP";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -531,7 +535,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy.VinchyStore;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = APPCLIP;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

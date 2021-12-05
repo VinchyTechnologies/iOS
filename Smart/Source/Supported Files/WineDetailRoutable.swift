@@ -15,7 +15,7 @@ extension WineDetailRoutable {
     if UIDevice.current.userInterfaceIdiom == .pad {
       presentWineDetailViewController(wineID: wineID)
     } else {
-      let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID), coordinator: Coordinator.shared)
+      let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID, isAppClip: false), coordinator: Coordinator.shared)
       controller.hidesBottomBarWhenPushed = true
       UIApplication.topViewController()?.navigationController?.pushViewController(
         controller,
@@ -24,7 +24,7 @@ extension WineDetailRoutable {
   }
 
   func presentWineDetailViewController(wineID: Int64) {
-    let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID), coordinator: Coordinator.shared)
+    let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID, isAppClip: false), coordinator: Coordinator.shared)
     let navigationController = VinchyNavigationController(rootViewController: controller)
     navigationController.modalPresentationStyle = .overFullScreen
     UIApplication.topViewController()?.present(

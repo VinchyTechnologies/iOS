@@ -16,6 +16,9 @@ import StringFormatting
 import UIKit
 import VinchyCore
 import VinchyUI
+#if canImport(AdUI)
+import AdUI
+#endif
 
 // MARK: - C
 
@@ -29,7 +32,8 @@ final class WineDetailViewController: CollectionViewController {
 
   // MARK: Lifecycle
 
-  init() {
+  init(input: WineDetailInput) {
+    self.input = input
     super.init(layout: UICollectionViewFlowLayout())
   }
 
@@ -64,11 +68,11 @@ final class WineDetailViewController: CollectionViewController {
     let moreBarButtonItem = UIBarButtonItem(customView: moreButton)
     let noteBarButtonItem = UIBarButtonItem(customView: noteButton)
     let spacerBarItem = UIBarButtonItem(customView: spacer)
-    #if APPCLIP
-    navigationItem.rightBarButtonItems = [moreBarButtonItem]
-    #else
-    navigationItem.rightBarButtonItems = [moreBarButtonItem, spacerBarItem, noteBarButtonItem]
-    #endif
+    if input.isAppClip {
+      navigationItem.rightBarButtonItems = [moreBarButtonItem]
+    } else {
+      navigationItem.rightBarButtonItems = [moreBarButtonItem, spacerBarItem, noteBarButtonItem]
+    }
     if isModal {
       let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
       navigationItem.leftBarButtonItem = UIBarButtonItem(
@@ -104,6 +108,8 @@ final class WineDetailViewController: CollectionViewController {
   }
 
   // MARK: Private
+
+  private let input: WineDetailInput
 
   private lazy var collectionViewSize: CGSize = view.frame.size
 
@@ -291,15 +297,23 @@ final class WineDetailViewController: CollectionViewController {
         .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 16, right: 24))
 
       case .ad(let itemID):
-        return SectionModel(dataID: section.dataID) {
-          AdItemView.itemModel(
-            dataID: itemID,
-            content: .init(),
-            style: .init())
-            .setBehaviors { [weak self] context in
-              context.view.adBanner.rootViewController = self
-            }
-            .flowLayoutItemSize(.init(width: collectionViewSize.width, height: AdItemView.height))
+        if input.isAppClip {
+          return nil
+        } else {
+          #if canImport(AdUI)
+          return SectionModel(dataID: section.dataID) {
+            AdItemView.itemModel(
+              dataID: itemID,
+              content: .init(),
+              style: .init())
+              .setBehaviors { [weak self] context in
+                context.view.adBanner.rootViewController = self
+              }
+              .flowLayoutItemSize(.init(width: collectionViewSize.width, height: AdItemView.height))
+          }
+          #else
+          return nil
+          #endif
         }
 
       case .similarWines(let itemID, let content):

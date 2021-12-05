@@ -14,6 +14,9 @@ import EpoxyCollectionView
 import EpoxyCore
 import EpoxyLayoutGroups
 import UIKit
+#if canImport(AdUI)
+import AdUI
+#endif
 
 // MARK: - StoreViewController
 
@@ -183,6 +186,7 @@ final class StoreViewController: CollectionViewController {
                 .flowLayoutItemSize(.init(width: width, height: height))
 
             case .ad(let itemID):
+              #if canImport(AdUI)
               return AdItemView.itemModel(
                 dataID: UUID(),
                 content: .init(),
@@ -191,6 +195,9 @@ final class StoreViewController: CollectionViewController {
                   context.view.adBanner.rootViewController = self
                 }
                 .flowLayoutItemSize(.init(width: collectionViewSize.width, height: AdItemView.height))
+              #else
+              return nil
+              #endif
 
             case .empty(let itemID, let content):
               return EmptyView.itemModel(

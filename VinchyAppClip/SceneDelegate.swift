@@ -14,6 +14,14 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   var window: UIWindow?
 
+  var isAppClip: Bool {
+    #if APPCLIP
+    return true
+    #else
+    return false
+    #endif
+  }
+
   func scene(
     _ scene: UIScene,
     willConnectTo session: UISceneSession,
@@ -40,6 +48,8 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     guard let affilatedId = Int(id) else {
       return
     }
+
+    print("===", isAppClip)
 
     let window = UIWindow(windowScene: windowScence)
     self.window = window
