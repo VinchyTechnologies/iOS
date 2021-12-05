@@ -8,7 +8,8 @@
 
 import Database
 import Display
-import Epoxy
+import EpoxyCore
+import EpoxyLayoutGroups
 import UIKit
 import WineDetail // TODO: - remove
 

@@ -10,7 +10,9 @@ import CommonUI
 import Core
 import Database
 import Display
-import Epoxy
+import EpoxyCollectionView
+import EpoxyCore
+import EpoxyLayoutGroups
 import UIKit
 import VinchyAuthorization
 

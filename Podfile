@@ -4,19 +4,22 @@ inhibit_all_warnings!
 
 workspace 'Smart'
 
+def epoxy
+  pod 'EpoxyCore'
+  pod 'EpoxyLayoutGroups'
+  pod 'EpoxyCollectionView'
+  pod 'EpoxyBars'
+end
+
 def commonPods
   pod 'FSPagerView' # no spm...
 #  pod 'CocoaDebug', :configurations => ['Debug']
   pod 'SwiftLint'
-  
   pod 'GoogleUtilities'
   pod 'Google-Mobile-Ads-SDK'
   pod 'Firebase/DynamicLinks'
-  pod 'Firebase/RemoteConfig'
-  pod 'Firebase/Analytics'
-  pod 'Epoxy'
+  epoxy
   pod 'SPAlert', '~> 2.1.4'
-  pod 'FittedSheets'
   pod 'Sheeeeeeeeet'
 end
 
@@ -24,6 +27,9 @@ target 'Smart' do
   project 'Smart'
 
   commonPods
+  pod 'Firebase/RemoteConfig'
+  pod 'FittedSheets'
+
 
   target 'SmartTests' do
     inherit! :search_paths
@@ -40,19 +46,19 @@ end
 
 target 'Display' do
   project 'submodules/Display/Display'
-  pod 'Epoxy'
+  epoxy
   pod 'GoogleUtilities'
   pod 'Google-Mobile-Ads-SDK'
 end
 
 target 'VinchyStore' do
   project 'submodules/VinchyStore/VinchyStore'
-  pod 'Epoxy'
+  epoxy
 end
 
 target 'CommonUI' do
   project 'submodules/CommonUI/CommonUI'
-  pod 'Epoxy'
+  epoxy
 end
 
 target 'VinchyUI' do
@@ -65,7 +71,7 @@ target 'WineDetail' do
   project 'submodules/WineDetail/WineDetail'
   pod 'GoogleUtilities'
   pod 'FSPagerView' # no spm...
-  pod 'Epoxy'
+  epoxy
   pod 'SPAlert', '~> 2.1.4'
   pod 'Sheeeeeeeeet'
   pod 'Firebase/DynamicLinks'

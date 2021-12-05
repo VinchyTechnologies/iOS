@@ -6,7 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Epoxy
+import EpoxyCore
 
 public final class LinkButton: UIButton, EpoxyableView {
 

@@ -7,7 +7,9 @@
 //
 
 import Display
-import Epoxy
+import EpoxyCollectionView
+import EpoxyCore
+import EpoxyLayoutGroups
 import UIKit
 
 // MARK: - TextRow

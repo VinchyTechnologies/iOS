@@ -8,7 +8,8 @@
 
 import AudioToolbox
 import CoreHaptics
-import Epoxy
+import EpoxyCollectionView
+import EpoxyCore
 import StringFormatting
 import UIKit
 

@@ -176,13 +176,10 @@ code_sign_if_enabled() {
 }
 
 if [[ "$CONFIGURATION" == "Debug" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/Epoxy/Epoxy.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/EpoxyBars/EpoxyBars.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/EpoxyCollectionView/EpoxyCollectionView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/EpoxyCore/EpoxyCore.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/EpoxyLayoutGroups/EpoxyLayoutGroups.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/EpoxyNavigationController/EpoxyNavigationController.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/EpoxyPresentations/EpoxyPresentations.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseABTesting/FirebaseABTesting.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework"
@@ -199,13 +196,10 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
-  install_framework "${BUILT_PRODUCTS_DIR}/Epoxy/Epoxy.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/EpoxyBars/EpoxyBars.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/EpoxyCollectionView/EpoxyCollectionView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/EpoxyCore/EpoxyCore.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/EpoxyLayoutGroups/EpoxyLayoutGroups.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/EpoxyNavigationController/EpoxyNavigationController.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/EpoxyPresentations/EpoxyPresentations.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseABTesting/FirebaseABTesting.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/FirebaseCore/FirebaseCore.framework"

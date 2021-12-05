@@ -8,7 +8,9 @@
 
 import CommonUI
 import Display
-import Epoxy
+import EpoxyBars
+import EpoxyCollectionView
+import EpoxyCore
 import StringFormatting
 import UIKit
 import VinchyCore

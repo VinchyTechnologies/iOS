@@ -6,7 +6,8 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Epoxy
+import EpoxyCollectionView
+import EpoxyCore
 import UIKit
 
 // MARK: - LoadingView

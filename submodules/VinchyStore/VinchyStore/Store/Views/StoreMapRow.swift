@@ -7,7 +7,8 @@
 //
 
 import Display
-import Epoxy
+import EpoxyCore
+import EpoxyLayoutGroups
 import UIKit
 
 // MARK: - StoreMapRow

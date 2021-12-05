@@ -6,8 +6,12 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+// MARK: - BarScrollPercentageCoordinating
+
 import Display
-import Epoxy
+import EpoxyBars
+import EpoxyCollectionView
+import EpoxyCore
 import UIKit
 
 // MARK: - BarScrollPercentageCoordinating

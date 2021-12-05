@@ -6,9 +6,9 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import FirebaseAnalytics
-
 // MARK: - Tracker
+
+//import FirebaseAnalytics
 
 public enum Tracker: CaseIterable, AnalyticsTrackable {
   case firebase

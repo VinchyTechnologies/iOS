@@ -7,7 +7,7 @@
 //
 
 import Display
-import Epoxy
+import EpoxyCore
 import UIKit
 
 // MARK: - ButtonCollectionCellDelegate

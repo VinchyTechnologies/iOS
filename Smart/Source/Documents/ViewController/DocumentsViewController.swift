@@ -7,11 +7,11 @@
 //
 
 import Display
-import Epoxy
+import EpoxyCollectionView
 
 // MARK: - DocumentsViewController
 
-final class DocumentsViewController: Epoxy.CollectionViewController {
+final class DocumentsViewController: CollectionViewController {
 
   // MARK: Lifecycle
 

@@ -6,7 +6,8 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Epoxy
+import EpoxyCore
+import EpoxyLayoutGroups
 
 // MARK: - TopTabBarView
 

@@ -7,7 +7,8 @@
 //
 
 import Display
-import Epoxy
+import EpoxyCollectionView
+import EpoxyCore
 import UIKit
 import VinchyCore
 
