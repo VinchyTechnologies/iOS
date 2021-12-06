@@ -229,7 +229,7 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
   }
 
   func didScrollStopped() {
-    if !UserDefaultsConfig.userHasSeenTutorialForReviewButton {
+    if !UserDefaultsConfig.userHasSeenTutorialForReviewButton && !input.isAppClip {
       presenter.showReviewButtonTutorial()
     }
   }

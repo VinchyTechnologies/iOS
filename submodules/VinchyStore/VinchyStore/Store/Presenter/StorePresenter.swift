@@ -16,7 +16,8 @@ final class StorePresenter {
 
   // MARK: Lifecycle
 
-  init(viewController: StoreViewControllerProtocol) {
+  init(input: StoreInput, viewController: StoreViewControllerProtocol) {
+    self.input = input
     self.viewController = viewController
   }
 
@@ -26,11 +27,17 @@ final class StorePresenter {
 
   // MARK: Private
 
+  private var input: StoreInput
+
   private var contextMenuViewModels: [ContextMenuViewModel] {
-    [
-      //      .share(content: .init(title: localized("share_link").firstLetterUppercased())),
-//      .writeNote(content: .init(title: localized("write_note").firstLetterUppercased())),
-    ]
+    if input.isAppClip {
+      return []
+    } else {
+      return [
+        .share(content: .init(title: localized("share_link").firstLetterUppercased())),
+        .writeNote(content: .init(title: localized("write_note").firstLetterUppercased())),
+      ]
+    }
   }
 }
 

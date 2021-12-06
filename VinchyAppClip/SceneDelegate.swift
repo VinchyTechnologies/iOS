@@ -14,14 +14,6 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
   var window: UIWindow?
 
-  var isAppClip: Bool {
-    #if APPCLIP
-    return true
-    #else
-    return false
-    #endif
-  }
-
   func scene(
     _ scene: UIScene,
     willConnectTo session: UISceneSession,
@@ -49,13 +41,11 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       return
     }
 
-    print("===", isAppClip)
-
     let window = UIWindow(windowScene: windowScence)
     self.window = window
     window.rootViewController = VinchyNavigationController(
       rootViewController: StoreAssembly.assemblyModule(
-        input: .init(mode: .normal(affilatedId: affilatedId)),
+        input: .init(mode: .normal(affilatedId: affilatedId), isAppClip: true),
         coordinator: Coordinator.shared, adFabricProtocol: nil))
     window.makeKeyAndVisible()
   }
