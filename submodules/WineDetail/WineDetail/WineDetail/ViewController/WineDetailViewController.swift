@@ -467,6 +467,10 @@ extension WineDetailViewController: ToolCollectionCellDelegate {
 
 extension WineDetailViewController: WineDetailViewControllerProtocol {
 
+  func showStatusAlert(viewModel: StatusAlertViewModel) {
+    interactor?.requestShowStatusAlert(viewModel: viewModel)
+  }
+
   func showAppClipDownloadFullApp() {
     if #available(iOS 14.0, *) {
       guard let scene = view.window?.windowScene else { return }

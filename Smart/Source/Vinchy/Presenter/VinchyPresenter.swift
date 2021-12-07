@@ -139,21 +139,22 @@ extension VinchyPresenter: VinchyPresenterProtocol {
   }
 
   func startShimmer() {
+    let sections: [VinchyViewControllerViewModel.FakeSection] = [
+      .stories(content: Array(repeating: FakeView.Content(), count: 10)),
+      .title(content: Array(repeating: FakeView.Content(), count: 1)),
+      .promo(content: Array(repeating: FakeView.Content(), count: 10)),
+      .title(content: Array(repeating: FakeView.Content(), count: 1)),
+      .big(content: Array(repeating: FakeView.Content(), count: 10)),
+      .title(content: Array(repeating: FakeView.Content(), count: 1)),
+      .promo(content: Array(repeating: FakeView.Content(), count: 10)),
+      .title(content: Array(repeating: FakeView.Content(), count: 1)),
+      .big(content: Array(repeating: FakeView.Content(), count: 10)),
+      .title(content: Array(repeating: FakeView.Content(), count: 1)),
+      .promo(content: Array(repeating: FakeView.Content(), count: 10)),
+    ]
     viewController?.updateUI(
       viewModel: VinchyViewControllerViewModel(
-        state: .fake(sections: [
-          .stories(content: Array(repeating: FakeView.Content(), count: 10)),
-          .title(content: Array(repeating: FakeView.Content(), count: 1)),
-          .promo(content: Array(repeating: FakeView.Content(), count: 10)),
-          .title(content: Array(repeating: FakeView.Content(), count: 1)),
-          .big(content: Array(repeating: FakeView.Content(), count: 10)),
-          .title(content: Array(repeating: FakeView.Content(), count: 1)),
-          .promo(content: Array(repeating: FakeView.Content(), count: 10)),
-          .title(content: Array(repeating: FakeView.Content(), count: 1)),
-          .big(content: Array(repeating: FakeView.Content(), count: 10)),
-          .title(content: Array(repeating: FakeView.Content(), count: 1)),
-          .promo(content: Array(repeating: FakeView.Content(), count: 10)),
-        ]),
+        state: .fake(sections: sections),
         leadingAddressButtonViewModel: .loading(text: localized("loading").firstLetterUppercased())))
   }
 

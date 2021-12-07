@@ -52,7 +52,7 @@ final class MoreBounceDecoratorView: UIView {
 
   // MARK: Private
 
-  private let label = PaddingLabel()
+  private let label = UILabel()
 }
 
 // MARK: Decoratable

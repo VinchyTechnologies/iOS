@@ -44,6 +44,9 @@ final class WineDetailRouter {
 // MARK: WineDetailRouterProtocol
 
 extension WineDetailRouter: WineDetailRouterProtocol {
+  func showStatusAlert(viewModel: StatusAlertViewModel) {
+    coordinator.showStatusAlert(viewModel: viewModel)
+  }
 
   func didTapShare(type: WineShareType) {
     coordinator.didTapShare(type: type)

@@ -53,7 +53,6 @@ public final class BottomPriceBarView: UIView, EpoxyableView {
     }
   }
 
-
   public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
     super.traitCollectionDidChange(previousTraitCollection)
     let blurEffect = UIBlurEffect(style: traitCollection.userInterfaceStyle == .dark ? .dark : .light)
@@ -94,9 +93,7 @@ public final class BottomPriceBarView: UIView, EpoxyableView {
     case spacer
   }
 
-
   private lazy var blurEffectView = UIVisualEffectView()
-
 
   private let hGroup = HGroup(
     style: .init(
@@ -108,7 +105,6 @@ public final class BottomPriceBarView: UIView, EpoxyableView {
     items: [])
 
   private var didSelect: ((Int) -> Void)?
-
 
   private func priceButton(text: String?) -> GroupItemModeling {
     GroupItem<Button>(

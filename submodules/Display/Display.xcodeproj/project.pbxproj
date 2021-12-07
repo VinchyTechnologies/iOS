@@ -52,7 +52,7 @@
 		CA53B12524E039F1009A0F85 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA53B12424E039F1009A0F85 /* Alertable.swift */; };
 		CA5B9019250FEF51006BC638 /* ScrollViewBounceDecorator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA5B9018250FEF51006BC638 /* ScrollViewBounceDecorator.swift */; };
 		CA7A87E324FEE1B200AAD10F /* Loadable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87E224FEE1B200AAD10F /* Loadable.swift */; };
-		CA7A87EA2502582C00AAD10F /* PaddingLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87E92502582C00AAD10F /* PaddingLabel.swift */; };
+		CA7A87EA2502582C00AAD10F /* UIEdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87E92502582C00AAD10F /* UIEdgeInsets.swift */; };
 		CA7A87EC25026FA700AAD10F /* LoadingCollectionFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87EB25026FA700AAD10F /* LoadingCollectionFooter.swift */; };
 		CA81987B25387CA80056A1C6 /* Gradient.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA81987A25387CA80056A1C6 /* Gradient.swift */; };
 		CA99E65B24F7D79B00C36BEE /* ActivityIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA99E65A24F7D79B00C36BEE /* ActivityIndicator.swift */; };
@@ -111,7 +111,7 @@
 		CA53B12424E039F1009A0F85 /* Alertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		CA5B9018250FEF51006BC638 /* ScrollViewBounceDecorator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScrollViewBounceDecorator.swift; sourceTree = "<group>"; };
 		CA7A87E224FEE1B200AAD10F /* Loadable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Loadable.swift; sourceTree = "<group>"; };
-		CA7A87E92502582C00AAD10F /* PaddingLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PaddingLabel.swift; sourceTree = "<group>"; };
+		CA7A87E92502582C00AAD10F /* UIEdgeInsets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIEdgeInsets.swift; sourceTree = "<group>"; };
 		CA7A87EB25026FA700AAD10F /* LoadingCollectionFooter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingCollectionFooter.swift; sourceTree = "<group>"; };
 		CA81987A25387CA80056A1C6 /* Gradient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gradient.swift; sourceTree = "<group>"; };
 		CA99E65A24F7D79B00C36BEE /* ActivityIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
@@ -224,6 +224,7 @@
 				CA53B12424E039F1009A0F85 /* Alertable.swift */,
 				CABDBA9524C31FAC00AD96D6 /* ASPageControl.swift */,
 				8A1587FF272F04B60002CA28 /* BottlesCollectionView.swift */,
+				8A9C7EA7275FA3AA00A5B694 /* BottomPriceBarView.swift */,
 				44A72593259230C600A7552B /* Button.swift */,
 				8A7D7922273D5675005F075A /* ContactUsRoutable.swift */,
 				8A1587F6272EFFC30002CA28 /* ContextMenu.swift */,
@@ -244,7 +245,6 @@
 				CA7A87EB25026FA700AAD10F /* LoadingCollectionFooter.swift */,
 				44DE6C1525DB9E980008695D /* Orientation.swift */,
 				8A2F30482671FA13002DE6C1 /* OverlayPresentationCenter.swift */,
-				CA7A87E92502582C00AAD10F /* PaddingLabel.swift */,
 				CE8D930F25BA2878004792C6 /* PlaceholderTextView.swift */,
 				CA5B9018250FEF51006BC638 /* ScrollViewBounceDecorator.swift */,
 				8AE95A3E27555D4B007F01CE /* SearchBar.swift */,
@@ -258,12 +258,12 @@
 				8A251E3726B0589600DAED2D /* Tutorials */,
 				8A0793E3269350AB000ACA2B /* UICollectionViewCompositionalLayout.swift */,
 				CA18220524C0F8CE00280DD4 /* UIColor.swift */,
+				CA7A87E92502582C00AAD10F /* UIEdgeInsets.swift */,
 				CA18220724C0FE2300280DD4 /* UIKitUtils.swift */,
 				8A10F65C270757EF003463B0 /* UIScrollView.swift */,
 				4404888C25D8390600019081 /* UITapGestureRecognizer.swift */,
 				CA18220324C0F88B00280DD4 /* VinchyNavigationController.swift */,
 				8A1587F8272F01130002CA28 /* WineBottleView.swift */,
-				8A9C7EA7275FA3AA00A5B694 /* BottomPriceBarView.swift */,
 			);
 			path = Source;
 			sourceTree = "<group>";
@@ -383,7 +383,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CA7A87EA2502582C00AAD10F /* PaddingLabel.swift in Sources */,
+				CA7A87EA2502582C00AAD10F /* UIEdgeInsets.swift in Sources */,
 				44DE6C1625DB9E980008695D /* Orientation.swift in Sources */,
 				CA53B12524E039F1009A0F85 /* Alertable.swift in Sources */,
 				8A158800272F04B60002CA28 /* BottlesCollectionView.swift in Sources */,

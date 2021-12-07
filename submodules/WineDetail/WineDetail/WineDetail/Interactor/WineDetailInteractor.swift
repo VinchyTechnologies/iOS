@@ -200,8 +200,13 @@ final class WineDetailInteractor {
 // MARK: WineDetailInteractorProtocol
 
 extension WineDetailInteractor: WineDetailInteractorProtocol {
+
   var contextMenuRouter: ActivityRoutable & WriteNoteRoutable {
     router
+  }
+
+  func requestShowStatusAlert(viewModel: StatusAlertViewModel) {
+    router.showStatusAlert(viewModel: viewModel)
   }
 
   func didTapShareContextMenu(wineID: Int64, sourceView: UIView) {

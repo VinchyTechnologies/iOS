@@ -5,4 +5,3 @@ ${BUILT_PRODUCTS_DIR}/EpoxyCore/EpoxyCore.framework
 ${BUILT_PRODUCTS_DIR}/EpoxyLayoutGroups/EpoxyLayoutGroups.framework
 ${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework
 ${BUILT_PRODUCTS_DIR}/FittedSheets/FittedSheets.framework
-${BUILT_PRODUCTS_DIR}/SPAlert/SPAlert.framework

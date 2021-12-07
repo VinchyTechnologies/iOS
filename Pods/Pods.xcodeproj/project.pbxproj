@@ -134,6 +134,7 @@
 		0C5F9017F5DB563BC77D5B7A21EDCD39 /* _Sandboxer.h in Headers */ = {isa = PBXBuildFile; fileRef = F2BA99565D9062AA4762651AFDD77830 /* _Sandboxer.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0C801059BA3BD7A7F2D5730A6F69723F /* RCNConfigFetch.h in Headers */ = {isa = PBXBuildFile; fileRef = F9DD3F141BE9B712DF8CA1A6DE7127ED /* RCNConfigFetch.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		0D6796FD39E1C52B695CC9F6FAD952AC /* icon_file_type_avi@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8A20F6785CCC472D4A3B36AFF3DCCA60 /* icon_file_type_avi@3x.png */; };
+		0D72A7B9147B8007FA0D1CAB0C66D69C /* Pods-VinchyAppClip-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BBE6F161C0A328C33EC7D41FD80B54D /* Pods-VinchyAppClip-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0DB660E534D5CD5AD1E4846BC47B3EA3 /* icon_file_type_java.png in Resources */ = {isa = PBXBuildFile; fileRef = 96AA5ED14D0C2884021A1C55225E3BFF /* icon_file_type_java.png */; };
 		0DCEF2A34CAC23296CEAD92B41DA6D06 /* _GPBWellKnownTypes.h in Headers */ = {isa = PBXBuildFile; fileRef = 902DE80E66624586BB52BADEA603EBFC /* _GPBWellKnownTypes.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		0DD5FC006B63E1C77D8B34ED521A14FE /* FIRDLDefaultRetrievalProcessV2.h in Headers */ = {isa = PBXBuildFile; fileRef = 0FC8C0EBB471FB2BA84C75964201770A /* FIRDLDefaultRetrievalProcessV2.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -264,7 +265,6 @@
 		2E4A914423BA1B263C96C3BBC43E2245 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B4E87CD9EC6D61393FE435EF2546D670 /* UIKit.framework */; };
 		2E4ADC130B4E63512BC6B38C79DB26E9 /* GULUserDefaults.h in Headers */ = {isa = PBXBuildFile; fileRef = AA215C32ACC0467F12397C267DA8A2F0 /* GULUserDefaults.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		2E931216B45BFE4E20ABD84053B08862 /* DisplayRespondingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 395AAF0903581FE564A0445F1DDEB994 /* DisplayRespondingView.swift */; };
-		2ED505642E808064E60A81B56AA8BDC4 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0631173F2BD35103758061DA656B998 /* Foundation.framework */; };
 		2EED28559ACF6778C3B93AC5D45EC1B0 /* FIRFirebaseUserAgent.m in Sources */ = {isa = PBXBuildFile; fileRef = 4FA03216B5A82BB2874C41EFF185046C /* FIRFirebaseUserAgent.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		2EFDEA5B1324E3F4169C320789FFC7E3 /* FBLPromise+Do.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = 4934A96009AA78E605B4DE51B999AC4A /* FBLPromise+Do.h */; };
 		2F1E206458F42C29262F88BE49AB1E5B /* FBLPromiseError.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = B9EC93DE570ADCFC605E9A16A65983EB /* FBLPromiseError.h */; };
@@ -285,6 +285,7 @@
 		3242F63ACE95FDB63E82480FDC55B7EC /* FIRComponentContainerInternal.h in Headers */ = {isa = PBXBuildFile; fileRef = CCC168A2DE5BC57B82021A2D449CD616 /* FIRComponentContainerInternal.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		328A76599CE8981B0F583B907461189F /* GDTCOREvent+GDTCCTSupport.h in Headers */ = {isa = PBXBuildFile; fileRef = 9BFAFBD8A07C9D0D17423E23377B3F90 /* GDTCOREvent+GDTCCTSupport.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		32B6D5E4F0FCEB804863B9E8ACB41BFF /* GDTCORTransformer.m in Sources */ = {isa = PBXBuildFile; fileRef = C6276C6269B5CE509C3D132FB8D167C2 /* GDTCORTransformer.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
+		32DF8B520F01562138AB081E0169D010 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0631173F2BD35103758061DA656B998 /* Foundation.framework */; };
 		334E75F690E961C5CA544DF73605BF34 /* cct.nanopb.h in Headers */ = {isa = PBXBuildFile; fileRef = A73F08A4B1092AC248CA3763FFF94A6D /* cct.nanopb.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		339CC5CCA8F7F2BFB8B9CD4160909EA9 /* FIRDynamicLinkComponentsKeyProvider.m in Sources */ = {isa = PBXBuildFile; fileRef = 996383EE0CCEDD601ED5050D6D5A59BE /* FIRDynamicLinkComponentsKeyProvider.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		33ECF5AA283728261338F882B9FDA580 /* CollectionViewDataSource.swift in Sources */ = {isa = PBXBuildFile; fileRef = FB8E85125B886CC520FF71D314B54220 /* CollectionViewDataSource.swift */; };
@@ -374,7 +375,6 @@
 		49728E4717266472526C94056260C99C /* icon_file_type_txt@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 470B5E15EB5A8B41E176214E401B6835 /* icon_file_type_txt@3x.png */; };
 		49EE23D922ECE5483E70D21FF7697801 /* EpoxyLogger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 33779CCF6BBDDE32F0837ECDA6E84141 /* EpoxyLogger.swift */; };
 		4A80BA5735330D5B2A7A2A20CB1F7506 /* NSURLSession+GULPromises.h in Headers */ = {isa = PBXBuildFile; fileRef = 3EFDC88E08453CCA3FD381FCFB0FC6D8 /* NSURLSession+GULPromises.h */; settings = {ATTRIBUTES = (Project, ); }; };
-		4B1831456F95EB7E74F768CC22E97C5C /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0631173F2BD35103758061DA656B998 /* Foundation.framework */; };
 		4B2F2C0B6273994402C97A052DF36DC6 /* icon_file_type_mov.png in Resources */ = {isa = PBXBuildFile; fileRef = 02DF67F9053F59B99E6CC5E73D4E5202 /* icon_file_type_mov.png */; };
 		4B4A76C10DA774203B4AFCDA61FBB56C /* ViewDifferentiatorProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = F8578EDAAA22021B19B62CB86951DE5A /* ViewDifferentiatorProviding.swift */; };
 		4B62C7737348210405D94C57F17525DC /* GULRuntimeClassSnapshot.h in Headers */ = {isa = PBXBuildFile; fileRef = F19083A72315C21EB7DE6E8839A650F2 /* GULRuntimeClassSnapshot.h */; settings = {ATTRIBUTES = (Project, ); }; };
@@ -520,7 +520,6 @@
 		6BD792521C2EBBF79BF249C2E5D7265B /* GDTCOREvent+GDTCCTSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = B39E6271AB59027B1391ECD4D306BFE6 /* GDTCOREvent+GDTCCTSupport.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		6C1CDA9145B0C2099FE3F98C0C0695A2 /* CollectionViewScrollToItemHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = E52B4059124DB678017F1BEC6FD2E4BA /* CollectionViewScrollToItemHelper.swift */; };
 		6CAE63B822FEE2A31A94A6FC377124F0 /* FirebaseCoreDiagnostics-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = A12C5087077C93EF1816B099680DC44A /* FirebaseCoreDiagnostics-dummy.m */; };
-		6CB337D413702F86EF47B32C114FB252 /* Pods-VinchyAppClip-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 7BBE6F161C0A328C33EC7D41FD80B54D /* Pods-VinchyAppClip-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CBE05E0F9A90D4FF3D33953C7C9B24E /* GULNetworkLoggerProtocol.h in Headers */ = {isa = PBXBuildFile; fileRef = E69814187513B8C48F0AA545929B6D70 /* GULNetworkLoggerProtocol.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6CBF46072142C70586E9DD20FBEEA18F /* FIRInstallationsIDController.m in Sources */ = {isa = PBXBuildFile; fileRef = 07C4AFDEEBFC0507AE3B88C59180CE49 /* FIRInstallationsIDController.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		6CDFD94C67260B375BF0AEFF95C0B138 /* icon_file_type_md.png in Resources */ = {isa = PBXBuildFile; fileRef = 1F9FB620C4FF35E626C93B96DBA87917 /* icon_file_type_md.png */; };
@@ -610,6 +609,7 @@
 		814E5ECE131D88B8F79ECF68F722E787 /* FBLPromise+Always.m in Sources */ = {isa = PBXBuildFile; fileRef = 190D4FA107E4B3B982CE5CCCDE12A660 /* FBLPromise+Always.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		81AED3E70AFE861DD56668CB407EDCD9 /* icon_file_type_fla@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2A98F0C14D255F2972FF142D885FC1BD /* icon_file_type_fla@2x.png */; };
 		822CDBA2919894245D9454EBB8776843 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0631173F2BD35103758061DA656B998 /* Foundation.framework */; };
+		825ED1CE895E80D99002F9071618769A /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0631173F2BD35103758061DA656B998 /* Foundation.framework */; };
 		8290E913BA87BC9B17DF027B30D1935D /* GULNetworkURLSession.m in Sources */ = {isa = PBXBuildFile; fileRef = A5FD8AB254537FBC7C51B8A8E68E956F /* GULNetworkURLSession.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		82C3A64A2C47807B545846BFE01E5772 /* EpoxyCore-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 48608C7B0E2F3AC994E1CC5C6A5B6375 /* EpoxyCore-dummy.m */; };
 		82C5DE597BA2E6C60166E86C74DD2833 /* BarWrapperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8E53B39E92B579C465B4B885477E8131 /* BarWrapperView.swift */; };
@@ -688,6 +688,7 @@
 		96842DE931339CC8321C968D6AF7E534 /* icon_file_type_bmp.png in Resources */ = {isa = PBXBuildFile; fileRef = 3DE252E64C58BD491D409B342CCBAE91 /* icon_file_type_bmp.png */; };
 		968556D52BFABFB6585CA9D17E9581E4 /* icon_file_type_pdf.png in Resources */ = {isa = PBXBuildFile; fileRef = 1A18BE2E583D18A57449DA37B838C7DF /* icon_file_type_pdf.png */; };
 		97009FA204835DB796542B0089F0253F /* icon_file_type_folder_not_empty.png in Resources */ = {isa = PBXBuildFile; fileRef = D153D1F8B42590E1F9CC195727E40ABD /* icon_file_type_folder_not_empty.png */; };
+		97B3492FF650C48C87D2E5F09BEBE22B /* Pods-WineDetail-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AC4F88011AF566FF4647E280E5254047 /* Pods-WineDetail-dummy.m */; };
 		97E96C2C56562381003DA2FD9BEA2E1B /* HorizontalAlignmentProviding.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6E7F342591A1C204349AF05F8E5A7583 /* HorizontalAlignmentProviding.swift */; };
 		98391D12CFC9D89C69A55CDC575FB3D2 /* FIRCoreDiagnostics.h in Headers */ = {isa = PBXBuildFile; fileRef = 9F608DFA5AA920E37B190E7C0501CD31 /* FIRCoreDiagnostics.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		987034A126B3C94518028BADA454865F /* icon_file_type_folder_empty@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = D612D96D8692ED08B7C7D459CC7958C2 /* icon_file_type_folder_empty@3x.png */; };
@@ -719,6 +720,7 @@
 		9CBBCF4584C458CF699704A0C03EF654 /* Group.swift in Sources */ = {isa = PBXBuildFile; fileRef = F31D693A16D157D3AA47639C0BCD00BD /* Group.swift */; };
 		9CEB529AF97C17D17783CC507C007641 /* _SourceContext.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 59CD0E7B18D3DC3DEF9BEAAF9903FA22 /* _SourceContext.pbobjc.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9D1D8751B51347126D04C67E2E1FDE97 /* GINArgument.h in Headers */ = {isa = PBXBuildFile; fileRef = 13774E5BF0E3068583296271F3879440 /* GINArgument.h */; settings = {ATTRIBUTES = (Project, ); }; };
+		9D25EABC8E393010CDEB604FE6DC821A /* Pods-WineDetail-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3CCF24FEA4344B21A17642CBF45E82AE /* Pods-WineDetail-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		9D51558956D335C34F7704759B1AC733 /* icon_file_type_ppt@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = F7545D3C7A3DA27785878F2C8FC54580 /* icon_file_type_ppt@2x.png */; };
 		9E3229C306D820E3AB63EB804AA31178 /* FBLPromise+Reduce.h in Headers */ = {isa = PBXBuildFile; fileRef = 8BB135BFA45D638CC56B6EA584ABF892 /* FBLPromise+Reduce.h */; };
 		9E715168121B1E73AD5E6C1363A19E6E /* EpoxyBars-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 6190BC427B81EA144B440AAFEC991D3C /* EpoxyBars-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -789,7 +791,6 @@
 		ACA3B01BC61EA1E4C91C889BEB2E298E /* ViewEpoxyModeled.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E6262A8615E0F4FE6E8BCDD6ECDE629 /* ViewEpoxyModeled.swift */; };
 		ACC82AD7486A18D5C459436B17B4DBEF /* icon_file_type_css.png in Resources */ = {isa = PBXBuildFile; fileRef = 14505A3C5301CB66E409EA8016097F1C /* icon_file_type_css.png */; };
 		ACEB438B7C4E3F1C2C2F1D0B3740ACE6 /* SectionModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2E91DB5D1C845F7E86BC497641054072 /* SectionModelBuilder.swift */; };
-		AD2045F75C2C9ED552FEA3F74F4F5271 /* Pods-WineDetail-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = AC4F88011AF566FF4647E280E5254047 /* Pods-WineDetail-dummy.m */; };
 		AD933E38E4735635B7A0B79DD94C2AEB /* FirebaseRemoteConfig-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3AD53D2FA7214CECFED3343A7EA97FC0 /* FirebaseRemoteConfig-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		ADAC3A56DCFF825CBFD1CFBB44F1074F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D0631173F2BD35103758061DA656B998 /* Foundation.framework */; };
 		ADB3D68F1DEB9F747A6ABDF3ACC8C68B /* SheetSize.swift in Sources */ = {isa = PBXBuildFile; fileRef = D609CB5ECCDED7DBBE0AB39208648790 /* SheetSize.swift */; };
@@ -861,7 +862,6 @@
 		BCCBDAE8AA22C1695B09595B48B4A6FF /* Pods-VinchyUI-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 0583EA8768A504953ECC09F851302BE4 /* Pods-VinchyUI-dummy.m */; };
 		BCE20E3F10C00AB94FE0DA4F48BC6FF4 /* _Api.pbobjc.m in Sources */ = {isa = PBXBuildFile; fileRef = D9A8BE3CB91AE5B9DF8369026D2DF052 /* _Api.pbobjc.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
 		BCEE50F34F2F11BD0F462CF3223170AA /* _Empty.pbobjc.h in Headers */ = {isa = PBXBuildFile; fileRef = 5634FFEC7B81DDE8E02B406B81B28E21 /* _Empty.pbobjc.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		BCF75390B19A3B24C6D65EFA77221308 /* Pods-VinchyAppClip-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 150D95A27D39B2B4184C7201D81FDD53 /* Pods-VinchyAppClip-dummy.m */; };
 		BD395FC638D15F25984E6C4FBEBCED26 /* _GPBMessage+CocoaDebug.h in Headers */ = {isa = PBXBuildFile; fileRef = B20B1F92E87BB48183767BA13697CA37 /* _GPBMessage+CocoaDebug.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		BD57B383E4EE5814A33B43FA400DFF05 /* ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8FF09340B3591C53B070679040CE3BF3 /* ItemModel.swift */; };
 		BD69971D8471D01409B3048DCB07880C /* pb_encode.c in Sources */ = {isa = PBXBuildFile; fileRef = 4560727ABF194E8E93DF47FAF7338D3E /* pb_encode.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks -fno-objc-arc -w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -1024,6 +1024,7 @@
 		EA18BA1BF1573D2D3EFDF3FE2C77A399 /* icon_file_type_gif@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = BAD19549CB33B37D9C8AED0B8A5B5804 /* icon_file_type_gif@3x.png */; };
 		EA2B85B7EAF0F6298638FB7FD84F1CF8 /* icon_file_type_7z@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4F3E103D4F6B0E60D551E34453B711CB /* icon_file_type_7z@2x.png */; };
 		EAF6D050964A455596263303EF236A10 /* icon_file_type_jar.png in Resources */ = {isa = PBXBuildFile; fileRef = 815AC7C6C787E123865A3868D442DDDC /* icon_file_type_jar.png */; };
+		EB037B60C96A668ECFCE146D2FA800C5 /* Pods-VinchyAppClip-dummy.m in Sources */ = {isa = PBXBuildFile; fileRef = 150D95A27D39B2B4184C7201D81FDD53 /* Pods-VinchyAppClip-dummy.m */; };
 		EB10F6C0708CD471EE473E490908F537 /* FirebaseInstallations-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = CAD8021F6D56C5E5D7BEEC18EEBD4247 /* FirebaseInstallations-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		EB12E8C76568ACC18E1EDEF8C1FF40E5 /* icon_file_type_xls@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = C13E12C7FE432D4533DABE0E223186C7 /* icon_file_type_xls@3x.png */; };
 		EB2B93204FE56107C040645E35032C20 /* AnyItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 69842DD80DAA68626F9361899430877F /* AnyItemModel.swift */; };
@@ -1101,7 +1102,6 @@
 		FC3599B7C85CD8DAABF4BB6912478383 /* GDTCORStorageEventSelector.h in Headers */ = {isa = PBXBuildFile; fileRef = 4E622C4A9D398F32501AF2ECC1FF8980 /* GDTCORStorageEventSelector.h */; settings = {ATTRIBUTES = (Project, ); }; };
 		FC59BA9CE2066989855043196492FA85 /* icon_file_type_tif.png in Resources */ = {isa = PBXBuildFile; fileRef = AF78543D40783FBB4043733D28F44417 /* icon_file_type_tif.png */; };
 		FC7A55ED315A493B2822EC630C617668 /* ItemModelBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 11CE032692418459845350C42ECE67F2 /* ItemModelBuilder.swift */; };
-		FCC77D2629AB6BA79094488EE69BAB5C /* Pods-WineDetail-umbrella.h in Headers */ = {isa = PBXBuildFile; fileRef = 3CCF24FEA4344B21A17642CBF45E82AE /* Pods-WineDetail-umbrella.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		FCE5DB5147DDDB215A1E44259B44E4B1 /* EpoxyableView+ItemModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EE39A47DA1FF19E6DED0B3C5862B3A3D /* EpoxyableView+ItemModel.swift */; };
 		FD1E9114D326C97F9555E8627CAB1694 /* FBLPromise+Testing.h in Copy . Public Headers */ = {isa = PBXBuildFile; fileRef = D584B9E521ED5C13C95B1CDD436F038C /* FBLPromise+Testing.h */; };
 		FD47D3871B47CA8E5B5514F878B55A8E /* FBLPromise+Retry.m in Sources */ = {isa = PBXBuildFile; fileRef = F9A8124329E6435897D0FB5A91D83549 /* FBLPromise+Retry.m */; settings = {COMPILER_FLAGS = "-w -Xanalyzer -analyzer-disable-all-checks"; }; };
@@ -1250,12 +1250,12 @@
 			remoteGlobalIDString = B53D977A951AFC38B21751B706C1DF83;
 			remoteInfo = GoogleAppMeasurement;
 		};
-		219E7A56B866770F2E14660BF47EA6DD /* PBXContainerItemProxy */ = {
+		231058148E0B435C6D96C95A2ACF5AE2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = FD44322E8726962379CEC9DE8B73EB12;
-			remoteInfo = EpoxyCollectionView;
+			remoteGlobalIDString = D4F8239FB329387A8476B964D92D92E7;
+			remoteInfo = FSPagerView;
 		};
 		232CCCA05D48927048E7F08A3AA7C51E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1277,6 +1277,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 87803597EB3F20FC46472B85392EC4FD;
 			remoteInfo = FirebaseInstallations;
+		};
+		267057F2AADDA83F7FAECAB6EC691783 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DF5272089565AC514067F7C24269AE56;
+			remoteInfo = EpoxyCore;
 		};
 		283E0CC2BCA54A678C5FD37BA7CCEBA8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1369,6 +1376,20 @@
 			remoteGlobalIDString = 51471EE35F2E9E19E51A74944E5ABB7F;
 			remoteInfo = FirebaseRemoteConfig;
 		};
+		382DE4CCFD6846CF0CC5B1A20AF854D5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FD44322E8726962379CEC9DE8B73EB12;
+			remoteInfo = EpoxyCollectionView;
+		};
+		396659C093D3D4B22DE611102471D503 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 92E41359403FE00C14D7DDE24E8E9C1F;
+			remoteInfo = EpoxyLayoutGroups;
+		};
 		3B8AF00B39E477B0C6F93FA22D817821 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -1425,26 +1446,12 @@
 			remoteGlobalIDString = 0A2E6BA6D5360D619D7CABED3467AA69;
 			remoteInfo = CocoaDebug;
 		};
-		5EE7E4971B170ECD845929C18459116D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DF5272089565AC514067F7C24269AE56;
-			remoteInfo = EpoxyCore;
-		};
 		5FD3C4989389EC3B009F4687F17FF404 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 620E05868772C10B4920DC7E324F2C87;
 			remoteInfo = FirebaseCoreDiagnostics;
-		};
-		5FF2D8885764340305D457FF76EE3A86 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D4F8239FB329387A8476B964D92D92E7;
-			remoteInfo = FSPagerView;
 		};
 		64D264A5A4A9D1E0523C2C7014A58FE6 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1495,6 +1502,13 @@
 			remoteGlobalIDString = 87803597EB3F20FC46472B85392EC4FD;
 			remoteInfo = FirebaseInstallations;
 		};
+		737B4B98AE33D651067F1E29F5C7B7CF /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = DF5272089565AC514067F7C24269AE56;
+			remoteInfo = EpoxyCore;
+		};
 		75993D2F403684C74931470EF10ABF4A /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
@@ -1502,12 +1516,33 @@
 			remoteGlobalIDString = 2BBF7206D7FAC92C82A042A99C4A98F8;
 			remoteInfo = PromisesObjC;
 		};
+		7887CA1AE8A34C8FE56422987E180ECA /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 52B60EC2A583F24ACBB69C113F5488B9;
+			remoteInfo = SwiftLint;
+		};
+		7C8B4C3403C1C2DCF8AD24EBC11B1097 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B7F718B320B5FE8B8536C0C6382FD76F;
+			remoteInfo = EpoxyBars;
+		};
 		7D335F40DCA891E7FEB50C9F5EA406CC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = E29C60AABB60DF839F77B3B1B61393A6;
 			remoteInfo = "Pods-Smart";
+		};
+		7F01C14A8ADE094B8A0BFF8AD3330F13 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B7F718B320B5FE8B8536C0C6382FD76F;
+			remoteInfo = EpoxyBars;
 		};
 		800531995E3720469E4254CE7C6DCFB5 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1522,13 +1557,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = 4402AFF83DBDC4DD07E198685FDC2DF2;
 			remoteInfo = FirebaseCore;
-		};
-		865945F661A77BEFC3971F0674C5E4B1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 52B60EC2A583F24ACBB69C113F5488B9;
-			remoteInfo = SwiftLint;
 		};
 		87D3637467A847CA3F3518EEE0719B59 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1565,26 +1593,12 @@
 			remoteGlobalIDString = 92E41359403FE00C14D7DDE24E8E9C1F;
 			remoteInfo = EpoxyLayoutGroups;
 		};
-		8D1EEE755F4DDC6367C66A0D40C1A045 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = D4F8239FB329387A8476B964D92D92E7;
-			remoteInfo = FSPagerView;
-		};
 		94EE7C72588225B00B84EB202D55F53C /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = FEA3B3A570634836C0457F3D7CEF1699;
 			remoteInfo = "Google-Mobile-Ads-SDK";
-		};
-		964614462EB384FB331D12CA3B537F21 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B7F718B320B5FE8B8536C0C6382FD76F;
-			remoteInfo = EpoxyBars;
 		};
 		99CB8DF536FDD10A0B8166E932AAA5FC /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1607,40 +1621,19 @@
 			remoteGlobalIDString = 620E05868772C10B4920DC7E324F2C87;
 			remoteInfo = FirebaseCoreDiagnostics;
 		};
-		A0417C492AAE92E747E6AF00C953891E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = FEA3B3A570634836C0457F3D7CEF1699;
-			remoteInfo = "Google-Mobile-Ads-SDK";
-		};
-		A2512F711EB86BF69F6F3FBBB6965AA4 /* PBXContainerItemProxy */ = {
+		9DFF4743E17F9A494BB124E7E9F2D701 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = FD44322E8726962379CEC9DE8B73EB12;
 			remoteInfo = EpoxyCollectionView;
 		};
-		A623DD8C72AA840977C596C1CB2176A1 /* PBXContainerItemProxy */ = {
+		A0417C492AAE92E747E6AF00C953891E /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = B4652B2924FE3B941944F77DA8477ABD;
-			remoteInfo = SPAlert;
-		};
-		B7DDDB9005D52AADF901F5C7F954547E /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 92E41359403FE00C14D7DDE24E8E9C1F;
-			remoteInfo = EpoxyLayoutGroups;
-		};
-		B9680F1F944BC3CEB701853FDADF8722 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B7F718B320B5FE8B8536C0C6382FD76F;
-			remoteInfo = EpoxyBars;
+			remoteGlobalIDString = FEA3B3A570634836C0457F3D7CEF1699;
+			remoteInfo = "Google-Mobile-Ads-SDK";
 		};
 		BD5DA4D145071D30CB410CB6E17B44C2 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1662,6 +1655,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 4402AFF83DBDC4DD07E198685FDC2DF2;
 			remoteInfo = FirebaseCore;
+		};
+		C151E30AC51CBD7C5D03F2E2B37BE78A /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D4F8239FB329387A8476B964D92D92E7;
+			remoteInfo = FSPagerView;
 		};
 		C227A031F3F54DDEFFC4F73C2ADB5E1B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1698,26 +1698,12 @@
 			remoteGlobalIDString = 8F68D031908A0059566798048C48F776;
 			remoteInfo = FirebaseABTesting;
 		};
-		D19A132E334AB34BEE5688DB9177976A /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = B4652B2924FE3B941944F77DA8477ABD;
-			remoteInfo = SPAlert;
-		};
-		D50A832E62F0B08468B202C1DBB78326 /* PBXContainerItemProxy */ = {
+		DB6B7AD07DE4AFFB64D349EAB3220D52 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = B71C614CBF9B1B690FE941C4DF44D040;
 			remoteInfo = FittedSheets;
-		};
-		D759B228FC82F248341AC7342390A525 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = DF5272089565AC514067F7C24269AE56;
-			remoteInfo = EpoxyCore;
 		};
 		E0B6CB0CCF3F5900E95184CEA3E8D0E8 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1760,13 +1746,6 @@
 			proxyType = 1;
 			remoteGlobalIDString = FD44322E8726962379CEC9DE8B73EB12;
 			remoteInfo = EpoxyCollectionView;
-		};
-		E634814434CF3B4C27A74E4E4B4F094B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 92E41359403FE00C14D7DDE24E8E9C1F;
-			remoteInfo = EpoxyLayoutGroups;
 		};
 		E915B1E4A0EAC8600B0485320481740B /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -1823,6 +1802,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 4402AFF83DBDC4DD07E198685FDC2DF2;
 			remoteInfo = FirebaseCore;
+		};
+		F62FB9FA8176674DE0F60FFABF069810 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BFDFE7DC352907FC980B868725387E98 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 92E41359403FE00C14D7DDE24E8E9C1F;
+			remoteInfo = EpoxyLayoutGroups;
 		};
 		FA0F846FEC5D7BE1BEC842E4ACD00798 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
@@ -3164,14 +3150,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		490EABECFE4E1705AE6837A44D8E9671 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				2ED505642E808064E60A81B56AA8BDC4 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		4AAB9688CC00229B5EDCCBE836AFB799 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -3185,14 +3163,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				E137A49585796C6FFA61ED81CA1907D6 /* Foundation.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		5C5EA04CE35A2539481D01885EAAC6B5 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				4B1831456F95EB7E74F768CC22E97C5C /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3221,11 +3191,27 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		6936AD937E8D3ECDD394C799859ED68E /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				32DF8B520F01562138AB081E0169D010 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		6DAF27CBE274196B94DF53CD7ECB24FD /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				BEB816B992F5C0C818B40EAA075F5DAE /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		881AA0183212EA1D1910FA90AA43B8F3 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				825ED1CE895E80D99002F9071618769A /* Foundation.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5312,14 +5298,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		11F09D6DE87829503D6D111E2490E888 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				FCC77D2629AB6BA79094488EE69BAB5C /* Pods-WineDetail-umbrella.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		1B3F1B07946C9CB737A5CD8B0EEF79B2 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -5677,6 +5655,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		CF83099FAE4251F5F6EBB7EA3E72C4E9 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				9D25EABC8E393010CDEB604FE6DC821A /* Pods-WineDetail-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		CF9A5BAED0E333E85855B11A9E5DF571 /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -5698,6 +5684,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				25416222E60F9E6D91B054154704FDBA /* Pods-Smart-umbrella.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D608E10A7CFEABAC914CA9BB1C126A48 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				0D72A7B9147B8007FA0D1CAB0C66D69C /* Pods-VinchyAppClip-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5740,14 +5734,6 @@
 				DE711DA24CFC3AD8D782F575624CB4E4 /* FIROptions.h in Headers */,
 				4301D6085F73A8A4DF54AD5087CC9C3B /* FIROptionsInternal.h in Headers */,
 				C6F40A8BDB35847F0DB7868DB711BFE8 /* FIRVersion.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		F39FC0BFC6C6717CBBBD10EE9F272251 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				6CB337D413702F86EF47B32C114FB252 /* Pods-VinchyAppClip-umbrella.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -5870,22 +5856,21 @@
 /* Begin PBXNativeTarget section */
 		03928631FBEE5A3F03F83281A264C5F2 /* Pods-WineDetail */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 37B2F209B58A8061FCE7D34427A9B456 /* Build configuration list for PBXNativeTarget "Pods-WineDetail" */;
+			buildConfigurationList = 3112E581A7D471ED08FC3DD2ED3BEECE /* Build configuration list for PBXNativeTarget "Pods-WineDetail" */;
 			buildPhases = (
-				11F09D6DE87829503D6D111E2490E888 /* Headers */,
-				975147D25F75E0D522E7DB0DD189CB2B /* Sources */,
-				490EABECFE4E1705AE6837A44D8E9671 /* Frameworks */,
-				3E81E826962C9138B7F9B26291C9DC4C /* Resources */,
+				CF83099FAE4251F5F6EBB7EA3E72C4E9 /* Headers */,
+				A18F85E3F1DE1AC39B6019B0963021E6 /* Sources */,
+				881AA0183212EA1D1910FA90AA43B8F3 /* Frameworks */,
+				9A64B640ABAE4CB2606039DEE3872ECF /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				62D3AD3B8A457C54D37E52BB317418E4 /* PBXTargetDependency */,
-				81E5267D4F9CAF6043599D55773BBA7A /* PBXTargetDependency */,
-				1603128696696E10CF73C61CF722A31E /* PBXTargetDependency */,
-				DBBD394BD278BB25BFC1441468A14A46 /* PBXTargetDependency */,
-				C6B75272BB01DF38DEC9DB0F50AD3324 /* PBXTargetDependency */,
-				AECBD074A77E5BC95B652F3FBD2B30D7 /* PBXTargetDependency */,
+				ECE2571C5FEA10E7079A0736703C6BAF /* PBXTargetDependency */,
+				FC9FE150203C05B0AC6794D2FE313FDB /* PBXTargetDependency */,
+				E0EF2DCEA9BB2B7EB428A1D269D92C4D /* PBXTargetDependency */,
+				B51759D93139B931E1A1C3B879166CEC /* PBXTargetDependency */,
+				3351BDE70CBB434F26A9F140E534E9B7 /* PBXTargetDependency */,
 			);
 			name = "Pods-WineDetail";
 			productName = Pods_WineDetail;
@@ -6307,24 +6292,23 @@
 		};
 		C548545664AFAD7DCB2DAC7BD6E76D85 /* Pods-VinchyAppClip */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9259B33F7CD49D92F143824420BB9515 /* Build configuration list for PBXNativeTarget "Pods-VinchyAppClip" */;
+			buildConfigurationList = 763489F2ED29AB6DC3EB424B451B9294 /* Build configuration list for PBXNativeTarget "Pods-VinchyAppClip" */;
 			buildPhases = (
-				F39FC0BFC6C6717CBBBD10EE9F272251 /* Headers */,
-				F2A158EA9AB473DE83C36F11F7E3DC57 /* Sources */,
-				5C5EA04CE35A2539481D01885EAAC6B5 /* Frameworks */,
-				3A606031C691C33269A706080E8DF75B /* Resources */,
+				D608E10A7CFEABAC914CA9BB1C126A48 /* Headers */,
+				622AF05858BE08D47CD80DBFA31D7333 /* Sources */,
+				6936AD937E8D3ECDD394C799859ED68E /* Frameworks */,
+				30C7F569D690C48A8C76385FC330620E /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				00C456F572AD8F97B8CDEEC54D9FA4FA /* PBXTargetDependency */,
-				CFC93AD93E3BB7987336ED5CE194C26E /* PBXTargetDependency */,
-				8D420616EED44D331F87C7FB9A58943A /* PBXTargetDependency */,
-				C57788BF4729CAFEAEB1AA5C0A45291B /* PBXTargetDependency */,
-				02871BB2C2D7E6BAFE6989D4A7E50116 /* PBXTargetDependency */,
-				F32FE09B8591A305A9B3487F048BE528 /* PBXTargetDependency */,
-				D01658AFE90B862F4D660ADD4532F2C8 /* PBXTargetDependency */,
-				E3E307B5B265E95312C6820BA4B5AF7F /* PBXTargetDependency */,
+				6F66F88CA9D5B9DDB8F2FD91638C15C9 /* PBXTargetDependency */,
+				2E08FF854D1700A9B13CD49BB0635EEB /* PBXTargetDependency */,
+				133E519ECCDCF5BD821417830EE13F8A /* PBXTargetDependency */,
+				CEB0D20311399BB3786ADE4263306356 /* PBXTargetDependency */,
+				A794BFCD898B0A9E3C866064AD8B1AD2 /* PBXTargetDependency */,
+				712E2715A1ABA98246D822098071AAC9 /* PBXTargetDependency */,
+				BDA1940C1FBFB6F81A5AB0E664F00A8E /* PBXTargetDependency */,
 			);
 			name = "Pods-VinchyAppClip";
 			productName = Pods_VinchyAppClip;
@@ -6613,6 +6597,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		30C7F569D690C48A8C76385FC330620E /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		399C2883CE99F829A70C4B780DB85EED /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -6621,20 +6612,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		3A5A6EEC0CE7F1920B16D9339D73F3B4 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3A606031C691C33269A706080E8DF75B /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		3E81E826962C9138B7F9B26291C9DC4C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -6733,6 +6710,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		961A10804A826B86003CFCCC92EF37E9 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		9A64B640ABAE4CB2606039DEE3872ECF /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -7426,6 +7410,14 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		622AF05858BE08D47CD80DBFA31D7333 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				EB037B60C96A668ECFCE146D2FA800C5 /* Pods-VinchyAppClip-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		7CC6A1BF9DF6098CC13C01270D43FB62 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -7481,14 +7473,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		975147D25F75E0D522E7DB0DD189CB2B /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				AD2045F75C2C9ED552FEA3F74F4F5271 /* Pods-WineDetail-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		9A94B95F2B60F00E40D33EE99C6AFF0D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -7512,6 +7496,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				BCCBDAE8AA22C1695B09595B48B4A6FF /* Pods-VinchyUI-dummy.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		A18F85E3F1DE1AC39B6019B0963021E6 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				97B3492FF650C48C87D2E5F09BEBE22B /* Pods-WineDetail-dummy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -7643,14 +7635,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		F2A158EA9AB473DE83C36F11F7E3DC57 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				BCF75390B19A3B24C6D65EFA77221308 /* Pods-VinchyAppClip-dummy.m in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		FFA0F8298836C4FEAC6D87A7D047B8BC /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -7674,23 +7658,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		00C456F572AD8F97B8CDEEC54D9FA4FA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = EpoxyBars;
-			target = B7F718B320B5FE8B8536C0C6382FD76F /* EpoxyBars */;
-			targetProxy = 964614462EB384FB331D12CA3B537F21 /* PBXContainerItemProxy */;
-		};
 		01410BA4D4D8FE425C0CC1043833F668 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = FirebaseCore;
 			target = 4402AFF83DBDC4DD07E198685FDC2DF2 /* FirebaseCore */;
 			targetProxy = E3A5540A15786986B6807F7B02C8BE40 /* PBXContainerItemProxy */;
-		};
-		02871BB2C2D7E6BAFE6989D4A7E50116 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = FSPagerView;
-			target = D4F8239FB329387A8476B964D92D92E7 /* FSPagerView */;
-			targetProxy = 5FF2D8885764340305D457FF76EE3A86 /* PBXContainerItemProxy */;
 		};
 		02B5CC53F3082F33326DF2058D059F23 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -7776,17 +7748,17 @@
 			target = B4652B2924FE3B941944F77DA8477ABD /* SPAlert */;
 			targetProxy = C287866A424CE370461DEC2DA0A39BAF /* PBXContainerItemProxy */;
 		};
+		133E519ECCDCF5BD821417830EE13F8A /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = EpoxyCore;
+			target = DF5272089565AC514067F7C24269AE56 /* EpoxyCore */;
+			targetProxy = 267057F2AADDA83F7FAECAB6EC691783 /* PBXContainerItemProxy */;
+		};
 		153BFD71685486B7C391161EF2B21A55 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = FirebaseCoreDiagnostics;
 			target = 620E05868772C10B4920DC7E324F2C87 /* FirebaseCoreDiagnostics */;
 			targetProxy = 9DE08FBE2018A97EEEF8175CED4F8D41 /* PBXContainerItemProxy */;
-		};
-		1603128696696E10CF73C61CF722A31E /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = EpoxyCore;
-			target = DF5272089565AC514067F7C24269AE56 /* EpoxyCore */;
-			targetProxy = D759B228FC82F248341AC7342390A525 /* PBXContainerItemProxy */;
 		};
 		1864E8725BDBB1C2A465852F538D01CB /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -7824,6 +7796,12 @@
 			target = DF5272089565AC514067F7C24269AE56 /* EpoxyCore */;
 			targetProxy = 182E84710727FEB108D257BB4DC6BDFD /* PBXContainerItemProxy */;
 		};
+		2E08FF854D1700A9B13CD49BB0635EEB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = EpoxyCollectionView;
+			target = FD44322E8726962379CEC9DE8B73EB12 /* EpoxyCollectionView */;
+			targetProxy = 382DE4CCFD6846CF0CC5B1A20AF854D5 /* PBXContainerItemProxy */;
+		};
 		2FAF69F9436D6C09B4D2DCF5186013D8 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = GoogleDataTransport;
@@ -7835,6 +7813,12 @@
 			name = EpoxyCore;
 			target = DF5272089565AC514067F7C24269AE56 /* EpoxyCore */;
 			targetProxy = FA82CA2F0A4303EBCD9E77134E0B80F4 /* PBXContainerItemProxy */;
+		};
+		3351BDE70CBB434F26A9F140E534E9B7 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FSPagerView;
+			target = D4F8239FB329387A8476B964D92D92E7 /* FSPagerView */;
+			targetProxy = C151E30AC51CBD7C5D03F2E2B37BE78A /* PBXContainerItemProxy */;
 		};
 		38EB8EB7FDDF161DEEE71828F8126034 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -7920,12 +7904,6 @@
 			target = 620E05868772C10B4920DC7E324F2C87 /* FirebaseCoreDiagnostics */;
 			targetProxy = 5FD3C4989389EC3B009F4687F17FF404 /* PBXContainerItemProxy */;
 		};
-		62D3AD3B8A457C54D37E52BB317418E4 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = EpoxyBars;
-			target = B7F718B320B5FE8B8536C0C6382FD76F /* EpoxyBars */;
-			targetProxy = B9680F1F944BC3CEB701853FDADF8722 /* PBXContainerItemProxy */;
-		};
 		64AAEB85DE6AD31F567479EC5BB8696E /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = "Google-Mobile-Ads-SDK";
@@ -7980,6 +7958,18 @@
 			target = 8D7F5D5DD528D21A72DC87ADA5B12E2D /* GoogleUtilities */;
 			targetProxy = 07A8C767CBE8B1AF638C608CB14CDC09 /* PBXContainerItemProxy */;
 		};
+		6F66F88CA9D5B9DDB8F2FD91638C15C9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = EpoxyBars;
+			target = B7F718B320B5FE8B8536C0C6382FD76F /* EpoxyBars */;
+			targetProxy = 7F01C14A8ADE094B8A0BFF8AD3330F13 /* PBXContainerItemProxy */;
+		};
+		712E2715A1ABA98246D822098071AAC9 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FittedSheets;
+			target = B71C614CBF9B1B690FE941C4DF44D040 /* FittedSheets */;
+			targetProxy = DB6B7AD07DE4AFFB64D349EAB3220D52 /* PBXContainerItemProxy */;
+		};
 		77A4C27B664074A62974A1027A82A3C6 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = CocoaDebug;
@@ -7992,12 +7982,6 @@
 			target = 4402AFF83DBDC4DD07E198685FDC2DF2 /* FirebaseCore */;
 			targetProxy = 50789F16A78AC021991D0BF3C411D1B9 /* PBXContainerItemProxy */;
 		};
-		81E5267D4F9CAF6043599D55773BBA7A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = EpoxyCollectionView;
-			target = FD44322E8726962379CEC9DE8B73EB12 /* EpoxyCollectionView */;
-			targetProxy = 219E7A56B866770F2E14660BF47EA6DD /* PBXContainerItemProxy */;
-		};
 		84BE959AFD04F5D0F3D6100466002043 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = GoogleUtilities;
@@ -8009,12 +7993,6 @@
 			name = FirebaseDynamicLinks;
 			target = 8693A0BF5F08F05139D655B3CDAE8FE9 /* FirebaseDynamicLinks */;
 			targetProxy = F1298D4B277D5512777EAB8C58A185BB /* PBXContainerItemProxy */;
-		};
-		8D420616EED44D331F87C7FB9A58943A /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = EpoxyCore;
-			target = DF5272089565AC514067F7C24269AE56 /* EpoxyCore */;
-			targetProxy = 5EE7E4971B170ECD845929C18459116D /* PBXContainerItemProxy */;
 		};
 		8D9D5C983D679B6E963A2C82652B2439 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -8088,6 +8066,12 @@
 			target = D4F8239FB329387A8476B964D92D92E7 /* FSPagerView */;
 			targetProxy = 441A006DC5E55AF29046D6146161CAAB /* PBXContainerItemProxy */;
 		};
+		A794BFCD898B0A9E3C866064AD8B1AD2 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = FSPagerView;
+			target = D4F8239FB329387A8476B964D92D92E7 /* FSPagerView */;
+			targetProxy = 231058148E0B435C6D96C95A2ACF5AE2 /* PBXContainerItemProxy */;
+		};
 		AE3A301E31E8AFE251774A1640CC5835 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = Firebase;
@@ -8099,12 +8083,6 @@
 			name = FirebaseCore;
 			target = 4402AFF83DBDC4DD07E198685FDC2DF2 /* FirebaseCore */;
 			targetProxy = BFD0F4FF0EAB875EDCB7DDD620DD9D41 /* PBXContainerItemProxy */;
-		};
-		AECBD074A77E5BC95B652F3FBD2B30D7 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SPAlert;
-			target = B4652B2924FE3B941944F77DA8477ABD /* SPAlert */;
-			targetProxy = D19A132E334AB34BEE5688DB9177976A /* PBXContainerItemProxy */;
 		};
 		B15196D3576858BB70D21DBB5BB7FA6D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -8124,11 +8102,23 @@
 			target = 0A2E6BA6D5360D619D7CABED3467AA69 /* CocoaDebug */;
 			targetProxy = 99CB8DF536FDD10A0B8166E932AAA5FC /* PBXContainerItemProxy */;
 		};
+		B51759D93139B931E1A1C3B879166CEC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = EpoxyLayoutGroups;
+			target = 92E41359403FE00C14D7DDE24E8E9C1F /* EpoxyLayoutGroups */;
+			targetProxy = F62FB9FA8176674DE0F60FFABF069810 /* PBXContainerItemProxy */;
+		};
 		B5CB4A7DE987A089D6AE918D65A1AF7A /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = EpoxyCollectionView;
 			target = FD44322E8726962379CEC9DE8B73EB12 /* EpoxyCollectionView */;
 			targetProxy = 3B8AF00B39E477B0C6F93FA22D817821 /* PBXContainerItemProxy */;
+		};
+		BDA1940C1FBFB6F81A5AB0E664F00A8E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = SwiftLint;
+			target = 52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */;
+			targetProxy = 7887CA1AE8A34C8FE56422987E180ECA /* PBXContainerItemProxy */;
 		};
 		BE40CC80EFB970D5B8E95F87E2CB65E0 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -8154,23 +8144,11 @@
 			target = 8693A0BF5F08F05139D655B3CDAE8FE9 /* FirebaseDynamicLinks */;
 			targetProxy = 6AE8E5F081094CD9E12E309C27FFEF2D /* PBXContainerItemProxy */;
 		};
-		C57788BF4729CAFEAEB1AA5C0A45291B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = EpoxyLayoutGroups;
-			target = 92E41359403FE00C14D7DDE24E8E9C1F /* EpoxyLayoutGroups */;
-			targetProxy = B7DDDB9005D52AADF901F5C7F954547E /* PBXContainerItemProxy */;
-		};
 		C68DBD177F726ED4D93DA12B2BF6AC9F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = EpoxyBars;
 			target = B7F718B320B5FE8B8536C0C6382FD76F /* EpoxyBars */;
 			targetProxy = FE2DA3B9E3D8B4A9F185F6ACB83C4757 /* PBXContainerItemProxy */;
-		};
-		C6B75272BB01DF38DEC9DB0F50AD3324 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = FSPagerView;
-			target = D4F8239FB329387A8476B964D92D92E7 /* FSPagerView */;
-			targetProxy = 8D1EEE755F4DDC6367C66A0D40C1A045 /* PBXContainerItemProxy */;
 		};
 		C881A3F4C5E693311930F5BB57DA4F22 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -8184,17 +8162,11 @@
 			target = 5C0371EE948D0357B8EE0E34ABB44BF0 /* GoogleDataTransport */;
 			targetProxy = 2E8AD5E789DE85AB882468325DD1DBC9 /* PBXContainerItemProxy */;
 		};
-		CFC93AD93E3BB7987336ED5CE194C26E /* PBXTargetDependency */ = {
+		CEB0D20311399BB3786ADE4263306356 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = EpoxyCollectionView;
-			target = FD44322E8726962379CEC9DE8B73EB12 /* EpoxyCollectionView */;
-			targetProxy = A2512F711EB86BF69F6F3FBBB6965AA4 /* PBXContainerItemProxy */;
-		};
-		D01658AFE90B862F4D660ADD4532F2C8 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = SPAlert;
-			target = B4652B2924FE3B941944F77DA8477ABD /* SPAlert */;
-			targetProxy = A623DD8C72AA840977C596C1CB2176A1 /* PBXContainerItemProxy */;
+			name = EpoxyLayoutGroups;
+			target = 92E41359403FE00C14D7DDE24E8E9C1F /* EpoxyLayoutGroups */;
+			targetProxy = 396659C093D3D4B22DE611102471D503 /* PBXContainerItemProxy */;
 		};
 		D91C3040B1DE7A5C628DB6A220E77129 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -8207,12 +8179,6 @@
 			name = FittedSheets;
 			target = B71C614CBF9B1B690FE941C4DF44D040 /* FittedSheets */;
 			targetProxy = E993D4B7E5572ABF62DDFCFC950ED351 /* PBXContainerItemProxy */;
-		};
-		DBBD394BD278BB25BFC1441468A14A46 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = EpoxyLayoutGroups;
-			target = 92E41359403FE00C14D7DDE24E8E9C1F /* EpoxyLayoutGroups */;
-			targetProxy = E634814434CF3B4C27A74E4E4B4F094B /* PBXContainerItemProxy */;
 		};
 		DC9E2782F0F8566F9B9BD43D58A732BF /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -8238,11 +8204,11 @@
 			target = 51471EE35F2E9E19E51A74944E5ABB7F /* FirebaseRemoteConfig */;
 			targetProxy = 3743400EAABF5385C71D0097C2E5BA1D /* PBXContainerItemProxy */;
 		};
-		E3E307B5B265E95312C6820BA4B5AF7F /* PBXTargetDependency */ = {
+		E0EF2DCEA9BB2B7EB428A1D269D92C4D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			name = SwiftLint;
-			target = 52B60EC2A583F24ACBB69C113F5488B9 /* SwiftLint */;
-			targetProxy = 865945F661A77BEFC3971F0674C5E4B1 /* PBXContainerItemProxy */;
+			name = EpoxyCore;
+			target = DF5272089565AC514067F7C24269AE56 /* EpoxyCore */;
+			targetProxy = 737B4B98AE33D651067F1E29F5C7B7CF /* PBXContainerItemProxy */;
 		};
 		E3FFBAA0F5BF3C31FC2DDEBE7F190B4F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -8255,6 +8221,12 @@
 			name = "Google-Mobile-Ads-SDK";
 			target = FEA3B3A570634836C0457F3D7CEF1699 /* Google-Mobile-Ads-SDK */;
 			targetProxy = 94EE7C72588225B00B84EB202D55F53C /* PBXContainerItemProxy */;
+		};
+		ECE2571C5FEA10E7079A0736703C6BAF /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = EpoxyBars;
+			target = B7F718B320B5FE8B8536C0C6382FD76F /* EpoxyBars */;
+			targetProxy = 7C8B4C3403C1C2DCF8AD24EBC11B1097 /* PBXContainerItemProxy */;
 		};
 		ED0D1DD5281357D0D780CD71DF482D2C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -8280,12 +8252,6 @@
 			target = 51471EE35F2E9E19E51A74944E5ABB7F /* FirebaseRemoteConfig */;
 			targetProxy = 6C4C93F9089415840225D495AC1E7087 /* PBXContainerItemProxy */;
 		};
-		F32FE09B8591A305A9B3487F048BE528 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = FittedSheets;
-			target = B71C614CBF9B1B690FE941C4DF44D040 /* FittedSheets */;
-			targetProxy = D50A832E62F0B08468B202C1DBB78326 /* PBXContainerItemProxy */;
-		};
 		F35F43CB173BB83B29A7A9840D9FCCAE /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			name = nanopb;
@@ -8297,6 +8263,12 @@
 			name = nanopb;
 			target = D2B5E7DCCBBFB32341D857D01211A1A3 /* nanopb */;
 			targetProxy = 592635767FB4D2AF8E4B66BDDBD72A62 /* PBXContainerItemProxy */;
+		};
+		FC9FE150203C05B0AC6794D2FE313FDB /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = EpoxyCollectionView;
+			target = FD44322E8726962379CEC9DE8B73EB12 /* EpoxyCollectionView */;
+			targetProxy = 9DFF4743E17F9A494BB124E7E9F2D701 /* PBXContainerItemProxy */;
 		};
 		FE753E2BAF5C14F88FC1605F732A0AD9 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
@@ -8646,42 +8618,6 @@
 			};
 			name = Debug;
 		};
-		22587A6AEF789104718E41D43CC4FA76 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 7AABB5AAD5B6C716DB2ECE92590CBD7A /* Pods-WineDetail.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-WineDetail/Pods-WineDetail-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-WineDetail/Pods-WineDetail.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
-		};
 		26F46E8E8C638920F0FDF094C41B0938 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = B01926A98FCCF96A05D01C0D14B9FAEB /* nanopb.debug.xcconfig */;
@@ -8749,42 +8685,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Release;
-		};
-		2B10EEB8FC49C44A1963722F44ECCE2F /* Debug */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 795D06868E9BA313D858020704A87A70 /* Pods-VinchyAppClip.debug.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-VinchyAppClip/Pods-VinchyAppClip-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-VinchyAppClip/Pods-VinchyAppClip.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Debug;
 		};
 		2BE37F1F8AF340E60B00A2AB21FE0262 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -9039,43 +8939,6 @@
 			};
 			name = Debug;
 		};
-		35C45B532E2F1C0AF22614C63366EA71 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5B050FF6A999D9C6823A6A8EFA4E1641 /* Pods-WineDetail.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-WineDetail/Pods-WineDetail-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-WineDetail/Pods-WineDetail.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
-		};
 		36B9BE013738F4455240139576025344 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = DDC5981E073C08432D5961DF357762E7 /* Google-Mobile-Ads-SDK.release.xcconfig */;
@@ -9198,43 +9061,6 @@
 				VERSION_INFO_PREFIX = "";
 			};
 			name = Debug;
-		};
-		4F673D475E24FDE7AAE7E471A956A677 /* Release */ = {
-			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6585075AC753009655D9C5E2EF27C82E /* Pods-VinchyAppClip.release.xcconfig */;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
-				CLANG_ENABLE_OBJC_WEAK = NO;
-				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
-				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
-				CURRENT_PROJECT_VERSION = 1;
-				DEFINES_MODULE = YES;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = "Target Support Files/Pods-VinchyAppClip/Pods-VinchyAppClip-Info.plist";
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MACH_O_TYPE = staticlib;
-				MODULEMAP_FILE = "Target Support Files/Pods-VinchyAppClip/Pods-VinchyAppClip.modulemap";
-				OTHER_LDFLAGS = "";
-				OTHER_LIBTOOLFLAGS = "";
-				PODS_ROOT = "$(SRCROOT)";
-				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = iphoneos;
-				SKIP_INSTALL = YES;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				VALIDATE_PRODUCT = YES;
-				VERSIONING_SYSTEM = "apple-generic";
-				VERSION_INFO_PREFIX = "";
-			};
-			name = Release;
 		};
 		50B94E614255DE216E5E00875D2CEC42 /* Debug */ = {
 			isa = XCBuildConfiguration;
@@ -9489,6 +9315,79 @@
 			};
 			name = Debug;
 		};
+		6BF22184008DA9C619FAAE7BDD6ABA96 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 795D06868E9BA313D858020704A87A70 /* Pods-VinchyAppClip.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-VinchyAppClip/Pods-VinchyAppClip-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-VinchyAppClip/Pods-VinchyAppClip.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		70AECF7AA7C0C1D491478A3C690E2408 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B050FF6A999D9C6823A6A8EFA4E1641 /* Pods-WineDetail.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-WineDetail/Pods-WineDetail-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-WineDetail/Pods-WineDetail.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
 		74217232D8FB2A77DF7B02D99F275003 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 6B4197946CF363FFA58AFEA76DFB0B8D /* EpoxyCore.debug.xcconfig */;
@@ -9615,6 +9514,43 @@
 				);
 				MACH_O_TYPE = staticlib;
 				MODULEMAP_FILE = "Target Support Files/Pods-VinchyAuthorization/Pods-VinchyAuthorization.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		8DDB341B0E940F409F02D47D20844779 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 6585075AC753009655D9C5E2EF27C82E /* Pods-VinchyAppClip.release.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-VinchyAppClip/Pods-VinchyAppClip-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-VinchyAppClip/Pods-VinchyAppClip.modulemap";
 				OTHER_LDFLAGS = "";
 				OTHER_LIBTOOLFLAGS = "";
 				PODS_ROOT = "$(SRCROOT)";
@@ -10464,6 +10400,42 @@
 			};
 			name = Release;
 		};
+		DA769536B1C0EB884216DEA2A698C58B /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 7AABB5AAD5B6C716DB2ECE92590CBD7A /* Pods-WineDetail.debug.xcconfig */;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = NO;
+				CLANG_ENABLE_OBJC_WEAK = NO;
+				"CODE_SIGN_IDENTITY[sdk=appletvos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				"CODE_SIGN_IDENTITY[sdk=watchos*]" = "";
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				INFOPLIST_FILE = "Target Support Files/Pods-WineDetail/Pods-WineDetail-Info.plist";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MACH_O_TYPE = staticlib;
+				MODULEMAP_FILE = "Target Support Files/Pods-WineDetail/Pods-WineDetail.modulemap";
+				OTHER_LDFLAGS = "";
+				OTHER_LIBTOOLFLAGS = "";
+				PODS_ROOT = "$(SRCROOT)";
+				PRODUCT_BUNDLE_IDENTIFIER = "org.cocoapods.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
 		DC96D9527E325D6E2C87901C420AB301 /* Release */ = {
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 8C756DA0A5E3D2F8D36ECE15AA161130 /* GoogleAppMeasurement.release.xcconfig */;
@@ -10695,11 +10667,11 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		37B2F209B58A8061FCE7D34427A9B456 /* Build configuration list for PBXNativeTarget "Pods-WineDetail" */ = {
+		3112E581A7D471ED08FC3DD2ED3BEECE /* Build configuration list for PBXNativeTarget "Pods-WineDetail" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				22587A6AEF789104718E41D43CC4FA76 /* Debug */,
-				35C45B532E2F1C0AF22614C63366EA71 /* Release */,
+				DA769536B1C0EB884216DEA2A698C58B /* Debug */,
+				70AECF7AA7C0C1D491478A3C690E2408 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
@@ -10776,6 +10748,15 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
+		763489F2ED29AB6DC3EB424B451B9294 /* Build configuration list for PBXNativeTarget "Pods-VinchyAppClip" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6BF22184008DA9C619FAAE7BDD6ABA96 /* Debug */,
+				8DDB341B0E940F409F02D47D20844779 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		773B177DC6A85A5D049D4A0E0E25EAB2 /* Build configuration list for PBXAggregateTarget "GoogleAppMeasurement" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -10817,15 +10798,6 @@
 			buildConfigurations = (
 				354C1D3D036C67B73B3CB3C4B86AFFF2 /* Debug */,
 				1C5A3A276F12934F8D967C71DBDF1636 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		9259B33F7CD49D92F143824420BB9515 /* Build configuration list for PBXNativeTarget "Pods-VinchyAppClip" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				2B10EEB8FC49C44A1963722F44ECCE2F /* Debug */,
-				4F673D475E24FDE7AAE7E471A956A677 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

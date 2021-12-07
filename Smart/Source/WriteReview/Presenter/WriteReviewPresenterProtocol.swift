@@ -6,7 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import WineDetail // TODO: - remove
+import VinchyUI
 
 protocol WriteReviewPresenterProtocol: AnyObject {
   var statusAlertViewModelAfterCreate: StatusAlertViewModel { get }

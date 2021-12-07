@@ -7,6 +7,7 @@
 //
 
 import Display
+import VinchyUI
 
 protocol WineDetailViewControllerProtocol: Alertable, StatusAlertable, Loadable {
   func updateUI(viewModel: WineDetailViewModel)

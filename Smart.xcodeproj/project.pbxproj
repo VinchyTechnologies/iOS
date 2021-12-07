@@ -239,6 +239,7 @@
 		8A9C7EA4275F9C9200A5B694 /* PluralLocalizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 8A07983D269750A0000ACA2B /* PluralLocalizable.stringsdict */; };
 		8A9C7EA5275F9C9600A5B694 /* Countries.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA3C97E8257245F40036F7D9 /* Countries.strings */; };
 		8A9C7EA6275F9C9E00A5B694 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA445F6D24BFA3C20023A09F /* InfoPlist.strings */; };
+		8A9C7EB0275FDE1900A5B694 /* StatusAlertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9C7EAF275FDE1900A5B694 /* StatusAlertable.swift */; };
 		8AA5E5132615053D00935B5E /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA5E5122615053D00935B5E /* AboutView.swift */; };
 		8AA7BA78275CDE1B00BF68E8 /* VinchyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; };
 		8AA7BA79275CDE1B00BF68E8 /* VinchyCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -718,6 +719,7 @@
 		8A916116268E27EB00240B18 /* SearchRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
 		8A916117268E27EB00240B18 /* SearchRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRouterProtocol.swift; sourceTree = "<group>"; };
 		8A9554672692284B00F1C5AE /* DocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsViewController.swift; sourceTree = "<group>"; };
+		8A9C7EAF275FDE1900A5B694 /* StatusAlertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusAlertable.swift; sourceTree = "<group>"; };
 		8AA4CBAD275CA72A00856FE5 /* LocationUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LocationUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AA5E5122615053D00935B5E /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		8AA9909126D91FE000C32358 /* StoresViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoresViewModel.swift; sourceTree = "<group>"; };
@@ -2619,6 +2621,7 @@
 				8AEC83CC2759588500C80F1E /* ResultsSearchRoutable.swift */,
 				8A2BA4F3275D370A006D6AF4 /* AdFabric.swift */,
 				8A2BA4F7275D41E8006D6AF4 /* AdItemView.swift */,
+				8A9C7EAF275FDE1900A5B694 /* StatusAlertable.swift */,
 			);
 			path = "Supported Files";
 			sourceTree = "<group>";
@@ -3603,6 +3606,7 @@
 				4437AA6425E3A7CE00F6E838 /* WriteReviewRouterProtocol.swift in Sources */,
 				4437AA6525E3A7CE00F6E838 /* WriteReviewRouter.swift in Sources */,
 				8AD7A37E2639D31A007D4273 /* PartnerAnnotationView.swift in Sources */,
+				8A9C7EB0275FDE1900A5B694 /* StatusAlertable.swift in Sources */,
 				4437AA6E25E3BE7300F6E838 /* WriteReviewRoutable.swift in Sources */,
 				8AA990A226D91FE000C32358 /* StoresViewModel.swift in Sources */,
 				CACA7E9A254C57CC0099E622 /* WriteNoteInput.swift in Sources */,

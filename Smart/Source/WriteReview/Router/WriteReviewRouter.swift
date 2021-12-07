@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import WineDetail // TODO: - remove
+import VinchyUI
 
 // MARK: - WriteReviewRouter
 

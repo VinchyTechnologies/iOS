@@ -14,7 +14,6 @@ end
 def commonPods
   pod 'FSPagerView' # no spm...
   pod 'SwiftLint'
-  pod 'SPAlert', '~> 2.1.4'
   pod 'FittedSheets'
   epoxy
 end
@@ -26,6 +25,7 @@ target 'Smart' do
   pod 'Google-Mobile-Ads-SDK'
   pod 'CocoaDebug', :configurations => ['Debug']
   pod 'Firebase/RemoteConfig'
+  pod 'SPAlert', '~> 2.1.4'
   commonPods
 
   target 'SmartTests' do
@@ -68,7 +68,6 @@ end
 target 'WineDetail' do
   project 'submodules/WineDetail/WineDetail'
   pod 'FSPagerView' # no spm...
-  pod 'SPAlert', '~> 2.1.4'
   epoxy
 end
 
