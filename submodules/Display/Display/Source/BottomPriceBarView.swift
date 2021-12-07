@@ -20,14 +20,11 @@ public final class BottomPriceBarView: UIView, EpoxyableView {
     backgroundColor = .clear
     translatesAutoresizingMaskIntoConstraints = false
     directionalLayoutMargins = .init(top: 12, leading: 24, bottom: 0, trailing: 24)
-    
+
     hGroup.install(in: self)
     hGroup.constrainToMarginsWithHighPriorityBottom()
     hGroup.heightAnchor.constraint(equalToConstant: 56).isActive = true
   }
-  
-  private lazy var blurEffectView = UIVisualEffectView()
-
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
@@ -38,13 +35,6 @@ public final class BottomPriceBarView: UIView, EpoxyableView {
     public init() {
     }
   }
-  
-  public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-    super.traitCollectionDidChange(previousTraitCollection)
-    let blurEffect = UIBlurEffect(style: traitCollection.userInterfaceStyle == .dark ? .dark : .light)
-    blurEffectView.effect = blurEffect
-  }
-
   public struct Behaviors {
     var didSelect: ((Int) -> Void)?
 
@@ -56,11 +46,18 @@ public final class BottomPriceBarView: UIView, EpoxyableView {
   public struct Content: Equatable {
     public let leadingText: String?
     public let trailingButtonText: String?
-    
+
     public init(leadingText: String?, trailingButtonText: String?) {
       self.leadingText = leadingText
       self.trailingButtonText = trailingButtonText
     }
+  }
+
+
+  public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+    super.traitCollectionDidChange(previousTraitCollection)
+    let blurEffect = UIBlurEffect(style: traitCollection.userInterfaceStyle == .dark ? .dark : .light)
+    blurEffectView.effect = blurEffect
   }
 
   public func setBehaviors(_ behaviors: Behaviors?) {
@@ -73,7 +70,7 @@ public final class BottomPriceBarView: UIView, EpoxyableView {
     blurEffectView.effect = blurEffect
     blurEffectView.translatesAutoresizingMaskIntoConstraints = false
     blurEffectView.constrainToSuperview()
-    
+
     hGroup.setItems {
       if let subtitle = content.leadingText {
         Label.groupItem(
@@ -81,14 +78,39 @@ public final class BottomPriceBarView: UIView, EpoxyableView {
           content: subtitle,
           style: Label.Style(font: Font.bold(18), showLabelBackground: false, numberOfLines: 1, textColor: .dark))
       }
-      
+
       if let trailingButtonText = content.trailingButtonText {
         SpacerItem(dataID: DataID.spacer)
         priceButton(text: trailingButtonText)
       }
     }
   }
-  
+
+  // MARK: Private
+
+
+  private enum DataID {
+    case leadingTitle
+    case trailingButton
+    case spacer
+  }
+
+
+  private lazy var blurEffectView = UIVisualEffectView()
+
+
+  private let hGroup = HGroup(
+    style: .init(
+      alignment: .center,
+      accessibilityAlignment: .center,
+      spacing: 8,
+      reflowsForAccessibilityTypeSizes: false,
+      forceVerticalAccessibilityLayout: false),
+    items: [])
+
+  private var didSelect: ((Int) -> Void)?
+
+
   private func priceButton(text: String?) -> GroupItemModeling {
     GroupItem<Button>(
       dataID: DataID.trailingButton,
@@ -112,28 +134,8 @@ public final class BottomPriceBarView: UIView, EpoxyableView {
         context.constrainable.addTarget(self, action: #selector(self.didTapButton(_:)), for: .touchUpInside)
       }
   }
-  
+
   @objc
   private func didTapButton(_ button: UIButton) {
   }
-  
-  private enum DataID {
-    case leadingTitle
-    case trailingButton
-    case spacer
-  }
-  
-  private let hGroup = HGroup(
-    style: .init(
-      alignment: .center,
-      accessibilityAlignment: .center,
-      spacing: 8,
-      reflowsForAccessibilityTypeSizes: false,
-      forceVerticalAccessibilityLayout: false),
-    items: [])
-
-  // MARK: Private
-
-  private var didSelect: ((Int) -> Void)?
-
 }

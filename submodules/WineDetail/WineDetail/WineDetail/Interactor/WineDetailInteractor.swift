@@ -242,9 +242,7 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
   }
 
   func didTapStarsRatingControl() {
-    if input.isAppClip {
-      presenter.showAppClipDownloadFullApp()
-    } else {
+    if !input.isAppClip {
       openReviewFlow()
     }
   }
@@ -298,7 +296,7 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
   }
 
   func didTapPriceButton() {
-    if !(stores?.isEmpty == true) && !input.isAppClip {
+    if !(stores?.isEmpty == true) {
       presenter.scrollToWhereToBuySections()
     }
   }
@@ -383,10 +381,6 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
   }
 
   func didTapLikeButton(_ button: UIButton) {
-    if input.isAppClip {
-      presenter.showAppClipDownloadFullApp()
-      return
-    }
 
     guard let wine = wine else { return }
 

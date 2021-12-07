@@ -9,13 +9,13 @@
 import CommonUI
 import Database
 import Display
+import EpoxyBars
 import EpoxyCollectionView
 import EpoxyCore
 import StoreKit
 import StringFormatting
 import UIKit
 import VinchyCore
-import EpoxyBars
 import VinchyUI
 
 // MARK: - C
@@ -118,6 +118,11 @@ final class WineDetailViewController: CollectionViewController {
   private let moreButton = UIButton(type: .system)
 
   private var viewModel: WineDetailViewModel = .init(navigationTitle: nil, sections: [], isGeneralInfoCollapsed: false, bottomPriceBarViewModel: .init(leadingText: nil, trailingButtonText: nil))
+
+
+  private lazy var bottomBarInstaller = BottomBarInstaller(
+    viewController: self,
+    bars: bars)
 
   @SectionModelBuilder
   private var sections: [SectionModel] {
@@ -358,18 +363,14 @@ final class WineDetailViewController: CollectionViewController {
     let activeRectBottomRight = CGPoint(x: collectionViewRect.origin.x + collectionViewRect.size.width, y: collectionViewRect.origin.y + collectionViewRect.size.height)
     return CGRect(origin: activeRectTopLeft, size: CGSize(width: activeRectBottomRight.x - activeRectTopLeft.x, height: activeRectBottomRight.y - activeRectTopLeft.y))
   }
-  
-  private lazy var bottomBarInstaller = BottomBarInstaller(
-    viewController: self,
-    bars: bars)
-  
+
   @BarModelBuilder
   private var bars: [BarModeling] {
     [
       BottomPriceBarView.barModel(
         dataID: nil,
         content: viewModel.bottomPriceBarViewModel,
-        style: .init())
+        style: .init()),
     ]
   }
 

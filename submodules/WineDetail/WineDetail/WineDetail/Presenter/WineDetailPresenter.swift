@@ -429,7 +429,7 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
       bottomPriceBarViewModel: .init(
         leadingText: localized("price").firstLetterUppercased(),
         trailingButtonText: formatCurrencyAmount(
-      wine.price ?? 0, currency: currency)))
+          wine.price ?? 0, currency: currency)))
 
     viewController?.updateUI(viewModel: viewModel)
 
