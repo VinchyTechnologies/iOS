@@ -204,7 +204,7 @@ extension RatesInteractor: RatesInteractorProtocol {
 
       guard let url = url else { return }
 
-      let items = [wine.title, url] as [Any]
+      let items: [Any] = [wine.title, url]
       self?.router.presentActivityViewController(items: items, sourceView: sourceView)
     }
   }

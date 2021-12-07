@@ -56,7 +56,7 @@ final class Coordinator: ShowcaseRoutable, WineDetailRoutable, WriteNoteRoutable
 
         guard let url = url else { return }
 
-        let items = [titleText, url] as [Any]
+        let items: [Any] = [titleText, url]
         self?.presentActivityViewController(items: items, sourceView: sourceView)
       }
     }
@@ -150,7 +150,7 @@ extension WineViewContextMenuTappable {
 
           guard let url = url else { return }
 
-          let items = [contextMenuWine.title, url] as [Any]
+          let items: [Any] = [contextMenuWine.title, url]
           self?.contextMenuRouter.presentActivityViewController(items: items, sourceView: sourceView)
         }
 

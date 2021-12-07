@@ -11,7 +11,7 @@ import CoreLocation
 import UIKit.UIButton
 import VinchyUI
 
-protocol StoreRouterProtocol: WineDetailRoutable, ActivityRoutable, WriteNoteRoutable, OpenURLProtocol, ResultsSearchRoutable {
+protocol StoreRouterProtocol: WineDetailRoutable, ActivityRoutable, WriteNoteRoutable, OpenURLProtocol, ResultsSearchRoutable, WineShareRoutable {
   func presentFilter(preselectedFilters: [(String, String)])
   func showRoutesActionSheet(storeTitleText: String?, coordinate: CLLocationCoordinate2D, button: UIButton)
 }

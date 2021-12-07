@@ -210,10 +210,34 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
   }
 
   func didTapShareContextMenu(wineID: Int64, sourceView: UIView) {
+    Wines.shared.getDetailWine(wineID: wineID) { [weak self] result in
+      guard let self = self else { return }
+      switch result {
+      case .success(let response):
+        self.router.didTapShare(type: .fullInfo(wineID: wineID, titleText: response.title, bottleURL: response.mainImageUrl?.toURL, sourceView: sourceView))
 
+      case .failure(let errorResponse):
+        print(errorResponse)
+      }
+    }
   }
 
   func didTapWriteNoteContextMenu(wineID: Int64) {
+    Wines.shared.getDetailWine(wineID: wineID) { [weak self] result in
+      guard let self = self else { return }
+      switch result {
+      case .success(let response):
+        let contextMenuWine = response
+        if let note = notesRepository.findAll().first(where: { $0.wineID == wineID }) {
+          self.contextMenuRouter.pushToWriteViewController(note: note)
+        } else {
+          self.contextMenuRouter.pushToWriteViewController(wine: contextMenuWine)
+        }
+
+      case .failure(let errorResponse):
+        print(errorResponse)
+      }
+    }
   }
 
   func didSelectWine(wineID: Int64) {

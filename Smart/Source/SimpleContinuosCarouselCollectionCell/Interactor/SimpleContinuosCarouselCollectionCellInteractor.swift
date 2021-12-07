@@ -172,7 +172,7 @@ extension SimpleContinuosCarouselCollectionCellInteractor: SimpleContinuosCarous
 
         guard let url = url else { return }
 
-        let items = [contextMenuWine.title, url] as [Any]
+        let items: [Any] = [contextMenuWine.title, url]
         self?.router.presentActivityViewController(items: items)
       }
     }

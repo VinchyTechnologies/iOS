@@ -30,15 +30,14 @@ final class StorePresenter {
   private var input: StoreInput
 
   private var contextMenuViewModels: [ContextMenuViewModel] {
-    []
-//    if input.isAppClip {
-//      return []
-//    } else {
-//      return [
-//        .share(content: .init(title: localized("share_link").firstLetterUppercased())),
-//        .writeNote(content: .init(title: localized("write_note").firstLetterUppercased())),
-//      ]
-//    }
+    if input.isAppClip {
+      return []
+    } else {
+      return [
+        .share(content: .init(title: localized("share_link").firstLetterUppercased())),
+        .writeNote(content: .init(title: localized("write_note").firstLetterUppercased())),
+      ]
+    }
   }
 }
 

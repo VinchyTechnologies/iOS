@@ -12,6 +12,7 @@ import Display
 import StringFormatting
 import UIKit
 import VinchyCore
+import VinchyUI
 
 // MARK: - StoreRouter
 
@@ -45,6 +46,9 @@ final class StoreRouter {
 // MARK: StoreRouterProtocol
 
 extension StoreRouter: StoreRouterProtocol {
+  func didTapShare(type: WineShareType) {
+    coordinator.didTapShare(type: type)
+  }
 
   func pushToResultsSearchController(affilatedId: Int) {
     coordinator.pushToResultsSearchController(affilatedId: affilatedId)
