@@ -14,21 +14,19 @@ end
 def commonPods
   pod 'FSPagerView' # no spm...
   pod 'SwiftLint'
-  pod 'GoogleUtilities'
-  pod 'Firebase/DynamicLinks'
-  epoxy
   pod 'SPAlert', '~> 2.1.4'
   pod 'FittedSheets'
+  epoxy
 end
 
 target 'Smart' do
   project 'Smart'
-
+  pod 'GoogleUtilities'
+  pod 'Firebase/DynamicLinks'
   pod 'Google-Mobile-Ads-SDK'
   pod 'CocoaDebug', :configurations => ['Debug']
-
-  commonPods
   pod 'Firebase/RemoteConfig'
+  commonPods
 
   target 'SmartTests' do
     inherit! :search_paths
@@ -69,11 +67,9 @@ end
 
 target 'WineDetail' do
   project 'submodules/WineDetail/WineDetail'
-  pod 'GoogleUtilities'
   pod 'FSPagerView' # no spm...
-  epoxy
   pod 'SPAlert', '~> 2.1.4'
-  pod 'Firebase/DynamicLinks'
+  epoxy
 end
 
 target 'VinchyAuthorization' do

@@ -15,4 +15,3 @@ public protocol WineViewContextMenuTappable: AnyObject {
   func didTapShareContextMenu(wineID: Int64, sourceView: UIView)
   func didTapWriteNoteContextMenu(wineID: Int64)
 }
-

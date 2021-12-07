@@ -118,7 +118,6 @@ extension SimpleContinuosCarouselCollectionCellInteractor: SimpleContinuosCarous
 
   func didTapBottleCell(wineID: Int64) {
     delegate?.didTapBottleCell(wineID: wineID)
-//    router.pushToWineDetailViewController(wineID: wineID)
   }
 
   func didTapShareContextMenu(wineID: Int64) {

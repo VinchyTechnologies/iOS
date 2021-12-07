@@ -312,7 +312,6 @@
 		8AEC94F0275B621500C80F1E /* ReviewDetailRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4495625025E2E15A005E79DA /* ReviewDetailRoutable.swift */; };
 		8AEC94F1275B624B00C80F1E /* filters.json in Resources */ = {isa = PBXBuildFile; fileRef = CACC1DC124C5F2980082BD01 /* filters.json */; };
 		8AEC94F2275B627600C80F1E /* country_codes.json in Resources */ = {isa = PBXBuildFile; fileRef = CA3CEFAF251288F000AAA692 /* country_codes.json */; };
-		8AEC94F5275BFD5600C80F1E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CA4D4FE32548A93500A6FD0B /* GoogleService-Info.plist */; };
 		8AF5656226F2341500C58E2C /* VinchyRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF5656126F2341500C58E2C /* VinchyRepositoryProtocol.swift */; };
 		8AF5656426F2341D00C58E2C /* VinchyRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF5656326F2341D00C58E2C /* VinchyRepository.swift */; };
 		8AF94419269228F5003EB76A /* TextRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF94418269228F5003EB76A /* TextRow.swift */; };
@@ -3196,7 +3195,6 @@
 				8AEC94F1275B624B00C80F1E /* filters.json in Resources */,
 				8AEC94F2275B627600C80F1E /* country_codes.json in Resources */,
 				8AEC94C3275A9E3600C80F1E /* currencies.json in Resources */,
-				8AEC94F5275BFD5600C80F1E /* GoogleService-Info.plist in Resources */,
 				8A9C7EA6275F9C9E00A5B694 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -119,7 +119,6 @@ final class WineDetailViewController: CollectionViewController {
 
   private var viewModel: WineDetailViewModel = .init(navigationTitle: nil, sections: [], isGeneralInfoCollapsed: false, bottomPriceBarViewModel: .init(leadingText: nil, trailingButtonText: nil))
 
-
   private lazy var bottomBarInstaller = BottomBarInstaller(
     viewController: self,
     bars: bars)

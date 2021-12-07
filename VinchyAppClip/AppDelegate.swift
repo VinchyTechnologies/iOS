@@ -6,7 +6,6 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Firebase
 import UIKit
 
 @main
@@ -17,8 +16,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?)
     -> Bool
   {
-    FirebaseApp.configure()
-    return true
+    true
   }
 
   // MARK: UISceneSession Lifecycle

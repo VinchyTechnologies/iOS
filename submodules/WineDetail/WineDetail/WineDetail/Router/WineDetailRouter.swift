@@ -45,6 +45,10 @@ final class WineDetailRouter {
 
 extension WineDetailRouter: WineDetailRouterProtocol {
 
+  func didTapShare(type: WineShareType) {
+    coordinator.didTapShare(type: type)
+  }
+
   func presentAuthorizationViewController() {
     coordinator.presentAuthorizationViewController()
   }

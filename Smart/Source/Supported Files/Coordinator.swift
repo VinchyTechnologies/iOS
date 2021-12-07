@@ -17,9 +17,50 @@ import VinchyUI
 
 // MARK: - Coordinator
 
-final class Coordinator: ShowcaseRoutable, WineDetailRoutable, WriteNoteRoutable, ActivityRoutable, AdvancedSearchRoutable, ReviewDetailRoutable, ReviewsRoutable, WriteReviewRoutable, StoresRoutable, StoreRoutable, ResultsSearchRoutable, AuthorizationRoutable {
+final class Coordinator: ShowcaseRoutable, WineDetailRoutable, WriteNoteRoutable, ActivityRoutable, AdvancedSearchRoutable, ReviewDetailRoutable, ReviewsRoutable, WriteReviewRoutable, StoresRoutable, StoreRoutable, ResultsSearchRoutable, AuthorizationRoutable, WineShareRoutable {
 
   static let shared = Coordinator()
+
+  func didTapShare(type: WineShareType) {
+    switch type {
+    case .fullInfo(let wineID, let titleText, let bottleURL, let sourceView):
+      var components = URLComponents()
+      components.scheme = Scheme.https.rawValue
+      components.host = domain
+      components.path = "/wines/" + String(wineID)
+
+      guard let linkParameter = components.url else {
+        return
+      }
+
+      guard
+        let shareLink = DynamicLinkComponents(
+          link: linkParameter,
+          domainURIPrefix: "https://vinchy.page.link")
+      else {
+        return
+      }
+
+      if let bundleID = Bundle.main.bundleIdentifier {
+        shareLink.iOSParameters = DynamicLinkIOSParameters(bundleID: bundleID)
+      }
+      shareLink.iOSParameters?.appStoreID = "1536720416"
+      shareLink.socialMetaTagParameters = DynamicLinkSocialMetaTagParameters()
+      shareLink.socialMetaTagParameters?.title = titleText
+      shareLink.socialMetaTagParameters?.imageURL = bottleURL
+
+      shareLink.shorten { [weak self] url, _, error in
+        if error != nil {
+          return
+        }
+
+        guard let url = url else { return }
+
+        let items = [titleText, url] as [Any]
+        self?.presentActivityViewController(items: items, sourceView: sourceView)
+      }
+    }
+  }
 
   func presentAdvancedSearch(input: AdvancedSearchInput, delegate: AdvancedSearchOutputDelegate?) {
     let controller = AdvancedSearchAssembly.assemblyModule(

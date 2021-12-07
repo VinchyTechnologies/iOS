@@ -241,8 +241,8 @@ extension StoreInteractor: StoreInteractorProtocol {
   }
 
   func didTapWriteNoteContextMenu(wineID: Int64) {
-
   }
+
   func didTapSearchButton() {
     switch input.mode {
     case .normal(let affilatedId):

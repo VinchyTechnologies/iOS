@@ -73,14 +73,14 @@ final class RatesInteractor {
   }
 
   private func loadData(offset: Int, usingRefreshControl: Bool) {
-//    if let accountId = authService.currentUser?.accountID {
+    if let accountId = authService.currentUser?.accountID {
     if offset == .zero && !usingRefreshControl {
       DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
         self.dispatchWorkItemHud.perform()
       }
     }
 
-    Wines.shared.getReviewedWines(accountId: 78, offset: offset, limit: C.limit) { [weak self] result in
+    Wines.shared.getReviewedWines(accountId: accountId, offset: offset, limit: C.limit) { [weak self] result in
       switch result {
       case .success(let data):
         self?.stateMachine.invokeSuccess(with: data)
@@ -89,10 +89,10 @@ final class RatesInteractor {
         self?.stateMachine.fail(with: error)
       }
     }
-//    } else {
-//      reviews.removeAll()
-//      presenter.showNeedsLoginError()
-//    }
+    } else {
+      reviews.removeAll()
+      presenter.showNeedsLoginError()
+    }
   }
 
   private func loadInitData(usingRefreshControl: Bool) {

@@ -8,7 +8,6 @@
 
 import Core
 import Firebase
-//import GoogleMobileAds
 import Spotlight
 import SwiftUI
 import UIKit

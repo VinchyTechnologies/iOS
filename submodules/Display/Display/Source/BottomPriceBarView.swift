@@ -88,7 +88,6 @@ public final class BottomPriceBarView: UIView, EpoxyableView {
 
   // MARK: Private
 
-
   private enum DataID {
     case leadingTitle
     case trailingButton
