@@ -13,13 +13,11 @@ end
 
 def commonPods
   pod 'FSPagerView' # no spm...
-#  pod 'CocoaDebug', :configurations => ['Debug']
   pod 'SwiftLint'
   pod 'GoogleUtilities'
   pod 'Firebase/DynamicLinks'
   epoxy
   pod 'SPAlert', '~> 2.1.4'
-  pod 'Sheeeeeeeeet'
   pod 'FittedSheets'
 end
 
@@ -27,10 +25,10 @@ target 'Smart' do
   project 'Smart'
 
   pod 'Google-Mobile-Ads-SDK'
+  pod 'CocoaDebug', :configurations => ['Debug']
 
   commonPods
   pod 'Firebase/RemoteConfig'
-#  pod 'FittedSheets'
 
   target 'SmartTests' do
     inherit! :search_paths
@@ -52,9 +50,6 @@ end
 
 target 'AdUI' do
   project 'submodules/AdUI/AdUI'
-#  pod 'EpoxyCore'
-#  pod 'GoogleUtilities'
-#  ad
 end
 
 target 'VinchyStore' do
@@ -78,7 +73,6 @@ target 'WineDetail' do
   pod 'FSPagerView' # no spm...
   epoxy
   pod 'SPAlert', '~> 2.1.4'
-  pod 'Sheeeeeeeeet'
   pod 'Firebase/DynamicLinks'
 end
 

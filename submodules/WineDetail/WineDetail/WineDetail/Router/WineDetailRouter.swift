@@ -9,7 +9,7 @@
 import Core
 import Database
 import Display
-import Sheeeeeeeeet
+import StringFormatting
 import UIKit
 import VinchyCore
 import VinchyUI
@@ -97,29 +97,17 @@ extension WineDetailRouter: WineDetailRouterProtocol {
     coordinator.presentWriteViewController(wine: wine)
   }
 
-  func showMoreActionSheet(menuItems: [MenuItem], appearance: ActionSheetAppearance, button: UIButton) {
-    ActionSheet.applyAppearance(appearance, force: true)
-    let menu = Menu(items: menuItems)
-    let sheet = menu.toActionSheet { [weak self] aSheet, action in
+  func showMoreActionSheet(reportAnErrorText: String?, button: UIButton) {
+    let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+    alert.addAction(UIAlertAction(title: reportAnErrorText, style: .default, handler: { [weak self] _ in
+      self?.interactor?.didTapReportAnError(sourceView: button)
+    }))
+    alert.addAction(UIAlertAction(title: localized("cancel").firstLetterUppercased(), style: .cancel, handler: nil))
 
-      guard let self = self else { return }
+    alert.view.tintColor = .accent
+    alert.popoverPresentationController?.sourceView = button
+    alert.popoverPresentationController?.permittedArrowDirections = .up
 
-      guard let action = action.value as? WineDetailMoreActions else {
-        return
-      }
-
-      aSheet.dismiss {
-        switch action {
-        case .dislike:
-          self.interactor?.didTapDislikeButton()
-
-        case .reportAnError:
-          self.interactor?.didTapReportAnError(sourceView: button)
-        }
-      }
-    }
-
-    guard let viewController = viewController else { return }
-    sheet.present(in: viewController, from: button)
+    viewController?.present(alert, animated: true, completion: nil)
   }
 }

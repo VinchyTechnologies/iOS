@@ -236,6 +236,9 @@
 		8A916121268E27EB00240B18 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916116268E27EB00240B18 /* SearchRouter.swift */; };
 		8A916122268E27EB00240B18 /* SearchRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916117268E27EB00240B18 /* SearchRouterProtocol.swift */; };
 		8A9554682692284B00F1C5AE /* DocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9554672692284B00F1C5AE /* DocumentsViewController.swift */; };
+		8A9C7EA4275F9C9200A5B694 /* PluralLocalizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 8A07983D269750A0000ACA2B /* PluralLocalizable.stringsdict */; };
+		8A9C7EA5275F9C9600A5B694 /* Countries.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA3C97E8257245F40036F7D9 /* Countries.strings */; };
+		8A9C7EA6275F9C9E00A5B694 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA445F6D24BFA3C20023A09F /* InfoPlist.strings */; };
 		8AA5E5132615053D00935B5E /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA5E5122615053D00935B5E /* AboutView.swift */; };
 		8AA7BA78275CDE1B00BF68E8 /* VinchyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; };
 		8AA7BA79275CDE1B00BF68E8 /* VinchyCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -3185,13 +3188,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A9C7EA5275F9C9600A5B694 /* Countries.strings in Resources */,
 				8AEC94D4275AA34200C80F1E /* Localizable.strings in Resources */,
 				8AEC94B3275A914300C80F1E /* LaunchScreen.storyboard in Resources */,
 				8AEC94B0275A914300C80F1E /* Assets.xcassets in Resources */,
+				8A9C7EA4275F9C9200A5B694 /* PluralLocalizable.stringsdict in Resources */,
 				8AEC94F1275B624B00C80F1E /* filters.json in Resources */,
 				8AEC94F2275B627600C80F1E /* country_codes.json in Resources */,
 				8AEC94C3275A9E3600C80F1E /* currencies.json in Resources */,
 				8AEC94F5275BFD5600C80F1E /* GoogleService-Info.plist in Resources */,
+				8A9C7EA6275F9C9E00A5B694 /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -3866,7 +3872,7 @@
 				CODE_SIGN_ENTITLEMENTS = VinchyAppClip/VinchyAppClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				ENABLE_BITCODE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -3903,7 +3909,7 @@
 				CODE_SIGN_ENTITLEMENTS = VinchyAppClip/VinchyAppClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				ENABLE_BITCODE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -4058,7 +4064,7 @@
 				CODE_SIGN_ENTITLEMENTS = Smart/Vinchy.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Smart/Resources/Info.plist;
@@ -4091,7 +4097,7 @@
 				CODE_SIGN_ENTITLEMENTS = Smart/VinchyRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 12;
+				CURRENT_PROJECT_VERSION = 14;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Smart/Resources/Info.plist;

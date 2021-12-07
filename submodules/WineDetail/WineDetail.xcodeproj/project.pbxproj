@@ -35,7 +35,6 @@
 		8AEC838E2758DEFB00C80F1E /* WineDetailInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83722758DEFB00C80F1E /* WineDetailInteractorProtocol.swift */; };
 		8AEC838F2758DEFB00C80F1E /* WineDetailRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83742758DEFB00C80F1E /* WineDetailRouterProtocol.swift */; };
 		8AEC83902758DEFB00C80F1E /* WineDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83752758DEFB00C80F1E /* WineDetailRouter.swift */; };
-		8AEC83922758DFFC00C80F1E /* VinchyActionSheetAppearence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83912758DFFC00C80F1E /* VinchyActionSheetAppearence.swift */; };
 		8AEC83942758E08200C80F1E /* StatusAlertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83932758E08200C80F1E /* StatusAlertable.swift */; };
 		8AEC839C2758E33500C80F1E /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC839B2758E33500C80F1E /* Display.framework */; };
 		8AEC83A42758E34800C80F1E /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC83A32758E34800C80F1E /* Core.framework */; };
@@ -77,7 +76,6 @@
 		8AEC83722758DEFB00C80F1E /* WineDetailInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineDetailInteractorProtocol.swift; sourceTree = "<group>"; };
 		8AEC83742758DEFB00C80F1E /* WineDetailRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineDetailRouterProtocol.swift; sourceTree = "<group>"; };
 		8AEC83752758DEFB00C80F1E /* WineDetailRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineDetailRouter.swift; sourceTree = "<group>"; };
-		8AEC83912758DFFC00C80F1E /* VinchyActionSheetAppearence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyActionSheetAppearence.swift; sourceTree = "<group>"; };
 		8AEC83932758E08200C80F1E /* StatusAlertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusAlertable.swift; sourceTree = "<group>"; };
 		8AEC839B2758E33500C80F1E /* Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AEC839F2758E33E00C80F1E /* VinchyAuthorization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyAuthorization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,7 +128,6 @@
 		8AEC83472758DCE300C80F1E /* WineDetail */ = {
 			isa = PBXGroup;
 			children = (
-				8AEC83912758DFFC00C80F1E /* VinchyActionSheetAppearence.swift */,
 				8AEC83512758DEFA00C80F1E /* WineDetail */,
 				8AEC83482758DCE300C80F1E /* WineDetail.h */,
 				8AEC83492758DCE300C80F1E /* WineDetail.docc */,
@@ -391,7 +388,6 @@
 				8AEC83832758DEFB00C80F1E /* ServingTipsCollectionView.swift in Sources */,
 				8AEC83782758DEFB00C80F1E /* WineDetailInput.swift in Sources */,
 				8AEC837C2758DEFB00C80F1E /* WineDetailViewController.swift in Sources */,
-				8AEC83922758DFFC00C80F1E /* VinchyActionSheetAppearence.swift in Sources */,
 				8AEC838D2758DEFB00C80F1E /* WineDetailInteractor.swift in Sources */,
 				8AEC838B2758DEFB00C80F1E /* ShortInfoView.swift in Sources */,
 			);

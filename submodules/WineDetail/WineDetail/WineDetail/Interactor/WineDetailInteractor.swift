@@ -9,7 +9,6 @@
 import Core
 import Database
 import FirebaseDynamicLinks
-import Sheeeeeeeeet
 import VinchyCore
 import VinchyUI
 
@@ -293,31 +292,9 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
   }
 
   func didTapMore(_ button: UIButton) {
-//    guard let wine = wine else { return }
-    var menuItems: [MenuItem] = []
-
-//    let imageName = isDisliked(wine: wine) ? "heart.slash.fill" : "heart.slash"
-//
-//    let dislikeMenuItem = MenuItem(
-//      title: presenter.dislikeText ?? "",
-//      subtitle: nil,
-//      value: WineDetailMoreActions.dislike,
-//      image: UIImage(systemName: imageName),
-//      isEnabled: true,
-//      tapBehavior: .none)
-
-    let reportAnErrorMenuItem = MenuItem(
-      title: presenter.reportAnErrorText ?? "",
-      subtitle: nil,
-      value: WineDetailMoreActions.reportAnError,
-      image: nil,
-      isEnabled: true,
-      tapBehavior: .none)
-
-//    menuItems.append(dislikeMenuItem)
-    menuItems.append(reportAnErrorMenuItem)
-
-    router.showMoreActionSheet(menuItems: menuItems, appearance: VinchyActionSheetAppearance(), button: button)
+    router.showMoreActionSheet(
+      reportAnErrorText: presenter.reportAnErrorText,
+      button: button)
   }
 
   func didTapPriceButton() {
@@ -328,13 +305,7 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
 
   func didTapReportAnError(sourceView: UIView) {
     guard let wine = wine, let to = presenter.reportAnErrorRecipients.first else { return }
-
     router.presentContactActionSheet(to: to, subject: "", body: wine.title, includingThirdPartyApps: false, sourceView: sourceView)
-//    if emailService.canSend {
-//      router.presentEmailController(HTMLText: wine.title, recipients: presenter.reportAnErrorRecipients)
-//    } else {
-//      presenter.showAlertCantOpenEmail()
-//    }
   }
 
   func didTapDislikeButton() {
