@@ -212,14 +212,16 @@ final class WineDetailPresenter {
 
     sections += buildStarRateControl(rating: rating)
 
-    sections += [
-      .tool(
-        itemID: .tool,
-        content: .init(
-          price: formatCurrencyAmount(
-            wine.price ?? 0, currency: currency),
-          isLiked: isLiked, isAppClip: input.isAppClip)),
-    ]
+    if !input.isAppClip {
+      sections += [
+        .tool(
+          itemID: .tool,
+          content: .init(
+            price: formatCurrencyAmount(
+              wine.price ?? 0, currency: currency),
+            isLiked: isLiked, isAppClip: input.isAppClip)),
+      ]
+    }
 
 //    if isDescriptionInWineDetailEnabled {
 //      sections += [
@@ -420,7 +422,14 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
 
     let sections = generateAllSections(wine: wine, reviews: reviews, isLiked: isLiked, isDisliked: isDisliked, rating: rating, currency: currency, stores: stores, isGeneralInfoCollapsed: isGeneralInfoCollapsed)
 
-    let viewModel = WineDetailViewModel(navigationTitle: wine.title, sections: sections, isGeneralInfoCollapsed: isGeneralInfoCollapsed)
+    let viewModel = WineDetailViewModel(
+      navigationTitle: wine.title,
+      sections: sections,
+      isGeneralInfoCollapsed: isGeneralInfoCollapsed,
+      bottomPriceBarViewModel: .init(
+        leadingText: localized("price").firstLetterUppercased(),
+        trailingButtonText: formatCurrencyAmount(
+      wine.price ?? 0, currency: currency)))
 
     viewController?.updateUI(viewModel: viewModel)
 

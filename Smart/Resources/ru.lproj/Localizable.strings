@@ -123,6 +123,7 @@
 "you_have_not_rated_any_wine" = "Вы не оценили ни одного вина";
 "your_rated_wines_will_be_here" = "Здесь будут Ваши оцененные вина";
 "you_need_to_login_first" = "Сперва Вам необходимо войти";
+"price" = "стоимость";
 
 // MARK: - Sugar
 "sugar" = "сахар";

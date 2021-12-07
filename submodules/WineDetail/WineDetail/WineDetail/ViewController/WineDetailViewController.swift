@@ -15,6 +15,7 @@ import StoreKit
 import StringFormatting
 import UIKit
 import VinchyCore
+import EpoxyBars
 import VinchyUI
 
 // MARK: - C
@@ -116,7 +117,7 @@ final class WineDetailViewController: CollectionViewController {
   private let noteButton = UIButton(type: .system)
   private let moreButton = UIButton(type: .system)
 
-  private var viewModel: WineDetailViewModel = .init(navigationTitle: nil, sections: [], isGeneralInfoCollapsed: false)
+  private var viewModel: WineDetailViewModel = .init(navigationTitle: nil, sections: [], isGeneralInfoCollapsed: false, bottomPriceBarViewModel: .init(leadingText: nil, trailingButtonText: nil))
 
   @SectionModelBuilder
   private var sections: [SectionModel] {
@@ -357,6 +358,20 @@ final class WineDetailViewController: CollectionViewController {
     let activeRectBottomRight = CGPoint(x: collectionViewRect.origin.x + collectionViewRect.size.width, y: collectionViewRect.origin.y + collectionViewRect.size.height)
     return CGRect(origin: activeRectTopLeft, size: CGSize(width: activeRectBottomRight.x - activeRectTopLeft.x, height: activeRectBottomRight.y - activeRectTopLeft.y))
   }
+  
+  private lazy var bottomBarInstaller = BottomBarInstaller(
+    viewController: self,
+    bars: bars)
+  
+  @BarModelBuilder
+  private var bars: [BarModeling] {
+    [
+      BottomPriceBarView.barModel(
+        dataID: nil,
+        content: viewModel.bottomPriceBarViewModel,
+        style: .init())
+    ]
+  }
 
   @objc
   private func didTapCloseBarButtonItem(_: UIBarButtonItem) {
@@ -486,6 +501,9 @@ extension WineDetailViewController: WineDetailViewControllerProtocol {
 
   func updateUI(viewModel: WineDetailViewModel) {
     self.viewModel = viewModel
+    if input.isAppClip {
+      bottomBarInstaller.install()
+    }
     collectionView.setSections(sections, animated: true)
   }
 }

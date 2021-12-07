@@ -36,7 +36,7 @@ struct WineDetailViewModel {
     case reviews(itemID: ItemID, content: ReviewsCollectionView.Content)
     case servingTips(itemID: ItemID, content: ServingTipsCollectionView.Content)
     case button(itemID: ItemID, content: ButtonView.Content)
-    case ad(itemID: ItemID) // done
+    case ad(itemID: ItemID)
     case similarWines(itemID: ItemID, content: BottlesCollectionView.Content)
     case expandCollapse(itemID: ItemID, content: ExpandCollapseView.Content)
     case whereToBuy(itemID: ItemID, content: [WhereToBuyView.Content])
@@ -99,4 +99,5 @@ struct WineDetailViewModel {
   let navigationTitle: String?
   var sections: [Section]
   var isGeneralInfoCollapsed: Bool
+  var bottomPriceBarViewModel: BottomPriceBarView.Content
 }
