@@ -58,7 +58,6 @@ public final class AdItemView: UIView, EpoxyableView {
     adSize.size.height + 40
   }
 
-
   public final class var option: UIColor {
     UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
       if UITraitCollection.userInterfaceStyle == .dark {
