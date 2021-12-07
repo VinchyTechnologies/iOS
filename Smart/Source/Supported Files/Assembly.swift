@@ -49,12 +49,6 @@ final class Assembly {
     return navController
   }
 
-//  static func buildChooseCountiesModule(preSelectedCountryCodes: [String], delegate: CountriesViewControllerDelegate) -> VinchyNavigationController {
-//    let controller = CountriesViewController(preSelectedCountryCodes: preSelectedCountryCodes, delegate: delegate)
-//    let navController = VinchyNavigationController(rootViewController: controller)
-//    return navController
-//  }
-
   static func buildWriteNoteViewController(for wine: Wine) -> UIViewController {
     let controller = WriteNoteAssembly.assemblyModule(input: .init(wine: .firstTime(wine: wine)))
     controller.hidesBottomBarWhenPushed = true
