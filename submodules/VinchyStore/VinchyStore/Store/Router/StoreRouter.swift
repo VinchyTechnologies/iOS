@@ -50,8 +50,10 @@ extension StoreRouter: StoreRouterProtocol {
     coordinator.didTapShare(type: type)
   }
 
-  func pushToResultsSearchController(affilatedId: Int) {
-    coordinator.pushToResultsSearchController(affilatedId: affilatedId)
+  func pushToResultsSearchController(affilatedId: Int, resultsSearchDelegate: ResultsSearchDelegate?) {
+    coordinator.pushToResultsSearchController(
+      affilatedId: affilatedId,
+      resultsSearchDelegate: resultsSearchDelegate)
   }
 
   func presentActivityViewController(items: [Any], sourceView: UIView) {

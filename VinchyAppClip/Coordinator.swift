@@ -30,8 +30,12 @@ final class Coordinator: WineDetailRoutable, ActivityRoutable, WriteNoteRoutable
     UIApplication.topViewController()?.present(navController, animated: true, completion: nil)
   }
 
-  func pushToResultsSearchController(affilatedId: Int) {
-
+  func pushToResultsSearchController(affilatedId: Int, resultsSearchDelegate: ResultsSearchDelegate?) {
+    let controller = ResultsSearchAssembly.assemblyModule(
+      input: .init(mode: .storeDetail(affilatedId: affilatedId)), resultsSearchDelegate: resultsSearchDelegate)
+    let navController = VinchyNavigationController(rootViewController: controller)
+    navController.modalPresentationStyle = .overCurrentContext
+    UIApplication.topViewController()?.present(navController, animated: true, completion: nil)
   }
 
   func showBottomSheetReviewDetailViewController(reviewInput: ReviewDetailInput) {

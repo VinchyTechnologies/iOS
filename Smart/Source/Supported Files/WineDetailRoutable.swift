@@ -18,9 +18,15 @@ extension WineDetailRoutable {
     } else {
       let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID, isAppClip: false), coordinator: Coordinator.shared, adGenerator: AdFabric.shared)
       controller.hidesBottomBarWhenPushed = true
-      UIApplication.topViewController()?.navigationController?.pushViewController(
-        controller,
-        animated: true)
+      if UIApplication.topViewController() is SearchViewController {
+        UIApplication.topViewController()?.presentingViewController?.navigationController?.pushViewController(
+          controller,
+          animated: true)
+      } else {
+        UIApplication.topViewController()?.navigationController?.pushViewController(
+          controller,
+          animated: true)
+      }
     }
   }
 

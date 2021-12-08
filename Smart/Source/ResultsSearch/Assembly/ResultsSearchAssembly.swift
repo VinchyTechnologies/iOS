@@ -6,13 +6,13 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import VinchyUI
 
 final class ResultsSearchAssembly {
 
-  static func assemblyModule(input: ResultsSearchInput) -> ResultsSearchViewController {
+  static func assemblyModule(input: ResultsSearchInput, resultsSearchDelegate: ResultsSearchDelegate?) -> ResultsSearchViewController {
     let viewController = ResultsSearchViewController(input: input)
-
+    viewController.resultsSearchDelegate = resultsSearchDelegate
     let router = ResultsSearchRouter(viewController: viewController)
     let presenter = ResultsSearchPresenter(viewController: viewController)
     let interactor = ResultsSearchInteractor(input: input, router: router, presenter: presenter)

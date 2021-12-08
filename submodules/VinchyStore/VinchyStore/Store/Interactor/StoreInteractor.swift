@@ -276,10 +276,10 @@ extension StoreInteractor: StoreInteractorProtocol {
   func didTapSearchButton() {
     switch input.mode {
     case .normal(let affilatedId):
-      router.pushToResultsSearchController(affilatedId: affilatedId)
+      router.pushToResultsSearchController(affilatedId: affilatedId, resultsSearchDelegate: self)
 
     case .hasPersonalRecommendations(let affilatedId, _):
-      router.pushToResultsSearchController(affilatedId: affilatedId)
+      router.pushToResultsSearchController(affilatedId: affilatedId, resultsSearchDelegate: self)
     }
   }
 
@@ -325,4 +325,14 @@ extension StoreInteractor: StoreInteractorProtocol {
   func didSelectWine(wineID: Int64) {
     router.pushToWineDetailViewController(wineID: wineID)
   }
+}
+
+// MARK: ResultsSearchDelegate
+
+extension StoreInteractor: ResultsSearchDelegate {
+  func didTapBottleCell(wineID: Int64) {
+    router.pushToWineDetailViewController(wineID: wineID)
+  }
+
+  func didTapSearchButton(searchText: String?) { }
 }

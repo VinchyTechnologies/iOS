@@ -14,13 +14,7 @@ import EpoxyCore
 import StringFormatting
 import UIKit
 import VinchyCore
-
-// MARK: - ResultsSearchDelegate
-
-protocol ResultsSearchDelegate: AnyObject {
-  func didTapBottleCell(wineID: Int64)
-  func didTapSearchButton(searchText: String?)
-}
+import VinchyUI
 
 // MARK: - ResultsSearchViewController
 

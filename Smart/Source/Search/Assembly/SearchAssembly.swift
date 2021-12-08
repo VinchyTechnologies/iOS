@@ -6,12 +6,12 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import VinchyUI
 
 final class SearchAssembly {
 
-  static func assemblyModule(input: SearchInput) -> SearchViewController {
-    let resultsController = ResultsSearchAssembly.assemblyModule(input: input.resultSearchInput)
+  static func assemblyModule(input: SearchInput, resultsSearchDelegate: ResultsSearchDelegate?) -> SearchViewController {
+    let resultsController = ResultsSearchAssembly.assemblyModule(input: input.resultSearchInput, resultsSearchDelegate: resultsSearchDelegate)
     let viewController = SearchViewController(searchResultsController: resultsController)
     resultsController.didnotFindTheWineCollectionCellDelegate = viewController
 
