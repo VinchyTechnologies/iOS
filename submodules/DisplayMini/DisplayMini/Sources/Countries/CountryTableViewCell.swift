@@ -1,12 +1,11 @@
 //
 //  CountryTableViewCell.swift
-//  CommonUI
+//  DisplayMini
 //
 //  Created by Aleksei Smirnov on 15.09.2020.
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import Display
 import UIKit
 
 // MARK: - CountryTableViewCellViewModel

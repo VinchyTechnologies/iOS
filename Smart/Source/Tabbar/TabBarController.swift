@@ -7,7 +7,7 @@
 //
 
 import Combine
-import Display
+import DisplayMini
 import StringFormatting
 import UIKit
 import VinchyStore

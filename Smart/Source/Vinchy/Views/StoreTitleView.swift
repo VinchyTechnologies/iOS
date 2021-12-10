@@ -7,6 +7,7 @@
 //
 
 import Display
+import DisplayMini
 import EpoxyCore
 import EpoxyLayoutGroups
 

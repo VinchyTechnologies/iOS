@@ -7,7 +7,7 @@
 //
 
 import CoreLocation
-import Display
+import DisplayMini
 import MapKit
 import VinchyCore
 

@@ -6,7 +6,7 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import Display
+import DisplayMini
 import UIKit
 
 // MARK: - SwitcherWithTextViewModel

@@ -1,12 +1,11 @@
 //
 //  LoadingIndicatorCell.swift
-//  CommonUI
+//  DisplayMini
 //
 //  Created by Алексей Смирнов on 20.02.2021.
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Display
 import UIKit
 
 public final class LoadingIndicatorCell: UICollectionViewCell, Loadable, Reusable {

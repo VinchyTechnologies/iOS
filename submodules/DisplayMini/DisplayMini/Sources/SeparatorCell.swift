@@ -1,12 +1,11 @@
 //
 //  SeparatorCell.swift
-//  CommonUI
+//  DisplayMini
 //
 //  Created by Алексей Смирнов on 25.02.2021.
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Display
 import UIKit
 
 public final class SeparatorCell: UICollectionViewCell, Reusable {

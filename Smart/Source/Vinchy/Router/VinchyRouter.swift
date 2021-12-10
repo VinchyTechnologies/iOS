@@ -6,9 +6,8 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import CommonUI
 import Core
-import Display
+import DisplayMini
 import FittedSheets
 import StringFormatting
 import UIKit

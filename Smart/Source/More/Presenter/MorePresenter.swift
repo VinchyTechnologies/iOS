@@ -7,9 +7,8 @@
 //
 // swiftlint:disable all
 
-import CommonUI
 import Core
-import Display
+import DisplayMini
 import StringFormatting
 import UIKit
 import VinchyUI

@@ -1,12 +1,12 @@
 //
 //  WineTableCell.swift
-//  CommonUI
+//  Display
 //
-//  Created by Aleksei Smirnov on 18.07.2020.
-//  Copyright © 2020 Aleksei Smirnov. All rights reserved.
+//  Created by Алексей Смирнов on 10.12.2021.
+//  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Display
+import DisplayMini
 import UIKit
 
 // MARK: - WineTableCellViewModel

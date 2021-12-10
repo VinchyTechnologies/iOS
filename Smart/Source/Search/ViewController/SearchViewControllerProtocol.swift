@@ -6,6 +6,6 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Display
+import DisplayMini
 
 protocol SearchViewControllerProtocol: Alertable {}

@@ -1,13 +1,12 @@
 //
 //  ReviewCell.swift
-//  CommonUI
+//  DisplayMini
 //
 //  Created by Алексей Смирнов on 19.02.2021.
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
 import Cosmos
-import Display
 import UIKit
 
 // MARK: - ReviewCellViewModel

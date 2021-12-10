@@ -7,6 +7,7 @@
 //
 
 import Display
+import DisplayMini
 
 struct StoresViewModel {
   enum SectionID {

@@ -6,7 +6,7 @@
 //
 
 import Core
-import Display
+import DisplayMini
 
 protocol ChooseAuthTypeViewControllerProtocol: Alertable, OpenURLProtocol {
   func updateUI(viewModel: ChooseAuthTypeViewModel)

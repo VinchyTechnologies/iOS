@@ -6,6 +6,4 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import CommonUI
-
 struct SearchViewModel {}

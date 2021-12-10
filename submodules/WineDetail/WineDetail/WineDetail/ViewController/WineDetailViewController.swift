@@ -6,9 +6,8 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import CommonUI
 import Database
-import Display
+import DisplayMini
 import EpoxyBars
 import EpoxyCollectionView
 import EpoxyCore

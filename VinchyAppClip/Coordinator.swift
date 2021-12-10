@@ -8,7 +8,7 @@
 
 import AdvancedSearch
 import Database
-import Display
+import DisplayMini
 import FittedSheets
 import UIKit
 import VinchyCore

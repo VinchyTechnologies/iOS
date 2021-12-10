@@ -6,9 +6,8 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import CommonUI
 import Core
-import Display
+import DisplayMini
 import UIKit
 import VinchyCore
 

@@ -6,8 +6,8 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import CommonUI
 import Display
+import DisplayMini
 
 struct ShowcaseViewModel {
   enum Section {

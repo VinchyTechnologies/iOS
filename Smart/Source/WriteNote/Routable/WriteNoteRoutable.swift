@@ -7,7 +7,7 @@
 //
 
 import Database
-import Display
+import DisplayMini
 import UIKit
 import VinchyCore
 import VinchyUI

@@ -163,12 +163,8 @@
 		8A3C0F5D2732D38500947085 /* ControllerCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A3C0F5C2732D38500947085 /* ControllerCell.swift */; };
 		8A417735275CBF03003E1934 /* AdvancedSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94DA275B609200C80F1E /* AdvancedSearch.framework */; };
 		8A417736275CBF03003E1934 /* AdvancedSearch.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94DA275B609200C80F1E /* AdvancedSearch.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8A417738275CBF06003E1934 /* CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24AEA24C32AE90057547F /* CommonUI.framework */; };
-		8A417739275CBF06003E1934 /* CommonUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24AEA24C32AE90057547F /* CommonUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A41773A275CBF08003E1934 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CABDBA8624C2FAB800AD96D6 /* Core.framework */; };
 		8A41773B275CBF08003E1934 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CABDBA8624C2FAB800AD96D6 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		8A41773C275CBF09003E1934 /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA1821A324C0E83900280DD4 /* Display.framework */; };
-		8A41773D275CBF09003E1934 /* Display.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA1821A324C0E83900280DD4 /* Display.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A417740275CBF0E003E1934 /* Spotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A299EF2274FB7B400355602 /* Spotlight.framework */; };
 		8A417741275CBF0E003E1934 /* Spotlight.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A299EF2274FB7B400355602 /* Spotlight.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A417742275CBF10003E1934 /* StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24ACC24C323C90057547F /* StringFormatting.framework */; };
@@ -192,8 +188,6 @@
 		8A5145E12757EC9000DC45CD /* VinchyStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5145E02757EC9000DC45CD /* VinchyStore.framework */; };
 		8A5145E22757EC9000DC45CD /* VinchyStore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5145E02757EC9000DC45CD /* VinchyStore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A5401CA26EFA894007247E5 /* StoreTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5401C926EFA894007247E5 /* StoreTitleView.swift */; };
-		8A63CCB126754628003B1D4D /* CommonUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24AEA24C32AE90057547F /* CommonUI.framework */; };
-		8A63CCB226754628003B1D4D /* CommonUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CAF24AEA24C32AE90057547F /* CommonUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A63CCB42675462A003B1D4D /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CABDBA8624C2FAB800AD96D6 /* Core.framework */; };
 		8A63CCB52675462A003B1D4D /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CABDBA8624C2FAB800AD96D6 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A63CCB62675462C003B1D4D /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA1821FE24C0F6F000280DD4 /* Database.framework */; };
@@ -253,6 +247,10 @@
 		8A9C7EBF276118BE00A5B694 /* ResultsSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E55F9626AACE2C0086C159 /* ResultsSearchViewModel.swift */; };
 		8A9C7EC0276118C700A5B694 /* WineCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E55FB326AAD25E0086C159 /* WineCollectionCell.swift */; };
 		8A9C7EC1276118CD00A5B694 /* DidnotFindTheWineCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E55FB526AADB340086C159 /* DidnotFindTheWineCollectionCell.swift */; };
+		8A9C7F0827613A3300A5B694 /* DisplayMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9C7F0727613A3300A5B694 /* DisplayMini.framework */; };
+		8A9C7F0927613A3300A5B694 /* DisplayMini.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9C7F0727613A3300A5B694 /* DisplayMini.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8A9C7F0B27613A3F00A5B694 /* DisplayMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9C7F0A27613A3F00A5B694 /* DisplayMini.framework */; };
+		8A9C7F0C27613A3F00A5B694 /* DisplayMini.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9C7F0A27613A3F00A5B694 /* DisplayMini.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8AA5E5132615053D00935B5E /* AboutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA5E5122615053D00935B5E /* AboutView.swift */; };
 		8AA7BA78275CDE1B00BF68E8 /* VinchyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; };
 		8AA7BA79275CDE1B00BF68E8 /* VinchyCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
@@ -357,7 +355,6 @@
 		CA472ACC245EDE30009149FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA472ACA245EDE30009149FF /* LaunchScreen.storyboard */; };
 		CA472AD7245EDE30009149FF /* SmartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA472AD6245EDE30009149FF /* SmartTests.swift */; };
 		CA472AE2245EDE30009149FF /* SmartUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA472AE1245EDE30009149FF /* SmartUITests.swift */; };
-		CA472B2B245EDEA0009149FF /* FiltersHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA472B26245EDEA0009149FF /* FiltersHeaderView.swift */; };
 		CA472B2C245EDEA0009149FF /* HeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA472B27245EDEA0009149FF /* HeaderReusableView.swift */; };
 		CA472B54245EDEDB009149FF /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA472B40245EDEDB009149FF /* Assembly.swift */; };
 		CA472B59245EDEDB009149FF /* ShowcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA472B49245EDEDB009149FF /* ShowcaseViewController.swift */; };
@@ -476,13 +473,12 @@
 				8A417741275CBF0E003E1934 /* Spotlight.framework in Embed Frameworks */,
 				8A889A58275CC8390096A74A /* Database.framework in Embed Frameworks */,
 				8A41774B275CBF16003E1934 /* WineDetail.framework in Embed Frameworks */,
+				8A9C7F0C27613A3F00A5B694 /* DisplayMini.framework in Embed Frameworks */,
 				8A417747275CBF13003E1934 /* VinchyStore.framework in Embed Frameworks */,
 				8A417749275CBF15003E1934 /* VinchyUI.framework in Embed Frameworks */,
 				8AA7BA79275CDE1B00BF68E8 /* VinchyCore.framework in Embed Frameworks */,
 				8A41773B275CBF08003E1934 /* Core.framework in Embed Frameworks */,
-				8A417739275CBF06003E1934 /* CommonUI.framework in Embed Frameworks */,
 				8A417743275CBF10003E1934 /* StringFormatting.framework in Embed Frameworks */,
-				8A41773D275CBF09003E1934 /* Display.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -501,8 +497,8 @@
 				8A5145872757C9A000DC45CD /* VinchyUI.framework in Embed Frameworks */,
 				8A63CCBB26754630003B1D4D /* LocationUI.framework in Embed Frameworks */,
 				8A63CCBF26754635003B1D4D /* VinchyAuthorization.framework in Embed Frameworks */,
-				8A63CCB226754628003B1D4D /* CommonUI.framework in Embed Frameworks */,
 				8A5145E22757EC9000DC45CD /* VinchyStore.framework in Embed Frameworks */,
+				8A9C7F0927613A3300A5B694 /* DisplayMini.framework in Embed Frameworks */,
 				8A63CCB52675462A003B1D4D /* Core.framework in Embed Frameworks */,
 				8A299EF4274FB7B400355602 /* Spotlight.framework in Embed Frameworks */,
 				8AEC83BB2758E7BE00C80F1E /* WineDetail.framework in Embed Frameworks */,
@@ -733,6 +729,8 @@
 		8A916117268E27EB00240B18 /* SearchRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRouterProtocol.swift; sourceTree = "<group>"; };
 		8A9554672692284B00F1C5AE /* DocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsViewController.swift; sourceTree = "<group>"; };
 		8A9C7EAF275FDE1900A5B694 /* StatusAlertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusAlertable.swift; sourceTree = "<group>"; };
+		8A9C7F0727613A3300A5B694 /* DisplayMini.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DisplayMini.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A9C7F0A27613A3F00A5B694 /* DisplayMini.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DisplayMini.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AA4CBAD275CA72A00856FE5 /* LocationUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = LocationUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AA5E5122615053D00935B5E /* AboutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutView.swift; sourceTree = "<group>"; };
 		8AA9909126D91FE000C32358 /* StoresViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoresViewModel.swift; sourceTree = "<group>"; };
@@ -822,7 +820,6 @@
 		CA472ADD245EDE30009149FF /* SmartUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA472AE1245EDE30009149FF /* SmartUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartUITests.swift; sourceTree = "<group>"; };
 		CA472AE3245EDE30009149FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CA472B26245EDEA0009149FF /* FiltersHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersHeaderView.swift; sourceTree = "<group>"; };
 		CA472B27245EDEA0009149FF /* HeaderReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderReusableView.swift; sourceTree = "<group>"; };
 		CA472B40245EDEDB009149FF /* Assembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
 		CA472B49245EDEDB009149FF /* ShowcaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowcaseViewController.swift; sourceTree = "<group>"; };
@@ -932,9 +929,8 @@
 				8A417735275CBF03003E1934 /* AdvancedSearch.framework in Frameworks */,
 				8A417746275CBF13003E1934 /* VinchyStore.framework in Frameworks */,
 				8A41773A275CBF08003E1934 /* Core.framework in Frameworks */,
-				8A417738275CBF06003E1934 /* CommonUI.framework in Frameworks */,
-				8A41773C275CBF09003E1934 /* Display.framework in Frameworks */,
 				8A889A57275CC8390096A74A /* Database.framework in Frameworks */,
+				8A9C7F0B27613A3F00A5B694 /* DisplayMini.framework in Frameworks */,
 				FABB13923370D0A65D1B9E5E /* Pods_VinchyAppClip.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -953,7 +949,7 @@
 				8A63CCB42675462A003B1D4D /* Core.framework in Frameworks */,
 				8A63CCC026754638003B1D4D /* VinchyCore.framework in Frameworks */,
 				8AEC83BA2758E7BE00C80F1E /* WineDetail.framework in Frameworks */,
-				8A63CCB126754628003B1D4D /* CommonUI.framework in Frameworks */,
+				8A9C7F0827613A3300A5B694 /* DisplayMini.framework in Frameworks */,
 				8A299EF3274FB7B400355602 /* Spotlight.framework in Frameworks */,
 				8A63CCBA26754630003B1D4D /* LocationUI.framework in Frameworks */,
 				8A5145E12757EC9000DC45CD /* VinchyStore.framework in Frameworks */,
@@ -1357,6 +1353,8 @@
 		46483F371463D95E22014241 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8A9C7F0A27613A3F00A5B694 /* DisplayMini.framework */,
+				8A9C7F0727613A3300A5B694 /* DisplayMini.framework */,
 				8A7E8781275D1F3B00A8C470 /* AdUI.framework */,
 				8A07B9DE275D1B7500AF27B0 /* AdUI.framework */,
 				8A07B9C1275CEF7700AF27B0 /* VinchyAuthorization.framework */,
@@ -2989,7 +2987,6 @@
 			isa = PBXGroup;
 			children = (
 				CA472B27245EDEA0009149FF /* HeaderReusableView.swift */,
-				CA472B26245EDEA0009149FF /* FiltersHeaderView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3596,7 +3593,6 @@
 				CA490141252F7EDC00066A98 /* VinchyViewControllerViewModel.swift in Sources */,
 				CA48579B2517CA5200EDA4CE /* VinchyViewControllerProtocol.swift in Sources */,
 				8AE7880E2684E8D60056A84B /* NotesPresenterProtocol.swift in Sources */,
-				CA472B2B245EDEA0009149FF /* FiltersHeaderView.swift in Sources */,
 				8AA990A726D91FE000C32358 /* StoresViewController.swift in Sources */,
 				CE8FF83525FADA76004D4F37 /* ShowcaseInteractor.swift in Sources */,
 				CE58DECB25ED712900B5BDF9 /* CurrencyPresenter.swift in Sources */,
@@ -3900,7 +3896,7 @@
 				CODE_SIGN_ENTITLEMENTS = VinchyAppClip/VinchyAppClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				ENABLE_BITCODE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -3937,7 +3933,7 @@
 				CODE_SIGN_ENTITLEMENTS = VinchyAppClip/VinchyAppClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				ENABLE_BITCODE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -4092,7 +4088,7 @@
 				CODE_SIGN_ENTITLEMENTS = Smart/Vinchy.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Smart/Resources/Info.plist;
@@ -4125,7 +4121,7 @@
 				CODE_SIGN_ENTITLEMENTS = Smart/VinchyRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 16;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Smart/Resources/Info.plist;

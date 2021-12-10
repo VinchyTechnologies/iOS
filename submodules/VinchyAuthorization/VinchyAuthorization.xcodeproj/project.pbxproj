@@ -61,6 +61,7 @@
 		8A417751275CC313003E1934 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A417750275CC313003E1934 /* Core.framework */; };
 		8A417755275CC32B003E1934 /* StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A417754275CC32B003E1934 /* StringFormatting.framework */; };
 		8A4EF2B6275CEE31004D140D /* VinchyUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A4EF2B5275CEE31004D140D /* VinchyUI.framework */; };
+		8AD51DA5276403490009499A /* DisplayMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AD51DA4276403490009499A /* DisplayMini.framework */; };
 		8AFD837C26F7A118003DF360 /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A724E22591351C00A7552B /* Display.framework */; };
 		8AFD837D26F7A118003DF360 /* Display.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44A724E22591351C00A7552B /* Display.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8AFD837E26F7A11B003DF360 /* StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AFD837926F7A101003DF360 /* StringFormatting.framework */; };
@@ -180,6 +181,7 @@
 		8A417750275CC313003E1934 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A417754275CC32B003E1934 /* StringFormatting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StringFormatting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A4EF2B5275CEE31004D140D /* VinchyUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AD51DA4276403490009499A /* DisplayMini.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DisplayMini.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AFD837926F7A101003DF360 /* StringFormatting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StringFormatting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AFD838226F7A192003DF360 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9AF072C587CFDED49C6A1B68 /* Pods_VinchyAuthorizationApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinchyAuthorizationApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -200,6 +202,7 @@
 				7533A31D914AAECD8AC85663 /* Pods_VinchyAuthorization.framework in Frameworks */,
 				8A417751275CC313003E1934 /* Core.framework in Frameworks */,
 				8A4EF2B6275CEE31004D140D /* VinchyUI.framework in Frameworks */,
+				8AD51DA5276403490009499A /* DisplayMini.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -419,6 +422,7 @@
 		44A724E12591351C00A7552B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8AD51DA4276403490009499A /* DisplayMini.framework */,
 				8A4EF2B5275CEE31004D140D /* VinchyUI.framework */,
 				8A417754275CC32B003E1934 /* StringFormatting.framework */,
 				8A417750275CC313003E1934 /* Core.framework */,

@@ -22,7 +22,7 @@
 		8A9C7EAA275FBAAD00A5B694 /* WineShareRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9C7EA9275FBAAD00A5B694 /* WineShareRoutable.swift */; };
 		8A9C7EAC275FDDA000A5B694 /* CantOpenURLAlertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9C7EAB275FDDA000A5B694 /* CantOpenURLAlertable.swift */; };
 		8A9C7EAE275FDDE200A5B694 /* StatusAlertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9C7EAD275FDDE200A5B694 /* StatusAlertable.swift */; };
-		8A9C7EB22761183F00A5B694 /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9C7EB12761183F00A5B694 /* Display.framework */; };
+		8A9C7F5B27613FD900A5B694 /* DisplayMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9C7F5A27613FD900A5B694 /* DisplayMini.framework */; };
 		8AA7BA7D275CE7F700BF68E8 /* AuthorizationRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA7BA7C275CE7F700BF68E8 /* AuthorizationRoutable.swift */; };
 		8AEC83962758E12C00C80F1E /* ReviewsRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83952758E12C00C80F1E /* ReviewsRoutable.swift */; };
 		8AEC83982758E1C500C80F1E /* WriteReviewRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83972758E1C500C80F1E /* WriteReviewRoutable.swift */; };
@@ -52,6 +52,7 @@
 		8A9C7EAB275FDDA000A5B694 /* CantOpenURLAlertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CantOpenURLAlertable.swift; sourceTree = "<group>"; };
 		8A9C7EAD275FDDE200A5B694 /* StatusAlertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusAlertable.swift; sourceTree = "<group>"; };
 		8A9C7EB12761183F00A5B694 /* Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A9C7F5A27613FD900A5B694 /* DisplayMini.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DisplayMini.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AA7BA7C275CE7F700BF68E8 /* AuthorizationRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRoutable.swift; sourceTree = "<group>"; };
 		8AEC83952758E12C00C80F1E /* ReviewsRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsRoutable.swift; sourceTree = "<group>"; };
 		8AEC83972758E1C500C80F1E /* WriteReviewRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewRoutable.swift; sourceTree = "<group>"; };
@@ -69,11 +70,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A9C7F5B27613FD900A5B694 /* DisplayMini.framework in Frameworks */,
 				8A5145ED2757FA7100DC45CD /* VinchyCore.framework in Frameworks */,
 				8A5145F52757FE7C00DC45CD /* Core.framework in Frameworks */,
 				8A5145E92757FA6600DC45CD /* Database.framework in Frameworks */,
 				06C24011D5E1A289379A1451 /* Pods_VinchyUI.framework in Frameworks */,
-				8A9C7EB22761183F00A5B694 /* Display.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -118,6 +119,7 @@
 		8A5145E72757FA6600DC45CD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8A9C7F5A27613FD900A5B694 /* DisplayMini.framework */,
 				8A9C7EB12761183F00A5B694 /* Display.framework */,
 				8A5145F42757FE7C00DC45CD /* Core.framework */,
 				8A5145EC2757FA7100DC45CD /* VinchyCore.framework */,

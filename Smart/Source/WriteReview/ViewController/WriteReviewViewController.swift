@@ -6,8 +6,8 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import CommonUI
 import Display
+import DisplayMini
 import UIKit
 
 // MARK: - WriteReviewViewController

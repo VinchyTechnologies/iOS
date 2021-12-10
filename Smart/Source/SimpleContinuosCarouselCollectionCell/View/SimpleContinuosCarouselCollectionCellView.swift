@@ -7,10 +7,9 @@
 //
 
 import AudioToolbox
-import CommonUI
 import CoreHaptics
 import Database
-import Display
+import DisplayMini
 import StringFormatting
 import UIKit
 import VinchyCore

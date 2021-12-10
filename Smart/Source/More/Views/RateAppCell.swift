@@ -6,7 +6,7 @@
 //  Copyright © 2019 Алексей Смирнов. All rights reserved.
 //
 
-import Display
+import DisplayMini
 import StringFormatting
 import UIKit
 

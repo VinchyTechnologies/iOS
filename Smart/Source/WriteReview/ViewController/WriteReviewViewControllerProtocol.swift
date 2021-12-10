@@ -6,7 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Display
+import DisplayMini
 
 protocol WriteReviewViewControllerProtocol: Alertable, Loadable {
   func setPlaceholder(placeholder: String?)

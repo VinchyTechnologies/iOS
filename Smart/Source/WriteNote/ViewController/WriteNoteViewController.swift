@@ -8,6 +8,7 @@
 
 import Database
 import Display
+import DisplayMini
 import StringFormatting
 import UIKit
 import VinchyCore

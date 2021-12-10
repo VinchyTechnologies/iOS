@@ -1,12 +1,11 @@
 //
 //  ImageOptionCollectionCell.swift
-//  CommonUI
+//  DisplayMini
 //
 //  Created by Aleksei Smirnov on 27.08.2020.
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import Display
 import UIKit
 
 // MARK: - ImageOptionCollectionCellViewModel

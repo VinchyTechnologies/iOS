@@ -5,7 +5,7 @@
 //  Created by Алексей Смирнов on 06.02.2021.
 //
 
-import Display
+import DisplayMini
 import UIKit
 import VinchyUI
 

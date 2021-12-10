@@ -6,10 +6,9 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import CommonUI
 import Core
 import CoreLocation
-import Display
+import DisplayMini
 import MapKit
 import StringFormatting
 import UIKit

@@ -46,17 +46,17 @@ target 'Display' do
   epoxy
 end
 
+target 'DisplayMini' do
+  project 'submodules/DisplayMini/DisplayMini'
+  epoxy
+end
+
 target 'AdUI' do
   project 'submodules/AdUI/AdUI'
 end
 
 target 'VinchyStore' do
   project 'submodules/VinchyStore/VinchyStore'
-  epoxy
-end
-
-target 'CommonUI' do
-  project 'submodules/CommonUI/CommonUI'
   epoxy
 end
 

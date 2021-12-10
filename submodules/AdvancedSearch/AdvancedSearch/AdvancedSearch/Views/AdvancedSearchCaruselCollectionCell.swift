@@ -6,8 +6,7 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import CommonUI
-import Display
+import DisplayMini
 import UIKit
 
 // MARK: - AdvancedSearchCaruselCollectionCellDelegate
@@ -44,7 +43,7 @@ final class AdvancedSearchCaruselCollectionCell: UICollectionViewCell, Reusable 
 
     addSubview(collectionView)
     collectionView.fill()
-    bounceDecorator.configureBounceDecorator(onView: self)
+//    bounceDecorator.configureBounceDecorator(onView: self)
   }
 
   @available(*, unavailable)
@@ -71,24 +70,24 @@ final class AdvancedSearchCaruselCollectionCell: UICollectionViewCell, Reusable 
 
   // MARK: Private
 
-  private lazy var bounceDecorationView: MoreBounceDecoratorView = {
-    let view = MoreBounceDecoratorView()
-    view.decorate(model: .init(titleText: "More"))
-    return view
-  }()
-
-  private lazy var bounceDecorator: ScrollViewBounceDecorator = {
-    let left = decorationBounceViewInsets.left - collectionView.contentInset.left
-    let right = decorationBounceViewInsets.right
-    let direction: ScrollViewBounceDecorator.ScrollDirection =
-      .horizontal(.right(.init(top: 0, left: left, bottom: 0, right: left))) // TODO: - fix Arabic
-
-    return ScrollViewBounceDecorator(
-      decorationView: bounceDecorationView,
-      direction: direction,
-      isFadingEnabled: false,
-      delegate: self)
-  }()
+//  private lazy var bounceDecorationView: MoreBounceDecoratorView = {
+//    let view = MoreBounceDecoratorView()
+//    view.decorate(model: .init(titleText: "More"))
+//    return view
+//  }()
+//
+//  private lazy var bounceDecorator: ScrollViewBounceDecorator = {
+//    let left = decorationBounceViewInsets.left - collectionView.contentInset.left
+//    let right = decorationBounceViewInsets.right
+//    let direction: ScrollViewBounceDecorator.ScrollDirection =
+//      .horizontal(.right(.init(top: 0, left: left, bottom: 0, right: left))) // TODO: - fix Arabic
+//
+//    return ScrollViewBounceDecorator(
+//      decorationView: bounceDecorationView,
+//      direction: direction,
+//      isFadingEnabled: false,
+//      delegate: self)
+//  }()
 
   private var items: [ImageOptionCollectionCellViewModel] = [] {
     didSet {
@@ -104,7 +103,7 @@ extension AdvancedSearchCaruselCollectionCell: Decoratable {
 
   func decorate(model: AdvancedSearchCaruselCollectionCellViewModel) {
     items = model.items
-    bounceDecorator.isEnabled = false
+//    bounceDecorator.isEnabled = false
   }
 }
 
@@ -135,11 +134,11 @@ extension AdvancedSearchCaruselCollectionCell: DecoratorFlowLayoutDelegate {
 
   public func scrollViewDidScroll(_ scrollView: UIScrollView) {
 //    delegate?.setContentOffset(scrollView.contentOffset, at: section)
-    bounceDecorator.handleScrollViewDidScroll(scrollView)
+//    bounceDecorator.handleScrollViewDidScroll(scrollView)
   }
 
   public func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate _: Bool) {
-    bounceDecorator.handleScrollViewDidEndDragging(scrollView)
+//    bounceDecorator.handleScrollViewDidEndDragging(scrollView)
   }
 
   // MARK: Internal
@@ -163,8 +162,8 @@ extension AdvancedSearchCaruselCollectionCell: DecoratorFlowLayoutDelegate {
 
 // MARK: ScrollViewBounceDecoratorDelegate
 
-extension AdvancedSearchCaruselCollectionCell: ScrollViewBounceDecoratorDelegate {
-  func scrollViewBounceDecoratorTriggered() {
-//    delegate?.showMore(at: section)
-  }
-}
+//extension AdvancedSearchCaruselCollectionCell: ScrollViewBounceDecoratorDelegate {
+//  func scrollViewBounceDecoratorTriggered() {
+////    delegate?.showMore(at: section)
+//  }
+//}

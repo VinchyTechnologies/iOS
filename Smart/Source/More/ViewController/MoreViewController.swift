@@ -6,9 +6,8 @@
 //  Copyright © 2019 Алексей Смирнов. All rights reserved.
 //
 
-import CommonUI
 import Database
-import Display
+import DisplayMini
 import StringFormatting
 import UIKit
 import VinchyUI

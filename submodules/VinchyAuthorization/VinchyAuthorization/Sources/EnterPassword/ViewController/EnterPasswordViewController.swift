@@ -5,7 +5,7 @@
 //  Created by Алексей Смирнов on 23.12.2020.
 //
 
-import Display
+import DisplayMini
 import UIKit
 
 // MARK: - C

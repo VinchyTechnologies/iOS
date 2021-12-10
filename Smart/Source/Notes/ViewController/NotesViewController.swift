@@ -7,8 +7,8 @@
 //
 
 import Combine
-import CommonUI
 import Display
+import DisplayMini
 import StringFormatting
 import UIKit
 

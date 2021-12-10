@@ -7,7 +7,7 @@
 //
 
 import Combine
-import Display
+import DisplayMini
 
 protocol NotesViewControllerProtocol: Alertable {
   func updateUI(viewModel: NotesViewModel)

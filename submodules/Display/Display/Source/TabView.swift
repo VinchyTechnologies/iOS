@@ -6,6 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import DisplayMini
 import UIKit
 
 // MARK: - LocalConstants

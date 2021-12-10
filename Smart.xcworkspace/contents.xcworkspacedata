@@ -18,9 +18,6 @@
          location = "group:submodules/AdvancedSearch/AdvancedSearch.xcodeproj">
       </FileRef>
       <FileRef
-         location = "group:submodules/CommonUI/CommonUI.xcodeproj">
-      </FileRef>
-      <FileRef
          location = "group:submodules/Core/Core.xcodeproj">
       </FileRef>
       <FileRef
@@ -28,6 +25,9 @@
       </FileRef>
       <FileRef
          location = "group:submodules/Display/Display.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:submodules/DisplayMini/DisplayMini.xcodeproj">
       </FileRef>
       <FileRef
          location = "group:submodules/LocationUI/LocationUI.xcodeproj">

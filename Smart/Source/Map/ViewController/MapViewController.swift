@@ -7,7 +7,7 @@
 //
 
 import Core
-import Display
+import DisplayMini
 import MapKit
 import StringFormatting
 import UIKit

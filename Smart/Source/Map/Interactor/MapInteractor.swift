@@ -224,7 +224,8 @@ extension MapInteractor: MapInteractorProtocol {
 
 extension MKMapView {
   func topCenterCoordinate() -> CLLocationCoordinate2D {
-    convert(CGPoint(x: frame.size.width / 2.0, y: 0), toCoordinateFrom: self)
+    let x = frame.size.width / 2.0
+    return convert(CGPoint(x: x, y: 0), toCoordinateFrom: self)
   }
 
   func currentRadius() -> Double {

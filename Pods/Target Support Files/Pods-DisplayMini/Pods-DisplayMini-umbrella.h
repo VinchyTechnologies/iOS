@@ -11,6 +11,6 @@
 #endif
 
 
-FOUNDATION_EXPORT double Pods_CommonUIVersionNumber;
-FOUNDATION_EXPORT const unsigned char Pods_CommonUIVersionString[];
+FOUNDATION_EXPORT double Pods_DisplayMiniVersionNumber;
+FOUNDATION_EXPORT const unsigned char Pods_DisplayMiniVersionString[];
 

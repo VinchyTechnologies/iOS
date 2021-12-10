@@ -8,7 +8,7 @@
 
 import Core
 import CoreLocation
-import Display
+import DisplayMini
 import StringFormatting
 import UIKit
 

@@ -7,7 +7,7 @@
 
 import AuthenticationServices
 import Core
-import Display
+import DisplayMini
 import StringFormatting
 import UIKit
 import VinchyCore
