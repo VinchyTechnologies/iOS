@@ -14,7 +14,7 @@ final class ResultsSearchAssembly {
     let viewController = ResultsSearchViewController(input: input)
     viewController.resultsSearchDelegate = resultsSearchDelegate
     let router = ResultsSearchRouter(viewController: viewController)
-    let presenter = ResultsSearchPresenter(viewController: viewController)
+    let presenter = ResultsSearchPresenter(input: input, viewController: viewController)
     let interactor = ResultsSearchInteractor(input: input, router: router, presenter: presenter)
 
     router.interactor = interactor

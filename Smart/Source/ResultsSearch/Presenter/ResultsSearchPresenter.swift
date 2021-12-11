@@ -18,13 +18,18 @@ final class ResultsSearchPresenter {
 
   // MARK: Lifecycle
 
-  init(viewController: ResultsSearchViewControllerProtocol) {
+  init(input: ResultsSearchInput, viewController: ResultsSearchViewControllerProtocol) {
+    self.input = input
     self.viewController = viewController
   }
 
   // MARK: Internal
 
   weak var viewController: ResultsSearchViewControllerProtocol?
+
+  // MARK: Private
+
+  private let input: ResultsSearchInput
 
 }
 
@@ -35,7 +40,7 @@ extension ResultsSearchPresenter: ResultsSearchPresenterProtocol {
 
     var sections: [ResultsSearchViewModel.ResultsSection] = []
 
-    if didFindWines.isEmpty {
+    if didFindWines.isEmpty, case .normal = input.mode {
       sections.append(.didNotFindTheWine([.init(titleText: localized("did_not_find_the_wine"), writeUsButtonText: localized("write_us").firstLetterUppercased())]))
       viewController?.updateUI(viewModel: .init(state: .results(sections: sections)))
 

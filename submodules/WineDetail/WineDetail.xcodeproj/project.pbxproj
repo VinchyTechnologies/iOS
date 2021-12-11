@@ -45,7 +45,6 @@
 /* Begin PBXFileReference section */
 		3D5561E695FDBE83E14233E3 /* Pods_WineDetail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WineDetail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		631AFEC6596103C82C9B4826 /* Pods-WineDetail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WineDetail.debug.xcconfig"; path = "Target Support Files/Pods-WineDetail/Pods-WineDetail.debug.xcconfig"; sourceTree = "<group>"; };
-		8A07B9E1275D1B9A00AF27B0 /* AdUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AdUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A9C7F5627613FA300A5B694 /* DisplayMini.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DisplayMini.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AEC83452758DCE300C80F1E /* WineDetail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WineDetail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AEC83482758DCE300C80F1E /* WineDetail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WineDetail.h; sourceTree = "<group>"; };
@@ -75,11 +74,8 @@
 		8AEC83722758DEFB00C80F1E /* WineDetailInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineDetailInteractorProtocol.swift; sourceTree = "<group>"; };
 		8AEC83742758DEFB00C80F1E /* WineDetailRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineDetailRouterProtocol.swift; sourceTree = "<group>"; };
 		8AEC83752758DEFB00C80F1E /* WineDetailRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineDetailRouter.swift; sourceTree = "<group>"; };
-		8AEC839B2758E33500C80F1E /* Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8AEC839F2758E33E00C80F1E /* VinchyAuthorization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyAuthorization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AEC83A32758E34800C80F1E /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AEC83A72758E35000C80F1E /* StringFormatting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StringFormatting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8AEC83AB2758E37800C80F1E /* CommonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AEC83AF2758E38800C80F1E /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AEC83B32758E39A00C80F1E /* VinchyUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		933617826C773F60DC976C34 /* Pods-WineDetail.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WineDetail.release.xcconfig"; path = "Target Support Files/Pods-WineDetail/Pods-WineDetail.release.xcconfig"; sourceTree = "<group>"; };
@@ -105,7 +101,7 @@
 		8AEC833B2758DCE300C80F1E = {
 			isa = PBXGroup;
 			children = (
-				8AEC83472758DCE300C80F1E /* WineDetail */,
+				8AEC83472758DCE300C80F1E /* Sources */,
 				8AEC83462758DCE300C80F1E /* Products */,
 				D66F7C1164140B7387774FCA /* Pods */,
 				9A5DFD71ADC8E57A71183B9E /* Frameworks */,
@@ -122,14 +118,14 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8AEC83472758DCE300C80F1E /* WineDetail */ = {
+		8AEC83472758DCE300C80F1E /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				8AEC83512758DEFA00C80F1E /* WineDetail */,
 				8AEC83482758DCE300C80F1E /* WineDetail.h */,
 				8AEC83492758DCE300C80F1E /* WineDetail.docc */,
 			);
-			path = WineDetail;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		8AEC83512758DEFA00C80F1E /* WineDetail */ = {
@@ -232,14 +228,10 @@
 			isa = PBXGroup;
 			children = (
 				8A9C7F5627613FA300A5B694 /* DisplayMini.framework */,
-				8A07B9E1275D1B9A00AF27B0 /* AdUI.framework */,
 				8AEC83B32758E39A00C80F1E /* VinchyUI.framework */,
 				8AEC83AF2758E38800C80F1E /* Database.framework */,
-				8AEC83AB2758E37800C80F1E /* CommonUI.framework */,
 				8AEC83A72758E35000C80F1E /* StringFormatting.framework */,
 				8AEC83A32758E34800C80F1E /* Core.framework */,
-				8AEC839F2758E33E00C80F1E /* VinchyAuthorization.framework */,
-				8AEC839B2758E33500C80F1E /* Display.framework */,
 				3D5561E695FDBE83E14233E3 /* Pods_WineDetail.framework */,
 			);
 			name = Frameworks;

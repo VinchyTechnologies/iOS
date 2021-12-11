@@ -90,7 +90,7 @@ extension ResultsSearchInteractor: ResultsSearchInteractorProtocol {
         }
 
       case .storeDetail:
-        break
+        presenter.update(didFindWines: [])
       }
 
       return
