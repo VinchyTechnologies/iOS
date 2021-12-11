@@ -2481,6 +2481,8 @@
 		CA0A3527247860EB00C400F5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				CA78E28325751D97000ECDA8 /* Vinchy.entitlements */,
+				CA81989A253B897B0056A1C6 /* VinchyRelease.entitlements */,
 				CA472AC8245EDE30009149FF /* Assets.xcassets */,
 				CA4EA6BA24BE3ACD00E6F0C4 /* currencies.json */,
 				CA3CEFAF251288F000AAA692 /* country_codes.json */,
@@ -2553,8 +2555,6 @@
 			children = (
 				CA0A3527247860EB00C400F5 /* Resources */,
 				CA472B2D245EDEC7009149FF /* Sources */,
-				CA78E28325751D97000ECDA8 /* Vinchy.entitlements */,
-				CA81989A253B897B0056A1C6 /* VinchyRelease.entitlements */,
 			);
 			path = Vinchy;
 			sourceTree = "<group>";
@@ -3896,7 +3896,7 @@
 				CODE_SIGN_ENTITLEMENTS = VinchyAppClip/VinchyAppClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				ENABLE_BITCODE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -3933,7 +3933,7 @@
 				CODE_SIGN_ENTITLEMENTS = VinchyAppClip/VinchyAppClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				ENABLE_BITCODE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -4085,10 +4085,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Vinchy/Vinchy.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Vinchy/Resources/Vinchy.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Vinchy/Resources/Info.plist;
@@ -4118,10 +4118,10 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Vinchy/VinchyRelease.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Vinchy/Resources/VinchyRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 20;
+				CURRENT_PROJECT_VERSION = 21;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Vinchy/Resources/Info.plist;

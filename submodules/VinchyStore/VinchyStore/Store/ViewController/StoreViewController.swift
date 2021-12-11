@@ -66,7 +66,7 @@ final class StoreViewController: CollectionViewController {
     collectionView.scrollDelegate = self
 
     let filterBarButtonItem = UIBarButtonItem(
-      image: UIImage(named: "edit")?.withRenderingMode(.alwaysTemplate),
+      image: UIImage(named: "edit")?.withRenderingMode(.alwaysOriginal).withTintColor(.dark),
       style: .plain,
       target: self,
       action: #selector(didTapFilterButton(_:)))

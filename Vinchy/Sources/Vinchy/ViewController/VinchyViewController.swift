@@ -49,7 +49,8 @@ final class VinchyViewController: CollectionViewController {
     filterButton.translatesAutoresizingMaskIntoConstraints = false
     filterButton.heightAnchor.constraint(equalToConstant: 40).isActive = true
     filterButton.widthAnchor.constraint(equalToConstant: 40).isActive = true
-    filterButton.setImage(UIImage(named: "edit")?.withRenderingMode(.alwaysTemplate), for: [])
+    filterButton.setImage(
+      UIImage(named: "edit")?.withRenderingMode(.alwaysOriginal).withTintColor(.dark), for: [])
     filterButton.imageView?.contentMode = .scaleAspectFit
     filterButton.imageEdgeInsets = UIEdgeInsets(top: 1, left: 1.5, bottom: 1, right: 1.5)
     filterButton.contentEdgeInsets = .init(top: 6, left: 6, bottom: 6, right: 6)
