@@ -53,8 +53,8 @@
 		8A9CAC182763F64B00A5B694 /* DeliveryTutorialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8A9CAC152763F64B00A5B694 /* DeliveryTutorialView.xib */; };
 		8A9CAC192763F64B00A5B694 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CAC162763F64B00A5B694 /* TutorialViewController.swift */; };
 		8A9CAC1C2763F6E600A5B694 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CAC1A2763F6E600A5B694 /* EmptyView.swift */; };
-		8A9CAC1F2763F74100A5B694 /* OverlayPresentationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CAC1E2763F74100A5B694 /* OverlayPresentationCenter.swift */; };
 		8A9CAC212763F8A700A5B694 /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CAC202763F8A700A5B694 /* IconView.swift */; };
+		8AD51DA927650BB60009499A /* OverlayPresentationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD51DA827650BB50009499A /* OverlayPresentationCenter.swift */; };
 		D12A71C9391FF45EA6009B81 /* Pods_DisplayMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ADEFB7AAE5EE1069C5D2954 /* Pods_DisplayMini.framework */; };
 /* End PBXBuildFile section */
 
@@ -106,8 +106,8 @@
 		8A9CAC152763F64B00A5B694 /* DeliveryTutorialView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DeliveryTutorialView.xib; sourceTree = "<group>"; };
 		8A9CAC162763F64B00A5B694 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		8A9CAC1A2763F6E600A5B694 /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
-		8A9CAC1E2763F74100A5B694 /* OverlayPresentationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = OverlayPresentationCenter.swift; path = ../../../Display/Display/Source/OverlayPresentationCenter.swift; sourceTree = "<group>"; };
 		8A9CAC202763F8A700A5B694 /* IconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
+		8AD51DA827650BB50009499A /* OverlayPresentationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayPresentationCenter.swift; sourceTree = "<group>"; };
 		E2D2D16B52FD4AEDE8820451 /* Pods-DisplayMini.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DisplayMini.debug.xcconfig"; path = "Target Support Files/Pods-DisplayMini/Pods-DisplayMini.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -200,7 +200,7 @@
 				8A9CABD62763F01300A5B694 /* LoadingIndicatorCell.swift */,
 				8A9CABCE2763F01300A5B694 /* LoadingView.swift */,
 				8A9CABC62763F01300A5B694 /* Orientation.swift */,
-				8A9CAC1E2763F74100A5B694 /* OverlayPresentationCenter.swift */,
+				8AD51DA827650BB50009499A /* OverlayPresentationCenter.swift */,
 				8A9CABDF2763F01300A5B694 /* ReviewCell.swift */,
 				8A9CABE02763F01400A5B694 /* SearchBar.swift */,
 				8A9CABC72763F01300A5B694 /* SeparatorCell.swift */,
@@ -371,7 +371,6 @@
 				8A9CAC042763F01400A5B694 /* HighlightCollectionCell.swift in Sources */,
 				8A9CABF82763F01400A5B694 /* ContactUsRoutable.swift in Sources */,
 				8A9CAC172763F64B00A5B694 /* DeliveryTutorialView.swift in Sources */,
-				8A9CAC1F2763F74100A5B694 /* OverlayPresentationCenter.swift in Sources */,
 				8A9CABEE2763F01400A5B694 /* SeparatorCell.swift in Sources */,
 				8A9CAC0A2763F01400A5B694 /* ASPageControl.swift in Sources */,
 				8A9CABFC2763F01400A5B694 /* EpoxyErrorView.swift in Sources */,
@@ -395,6 +394,7 @@
 				8A9CABF22763F01400A5B694 /* DecoratorFlowLayout.swift in Sources */,
 				8A9CABF62763F01400A5B694 /* Button.swift in Sources */,
 				8A9CABEF2763F01400A5B694 /* BottomButtonsView.swift in Sources */,
+				8AD51DA927650BB60009499A /* OverlayPresentationCenter.swift in Sources */,
 				8A9CAC1C2763F6E600A5B694 /* EmptyView.swift in Sources */,
 				8A9CABFA2763F01400A5B694 /* ActivityIndicator.swift in Sources */,
 			);

@@ -132,14 +132,14 @@
 		CA7B823924EC71F300991F24 /* VinchyCore */ = {
 			isa = PBXGroup;
 			children = (
-				CA7B824224EC729300991F24 /* Source */,
+				CA7B824224EC729300991F24 /* Sources */,
 				CA7B823A24EC71F300991F24 /* VinchyCore.h */,
 				CA7B823B24EC71F300991F24 /* Info.plist */,
 			);
 			path = VinchyCore;
 			sourceTree = "<group>";
 		};
-		CA7B824224EC729300991F24 /* Source */ = {
+		CA7B824224EC729300991F24 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				CA7B824A24EC739B00991F24 /* APIService */,
@@ -148,7 +148,7 @@
 				CA7B824724EC736A00991F24 /* ServiceModels */,
 				8AA7BA7A275CE50000BF68E8 /* AuthService.swift */,
 			);
-			path = Source;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		CA7B824724EC736A00991F24 /* ServiceModels */ = {

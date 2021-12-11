@@ -96,14 +96,14 @@
 		CA1821F324C0F48600280DD4 /* Database */ = {
 			isa = PBXGroup;
 			children = (
-				CA1821FC24C0F4D500280DD4 /* Source */,
+				CA1821FC24C0F4D500280DD4 /* Sources */,
 				CA1821F424C0F48600280DD4 /* Database.h */,
 				CA1821F524C0F48600280DD4 /* Info.plist */,
 			);
 			path = Database;
 			sourceTree = "<group>";
 		};
-		CA1821FC24C0F4D500280DD4 /* Source */ = {
+		CA1821FC24C0F4D500280DD4 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				8A2F32DD2673B7D7002DE6C1 /* CollectionRepository.swift */,
@@ -115,7 +115,7 @@
 				740EC95E269DA5C30000718B /* SearchedWinesRepository.swift */,
 				8AEC83B72758E4EB00C80F1E /* RatesRepository.swift */,
 			);
-			path = Source;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

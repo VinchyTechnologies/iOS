@@ -58,21 +58,21 @@
 		CAF24B0424C330780057547F /* LocationUI */ = {
 			isa = PBXGroup;
 			children = (
-				CAF24B1024C331260057547F /* Source */,
+				CAF24B1024C331260057547F /* Sources */,
 				CAF24B0524C330780057547F /* LocationUI.h */,
 				CAF24B0624C330780057547F /* Info.plist */,
 			);
 			path = LocationUI;
 			sourceTree = "<group>";
 		};
-		CAF24B1024C331260057547F /* Source */ = {
+		CAF24B1024C331260057547F /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				CAF24B1324C333AE0057547F /* URLImageView.swift */,
 				CAF24B1524C333CA0057547F /* MapURLProtocol.swift */,
 				4407197425F02417000531B7 /* LocationService.swift */,
 			);
-			path = Source;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 		FA6BE27CC42322CDFE304475 /* Frameworks */ = {

@@ -14,7 +14,6 @@
 		8A0793E4269350AB000ACA2B /* UICollectionViewCompositionalLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0793E3269350AB000ACA2B /* UICollectionViewCompositionalLayout.swift */; };
 		8A10F65D270757EF003463B0 /* UIScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A10F65C270757EF003463B0 /* UIScrollView.swift */; };
 		8A27E9F427342D85005A13C6 /* TopTabBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A27E9F327342D85005A13C6 /* TopTabBarView.swift */; };
-		8A2F30492671FA13002DE6C1 /* OverlayPresentationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F30482671FA13002DE6C1 /* OverlayPresentationCenter.swift */; };
 		8A2F304B2671FAF7002DE6C1 /* FadingInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2F304A2671FAF7002DE6C1 /* FadingInfoViewController.swift */; };
 		8A5145BE2757D57300DC45CD /* HorizontalPartnerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145B72757D57300DC45CD /* HorizontalPartnerView.swift */; };
 		8A5145C02757D57300DC45CD /* LinkButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145B92757D57300DC45CD /* LinkButton.swift */; };
@@ -39,7 +38,6 @@
 		8A0793E3269350AB000ACA2B /* UICollectionViewCompositionalLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UICollectionViewCompositionalLayout.swift; sourceTree = "<group>"; };
 		8A10F65C270757EF003463B0 /* UIScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIScrollView.swift; sourceTree = "<group>"; };
 		8A27E9F327342D85005A13C6 /* TopTabBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopTabBarView.swift; sourceTree = "<group>"; };
-		8A2F30482671FA13002DE6C1 /* OverlayPresentationCenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OverlayPresentationCenter.swift; sourceTree = "<group>"; };
 		8A2F304A2671FAF7002DE6C1 /* FadingInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FadingInfoViewController.swift; sourceTree = "<group>"; };
 		8A5145B72757D57300DC45CD /* HorizontalPartnerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalPartnerView.swift; sourceTree = "<group>"; };
 		8A5145B92757D57300DC45CD /* LinkButton.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LinkButton.swift; sourceTree = "<group>"; };
@@ -126,21 +124,20 @@
 		CAE8869A24C0E5F800E33E16 /* Display */ = {
 			isa = PBXGroup;
 			children = (
-				CAE886A524C0E6D000E33E16 /* Source */,
+				CAE886A524C0E6D000E33E16 /* Sources */,
 				CAE8869B24C0E5F800E33E16 /* Display.h */,
 				CAE8869C24C0E5F800E33E16 /* Info.plist */,
 			);
 			path = Display;
 			sourceTree = "<group>";
 		};
-		CAE886A524C0E6D000E33E16 /* Source */ = {
+		CAE886A524C0E6D000E33E16 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				4410AE3225E5632400A84FF9 /* DismissRoutable.swift */,
 				8A5145B32757D57300DC45CD /* EpoxyViews */,
 				8A2F304A2671FAF7002DE6C1 /* FadingInfoViewController.swift */,
 				CA3C97EE2572533E0036F7D9 /* GradientView.swift */,
-				8A2F30482671FA13002DE6C1 /* OverlayPresentationCenter.swift */,
 				CE8D930F25BA2878004792C6 /* PlaceholderTextView.swift */,
 				CA5B9018250FEF51006BC638 /* ScrollViewBounceDecorator.swift */,
 				8AD49F1A267525840094E157 /* SkyFloatingLabelTextField.swift */,
@@ -152,7 +149,7 @@
 				4404888C25D8390600019081 /* UITapGestureRecognizer.swift */,
 				8A9CAC112763F09400A5B694 /* WineTableCell.swift */,
 			);
-			path = Source;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -278,7 +275,6 @@
 				8AD49F1B267525840094E157 /* SkyFloatingLabelTextField.swift in Sources */,
 				8A85586126FB9C0300F6F9C8 /* TabView.swift in Sources */,
 				8A27E9F427342D85005A13C6 /* TopTabBarView.swift in Sources */,
-				8A2F30492671FA13002DE6C1 /* OverlayPresentationCenter.swift in Sources */,
 				4410AE3325E5632400A84FF9 /* DismissRoutable.swift in Sources */,
 				8A9CAC122763F09400A5B694 /* WineTableCell.swift in Sources */,
 			);

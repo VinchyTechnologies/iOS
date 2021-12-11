@@ -86,14 +86,14 @@
 		CABDBA7C24C2F7A800AD96D6 /* Core */ = {
 			isa = PBXGroup;
 			children = (
-				CABDBA8524C2F7EF00AD96D6 /* Source */,
+				CABDBA8524C2F7EF00AD96D6 /* Sources */,
 				CABDBA7D24C2F7A800AD96D6 /* Core.h */,
 				CABDBA7E24C2F7A800AD96D6 /* Info.plist */,
 			);
 			path = Core;
 			sourceTree = "<group>";
 		};
-		CABDBA8524C2F7EF00AD96D6 /* Source */ = {
+		CABDBA8524C2F7EF00AD96D6 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				CA4AED9E24CED4AC00035922 /* AppBundle.swift */,
@@ -115,7 +115,7 @@
 				CA7A87F325028C0F00AAD10F /* URL.swift */,
 				CA2E796224D5ECAC00F17725 /* UserDefaults.swift */,
 			);
-			path = Source;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
