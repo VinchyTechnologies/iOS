@@ -28,12 +28,15 @@ public struct WineCollectionCellViewModel: ViewModelProtocol {
 
 // MARK: - WineCollectionCell
 
-class WineCollectionCell: UICollectionViewCell, Reusable {
+final class WineCollectionCell: HighlightCollectionCell, Reusable {
 
   // MARK: Lifecycle
 
   override init(frame: CGRect) {
     super.init(frame: frame)
+
+    highlightStyle = .scale
+
     bottleImageView.contentMode = .scaleAspectFit
 
     addSubview(bottleImageView)

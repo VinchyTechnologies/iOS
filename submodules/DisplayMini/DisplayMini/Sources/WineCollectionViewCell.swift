@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - WineCollectionViewCellViewModel
 
-public struct WineCollectionViewCellViewModel: ViewModelProtocol, Hashable {
+public struct WineCollectionViewCellViewModel: ViewModelProtocol {
 
   // MARK: Lifecycle
 
@@ -33,14 +33,6 @@ public struct WineCollectionViewCellViewModel: ViewModelProtocol, Hashable {
   public let subtitleText: String?
 
   public let rating: Double?
-
-  public static func == (lhs: WineCollectionViewCellViewModel, rhs: WineCollectionViewCellViewModel) -> Bool {
-    lhs.wineID == rhs.wineID
-  }
-
-  public func hash(into hasher: inout Hasher) {
-    hasher.combine(wineID)
-  }
 
 }
 
