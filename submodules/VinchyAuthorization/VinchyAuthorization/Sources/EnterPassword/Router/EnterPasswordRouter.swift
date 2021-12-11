@@ -7,6 +7,7 @@
 
 import UIKit
 import VinchyCore
+import VinchyUI
 
 // MARK: - EnterPasswordRouter
 

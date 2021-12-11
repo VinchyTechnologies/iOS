@@ -1,0 +1,234 @@
+/* 
+  Localizable.strings
+  Smart
+
+  Created by Aleksei Smirnov on 17.06.2020.
+  Copyright © 2020 Aleksei Smirnov. All rights reserved.
+*/
+// MARK: - Common
+"see_all" = "Смотреть все";
+"reset" = "сбросить";
+"unavailable_version" = "Данная версия приложения больше не поддерживается. Пожалуйста, обновите приложение.";
+"open_appstore" = "Открыть AppStore";
+"appstore_link" = "itms-apps://itunes.apple.com/app/id1536720416";
+"discovery_link" = "https://vinchy.page.link/discover";
+"instagram_link" = "https://www.instagram.com/vinchy.wine";
+"telegram_link" = "https://t.me/vinchy_wine";
+"facebook_link" = "https://www.facebook.com/vinchy.wine";
+"add" = "добавить";
+"rate_our_app" = "Оцените наше приложение";
+"error" = "ошибка";
+"what_is_your_name" = "Как Вас зовут?";
+"profile" = "Профиль";
+"looking_for_partners" = "ищем партнёров";
+"become_a_part_of_a_wine_startup" = "Стань частью винного стартапа";
+"email_us" = "пишите нам на почту";
+"for_any_questions" = "По любым возникающим вопросам";
+"always_available" = "Всегда на связи";
+"we_are_in_social_networks" = "мы в соцсетях";
+"legal_documents" = "правовые документы";
+"about_the_app" = "о приложении";
+"version" = "Версия";
+"advanced_search" = "Найти по параметрам";
+"cancel" = "Отмена";
+"delete" = "Удалить";
+"delete_note" = "Удалить заметку?";
+"this_action_cannot_to_be_undone" = "Эта операция не может быть отменена";
+"country" = "страна";
+"you_can_also_like" = "вам также может понравится";
+"search" = "найти";
+"did_not_find_the_wine" = "Не нашли вино?";
+"write_us" = "напишите нам";
+"search_results" = "результаты поиска";
+"all" = "все";
+"all_shops" = "все магазины";
+"back" = "назад";
+"reload" = "обновить";
+"serving_temperature" = "температура подачи";
+"vintage" = "год";
+"alcohol" = "алкоголь";
+"color" = "цвет";
+"unlike" = "не нравится";
+"serving_tips" = "советы по сервировке";
+"tell_about_error" = "Сообщить об ошибке";
+"harmful_to_your_health" = "Чрезмерное употребление алкоголя вредит вашему здоровью";
+"email_did_not_find_wine" = "Привет! Не могу найти вино с названием ";
+"like_vinchy" = "Нравится Vinchy?";
+"tell_the_whole_world_about_us" = "Расскажите о нас всему миру!";
+"share_link" = "поделиться ссылкой";
+"type" = "тип";
+"show_all" = "показать все";
+"choose" = "выбрать";
+"сhoose_countries" = "выберете страны";
+"i_use_vinchy" = "Я пользуюсь Vinchy чтобы выбрать вино, всем рекомендую";
+"loved" = "понравилось";
+"will_recommend_more" = "Мы будем предлагать больше похожих вин";
+"unloved" = "Не понравилось";
+"will_recommend_less" = "Мы будем стараться предлагать меньше подобных вин";
+"similar_wines" = "похожие вина";
+"write_review" = "оставить отзыв";
+"write_note" = "добавить заметку";
+"update_review" = "Обновить отзыв";
+"review_placeholder" = "Отзыв (Необязательно)";
+"did_update_rating" = "Мы обновили Ваш отзыв";
+"did_send_rating" = "Спасибо за ваш отзыв";
+"reviews" = "отзывы";
+"send" = "отправить";
+"tap_a_star_to_rate" = "Коснитесь для оценки";
+"zero_rating_error" = "Рейтинг не может быть нулевым";
+"open_in_app" = "В Vinchy";
+"region" = "регион";
+"save" = "сохранить";
+"continue" = "продолжить";
+"expand" = "ещё";
+"collapse" = "скрыть";
+"recently_searched" = "вы недавно искали";
+"wine_has_no_reviews_yet" = "У этого вина еще нет отзывов, будьте первым, кто напишет его!";
+"vinchy_recommends" = "vinchy рекомендует";
+"view_assortment" = "посмотреть ассортимент";
+"where_to_buy" = "Где купить?";
+"leave_review_more_often" = "Чаще оставляйте отзывы!";
+"hint_to_review_button" = "Только с помощью Ваших отзывов и оценок мы сможем подобрать вино специально для Вас";
+"enter_address" = "Укажите адрес";
+"address_search" = "Поиск адреса";
+"later" = "Позже";
+"we_donot_know_where_you_are" = "Мы не знаем где Вы ...";
+"let_us_know_your_location" = "разрешите нам определять ваше текущее место положение, чтобы подсказывать ближайшие магазины. Вы можете включить это в настройках.";
+"settings" = "Настройки";
+"current_geo" = "текущее местоположение";
+"loading" = "Загрузка...";
+"more" = "Ещё";
+"logout" = "Выйти из профиля";
+"alert_sure_logout_title" = "Выход из профиля";
+"alert_sure_logout_subtitle" = "Вы действительно хотите выйти из профиля?";
+"alert_sure_logout_trailing_button_text" = "Да";
+"yandex_maps" = "Яндекс.Карты";
+"google_maps" = "Google Карты";
+"build_route" = "Построить маршрут";
+"nearest_stores" = "Ближайшие магазины";
+"walking" = "пешком";
+"undefined" = "не определено";
+"wines_assortiment_could_be_not_right" = "Некоторые вина, представленные в приложени, могут отсутствовать в магазине. Наличие уточняйте у продавца";
+"google_mail" = "Gmail";
+"system_mail" = "Системная почта";
+"outlook_mail" = "Outlook";
+"spark_mail" = "Spark";
+"yahoo_mail" = "Yahoo Mail";
+"telegram" = "Telegram";
+"copy" = "Скопировать";
+"edit" = "редактировать";
+"share" = "поделиться";
+"liked" = "понравившиеся";
+"rated" = "мои оценки";
+"you_have_not_rated_any_wine" = "Вы не оценили ни одного вина";
+"your_rated_wines_will_be_here" = "Здесь будут Ваши оцененные вина";
+"you_need_to_login_first" = "Сперва Вам необходимо войти";
+"price" = "стоимость";
+
+// MARK: - Sugar
+"sugar" = "сахар";
+"dry" = "сухое";
+"semi-dry" = "полусухое";
+"semi-sweet" = "полусладкое";
+"sweet" = "сладкое";
+
+// MARK: - WineStyle
+"style" = "тип";
+"red" = "красное";
+"white" = "белое";
+"pink" = "розовое";
+"sparkling" = "игристое";
+"quiet" = "тихое";
+
+// MARK: - Compatibility
+"compatibility" = "сочетаемость";
+"meat" = "мясо";
+"fish" = "рыба";
+"seafood" = "морепродукты";
+"wildfowl" = "дичь";
+"poultry" = "птица";
+"desserts" = "десерт";
+"bakery" = "выпечка";
+"cheese" = "сыр";
+"fruits" = "фрукты";
+"snacks" = "закуски";
+"shellfish" = "моллюски";
+"vegetarian" = "веган";
+"spicy food" = "острое";
+"mushrooms" = "грибы";
+"aperitif" = "аперетив";
+"pasta" = "паста";
+
+// MARK: - Tabs
+"explore" = "главная";
+"favourites" = "Мои вина";
+"notes" = "заметки";
+"info" = "инфо";
+
+// MARK: - Favourites
+"you_liked" = "хорошие";
+"you_disliked" = "плохие";
+
+// MARK: - Info
+"contact_email" = "vinchy.tech@gmail.com";
+"contact_phone_url" = "tel://+79102433638";
+"contact_phone" = "+ 7 (910) 243-36-38";
+"currency" = "Валюта";
+"sign_in_or_register" = "Войти";
+"edit_profile" = "Редактировать Профиль";
+"username" = "Имя пользователя";
+
+// MARK: - Currency
+"select_currency" = "Выберите валюту";
+
+// MARK: - Subscriptions
+"subscriptions" = "Подписки";
+
+// MARK: - EmptyView
+"nothing_here" = "пока пусто";
+
+// MARK: - ConfirmToStartViewController
+"legal_age" = "Вы старше минимального установленного законом возраста употребления алкоголя в вашей стране.";
+"terms_of_use_agreement" = "Нажимая кнопку «Продолжить» Вы подверждаете, что Вы старше минимального установленного законом возраста употребления алкоголя в вашей стране, а также согласны с\nУсловиями использования сервиса.";
+"terms_of_use" = "Условиями использования сервиса.";
+"before_we_start" = "Немного формальностей";
+
+// MARK: - Error
+"open_url_error" = "Возникла ошибка при открытии URL";
+"open_mail_error" = "Возникла ошибка при открытии почты";
+"unknown_country_code" = "Неизвестный код страны";
+"nothing_found" = "ничего не найдено";
+"empty_collection" = "Пустая коллекция";
+"you_have_already_liked_the_wine" = "Вы отметили вино как понравившееся";
+"you_have_already_disliked_the_wine" = "Вы отметили вино как не понравившееся";
+
+// MARK: - Notes
+"general_impression" = "общее впечатление";
+"description" = "Описание";
+"you_have_not_written_any_notes_yet" = "Вы не написали ещё ни одной заметки";
+"your_thoughts_about_wine" = "ваши мысли о вине...";
+"no_notes_found_for_your_request" = "По вашему запросу не найдено ни одной заметки";
+
+// MARK: - Docs
+"terms_of_use_url" = "https://drive.google.com/file/d/1P9kIPsxwMD20OH4VZ2ANIdsn-1QtZNLM/view";
+"terms_of_use_doc" = "Пользовательское соглашение";
+
+// MARK: - Map
+"map" = "карта";
+"apple_maps" = "Apple Карты";
+"search_this_area" = "Искать в этом районе";
+
+// MARK: - AreYouInStore
+"AreYouInStore.RecommendToBuy" = "Рекомендуем к покупке";
+"AreYouInStore.SeemsYouAreIn" = "Кажется, Вы в магазине\n";
+"AreYouInStore.NotHere" = "Я не здесь";
+"AreYouInStore.SeeMore" = "Смотреть всё";
+
+// MARK: - Onboarding
+"onboarding_feature_one" = "Умные рекомендации вина";
+"onboarding_feature_two" = "Цены и ассортимент магазинов";
+"onboarding_feature_three" = "Реальные отзывы и рейтинги";
+"onboarding_geo_title" = "Найдем ближайший магазин";
+"onboarding_geo_subtitle" = "Разрешите доступ к геолокации и мы покажем магазины, где есть в наличие ваши любимые вина";
+"onboarding_let_us_use_geo" = "Разрешить";
+"onboarding_next" = "Дальше";

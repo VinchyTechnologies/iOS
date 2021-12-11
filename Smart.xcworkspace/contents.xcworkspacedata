@@ -12,10 +12,10 @@
       location = "container:"
       name = "submodules">
       <FileRef
-         location = "group:submodules/AdvancedSearch/AdvancedSearch.xcodeproj">
+         location = "group:submodules/AdUI/AdUI.xcodeproj">
       </FileRef>
       <FileRef
-         location = "group:submodules/CommonUI/CommonUI.xcodeproj">
+         location = "group:submodules/AdvancedSearch/AdvancedSearch.xcodeproj">
       </FileRef>
       <FileRef
          location = "group:submodules/Core/Core.xcodeproj">
@@ -25,6 +25,9 @@
       </FileRef>
       <FileRef
          location = "group:submodules/Display/Display.xcodeproj">
+      </FileRef>
+      <FileRef
+         location = "group:submodules/DisplayMini/DisplayMini.xcodeproj">
       </FileRef>
       <FileRef
          location = "group:submodules/LocationUI/LocationUI.xcodeproj">
@@ -53,10 +56,10 @@
    </Group>
    <Group
       location = "container:"
-      name = "Smart">
+      name = "Vinchy">
       <Group
          location = "container:"
-         name = "Smart-iOS">
+         name = "Vinchy-iOS">
          <FileRef
             location = "group:Smart.xcodeproj">
          </FileRef>

@@ -16,8 +16,10 @@ public struct StoreInput {
   }
 
   public let mode: Mode
+  public let isAppClip: Bool
 
-  public init(mode: Mode) {
+  public init(mode: Mode, isAppClip: Bool) {
     self.mode = mode
+    self.isAppClip = isAppClip
   }
 }

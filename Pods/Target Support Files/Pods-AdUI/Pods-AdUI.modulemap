@@ -1,0 +1,6 @@
+framework module Pods_AdUI {
+  umbrella header "Pods-AdUI-umbrella.h"
+
+  export *
+  module * { export * }
+}

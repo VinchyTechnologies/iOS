@@ -7,9 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		25C7990D4CD38630D0A42E04 /* Pods_VinchyAuthorizationApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 89253731F2C742635398AF8F /* Pods_VinchyAuthorizationApp.framework */; };
 		441F760825D19ADA008DC46B /* AuthorizationNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4436021625CF00B500ABA7F1 /* AuthorizationNavigationController.swift */; };
-		443601DD25CEF5B200ABA7F1 /* AuthorizationOutputDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443601DC25CEF5B200ABA7F1 /* AuthorizationOutputDelegate.swift */; };
 		443F0ADC259123FE00E15437 /* VinchyAuthorization.h in Headers */ = {isa = PBXBuildFile; fileRef = 443F0ADA259123FE00E15437 /* VinchyAuthorization.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		443F0AFB259126F200E15437 /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F0AEA259126F200E15437 /* AuthorizationViewModel.swift */; };
 		443F0AFC259126F200E15437 /* AuthorizationInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 443F0AEC259126F200E15437 /* AuthorizationInput.swift */; };
@@ -41,7 +39,6 @@
 		44AD9A8B25936CDB001A5188 /* EnterPasswordInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A7725936CDB001A5188 /* EnterPasswordInteractorProtocol.swift */; };
 		44AD9A8D25936CDB001A5188 /* EnterPasswordRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A7925936CDB001A5188 /* EnterPasswordRouterProtocol.swift */; };
 		44AD9A8F25936CDB001A5188 /* EnterPasswordRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44AD9A7A25936CDB001A5188 /* EnterPasswordRouter.swift */; };
-		44D3CDEE25E42ECF00FFFCD5 /* AuthorizationRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44D3CDED25E42ECF00FFFCD5 /* AuthorizationRoutable.swift */; };
 		44E2163025CD2D5F00FE31CE /* ChooseAuthTypeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E2161F25CD2D5F00FE31CE /* ChooseAuthTypeViewModel.swift */; };
 		44E2163125CD2D5F00FE31CE /* ChooseAuthTypeInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E2162125CD2D5F00FE31CE /* ChooseAuthTypeInput.swift */; };
 		44E2163225CD2D5F00FE31CE /* ChooseAuthTypeAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44E2162325CD2D5F00FE31CE /* ChooseAuthTypeAssembly.swift */; };
@@ -60,7 +57,11 @@
 		44E83A4B25D1B03D00711490 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 44E83A4D25D1B03D00711490 /* Localizable.strings */; };
 		740EC931268DF58A0000718B /* OTPStackView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740EC930268DF5890000718B /* OTPStackView.swift */; };
 		740EC933268DF6BC0000718B /* OTPTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 740EC932268DF6BC0000718B /* OTPTextField.swift */; };
-		8ACE34E2271EE6610035BE47 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ACE34E1271EE6610035BE47 /* AuthService.swift */; };
+		7533A31D914AAECD8AC85663 /* Pods_VinchyAuthorization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FCE1A4C9AC96A69A11D7530D /* Pods_VinchyAuthorization.framework */; };
+		8A417751275CC313003E1934 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A417750275CC313003E1934 /* Core.framework */; };
+		8A417755275CC32B003E1934 /* StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A417754275CC32B003E1934 /* StringFormatting.framework */; };
+		8A4EF2B6275CEE31004D140D /* VinchyUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A4EF2B5275CEE31004D140D /* VinchyUI.framework */; };
+		8AD51DA5276403490009499A /* DisplayMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AD51DA4276403490009499A /* DisplayMini.framework */; };
 		8AFD837C26F7A118003DF360 /* Display.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 44A724E22591351C00A7552B /* Display.framework */; };
 		8AFD837D26F7A118003DF360 /* Display.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44A724E22591351C00A7552B /* Display.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8AFD837E26F7A11B003DF360 /* StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AFD837926F7A101003DF360 /* StringFormatting.framework */; };
@@ -69,7 +70,7 @@
 		8AFD838126F7A145003DF360 /* VinchyCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44E2161225CC8ED900FE31CE /* VinchyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8AFD838326F7A192003DF360 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AFD838226F7A192003DF360 /* Core.framework */; };
 		8AFD838426F7A192003DF360 /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8AFD838226F7A192003DF360 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		BE6B0C224AE3BD22241F4FAF /* Pods_VinchyAuthorization.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 19196934F2A7BBCCC994BE50 /* Pods_VinchyAuthorization.framework */; };
+		CFEE735CEA7AEB8A6FD25F10 /* Pods_VinchyAuthorizationApp.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AF072C587CFDED49C6A1B68 /* Pods_VinchyAuthorizationApp.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -115,8 +116,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		19196934F2A7BBCCC994BE50 /* Pods_VinchyAuthorization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinchyAuthorization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		443601DC25CEF5B200ABA7F1 /* AuthorizationOutputDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationOutputDelegate.swift; sourceTree = "<group>"; };
 		4436021625CF00B500ABA7F1 /* AuthorizationNavigationController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationNavigationController.swift; sourceTree = "<group>"; };
 		443F0AD7259123FE00E15437 /* VinchyAuthorization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VinchyAuthorization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		443F0ADA259123FE00E15437 /* VinchyAuthorization.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VinchyAuthorization.h; sourceTree = "<group>"; };
@@ -159,7 +158,6 @@
 		44AD9A7725936CDB001A5188 /* EnterPasswordInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordInteractorProtocol.swift; sourceTree = "<group>"; };
 		44AD9A7925936CDB001A5188 /* EnterPasswordRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordRouterProtocol.swift; sourceTree = "<group>"; };
 		44AD9A7A25936CDB001A5188 /* EnterPasswordRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EnterPasswordRouter.swift; sourceTree = "<group>"; };
-		44D3CDED25E42ECF00FFFCD5 /* AuthorizationRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRoutable.swift; sourceTree = "<group>"; };
 		44E2161225CC8ED900FE31CE /* VinchyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		44E2161F25CD2D5F00FE31CE /* ChooseAuthTypeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseAuthTypeViewModel.swift; sourceTree = "<group>"; };
 		44E2162125CD2D5F00FE31CE /* ChooseAuthTypeInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChooseAuthTypeInput.swift; sourceTree = "<group>"; };
@@ -180,12 +178,16 @@
 		740EC930268DF5890000718B /* OTPStackView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPStackView.swift; sourceTree = "<group>"; };
 		740EC932268DF6BC0000718B /* OTPTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OTPTextField.swift; sourceTree = "<group>"; };
 		74515F9C26F79064008F789C /* VinchyAuthorizationApp.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VinchyAuthorizationApp.entitlements; sourceTree = "<group>"; };
-		89253731F2C742635398AF8F /* Pods_VinchyAuthorizationApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinchyAuthorizationApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8ACE34E1271EE6610035BE47 /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		8A417750275CC313003E1934 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A417754275CC32B003E1934 /* StringFormatting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StringFormatting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A4EF2B5275CEE31004D140D /* VinchyUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AD51DA4276403490009499A /* DisplayMini.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DisplayMini.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AFD837926F7A101003DF360 /* StringFormatting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StringFormatting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AFD838226F7A192003DF360 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9AF072C587CFDED49C6A1B68 /* Pods_VinchyAuthorizationApp.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinchyAuthorizationApp.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C0142329D2F9663DDB44D2E0 /* Pods-VinchyAuthorizationApp.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyAuthorizationApp.debug.xcconfig"; path = "Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp.debug.xcconfig"; sourceTree = "<group>"; };
 		E5069D60CC81C970BB1FD8B4 /* Pods-VinchyAuthorization.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyAuthorization.debug.xcconfig"; path = "Target Support Files/Pods-VinchyAuthorization/Pods-VinchyAuthorization.debug.xcconfig"; sourceTree = "<group>"; };
+		FCE1A4C9AC96A69A11D7530D /* Pods_VinchyAuthorization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinchyAuthorization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		FEB2CC41F7F0BC80C2F1BBD6 /* Pods-VinchyAuthorization.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyAuthorization.release.xcconfig"; path = "Target Support Files/Pods-VinchyAuthorization/Pods-VinchyAuthorization.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -195,8 +197,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				44E83A0425D1A23600711490 /* VinchyCore.framework in Frameworks */,
+				8A417755275CC32B003E1934 /* StringFormatting.framework in Frameworks */,
 				44E83A0125D1A23400711490 /* Display.framework in Frameworks */,
-				BE6B0C224AE3BD22241F4FAF /* Pods_VinchyAuthorization.framework in Frameworks */,
+				7533A31D914AAECD8AC85663 /* Pods_VinchyAuthorization.framework in Frameworks */,
+				8A417751275CC313003E1934 /* Core.framework in Frameworks */,
+				8A4EF2B6275CEE31004D140D /* VinchyUI.framework in Frameworks */,
+				8AD51DA5276403490009499A /* DisplayMini.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -207,9 +213,9 @@
 				8AFD837E26F7A11B003DF360 /* StringFormatting.framework in Frameworks */,
 				8AFD838326F7A192003DF360 /* Core.framework in Frameworks */,
 				8AFD838026F7A145003DF360 /* VinchyCore.framework in Frameworks */,
-				25C7990D4CD38630D0A42E04 /* Pods_VinchyAuthorizationApp.framework in Frameworks */,
 				44E83A0E25D1A40C00711490 /* VinchyAuthorization.framework in Frameworks */,
 				8AFD837C26F7A118003DF360 /* Display.framework in Frameworks */,
+				CFEE735CEA7AEB8A6FD25F10 /* Pods_VinchyAuthorizationApp.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -245,7 +251,6 @@
 		443601DB25CEF59600ABA7F1 /* Output */ = {
 			isa = PBXGroup;
 			children = (
-				443601DC25CEF5B200ABA7F1 /* AuthorizationOutputDelegate.swift */,
 				4436021625CF00B500ABA7F1 /* AuthorizationNavigationController.swift */,
 			);
 			path = Output;
@@ -291,8 +296,6 @@
 		443F0AE32591242C00E15437 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				8ACE34E0271EE6490035BE47 /* AuthService */,
-				44D3CDEC25E42EB900FFFCD5 /* Routable */,
 				443601DB25CEF59600ABA7F1 /* Output */,
 				443F0AE8259126F200E15437 /* Authorization */,
 				44E2161D25CD2D5F00FE31CE /* ChooseAuthType */,
@@ -419,13 +422,17 @@
 		44A724E12591351C00A7552B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8AD51DA4276403490009499A /* DisplayMini.framework */,
+				8A4EF2B5275CEE31004D140D /* VinchyUI.framework */,
+				8A417754275CC32B003E1934 /* StringFormatting.framework */,
+				8A417750275CC313003E1934 /* Core.framework */,
 				8AFD838226F7A192003DF360 /* Core.framework */,
 				8AFD837926F7A101003DF360 /* StringFormatting.framework */,
 				44E2161225CC8ED900FE31CE /* VinchyCore.framework */,
 				44A72596259245E100A7552B /* Display.framework */,
 				44A724E22591351C00A7552B /* Display.framework */,
-				89253731F2C742635398AF8F /* Pods_VinchyAuthorizationApp.framework */,
-				19196934F2A7BBCCC994BE50 /* Pods_VinchyAuthorization.framework */,
+				FCE1A4C9AC96A69A11D7530D /* Pods_VinchyAuthorization.framework */,
+				9AF072C587CFDED49C6A1B68 /* Pods_VinchyAuthorizationApp.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -503,14 +510,6 @@
 				44AD9A7A25936CDB001A5188 /* EnterPasswordRouter.swift */,
 			);
 			path = Router;
-			sourceTree = "<group>";
-		};
-		44D3CDEC25E42EB900FFFCD5 /* Routable */ = {
-			isa = PBXGroup;
-			children = (
-				44D3CDED25E42ECF00FFFCD5 /* AuthorizationRoutable.swift */,
-			);
-			path = Routable;
 			sourceTree = "<group>";
 		};
 		44E2161D25CD2D5F00FE31CE /* ChooseAuthType */ = {
@@ -596,14 +595,6 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
-		8ACE34E0271EE6490035BE47 /* AuthService */ = {
-			isa = PBXGroup;
-			children = (
-				8ACE34E1271EE6610035BE47 /* AuthService.swift */,
-			);
-			path = AuthService;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -645,8 +636,8 @@
 				443F0B082591282C00E15437 /* Sources */,
 				443F0B092591282C00E15437 /* Frameworks */,
 				443F0B0A2591282C00E15437 /* Resources */,
-				4E03E950A28C4F2E93F32208 /* [CP] Embed Pods Frameworks */,
 				44E83A0B25D1A40800711490 /* Embed Frameworks */,
+				72BC67B4B861DB488C39945E /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -778,23 +769,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		4E03E950A28C4F2E93F32208 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputFileListPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
 		568967863572074888866CB3 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -815,6 +789,23 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		72BC67B4B861DB488C39945E /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp-frameworks-${CONFIGURATION}-input-files.xcfilelist",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputFileListPaths = (
+				"${PODS_ROOT}/Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp-frameworks-${CONFIGURATION}-output-files.xcfilelist",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-VinchyAuthorizationApp/Pods-VinchyAuthorizationApp-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E955512D04A93EDA9BF95EC7 /* [CP] Check Pods Manifest.lock */ = {
@@ -852,7 +843,6 @@
 				441F760825D19ADA008DC46B /* AuthorizationNavigationController.swift in Sources */,
 				443F0B05259126F200E15437 /* AuthorizationRouterProtocol.swift in Sources */,
 				44E2163425CD2D5F00FE31CE /* ChooseAuthTypePresenterProtocol.swift in Sources */,
-				8ACE34E2271EE6610035BE47 /* AuthService.swift in Sources */,
 				443F0B00259126F200E15437 /* AuthorizationViewController.swift in Sources */,
 				44AD9A7D25936CDB001A5188 /* EnterPasswordInput.swift in Sources */,
 				443F0B03259126F200E15437 /* AuthorizationInteractorProtocol.swift in Sources */,
@@ -868,7 +858,6 @@
 				44E2163525CD2D5F00FE31CE /* ChooseAuthTypeViewControllerProtocol.swift in Sources */,
 				443F0B01259126F200E15437 /* AuthorizationViewControllerProtocol.swift in Sources */,
 				44E2163225CD2D5F00FE31CE /* ChooseAuthTypeAssembly.swift in Sources */,
-				44D3CDEE25E42ECF00FFFCD5 /* AuthorizationRoutable.swift in Sources */,
 				44E2163625CD2D5F00FE31CE /* ChooseAuthTypeViewController.swift in Sources */,
 				740EC933268DF6BC0000718B /* OTPTextField.swift in Sources */,
 				44AD9A8F25936CDB001A5188 /* EnterPasswordRouter.swift in Sources */,
@@ -882,7 +871,6 @@
 				44AD9A8725936CDB001A5188 /* EnterPasswordViewControllerProtocol.swift in Sources */,
 				443F0AFC259126F200E15437 /* AuthorizationInput.swift in Sources */,
 				443F0AFB259126F200E15437 /* AuthorizationViewModel.swift in Sources */,
-				443601DD25CEF5B200ABA7F1 /* AuthorizationOutputDelegate.swift in Sources */,
 				44AD9A7F25936CDB001A5188 /* EnterPasswordAssembly.swift in Sources */,
 				44E2163325CD2D5F00FE31CE /* ChooseAuthTypePresenter.swift in Sources */,
 			);
@@ -1112,6 +1100,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_REFLECTION_METADATA_LEVEL = none;
 				SWIFT_VERSION = 5.0;
@@ -1142,6 +1131,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
 				SUPPORTS_MACCATALYST = NO;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_REFLECTION_METADATA_LEVEL = none;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
@@ -1165,6 +1155,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy.VinchyAuthorizationApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};
@@ -1187,6 +1178,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy.VinchyAuthorizationApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = 1;
 			};

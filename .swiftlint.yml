@@ -27,6 +27,7 @@ excluded:
   - Carthage
   - Pods
   - tools
+  - third-party
 
 colon:
   apply_to_dictionaries: false

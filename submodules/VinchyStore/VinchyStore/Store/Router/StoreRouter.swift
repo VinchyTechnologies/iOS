@@ -8,10 +8,11 @@
 
 import CoreLocation
 import Database
-import Display
+import DisplayMini
 import StringFormatting
 import UIKit
 import VinchyCore
+import VinchyUI
 
 // MARK: - StoreRouter
 
@@ -45,9 +46,14 @@ final class StoreRouter {
 // MARK: StoreRouterProtocol
 
 extension StoreRouter: StoreRouterProtocol {
+  func didTapShare(type: WineShareType) {
+    coordinator.didTapShare(type: type)
+  }
 
-  func pushToResultsSearchController(affilatedId: Int) {
-    coordinator.pushToResultsSearchController(affilatedId: affilatedId)
+  func pushToResultsSearchController(affilatedId: Int, resultsSearchDelegate: ResultsSearchDelegate?) {
+    coordinator.pushToResultsSearchController(
+      affilatedId: affilatedId,
+      resultsSearchDelegate: resultsSearchDelegate)
   }
 
   func presentActivityViewController(items: [Any], sourceView: UIView) {

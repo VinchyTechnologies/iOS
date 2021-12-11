@@ -8,6 +8,7 @@
 import Core
 import StringFormatting
 import VinchyCore
+import VinchyUI
 
 // MARK: - AuthorizationInteractor
 

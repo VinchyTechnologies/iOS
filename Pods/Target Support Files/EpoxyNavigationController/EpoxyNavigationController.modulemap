@@ -1,6 +1,0 @@
-framework module EpoxyNavigationController {
-  umbrella header "EpoxyNavigationController-umbrella.h"
-
-  export *
-  module * { export * }
-}

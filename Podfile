@@ -4,24 +4,28 @@ inhibit_all_warnings!
 
 workspace 'Smart'
 
+def epoxy
+  pod 'EpoxyCore'
+  pod 'EpoxyLayoutGroups'
+  pod 'EpoxyCollectionView'
+  pod 'EpoxyBars'
+end
+
 def commonPods
   pod 'FSPagerView' # no spm...
-#  pod 'CocoaDebug', :configurations => ['Debug']
   pod 'SwiftLint'
-  
-  pod 'Google-Mobile-Ads-SDK'
-  pod 'Firebase/DynamicLinks'
-  pod 'Firebase/RemoteConfig'
-  pod 'Firebase/Analytics'
-  pod 'Epoxy'
-  pod 'SPAlert', '~> 2.1.4'
   pod 'FittedSheets'
-  pod 'Sheeeeeeeeet'
+  epoxy
 end
 
 target 'Smart' do
   project 'Smart'
-
+  pod 'GoogleUtilities'
+  pod 'Firebase/DynamicLinks'
+  pod 'Google-Mobile-Ads-SDK'
+  pod 'CocoaDebug', :configurations => ['Debug']
+  pod 'Firebase/RemoteConfig'
+  pod 'SPAlert', '~> 2.1.4'
   commonPods
 
   target 'SmartTests' do
@@ -29,42 +33,47 @@ target 'Smart' do
   end
 
   target 'SmartUITests' do
-  end
+  end  
+end
+
+target 'VinchyAppClip' do
+  use_modular_headers!
+  commonPods
 end
 
 target 'Display' do
   project 'submodules/Display/Display'
-  pod 'Epoxy'
-  pod 'Google-Mobile-Ads-SDK'
+  epoxy
+end
+
+target 'DisplayMini' do
+  project 'submodules/DisplayMini/DisplayMini'
+  epoxy
+end
+
+target 'AdUI' do
+  project 'submodules/AdUI/AdUI'
 end
 
 target 'VinchyStore' do
   project 'submodules/VinchyStore/VinchyStore'
-  pod 'Epoxy'
-end
-
-target 'CommonUI' do
-  project 'submodules/CommonUI/CommonUI'
-  pod 'Epoxy'
+  epoxy
 end
 
 target 'VinchyUI' do
   project 'submodules/VinchyUI/VinchyUI'
-  pod 'Firebase/DynamicLinks'
+  epoxy
 end
 
 target 'WineDetail' do
   project 'submodules/WineDetail/WineDetail'
   pod 'FSPagerView' # no spm...
-  pod 'Epoxy'
-  pod 'SPAlert', '~> 2.1.4'
-  pod 'Sheeeeeeeeet'
-  pod 'Firebase/DynamicLinks'
+  epoxy
 end
 
 target 'VinchyAuthorization' do
   project 'submodules/VinchyAuthorization/VinchyAuthorization'
-  pod 'FittedSheets'
+#  pod 'FittedSheets'
 end
 
 target 'VinchyAuthorizationApp' do

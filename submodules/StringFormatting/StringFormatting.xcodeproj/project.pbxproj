@@ -70,14 +70,14 @@
 		CABDBAA424C3222C00AD96D6 /* StringFormatting */ = {
 			isa = PBXGroup;
 			children = (
-				CAF24AC724C322760057547F /* Source */,
+				CAF24AC724C322760057547F /* Sources */,
 				CABDBAA524C3222C00AD96D6 /* StringFormatting.h */,
 				CABDBAA624C3222C00AD96D6 /* Info.plist */,
 			);
 			path = StringFormatting;
 			sourceTree = "<group>";
 		};
-		CAF24AC724C322760057547F /* Source */ = {
+		CAF24AC724C322760057547F /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				CAF24AC824C322990057547F /* CurrencyFormatterEntry.swift */,
@@ -92,7 +92,7 @@
 				8A44705926623862000A1769 /* Time.swift */,
 				740EC934268F85360000718B /* NumericValidation.swift */,
 			);
-			path = Source;
+			path = Sources;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -335,6 +335,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy.StringFormatting;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_REFLECTION_METADATA_LEVEL = none;
 				SWIFT_VERSION = 5.0;
@@ -363,6 +364,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy.StringFormatting;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "";
 				SWIFT_REFLECTION_METADATA_LEVEL = none;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

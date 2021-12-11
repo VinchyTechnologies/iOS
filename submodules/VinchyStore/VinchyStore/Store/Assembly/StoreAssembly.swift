@@ -11,12 +11,12 @@ import VinchyUI
 
 public final class StoreAssembly {
 
-  public typealias Coordinator = WineDetailRoutable & ActivityRoutable & WriteNoteRoutable & AdvancedSearchRoutable & ResultsSearchRoutable
+  public typealias Coordinator = WineDetailRoutable & ActivityRoutable & WriteNoteRoutable & AdvancedSearchRoutable & ResultsSearchRoutable & WineShareRoutable
 
-  public static func assemblyModule(input: StoreInput, coordinator: Coordinator) -> UIViewController {
-    let viewController = StoreViewController()
+  public static func assemblyModule(input: StoreInput, coordinator: Coordinator, adFabricProtocol: AdFabricProtocol?) -> UIViewController {
+    let viewController = StoreViewController(adGenerator: adFabricProtocol)
     let router = StoreRouter(input: input, viewController: viewController, coordinator: coordinator)
-    let presenter = StorePresenter(viewController: viewController)
+    let presenter = StorePresenter(input: input, viewController: viewController)
     let interactor = StoreInteractor(input: input, router: router, presenter: presenter)
 
     viewController.interactor = interactor

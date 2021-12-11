@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		1CD38065332577DA2E24DB62 /* Pods_VinchyUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B7FC3C76302ABA896A624F35 /* Pods_VinchyUI.framework */; };
+		06C24011D5E1A289379A1451 /* Pods_VinchyUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 28DC5A587488228F31BD6D39 /* Pods_VinchyUI.framework */; };
+		8A2BA4F6275D3758006D6AF4 /* AdFabricProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A2BA4F5275D3758006D6AF4 /* AdFabricProtocol.swift */; };
 		8A5145802757C85B00DC45CD /* ShowcaseRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A51457F2757C85B00DC45CD /* ShowcaseRoutable.swift */; };
 		8A5145E42757F53B00DC45CD /* WineDetailRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145E32757F53B00DC45CD /* WineDetailRoutable.swift */; };
 		8A5145E62757FA2400DC45CD /* WriteNoteRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145E52757FA2400DC45CD /* WriteNoteRoutable.swift */; };
@@ -18,6 +19,11 @@
 		8A5145F52757FE7C00DC45CD /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5145F42757FE7C00DC45CD /* Core.framework */; };
 		8A5145F9275801D000DC45CD /* ShowNetworkAlertPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145F8275801D000DC45CD /* ShowNetworkAlertPresentable.swift */; };
 		8A5145FB275807C200DC45CD /* AdvancedSearchRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145FA275807C200DC45CD /* AdvancedSearchRoutable.swift */; };
+		8A9C7EAA275FBAAD00A5B694 /* WineShareRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9C7EA9275FBAAD00A5B694 /* WineShareRoutable.swift */; };
+		8A9C7EAC275FDDA000A5B694 /* CantOpenURLAlertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9C7EAB275FDDA000A5B694 /* CantOpenURLAlertable.swift */; };
+		8A9C7EAE275FDDE200A5B694 /* StatusAlertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9C7EAD275FDDE200A5B694 /* StatusAlertable.swift */; };
+		8A9C7F5B27613FD900A5B694 /* DisplayMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9C7F5A27613FD900A5B694 /* DisplayMini.framework */; };
+		8AA7BA7D275CE7F700BF68E8 /* AuthorizationRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AA7BA7C275CE7F700BF68E8 /* AuthorizationRoutable.swift */; };
 		8AEC83962758E12C00C80F1E /* ReviewsRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83952758E12C00C80F1E /* ReviewsRoutable.swift */; };
 		8AEC83982758E1C500C80F1E /* WriteReviewRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83972758E1C500C80F1E /* WriteReviewRoutable.swift */; };
 		8AEC839A2758E21500C80F1E /* ReviewDetailRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83992758E21500C80F1E /* ReviewDetailRoutable.swift */; };
@@ -29,7 +35,9 @@
 
 /* Begin PBXFileReference section */
 		21771EAE1AC5541EB9ADA173 /* Pods-VinchyUI.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyUI.release.xcconfig"; path = "Target Support Files/Pods-VinchyUI/Pods-VinchyUI.release.xcconfig"; sourceTree = "<group>"; };
+		28DC5A587488228F31BD6D39 /* Pods_VinchyUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinchyUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		61D978FDE224E02DA3A38AC8 /* Pods-VinchyUI.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyUI.debug.xcconfig"; path = "Target Support Files/Pods-VinchyUI/Pods-VinchyUI.debug.xcconfig"; sourceTree = "<group>"; };
+		8A2BA4F5275D3758006D6AF4 /* AdFabricProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdFabricProtocol.swift; sourceTree = "<group>"; };
 		8A51457F2757C85B00DC45CD /* ShowcaseRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseRoutable.swift; sourceTree = "<group>"; };
 		8A5145E32757F53B00DC45CD /* WineDetailRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineDetailRoutable.swift; sourceTree = "<group>"; };
 		8A5145E52757FA2400DC45CD /* WriteNoteRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteNoteRoutable.swift; sourceTree = "<group>"; };
@@ -40,13 +48,18 @@
 		8A5145F42757FE7C00DC45CD /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5145F8275801D000DC45CD /* ShowNetworkAlertPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowNetworkAlertPresentable.swift; sourceTree = "<group>"; };
 		8A5145FA275807C200DC45CD /* AdvancedSearchRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AdvancedSearchRoutable.swift; sourceTree = "<group>"; };
+		8A9C7EA9275FBAAD00A5B694 /* WineShareRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineShareRoutable.swift; sourceTree = "<group>"; };
+		8A9C7EAB275FDDA000A5B694 /* CantOpenURLAlertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CantOpenURLAlertable.swift; sourceTree = "<group>"; };
+		8A9C7EAD275FDDE200A5B694 /* StatusAlertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusAlertable.swift; sourceTree = "<group>"; };
+		8A9C7EB12761183F00A5B694 /* Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A9C7F5A27613FD900A5B694 /* DisplayMini.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DisplayMini.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8AA7BA7C275CE7F700BF68E8 /* AuthorizationRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRoutable.swift; sourceTree = "<group>"; };
 		8AEC83952758E12C00C80F1E /* ReviewsRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewsRoutable.swift; sourceTree = "<group>"; };
 		8AEC83972758E1C500C80F1E /* WriteReviewRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteReviewRoutable.swift; sourceTree = "<group>"; };
 		8AEC83992758E21500C80F1E /* ReviewDetailRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReviewDetailRoutable.swift; sourceTree = "<group>"; };
 		8AEC83C12758F09500C80F1E /* StoresRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoresRoutable.swift; sourceTree = "<group>"; };
 		8AEC83C62758F35A00C80F1E /* StoreRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRoutable.swift; sourceTree = "<group>"; };
 		8AEC83CA275957DF00C80F1E /* ResultsSearchRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsSearchRoutable.swift; sourceTree = "<group>"; };
-		B7FC3C76302ABA896A624F35 /* Pods_VinchyUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinchyUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7B826F24ED0B0400991F24 /* VinchyUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VinchyUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA7B827224ED0B0400991F24 /* VinchyUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VinchyUI.h; sourceTree = "<group>"; };
 		CA7B827324ED0B0400991F24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -57,10 +70,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A9C7F5B27613FD900A5B694 /* DisplayMini.framework in Frameworks */,
 				8A5145ED2757FA7100DC45CD /* VinchyCore.framework in Frameworks */,
 				8A5145F52757FE7C00DC45CD /* Core.framework in Frameworks */,
 				8A5145E92757FA6600DC45CD /* Database.framework in Frameworks */,
-				1CD38065332577DA2E24DB62 /* Pods_VinchyUI.framework in Frameworks */,
+				06C24011D5E1A289379A1451 /* Pods_VinchyUI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -80,19 +94,24 @@
 		8A51457E2757C83B00DC45CD /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				8A51457F2757C85B00DC45CD /* ShowcaseRoutable.swift */,
-				8A5145E32757F53B00DC45CD /* WineDetailRoutable.swift */,
-				8A5145E52757FA2400DC45CD /* WriteNoteRoutable.swift */,
 				8A5145F02757FB6A00DC45CD /* ActivityRoutable.swift */,
-				8A5145F22757FE4800DC45CD /* WineViewContextMenuTappable.swift */,
-				8A5145F8275801D000DC45CD /* ShowNetworkAlertPresentable.swift */,
+				8A2BA4F5275D3758006D6AF4 /* AdFabricProtocol.swift */,
 				8A5145FA275807C200DC45CD /* AdvancedSearchRoutable.swift */,
-				8AEC83952758E12C00C80F1E /* ReviewsRoutable.swift */,
-				8AEC83972758E1C500C80F1E /* WriteReviewRoutable.swift */,
-				8AEC83992758E21500C80F1E /* ReviewDetailRoutable.swift */,
-				8AEC83C12758F09500C80F1E /* StoresRoutable.swift */,
-				8AEC83C62758F35A00C80F1E /* StoreRoutable.swift */,
+				8AA7BA7C275CE7F700BF68E8 /* AuthorizationRoutable.swift */,
+				8A9C7EAB275FDDA000A5B694 /* CantOpenURLAlertable.swift */,
 				8AEC83CA275957DF00C80F1E /* ResultsSearchRoutable.swift */,
+				8AEC83992758E21500C80F1E /* ReviewDetailRoutable.swift */,
+				8AEC83952758E12C00C80F1E /* ReviewsRoutable.swift */,
+				8A51457F2757C85B00DC45CD /* ShowcaseRoutable.swift */,
+				8A5145F8275801D000DC45CD /* ShowNetworkAlertPresentable.swift */,
+				8A9C7EAD275FDDE200A5B694 /* StatusAlertable.swift */,
+				8AEC83C62758F35A00C80F1E /* StoreRoutable.swift */,
+				8AEC83C12758F09500C80F1E /* StoresRoutable.swift */,
+				8A5145E32757F53B00DC45CD /* WineDetailRoutable.swift */,
+				8A9C7EA9275FBAAD00A5B694 /* WineShareRoutable.swift */,
+				8A5145F22757FE4800DC45CD /* WineViewContextMenuTappable.swift */,
+				8A5145E52757FA2400DC45CD /* WriteNoteRoutable.swift */,
+				8AEC83972758E1C500C80F1E /* WriteReviewRoutable.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -100,10 +119,12 @@
 		8A5145E72757FA6600DC45CD /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8A9C7F5A27613FD900A5B694 /* DisplayMini.framework */,
+				8A9C7EB12761183F00A5B694 /* Display.framework */,
 				8A5145F42757FE7C00DC45CD /* Core.framework */,
 				8A5145EC2757FA7100DC45CD /* VinchyCore.framework */,
 				8A5145E82757FA6600DC45CD /* Database.framework */,
-				B7FC3C76302ABA896A624F35 /* Pods_VinchyUI.framework */,
+				28DC5A587488228F31BD6D39 /* Pods_VinchyUI.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -250,12 +271,17 @@
 				8A5145F32757FE4800DC45CD /* WineViewContextMenuTappable.swift in Sources */,
 				8AEC83962758E12C00C80F1E /* ReviewsRoutable.swift in Sources */,
 				8A5145E62757FA2400DC45CD /* WriteNoteRoutable.swift in Sources */,
+				8A9C7EAA275FBAAD00A5B694 /* WineShareRoutable.swift in Sources */,
 				8AEC83CB275957DF00C80F1E /* ResultsSearchRoutable.swift in Sources */,
+				8A9C7EAC275FDDA000A5B694 /* CantOpenURLAlertable.swift in Sources */,
 				8AEC83C22758F09500C80F1E /* StoresRoutable.swift in Sources */,
 				8A5145F9275801D000DC45CD /* ShowNetworkAlertPresentable.swift in Sources */,
 				8AEC83982758E1C500C80F1E /* WriteReviewRoutable.swift in Sources */,
 				8A5145FB275807C200DC45CD /* AdvancedSearchRoutable.swift in Sources */,
+				8AA7BA7D275CE7F700BF68E8 /* AuthorizationRoutable.swift in Sources */,
+				8A9C7EAE275FDDE200A5B694 /* StatusAlertable.swift in Sources */,
 				8AEC839A2758E21500C80F1E /* ReviewDetailRoutable.swift in Sources */,
+				8A2BA4F6275D3758006D6AF4 /* AdFabricProtocol.swift in Sources */,
 				8A5145E42757F53B00DC45CD /* WineDetailRoutable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

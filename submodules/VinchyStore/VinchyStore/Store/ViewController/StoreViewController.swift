@@ -6,13 +6,14 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import CommonUI
 import Core
 import Database
-import Display
-import Epoxy
+import DisplayMini
+import EpoxyCollectionView
+import EpoxyCore
+import EpoxyLayoutGroups
 import UIKit
-import VinchyAuthorization
+import VinchyUI
 
 // MARK: - StoreViewController
 
@@ -20,7 +21,8 @@ final class StoreViewController: CollectionViewController {
 
   // MARK: Lifecycle
 
-  init() {
+  init(adGenerator: AdFabricProtocol?) {
+    self.adGenerator = adGenerator
     let layout = SeparatorFlowLayout()
     layout.sectionHeadersPinToVisibleBounds = true
     super.init(layout: layout)
@@ -64,7 +66,7 @@ final class StoreViewController: CollectionViewController {
     collectionView.scrollDelegate = self
 
     let filterBarButtonItem = UIBarButtonItem(
-      image: UIImage(named: "edit")?.withRenderingMode(.alwaysTemplate),
+      image: UIImage(named: "edit")?.withRenderingMode(.alwaysOriginal).withTintColor(.dark),
       style: .plain,
       target: self,
       action: #selector(didTapFilterButton(_:)))
@@ -90,6 +92,7 @@ final class StoreViewController: CollectionViewController {
 
   // MARK: Private
 
+  private let adGenerator: AdFabricProtocol?
   private lazy var collectionViewSize: CGSize = view.frame.size
 
   private var supplementaryView: UIView?
@@ -182,14 +185,11 @@ final class StoreViewController: CollectionViewController {
                 .flowLayoutItemSize(.init(width: width, height: height))
 
             case .ad(let itemID):
-              return AdItemView.itemModel(
-                dataID: UUID(),
-                content: .init(),
-                style: .init())
-                .setBehaviors { [weak self] context in
-                  context.view.adBanner.rootViewController = self
-                }
-                .flowLayoutItemSize(.init(width: collectionViewSize.width, height: AdItemView.height))
+              if let adGenerator = adGenerator {
+                return adGenerator.generateGoogleAd(width: collectionViewSize.width, rootcontroller: self) as? ItemModeling
+              } else {
+                return nil
+              }
 
             case .empty(let itemID, let content):
               return EmptyView.itemModel(

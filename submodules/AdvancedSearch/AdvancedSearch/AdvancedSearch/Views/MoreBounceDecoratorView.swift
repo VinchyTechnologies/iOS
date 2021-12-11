@@ -6,7 +6,7 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import Display
+import DisplayMini
 import UIKit
 
 // MARK: - MoreBounceDecoratorViewModel
@@ -52,7 +52,7 @@ final class MoreBounceDecoratorView: UIView {
 
   // MARK: Private
 
-  private let label = PaddingLabel()
+  private let label = UILabel()
 }
 
 // MARK: Decoratable

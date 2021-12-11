@@ -6,8 +6,9 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Display
-import Epoxy
+import DisplayMini
+import EpoxyCollectionView
+import EpoxyCore
 
 // MARK: - FilterItemViewViewModel
 
