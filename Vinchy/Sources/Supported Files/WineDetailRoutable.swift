@@ -13,7 +13,7 @@ import WineDetail
 
 extension WineDetailRoutable {
   func pushToWineDetailViewController(wineID: Int64) {
-    if UIDevice.current.userInterfaceIdiom == .pad {
+    if UIDevice.current.userInterfaceIdiom == .pad && UIApplication.topViewController() is SearchViewController {
       presentWineDetailViewController(wineID: wineID)
     } else {
       let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID, isAppClip: false), coordinator: Coordinator.shared, adGenerator: AdFabric.shared)
