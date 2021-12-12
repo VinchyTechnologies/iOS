@@ -53,7 +53,7 @@
       <EnvironmentVariables>
          <EnvironmentVariable
             key = "_XCAppClipURL"
-            value = "https://vinchy.tech/stores?affilatedId=366"
+            value = "https://vinchy.tech/stores?id=366"
             isEnabled = "YES">
          </EnvironmentVariable>
       </EnvironmentVariables>

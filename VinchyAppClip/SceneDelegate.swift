@@ -31,7 +31,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     }
 
     guard
-      let queryItem = components.queryItems?.first(where: { $0.name == "affilatedId" }),
+      let queryItem = components.queryItems?.first(where: { $0.name == "id" }),
       let id = queryItem.value else
     {
       return
