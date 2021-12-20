@@ -46,6 +46,11 @@ final class StoreRouter {
 // MARK: StoreRouterProtocol
 
 extension StoreRouter: StoreRouterProtocol {
+
+  func presentSafari(url: URL) {
+    coordinator.presentSafari(url: url)
+  }
+
   func didTapShare(type: WineShareType) {
     coordinator.didTapShare(type: type)
   }

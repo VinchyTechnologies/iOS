@@ -202,6 +202,8 @@
 		8A63CCBF26754635003B1D4D /* VinchyAuthorization.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 44D3CDE725E42E0B00FFFCD5 /* VinchyAuthorization.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A63CCC026754638003B1D4D /* VinchyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; };
 		8A63CCC126754638003B1D4D /* VinchyCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8A63E3382770F27400D8362C /* SafariRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A63E3372770F27400D8362C /* SafariRoutable.swift */; };
+		8A63E3392770F27400D8362C /* SafariRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A63E3372770F27400D8362C /* SafariRoutable.swift */; };
 		8A7BCD712757B25000B56313 /* ThirdParty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A7BCD702757B25000B56313 /* ThirdParty.framework */; };
 		8A7BCD722757B25000B56313 /* ThirdParty.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A7BCD702757B25000B56313 /* ThirdParty.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A889A57275CC8390096A74A /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA1821FE24C0F6F000280DD4 /* Database.framework */; };
@@ -230,6 +232,17 @@
 		8A916121268E27EB00240B18 /* SearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916116268E27EB00240B18 /* SearchRouter.swift */; };
 		8A916122268E27EB00240B18 /* SearchRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A916117268E27EB00240B18 /* SearchRouterProtocol.swift */; };
 		8A9554682692284B00F1C5AE /* DocumentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9554672692284B00F1C5AE /* DocumentsViewController.swift */; };
+		8A98EB1B2768DC7800D98AE1 /* DebugSettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A98EB0A2768DC7800D98AE1 /* DebugSettingsViewModel.swift */; };
+		8A98EB1C2768DC7800D98AE1 /* DebugSettingsInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A98EB0C2768DC7800D98AE1 /* DebugSettingsInput.swift */; };
+		8A98EB1D2768DC7800D98AE1 /* DebugSettingsAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A98EB0E2768DC7800D98AE1 /* DebugSettingsAssembly.swift */; };
+		8A98EB1E2768DC7800D98AE1 /* DebugSettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A98EB102768DC7800D98AE1 /* DebugSettingsPresenter.swift */; };
+		8A98EB1F2768DC7800D98AE1 /* DebugSettingsPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A98EB112768DC7800D98AE1 /* DebugSettingsPresenterProtocol.swift */; };
+		8A98EB202768DC7800D98AE1 /* DebugSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A98EB132768DC7800D98AE1 /* DebugSettingsViewController.swift */; };
+		8A98EB212768DC7800D98AE1 /* DebugSettingsViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A98EB142768DC7800D98AE1 /* DebugSettingsViewControllerProtocol.swift */; };
+		8A98EB222768DC7800D98AE1 /* DebugSettingsInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A98EB162768DC7800D98AE1 /* DebugSettingsInteractorProtocol.swift */; };
+		8A98EB232768DC7800D98AE1 /* DebugSettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A98EB172768DC7800D98AE1 /* DebugSettingsInteractor.swift */; };
+		8A98EB242768DC7800D98AE1 /* DebugSettingsRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A98EB192768DC7800D98AE1 /* DebugSettingsRouterProtocol.swift */; };
+		8A98EB252768DC7800D98AE1 /* DebugSettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A98EB1A2768DC7800D98AE1 /* DebugSettingsRouter.swift */; };
 		8A9C7EA4275F9C9200A5B694 /* PluralLocalizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 8A07983D269750A0000ACA2B /* PluralLocalizable.stringsdict */; };
 		8A9C7EA5275F9C9600A5B694 /* Countries.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA3C97E8257245F40036F7D9 /* Countries.strings */; };
 		8A9C7EA6275F9C9E00A5B694 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA445F6D24BFA3C20023A09F /* InfoPlist.strings */; };
@@ -702,6 +715,7 @@
 		8A5145852757C9A000DC45CD /* VinchyUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5145E02757EC9000DC45CD /* VinchyStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5401C926EFA894007247E5 /* StoreTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTitleView.swift; sourceTree = "<group>"; };
+		8A63E3372770F27400D8362C /* SafariRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariRoutable.swift; sourceTree = "<group>"; };
 		8A7BCD702757B25000B56313 /* ThirdParty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ThirdParty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A7E8781275D1F3B00A8C470 /* AdUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AdUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A8FE7322708D9F8002EE088 /* LogOutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutCell.swift; sourceTree = "<group>"; };
@@ -728,6 +742,17 @@
 		8A916116268E27EB00240B18 /* SearchRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRouter.swift; sourceTree = "<group>"; };
 		8A916117268E27EB00240B18 /* SearchRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchRouterProtocol.swift; sourceTree = "<group>"; };
 		8A9554672692284B00F1C5AE /* DocumentsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DocumentsViewController.swift; sourceTree = "<group>"; };
+		8A98EB0A2768DC7800D98AE1 /* DebugSettingsViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugSettingsViewModel.swift; sourceTree = "<group>"; };
+		8A98EB0C2768DC7800D98AE1 /* DebugSettingsInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugSettingsInput.swift; sourceTree = "<group>"; };
+		8A98EB0E2768DC7800D98AE1 /* DebugSettingsAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugSettingsAssembly.swift; sourceTree = "<group>"; };
+		8A98EB102768DC7800D98AE1 /* DebugSettingsPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugSettingsPresenter.swift; sourceTree = "<group>"; };
+		8A98EB112768DC7800D98AE1 /* DebugSettingsPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugSettingsPresenterProtocol.swift; sourceTree = "<group>"; };
+		8A98EB132768DC7800D98AE1 /* DebugSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugSettingsViewController.swift; sourceTree = "<group>"; };
+		8A98EB142768DC7800D98AE1 /* DebugSettingsViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugSettingsViewControllerProtocol.swift; sourceTree = "<group>"; };
+		8A98EB162768DC7800D98AE1 /* DebugSettingsInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugSettingsInteractorProtocol.swift; sourceTree = "<group>"; };
+		8A98EB172768DC7800D98AE1 /* DebugSettingsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugSettingsInteractor.swift; sourceTree = "<group>"; };
+		8A98EB192768DC7800D98AE1 /* DebugSettingsRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugSettingsRouterProtocol.swift; sourceTree = "<group>"; };
+		8A98EB1A2768DC7800D98AE1 /* DebugSettingsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DebugSettingsRouter.swift; sourceTree = "<group>"; };
 		8A9C7EAF275FDE1900A5B694 /* StatusAlertable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StatusAlertable.swift; sourceTree = "<group>"; };
 		8A9C7F0727613A3300A5B694 /* DisplayMini.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DisplayMini.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A9C7F0A27613A3F00A5B694 /* DisplayMini.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DisplayMini.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1961,6 +1986,17 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		8A63E3362770F24200D8362C /* Routable */ = {
+			isa = PBXGroup;
+			children = (
+				8AEC83C82758F38400C80F1E /* StoreRoutable.swift */,
+				8AEC83CC2759588500C80F1E /* ResultsSearchRoutable.swift */,
+				8AEC83BC2758E8C700C80F1E /* WineDetailRoutable.swift */,
+				8A63E3372770F27400D8362C /* SafariRoutable.swift */,
+			);
+			path = Routable;
+			sourceTree = "<group>";
+		};
 		8A91600F268CE66C00240B18 /* AreYouInStore */ = {
 			isa = PBXGroup;
 			children = (
@@ -2105,6 +2141,80 @@
 			children = (
 				8A916116268E27EB00240B18 /* SearchRouter.swift */,
 				8A916117268E27EB00240B18 /* SearchRouterProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		8A98EB082768DC7800D98AE1 /* DebugSettings */ = {
+			isa = PBXGroup;
+			children = (
+				8A98EB0D2768DC7800D98AE1 /* Assembly */,
+				8A98EB0B2768DC7800D98AE1 /* Input */,
+				8A98EB152768DC7800D98AE1 /* Interactor */,
+				8A98EB0F2768DC7800D98AE1 /* Presenter */,
+				8A98EB182768DC7800D98AE1 /* Router */,
+				8A98EB122768DC7800D98AE1 /* ViewController */,
+				8A98EB092768DC7800D98AE1 /* ViewModel */,
+			);
+			path = DebugSettings;
+			sourceTree = "<group>";
+		};
+		8A98EB092768DC7800D98AE1 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				8A98EB0A2768DC7800D98AE1 /* DebugSettingsViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		8A98EB0B2768DC7800D98AE1 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				8A98EB0C2768DC7800D98AE1 /* DebugSettingsInput.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		8A98EB0D2768DC7800D98AE1 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				8A98EB0E2768DC7800D98AE1 /* DebugSettingsAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		8A98EB0F2768DC7800D98AE1 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				8A98EB102768DC7800D98AE1 /* DebugSettingsPresenter.swift */,
+				8A98EB112768DC7800D98AE1 /* DebugSettingsPresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		8A98EB122768DC7800D98AE1 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				8A98EB132768DC7800D98AE1 /* DebugSettingsViewController.swift */,
+				8A98EB142768DC7800D98AE1 /* DebugSettingsViewControllerProtocol.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		8A98EB152768DC7800D98AE1 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				8A98EB162768DC7800D98AE1 /* DebugSettingsInteractorProtocol.swift */,
+				8A98EB172768DC7800D98AE1 /* DebugSettingsInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		8A98EB182768DC7800D98AE1 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				8A98EB192768DC7800D98AE1 /* DebugSettingsRouterProtocol.swift */,
+				8A98EB1A2768DC7800D98AE1 /* DebugSettingsRouter.swift */,
 			);
 			path = Router;
 			sourceTree = "<group>";
@@ -2585,6 +2695,7 @@
 				CA07097E2523146200C3D9EC /* Agreement */,
 				8A91600F268CE66C00240B18 /* AreYouInStore */,
 				CE69652B25E4373400CD414D /* Currency */,
+				8A98EB082768DC7800D98AE1 /* DebugSettings */,
 				449F81C225DD048500585364 /* Deeplink */,
 				8A0792ED269239C0000ACA2B /* Documents */,
 				8AF966AB2678F194001891B2 /* EditProfile */,
@@ -2617,6 +2728,7 @@
 		CA472B3F245EDEDB009149FF /* Supported Files */ = {
 			isa = PBXGroup;
 			children = (
+				8A63E3362770F24200D8362C /* Routable */,
 				CA8CD67525096EC100FDB7AF /* Smart-Bridging-Header.h */,
 				CA472ABF245EDE2F009149FF /* AppDelegate.swift */,
 				CA472B40245EDEDB009149FF /* Assembly.swift */,
@@ -2628,9 +2740,6 @@
 				74DAD09E26E0D4F400055AE7 /* LoadingPresentable.swift */,
 				74DAD0A026E0D99300055AE7 /* ActivityRoutable.swift */,
 				8A5145682757BEB000DC45CD /* Coordinator.swift */,
-				8AEC83BC2758E8C700C80F1E /* WineDetailRoutable.swift */,
-				8AEC83C82758F38400C80F1E /* StoreRoutable.swift */,
-				8AEC83CC2759588500C80F1E /* ResultsSearchRoutable.swift */,
 				8A2BA4F3275D370A006D6AF4 /* AdFabric.swift */,
 				8A2BA4F7275D41E8006D6AF4 /* AdItemView.swift */,
 				8A9C7EAF275FDE1900A5B694 /* StatusAlertable.swift */,
@@ -3440,6 +3549,7 @@
 				8AEC94EA275B614E00C80F1E /* ReviewsRouter.swift in Sources */,
 				8AEC94E9275B614900C80F1E /* ReviewsPresenter.swift in Sources */,
 				8AEC94F0275B621500C80F1E /* ReviewDetailRoutable.swift in Sources */,
+				8A63E3392770F27400D8362C /* SafariRoutable.swift in Sources */,
 				8A9C7EBD276118B600A5B694 /* ResultsSearchViewControllerProtocol.swift in Sources */,
 				8AEC94EB275B615100C80F1E /* ReviewsRouterProtocol.swift in Sources */,
 				8A9C7EBE276118B900A5B694 /* ResultsSearchViewController.swift in Sources */,
@@ -3484,6 +3594,7 @@
 				CA4857892517C71200EDA4CE /* VinchyPresenterProtocol.swift in Sources */,
 				8AF966C12678F194001891B2 /* EditProfilePresenterProtocol.swift in Sources */,
 				74E55FA726AACE2C0086C159 /* ResultsSearchViewModel.swift in Sources */,
+				8A98EB202768DC7800D98AE1 /* DebugSettingsViewController.swift in Sources */,
 				8A27EA9327365B86005A13C6 /* RatesInteractor.swift in Sources */,
 				8A10F28727063398003463B0 /* AddressSearchInteractor.swift in Sources */,
 				74DAD09F26E0D4F400055AE7 /* LoadingPresentable.swift in Sources */,
@@ -3497,6 +3608,7 @@
 				CA4857782517BEA000EDA4CE /* VinchyPresenter.swift in Sources */,
 				8AA990A426D91FE000C32358 /* StoresAssembly.swift in Sources */,
 				CACA7E9B254C57CC0099E622 /* WriteNoteAssembly.swift in Sources */,
+				8A98EB1D2768DC7800D98AE1 /* DebugSettingsAssembly.swift in Sources */,
 				44EFDB7225E263E00076ED6D /* ReviewDetailPresenterProtocol.swift in Sources */,
 				8AF94419269228F5003EB76A /* TextRow.swift in Sources */,
 				8AD49F182675210A0094E157 /* ReviewsRouter.swift in Sources */,
@@ -3518,6 +3630,7 @@
 				8A446CDF2660123B000A1769 /* RoutingToolBar.swift in Sources */,
 				CA7A87FA2506B9D600AAD10F /* ShareUsView.swift in Sources */,
 				449F81C425DD049B00585364 /* DeeplinkFlow.swift in Sources */,
+				8A98EB232768DC7800D98AE1 /* DebugSettingsInteractor.swift in Sources */,
 				CEF2087C25E8297900C413EA /* CurrencyCell.swift in Sources */,
 				8A4749B1272832700091B493 /* StoriesCollectionView.swift in Sources */,
 				8AE7880B2684E8D60056A84B /* NotesViewModel.swift in Sources */,
@@ -3554,6 +3667,7 @@
 				CA472B59245EDEDB009149FF /* ShowcaseViewController.swift in Sources */,
 				8A313C0226447042009F2165 /* MapDetailStorePresenterProtocol.swift in Sources */,
 				447C353A25EEAA5700105A35 /* MapAssembly.swift in Sources */,
+				8A98EB1E2768DC7800D98AE1 /* DebugSettingsPresenter.swift in Sources */,
 				CAF514222461C52400667ED0 /* MoreViewController.swift in Sources */,
 				449F81CA25DD04B400585364 /* DeeplinkStep.swift in Sources */,
 				CA7B835B24EED6E600991F24 /* StoryCollectionCell.swift in Sources */,
@@ -3569,6 +3683,7 @@
 				8A3C0F522732D08E00947085 /* SavedAssembly.swift in Sources */,
 				449F81AC25DD023A00585364 /* RootInteractor.swift in Sources */,
 				8A91611B268E27EB00240B18 /* SearchPresenter.swift in Sources */,
+				8A98EB222768DC7800D98AE1 /* DebugSettingsInteractorProtocol.swift in Sources */,
 				7485870326C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellViewProtocol.swift in Sources */,
 				447C354025EEAA5700105A35 /* MapInteractorProtocol.swift in Sources */,
 				8A916027268CE66C00240B18 /* AreYouInStoreViewController.swift in Sources */,
@@ -3587,6 +3702,7 @@
 				44EFDB6F25E263E00076ED6D /* ReviewDetailViewModel.swift in Sources */,
 				8A079309269239C1000ACA2B /* DocumentsRouter.swift in Sources */,
 				44EFDB7825E263E00076ED6D /* ReviewDetailRouterProtocol.swift in Sources */,
+				8A98EB252768DC7800D98AE1 /* DebugSettingsRouter.swift in Sources */,
 				CA490141252F7EDC00066A98 /* VinchyViewControllerViewModel.swift in Sources */,
 				CA48579B2517CA5200EDA4CE /* VinchyViewControllerProtocol.swift in Sources */,
 				8AE7880E2684E8D60056A84B /* NotesPresenterProtocol.swift in Sources */,
@@ -3605,9 +3721,11 @@
 				74E55FAA26AACE2C0086C159 /* ResultsSearchPresenter.swift in Sources */,
 				8A0795B726943DD6000ACA2B /* FeaturesOnboardingViewController.swift in Sources */,
 				8A10F28927063398003463B0 /* AddressSearchRouter.swift in Sources */,
+				8A63E3382770F27400D8362C /* SafariRoutable.swift in Sources */,
 				8AF966C32678F194001891B2 /* EditProfileViewController.swift in Sources */,
 				44EFDB3F25E177220076ED6D /* ReviewsInteractor.swift in Sources */,
 				CA7B836024EF109200991F24 /* MainSubtitleCollectionCell.swift in Sources */,
+				8A98EB1B2768DC7800D98AE1 /* DebugSettingsViewModel.swift in Sources */,
 				8A2BA4F8275D41E8006D6AF4 /* AdItemView.swift in Sources */,
 				447C353E25EEAA5700105A35 /* MapViewControllerProtocol.swift in Sources */,
 				7485870626C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellRouter.swift in Sources */,
@@ -3676,6 +3794,7 @@
 				8AF966C42678F194001891B2 /* EditProfileViewControllerProtocol.swift in Sources */,
 				8A3C0F5A2732D08E00947085 /* SavedRouterProtocol.swift in Sources */,
 				8A313C0026447042009F2165 /* MapDetailStoreInput.swift in Sources */,
+				8A98EB212768DC7800D98AE1 /* DebugSettingsViewControllerProtocol.swift in Sources */,
 				8A91602A268CE66C00240B18 /* AreYouInStoreInteractor.swift in Sources */,
 				8A5145692757BEB000DC45CD /* Coordinator.swift in Sources */,
 				CAF514292461C52400667ED0 /* MoreRouter.swift in Sources */,
@@ -3700,6 +3819,8 @@
 				8AA990AA26D91FE000C32358 /* StoresInteractor.swift in Sources */,
 				8A916025268CE66C00240B18 /* AreYouInStorePresenter.swift in Sources */,
 				8A27EA8D27365B86005A13C6 /* RatesInput.swift in Sources */,
+				8A98EB1C2768DC7800D98AE1 /* DebugSettingsInput.swift in Sources */,
+				8A98EB242768DC7800D98AE1 /* DebugSettingsRouterProtocol.swift in Sources */,
 				447C353C25EEAA5700105A35 /* MapPresenterProtocol.swift in Sources */,
 				8A916121268E27EB00240B18 /* SearchRouter.swift in Sources */,
 				8A91602B268CE66C00240B18 /* AreYouInStoreRouter.swift in Sources */,
@@ -3712,6 +3833,7 @@
 				8A916118268E27EB00240B18 /* SearchViewModel.swift in Sources */,
 				CEB0A6222609442B00B07B87 /* ShowcaseRouterProtocol.swift in Sources */,
 				44EFDB7625E263E00076ED6D /* ReviewDetailInteractor.swift in Sources */,
+				8A98EB1F2768DC7800D98AE1 /* DebugSettingsPresenterProtocol.swift in Sources */,
 				8A10F28327063398003463B0 /* AddressSearchPresenterProtocol.swift in Sources */,
 				CE8FF83925FADABF004D4F37 /* ShowcaseInteractorProtocol.swift in Sources */,
 				447C353D25EEAA5700105A35 /* MapViewController.swift in Sources */,

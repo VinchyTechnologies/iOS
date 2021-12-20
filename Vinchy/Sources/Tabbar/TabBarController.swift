@@ -126,12 +126,13 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
       image: UIImage(systemName: "map", withConfiguration: imageConfig)?.withTintColor(.blueGray, renderingMode: .alwaysOriginal),
       selectedImage: UIImage(systemName: "map", withConfiguration: imageConfig)?.withTintColor(.accent, renderingMode: .alwaysOriginal))
 
-//    [main, love, notes, profile].forEach { controller in
-//      controller.tabBarItem.titlePositionAdjustment = .init(horizontal: 0, vertical: -3)
-//      controller.tabBarItem.imageInsets = .init(top: 10, left: 0, bottom: 0, right: 0)
-//    }
-
     viewControllers = [main, love, map, notes, profile]
+
+    if let lastTabView = tabBar.items?.last?.value(forKey: "view") as? UIView {
+      lastTabView.addGestureRecognizer(debugSettingsGestureRecognizer)
+    }
+
+    tabBar.addGestureRecognizer(debugSettingsGestureRecognizer)
   }
 
   override func viewWillLayoutSubviews() {
@@ -164,6 +165,24 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
   }
 
   // MARK: Private
+
+  private lazy var debugSettingsGestureRecognizer: UITapGestureRecognizer = {
+    let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapDebugSettings(_:)))
+    gestureRecognizer.numberOfTapsRequired = 10
+    return gestureRecognizer
+  }()
+
+  @objc
+  private func didTapDebugSettings(_ gesture: UITapGestureRecognizer) {
+    if let viewController = viewControllers?.last {
+      selectedIndex = .profile
+      let controller = DebugSettingsAssembly.assemblyModule()
+      controller.hidesBottomBarWhenPushed = true
+      (viewController as? VinchyNavigationController)?.pushViewController(
+        controller,
+        animated: true)
+    }
+  }
 
   private func popToRoot() {
     if let tabPresentedController = presentedViewController {
@@ -232,6 +251,7 @@ extension TabBarController: TabBarDeeplinkable {
 extension Int {
   fileprivate static let main = 0
   fileprivate static let love = 1
-  fileprivate static let notes = 2
-  fileprivate static let profile = 3
+  fileprivate static let map = 2
+  fileprivate static let notes = 3
+  fileprivate static let profile = 4
 }

@@ -76,7 +76,7 @@
 		8A9CABCD2763F01300A5B694 /* Font.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		8A9CABCE2763F01300A5B694 /* LoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoadingView.swift; sourceTree = "<group>"; };
 		8A9CABCF2763F01300A5B694 /* Button.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Button.swift; sourceTree = "<group>"; };
-		8A9CABD02763F01300A5B694 /* HorizontalWineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HorizontalWineView.swift; sourceTree = "<group>"; };
+		8A9CABD02763F01300A5B694 /* HorizontalWineView.swift */ = {isa = PBXFileReference; fileEncoding = 4; indentWidth = 2; lastKnownFileType = sourcecode.swift; path = HorizontalWineView.swift; sourceTree = "<group>"; tabWidth = 2; };
 		8A9CABD12763F01300A5B694 /* ContactUsRoutable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactUsRoutable.swift; sourceTree = "<group>"; };
 		8A9CABD22763F01300A5B694 /* WineCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineCollectionViewCell.swift; sourceTree = "<group>"; };
 		8A9CABD32763F01300A5B694 /* ActivityIndicator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ActivityIndicator.swift; sourceTree = "<group>"; };
@@ -151,7 +151,9 @@
 				51072CC0A77D803FE86F8EB9 /* Pods */,
 				0BB64614A2E2B91D6C195864 /* Frameworks */,
 			);
+			indentWidth = 2;
 			sourceTree = "<group>";
+			tabWidth = 2;
 		};
 		8A9C7ECD276136ED00A5B694 /* Products */ = {
 			isa = PBXGroup;

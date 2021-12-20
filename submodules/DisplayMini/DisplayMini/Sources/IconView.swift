@@ -22,6 +22,9 @@ public final class IconView: UIImageView, EpoxyableView {
       layer.cornerRadius = size.height / 2
       clipsToBounds = true
     }
+
+    widthAnchor.constraint(greaterThanOrEqualToConstant: size.width).isActive = true
+
     contentMode = .scaleAspectFit
     setContentHuggingPriority(.required, for: .vertical)
     setContentHuggingPriority(.required, for: .horizontal)

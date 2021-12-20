@@ -140,7 +140,8 @@ extension StorePresenter: StorePresenterProtocol {
           wineID: wine.id,
           imageURL: wine.mainImageUrl?.toURL,
           titleText: wine.title,
-          subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode))
+          subtitleText: wine.winery?.title,
+          buttonText: "$123")
       })
 
       var assortmentsContent = [StoreViewModel.AssortimentContent]()

@@ -29,6 +29,7 @@ public final class BottlesCollectionView: CollectionView, EpoxyableView {
     super.init(layout: UICollectionViewCompositionalLayout.epoxy)
     delaysContentTouches = false
     prefetchDelegate = self
+    alwaysBounceVertical = false
   }
 
   // MARK: Public

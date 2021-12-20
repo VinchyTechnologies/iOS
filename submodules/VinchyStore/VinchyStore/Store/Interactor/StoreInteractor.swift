@@ -232,9 +232,15 @@ final class StoreInteractor {
 // MARK: StoreInteractorProtocol
 
 extension StoreInteractor: StoreInteractorProtocol {
-
   var contextMenuRouter: ActivityRoutable & WriteNoteRoutable {
     router
+  }
+
+  func didTapHorizontalWineViewButton(wineID: Int64) {
+    if let wineURL = assortimentWines.first(where: { $0.id == wineID }) {
+      print(wineURL.id)
+      router.presentSafari(url: URL(string: "https://amwine.ru/catalog/vino/prima_alta_soave")!)
+    }
   }
 
   func didTapShareContextMenu(wineID: Int64, sourceView: UIView) {

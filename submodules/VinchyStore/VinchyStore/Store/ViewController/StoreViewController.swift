@@ -166,11 +166,14 @@ final class StoreViewController: CollectionViewController {
               return HorizontalWineView.itemModel(
                 dataID: UUID(),
                 content: content,
-                style: .init())
+                behaviors: .init(didTap: { [weak self] _, wineID in
+                  self?.interactor?.didTapHorizontalWineViewButton(wineID: wineID)
+                }),
+                style: .init(kind: .common))
                 .didSelect { [weak self] _ in
                   self?.interactor?.didSelectWine(wineID: content.wineID)
                 }
-                .flowLayoutItemSize(.init(width: collectionViewSize.width, height: 130))
+                .flowLayoutItemSize(.init(width: collectionViewSize.width, height: content.height(width: collectionViewSize.width)))
 
             case .contentCoulBeNotRight(let content):
               let width: CGFloat = collectionViewSize.width - 48
