@@ -60,22 +60,22 @@ extension StorePresenter: StorePresenterProtocol {
       sections += [.address(StoreMapRow.Content(title: addressText))]
     }
 
-    if !data.recommendedWines.isEmpty {
-      sections += [.title(localized("vinchy_recommends").firstLetterUppercased())]
-
-      let winesContent = data.recommendedWines.map { wine in
-        WineBottleView.Content(
-          wineID: wine.id,
-          imageURL: wine.mainImageUrl?.toURL,
-          titleText: wine.title,
-          subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode),
-          rating: wine.rating,
-          buttonText: "$255",
-          contextMenuViewModels: contextMenuViewModels)
-      }
-
-      sections += [.wines(winesContent)]
-    }
+//    if !data.recommendedWines.isEmpty {
+//      sections += [.title(localized("vinchy_recommends").firstLetterUppercased())]
+//
+//      let winesContent = data.recommendedWines.map { wine in
+//        WineBottleView.Content(
+//          wineID: wine.id,
+//          imageURL: wine.mainImageUrl?.toURL,
+//          titleText: wine.title,
+//          subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode),
+//          rating: wine.rating,
+//          buttonText: "$255",
+//          contextMenuViewModels: contextMenuViewModels)
+//      }
+//
+//      sections += [.wines(winesContent)]
+//    }
 
     sections += [.loading(itemID: .loadingItem, shouldCallWillDisplay: false)]
 
@@ -118,7 +118,7 @@ extension StorePresenter: StorePresenterProtocol {
       sections += [.address(StoreMapRow.Content(title: addressText))]
     }
 
-    if !data.recommendedWines.isEmpty {
+    if !data.recommendedWines.isEmpty, data.selectedFilters.isEmpty {
       sections += [.title(localized("vinchy_recommends").firstLetterUppercased())]
 
       let winesContent = data.recommendedWines.map { wine in
