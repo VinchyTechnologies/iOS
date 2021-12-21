@@ -69,7 +69,7 @@ public final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDel
     NSLayoutConstraint.activate([
       bottleImageView.centerXAnchor.constraint(equalTo: centerXAnchor),
       bottleImageView.topAnchor.constraint(equalTo: topAnchor),
-      bottleImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 2 / 3),
+      bottleImageView.heightAnchor.constraint(equalTo: heightAnchor, multiplier: 2 / 3, constant: style.kind == .normal ? 0 : -20),
       bottleImageView.widthAnchor.constraint(equalTo: widthAnchor, multiplier: 1 / 4),
     ])
 
@@ -89,15 +89,15 @@ public final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDel
 
     let stackView = UIStackView()
     stackView.axis = .vertical
-    stackView.distribution = .equalCentering
+    stackView.distribution = .equalSpacing
     stackView.alignment = .center
 
     stackView.addArrangedSubview(UIView())
     stackView.addArrangedSubview(titleLabel)
     stackView.addArrangedSubview(subtitleLabel)
     stackView.addArrangedSubview(UIView())
-
-    stackView.setCustomSpacing(2, after: titleLabel)
+//    stackView.setCustomSpacing(2, after: subtitleLabel)
+    stackView.addArrangedSubview(button)
 
     addSubview(stackView)
     stackView.translatesAutoresizingMaskIntoConstraints = false
@@ -105,7 +105,7 @@ public final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDel
       stackView.topAnchor.constraint(equalTo: bottleImageView.bottomAnchor, constant: 0),
       stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
       stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-      stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -5),
+      stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
     ])
 
     if UIDevice.current.userInterfaceIdiom == .phone {
@@ -120,8 +120,13 @@ public final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDel
   // MARK: Public
 
   public struct Style: Hashable {
-    public init() {
 
+    public enum Kind {
+      case normal, price
+    }
+    let kind: Kind
+    public init(kind: Kind) {
+      self.kind = kind
     }
   }
 
@@ -129,12 +134,13 @@ public final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDel
 
     // MARK: Lifecycle
 
-    public init(wineID: Int64, imageURL: URL?, titleText: String?, subtitleText: String?, rating: Double?, contextMenuViewModels: [ContextMenuViewModel]?) {
+    public init(wineID: Int64, imageURL: URL?, titleText: String?, subtitleText: String?, rating: Double?, buttonText: String?, contextMenuViewModels: [ContextMenuViewModel]?) {
       self.wineID = wineID
       self.imageURL = imageURL
       self.titleText = titleText
       self.subtitleText = subtitleText
       self.rating = rating
+      self.buttonText = buttonText
       self.contextMenuViewModels = contextMenuViewModels
     }
 
@@ -146,8 +152,8 @@ public final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDel
     public let titleText: String?
     public let imageURL: URL?
     public let subtitleText: String?
-
     public let rating: Double?
+    public let buttonText: String?
 
     public static func == (lhs: Content, rhs: Content) -> Bool {
       lhs.wineID == rhs.wineID
@@ -191,6 +197,13 @@ public final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDel
       ratingLabel.text = String(format: "%.1f", content.rating ?? 0)
       ratingView.isHidden = false
       ratingLabel.isHidden = false
+    }
+
+    if let buttonText = content.buttonText, !buttonText.isEmpty {
+      button.setTitle(buttonText, for: [])
+      button.isHidden = false
+    } else {
+      button.isHidden = true
     }
   }
 
@@ -245,6 +258,14 @@ public final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDel
     $0.textAlignment = .center
     return $0
   }(UILabel())
+
+  private lazy var button: Button = {
+    $0.translatesAutoresizingMaskIntoConstraints = false
+    $0.heightAnchor.constraint(equalToConstant: 30).isActive = true
+    $0.titleLabel?.font = Font.with(size: 16, design: .round, traits: .bold)
+    $0.contentEdgeInsets = .init(top: 0, left: 12, bottom: 0, right: 12)
+    return $0
+  }(Button())
 
   @objc
   private func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {

@@ -291,6 +291,7 @@ final class WineDetailPresenter {
             titleText: shortWine.title,
             subtitleText: countryNameFromLocaleCode(countryCode: shortWine.winery?.countryCode),
             rating: shortWine.rating,
+            buttonText: nil,
             contextMenuViewModels: contextMenuViewModels))
       }
 

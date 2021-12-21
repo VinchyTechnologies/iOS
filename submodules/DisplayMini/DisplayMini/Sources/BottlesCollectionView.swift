@@ -60,7 +60,7 @@ public final class BottlesCollectionView: CollectionView, EpoxyableView {
         WineBottleView.itemModel(
           dataID: index,
           content: wineCollectionViewCellViewModel,
-          style: .init())
+          style: .init(kind: wineCollectionViewCellViewModel.buttonText?.isNilOrEmpty == false ? .price : .normal))
           .setBehaviors({ [weak self] context in
             context.view.delegate = self
           })

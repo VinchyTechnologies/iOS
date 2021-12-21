@@ -70,6 +70,7 @@ extension StorePresenter: StorePresenterProtocol {
           titleText: wine.title,
           subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode),
           rating: wine.rating,
+          buttonText: "$255",
           contextMenuViewModels: contextMenuViewModels)
       }
 
@@ -127,6 +128,7 @@ extension StorePresenter: StorePresenterProtocol {
           titleText: wine.title,
           subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode),
           rating: wine.rating,
+          buttonText: "$255",
           contextMenuViewModels: contextMenuViewModels)
       }
 
