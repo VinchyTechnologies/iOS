@@ -121,14 +121,20 @@ extension StorePresenter: StorePresenterProtocol {
     if !data.recommendedWines.isEmpty, data.selectedFilters.isEmpty {
       sections += [.title(localized("vinchy_recommends").firstLetterUppercased())]
 
-      let winesContent = data.recommendedWines.map { wine in
-        WineBottleView.Content(
+      let winesContent: [WineBottleView.Content] = data.recommendedWines.compactMap { wine in
+        let buttonText: String? = {
+          if let amount = wine.price?.amount, let currency = wine.price?.currencyCode {
+            return formatCurrencyAmount(amount, currency: currency)
+          }
+          return nil
+        }()
+        return WineBottleView.Content(
           wineID: wine.id,
           imageURL: wine.mainImageUrl?.toURL,
           titleText: wine.title,
           subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode),
           rating: wine.rating,
-          buttonText: "$255",
+          buttonText: buttonText,
           contextMenuViewModels: contextMenuViewModels)
       }
 

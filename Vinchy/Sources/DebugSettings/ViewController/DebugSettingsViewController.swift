@@ -42,6 +42,7 @@ final class DebugSettingsViewController: CollectionViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     navigationItem.largeTitleDisplayMode = .never
+    collectionView.backgroundColor = .mainBackground
     interactor?.viewDidLoad()
   }
 
