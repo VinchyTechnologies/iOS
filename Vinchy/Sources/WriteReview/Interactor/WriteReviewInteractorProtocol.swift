@@ -12,4 +12,5 @@ protocol WriteReviewInteractorProtocol: AnyObject {
   func viewDidLoad()
   func didTapSend(rating: Double, comment: String?)
   func didChangeContent(comment: String?, rating: Double?)
+  func didRequestToCloseController(comment: String?, rating: Double?) -> Bool
 }

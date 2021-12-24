@@ -22,7 +22,7 @@ public final class AdItemView: UIView, EpoxyableView {
 
     adBanner.adUnitID = "ca-app-pub-2612888576498887/2728637945"
 
-    backgroundColor = AdItemView.option
+    backgroundColor = .option
 
     addSubview(adBanner)
     adBanner.translatesAutoresizingMaskIntoConstraints = false
@@ -56,16 +56,6 @@ public final class AdItemView: UIView, EpoxyableView {
 
   public static var height: CGFloat {
     adSize.size.height + 40
-  }
-
-  public final class var option: UIColor {
-    UIColor { (UITraitCollection: UITraitCollection) -> UIColor in
-      if UITraitCollection.userInterfaceStyle == .dark {
-        return UIColor(red: 38 / 255, green: 38 / 255, blue: 41 / 255, alpha: 1.0)
-      } else {
-        return UIColor(red: 241 / 255, green: 243 / 255, blue: 246 / 255, alpha: 1.0)
-      }
-    }
   }
 
   public lazy var adBanner = GADBannerView(adSize: AdItemView.adSize)

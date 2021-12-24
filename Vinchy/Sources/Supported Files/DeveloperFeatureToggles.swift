@@ -17,10 +17,5 @@ let remoteConfig: RemoteConfig = {
 }()
 
 let isOnboardingAvailable = true
-let isSmartFilterAvailable = false
-let isShareUsEnabled = true
 let isDescriptionInWineDetailEnabled = false
 var isAdAvailable = false
-let isProfileCellAvailable = true
-let isMapOnVinchyVCAvailable = false
-let isReviewAvailable = true

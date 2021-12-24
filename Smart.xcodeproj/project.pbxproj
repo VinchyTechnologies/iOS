@@ -1987,6 +1987,7 @@
 		8A63E3362770F24200D8362C /* Routable */ = {
 			isa = PBXGroup;
 			children = (
+				74DAD0A026E0D99300055AE7 /* ActivityRoutable.swift */,
 				8AEC83C82758F38400C80F1E /* StoreRoutable.swift */,
 				8AEC83CC2759588500C80F1E /* ResultsSearchRoutable.swift */,
 				8AEC83BC2758E8C700C80F1E /* WineDetailRoutable.swift */,
@@ -2735,7 +2736,6 @@
 				CA472AC1245EDE2F009149FF /* SceneDelegate.swift */,
 				8AD49F2B26752B4B0094E157 /* AnalyticsTrackable.swift */,
 				8A07930B26924DAF000ACA2B /* Document.swift */,
-				74DAD0A026E0D99300055AE7 /* ActivityRoutable.swift */,
 				8A5145682757BEB000DC45CD /* Coordinator.swift */,
 				8A2BA4F3275D370A006D6AF4 /* AdFabric.swift */,
 				8A2BA4F7275D41E8006D6AF4 /* AdItemView.swift */,

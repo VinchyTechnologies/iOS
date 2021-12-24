@@ -42,6 +42,11 @@ final class WriteReviewInteractor {
 // MARK: WriteReviewInteractorProtocol
 
 extension WriteReviewInteractor: WriteReviewInteractorProtocol {
+
+  func didRequestToCloseController(comment: String?, rating: Double?) -> Bool {
+    input.rating == rating && input.comment == comment // if no changes -- allow to dismiss
+  }
+
   func viewDidLoad() {
     presenter.setPlaceholder()
     if let rating = input.rating {

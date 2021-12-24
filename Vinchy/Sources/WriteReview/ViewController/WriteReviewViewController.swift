@@ -80,6 +80,8 @@ final class WriteReviewViewController: UIViewController {
       bottomConstraint,
     ])
 
+    navigationController?.presentationController?.delegate = self
+
     interactor?.viewDidLoad()
   }
 
@@ -184,5 +186,13 @@ extension WriteReviewViewController: WriteReviewViewControllerProtocol {
 
   func setSendButtonEnabled(_ flag: Bool) {
     flag ? sendButton.enable() : sendButton.disable()
+  }
+}
+
+// MARK: UIAdaptivePresentationControllerDelegate
+
+extension WriteReviewViewController: UIAdaptivePresentationControllerDelegate {
+  func presentationControllerShouldDismiss(_ presentationController: UIPresentationController) -> Bool {
+    interactor?.didRequestToCloseController(comment: textView.text, rating: ratingView.rating) ?? true
   }
 }
