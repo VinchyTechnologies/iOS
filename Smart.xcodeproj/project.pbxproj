@@ -74,7 +74,6 @@
 		7485870626C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586FB26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellRouter.swift */; };
 		7485870726C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 748586FC26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellRouterProtocol.swift */; };
 		7485877A26CC068700F5CBEA /* Configurator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7485877926CC068600F5CBEA /* Configurator.swift */; };
-		74DAD09F26E0D4F400055AE7 /* LoadingPresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DAD09E26E0D4F400055AE7 /* LoadingPresentable.swift */; };
 		74DAD0A126E0D99300055AE7 /* ActivityRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DAD0A026E0D99300055AE7 /* ActivityRoutable.swift */; };
 		74DAD0A426E0E05100055AE7 /* WriteNoteRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74DAD0A326E0E05100055AE7 /* WriteNoteRoutable.swift */; };
 		74E55FA726AACE2C0086C159 /* ResultsSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 74E55F9626AACE2C0086C159 /* ResultsSearchViewModel.swift */; };
@@ -615,7 +614,6 @@
 		748586FB26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleContinuosCarouselCollectionCellRouter.swift; sourceTree = "<group>"; };
 		748586FC26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SimpleContinuosCarouselCollectionCellRouterProtocol.swift; sourceTree = "<group>"; };
 		7485877926CC068600F5CBEA /* Configurator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Configurator.swift; sourceTree = "<group>"; };
-		74DAD09E26E0D4F400055AE7 /* LoadingPresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoadingPresentable.swift; sourceTree = "<group>"; };
 		74DAD0A026E0D99300055AE7 /* ActivityRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityRoutable.swift; sourceTree = "<group>"; };
 		74DAD0A326E0E05100055AE7 /* WriteNoteRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WriteNoteRoutable.swift; sourceTree = "<group>"; };
 		74E55F9626AACE2C0086C159 /* ResultsSearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsSearchViewModel.swift; sourceTree = "<group>"; };
@@ -2737,7 +2735,6 @@
 				CA472AC1245EDE2F009149FF /* SceneDelegate.swift */,
 				8AD49F2B26752B4B0094E157 /* AnalyticsTrackable.swift */,
 				8A07930B26924DAF000ACA2B /* Document.swift */,
-				74DAD09E26E0D4F400055AE7 /* LoadingPresentable.swift */,
 				74DAD0A026E0D99300055AE7 /* ActivityRoutable.swift */,
 				8A5145682757BEB000DC45CD /* Coordinator.swift */,
 				8A2BA4F3275D370A006D6AF4 /* AdFabric.swift */,
@@ -3597,7 +3594,6 @@
 				8A98EB202768DC7800D98AE1 /* DebugSettingsViewController.swift in Sources */,
 				8A27EA9327365B86005A13C6 /* RatesInteractor.swift in Sources */,
 				8A10F28727063398003463B0 /* AddressSearchInteractor.swift in Sources */,
-				74DAD09F26E0D4F400055AE7 /* LoadingPresentable.swift in Sources */,
 				8AA5E5132615053D00935B5E /* AboutView.swift in Sources */,
 				CA46DC98252A44180007819E /* SmartFilterCollectionCell.swift in Sources */,
 				CE58DEC325ED70DC00B5BDF9 /* CurrencyAssembly.swift in Sources */,

@@ -107,7 +107,10 @@ final class VinchyViewController: CollectionViewController {
       sections.compactMap { section in
         switch section {
         case .common(let content):
-          let height = collectionViewSize.height - (navigationController?.navigationBar.frame.height ?? 0) //- (tabBarController?.tabBar.frame.height ?? 0)
+          let height = collectionViewSize.height
+            - searchController.searchBar.frame.height
+            - (navigationController?.navigationBar.frame.height ?? 0)
+            - (tabBarController?.tabBar.frame.height ?? 0)
           return SectionModel(dataID: UUID()) {
             EpoxyErrorView.itemModel(
               dataID: UUID(),
@@ -280,10 +283,17 @@ final class VinchyViewController: CollectionViewController {
       switch viewModel.state {
       case .fake:
         collectionView.isUserInteractionEnabled = false
+        collectionView.isScrollEnabled = true
         setSections(sections, animated: true)
 
-      case .normal, .error:
+      case .normal:
         collectionView.isUserInteractionEnabled = true
+        collectionView.isScrollEnabled = true
+        setSections(sections, animated: true)
+
+      case .error:
+        collectionView.isUserInteractionEnabled = true
+        collectionView.isScrollEnabled = false
         setSections(sections, animated: true)
       }
     }

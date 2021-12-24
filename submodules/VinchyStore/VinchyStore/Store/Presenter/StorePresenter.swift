@@ -138,12 +138,18 @@ extension StorePresenter: StorePresenterProtocol {
     if !data.assortimentWines.isEmpty {
 
       let winesContent: [HorizontalWineView.Content] = data.assortimentWines.map({ wine in
-        HorizontalWineView.Content.init(
+        let buttonText: String? = {
+          if let amount = wine.price?.amount, let currency = wine.price?.currencyCode {
+            return formatCurrencyAmount(amount, currency: currency)
+          }
+          return nil
+        }()
+        return HorizontalWineView.Content.init(
           wineID: wine.id,
           imageURL: wine.mainImageUrl?.toURL,
           titleText: wine.title,
           subtitleText: wine.winery?.title,
-          buttonText: "$123")
+          buttonText: buttonText)
       })
 
       var assortmentsContent = [StoreViewModel.AssortimentContent]()

@@ -17,17 +17,21 @@ public struct ShortWine: Decodable, Equatable {
     let title = try container.decode(String.self, forKey: .title)
     let winery = try? container.decodeIfPresent(Winery.self, forKey: .winery)
     let rating = try? container.decodeIfPresent(Double.self, forKey: .rating)
+    let url = try? container.decodeIfPresent(String.self, forKey: .url)
+    let price = try? container.decodeIfPresent(Price.self, forKey: .price)
 
     self.id = id
     mainImageUrl = mainImageURL
     self.title = title
     self.winery = winery
     self.rating = rating
+    self.url = url
+    self.price = price
   }
 
   // MARK: Public
 
-  //  #if DEBUG
+  #if DEBUG
   public static var fake: ShortWine {
     let json = """
     {
@@ -48,8 +52,8 @@ public struct ShortWine: Decodable, Equatable {
     let obj = try! decoder.decode(ShortWine.self, from: jsonData) // swiftlint:disable:this force_try
     return obj
   }
+  #endif
 
-  //  #endif
   public let id: Int64
 
   public let title: String
@@ -60,6 +64,10 @@ public struct ShortWine: Decodable, Equatable {
 
   public let rating: Double?
 
+  public let url: String?
+
+  public let price: Price?
+
   // MARK: Private
 
   private enum CodingKeys: String, CodingKey {
@@ -68,5 +76,7 @@ public struct ShortWine: Decodable, Equatable {
     case mainImageURL = "bottle_image_url"
     case winery
     case rating
+    case url = "partner_url"
+    case price
   }
 }
