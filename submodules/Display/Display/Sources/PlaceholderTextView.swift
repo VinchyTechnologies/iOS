@@ -85,6 +85,7 @@ public final class PlaceholderTextView: UITextView {
   }()
 
   private func setup() {
+    tintColor = .accent
     super.delegate = self
     textContainer.lineFragmentPadding = .zero
     layer.addSublayer(placeholderLayer)
