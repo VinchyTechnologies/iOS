@@ -15,8 +15,14 @@ extension ShowcaseRoutable {
   func pushToShowcaseViewController(input: ShowcaseInput) {
     let controller = ShowcaseAssembly.assemblyModule(input: input)
     controller.hidesBottomBarWhenPushed = true
-    UIApplication.topViewController()?.navigationController?.pushViewController(
-      controller,
-      animated: true)
+    if UIApplication.topViewController() is SearchViewController {
+      UIApplication.topViewController()?.presentingViewController?.navigationController?.pushViewController(
+        controller,
+        animated: true)
+    } else {
+      UIApplication.topViewController()?.navigationController?.pushViewController(
+        controller,
+        animated: true)
+    }
   }
 }
