@@ -62,6 +62,7 @@ public final class ErrorView: UIView {
     subtitleLabel.widthAnchor.constraint(lessThanOrEqualToConstant: UIScreen.main.bounds.width - 40).isActive = true
 
     button.heightAnchor.constraint(equalToConstant: 48).isActive = true
+    button.contentEdgeInsets = .init(top: 0, left: 18, bottom: 0, right: 18)
     button.widthAnchor.constraint(greaterThanOrEqualToConstant: 150).isActive = true
     button.addTarget(self, action: #selector(didTapErrorButton(_:)), for: .touchUpInside)
 
