@@ -103,9 +103,11 @@ public func formatCurrencyAmount(_ amount: Int64, currency: String) -> String {
       }
     }
     result.append("\(integerPart)")
-    result.append(entry.decimalSeparator)
-    for i in 0 ..< fractional.count {
-      result.append(fractional[fractional.count - i - 1])
+    if !fractional.allSatisfy({ $0 == "0" }) {
+      result.append(entry.decimalSeparator)
+      for i in 0 ..< fractional.count {
+        result.append(fractional[fractional.count - i - 1])
+      }
     }
     if !entry.symbolOnLeft {
       if entry.spaceBetweenAmountAndSymbol {

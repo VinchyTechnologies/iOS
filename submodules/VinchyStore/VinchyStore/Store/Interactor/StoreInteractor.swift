@@ -237,9 +237,8 @@ extension StoreInteractor: StoreInteractorProtocol {
   }
 
   func didTapHorizontalWineViewButton(wineID: Int64) {
-    if let wineURL = assortimentWines.first(where: { $0.id == wineID }) {
-      print(wineURL.id)
-      router.presentSafari(url: URL(string: "https://amwine.ru/catalog/vino/prima_alta_soave")!)
+    if let wineURL = assortimentWines.first(where: { $0.id == wineID })?.url?.toURL {
+      router.presentSafari(url: wineURL)
     }
   }
 

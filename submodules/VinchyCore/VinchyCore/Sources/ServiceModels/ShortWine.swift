@@ -76,7 +76,7 @@ public struct ShortWine: Decodable, Equatable {
     case mainImageURL = "bottle_image_url"
     case winery
     case rating
-    case url = "partner_url"
+    case url
     case price
   }
 }
