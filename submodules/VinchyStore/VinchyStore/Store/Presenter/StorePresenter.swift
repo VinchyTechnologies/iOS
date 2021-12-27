@@ -57,7 +57,8 @@ extension StorePresenter: StorePresenterProtocol {
     ]
 
     if let addressText = data.partnerInfo.address {
-      sections += [.address(StoreMapRow.Content(title: addressText))]
+      let isMapButtonHidden = data.partnerInfo.latitude == nil || data.partnerInfo.longitude == nil
+      sections += [.address(StoreMapRow.Content(title: addressText, isMapButtonHidden: isMapButtonHidden))]
     }
 
 //    if !data.recommendedWines.isEmpty {
@@ -115,7 +116,8 @@ extension StorePresenter: StorePresenterProtocol {
     ]
 
     if let addressText = data.partnerInfo.address {
-      sections += [.address(StoreMapRow.Content(title: addressText))]
+      let isMapButtonHidden = data.partnerInfo.latitude == nil || data.partnerInfo.longitude == nil
+      sections += [.address(StoreMapRow.Content(title: addressText, isMapButtonHidden: isMapButtonHidden))]
     }
 
     if !data.recommendedWines.isEmpty, data.selectedFilters.isEmpty {
