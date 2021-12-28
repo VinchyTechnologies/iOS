@@ -144,6 +144,18 @@ final class StoreViewController: CollectionViewController {
         .flowLayoutItemSize(.init(width: width, height: height))
         .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 16, right: 24))
 
+      case .services(let content):
+        let width: CGFloat = collectionViewSize.width - 48
+        let height: CGFloat = content.height(for: width)
+        return SectionModel(dataID: UUID()) {
+          ServicesButtonView.itemModel(
+            dataID: UUID(),
+            content: content,
+            style: .init())
+        }
+        .flowLayoutItemSize(.init(width: width, height: height))
+        .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 16, right: 24))
+
       case .wines(let itemID, let content):
         return SectionModel(dataID: UUID()) {
           BottlesCollectionView.itemModel(
@@ -299,6 +311,10 @@ extension StoreViewController: StoreViewControllerProtocol {
 
         case .assortiment, .loading:
           resultHeight += 0
+
+        case .services(let content):
+          let width: CGFloat = collectionViewSize.width - 48
+          resultHeight += content.height(for: width)
         }
       }
 
@@ -345,7 +361,7 @@ extension StoreViewController: SeparatorFlowLayoutDelegate {
     -> Bool
   {
     switch viewModel.sections[indexPath.section] {
-    case .logo, .title, .wines, .address, .loading:
+    case .logo, .title, .wines, .address, .services, .loading:
       return false
 
     case .assortiment:

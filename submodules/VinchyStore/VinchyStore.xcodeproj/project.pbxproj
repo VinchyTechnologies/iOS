@@ -29,6 +29,7 @@
 		8A5145CF2757E46700DC45CD /* Spotlight.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5145CE2757E46700DC45CD /* Spotlight.framework */; };
 		8A5145DB2757E4D300DC45CD /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5145DA2757E4D300DC45CD /* Database.framework */; };
 		8A9C7F5327613F9300A5B694 /* DisplayMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9C7F5227613F9300A5B694 /* DisplayMini.framework */; };
+		8ABEF4032779FC270046C43E /* ServicesButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABEF4022779FC270046C43E /* ServicesButtonView.swift */; };
 		8AEC94CC275AA22700C80F1E /* VinchyUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94CB275AA22700C80F1E /* VinchyUI.framework */; };
 		D502406AFE81097E856372FA /* Pods_VinchyStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74F4725EF20796D3941585EF /* Pods_VinchyStore.framework */; };
 /* End PBXBuildFile section */
@@ -63,6 +64,7 @@
 		8A5145D62757E4BF00DC45CD /* CommonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5145DA2757E4D300DC45CD /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A9C7F5227613F9300A5B694 /* DisplayMini.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DisplayMini.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8ABEF4022779FC270046C43E /* ServicesButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesButtonView.swift; sourceTree = "<group>"; };
 		8AEC94CB275AA22700C80F1E /* VinchyUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9096DFFB618EF42EBD5962D7 /* Pods-VinchyStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyStore.debug.xcconfig"; path = "Target Support Files/Pods-VinchyStore/Pods-VinchyStore.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -179,6 +181,7 @@
 				8A5145972757D3DD00DC45CD /* FilterItemView.swift */,
 				8A5145982757D3DD00DC45CD /* StoreMapRow.swift */,
 				8A5145992757D3DD00DC45CD /* FiltersCollectionView.swift */,
+				8ABEF4022779FC270046C43E /* ServicesButtonView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -350,6 +353,7 @@
 				8A5145AA2757D3DD00DC45CD /* StoreMapRow.swift in Sources */,
 				8A5145A72757D3DD00DC45CD /* StoreViewControllerProtocol.swift in Sources */,
 				8A5145A62757D3DD00DC45CD /* StoreViewController.swift in Sources */,
+				8ABEF4032779FC270046C43E /* ServicesButtonView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

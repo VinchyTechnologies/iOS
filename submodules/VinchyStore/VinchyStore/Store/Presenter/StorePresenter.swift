@@ -120,6 +120,8 @@ extension StorePresenter: StorePresenterProtocol {
       sections += [.address(StoreMapRow.Content(title: addressText, isMapButtonHidden: isMapButtonHidden))]
     }
 
+//    sections += [.services(.init())]
+
     if !data.recommendedWines.isEmpty, data.selectedFilters.isEmpty {
       sections += [.title(localized("vinchy_recommends").firstLetterUppercased())]
 

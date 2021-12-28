@@ -127,12 +127,6 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
       selectedImage: UIImage(systemName: "map", withConfiguration: imageConfig)?.withTintColor(.accent, renderingMode: .alwaysOriginal))
 
     viewControllers = [main, love, map, notes, profile]
-
-    if let lastTabView = tabBar.items?.last?.value(forKey: "view") as? UIView {
-      lastTabView.addGestureRecognizer(debugSettingsGestureRecognizer)
-    }
-
-    tabBar.addGestureRecognizer(debugSettingsGestureRecognizer)
   }
 
   override func viewWillLayoutSubviews() {
@@ -153,12 +147,34 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
   {
     if
       let index = viewControllers?.firstIndex(where: { $0 === viewController }),
-      selectedIndex == index,
-      let navViewController = viewController as? UINavigationController,
-      let firstVC = navViewController.viewControllers.first as? ScrollableToTop
+      selectedIndex == index
     {
-      let scrollView = firstVC.scrollableToTopScrollView
-      scrollView.scrollToTopForcingSearchBar()
+      if
+        let navViewController = viewController as? UINavigationController,
+        let firstVC = navViewController.viewControllers.first as? ScrollableToTop
+      {
+        let scrollView = firstVC.scrollableToTopScrollView
+        scrollView.scrollToTopForcingSearchBar()
+      }
+
+      if let endIndex = viewControllers?.endIndex, index == endIndex - 1 {
+        let timestamp = CACurrentMediaTime()
+        if debugTapCounter.0 < timestamp - 0.4 {
+          debugTapCounter.0 = timestamp
+          debugTapCounter.1 = 0
+        }
+
+        if debugTapCounter.0 >= timestamp - 0.4 {
+          debugTapCounter.0 = timestamp
+          debugTapCounter.1 += 1
+        }
+
+        if debugTapCounter.1 >= 10 {
+          debugTapCounter.1 = 0
+          openDebugSettings()
+          return false
+        }
+      }
     }
 
     return true
@@ -166,14 +182,9 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
   // MARK: Private
 
-  private lazy var debugSettingsGestureRecognizer: UITapGestureRecognizer = {
-    let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapDebugSettings(_:)))
-    gestureRecognizer.numberOfTapsRequired = 10
-    return gestureRecognizer
-  }()
+  private var debugTapCounter: (Double, Int) = (0.0, 0)
 
-  @objc
-  private func didTapDebugSettings(_ gesture: UITapGestureRecognizer) {
+  private func openDebugSettings() {
     if let viewController = viewControllers?.last {
       selectedIndex = .profile
       let controller = DebugSettingsAssembly.assemblyModule()

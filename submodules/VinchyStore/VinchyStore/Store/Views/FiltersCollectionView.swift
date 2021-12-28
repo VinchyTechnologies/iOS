@@ -18,6 +18,8 @@ final class FiltersCollectionView: CollectionView, EpoxyableView {
     delaysContentTouches = false
     backgroundColor = .mainBackground
 
+    alwaysBounceVertical = false
+
     layer.shadowColor = UIColor.black.withAlphaComponent(0.12).cgColor
     layer.shadowOpacity = 0.0
     layer.shadowOffset = CGSize(width: 0, height: 4)
