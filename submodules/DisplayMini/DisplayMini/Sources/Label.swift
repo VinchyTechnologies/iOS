@@ -44,7 +44,7 @@ public final class Label: UILabel, EpoxyableView {
 
     // MARK: Lifecycle
 
-    public init(font: UIFont, showLabelBackground: Bool, numberOfLines: Int = 0, backgroundColor: UIColor = .mainBackground, isRounded: Bool = false, textAligment: NSTextAlignment = .left, textColor: UIColor = .dark, insets: UIEdgeInsets = .zero) {
+    public init(font: UIFont, showLabelBackground: Bool, numberOfLines: Int = 0, backgroundColor: UIColor = .mainBackground, isRounded: Bool = false, textAligment: NSTextAlignment = .left, textColor: UIColor = .dark, insets: UIEdgeInsets = .zero, hasUnderLine: Bool = false) {
       self.font = font
       self.showLabelBackground = showLabelBackground
       self.numberOfLines = numberOfLines
@@ -53,6 +53,7 @@ public final class Label: UILabel, EpoxyableView {
       self.textAligment = textAligment
       self.textColor = textColor
       self.insets = insets
+      self.hasUnderLine = hasUnderLine
     }
 
     // MARK: Public
@@ -65,6 +66,7 @@ public final class Label: UILabel, EpoxyableView {
     public var textAligment: NSTextAlignment = .left
     public var textColor: UIColor = .dark
     public var insets: UIEdgeInsets = .zero
+    public var hasUnderLine: Bool = false
   }
 
   // MARK: ContentConfigurableView
@@ -222,7 +224,13 @@ public final class CopyLabel: CopyableLabel, EpoxyableView {
   }
 
   public func setContent(_ content: String, animated: Bool) {
-    text = content
+    if style.hasUnderLine {
+      let attributes = [NSAttributedString.Key.underlineStyle: NSUnderlineStyle.single.rawValue]
+      let attrString = NSAttributedString(string: content, attributes: attributes)
+      attributedText = attrString
+    } else {
+      text = content
+    }
   }
 
   // MARK: Private

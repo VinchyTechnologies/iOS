@@ -7,6 +7,7 @@
 //
 
 import Core
+import StringFormatting // TODO: - remove
 import VinchyUI
 
 // MARK: - AdvancedSearchInteractor
@@ -166,7 +167,7 @@ extension AdvancedSearchInteractor: AdvancedSearchInteractorProtocol {
         return // TODO: - alert no one filter selected
       }
       let params: [(String, String)] = selectedFilters.compactMap { ($0.category.serverName, $0.title) }
-      router.pushToShowcaseViewController(input: .init(title: nil, mode: .advancedSearch(params: params)))
+      router.pushToShowcaseViewController(input: .init(title: localized("search_results").firstLetterUppercased(), mode: .advancedSearch(params: params)))
 
     case .asView:
       let params: [(String, String)] = selectedFilters.compactMap { ($0.category.serverName, $0.title) }

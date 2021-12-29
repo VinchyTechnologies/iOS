@@ -200,9 +200,21 @@ final class WineDetailInteractor {
 // MARK: WineDetailInteractorProtocol
 
 extension WineDetailInteractor: WineDetailInteractorProtocol {
-
   var contextMenuRouter: ActivityRoutable & WriteNoteRoutable {
     router
+  }
+
+
+  func didTapWinery() {
+    guard let wine = wine else {
+      return
+    }
+    guard let wineryId = wine.winery?.id else {
+      return
+    }
+    if !input.isAppClip {
+      router.pushToShowcaseViewController(input: .init(title: wine.winery?.title, mode: .advancedSearch(params: [("wineries_ids", String(wineryId))])))
+    }
   }
 
   func requestShowStatusAlert(viewModel: StatusAlertViewModel) {

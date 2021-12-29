@@ -44,6 +44,10 @@ final class WineDetailRouter {
 // MARK: WineDetailRouterProtocol
 
 extension WineDetailRouter: WineDetailRouterProtocol {
+  func pushToShowcaseViewController(input: ShowcaseInput) {
+    coordinator.pushToShowcaseViewController(input: input)
+  }
+
   func showStatusAlert(viewModel: StatusAlertViewModel) {
     coordinator.showStatusAlert(viewModel: viewModel)
   }

@@ -11,7 +11,7 @@ import VinchyUI
 
 public final class WineDetailAssembly {
 
-  public typealias Coordinator = WineDetailRoutable & ReviewsRoutable & ReviewDetailRoutable & WriteReviewRoutable & ActivityRoutable & WriteNoteRoutable & StoresRoutable & StoreRoutable & AuthorizationRoutable & WineShareRoutable & StatusAlertable
+  public typealias Coordinator = WineDetailRoutable & ReviewsRoutable & ReviewDetailRoutable & WriteReviewRoutable & ActivityRoutable & WriteNoteRoutable & StoresRoutable & StoreRoutable & AuthorizationRoutable & WineShareRoutable & StatusAlertable & ShowcaseRoutable
 
   public static func assemblyModule(input: WineDetailInput, coordinator: Coordinator, adGenerator: AdFabricProtocol?) -> UIViewController {
     let viewController = WineDetailViewController(input: input, adGenerator: adGenerator)

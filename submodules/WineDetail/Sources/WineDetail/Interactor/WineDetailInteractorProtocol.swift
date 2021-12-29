@@ -31,4 +31,5 @@ protocol WineDetailInteractorProtocol: /*AnalyticsTrackable,*/ WineViewContextMe
   func didSelectWine(wineID: Int64)
   func didTapSeeAllStores()
   func requestShowStatusAlert(viewModel: StatusAlertViewModel)
+  func didTapWinery()
 }

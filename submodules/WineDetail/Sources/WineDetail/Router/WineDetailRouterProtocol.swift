@@ -12,6 +12,6 @@ import UIKit
 import VinchyCore
 import VinchyUI
 
-protocol WineDetailRouterProtocol: WineDetailRoutable, ReviewsRoutable, ReviewDetailRoutable, WriteReviewRoutable, AuthorizationRoutable, ActivityRoutable, WriteNoteRoutable, ContactUsRoutable, StoresRoutable, StoreRoutable, WineShareRoutable, StatusAlertable {
+protocol WineDetailRouterProtocol: WineDetailRoutable, ReviewsRoutable, ReviewDetailRoutable, WriteReviewRoutable, AuthorizationRoutable, ActivityRoutable, WriteNoteRoutable, ContactUsRoutable, StoresRoutable, StoreRoutable, WineShareRoutable, StatusAlertable, ShowcaseRoutable {
   func showMoreActionSheet(reportAnErrorText: String?, button: UIButton)
 }

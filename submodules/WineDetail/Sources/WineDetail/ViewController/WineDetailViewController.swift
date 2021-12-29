@@ -194,7 +194,16 @@ final class WineDetailViewController: CollectionViewController {
           CopyLabel.itemModel(
             dataID: itemID,
             content: content,
-            style: .style(with: .subtitle))
+            style: .init(
+              font: Font.medium(18),
+              showLabelBackground: true,
+              textColor: .blueGray,
+              hasUnderLine: !input.isAppClip))
+            .setBehaviors { [weak self] context in
+              guard let self = self else { return }
+              let tap = UITapGestureRecognizer(target: self, action: #selector(self.didTapWinery))
+              context.view.addGestureRecognizer(tap)
+            }
         }
         .flowLayoutItemSize(.init(width: width, height: height))
         .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 0, right: trailingInset))
@@ -385,6 +394,11 @@ final class WineDetailViewController: CollectionViewController {
   @objc
   private func didTapMore(_ button: UIButton) {
     interactor?.didTapMore(button)
+  }
+
+  @objc
+  private func didTapWinery() {
+    interactor?.didTapWinery()
   }
 
   private func showDeliveryTutorialIfCan(at indexPath: IndexPath, collectionCell: UICollectionViewCell, viewModel: DeliveryTutorialViewModel) {

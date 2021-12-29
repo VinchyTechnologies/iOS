@@ -95,7 +95,7 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
       title = input.title
 
     case .advancedSearch:
-      title = localized("search_results").firstLetterUppercased()
+      title = input.title //localized("search_results").firstLetterUppercased()
     }
 
     let tabViewModel: TabViewModel = .init(items: sections.compactMap({ sec in
