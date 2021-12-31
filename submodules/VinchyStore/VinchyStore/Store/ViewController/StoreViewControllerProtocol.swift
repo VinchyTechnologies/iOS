@@ -11,4 +11,5 @@ import DisplayMini
 protocol StoreViewControllerProtocol: Loadable, Alertable {
   func updateUI(viewModel: StoreViewModel)
   func updateUI(errorViewModel: ErrorViewModel)
+  func setLikedStatus(isLiked: Bool)
 }

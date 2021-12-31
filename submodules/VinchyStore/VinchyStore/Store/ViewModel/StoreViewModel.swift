@@ -62,10 +62,15 @@ struct StoreViewModel {
     }
   }
 
-  static let empty: Self = .init(sections: [], navigationTitleText: nil, shouldResetContentOffset: false)
+  static let empty: Self = .init(
+    sections: [],
+    navigationTitleText: nil,
+    shouldResetContentOffset: false,
+    isLiked: false)
 
   let sections: [Section]
   let navigationTitleText: String?
   let shouldResetContentOffset: Bool
+  var isLiked: Bool
 
 }

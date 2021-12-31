@@ -43,6 +43,11 @@ final class StorePresenter {
 // MARK: StorePresenterProtocol
 
 extension StorePresenter: StorePresenterProtocol {
+
+  func setLikedStatus(isLiked: Bool) {
+    viewController?.setLikedStatus(isLiked: isLiked)
+  }
+
   func showNetworkErrorAlert(error: Error) {
     viewController?.showAlert(
       title: localized("error").firstLetterUppercased(),
@@ -80,7 +85,7 @@ extension StorePresenter: StorePresenterProtocol {
 
     sections += [.loading(itemID: .loadingItem, shouldCallWillDisplay: false)]
 
-    let viewModel = StoreViewModel(sections: sections, navigationTitleText: data.partnerInfo.title, shouldResetContentOffset: true)
+    let viewModel = StoreViewModel(sections: sections, navigationTitleText: data.partnerInfo.title, shouldResetContentOffset: true, isLiked: data.isLiked)
     viewController?.updateUI(viewModel: viewModel)
   }
 
@@ -120,7 +125,7 @@ extension StorePresenter: StorePresenterProtocol {
       sections += [.address(StoreMapRow.Content(title: addressText, isMapButtonHidden: isMapButtonHidden))]
     }
 
-//    sections += [.services(.init())]
+    sections += [.services(.init(isLiked: data.isLiked))]
 
     if !data.recommendedWines.isEmpty, data.selectedFilters.isEmpty {
       sections += [.title(localized("vinchy_recommends").firstLetterUppercased())]
@@ -213,7 +218,7 @@ extension StorePresenter: StorePresenterProtocol {
       }
     }
 
-    let viewModel = StoreViewModel(sections: sections, navigationTitleText: data.partnerInfo.title, shouldResetContentOffset: false)
+    let viewModel = StoreViewModel(sections: sections, navigationTitleText: data.partnerInfo.title, shouldResetContentOffset: false, isLiked: data.isLiked)
     viewController?.updateUI(viewModel: viewModel)
   }
 }

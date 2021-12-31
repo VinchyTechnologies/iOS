@@ -33,6 +33,19 @@ final class ServicesButtonView: UIView, EpoxyableView {
 
   required init?(coder aDecoder: NSCoder) { fatalError() }
 
+  // MARK: Public
+
+  public struct Behaviors {
+    public let didTapLike: (UIButton) -> Void
+    public init(didTapLike: @escaping ((UIButton) -> Void)) {
+      self.didTapLike = didTapLike
+    }
+  }
+
+  public func setBehaviors(_ behaviors: Behaviors?) {
+    didTapLike = behaviors?.didTapLike
+  }
+
   // MARK: Internal
 
   struct Style: Hashable {
@@ -40,11 +53,12 @@ final class ServicesButtonView: UIView, EpoxyableView {
 
     }
   }
-
   struct Content: Equatable {
 
-    init() {
+    let isLiked: Bool
 
+    init(isLiked: Bool) {
+      self.isLiked = isLiked
     }
 
     func height(for width: CGFloat) -> CGFloat {
@@ -52,30 +66,36 @@ final class ServicesButtonView: UIView, EpoxyableView {
     }
   }
 
+  private(set) lazy var likeButton = ServiceButton(style: .init())
+  private(set) lazy var shareButton = ServiceButton(style: .init())
+
   func setContent(_ content: Content, animated: Bool) {
     let imageConfig = UIImage.SymbolConfiguration(pointSize: 18, weight: .medium, scale: .default)
 
-    let likeButton = ServiceButton(style: .init())
-    likeButton.setContent(.init(titleText: "Save", image: UIImage(systemName: "heart", withConfiguration: imageConfig)), animated: false)
+    likeButton.setTitle("Save", for: [])
+    likeButton.setImage(UIImage(systemName: "heart", withConfiguration: imageConfig), for: .normal)
+    likeButton.setImage(UIImage(systemName: "heart.fill", withConfiguration: imageConfig), for: .selected)
     likeButton.addTarget(self, action: #selector(didTapLikeButton(_:)), for: .touchUpInside)
+    likeButton.isSelected = content.isLiked
     hStack.addArrangedSubview(likeButton)
 
-    let shareButton = ServiceButton(style: .init())
-    shareButton.setContent(.init(titleText: "Share", image: UIImage(systemName: "square.and.arrow.up", withConfiguration: imageConfig)), animated: false)
-    shareButton.addTarget(self, action: #selector(didTapShareButton(_:)), for: .touchUpInside)
-    hStack.addArrangedSubview(shareButton)
+//    shareButton.setContent(.init(titleText: "Share", image: UIImage(systemName: "square.and.arrow.up", withConfiguration: imageConfig)), animated: false)
+//    shareButton.addTarget(self, action: #selector(didTapShareButton(_:)), for: .touchUpInside)
+//    hStack.addArrangedSubview(shareButton)
   }
 
   // MARK: Private
+
+  private var didTapLike: ((UIButton) -> Void)?
 
   private let hStack = UIStackView()
 
   private let style: Style
 
-
   @objc
   private func didTapLikeButton(_ button: UIButton) {
-
+    button.isSelected = !button.isSelected
+    didTapLike?(button)
   }
 
   @objc

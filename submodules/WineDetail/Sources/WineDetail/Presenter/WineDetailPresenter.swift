@@ -332,7 +332,7 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
     viewModel?.isLiked = isLiked
     viewController?.updateLike(isLiked: isLiked)
   }
-  
+
   func showAppClipDownloadFullApp() {
     viewController?.showAppClipDownloadFullApp()
   }

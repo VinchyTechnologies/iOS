@@ -15,4 +15,5 @@ protocol StorePresenterProtocol: ShowNetworkAlertPresentable {
   func showErrorAlert(error: Error)
   func showInitiallyLoadingError(error: Error)
   func setLoadingFilters(data: StoreInteractorData)
+  func setLikedStatus(isLiked: Bool)
 }

@@ -151,7 +151,14 @@ final class StoreViewController: CollectionViewController {
           ServicesButtonView.itemModel(
             dataID: UUID(),
             content: content,
+            behaviors: .init(didTapLike: { [weak self] _ in
+              self?.interactor?.didTapLikeButton()
+            }),
             style: .init())
+            .willDisplay { [weak self] context in
+              guard let self = self else { return }
+              context.view.likeButton.isSelected = self.viewModel.isLiked
+            }
         }
         .flowLayoutItemSize(.init(width: width, height: height))
         .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 16, right: 24))
@@ -271,6 +278,10 @@ final class StoreViewController: CollectionViewController {
 // MARK: StoreViewControllerProtocol
 
 extension StoreViewController: StoreViewControllerProtocol {
+
+  func setLikedStatus(isLiked: Bool) {
+    viewModel.isLiked = isLiked
+  }
 
   func updateUI(errorViewModel: ErrorViewModel) {
     let errorView = ErrorView(frame: view.frame)

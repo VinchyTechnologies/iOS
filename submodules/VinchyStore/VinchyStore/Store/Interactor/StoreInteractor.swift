@@ -21,6 +21,7 @@ struct StoreInteractorData {
   var recommendedWines: [ShortWine] = []
   var assortimentWines: [ShortWine] = []
   var selectedFilters: [(String, String)] = []
+  var isLiked: Bool
 }
 
 // MARK: - StoreInteractorError
@@ -53,11 +54,11 @@ final class StoreInteractor {
     configureStateMachine()
   }
 
-  // MARK: Internal
-
-  internal let dispatchGroup = DispatchGroup()
-
   // MARK: Private
+
+  private let dispatchGroup = DispatchGroup()
+
+  private let dataBase = storesRepository
 
   private lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
     guard let self = self else { return }
@@ -166,7 +167,8 @@ final class StoreInteractor {
             partnerInfo: partnerInfo,
             recommendedWines: self.personalRecommendedWines ?? [],
             assortimentWines: self.assortimentWines,
-            selectedFilters: self.selectedFilters)
+            selectedFilters: self.selectedFilters,
+            isLiked: self.isLiked(affilatedId: self.partnerInfo?.affiliatedStoreId))
           self.data = data
           self.stateMachine.invokeSuccess(with: data)
         } else {
@@ -179,6 +181,13 @@ final class StoreInteractor {
     case .hasPersonalRecommendations(_, _):
       break
     }
+  }
+
+  private func isLiked(affilatedId: Int?) -> Bool {
+    guard let affilatedId = affilatedId else {
+      return false
+    }
+    return dataBase.findAll().first(where: { $0.affilatedId == affilatedId }) != nil
   }
 
   private func loadInitData() {
@@ -232,10 +241,26 @@ final class StoreInteractor {
 // MARK: StoreInteractorProtocol
 
 extension StoreInteractor: StoreInteractorProtocol {
+
   var contextMenuRouter: ActivityRoutable & WriteNoteRoutable {
     router
   }
 
+  func didTapLikeButton() {
+    guard let partnerInfo = partnerInfo else {
+      return
+    }
+    if let dbStore = dataBase.findAll().first(where: { $0.affilatedId == partnerInfo.affiliatedStoreId }) {
+      dataBase.remove(dbStore)
+      presenter.setLikedStatus(isLiked: false)
+    } else {
+      let maxId = dataBase.findAll().map { $0.id }.max() ?? 0
+      let id = maxId + 1
+      dataBase.append(VStore(id: id, affilatedId: partnerInfo.affiliatedStoreId, title: partnerInfo.title, logoURL: partnerInfo.logoURL))
+      presenter.setLikedStatus(isLiked: true)
+//      presenter.showStatusAlertDidLikedSuccessfully()
+    }
+  }
   func didTapHorizontalWineViewButton(wineID: Int64) {
     if let wineURL = assortimentWines.first(where: { $0.id == wineID })?.url?.toURL {
       router.presentSafari(url: wineURL)
@@ -296,11 +321,12 @@ extension StoreInteractor: StoreInteractorProtocol {
         button: button)
     }
   }
+
   func didChoose(_ filters: [(String, String)]) {
     guard let partnerInfo = partnerInfo else {
       return
     }
-    presenter.setLoadingFilters(data: .init(partnerInfo: partnerInfo, recommendedWines: personalRecommendedWines ?? [], assortimentWines: []))
+    presenter.setLoadingFilters(data: .init(partnerInfo: partnerInfo, recommendedWines: personalRecommendedWines ?? [], assortimentWines: [], isLiked: isLiked(affilatedId: partnerInfo.affiliatedStoreId)))
     selectedFilters = filters
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.95) {
       self.loadInitData()
