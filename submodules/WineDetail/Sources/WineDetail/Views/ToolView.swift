@@ -108,6 +108,8 @@ final class ToolView: UIView, EpoxyableView {
 
   weak var delegate: ToolCollectionCellDelegate?
 
+  let likeButton = UIButton()
+
   func setContent(_ content: Content, animated: Bool) {
     self.content = content
     let title = NSAttributedString(
@@ -126,7 +128,6 @@ final class ToolView: UIView, EpoxyableView {
 
   private let style: Style
   private let shareButton = UIButton(type: .system)
-  private let likeButton = UIButton()
   private let priceButton = Button()
 
   @objc

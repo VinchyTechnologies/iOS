@@ -100,4 +100,5 @@ struct WineDetailViewModel {
   var sections: [Section]
   var isGeneralInfoCollapsed: Bool
   var bottomPriceBarViewModel: BottomPriceBarView.Content
+  var isLiked: Bool
 }

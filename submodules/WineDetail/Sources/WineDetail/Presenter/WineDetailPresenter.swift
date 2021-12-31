@@ -192,6 +192,21 @@ final class WineDetailPresenter {
     return [.rate(itemID: .rate, content: rateViewModel)]
   }
 
+  private func buildToolSection(wine: Wine, currency: String, isLiked: Bool) -> [WineDetailViewModel.Section] {
+    if !input.isAppClip {
+      return [
+        .tool(
+          itemID: .tool,
+          content: .init(
+            price: formatCurrencyAmount(
+              wine.price ?? 0, currency: currency),
+            isLiked: isLiked,
+            isAppClip: input.isAppClip)),
+      ]
+    }
+    return []
+  }
+
   private func generateAllSections(wine: Wine, reviews: [Review]?, isLiked: Bool, isDisliked: Bool, rating: Rating?, currency: String, stores: [PartnerInfo]?, isGeneralInfoCollapsed: Bool) -> [WineDetailViewModel.Section] {
     var sections: [WineDetailViewModel.Section] = []
 
@@ -211,16 +226,7 @@ final class WineDetailPresenter {
 
     sections += buildStarRateControl(rating: rating)
 
-    if !input.isAppClip {
-      sections += [
-        .tool(
-          itemID: .tool,
-          content: .init(
-            price: formatCurrencyAmount(
-              wine.price ?? 0, currency: currency),
-            isLiked: isLiked, isAppClip: input.isAppClip)),
-      ]
-    }
+    sections += buildToolSection(wine: wine, currency: currency, isLiked: isLiked)
 
 //    if isDescriptionInWineDetailEnabled {
 //      sections += [
@@ -309,6 +315,7 @@ final class WineDetailPresenter {
 // MARK: WineDetailPresenterProtocol
 
 extension WineDetailPresenter: WineDetailPresenterProtocol {
+
   var reportAnErrorText: String? {
     localized("tell_about_error").firstLetterUppercased()
   }
@@ -321,6 +328,11 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
     [localized("contact_email")]
   }
 
+  func setLikedStatus(isLiked: Bool) {
+    viewModel?.isLiked = isLiked
+    viewController?.updateLike(isLiked: isLiked)
+  }
+  
   func showAppClipDownloadFullApp() {
     viewController?.showAppClipDownloadFullApp()
   }
@@ -429,7 +441,8 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
       bottomPriceBarViewModel: .init(
         leadingText: localized("price").firstLetterUppercased(),
         trailingButtonText: formatCurrencyAmount(
-          wine.price ?? 0, currency: currency)))
+          wine.price ?? 0, currency: currency)),
+      isLiked: isLiked)
 
     viewController?.updateUI(viewModel: viewModel)
 

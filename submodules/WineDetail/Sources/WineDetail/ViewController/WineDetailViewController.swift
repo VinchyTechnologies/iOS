@@ -116,7 +116,7 @@ final class WineDetailViewController: CollectionViewController {
   private let noteButton = UIButton(type: .system)
   private let moreButton = UIButton(type: .system)
 
-  private var viewModel: WineDetailViewModel = .init(navigationTitle: nil, sections: [], isGeneralInfoCollapsed: false, bottomPriceBarViewModel: .init(leadingText: nil, trailingButtonText: nil))
+  private var viewModel: WineDetailViewModel = .init(navigationTitle: nil, sections: [], isGeneralInfoCollapsed: false, bottomPriceBarViewModel: .init(leadingText: nil, trailingButtonText: nil), isLiked: false)
 
   private lazy var bottomBarInstaller = BottomBarInstaller(
     viewController: self,
@@ -232,6 +232,10 @@ final class WineDetailViewController: CollectionViewController {
             style: .init())
             .setBehaviors { [weak self] context in
               context.view.delegate = self
+            }
+            .willDisplay { [weak self] context in
+              guard let self = self else { return }
+              context.view.likeButton.isSelected = self.viewModel.isLiked
             }
         }
         .flowLayoutItemSize(.init(width: width, height: ToolView.height))
@@ -479,6 +483,10 @@ extension WineDetailViewController: ToolCollectionCellDelegate {
 // MARK: WineDetailViewControllerProtocol
 
 extension WineDetailViewController: WineDetailViewControllerProtocol {
+
+  func updateLike(isLiked: Bool) {
+    viewModel.isLiked = isLiked
+  }
 
   func showStatusAlert(viewModel: StatusAlertViewModel) {
     interactor?.requestShowStatusAlert(viewModel: viewModel)

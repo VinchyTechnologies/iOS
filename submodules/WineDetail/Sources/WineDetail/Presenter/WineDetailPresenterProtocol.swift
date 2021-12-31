@@ -20,6 +20,7 @@ protocol WineDetailPresenterProtocol: AnyObject {
   func showAlertWineAlreadyDisliked()
   func showAlertWineAlreadyLiked()
   func showStatusAlertDidLikedSuccessfully()
+  func setLikedStatus(isLiked: Bool)
   func showStatusAlertDidDislikedSuccessfully()
   func expandOrCollapseGeneralInfo(wine: Wine, isGeneralInfoCollapsed: Bool)
   func showReviewButtonTutorial()

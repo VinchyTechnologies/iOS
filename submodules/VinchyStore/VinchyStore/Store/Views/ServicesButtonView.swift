@@ -22,8 +22,13 @@ final class ServicesButtonView: UIView, EpoxyableView {
     translatesAutoresizingMaskIntoConstraints = false
     directionalLayoutMargins = .zero
     layoutMargins = .zero
-    group.install(in: self)
-    group.constrainToSuperview()
+
+    addSubview(hStack)
+    hStack.translatesAutoresizingMaskIntoConstraints = false
+    hStack.constrainToSuperview()
+    hStack.axis = .horizontal
+    hStack.distribution = .fillEqually
+    hStack.spacing = 8
   }
 
   required init?(coder aDecoder: NSCoder) { fatalError() }
@@ -48,35 +53,35 @@ final class ServicesButtonView: UIView, EpoxyableView {
   }
 
   func setContent(_ content: Content, animated: Bool) {
-    let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .medium, scale: .default)
-    group.setItems {
-      ServiceButton.groupItem(
-        dataID: DataID.linkService,
-        content: .init(titleText: "Link", image: UIImage(systemName: "link", withConfiguration: imageConfig)),
-        style: .init())
+    let imageConfig = UIImage.SymbolConfiguration(pointSize: 18, weight: .medium, scale: .default)
 
-      ServiceButton.groupItem(
-        dataID: DataID.saveService,
-        content: .init(titleText: "Save", image: UIImage(systemName: "heart", withConfiguration: imageConfig)),
-        style: .init())
+    let likeButton = ServiceButton(style: .init())
+    likeButton.setContent(.init(titleText: "Save", image: UIImage(systemName: "heart", withConfiguration: imageConfig)), animated: false)
+    likeButton.addTarget(self, action: #selector(didTapLikeButton(_:)), for: .touchUpInside)
+    hStack.addArrangedSubview(likeButton)
 
-      ServiceButton.groupItem(
-        dataID: DataID.shareService,
-        content: .init(titleText: "Share", image: UIImage(systemName: "square.and.arrow.up", withConfiguration: imageConfig)),
-        style: .init())
-    }
+    let shareButton = ServiceButton(style: .init())
+    shareButton.setContent(.init(titleText: "Share", image: UIImage(systemName: "square.and.arrow.up", withConfiguration: imageConfig)), animated: false)
+    shareButton.addTarget(self, action: #selector(didTapShareButton(_:)), for: .touchUpInside)
+    hStack.addArrangedSubview(shareButton)
   }
 
   // MARK: Private
 
-  private enum DataID {
-    case linkService
-    case saveService
-    case shareService
-  }
+  private let hStack = UIStackView()
 
   private let style: Style
-  private let group = HGroup.init(style: .init(alignment: .fill, accessibilityAlignment: .leading, spacing: 8, reflowsForAccessibilityTypeSizes: false, forceVerticalAccessibilityLayout: false), items: [])
+
+
+  @objc
+  private func didTapLikeButton(_ button: UIButton) {
+
+  }
+
+  @objc
+  private func didTapShareButton(_ button: UIButton) {
+
+  }
 }
 
 // MARK: - ServiceButton
@@ -97,7 +102,8 @@ final class ServiceButton: UIButton, EpoxyableView {
     titleLabel?.font = Font.medium(16)
     setTitleColor(.dark, for: [])
     tintColor = .accent
-    contentEdgeInsets = .init(top: 0, left: 12, bottom: 0, right: 12)
+
+    setInsets(forContentPadding: .init(top: 0, left: 12, bottom: 0, right: 12), imageTitlePadding: 4)
   }
 
   required init?(coder: NSCoder) {
