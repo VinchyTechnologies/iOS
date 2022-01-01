@@ -125,12 +125,14 @@ extension StorePresenter: StorePresenterProtocol {
       sections += [.address(StoreMapRow.Content(titleText: addressText, isMapButtonHidden: isMapButtonHidden))]
     }
 
-    sections += [
-      .services(.init(
-        isLiked: data.isLiked,
-        saveButtonText: localized("save").firstLetterUppercased(),
-        savedButtonText: localized("saved").firstLetterUppercased())),
-    ]
+    if !input.isAppClip {
+      sections += [
+        .services(.init(
+          isLiked: data.isLiked,
+          saveButtonText: localized("save").firstLetterUppercased(),
+          savedButtonText: localized("saved").firstLetterUppercased())),
+      ]
+    }
 
     if !data.recommendedWines.isEmpty, data.selectedFilters.isEmpty {
       sections += [.title(localized("vinchy_recommends").firstLetterUppercased())]
