@@ -14,10 +14,11 @@ public final class VStore: Codable, DIdentifiable, DSortable, Equatable {
 
   // MARK: Lifecycle
 
-  public init(id: Int, affilatedId: Int?, title: String?, logoURL: String?) {
+  public init(id: Int, affilatedId: Int?, title: String?, subtitle: String?, logoURL: String?) {
     self.id = id
     self.affilatedId = affilatedId
     self.title = title
+    self.subtitle = subtitle
     self.logoURL = logoURL
   }
 
@@ -32,6 +33,7 @@ public final class VStore: Codable, DIdentifiable, DSortable, Equatable {
   public let id: Int
   public let affilatedId: Int?
   public let title: String?
+  public let subtitle: String?
   public let logoURL: String?
 
   public static func == (lhs: VStore, rhs: VStore) -> Bool {
@@ -59,6 +61,9 @@ extension VStore {
 
     case "title":
       return title
+
+    case "subtitle":
+      return subtitle
 
     case "logoURL":
       return logoURL

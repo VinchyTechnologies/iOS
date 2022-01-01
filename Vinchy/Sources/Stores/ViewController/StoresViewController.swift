@@ -85,22 +85,24 @@ final class StoresViewController: CollectionViewController {
         .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 16, right: 24))
 
       case .partners(_, let rows):
+        let width = collectionViewSize.width - 48
         return SectionModel(
           dataID: section.dataID,
           items: rows.enumerated().compactMap({ index, partnerContent in
             switch partnerContent {
             case .horizontalPartner(let content):
               return HorizontalPartnerView.itemModel(
-                dataID: content.affiliatedStoreId + index * index,
+                dataID: UUID(),
                 content: content,
                 style: .init())
                 .didSelect { [weak self] _ in
                   self?.interactor?.didSelectPartner(affiliatedStoreId: content.affiliatedStoreId)
                 }
-                .flowLayoutItemSize(.init(width: collectionViewSize.width, height: 160))
+                .flowLayoutItemSize(.init(width: collectionViewSize.width - 48, height: content.height(for: width)))
             }
           }))
-          .flowLayoutMinimumLineSpacing(10)
+          .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 0, right: 24))
+          .flowLayoutMinimumLineSpacing(15)
 
       case .loading(let itemID):
         return SectionModel(dataID: section.dataID) {

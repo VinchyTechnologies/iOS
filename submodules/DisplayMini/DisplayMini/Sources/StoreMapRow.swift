@@ -6,22 +6,22 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import DisplayMini
 import EpoxyCore
 import EpoxyLayoutGroups
 import UIKit
 
 // MARK: - StoreMapRow
 
-final class StoreMapRow: UIView, EpoxyableView {
+public final class StoreMapRow: UIView, EpoxyableView {
 
   // MARK: Lifecycle
 
-  init(style: Style) {
+  public init(style: Style) {
     self.style = style
     super.init(frame: .zero)
     translatesAutoresizingMaskIntoConstraints = false
     layoutMargins = .zero
+    directionalLayoutMargins = .zero
     group.install(in: self)
     group.constrainToMarginsWithHighPriorityBottom()
   }
@@ -31,42 +31,48 @@ final class StoreMapRow: UIView, EpoxyableView {
   // MARK: Public
 
   public struct Behaviors {
-    var didTapMap: ((UIButton) -> Void)?
+    public var didTapMap: ((UIButton) -> Void)?
 
     public init(didTapMap: ((UIButton) -> Void)?) {
       self.didTapMap = didTapMap
     }
   }
 
-  // MARK: Internal
+  public struct Style: Hashable {
+    public init() {
 
-  struct Style: Hashable {
+    }
   }
 
-  struct Content: Equatable {
-    var title: String?
-    var isMapButtonHidden: Bool
+  public struct Content: Equatable {
+    public var titleText: String?
+    public var isMapButtonHidden: Bool
 
-    func height(for width: CGFloat) -> CGFloat {
+    public init(titleText: String?, isMapButtonHidden: Bool) {
+      self.titleText = titleText
+      self.isMapButtonHidden = isMapButtonHidden
+    }
+
+    public func height(for width: CGFloat) -> CGFloat {
       let widthOfImage: CGFloat = isMapButtonHidden ? 0 : .imageSide + 8
       let widthWithOrWithoutImage: CGFloat = width - widthOfImage
-      let labelHeight = Label.height(for: title, width: widthWithOrWithoutImage, style: .style(with: .regular))
+      let labelHeight = Label.height(for: titleText, width: widthWithOrWithoutImage, style: .style(with: .regular))
       let height = max(isMapButtonHidden ? 0 : CGFloat.imageSide, labelHeight)
       return height
     }
   }
 
-  func setContent(_ content: Content, animated: Bool) {
+  public func setContent(_ content: Content, animated: Bool) {
     group.setItems {
       VGroupItem.init(
         dataID: DataID.vGroupItem,
         style: .init(spacing: 8))
       {
-        if let title = content.title {
+        if let titleText = content.titleText {
           Label.groupItem(
             dataID: DataID.title,
-            content: title,
-            style: .style(with: .regular, textColor: .blueGray))
+            content: titleText,
+            style: .style(with: .regular, backgroundColor: .clear, textColor: .blueGray))
         }
       }
       if !content.isMapButtonHidden {
@@ -75,7 +81,7 @@ final class StoreMapRow: UIView, EpoxyableView {
     }
   }
 
-  func setBehaviors(_ behaviors: Behaviors?) {
+  public func setBehaviors(_ behaviors: Behaviors?) {
     didTapMap = behaviors?.didTapMap
   }
 

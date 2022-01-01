@@ -16,7 +16,8 @@ final class StoresPresenter {
 
   // MARK: Lifecycle
 
-  init(viewController: StoresViewControllerProtocol) {
+  init(input: StoresInput, viewController: StoresViewControllerProtocol) {
+    self.input = input
     self.viewController = viewController
   }
 
@@ -26,22 +27,41 @@ final class StoresPresenter {
 
   // MARK: Private
 
-  private typealias ViewModel = StoresViewModel
+  private let input: StoresInput
+
 }
 
 // MARK: StoresPresenterProtocol
 
 extension StoresPresenter: StoresPresenterProtocol {
 
+  func showNoSavedStores() {
+    viewController?.updateUI(
+      errorViewModel: ErrorViewModel(
+        titleText: localized("nothing_here").firstLetterUppercased(),
+        subtitleText: nil,
+        buttonText: nil))
+  }
+
   func update(partnersInfo: [PartnerInfo], needLoadMore: Bool) {
 
     var sections: [StoresViewModel.Section] = []
 
+    var navigationTitleText: String
+
+    switch input.mode {
+    case .wine:
+      navigationTitleText = localized("all_shops").firstLetterUppercased()
+
+    case .saved:
+      navigationTitleText = localized("saved_stores").firstLetterUppercased()
+    }
+
     if !partnersInfo.isEmpty {
-      sections += [.title(localized("all_shops").firstLetterUppercased())]
+      sections += [.title(navigationTitleText)]
 
       let partnersContent: [StoresViewModel.PartnersContent] = partnersInfo.map({ partner in
-        StoresViewModel.PartnersContent.horizontalPartner(.init(affiliatedStoreId: partner.affiliatedStoreId, imageURL: partner.logoURL?.toURL, titleText: partner.title, subtitleText: partner.address, scheduleOfWorkText: partner.scheduleOfWork))
+        StoresViewModel.PartnersContent.horizontalPartner(.init(affiliatedStoreId: partner.affiliatedStoreId, imageURL: partner.logoURL, titleText: partner.title, subtitleText: partner.address))
       })
 
       sections += [.partners(content: partnersContent)]
@@ -51,7 +71,7 @@ extension StoresPresenter: StoresPresenterProtocol {
       }
     }
 
-    let viewModel = StoresViewModel(sections: sections, navigationTitleText: localized("all_shops").firstLetterUppercased())
+    let viewModel = StoresViewModel(sections: sections, navigationTitleText: navigationTitleText)
     viewController?.updateUI(viewModel: viewModel)
   }
 

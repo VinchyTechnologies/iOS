@@ -33,6 +33,12 @@ final class MoreRouter: OpenURLProtocol {
 
 extension MoreRouter: MoreRouterProtocol {
 
+  func pushToMyStores() {
+    let controller = StoresAssembly.assemblyModule(input: .init(mode: .saved))
+    controller.hidesBottomBarWhenPushed = true
+    viewController?.navigationController?.pushViewController(controller, animated: true)
+  }
+
   func presentAlertAreYouSureLogout(titleText: String?, subtitleText: String?, leadingButtonText: String?, trailingButtonText: String?) {
     let alert = UIAlertController(title: titleText, message: subtitleText, preferredStyle: .alert)
     alert.view.tintColor = .accent

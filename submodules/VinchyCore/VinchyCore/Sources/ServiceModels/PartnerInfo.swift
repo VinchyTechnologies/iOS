@@ -10,6 +10,32 @@
 
 public struct PartnerInfo: Decodable, Equatable {
 
+  // MARK: Lifecycle
+
+  public init(
+    affiliatedStoreId: Int,
+    title: String,
+    latitude: Double?,
+    longitude: Double?,
+    affiliatedStoreType: AffiliatedStoreType?,
+    url: String?,
+    phoneNumber: String?,
+    scheduleOfWork: String?,
+    address: String?,
+    logoURL: String?)
+  {
+    self.affiliatedStoreId = affiliatedStoreId
+    self.title = title
+    self.latitude = latitude
+    self.longitude = longitude
+    self.affiliatedStoreType = affiliatedStoreType
+    self.url = url
+    self.phoneNumber = phoneNumber
+    self.scheduleOfWork = scheduleOfWork
+    self.address = address
+    self.logoURL = logoURL
+  }
+
   // MARK: Public
 
   public let affiliatedStoreId: Int

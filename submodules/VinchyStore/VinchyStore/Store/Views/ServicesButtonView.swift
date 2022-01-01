@@ -56,9 +56,13 @@ final class ServicesButtonView: UIView, EpoxyableView {
   struct Content: Equatable {
 
     let isLiked: Bool
+    let saveButtonText: String?
+    let savedButtonText: String?
 
-    init(isLiked: Bool) {
+    init(isLiked: Bool, saveButtonText: String?, savedButtonText: String?) {
       self.isLiked = isLiked
+      self.saveButtonText = saveButtonText
+      self.savedButtonText = savedButtonText
     }
 
     func height(for width: CGFloat) -> CGFloat {
@@ -72,7 +76,8 @@ final class ServicesButtonView: UIView, EpoxyableView {
   func setContent(_ content: Content, animated: Bool) {
     let imageConfig = UIImage.SymbolConfiguration(pointSize: 18, weight: .medium, scale: .default)
 
-    likeButton.setTitle("Save", for: [])
+    likeButton.setTitle(content.saveButtonText, for: .normal)
+    likeButton.setTitle(content.savedButtonText, for: .selected)
     likeButton.setImage(UIImage(systemName: "heart", withConfiguration: imageConfig), for: .normal)
     likeButton.setImage(UIImage(systemName: "heart.fill", withConfiguration: imageConfig), for: .selected)
     likeButton.addTarget(self, action: #selector(didTapLikeButton(_:)), for: .touchUpInside)

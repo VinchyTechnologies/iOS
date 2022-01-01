@@ -16,9 +16,7 @@
 		8A5145A52757D3DD00DC45CD /* StorePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145912757D3DD00DC45CD /* StorePresenterProtocol.swift */; };
 		8A5145A62757D3DD00DC45CD /* StoreViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145932757D3DD00DC45CD /* StoreViewController.swift */; };
 		8A5145A72757D3DD00DC45CD /* StoreViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145942757D3DD00DC45CD /* StoreViewControllerProtocol.swift */; };
-		8A5145A82757D3DD00DC45CD /* LogoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145962757D3DD00DC45CD /* LogoRow.swift */; };
 		8A5145A92757D3DD00DC45CD /* FilterItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145972757D3DD00DC45CD /* FilterItemView.swift */; };
-		8A5145AA2757D3DD00DC45CD /* StoreMapRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145982757D3DD00DC45CD /* StoreMapRow.swift */; };
 		8A5145AB2757D3DD00DC45CD /* FiltersCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5145992757D3DD00DC45CD /* FiltersCollectionView.swift */; };
 		8A5145AD2757D3DD00DC45CD /* StoreInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A51459C2757D3DD00DC45CD /* StoreInteractor.swift */; };
 		8A5145AE2757D3DD00DC45CD /* StoreInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A51459D2757D3DD00DC45CD /* StoreInteractorProtocol.swift */; };
@@ -48,9 +46,7 @@
 		8A5145912757D3DD00DC45CD /* StorePresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorePresenterProtocol.swift; sourceTree = "<group>"; };
 		8A5145932757D3DD00DC45CD /* StoreViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreViewController.swift; sourceTree = "<group>"; };
 		8A5145942757D3DD00DC45CD /* StoreViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreViewControllerProtocol.swift; sourceTree = "<group>"; };
-		8A5145962757D3DD00DC45CD /* LogoRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoRow.swift; sourceTree = "<group>"; };
 		8A5145972757D3DD00DC45CD /* FilterItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FilterItemView.swift; sourceTree = "<group>"; };
-		8A5145982757D3DD00DC45CD /* StoreMapRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreMapRow.swift; sourceTree = "<group>"; };
 		8A5145992757D3DD00DC45CD /* FiltersCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersCollectionView.swift; sourceTree = "<group>"; };
 		8A51459C2757D3DD00DC45CD /* StoreInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreInteractor.swift; sourceTree = "<group>"; };
 		8A51459D2757D3DD00DC45CD /* StoreInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreInteractorProtocol.swift; sourceTree = "<group>"; };
@@ -177,9 +173,7 @@
 		8A5145952757D3DD00DC45CD /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8A5145962757D3DD00DC45CD /* LogoRow.swift */,
 				8A5145972757D3DD00DC45CD /* FilterItemView.swift */,
-				8A5145982757D3DD00DC45CD /* StoreMapRow.swift */,
 				8A5145992757D3DD00DC45CD /* FiltersCollectionView.swift */,
 				8ABEF4022779FC270046C43E /* ServicesButtonView.swift */,
 			);
@@ -337,7 +331,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A5145A82757D3DD00DC45CD /* LogoRow.swift in Sources */,
 				8A5145B02757D3DD00DC45CD /* StoreRouter.swift in Sources */,
 				8A5145A22757D3DD00DC45CD /* StoreInput.swift in Sources */,
 				8A5145AD2757D3DD00DC45CD /* StoreInteractor.swift in Sources */,
@@ -350,7 +343,6 @@
 				8A5145A92757D3DD00DC45CD /* FilterItemView.swift in Sources */,
 				8A5145A52757D3DD00DC45CD /* StorePresenterProtocol.swift in Sources */,
 				8A5145A42757D3DD00DC45CD /* StorePresenter.swift in Sources */,
-				8A5145AA2757D3DD00DC45CD /* StoreMapRow.swift in Sources */,
 				8A5145A72757D3DD00DC45CD /* StoreViewControllerProtocol.swift in Sources */,
 				8A5145A62757D3DD00DC45CD /* StoreViewController.swift in Sources */,
 				8ABEF4032779FC270046C43E /* ServicesButtonView.swift in Sources */,

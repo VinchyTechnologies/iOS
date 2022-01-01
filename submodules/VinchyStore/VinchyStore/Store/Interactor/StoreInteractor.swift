@@ -256,7 +256,7 @@ extension StoreInteractor: StoreInteractorProtocol {
     } else {
       let maxId = dataBase.findAll().map { $0.id }.max() ?? 0
       let id = maxId + 1
-      dataBase.append(VStore(id: id, affilatedId: partnerInfo.affiliatedStoreId, title: partnerInfo.title, logoURL: partnerInfo.logoURL))
+      dataBase.append(VStore(id: id, affilatedId: partnerInfo.affiliatedStoreId, title: partnerInfo.title, subtitle: partnerInfo.address, logoURL: partnerInfo.logoURL))
       presenter.setLikedStatus(isLiked: true)
 //      presenter.showStatusAlertDidLikedSuccessfully()
     }

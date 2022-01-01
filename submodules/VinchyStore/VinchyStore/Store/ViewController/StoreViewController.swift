@@ -111,8 +111,8 @@ final class StoreViewController: CollectionViewController {
             content: content,
             style: .large)
         }
-        .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 8, right: 0))
-        .flowLayoutItemSize(.init(width: collectionViewSize.width, height: content.height(for: width)))
+        .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 8, right: 24))
+        .flowLayoutItemSize(.init(width: width, height: content.height(for: width)))
 
       case .title(let itemID, let content):
         let width: CGFloat = collectionViewSize.width - 48

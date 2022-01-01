@@ -7,6 +7,7 @@
 //
 
 import Core
+import Database
 import VinchyCore
 
 // MARK: - C
@@ -20,6 +21,7 @@ fileprivate enum C {
 enum StoresInteractorError: Error {
   case initialLoading(APIError)
   case loadMore(APIError)
+  case savedEmpty
 }
 
 // MARK: - StoresInteractor
@@ -40,6 +42,8 @@ final class StoresInteractor {
   }
 
   // MARK: Private
+
+  private let dataBase = storesRepository
 
   private lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
     guard let self = self else { return }
@@ -78,7 +82,13 @@ final class StoresInteractor {
       needLoadMore = false
 
     case .loading(let offset, _):
-      needLoadMore = partnersInfo.count == offset + C.limit
+      switch input.mode {
+      case .wine:
+        needLoadMore = partnersInfo.count == offset + C.limit
+
+      case .saved:
+        needLoadMore = false
+      }
     }
 
     showData(needLoadMore: needLoadMore)
@@ -97,6 +107,9 @@ final class StoresInteractor {
 
       case .loadMore(let error):
         presenter.showErrorAlert(error: error)
+
+      case .savedEmpty:
+        presenter.showNoSavedStores()
       }
 
     } else {
@@ -105,21 +118,43 @@ final class StoresInteractor {
   }
 
   private func loadData(offset: Int) {
-    Partners.shared.getPartnersByWine(
-      wineID: input.wineID,
-      latitude: 55.755786,
-      longitude: 37.617633,
-      limit: C.limit,
-      offset: offset) { [weak self] result in
-        guard let self = self else { return }
-        switch result {
-        case .success(let response):
-          self.partnersInfo += response
-          self.stateMachine.invokeSuccess(with: self.partnersInfo)
 
-        case .failure(let error):
-          self.stateMachine.fail(with: error)
+    switch input.mode {
+    case .wine(let wineID):
+      Partners.shared.getPartnersByWine(
+        wineID: wineID,
+        latitude: 55.755786,
+        longitude: 37.617633,
+        limit: C.limit,
+        offset: offset) { [weak self] result in
+          guard let self = self else { return }
+          switch result {
+          case .success(let response):
+            self.partnersInfo += response
+            self.stateMachine.invokeSuccess(with: self.partnersInfo)
+
+          case .failure(let error):
+            if offset == 0 {
+              self.stateMachine.fail(with: StoresInteractorError.initialLoading(error))
+            } else {
+              self.stateMachine.fail(with: StoresInteractorError.loadMore(error))
+            }
+          }
+      }
+
+    case .saved:
+      partnersInfo += dataBase.findAll().compactMap { vstore in
+        guard let affilatedId = vstore.affilatedId else {
+          return nil
         }
+        return PartnerInfo(affiliatedStoreId: affilatedId, title: vstore.title ?? "", latitude: nil, longitude: nil, affiliatedStoreType: nil, url: nil, phoneNumber: nil, scheduleOfWork: nil, address: vstore.subtitle, logoURL: vstore.logoURL)
+      }
+
+      if partnersInfo.isEmpty {
+        stateMachine.fail(with: StoresInteractorError.savedEmpty)
+      } else {
+        stateMachine.invokeSuccess(with: partnersInfo)
+      }
     }
   }
 

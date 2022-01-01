@@ -9,31 +9,7 @@
 import DisplayMini
 import EpoxyCollectionView
 import EpoxyCore
-
-// MARK: - HorizontalPartnerViewViewModel
-
-public struct HorizontalPartnerViewViewModel: Equatable {
-
-  public let affiliatedStoreId: Int
-  fileprivate let imageURL: URL?
-  fileprivate let titleText: String
-  fileprivate let subtitleText: String?
-  fileprivate let scheduleOfWorkText: String?
-
-  public init(
-    affiliatedStoreId: Int,
-    imageURL: URL?,
-    titleText: String,
-    subtitleText: String?,
-    scheduleOfWorkText: String?)
-  {
-    self.affiliatedStoreId = affiliatedStoreId
-    self.imageURL = imageURL
-    self.titleText = titleText
-    self.subtitleText = subtitleText
-    self.scheduleOfWorkText = scheduleOfWorkText
-  }
-}
+import EpoxyLayoutGroups
 
 // MARK: - HorizontalPartnerView
 
@@ -43,57 +19,12 @@ public final class HorizontalPartnerView: UIView, EpoxyableView {
 
   public init(style: Style) {
     super.init(frame: .zero)
-    background.backgroundColor = .option
-    background.layer.cornerRadius = 20
-    background.layer.masksToBounds = true
-
-    addSubview(background)
-    background.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      background.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 10),
-      background.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -10),
-      background.bottomAnchor.constraint(equalTo: bottomAnchor),
-      background.topAnchor.constraint(equalTo: topAnchor),
-    ])
-
-    partnerLogoImageView.contentMode = .scaleAspectFill
-    partnerLogoImageView.clipsToBounds = true
-    partnerLogoImageView.layer.cornerRadius = 20
-    background.addSubview(partnerLogoImageView)
-    partnerLogoImageView.translatesAutoresizingMaskIntoConstraints = false
-
-    NSLayoutConstraint.activate([
-      partnerLogoImageView.topAnchor.constraint(equalTo: background.topAnchor, constant: 10),
-      partnerLogoImageView.bottomAnchor.constraint(equalTo: background.bottomAnchor, constant: -10),
-      partnerLogoImageView.widthAnchor.constraint(equalTo: partnerLogoImageView.heightAnchor),
-      partnerLogoImageView.leadingAnchor.constraint(equalTo: background.leadingAnchor, constant: 10),
-    ])
-    titleLabel.font = Font.bold(20)
-    titleLabel.numberOfLines = 2
-
-    subtitleLabel.font = Font.medium(16)
-    subtitleLabel.textColor = .blueGray
-    subtitleLabel.numberOfLines = 2
-
-    scheduleOfWorkTitle.font = Font.light(16)
-    scheduleOfWorkTitle.textColor = .dark
-    scheduleOfWorkTitle.numberOfLines = 2
-
-    stackView.addArrangedSubview(titleLabel)
-    stackView.addArrangedSubview(subtitleLabel)
-    stackView.addArrangedSubview(scheduleOfWorkTitle)
-    stackView.addArrangedSubview(UIView())
-    stackView.alignment = .top
-    stackView.axis = .vertical
-    stackView.spacing = 4
-    stackView.translatesAutoresizingMaskIntoConstraints = false
-    background.addSubview(stackView)
-    NSLayoutConstraint.activate([
-      stackView.topAnchor.constraint(equalTo: background.topAnchor, constant: 10),
-      stackView.bottomAnchor.constraint(equalTo: background.bottomAnchor, constant: -10),
-      stackView.leadingAnchor.constraint(equalTo: partnerLogoImageView.trailingAnchor, constant: 10),
-      stackView.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -10),
-    ])
+    backgroundColor = .option
+    layer.cornerRadius = 24
+    clipsToBounds = true
+    directionalLayoutMargins = .init(top: 15, leading: 15, bottom: 15, trailing: 15)
+    vGroup.install(in: self)
+    vGroup.constrainToMarginsWithHighPriorityBottom()
   }
 
   required init?(coder: NSCoder) {
@@ -110,23 +41,66 @@ public final class HorizontalPartnerView: UIView, EpoxyableView {
 
   // MARK: ContentConfigurableView
 
-  public typealias Content = HorizontalPartnerViewViewModel
+  public struct Content: Equatable {
+
+    // MARK: Lifecycle
+
+    public init(
+      affiliatedStoreId: Int,
+      imageURL: String?,
+      titleText: String?,
+      subtitleText: String?)
+    {
+      self.affiliatedStoreId = affiliatedStoreId
+      self.imageURL = imageURL
+      self.titleText = titleText
+      self.subtitleText = subtitleText
+    }
+
+    // MARK: Public
+
+    public let affiliatedStoreId: Int
+    public let imageURL: String?
+    public let titleText: String?
+    public let subtitleText: String?
+
+    public func height(for width: CGFloat) -> CGFloat {
+      let width = width - 30
+      var result: CGFloat = 0
+      result += LogoRow.Content(title: titleText, logoURL: imageURL).height(for: width)
+      let storeMapRowHeight = StoreMapRow.Content(titleText: subtitleText, isMapButtonHidden: true).height(for: width)
+      result += storeMapRowHeight //+ 8 // ?????
+      result += 15 + 15
+      return max(result, 80)
+    }
+  }
 
   public func setContent(_ content: Content, animated: Bool) {
-    partnerLogoImageView.loadBottle(url: content.imageURL)
-    titleLabel.text = content.titleText
-    subtitleLabel.text = content.subtitleText
-    scheduleOfWorkTitle.text = content.scheduleOfWorkText
+    vGroup.setItems {
+      if let titleText = content.titleText {
+        LogoRow.groupItem(
+          dataID: DataID.logo,
+          content: .init(title: titleText, logoURL: content.imageURL),
+          style: .large)
+      }
+
+      if let subtitleText = content.subtitleText {
+        StoreMapRow.groupItem(
+          dataID: DataID.address,
+          content: .init(titleText: subtitleText, isMapButtonHidden: true),
+          style: .init())
+      }
+    }
   }
 
   // MARK: Private
 
-  private let partnerLogoImageView = UIImageView()
-  private let titleLabel = UILabel()
-  private let subtitleLabel = UILabel()
-  private let background = UIView()
-  private let scheduleOfWorkTitle = UILabel()
-  private let stackView = UIStackView()
+  private enum DataID {
+    case logo, address
+  }
+
+  private var vGroup = VGroup(alignment: .leading, spacing: 8, items: [])
+
 }
 
 // MARK: HighlightableView

@@ -79,6 +79,7 @@
 "open_in_app" = "В Vinchy";
 "region" = "регион";
 "save" = "сохранить";
+"saved" = "сохранено";
 "continue" = "продолжить";
 "expand" = "ещё";
 "collapse" = "скрыть";
@@ -124,6 +125,7 @@
 "your_rated_wines_will_be_here" = "Здесь будут Ваши оцененные вина";
 "you_need_to_login_first" = "Сперва Вам необходимо войти";
 "price" = "стоимость";
+"saved_stores" = "Избранные магазины";
 
 // MARK: - Sugar
 "sugar" = "сахар";

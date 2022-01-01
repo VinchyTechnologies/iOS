@@ -84,6 +84,9 @@ final class MorePresenter {
 
 //    sections.append(.social([.init(titleText: localized("we_are_in_social_networks").firstLetterUppercased())]))
 
+    let mySoresViewModel = DocCellViewModel(titleText: localized("saved_stores").firstLetterUppercased(), icon: UIImage(named: "shop"))
+    sections.append(.myStores([mySoresViewModel]))
+
     let currencyViewModel = InfoCurrencyCellViewModel(
       titleText: localized("currency").firstLetterUppercased(),
       symbolText: currency,

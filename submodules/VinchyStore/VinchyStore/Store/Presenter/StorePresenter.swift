@@ -63,7 +63,7 @@ extension StorePresenter: StorePresenterProtocol {
 
     if let addressText = data.partnerInfo.address {
       let isMapButtonHidden = data.partnerInfo.latitude == nil || data.partnerInfo.longitude == nil
-      sections += [.address(StoreMapRow.Content(title: addressText, isMapButtonHidden: isMapButtonHidden))]
+      sections += [.address(StoreMapRow.Content(titleText: addressText, isMapButtonHidden: isMapButtonHidden))]
     }
 
 //    if !data.recommendedWines.isEmpty {
@@ -122,10 +122,15 @@ extension StorePresenter: StorePresenterProtocol {
 
     if let addressText = data.partnerInfo.address {
       let isMapButtonHidden = data.partnerInfo.latitude == nil || data.partnerInfo.longitude == nil
-      sections += [.address(StoreMapRow.Content(title: addressText, isMapButtonHidden: isMapButtonHidden))]
+      sections += [.address(StoreMapRow.Content(titleText: addressText, isMapButtonHidden: isMapButtonHidden))]
     }
 
-    sections += [.services(.init(isLiked: data.isLiked))]
+    sections += [
+      .services(.init(
+        isLiked: data.isLiked,
+        saveButtonText: localized("save").firstLetterUppercased(),
+        savedButtonText: localized("saved").firstLetterUppercased())),
+    ]
 
     if !data.recommendedWines.isEmpty, data.selectedFilters.isEmpty {
       sections += [.title(localized("vinchy_recommends").firstLetterUppercased())]

@@ -7,5 +7,14 @@
 //
 
 struct StoresInput {
-  let wineID: Int64
+  let mode: Mode
+
+  enum Mode {
+    case wine(wineID: Int64)
+    case saved
+  }
+
+  init(mode: Mode) {
+    self.mode = mode
+  }
 }

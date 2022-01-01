@@ -53,6 +53,9 @@ final class MoreInteractor {
 // MARK: MoreInteractorProtocol
 
 extension MoreInteractor: MoreInteractorProtocol {
+  func didTapMyStores() {
+    router.pushToMyStores()
+  }
 
   func didTapOpenInstagram() {
     openUrl(urlString: localized("instagram_link"))

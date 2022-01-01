@@ -79,6 +79,7 @@
 "open_in_app" = "Build in Vinchy";
 "region" = "region";
 "save" = "save";
+"saved" = "saved";
 "continue" = "continue";
 "expand" = "more";
 "collapse" = "less";
@@ -124,6 +125,7 @@
 "your_rated_wines_will_be_here" = "Your rated wines will be here";
 "you_need_to_login_first" = "you need to login first";
 "price" = "price";
+"saved_stores" = "my stores";
 
 // MARK: - Sugar
 "sugar" = "sugar";

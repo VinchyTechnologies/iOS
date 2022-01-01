@@ -19,6 +19,7 @@ struct MoreViewControllerModel {
     case social([StandartImageViewModel])
     case currency([InfoCurrencyCellViewModel])
     case aboutApp([DocCellViewModel])
+    case myStores([DocCellViewModel])
     case doc([DocCellViewModel])
     case separator
     case logout([LogOutCellViewModel])

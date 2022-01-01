@@ -15,4 +15,5 @@ protocol MoreRouterProtocol: AuthorizationRoutable, ContactUsRoutable {
   func pushToAboutController()
   func presentShowEditProfileViewController()
   func presentAlertAreYouSureLogout(titleText: String?, subtitleText: String?, leadingButtonText: String?, trailingButtonText: String?)
+  func pushToMyStores()
 }

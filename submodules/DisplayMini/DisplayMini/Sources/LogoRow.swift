@@ -6,39 +6,43 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import DisplayMini
 import EpoxyCore
 import EpoxyLayoutGroups
 import UIKit
 
 // MARK: - TextRow
 
-final class LogoRow: UIView, EpoxyableView {
+public final class LogoRow: UIView, EpoxyableView {
 
   // MARK: Lifecycle
 
-  init(style: Style) {
+  public init(style: Style) {
     self.style = style
     super.init(frame: .zero)
     translatesAutoresizingMaskIntoConstraints = false
-    layoutMargins = UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
+    layoutMargins = .zero//UIEdgeInsets(top: 0, left: 24, bottom: 0, right: 24)
     group.install(in: self)
     group.constrainToMarginsWithHighPriorityBottom()
   }
 
   required init?(coder aDecoder: NSCoder) { fatalError() }
 
-  // MARK: Internal
+  // MARK: Public
 
-  enum Style {
+  public enum Style {
     case large
   }
 
-  struct Content: Equatable {
-    var title: String?
-    var logoURL: String?
+  public struct Content: Equatable {
+    public var title: String?
+    public var logoURL: String?
 
-    func height(for width: CGFloat) -> CGFloat {
+    public init(title: String?, logoURL: String?) {
+      self.title = title
+      self.logoURL = logoURL
+    }
+
+    public func height(for width: CGFloat) -> CGFloat {
       let widthOfImage: CGFloat = logoURL == nil ? 0 : 48 + 8
       let widthWithOrWithoutImage: CGFloat = width - widthOfImage
       let labelHeight = Label.height(for: title, width: widthWithOrWithoutImage, style: .style(with: .lagerTitle))
@@ -47,7 +51,7 @@ final class LogoRow: UIView, EpoxyableView {
     }
   }
 
-  func setContent(_ content: Content, animated: Bool) {
+  public func setContent(_ content: Content, animated: Bool) {
 
     group.setItems {
 
@@ -66,7 +70,7 @@ final class LogoRow: UIView, EpoxyableView {
           Label.groupItem(
             dataID: DataID.title,
             content: title,
-            style: .style(with: .lagerTitle))
+            style: .style(with: .lagerTitle, backgroundColor: .clear))
         }
       }
     }

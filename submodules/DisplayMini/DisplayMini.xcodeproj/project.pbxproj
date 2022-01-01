@@ -54,6 +54,8 @@
 		8A9CAC192763F64B00A5B694 /* TutorialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CAC162763F64B00A5B694 /* TutorialViewController.swift */; };
 		8A9CAC1C2763F6E600A5B694 /* EmptyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CAC1A2763F6E600A5B694 /* EmptyView.swift */; };
 		8A9CAC212763F8A700A5B694 /* IconView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CAC202763F8A700A5B694 /* IconView.swift */; };
+		8ABEF40927809E430046C43E /* LogoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABEF40827809E430046C43E /* LogoRow.swift */; };
+		8ABEF40B2780A73F0046C43E /* StoreMapRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABEF40A2780A73F0046C43E /* StoreMapRow.swift */; };
 		8AD51DA927650BB60009499A /* OverlayPresentationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD51DA827650BB50009499A /* OverlayPresentationCenter.swift */; };
 		D12A71C9391FF45EA6009B81 /* Pods_DisplayMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ADEFB7AAE5EE1069C5D2954 /* Pods_DisplayMini.framework */; };
 /* End PBXBuildFile section */
@@ -107,6 +109,8 @@
 		8A9CAC162763F64B00A5B694 /* TutorialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TutorialViewController.swift; sourceTree = "<group>"; };
 		8A9CAC1A2763F6E600A5B694 /* EmptyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmptyView.swift; sourceTree = "<group>"; };
 		8A9CAC202763F8A700A5B694 /* IconView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = IconView.swift; sourceTree = "<group>"; };
+		8ABEF40827809E430046C43E /* LogoRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoRow.swift; sourceTree = "<group>"; };
+		8ABEF40A2780A73F0046C43E /* StoreMapRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreMapRow.swift; sourceTree = "<group>"; };
 		8AD51DA827650BB50009499A /* OverlayPresentationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayPresentationCenter.swift; sourceTree = "<group>"; };
 		E2D2D16B52FD4AEDE8820451 /* Pods-DisplayMini.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DisplayMini.debug.xcconfig"; path = "Target Support Files/Pods-DisplayMini/Pods-DisplayMini.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -201,6 +205,7 @@
 				8A9CABDE2763F01300A5B694 /* Loadable.swift */,
 				8A9CABD62763F01300A5B694 /* LoadingIndicatorCell.swift */,
 				8A9CABCE2763F01300A5B694 /* LoadingView.swift */,
+				8ABEF40827809E430046C43E /* LogoRow.swift */,
 				8A9CABC62763F01300A5B694 /* Orientation.swift */,
 				8AD51DA827650BB50009499A /* OverlayPresentationCenter.swift */,
 				8A9CABDF2763F01300A5B694 /* ReviewCell.swift */,
@@ -209,6 +214,7 @@
 				8A9CABCA2763F01300A5B694 /* SeparatorFlowLayout.swift */,
 				8A9CABE12763F01400A5B694 /* ShimmeringView.swift */,
 				8A9CABD92763F01300A5B694 /* StarsRatingView.swift */,
+				8ABEF40A2780A73F0046C43E /* StoreMapRow.swift */,
 				8A9CABE52763F01400A5B694 /* TextCollectionCell.swift */,
 				8A9CAC132763F64B00A5B694 /* Tutorials */,
 				8A9CABE22763F01400A5B694 /* UIColor.swift */,
@@ -373,10 +379,12 @@
 				8A9CAC042763F01400A5B694 /* HighlightCollectionCell.swift in Sources */,
 				8A9CABF82763F01400A5B694 /* ContactUsRoutable.swift in Sources */,
 				8A9CAC172763F64B00A5B694 /* DeliveryTutorialView.swift in Sources */,
+				8ABEF40927809E430046C43E /* LogoRow.swift in Sources */,
 				8A9CABEE2763F01400A5B694 /* SeparatorCell.swift in Sources */,
 				8A9CAC0A2763F01400A5B694 /* ASPageControl.swift in Sources */,
 				8A9CABFC2763F01400A5B694 /* EpoxyErrorView.swift in Sources */,
 				8A9CABED2763F01400A5B694 /* Orientation.swift in Sources */,
+				8ABEF40B2780A73F0046C43E /* StoreMapRow.swift in Sources */,
 				8A9CAC0D2763F01400A5B694 /* UIKitUtils.swift in Sources */,
 				8A9CABF32763F01400A5B694 /* HighlightableViewProtocol.swift in Sources */,
 				8A9CABF52763F01400A5B694 /* LoadingView.swift in Sources */,
