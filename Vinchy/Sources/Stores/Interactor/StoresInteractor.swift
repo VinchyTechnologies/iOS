@@ -203,7 +203,6 @@ extension StoresInteractor: StoresInteractorProtocol {
       break
 
     case .saved:
-      print(12345)
       loadInitData()
     }
   }
