@@ -125,7 +125,7 @@ extension StorePresenter: StorePresenterProtocol {
       sections += [.address(StoreMapRow.Content(titleText: addressText, isMapButtonHidden: isMapButtonHidden))]
     }
 
-    if !input.isAppClip {
+    if !input.isAppClip && data.selectedFilters.isEmpty {
       sections += [
         .services(.init(
           isLiked: data.isLiked,
