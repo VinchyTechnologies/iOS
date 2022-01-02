@@ -25,6 +25,7 @@ struct EditProfileViewModel {
 
   enum Section {
     case commonEditCell([CommonEditCellRow])
+    case deleteAccount([LogOutCellViewModel])
   }
 
   let sections: [Section]

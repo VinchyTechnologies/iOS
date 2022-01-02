@@ -53,6 +53,10 @@ extension EditProfilePresenter: EditProfilePresenterProtocol {
       ]),
     ]
 
+    sections += [
+      .deleteAccount([LogOutCellViewModel(titleText: "Delete Account")]),
+    ]
+
     let viewModel = EditProfileViewModel(sections: sections, navigationTitle: localized("edit_profile"), saveButtonText: localized("save").firstLetterUppercased())
     viewController?.updateUI(viewModel: viewModel)
   }

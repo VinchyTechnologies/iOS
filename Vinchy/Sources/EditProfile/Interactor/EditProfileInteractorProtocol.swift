@@ -12,4 +12,5 @@ protocol EditProfileInteractorProtocol: AnyObject {
   func viewDidLoad()
   func textFieldDidChanged(type: EditProfileTextFieldType, newValue: String?)
   func didTapSaveButton()
+  func didTapDeleteAccount()
 }

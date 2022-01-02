@@ -54,7 +54,8 @@ final class EditProfileViewController: UIViewController {
     $0.backgroundColor = .mainBackground
     $0.register(
       CommonEditCollectionViewCell.self,
-      TextCollectionCell.self)
+      TextCollectionCell.self,
+      LogOutCell.self)
     $0.keyboardDismissMode = .onDrag
     $0.dataSource = self
     $0.delegate = self
@@ -130,6 +131,9 @@ extension EditProfileViewController: UICollectionViewDataSource {
     case .commonEditCell(let models):
       return models.count
 
+    case .deleteAccount(let models):
+      return models.count
+
     case .none:
       return 0
     }
@@ -161,6 +165,13 @@ extension EditProfileViewController: UICollectionViewDataSource {
         return .init()
       }
 
+    case .deleteAccount(let models):
+      if let model = models[safe: indexPath.row], let cell = collectionView.dequeueReusableCell(withReuseIdentifier: LogOutCell.reuseId, for: indexPath) as? LogOutCell {
+        cell.decorate(model: model)
+        return cell
+      }
+      return .init()
+
     case .none:
       return .init()
     }
@@ -188,6 +199,12 @@ extension EditProfileViewController: UICollectionViewDelegateFlowLayout {
         return .zero
       }
 
+    case .deleteAccount(let models):
+      if models[safe: indexPath.row] != nil {
+        return .init(width: collectionView.frame.width, height: LogOutCell.height())
+      }
+      return .zero
+
     case .none:
       return .zero
     }
@@ -209,6 +226,19 @@ extension EditProfileViewController: UICollectionViewDelegateFlowLayout {
     -> UIEdgeInsets
   {
     UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 16)
+  }
+
+  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+    switch viewModel?.sections[safe: indexPath.section] {
+    case .commonEditCell:
+      break
+
+    case .deleteAccount:
+      interactor?.didTapDeleteAccount()
+
+    case .none:
+      break
+    }
   }
 }
 

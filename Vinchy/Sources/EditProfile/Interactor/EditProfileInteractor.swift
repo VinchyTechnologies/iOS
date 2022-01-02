@@ -36,6 +36,12 @@ final class EditProfileInteractor {
 
 extension EditProfileInteractor: EditProfileInteractorProtocol {
 
+  func didTapDeleteAccount() {
+    authService.logout()
+    // TODO: - delete ACCOUNT backend
+    router.dismiss()
+  }
+
   func didTapSaveButton() {
     UserDefaultsConfig.userName = currentEditingName ?? ""
 
