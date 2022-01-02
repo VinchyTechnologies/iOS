@@ -143,7 +143,7 @@ final class StoresInteractor {
       }
 
     case .saved:
-      partnersInfo += dataBase.findAll().compactMap { vstore in
+      partnersInfo = dataBase.findAll().compactMap { vstore in
         guard let affilatedId = vstore.affilatedId else {
           return nil
         }
@@ -188,6 +188,23 @@ extension StoresInteractor: StoresInteractorProtocol {
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
       self.dispatchWorkItemHud.perform()
     }
-    loadInitData()
+    switch input.mode {
+    case .wine:
+      loadInitData()
+
+    case .saved:
+      break
+    }
+  }
+
+  func viewWillAppear() {
+    switch input.mode {
+    case .wine:
+      break
+
+    case .saved:
+      print(12345)
+      loadInitData()
+    }
   }
 }

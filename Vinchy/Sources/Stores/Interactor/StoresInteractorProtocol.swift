@@ -10,6 +10,7 @@ import Foundation
 
 protocol StoresInteractorProtocol: AnyObject {
   func viewDidLoad()
+  func viewWillAppear()
   func didSelectPartner(affiliatedStoreId: Int)
   func willDisplayLoadingView()
   func didTapReloadButton()

@@ -47,6 +47,11 @@ final class StoresViewController: CollectionViewController {
     interactor?.viewDidLoad()
   }
 
+  override func viewWillAppear(_ animated: Bool) {
+    super.viewWillAppear(animated)
+    interactor?.viewWillAppear()
+  }
+
   override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
     super.viewWillTransition(to: size, with: coordinator)
     coordinator.animate(alongsideTransition: { _ in
@@ -140,7 +145,6 @@ extension StoresViewController: StoresViewControllerProtocol {
       var resultHeight: CGFloat = 0.0
       viewModel.sections.forEach { section in
         switch section {
-
         case .title(_, let content):
           let width: CGFloat = view.frame.width - 48
           let height: CGFloat = Label.height(
@@ -161,6 +165,7 @@ extension StoresViewController: StoresViewControllerProtocol {
   }
 
   func updateUI(errorViewModel: ErrorViewModel) {
+    collectionView.setSections([], animated: false)
     let errorView = ErrorView(frame: view.frame)
     errorView.decorate(model: errorViewModel)
     errorView.delegate = self
