@@ -88,7 +88,7 @@ open class ContextMenu: NSObject {
       customView = wind
       self.viewTargeted = viewTargeted
       mainViewRect = customView.frame
-    }else{
+    } else {
       return nil
     }
   }
@@ -111,7 +111,6 @@ open class ContextMenu: NSObject {
   open var placeHolderView: UIView?
   open var headerView: UIView?
   open var footerView: UIView?
-//  open var nibView = UINib(nibName: ContextMenuCell.identifier, bundle: Bundle(for: ContextMenuCell.self))
   open var closeAnimation = true
 
   open var onItemTap: ((_ index: Int, _ item: ContextMenuItem) -> Bool)?
@@ -196,8 +195,7 @@ open class ContextMenu: NSObject {
     return viewSnapShotImage
   }
 
-  func addBlurEffectView(){
-
+  func addBlurEffectView() {
     if !customView.subviews.contains(blurEffectView) {
       customView.addSubview(blurEffectView)
     }
@@ -217,11 +215,6 @@ open class ContextMenu: NSObject {
     }
   }
 
-  @objc
-  func dismissViewAction(_ sender: UITapGestureRecognizer? = nil){
-    closeAllViews()
-  }
-
   func addCloseButton(){
 
     if !customView.subviews.contains(closeButton) {
@@ -235,13 +228,11 @@ open class ContextMenu: NSObject {
   }
 
   func addTargetedImageView(){
-
     if !customView.subviews.contains(targetedImageView) {
       customView.addSubview(targetedImageView)
     }
 
     let rect = viewTargeted.convert(mainViewRect.origin, to: nil)
-
     targetedImageView.image = getRenderedImage()
     targetedImageView.frame = CGRect(
       x: rect.x,
@@ -291,197 +282,19 @@ open class ContextMenu: NSObject {
     tableView.reloadData()
   }
 
-  func openAllViews(animated: Bool = true){
-    let rect = viewTargeted.convert(mainViewRect.origin, to: nil)
-    viewTargeted.alpha = 0
-    //        customView.backgroundColor = .clear
-    blurEffectView.alpha = 0
-    closeButton.isUserInteractionEnabled = true
-    targetedImageView.alpha = 1
-    targetedImageView.layer.shadowOpacity = 0.0
-    targetedImageView.isUserInteractionEnabled = true
-    targetedImageView.frame = CGRect(x: rect.x, y: rect.y, width: viewTargeted.frame.width, height: viewTargeted.frame.height)
-    menuView.alpha = 0
-    menuView.isUserInteractionEnabled = true
-    menuView.frame = CGRect(x: rect.x, y: rect.y, width: viewTargeted.frame.width, height: viewTargeted.frame.height)
-
-    if animated {
-      UIView.animate(withDuration: 0.2) {
-        self.blurEffectView.alpha = 1
-        self.targetedImageView.layer.shadowOpacity = 0.2
-      }
-    }else{
-      blurEffectView.alpha = 1
-      targetedImageView.layer.shadowOpacity = 0.2
-    }
-    updateTargetedImageViewPosition(animated: animated)
-    onViewAppear?(viewTargeted)
-  }
-
-  func closeAllViews(){
-    NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
-    DispatchQueue.main.async {
-      self.targetedImageView.isUserInteractionEnabled = false
-      self.menuView.isUserInteractionEnabled = false
-      self.closeButton.isUserInteractionEnabled = false
-
-      let rect = self.viewTargeted.convert(self.mainViewRect.origin, to: nil)
-      if self.closeAnimation {
-        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 6, options: [.layoutSubviews, .preferredFramesPerSecond60, .allowUserInteraction], animations: {
-          self.prepareViewsForRemoveFromSuperView(with: rect)
-
-        }) { _ in
-          DispatchQueue.main.async {
-            self.removeAllViewsFromSuperView()
-          }
-        }
-      }else{
-        DispatchQueue.main.async {
-          self.prepareViewsForRemoveFromSuperView(with: rect)
-          self.removeAllViewsFromSuperView()
-        }
-      }
-      self.onViewDismiss?(self.viewTargeted)
-    }
-  }
-
-  func closeAllViews(withAnimation animation: Bool = true) {
-    NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
-    DispatchQueue.main.async {
-      self.targetedImageView.isUserInteractionEnabled = false
-      self.menuView.isUserInteractionEnabled = false
-      self.closeButton.isUserInteractionEnabled = false
-
-      let rect = self.viewTargeted.convert(self.mainViewRect.origin, to: nil)
-      if animation {
-        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 6, options: [.layoutSubviews, .preferredFramesPerSecond60, .allowUserInteraction], animations: {
-          self.prepareViewsForRemoveFromSuperView(with: rect)
-        }) { _ in
-          DispatchQueue.main.async {
-            self.removeAllViewsFromSuperView()
-          }
-        }
-      } else {
-        DispatchQueue.main.async {
-          self.prepareViewsForRemoveFromSuperView(with: rect)
-          self.removeAllViewsFromSuperView()
-        }
-      }
-      self.onViewDismiss?(self.viewTargeted)
-    }
-  }
-
-  func prepareViewsForRemoveFromSuperView(with rect: CGPoint) {
-    blurEffectView.alpha = 0
-    targetedImageView.layer.shadowOpacity = 0
-    targetedImageView.frame = CGRect(x: rect.x, y: rect.y, width: viewTargeted.frame.width, height: viewTargeted.frame.height)
-    menuView.alpha = 0
-    menuView.frame = CGRect(x: rect.x, y: rect.y, width: viewTargeted.frame.width, height: viewTargeted.frame.height)
-  }
-
-  func removeAllViewsFromSuperView() {
-    viewTargeted?.alpha = 1
-    targetedImageView.alpha = 0
-    targetedImageView.removeFromSuperview()
-    blurEffectView.removeFromSuperview()
-    closeButton.removeFromSuperview()
-    menuView.removeFromSuperview()
-    tableView.removeFromSuperview()
-  }
-
   @objc
   func rotated() {
-    if UIDevice.current.orientation.isLandscape, !isLandscape {
-      updateView()
-      isLandscape = true
-      print("Landscape")
-    } else if !UIDevice.current.orientation.isLandscape, isLandscape {
-      updateView()
-      isLandscape = false
-      print("Portrait")
-    }
-  }
-
-  func getZoomedTargetedSize() -> CGRect{
-
-    let rect = viewTargeted.convert(mainViewRect.origin, to: nil)
-    let targetedImageFrame = viewTargeted.frame
-
-    let backgroundWidth = mainViewRect.width - (2 * MenuConstants.HorizontalMarginSpace)
-    let backgroundHeight = mainViewRect.height - MenuConstants.TopMarginSpace - MenuConstants.BottomMarginSpace
-
-    var zoomFactor = MenuConstants.MaxZoom
-    var updatedWidth = targetedImageFrame.width // * zoomFactor
-    var updatedHeight = targetedImageFrame.height // * zoomFactor
-
-    if backgroundWidth > backgroundHeight {
-
-      let zoomFactorHorizontalWithMenu = (backgroundWidth - MenuConstants.MenuWidth - MenuConstants.MenuMarginSpace) / updatedWidth
-      let zoomFactorVerticalWithMenu = backgroundHeight / updatedHeight
-
-      if zoomFactorHorizontalWithMenu < zoomFactorVerticalWithMenu {
-        zoomFactor = zoomFactorHorizontalWithMenu
-      }else{
-        zoomFactor = zoomFactorVerticalWithMenu
-      }
-      if zoomFactor > MenuConstants.MaxZoom {
-        zoomFactor = MenuConstants.MaxZoom
-      }
-
-      // Menu Height
-      if menuHeight > backgroundHeight {
-        menuHeight = backgroundHeight + MenuConstants.MenuMarginSpace
-      }
-    } else {
-
-      let zoomFactorHorizontalWithMenu = backgroundWidth / updatedWidth
-      let zoomFactorVerticalWithMenu = backgroundHeight / (updatedHeight + menuHeight + MenuConstants.MenuMarginSpace)
-
-      if zoomFactorHorizontalWithMenu < zoomFactorVerticalWithMenu {
-        zoomFactor = zoomFactorHorizontalWithMenu
-      }else{
-        zoomFactor = zoomFactorVerticalWithMenu
-      }
-      if zoomFactor > MenuConstants.MaxZoom {
-        zoomFactor = MenuConstants.MaxZoom
-      }else if zoomFactor < MenuConstants.MinZoom {
-        zoomFactor = MenuConstants.MinZoom
-      }
-    }
-
-    updatedWidth = (updatedWidth * zoomFactor)
-    updatedHeight = (updatedHeight * zoomFactor)
-
-    let updatedX = rect.x - (updatedWidth - targetedImageFrame.width) / 2
-    let updatedY = rect.y - (updatedHeight - targetedImageFrame.height) / 2
-
-    return CGRect(x: updatedX, y: updatedY, width: updatedWidth, height: updatedHeight)
-
-  }
-
-  func fixTargetedImageViewExtrudings() {
-
-    if tvY > mainViewRect.height - MenuConstants.BottomMarginSpace - tvH {
-      tvY = mainViewRect.height - MenuConstants.BottomMarginSpace - tvH
-    }
-    else if tvY < MenuConstants.TopMarginSpace {
-      tvY = MenuConstants.TopMarginSpace
-    }
-
-    if tvX < MenuConstants.HorizontalMarginSpace {
-      tvX = MenuConstants.HorizontalMarginSpace
-//            mX = MenuConstants.HorizontalMarginSpace
-    }
-    else if tvX > mainViewRect.width - MenuConstants.HorizontalMarginSpace - tvW {
-      tvX = mainViewRect.width - MenuConstants.HorizontalMarginSpace - tvW
-//            mX = mainViewRect.width - MenuConstants.HorizontalMarginSpace - mW
-    }
-
-//        if mY
+    closeAllViews(withAnimation: false)
+//    if UIDevice.current.orientation.isLandscape, !isLandscape {
+//      updateView()
+//      isLandscape = true
+//    } else if !UIDevice.current.orientation.isLandscape, isLandscape {
+//      updateView()
+//      isLandscape = false
+//    }
   }
 
   func updateHorizontalTargetedImageViewRect(){
-
     let rightClippedSpace = (tvW + MenuConstants.MenuMarginSpace + mW + tvX + MenuConstants.HorizontalMarginSpace) - mainViewRect.width
     let leftClippedSpace = -(tvX - MenuConstants.MenuMarginSpace - mW - MenuConstants.HorizontalMarginSpace)
 
@@ -505,14 +318,11 @@ open class ContextMenu: NSObject {
           mX = tvX + tvW + MenuConstants.MenuMarginSpace
         }
       }
-    }
-    else if rightClippedSpace > 0 {
+    } else if rightClippedSpace > 0 {
       mX = tvX - MenuConstants.MenuMarginSpace - mW
-    }
-    else if leftClippedSpace > 0 {
+    } else if leftClippedSpace > 0 {
       mX = tvX + MenuConstants.MenuMarginSpace + tvW
-    }
-    else{
+    } else {
       mX = tvX + MenuConstants.MenuMarginSpace + tvW
     }
 
@@ -525,101 +335,6 @@ open class ContextMenu: NSObject {
     }
     else if (tvY + mH) > (mainViewRect.height - MenuConstants.BottomMarginSpace){
       mY = tvY - ((tvY + mH) - (mainViewRect.height - MenuConstants.BottomMarginSpace))
-    }
-  }
-
-  func updateVerticalTargetedImageViewRect(){
-
-    let bottomClippedSpace = (tvH + MenuConstants.MenuMarginSpace + mH + tvY + MenuConstants.BottomMarginSpace) - mainViewRect.height
-    let topClippedSpace = -(tvY - MenuConstants.MenuMarginSpace - mH - MenuConstants.TopMarginSpace)
-
-    // not enought space down
-
-    if topClippedSpace > 0, bottomClippedSpace > 0 {
-
-      let diffY = mainViewRect.height - (mH + MenuConstants.MenuMarginSpace + tvH + MenuConstants.TopMarginSpace + MenuConstants.BottomMarginSpace)
-      if diffY > 0 {
-        if (tvY + tvH / 2) > mainViewRect.height / 2 { //down
-          tvY = tvY + topClippedSpace
-          mY = tvY - MenuConstants.MenuMarginSpace - mH
-        }else{ //up
-          tvY = tvY - bottomClippedSpace
-          mY = tvY + MenuConstants.MenuMarginSpace + tvH
-        }
-      } else {
-        if (tvY + tvH / 2) > mainViewRect.height / 2 { //down
-          tvY = mainViewRect.height - MenuConstants.BottomMarginSpace - tvH
-          mY = MenuConstants.TopMarginSpace
-          mH = mainViewRect.height - MenuConstants.TopMarginSpace - MenuConstants.BottomMarginSpace - MenuConstants.MenuMarginSpace - tvH
-        }else{ //up
-          tvY = MenuConstants.TopMarginSpace
-          mY = tvY + tvH + MenuConstants.MenuMarginSpace
-          mH = mainViewRect.height - MenuConstants.TopMarginSpace - MenuConstants.BottomMarginSpace - MenuConstants.MenuMarginSpace - tvH
-        }
-      }
-    }
-    else if bottomClippedSpace > 0 {
-      mY = tvY - MenuConstants.MenuMarginSpace - mH
-    }
-    else if topClippedSpace > 0 {
-      mY = tvY + MenuConstants.MenuMarginSpace + tvH
-    }
-    else{
-      mY = tvY + MenuConstants.MenuMarginSpace + tvH
-    }
-
-  }
-
-  func updateTargetedImageViewRect(){
-
-    mainViewRect = customView.frame
-
-    let targetedImagePosition = getZoomedTargetedSize()
-
-    tvH = targetedImagePosition.height
-    tvW = targetedImagePosition.width
-    tvY = targetedImagePosition.origin.y
-    tvX = targetedImagePosition.origin.x
-    mH = menuHeight
-    mW = MenuConstants.MenuWidth
-    mY = tvY + MenuConstants.MenuMarginSpace
-    mX = MenuConstants.HorizontalMarginSpace
-
-    fixTargetedImageViewExtrudings()
-
-    let backgroundWidth = mainViewRect.width - (2 * MenuConstants.HorizontalMarginSpace)
-    let backgroundHeight = mainViewRect.height - MenuConstants.TopMarginSpace - MenuConstants.BottomMarginSpace
-
-    if backgroundHeight > backgroundWidth {
-      updateVerticalTargetedImageViewRect()
-    }
-    else{
-      updateHorizontalTargetedImageViewRect()
-    }
-
-    tableView.frame = CGRect(x: 0, y: 0, width: mW, height: mH)
-    tableView.layoutIfNeeded()
-
-  }
-
-  func updateTargetedImageViewPosition(animated: Bool = true){
-
-    updateTargetedImageViewRect()
-    if animated {
-      UIView.animate(
-        withDuration: 0.2,
-        delay: 0,
-        usingSpringWithDamping: 0.9,
-        initialSpringVelocity: 6,
-        options: [.layoutSubviews, .preferredFramesPerSecond60, .allowUserInteraction],
-        animations:
-        { [weak self] in
-
-          self?.updateTargetedImageViewPositionFrame()
-
-        })
-    }else{
-      updateTargetedImageViewPositionFrame()
     }
   }
 
@@ -676,6 +391,273 @@ open class ContextMenu: NSObject {
   private var mW: CGFloat = 0.0
   private var mY: CGFloat = 0.0
   private var mX: CGFloat = 0.0
+
+  @objc
+  private func dismissViewAction(_ sender: UITapGestureRecognizer? = nil){
+    closeAllViews()
+  }
+
+  private func openAllViews(animated: Bool = true) {
+    let rect = viewTargeted.convert(mainViewRect.origin, to: nil)
+    viewTargeted.alpha = 0
+    //        customView.backgroundColor = .clear
+    blurEffectView.alpha = 0
+    closeButton.isUserInteractionEnabled = true
+    targetedImageView.alpha = 1
+    targetedImageView.layer.shadowOpacity = 0.0
+    targetedImageView.isUserInteractionEnabled = true
+    targetedImageView.frame = CGRect(x: rect.x, y: rect.y, width: viewTargeted.frame.width, height: viewTargeted.frame.height)
+    menuView.alpha = 0
+    menuView.isUserInteractionEnabled = true
+    menuView.frame = CGRect(x: rect.x, y: rect.y, width: viewTargeted.frame.width, height: viewTargeted.frame.height)
+
+    if animated {
+      UIView.animate(withDuration: 0.2) {
+        self.blurEffectView.alpha = 1
+        self.targetedImageView.layer.shadowOpacity = 0.2
+      }
+    } else {
+      blurEffectView.alpha = 1
+      targetedImageView.layer.shadowOpacity = 0.2
+    }
+    updateTargetedImageViewPosition(animated: animated)
+    onViewAppear?(viewTargeted)
+  }
+
+  private func closeAllViews(){
+    NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
+    DispatchQueue.main.async {
+      self.targetedImageView.isUserInteractionEnabled = false
+      self.menuView.isUserInteractionEnabled = false
+      self.closeButton.isUserInteractionEnabled = false
+
+      let rect = self.viewTargeted.convert(self.mainViewRect.origin, to: nil)
+      if self.closeAnimation {
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 6, options: [.layoutSubviews, .preferredFramesPerSecond60, .allowUserInteraction], animations: {
+          self.prepareViewsForRemoveFromSuperView(with: rect)
+
+        }) { _ in
+          DispatchQueue.main.async {
+            self.removeAllViewsFromSuperView()
+          }
+        }
+      } else {
+        DispatchQueue.main.async {
+          self.prepareViewsForRemoveFromSuperView(with: rect)
+          self.removeAllViewsFromSuperView()
+        }
+      }
+      self.onViewDismiss?(self.viewTargeted)
+    }
+  }
+
+  private func closeAllViews(withAnimation animation: Bool = true) {
+    NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
+    DispatchQueue.main.async {
+      self.targetedImageView.isUserInteractionEnabled = false
+      self.menuView.isUserInteractionEnabled = false
+      self.closeButton.isUserInteractionEnabled = false
+
+      let rect = self.viewTargeted.convert(self.mainViewRect.origin, to: nil)
+      if animation {
+        UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.8, initialSpringVelocity: 6, options: [.layoutSubviews, .preferredFramesPerSecond60, .allowUserInteraction], animations: {
+          self.prepareViewsForRemoveFromSuperView(with: rect)
+        }) { _ in
+          DispatchQueue.main.async {
+            self.removeAllViewsFromSuperView()
+          }
+        }
+      } else {
+        DispatchQueue.main.async {
+          self.prepareViewsForRemoveFromSuperView(with: rect)
+          self.removeAllViewsFromSuperView()
+        }
+      }
+      self.onViewDismiss?(self.viewTargeted)
+    }
+  }
+
+  private func prepareViewsForRemoveFromSuperView(with rect: CGPoint) {
+    blurEffectView.alpha = 0
+    targetedImageView.layer.shadowOpacity = 0
+    targetedImageView.frame = CGRect(x: rect.x, y: rect.y, width: viewTargeted.frame.width, height: viewTargeted.frame.height)
+    menuView.alpha = 0
+    menuView.frame = CGRect(x: rect.x, y: rect.y, width: viewTargeted.frame.width, height: viewTargeted.frame.height)
+  }
+
+  private func removeAllViewsFromSuperView() {
+    viewTargeted?.alpha = 1
+    targetedImageView.alpha = 0
+    targetedImageView.removeFromSuperview()
+    blurEffectView.removeFromSuperview()
+    closeButton.removeFromSuperview()
+    menuView.removeFromSuperview()
+    tableView.removeFromSuperview()
+  }
+
+  private func getZoomedTargetedSize() -> CGRect {
+    let rect = viewTargeted.convert(mainViewRect.origin, to: nil)
+    let targetedImageFrame = viewTargeted.frame
+
+    let backgroundWidth = mainViewRect.width - (2 * MenuConstants.HorizontalMarginSpace)
+    let backgroundHeight = mainViewRect.height - MenuConstants.TopMarginSpace - MenuConstants.BottomMarginSpace
+
+    var zoomFactor = MenuConstants.MaxZoom
+    var updatedWidth = targetedImageFrame.width // * zoomFactor
+    var updatedHeight = targetedImageFrame.height // * zoomFactor
+
+    if backgroundWidth > backgroundHeight {
+
+      let zoomFactorHorizontalWithMenu = (backgroundWidth - MenuConstants.MenuWidth - MenuConstants.MenuMarginSpace) / updatedWidth
+      let zoomFactorVerticalWithMenu = backgroundHeight / updatedHeight
+
+      if zoomFactorHorizontalWithMenu < zoomFactorVerticalWithMenu {
+        zoomFactor = zoomFactorHorizontalWithMenu
+      } else {
+        zoomFactor = zoomFactorVerticalWithMenu
+      }
+      if zoomFactor > MenuConstants.MaxZoom {
+        zoomFactor = MenuConstants.MaxZoom
+      }
+
+      // Menu Height
+      if menuHeight > backgroundHeight {
+        menuHeight = backgroundHeight + MenuConstants.MenuMarginSpace
+      }
+    } else {
+
+      let zoomFactorHorizontalWithMenu = backgroundWidth / updatedWidth
+      let zoomFactorVerticalWithMenu = backgroundHeight / (updatedHeight + menuHeight + MenuConstants.MenuMarginSpace)
+
+      if zoomFactorHorizontalWithMenu < zoomFactorVerticalWithMenu {
+        zoomFactor = zoomFactorHorizontalWithMenu
+      } else {
+        zoomFactor = zoomFactorVerticalWithMenu
+      }
+      if zoomFactor > MenuConstants.MaxZoom {
+        zoomFactor = MenuConstants.MaxZoom
+      } else if zoomFactor < MenuConstants.MinZoom {
+        zoomFactor = MenuConstants.MinZoom
+      }
+    }
+
+    updatedWidth = (updatedWidth * zoomFactor)
+    updatedHeight = (updatedHeight * zoomFactor)
+
+    let updatedX = rect.x - (updatedWidth - targetedImageFrame.width) / 2
+    let updatedY = rect.y - (updatedHeight - targetedImageFrame.height) / 2
+
+    return CGRect(x: updatedX, y: updatedY, width: updatedWidth, height: updatedHeight)
+
+  }
+
+  private func fixTargetedImageViewExtrudings() {
+    if tvY > mainViewRect.height - MenuConstants.BottomMarginSpace - tvH {
+      tvY = mainViewRect.height - MenuConstants.BottomMarginSpace - tvH
+    } else if tvY < MenuConstants.TopMarginSpace {
+      tvY = MenuConstants.TopMarginSpace
+    }
+
+    if tvX < MenuConstants.HorizontalMarginSpace {
+      tvX = MenuConstants.HorizontalMarginSpace
+      mX = MenuConstants.HorizontalMarginSpace // was comment
+    } else if tvX > mainViewRect.width - MenuConstants.HorizontalMarginSpace - tvW {
+      tvX = mainViewRect.width - MenuConstants.HorizontalMarginSpace - tvW
+      mX = mainViewRect.width - MenuConstants.HorizontalMarginSpace - mW // was comment
+    } else {
+      if tvX + mW + MenuConstants.HorizontalMarginSpace >= mainViewRect.width {
+        mX = mainViewRect.width - MenuConstants.HorizontalMarginSpace - mW
+      } else {
+        mX = tvX
+      }
+    }
+  }
+
+  private func updateVerticalTargetedImageViewRect() {
+
+    let bottomClippedSpace = (tvH + MenuConstants.MenuMarginSpace + mH + tvY + MenuConstants.BottomMarginSpace) - mainViewRect.height
+    let topClippedSpace = -(tvY - MenuConstants.MenuMarginSpace - mH - MenuConstants.TopMarginSpace)
+
+    // not enought space down
+
+    if topClippedSpace > 0, bottomClippedSpace > 0 {
+      let diffY = mainViewRect.height - (mH + MenuConstants.MenuMarginSpace + tvH + MenuConstants.TopMarginSpace + MenuConstants.BottomMarginSpace)
+      if diffY > 0 {
+        if (tvY + tvH / 2) > mainViewRect.height / 2 { //down
+          tvY = tvY + topClippedSpace
+          mY = tvY - MenuConstants.MenuMarginSpace - mH
+        } else { //up
+          tvY = tvY - bottomClippedSpace
+          mY = tvY + MenuConstants.MenuMarginSpace + tvH
+        }
+      } else {
+        if (tvY + tvH / 2) > mainViewRect.height / 2 { //down
+          tvY = mainViewRect.height - MenuConstants.BottomMarginSpace - tvH
+          mY = MenuConstants.TopMarginSpace
+          mH = mainViewRect.height - MenuConstants.TopMarginSpace - MenuConstants.BottomMarginSpace - MenuConstants.MenuMarginSpace - tvH
+        } else { //up
+          tvY = MenuConstants.TopMarginSpace
+          mY = tvY + tvH + MenuConstants.MenuMarginSpace
+          mH = mainViewRect.height - MenuConstants.TopMarginSpace - MenuConstants.BottomMarginSpace - MenuConstants.MenuMarginSpace - tvH
+        }
+      }
+    } else if bottomClippedSpace > 0 {
+      mY = tvY - MenuConstants.MenuMarginSpace - mH
+    } else if topClippedSpace > 0 {
+      mY = tvY + MenuConstants.MenuMarginSpace + tvH
+    } else{
+      mY = tvY + MenuConstants.MenuMarginSpace + tvH
+    }
+  }
+
+  private func updateTargetedImageViewRect() {
+
+    mainViewRect = customView.frame
+
+    let targetedImagePosition = getZoomedTargetedSize()
+
+    tvH = targetedImagePosition.height
+    tvW = targetedImagePosition.width
+    tvY = targetedImagePosition.origin.y
+    tvX = targetedImagePosition.origin.x
+    mH = menuHeight
+    mW = MenuConstants.MenuWidth
+    mY = tvY + MenuConstants.MenuMarginSpace
+    mX = MenuConstants.HorizontalMarginSpace
+
+    fixTargetedImageViewExtrudings()
+
+    let backgroundWidth = mainViewRect.width - (2 * MenuConstants.HorizontalMarginSpace)
+    let backgroundHeight = mainViewRect.height - MenuConstants.TopMarginSpace - MenuConstants.BottomMarginSpace
+
+    if backgroundHeight > backgroundWidth {
+      updateVerticalTargetedImageViewRect()
+    } else {
+      updateHorizontalTargetedImageViewRect()
+    }
+
+    tableView.frame = CGRect(x: 0, y: 0, width: mW, height: mH)
+    tableView.layoutIfNeeded()
+  }
+
+  private func updateTargetedImageViewPosition(animated: Bool = true) {
+    updateTargetedImageViewRect()
+    if animated {
+      UIView.animate(
+        withDuration: 0.2,
+        delay: 0,
+        usingSpringWithDamping: 0.9,
+        initialSpringVelocity: 6,
+        options: [.layoutSubviews, .preferredFramesPerSecond60, .allowUserInteraction],
+        animations:
+        { [weak self] in
+          self?.updateTargetedImageViewPositionFrame()
+        })
+    } else {
+      updateTargetedImageViewPositionFrame()
+    }
+  }
+
 }
 
 // MARK: UITableViewDataSource, UITableViewDelegate
@@ -715,13 +697,12 @@ extension ContextMenu: UITableViewDataSource, UITableViewDelegate {
   open func tableView(_ tableView: UITableView, estimatedHeightForRowAt indexPath: IndexPath) -> CGFloat {
     MenuConstants.ItemDefaultHeight
   }
-
 }
 
 // MARK: - ClosureSleeve
 
 @objc
-class ClosureSleeve: NSObject {
+final class ClosureSleeve: NSObject {
 
   // MARK: Lifecycle
 
@@ -749,7 +730,7 @@ extension UIControl {
 
 // MARK: - ContextMenuCell
 
-open class ContextMenuCell: UITableViewCell {
+final class ContextMenuCell: UITableViewCell {
 
   // MARK: Lifecycle
 
@@ -772,13 +753,9 @@ open class ContextMenuCell: UITableViewCell {
   @available(*, unavailable)
   required public init?(coder _: NSCoder) { fatalError() }
 
-  // MARK: Open
+  // MARK: Public
 
-  override open func setSelected(_ selected: Bool, animated: Bool) {
-    super.setSelected(selected, animated: animated)
-  }
-
-  override open func setHighlighted(_ highlighted: Bool, animated: Bool) {
+  override public func setHighlighted(_ highlighted: Bool, animated: Bool) {
     if highlighted {
       contentView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.3)
     } else {
@@ -786,21 +763,14 @@ open class ContextMenuCell: UITableViewCell {
     }
   }
 
-  override open func prepareForReuse() {
-    super.prepareForReuse()
-
-    titleLabel.text = nil
-    iconImageView.image = nil
-  }
-
-  open func setup() {
-    titleLabel.text = item.title
+  public func setup() {
+    titleLabel.text = item?.title
     if let menuConstants = style {
       titleLabel.font = menuConstants.LabelDefaultFont
     }
-    iconImageView.image = item.image
+    iconImageView.image = item?.image
     iconImageView.tintColor = UIColor.dark
-    iconImageView.isHidden = item.image == nil
+    iconImageView.isHidden = item?.image == nil
   }
 
   // MARK: Internal
@@ -809,7 +779,7 @@ open class ContextMenuCell: UITableViewCell {
 
   weak var contextMenu: ContextMenu?
   weak var tableView: UITableView?
-  var item: ContextMenuItem!
+  var item: ContextMenuItem?
   var style: ContextMenuConstants? = nil
 
   // MARK: Private

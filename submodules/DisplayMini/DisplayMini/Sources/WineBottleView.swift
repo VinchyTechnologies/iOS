@@ -108,11 +108,9 @@ public final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDel
       stackView.bottomAnchor.constraint(equalTo: bottomAnchor, constant: -10),
     ])
 
-    if UIDevice.current.userInterfaceIdiom == .phone {
-      longPressedGesture.minimumPressDuration = 0.45
-      longPressedGesture.delegate = self
-      addGestureRecognizer(longPressedGesture)
-    }
+    longPressedGesture.minimumPressDuration = 0.45
+    longPressedGesture.delegate = self
+    addGestureRecognizer(longPressedGesture)
   }
 
   required init?(coder: NSCoder) { fatalError() }
