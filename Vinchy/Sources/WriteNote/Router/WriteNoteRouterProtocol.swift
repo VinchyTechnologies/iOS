@@ -6,8 +6,11 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import Database
+import UIKit.UIView
 
 protocol WriteNoteRouterProtocol: AnyObject {
-  func pop()
+  func dismiss()
+  func showAlertYouDidntSaveNote(text: String?, titleText: String?, subtitleText: String?, okText: String?, cancelText: String?, barButtonItem: UIBarButtonItem?)
+  func showAlertToDelete(note: VNote, titleText: String?, subtitleText: String?, okText: String?, cancelText: String?, barButtonItem: UIBarButtonItem?)
 }

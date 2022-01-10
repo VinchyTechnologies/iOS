@@ -30,8 +30,4 @@ final class NotesRouter {
 // MARK: NotesRouterProtocol
 
 extension NotesRouter: NotesRouterProtocol {
-  func pushToWriteViewController(note: VNote) {
-    let controller = Assembly.buildWriteNoteViewController(for: note)
-    viewController?.navigationController?.pushViewController(controller, animated: true)
-  }
 }

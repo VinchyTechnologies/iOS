@@ -35,6 +35,15 @@ final class WriteNoteViewController: UIViewController {
     super.viewDidLoad()
     view.backgroundColor = .mainBackground
 
+    if isModal {
+      let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
+      navigationItem.leftBarButtonItem = UIBarButtonItem(
+        image: UIImage(systemName: "chevron.down", withConfiguration: imageConfig),
+        style: .plain,
+        target: self,
+        action: #selector(didTapCloseBarButtonItem(_:)))
+    }
+
     navigationItem.largeTitleDisplayMode = .never
     navigationItem.rightBarButtonItem = UIBarButtonItem(customView: saveButton)
     view.addSubview(textView)
@@ -80,6 +89,11 @@ final class WriteNoteViewController: UIViewController {
     attribute: .bottom,
     multiplier: 1,
     constant: -16)
+
+  @objc
+  private func didTapCloseBarButtonItem(_ barButtonItem: UIBarButtonItem) {
+    interactor?.didTapClose(text: textView.text, barButtonItem: barButtonItem)
+  }
 
   @objc
   private func adjustForKeyboard(notification: Notification) {

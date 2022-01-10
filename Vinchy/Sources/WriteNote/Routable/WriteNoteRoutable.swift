@@ -15,41 +15,17 @@ import VinchyUI
 // MARK: - WriteNoteRoutable
 
 extension WriteNoteRoutable {
-  func pushToWriteViewController(note: VNote) {
-    let controller = Assembly.buildWriteNoteViewController(for: note)
-    guard let navigationController = UIApplication.topViewController()?.navigationController else {
-      presentWriteViewController(note: note)
-      return
-    }
-    navigationController.pushViewController(controller, animated: true)
-  }
-
-  func pushToWriteViewController(wine: Wine) {
-    let controller = Assembly.buildWriteNoteViewController(for: wine)
-    guard let navigationController = UIApplication.topViewController()?.navigationController else {
-      presentWriteViewController(wine: wine)
-      return
-    }
-    navigationController.pushViewController(controller, animated: true)
-  }
-
   func presentWriteViewController(wine: Wine) {
-    let controller = Assembly.buildWriteNoteViewController(for: wine)
+    let controller = WriteNoteAssembly.assemblyModule(input: .init(wine: .firstTime(wine: wine)))
     let navigationController = VinchyNavigationController(rootViewController: controller)
-    navigationController.modalPresentationStyle = .pageSheet
-    UIApplication.topViewController()?.present(
-      navigationController,
-      animated: true,
-      completion: nil)
+    navigationController.modalPresentationStyle = .fullScreen
+    UIApplication.topViewController()?.present(navigationController, animated: true)
   }
 
   func presentWriteViewController(note: VNote) {
-    let controller = Assembly.buildWriteNoteViewController(for: note)
+    let controller = WriteNoteAssembly.assemblyModule(input: .init(wine: .database(note: note)))
     let navigationController = VinchyNavigationController(rootViewController: controller)
-    navigationController.modalPresentationStyle = .pageSheet
-    UIApplication.topViewController()?.present(
-      navigationController,
-      animated: true,
-      completion: nil)
+    navigationController.modalPresentationStyle = .fullScreen
+    UIApplication.topViewController()?.present(navigationController, animated: true)
   }
 }

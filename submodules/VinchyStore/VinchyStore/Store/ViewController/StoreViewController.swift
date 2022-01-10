@@ -103,7 +103,7 @@ final class StoreViewController: CollectionViewController {
   private var sections: [SectionModel] {
     viewModel.sections.compactMap { section in
       switch section {
-      case .logo(let itemID, let content):
+      case .logo(_, let content):
         let width = collectionViewSize.width - 48
         return SectionModel(dataID: UUID()) {
           LogoRow.itemModel(
@@ -114,7 +114,7 @@ final class StoreViewController: CollectionViewController {
         .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 8, right: 24))
         .flowLayoutItemSize(.init(width: width, height: content.height(for: width)))
 
-      case .title(let itemID, let content):
+      case .title(_, let content):
         let width: CGFloat = collectionViewSize.width - 48
         let height: CGFloat = Label.height(
           for: content,
@@ -129,7 +129,7 @@ final class StoreViewController: CollectionViewController {
         .flowLayoutItemSize(.init(width: width, height: height))
         .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 8, right: 24))
 
-      case .address(let itemID, let content):
+      case .address(_, let content):
         let width: CGFloat = collectionViewSize.width - 48
         let height: CGFloat = content.height(for: width)
         return SectionModel(dataID: UUID()) {
@@ -163,7 +163,7 @@ final class StoreViewController: CollectionViewController {
         .flowLayoutItemSize(.init(width: width, height: height))
         .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 16, right: 24))
 
-      case .wines(let itemID, let content):
+      case .wines(_, let content):
         return SectionModel(dataID: UUID()) {
           BottlesCollectionView.itemModel(
             dataID: UUID(),
@@ -206,14 +206,14 @@ final class StoreViewController: CollectionViewController {
                 style: .style(with: .miniBold, textAligment: .center))
                 .flowLayoutItemSize(.init(width: width, height: height))
 
-            case .ad(let itemID):
+            case .ad:
               if let adGenerator = adGenerator {
                 return adGenerator.generateGoogleAd(width: collectionViewSize.width, rootcontroller: self) as? ItemModeling
               } else {
                 return nil
               }
 
-            case .empty(let itemID, let content):
+            case .empty(_, let content):
               return EmptyView.itemModel(
                 dataID: UUID(),
                 content: content,
@@ -232,7 +232,7 @@ final class StoreViewController: CollectionViewController {
           ])
           .flowLayoutHeaderReferenceSize(.init(width: collectionViewSize.width, height: 50))
 
-      case .loading(let itemID, let shouldCallWillDisplay):
+      case .loading(_, let shouldCallWillDisplay):
         return SectionModel(dataID: UUID()) {
           LoadingView.itemModel(dataID: UUID())
         }

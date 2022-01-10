@@ -126,6 +126,7 @@
 "you_need_to_login_first" = "you need to login first";
 "price" = "price";
 "saved_stores" = "my stores";
+"save_changes" = "save changes?";
 
 // MARK: - Sugar
 "sugar" = "sugar";

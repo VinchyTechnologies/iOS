@@ -126,6 +126,7 @@
 "you_need_to_login_first" = "Сперва Вам необходимо войти";
 "price" = "стоимость";
 "saved_stores" = "Избранные магазины";
+"save_changes" = "сохранить изменения?";
 
 // MARK: - Sugar
 "sugar" = "сахар";

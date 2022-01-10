@@ -103,7 +103,7 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
       image: UIImage(systemName: "square.and.pencil", withConfiguration: imageConfig)?.withTintColor(.blueGray, renderingMode: .alwaysOriginal),
       selectedImage: UIImage(systemName: "square.and.pencil", withConfiguration: imageConfig)?.withTintColor(.accent, renderingMode: .alwaysOriginal))
 
-    let profile = Assembly.buildProfileModule()
+    let profile = buildProfileModule()
     profile.tabBarItem = UITabBarItem(
       title: localized("profile").firstLetterUppercased(),
       image: UIImage(systemName: "person.circle", withConfiguration: imageConfig)?.withTintColor(.blueGray, renderingMode: .alwaysOriginal),
@@ -183,6 +183,12 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
   // MARK: Private
 
   private var debugTapCounter: (Double, Int) = (0.0, 0)
+
+  private func buildProfileModule() -> VinchyNavigationController {
+    let controller = MoreAssembly.assemblyModule()
+    let navController = VinchyNavigationController(rootViewController: controller)
+    return navController
+  }
 
   private func openDebugSettings() {
     if let viewController = viewControllers?.last {

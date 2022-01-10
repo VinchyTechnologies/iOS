@@ -251,9 +251,9 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
       case .success(let response):
         let contextMenuWine = response
         if let note = notesRepository.findAll().first(where: { $0.wineID == wineID }) {
-          self.contextMenuRouter.pushToWriteViewController(note: note)
+          self.contextMenuRouter.presentWriteViewController(note: note)
         } else {
-          self.contextMenuRouter.pushToWriteViewController(wine: contextMenuWine)
+          self.contextMenuRouter.presentWriteViewController(wine: contextMenuWine)
         }
 
       case .failure(let errorResponse):
@@ -395,9 +395,9 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
   func didTapNotes() {
     guard let wine = wine else { return }
     if let note = notesRepository.findAll().first(where: { $0.wineID == wine.id }) {
-      router.pushToWriteViewController(note: note)
+      router.presentWriteViewController(note: note)
     } else {
-      router.pushToWriteViewController(wine: wine)
+      router.presentWriteViewController(wine: wine)
     }
   }
 

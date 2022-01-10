@@ -71,7 +71,7 @@ public final class AdItemView: UIView, EpoxyableView {
 
   // MARK: Private
 
-  private static var adSize: GADAdSize = kGADAdSizeMediumRectangle
+  private static var adSize: GADAdSize = GADAdSizeMediumRectangle
 }
 
 // MARK: GADBannerViewDelegate

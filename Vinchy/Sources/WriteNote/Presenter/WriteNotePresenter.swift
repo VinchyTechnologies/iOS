@@ -29,6 +29,30 @@ final class WriteNotePresenter {
 
 extension WriteNotePresenter: WriteNotePresenterProtocol {
 
+  var deleteTitleText: String? {
+    localized("delete_note").firstLetterUppercased()
+  }
+
+  var deleteConfirmText: String? {
+    localized("delete").firstLetterUppercased()
+  }
+
+  var subtitleDeleteText: String? {
+    localized("this_action_cannot_to_be_undone").firstLetterUppercased()
+  }
+
+  var areYouSureToSaveTitleText: String? {
+    localized("save_changes").firstLetterUppercased()
+  }
+
+  var cancelText: String? {
+    localized("cancel").firstLetterUppercased()
+  }
+
+  var saveText: String? {
+    localized("save").firstLetterUppercased()
+  }
+
   func setSaveButtonActive(_ flag: Bool) {
     viewController?.setSaveButtonActive(flag)
   }

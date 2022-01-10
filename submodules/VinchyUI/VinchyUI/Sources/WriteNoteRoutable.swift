@@ -10,8 +10,6 @@ import Database
 import VinchyCore
 
 public protocol WriteNoteRoutable: AnyObject {
-  func pushToWriteViewController(note: VNote)
   func presentWriteViewController(note: VNote)
-  func pushToWriteViewController(wine: Wine)
   func presentWriteViewController(wine: Wine)
 }

@@ -8,7 +8,7 @@
 
 import Database
 import Foundation
+import VinchyUI
 
-protocol NotesRouterProtocol: AnyObject {
-  func pushToWriteViewController(note: VNote)
+protocol NotesRouterProtocol: WriteNoteRoutable {
 }

@@ -7,6 +7,7 @@
 //
 
 import Database
+import UIKit.UIBarButtonItem
 
 // MARK: - WriteNoteInteractor
 
@@ -35,6 +36,55 @@ final class WriteNoteInteractor {
 // MARK: WriteNoteInteractorProtocol
 
 extension WriteNoteInteractor: WriteNoteInteractorProtocol {
+
+  func didTapDeleteNote(note: VNote) {
+    notesRepository.remove(note)
+    router.dismiss()
+  }
+
+  func didTapSaveOnAlert(text: String?) {
+    noteText = text
+    didTapSave()
+  }
+
+  func didTapClose(text: String?, barButtonItem: UIBarButtonItem?) {
+    switch input.wine {
+    case .database(let note):
+      if note.noteText == text {
+        router.dismiss()
+      } else if text.isNilOrEmpty {
+        router.showAlertToDelete(
+          note: note,
+          titleText: presenter.deleteTitleText,
+          subtitleText: presenter.subtitleDeleteText,
+          okText: presenter.deleteConfirmText,
+          cancelText: presenter.cancelText,
+          barButtonItem: barButtonItem)
+      } else {
+        router.showAlertYouDidntSaveNote(
+          text: text,
+          titleText: presenter.areYouSureToSaveTitleText,
+          subtitleText: nil,
+          okText: presenter.saveText,
+          cancelText: presenter.cancelText,
+          barButtonItem: barButtonItem)
+      }
+
+    case .firstTime:
+      if text.isNilOrEmpty {
+        router.dismiss()
+      } else {
+        router.showAlertYouDidntSaveNote(
+          text: text,
+          titleText: presenter.areYouSureToSaveTitleText,
+          subtitleText: nil,
+          okText: presenter.saveText,
+          cancelText: presenter.cancelText,
+          barButtonItem: barButtonItem)
+      }
+    }
+  }
+
   func viewDidLoad() {
     switch input.wine {
     case .database(let note):
@@ -48,10 +98,21 @@ extension WriteNoteInteractor: WriteNoteInteractorProtocol {
   func didTapSave() {
     switch input.wine {
     case .database(let note):
-      notesRepository.remove(note)
-      let maxId = notesRepository.findAll().map { $0.id }.max() ?? 0
-      let id = maxId + 1
-      notesRepository.append(VNote(id: id, wineID: note.wineID, wineTitle: note.wineTitle, noteText: noteText ?? ""))
+      if noteText.isNilOrEmpty {
+        router.showAlertToDelete(
+          note: note,
+          titleText: presenter.deleteTitleText,
+          subtitleText: presenter.subtitleDeleteText,
+          okText: presenter.deleteConfirmText,
+          cancelText: presenter.cancelText,
+          barButtonItem: nil)
+        return
+      } else {
+        notesRepository.remove(note)
+        let maxId = notesRepository.findAll().map { $0.id }.max() ?? 0
+        let id = maxId + 1
+        notesRepository.append(VNote(id: id, wineID: note.wineID, wineTitle: note.wineTitle, noteText: noteText ?? ""))
+      }
 
     case .firstTime(let wine):
       guard let noteText = noteText, !noteText.isEmpty else {
@@ -63,7 +124,7 @@ extension WriteNoteInteractor: WriteNoteInteractorProtocol {
       notesRepository.append(VNote(id: id, wineID: wine.id, wineTitle: wine.title, noteText: noteText))
     }
 
-    router.pop()
+    router.dismiss()
   }
 
   func didChangeNoteText(_ text: String?) {

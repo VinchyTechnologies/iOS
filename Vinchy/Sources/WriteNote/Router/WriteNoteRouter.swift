@@ -6,6 +6,7 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
+import Database
 import UIKit
 
 // MARK: - WriteNoteRouter
@@ -35,7 +36,35 @@ final class WriteNoteRouter {
 // MARK: WriteNoteRouterProtocol
 
 extension WriteNoteRouter: WriteNoteRouterProtocol {
-  func pop() {
-    viewController?.navigationController?.popViewController(animated: true)
+  func dismiss() {
+    viewController?.dismiss(animated: true)
+  }
+
+  func showAlertYouDidntSaveNote(text: String?, titleText: String?, subtitleText: String?, okText: String?, cancelText: String?, barButtonItem: UIBarButtonItem?) {
+    let alert = UIAlertController(title: titleText, message: subtitleText, preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: okText, style: .default, handler: { [weak self] _ in
+      self?.interactor?.didTapSaveOnAlert(text: text)
+    }))
+    alert.addAction(UIAlertAction(title: cancelText, style: .cancel, handler: nil))
+
+    alert.view.tintColor = .accent
+    alert.popoverPresentationController?.barButtonItem = barButtonItem
+    alert.popoverPresentationController?.permittedArrowDirections = .up
+
+    viewController?.present(alert, animated: true, completion: nil)
+  }
+
+  func showAlertToDelete(note: VNote, titleText: String?, subtitleText: String?, okText: String?, cancelText: String?, barButtonItem: UIBarButtonItem?) {
+    let alert = UIAlertController(title: titleText, message: subtitleText, preferredStyle: .alert)
+    alert.addAction(UIAlertAction(title: okText, style: .default, handler: { [weak self] _ in
+      self?.interactor?.didTapDeleteNote(note: note)
+    }))
+    alert.addAction(UIAlertAction(title: cancelText, style: .cancel, handler: nil))
+
+    alert.view.tintColor = .accent
+    alert.popoverPresentationController?.barButtonItem = barButtonItem
+    alert.popoverPresentationController?.permittedArrowDirections = .up
+
+    viewController?.present(alert, animated: true, completion: nil)
   }
 }

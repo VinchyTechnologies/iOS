@@ -92,16 +92,8 @@ extension WineDetailRouter: WineDetailRouterProtocol {
     coordinator.presentActivityViewController(items: items, sourceView: sourceView)
   }
 
-  func pushToWriteViewController(note: VNote) {
-    coordinator.pushToWriteViewController(note: note)
-  }
-
   func presentWriteViewController(note: VNote) {
     coordinator.presentWriteViewController(note: note)
-  }
-
-  func pushToWriteViewController(wine: Wine) {
-    coordinator.pushToWriteViewController(wine: wine)
   }
 
   func presentWriteViewController(wine: Wine) {

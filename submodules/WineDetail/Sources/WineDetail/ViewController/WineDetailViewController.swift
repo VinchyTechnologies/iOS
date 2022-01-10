@@ -313,7 +313,7 @@ final class WineDetailViewController: CollectionViewController {
         .flowLayoutItemSize(.init(width: width, height: ButtonView.height))
         .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 16, right: 24))
 
-      case .ad(let itemID):
+      case .ad:
         if input.isAppClip {
           return nil
         } else {

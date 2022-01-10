@@ -292,9 +292,9 @@ extension StoreInteractor: StoreInteractorProtocol {
       case .success(let response):
         let contextMenuWine = response
         if let note = notesRepository.findAll().first(where: { $0.wineID == wineID }) {
-          self.contextMenuRouter.pushToWriteViewController(note: note)
+          self.contextMenuRouter.presentWriteViewController(note: note)
         } else {
-          self.contextMenuRouter.pushToWriteViewController(wine: contextMenuWine)
+          self.contextMenuRouter.presentWriteViewController(wine: contextMenuWine)
         }
 
       case .failure(let errorResponse):

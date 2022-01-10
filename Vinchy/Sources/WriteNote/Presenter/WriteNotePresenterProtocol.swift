@@ -10,6 +10,15 @@ import Database
 import VinchyCore
 
 protocol WriteNotePresenterProtocol: AnyObject {
+
+  var areYouSureToSaveTitleText: String? { get }
+  var cancelText: String? { get }
+  var saveText: String? { get }
+
+  var deleteTitleText: String? { get }
+  var subtitleDeleteText: String? { get }
+  var deleteConfirmText: String? { get }
+
   func setInitialNoteInfo(note: VNote)
   func setInitialNoteInfo(wine: Wine)
   func setPlaceholder()

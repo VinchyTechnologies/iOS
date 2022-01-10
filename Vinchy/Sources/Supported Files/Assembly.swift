@@ -14,8 +14,8 @@ import UIKit
 import VinchyCore
 import WineDetail
 
+@available(*, deprecated, message: "Use routable")
 final class Assembly {
-  @available(*, deprecated, message: "Use routable")
   static func buildDetailModule(wineID: Int64) -> UIViewController {
     let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID, isAppClip: false), coordinator: Coordinator.shared, adGenerator: AdFabric.shared)
     controller.hidesBottomBarWhenPushed = true
@@ -42,23 +42,7 @@ final class Assembly {
     return navController
   }
 
-  static func buildProfileModule() -> VinchyNavigationController {
-    let controller = MoreAssembly.assemblyModule()
-    let navController = VinchyNavigationController(rootViewController: controller)
-    return navController
-  }
 
-  static func buildWriteNoteViewController(for wine: Wine) -> UIViewController {
-    let controller = WriteNoteAssembly.assemblyModule(input: .init(wine: .firstTime(wine: wine)))
-    controller.hidesBottomBarWhenPushed = true
-    return controller
-  }
-
-  static func buildWriteNoteViewController(for note: VNote) -> UIViewController {
-    let controller = WriteNoteAssembly.assemblyModule(input: .init(wine: .database(note: note)))
-    controller.hidesBottomBarWhenPushed = true
-    return controller
-  }
 
   static func buildReviewDetailViewController(
     rate: Double?,

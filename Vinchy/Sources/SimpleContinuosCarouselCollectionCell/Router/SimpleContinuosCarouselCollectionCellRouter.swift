@@ -39,13 +39,11 @@ final class SimpleContinuosCarouselCollectionCellRouter {
 
 extension SimpleContinuosCarouselCollectionCellRouter: SimpleContinuosCarouselCollectionCellRouterProtocol {
   func pushToWriteViewController(note: VNote) {
-    let controller = Assembly.buildWriteNoteViewController(for: note)
-    viewController?.navigationController?.pushViewController(controller, animated: true)
+
   }
 
   func pushToWriteViewController(wine: Wine) {
-    let controller = Assembly.buildWriteNoteViewController(for: wine)
-    viewController?.navigationController?.pushViewController(controller, animated: true)
+
   }
 
   func presentActivityViewController(items: [Any]) {

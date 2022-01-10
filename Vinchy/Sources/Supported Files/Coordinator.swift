@@ -56,7 +56,7 @@ final class Coordinator: ShowcaseRoutable, WineDetailRoutable, WriteNoteRoutable
 
         guard let url = url else { return }
 
-        let items: [Any] = [titleText, url]
+        let items: [Any] = [titleText as Any, url]
         self?.presentActivityViewController(items: items, sourceView: sourceView)
       }
     }
@@ -101,9 +101,9 @@ extension WineViewContextMenuTappable {
       case .success(let response):
         let contextMenuWine = response
         if let note = notesRepository.findAll().first(where: { $0.wineID == wineID }) {
-          self.contextMenuRouter.pushToWriteViewController(note: note)
+          self.contextMenuRouter.presentWriteViewController(note: note)
         } else {
-          self.contextMenuRouter.pushToWriteViewController(wine: contextMenuWine)
+          self.contextMenuRouter.presentWriteViewController(wine: contextMenuWine)
         }
 
       case .failure(let errorResponse):
