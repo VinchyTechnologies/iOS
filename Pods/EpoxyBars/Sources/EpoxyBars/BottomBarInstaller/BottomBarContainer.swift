@@ -22,11 +22,14 @@ public final class BottomBarContainer: BarStackView, InternalBarContainer {
   }
 
   @available(*, unavailable)
-  required public init(style: Style) {
+  required public init(style _: Style) {
     fatalError("init(style:) has not been implemented")
   }
 
   // MARK: Public
+
+  /// The `BottomBarInstaller` that manages this `BottomBarContainer`
+  public internal(set) weak var barInstaller: BottomBarInstaller?
 
   public override var center: CGPoint {
     didSet {
@@ -47,7 +50,7 @@ public final class BottomBarContainer: BarStackView, InternalBarContainer {
     didSet { verifyViewController() }
   }
 
-  public var insetMargins: Bool = true {
+  public var insetMargins = true {
     didSet {
       guard insetMargins != oldValue else { return }
       setNeedsLayout()

@@ -178,7 +178,7 @@ final class StoreInteractor {
         }
       }
 
-    case .hasPersonalRecommendations(_, _):
+    case .hasPersonalRecommendations:
       break
     }
   }

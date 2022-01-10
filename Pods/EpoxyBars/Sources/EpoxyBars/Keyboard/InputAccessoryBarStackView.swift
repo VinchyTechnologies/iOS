@@ -35,15 +35,13 @@ public final class InputAccessoryBarStackView: UIView {
   }
 
   @available(*, unavailable)
-  public required init?(coder: NSCoder) {
+  public required init?(coder _: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
   // MARK: Public
 
   public let barStack: BarStackView
-
-  // MARK: UIView
 
   public override var intrinsicContentSize: CGSize {
     barStack.systemLayoutSizeFitting(UIView.layoutFittingCompressedSize)

@@ -1,9 +1,9 @@
 //
 //  Example
-//  man.li
+//  man
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 #import <Foundation/Foundation.h>
@@ -23,6 +23,8 @@ typedef NS_ENUM (NSInteger, CocoaDebugToolType) {
 };
 
 @interface _OCLogModel : NSObject
+
+@property (nonatomic, copy) NSData *contentData;
 
 @property (nonatomic, copy) NSString *Id;
 @property (nonatomic, copy) NSString *fileInfo;

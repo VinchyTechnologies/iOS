@@ -1,25 +1,25 @@
 //
 //  Example
-//  man.li
+//  man
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 import UIKit
 
 class CrashListViewController: UITableViewController {
-
+    
     var models: [_CrashModel] = [_CrashModel]()
     
     @IBOutlet weak var naviItem: UINavigationItem!
     
     var naviItemTitleLabel: UILabel?
-
+    
     //MARK: - init
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         naviItemTitleLabel = UILabel.init(frame: CGRect(x: 0, y: 0, width: 80, height: 40))
         naviItemTitleLabel?.textAlignment = .center
         naviItemTitleLabel?.textColor = Color.mainGreen
@@ -29,7 +29,7 @@ class CrashListViewController: UITableViewController {
         
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action:#selector(CrashListViewController.deleteCrashes))
-
+        
         tableView.delegate = self
         tableView.dataSource = self
         tableView.tableFooterView = UIView()
@@ -43,9 +43,9 @@ class CrashListViewController: UITableViewController {
         models = []
         CrashStoreManager.shared.resetCrashs()
         
-        dispatch_main_async_safe { [weak self] in
-            self?.tableView.reloadData()
-        }
+        //        dispatch_main_async_safe { [weak self] in
+        tableView.reloadData()
+        //        }
     }
 }
 
@@ -57,12 +57,6 @@ extension CrashListViewController {
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
-        //Otherwise occasionally crash
-        if indexPath.row >= models.count {
-            return UITableViewCell()
-        }
-        
         let cell = tableView.dequeueReusableCell(withIdentifier: "CrashCell", for: indexPath)
             as! CrashCell
         cell.crash = models[indexPath.row]
@@ -90,9 +84,9 @@ extension CrashListViewController {
             guard let models = self?.models else {return}
             CrashStoreManager.shared.removeCrash(models[indexPath.row])
             self?.models.remove(at: indexPath.row)
-            self?.dispatch_main_async_safe { [weak self] in
-                self?.tableView.deleteRows(at: [indexPath], with: .automatic)
-            }
+            //            self?.dispatch_main_async_safe { [weak self] in
+            self?.tableView.deleteRows(at: [indexPath], with: .automatic)
+            //            }
             completionHandler(true)
         }
         
@@ -113,9 +107,9 @@ extension CrashListViewController {
         if (editingStyle == .delete) {
             CrashStoreManager.shared.removeCrash(models[indexPath.row])
             self.models.remove(at: indexPath.row)
-            self.dispatch_main_async_safe { [weak self] in
-                self?.tableView.deleteRows(at: [indexPath], with: .automatic)
-            }
+            //            self.dispatch_main_async_safe { [weak self] in
+            self.tableView.deleteRows(at: [indexPath], with: .automatic)
+            //            }
         }
     }
 }

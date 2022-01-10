@@ -1,9 +1,9 @@
 //
 //  Example
-//  man.li
+//  man
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 enum EditType {
@@ -23,14 +23,14 @@ class JsonViewController: UIViewController {
     @IBOutlet weak var naviItem: UINavigationItem!
     
     var naviItemTitleLabel: UILabel?
-
+    
     var editType: EditType  = .unknown
     var httpModel: _HttpModel?
     var detailModel: NetworkDetailModel?
     
-    //编辑过的url
+    //Edited url
     var editedURLString: String?
-    //编辑过的content
+    //Edited content
     var editedContent: String?
     
     //log
@@ -38,7 +38,7 @@ class JsonViewController: UIViewController {
     var logModels: [_OCLogModel]?
     var logModel: _OCLogModel?
     var justCancelCallback:(() -> Void)?
-
+    
     static func instanceFromStoryBoard() -> JsonViewController {
         let storyboard = UIStoryboard(name: "Network", bundle: Bundle(for: CocoaDebug.self))
         return storyboard.instantiateViewController(withIdentifier: "JsonViewController") as! JsonViewController
@@ -46,25 +46,25 @@ class JsonViewController: UIViewController {
     
     //MARK: - tool
     
-    //确定格式(JSON/Form)
+    //detect format (JSON/Form)
     func detectSerializer() {
         guard let content = detailModel?.content else {
-            detailModel?.requestSerializer = RequestSerializer.JSON//默认JSON格式
+            detailModel?.requestSerializer = RequestSerializer.JSON//default JSON format
             return
         }
         
         if let _ = content.stringToDictionary() {
-            //JSON格式
+            //JSON format
             detailModel?.requestSerializer = RequestSerializer.JSON
         } else {
-            //Form格式
+            //Form format
             detailModel?.requestSerializer = RequestSerializer.form
             
-                if let jsonString = detailModel?.content?.formStringToJsonString() {
-                    textView.text = jsonString
-                    detailModel?.requestSerializer = RequestSerializer.JSON
-                    detailModel?.content = textView.text
-                }
+            if let jsonString = detailModel?.content?.formStringToJsonString() {
+                textView.text = jsonString
+                detailModel?.requestSerializer = RequestSerializer.JSON
+                detailModel?.content = textView.text
+            }
         }
     }
     
@@ -72,12 +72,12 @@ class JsonViewController: UIViewController {
     //MARK: - init
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-//        navigationController?.hidesBarsOnSwipe = true
+        //        navigationController?.hidesBarsOnSwipe = true
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-//        navigationController?.hidesBarsOnSwipe = false
+        //        navigationController?.hidesBarsOnSwipe = false
         
         if let index = logModels?.firstIndex(where: { (model) -> Bool in
             return model.isSelected == true
@@ -86,7 +86,7 @@ class JsonViewController: UIViewController {
         }
         
         logModel?.isSelected = true
-
+        
         if let justCancelCallback = justCancelCallback {
             justCancelCallback()
         }
@@ -94,7 +94,7 @@ class JsonViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         naviItemTitleLabel = UILabel.init(frame: CGRect(x: 0, y: 0, width: 80, height: 40))
         naviItemTitleLabel?.textAlignment = .center
         naviItemTitleLabel?.textColor = Color.mainGreen
@@ -103,9 +103,9 @@ class JsonViewController: UIViewController {
         naviItem.titleView = naviItemTitleLabel
         
         textView.textContainer.lineFragmentPadding = 15
-//        textView.textContainerInset = .zero
+        //        textView.textContainerInset = .zero
         
-        //判断类型 (默认类型URL)
+        //detect type (default type URL)
         if detailModel?.title == "REQUEST HEADER" {
             editType = .requestHeader
         }
@@ -113,7 +113,7 @@ class JsonViewController: UIViewController {
             editType = .responseHeader
         }
         
-        //设置UI
+        //setup UI
         if editType == .requestHeader
         {
             imageView.isHidden = true
@@ -132,10 +132,8 @@ class JsonViewController: UIViewController {
             textView.isHidden = false
             naviItemTitleLabel?.text = logTitleString
             
-            if let logModel = logModel {
-                textView.text = nil
-                textView.text = logModel.str
-                textView.attributedText = logModel.attr
+            if let data = logModel?.contentData {
+                textView.text = data.dataToString()
             }
         }
         else
@@ -144,7 +142,7 @@ class JsonViewController: UIViewController {
                 imageView.isHidden = true
                 textView.isHidden = false
                 textView.text = content
-                detectSerializer()//确定格式(JSON/Form)
+                detectSerializer()//detect format (JSON/Form)
             }
             if let image = detailModel?.image {
                 textView.isHidden = true

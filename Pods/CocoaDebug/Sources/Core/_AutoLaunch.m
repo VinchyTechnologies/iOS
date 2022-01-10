@@ -1,9 +1,9 @@
 //
 //  Example
-//  man.li
+//  man
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 static const char *kPropertyKey = "kApplicationDidFinishLaunching_CocoaDebug_Key";
@@ -15,7 +15,7 @@ static const char *kPropertyKey = "kApplicationDidFinishLaunching_CocoaDebug_Key
 
 @interface NSObject (CocoaDebugAutoLaunch)
 
-@property (nonatomic, assign) BOOL applicationDidFinishLaunching;
+@property (nonatomic, assign) BOOL cocoadebug_applicationDidFinishLaunching;
 
 @end
 
@@ -23,14 +23,14 @@ static const char *kPropertyKey = "kApplicationDidFinishLaunching_CocoaDebug_Key
 
 #pragma mark - load
 + (void)load {
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(applicationDidFinishLaunchingNotification:) name:UIApplicationDidFinishLaunchingNotification object:nil];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(cocoadebug_applicationDidFinishLaunchingNotification:) name:UIApplicationDidFinishLaunchingNotification object:nil];
 }
 
 #pragma mark - notification
-- (void)applicationDidFinishLaunchingNotification:(NSNotification *)notification {
-    if (self.applicationDidFinishLaunching) {return;}
-    self.applicationDidFinishLaunching = YES;
-
+- (void)cocoadebug_applicationDidFinishLaunchingNotification:(NSNotification *)notification {
+    if (self.cocoadebug_applicationDidFinishLaunching) {return;}
+    self.cocoadebug_applicationDidFinishLaunching = YES;
+    
     Class CocoaDebug = NSClassFromString(@"_TtC10CocoaDebug10CocoaDebug");
     if (CocoaDebug) {
         [[CocoaDebug class] performSelector:@selector(enable)];
@@ -38,12 +38,12 @@ static const char *kPropertyKey = "kApplicationDidFinishLaunching_CocoaDebug_Key
 }
 
 #pragma mark - getter setter
-- (BOOL)applicationDidFinishLaunching {
+- (BOOL)cocoadebug_applicationDidFinishLaunching {
     NSNumber *number = objc_getAssociatedObject(self, kPropertyKey);
     return [number boolValue];
 }
 
-- (void)setApplicationDidFinishLaunching:(BOOL)applicationDidFinishLaunching {
+- (void)setCocoadebug_applicationDidFinishLaunching:(BOOL)applicationDidFinishLaunching {
     NSNumber *number = [NSNumber numberWithBool:applicationDidFinishLaunching];
     objc_setAssociatedObject(self, kPropertyKey, number, OBJC_ASSOCIATION_RETAIN);
 }

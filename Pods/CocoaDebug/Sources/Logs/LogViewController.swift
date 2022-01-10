@@ -1,9 +1,9 @@
 //
 //  Example
-//  man.li
+//  man
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 import UIKit
@@ -122,20 +122,23 @@ class LogViewController: UIViewController {
         
         if selectedSegmentIndex == 0
         {
-            if defaultReloadDataFinish == false {
-                return
+            if defaultReloadDataFinish == false {return}
+            
+            if defaultSearchBar.isHidden != false ||
+                rnSearchBar.isHidden != true ||
+                webSearchBar.isHidden != true {
+                defaultSearchBar.isHidden = false
+                rnSearchBar.isHidden = true
+                webSearchBar.isHidden = true
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1)) { [weak self] in
-                if self?.defaultSearchBar.isHidden == true {
-                    self?.defaultSearchBar.isHidden = false
-                }
+            if defaultTableView.isHidden != false ||
+                rnTableView.isHidden != true ||
+                webTableView.isHidden != true {
+                defaultTableView.isHidden = false
+                rnTableView.isHidden = true
+                webTableView.isHidden = true
             }
-            
-            
-            defaultTableView.isHidden = false
-            rnTableView.isHidden = true
-            webTableView.isHidden = true
             
             if needReloadData == false && defaultModels.count > 0 {return}
             
@@ -147,39 +150,42 @@ class LogViewController: UIViewController {
             
             self.searchLogic(CocoaDebugSettings.shared.logSearchWordNormal ?? "")
             
-            dispatch_main_async_safe { [weak self] in
-                self?.defaultReloadDataFinish = false
-                self?.defaultTableView.reloadData {
-                    self?.defaultReloadDataFinish = true
-                }
-                
-                if needScrollToEnd == false {return}
-                
-                //table下滑到底部
-                guard let count = self?.defaultModels.count else {return}
-                if count > 0 {
-                    guard let firstInDefault = self?.firstInDefault else {return}
-                    self?.defaultTableView.tableViewScrollToBottom(animated: !firstInDefault)
-                    self?.firstInDefault = false
-                }
+            //            dispatch_main_async_safe { [weak self] in
+            self.defaultReloadDataFinish = false
+            self.defaultTableView.reloadData {
+                self.defaultReloadDataFinish = true
             }
+            
+            if needScrollToEnd == false {return}
+            
+            //table下滑到底部
+            //                guard let count = self.defaultModels.count else {return}
+            if self.defaultModels.count > 0 {
+                //                    guard let firstInDefault = self.firstInDefault else {return}
+                self.defaultTableView.tableViewScrollToBottom(animated: !firstInDefault)
+                self.firstInDefault = false
+            }
+            //            }
         }
         else if selectedSegmentIndex == 1
         {
-            if rnReloadDataFinish == false {
-                return
+            if rnReloadDataFinish == false {return}
+            
+            if defaultSearchBar.isHidden != true ||
+                rnSearchBar.isHidden != false ||
+                webSearchBar.isHidden != true {
+                defaultSearchBar.isHidden = true
+                rnSearchBar.isHidden = false
+                webSearchBar.isHidden = true
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1)) { [weak self] in
-                if self?.rnSearchBar.isHidden == true {
-                    self?.rnSearchBar.isHidden = false
-                }
+            if defaultTableView.isHidden != true ||
+                rnTableView.isHidden != false ||
+                webTableView.isHidden != true {
+                defaultTableView.isHidden = true
+                rnTableView.isHidden = false
+                webTableView.isHidden = true
             }
-            
-            
-            defaultTableView.isHidden = true
-            rnTableView.isHidden = false
-            webTableView.isHidden = true
             
             if needReloadData == false && rnModels.count > 0 {return}
             
@@ -191,39 +197,42 @@ class LogViewController: UIViewController {
             
             self.searchLogic(CocoaDebugSettings.shared.logSearchWordRN ?? "")
             
-            dispatch_main_async_safe { [weak self] in
-                self?.rnReloadDataFinish = false
-                self?.rnTableView.reloadData {
-                    self?.rnReloadDataFinish = true
-                }
-                
-                if needScrollToEnd == false {return}
-                
-                //table下滑到底部
-                guard let count = self?.rnModels.count else {return}
-                if count > 0 {
-                    guard let firstInRN = self?.firstInRN else {return}
-                    self?.rnTableView.tableViewScrollToBottom(animated: !firstInRN)
-                    self?.firstInRN = false
-                }
+            //            dispatch_main_async_safe { [weak self] in
+            self.rnReloadDataFinish = false
+            self.rnTableView.reloadData {
+                self.rnReloadDataFinish = true
             }
+            
+            if needScrollToEnd == false {return}
+            
+            //table下滑到底部
+            //                guard let count = self.rnModels.count else {return}
+            if self.rnModels.count > 0 {
+                //                    guard let firstInRN = self.firstInRN else {return}
+                self.rnTableView.tableViewScrollToBottom(animated: !firstInRN)
+                self.firstInRN = false
+            }
+            //            }
         }
         else
         {
-            if webReloadDataFinish == false {
-                return
+            if webReloadDataFinish == false {return}
+            
+            if defaultSearchBar.isHidden != true ||
+                rnSearchBar.isHidden != true ||
+                webSearchBar.isHidden != false {
+                defaultSearchBar.isHidden = true
+                rnSearchBar.isHidden = true
+                webSearchBar.isHidden = false
             }
             
-            DispatchQueue.main.asyncAfter(deadline: .now() + .milliseconds(1)) { [weak self] in
-                if self?.webSearchBar.isHidden == true {
-                    self?.webSearchBar.isHidden = false
-                }
+            if defaultTableView.isHidden != true ||
+                rnTableView.isHidden != true ||
+                webTableView.isHidden != false {
+                defaultTableView.isHidden = true
+                rnTableView.isHidden = true
+                webTableView.isHidden = false
             }
-            
-            
-            defaultTableView.isHidden = true
-            rnTableView.isHidden = true
-            webTableView.isHidden = false
             
             if needReloadData == false && webModels.count > 0 {return}
             
@@ -235,22 +244,22 @@ class LogViewController: UIViewController {
             
             self.searchLogic(CocoaDebugSettings.shared.logSearchWordWeb ?? "")
             
-            dispatch_main_async_safe { [weak self] in
-                self?.webReloadDataFinish = false
-                self?.webTableView.reloadData {
-                    self?.webReloadDataFinish = true
-                }
-                
-                if needScrollToEnd == false {return}
-                
-                //table下滑到底部
-                guard let count = self?.webModels.count else {return}
-                if count > 0 {
-                    guard let firstInWeb = self?.firstInWeb else {return}
-                    self?.webTableView.tableViewScrollToBottom(animated: !firstInWeb)
-                    self?.firstInWeb = false
-                }
+            //            dispatch_main_async_safe { [weak self] in
+            self.webReloadDataFinish = false
+            self.webTableView.reloadData {
+                self.webReloadDataFinish = true
             }
+            
+            if needScrollToEnd == false {return}
+            
+            //table下滑到底部
+            //                guard let count = self.webModels.count else {return}
+            if self.webModels.count > 0 {
+                //                    guard let firstInWeb = self.firstInWeb else {return}
+                self.webTableView.tableViewScrollToBottom(animated: !firstInWeb)
+                self.firstInWeb = false
+            }
+            //            }
         }
     }
     
@@ -274,13 +283,15 @@ class LogViewController: UIViewController {
         }
         
         //notification
-        NotificationCenter.default.addObserver(self, selector: #selector(refreshLogs_notification), name: NSNotification.Name(rawValue: "refreshLogs_CocoaDebug"), object: nil)
-
+        NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "refreshLogs_CocoaDebug"), object: nil, queue: OperationQueue.main) { [weak self] _ in
+            self?.refreshLogs_notification()
+        }
+        
         
         defaultTableView.tableFooterView = UIView()
         defaultTableView.delegate = self
         defaultTableView.dataSource = self
-//        defaultTableView.rowHeight = UITableViewAutomaticDimension
+        //        defaultTableView.rowHeight = UITableViewAutomaticDimension
         defaultSearchBar.delegate = self
         defaultSearchBar.text = CocoaDebugSettings.shared.logSearchWordNormal
         defaultSearchBar.isHidden = true
@@ -294,7 +305,7 @@ class LogViewController: UIViewController {
         rnTableView.tableFooterView = UIView()
         rnTableView.delegate = self
         rnTableView.dataSource = self
-//        rnTableView.rowHeight = UITableViewAutomaticDimension
+        //        rnTableView.rowHeight = UITableViewAutomaticDimension
         rnSearchBar.delegate = self
         rnSearchBar.text = CocoaDebugSettings.shared.logSearchWordRN
         rnSearchBar.isHidden = true
@@ -308,7 +319,7 @@ class LogViewController: UIViewController {
         webTableView.tableFooterView = UIView()
         webTableView.delegate = self
         webTableView.dataSource = self
-//        webTableView.rowHeight = UITableViewAutomaticDimension
+        //        webTableView.rowHeight = UITableViewAutomaticDimension
         webSearchBar.delegate = self
         webSearchBar.text = CocoaDebugSettings.shared.logSearchWordWeb
         webSearchBar.isHidden = true
@@ -332,7 +343,7 @@ class LogViewController: UIViewController {
         }
         
         reloadLogs(needScrollToEnd: true, needReloadData: true)
-
+        
         
         
         //hide searchBar icon
@@ -341,13 +352,13 @@ class LogViewController: UIViewController {
         textFieldInsideSearchBar.leftView = nil
         textFieldInsideSearchBar.backgroundColor = .white
         textFieldInsideSearchBar.returnKeyType = .default
-
+        
         let textFieldInsideSearchBar2 = rnSearchBar.value(forKey: "searchField") as! UITextField
         textFieldInsideSearchBar2.leftViewMode = .never
         textFieldInsideSearchBar2.leftView = nil
         textFieldInsideSearchBar2.backgroundColor = .white
         textFieldInsideSearchBar2.returnKeyType = .default
-
+        
         let textFieldInsideSearchBar3 = webSearchBar.value(forKey: "searchField") as! UITextField
         textFieldInsideSearchBar3.leftViewMode = .never
         textFieldInsideSearchBar3.leftView = nil
@@ -366,7 +377,7 @@ class LogViewController: UIViewController {
         //notification
         NotificationCenter.default.removeObserver(self)
     }
-
+    
     
     //MARK: - target action
     @IBAction func didTapDown(_ sender: Any) {
@@ -417,43 +428,43 @@ class LogViewController: UIViewController {
         {
             defaultModels = []
             defaultCacheModels = []
-//            defaultSearchBar.text = nil
+            //            defaultSearchBar.text = nil
             defaultSearchBar.resignFirstResponder()
-//            CocoaDebugSettings.shared.logSearchWordNormal = nil
+            //            CocoaDebugSettings.shared.logSearchWordNormal = nil
             
             _OCLogStoreManager.shared()?.resetNormalLogs()
             
-            dispatch_main_async_safe { [weak self] in
-                self?.defaultTableView.reloadData()
-            }
+            //            dispatch_main_async_safe { [weak self] in
+            self.defaultTableView.reloadData()
+            //            }
         }
         else if selectedSegmentIndex == 1
         {
             rnModels = []
             rnCacheModels = []
-//            rnSearchBar.text = nil
+            //            rnSearchBar.text = nil
             rnSearchBar.resignFirstResponder()
-//            CocoaDebugSettings.shared.logSearchWordRN = nil
+            //            CocoaDebugSettings.shared.logSearchWordRN = nil
             
             _OCLogStoreManager.shared()?.resetRNLogs()
             
-            dispatch_main_async_safe { [weak self] in
-                self?.rnTableView.reloadData()
-            }
+            //            dispatch_main_async_safe { [weak self] in
+            self.rnTableView.reloadData()
+            //            }
         }
         else
         {
             webModels = []
             webCacheModels = []
-//            webSearchBar.text = nil
+            //            webSearchBar.text = nil
             webSearchBar.resignFirstResponder()
-//            CocoaDebugSettings.shared.logSearchWordWeb = nil
+            //            CocoaDebugSettings.shared.logSearchWordWeb = nil
             
             _OCLogStoreManager.shared().resetWebLogs()
             
-            dispatch_main_async_safe { [weak self] in
-                self?.webTableView.reloadData()
-            }
+            //            dispatch_main_async_safe { [weak self] in
+            self.webTableView.reloadData()
+            //            }
         }
     }
     
@@ -506,14 +517,12 @@ class LogViewController: UIViewController {
     
     //MARK: - notification
     @objc func refreshLogs_notification() {
-        dispatch_main_async_safe { [weak self] in
-            if self?.selectedSegmentIndex == 0 {
-                self?.reloadLogs(needScrollToEnd: self?.reachEndDefault ?? true, needReloadData: true)
-            } else if self?.selectedSegmentIndex == 1 {
-                self?.reloadLogs(needScrollToEnd: self?.reachEndRN ?? true, needReloadData: true)
-            } else {
-                self?.reloadLogs(needScrollToEnd: self?.reachEndWeb ?? true, needReloadData: true)
-            }
+        if self.selectedSegmentIndex == 0 {
+            self.reloadLogs(needScrollToEnd: self.reachEndDefault , needReloadData: true)
+        } else if self.selectedSegmentIndex == 1 {
+            self.reloadLogs(needScrollToEnd: self.reachEndRN , needReloadData: true)
+        } else {
+            self.reloadLogs(needScrollToEnd: self.reachEndWeb , needReloadData: true)
         }
     }
 }
@@ -536,29 +545,14 @@ extension LogViewController: UITableViewDataSource {
         
         if tableView == defaultTableView
         {
-            //Otherwise occasionally crash
-            if indexPath.row >= defaultModels.count {
-                return UITableViewCell()
-            }
-            
             cell.model = defaultModels[indexPath.row]
         }
         else if tableView == rnTableView
         {
-            //Otherwise occasionally crash
-            if indexPath.row >= rnModels.count {
-                return UITableViewCell()
-            }
-            
             cell.model = rnModels[indexPath.row]
         }
         else
         {
-            //Otherwise occasionally crash
-            if indexPath.row >= webModels.count {
-                return UITableViewCell()
-            }
-            
             cell.model = webModels[indexPath.row]
         }
         
@@ -574,7 +568,7 @@ extension LogViewController: UITableViewDelegate {
         
         var logTitleString = ""
         var models_: [_OCLogModel]?
-
+        
         if tableView == defaultTableView
         {
             defaultSearchBar.resignFirstResponder()
@@ -596,10 +590,10 @@ extension LogViewController: UITableViewDelegate {
             logTitleString = "Web"
             models_ = webModels
         }
-
+        
         //
         guard let models = models_ else {return}
-
+        
         let vc = JsonViewController.instanceFromStoryBoard()
         vc.editType = .log
         vc.logTitleString = logTitleString
@@ -619,228 +613,48 @@ extension LogViewController: UITableViewDelegate {
         
         if tableView == defaultTableView {
             model = defaultModels[indexPath.row]
+            
         } else if tableView == rnTableView {
             model = rnModels[indexPath.row]
+            
         } else {
             model = webModels[indexPath.row]
         }
         
-        
         if let height = model.str?.height(with: UIFont.boldSystemFont(ofSize: 12), constraintToWidth: UIScreen.main.bounds.size.width) {
-            return (height + 10) > 5000 ? 5000 : (height + 10)
+            return height + 10;
         }
         
         return 0
-    }
-    
-    
-    @available(iOS 11.0, *)
-    func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        if tableView == defaultTableView
-        {
-            let model = defaultModels[indexPath.row]
-            var title = "Tag"
-            if model.isTag == true {title = "UnTag"}
-            
-            let left = UIContextualAction(style: .normal, title: title) { [weak self] (action, sourceView, completionHandler) in
-                model.isTag = !model.isTag
-                self?.dispatch_main_async_safe { [weak self] in
-                    self?.defaultTableView.reloadData()
-                }
-                completionHandler(true)
-            }
-            
-            defaultSearchBar.resignFirstResponder()
-            left.backgroundColor = "#007aff".hexColor
-            return UISwipeActionsConfiguration(actions: [left])
-        }
-        else if tableView == rnTableView
-        {
-            let model = rnModels[indexPath.row]
-            var title = "Tag"
-            if model.isTag == true {title = "UnTag"}
-            
-            let left = UIContextualAction(style: .normal, title: title) { [weak self] (action, sourceView, completionHandler) in
-                model.isTag = !model.isTag
-                self?.dispatch_main_async_safe { [weak self] in
-                    self?.rnTableView.reloadData()
-                }
-                completionHandler(true)
-            }
-            
-            rnSearchBar.resignFirstResponder()
-            left.backgroundColor = "#007aff".hexColor
-            return UISwipeActionsConfiguration(actions: [left])
-        }
-        else
-        {
-            let model = webModels[indexPath.row]
-            var title = "Tag"
-            if model.isTag == true {title = "UnTag"}
-            
-            let left = UIContextualAction(style: .normal, title: title) { [weak self] (action, sourceView, completionHandler) in
-                model.isTag = !model.isTag
-                self?.dispatch_main_async_safe { [weak self] in
-                    self?.webTableView.reloadData()
-                }
-                completionHandler(true)
-            }
-            
-            webSearchBar.resignFirstResponder()
-            left.backgroundColor = "#007aff".hexColor
-            return UISwipeActionsConfiguration(actions: [left])
-        }
-    }
-    
-    @available(iOS 11.0, *)
-    func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        if tableView == defaultTableView
-        {
-            let delete = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, sourceView, completionHandler) in
-                guard let models = self?.defaultModels else {return}
-                
-                let model: _OCLogModel = models[indexPath.row]
-                _OCLogStoreManager.shared().removeLog(model)
-                
-                self?.defaultModels.remove(at: indexPath.row)
-                _ = self?.defaultCacheModels?.firstIndex(of: model).map { self?.defaultCacheModels?.remove(at: $0) }
-                _ = self?.defaultSearchModels?.firstIndex(of: model).map { self?.defaultSearchModels?.remove(at: $0) }
-                
-                self?.dispatch_main_async_safe { [weak self] in
-                    self?.defaultTableView.deleteRows(at: [indexPath], with: .automatic)
-                }
-                completionHandler(true)
-            }
-            
-            defaultSearchBar.resignFirstResponder()
-            return UISwipeActionsConfiguration(actions: [delete])
-        }
-        else if tableView == rnTableView
-        {
-            let delete = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, sourceView, completionHandler) in
-                guard let models = self?.rnModels else {return}
-                
-                let model: _OCLogModel = models[indexPath.row]
-                _OCLogStoreManager.shared().removeLog(model)
-                
-                self?.rnModels.remove(at: indexPath.row)
-                _ = self?.rnCacheModels?.firstIndex(of: model).map { self?.rnCacheModels?.remove(at: $0) }
-                _ = self?.rnSearchModels?.firstIndex(of: model).map { self?.rnSearchModels?.remove(at: $0) }
-                
-                self?.dispatch_main_async_safe { [weak self] in
-                    self?.rnTableView.deleteRows(at: [indexPath], with: .automatic)
-                }
-                completionHandler(true)
-            }
-            
-            rnSearchBar.resignFirstResponder()
-            return UISwipeActionsConfiguration(actions: [delete])
-        }
-        else
-        {
-            let delete = UIContextualAction(style: .destructive, title: "Delete") { [weak self] (action, sourceView, completionHandler) in
-                guard let models = self?.webModels else {return}
-                
-                let model: _OCLogModel = models[indexPath.row]
-                _OCLogStoreManager.shared().removeLog(model)
-                
-                self?.webModels.remove(at: indexPath.row)
-                _ = self?.webCacheModels?.firstIndex(of: model).map { self?.webCacheModels?.remove(at: $0) }
-                _ = self?.webSearchModels?.firstIndex(of: model).map { self?.webSearchModels?.remove(at: $0) }
-                
-                self?.dispatch_main_async_safe { [weak self] in
-                    self?.webTableView.deleteRows(at: [indexPath], with: .automatic)
-                }
-                completionHandler(true)
-            }
-            
-            webSearchBar.resignFirstResponder()
-            return UISwipeActionsConfiguration(actions: [delete])
-        }
-    }
-    
-    //MARK: - only for ios8/ios9/ios10, not ios11
-    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-        return .delete
-    }
-    func tableView(_ tableView: UITableView, titleForDeleteConfirmationButtonForRowAt indexPath: IndexPath) -> String? {
-        return "Delete"
-    }
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
-        if tableView == defaultTableView
-        {
-            if (editingStyle == .delete) {
-                
-                let model: _OCLogModel = defaultModels[indexPath.row]
-                _OCLogStoreManager.shared().removeLog(model)
-                
-                self.defaultModels.remove(at: indexPath.row)
-                _ = self.defaultCacheModels?.firstIndex(of: model).map { self.defaultCacheModels?.remove(at: $0) }
-                _ = self.defaultSearchModels?.firstIndex(of: model).map { self.defaultSearchModels?.remove(at: $0) }
-                
-                self.dispatch_main_async_safe { [weak self] in
-                    self?.defaultTableView.deleteRows(at: [indexPath], with: .automatic)
-                }
-            }
-        }
-        else if tableView == rnTableView
-        {
-            if (editingStyle == .delete) {
-                
-                let model: _OCLogModel = rnModels[indexPath.row]
-                _OCLogStoreManager.shared().removeLog(model)
-                
-                self.rnModels.remove(at: indexPath.row)
-                _ = self.rnCacheModels?.firstIndex(of: model).map { self.rnCacheModels?.remove(at: $0) }
-                _ = self.rnSearchModels?.firstIndex(of: model).map { self.rnSearchModels?.remove(at: $0) }
-                
-                self.dispatch_main_async_safe { [weak self] in
-                    self?.rnTableView.deleteRows(at: [indexPath], with: .automatic)
-                }
-            }
-        }
-        else
-        {
-            if (editingStyle == .delete) {
-                
-                let model: _OCLogModel = webModels[indexPath.row]
-                _OCLogStoreManager.shared().removeLog(model)
-                
-                self.webModels.remove(at: indexPath.row)
-                _ = self.webCacheModels?.firstIndex(of: model).map { self.webCacheModels?.remove(at: $0) }
-                _ = self.webSearchModels?.firstIndex(of: model).map { self.webSearchModels?.remove(at: $0) }
-                
-                self.dispatch_main_async_safe { [weak self] in
-                    self?.webTableView.deleteRows(at: [indexPath], with: .automatic)
-                }
-            }
-        }
     }
 }
 
 //MARK: - UIScrollViewDelegate
 extension LogViewController: UIScrollViewDelegate {
     
-    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         if scrollView == defaultTableView {
             defaultSearchBar.resignFirstResponder()
+            reachEndDefault = false
         } else if scrollView == rnTableView {
             rnSearchBar.resignFirstResponder()
+            reachEndRN = false
         } else {
             webSearchBar.resignFirstResponder()
+            reachEndWeb = false
         }
     }
     
-    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
-        if scrollView == defaultTableView {
-            reachEndDefault = false
-        } else if scrollView == rnTableView {
-            reachEndRN = false
-        } else {
-            reachEndWeb = false
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        if (scrollView.contentOffset.y + 1) >= (scrollView.contentSize.height - scrollView.frame.size.height) {
+            //bottom reached
+            if scrollView == defaultTableView {
+                reachEndDefault = true
+            } else if scrollView == rnTableView {
+                reachEndRN = true
+            } else {
+                reachEndWeb = true
+            }
         }
     }
 }
@@ -860,27 +674,27 @@ extension LogViewController: UISearchBarDelegate {
             CocoaDebugSettings.shared.logSearchWordNormal = searchText
             searchLogic(searchText)
             
-            dispatch_main_async_safe { [weak self] in
-                self?.defaultTableView.reloadData()
-            }
+            //            dispatch_main_async_safe { [weak self] in
+            self.defaultTableView.reloadData()
+            //            }
         }
         else if searchBar == rnSearchBar
         {
             CocoaDebugSettings.shared.logSearchWordRN = searchText
             searchLogic(searchText)
             
-            dispatch_main_async_safe { [weak self] in
-                self?.rnTableView.reloadData()
-            }
+            //            dispatch_main_async_safe { [weak self] in
+            self.rnTableView.reloadData()
+            //            }
         }
         else
         {
             CocoaDebugSettings.shared.logSearchWordWeb = searchText
             searchLogic(searchText)
             
-            dispatch_main_async_safe { [weak self] in
-                self?.webTableView.reloadData()
-            }
+            //            dispatch_main_async_safe { [weak self] in
+            self.webTableView.reloadData()
+            //            }
         }
     }
 }

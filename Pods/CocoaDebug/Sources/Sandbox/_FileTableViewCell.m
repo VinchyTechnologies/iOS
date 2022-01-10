@@ -1,9 +1,9 @@
 //
 //  Example
-//  man.li
+//  man
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 #import "_FileTableViewCell.h"
@@ -31,7 +31,7 @@ NSString *const _FileTableViewCellReuseIdentifier = @"_FileCell";
     self.textLabel.textColor = [UIColor whiteColor];
     self.textLabel.adjustsFontSizeToFitWidth = YES;
     
-    self.detailTextLabel.textColor = [UIColor grayColor];
+    self.detailTextLabel.textColor = [UIColor systemGrayColor];
     self.detailTextLabel.adjustsFontSizeToFitWidth = YES;
     self.detailTextLabel.font = [UIFont boldSystemFontOfSize:12];
     //    self.selectionStyle = UITableViewCellSelectionStyleNone;

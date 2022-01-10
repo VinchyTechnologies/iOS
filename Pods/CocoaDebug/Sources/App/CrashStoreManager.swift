@@ -1,9 +1,9 @@
 //
 //  Example
-//  man.li
+//  man
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 import Foundation
@@ -19,7 +19,7 @@ class CrashStoreManager {
     
     //MARK: - public
     func addCrash(_ crash: _CrashModel) {
-        if self.crashArray.count >= CocoaDebugSettings.shared.logMaxCount {
+        if self.crashArray.count >= 1000 {
             if self.crashArray.count > 0 {
                 self.crashArray.remove(at: 0)
             }

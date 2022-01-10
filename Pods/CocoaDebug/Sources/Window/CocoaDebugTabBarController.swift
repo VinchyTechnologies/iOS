@@ -1,15 +1,15 @@
 //
 //  Example
-//  man.li
+//  man
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 import UIKit
 
 class CocoaDebugTabBarController: UITabBarController {
-
+    
     //MARK: - init
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,7 @@ class CocoaDebugTabBarController: UITabBarController {
     
     //MARK: - private
     func setChildControllers() {
-
+        
         //1.
         let logs = UIStoryboard(name: "Logs", bundle: Bundle(for: CocoaDebug.self)).instantiateViewController(withIdentifier: "Logs")
         let network = UIStoryboard(name: "Network", bundle: Bundle(for: CocoaDebug.self)).instantiateViewController(withIdentifier: "Network")
@@ -61,13 +61,14 @@ class CocoaDebugTabBarController: UITabBarController {
             return
         }
         
-        //4.添加额外的控制器
+        //4.Add additional controller
         var temp = [network, logs, sandbox, app]
         
         let nav = UINavigationController.init(rootViewController: additionalViewController)
         nav.navigationBar.barTintColor = "#1f2124".hexColor
-        
-        //****** 以下代码从NavigationController.swift复制 ******
+        nav.tabBarItem = UITabBarItem.init(tabBarSystemItem: .more, tag: 4)
+
+        //****** copy codes from LogNavigationViewController.swift ******
         nav.navigationBar.isTranslucent = false
         
         nav.navigationBar.tintColor = Color.mainGreen
@@ -79,10 +80,10 @@ class CocoaDebugTabBarController: UITabBarController {
         
         let image = UIImage(named: "_icon_file_type_close", in: Bundle(for: CocoaDebugNavigationController.self), compatibleWith: nil)
         let leftItem = UIBarButtonItem(image: image,
-                                         style: .done, target: self, action: selector)
+                                       style: .done, target: self, action: selector)
         leftItem.tintColor = Color.mainGreen
         nav.topViewController?.navigationItem.leftBarButtonItem = leftItem
-        //****** 以上代码从NavigationController.swift复制 ******
+        //****** copy codes from LogNavigationViewController.swift ******
         
         temp.append(nav)
         
@@ -95,11 +96,11 @@ class CocoaDebugTabBarController: UITabBarController {
     }
     
     //MARK: - show more than 5 tabs by CocoaDebug
-//    override var traitCollection: UITraitCollection {
-//        var realTraits = super.traitCollection
-//        var lieTrait = UITraitCollection.init(horizontalSizeClass: .regular)
-//        return UITraitCollection(traitsFrom: [realTraits, lieTrait])
-//    }
+    //    override var traitCollection: UITraitCollection {
+    //        var realTraits = super.traitCollection
+    //        var lieTrait = UITraitCollection.init(horizontalSizeClass: .regular)
+    //        return UITraitCollection(traitsFrom: [realTraits, lieTrait])
+    //    }
 }
 
 //MARK: - UITabBarDelegate

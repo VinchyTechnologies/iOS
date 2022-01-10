@@ -1,9 +1,9 @@
 //
 //  Example
-//  man.li
+//  man
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 import Foundation
@@ -11,21 +11,22 @@ import UIKit
 
 class NetworkCell: UITableViewCell {
     
-    @IBOutlet weak var leftAlignLine: UIView!
+    @IBOutlet weak var leftAlignLine: UILabel!
     @IBOutlet weak var statusCodeLabel: UILabel!
     @IBOutlet weak var methodLabel: UILabel!
     @IBOutlet weak var requestTimeTextView: CustomTextView!
     @IBOutlet weak var requestUrlTextView: CustomTextView!
     @IBOutlet weak var imageLabel: UILabel!
     @IBOutlet weak var statusCodeView: UIView!
-
+    
+    var index: NSInteger = 0
     
     var httpModel: _HttpModel? {
         didSet {
             
             guard let serverURL = CocoaDebugSettings.shared.serverURL else {return}
             
-            //域名
+            //domain name
             requestUrlTextView.text = httpModel?.url.absoluteString
             if requestUrlTextView.text?.contains(serverURL) == true {
                 if #available(iOS 8.2, *) {
@@ -43,12 +44,12 @@ class NetworkCell: UITableViewCell {
                 }
             }
             
-            //请求方式
+            //Request method
             if let method = httpModel?.method {
                 methodLabel.text = "[" + method + "]"
             }
             
-            //请求时间
+            //Request time
             if let startTime = httpModel?.startTime {
                 if (startTime as NSString).doubleValue == 0 {
                     requestTimeTextView.text = _OCLoggerFormat.formatDate(Date())
@@ -62,7 +63,7 @@ class NetworkCell: UITableViewCell {
             let informationalStatusCodes = ["100","101","102","103","122"]
             let redirectionStatusCodes = ["300","301","302","303","304","305","306","307","308"]
             
-            //状态码
+            //status code
             statusCodeLabel.text = httpModel?.statusCode
             
             if successStatusCodes.contains(statusCodeLabel.text ?? "") {
@@ -82,7 +83,7 @@ class NetworkCell: UITableViewCell {
                 statusCodeLabel.text = "❌"
             }
             
-            //是否显示图片label
+            //Whether to display the image label
             if httpModel?.isImage == true
             {
                 imageLabel.isHidden = false
@@ -136,5 +137,21 @@ class NetworkCell: UITableViewCell {
         requestUrlTextView.textContainer.lineFragmentPadding = 0
         requestUrlTextView.textContainerInset = .zero
         requestUrlTextView.isSelectable = true
+        
+        leftAlignLine.textAlignment = .center
+        leftAlignLine.textColor = .white
+        leftAlignLine.adjustsFontSizeToFitWidth = true
+        if #available(iOS 8.2, *) {
+            leftAlignLine.font = UIFont.systemFont(ofSize: 20, weight: .bold)
+        } else {
+            leftAlignLine.font = UIFont.boldSystemFont(ofSize: 20)
+        }
+    }
+    
+    //MARK: - layoutSubviews
+    override func layoutSubviews() {
+        superview?.layoutSubviews()
+        
+        leftAlignLine.text = String(index + 1)
     }
 }

@@ -93,7 +93,7 @@ final class StoresViewController: CollectionViewController {
         let width = collectionViewSize.width - 48
         return SectionModel(
           dataID: section.dataID,
-          items: rows.enumerated().compactMap({ index, partnerContent in
+          items: rows.compactMap({ partnerContent in
             switch partnerContent {
             case .horizontalPartner(let content):
               return HorizontalPartnerView.itemModel(

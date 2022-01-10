@@ -1,9 +1,9 @@
 //
 //  Example
-//  man.li
+//  man
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 #import "_OCLogHelper.h"
@@ -24,12 +24,12 @@
 }
 
 //default value for @property
-- (id)init {
-    if (self = [super init])  {
-        self.enable = YES;
-    }
-    return self;
-}
+//- (id)init {
+//    if (self = [super init])  {
+//        self.enable = YES;
+//    }
+//    return self;
+//}
 
 - (NSString *)parseFileInfo:(NSString *)file function:(NSString *)function line:(NSInteger)line
 {
@@ -61,18 +61,18 @@
 
 - (void)handleLogWithFile:(NSString *)file function:(NSString *)function line:(NSInteger)line message:(NSString *)message color:(UIColor *)color type:(CocoaDebugToolType)type
 {
-    if (!self.enable) {return;}
+//    if (!self.enable && type != CocoaDebugToolTypeRN) {return;}
     if (!file || !function || !message || !color) {return;}
-
+    
     //1.
     NSString *fileInfo = [self parseFileInfo:file function:function line:line];
     
     //2.
     _OCLogModel *newLog = [[_OCLogModel alloc] initWithContent:message color:color fileInfo:fileInfo isTag:NO type:type];
     
-//    if (line == 0 && ![fileInfo isEqualToString:@"XXX|XXX|1"]) {
-//        newLog.logType = CocoaDebugLogType...
-//    }
+    //    if (line == 0 && ![fileInfo isEqualToString:@"XXX|XXX|1"]) {
+    //        newLog.logType = CocoaDebugLogType...
+    //    }
     
     if (type == CocoaDebugToolTypeRN) {
         newLog.logType = CocoaDebugLogTypeRN;

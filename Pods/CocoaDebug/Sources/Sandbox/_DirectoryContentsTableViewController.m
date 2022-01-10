@@ -1,9 +1,9 @@
 //
 //  Example
-//  man.li
+//  man
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 #import "_DirectoryContentsTableViewController.h"
@@ -41,16 +41,12 @@
 
 @end
 
-NSInteger const kMLBDeleteAlertViewTag = 101; // 左滑删除
-NSInteger const kMLBDeleteAllAlertViewTag = 111; // Toolbar Delete All
-NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
-
 @implementation _DirectoryContentsTableViewController
 
 //liman
 - (void)customNavigationBar
 {
-    //****** 以下代码从LogNavigationViewController.swift复制 ******
+    //****** copy codes from LogNavigationViewController.swift ******
     self.navigationController.navigationBar.translucent = NO;
     
     self.navigationController.navigationBar.tintColor = [_NetworkHelper shared].mainColor;
@@ -122,7 +118,7 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 
 #pragma mark - Private Methods
 - (void)setupViews {
-    //暂时不用
+    //not needed for now
     self.editItem = [[UIBarButtonItem alloc] initWithTitle:@"Edit" style:UIBarButtonItemStylePlain target:self action:@selector(editAction)];
     self.editItem.possibleTitles = [NSSet setWithObjects:@"Edit", @"Cancel", nil];
     
@@ -197,7 +193,6 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     
     __weak _DirectoryContentsTableViewController *weakSelf = self;
 
-    //子线程
     dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_HIGH, 0), ^{
         
         NSMutableArray<_FileInfo *> *dataSource_ = [_FileInfo contentsOfDirectoryAtURL:weakSelf.fileInfo.URL];
@@ -206,7 +201,6 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
             weakSelf.dataSource_cache = dataSource_;
         }
         
-        //主线程
         dispatch_async(dispatch_get_main_queue(), ^{
             
             weakSelf.refreshItem.enabled = YES;
@@ -268,8 +262,8 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
     NSInteger directoryCount = 0;
     [self getDeletableFileCount:&fileCount directoryCount:&directoryCount];
     
-    if (([_Sandboxer shared].isFileDeletable && ![_Sandboxer shared].isDirectoryDeletable && fileCount == 0) || // 只能删除文件，但是文件数为 0
-        (![_Sandboxer shared].isFileDeletable && [_Sandboxer shared].isDirectoryDeletable && directoryCount == 0)) { // 只能删除文件夹，但是文件夹数为 0
+    if (([_Sandboxer shared].isFileDeletable && ![_Sandboxer shared].isDirectoryDeletable && fileCount == 0) || // Can only delete files, but the number of files is 0
+        (![_Sandboxer shared].isFileDeletable && [_Sandboxer shared].isDirectoryDeletable && directoryCount == 0)) { // Can only delete folders, but the number of folders is 0
         return NO;
     }
     
@@ -519,8 +513,8 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 }
 
 - (BOOL)deleteFile:(_FileInfo *)fileInfo {
-    if (![_Sandboxer shared].isFileDeletable || // 是否可以删除文件
-        (![_Sandboxer shared].isDirectoryDeletable && fileInfo.isDirectory)) { // 是否可以删除文件夹
+    if (![_Sandboxer shared].isFileDeletable ||
+        (![_Sandboxer shared].isDirectoryDeletable && fileInfo.isDirectory)) {
         return NO;
     }
     
@@ -598,6 +592,10 @@ NSInteger const kMLBDeleteSelectedAlertViewTag = 121; // Toolbar Delete
 
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     return self.searchBar;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
+    return 44;
 }
 
 - (UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {

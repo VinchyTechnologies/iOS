@@ -24,7 +24,7 @@ protocol WineDetailInteractorProtocol: /*AnalyticsTrackable,*/ WineViewContextMe
   func didTapReview(reviewID: Int)
   func didSuccessfullyLoginOrRegister()
   func didTapStarsRatingControl()
-  func didTapExpandOrCollapseGeneralInfo()
+  func didTapExpandOrCollapseGeneralInfo() async
   func didScrollStopped()
   func didShowTutorial()
   func didSelectStore(affilatedId: Int)

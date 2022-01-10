@@ -1,9 +1,9 @@
 //
 //  Example
-//  man.li
+//  man
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 import UIKit
@@ -44,7 +44,7 @@ func handleSignal(signal: Int32) {
 }
 
 class CrashLogger {
-
+    
     static let shared = CrashLogger()
     private init() {}
     
@@ -60,7 +60,7 @@ class CrashLogger {
             }
         }
     }
-
+    
     func register() {
         if hasBeenRegistered == false {
             hasBeenRegistered = true
@@ -75,7 +75,7 @@ class CrashLogger {
             signal(SIGTRAP, handleSignal)
         }
     }
-
+    
     func unregister() {
         if hasBeenRegistered == true {
             hasBeenRegistered = false
@@ -90,7 +90,7 @@ class CrashLogger {
             signal(SIGTRAP, SIG_DFL)
         }
     }
-
+    
     static func addCrash(name: String, reason: String?) {
         let newCrash = _CrashModel(name: name, reason: reason)
         CrashStoreManager.shared.addCrash(newCrash)

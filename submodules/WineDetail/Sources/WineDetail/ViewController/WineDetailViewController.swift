@@ -342,7 +342,10 @@ final class WineDetailViewController: CollectionViewController {
             content: content,
             style: .init())
             .didSelect { [weak self] _ in
-              self?.interactor?.didTapExpandOrCollapseGeneralInfo()
+              guard let self = self else { return }
+              Task {
+                await self.interactor?.didTapExpandOrCollapseGeneralInfo()
+              }
             }
             .flowLayoutItemSize(.init(width: collectionViewSize.width, height: 44))
         }

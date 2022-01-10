@@ -18,7 +18,7 @@ public class BarStackView: UIStackView, EpoxyableView {
   }
 
   @available(*, unavailable)
-  public required init(coder: NSCoder) {
+  public required init(coder _: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
 
@@ -146,8 +146,8 @@ public class BarStackView: UIStackView, EpoxyableView {
 
   /// Updates the contents of this stack to the stack modeled by the given model array, inserting,
   /// removing, and updating any bars as needed.
-  public func setBars(_ models: [BarModeling], animated: Bool) {
-    let updates = updateModels(models, animated: animated)
+  public func setBars(_ bars: [BarModeling], animated: Bool) {
+    let updates = updateModels(bars, animated: animated)
 
     updateWrapperZOrder()
 
@@ -325,6 +325,7 @@ public class BarStackView: UIStackView, EpoxyableView {
 
       for view in updates.removed {
         view.removeFromSuperview()
+        view.handleDidEndDisplaying(animated: false)
       }
     }
   }
@@ -368,6 +369,7 @@ public class BarStackView: UIStackView, EpoxyableView {
   private func completeAnimatedWrapperUpdates(_ updates: WrapperUpdates) {
     for view in updates.removed {
       view.removeFromSuperview()
+      view.handleDidEndDisplaying(animated: true)
     }
   }
 
@@ -488,7 +490,7 @@ extension BarStackView {
     /// The order that the bars are arranged on the Z axis.
     public var zOrder: ZOrder
 
-    public static func ==(lhs: Self, rhs: Self) -> Bool {
+    public static func ==(_: Self, _: Self) -> Bool {
       // The content should never be equal since we need the `models`'s behavior to be updated on
       // every content change.
       false

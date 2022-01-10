@@ -21,11 +21,12 @@ public final class BottomBarInstaller: NSObject {
   public init(
     viewController: UIViewController,
     avoidsKeyboard: Bool = false,
-    bars: [BarModeling] = [])
+    bars: [BarModeling] = [],
+    configuration: BarInstallerConfiguration = .shared)
   {
     self.viewController = viewController
     keyboardPositionWatcher.enabled = avoidsKeyboard
-    installer = .init(viewController: viewController)
+    installer = .init(viewController: viewController, configuration: configuration)
     super.init()
     installer.setBars(bars, animated: false)
   }
@@ -35,7 +36,7 @@ public final class BottomBarInstaller: NSObject {
     avoidsKeyboard: Bool = false,
     @BarModelBuilder bars: () -> [BarModeling])
   {
-    self.init(viewController: viewController, bars: bars())
+    self.init(viewController: viewController, avoidsKeyboard: avoidsKeyboard, bars: bars())
   }
 
   // MARK: Public
@@ -74,12 +75,14 @@ public final class BottomBarInstaller: NSObject {
   /// installation or if a bar model was set prior to installation.
   public func install() {
     installer.install()
+    container?.barInstaller = self
     watchKeyboardPosition(true)
   }
 
   /// Removes the bar stack from the associated view controller.
   public func uninstall() {
     installer.uninstall()
+    container?.barInstaller = nil
     watchKeyboardPosition(false)
   }
 

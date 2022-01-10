@@ -131,7 +131,17 @@ final class WineDetailInteractor {
       self.dispatchWorkItemHud.cancel()
 
       if let wine = self.wine {
-        self.presenter.update(wine: wine, reviews: self.reviews, isLiked: self.isFavourite(wine: wine), isDisliked: self.isDisliked(wine: wine), rating: self.rating, currency: UserDefaultsConfig.currency, stores: self.stores, isGeneralInfoCollapsed: self.isGeneralInfoCollapsed)
+        Task {
+          await self.presenter.update(
+            wine: wine,
+            reviews: self.reviews,
+            isLiked: self.isFavourite(wine: wine),
+            isDisliked: self.isDisliked(wine: wine),
+            rating: self.rating,
+            currency: UserDefaultsConfig.currency,
+            stores: self.stores,
+            isGeneralInfoCollapsed: self.isGeneralInfoCollapsed)
+        }
       }
 
       if let error = error {
@@ -143,6 +153,7 @@ final class WineDetailInteractor {
       }
     }
   }
+
   private func isFavourite(wine: Wine) -> Bool {
     winesRepository.findAll().first(where: { $0.wineID == wine.id })?.isLiked == true
   }
@@ -273,12 +284,12 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
     }
   }
 
-  func didTapExpandOrCollapseGeneralInfo() {
+  func didTapExpandOrCollapseGeneralInfo() async {
     guard let wine = wine else {
       return
     }
     isGeneralInfoCollapsed = !isGeneralInfoCollapsed
-    presenter.expandOrCollapseGeneralInfo(wine: wine, isGeneralInfoCollapsed: isGeneralInfoCollapsed)
+    await presenter.expandOrCollapseGeneralInfo(wine: wine, isGeneralInfoCollapsed: isGeneralInfoCollapsed)
   }
 
   func didTapStarsRatingControl() {

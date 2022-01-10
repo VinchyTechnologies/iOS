@@ -33,10 +33,11 @@ final class WineDetailPresenter {
   // MARK: Internal
 
   weak var viewController: WineDetailViewControllerProtocol?
-
   var viewModel: WineDetailViewModel?
 
   // MARK: Private
+
+  private let viewModelFactory = WineDetailViewModelFactory()
 
   private let input: WineDetailInput
 
@@ -51,182 +52,27 @@ final class WineDetailPresenter {
     }
   }
 
-  // TODO: - Make Factory Pattern
-
-  private func buildCaruselImages(wine: Wine) -> [WineDetailViewModel.Section] {
-    let arg1 = [String(wine.mainImageUrl ?? "")]
-    let arg2 = [String(wine.labelImageUrl ?? "")]
-    let imageURLs: [String?] = (arg1 + arg2 + Array(wine.imageURLs ?? [])).map { str -> String? in
-      str == "" ? nil : str
-    }
-
-    if !imageURLs.isEmpty {
-      return [.gallery(itemID: .gallery, .init(urls: imageURLs))]
-    } else {
-      return []
-    }
-  }
-
-  private func buildGeneralInfo(wine: Wine, prefix: Int?) -> (sections: [WineDetailViewModel.Section], count: Int) {
-    var shortDescriptions: [TitleWithSubtitleInfoCollectionViewCellViewModel] = []
-
-    if let color = wine.color {
-      shortDescriptions.append(.init(titleText: localized(color.rawValue).firstLetterUppercased(), subtitleText: localized("color").firstLetterUppercased()))
-    }
-
-    if let sugar = wine.sugar {
-      shortDescriptions.append(.init(titleText: localized(sugar.rawValue).firstLetterUppercased(), subtitleText: localized("sugar").firstLetterUppercased()))
-    }
-
-    if let country = countryNameFromLocaleCode(countryCode: wine.winery?.countryCode) {
-      shortDescriptions.append(.init(titleText: country, subtitleText: localized("country").firstLetterUppercased()))
-    }
-
-    if let year = wine.year, year != 0 {
-      shortDescriptions.append(.init(titleText: String(year), subtitleText: localized("vintage").firstLetterUppercased()))
-    }
-
-    if let alcoholPercent = wine.alcoholPercent {
-      shortDescriptions.append(.init(titleText: String(alcoholPercent) + "%", subtitleText: localized("alcohol").firstLetterUppercased()))
-    }
-
-    if let region = wine.winery?.region {
-      shortDescriptions.append(.init(titleText: region, subtitleText: localized("region").firstLetterUppercased()))
-    }
-
-    if let grapes = wine.grapes, !grapes.isEmpty {
-      let grapesString = grapes.joined(separator: ", ")
-      shortDescriptions.append(
-        .init(
-          titleText: grapesString,
-          subtitleText: localizedPlural(
-            "sortsOfGrape",
-            count: UInt(grapes.count)).firstLetterUppercased()))
-    }
-
-    if !shortDescriptions.isEmpty {
-      if let prefix = prefix {
-        return (sections: [.list(itemID: .list, content: Array(shortDescriptions.prefix(prefix)))], count: shortDescriptions.count)
-      } else {
-        return (sections: [.list(itemID: .list, content: shortDescriptions)], count: shortDescriptions.count)
-      }
-    } else {
-      return (sections: [], count: 0)
-    }
-  }
-
-  private func buildServingTips(wine: Wine) -> [WineDetailViewModel.Section] {
-    var servingTips = [ServingTipsCollectionViewItem]()
-
-    if let servingTemperature = localizedTemperature(wine.minServingTemperature, wine.maxServingTemperature) {
-      let subtitle = localized("serving_temperature").firstLetterUppercased()
-      servingTips.append(.titleOption(content: .init(titleText: servingTemperature, subtitleText: subtitle)))
-    }
-
-    if let dishes = wine.dishCompatibility, !dishes.isEmpty {
-      dishes.forEach { dish in
-        servingTips.append(.imageOption(content: .init(image: UIImage(named: dish.imageName)?.withTintColor(.dark), titleText: dish.localized, isSelected: false)))
-      }
-    }
-
-    if !servingTips.isEmpty {
-      return [
-        .title(itemID: .servingTipsTitle, localized("serving_tips").firstLetterUppercased()),
-        .servingTips(itemID: .servingTips, content: .init(items: servingTips)),
-      ]
-    } else {
-      return []
-    }
-  }
-
-  private func buildReview(reviews: [Review]) -> [WineDetailViewModel.Section] {
-    let reviewCellViewModels: [ReviewView.Content] = reviews.compactMap {
-      if $0.comment?.isEmpty == true || $0.comment == nil {
-        return nil
-      }
-
-      let dateText: String?
-
-      if $0.updateDate == nil {
-        dateText = $0.publicationDate.toDate()
-      } else {
-        dateText = $0.updateDate.toDate()
-      }
-
-      return ReviewView.Content(
-        id: $0.id,
-        userNameText: nil,
-        dateText: dateText,
-        reviewText: $0.comment,
-        rate: $0.rating)
-    }
-
-    if reviewCellViewModels.isEmpty {
-      return [
-        .ratingAndReview(
-          itemID: .titleReviews,
-          content: .init(
-            titleText: localized("reviews").firstLetterUppercased(),
-            moreText: localized("see_all").firstLetterUppercased(),
-            shouldShowMoreText: reviewCellViewModels.count >= 5)),
-
-        .text(itemID: .noReviewsYet, localized("wine_has_no_reviews_yet").firstLetterUppercased()),
-      ]
-    }
-
-    return [
-      .ratingAndReview(
-        itemID: .titleReviews,
-        content: .init(
-          titleText: localized("reviews").firstLetterUppercased(),
-          moreText: localized("see_all").firstLetterUppercased(),
-          shouldShowMoreText: reviewCellViewModels.count >= 5)),
-      .reviews(itemID: .reviews, content: reviewCellViewModels),
-    ]
-  }
-
-  private func buildStarRateControl(rating: Rating?) -> [WineDetailViewModel.Section] {
-    let rateViewModel = StarRatingControlCollectionViewCellViewModel(
-      rate: rating?.rating ?? 0,
-      count: rating?.reviewsCount ?? 0)
-    return [.rate(itemID: .rate, content: rateViewModel)]
-  }
-
-  private func buildToolSection(wine: Wine, currency: String, isLiked: Bool) -> [WineDetailViewModel.Section] {
-    if !input.isAppClip {
-      return [
-        .tool(
-          itemID: .tool,
-          content: .init(
-            price: formatCurrencyAmount(
-              wine.price ?? 0, currency: currency),
-            isLiked: isLiked,
-            isAppClip: input.isAppClip)),
-      ]
-    }
-    return []
-  }
-
-  private func generateAllSections(wine: Wine, reviews: [Review]?, isLiked: Bool, isDisliked: Bool, rating: Rating?, currency: String, stores: [PartnerInfo]?, isGeneralInfoCollapsed: Bool) -> [WineDetailViewModel.Section] {
+  private func generateAllSections(
+    wine: Wine,
+    reviews: [Review]?,
+    isLiked: Bool,
+    isDisliked: Bool,
+    rating: Rating?,
+    currency: String,
+    stores: [PartnerInfo]?,
+    isGeneralInfoCollapsed: Bool) async
+    -> [WineDetailViewModel.Section]
+  {
     var sections: [WineDetailViewModel.Section] = []
-
-    sections += buildCaruselImages(wine: wine)
-
-    /// Winery
-
-    if let wineryTitle = wine.winery?.title {
-      sections += [
-        .winery(itemID: .winery, wineryTitle),
-      ]
-    }
-
-    sections += [
-      .name(itemID: .name, wine.title),
-    ]
-
-    sections += buildStarRateControl(rating: rating)
-
-    sections += buildToolSection(wine: wine, currency: currency, isLiked: isLiked)
+    sections += await viewModelFactory.buildCaruselImages(wine: wine)
+    sections += await viewModelFactory.buildWinery(wine: wine)
+    sections += await viewModelFactory.buildTitle(wine: wine)
+    sections += await viewModelFactory.buildStarRateControl(rating: rating)
+    sections += await viewModelFactory.buildToolSection(
+      wine: wine,
+      currency: currency,
+      isLiked: isLiked,
+      isAppClip: input.isAppClip)
 
 //    if isDescriptionInWineDetailEnabled {
 //      sections += [
@@ -238,7 +84,9 @@ final class WineDetailPresenter {
 //      ]
 //    }
 
-    let generalInfoRows = buildGeneralInfo(wine: wine, prefix: C.numberOfNonHiddenRowsInGeneralInfoSection)
+    let generalInfoRows = await viewModelFactory.buildGeneralInfo(
+      wine: wine,
+      prefix: C.numberOfNonHiddenRowsInGeneralInfoSection)
     sections += generalInfoRows.sections
 
     if generalInfoRows.count > C.numberOfNonHiddenRowsInGeneralInfoSection {
@@ -250,10 +98,10 @@ final class WineDetailPresenter {
       ]
     }
 
-    sections += buildServingTips(wine: wine)
+    sections += await viewModelFactory.buildServingTips(wine: wine)
 
     if let reviews = reviews {
-      sections += buildReview(reviews: reviews)
+      sections += await viewModelFactory.buildReview(reviews: reviews)
       sections += [.button(itemID: .writeReviewButton, content: .init(buttonText: localized("write_review").firstLetterUppercased()))]
     }
 
@@ -283,30 +131,9 @@ final class WineDetailPresenter {
       }
     }
 
-    /// Similar wines
-
-    if let similarWines = wine.similarWines {
-
-      var wineList: [WineBottleView.Content] = []
-
-      similarWines.forEach { shortWine in
-        wineList.append(
-          .init(
-            wineID: shortWine.id,
-            imageURL: shortWine.mainImageUrl?.toURL,
-            titleText: shortWine.title,
-            subtitleText: countryNameFromLocaleCode(countryCode: shortWine.winery?.countryCode),
-            rating: shortWine.rating,
-            buttonText: nil,
-            contextMenuViewModels: contextMenuViewModels))
-      }
-
-      sections += [
-        .title(itemID: .similarWinesTitle, localized("similar_wines").firstLetterUppercased()),
-      ]
-
-      sections += [.similarWines(itemID: .similarWines, content: wineList)]
-    }
+    sections += await viewModelFactory.buildSimilarWines(
+      wine: wine,
+      contextMenuViewModels: contextMenuViewModels)
 
     return sections
   }
@@ -344,7 +171,7 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
         content: localized("hint_to_review_button").firstLetterUppercased()))
   }
 
-  func expandOrCollapseGeneralInfo(wine: Wine, isGeneralInfoCollapsed: Bool) {
+  func expandOrCollapseGeneralInfo(wine: Wine, isGeneralInfoCollapsed: Bool) async {
 
     let indexOfGeneralInfo = viewModel?.sections.firstIndex(where: { section in
       switch section {
@@ -361,7 +188,7 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
     }
 
     guard
-      let section = buildGeneralInfo(
+      let section = await viewModelFactory.buildGeneralInfo(
         wine: wine,
         prefix: isGeneralInfoCollapsed ? C.numberOfNonHiddenRowsInGeneralInfoSection : nil).sections.first
     else {
@@ -430,9 +257,26 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
     viewController?.stopLoadingAnimation()
   }
 
-  func update(wine: Wine, reviews: [Review]?, isLiked: Bool, isDisliked: Bool, rating: Rating?, currency: String, stores: [PartnerInfo]?, isGeneralInfoCollapsed: Bool) {
+  func update(
+    wine: Wine,
+    reviews: [Review]?,
+    isLiked: Bool,
+    isDisliked: Bool,
+    rating: Rating?,
+    currency: String,
+    stores: [PartnerInfo]?,
+    isGeneralInfoCollapsed: Bool) async
+  {
 
-    let sections = generateAllSections(wine: wine, reviews: reviews, isLiked: isLiked, isDisliked: isDisliked, rating: rating, currency: currency, stores: stores, isGeneralInfoCollapsed: isGeneralInfoCollapsed)
+    let sections = await generateAllSections(
+      wine: wine,
+      reviews: reviews,
+      isLiked: isLiked,
+      isDisliked: isDisliked,
+      rating: rating,
+      currency: currency,
+      stores: stores,
+      isGeneralInfoCollapsed: isGeneralInfoCollapsed)
 
     let viewModel = WineDetailViewModel(
       navigationTitle: wine.title,
@@ -444,7 +288,9 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
           wine.price ?? 0, currency: currency)),
       isLiked: isLiked)
 
-    viewController?.updateUI(viewModel: viewModel)
+    DispatchQueue.main.async {
+      self.viewController?.updateUI(viewModel: viewModel)
+    }
 
     self.viewModel = viewModel
   }

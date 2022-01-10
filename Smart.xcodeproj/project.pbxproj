@@ -1984,6 +1984,16 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		8A4F1438278B34A40043F4F2 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				8AEC94D5275B5E5E00C80F1E /* Coordinator.swift */,
+				8AEC94A8275A914100C80F1E /* SceneDelegate.swift */,
+				8AEC94A6275A914100C80F1E /* AppDelegate.swift */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
 		8A63E3362770F24200D8362C /* Routable */ = {
 			isa = PBXGroup;
 			children = (
@@ -2403,13 +2413,11 @@
 		8AEC94A5275A914100C80F1E /* VinchyAppClip */ = {
 			isa = PBXGroup;
 			children = (
-				8AEC94A6275A914100C80F1E /* AppDelegate.swift */,
-				8AEC94A8275A914100C80F1E /* SceneDelegate.swift */,
+				8A4F1438278B34A40043F4F2 /* Sources */,
 				8AEC94AF275A914300C80F1E /* Assets.xcassets */,
 				8AEC94B1275A914300C80F1E /* LaunchScreen.storyboard */,
 				8AEC94B4275A914300C80F1E /* Info.plist */,
 				8AEC94B5275A914300C80F1E /* VinchyAppClip.entitlements */,
-				8AEC94D5275B5E5E00C80F1E /* Coordinator.swift */,
 			);
 			path = VinchyAppClip;
 			sourceTree = "<group>";

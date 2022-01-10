@@ -141,6 +141,10 @@ extension BarModel: DataIDProviding {}
 
 extension BarModel: DidDisplayProviding {}
 
+// MARK: DidEndDisplayingProviding
+
+extension BarModel: DidEndDisplayingProviding {}
+
 // MARK: MakeViewProviding
 
 extension BarModel: MakeViewProviding {}
@@ -196,6 +200,10 @@ extension BarModel: InternalBarModeling {
 
   func didDisplay(_ view: UIView, traitCollection: UITraitCollection, animated: Bool) {
     didDisplay?(.init(view: castOrAssert(view), traitCollection: traitCollection, animated: animated))
+  }
+
+  func didEndDisplaying(_ view: UIView, traitCollection: UITraitCollection, animated: Bool) {
+    didEndDisplaying?(.init(view: castOrAssert(view), traitCollection: traitCollection, animated: animated))
   }
 
   func didSelect(_ view: UIView, traitCollection: UITraitCollection, animated: Bool) {
@@ -274,6 +282,6 @@ extension BarModel: CallbackContextEpoxyModeled {
 /// removed and a new bar view will be created and inserted in its place.
 struct DiffIdentifier: Hashable {
   var dataID: AnyHashable
-  // The `View.Type` wrapped in `ObjectIdentifier` since `AnyClass` is not `Hashable`.
-  var viewClass: ObjectIdentifier
+  // The `View.Type` wrapped in a `ClassReference` since `AnyClass` is not `Hashable`.
+  var viewClass: ClassReference
 }

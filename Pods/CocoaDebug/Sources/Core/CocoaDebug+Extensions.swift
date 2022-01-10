@@ -1,15 +1,15 @@
 //
 //  Example
-//  man.li
+//  man
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 import Foundation
 
 extension Dictionary {
-    ///JSON/Form格式互转
+    ///JSON/Form format conversion
     func dictionaryToFormString() -> String? {
         var array = [String]()
         
@@ -24,7 +24,7 @@ extension Dictionary {
 }
 
 extension String {
-    ///JSON/Form格式互转
+    ///JSON/Form format conversion
     func formStringToDictionary() -> [String: Any]? {
         var dictionary = [String: Any]()
         let array = self.components(separatedBy: "&")
@@ -156,17 +156,17 @@ extension Data {
             return str
         } else {
             //2.protobuf
-            if let message = try? _GPBMessage.parse(from: self) {
-                if message.serializedSize() > 0 {
-                    return message.description
-                } else {
-                    //3.utf-8 string
-                    return String(data: self, encoding: .utf8)
-                }
-            } else {
-                //3.utf-8 string
-                return String(data: self, encoding: .utf8)
-            }
+            //            if let message = try? GPBMessage.parse(from: self) {
+            //                if message.serializedSize() > 0 {
+            //                    return message.description
+            //                } else {
+            //                    //3.utf-8 string
+            //                    return String(data: self, encoding: .utf8)
+            //                }
+            //            } else {
+            //3.utf-8 string
+            return String(data: self, encoding: .utf8)
+            //            }
         }
     }
 }
@@ -195,7 +195,6 @@ extension String {
     }
 }
 
-///添加圆角
 extension UIView {
     func addCorner(roundingCorners: UIRectCorner, cornerSize: CGSize) {
         let path = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: roundingCorners, cornerRadii: cornerSize)
@@ -206,18 +205,17 @@ extension UIView {
     }
 }
 
-///主线程
-extension NSObject {
-    func dispatch_main_async_safe(callback: @escaping ()->Void ) {
-        if Thread.isMainThread {
-            callback()
-        } else {
-            DispatchQueue.main.async( execute: {
-                callback()
-            })
-        }
-    }
-}
+//extension NSObject {
+//    func dispatch_main_async_safe(callback: @escaping ()->Void ) {
+//        if Thread.isMainThread {
+//            callback()
+//        } else {
+//            DispatchQueue.main.async( execute: {
+//                callback()
+//            })
+//        }
+//    }
+//}
 
 //https://stackoverflow.com/questions/26244293/scrolltorowatindexpath-with-uitableview-does-not-work
 ///tableView
@@ -246,7 +244,7 @@ extension UITableView {
     
     func reloadData(completion: @escaping () -> ()) {
         UIView.animate(withDuration: 0, animations: { self.reloadData()})
-        {_ in completion() }
+            {_ in completion() }
     }
 }
 
@@ -275,7 +273,7 @@ extension UIWindow {
         super.motionBegan(motion, with: event)
         
         self.cocoadebugShakeProperty = true
-
+        
         if CocoaDebugSettings.shared.responseShake == false {return}
         if motion == .motionShake {
             if CocoaDebugSettings.shared.visible == true { return }
@@ -304,33 +302,36 @@ extension UIWindow {
 extension CocoaDebug {
     
     ///init
-    static func initializationMethod(serverURL: String? = nil, ignoredURLs: [String]? = nil, onlyURLs: [String]? = nil, additionalViewController: UIViewController? = nil, emailToRecipients: [String]? = nil, emailCcRecipients: [String]? = nil, mainColor: String? = nil, protobufTransferMap: [String: [String]]? = nil)
+    static func initializationMethod(serverURL: String? = nil, ignoredURLs: [String]? = nil, onlyURLs: [String]? = nil, ignoredPrefixLogs: [String]? = nil, onlyPrefixLogs: [String]? = nil, additionalViewController: UIViewController? = nil, emailToRecipients: [String]? = nil, emailCcRecipients: [String]? = nil, mainColor: String? = nil, protobufTransferMap: [String: [String]]? = nil)
     {
-        if CocoaDebugSettings.shared.isRunning == true {return}
-        
-        CocoaDebugSettings.shared.isRunning = true
-
-//        let enableWKWebViewMonitoring = UserDefaults.standard.bool(forKey: "enableWKWebViewMonitoring_CocoaDebug")
-//        let enableCrashRecording = UserDefaults.standard.bool(forKey: "enableCrashRecording_CocoaDebug")
-        let disableLogMonitoring = UserDefaults.standard.bool(forKey: "disableLogMonitoring_CocoaDebug")
-        let disableNetworkMonitoring = UserDefaults.standard.bool(forKey: "disableNetworkMonitoring_CocoaDebug")
-//        let disableRNMonitoring = UserDefaults.standard.bool(forKey: "disableRNMonitoring_CocoaDebug")
-
         if serverURL == nil {
             CocoaDebugSettings.shared.serverURL = ""
         } else {
             CocoaDebugSettings.shared.serverURL = serverURL
+        }
+        
+        if ignoredURLs == nil {
+            CocoaDebugSettings.shared.ignoredURLs = []
+        } else {
+            CocoaDebugSettings.shared.ignoredURLs = ignoredURLs
         }
         if onlyURLs == nil {
             CocoaDebugSettings.shared.onlyURLs = []
         } else {
             CocoaDebugSettings.shared.onlyURLs = onlyURLs
         }
-        if ignoredURLs == nil {
-            CocoaDebugSettings.shared.ignoredURLs = []
+        
+        if ignoredPrefixLogs == nil {
+            CocoaDebugSettings.shared.ignoredPrefixLogs = []
         } else {
-            CocoaDebugSettings.shared.ignoredURLs = ignoredURLs
+            CocoaDebugSettings.shared.ignoredPrefixLogs = ignoredPrefixLogs
         }
+        if onlyPrefixLogs == nil {
+            CocoaDebugSettings.shared.onlyPrefixLogs = []
+        } else {
+            CocoaDebugSettings.shared.onlyPrefixLogs = onlyPrefixLogs
+        }
+        
         if CocoaDebugSettings.shared.firstIn == nil {//first launch
             CocoaDebugSettings.shared.firstIn = ""
             CocoaDebugSettings.shared.showBubbleAndWindow = true
@@ -343,16 +344,11 @@ extension CocoaDebug {
         CocoaDebugSettings.shared.logSearchWordRN = nil
         CocoaDebugSettings.shared.logSearchWordWeb = nil
         CocoaDebugSettings.shared.networkSearchWord = nil
-        CocoaDebugSettings.shared.logMaxCount = CocoaDebug.logMaxCount
         CocoaDebugSettings.shared.protobufTransferMap = protobufTransferMap
         CocoaDebugSettings.shared.additionalViewController = additionalViewController
-//        CocoaDebugSettings.shared.enableCrashRecording = enableCrashRecording
-//        CocoaDebugSettings.shared.enableWKWebViewMonitoring = enableWKWebViewMonitoring
-//        CocoaDebugSettings.shared.disableRNMonitoring = disableRNMonitoring
-
+        
         var _ = _OCLogStoreManager.shared()
         CocoaDebugSettings.shared.responseShake = true
-//        CocoaDebugSettings.shared.responseShakeNetworkDetail = true
         
         //share via email
         CocoaDebugSettings.shared.emailToRecipients = emailToRecipients
@@ -365,15 +361,17 @@ extension CocoaDebug {
         CocoaDebugSettings.shared.slowAnimations = false
         
         //log
-        if disableLogMonitoring == true {
+        let enableLogMonitoring = UserDefaults.standard.bool(forKey: "enableLogMonitoring_CocoaDebug")
+        if enableLogMonitoring == false {
             _SwiftLogHelper.shared.enable = false
-            _OCLogHelper.shared()?.enable = false
+//            _OCLogHelper.shared()?.enable = false
         } else {
             _SwiftLogHelper.shared.enable = true
-            _OCLogHelper.shared()?.enable = true
+//            _OCLogHelper.shared()?.enable = true
         }
         
         //network
+        let disableNetworkMonitoring = UserDefaults.standard.bool(forKey: "disableNetworkMonitoring_CocoaDebug")
         if disableNetworkMonitoring == true {
             _NetworkHelper.shared().disable()
         } else {
@@ -383,14 +381,12 @@ extension CocoaDebug {
     
     ///deinit
     static func deinitializationMethod() {
-        CocoaDebugSettings.shared.isRunning = false
         WindowHelper.shared.disable()
         _NetworkHelper.shared().disable()
         _SwiftLogHelper.shared.enable = false
-        _OCLogHelper.shared()?.enable = false
+//        _OCLogHelper.shared()?.enable = false
         CrashLogger.shared.enable = false
         CocoaDebugSettings.shared.responseShake = false
-//        CocoaDebugSettings.shared.responseShakeNetworkDetail = false
     }
 }
 

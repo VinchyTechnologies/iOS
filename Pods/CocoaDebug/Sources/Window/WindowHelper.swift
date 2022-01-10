@@ -1,24 +1,24 @@
 //
 //  Example
-//  man.li
+//  man
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 import UIKit
 
 public class WindowHelper: NSObject {
     public static let shared = WindowHelper()
-
+    
     var window: CocoaDebugWindow
     var displayedList = false
-    lazy var vc = CocoaDebugViewController() //必须使用lazy, 否则崩溃
+    lazy var vc = CocoaDebugViewController() //must lazy init, otherwise crash
     
-    //FPS
-//    fileprivate var fpsCounter = FPSCounter()
-//    var fpsCallback:((Int) -> Void)?
-
+    //UIBlocking
+//    fileprivate var uiBlockingCounter = UIBlockingCounter()
+//    var uiBlockingCallback:((Int) -> Void)?
+    
     
     private override init() {
         window = CocoaDebugWindow(frame: UIScreen.main.bounds)
@@ -26,19 +26,23 @@ public class WindowHelper: NSObject {
         window.bounds.size.height = UIScreen.main.bounds.height.nextDown
         super.init()
         
-//        fpsCounter.delegate = self
+//        uiBlockingCounter.delegate = self
     }
-
+    
     
     public func enable() {
-        if window.rootViewController != vc {
-            window.rootViewController = vc
-            window.delegate = self
-            window.isHidden = false
-//            _DebugMemoryMonitor.sharedInstance()?.startMonitoring()
-//            _DebugCpuMonitor.sharedInstance()?.startMonitoring()
-//            fpsCounter.startMonitoring()
+        if window.rootViewController == vc {
+            return
         }
+        
+        window.rootViewController = vc
+        window.delegate = self
+        window.isHidden = false
+        
+        if CocoaDebugSettings.shared.enableUIBlockingMonitoring == true {
+            startUIBlockingMonitoring()
+        }
+
         
         if #available(iOS 13.0, *) {
             var success: Bool = false
@@ -58,25 +62,34 @@ public class WindowHelper: NSObject {
         }
     }
     
-
+    
     public func disable() {
-        if window.rootViewController != nil {
-            window.rootViewController = nil
-            window.delegate = nil
-            window.isHidden = true
-//            _DebugMemoryMonitor.sharedInstance()?.stopMonitoring()
-//            _DebugCpuMonitor.sharedInstance()?.stopMonitoring()
-//            fpsCounter.stopMonitoring()
+        if window.rootViewController == nil {
+            return
         }
+        window.rootViewController = nil
+        window.delegate = nil
+        window.isHidden = true
+        stopUIBlockingMonitoring()
+    }
+    
+    public func startUIBlockingMonitoring() {
+//        uiBlockingCounter.startMonitoring()
+        _RunloopMonitor.shared().begin()
+    }
+
+    public func stopUIBlockingMonitoring() {
+//        uiBlockingCounter.stopMonitoring()
+        _RunloopMonitor.shared().end()
     }
 }
 
 
-// MARK: - FPSCounterDelegate
-//extension WindowHelper: FPSCounterDelegate {
-//    @objc public func fpsCounter(_ counter: FPSCounter, didUpdateFramesPerSecond fps: Int) {
-//        if let fpsCallback = fpsCallback {
-//            fpsCallback(fps)
+// MARK: - UIBlockingCounterDelegate
+//extension WindowHelper: UIBlockingCounterDelegate {
+//    @objc public func uiBlockingCounter(_ counter: UIBlockingCounter, didUpdateFramesPerSecond uiBlocking: Int) {
+//        if let uiBlockingCallback = uiBlockingCallback {
+//            uiBlockingCallback(uiBlocking)
 //        }
 //    }
 //}

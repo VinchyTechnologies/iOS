@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		1DB373A06DAD56DF3F912263 /* Pods_WineDetail.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3D5561E695FDBE83E14233E3 /* Pods_WineDetail.framework */; };
+		8A8B7F1E278C606C0070353E /* WineDetailViewModelFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A8B7F1D278C606C0070353E /* WineDetailViewModelFactory.swift */; };
 		8A9C7F5727613FA300A5B694 /* DisplayMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9C7F5627613FA300A5B694 /* DisplayMini.framework */; };
 		8AEC834A2758DCE300C80F1E /* WineDetail.docc in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83492758DCE300C80F1E /* WineDetail.docc */; };
 		8AEC834B2758DCE300C80F1E /* WineDetail.h in Headers */ = {isa = PBXBuildFile; fileRef = 8AEC83482758DCE300C80F1E /* WineDetail.h */; settings = {ATTRIBUTES = (Public, ); }; };
@@ -45,6 +46,7 @@
 /* Begin PBXFileReference section */
 		3D5561E695FDBE83E14233E3 /* Pods_WineDetail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WineDetail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		631AFEC6596103C82C9B4826 /* Pods-WineDetail.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WineDetail.debug.xcconfig"; path = "Target Support Files/Pods-WineDetail/Pods-WineDetail.debug.xcconfig"; sourceTree = "<group>"; };
+		8A8B7F1D278C606C0070353E /* WineDetailViewModelFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WineDetailViewModelFactory.swift; sourceTree = "<group>"; };
 		8A9C7F5627613FA300A5B694 /* DisplayMini.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DisplayMini.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AEC83452758DCE300C80F1E /* WineDetail.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = WineDetail.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AEC83482758DCE300C80F1E /* WineDetail.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = WineDetail.h; sourceTree = "<group>"; };
@@ -172,6 +174,7 @@
 			children = (
 				8AEC835B2758DEFB00C80F1E /* WineDetailPresenter.swift */,
 				8AEC835C2758DEFB00C80F1E /* WineDetailPresenterProtocol.swift */,
+				8A8B7F1D278C606C0070353E /* WineDetailViewModelFactory.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 				8AEC83882758DEFB00C80F1E /* ReviewView.swift in Sources */,
 				8AEC83812758DEFB00C80F1E /* ToolView.swift in Sources */,
 				8AEC838C2758DEFB00C80F1E /* ButtonView.swift in Sources */,
+				8A8B7F1E278C606C0070353E /* WineDetailViewModelFactory.swift in Sources */,
 				8AEC837A2758DEFB00C80F1E /* WineDetailPresenter.swift in Sources */,
 				8AEC83842758DEFB00C80F1E /* ReviewsCollectionView.swift in Sources */,
 				8AEC837B2758DEFB00C80F1E /* WineDetailPresenterProtocol.swift in Sources */,

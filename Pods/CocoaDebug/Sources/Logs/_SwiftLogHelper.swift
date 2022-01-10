@@ -1,9 +1,9 @@
 //
 //  Example
-//  man.li
+//  man
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 import Foundation
@@ -20,7 +20,7 @@ public class _SwiftLogHelper: NSObject {
         guard let file = file, let function = function, let line = line, let fileName = file.components(separatedBy: "/").last else {return nil}
         return "\(fileName)[\(line)]\(function)\n"
     }
-
+    
     
     public func handleLog(file: String?, function: String?, line: Int?, message: Any..., color: UIColor?) {
         let stringContent = message.reduce("") { result, next -> String in

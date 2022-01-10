@@ -1,43 +1,58 @@
 //
 //  Example
-//  man.li
+//  man
 //
-//  Created by man.li on 11/11/2018.
-//  Copyright © 2020 man.li. All rights reserved.
+//  Created by man 11/11/2018.
+//  Copyright © 2020 man. All rights reserved.
 //
 
 import UIKit
 
 class CocoaDebugViewController: UIViewController {
-
-    var bubble = Bubble(frame: CGRect(origin: CGPoint(x: 0, y: 0), size: Bubble.size))
-
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        self.view.addSubview(self.bubble)
-    }
-
+    
+    var bubble = Bubble(frame: CGRect(origin: .zero, size: Bubble.size))
+    var uiBlockingBubble = UIBlockingBubble(frame: CGRect(origin: .zero, size: UIBlockingBubble.size))
+    
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        self.bubble.updateOrientation(newSize: size)
+        bubble.updateOrientation(newSize: size)
     }
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.bubble.center = Bubble.originalPosition
-        self.bubble.delegate = self
         self.view.backgroundColor = .clear
-    }
 
+        bubble.center = Bubble.originalPosition
+        bubble.delegate = self
+        view.addSubview(bubble)
+    }
+    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         WindowHelper.shared.displayedList = false
+        if CocoaDebugSettings.shared.enableUIBlockingMonitoring {
+            view.addSubview(uiBlockingBubble)
+        }
     }
-
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if CocoaDebugSettings.shared.enableUIBlockingMonitoring {
+            uiBlockingBubble.updateFrame()
+        }
+    }
+    
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        if CocoaDebugSettings.shared.enableUIBlockingMonitoring {
+            uiBlockingBubble.removeFromSuperview()
+        }
+    }
+    
     func shouldReceive(point: CGPoint) -> Bool {
         if WindowHelper.shared.displayedList {
             return true
         }
-        return self.bubble.frame.contains(point)
+        return bubble.frame.contains(point)
     }
 }
 
