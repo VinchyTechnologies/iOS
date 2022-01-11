@@ -147,12 +147,19 @@ final class WineDetailViewModelFactory {
         dateText = $0.updateDate.toDate()
       }
 
+      var contextMenuViewModels: [ReviewViewContextMenuViewModel] = []
+
+      if let comment = $0.comment, canTranslateText(text: comment, showTranslate: true, ignoredLanguages: nil) {
+        contextMenuViewModels.append(.translate(content: .init(title: "Translate")))
+      }
+
       return ReviewView.Content(
         id: $0.id,
         userNameText: nil,
         dateText: dateText,
         reviewText: $0.comment,
-        rate: $0.rating)
+        rate: $0.rating,
+        contextMenuViewModels: contextMenuViewModels)
     }
 
     if reviewCellViewModels.isEmpty {

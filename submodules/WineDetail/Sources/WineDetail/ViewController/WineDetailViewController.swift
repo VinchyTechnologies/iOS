@@ -281,9 +281,16 @@ final class WineDetailViewController: CollectionViewController {
           ReviewsCollectionView.itemModel(
             dataID: itemID,
             content: content,
-            behaviors: .init(didTap: { [weak self] reviewID in
-              self?.interactor?.didTapReview(reviewID: reviewID)
-            }),
+            behaviors: .init(
+              didTap: { [weak self] reviewID in
+                self?.interactor?.didTapReview(reviewID: reviewID)
+              },
+              didTapTranslate: { [weak self] reviewText in
+                guard let reviewText = reviewText else {
+                  return
+                }
+                translateText(text: reviewText)
+              }),
             style: .init())
         }
         .flowLayoutItemSize(.init(width: collectionViewSize.width, height: 200))

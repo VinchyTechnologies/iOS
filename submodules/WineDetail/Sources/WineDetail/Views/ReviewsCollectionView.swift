@@ -22,6 +22,7 @@ final class ReviewsCollectionView: CollectionView, EpoxyableView {
 
   struct Behaviors {
     var didTap: ((_ reviewID: Int) -> Void)?
+    var didTapTranslate: ((String?) -> Void)?
   }
 
   struct Style: Hashable {
@@ -31,6 +32,7 @@ final class ReviewsCollectionView: CollectionView, EpoxyableView {
 
   func setBehaviors(_ behaviors: Behaviors?) {
     didTap = behaviors?.didTap
+    didTapTranslate = behaviors?.didTapTranslate
   }
 
   func setContent(_ content: Content, animated: Bool) {
@@ -40,6 +42,9 @@ final class ReviewsCollectionView: CollectionView, EpoxyableView {
         ReviewView.itemModel(
           dataID: index,
           content: content,
+          behaviors: .init(didTapTranslate: { [weak self] reviewText in
+            self?.didTapTranslate?(reviewText)
+          }),
           style: .init())
           .didSelect { [weak self] _ in
             self?.didTap?(content.id)
@@ -58,6 +63,7 @@ final class ReviewsCollectionView: CollectionView, EpoxyableView {
   }
 
   private var didTap: ((_ reviewID: Int) -> Void)?
+  private var didTapTranslate: ((String?) -> Void)?
 
   private var layoutSection: NSCollectionLayoutSection? {
     let width: CGFloat = UIScreen.main.bounds.width > 320 ? 300 : 285
