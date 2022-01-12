@@ -192,7 +192,7 @@ extension StorePresenter: StorePresenterProtocol {
           if $0.0 == "country_code" {
             return countryNameFromLocaleCode(countryCode: $0.1)
           } else {
-            return localized($0.1).firstLetterUppercased()
+            return localized($0.1.lowercased()).firstLetterUppercased()
           }
         })
         sections += [.assortiment(header: header, content: assortmentsContent)]
@@ -218,7 +218,7 @@ extension StorePresenter: StorePresenterProtocol {
           if $0.0 == "country_code" {
             return countryNameFromLocaleCode(countryCode: $0.1)
           } else {
-            return localized($0.1).firstLetterUppercased()
+            return localized($0.1.lowercased()).firstLetterUppercased()
           }
         })
         sections += [.assortiment(header: header, content: assortmentsContent)]

@@ -39,7 +39,7 @@ final class StoreViewController: CollectionViewController {
       layout: layout,
       configuration: .init(
         usesBatchUpdatesForAllReloads: false,
-        usesCellPrefetching: false,
+        usesCellPrefetching: true,
         usesAccurateScrollToItem: true))
     collectionView.prefetchDelegate = self
     return collectionView
@@ -176,7 +176,7 @@ final class StoreViewController: CollectionViewController {
         .flowLayoutItemSize(.init(width: collectionViewSize.width, height: 250))
         .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 16, right: 0))
 
-      case .assortiment(let headerItemID, let header, let rows):
+      case .assortiment(_, let header, let rows):
         return SectionModel(
           dataID: UUID(),
           items: rows.compactMap({ assortmentContent in
@@ -223,7 +223,7 @@ final class StoreViewController: CollectionViewController {
           }))
           .supplementaryItems(ofKind: UICollectionView.elementKindSectionHeader, [
             FiltersCollectionView.supplementaryItemModel(
-              dataID: headerItemID,
+              dataID: UUID(),
               content: header,
               style: .init())
               .setBehaviors { [weak self] context in
@@ -339,6 +339,7 @@ extension StoreViewController: StoreViewControllerProtocol {
           (collectionView as UIScrollView).perform(scrollToTopIfPossibleSelector)
         }
       }
+      setSections([], animated: false) // does it fix crash ???
       setSections(sections, animated: false)
     } else {
       setSections(sections, animated: false)
