@@ -98,7 +98,6 @@ final class Coordinator: WineDetailRoutable, ActivityRoutable, WriteNoteRoutable
     rating: Double,
     reviewText: String?) { }
 
-
   func presentWriteViewController(note: VNote) { }
 
   func presentWriteViewController(wine: Wine) { }

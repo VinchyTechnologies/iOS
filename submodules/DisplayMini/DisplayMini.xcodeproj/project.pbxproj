@@ -43,7 +43,6 @@
 		8A9CAC072763F01400A5B694 /* SearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CABE02763F01400A5B694 /* SearchBar.swift */; };
 		8A9CAC082763F01400A5B694 /* ShimmeringView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CABE12763F01400A5B694 /* ShimmeringView.swift */; };
 		8A9CAC092763F01400A5B694 /* UIColor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CABE22763F01400A5B694 /* UIColor.swift */; };
-		8A9CAC0A2763F01400A5B694 /* ASPageControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CABE32763F01400A5B694 /* ASPageControl.swift */; };
 		8A9CAC0B2763F01400A5B694 /* UIEdgeInsets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CABE42763F01400A5B694 /* UIEdgeInsets.swift */; };
 		8A9CAC0C2763F01400A5B694 /* TextCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CABE52763F01400A5B694 /* TextCollectionCell.swift */; };
 		8A9CAC0D2763F01400A5B694 /* UIKitUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CABE62763F01400A5B694 /* UIKitUtils.swift */; };
@@ -99,7 +98,6 @@
 		8A9CABE02763F01400A5B694 /* SearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBar.swift; sourceTree = "<group>"; };
 		8A9CABE12763F01400A5B694 /* ShimmeringView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShimmeringView.swift; sourceTree = "<group>"; };
 		8A9CABE22763F01400A5B694 /* UIColor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIColor.swift; sourceTree = "<group>"; };
-		8A9CABE32763F01400A5B694 /* ASPageControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ASPageControl.swift; sourceTree = "<group>"; };
 		8A9CABE42763F01400A5B694 /* UIEdgeInsets.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIEdgeInsets.swift; sourceTree = "<group>"; };
 		8A9CABE52763F01400A5B694 /* TextCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextCollectionCell.swift; sourceTree = "<group>"; };
 		8A9CABE62763F01400A5B694 /* UIKitUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIKitUtils.swift; sourceTree = "<group>"; };
@@ -192,7 +190,6 @@
 				8A453146278D72B100781EEC /* Translate */,
 				8A9CABD32763F01300A5B694 /* ActivityIndicator.swift */,
 				8A9CABDC2763F01300A5B694 /* Alertable.swift */,
-				8A9CABE32763F01400A5B694 /* ASPageControl.swift */,
 				8A9CABD72763F01300A5B694 /* BottlesCollectionView.swift */,
 				8A9CABC82763F01300A5B694 /* BottomButtonsView.swift */,
 				8A9CABD42763F01300A5B694 /* BottomPriceBarView.swift */,
@@ -393,7 +390,6 @@
 				8A9CAC172763F64B00A5B694 /* DeliveryTutorialView.swift in Sources */,
 				8ABEF40927809E430046C43E /* LogoRow.swift in Sources */,
 				8A9CABEE2763F01400A5B694 /* SeparatorCell.swift in Sources */,
-				8A9CAC0A2763F01400A5B694 /* ASPageControl.swift in Sources */,
 				8A9CABFC2763F01400A5B694 /* EpoxyErrorView.swift in Sources */,
 				8A9CABED2763F01400A5B694 /* Orientation.swift in Sources */,
 				8ABEF40B2780A73F0046C43E /* StoreMapRow.swift in Sources */,
