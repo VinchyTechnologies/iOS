@@ -6,6 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import Combine
 import Core
 import Database
 import FirebaseDynamicLinks
@@ -32,6 +33,7 @@ final class RatesInteractor {
     self.router = router
     self.presenter = presenter
     configureStateMachine()
+    subscribeToEvents()
   }
 
   // MARK: Internal
@@ -40,6 +42,8 @@ final class RatesInteractor {
   var numberDeletedReview = 0
 
   // MARK: Private
+
+  private var observers: [AnyCancellable] = []
 
   private let authService = AuthService.shared
   private let input: RatesInput
@@ -70,6 +74,24 @@ final class RatesInteractor {
         break
       }
     }
+  }
+
+  private func subscribeToEvents() {
+    observers = []
+
+    authService.eventProducer.sink { [weak self] event in
+      guard let self = self else { return }
+      switch event {
+      case .loggedIn:
+        self.reviews.removeAll()
+        self.loadInitData(usingRefreshControl: false)
+
+      case .logout:
+        self.reviews.removeAll()
+        self.loadInitData(usingRefreshControl: false)
+      }
+    }
+    .store(in: &observers)
   }
 
   private func loadData(offset: Int, usingRefreshControl: Bool) {
@@ -151,14 +173,6 @@ final class RatesInteractor {
 // MARK: RatesInteractorProtocol
 
 extension RatesInteractor: RatesInteractorProtocol {
-
-  func viewWillAppear() {
-    if ratesRepository.state == .needsReload {
-      reviews.removeAll()
-      loadInitData(usingRefreshControl: false)
-      ratesRepository.state = .normal
-    }
-  }
 
   func didTapLoginButton() {
     router.presentAuthorizationViewController()

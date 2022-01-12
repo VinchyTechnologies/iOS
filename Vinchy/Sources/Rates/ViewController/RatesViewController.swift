@@ -56,11 +56,6 @@ final class RatesViewController: UIViewController {
     interactor?.viewDidLoad()
   }
 
-  override func viewWillAppear(_ animated: Bool) {
-    super.viewWillAppear(animated)
-    interactor?.viewWillAppear()
-  }
-
   // MARK: Private
 
   private var viewModel: RatesViewModel = .init(state: .normal(items: []), navigationTitle: nil) {
@@ -303,11 +298,8 @@ extension RatesViewController: WineRateTableCellDelegate {
 
 extension RatesViewController: AuthorizationOutputDelegate {
   func didSuccessfullyRegister(output: AuthorizationOutputModel?) {
-    interactor?.viewDidLoad()
   }
 
   func didSuccessfullyLogin(output: AuthorizationOutputModel?) {
-    ratesRepository.state = .needsReload
-    interactor?.viewWillAppear()
   }
 }

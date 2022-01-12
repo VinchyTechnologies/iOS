@@ -7,6 +7,7 @@
 //
 
 import AuthenticationServices
+import Combine
 import Core
 
 // MARK: - User
@@ -14,6 +15,12 @@ import Core
 public struct User {
   public let accountID: Int
   public let name: String
+}
+
+// MARK: - AuthEvent
+
+public enum AuthEvent {
+  case loggedIn, logout
 }
 
 // MARK: - AuthService
@@ -28,6 +35,9 @@ public final class AuthService {
   // MARK: Public
 
   public static let shared = AuthService()
+
+
+  public let eventProducer = PassthroughSubject<AuthEvent, Never>()
 
   public var isAuthorized: Bool {
     UserDefaultsConfig.accountID != 0
@@ -60,7 +70,8 @@ public final class AuthService {
       UserDefaultsConfig.userName = (fullName.givenName ?? "") + " " + (fullName.familyName ?? "")
     }
 
-    let com: (Result<AccountInfo, APIError>) -> Void = { result in
+    let com: (Result<AccountInfo, APIError>) -> Void = { [weak self] result in
+      guard let self = self else { return }
       switch result {
       case .success(let response):
         UserDefaultsConfig.accountID = response.accountID
@@ -70,6 +81,7 @@ public final class AuthService {
         Keychain.shared.accessToken = response.accessToken
         Keychain.shared.refreshToken = response.refreshToken
         completion(.success(response))
+        self.eventProducer.send(.loggedIn)
 
       case .failure(let error):
         completion(.failure(error))
@@ -93,5 +105,6 @@ public final class AuthService {
     Keychain.shared.accessToken = nil
     Keychain.shared.refreshToken = nil
     Keychain.shared.password = nil
+    eventProducer.send(.logout)
   }
 }
