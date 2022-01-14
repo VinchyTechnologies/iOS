@@ -72,8 +72,11 @@ final class WineDetailViewModelFactory {
       shortDescriptions.append(.init(titleText: localized(sugar.rawValue).firstLetterUppercased(), subtitleText: localized("sugar").firstLetterUppercased()))
     }
 
-    if let country = countryNameFromLocaleCode(countryCode: wine.winery?.countryCode) {
-      shortDescriptions.append(.init(titleText: country, subtitleText: localized("country").firstLetterUppercased()))
+    if let countryCode = wine.winery?.countryCode, let country = countryNameFromLocaleCode(countryCode: countryCode) {
+      let flag = emojiFlagForISOCountryCode(countryCode).isEmpty
+        ? ""
+        : emojiFlagForISOCountryCode(countryCode) + " "
+      shortDescriptions.append(.init(titleText: flag + country, subtitleText: localized("country").firstLetterUppercased()))
     }
 
     if let year = wine.year, year != 0 {
