@@ -173,20 +173,45 @@ import UIKit
 
 public protocol BarScrollPercentageCoordinating: AnyObject {
   var scrollPercentage: CGFloat { get set }
+  var targetIndex: Int { get set }
+  var didSelectIndex: Int { get set }
 }
 
 extension BarCoordinatorProperty {
   fileprivate static var scrollPercentage: BarCoordinatorProperty<CGFloat> {
     .init(keyPath: \BarScrollPercentageCoordinating.scrollPercentage, default: 0)
   }
+
+  fileprivate static var targetIndex: BarCoordinatorProperty<Int> {
+    .init(keyPath: \BarScrollPercentageCoordinating.targetIndex, default: 0)
+  }
+
+  fileprivate static var didSelectIndex: BarCoordinatorProperty<Int> {
+    .init(keyPath: \BarScrollPercentageCoordinating.didSelectIndex, default: 0)
+  }
 }
 
 // MARK: - TopBarInstaller + BarScrollPercentageCoordinating
 
 extension TopBarInstaller: BarScrollPercentageCoordinating {
+
+  public var targetIndex: Int {
+    get { self[.targetIndex] }
+    set { self[.targetIndex] = newValue }
+  }
+
   public var scrollPercentage: CGFloat {
     get { self[.scrollPercentage] }
     set { self[.scrollPercentage] = newValue }
+  }
+
+  public var didSelectIndex: Int {
+    get {
+      self[.didSelectIndex]
+    }
+    set {
+      self[.didSelectIndex] = newValue
+    }
   }
 }
 
@@ -200,9 +225,21 @@ final class ScrollPercentageBarCoordinator: BarCoordinating, BarScrollPercentage
 
   // MARK: Public
 
+  public var targetIndex: Int = 0 {
+    didSet {
+      view?.targetIndex = targetIndex
+    }
+  }
+
   public var scrollPercentage: CGFloat = 0 {
     didSet {
       updateScrollPercentage()
+    }
+  }
+
+  public var didSelectIndex: Int = 0 {
+    didSet {
+      view?.didSelectIndex = didSelectIndex
     }
   }
 

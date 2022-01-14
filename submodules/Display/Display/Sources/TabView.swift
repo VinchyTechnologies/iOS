@@ -99,19 +99,9 @@ public final class TabView: UIView {
     layer.shadowOpacity = alpha / 2.0
   }
 
-  // MARK: Private
+  // MARK: Internal
 
-  // MARK: - Private Properties
-
-  private typealias TabCell = TabItemCollectionCell
-
-  private lazy var layout: DonerFlowLayout = {
-    $0.scrollDirection = .horizontal
-    $0.delegate = self
-    return $0
-  }(DonerFlowLayout())
-
-  private lazy var collectionView: CollectionViewWithSelectionBackground = {
+  private(set) lazy var collectionView: CollectionViewWithSelectionBackground = {
     $0.showsHorizontalScrollIndicator = false
     $0.backgroundColor = .accent
     $0.delegate = self
@@ -124,6 +114,16 @@ public final class TabView: UIView {
     $0.selectionBackgroundRadius = LocalConstants.collectionSelectionRadius
     return $0
   }(CollectionViewWithSelectionBackground(frame: .zero, collectionViewLayout: layout))
+
+  // MARK: Private
+
+  private typealias TabCell = TabItemCollectionCell
+
+  private lazy var layout: DonerFlowLayout = {
+    $0.scrollDirection = .horizontal
+    $0.delegate = self
+    return $0
+  }(DonerFlowLayout())
 
   private lazy var underlyingCollectionView: UICollectionView = {
     $0.showsHorizontalScrollIndicator = false
@@ -380,6 +380,17 @@ public final class TabItemCollectionCell: UICollectionViewCell, Reusable {
 
 public final class CollectionViewWithSelectionBackground: UICollectionView {
 
+  // MARK: Lifecycle
+
+  public override init(frame: CGRect, collectionViewLayout layout: UICollectionViewLayout) {
+    super.init(frame: frame, collectionViewLayout: layout)
+    animator.startAnimation()
+  }
+
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
   // MARK: Public
 
   public var selectionBackgroundColor: UIColor? {
@@ -406,6 +417,28 @@ public final class CollectionViewWithSelectionBackground: UICollectionView {
     moveSelectionBackgroundViewToItem(at: indexPath, animated: animated)
   }
 
+  public func move(indexPath: IndexPath, fraction: CGFloat) {
+    animator.addAnimations {
+      guard let attributes = self.layoutAttributesForItem(at: indexPath) else {
+        return
+      }
+      let cellFrame = attributes.frame
+      let frame = CGRect(
+        x: cellFrame.origin.x,
+        y: cellFrame.origin.y,
+        width: cellFrame.size.width,
+        height: cellFrame.size.height)
+      self.selectionBackgroundView.frame = frame
+      self.selectedIndexPath = indexPath
+    }
+
+    if fraction == 1.0 {
+      animator.stopAnimation(true)
+    }
+
+    animator.fractionComplete = fraction
+  }
+
   // MARK: Private
 
   private var selectedIndexPath = IndexPath(row: 0, section: 0)
@@ -414,6 +447,10 @@ public final class CollectionViewWithSelectionBackground: UICollectionView {
     let view = UIView(frame: .zero)
     insertSubview(view, at: .zero)
     return view
+  }()
+
+  private lazy var animator: UIViewPropertyAnimator = {
+    UIViewPropertyAnimator(duration: 0.25, curve: .linear)
   }()
 
   private func moveSelectionBackgroundViewToItem(at indexPath: IndexPath, animated: Bool) {

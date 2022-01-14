@@ -47,9 +47,18 @@ public final class TopTabBarView: UIView, EpoxyableView {
 
   public typealias Content = TabViewModel
 
+  public var targetIndex: Int = 0
+
   public var scrollPercentage: CGFloat = 0.0 {
     didSet {
-      tabView.selectItem(atIndex: Int(scrollPercentage), animated: true)
+      let indexPath = IndexPath(item: 0, section: targetIndex)
+      tabView.collectionView.move(indexPath: indexPath, fraction: scrollPercentage)
+    }
+  }
+
+  public var didSelectIndex: Int = 0 {
+    didSet {
+      tabView.selectItem(atIndex: didSelectIndex, animated: true)
     }
   }
 

@@ -120,7 +120,13 @@ extension SavedViewController: PagingViewControllerDataSource {
 // MARK: PagingViewControllerDelegate
 
 extension SavedViewController: PagingViewControllerDelegate {
-  func pagingViewController(_ pagingViewController: PagingViewController, didScrollToItem pagingItem: PagingItem, startingViewController: UIViewController?, destinationViewController: UIViewController, transitionSuccessful: Bool) {
+  func pagingViewController(
+    _ pagingViewController: PagingViewController,
+    didScrollToItem pagingItem: PagingItem,
+    startingViewController: UIViewController?,
+    destinationViewController: UIViewController,
+    transitionSuccessful: Bool)
+  {
     guard
       let index = viewControllers.firstIndex(
         where: { $0 === destinationViewController })
@@ -130,9 +136,29 @@ extension SavedViewController: PagingViewControllerDelegate {
 
     if transitionSuccessful {
       currentIndex = index
-      topBarInstaller.scrollPercentage = CGFloat(index)
+      topBarInstaller.targetIndex = index
+      topBarInstaller.didSelectIndex = index
     }
   }
+
+  func pagingViewController(
+    _: PagingViewController,
+    isScrollingFromItem currentPagingItem: PagingItem,
+    toItem upcomingPagingItem: PagingItem?,
+    startingViewController: UIViewController,
+    destinationViewController: UIViewController?,
+    progress: CGFloat)
+  {
+    guard
+      let index = viewControllers.firstIndex(
+        where: { $0 === destinationViewController })
+    else {
+      return
+    }
+    topBarInstaller.targetIndex = index
+    topBarInstaller.scrollPercentage = abs(progress)
+  }
+
 }
 
 extension SavedViewController {
