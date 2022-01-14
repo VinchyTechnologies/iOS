@@ -202,9 +202,10 @@ final class WineDetailViewModelFactory {
             wineID: shortWine.id,
             imageURL: shortWine.mainImageUrl?.toURL,
             titleText: shortWine.title,
-            subtitleText: countryNameFromLocaleCode(countryCode: shortWine.winery?.countryCode),
+            subtitleText: shortWine.winery?.title,
             rating: shortWine.rating,
             buttonText: nil,
+            flag: emojiFlagForISOCountryCode(shortWine.winery?.countryCode ?? ""),
             contextMenuViewModels: contextMenuViewModels))
       }
 

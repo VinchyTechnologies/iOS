@@ -148,9 +148,10 @@ extension StorePresenter: StorePresenterProtocol {
           wineID: wine.id,
           imageURL: wine.mainImageUrl?.toURL,
           titleText: wine.title,
-          subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode),
+          subtitleText: wine.winery?.title,
           rating: wine.rating,
           buttonText: buttonText,
+          flag: emojiFlagForISOCountryCode(wine.winery?.countryCode ?? ""),
           contextMenuViewModels: contextMenuViewModels)
       }
 

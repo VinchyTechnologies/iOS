@@ -87,6 +87,15 @@ public final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDel
     ratingLabel.centerXAnchor.constraint(equalTo: ratingView.centerXAnchor).isActive = true
     ratingLabel.topAnchor.constraint(equalTo: ratingView.bottomAnchor, constant: 4).isActive = true
 
+    background.addSubview(flagLabel)
+    flagLabel.translatesAutoresizingMaskIntoConstraints = false
+    NSLayoutConstraint.activate([
+      flagLabel.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -18),
+      flagLabel.topAnchor.constraint(equalTo: background.topAnchor, constant: 14),
+      flagLabel.widthAnchor.constraint(equalToConstant: 28),
+      flagLabel.heightAnchor.constraint(equalToConstant: 28),
+    ])
+
     let stackView = UIStackView()
     stackView.axis = .vertical
     stackView.distribution = .equalSpacing
@@ -132,13 +141,14 @@ public final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDel
 
     // MARK: Lifecycle
 
-    public init(wineID: Int64, imageURL: URL?, titleText: String?, subtitleText: String?, rating: Double?, buttonText: String?, contextMenuViewModels: [ContextMenuViewModel]?) {
+    public init(wineID: Int64, imageURL: URL?, titleText: String?, subtitleText: String?, rating: Double?, buttonText: String?, flag: String?, contextMenuViewModels: [ContextMenuViewModel]?) {
       self.wineID = wineID
       self.imageURL = imageURL
       self.titleText = titleText
       self.subtitleText = subtitleText
       self.rating = rating
       self.buttonText = buttonText
+      self.flag = flag
       self.contextMenuViewModels = contextMenuViewModels
     }
 
@@ -152,6 +162,7 @@ public final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDel
     public let subtitleText: String?
     public let rating: Double?
     public let buttonText: String?
+    public let flag: String?
 
     public static func == (lhs: Content, rhs: Content) -> Bool {
       lhs.wineID == rhs.wineID
@@ -203,6 +214,13 @@ public final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDel
     } else {
       button.isHidden = true
     }
+
+    if let flag = content.flag, !flag.isEmpty {
+      flagLabel.text = flag
+      flagLabel.isHidden = false
+    } else {
+      flagLabel.isHidden = true
+    }
   }
 
   // MARK: Private
@@ -249,6 +267,11 @@ public final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDel
     $0.settings.totalStars = 1
     return $0
   }(StarsRatingView())
+
+  private lazy var flagLabel: UILabel = {
+    $0.font = .systemFont(ofSize: 28)
+    return $0
+  }(UILabel())
 
   private let ratingLabel: UILabel = {
     $0.font = Font.with(size: 14, design: .round, traits: .bold)
