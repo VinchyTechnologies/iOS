@@ -241,9 +241,15 @@ final class StoreInteractor {
 // MARK: StoreInteractorProtocol
 
 extension StoreInteractor: StoreInteractorProtocol {
-
   var contextMenuRouter: ActivityRoutable & WriteNoteRoutable {
     router
+  }
+
+  func didTapShare(button: UIButton) {
+    guard let partnerInfo = partnerInfo else {
+      return
+    }
+    router.didTapShareStore(type: .fullInfo(affilatedId: partnerInfo.affiliatedStoreId, titleText: partnerInfo.title, logoURL: partnerInfo.logoURL?.toURL, sourceView: button))
   }
 
   func didTapLikeButton() {

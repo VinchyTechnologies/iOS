@@ -19,4 +19,5 @@ protocol StoreInteractorProtocol: WineViewContextMenuTappable, AdvancedSearchOut
   func didTapSearchButton()
   func didTapHorizontalWineViewButton(wineID: Int64)
   func didTapLikeButton()
+  func didTapShare(button: UIButton)
 }

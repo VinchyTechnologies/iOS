@@ -24,22 +24,17 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     guard
       let userActivity = connectionOptions.userActivities.first,
       userActivity.activityType == NSUserActivityTypeBrowsingWeb,
-      let url = userActivity.webpageURL,
-      let components = NSURLComponents(url: url, resolvingAgainstBaseURL: true)
+      let url = userActivity.webpageURL
     else {
       return
     }
 
     guard
-      let queryItem = components.queryItems?.first(where: { $0.name == "id" }),
-      let id = queryItem.value else
-    {
-      return
-    }
-
-    guard let affilatedId = Int(id) else {
-      return
-    }
+      let word = url.pathComponents[safe: url.pathComponents.count - 2],
+      word == "store",
+      let id = url.pathComponents.last,
+      let affilatedId = Int(id)
+    else { return }
 
     let window = UIWindow(windowScene: windowScence)
     self.window = window

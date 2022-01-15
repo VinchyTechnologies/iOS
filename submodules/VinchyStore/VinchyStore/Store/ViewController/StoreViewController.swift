@@ -151,9 +151,13 @@ final class StoreViewController: CollectionViewController {
           ServicesButtonView.itemModel(
             dataID: UUID(),
             content: content,
-            behaviors: .init(didTapLike: { [weak self] _ in
-              self?.interactor?.didTapLikeButton()
-            }),
+            behaviors: .init(
+              didTapLike: { [weak self] _ in
+                self?.interactor?.didTapLikeButton()
+              },
+              didTapShare: { [weak self] button in
+                self?.interactor?.didTapShare(button: button)
+              }),
             style: .init())
             .willDisplay { [weak self] context in
               guard let self = self else { return }

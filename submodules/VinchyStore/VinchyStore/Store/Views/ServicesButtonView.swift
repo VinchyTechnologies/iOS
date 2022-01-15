@@ -37,13 +37,16 @@ final class ServicesButtonView: UIView, EpoxyableView {
 
   public struct Behaviors {
     public let didTapLike: (UIButton) -> Void
-    public init(didTapLike: @escaping ((UIButton) -> Void)) {
+    public let didTapShare: (UIButton) -> Void
+    public init(didTapLike: @escaping ((UIButton) -> Void), didTapShare: @escaping (UIButton) -> Void) {
       self.didTapLike = didTapLike
+      self.didTapShare = didTapShare
     }
   }
 
   public func setBehaviors(_ behaviors: Behaviors?) {
     didTapLike = behaviors?.didTapLike
+    didTapShare = behaviors?.didTapShare
   }
 
   // MARK: Internal
@@ -58,11 +61,13 @@ final class ServicesButtonView: UIView, EpoxyableView {
     let isLiked: Bool
     let saveButtonText: String?
     let savedButtonText: String?
+    let shareText: String?
 
-    init(isLiked: Bool, saveButtonText: String?, savedButtonText: String?) {
+    init(isLiked: Bool, saveButtonText: String?, savedButtonText: String?, shareText: String?) {
       self.isLiked = isLiked
       self.saveButtonText = saveButtonText
       self.savedButtonText = savedButtonText
+      self.shareText = shareText
     }
 
     func height(for width: CGFloat) -> CGFloat {
@@ -84,14 +89,15 @@ final class ServicesButtonView: UIView, EpoxyableView {
     likeButton.isSelected = content.isLiked
     hStack.addArrangedSubview(likeButton)
 
-//    shareButton.setContent(.init(titleText: "Share", image: UIImage(systemName: "square.and.arrow.up", withConfiguration: imageConfig)), animated: false)
-//    shareButton.addTarget(self, action: #selector(didTapShareButton(_:)), for: .touchUpInside)
-//    hStack.addArrangedSubview(shareButton)
+    shareButton.setContent(.init(titleText: content.shareText, image: UIImage(systemName: "square.and.arrow.up", withConfiguration: imageConfig)), animated: false)
+    shareButton.addTarget(self, action: #selector(didTapShareButton(_:)), for: .touchUpInside)
+    hStack.addArrangedSubview(shareButton)
   }
 
   // MARK: Private
 
   private var didTapLike: ((UIButton) -> Void)?
+  private var didTapShare: ((UIButton) -> Void)?
 
   private let hStack = UIStackView()
 
@@ -105,7 +111,7 @@ final class ServicesButtonView: UIView, EpoxyableView {
 
   @objc
   private func didTapShareButton(_ button: UIButton) {
-
+    didTapShare?(button)
   }
 }
 

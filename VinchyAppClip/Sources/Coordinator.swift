@@ -15,7 +15,7 @@ import VinchyCore
 import VinchyUI
 import WineDetail
 
-final class Coordinator: WineDetailRoutable, ActivityRoutable, WriteNoteRoutable, AdvancedSearchRoutable, ResultsSearchRoutable, ReviewDetailRoutable, ReviewsRoutable, StoreRoutable, StoresRoutable, WriteReviewRoutable, ShowcaseRoutable, AuthorizationRoutable, WineShareRoutable, StatusAlertable, SafariRoutable {
+final class Coordinator: WineDetailRoutable, ActivityRoutable, WriteNoteRoutable, AdvancedSearchRoutable, ResultsSearchRoutable, ReviewDetailRoutable, ReviewsRoutable, StoreRoutable, StoresRoutable, WriteReviewRoutable, ShowcaseRoutable, AuthorizationRoutable, WineShareRoutable, StatusAlertable, SafariRoutable, StoreShareRoutable {
 
   static let shared = Coordinator()
 
@@ -107,4 +107,6 @@ final class Coordinator: WineDetailRoutable, ActivityRoutable, WriteNoteRoutable
   func didTapShare(type: WineShareType) { }
 
   func showStatusAlert(viewModel: StatusAlertViewModel) { }
+
+  func didTapShareStore(type: StoreShareType) { }
 }

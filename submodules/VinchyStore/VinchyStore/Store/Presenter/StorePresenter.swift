@@ -130,7 +130,8 @@ extension StorePresenter: StorePresenterProtocol {
         .services(.init(
           isLiked: data.isLiked,
           saveButtonText: localized("save").firstLetterUppercased(),
-          savedButtonText: localized("saved").firstLetterUppercased())),
+          savedButtonText: localized("saved").firstLetterUppercased(),
+          shareText: localized("share").firstLetterUppercased())),
       ]
     }
 

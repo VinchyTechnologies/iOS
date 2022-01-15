@@ -47,6 +47,10 @@ final class StoreRouter {
 
 extension StoreRouter: StoreRouterProtocol {
 
+  func didTapShareStore(type: StoreShareType) {
+    coordinator.didTapShareStore(type: type)
+  }
+
   func presentSafari(url: URL) {
     coordinator.presentSafari(url: url)
   }
