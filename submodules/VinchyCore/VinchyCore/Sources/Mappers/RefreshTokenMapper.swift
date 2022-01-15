@@ -31,7 +31,7 @@ func mapToRefreshTokenCompletion<T: Decodable>(
 
     case .failure(let error):
       switch error {
-      case .invalidURL, .decodingError, .noData:
+      case .invalidURL, .decodingError, .unknown, .noInternetConnection:
         completion(.failure(error))
 
       case .incorrectStatusCode(let code):

@@ -16,8 +16,9 @@ public enum APIError: Error {
   case invalidURL
   case decodingError
   case incorrectStatusCode(Int)
-  case noData
   case updateTokensErrorShouldShowAuthScreen
+  case noInternetConnection
+  case unknown
 }
 
 // MARK: - API
@@ -71,13 +72,25 @@ final class API {
 
     request.httpMethod = endpoint.method.rawValue
 
+    #if DEBUG
     print(request)
+    #endif
 
     URLSession.shared.dataTask(with: request) { data, response, error in
 
       guard let data = data, let response = response as? HTTPURLResponse, error == nil else {
         DispatchQueue.main.async {
-          completion(.failure(.noData))
+          if let error = error as? URLError {
+            switch error.errorCode {
+            case NSURLErrorNotConnectedToInternet:
+              completion(.failure(.noInternetConnection))
+
+            default:
+              completion(.failure(.unknown))
+            }
+          } else {
+            completion(.failure(.unknown))
+          }
         }
         return
       }

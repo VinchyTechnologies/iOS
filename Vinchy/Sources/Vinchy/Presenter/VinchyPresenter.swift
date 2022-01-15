@@ -163,7 +163,8 @@ extension VinchyPresenter: VinchyPresenterProtocol {
     city: String?,
     isLocationPermissionDenied: Bool,
     userLocation: CLLocationCoordinate2D?,
-    didUsePullToRefresh: Bool, error: Error?)
+    didUsePullToRefresh: Bool,
+    error: Error?)
   {
     if error != nil {
       viewController?.updateUI(viewModel: .init(
@@ -171,7 +172,7 @@ extension VinchyPresenter: VinchyPresenterProtocol {
           sections: [
             .common(content: .init(
               titleText: localized("error").firstLetterUppercased(),
-              subtitleText: error?.localizedDescription,
+              subtitleText: (error as? APIError)?.description,
               buttonText: localized("reload").firstLetterUppercased())),
           ]), leadingAddressButtonViewModel: .loading(text: localized("undefined").firstLetterUppercased())))
       if didUsePullToRefresh {

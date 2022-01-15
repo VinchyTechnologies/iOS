@@ -26,20 +26,14 @@ extension APIError: APIErrorProtocol {
 
   var description: String? {
     switch self {
-    case .invalidURL:
-      return "Invalid URL" // TODO: - localize
+    case .invalidURL, .decodingError, .incorrectStatusCode, .unknown:
+      return localized("Error.Unknown")
 
-    case .decodingError:
-      return "Decoding Error" // TODO: - localize
-
-    case .incorrectStatusCode(let statusCode):
-      return "StatusCode should be 2xx, but is \(statusCode)" // TODO: - localize
-
-    case .noData:
-      return "No Data" // TODO: - localize
+    case .noInternetConnection:
+      return localized("Error.NoInternetConnection")
 
     case .updateTokensErrorShouldShowAuthScreen:
-      return "Incorrect tokens"
+      return nil
     }
   }
 }

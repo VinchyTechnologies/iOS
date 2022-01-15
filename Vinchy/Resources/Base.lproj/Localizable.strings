@@ -236,3 +236,6 @@
 "onboarding_let_us_use_geo" = "Allow";
 "onboarding_next" = "Next";
 
+// MARK: - Errors
+"Error.NoInternetConnection" = "The internet connection appears to be offline";
+"Error.Unknown" = "An unknown error occurred";

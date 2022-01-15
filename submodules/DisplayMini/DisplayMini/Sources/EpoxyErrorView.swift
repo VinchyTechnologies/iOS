@@ -45,6 +45,8 @@ public final class EpoxyErrorView: UIView, EpoxyableView {
     subtitleLabel.textColor = .blueGray
     subtitleLabel.textAlignment = .center
     subtitleLabel.numberOfLines = 3
+    subtitleLabel.adjustsFontSizeToFitWidth = true
+    subtitleLabel.minimumScaleFactor = 0.1
     subtitleLabel.widthAnchor.constraint(lessThanOrEqualToConstant: UIScreen.main.bounds.width - 40).isActive = true
 
     button.heightAnchor.constraint(equalToConstant: 48).isActive = true
