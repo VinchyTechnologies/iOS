@@ -35,6 +35,15 @@ final class DebugSettingsViewController: CollectionViewController {
           .didSelect { [weak self] _ in
             self?.interactor?.didSelectOpenTestVinchyStore()
           }
+
+      case .navigateToPushNotification(let content):
+        return TextRow.itemModel(
+          dataID: UUID(),
+          content: content,
+          style: .large)
+          .didSelect { [weak self] _ in
+            self?.interactor?.didSelectOpenPushNotifications()
+          }
       }
     })
   }

@@ -10,4 +10,5 @@ import Foundation
 
 protocol DebugSettingsRouterProtocol: AnyObject {
   func pushToVinchyStoreTestViewController()
+  func pushToPushNotifications()
 }

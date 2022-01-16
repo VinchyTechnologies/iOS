@@ -203,6 +203,8 @@
 		8A63CCC126754638003B1D4D /* VinchyCore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA7B825C24EC750300991F24 /* VinchyCore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A63E3382770F27400D8362C /* SafariRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A63E3372770F27400D8362C /* SafariRoutable.swift */; };
 		8A63E3392770F27400D8362C /* SafariRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A63E3372770F27400D8362C /* SafariRoutable.swift */; };
+		8A6D10B727943FAB009FF7E7 /* NotificationsDebug.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6D10B627943FAB009FF7E7 /* NotificationsDebug.framework */; };
+		8A6D10B827943FAB009FF7E7 /* NotificationsDebug.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A6D10B627943FAB009FF7E7 /* NotificationsDebug.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A7BCD712757B25000B56313 /* ThirdParty.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A7BCD702757B25000B56313 /* ThirdParty.framework */; };
 		8A7BCD722757B25000B56313 /* ThirdParty.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A7BCD702757B25000B56313 /* ThirdParty.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A889A57275CC8390096A74A /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA1821FE24C0F6F000280DD4 /* Database.framework */; };
@@ -512,6 +514,7 @@
 				8A5145E22757EC9000DC45CD /* VinchyStore.framework in Embed Frameworks */,
 				8A9C7F0927613A3300A5B694 /* DisplayMini.framework in Embed Frameworks */,
 				8A63CCB52675462A003B1D4D /* Core.framework in Embed Frameworks */,
+				8A6D10B827943FAB009FF7E7 /* NotificationsDebug.framework in Embed Frameworks */,
 				8A299EF4274FB7B400355602 /* Spotlight.framework in Embed Frameworks */,
 				8AEC83BB2758E7BE00C80F1E /* WineDetail.framework in Embed Frameworks */,
 				8A63CCB92675462E003B1D4D /* Display.framework in Embed Frameworks */,
@@ -714,6 +717,7 @@
 		8A5145E02757EC9000DC45CD /* VinchyStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5401C926EFA894007247E5 /* StoreTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTitleView.swift; sourceTree = "<group>"; };
 		8A63E3372770F27400D8362C /* SafariRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariRoutable.swift; sourceTree = "<group>"; };
+		8A6D10B627943FAB009FF7E7 /* NotificationsDebug.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NotificationsDebug.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A7BCD702757B25000B56313 /* ThirdParty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ThirdParty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A7E8781275D1F3B00A8C470 /* AdUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AdUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A8FE7322708D9F8002EE088 /* LogOutCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogOutCell.swift; sourceTree = "<group>"; };
@@ -979,6 +983,7 @@
 				8A63CCBC26754633003B1D4D /* StringFormatting.framework in Frameworks */,
 				8A7BCD712757B25000B56313 /* ThirdParty.framework in Frameworks */,
 				37A9CF6CB814EAAD2813EDC6 /* Pods_Smart.framework in Frameworks */,
+				8A6D10B727943FAB009FF7E7 /* NotificationsDebug.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1376,6 +1381,7 @@
 		46483F371463D95E22014241 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8A6D10B627943FAB009FF7E7 /* NotificationsDebug.framework */,
 				8A9C7F0A27613A3F00A5B694 /* DisplayMini.framework */,
 				8A9C7F0727613A3300A5B694 /* DisplayMini.framework */,
 				8A7E8781275D1F3B00A8C470 /* AdUI.framework */,

@@ -6,6 +6,8 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import NotificationsDebug
+import SwiftUI
 import UIKit
 import VinchyUI
 
@@ -35,5 +37,10 @@ final class DebugSettingsRouter {
 extension DebugSettingsRouter: DebugSettingsRouterProtocol {
   func pushToVinchyStoreTestViewController() {
     coordinator.pushToStoreViewController(affilatedId: 1528)
+  }
+
+  func pushToPushNotifications() {
+    viewController?.navigationController?.pushViewController(
+      UIHostingController(rootView: NotificationDebugView()), animated: true)
   }
 }
