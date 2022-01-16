@@ -35,6 +35,10 @@ extension DebugSettingsInteractor: DebugSettingsInteractorProtocol {
     router.pushToVinchyStoreTestViewController()
   }
 
+  func didSelectOpenPushNotifications() {
+    router.pushToPushNotifications()
+  }
+
   func viewDidLoad() {
     presenter.update()
   }

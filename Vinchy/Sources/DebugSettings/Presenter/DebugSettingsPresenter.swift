@@ -28,14 +28,29 @@ final class DebugSettingsPresenter {
 
 extension DebugSettingsPresenter: DebugSettingsPresenterProtocol {
   func update() {
+
+    var sections: [DebugSettingsViewModel.Section] = []
+
+    sections += [
+      .navigateVinchyStore(
+        .init(
+          id: 1,
+          title: "Vinchy Store Test",
+          body: nil)),
+    ]
+
+    #if DEBUG
+    sections += [
+      .navigateToPushNotification(
+        .init(
+          id: 2,
+          title: "Push Notification Center",
+          body: nil)),
+    ]
+    #endif
+
     viewController?.updateUI(viewModel: .init(
-      sections: [
-        .navigateVinchyStore(
-          .init(
-            id: 1,
-            title: "Vinchy Store Test",
-            body: nil)),
-      ],
+      sections: sections,
       navigationTitleText: "Debug"))
   }
 }

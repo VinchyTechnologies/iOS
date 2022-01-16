@@ -12,6 +12,7 @@ struct DebugSettingsViewModel {
 
   enum Section {
     case navigateVinchyStore(TextRow.Content)
+    case navigateToPushNotification(TextRow.Content)
   }
 
   let sections: [Section]

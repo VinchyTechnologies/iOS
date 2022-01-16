@@ -92,8 +92,6 @@ public final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDel
     NSLayoutConstraint.activate([
       flagLabel.trailingAnchor.constraint(equalTo: background.trailingAnchor, constant: -18),
       flagLabel.topAnchor.constraint(equalTo: background.topAnchor, constant: 14),
-      flagLabel.widthAnchor.constraint(equalToConstant: 28),
-      flagLabel.heightAnchor.constraint(equalToConstant: 28),
     ])
 
     let stackView = UIStackView()

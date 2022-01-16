@@ -11,4 +11,5 @@ import Foundation
 protocol DebugSettingsInteractorProtocol: AnyObject {
   func viewDidLoad()
   func didSelectOpenTestVinchyStore()
+  func didSelectOpenPushNotifications()
 }
