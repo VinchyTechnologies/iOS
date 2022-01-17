@@ -4038,7 +4038,7 @@
 				CODE_SIGN_ENTITLEMENTS = VinchyAppClip/VinchyAppClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				ENABLE_BITCODE = YES;
 				GCC_OPTIMIZATION_LEVEL = s;
@@ -4078,7 +4078,7 @@
 				CODE_SIGN_ENTITLEMENTS = VinchyAppClip/VinchyAppClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				ENABLE_BITCODE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -4237,7 +4237,7 @@
 				CODE_SIGN_ENTITLEMENTS = Vinchy/Resources/Vinchy.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Vinchy/Resources/Info.plist;
@@ -4270,7 +4270,7 @@
 				CODE_SIGN_ENTITLEMENTS = Vinchy/Resources/VinchyRelease.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = Vinchy/Resources/Info.plist;
