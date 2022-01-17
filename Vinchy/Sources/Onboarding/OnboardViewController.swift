@@ -4,7 +4,6 @@
 //
 
 import CoreLocation
-import FSPagerView
 import UIKit
 
 // MARK: - OnboardingViewControllerOutput

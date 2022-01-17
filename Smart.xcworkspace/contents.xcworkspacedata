@@ -5,6 +5,9 @@
       location = "container:"
       name = "third-party">
       <FileRef
+         location = "group:third-party/Pager/Pager.xcodeproj">
+      </FileRef>
+      <FileRef
          location = "group:third-party/ThirdParty/ThirdParty.xcodeproj">
       </FileRef>
    </Group>

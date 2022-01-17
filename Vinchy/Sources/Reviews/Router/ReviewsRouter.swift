@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import VinchyUI
 
 // MARK: - ReviewsRouter
 
@@ -16,16 +17,19 @@ final class ReviewsRouter {
 
   init(
     input: ReviewsInput,
-    viewController: UIViewController)
+    viewController: UIViewController,
+    coordinator: ReviewDetailRoutable)
   {
     self.input = input
     self.viewController = viewController
+    self.coordinator = coordinator
   }
 
   // MARK: Internal
 
   weak var viewController: UIViewController?
   weak var interactor: ReviewsInteractorProtocol?
+  let coordinator: ReviewDetailRoutable
 
   // MARK: Private
 
@@ -34,4 +38,9 @@ final class ReviewsRouter {
 
 // MARK: ReviewsRouterProtocol
 
-extension ReviewsRouter: ReviewsRouterProtocol {}
+extension ReviewsRouter: ReviewsRouterProtocol {
+
+  func showBottomSheetReviewDetailViewController(reviewInput: ReviewDetailInput) {
+    coordinator.showBottomSheetReviewDetailViewController(reviewInput: reviewInput)
+  }
+}

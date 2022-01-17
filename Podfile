@@ -12,9 +12,7 @@ def epoxy
 end
 
 def commonPods
-  pod 'FSPagerView' # no spm...
   pod 'SwiftLint'
-  pod 'FittedSheets'
   epoxy
 end
 
@@ -26,6 +24,7 @@ target 'Smart' do
   pod 'CocoaDebug', :configurations => ['Debug']
   pod 'Firebase/RemoteConfig'
   pod 'SPAlert', '~> 2.1.4'
+  pod 'FittedSheets'
   commonPods
 
   target 'SmartTests' do
@@ -67,7 +66,6 @@ end
 
 target 'WineDetail' do
   project 'submodules/WineDetail/WineDetail'
-  pod 'FSPagerView' # no spm...
   epoxy
 end
 

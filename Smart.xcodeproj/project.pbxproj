@@ -187,6 +187,10 @@
 		8A5145E12757EC9000DC45CD /* VinchyStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5145E02757EC9000DC45CD /* VinchyStore.framework */; };
 		8A5145E22757EC9000DC45CD /* VinchyStore.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5145E02757EC9000DC45CD /* VinchyStore.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A5401CA26EFA894007247E5 /* StoreTitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5401C926EFA894007247E5 /* StoreTitleView.swift */; };
+		8A62EF0B2795C09D005445B4 /* Pager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A62EF0A2795C09D005445B4 /* Pager.framework */; };
+		8A62EF0C2795C09D005445B4 /* Pager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A62EF0A2795C09D005445B4 /* Pager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8A62EF0E2795C0AA005445B4 /* Pager.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A62EF0D2795C0AA005445B4 /* Pager.framework */; };
+		8A62EF0F2795C0AA005445B4 /* Pager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A62EF0D2795C0AA005445B4 /* Pager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A63CCB42675462A003B1D4D /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CABDBA8624C2FAB800AD96D6 /* Core.framework */; };
 		8A63CCB52675462A003B1D4D /* Core.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CABDBA8624C2FAB800AD96D6 /* Core.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A63CCB62675462C003B1D4D /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA1821FE24C0F6F000280DD4 /* Database.framework */; };
@@ -338,7 +342,6 @@
 		8AEC94ED275B615800C80F1E /* ReviewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB3025E177220076ED6D /* ReviewsViewController.swift */; };
 		8AEC94EE275B615D00C80F1E /* ReviewsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB2625E177220076ED6D /* ReviewsViewModel.swift */; };
 		8AEC94EF275B61AC00C80F1E /* FakeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA276D54256AC6720061BEBE /* FakeCell.swift */; };
-		8AEC94F0275B621500C80F1E /* ReviewDetailRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4495625025E2E15A005E79DA /* ReviewDetailRoutable.swift */; };
 		8AEC94F1275B624B00C80F1E /* filters.json in Resources */ = {isa = PBXBuildFile; fileRef = CACC1DC124C5F2980082BD01 /* filters.json */; };
 		8AEC94F2275B627600C80F1E /* country_codes.json in Resources */ = {isa = PBXBuildFile; fileRef = CA3CEFAF251288F000AAA692 /* country_codes.json */; };
 		8AF5656226F2341500C58E2C /* VinchyRepositoryProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF5656126F2341500C58E2C /* VinchyRepositoryProtocol.swift */; };
@@ -485,6 +488,7 @@
 			files = (
 				8A417736275CBF03003E1934 /* AdvancedSearch.framework in Embed Frameworks */,
 				8A417741275CBF0E003E1934 /* Spotlight.framework in Embed Frameworks */,
+				8A62EF0F2795C0AA005445B4 /* Pager.framework in Embed Frameworks */,
 				8A889A58275CC8390096A74A /* Database.framework in Embed Frameworks */,
 				8A41774B275CBF16003E1934 /* WineDetail.framework in Embed Frameworks */,
 				8A9C7F0C27613A3F00A5B694 /* DisplayMini.framework in Embed Frameworks */,
@@ -513,6 +517,7 @@
 				8A63CCBF26754635003B1D4D /* VinchyAuthorization.framework in Embed Frameworks */,
 				8A5145E22757EC9000DC45CD /* VinchyStore.framework in Embed Frameworks */,
 				8A9C7F0927613A3300A5B694 /* DisplayMini.framework in Embed Frameworks */,
+				8A62EF0C2795C09D005445B4 /* Pager.framework in Embed Frameworks */,
 				8A63CCB52675462A003B1D4D /* Core.framework in Embed Frameworks */,
 				8A6D10B827943FAB009FF7E7 /* NotificationsDebug.framework in Embed Frameworks */,
 				8A299EF4274FB7B400355602 /* Spotlight.framework in Embed Frameworks */,
@@ -716,6 +721,8 @@
 		8A5145852757C9A000DC45CD /* VinchyUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5145E02757EC9000DC45CD /* VinchyStore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyStore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5401C926EFA894007247E5 /* StoreTitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreTitleView.swift; sourceTree = "<group>"; };
+		8A62EF0A2795C09D005445B4 /* Pager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A62EF0D2795C0AA005445B4 /* Pager.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Pager.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A63E3372770F27400D8362C /* SafariRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SafariRoutable.swift; sourceTree = "<group>"; };
 		8A6D10B627943FAB009FF7E7 /* NotificationsDebug.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = NotificationsDebug.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A7BCD702757B25000B56313 /* ThirdParty.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = ThirdParty.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -958,6 +965,7 @@
 				8A41773A275CBF08003E1934 /* Core.framework in Frameworks */,
 				8A889A57275CC8390096A74A /* Database.framework in Frameworks */,
 				8A9C7F0B27613A3F00A5B694 /* DisplayMini.framework in Frameworks */,
+				8A62EF0E2795C0AA005445B4 /* Pager.framework in Frameworks */,
 				FABB13923370D0A65D1B9E5E /* Pods_VinchyAppClip.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -971,6 +979,7 @@
 				CA51BBEF254094B000208F71 /* AppTrackingTransparency.framework in Frameworks */,
 				8A63CCB62675462C003B1D4D /* Database.framework in Frameworks */,
 				CA51BBED254094A100208F71 /* AdSupport.framework in Frameworks */,
+				8A62EF0B2795C09D005445B4 /* Pager.framework in Frameworks */,
 				8A63CCBE26754635003B1D4D /* VinchyAuthorization.framework in Frameworks */,
 				8A63CCB82675462E003B1D4D /* Display.framework in Frameworks */,
 				8A63CCB42675462A003B1D4D /* Core.framework in Frameworks */,
@@ -1381,6 +1390,8 @@
 		46483F371463D95E22014241 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8A62EF0D2795C0AA005445B4 /* Pager.framework */,
+				8A62EF0A2795C09D005445B4 /* Pager.framework */,
 				8A6D10B627943FAB009FF7E7 /* NotificationsDebug.framework */,
 				8A9C7F0A27613A3F00A5B694 /* DisplayMini.framework */,
 				8A9C7F0727613A3300A5B694 /* DisplayMini.framework */,
@@ -3559,7 +3570,6 @@
 				8AEC94E3275B60F900C80F1E /* ReviewDetailRouter.swift in Sources */,
 				8AEC94EA275B614E00C80F1E /* ReviewsRouter.swift in Sources */,
 				8AEC94E9275B614900C80F1E /* ReviewsPresenter.swift in Sources */,
-				8AEC94F0275B621500C80F1E /* ReviewDetailRoutable.swift in Sources */,
 				8A63E3392770F27400D8362C /* SafariRoutable.swift in Sources */,
 				8A9C7EBD276118B600A5B694 /* ResultsSearchViewControllerProtocol.swift in Sources */,
 				8AEC94EB275B615100C80F1E /* ReviewsRouterProtocol.swift in Sources */,

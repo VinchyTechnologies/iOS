@@ -7,7 +7,6 @@
 //
 
 import DisplayMini
-import FittedSheets
 import UIKit
 
 // MARK: - ReviewDetailViewController
@@ -18,13 +17,20 @@ final class ReviewDetailViewController: UIViewController {
 
   var interactor: ReviewDetailInteractorProtocol?
 
+  let scrollView: UIScrollView = {
+    let scrollView = UIScrollView()
+    scrollView.alwaysBounceVertical = true
+    scrollView.backgroundColor = .mainBackground
+    return scrollView
+  }()
+
   override func viewDidLoad() {
     super.viewDidLoad()
 
-    sheetViewController?.handleScrollView(scrollView)
-    if traitCollection.userInterfaceStyle == .dark {
-      sheetViewController?.gripColor = .blueGray
-    }
+//    sheetViewController?.handleScrollView(scrollView)
+//    if traitCollection.userInterfaceStyle == .dark {
+//      sheetViewController?.gripColor = .blueGray
+//    }
 
     view.addSubview(scrollView)
     scrollView.translatesAutoresizingMaskIntoConstraints = false
@@ -78,21 +84,15 @@ final class ReviewDetailViewController: UIViewController {
 
   override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
     super.traitCollectionDidChange(previousTraitCollection)
-    if traitCollection.userInterfaceStyle == .dark {
-      sheetViewController?.gripColor = .blueGray
-    } else {
-      sheetViewController?.gripColor = SheetViewController.gripColor
-    }
+    // TODO: - Fix it
+//    if traitCollection.userInterfaceStyle == .dark {
+//      sheetViewController?.gripColor = .blueGray
+//    } else {
+//      sheetViewController?.gripColor = SheetViewController.gripColor
+//    }
   }
 
   // MARK: Private
-
-  private let scrollView: UIScrollView = {
-    let scrollView = UIScrollView()
-    scrollView.alwaysBounceVertical = true
-    scrollView.backgroundColor = .mainBackground
-    return scrollView
-  }()
 
   private let rateLabel: UILabel = {
     let label = UILabel()

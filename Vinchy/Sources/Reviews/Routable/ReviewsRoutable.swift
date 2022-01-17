@@ -13,7 +13,7 @@ import VinchyUI
 
 extension WineDetailRoutable {
   func pushToReviewsViewController(wineID: Int64) {
-    let controller = ReviewsAssembly.assemblyModule(input: .init(wineID: wineID))
+    let controller = ReviewsAssembly.assemblyModule(input: .init(wineID: wineID), coordinator: Coordinator.shared)
     controller.hidesBottomBarWhenPushed = true
     UIApplication.topViewController()?.navigationController?.pushViewController(
       controller,

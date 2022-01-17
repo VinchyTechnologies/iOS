@@ -21,6 +21,11 @@ extension ReviewDetailRoutable {
       sizes: [.percent(0.5), .fullscreen],
       options: options)
 
+    sheet.handleScrollView(reviewDetailViewController.scrollView)
+    if reviewDetailViewController.traitCollection.userInterfaceStyle == .dark {
+      sheet.gripColor = .blueGray
+    }
+
     UIApplication.topViewController()?.present(sheet, animated: true, completion: nil)
   }
 }

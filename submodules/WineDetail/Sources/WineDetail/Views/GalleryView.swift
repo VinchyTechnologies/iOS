@@ -8,7 +8,7 @@
 
 import DisplayMini
 import EpoxyCore
-import FSPagerView
+import Pager
 import UIKit
 
 // MARK: - GalleryCellViewModel

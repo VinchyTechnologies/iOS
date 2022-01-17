@@ -9,7 +9,6 @@
 import AdvancedSearch
 import Database
 import DisplayMini
-import FittedSheets
 import UIKit
 import VinchyCore
 import VinchyUI
@@ -39,18 +38,18 @@ final class Coordinator: WineDetailRoutable, ActivityRoutable, WriteNoteRoutable
   }
 
   func showBottomSheetReviewDetailViewController(reviewInput: ReviewDetailInput) {
-    let options = SheetOptions(shrinkPresentingViewController: false)
+//    let options = SheetOptions(shrinkPresentingViewController: false)
     let reviewDetailViewController = ReviewDetailAssembly.assemblyModule(input: reviewInput)
-    let sheet = SheetViewController(
-      controller: reviewDetailViewController,
-      sizes: [.percent(0.5), .fullscreen],
-      options: options)
+//    let sheet = SheetViewController(
+//      controller: reviewDetailViewController,
+//      sizes: [.percent(0.5), .fullscreen],
+//      options: options)
 
-    UIApplication.topViewController()?.present(sheet, animated: true, completion: nil)
+    UIApplication.topViewController()?.present(reviewDetailViewController, animated: true, completion: nil)
   }
 
   func pushToReviewsViewController(wineID: Int64) {
-    let controller = ReviewsAssembly.assemblyModule(input: .init(wineID: wineID))
+    let controller = ReviewsAssembly.assemblyModule(input: .init(wineID: wineID), coordinator: Coordinator.shared)
     controller.hidesBottomBarWhenPushed = true
     UIApplication.topViewController()?.navigationController?.pushViewController(
       controller,

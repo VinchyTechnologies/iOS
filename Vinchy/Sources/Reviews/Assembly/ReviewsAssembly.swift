@@ -6,12 +6,12 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Foundation
+import VinchyUI
 
 final class ReviewsAssembly {
-  static func assemblyModule(input: ReviewsInput) -> ReviewsViewController {
+  static func assemblyModule(input: ReviewsInput, coordinator: ReviewDetailRoutable) -> ReviewsViewController {
     let viewController = ReviewsViewController()
-    let router = ReviewsRouter(input: input, viewController: viewController)
+    let router = ReviewsRouter(input: input, viewController: viewController, coordinator: coordinator)
     let presenter = ReviewsPresenter(viewController: viewController)
     let interactor = ReviewsInteractor(input: input, router: router, presenter: presenter)
 

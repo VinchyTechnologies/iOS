@@ -180,16 +180,12 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/EpoxyCollectionView/EpoxyCollectionView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/EpoxyCore/EpoxyCore.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/EpoxyLayoutGroups/EpoxyLayoutGroups.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/FittedSheets/FittedSheets.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "${BUILT_PRODUCTS_DIR}/EpoxyBars/EpoxyBars.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/EpoxyCollectionView/EpoxyCollectionView.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/EpoxyCore/EpoxyCore.framework"
   install_framework "${BUILT_PRODUCTS_DIR}/EpoxyLayoutGroups/EpoxyLayoutGroups.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/FSPagerView/FSPagerView.framework"
-  install_framework "${BUILT_PRODUCTS_DIR}/FittedSheets/FittedSheets.framework"
 fi
 if [ "${COCOAPODS_PARALLEL_CODE_SIGN}" == "true" ]; then
   wait
