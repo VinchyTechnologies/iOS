@@ -125,7 +125,6 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
       title: localized("map").firstLetterUppercased(),
       image: UIImage(systemName: "map", withConfiguration: imageConfig)?.withTintColor(.blueGray, renderingMode: .alwaysOriginal),
       selectedImage: UIImage(systemName: "map", withConfiguration: imageConfig)?.withTintColor(.accent, renderingMode: .alwaysOriginal))
-
     viewControllers = [main, love, map, notes, profile]
   }
 
@@ -271,4 +270,15 @@ extension Int {
   fileprivate static let map = 2
   fileprivate static let notes = 3
   fileprivate static let profile = 4
+}
+
+extension UITabBar {
+  // Workaround for iOS 11's new UITabBar behavior where on iPad, the UITabBar inside
+  // the Master view controller shows the UITabBarItem icon next to the text
+  override open var traitCollection: UITraitCollection {
+    if UIDevice.current.userInterfaceIdiom == .pad {
+      return UITraitCollection(horizontalSizeClass: .compact)
+    }
+    return super.traitCollection
+  }
 }
