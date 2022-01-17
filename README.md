@@ -10,3 +10,9 @@ In case of errors run chmod u+x (../tools/podInstall.command or ../tools/podUpda
 
 ## Swizzling
 "`tdspmmUpUpqJgQpttjcmf;" equal to "_scrollToTopIfPossible:"
+
+## Build Settings
+SWIFT_REFLECTION_METADATA_LEVEL = none;
+For App Clip only 
+SWIFT_OPTIMIZATION_LEVEL = "-Osize";
+GCC_OPTIMIZATION_LEVEL = s;
