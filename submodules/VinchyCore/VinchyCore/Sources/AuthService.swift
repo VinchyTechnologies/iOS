@@ -36,7 +36,6 @@ public final class AuthService {
 
   public static let shared = AuthService()
 
-
   public let eventProducer = PassthroughSubject<AuthEvent, Never>()
 
   public var isAuthorized: Bool {

@@ -120,7 +120,6 @@ public final class ReviewView: UIView, EpoxyableView {
   public struct Style: Hashable {
   }
 
-
   public typealias Content = ReviewViewViewModel
 
   public struct Behaviors {

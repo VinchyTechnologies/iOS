@@ -285,7 +285,7 @@ final class WineDetailViewController: CollectionViewController {
               didTap: { [weak self] reviewID in
                 self?.interactor?.didTapReview(reviewID: reviewID)
               },
-              didTapTranslate: { [weak self] reviewText in
+              didTapTranslate: { reviewText in
                 guard let reviewText = reviewText else {
                   return
                 }

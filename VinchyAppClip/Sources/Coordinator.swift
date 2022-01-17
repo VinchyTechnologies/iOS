@@ -38,13 +38,7 @@ final class Coordinator: WineDetailRoutable, ActivityRoutable, WriteNoteRoutable
   }
 
   func showBottomSheetReviewDetailViewController(reviewInput: ReviewDetailInput) {
-//    let options = SheetOptions(shrinkPresentingViewController: false)
     let reviewDetailViewController = ReviewDetailAssembly.assemblyModule(input: reviewInput)
-//    let sheet = SheetViewController(
-//      controller: reviewDetailViewController,
-//      sizes: [.percent(0.5), .fullscreen],
-//      options: options)
-
     UIApplication.topViewController()?.present(reviewDetailViewController, animated: true, completion: nil)
   }
 
