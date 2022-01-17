@@ -65,7 +65,7 @@
       name = "Vinchy">
       <Group
          location = "container:"
-         name = "Vinchy-iOS">
+         name = "Vinchy">
          <FileRef
             location = "group:Smart.xcodeproj">
          </FileRef>
