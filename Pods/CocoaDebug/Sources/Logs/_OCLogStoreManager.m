@@ -9,6 +9,12 @@
 #import "_OCLogStoreManager.h"
 #import "_NetworkHelper.h"
 
+@interface _OCLogStoreManager ()
+{
+    dispatch_semaphore_t semaphore;
+}
+@end
+
 @implementation _OCLogStoreManager
 
 + (instancetype)shared
@@ -27,9 +33,11 @@
 {
     self = [super init];
     if (self) {
-        self.normalLogArray = [NSMutableArray arrayWithCapacity:1000 + 100];
-        self.rnLogArray = [NSMutableArray arrayWithCapacity:1000 + 100];
-        self.webLogArray = [NSMutableArray arrayWithCapacity:1000 + 100];
+        semaphore = dispatch_semaphore_create(1);
+        
+        self.normalLogArray = [NSMutableArray arrayWithCapacity:[[_NetworkHelper shared] logMaxCount]];
+        self.rnLogArray = [NSMutableArray arrayWithCapacity:[[_NetworkHelper shared] logMaxCount]];
+        self.webLogArray = [NSMutableArray arrayWithCapacity:[[_NetworkHelper shared] logMaxCount]];
     }
     return self;
 }
@@ -54,11 +62,12 @@
     
     ////////////////////////////////////////////////////////////////////////////////////////////////////////
     
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
     
     if (log.logType == CocoaDebugLogTypeNormal)
     {
         //normal
-        if ([self.normalLogArray count] >= 1000) {
+        if ([self.normalLogArray count] >= [[_NetworkHelper shared] logMaxCount]) {
             if (self.normalLogArray.count > 0) {
                 [self.normalLogArray removeObjectAtIndex:0];
             }
@@ -69,7 +78,7 @@
     else if (log.logType == CocoaDebugLogTypeRN)
     {
         //rn
-        if ([self.rnLogArray count] >= 1000) {
+        if ([self.rnLogArray count] >= [[_NetworkHelper shared] logMaxCount]) {
             if (self.rnLogArray.count > 0) {
                 [self.rnLogArray removeObjectAtIndex:0];
             }
@@ -80,7 +89,7 @@
     else
     {
         //web
-        if ([self.webLogArray count] >= 1000) {
+        if ([self.webLogArray count] >= [[_NetworkHelper shared] logMaxCount]) {
             if (self.webLogArray.count > 0) {
                 [self.webLogArray removeObjectAtIndex:0];
             }
@@ -88,10 +97,14 @@
         
         [self.webLogArray addObject:log];
     }
+    
+    dispatch_semaphore_signal(semaphore);
 }
 
 - (void)removeLog:(_OCLogModel *)log
 {
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
+    
     if (log.logType == CocoaDebugLogTypeNormal)
     {
         //normal
@@ -107,21 +120,29 @@
         //web
         [self.webLogArray removeObject:log];
     }
+    
+    dispatch_semaphore_signal(semaphore);
 }
 
 - (void)resetNormalLogs
 {
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
     [self.normalLogArray removeAllObjects];
+    dispatch_semaphore_signal(semaphore);
 }
 
 - (void)resetRNLogs
 {
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
     [self.rnLogArray removeAllObjects];
+    dispatch_semaphore_signal(semaphore);
 }
 
 - (void)resetWebLogs
 {
+    dispatch_semaphore_wait(semaphore, DISPATCH_TIME_FOREVER);
     [self.webLogArray removeAllObjects];
+    dispatch_semaphore_signal(semaphore);
 }
 
 @end

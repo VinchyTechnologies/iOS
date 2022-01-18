@@ -10,12 +10,34 @@ import Display
 import DisplayMini
 
 struct ShowcaseViewModel {
+
+  enum State {
+    case normal(header: TabViewModel, sections: [Section])
+    case error(sections: [ErrorSection])
+  }
+
   enum Section {
-    case shelf(title: String?, wines: [WineCollectionViewCellViewModel])
+    case content(dataID: DataID, items: [Item])
+  }
+
+  enum Item {
+    case title(itemID: AnyHashable, content: Label.Content)
+    case bottle(itemID: AnyHashable, content: WineBottleView.Content)
     case loading
   }
 
+  enum ErrorSection {
+    case common(content: EpoxyErrorView.Content)
+  }
+
+  enum DataID {
+    case content
+  }
+
+  static let empty: Self = .init(
+    state: .normal(header: .init(items: [], initiallySelectedIndex: 0), sections: []),
+    navigationTitle: nil)
+
+  let state: State
   let navigationTitle: String?
-  let sections: [Section]
-  let tabViewModel: TabViewModel
 }

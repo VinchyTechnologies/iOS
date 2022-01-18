@@ -8,6 +8,8 @@
 
 import Display
 import DisplayMini
+import EpoxyCollectionView
+import Foundation
 import StringFormatting
 import VinchyCore
 import VinchyUI
@@ -42,7 +44,7 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
   }
 
   func update(wines: [ShortWine], needLoadMore: Bool) {
-    var sections: [ShowcaseViewModel.Section] = []
+    var items: [ShowcaseViewModel.Item] = []
 
     switch input.mode {
     case .advancedSearch, .partner:
@@ -55,14 +57,29 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
           rating: wine.rating,
           contextMenuViewModels: [])
       }
-      sections = [.shelf(title: localized("all").firstLetterUppercased(), wines: wines)]
+
+      items += [.title(itemID: UUID(), content: localized("all").firstLetterUppercased())]
+
+      let winesContent = wines.compactMap({
+        WineBottleView.Content(
+          wineID: $0.wineID,
+          imageURL: $0.imageURL,
+          titleText: $0.titleText,
+          subtitleText: $0.subtitleText,
+          rating: $0.rating,
+          buttonText: nil,
+          flag: nil,
+          contextMenuViewModels: [])
+      })
+
+      items += winesContent.compactMap({ .bottle(itemID: UUID(), content: $0) })
+
       if needLoadMore {
-        sections.append(.loading)
+        items.append(.loading)
       }
 
     case .normal:
       var groupedWines = wines.grouped(map: { $0.winery?.countryCode ?? localized("unknown_country_code") })
-
       groupedWines.sort { arr1, arr2 -> Bool in
         if
           let w1 = countryNameFromLocaleCode(countryCode: arr1.first?.winery?.countryCode),
@@ -72,20 +89,24 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
         }
         return false
       }
-      sections = groupedWines.map { arrayWine -> ShowcaseViewModel.Section in
-        let wines = arrayWine.compactMap { wine -> WineCollectionViewCellViewModel? in
-          WineCollectionViewCellViewModel(
+
+      groupedWines.enumerated().forEach { index, arrayShortWines in
+        items += [
+          .title(itemID: index, content: countryNameFromLocaleCode(
+            countryCode: arrayShortWines.first?.winery?.countryCode) ?? ""),
+        ]
+        let winesContent = arrayShortWines.compactMap { wine -> WineBottleView.Content in
+          WineBottleView.Content(
             wineID: wine.id,
             imageURL: wine.mainImageUrl?.toURL,
             titleText: wine.title,
-            subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode),
+            subtitleText: wine.winery?.title,
             rating: wine.rating,
+            buttonText: nil,
+            flag: emojiFlagForISOCountryCode(wine.winery?.countryCode ?? ""),
             contextMenuViewModels: [])
         }
-        return .shelf(
-          title: countryNameFromLocaleCode(
-            countryCode: arrayWine.first?.winery?.countryCode) ?? localized("unknown_country_code"),
-          wines: wines)
+        items += winesContent.enumerated().compactMap({ .bottle(itemID: ItemPath(itemDataID: "item\($0)", section: .dataID("sec\(index)")) , content: $1) })
       }
     }
 
@@ -98,17 +119,17 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
       title = input.title //localized("search_results").firstLetterUppercased()
     }
 
-    let tabViewModel: TabViewModel = .init(items: sections.compactMap({ sec in
+    let tabViewModel: TabViewModel = .init(items: items.compactMap({ sec in
       switch sec {
-      case .shelf(let title, _):
-        return .init(titleText: title)
+      case .title(_, let content):
+        return .init(titleText: content)
 
-      case .loading:
+      case .loading, .bottle:
         return nil
       }
     }), initiallySelectedIndex: 0)
 
-    let viewModel = ShowcaseViewModel(navigationTitle: title, sections: sections, tabViewModel: tabViewModel)
+    let viewModel = ShowcaseViewModel(state: .normal(header: tabViewModel, sections: [.content(dataID: .content, items: items)]), navigationTitle: title)
     viewController?.updateUI(viewModel: viewModel)
   }
 
@@ -119,18 +140,20 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
   }
 
   func showNothingFoundErrorView() {
-    viewController?.updateUI(
-      errorViewModel: ErrorViewModel(
-        titleText: localized("nothing_found").firstLetterUppercased(),
-        subtitleText: nil,
-        buttonText: nil))
+    viewController?.updateUI(viewModel: .init(state: .error(sections: [.common(content: .init(titleText: localized("nothing_found").firstLetterUppercased(), subtitleText: nil, buttonText: nil))]), navigationTitle: nil))
   }
 
   func showInitiallyLoadingError(error: Error) {
     viewController?.updateUI(
-      errorViewModel: ErrorViewModel(
-        titleText: localized("error").firstLetterUppercased(),
-        subtitleText: error.localizedDescription,
-        buttonText: localized("reload").firstLetterUppercased()))
+      viewModel: .init(
+        state: .error(
+          sections: [
+            .common(
+              content: .init(
+                titleText: localized("error").firstLetterUppercased(),
+                subtitleText: error.localizedDescription,
+                buttonText: localized("reload").firstLetterUppercased())),
+          ]),
+        navigationTitle: nil))
   }
 }

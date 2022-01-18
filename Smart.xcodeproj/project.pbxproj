@@ -375,7 +375,6 @@
 		CA472ACC245EDE30009149FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA472ACA245EDE30009149FF /* LaunchScreen.storyboard */; };
 		CA472AD7245EDE30009149FF /* SmartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA472AD6245EDE30009149FF /* SmartTests.swift */; };
 		CA472AE2245EDE30009149FF /* SmartUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA472AE1245EDE30009149FF /* SmartUITests.swift */; };
-		CA472B2C245EDEA0009149FF /* HeaderReusableView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA472B27245EDEA0009149FF /* HeaderReusableView.swift */; };
 		CA472B54245EDEDB009149FF /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA472B40245EDEDB009149FF /* Assembly.swift */; };
 		CA472B59245EDEDB009149FF /* ShowcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA472B49245EDEDB009149FF /* ShowcaseViewController.swift */; };
 		CA472B69245EDEF9009149FF /* ShowcaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA472B62245EDEF9009149FF /* ShowcaseViewModel.swift */; };
@@ -857,7 +856,6 @@
 		CA472ADD245EDE30009149FF /* SmartUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA472AE1245EDE30009149FF /* SmartUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartUITests.swift; sourceTree = "<group>"; };
 		CA472AE3245EDE30009149FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CA472B27245EDEA0009149FF /* HeaderReusableView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HeaderReusableView.swift; sourceTree = "<group>"; };
 		CA472B40245EDEDB009149FF /* Assembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
 		CA472B49245EDEDB009149FF /* ShowcaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowcaseViewController.swift; sourceTree = "<group>"; };
 		CA472B62245EDEF9009149FF /* ShowcaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowcaseViewModel.swift; sourceTree = "<group>"; };
@@ -2607,7 +2605,6 @@
 				CE8FF83025FAD796004D4F37 /* Router */,
 				CE8FF83125FAD79E004D4F37 /* ViewController */,
 				CE8FF83225FAD7A9004D4F37 /* ViewModel */,
-				CE8FF83325FAD7C4004D4F37 /* Views */,
 			);
 			path = Showcase;
 			sourceTree = "<group>";
@@ -3112,14 +3109,6 @@
 				CA472B62245EDEF9009149FF /* ShowcaseViewModel.swift */,
 			);
 			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		CE8FF83325FAD7C4004D4F37 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				CA472B27245EDEA0009149FF /* HeaderReusableView.swift */,
-			);
-			path = Views;
 			sourceTree = "<group>";
 		};
 		CEF2087325E828B000C413EA /* Assembly */ = {
@@ -3772,7 +3761,6 @@
 				CACA7E9A254C57CC0099E622 /* WriteNoteInput.swift in Sources */,
 				44EFDB3D25E177220076ED6D /* ReviewsViewController.swift in Sources */,
 				CA48578F2517C74700EDA4CE /* VinchyRouterProtocol.swift in Sources */,
-				CA472B2C245EDEA0009149FF /* HeaderReusableView.swift in Sources */,
 				44EFDB7725E263E00076ED6D /* ReviewDetailInteractorProtocol.swift in Sources */,
 				8AA990A926D91FE000C32358 /* StoresInteractorProtocol.swift in Sources */,
 				CE58DED325ED739200B5BDF9 /* CurrencyPresenterProtocol.swift in Sources */,
