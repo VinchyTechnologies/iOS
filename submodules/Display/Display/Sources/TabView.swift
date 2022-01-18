@@ -109,6 +109,8 @@ public final class TabView: UIView {
     $0.contentInset = LocalConstants.collectionInsets
     $0.allowsMultipleSelection = false
     $0.decelerationRate = .fast
+    $0.alwaysBounceHorizontal = true
+    $0.alwaysBounceVertical = false
     $0.register(TabCell.self, forCellWithReuseIdentifier: TabCell.description())
     $0.selectionBackgroundColor = LocalConstants.collectionSelectionColor
     $0.selectionBackgroundRadius = LocalConstants.collectionSelectionRadius
@@ -130,6 +132,8 @@ public final class TabView: UIView {
     $0.backgroundColor = .mainBackground
     $0.delegate = self
     $0.dataSource = self
+    $0.alwaysBounceHorizontal = true
+    $0.alwaysBounceVertical = false
     $0.contentInset = LocalConstants.collectionInsets
     $0.allowsMultipleSelection = false
     $0.decelerationRate = .fast

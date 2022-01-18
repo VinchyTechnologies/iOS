@@ -317,7 +317,7 @@ extension ShowcaseViewController: TabViewDelegate {
 extension ShowcaseViewController: UIScrollViewDelegate {
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     if scrollView === collectionView {
-      if scrollView.isDecelerating || scrollView.isDragging {
+      if scrollView.isDecelerating || scrollView.isDragging || scrollView.scrollsToTop {
         let attributes = layout.layoutAttributesForElements(in: CGRect(
           x: collectionView.frame.origin.x,
           y: max(0, scrollView.contentOffset.y + C.tabViewHeight),
