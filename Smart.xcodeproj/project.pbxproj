@@ -102,6 +102,7 @@
 		8A0795B726943DD6000ACA2B /* FeaturesOnboardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0795B626943DD6000ACA2B /* FeaturesOnboardingViewController.swift */; };
 		8A0795BA26943E85000ACA2B /* OnboardingFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0795B926943E85000ACA2B /* OnboardingFeatureView.swift */; };
 		8A07983B269750A0000ACA2B /* PluralLocalizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 8A07983D269750A0000ACA2B /* PluralLocalizable.stringsdict */; };
+		8A0A402327971ECA001A8CA1 /* ShowcaseLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0A402227971ECA001A8CA1 /* ShowcaseLayout.swift */; };
 		8A0D9CB726871D9D0076A7EC /* NewAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0D9CB626871D9D0076A7EC /* NewAgreementViewController.swift */; };
 		8A0D9CB926872CF60076A7EC /* NewAgreementsBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0D9CB826872CF60076A7EC /* NewAgreementsBottomView.swift */; };
 		8A1034592648596100F7CA81 /* AssortmentCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1034582648596100F7CA81 /* AssortmentCollectionCell.swift */; };
@@ -653,6 +654,7 @@
 		8A07983E269750A4000ACA2B /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.stringsdict; name = ru; path = ru.lproj/PluralLocalizable.stringsdict; sourceTree = "<group>"; };
 		8A07B9C1275CEF7700AF27B0 /* VinchyAuthorization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyAuthorization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A07B9DE275D1B7500AF27B0 /* AdUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AdUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A0A402227971ECA001A8CA1 /* ShowcaseLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseLayout.swift; sourceTree = "<group>"; };
 		8A0D9CB626871D9D0076A7EC /* NewAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAgreementViewController.swift; sourceTree = "<group>"; };
 		8A0D9CB826872CF60076A7EC /* NewAgreementsBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAgreementsBottomView.swift; sourceTree = "<group>"; };
 		8A1034582648596100F7CA81 /* AssortmentCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssortmentCollectionCell.swift; sourceTree = "<group>"; };
@@ -3097,6 +3099,7 @@
 		CE8FF83125FAD79E004D4F37 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
+				8A0A402227971ECA001A8CA1 /* ShowcaseLayout.swift */,
 				CA472B49245EDEDB009149FF /* ShowcaseViewController.swift */,
 				CE8FF84425FADB84004D4F37 /* ShowcaseViewControllerProtocol.swift */,
 			);
@@ -3877,6 +3880,7 @@
 				CAF5146B2468172900667ED0 /* LoveViewController.swift in Sources */,
 				CE8FF82A25FAD75C004D4F37 /* ShowcaseAssembly.swift in Sources */,
 				CA46DBE7252518230007819E /* OnboardingRepository.swift in Sources */,
+				8A0A402327971ECA001A8CA1 /* ShowcaseLayout.swift in Sources */,
 				7485877A26CC068700F5CBEA /* Configurator.swift in Sources */,
 				8A10F65B27074F3A003463B0 /* DiscoveryLeadingAddressButton.swift in Sources */,
 				CACA7E9F254C57CC0099E622 /* WriteNoteViewControllerProtocol.swift in Sources */,

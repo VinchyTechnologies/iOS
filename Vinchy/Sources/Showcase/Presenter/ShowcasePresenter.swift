@@ -129,7 +129,7 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
       }
     }), initiallySelectedIndex: 0)
 
-    let viewModel = ShowcaseViewModel(state: .normal(header: tabViewModel, sections: [.content(dataID: .content, items: items)]), navigationTitle: title)
+    let viewModel = ShowcaseViewModel(state: .normal(header: tabViewModel, sections: [.content(dataID: .content, items: items)]), navigationTitle: title, isSharable: true)
     viewController?.updateUI(viewModel: viewModel)
   }
 
@@ -140,7 +140,7 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
   }
 
   func showNothingFoundErrorView() {
-    viewController?.updateUI(viewModel: .init(state: .error(sections: [.common(content: .init(titleText: localized("nothing_found").firstLetterUppercased(), subtitleText: nil, buttonText: nil))]), navigationTitle: nil))
+    viewController?.updateUI(viewModel: .init(state: .error(sections: [.common(content: .init(titleText: localized("nothing_found").firstLetterUppercased(), subtitleText: nil, buttonText: nil))]), navigationTitle: nil, isSharable: false))
   }
 
   func showInitiallyLoadingError(error: Error) {
@@ -154,6 +154,7 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
                 subtitleText: error.localizedDescription,
                 buttonText: localized("reload").firstLetterUppercased())),
           ]),
-        navigationTitle: nil))
+        navigationTitle: nil,
+        isSharable: false))
   }
 }

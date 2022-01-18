@@ -83,6 +83,8 @@ final class ShowcaseViewController: UIViewController, Loadable {
 
   // MARK: Private
 
+  private lazy var shareButton = UIButton(type: .system)
+
   private lazy var tabView: TabView = {
     $0.delegate = self
     return $0
@@ -105,8 +107,8 @@ final class ShowcaseViewController: UIViewController, Loadable {
 
   private lazy var collectionViewSize: CGSize = view.frame.size
 
-  private let layout: LeftAlignedCollectionViewFlowLayout = {
-    let layout = LeftAlignedCollectionViewFlowLayout()
+  private let layout: ShowcaseLayout = {
+    let layout = ShowcaseLayout()
     layout.sectionHeadersPinToVisibleBounds = true
     layout.sectionInset = .init(top: 0, left: C.horizontalInset, bottom: 0, right: C.horizontalInset)
     layout.minimumInteritemSpacing = C.horizontalInset
@@ -218,6 +220,11 @@ final class ShowcaseViewController: UIViewController, Loadable {
     dismiss(animated: true, completion: nil)
   }
 
+  @objc
+  private func didTapShare(_ button: UIButton) {
+
+  }
+
   private func hideErrorView() {
     DispatchQueue.main.async {
       self.collectionView.backgroundView = nil
@@ -231,6 +238,16 @@ extension ShowcaseViewController: ShowcaseViewControllerProtocol {
   func updateUI(viewModel: ShowcaseViewModel) {
     self.viewModel = viewModel
     navigationItem.title = viewModel.navigationTitle
+    if viewModel.isSharable {
+      let imageConfig = UIImage.SymbolConfiguration(pointSize: 18, weight: .medium, scale: .default)
+      shareButton.setImage(UIImage(systemName: "square.and.arrow.up", withConfiguration: imageConfig), for: .normal)
+      shareButton.contentEdgeInsets = .init(top: 6, left: 6, bottom: 6, right: 6)
+      shareButton.tintColor = .dark
+      shareButton.addTarget(self, action: #selector(didTapShare(_:)), for: .touchUpInside)
+
+      let shareBarButtonItem = UIBarButtonItem(customView: shareButton)
+      navigationItem.rightBarButtonItems = [shareBarButtonItem]
+    }
     switch viewModel.state {
     case .normal:
       collectionView.isScrollEnabled = true
@@ -330,30 +347,5 @@ extension ShowcaseViewController: UIScrollViewDelegate {
       }
       updateShadowSupplementaryHeaderView(offset: scrollView.contentOffset.y)
     }
-  }
-}
-
-// MARK: - LeftAlignedCollectionViewFlowLayout
-
-class LeftAlignedCollectionViewFlowLayout: UICollectionViewFlowLayout {
-
-  override func layoutAttributesForElements(in rect: CGRect) -> [UICollectionViewLayoutAttributes]? {
-    let attributes = super.layoutAttributesForElements(in: rect)
-    var leftMargin = sectionInset.left
-    var maxY: CGFloat = -1.0
-    attributes?.forEach { layoutAttribute in
-      if layoutAttribute.representedElementCategory == .cell {
-        if layoutAttribute.frame.origin.y >= maxY {
-          leftMargin = sectionInset.left
-        }
-
-        layoutAttribute.frame.origin.x = leftMargin
-
-        leftMargin += layoutAttribute.frame.width + minimumInteritemSpacing
-        maxY = max(layoutAttribute.frame.maxY , maxY)
-      }
-    }
-
-    return attributes
   }
 }
