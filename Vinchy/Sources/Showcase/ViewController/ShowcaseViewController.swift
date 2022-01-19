@@ -226,7 +226,7 @@ final class ShowcaseViewController: UIViewController, Loadable {
 
   @objc
   private func didTapShare(_ button: UIButton) {
-
+    interactor?.didTapShare(sourceView: button)
   }
 
   private func hideErrorView() {

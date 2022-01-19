@@ -19,7 +19,7 @@ extension String {
 }
 
 extension Optional where Wrapped == String {
-  var toURL: URL? {
+  public var toURL: URL? {
     if self == nil || self == "" {
       return nil
     }

@@ -7,6 +7,7 @@
 //
 
 import Core
+import UIKit.UIView
 import VinchyCore
 import VinchyUI
 
@@ -41,6 +42,7 @@ final class ShowcaseInteractor {
   private let stateMachine = PagingStateMachine<[ShortWine]>()
   private var wines: [ShortWine] = []
   private lazy var title: String? = input.title
+  private var logoURL: URL?
   private lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
     guard let self = self else { return }
     self.presenter.startLoading()
@@ -116,6 +118,7 @@ final class ShowcaseInteractor {
         switch result {
         case .success(let data):
           self.title = data.title
+          self.logoURL = data.imageURL?.toURL
           self.stateMachine.invokeSuccess(with: data.wineList)
 
         case .failure(let error):
@@ -176,6 +179,17 @@ final class ShowcaseInteractor {
 // MARK: ShowcaseInteractorProtocol
 
 extension ShowcaseInteractor: ShowcaseInteractorProtocol {
+
+  func didTapShare(sourceView: UIView) {
+    switch input.mode {
+    case .remote(let collectionID):
+      router.didTapShareCollection(type: .fullInfo(collectionID: collectionID, titleText: title, logoURL: logoURL, sourceView: sourceView))
+
+    case .normal, .advancedSearch:
+      return
+    }
+  }
+
   func willDisplayLoadingView() {
     loadMoreData()
   }
