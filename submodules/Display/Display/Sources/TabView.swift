@@ -436,7 +436,7 @@ public final class CollectionViewWithSelectionBackground: UICollectionView {
       self.selectedIndexPath = indexPath
     }
 
-    if fraction == 1.0 {
+    if fraction == 1.0 || fraction == 0.0 {
       animator.stopAnimation(true)
     }
 

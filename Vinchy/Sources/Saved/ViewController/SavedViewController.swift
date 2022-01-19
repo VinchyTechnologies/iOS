@@ -22,11 +22,6 @@ final class SavedViewController: UIViewController, SavedViewControllerProtocol, 
 
   var interactor: SavedInteractorProtocol?
 
-  var viewControllers: [UIViewController] = [
-    LoveViewController(),
-    RatesAssembly.assemblyModule(input: .init()),
-  ]
-
   var scrollableToTopScrollView: UIScrollView {
     if let loveVC = viewControllers[safe: currentIndex] as? LoveViewController {
       return loveVC.collectionView
@@ -69,6 +64,11 @@ final class SavedViewController: UIViewController, SavedViewControllerProtocol, 
   }
 
   // MARK: Private
+
+  private var viewControllers: [UIViewController] = [
+    LoveViewController(),
+    RatesAssembly.assemblyModule(input: .init()),
+  ]
 
   private var currentIndex = 0
 
