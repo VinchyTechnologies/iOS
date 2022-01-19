@@ -18,12 +18,12 @@ import VinchyCore
 struct StoryViewViewModel: Equatable {
   let imageURL: URL?
   let titleText: String?
-  let wines: [ShortWine]
+  let collectionID: Int
 
-  public init(imageURL: URL?, titleText: String?, wines: [ShortWine]) {
+  public init(imageURL: URL?, titleText: String?, collectionID: Int) {
     self.imageURL = imageURL
     self.titleText = titleText
-    self.wines = wines
+    self.collectionID = collectionID
   }
 }
 

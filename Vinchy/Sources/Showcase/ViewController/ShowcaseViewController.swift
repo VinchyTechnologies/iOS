@@ -28,16 +28,6 @@ private enum C {
 
 final class ShowcaseViewController: UIViewController, Loadable {
 
-  // MARK: Lifecycle
-
-  init(input: ShowcaseInput) {
-    self.input = input
-    super.init(nibName: nil, bundle: nil)
-  }
-
-  @available(*, unavailable)
-  required init?(coder _: NSCoder) { fatalError() }
-
   // MARK: Internal
 
   var interactor: ShowcaseInteractorProtocol?
@@ -114,8 +104,6 @@ final class ShowcaseViewController: UIViewController, Loadable {
     layout.minimumInteritemSpacing = C.horizontalInset
     return layout
   }()
-
-  private let input: ShowcaseInput
 
   private var viewModel: ShowcaseViewModel = .empty
 

@@ -373,8 +373,8 @@ extension VinchyViewController: StoreTitleCollectionCellDelegate {
 // MARK: StoriesCollectionViewDelegate
 
 extension VinchyViewController: StoriesCollectionViewDelegate {
-  func didTapStory(title: String?, shortWines: [ShortWine]) {
-    interactor?.didTapCompilationCell(input: .init(title: title, mode: .normal(wines: shortWines)))
+  func didTapStory(collectionID: Int) {
+    interactor?.didTapCompilationCell(collectionID: collectionID)
   }
 }
 

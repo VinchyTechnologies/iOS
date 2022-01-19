@@ -22,7 +22,7 @@ public struct Collection: Decodable {
 
   public init(from decoder: Decoder) throws {
     let container = try decoder.container(keyedBy: CodingKeys.self)
-    let id = try container.decode(Int64.self, forKey: .id)
+    let id = try container.decode(Int.self, forKey: .id)
     let title = try container.decode(String.self, forKey: .title)
     let imageURL = try container.decodeIfPresent(String.self, forKey: .imageURL)
     let wineList = try? container.decode([ShortWine].self, forKey: .wineList)
@@ -49,7 +49,7 @@ public struct Collection: Decodable {
 
   // MARK: Public
 
-  public let id: Int64?
+  public let id: Int?
   public let title: String?
   public let imageURL: String?
   public var wineList: [ShortWine]

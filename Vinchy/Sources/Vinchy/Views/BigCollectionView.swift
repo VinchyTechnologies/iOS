@@ -14,10 +14,6 @@ import VinchyCore
 
 // MARK: - BigCollectionView
 
-//protocol StoriesCollectionViewDelegate: AnyObject {
-//  func didTapStory(id: Int)
-//}
-
 final class BigCollectionView: CollectionView, EpoxyableView {
 
   // MARK: Lifecycle
@@ -69,7 +65,7 @@ final class BigCollectionView: CollectionView, EpoxyableView {
             content: storyViewViewModel,
             style: .init(kind: .big))
             .didSelect { [weak self] _ in
-              self?.storiesCollectionViewDelegate?.didTapStory(title: storyViewViewModel.subtitleText, shortWines: storyViewViewModel.wines)
+              self?.storiesCollectionViewDelegate?.didTapStory(collectionID: storyViewViewModel.collectionID)
             }
 
         case .promo:
@@ -78,7 +74,7 @@ final class BigCollectionView: CollectionView, EpoxyableView {
             content: storyViewViewModel,
             style: .init(kind: .promo))
             .didSelect { [weak self] _ in
-              self?.storiesCollectionViewDelegate?.didTapStory(title: storyViewViewModel.subtitleText, shortWines: storyViewViewModel.wines)
+              self?.storiesCollectionViewDelegate?.didTapStory(collectionID: storyViewViewModel.collectionID)
             }
         }
       }
@@ -143,12 +139,12 @@ extension BigCollectionView: CollectionViewPrefetchingDelegate {
 struct MainSubtitleViewViewModel: Equatable {
   let subtitleText: String?
   fileprivate let imageURL: URL?
-  let wines: [ShortWine]
+  let collectionID: Int
 
-  public init(subtitleText: String?, imageURL: URL?, wines: [ShortWine]) {
+  public init(subtitleText: String?, imageURL: URL?, collectionID: Int) {
     self.subtitleText = subtitleText
     self.imageURL = imageURL
-    self.wines = wines
+    self.collectionID = collectionID
   }
 }
 

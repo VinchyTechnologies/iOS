@@ -10,6 +10,7 @@
 
 private enum CollectionEndpoint: EndpointProtocol {
   case all
+  case detail(collectionID: Int)
 
   // MARK: Internal
 
@@ -21,19 +22,22 @@ private enum CollectionEndpoint: EndpointProtocol {
     switch self {
     case .all:
       return "/collections"
+
+    case .detail(let collectionID):
+      return "/collections/" + String(collectionID)
     }
   }
 
   var method: HTTPMethod {
     switch self {
-    case .all:
+    case .all, .detail:
       return .get
     }
   }
 
   var parameters: Parameters? {
     switch self {
-    case .all:
+    case .all, .detail:
       return nil
     }
   }
@@ -53,6 +57,10 @@ public final class Collections {
 
   public func getCollections(completion: @escaping (Result<[Collection], APIError>) -> Void) {
     api.request(endpoint: CollectionEndpoint.all, completion: completion)
+  }
+
+  public func getDetailCollection(collectionID: Int, completion: @escaping (Result<Collection, APIError>) -> Void) {
+    api.request(endpoint: CollectionEndpoint.detail(collectionID: collectionID), completion: completion)
   }
 
   // MARK: Private

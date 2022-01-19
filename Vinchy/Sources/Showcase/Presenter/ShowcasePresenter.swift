@@ -43,11 +43,21 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
     viewController?.stopLoadingAnimation()
   }
 
-  func update(wines: [ShortWine], needLoadMore: Bool) {
+  func update(title: String?, wines: [ShortWine], needLoadMore: Bool) {
     var items: [ShowcaseViewModel.Item] = []
 
+    var isSharable = false
+
     switch input.mode {
-    case .advancedSearch, .partner:
+    case .advancedSearch, .normal:
+      isSharable = false
+
+    case .remote:
+      isSharable = true
+    }
+
+    switch input.mode {
+    case .advancedSearch:
       let wines = wines.compactMap { wine -> WineCollectionViewCellViewModel? in
         WineCollectionViewCellViewModel(
           wineID: wine.id,
@@ -78,7 +88,7 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
         items.append(.loading)
       }
 
-    case .normal:
+    case .normal, .remote:
       var groupedWines = wines.grouped(map: { $0.winery?.countryCode ?? localized("unknown_country_code") })
       groupedWines.sort { arr1, arr2 -> Bool in
         if
@@ -110,15 +120,6 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
       }
     }
 
-    let title: String?
-    switch input.mode {
-    case .normal, .partner:
-      title = input.title
-
-    case .advancedSearch:
-      title = input.title //localized("search_results").firstLetterUppercased()
-    }
-
     let tabViewModel: TabViewModel = .init(items: items.compactMap({ sec in
       switch sec {
       case .title(_, let content):
@@ -129,7 +130,7 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
       }
     }), initiallySelectedIndex: 0)
 
-    let viewModel = ShowcaseViewModel(state: .normal(header: tabViewModel, sections: [.content(dataID: .content, items: items)]), navigationTitle: title, isSharable: true)
+    let viewModel = ShowcaseViewModel(state: .normal(header: tabViewModel, sections: [.content(dataID: .content, items: items)]), navigationTitle: title, isSharable: isSharable)
     viewController?.updateUI(viewModel: viewModel)
   }
 

@@ -40,6 +40,7 @@ final class ShowcaseInteractor {
   private let presenter: ShowcasePresenterProtocol
   private let stateMachine = PagingStateMachine<[ShortWine]>()
   private var wines: [ShortWine] = []
+  private lazy var title: String? = input.title
   private lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
     guard let self = self else { return }
     self.presenter.startLoading()
@@ -96,35 +97,31 @@ final class ShowcaseInteractor {
         }
       }
 
-    case .partner(let partnerID, let affilatedID):
+    case .remote(let collectionID):
       if offset == .zero {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
           self.dispatchWorkItemHud.perform()
         }
       }
-      Partners.shared.getPartnerWines(
-        partnerId: partnerID,
-        affilatedId: affilatedID,
-        filters: [],
-        limit: C.limit,
-        offset: offset) { [weak self] result in
-          guard let self = self else { return }
+      Collections.shared.getDetailCollection(collectionID: collectionID, completion: { [weak self] result in
+        guard let self = self else { return }
 
-          if offset == .zero {
-            self.dispatchWorkItemHud.cancel()
-            DispatchQueue.main.async {
-              self.presenter.stopLoading()
-            }
+        if offset == .zero {
+          self.dispatchWorkItemHud.cancel()
+          DispatchQueue.main.async {
+            self.presenter.stopLoading()
           }
+        }
 
-          switch result {
-          case .success(let data):
-            self.stateMachine.invokeSuccess(with: data)
+        switch result {
+        case .success(let data):
+          self.title = data.title
+          self.stateMachine.invokeSuccess(with: data.wineList)
 
-          case .failure(let error):
-            self.stateMachine.fail(with: error)
-          }
-      }
+        case .failure(let error):
+          self.stateMachine.fail(with: error)
+        }
+      })
     }
   }
 
@@ -147,8 +144,12 @@ final class ShowcaseInteractor {
       needLoadMore = wines.count == offset + C.limit
     }
 
-    if case ShowcaseMode.normal = input.mode {
+    switch input.mode {
+    case .normal, .remote:
       needLoadMore = false
+
+    case .advancedSearch:
+      break
     }
 
     showData(needLoadMore: needLoadMore)
@@ -156,7 +157,7 @@ final class ShowcaseInteractor {
 
   private func showData(error: Error? = nil, needLoadMore: Bool) {
     if let error = error {
-      presenter.update(wines: wines, needLoadMore: needLoadMore)
+      presenter.update(title: title, wines: wines, needLoadMore: needLoadMore)
       if wines.isEmpty {
         presenter.showInitiallyLoadingError(error: error)
       } else {
@@ -166,7 +167,7 @@ final class ShowcaseInteractor {
       if wines.isEmpty {
         presenter.showNothingFoundErrorView()
       } else {
-        presenter.update(wines: wines, needLoadMore: needLoadMore)
+        presenter.update(title: title, wines: wines, needLoadMore: needLoadMore)
       }
     }
   }

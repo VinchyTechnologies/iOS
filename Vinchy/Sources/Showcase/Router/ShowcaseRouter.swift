@@ -7,15 +7,13 @@
 //
 
 import UIKit
-import VinchyUI
 
 final class ShowcaseRouter: ShowcaseRouterProtocol {
 
   // MARK: Lifecycle
 
-  init(viewController: UIViewController, input: ShowcaseInput) {
+  init(viewController: UIViewController) {
     self.viewController = viewController
-    self.input = input
   }
 
   // MARK: Internal
@@ -23,7 +21,4 @@ final class ShowcaseRouter: ShowcaseRouterProtocol {
   weak var viewController: UIViewController?
   var interactor: ShowcaseInteractorProtocol?
 
-  // MARK: Private
-
-  private let input: ShowcaseInput
 }
