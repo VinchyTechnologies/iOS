@@ -74,6 +74,7 @@ final class ShowcaseViewController: UIViewController, Loadable {
   // MARK: Private
 
   private var shouldCallScrollViewDidScroll = true
+  private var isGoingScrollToTopViaTappingStatusBar = false
 
   private lazy var shareButton = UIButton(type: .system)
 
@@ -205,6 +206,13 @@ final class ShowcaseViewController: UIViewController, Loadable {
     }
   }
 
+  private func shouldScroll(isDecelerating: Bool, isDragging: Bool) -> Bool {
+    if isGoingScrollToTopViaTappingStatusBar {
+      return true
+    } else {
+      return (isDecelerating || isDragging) && shouldCallScrollViewDidScroll
+    }
+  }
   private func updateShadowSupplementaryHeaderView(offset: CGFloat) {
     let value: CGFloat = offset
     let alpha = min(1, max(0, value / 10))
@@ -313,7 +321,7 @@ extension ShowcaseViewController: TabViewDelegate {
 extension ShowcaseViewController: UIScrollViewDelegate {
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     if scrollView === collectionView {
-      if (scrollView.isDecelerating || scrollView.isDragging || scrollView.scrollsToTop) && shouldCallScrollViewDidScroll {
+      if shouldScroll(isDecelerating: scrollView.isDecelerating, isDragging: scrollView.isDragging) {
         let attributes = layout.layoutAttributesForElements(in: CGRect(
           x: collectionView.frame.origin.x,
           y: max(0, scrollView.contentOffset.y + C.tabViewHeight),
@@ -328,7 +336,7 @@ extension ShowcaseViewController: UIScrollViewDelegate {
           switch (collectionView.item(at: indexPath)?.dataID as? ItemPath)?.section {
           case .dataID(let str):
             if let str = str as? String, str.prefix(3) == "sec" {
-              let string = str.dropFirst("sec".count)
+              let string = str.dropFirst(3)
               return Int(string)
             }
             return nil
@@ -343,5 +351,14 @@ extension ShowcaseViewController: UIScrollViewDelegate {
       }
       updateShadowSupplementaryHeaderView(offset: scrollView.contentOffset.y)
     }
+  }
+
+  func scrollViewShouldScrollToTop(_ scrollView: UIScrollView) -> Bool {
+    isGoingScrollToTopViaTappingStatusBar = true
+    return true
+  }
+
+  func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
+    isGoingScrollToTopViaTappingStatusBar = false
   }
 }
