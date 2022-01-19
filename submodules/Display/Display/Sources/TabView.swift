@@ -57,11 +57,25 @@ public final class TabView: UIView {
 
   // MARK: Public
 
-  // MARK: - Public Properties
-
   public typealias ViewModel = TabViewModel
 
   public weak var delegate: TabViewDelegate?
+
+  public private(set) lazy var collectionView: CollectionViewWithSelectionBackground = {
+    $0.showsHorizontalScrollIndicator = false
+    $0.backgroundColor = .accent
+    $0.delegate = self
+    $0.dataSource = self
+    $0.contentInset = LocalConstants.collectionInsets
+    $0.allowsMultipleSelection = false
+    $0.decelerationRate = .fast
+    $0.alwaysBounceHorizontal = true
+    $0.alwaysBounceVertical = false
+    $0.register(TabCell.self, forCellWithReuseIdentifier: TabCell.description())
+    $0.selectionBackgroundColor = LocalConstants.collectionSelectionColor
+    $0.selectionBackgroundRadius = LocalConstants.collectionSelectionRadius
+    return $0
+  }(CollectionViewWithSelectionBackground(frame: .zero, collectionViewLayout: layout))
 
   public var selectedIndex: Int? {
     guard let indexPath = collectionView.indexPathsForSelectedItems?.first else { return nil }
@@ -98,24 +112,6 @@ public final class TabView: UIView {
   public func setShadowAlpha(_ alpha: Float) {
     layer.shadowOpacity = alpha / 2.0
   }
-
-  // MARK: Internal
-
-  private(set) lazy var collectionView: CollectionViewWithSelectionBackground = {
-    $0.showsHorizontalScrollIndicator = false
-    $0.backgroundColor = .accent
-    $0.delegate = self
-    $0.dataSource = self
-    $0.contentInset = LocalConstants.collectionInsets
-    $0.allowsMultipleSelection = false
-    $0.decelerationRate = .fast
-    $0.alwaysBounceHorizontal = true
-    $0.alwaysBounceVertical = false
-    $0.register(TabCell.self, forCellWithReuseIdentifier: TabCell.description())
-    $0.selectionBackgroundColor = LocalConstants.collectionSelectionColor
-    $0.selectionBackgroundRadius = LocalConstants.collectionSelectionRadius
-    return $0
-  }(CollectionViewWithSelectionBackground(frame: .zero, collectionViewLayout: layout))
 
   // MARK: Private
 
@@ -397,6 +393,9 @@ public final class CollectionViewWithSelectionBackground: UICollectionView {
 
   // MARK: Public
 
+  public var didBeginAnimation: (() -> Void)?
+  public var didEndAnimation: (() -> Void)?
+
   public var selectionBackgroundColor: UIColor? {
     didSet {
       selectionBackgroundView.backgroundColor = selectionBackgroundColor
@@ -416,8 +415,9 @@ public final class CollectionViewWithSelectionBackground: UICollectionView {
   }
 
   public override func selectItem(at indexPath: IndexPath?, animated: Bool, scrollPosition: UICollectionView.ScrollPosition) {
+    didBeginAnimation?()
     super.selectItem(at: indexPath, animated: animated, scrollPosition: scrollPosition)
-    guard let indexPath = indexPath else { return }
+    guard let indexPath = indexPath else { didEndAnimation?(); return }
     moveSelectionBackgroundViewToItem(at: indexPath, animated: animated)
   }
 
@@ -478,7 +478,9 @@ public final class CollectionViewWithSelectionBackground: UICollectionView {
       animations: {
         self.selectionBackgroundView.frame = frame
         self.selectedIndexPath = indexPath
-      }, completion: nil)
+      }, completion: { [weak self] _ in
+        self?.didEndAnimation?()
+      })
   }
 }
 

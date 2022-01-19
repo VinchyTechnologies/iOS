@@ -73,10 +73,18 @@ final class ShowcaseViewController: UIViewController, Loadable {
 
   // MARK: Private
 
+  private var shouldCallScrollViewDidScroll = true
+
   private lazy var shareButton = UIButton(type: .system)
 
   private lazy var tabView: TabView = {
     $0.delegate = self
+    $0.collectionView.didBeginAnimation = { [weak self] in
+      self?.shouldCallScrollViewDidScroll = false
+    }
+    $0.collectionView.didEndAnimation = { [weak self] in
+      self?.shouldCallScrollViewDidScroll = true
+    }
     return $0
   }(TabView())
 
@@ -292,9 +300,9 @@ extension ShowcaseViewController: TabViewDelegate {
     }
 
     guard let layout = collectionView.collectionViewLayout.layoutAttributesForItem(at: indexPath) else {
-      collectionView.scrollToItem(at: indexPath, at: .top, animated: true)
       return
     }
+
     let offset = CGPoint(x: 0, y: layout.frame.minY - C.tabViewHeight)
     collectionView.setContentOffset(offset, animated: true)
   }
@@ -305,7 +313,7 @@ extension ShowcaseViewController: TabViewDelegate {
 extension ShowcaseViewController: UIScrollViewDelegate {
   func scrollViewDidScroll(_ scrollView: UIScrollView) {
     if scrollView === collectionView {
-      if scrollView.isDecelerating || scrollView.isDragging || scrollView.scrollsToTop {
+      if (scrollView.isDecelerating || scrollView.isDragging || scrollView.scrollsToTop) && shouldCallScrollViewDidScroll {
         let attributes = layout.layoutAttributesForElements(in: CGRect(
           x: collectionView.frame.origin.x,
           y: max(0, scrollView.contentOffset.y + C.tabViewHeight),
