@@ -15,7 +15,7 @@ import VinchyCore
 // MARK: - StoriesCollectionViewDelegate
 
 protocol StoriesCollectionViewDelegate: AnyObject {
-  func didTapStory(title: String?, shortWines: [ShortWine])
+  func didTapStory(collectionID: Int)
 }
 
 // MARK: - StoriesCollectionView
@@ -53,7 +53,7 @@ final class StoriesCollectionView: CollectionView, EpoxyableView {
           content: storyViewViewModel,
           style: .init())
           .didSelect { [weak self] _ in
-            self?.storiesCollectionViewDelegate?.didTapStory(title: storyViewViewModel.titleText, shortWines: storyViewViewModel.wines)
+            self?.storiesCollectionViewDelegate?.didTapStory(collectionID: storyViewViewModel.collectionID)
           }
       }
     }

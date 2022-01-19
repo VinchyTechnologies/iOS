@@ -14,7 +14,7 @@ protocol VinchyInteractorProtocol: ResultsSearchDelegate, WineViewContextMenuTap
   func didTapFilter()
   func didTapMapButton()
   func didTapBottleCell(wineID: Int64)
-  func didTapCompilationCell(input: ShowcaseInput)
+  func didTapCompilationCell(collectionID: Int)
   func didTapSeeStore(affilatedId: Int)
   func didTapChangeAddressButton()
   func didChangeAddress()

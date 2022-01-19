@@ -256,19 +256,8 @@ extension VinchyInteractor {
     router.pushToWineDetailViewController(wineID: wineID)
   }
 
-  func didTapCompilationCell(input: ShowcaseInput) {
-    switch input.mode {
-    case .normal(let wines):
-      guard !wines.isEmpty else {
-        presenter.showAlertEmptyCollection()
-        return
-      }
-
-    case .advancedSearch, .partner:
-      break
-    }
-
-    router.pushToShowcaseViewController(input: input)
+  func didTapCompilationCell(collectionID: Int) {
+    router.pushToShowcaseViewController(input: .init(title: nil, mode: .remote(collectionID: collectionID)))
   }
 }
 

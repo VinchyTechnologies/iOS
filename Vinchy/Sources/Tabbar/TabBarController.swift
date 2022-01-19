@@ -18,6 +18,7 @@ import WineDetail
 protocol TabBarDeeplinkable {
   func openWineDetail(wineID: Int64) -> AnyPublisher<TabBarDeeplinkable, Never>
   func openStoreDetail(affilatedId: Int) -> AnyPublisher<TabBarDeeplinkable, Never>
+  func openShowcase(collectionID: Int) -> AnyPublisher<TabBarDeeplinkable, Never>
   func selectSecondTab() -> AnyPublisher<TabBarDeeplinkable, Never>
   func makeSearchBarFirstResponder() -> AnyPublisher<TabBarDeeplinkable, Never>
 }
@@ -219,6 +220,18 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
 // MARK: TabBarDeeplinkable
 
 extension TabBarController: TabBarDeeplinkable {
+
+  func openShowcase(collectionID: Int) -> AnyPublisher<TabBarDeeplinkable, Never> {
+    let controller = ShowcaseAssembly.assemblyModule(input: .init(title: nil, mode: .remote(collectionID: collectionID)))
+    let navigationController = VinchyNavigationController(rootViewController: controller)
+    navigationController.modalPresentationStyle = .overFullScreen
+    UIApplication.topViewController(base: self)?.present(
+      navigationController,
+      animated: true,
+      completion: nil)
+    return Just(self)
+      .eraseToAnyPublisher()
+  }
 
   func openStoreDetail(affilatedId: Int) -> AnyPublisher<TabBarDeeplinkable, Never> {
     let controller = StoreAssembly.assemblyModule(input: .init(mode: .normal(affilatedId: affilatedId), isAppClip: false), coordinator: Coordinator.shared, adFabricProtocol: AdFabric.shared)

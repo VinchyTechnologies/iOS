@@ -26,3 +26,15 @@ extension ShowcaseRoutable {
     }
   }
 }
+
+// MARK: - CollectionShareType
+
+public enum CollectionShareType {
+  case fullInfo(collectionID: Int, titleText: String?, logoURL: URL?, sourceView: UIView)
+}
+
+// MARK: - CollectionShareRoutable
+
+public protocol CollectionShareRoutable: AnyObject {
+  func didTapShareCollection(type: CollectionShareType)
+}

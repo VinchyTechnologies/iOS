@@ -17,9 +17,50 @@ import VinchyUI
 
 // MARK: - Coordinator
 
-final class Coordinator: ShowcaseRoutable, WineDetailRoutable, WriteNoteRoutable, ActivityRoutable, AdvancedSearchRoutable, ReviewDetailRoutable, ReviewsRoutable, WriteReviewRoutable, StoresRoutable, StoreRoutable, ResultsSearchRoutable, AuthorizationRoutable, WineShareRoutable, StatusAlertable, SafariRoutable, StoreShareRoutable {
+final class Coordinator: ShowcaseRoutable, WineDetailRoutable, WriteNoteRoutable, ActivityRoutable, AdvancedSearchRoutable, ReviewDetailRoutable, ReviewsRoutable, WriteReviewRoutable, StoresRoutable, StoreRoutable, ResultsSearchRoutable, AuthorizationRoutable, WineShareRoutable, StatusAlertable, SafariRoutable, StoreShareRoutable, CollectionShareRoutable {
 
   static let shared = Coordinator()
+
+  func didTapShareCollection(type: CollectionShareType) {
+    switch type {
+    case .fullInfo(let collectionID, let titleText, let logoURL, let sourceView):
+      var components = URLComponents()
+      components.scheme = Scheme.https.rawValue
+      components.host = domain
+      components.path = "/list/" + String(collectionID)
+
+      guard let linkParameter = components.url else {
+        return
+      }
+
+      guard
+        let shareLink = DynamicLinkComponents(
+          link: linkParameter,
+          domainURIPrefix: "https://vinchy.page.link")
+      else {
+        return
+      }
+
+      if let bundleID = Bundle.main.bundleIdentifier {
+        shareLink.iOSParameters = DynamicLinkIOSParameters(bundleID: bundleID)
+      }
+      shareLink.iOSParameters?.appStoreID = "1536720416"
+      shareLink.socialMetaTagParameters = DynamicLinkSocialMetaTagParameters()
+      shareLink.socialMetaTagParameters?.title = titleText
+      shareLink.socialMetaTagParameters?.imageURL = logoURL
+
+      shareLink.shorten { [weak self] url, _, error in
+        if error != nil {
+          return
+        }
+
+        guard let url = url else { return }
+
+        let items: [Any] = [titleText as Any, url]
+        self?.presentActivityViewController(items: items, sourceView: sourceView)
+      }
+    }
+  }
 
   func didTapShareStore(type: StoreShareType) {
     switch type {

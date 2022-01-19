@@ -15,9 +15,9 @@ public class WindowHelper: NSObject {
     var displayedList = false
     lazy var vc = CocoaDebugViewController() //must lazy init, otherwise crash
     
-    //UIBlocking
-//    fileprivate var uiBlockingCounter = UIBlockingCounter()
-//    var uiBlockingCallback:((Int) -> Void)?
+    //FPS
+    fileprivate var fpsCounter = FPSCounter()
+    var fpsCallback:((Int) -> Void)?
     
     
     private override init() {
@@ -26,7 +26,7 @@ public class WindowHelper: NSObject {
         window.bounds.size.height = UIScreen.main.bounds.height.nextDown
         super.init()
         
-//        uiBlockingCounter.delegate = self
+        fpsCounter.delegate = self
     }
     
     
@@ -38,11 +38,7 @@ public class WindowHelper: NSObject {
         window.rootViewController = vc
         window.delegate = self
         window.isHidden = false
-        
-        if CocoaDebugSettings.shared.enableUIBlockingMonitoring == true {
-            startUIBlockingMonitoring()
-        }
-
+        startFpsMonitoring()
         
         if #available(iOS 13.0, *) {
             var success: Bool = false
@@ -70,27 +66,25 @@ public class WindowHelper: NSObject {
         window.rootViewController = nil
         window.delegate = nil
         window.isHidden = true
-        stopUIBlockingMonitoring()
+        stopFpsMonitoring()
     }
     
-    public func startUIBlockingMonitoring() {
-//        uiBlockingCounter.startMonitoring()
-        _RunloopMonitor.shared().begin()
+    public func startFpsMonitoring() {
+        fpsCounter.startMonitoring()
     }
-
-    public func stopUIBlockingMonitoring() {
-//        uiBlockingCounter.stopMonitoring()
-        _RunloopMonitor.shared().end()
+    
+    public func stopFpsMonitoring() {
+        fpsCounter.stopMonitoring()
     }
 }
 
 
-// MARK: - UIBlockingCounterDelegate
-//extension WindowHelper: UIBlockingCounterDelegate {
-//    @objc public func uiBlockingCounter(_ counter: UIBlockingCounter, didUpdateFramesPerSecond uiBlocking: Int) {
-//        if let uiBlockingCallback = uiBlockingCallback {
-//            uiBlockingCallback(uiBlocking)
-//        }
-//    }
-//}
+// MARK: - FPSCounterDelegate
+extension WindowHelper: FPSCounterDelegate {
+    @objc public func fpsCounter(_ counter: FPSCounter, didUpdateFramesPerSecond fps: Int) {
+        if let fpsCallback = fpsCallback {
+            fpsCallback(fps)
+        }
+    }
+}
 

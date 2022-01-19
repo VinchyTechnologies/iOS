@@ -8,7 +8,8 @@
 
 import UIKit
 
-// MARK: - ContextMenuItem
+// swiftlint:disable all
+
 public typealias ActionClosure = (() -> Void)
 
 // MARK: - ContextMenuItem

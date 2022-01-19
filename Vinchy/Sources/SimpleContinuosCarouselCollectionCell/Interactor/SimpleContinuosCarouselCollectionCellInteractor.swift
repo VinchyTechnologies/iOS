@@ -108,11 +108,11 @@ extension SimpleContinuosCarouselCollectionCellInteractor: SimpleContinuosCarous
   }
 
   func didTapCompilationCell(wines: [ShortWine], title: String?) {
-    guard !wines.isEmpty else {
-      presenter.showAlertEmptyCollection()
-      return
-    }
-    delegate?.didTapCompilationCell(input: .init(title: title, mode: .normal(wines: wines)))
+//    guard !wines.isEmpty else {
+//      presenter.showAlertEmptyCollection()
+//      return
+//    }
+//    delegate?.didTapCompilationCell(input: .init(title: title, mode: .normal(wines: wines)))
 //    router.pushToShowcaseViewController(input: .init(title: title, mode: .normal(wines: wines)))
   }
 

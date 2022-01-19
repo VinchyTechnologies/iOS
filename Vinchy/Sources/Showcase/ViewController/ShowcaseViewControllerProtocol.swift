@@ -10,5 +10,4 @@ import DisplayMini
 
 protocol ShowcaseViewControllerProtocol: Alertable, Loadable {
   func updateUI(viewModel: ShowcaseViewModel)
-  func updateUI(errorViewModel: ErrorViewModel)
 }

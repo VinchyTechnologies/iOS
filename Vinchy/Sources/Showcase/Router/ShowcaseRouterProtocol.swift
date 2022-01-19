@@ -8,4 +8,4 @@
 
 import VinchyUI
 
-protocol ShowcaseRouterProtocol: WineDetailRoutable {}
+protocol ShowcaseRouterProtocol: WineDetailRoutable, CollectionShareRoutable {}
