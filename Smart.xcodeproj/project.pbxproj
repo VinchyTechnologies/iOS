@@ -2714,7 +2714,7 @@
 		CA472AB3245EDE2F009149FF = {
 			isa = PBXGroup;
 			children = (
-				CA472ABE245EDE2F009149FF /* Vinchy-IOS */,
+				CA472ABE245EDE2F009149FF /* Vinchy-iOS */,
 				CA472AD5245EDE30009149FF /* SmartTests */,
 				CA472AE0245EDE30009149FF /* SmartUITests */,
 				8AEC94A5275A914100C80F1E /* VinchyAppClip */,
@@ -2739,13 +2739,13 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		CA472ABE245EDE2F009149FF /* Vinchy-IOS */ = {
+		CA472ABE245EDE2F009149FF /* Vinchy-iOS */ = {
 			isa = PBXGroup;
 			children = (
 				CA0A3527247860EB00C400F5 /* Resources */,
 				CA472B2D245EDEC7009149FF /* Sources */,
 			);
-			path = "Vinchy-IOS";
+			path = "Vinchy-iOS";
 			sourceTree = "<group>";
 		};
 		CA472AD5245EDE30009149FF /* SmartTests */ = {
@@ -4388,13 +4388,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Vinchy/Resources/Vinchy.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Vinchy-iOS/Resources/Vinchy.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				ENABLE_BITCODE = YES;
-				INFOPLIST_FILE = Vinchy/Resources/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Vinchy-iOS/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -4421,13 +4421,13 @@
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_ENTITLEMENTS = Vinchy/Resources/VinchyRelease.entitlements;
+				CODE_SIGN_ENTITLEMENTS = "Vinchy-iOS/Resources/VinchyRelease.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				ENABLE_BITCODE = YES;
-				INFOPLIST_FILE = Vinchy/Resources/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Vinchy-iOS/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
