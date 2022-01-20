@@ -190,7 +190,8 @@ extension VinchyPresenter: VinchyPresenterProtocol {
         })
       {
         sections.append(.stories(content: storiesCompilation.collectionList.compactMap({ collection in
-          .init(imageURL: collection.imageURL?.toURL, titleText: collection.title, wines: collection.wineList)
+          guard let collectionID = collection.id else { return nil }
+          return .init(imageURL: collection.imageURL?.toURL, titleText: collection.title, collectionID: collectionID)
         })))
       }
 
@@ -218,7 +219,8 @@ extension VinchyPresenter: VinchyPresenterProtocol {
           if let title = compilation.title {
             sections.append(.title(content: title))
             sections.append(.stories(content: compilation.collectionList.compactMap({ collection in
-              .init(imageURL: collection.imageURL?.toURL, titleText: collection.title, wines: collection.wineList)
+              guard let collectionID = collection.id else { return nil }
+              return .init(imageURL: collection.imageURL?.toURL, titleText: collection.title, collectionID: collectionID)
             })))
           }
 
@@ -227,7 +229,8 @@ extension VinchyPresenter: VinchyPresenterProtocol {
             sections.append(.title(content: title))
           }
           sections.append(.commonSubtitle(content: compilation.collectionList.compactMap({
-            .init(subtitleText: $0.title, imageURL: $0.imageURL?.toURL, wines: $0.wineList)
+            guard let collectionID = $0.id else { return nil }
+            return .init(subtitleText: $0.title, imageURL: $0.imageURL?.toURL, collectionID: collectionID)
           }), style: .init(kind: .big)))
 
         case .promo:
@@ -235,7 +238,8 @@ extension VinchyPresenter: VinchyPresenterProtocol {
             sections.append(.title(content: title))
           }
           sections.append(.commonSubtitle(content: compilation.collectionList.compactMap({
-            .init(subtitleText: $0.title, imageURL: $0.imageURL?.toURL, wines: $0.wineList)
+            guard let collectionID = $0.id else { return nil }
+            return .init(subtitleText: $0.title, imageURL: $0.imageURL?.toURL, collectionID: collectionID)
           }), style: .init(kind: .promo)))
 
         case .bottles:

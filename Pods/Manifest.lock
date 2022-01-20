@@ -1,5 +1,5 @@
 PODS:
-  - CocoaDebug (1.7.2)
+  - CocoaDebug (1.6.9)
   - EpoxyBars (0.7.0):
     - EpoxyCore (= 0.7.0)
   - EpoxyCollectionView (0.7.0):
@@ -150,7 +150,7 @@ SPEC REPOS:
     - SwiftLint
 
 SPEC CHECKSUMS:
-  CocoaDebug: 61cf93ada6ce8f3407507dc01f9b874d91ac1d5c
+  CocoaDebug: 827b20a16176ddcf577761dfcf60fc531d6225e8
   EpoxyBars: 320b3834a624a137d64933a41755ce4ec7bba474
   EpoxyCollectionView: cab2066f2e031fca89d5373078d9e7fa2c767858
   EpoxyCore: 7478304fc707a67583fda3cb98e6e631f5e13d40

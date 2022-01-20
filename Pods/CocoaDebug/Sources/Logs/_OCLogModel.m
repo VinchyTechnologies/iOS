@@ -29,7 +29,7 @@
             if ([fileInfo isEqualToString:@" \n"]) {//nslog
                 fileInfo = @"NSLog\n";
             } else if ([fileInfo isEqualToString:@"\n"]) {//color
-                fileInfo = @"\n";
+                fileInfo = @"Color\n";
             }
         }
         

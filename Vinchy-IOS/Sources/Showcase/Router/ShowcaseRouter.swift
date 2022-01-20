@@ -13,9 +13,9 @@ final class ShowcaseRouter: ShowcaseRouterProtocol {
 
   // MARK: Lifecycle
 
-  init(viewController: UIViewController, input: ShowcaseInput) {
+  init(viewController: UIViewController, coordinator: WineDetailRoutable & CollectionShareRoutable) {
     self.viewController = viewController
-    self.input = input
+    self.coordinator = coordinator
   }
 
   // MARK: Internal
@@ -23,7 +23,13 @@ final class ShowcaseRouter: ShowcaseRouterProtocol {
   weak var viewController: UIViewController?
   var interactor: ShowcaseInteractorProtocol?
 
+
+  func didTapShareCollection(type: CollectionShareType) {
+    coordinator.didTapShareCollection(type: type)
+  }
+
   // MARK: Private
 
-  private let input: ShowcaseInput
+  private let coordinator: WineDetailRoutable & CollectionShareRoutable
+
 }

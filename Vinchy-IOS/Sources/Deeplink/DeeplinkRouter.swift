@@ -93,6 +93,30 @@ final class OpenStoreFlow: DeeplinkFlow<RootDeeplinkable> {
   }
 }
 
+// MARK: - ShowcaseFlow
+
+final class ShowcaseFlow: DeeplinkFlow<RootDeeplinkable> {
+
+  // MARK: Lifecycle
+
+  init(input: Input) {
+    super.init()
+    onStep { root in
+      root.openTabBar()
+    }
+    .onStep { tabBar in
+      tabBar.openShowcase(collectionID: input.collectionID)
+    }
+    .commit()
+  }
+
+  // MARK: Internal
+
+  struct Input {
+    let collectionID: Int
+  }
+}
+
 // MARK: - DeeplinkRouter
 
 protocol DeeplinkRouter {
@@ -116,6 +140,7 @@ final class DeeplinkRouterImpl {
     case openSecondTabBarItem(flow: OpenSecondTabFlow)
     case openGlobalSearch(flow: OpenGlobalSearchFlow)
     case openStore(flow: OpenStoreFlow)
+    case openShowcase(flow: ShowcaseFlow)
   }
 
   // MARK: Private
@@ -149,6 +174,13 @@ final class DeeplinkRouterImpl {
           let affilatedId = Int(id)
         else { return nil }
         return .openStore(flow: OpenStoreFlow(input: .init(affilatedId: affilatedId)))
+
+      } else if word == "list" {
+        guard
+          let id = url.pathComponents.last,
+          let collectionID = Int(id)
+        else { return nil }
+        return .openShowcase(flow: ShowcaseFlow(input: .init(collectionID: collectionID)))
       }
     }
     return nil
@@ -170,6 +202,9 @@ extension DeeplinkRouterImpl: DeeplinkRouter {
       subscribtions = flow.subcscribe(root)
 
     case .openStore(let flow):
+      subscribtions = flow.subcscribe(root)
+
+    case .openShowcase(let flow):
       subscribtions = flow.subcscribe(root)
 
     case .none:
