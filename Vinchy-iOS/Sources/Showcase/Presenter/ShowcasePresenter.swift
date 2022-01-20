@@ -45,6 +45,7 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
 
   func update(title: String?, wines: [ShortWine], needLoadMore: Bool) {
     var items: [ShowcaseViewModel.Item] = []
+    var title = title
 
     var isSharable = false
 
@@ -118,6 +119,14 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
         }
         items += winesContent.enumerated().compactMap({ .bottle(itemID: ItemPath(itemDataID: "item\($0)", section: .dataID("sec\(index)")) , content: $1) })
       }
+    }
+
+    switch input.mode {
+    case .advancedSearch:
+      title = localized("search_results").firstLetterUppercased()
+      
+    case .normal, .remote:
+      break
     }
 
     let tabViewModel: TabViewModel = .init(items: items.compactMap({ sec in
