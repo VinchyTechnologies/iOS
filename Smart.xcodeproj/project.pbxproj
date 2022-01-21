@@ -109,6 +109,7 @@
 		8A0A448B279AA905001A8CA1 /* Widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0A448A279AA905001A8CA1 /* Widget.framework */; };
 		8A0A448C279AA905001A8CA1 /* Widget.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0A448A279AA905001A8CA1 /* Widget.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A0A448E279AA914001A8CA1 /* Widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0A448D279AA914001A8CA1 /* Widget.framework */; };
+		8A0A4492279AEAAA001A8CA1 /* DisplayMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0A4491279AEAAA001A8CA1 /* DisplayMini.framework */; };
 		8A0D9CB726871D9D0076A7EC /* NewAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0D9CB626871D9D0076A7EC /* NewAgreementViewController.swift */; };
 		8A0D9CB926872CF60076A7EC /* NewAgreementsBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0D9CB826872CF60076A7EC /* NewAgreementsBottomView.swift */; };
 		8A1034592648596100F7CA81 /* AssortmentCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1034582648596100F7CA81 /* AssortmentCollectionCell.swift */; };
@@ -692,6 +693,7 @@
 		8A0A4471279AA098001A8CA1 /* WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetExtension.entitlements; sourceTree = "<group>"; };
 		8A0A448A279AA905001A8CA1 /* Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A0A448D279AA914001A8CA1 /* Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A0A4491279AEAAA001A8CA1 /* DisplayMini.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DisplayMini.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A0D9CB626871D9D0076A7EC /* NewAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAgreementViewController.swift; sourceTree = "<group>"; };
 		8A0D9CB826872CF60076A7EC /* NewAgreementsBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAgreementsBottomView.swift; sourceTree = "<group>"; };
 		8A1034582648596100F7CA81 /* AssortmentCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssortmentCollectionCell.swift; sourceTree = "<group>"; };
@@ -1002,6 +1004,7 @@
 				8A62EF182795D83C005445B4 /* SwiftUI.framework in Frameworks */,
 				8A62EF162795D83C005445B4 /* WidgetKit.framework in Frameworks */,
 				8A0A446D279999F8001A8CA1 /* Core.framework in Frameworks */,
+				8A0A4492279AEAAA001A8CA1 /* DisplayMini.framework in Frameworks */,
 				8A0A448E279AA914001A8CA1 /* Widget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1446,6 +1449,7 @@
 		46483F371463D95E22014241 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8A0A4491279AEAAA001A8CA1 /* DisplayMini.framework */,
 				8A0A448D279AA914001A8CA1 /* Widget.framework */,
 				8A0A448A279AA905001A8CA1 /* Widget.framework */,
 				8A0A446C279999F8001A8CA1 /* Core.framework */,

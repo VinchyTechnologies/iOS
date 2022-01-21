@@ -143,6 +143,8 @@ extension SceneDelegate: UIWindowSceneDelegate {
     guard let urlToOpen = URLContexts.first?.url else { return }
     if let dynamicLink = DynamicLinks.dynamicLinks().dynamicLink(fromCustomSchemeURL: urlToOpen) {
       handleIncomingDynamicLink(dynamicLink)
+    } else {
+      deeplinkRouter.route(url: urlToOpen)
     }
   }
 

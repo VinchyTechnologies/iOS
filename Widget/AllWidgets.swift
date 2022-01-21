@@ -6,7 +6,9 @@
 //  Copyright © 2022 Aleksei Smirnov. All rights reserved.
 //
 
+import Combine
 import Database
+import DisplayMini
 import Intents
 import SwiftUI
 import Widget
@@ -41,7 +43,7 @@ struct StoresProvider: IntentTimelineProvider {
   // MARK: Internal
 
   func placeholder(in context: Context) -> SimpleEntry {
-    SimpleEntry(date: Date(), kind: .preview, stores: [], configuration: ConfigurationIntent())
+    SimpleEntry(date: Date(), kind: .preview, stores: [], configuration: ConfigurationIntent(), widgetHeight: context.displaySize.height)
   }
 
   func getSnapshot(
@@ -49,7 +51,7 @@ struct StoresProvider: IntentTimelineProvider {
     in context: Context,
     completion: @escaping (SimpleEntry) -> Void)
   {
-    let entry = SimpleEntry(date: Date(), kind: .preview, stores: [], configuration: configuration)
+    let entry = SimpleEntry(date: Date(), kind: .preview, stores: [], configuration: configuration, widgetHeight: context.displaySize.height)
     completion(entry)
   }
 
@@ -59,9 +61,9 @@ struct StoresProvider: IntentTimelineProvider {
     completion: @escaping (Timeline<Entry>) -> Void)
   {
     let stores = WidgetStorage.shared.getWidgetStores().compactMap { store in
-      Entry.Store(id: store.id, imageURL: store.imageURL, title: store.title)
+      Entry.Store(id: store.id, imageURL: store.imageURL, title: store.title, subtitle: store.subtitle)
     }
-    let entry = Entry(date: Date(), kind: .normal, stores: stores, configuration: configuration)
+    let entry = Entry(date: Date(), kind: .normal, stores: stores, configuration: configuration, widgetHeight: context.displaySize.height)
     let timeline = Timeline(entries: [entry], policy: .never)
     completion(timeline)
   }
@@ -90,6 +92,7 @@ struct SimpleEntry: TimelineEntry {
     let id: Int
     let imageURL: URL?
     let title: String?
+    let subtitle: String?
   }
 
   enum Kind {
@@ -100,29 +103,82 @@ struct SimpleEntry: TimelineEntry {
   let kind: Kind
   let stores: [Store]
   let configuration: ConfigurationIntent
+  let widgetHeight: CGFloat
+
 }
 
 // MARK: - StoresView
 
 struct StoresView: View {
+
+  // MARK: Lifecycle
+
+  init(data: StoresProvider.Entry) {
+    self.data = data
+    imageHeight = (data.widgetHeight - 8 - 8 - 8 - 8 - 1) / 2
+  }
+
+  // MARK: Internal
+
+  let imageHeight: CGFloat
   var data: StoresProvider.Entry
 
   var body: some View {
-    if data.kind == .preview {
-      Text("Preview")
-    } else if data.stores.isEmpty {
-      Text("Empty")
-    } else {
-      Text(data.stores.first?.title ?? "HUI")
+    VStack(spacing: 0) {
+      if data.kind == .preview {
+        Text("Preview")
+      } else if data.stores.isEmpty {
+        Text("Empty")
+      } else {
+        if let store1 = data.stores.first, let url1 = URL(string: "https://vinchy.tech/store/\(store1.id)") {
+          Link(destination: url1) {
+            row(for: store1)
+              .padding(.top, 8)
+              .padding(.bottom, 8)
+          }
+        }
+        Divider()
+          .frame(height: 1)
+          .padding(.init(top: 0, leading: imageHeight + 16, bottom: 0, trailing: 0))
+        if let store2 = data.stores.last, data.stores.count == 2, let url2 = URL(string: "https://vinchy.tech/store/\(store2.id)") {
+          Link(destination: url2) {
+            row(for: store2)
+              .padding(.top, 8)
+              .padding(.bottom, 8)
+          }
+        } else {
+          Spacer()
+        }
+      }
     }
+    .background(Color(.mainBackground))
   }
-}
 
-// MARK: - StoresWidget_Previews
+  // MARK: Private
 
-struct StoresWidget_Previews: PreviewProvider {
-  static var previews: some View {
-    StoresView(data: SimpleEntry(date: Date(), kind: .preview, stores: [], configuration: ConfigurationIntent()))
-      .previewContext(WidgetPreviewContext(family: .systemMedium))
+  private func row(for store: SimpleEntry.Store) -> some View {
+    HStack(alignment: .center, spacing: 8) {
+      if let url = store.imageURL, let data = try? Data(contentsOf: url), let uiImage = UIImage(data: data) {
+        Image(uiImage: uiImage)
+          .resizable()
+          .clipShape(Circle())
+          .frame(width: imageHeight, height: imageHeight)
+      }
+      VStack(alignment: .leading) {
+        if let title = store.title {
+          Text(title)
+            .font(.system(size: 16, weight: .heavy, design: .default))
+        }
+        if let subtitle = store.subtitle {
+          Text(subtitle)
+            .font(.system(size: 14, weight: .regular, design: .default))
+            .lineLimit(2)
+            .foregroundColor(.secondary)
+        }
+      }
+      .frame(height: imageHeight)
+      Spacer()
+    }
+    .padding(.init(top: 0, leading: 8, bottom: 0, trailing: 8))
   }
 }
