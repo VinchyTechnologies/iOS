@@ -9,9 +9,17 @@
 import Database
 import Display
 import DisplayMini
+import EpoxyBars
 import EpoxyCollectionView
 import EpoxyCore
+import StringFormatting
 import UIKit
+
+// MARK: - C
+
+fileprivate enum C {
+  static let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
+}
 
 // MARK: - StoresViewController
 
@@ -27,6 +35,15 @@ final class StoresViewController: CollectionViewController {
 
   var interactor: StoresInteractorProtocol?
   private(set) var loadingIndicator = ActivityIndicatorView()
+
+  lazy var bottomBarInstaller = BottomBarInstaller(
+    viewController: self,
+    bars: bars)
+
+  @BarModelBuilder
+  var bars: [BarModeling] {
+    []
+  }
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -44,6 +61,8 @@ final class StoresViewController: CollectionViewController {
     collectionView.backgroundColor = .mainBackground
     collectionView.delaysContentTouches = false
     collectionView.scrollDelegate = self
+    collectionView.contentInset = .init(top: 0, left: 0, bottom: 10, right: 0)
+    bottomBarInstaller.install()
     interactor?.viewDidLoad()
   }
 
@@ -62,6 +81,7 @@ final class StoresViewController: CollectionViewController {
 
   // MARK: Private
 
+  private var isShaking = false
   private lazy var collectionViewSize: CGSize = view.frame.size
 
   private var heightBeforeSupplementaryHeader: CGFloat?
@@ -99,10 +119,36 @@ final class StoresViewController: CollectionViewController {
               return HorizontalPartnerView.itemModel(
                 dataID: UUID(),
                 content: content,
+                behaviors: .init(didTapContextMenuDeleteWidget: { [weak self] in
+                  self?.interactor?.didTapContextMenuRemoveFromWidget(affilatedId: content.affiliatedStoreId)
+                }),
                 style: .init())
-                .didSelect { [weak self] _ in
-                  self?.interactor?.didSelectPartner(affiliatedStoreId: content.affiliatedStoreId)
+                .didSelect { [weak self] context in
+                  guard let self = self else { return }
+                  if self.isShaking {
+                    self.interactor?.didTapEditStore(affilatedId: content.affiliatedStoreId)
+                  } else {
+                    self.interactor?.didSelectPartner(affiliatedStoreId: content.affiliatedStoreId)
+                  }
+                  if self.interactor?.isUserSelectedPartnerForEditing(affilatedId: content.affiliatedStoreId) == true {
+                    context.view.select()
+                  } else {
+                    context.view.deselect()
+                  }
                 }
+                .willDisplay({ [weak self] context in
+                  guard let self = self else { return }
+                  if self.isShaking {
+                    context.view.shake()
+                  } else {
+                    context.view.stopShaking()
+                  }
+                  if self.interactor?.isUserSelectedPartnerForEditing(affilatedId: content.affiliatedStoreId) == true {
+                    context.view.select()
+                  } else {
+                    context.view.deselect()
+                  }
+                })
                 .flowLayoutItemSize(.init(width: collectionViewSize.width - 48, height: content.height(for: width)))
             }
           }))
@@ -122,6 +168,27 @@ final class StoresViewController: CollectionViewController {
     }
   }
 
+  @objc
+  private func editWidget() {
+    isShaking = true
+    navigationItem.rightBarButtonItem = UIBarButtonItem(title: localized("cancel").firstLetterUppercased(), style: .done, target: self, action: #selector(didTapCancelEditing))
+    bottomBarInstaller.setBars([
+      BottomPriceBarView.barModel(
+        dataID: nil,
+        content: .init(leadingText: "Добавить в виджет\n(не более 2)", trailingButtonText: "Добавить"),
+        behaviors: .init(didSelect: { [weak self] _ in
+          guard let self = self else { return }
+          self.isShaking = false
+          self.bottomBarInstaller.setBars([], animated: true)
+          self.interactor?.didTapAddToWidget()
+
+//          self.setSections(self.sections, animated: true) // TODO: -
+        }),
+        style: .init()),
+    ], animated: true)
+    setSections(sections, animated: true)
+  }
+
   private func hideErrorView() {
     collectionView.backgroundView = nil
   }
@@ -131,6 +198,14 @@ final class StoresViewController: CollectionViewController {
     dismiss(animated: true, completion: nil)
   }
 
+  @objc
+  private func didTapCancelEditing() {
+    interactor?.didTapCancelEditing()
+    isShaking = false
+    navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "pencil", withConfiguration: C.imageConfig), style: .plain, target: self, action: #selector(editWidget))
+    bottomBarInstaller.setBars([], animated: true)
+    setSections(sections, animated: true)
+  }
 }
 
 // MARK: StoresViewControllerProtocol
@@ -159,6 +234,12 @@ extension StoresViewController: StoresViewControllerProtocol {
       }
 
       heightBeforeSupplementaryHeader = resultHeight
+    }
+
+    if viewModel.isEditable {
+      navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "pencil", withConfiguration: C.imageConfig), style: .plain, target: self, action: #selector(editWidget))
+    } else {
+      navigationItem.rightBarButtonItem = nil
     }
 
     setSections(sections, animated: false)

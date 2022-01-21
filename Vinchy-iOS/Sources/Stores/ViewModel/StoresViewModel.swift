@@ -42,9 +42,10 @@ struct StoresViewModel {
     }
   }
 
-  static let empty: Self = .init(sections: [], navigationTitleText: nil)
+  static let empty: Self = .init(sections: [], navigationTitleText: nil, isEditable: false)
 
   let sections: [Section]
   let navigationTitleText: String?
+  let isEditable: Bool
 
 }

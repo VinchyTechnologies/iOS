@@ -23,7 +23,6 @@ final class ShowcaseRouter: ShowcaseRouterProtocol {
   weak var viewController: UIViewController?
   var interactor: ShowcaseInteractorProtocol?
 
-
   func didTapShareCollection(type: CollectionShareType) {
     coordinator.didTapShareCollection(type: type)
   }

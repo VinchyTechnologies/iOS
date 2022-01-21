@@ -9,7 +9,7 @@
 import VinchyCore
 
 protocol StoresPresenterProtocol: AnyObject {
-  func update(partnersInfo: [PartnerInfo], needLoadMore: Bool)
+  func update(partnersInfo: [PartnerInfo], inWidgetIds: [Int], needLoadMore: Bool)
   func startLoading()
   func stopLoading()
   func showErrorAlert(error: Error)

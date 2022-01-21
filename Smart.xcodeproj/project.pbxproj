@@ -103,6 +103,12 @@
 		8A0795BA26943E85000ACA2B /* OnboardingFeatureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0795B926943E85000ACA2B /* OnboardingFeatureView.swift */; };
 		8A07983B269750A0000ACA2B /* PluralLocalizable.stringsdict in Resources */ = {isa = PBXBuildFile; fileRef = 8A07983D269750A0000ACA2B /* PluralLocalizable.stringsdict */; };
 		8A0A402327971ECA001A8CA1 /* ShowcaseLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0A402227971ECA001A8CA1 /* ShowcaseLayout.swift */; };
+		8A0A446727998720001A8CA1 /* AllWidgets.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0A446627998720001A8CA1 /* AllWidgets.swift */; };
+		8A0A4469279999E0001A8CA1 /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0A4468279999E0001A8CA1 /* Database.framework */; };
+		8A0A446D279999F8001A8CA1 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0A446C279999F8001A8CA1 /* Core.framework */; };
+		8A0A448B279AA905001A8CA1 /* Widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0A448A279AA905001A8CA1 /* Widget.framework */; };
+		8A0A448C279AA905001A8CA1 /* Widget.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0A448A279AA905001A8CA1 /* Widget.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		8A0A448E279AA914001A8CA1 /* Widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0A448D279AA914001A8CA1 /* Widget.framework */; };
 		8A0D9CB726871D9D0076A7EC /* NewAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0D9CB626871D9D0076A7EC /* NewAgreementViewController.swift */; };
 		8A0D9CB926872CF60076A7EC /* NewAgreementsBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0D9CB826872CF60076A7EC /* NewAgreementsBottomView.swift */; };
 		8A1034592648596100F7CA81 /* AssortmentCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1034582648596100F7CA81 /* AssortmentCollectionCell.swift */; };
@@ -194,7 +200,6 @@
 		8A62EF0F2795C0AA005445B4 /* Pager.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A62EF0D2795C0AA005445B4 /* Pager.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A62EF162795D83C005445B4 /* WidgetKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A62EF152795D83C005445B4 /* WidgetKit.framework */; };
 		8A62EF182795D83C005445B4 /* SwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A62EF172795D83C005445B4 /* SwiftUI.framework */; };
-		8A62EF1B2795D83C005445B4 /* Widget.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A62EF1A2795D83C005445B4 /* Widget.swift */; };
 		8A62EF1E2795D83E005445B4 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8A62EF1D2795D83E005445B4 /* Assets.xcassets */; };
 		8A62EF202795D83E005445B4 /* Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 8A62EF1C2795D83C005445B4 /* Widget.intentdefinition */; };
 		8A62EF212795D83E005445B4 /* Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 8A62EF1C2795D83C005445B4 /* Widget.intentdefinition */; };
@@ -540,6 +545,7 @@
 				8A5145872757C9A000DC45CD /* VinchyUI.framework in Embed Frameworks */,
 				8A63CCBB26754630003B1D4D /* LocationUI.framework in Embed Frameworks */,
 				8A63CCBF26754635003B1D4D /* VinchyAuthorization.framework in Embed Frameworks */,
+				8A0A448C279AA905001A8CA1 /* Widget.framework in Embed Frameworks */,
 				8A5145E22757EC9000DC45CD /* VinchyStore.framework in Embed Frameworks */,
 				8A9C7F0927613A3300A5B694 /* DisplayMini.framework in Embed Frameworks */,
 				8A62EF0C2795C09D005445B4 /* Pager.framework in Embed Frameworks */,
@@ -680,6 +686,12 @@
 		8A07B9C1275CEF7700AF27B0 /* VinchyAuthorization.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyAuthorization.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A07B9DE275D1B7500AF27B0 /* AdUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = AdUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A0A402227971ECA001A8CA1 /* ShowcaseLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowcaseLayout.swift; sourceTree = "<group>"; };
+		8A0A446627998720001A8CA1 /* AllWidgets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AllWidgets.swift; sourceTree = "<group>"; };
+		8A0A4468279999E0001A8CA1 /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A0A446C279999F8001A8CA1 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A0A4471279AA098001A8CA1 /* WidgetExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = WidgetExtension.entitlements; sourceTree = "<group>"; };
+		8A0A448A279AA905001A8CA1 /* Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		8A0A448D279AA914001A8CA1 /* Widget.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Widget.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A0D9CB626871D9D0076A7EC /* NewAgreementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAgreementViewController.swift; sourceTree = "<group>"; };
 		8A0D9CB826872CF60076A7EC /* NewAgreementsBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewAgreementsBottomView.swift; sourceTree = "<group>"; };
 		8A1034582648596100F7CA81 /* AssortmentCollectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AssortmentCollectionCell.swift; sourceTree = "<group>"; };
@@ -752,7 +764,6 @@
 		8A62EF142795D83C005445B4 /* WidgetExtension.appex */ = {isa = PBXFileReference; explicitFileType = "wrapper.app-extension"; includeInIndex = 0; path = WidgetExtension.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A62EF152795D83C005445B4 /* WidgetKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = WidgetKit.framework; path = System/Library/Frameworks/WidgetKit.framework; sourceTree = SDKROOT; };
 		8A62EF172795D83C005445B4 /* SwiftUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SwiftUI.framework; path = System/Library/Frameworks/SwiftUI.framework; sourceTree = SDKROOT; };
-		8A62EF1A2795D83C005445B4 /* Widget.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Widget.swift; sourceTree = "<group>"; };
 		8A62EF1C2795D83C005445B4 /* Widget.intentdefinition */ = {isa = PBXFileReference; lastKnownFileType = file.intentdefinition; path = Widget.intentdefinition; sourceTree = "<group>"; };
 		8A62EF1D2795D83E005445B4 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8A62EF1F2795D83E005445B4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -987,8 +998,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8A0A4469279999E0001A8CA1 /* Database.framework in Frameworks */,
 				8A62EF182795D83C005445B4 /* SwiftUI.framework in Frameworks */,
 				8A62EF162795D83C005445B4 /* WidgetKit.framework in Frameworks */,
+				8A0A446D279999F8001A8CA1 /* Core.framework in Frameworks */,
+				8A0A448E279AA914001A8CA1 /* Widget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1019,6 +1033,7 @@
 				8A5145862757C9A000DC45CD /* VinchyUI.framework in Frameworks */,
 				CA51BBEF254094B000208F71 /* AppTrackingTransparency.framework in Frameworks */,
 				8A63CCB62675462C003B1D4D /* Database.framework in Frameworks */,
+				8A0A448B279AA905001A8CA1 /* Widget.framework in Frameworks */,
 				CA51BBED254094A100208F71 /* AdSupport.framework in Frameworks */,
 				8A62EF0B2795C09D005445B4 /* Pager.framework in Frameworks */,
 				8A63CCBE26754635003B1D4D /* VinchyAuthorization.framework in Frameworks */,
@@ -1431,6 +1446,10 @@
 		46483F371463D95E22014241 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				8A0A448D279AA914001A8CA1 /* Widget.framework */,
+				8A0A448A279AA905001A8CA1 /* Widget.framework */,
+				8A0A446C279999F8001A8CA1 /* Core.framework */,
+				8A0A4468279999E0001A8CA1 /* Database.framework */,
 				8A62EF0D2795C0AA005445B4 /* Pager.framework */,
 				8A62EF0A2795C09D005445B4 /* Pager.framework */,
 				8A6D10B627943FAB009FF7E7 /* NotificationsDebug.framework */,
@@ -1713,6 +1732,13 @@
 			children = (
 				8AE788F7268638CD0056A84B /* OnboardingBottomView.swift */,
 				8A0795B926943E85000ACA2B /* OnboardingFeatureView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		8A0A44702799C9CB001A8CA1 /* Views */ = {
+			isa = PBXGroup;
+			children = (
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2057,10 +2083,10 @@
 		8A62EF192795D83C005445B4 /* Widget */ = {
 			isa = PBXGroup;
 			children = (
-				8A62EF1A2795D83C005445B4 /* Widget.swift */,
 				8A62EF1C2795D83C005445B4 /* Widget.intentdefinition */,
 				8A62EF1D2795D83E005445B4 /* Assets.xcassets */,
 				8A62EF1F2795D83E005445B4 /* Info.plist */,
+				8A0A446627998720001A8CA1 /* AllWidgets.swift */,
 			);
 			path = Widget;
 			sourceTree = "<group>";
@@ -2318,14 +2344,15 @@
 		8AA9908F26D91FE000C32358 /* Stores */ = {
 			isa = PBXGroup;
 			children = (
-				8AEC83BE2758F06400C80F1E /* Routable */,
 				8AA9909426D91FE000C32358 /* Assembly */,
 				8AA9909226D91FE000C32358 /* Input */,
 				8AA9909C26D91FE000C32358 /* Interactor */,
 				8AA9909626D91FE000C32358 /* Presenter */,
+				8AEC83BE2758F06400C80F1E /* Routable */,
 				8AA9909F26D91FE000C32358 /* Router */,
 				8AA9909926D91FE000C32358 /* ViewController */,
 				8AA9909026D91FE000C32358 /* ViewModel */,
+				8A0A44702799C9CB001A8CA1 /* Views */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -2714,6 +2741,7 @@
 		CA472AB3245EDE2F009149FF = {
 			isa = PBXGroup;
 			children = (
+				8A0A4471279AA098001A8CA1 /* WidgetExtension.entitlements */,
 				CA472ABE245EDE2F009149FF /* Vinchy-iOS */,
 				CA472AD5245EDE30009149FF /* SmartTests */,
 				CA472AE0245EDE30009149FF /* SmartUITests */,
@@ -3640,7 +3668,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A62EF202795D83E005445B4 /* Widget.intentdefinition in Sources */,
-				8A62EF1B2795D83C005445B4 /* Widget.swift in Sources */,
+				8A0A446727998720001A8CA1 /* AllWidgets.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -4128,9 +4156,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = WidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widget/Info.plist;
@@ -4142,8 +4171,8 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy.Widget;
+				MARKETING_VERSION = 1.19;
+				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy.WidgetExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;
@@ -4158,9 +4187,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CODE_SIGN_ENTITLEMENTS = WidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 6;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widget/Info.plist;
@@ -4172,8 +4202,8 @@
 					"@executable_path/Frameworks",
 					"@executable_path/../../Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy.Widget;
+				MARKETING_VERSION = 1.19;
+				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy.WidgetExtension;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
 				SWIFT_EMIT_LOC_STRINGS = YES;

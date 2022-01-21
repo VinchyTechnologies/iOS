@@ -9,11 +9,13 @@
 import Core
 import Database
 import VinchyCore
+import Widget
 
 // MARK: - C
 
 fileprivate enum C {
   static let limit: Int = 40
+  static let maxNumberOfWidgetStores = 2
 }
 
 // MARK: - StoresInteractorError
@@ -55,6 +57,11 @@ final class StoresInteractor {
   private let input: StoresInput
   private let stateMachine = PagingStateMachine<[PartnerInfo]>()
   private var partnersInfo: [PartnerInfo] = []
+  private var selectedPartnersInfoIds: [Int] = []
+
+  private var storesInWidget: [WidgetStore] {
+    WidgetStorage.shared.getWidgetStores()
+  }
 
   private func configureStateMachine() {
     stateMachine.observe { [weak self] oldState, newState, _ in
@@ -113,7 +120,8 @@ final class StoresInteractor {
       }
 
     } else {
-      presenter.update(partnersInfo: partnersInfo, needLoadMore: needLoadMore)
+      let inWidgetIds = storesInWidget.compactMap({ $0.id })
+      presenter.update(partnersInfo: partnersInfo, inWidgetIds: inWidgetIds, needLoadMore: needLoadMore)
     }
   }
 
@@ -170,6 +178,48 @@ final class StoresInteractor {
 // MARK: StoresInteractorProtocol
 
 extension StoresInteractor: StoresInteractorProtocol {
+
+  func didTapContextMenuRemoveFromWidget(affilatedId: Int) {
+    var stores = storesInWidget
+    stores.removeAll(where: { $0.id == affilatedId })
+    WidgetStorage.shared.save(stores: stores)
+    loadInitData()
+  }
+
+  func didTapAddToWidget() {
+    let stores = selectedPartnersInfoIds.compactMap { id -> WidgetStore? in
+      guard let partnerInfo = partnersInfo.first(where: { $0.affiliatedStoreId == id }) else {
+        return nil
+      }
+      return WidgetStore(id: partnerInfo.affiliatedStoreId, imageURL: partnerInfo.logoURL?.toURL, title: partnerInfo.title, subtitle: partnerInfo.address)
+    }
+
+    WidgetStorage.shared.save(stores: stores + storesInWidget)
+    selectedPartnersInfoIds.removeAll()
+    loadInitData()
+  }
+
+  func didTapCancelEditing() {
+    selectedPartnersInfoIds.removeAll()
+  }
+
+  func didTapEditStore(affilatedId: Int) {
+    if selectedPartnersInfoIds.contains(affilatedId) {
+      selectedPartnersInfoIds.removeAll(where: { $0 == affilatedId })
+    } else {
+      if selectedPartnersInfoIds.count + storesInWidget.count >= C.maxNumberOfWidgetStores {
+        return
+      }
+      if storesInWidget.contains(where: { $0.id == affilatedId }) {
+        return
+      }
+      selectedPartnersInfoIds.append(affilatedId)
+    }
+  }
+
+  func isUserSelectedPartnerForEditing(affilatedId: Int) -> Bool {
+    selectedPartnersInfoIds.contains(affilatedId)
+  }
 
   func didSelectPartner(affiliatedStoreId: Int) {
     router.presentStore(affilatedId: affiliatedStoreId)

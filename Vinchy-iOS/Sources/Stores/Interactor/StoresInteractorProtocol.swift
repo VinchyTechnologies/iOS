@@ -14,4 +14,9 @@ protocol StoresInteractorProtocol: AnyObject {
   func didSelectPartner(affiliatedStoreId: Int)
   func willDisplayLoadingView()
   func didTapReloadButton()
+  func isUserSelectedPartnerForEditing(affilatedId: Int) -> Bool
+  func didTapEditStore(affilatedId: Int)
+  func didTapCancelEditing()
+  func didTapAddToWidget()
+  func didTapContextMenuRemoveFromWidget(affilatedId: Int)
 }

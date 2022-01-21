@@ -6,6 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import Display
 import DisplayMini
 import StringFormatting
 import VinchyCore
@@ -43,25 +44,39 @@ extension StoresPresenter: StoresPresenterProtocol {
         buttonText: nil))
   }
 
-  func update(partnersInfo: [PartnerInfo], needLoadMore: Bool) {
+  func update(partnersInfo: [PartnerInfo], inWidgetIds: [Int], needLoadMore: Bool) {
 
     var sections: [StoresViewModel.Section] = []
 
     var navigationTitleText: String
-
+    var isEditable: Bool
     switch input.mode {
     case .wine:
       navigationTitleText = localized("all_shops").firstLetterUppercased()
+      isEditable = false
 
     case .saved:
       navigationTitleText = localized("saved_stores").firstLetterUppercased()
+      if #available(iOS 14.0, *) {
+        isEditable = inWidgetIds.count < 2
+      } else {
+        isEditable = false
+      }
     }
 
     if !partnersInfo.isEmpty {
       sections += [.title(navigationTitleText)]
 
       let partnersContent: [StoresViewModel.PartnersContent] = partnersInfo.map({ partner in
-        StoresViewModel.PartnersContent.horizontalPartner(.init(affiliatedStoreId: partner.affiliatedStoreId, imageURL: partner.logoURL, titleText: partner.title, subtitleText: partner.address))
+        var widgetText: String?
+        var contextMenuRows: [HorizontalPartnerView.Content.ContextMenuRow] = []
+        let isInWidget = inWidgetIds.contains(partner.affiliatedStoreId)
+        if isInWidget {
+          widgetText = "В виджете"
+          contextMenuRows.append(.delete(titleText: localized("Удалить из виджета").firstLetterUppercased()))
+        }
+
+        return StoresViewModel.PartnersContent.horizontalPartner(.init(affiliatedStoreId: partner.affiliatedStoreId, imageURL: partner.logoURL, titleText: partner.title, subtitleText: partner.address, widgetText: widgetText, contextMenuRows: contextMenuRows))
       })
 
       sections += [.partners(content: partnersContent)]
@@ -71,7 +86,10 @@ extension StoresPresenter: StoresPresenterProtocol {
       }
     }
 
-    let viewModel = StoresViewModel(sections: sections, navigationTitleText: navigationTitleText)
+    let viewModel = StoresViewModel(
+      sections: sections,
+      navigationTitleText: navigationTitleText,
+      isEditable: isEditable)
     viewController?.updateUI(viewModel: viewModel)
   }
 
