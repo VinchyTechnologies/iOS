@@ -117,6 +117,30 @@ final class ShowcaseFlow: DeeplinkFlow<RootDeeplinkable> {
   }
 }
 
+// MARK: - SavedStoresFlow
+
+final class SavedStoresFlow: DeeplinkFlow<RootDeeplinkable> {
+
+  // MARK: Lifecycle
+
+  init(input: Input) {
+    super.init()
+    onStep { root in
+      root.openTabBar()
+    }
+    .onStep { tabBar in
+      tabBar.openSavedStores(isEditingWidget: input.isWidgetEditing)
+    }
+    .commit()
+  }
+
+  // MARK: Internal
+
+  struct Input {
+    let isWidgetEditing: Bool
+  }
+}
+
 // MARK: - DeeplinkRouter
 
 protocol DeeplinkRouter {
@@ -141,6 +165,7 @@ final class DeeplinkRouterImpl {
     case openGlobalSearch(flow: OpenGlobalSearchFlow)
     case openStore(flow: OpenStoreFlow)
     case openShowcase(flow: ShowcaseFlow)
+    case openSavedStores(flow: SavedStoresFlow)
   }
 
   // MARK: Private
@@ -155,6 +180,10 @@ final class DeeplinkRouterImpl {
 
     if url.absoluteString == "vinchy://secondTab" {
       return .openSecondTabBarItem(flow: .init())
+    }
+
+    if url.absoluteString == "vinchy://openSavedStoresInWidgetEditingMode" {
+      return .openSavedStores(flow: .init(input: .init(isWidgetEditing: true)))
     }
 
     guard !url.pathComponents.isEmpty else { return nil }
@@ -205,6 +234,9 @@ extension DeeplinkRouterImpl: DeeplinkRouter {
       subscribtions = flow.subcscribe(root)
 
     case .openShowcase(let flow):
+      subscribtions = flow.subcscribe(root)
+
+    case .openSavedStores(let flow):
       subscribtions = flow.subcscribe(root)
 
     case .none:

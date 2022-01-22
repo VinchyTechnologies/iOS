@@ -179,6 +179,10 @@ final class StoresInteractor {
 
 extension StoresInteractor: StoresInteractorProtocol {
 
+  func hasChangesForEditing() -> Bool {
+    !selectedPartnersInfoIds.isEmpty
+  }
+
   func didTapContextMenuRemoveFromWidget(affilatedId: Int) {
     var stores = storesInWidget
     stores.removeAll(where: { $0.id == affilatedId })

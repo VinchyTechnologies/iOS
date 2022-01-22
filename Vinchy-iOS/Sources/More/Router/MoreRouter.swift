@@ -34,7 +34,7 @@ final class MoreRouter: OpenURLProtocol {
 extension MoreRouter: MoreRouterProtocol {
 
   func pushToMyStores() {
-    let controller = StoresAssembly.assemblyModule(input: .init(mode: .saved))
+    let controller = StoresAssembly.assemblyModule(input: .init(mode: .saved(isEditingWidget: false)))
     controller.hidesBottomBarWhenPushed = true
     viewController?.navigationController?.pushViewController(controller, animated: true)
   }

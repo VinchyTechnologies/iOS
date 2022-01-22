@@ -128,7 +128,22 @@ struct StoresView: View {
       if data.kind == .preview {
         Text("Preview")
       } else if data.stores.isEmpty {
-        Text("Empty")
+        VStack(alignment: .center, spacing: 8) {
+          Text("Открывайте ваши любимые магазины прямо с виджета")
+            .font(.system(size: 16, weight: .heavy, design: .default))
+            .padding()
+            .multilineTextAlignment(.center)
+          Link(destination: URL(string: "vinchy://openSavedStoresInWidgetEditingMode")!) { // swiftlint:disable:this force_unwrapping
+            Text("Настроить")
+              .font(.system(size: 16, weight: .bold, design: .default))
+              .foregroundColor(Color(.mainBackground))
+              .frame(width: "Настроить".width(usingFont: .systemFont(ofSize: 16, weight: .bold)) + 32, height: 48, alignment: /*@START_MENU_TOKEN@*/ .center/*@END_MENU_TOKEN@*/)
+              .background(Color(.accent))
+              .cornerRadius(24)
+          }
+          Spacer()
+        }
+
       } else {
         if let store1 = data.stores.first, let url1 = URL(string: "https://vinchy.tech/store/\(store1.id)") {
           Link(destination: url1) {

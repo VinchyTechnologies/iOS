@@ -54,6 +54,9 @@ public final class BottomPriceBarView: UIView, EpoxyableView {
     }
   }
 
+
+  public let button = Button()
+
   public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
     super.traitCollectionDidChange(previousTraitCollection)
     let blurEffect = UIBlurEffect(style: traitCollection.userInterfaceStyle == .dark ? .dark : .light)
@@ -111,12 +114,12 @@ public final class BottomPriceBarView: UIView, EpoxyableView {
     GroupItem<Button>(
       dataID: DataID.trailingButton,
       content: "",
-      make: {
-        let button = Button()
+      make: { [weak self] in
+        guard let self = self else { return Button() }
         // this is required by LayoutGroups to ensure AutoLayout works as expected
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.heightAnchor.constraint(equalToConstant: 48).isActive = true
-        return button
+        self.button.translatesAutoresizingMaskIntoConstraints = false
+        self.button.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        return self.button
       },
       setContent: { context, _ in
         let text = (text ?? "0.00")

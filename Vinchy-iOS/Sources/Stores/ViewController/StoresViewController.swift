@@ -27,7 +27,8 @@ final class StoresViewController: CollectionViewController {
 
   // MARK: Lifecycle
 
-  init() {
+  init(input: StoresInput) {
+    self.input = input
     super.init(layout: UICollectionViewFlowLayout())
   }
 
@@ -69,6 +70,16 @@ final class StoresViewController: CollectionViewController {
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
     interactor?.viewWillAppear()
+    switch input.mode {
+    case .saved(let isEditingWidget):
+      if isEditingWidget && !didCalledOnceViewWillAppear {
+        editWidget()
+        didCalledOnceViewWillAppear = true
+      }
+
+    case .wine:
+      break
+    }
   }
 
   override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -80,6 +91,12 @@ final class StoresViewController: CollectionViewController {
   }
 
   // MARK: Private
+
+  private var bottomBarPriceView: BottomPriceBarView?
+
+  private var didCalledOnceViewWillAppear = false
+
+  private let input: StoresInput
 
   private var isShaking = false
   private lazy var collectionViewSize: CGSize = view.frame.size
@@ -135,6 +152,11 @@ final class StoresViewController: CollectionViewController {
                   } else {
                     context.view.deselect()
                   }
+                  if self.interactor?.hasChangesForEditing() == true {
+                    self.bottomBarPriceView?.button.enable()
+                  } else {
+                    self.bottomBarPriceView?.button.disable()
+                  }
                 }
                 .willDisplay({ [weak self] context in
                   guard let self = self else { return }
@@ -181,10 +203,12 @@ final class StoresViewController: CollectionViewController {
           self.isShaking = false
           self.bottomBarInstaller.setBars([], animated: true)
           self.interactor?.didTapAddToWidget()
-
-//          self.setSections(self.sections, animated: true) // TODO: -
         }),
-        style: .init()),
+        style: .init())
+        .willDisplay({ [weak self] context in
+          context.view.button.disable()
+          self?.bottomBarPriceView = context.view
+        }),
     ], animated: true)
     setSections(sections, animated: true)
   }

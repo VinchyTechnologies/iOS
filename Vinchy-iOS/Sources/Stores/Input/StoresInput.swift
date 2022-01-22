@@ -11,7 +11,7 @@ struct StoresInput {
 
   enum Mode {
     case wine(wineID: Int64)
-    case saved
+    case saved(isEditingWidget: Bool)
   }
 
   init(mode: Mode) {
