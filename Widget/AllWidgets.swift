@@ -206,6 +206,11 @@ struct StoresView: View {
           .resizable()
           .clipShape(Circle())
           .frame(width: imageHeight, height: imageHeight)
+      } else {
+        Image("logo")
+          .resizable()
+          .clipShape(Circle())
+          .frame(width: imageHeight, height: imageHeight)
       }
       VStack(alignment: .leading) {
         if let title = store.title {

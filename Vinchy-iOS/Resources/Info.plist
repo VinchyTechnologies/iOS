@@ -80,6 +80,10 @@
 	<string>Allow access to the camera for scanning</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>Allow access to geolocation to determine the delivery address</string>
+	<key>NSUserActivityTypes</key>
+	<array>
+		<string>ConfigurationIntent</string>
+	</array>
 	<key>NSUserTrackingUsageDescription</key>
 	<string>This identifier will be used to deliver personalized ads to you.</string>
 	<key>SKAdNetworkItems</key>
