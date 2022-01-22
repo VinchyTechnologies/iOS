@@ -126,7 +126,16 @@ struct StoresView: View {
   var body: some View {
     VStack(spacing: 0) {
       if data.kind == .preview {
-        Text("Preview")
+        previewRow(title: "Любимый магазин у дома", subtitle: "Адрес этого магазина")
+          .padding(.top, 8)
+          .padding(.bottom, 8)
+        Divider()
+          .frame(height: 1)
+          .padding(.init(top: 0, leading: imageHeight + 16, bottom: 0, trailing: 0))
+        previewRow(title: "Магазин с большим выбором", subtitle: "Адрес этого магазина")
+          .padding(.top, 8)
+          .padding(.bottom, 8)
+
       } else if data.stores.isEmpty {
         VStack(alignment: .center, spacing: 8) {
           Text("Открывайте ваши любимые магазины прямо с виджета")
@@ -190,6 +199,26 @@ struct StoresView: View {
             .lineLimit(2)
             .foregroundColor(.secondary)
         }
+      }
+      .frame(height: imageHeight)
+      Spacer()
+    }
+    .padding(.init(top: 0, leading: 8, bottom: 0, trailing: 8))
+  }
+
+  private func previewRow(title: String, subtitle: String) -> some View {
+    HStack(alignment: .center, spacing: 8) {
+      Image("logo")
+        .resizable()
+        .clipShape(Circle())
+        .frame(width: imageHeight, height: imageHeight)
+      VStack(alignment: .leading) {
+        Text(title)
+          .font(.system(size: 16, weight: .heavy, design: .default))
+        Text(subtitle)
+          .font(.system(size: 14, weight: .regular, design: .default))
+          .lineLimit(2)
+          .foregroundColor(.secondary)
       }
       .frame(height: imageHeight)
       Spacer()
