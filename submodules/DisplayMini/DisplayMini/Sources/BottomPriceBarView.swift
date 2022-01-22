@@ -25,6 +25,7 @@ public final class BottomPriceBarView: UIView, EpoxyableView {
     hGroup.constrainToMarginsWithHighPriorityBottom()
     hGroup.heightAnchor.constraint(equalToConstant: 56).isActive = true
   }
+
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
@@ -36,9 +37,9 @@ public final class BottomPriceBarView: UIView, EpoxyableView {
     }
   }
   public struct Behaviors {
-    var didSelect: ((Int) -> Void)?
+    var didSelect: ((UIButton) -> Void)?
 
-    public init(didSelect: ((Int) -> Void)?) {
+    public init(didSelect: ((UIButton) -> Void)?) {
       self.didSelect = didSelect
     }
   }
@@ -52,6 +53,9 @@ public final class BottomPriceBarView: UIView, EpoxyableView {
       self.trailingButtonText = trailingButtonText
     }
   }
+
+
+  public let button = Button()
 
   public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
     super.traitCollectionDidChange(previousTraitCollection)
@@ -75,7 +79,7 @@ public final class BottomPriceBarView: UIView, EpoxyableView {
         Label.groupItem(
           dataID: DataID.leadingTitle,
           content: subtitle,
-          style: Label.Style(font: Font.bold(18), showLabelBackground: false, numberOfLines: 1, textColor: .dark))
+          style: Label.Style(font: Font.bold(18), showLabelBackground: false, numberOfLines: 2, textColor: .dark))
       }
 
       if let trailingButtonText = content.trailingButtonText {
@@ -104,25 +108,26 @@ public final class BottomPriceBarView: UIView, EpoxyableView {
       forceVerticalAccessibilityLayout: false),
     items: [])
 
-  private var didSelect: ((Int) -> Void)?
+  private var didSelect: ((UIButton) -> Void)?
 
   private func priceButton(text: String?) -> GroupItemModeling {
     GroupItem<Button>(
       dataID: DataID.trailingButton,
       content: "",
-      make: {
-        let button = Button()
+      make: { [weak self] in
+        guard let self = self else { return Button() }
         // this is required by LayoutGroups to ensure AutoLayout works as expected
-        button.translatesAutoresizingMaskIntoConstraints = false
-        button.heightAnchor.constraint(equalToConstant: 48).isActive = true
-        return button
+        self.button.translatesAutoresizingMaskIntoConstraints = false
+        self.button.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        return self.button
       },
       setContent: { context, _ in
-        let text = "~" + (text ?? "0.00")
+        let text = (text ?? "0.00")
         context.constrainable.setTitle(text, for: [])
         context.constrainable.titleLabel?.font = Font.with(size: 20, design: .round, traits: .bold)
         context.constrainable.setTitleColor(.white, for: [])
         context.constrainable.contentEdgeInsets = .init(top: 0, left: 18, bottom: 0, right: 18)
+        context.constrainable.setContentCompressionResistancePriority(.required, for: .horizontal)
       })
       .setBehaviors { [weak self] context in
         guard let self = self else { return }
@@ -132,5 +137,6 @@ public final class BottomPriceBarView: UIView, EpoxyableView {
 
   @objc
   private func didTapButton(_ button: UIButton) {
+    didSelect?(button)
   }
 }

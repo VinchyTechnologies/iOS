@@ -14,6 +14,7 @@ public protocol OpenURLProtocol {
   func open(urlString: String, errorCompletion: () -> Void)
 }
 
+@available(iOSApplicationExtension, unavailable)
 extension OpenURLProtocol {
   public func open(urlString: String, errorCompletion: () -> Void) {
     if let url = URL(string: urlString), UIApplication.shared.canOpenURL(url) {

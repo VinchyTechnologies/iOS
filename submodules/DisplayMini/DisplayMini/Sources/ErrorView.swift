@@ -17,9 +17,9 @@ public protocol ErrorViewDelegate: AnyObject {
 // MARK: - ErrorViewModel
 
 public struct ErrorViewModel: ViewModelProtocol {
-  fileprivate let titleText: String?
-  fileprivate let subtitleText: String?
-  fileprivate let buttonText: String?
+  public let titleText: String?
+  public let subtitleText: String?
+  public let buttonText: String?
 
   public init(titleText: String?, subtitleText: String?, buttonText: String?) {
     self.titleText = titleText

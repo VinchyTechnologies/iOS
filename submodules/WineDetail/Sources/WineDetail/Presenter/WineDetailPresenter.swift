@@ -284,7 +284,7 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
       isGeneralInfoCollapsed: isGeneralInfoCollapsed,
       bottomPriceBarViewModel: .init(
         leadingText: localized("price").firstLetterUppercased(),
-        trailingButtonText: formatCurrencyAmount(
+        trailingButtonText: "~" + formatCurrencyAmount(
           wine.price ?? 0, currency: currency)),
       isLiked: isLiked)
 
