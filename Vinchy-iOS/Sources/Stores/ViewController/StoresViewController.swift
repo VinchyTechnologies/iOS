@@ -72,7 +72,7 @@ final class StoresViewController: CollectionViewController {
     interactor?.viewWillAppear()
     switch input.mode {
     case .saved(let isEditingWidget):
-      if isEditingWidget && !didCalledOnceViewWillAppear {
+      if isEditingWidget && !didCalledOnceViewWillAppear && !sections.isEmpty {
         editWidget()
         didCalledOnceViewWillAppear = true
       }
@@ -197,7 +197,7 @@ final class StoresViewController: CollectionViewController {
     bottomBarInstaller.setBars([
       BottomPriceBarView.barModel(
         dataID: nil,
-        content: .init(leadingText: "Добавить в виджет\n(не более 2)", trailingButtonText: "Добавить"),
+        content: .init(leadingText: localized("Widget.CanAddNoMoreThanTwo").firstLetterUppercased(), trailingButtonText: localized("add").firstLetterUppercased()),
         behaviors: .init(didSelect: { [weak self] _ in
           guard let self = self else { return }
           self.isShaking = false
@@ -226,9 +226,17 @@ final class StoresViewController: CollectionViewController {
   private func didTapCancelEditing() {
     interactor?.didTapCancelEditing()
     isShaking = false
-    navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "pencil", withConfiguration: C.imageConfig), style: .plain, target: self, action: #selector(editWidget))
+    setPencilButton()
     bottomBarInstaller.setBars([], animated: true)
     setSections(sections, animated: true)
+  }
+
+  private func setPencilButton() {
+    if interactor?.isAllContentInWidget() == false {
+      navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "pencil", withConfiguration: C.imageConfig), style: .plain, target: self, action: #selector(editWidget))
+    } else {
+      navigationItem.rightBarButtonItem = nil
+    }
   }
 }
 
@@ -264,7 +272,7 @@ extension StoresViewController: StoresViewControllerProtocol {
       if isShaking {
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: localized("cancel").firstLetterUppercased(), style: .done, target: self, action: #selector(didTapCancelEditing))
       } else {
-        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "pencil", withConfiguration: C.imageConfig), style: .plain, target: self, action: #selector(editWidget))
+        setPencilButton()
       }
     } else {
       navigationItem.rightBarButtonItem = nil
@@ -274,9 +282,10 @@ extension StoresViewController: StoresViewControllerProtocol {
   }
 
   func updateUI(errorViewModel: ErrorViewModel) {
+    navigationItem.rightBarButtonItem = nil
     collectionView.setSections([], animated: false)
-    let errorView = ErrorView(frame: view.frame)
-    errorView.decorate(model: errorViewModel)
+    let errorView = EpoxyErrorView(style: .init())
+    errorView.setContent(.init(titleText: errorViewModel.titleText, subtitleText: errorViewModel.subtitleText, buttonText: errorViewModel.buttonText), animated: true)
     errorView.delegate = self
     collectionView.backgroundView = errorView
   }
@@ -294,9 +303,9 @@ extension StoresViewController: UIScrollViewDelegate {
   }
 }
 
-// MARK: ErrorViewDelegate
+// MARK: EpoxyErrorViewDelegate
 
-extension StoresViewController: ErrorViewDelegate {
+extension StoresViewController: EpoxyErrorViewDelegate {
   func didTapErrorButton(_ button: UIButton) {
     interactor?.didTapReloadButton()
   }

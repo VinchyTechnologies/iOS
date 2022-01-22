@@ -127,6 +127,7 @@
 "price" = "price";
 "saved_stores" = "my stores";
 "save_changes" = "save changes?";
+"no_saved_stores_description" = "You have not added any store to your favorites";
 
 // MARK: - Sugar
 "sugar" = "sugar";
@@ -239,3 +240,7 @@
 // MARK: - Errors
 "Error.NoInternetConnection" = "The internet connection appears to be offline";
 "Error.Unknown" = "An unknown error occurred";
+
+"Widget.CanAddNoMoreThanTwo" = "Add to Widget\nmax. 2";
+"Widget.UsesWidget" = "Uses Widget";
+"Widget.Remove" = "Remove from Widget";

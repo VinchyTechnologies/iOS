@@ -179,6 +179,12 @@ final class StoresInteractor {
 
 extension StoresInteractor: StoresInteractorProtocol {
 
+  func isAllContentInWidget() -> Bool {
+    partnersInfo.allSatisfy { partner in
+      storesInWidget.contains(where: { $0.id == partner.affiliatedStoreId })
+    }
+  }
+
   func hasChangesForEditing() -> Bool {
     !selectedPartnersInfoIds.isEmpty
   }

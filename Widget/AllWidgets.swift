@@ -10,9 +10,18 @@ import Combine
 import Database
 import DisplayMini
 import Intents
+import StringFormatting
 import SwiftUI
 import Widget
 import WidgetKit
+
+// MARK: - C
+
+fileprivate class C {
+  var bundle: Bundle {
+    Bundle(for: type(of: self))
+  }
+}
 
 // MARK: - AllWidgetsEntryPoint
 
@@ -80,8 +89,8 @@ struct StoresWidget: Widget {
       StoresView(data: entry)
     }
     .supportedFamilies([.systemMedium])
-    .configurationDisplayName("My Widget")
-    .description("This is an example widget.")
+    .configurationDisplayName(localized("Widget.Title", bundle: C().bundle))
+    .description(localized("Widget.Description", bundle: C().bundle))
   }
 }
 
@@ -126,32 +135,42 @@ struct StoresView: View {
   var body: some View {
     VStack(spacing: 0) {
       if data.kind == .preview {
-        previewRow(title: "Любимый магазин у дома", subtitle: "Адрес этого магазина")
+        previewRow(title: localized("Widget.Preview.Title1", bundle: C().bundle), subtitle: localized("Widget.Preview.Subtitle", bundle: C().bundle))
           .padding(.top, 8)
           .padding(.bottom, 8)
         Divider()
           .frame(height: 1)
           .padding(.init(top: 0, leading: imageHeight + 16, bottom: 0, trailing: 0))
-        previewRow(title: "Магазин с большим выбором", subtitle: "Адрес этого магазина")
+        previewRow(title: localized("Widget.Preview.Title2", bundle: C().bundle), subtitle: localized("Widget.Preview.Subtitle", bundle: C().bundle))
           .padding(.top, 8)
           .padding(.bottom, 8)
 
       } else if data.stores.isEmpty {
-        VStack(alignment: .center, spacing: 8) {
-          Text("Открывайте ваши любимые магазины прямо с виджета")
-            .font(.system(size: 16, weight: .heavy, design: .default))
-            .padding()
-            .multilineTextAlignment(.center)
-          Link(destination: URL(string: "vinchy://openSavedStoresInWidgetEditingMode")!) { // swiftlint:disable:this force_unwrapping
-            Text("Настроить")
-              .font(.system(size: 16, weight: .bold, design: .default))
-              .foregroundColor(Color(.mainBackground))
-              .frame(width: "Настроить".width(usingFont: .systemFont(ofSize: 16, weight: .bold)) + 32, height: 48, alignment: /*@START_MENU_TOKEN@*/ .center/*@END_MENU_TOKEN@*/)
-              .background(Color(.accent))
-              .cornerRadius(24)
+        HStack {
+          VStack(alignment: .center, spacing: 8) {
+            Text(localized("Widget.Description", bundle: C().bundle))
+              .font(.system(size: 16, weight: .heavy, design: .default))
+              .padding()
+              .multilineTextAlignment(.center)
+            Link(destination: URL(string: "vinchy://openSavedStoresInWidgetEditingMode")!) { // swiftlint:disable:this force_unwrapping
+              Text(localized("Widget.Customize", bundle: C().bundle).firstLetterUppercased())
+                .font(.system(size: 16, weight: .bold, design: .default))
+                .foregroundColor(Color(.white))
+                .frame(width: localized("Widget.Customize", bundle: C().bundle).firstLetterUppercased().width(usingFont: .systemFont(ofSize: 16, weight: .bold)) + 32, height: 48, alignment: /*@START_MENU_TOKEN@*/ .center/*@END_MENU_TOKEN@*/)
+                .background(Color(.accent))
+                .cornerRadius(24)
+            }
+            Spacer()
           }
-          Spacer()
+          .background(Color(.mainBackground))
         }
+        .frame(
+          minWidth: 0,
+          maxWidth: .infinity,
+          minHeight: 0,
+          maxHeight: .infinity,
+          alignment: .center)
+        .background(Color(.mainBackground))
 
       } else {
         if let store1 = data.stores.first, let url1 = URL(string: "https://vinchy.tech/store/\(store1.id)") {

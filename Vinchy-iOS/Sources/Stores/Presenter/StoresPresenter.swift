@@ -40,7 +40,7 @@ extension StoresPresenter: StoresPresenterProtocol {
     viewController?.updateUI(
       errorViewModel: ErrorViewModel(
         titleText: localized("nothing_here").firstLetterUppercased(),
-        subtitleText: nil,
+        subtitleText: localized("no_saved_stores_description").firstLetterUppercased(),
         buttonText: nil))
   }
 
@@ -72,8 +72,8 @@ extension StoresPresenter: StoresPresenterProtocol {
         var contextMenuRows: [HorizontalPartnerView.Content.ContextMenuRow] = []
         let isInWidget = inWidgetIds.contains(partner.affiliatedStoreId)
         if isInWidget {
-          widgetText = "В виджете"
-          contextMenuRows.append(.delete(titleText: localized("Удалить из виджета").firstLetterUppercased()))
+          widgetText = localized("Widget.UsesWidget").firstLetterUppercased()
+          contextMenuRows.append(.delete(titleText: localized("Widget.Remove").firstLetterUppercased()))
         }
 
         return StoresViewModel.PartnersContent.horizontalPartner(.init(affiliatedStoreId: partner.affiliatedStoreId, imageURL: partner.logoURL, titleText: partner.title, subtitleText: partner.address, widgetText: widgetText, contextMenuRows: contextMenuRows))

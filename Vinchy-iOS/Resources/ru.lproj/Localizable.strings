@@ -127,6 +127,7 @@
 "price" = "стоимость";
 "saved_stores" = "Избранные магазины";
 "save_changes" = "сохранить изменения?";
+"no_saved_stores_description" = "Вы не добавили в избранное ни одного магазина";
 
 // MARK: - Sugar
 "sugar" = "сахар";
@@ -239,3 +240,7 @@
 // MARK: - Errors
 "Error.NoInternetConnection" = "Нет подключения к интернету";
 "Error.Unknown" = "Мы уже знаем о ней и делаем все возможное, чтобы устранить её как можно скорее";
+
+"Widget.CanAddNoMoreThanTwo" = "Добавить в виджет\nне более 2";
+"Widget.UsesWidget" = "В виджите";
+"Widget.Remove" = "Удалить из виджета";

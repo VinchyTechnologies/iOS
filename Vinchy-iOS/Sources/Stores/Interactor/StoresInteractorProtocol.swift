@@ -20,4 +20,5 @@ protocol StoresInteractorProtocol: AnyObject {
   func didTapAddToWidget()
   func didTapContextMenuRemoveFromWidget(affilatedId: Int)
   func hasChangesForEditing() -> Bool
+  func isAllContentInWidget() -> Bool
 }

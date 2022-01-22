@@ -1,0 +1,14 @@
+/* 
+  Localized.strings
+  Smart
+
+  Created by Алексей Смирнов on 22.01.2022.
+  Copyright © 2022 Aleksei Smirnov. All rights reserved.
+*/
+
+"Widget.Customize" = "customize";
+"Widget.Preview.Title1" = "Favorite store close to home";
+"Widget.Preview.Title2" = "Store with a good choise";
+"Widget.Preview.Subtitle" = "Address of this store";
+"Widget.Title" = "Favorite stores";
+"Widget.Description" = "Open your favorite stores in one click!";
