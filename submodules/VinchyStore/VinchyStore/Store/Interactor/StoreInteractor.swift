@@ -13,6 +13,7 @@ import Spotlight
 import UIKit
 import VinchyCore
 import VinchyUI
+import Widget
 
 // MARK: - StoreInteractorData
 
@@ -258,6 +259,11 @@ extension StoreInteractor: StoreInteractorProtocol {
     }
     if let dbStore = dataBase.findAll().first(where: { $0.affilatedId == partnerInfo.affiliatedStoreId }) {
       dataBase.remove(dbStore)
+      var stores = WidgetStorage.shared.getWidgetStores()
+      if stores.contains(where: { $0.id == partnerInfo.affiliatedStoreId }) {
+        stores.removeAll(where: { $0.id == partnerInfo.affiliatedStoreId })
+        WidgetStorage.shared.save(stores: stores)
+      }
       presenter.setLikedStatus(isLiked: false)
     } else {
       let maxId = dataBase.findAll().map { $0.id }.max() ?? 0
