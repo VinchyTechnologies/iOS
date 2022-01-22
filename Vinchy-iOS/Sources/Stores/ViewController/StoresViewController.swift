@@ -261,7 +261,11 @@ extension StoresViewController: StoresViewControllerProtocol {
     }
 
     if viewModel.isEditable {
-      navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "pencil", withConfiguration: C.imageConfig), style: .plain, target: self, action: #selector(editWidget))
+      if isShaking {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: localized("cancel").firstLetterUppercased(), style: .done, target: self, action: #selector(didTapCancelEditing))
+      } else {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "pencil", withConfiguration: C.imageConfig), style: .plain, target: self, action: #selector(editWidget))
+      }
     } else {
       navigationItem.rightBarButtonItem = nil
     }
