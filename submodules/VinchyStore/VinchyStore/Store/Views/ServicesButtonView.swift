@@ -27,7 +27,7 @@ final class ServicesButtonView: UIView, EpoxyableView {
     hStack.translatesAutoresizingMaskIntoConstraints = false
     hStack.constrainToSuperview()
     hStack.axis = .horizontal
-    hStack.distribution = .fillEqually
+    hStack.distribution = .fillProportionally
     hStack.spacing = 8
   }
 
@@ -37,16 +37,19 @@ final class ServicesButtonView: UIView, EpoxyableView {
 
   public struct Behaviors {
     public let didTapLike: (UIButton) -> Void
-    public let didTapShare: (UIButton) -> Void
-    public init(didTapLike: @escaping ((UIButton) -> Void), didTapShare: @escaping (UIButton) -> Void) {
+    public let didTapSubscribe: (UIButton) -> Void
+    public let didTapMore: (UIButton) -> Void
+    public init(didTapLike: @escaping ((UIButton) -> Void), didTapSubscribe: @escaping (UIButton) -> Void, didTapMore: @escaping (UIButton) -> Void) {
       self.didTapLike = didTapLike
-      self.didTapShare = didTapShare
+      self.didTapSubscribe = didTapSubscribe
+      self.didTapMore = didTapMore
     }
   }
 
   public func setBehaviors(_ behaviors: Behaviors?) {
     didTapLike = behaviors?.didTapLike
-    didTapShare = behaviors?.didTapShare
+    didTapSubscribe = behaviors?.didTapSubscribe
+    didTapMore = behaviors?.didTapMore
   }
 
   // MARK: Internal
@@ -61,13 +64,17 @@ final class ServicesButtonView: UIView, EpoxyableView {
     let isLiked: Bool
     let saveButtonText: String?
     let savedButtonText: String?
-    let shareText: String?
+    let subscribeText: String?
+    let subscribedText: String?
+    let isSubscribed: Bool
 
-    init(isLiked: Bool, saveButtonText: String?, savedButtonText: String?, shareText: String?) {
+    init(isLiked: Bool, saveButtonText: String?, savedButtonText: String?, subscribeText: String?, subscribedText: String?, isSubscribed: Bool) {
       self.isLiked = isLiked
       self.saveButtonText = saveButtonText
       self.savedButtonText = savedButtonText
-      self.shareText = shareText
+      self.subscribeText = subscribeText
+      self.subscribedText = subscribedText
+      self.isSubscribed = isSubscribed
     }
 
     func height(for width: CGFloat) -> CGFloat {
@@ -76,7 +83,8 @@ final class ServicesButtonView: UIView, EpoxyableView {
   }
 
   private(set) lazy var likeButton = ServiceButton(style: .init())
-  private(set) lazy var shareButton = ServiceButton(style: .init())
+  private(set) lazy var moreButton = ServiceButton(style: .init())
+  private(set) lazy var subscribeButton = ServiceButton(style: .init())
 
   func setContent(_ content: Content, animated: Bool) {
     let imageConfig = UIImage.SymbolConfiguration(pointSize: 18, weight: .medium, scale: .default)
@@ -89,15 +97,26 @@ final class ServicesButtonView: UIView, EpoxyableView {
     likeButton.isSelected = content.isLiked
     hStack.addArrangedSubview(likeButton)
 
-    shareButton.setContent(.init(titleText: content.shareText, image: UIImage(systemName: "square.and.arrow.up", withConfiguration: imageConfig)), animated: false)
-    shareButton.addTarget(self, action: #selector(didTapShareButton(_:)), for: .touchUpInside)
-    hStack.addArrangedSubview(shareButton)
+    subscribeButton.setTitle(content.subscribeText, for: .normal)
+    subscribeButton.setTitle(content.subscribedText, for: .selected)
+    subscribeButton.setImage(UIImage(systemName: "bell", withConfiguration: imageConfig), for: .normal)
+    subscribeButton.setImage(UIImage(systemName: "bell.fill", withConfiguration: imageConfig), for: .selected)
+    subscribeButton.addTarget(self, action: #selector(didTapSubscribeButton(_:)), for: .touchUpInside)
+    subscribeButton.isSelected = content.isSubscribed
+    hStack.addArrangedSubview(subscribeButton)
+
+    moreButton.translatesAutoresizingMaskIntoConstraints = false
+    moreButton.widthAnchor.constraint(equalToConstant: 48).isActive = true
+    moreButton.setContent(.init(titleText: nil, image: UIImage(systemName: "ellipsis", withConfiguration: imageConfig)), animated: false)
+    moreButton.addTarget(self, action: #selector(didTapMoreButton(_:)), for: .touchUpInside)
+    hStack.addArrangedSubview(moreButton)
   }
 
   // MARK: Private
 
   private var didTapLike: ((UIButton) -> Void)?
-  private var didTapShare: ((UIButton) -> Void)?
+  private var didTapSubscribe: ((UIButton) -> Void)?
+  private var didTapMore: ((UIButton) -> Void)?
 
   private let hStack = UIStackView()
 
@@ -110,8 +129,13 @@ final class ServicesButtonView: UIView, EpoxyableView {
   }
 
   @objc
-  private func didTapShareButton(_ button: UIButton) {
-    didTapShare?(button)
+  private func didTapSubscribeButton(_ button: UIButton) {
+    didTapSubscribe?(button)
+  }
+
+  @objc
+  private func didTapMoreButton(_ button: UIButton) {
+    didTapMore?(button)
   }
 }
 
@@ -134,7 +158,10 @@ final class ServiceButton: UIButton, EpoxyableView {
     setTitleColor(.dark, for: [])
     tintColor = .accent
 
-    setInsets(forContentPadding: .init(top: 0, left: 12, bottom: 0, right: 12), imageTitlePadding: 4)
+    titleLabel?.numberOfLines = 1
+    titleLabel?.adjustsFontSizeToFitWidth = true
+    titleLabel?.lineBreakMode = .byClipping
+    titleLabel?.minimumScaleFactor = 0.5
   }
 
   required init?(coder: NSCoder) {
@@ -158,6 +185,11 @@ final class ServiceButton: UIButton, EpoxyableView {
   }
 
   func setContent(_ content: Content, animated: Bool) {
+    if !content.titleText.isNilOrEmpty {
+      setInsets(forContentPadding: .init(top: 0, left: 12, bottom: 0, right: 12), imageTitlePadding: 4)
+    } else {
+      setInsets(forContentPadding: .init(top: 0, left: 12, bottom: 0, right: 12), imageTitlePadding: 0)
+    }
     setTitle(content.titleText, for: [])
     setImage(content.image, for: [])
   }

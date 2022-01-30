@@ -8,6 +8,7 @@
 
 import DisplayMini
 import StringFormatting
+import UIKit.UIView
 
 // MARK: - StorePresenter
 
@@ -43,6 +44,10 @@ final class StorePresenter {
 // MARK: StorePresenterProtocol
 
 extension StorePresenter: StorePresenterProtocol {
+
+  func showMoreOptions(sourceView: UIView) {
+    viewController?.showMoreOptions(shareText: localized("share").firstLetterUppercased(), cancelTitle: localized("cancel").firstLetterUppercased(), sourceView: sourceView)
+  }
 
   func setLikedStatus(isLiked: Bool) {
     viewController?.setLikedStatus(isLiked: isLiked)
@@ -131,7 +136,9 @@ extension StorePresenter: StorePresenterProtocol {
           isLiked: data.isLiked,
           saveButtonText: localized("save").firstLetterUppercased(),
           savedButtonText: localized("saved").firstLetterUppercased(),
-          shareText: localized("share").firstLetterUppercased())),
+          subscribeText: localized("Store.Subscribe").firstLetterUppercased(),
+          subscribedText: localized("Store.Subscribed").firstLetterUppercased(),
+          isSubscribed: false)),
       ]
     }
 

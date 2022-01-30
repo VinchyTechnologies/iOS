@@ -7,9 +7,11 @@
 //
 
 import DisplayMini
+import UIKit.UIView
 
 protocol StoreViewControllerProtocol: Loadable, Alertable {
   func updateUI(viewModel: StoreViewModel)
   func updateUI(errorViewModel: ErrorViewModel)
   func setLikedStatus(isLiked: Bool)
+  func showMoreOptions(shareText: String?, cancelTitle: String?, sourceView: UIView)
 }
