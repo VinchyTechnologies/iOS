@@ -85,20 +85,18 @@ public final class HorizontalPartnerView: UIView, EpoxyableView {
 
     public func height(for width: CGFloat) -> CGFloat {
       let width = width - 30
-      var result: CGFloat = 0
-      result += LogoRow.Content(title: titleText, logoURL: imageURL).height(for: width)
+      var result: CGFloat = 30
+      result += LogoRow.Content(title: titleText, logoURL: imageURL).height(for: width) + 8
       let storeMapRowHeight = StoreMapRow.Content(titleText: subtitleText, isMapButtonHidden: true).height(for: width)
-      result += storeMapRowHeight //+ 8 // ?????
+      result += storeMapRowHeight + 8
 
       if widgetText?.isNilOrEmpty == false {
-        result += Label.height(for: widgetText, width: width, style: .init(font: Font.medium(16), showLabelBackground: false)) + 8
+        result += Label.height(for: widgetText, width: width, style: .init(font: Font.medium(16), showLabelBackground: false)) + 8 // button vertical padding
       }
 
-      result += 15 + 15
       return max(result, 80)
     }
   }
-
 
   public struct Behaviors {
     public let didTapContextMenuDeleteWidget: (() -> Void)?

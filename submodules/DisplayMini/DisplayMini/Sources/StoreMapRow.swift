@@ -54,7 +54,7 @@ public final class StoreMapRow: UIView, EpoxyableView {
     }
 
     public func height(for width: CGFloat) -> CGFloat {
-      let widthOfImage: CGFloat = isMapButtonHidden ? 0 : .imageSide + 8
+      let widthOfImage: CGFloat = isMapButtonHidden ? 0 : (.imageSide + 8)
       let widthWithOrWithoutImage: CGFloat = width - widthOfImage
       let labelHeight = Label.height(for: titleText, width: widthWithOrWithoutImage, style: .style(with: .regular))
       let height = max(isMapButtonHidden ? 0 : CGFloat.imageSide, labelHeight)

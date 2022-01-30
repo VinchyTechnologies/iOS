@@ -43,7 +43,7 @@ public final class LogoRow: UIView, EpoxyableView {
     }
 
     public func height(for width: CGFloat) -> CGFloat {
-      let widthOfImage: CGFloat = logoURL == nil ? 0 : 48 + 8
+      let widthOfImage: CGFloat = logoURL == nil ? 0 : (48 + 8)
       let widthWithOrWithoutImage: CGFloat = width - widthOfImage
       let labelHeight = Label.height(for: title, width: widthWithOrWithoutImage, style: .style(with: .lagerTitle))
       let height = logoURL == nil ? labelHeight : max(60, labelHeight)
