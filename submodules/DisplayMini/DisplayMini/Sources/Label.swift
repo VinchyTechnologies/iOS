@@ -44,7 +44,7 @@ public final class Label: UILabel, EpoxyableView {
 
     // MARK: Lifecycle
 
-    public init(font: UIFont, showLabelBackground: Bool, numberOfLines: Int = 0, backgroundColor: UIColor = .mainBackground, isRounded: Bool = false, textAligment: NSTextAlignment = .left, textColor: UIColor = .dark, insets: UIEdgeInsets = .zero, hasUnderLine: Bool = false) {
+    public init(font: UIFont, showLabelBackground: Bool, numberOfLines: Int = 0, backgroundColor: UIColor = .mainBackground, isRounded: Bool = false, textAligment: NSTextAlignment = .left, textColor: UIColor = .dark, hasUnderLine: Bool = false) {
       self.font = font
       self.showLabelBackground = showLabelBackground
       self.numberOfLines = numberOfLines
@@ -52,7 +52,6 @@ public final class Label: UILabel, EpoxyableView {
       self.isRounded = isRounded
       self.textAligment = textAligment
       self.textColor = textColor
-      self.insets = insets
       self.hasUnderLine = hasUnderLine
     }
 
@@ -65,7 +64,6 @@ public final class Label: UILabel, EpoxyableView {
     public var isRounded: Bool = false
     public var textAligment: NSTextAlignment = .left
     public var textColor: UIColor = .dark
-    public var insets: UIEdgeInsets = .zero
     public var hasUnderLine: Bool = false
   }
 
