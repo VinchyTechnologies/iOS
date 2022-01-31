@@ -51,7 +51,7 @@ public final class HorizontalWineView: UIView, EpoxyableView {
 
   // MARK: ContentConfigurableView
 
-  public struct Content: Equatable {
+  public struct Content: Equatable, Hashable {
 
     // MARK: Lifecycle
 
@@ -60,13 +60,19 @@ public final class HorizontalWineView: UIView, EpoxyableView {
       imageURL: URL?,
       titleText: String?,
       subtitleText: String?,
-      buttonText: String?)
+      buttonText: String?,
+      oldPriceText: String?,
+      badgeText: String?,
+      rating: Double?)
     {
       self.wineID = wineID
       self.imageURL = imageURL
       self.titleText = titleText
       self.subtitleText = subtitleText
       self.buttonText = buttonText
+      self.oldPriceText = oldPriceText
+      self.badgeText = badgeText
+      self.rating = rating
     }
 
     // MARK: Public
@@ -76,17 +82,38 @@ public final class HorizontalWineView: UIView, EpoxyableView {
     public let titleText: String?
     public let subtitleText: String?
     public let buttonText: String?
+    public let oldPriceText: String?
+    public let badgeText: String?
+    public let rating: Double?
 
     public func height(width: CGFloat) -> CGFloat {
       var result: CGFloat = .zero
       let topAndBottomPadding = NSDirectionalEdgeInsets.insets.top + NSDirectionalEdgeInsets.insets.bottom
       result += topAndBottomPadding
 
-      let width = width - NSDirectionalEdgeInsets.insets.leading - NSDirectionalEdgeInsets.insets.trailing - .bottleWidth - .hSpacing - .bottleWidth
+      var width = width - NSDirectionalEdgeInsets.insets.leading - NSDirectionalEdgeInsets.insets.trailing - .bottleWidth - .hSpacing - .bottleWidth
+
+      var buttonWidth: CGFloat = 0.0
+      var oldPriceTextWidth: CGFloat = 0.0
+      var buttonsSpacing: CGFloat = 0
+      if let buttonText = buttonText {
+        buttonWidth += 24 + buttonText.width(usingFont: Font.with(size: 16, design: .round, traits: .bold))
+        buttonsSpacing = .hSpacing
+      }
+      if let oldPriceText = oldPriceText {
+        oldPriceTextWidth += oldPriceText.width(usingFont: Font.with(size: 14, design: .round, traits: .bold))
+        buttonsSpacing = .hSpacing
+      }
+
+      width = width - buttonsSpacing - max(buttonWidth, oldPriceTextWidth)
 
       if let subtitleText = subtitleText {
-        result += .vSpacing
         result += subtitleText.height(forWidth: width, font: Font.medium(18), numberOfLines: 0)
+      }
+
+      if let badgeText = badgeText {
+        result += badgeText.height(forWidth: width, font: Font.with(size: 12, design: .round, traits: .bold)) + 3 + 3
+        result += .spacerHeight
       }
 
       if let titleText = titleText {
@@ -94,10 +121,8 @@ public final class HorizontalWineView: UIView, EpoxyableView {
         result += titleText.height(forWidth: width, font: Font.heavy(20), numberOfLines: 0)
       }
 
-      if buttonText != nil {
-        result += .vSpacing
-        result += .spacerHeight
-        result += .buttonHeight
+      if let rating = rating, rating != 0.0 {
+        result += StarRatingControlView.height
       }
 
       return max(result, .bottleHeight + topAndBottomPadding)
@@ -122,12 +147,18 @@ public final class HorizontalWineView: UIView, EpoxyableView {
 
       VGroupItem.init(dataID: DataID.vGroup, style: .init(alignment: .leading, spacing: .vSpacing)) {
 
+        if let badgeText = content.badgeText {
+          badge(text: badgeText)
+          SpacerItem.init(dataID: DataID.vSpacer, style: .init(fixedHeight: .spacerHeight))
+        }
+
         if let subtitleText = content.subtitleText {
           Label.groupItem(
             dataID: DataID.subtitle,
             content: subtitleText,
             style: .style(with: .subtitle))
-            .contentCompressionResistancePriority(.required, for: .horizontal)
+//            .lineBreakMode(.byCharWrapping)
+//            .contentCompressionResistancePriority(.required, for: .horizontal)
         }
 
         if let titleText = content.titleText {
@@ -135,11 +166,23 @@ public final class HorizontalWineView: UIView, EpoxyableView {
             dataID: DataID.title,
             content: titleText,
             style: .style(with: .lagerTitle))
-            .contentCompressionResistancePriority(.required, for: .horizontal)
+//            .lineBreakMode(.byCharWrapping)
+//            .contentCompressionResistancePriority(.required, for: .horizontal)
         }
 
+        if let rating = content.rating, rating != 0.0 {
+          StarRatingControlView.groupItem(
+            dataID: DataID.rating,
+            content: .init(rate: rating, count: 0),
+            style: .init(kind: .small))
+        }
+      }
+
+      VGroupItem.init(dataID: DataID.priceVGroup, style: .init(alignment: .trailing, spacing: .vSpacing)) {
+        if let oldPriceText = content.oldPriceText {
+          oldPriceView(text: oldPriceText)
+        }
         if let buttonText = content.buttonText {
-          SpacerItem.init(dataID: DataID.vSpacer, style: .init(fixedHeight: .spacerHeight))
           priceButton(text: buttonText)
         }
       }
@@ -149,7 +192,7 @@ public final class HorizontalWineView: UIView, EpoxyableView {
   // MARK: Private
 
   private enum DataID {
-    case bottle, vGroup, title, subtitle, price, vSpacer
+    case bottle, vGroup, title, subtitle, price, vSpacer, priceVGroup, oldPrice, badge, rating
   }
 
   private var wineID: Int64?
@@ -164,6 +207,30 @@ public final class HorizontalWineView: UIView, EpoxyableView {
       reflowsForAccessibilityTypeSizes: false,
       forceVerticalAccessibilityLayout: false),
     items: [])
+
+  private func badge(text: String?) -> GroupItemModeling {
+    GroupItem<Button>(
+      dataID: DataID.price,
+      content: "",
+      make: {
+        let button = Button()
+        // this is required by LayoutGroups to ensure AutoLayout works as expected
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+      },
+      setContent: { context, _ in
+        context.constrainable.backgroundColor = .systemPurple
+        context.constrainable.setTitle(text, for: [])
+        context.constrainable.titleLabel?.font = Font.with(size: 12, design: .round, traits: .bold)
+        context.constrainable.setTitleColor(.white, for: [])
+        context.constrainable.contentEdgeInsets = .init(top: 3, left: 6, bottom: 3, right: 6)
+      })
+      .setBehaviors { [weak self] context in
+        guard let self = self else { return }
+        context.constrainable.addTarget(self, action: #selector(self.didTapButton(_:)), for: .touchUpInside)
+      }
+      .contentCompressionResistancePriority(.required, for: .horizontal)
+  }
 
   private func priceButton(text: String?) -> GroupItemModeling {
     GroupItem<Button>(
@@ -186,6 +253,28 @@ public final class HorizontalWineView: UIView, EpoxyableView {
         guard let self = self else { return }
         context.constrainable.addTarget(self, action: #selector(self.didTapButton(_:)), for: .touchUpInside)
       }
+      .contentCompressionResistancePriority(.required, for: .horizontal)
+  }
+
+  private func oldPriceView(text: String?) -> GroupItemModeling {
+    GroupItem<UILabel>(
+      dataID: DataID.oldPrice,
+      content: "",
+      make: {
+        let label = UILabel()
+        // this is required by LayoutGroups to ensure AutoLayout works as expected
+        label.translatesAutoresizingMaskIntoConstraints = false
+//        button.heightAnchor.constraint(equalToConstant: .buttonHeight).isActive = true
+        return label
+      },
+      setContent: { context, _ in
+        let attributeString = NSMutableAttributedString(string: text ?? "")
+        attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: NSUnderlineStyle.single.rawValue, range: NSRange(location: 0, length: attributeString.length))
+        context.constrainable.font = Font.with(size: 14, design: .round, traits: .bold)
+        context.constrainable.attributedText = attributeString
+        context.constrainable.textColor = .blueGray
+      })
+      .contentCompressionResistancePriority(.required, for: .horizontal)
   }
 
   @objc
@@ -219,7 +308,7 @@ extension CGFloat {
   fileprivate static let hSpacing: CGFloat = 12
   fileprivate static let bottleWidth: Self = 40
   fileprivate static let vSpacing: Self = 4
-  fileprivate static let spacerHeight: Self = 8
+  fileprivate static let spacerHeight: Self = 2
   fileprivate static let buttonHeight: Self = 30
 }
 

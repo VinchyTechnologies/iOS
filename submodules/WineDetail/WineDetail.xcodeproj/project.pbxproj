@@ -27,7 +27,6 @@
 		8AEC83832758DEFB00C80F1E /* ServingTipsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83662758DEFB00C80F1E /* ServingTipsCollectionView.swift */; };
 		8AEC83842758DEFB00C80F1E /* ReviewsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83672758DEFB00C80F1E /* ReviewsCollectionView.swift */; };
 		8AEC83852758DEFB00C80F1E /* WhereToBuyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83682758DEFB00C80F1E /* WhereToBuyView.swift */; };
-		8AEC83862758DEFB00C80F1E /* StarRatingControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83692758DEFB00C80F1E /* StarRatingControlView.swift */; };
 		8AEC83872758DEFB00C80F1E /* ShortInfoCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC836A2758DEFB00C80F1E /* ShortInfoCollectionCell.swift */; };
 		8AEC83882758DEFB00C80F1E /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC836B2758DEFB00C80F1E /* ReviewView.swift */; };
 		8AEC83892758DEFB00C80F1E /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC836C2758DEFB00C80F1E /* GalleryView.swift */; };
@@ -67,7 +66,6 @@
 		8AEC83662758DEFB00C80F1E /* ServingTipsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ServingTipsCollectionView.swift; sourceTree = "<group>"; };
 		8AEC83672758DEFB00C80F1E /* ReviewsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsCollectionView.swift; sourceTree = "<group>"; };
 		8AEC83682758DEFB00C80F1E /* WhereToBuyView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WhereToBuyView.swift; sourceTree = "<group>"; };
-		8AEC83692758DEFB00C80F1E /* StarRatingControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarRatingControlView.swift; sourceTree = "<group>"; };
 		8AEC836A2758DEFB00C80F1E /* ShortInfoCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShortInfoCollectionCell.swift; sourceTree = "<group>"; };
 		8AEC836B2758DEFB00C80F1E /* ReviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		8AEC836C2758DEFB00C80F1E /* GalleryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
@@ -201,7 +199,6 @@
 				8AEC83662758DEFB00C80F1E /* ServingTipsCollectionView.swift */,
 				8AEC83672758DEFB00C80F1E /* ReviewsCollectionView.swift */,
 				8AEC83682758DEFB00C80F1E /* WhereToBuyView.swift */,
-				8AEC83692758DEFB00C80F1E /* StarRatingControlView.swift */,
 				8AEC836A2758DEFB00C80F1E /* ShortInfoCollectionCell.swift */,
 				8AEC836B2758DEFB00C80F1E /* ReviewView.swift */,
 				8AEC836C2758DEFB00C80F1E /* GalleryView.swift */,
@@ -375,7 +372,6 @@
 				8AEC838E2758DEFB00C80F1E /* WineDetailInteractorProtocol.swift in Sources */,
 				8AEC83822758DEFB00C80F1E /* TitleWithSubtitleInfoView.swift in Sources */,
 				8AEC837D2758DEFB00C80F1E /* WineDetailViewControllerProtocol.swift in Sources */,
-				8AEC83862758DEFB00C80F1E /* StarRatingControlView.swift in Sources */,
 				8AEC83802758DEFB00C80F1E /* ExpandCollapseView.swift in Sources */,
 				8AEC834A2758DCE300C80F1E /* WineDetail.docc in Sources */,
 				8AEC838A2758DEFB00C80F1E /* ImageOptionView.swift in Sources */,

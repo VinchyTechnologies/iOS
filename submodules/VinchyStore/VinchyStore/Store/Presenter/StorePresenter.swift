@@ -168,12 +168,29 @@ extension StorePresenter: StorePresenterProtocol {
           }
           return nil
         }()
+
+        let subtitleText: String? = {
+          var result = ""
+          let flag = emojiFlagForISOCountryCode(wine.winery?.countryCode ?? "")
+          if let subtitleText = wine.winery?.title {
+            if !flag.isEmpty {
+              result += flag + " " + subtitleText
+            } else {
+              result += subtitleText
+            }
+          }
+          return result.isEmpty ? nil : result
+        }()
+
         return HorizontalWineView.Content.init(
           wineID: wine.id,
           imageURL: wine.mainImageUrl?.toURL,
           titleText: wine.title,
-          subtitleText: wine.winery?.title,
-          buttonText: buttonText)
+          subtitleText: subtitleText,
+          buttonText: buttonText,
+          oldPriceText: nil,
+          badgeText: nil,
+          rating: wine.rating)
       })
 
       var assortmentsContent = [StoreViewModel.AssortimentContent]()

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		8A453148278D72C300781EEC /* Translate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A453147278D72C300781EEC /* Translate.swift */; };
+		8A65E75827A828D2008556A4 /* StarRatingControlView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A65E75727A828D2008556A4 /* StarRatingControlView.swift */; };
 		8A9C7ED0276136ED00A5B694 /* DisplayMini.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A9C7ECF276136ED00A5B694 /* DisplayMini.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		8A9C7F3E27613C0D00A5B694 /* Nuke in Frameworks */ = {isa = PBXBuildFile; productRef = 8A9C7F3D27613C0D00A5B694 /* Nuke */; };
 		8A9C7F4F27613E7000A5B694 /* Cosmos in Frameworks */ = {isa = PBXBuildFile; productRef = 8A9C7F4E27613E7000A5B694 /* Cosmos */; };
@@ -64,6 +65,7 @@
 		6ADEFB7AAE5EE1069C5D2954 /* Pods_DisplayMini.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_DisplayMini.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		76467D8F98FFD0C99C2037EA /* Pods-DisplayMini.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DisplayMini.release.xcconfig"; path = "Target Support Files/Pods-DisplayMini/Pods-DisplayMini.release.xcconfig"; sourceTree = "<group>"; };
 		8A453147278D72C300781EEC /* Translate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Translate.swift; sourceTree = "<group>"; };
+		8A65E75727A828D2008556A4 /* StarRatingControlView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarRatingControlView.swift; sourceTree = "<group>"; };
 		8A9C7ECC276136ED00A5B694 /* DisplayMini.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = DisplayMini.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A9C7ECF276136ED00A5B694 /* DisplayMini.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DisplayMini.h; sourceTree = "<group>"; };
 		8A9CABC32763F01300A5B694 /* CountriesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CountriesViewController.swift; sourceTree = "<group>"; };
@@ -187,7 +189,6 @@
 		8A9C7ED72761397C00A5B694 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				8A453146278D72B100781EEC /* Translate */,
 				8A9CABD32763F01300A5B694 /* ActivityIndicator.swift */,
 				8A9CABDC2763F01300A5B694 /* Alertable.swift */,
 				8A9CABD72763F01300A5B694 /* BottlesCollectionView.swift */,
@@ -221,9 +222,11 @@
 				8A9CABC72763F01300A5B694 /* SeparatorCell.swift */,
 				8A9CABCA2763F01300A5B694 /* SeparatorFlowLayout.swift */,
 				8A9CABE12763F01400A5B694 /* ShimmeringView.swift */,
+				8A65E75727A828D2008556A4 /* StarRatingControlView.swift */,
 				8A9CABD92763F01300A5B694 /* StarsRatingView.swift */,
 				8ABEF40A2780A73F0046C43E /* StoreMapRow.swift */,
 				8A9CABE52763F01400A5B694 /* TextCollectionCell.swift */,
+				8A453146278D72B100781EEC /* Translate */,
 				8A9CAC132763F64B00A5B694 /* Tutorials */,
 				8A9CABE22763F01400A5B694 /* UIColor.swift */,
 				8A9CABE42763F01400A5B694 /* UIEdgeInsets.swift */,
@@ -401,6 +404,7 @@
 				8A9CAC072763F01400A5B694 /* SearchBar.swift in Sources */,
 				8A9CABEC2763F01400A5B694 /* WineBottleView.swift in Sources */,
 				8A9CABFE2763F01400A5B694 /* BottlesCollectionView.swift in Sources */,
+				8A65E75827A828D2008556A4 /* StarRatingControlView.swift in Sources */,
 				8A9CABFD2763F01400A5B694 /* LoadingIndicatorCell.swift in Sources */,
 				8A9CABEB2763F01400A5B694 /* CountryTableViewCell.swift in Sources */,
 				8A9CAC0E2763F01400A5B694 /* VinchyNavigationController.swift in Sources */,
