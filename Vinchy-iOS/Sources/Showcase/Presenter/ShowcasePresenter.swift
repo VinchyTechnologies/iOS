@@ -123,7 +123,7 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
 
     switch input.mode {
     case .advancedSearch:
-      title = localized("search_results").firstLetterUppercased()
+      title = input.title ?? localized("search_results").firstLetterUppercased()
 
     case .normal, .remote:
       break
