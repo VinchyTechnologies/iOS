@@ -69,6 +69,11 @@ target 'WineDetail' do
   epoxy
 end
 
+target 'AdvancedSearch' do
+  project 'submodules/AdvancedSearch/AdvancedSearch'
+  epoxy
+end
+
 target 'VinchyAuthorization' do
   project 'submodules/VinchyAuthorization/VinchyAuthorization'
 #  pod 'FittedSheets'

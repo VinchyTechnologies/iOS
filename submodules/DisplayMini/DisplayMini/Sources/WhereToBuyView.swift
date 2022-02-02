@@ -6,20 +6,19 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import DisplayMini
 import EpoxyCollectionView
 import EpoxyCore
 import UIKit
 
 // MARK: - WhereToBuyCellViewModel
 
-struct WhereToBuyCellViewModel: ViewModelProtocol, Equatable {
-  let affilatedId: Int
+public struct WhereToBuyCellViewModel: ViewModelProtocol, Equatable {
+  public let affilatedId: Int
   fileprivate let imageURL: String?
   fileprivate let titleText: String?
   fileprivate let subtitleText: String?
 
-  init(affilatedId: Int, imageURL: String?, titleText: String?, subtitleText: String?) {
+  public init(affilatedId: Int, imageURL: String?, titleText: String?, subtitleText: String?) {
     self.affilatedId = affilatedId
     self.imageURL = imageURL
     self.titleText = titleText
@@ -29,11 +28,11 @@ struct WhereToBuyCellViewModel: ViewModelProtocol, Equatable {
 
 // MARK: - WhereToBuyView
 
-final class WhereToBuyView: UIView, EpoxyableView {
+public final class WhereToBuyView: UIView, EpoxyableView {
 
   // MARK: Lifecycle
 
-  init(style: Style) {
+  public init(style: Style) {
     self.style = style
     super.init(frame: .zero)
     translatesAutoresizingMaskIntoConstraints = false
@@ -64,15 +63,18 @@ final class WhereToBuyView: UIView, EpoxyableView {
     fatalError("init(coder:) has not been implemented")
   }
 
-  // MARK: Internal
+  // MARK: Public
 
-  struct Style: Hashable {
-    let backgroundColor: UIColor
+  public struct Style: Hashable {
+    public let backgroundColor: UIColor
+    public init(backgroundColor: UIColor) {
+      self.backgroundColor = backgroundColor
+    }
   }
 
-  typealias Content = WhereToBuyCellViewModel
+  public typealias Content = WhereToBuyCellViewModel
 
-  static func height(width: CGFloat, content: Content) -> CGFloat {
+  public static func height(width: CGFloat, content: Content) -> CGFloat {
     var height: CGFloat = 0
     if content.imageURL == nil {
       if let titleText = content.titleText {
@@ -107,13 +109,13 @@ final class WhereToBuyView: UIView, EpoxyableView {
     return max(height + 7 + 7, 50 + 7 + 7)
   }
 
-  override func layoutSubviews() {
+  public override func layoutSubviews() {
     super.layoutSubviews()
     imageView.layer.cornerRadius = hStackView.frame.height / 2
     imageView.clipsToBounds = true
   }
 
-  func setContent(_ content: Content, animated: Bool) {
+  public func setContent(_ content: Content, animated: Bool) {
     if content.imageURL == nil {
       imageView.isHidden = true
     } else {
@@ -166,7 +168,7 @@ final class WhereToBuyView: UIView, EpoxyableView {
 // MARK: HighlightableView
 
 extension WhereToBuyView: HighlightableView {
-  func didHighlight(_ isHighlighted: Bool) {
+  public func didHighlight(_ isHighlighted: Bool) {
     UIView.animate(
       withDuration: 0.15,
       delay: 0,

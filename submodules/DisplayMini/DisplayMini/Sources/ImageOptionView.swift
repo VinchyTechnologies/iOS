@@ -6,18 +6,21 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import DisplayMini
+import Core
+import EpoxyCollectionView
 import EpoxyCore
 import UIKit
 
 // MARK: - ImageOptionViewViewModel
 
 public struct ImageOptionViewViewModel: Equatable {
+  public let filterItem: FilterItem?
   fileprivate let image: UIImage?
   fileprivate let titleText: String?
   fileprivate let isSelected: Bool
 
-  public init(image: UIImage?, titleText: String?, isSelected: Bool) {
+  public init(filterItem: FilterItem?, image: UIImage?, titleText: String?, isSelected: Bool) {
+    self.filterItem = filterItem
     self.image = image
     self.titleText = titleText
     self.isSelected = isSelected
@@ -81,6 +84,20 @@ public final class ImageOptionView: UIView, EpoxyableView {
     setSelected(flag: content.isSelected, animated: false)
   }
 
+  public func setSelected(flag: Bool, animated: Bool) {
+    if animated {
+      UIView.animate(withDuration: 0.15, delay: 0, options: .transitionCrossDissolve, animations: {
+        self.backgroundColor = flag ? .accent : .option
+        self.titleLabel.textColor = flag ? .white : .dark
+        self.imageView.alpha = flag ? 0 : 1
+      }, completion: nil)
+    } else {
+      backgroundColor = flag ? .accent : .option
+      titleLabel.textColor = flag ? .white : .dark
+      imageView.alpha = flag ? 0 : 1
+    }
+  }
+
   // MARK: Internal
 
   static func size(for content: Content) -> CGSize {
@@ -95,17 +112,20 @@ public final class ImageOptionView: UIView, EpoxyableView {
   private let imageView = UIImageView()
   private let titleLabel = UILabel()
 
-  private func setSelected(flag: Bool, animated: Bool) {
-    if animated {
-      UIView.animate(withDuration: 0.15, delay: 0, options: .transitionCrossDissolve, animations: {
-        self.backgroundColor = flag ? .accent : .option
-        self.titleLabel.textColor = flag ? .white : .dark
-        self.imageView.alpha = flag ? 0 : 1
-      }, completion: nil)
-    } else {
-      backgroundColor = flag ? .accent : .option
-      titleLabel.textColor = flag ? .white : .dark
-      imageView.alpha = flag ? 0 : 1
+}
+
+// MARK: HighlightableView
+
+extension ImageOptionView: HighlightableView {
+  public func didHighlight(_ isHighlighted: Bool) {
+    UIView.animate(
+      withDuration: 0.15,
+      delay: 0,
+      options: [.beginFromCurrentState, .allowUserInteraction])
+    {
+      self.transform = isHighlighted
+        ? CGAffineTransform(scaleX: 0.95, y: 0.95)
+        : .identity
     }
   }
 }

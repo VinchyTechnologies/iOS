@@ -69,6 +69,8 @@ extension AdvancedSearchPresenter: AdvancedSearchPresenterProtocol {
   func update(filters: [Filter], selectedFilters: [FilterItem], sec: Int?) {
     var sections = [ViewModel.Section]()
 
+    sections += [.price(headerViewModel: .init(titleText: "Цена, Р", moreText: nil, shouldShowMore: false), items: [.init()])]
+
     filters.forEach { filter in
       switch filter.category {
       case .type, .color, .sugar, .compatibility:

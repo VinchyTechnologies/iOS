@@ -122,7 +122,7 @@ final class WineDetailViewModelFactory {
 
     if let dishes = wine.dishCompatibility, !dishes.isEmpty {
       dishes.forEach { dish in
-        servingTips.append(.imageOption(content: .init(image: UIImage(named: dish.imageName)?.withTintColor(.dark), titleText: dish.localized, isSelected: false)))
+        servingTips.append(.imageOption(content: .init(filterItem: nil, image: UIImage(named: dish.imageName)?.withTintColor(.dark), titleText: dish.localized, isSelected: false)))
       }
     }
 

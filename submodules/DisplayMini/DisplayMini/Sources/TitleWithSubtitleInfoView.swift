@@ -6,17 +6,16 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import DisplayMini
 import EpoxyCore
 import UIKit
 
 // MARK: - TitleWithSubtitleInfoCollectionViewCellViewModel
 
-struct TitleWithSubtitleInfoCollectionViewCellViewModel: ViewModelProtocol, Equatable {
+public struct TitleWithSubtitleInfoCollectionViewCellViewModel: ViewModelProtocol, Equatable {
   fileprivate let titleText: String?
   fileprivate let subtitleText: String?
 
-  init(titleText: String?, subtitleText: String?) {
+  public init(titleText: String?, subtitleText: String?) {
     self.titleText = titleText
     self.subtitleText = subtitleText
   }
@@ -24,11 +23,11 @@ struct TitleWithSubtitleInfoCollectionViewCellViewModel: ViewModelProtocol, Equa
 
 // MARK: - TitleWithSubtitleInfoView
 
-final class TitleWithSubtitleInfoView: UIView, EpoxyableView {
+public final class TitleWithSubtitleInfoView: UIView, EpoxyableView {
 
   // MARK: Lifecycle
 
-  init(style: Style) {
+  public init(style: Style) {
     self.style = style
     super.init(frame: .zero)
     translatesAutoresizingMaskIntoConstraints = false
@@ -55,22 +54,25 @@ final class TitleWithSubtitleInfoView: UIView, EpoxyableView {
     fatalError("init(coder:) has not been implemented")
   }
 
-  // MARK: Internal
+  // MARK: Public
 
-  struct Style: Hashable {
-    let backgroundColor: UIColor
+  public struct Style: Hashable {
+    public let backgroundColor: UIColor
+    public init(backgroundColor: UIColor) {
+      self.backgroundColor = backgroundColor
+    }
   }
 
-  typealias Content = TitleWithSubtitleInfoCollectionViewCellViewModel
+  public typealias Content = TitleWithSubtitleInfoCollectionViewCellViewModel
 
-  static func height(width: CGFloat, content: Content) -> CGFloat {
+  public static func height(width: CGFloat, content: Content) -> CGFloat {
     let titleHeight = (content.titleText ?? "").height(forWidth: width - 48, font: Font.medium(20))
     let subtitleHeight = (content.subtitleText ?? "").height(forWidth: width - 48, font: Font.regular(14))
 
     return titleHeight + subtitleHeight + 7 + 7 + 2
   }
 
-  func setContent(_ content: Content, animated: Bool) {
+  public func setContent(_ content: Content, animated: Bool) {
     titleLabel.attributedText = NSAttributedString(string: content.titleText ?? "", font: Font.medium(20), textColor: .dark)
     subtitleLabel.attributedText = NSAttributedString(string: content.subtitleText ?? "", font: Font.regular(14), textColor: .blueGray)
   }

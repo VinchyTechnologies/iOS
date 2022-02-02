@@ -6,13 +6,12 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import DisplayMini
 import EpoxyCore
 import UIKit
 
 // MARK: - ShortInfoViewViewModel
 
-struct ShortInfoViewViewModel: Equatable {
+public struct ShortInfoViewViewModel: Equatable {
   fileprivate let titleText: String?
   fileprivate let subtitleText: String?
 
@@ -24,11 +23,11 @@ struct ShortInfoViewViewModel: Equatable {
 
 // MARK: - ShortInfoView
 
-final class ShortInfoView: UIView, EpoxyableView {
+public final class ShortInfoView: UIView, EpoxyableView {
 
   // MARK: Lifecycle
 
-  init(style: Style) {
+  public init(style: Style) {
     self.style = style
     super.init(frame: .zero)
     translatesAutoresizingMaskIntoConstraints = false
@@ -63,14 +62,17 @@ final class ShortInfoView: UIView, EpoxyableView {
     fatalError("init(coder:) has not been implemented")
   }
 
-  // MARK: Internal
+  // MARK: Public
 
-  struct Style: Hashable {
+  public struct Style: Hashable {
+    public init(){
+
+    }
   }
 
-  typealias Content = ShortInfoViewViewModel
+  public typealias Content = ShortInfoViewViewModel
 
-  static func size(for content: Content) -> CGSize {
+  public static func size(for content: Content) -> CGSize {
     let height: CGFloat = 100
     let titleWidth = content.titleText?.width(usingFont: Font.semibold(22))
     let subtitleWidth = content.subtitleText?.width(usingFont: Font.with(size: 18, design: .round, traits: .bold))
@@ -78,7 +80,7 @@ final class ShortInfoView: UIView, EpoxyableView {
     return CGSize(width: max(width, 130), height: height)
   }
 
-  func setContent(_ content: Content, animated: Bool) {
+  public func setContent(_ content: Content, animated: Bool) {
     titleLabel.text = content.titleText
     subtitleLabel.text = content.subtitleText
   }

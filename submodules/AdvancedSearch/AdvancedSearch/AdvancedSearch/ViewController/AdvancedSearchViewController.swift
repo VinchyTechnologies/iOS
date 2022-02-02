@@ -89,6 +89,36 @@ final class AdvancedSearchViewController: UIViewController {
     else { return nil }
 
     switch viewModel.sections[sectionNumber] {
+
+    case .price:
+      let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
+      let group = NSCollectionLayoutGroup.horizontal(
+        layoutSize: .init(
+          widthDimension: .fractionalWidth(1),
+          heightDimension: .absolute(50)),
+        subitems: [item])
+      let section = NSCollectionLayoutSection(group: group)
+      section.boundarySupplementaryItems = [
+        .init(
+          layoutSize: .init(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .absolute(50)),
+          elementKind: C.categoryHeaderID,
+          alignment: .topLeading),
+
+        .init(
+          layoutSize: .init(
+            widthDimension: .fractionalWidth(1),
+            heightDimension: .absolute(20)),
+          elementKind: C.categorySeparatorID,
+          alignment: .bottom),
+      ]
+
+      if viewModel.sections.count - 1 == sectionNumber {
+        section.boundarySupplementaryItems.removeLast()
+      }
+      return section
+
     case .carusel:
       let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
       let group = NSCollectionLayoutGroup.horizontal(
@@ -128,7 +158,7 @@ final class AdvancedSearchViewController: UIViewController {
     collectionView.dataSource = self
     collectionView.showsVerticalScrollIndicator = false // TODO: - ???
 
-    collectionView.register(AdvancedSearchCaruselCollectionCell.self)
+    collectionView.register(AdvancedSearchCaruselCollectionCell.self, MinMaxPriceCell.self)
 
     collectionView.register(
       AdvancedHeader.self,
@@ -168,6 +198,9 @@ extension AdvancedSearchViewController: AdvancedSearchViewControllerProtocol {
       case .carusel(_, let items):
         let cell = collectionView.cellForItem(at: IndexPath(row: 0, section: sec)) as! AdvancedSearchCaruselCollectionCell // swiftlint:disable:this force_cast
         cell.decorate(model: items[0])
+        cell.collectionView.reloadData()
+      case .price:
+        break
       }
     } else {
       collectionView.reloadData()
@@ -192,6 +225,9 @@ extension AdvancedSearchViewController: UICollectionViewDataSource {
     switch viewModel.sections[section] {
     case .carusel(_, let items):
       return items.count
+
+    case .price(_, let items):
+      return items.count
     }
   }
 
@@ -213,6 +249,17 @@ extension AdvancedSearchViewController: UICollectionViewDataSource {
       cell.delegate = self
       cell.section = indexPath.section
       return cell
+
+    case .price(_, let items):
+      let cell = collectionView.dequeueReusableCell(
+        withReuseIdentifier: MinMaxPriceCell.reuseId,
+        for: indexPath) as! MinMaxPriceCell // swiftlint:disable:this force_cast
+
+      let model = items[indexPath.row]
+      cell.decorate(model: model)
+//      cell.delegate = self
+//      cell.section = indexPath.section
+      return cell
     }
   }
 
@@ -224,7 +271,7 @@ extension AdvancedSearchViewController: UICollectionViewDataSource {
   {
     guard let viewModel = viewModel else { return .init() }
     switch viewModel.sections[indexPath.section] {
-    case .carusel(let viewModel, _):
+    case .carusel(let viewModel, _), .price(let viewModel, _):
       if kind == C.categoryHeaderID {
         // swiftlint:disable:next force_cast
         let header = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: AdvancedHeader.reuseId, for: indexPath) as! AdvancedHeader

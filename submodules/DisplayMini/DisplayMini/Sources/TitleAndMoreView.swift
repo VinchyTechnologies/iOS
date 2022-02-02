@@ -6,24 +6,17 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import DisplayMini
 import EpoxyCore
 import UIKit
 
-// MARK: - TitleAndMoreViewDelegate
-
-protocol TitleAndMoreViewDelegate: AnyObject {
-  func didTapSeeAllReview()
-}
-
 // MARK: - TitleAndMoreViewViewModel
 
-struct TitleAndMoreViewViewModel: ViewModelProtocol, Equatable {
+public struct TitleAndMoreViewViewModel: ViewModelProtocol, Equatable {
   fileprivate let titleText: String?
   fileprivate let moreText: String?
   fileprivate let shouldShowMoreText: Bool
 
-  init(titleText: String?, moreText: String?, shouldShowMoreText: Bool) {
+  public init(titleText: String?, moreText: String?, shouldShowMoreText: Bool) {
     self.titleText = titleText
     self.moreText = moreText
     self.shouldShowMoreText = shouldShowMoreText
@@ -32,11 +25,11 @@ struct TitleAndMoreViewViewModel: ViewModelProtocol, Equatable {
 
 // MARK: - TitleAndMoreView
 
-final class TitleAndMoreView: UIView, EpoxyableView {
+public final class TitleAndMoreView: UIView, EpoxyableView {
 
   // MARK: Lifecycle
 
-  init(style: Style) {
+  public init(style: Style) {
     self.style = style
     super.init(frame: .zero)
     translatesAutoresizingMaskIntoConstraints = false
@@ -69,30 +62,34 @@ final class TitleAndMoreView: UIView, EpoxyableView {
     fatalError("init(coder:) has not been implemented")
   }
 
-  // MARK: Internal
+  // MARK: Public
 
-  struct Behaviors {
-    var didTap: (() -> Void)?
+  public struct Behaviors {
+    public var didTap: (() -> Void)?
+    public init(didTap: (() -> Void)?) {
+      self.didTap = didTap
+    }
   }
 
-  struct Style: Hashable {
+  public struct Style: Hashable {
+    public init() {
+
+    }
   }
 
-  typealias Content = TitleAndMoreViewViewModel
+  public typealias Content = TitleAndMoreViewViewModel
 
-  weak var delegate: TitleAndMoreViewDelegate?
-
-  static func height(width: CGFloat, content: Content) -> CGFloat {
+  public static func height(width: CGFloat, content: Content) -> CGFloat {
     let buttonWidth = content.moreText?.width(usingFont: Font.medium(16)) ?? 0
     let titleWidth = width - buttonWidth - 5
     return content.titleText?.height(forWidth: titleWidth, font: Font.heavy(20)) ?? 0
   }
 
-  func setBehaviors(_ behaviors: Behaviors?) {
+  public func setBehaviors(_ behaviors: Behaviors?) {
     didTap = behaviors?.didTap
   }
 
-  func setContent(_ content: Content, animated: Bool) {
+  public func setContent(_ content: Content, animated: Bool) {
     titleLabel.text = content.titleText
     moreButton.setTitle(content.moreText, for: .normal)
     moreButton.isHidden = !content.shouldShowMoreText

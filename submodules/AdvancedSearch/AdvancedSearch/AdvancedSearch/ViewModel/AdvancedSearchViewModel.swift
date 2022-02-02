@@ -11,6 +11,7 @@ import DisplayMini
 public struct AdvancedSearchViewModel {
   enum Section {
     case carusel(headerViewModel: AdvancedHeaderViewModel, items: [AdvancedSearchCaruselCollectionCellViewModel])
+    case price(headerViewModel: AdvancedHeaderViewModel, items: [MinMaxPriceCellViewModel])
   }
 
   let sections: [Section]

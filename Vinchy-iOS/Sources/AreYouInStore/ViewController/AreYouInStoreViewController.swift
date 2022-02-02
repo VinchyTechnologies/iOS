@@ -33,7 +33,7 @@ final class AreYouInStoreViewController: UIViewController {
       }
     }
 
-    let bottomViewHeight: CGFloat = (UIApplication.shared.asKeyWindow?.safeAreaInsets.bottom ?? 0) + 48 + 20
+    let bottomViewHeight: CGFloat = (UIApplication.shared.asKeyWindow?.safeAreaInsets.bottom ?? 0) + 48 + 24
 
     return height + bottomViewHeight + 24 /* pull bar height */+ 20
   }
@@ -78,7 +78,7 @@ final class AreYouInStoreViewController: UIViewController {
   private lazy var bottomButtonsView: BottomButtonsView = {
     $0.delegate = self
     return $0
-  }(BottomButtonsView())
+  }(BottomButtonsView(style: .init()))
 
   private let layout: UICollectionViewFlowLayout = {
     $0.scrollDirection = .vertical

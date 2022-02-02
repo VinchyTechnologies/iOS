@@ -6,7 +6,7 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
+import UIKit // TODO: - move Display
 
 // MARK: - TextCollectionCellViewModel
 

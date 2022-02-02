@@ -6,6 +6,7 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
+import EpoxyCore
 import UIKit
 
 // MARK: - BottomButtonsViewDelegate
@@ -29,13 +30,15 @@ public struct BottomButtonsViewModel: ViewModelProtocol {
 
 // MARK: - BottomButtonsView
 
-public final class BottomButtonsView: UIView {
+public final class BottomButtonsView: UIView, EpoxyableView {
 
   // MARK: Lifecycle
 
-  override init(frame: CGRect) {
-    super.init(frame: frame)
+  public init(style: Style) {
+    super.init(frame: .zero)
+    translatesAutoresizingMaskIntoConstraints = false
     backgroundColor = .mainBackground
+    directionalLayoutMargins = .init(top: 12, leading: 24, bottom: 12, trailing: 24)
 
     let line = UIView()
     line.translatesAutoresizingMaskIntoConstraints = false
@@ -46,17 +49,17 @@ public final class BottomButtonsView: UIView {
       line.topAnchor.constraint(equalTo: topAnchor),
       line.leadingAnchor.constraint(equalTo: leadingAnchor),
       line.trailingAnchor.constraint(equalTo: trailingAnchor),
-      line.heightAnchor.constraint(equalToConstant: 0.3),
+      line.heightAnchor.constraint(equalToConstant: 1.0 / UIScreen.main.scale),
     ])
 
     addSubview(stackView)
     stackView.translatesAutoresizingMaskIntoConstraints = false
-    NSLayoutConstraint.activate([
-      stackView.leadingAnchor.constraint(equalTo: leadingAnchor, constant: 16),
-      stackView.trailingAnchor.constraint(equalTo: trailingAnchor, constant: -16),
-      stackView.topAnchor.constraint(equalTo: topAnchor),
-      stackView.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
-    ])
+    stackView.constrainToMarginsWithHighPriorityBottom()
+    stackView.heightAnchor.constraint(equalToConstant: 48).isActive = true
+  }
+
+  override init(frame: CGRect) {
+    super.init(frame: frame)
   }
 
   @available(*, unavailable)
@@ -64,7 +67,28 @@ public final class BottomButtonsView: UIView {
 
   // MARK: Public
 
+  public struct Style: Hashable {
+    public init() {
+
+    }
+  }
+
+  public struct Content: Equatable {
+    fileprivate let leadingButtonText: String?
+    fileprivate let trailingButtonText: String?
+
+    public init(leadingButtonText: String?, trailingButtonText: String?) {
+      self.leadingButtonText = leadingButtonText
+      self.trailingButtonText = trailingButtonText
+    }
+  }
+
   public weak var delegate: BottomButtonsViewDelegate?
+
+  public func setContent(_ content: Content, animated: Bool) {
+    leadingButton.setTitle(content.leadingButtonText, for: .normal)
+    trailingButton.setTitle(content.trailingButtonText, for: .normal)
+  }
 
   // MARK: Private
 
@@ -97,9 +121,6 @@ public final class BottomButtonsView: UIView {
     stackView.axis = .horizontal
     stackView.distribution = .fillEqually
     stackView.spacing = 16
-    stackView.layoutMargins = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
-    stackView.isLayoutMarginsRelativeArrangement = true
-
     return stackView
   }()
 
