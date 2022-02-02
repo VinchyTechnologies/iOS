@@ -27,7 +27,6 @@ final class FiltersViewController: CollectionViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-//    bottomBarInstaller.install()
     interactor?.viewDidLoad()
   }
 
@@ -38,12 +37,6 @@ final class FiltersViewController: CollectionViewController {
       self.setSections(self.sections, animated: false)
     })
   }
-
-//  override func makeCollectionView() -> CollectionView {
-//    let collectionView = CollectionView(layout: layout, configuration: .init(
-//      usesBatchUpdatesForAllReloads: true, usesCellPrefetching: false, usesAccurateScrollToItem: true))
-//    return collectionView
-//  }
 
   // MARK: Private
 
@@ -61,7 +54,7 @@ final class FiltersViewController: CollectionViewController {
       switch section {
       case .title(let content):
         let width: CGFloat = collectionViewSize.width - 48
-        let style = Label.Style(font: Font.bold(22), showLabelBackground: true)
+        let style = Label.Style.style(with: .lagerTitle)
         let height: CGFloat = Label.height(
           for: content,
           width: width,
