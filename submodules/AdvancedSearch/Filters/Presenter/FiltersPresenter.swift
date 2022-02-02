@@ -24,6 +24,63 @@ final class FiltersPresenter {
 
   weak var viewController: FiltersViewControllerProtocol?
 
+  // MARK: Private
+
+  private func mapNormalFilter(selectedFilters: [(String, String)], filter: Filter, shouldAddHeader: Bool = true) -> [FiltersViewModel.Section] {
+    var sections = [FiltersViewModel.Section]()
+
+    if shouldAddHeader {
+      sections += [.title(content: localized(filter.category.rawValue).firstLetterUppercased())]
+    }
+
+    let items: [ServingTipsCollectionViewItem] = filter.items.compactMap { filterItem in
+      var titleText: String? = localized(filterItem.title.lowercased()).firstLetterUppercased()
+      var image: UIImage?
+      if filter.category == .country {
+        titleText = countryNameFromLocaleCode(countryCode: filterItem.title)
+        image = UIImage(named: filterItem.imageName ?? "")
+      }
+      if filter.category == .compatibility {
+        image = UIImage(named: filterItem.imageName?.lowercased() ?? "")?.withTintColor(.dark, renderingMode: .alwaysOriginal)
+      }
+      let isSelected = selectedFilters.contains(where: { $0.0 == filterItem.category.rawValue && $0.1 == filterItem.title })
+      let content: ImageOptionView.Content = .init(
+        filterItem: filterItem,
+        image: image,
+        titleText: titleText,
+        isSelected: isSelected)
+      return .imageOption(content: content)
+    }
+    sections += [.carousel(dataID: filter.category.rawValue, content: .init(items: items))]
+    return sections
+  }
+
+  private func mapCountryFilter(selectedFilters: [(String, String)], filter: Filter) -> [FiltersViewModel.Section] {
+    var sections = [FiltersViewModel.Section]()
+    sections += [.countryTitle(content: .init(titleText: localized(filter.category.rawValue).firstLetterUppercased(), moreText: localized("see_all").firstLetterUppercased(), shouldShowMoreText: true))]
+    let selectedFilters = selectedFilters.filter({ $0.0 == "country" })
+    let filterItems = filter.items
+    if
+      selectedFilters.allSatisfy({ selectedFilter in
+        filterItems.contains(where: { $0.title == selectedFilter.1 })
+      })
+    {
+      sections += mapNormalFilter(selectedFilters: selectedFilters, filter: filter, shouldAddHeader: false)
+    } else {
+      let items: [ServingTipsCollectionViewItem] = selectedFilters.compactMap { selectedFilter in
+        let image = UIImage(named: selectedFilter.1)
+        let isSelected = true
+        let content: ImageOptionView.Content = .init(
+          filterItem: .init(title: selectedFilter.1, imageName: selectedFilter.1, category: .country),
+          image: image,
+          titleText: countryNameFromLocaleCode(countryCode: selectedFilter.1),
+          isSelected: isSelected)
+        return .imageOption(content: content)
+      }
+      sections += [.carousel(dataID: filter.category.rawValue, content: .init(items: items))]
+    }
+    return sections
+  }
 }
 
 // MARK: FiltersPresenterProtocol
@@ -32,84 +89,11 @@ extension FiltersPresenter: FiltersPresenterProtocol {
 
   func update(filters: [Filter], selectedFilters: [(String, String)], reloadingData: Bool) {
     var sections = [FiltersViewModel.Section]()
-
     filters.forEach { filter in
-
       if filter.category == .country {
-        sections += [.countryTitle(content: .init(titleText: localized(filter.category.rawValue).firstLetterUppercased(), moreText: localized("see_all").firstLetterUppercased(), shouldShowMoreText: true))]
+        sections += mapCountryFilter(selectedFilters: selectedFilters, filter: filter)
       } else {
-        sections += [.title(content: localized(filter.category.rawValue).firstLetterUppercased())]
-      }
-
-      if filter.category == .country {
-        if
-          selectedFilters.allSatisfy({ selectedFilter in
-            if selectedFilter.0 == "country" {
-              if let filter = filters.first(where: { $0.category == .country }) {
-                return filter.items.contains(where: { $0.title == selectedFilter.1 })
-              }
-              return true
-            }
-            return true
-          })
-        {
-          let items: [ServingTipsCollectionViewItem] = filter.items.compactMap { filterItem in
-            var titleText: String? = localized(filterItem.title.lowercased()).firstLetterUppercased()
-            var image: UIImage?
-            if filter.category == .country {
-              titleText = countryNameFromLocaleCode(countryCode: filterItem.title)
-              image = UIImage(named: filterItem.imageName ?? "")
-            }
-            if filter.category == .compatibility {
-              image = UIImage(named: filterItem.imageName?.lowercased() ?? "")?.withTintColor(.dark, renderingMode: .alwaysOriginal)
-            }
-            let isSelected = selectedFilters.contains(where: { $0.0 == filterItem.category.rawValue && $0.1 == filterItem.title })
-            let content: ImageOptionView.Content = .init(
-              filterItem: filterItem,
-              image: image,
-              titleText: titleText,
-              isSelected: isSelected)
-            return .imageOption(content: content)
-          }
-          sections += [.carousel(dataID: filter.category.rawValue, content: .init(items: items))]
-        } else {
-          let items: [ServingTipsCollectionViewItem] = selectedFilters.compactMap { filterItem in
-            var titleText: String? = localized(filterItem.1.lowercased()).firstLetterUppercased()
-            var image: UIImage?
-            if filter.category == .country {
-              titleText = countryNameFromLocaleCode(countryCode: filterItem.1)
-              image = UIImage(named: filterItem.1)
-            }
-            let isSelected = true
-            let content: ImageOptionView.Content = .init(
-              filterItem: FilterItem(title: filterItem.1, imageName: filterItem.1, category: .country),
-              image: image,
-              titleText: titleText,
-              isSelected: isSelected)
-            return .imageOption(content: content)
-          }
-          sections += [.carousel(dataID: filter.category.rawValue, content: .init(items: items))]
-        }
-      } else {
-        let items: [ServingTipsCollectionViewItem] = filter.items.compactMap { filterItem in
-          var titleText: String? = localized(filterItem.title.lowercased()).firstLetterUppercased()
-          var image: UIImage?
-          if filter.category == .country {
-            titleText = countryNameFromLocaleCode(countryCode: filterItem.title)
-            image = UIImage(named: filterItem.imageName ?? "")
-          }
-          if filter.category == .compatibility {
-            image = UIImage(named: filterItem.imageName?.lowercased() ?? "")?.withTintColor(.dark, renderingMode: .alwaysOriginal)
-          }
-          let isSelected = selectedFilters.contains(where: { $0.0 == filterItem.category.rawValue && $0.1 == filterItem.title })
-          let content: ImageOptionView.Content = .init(
-            filterItem: filterItem,
-            image: image,
-            titleText: titleText,
-            isSelected: isSelected)
-          return .imageOption(content: content)
-        }
-        sections += [.carousel(dataID: filter.category.rawValue, content: .init(items: items))]
+        sections += mapNormalFilter(selectedFilters: selectedFilters, filter: filter)
       }
     }
     var bottomBarViewModel: BottomButtonsView.Content?

@@ -39,6 +39,10 @@ final class FiltersInteractor {
 
 extension FiltersInteractor: FiltersInteractorProtocol {
 
+  func didTapConfirmFilters() {
+    router.dismissWithFilters(selectedFilters)
+  }
+
   func didChoose(countryCodes: [String]) {
     selectedFilters.removeAll(where: { $0.0 == "country" })
     countryCodes.forEach { code in

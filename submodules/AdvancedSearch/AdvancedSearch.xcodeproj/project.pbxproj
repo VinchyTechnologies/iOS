@@ -107,6 +107,7 @@
 		8A51441C2757B66800DC45CD = {
 			isa = PBXGroup;
 			children = (
+				8A51443C2757B6F500DC45CD /* Output */,
 				8A65E75D27A967EF008556A4 /* Filters */,
 				8A5144282757B66800DC45CD /* AdvancedSearch */,
 				8A5144272757B66800DC45CD /* Products */,
@@ -140,7 +141,6 @@
 			children = (
 				8A5144372757B6F500DC45CD /* Assembly */,
 				8A5144472757B6F500DC45CD /* Interactor */,
-				8A51443C2757B6F500DC45CD /* Output */,
 				8A5144392757B6F500DC45CD /* Presenter */,
 				8A51444A2757B6F500DC45CD /* Router */,
 				8A51443F2757B6F500DC45CD /* ViewController */,

@@ -14,4 +14,5 @@ protocol FiltersInteractorProtocol: AnyObject {
   func didTapResetAllFilters()
   func didTapSeeAllCounties()
   func didChoose(countryCodes: [String])
+  func didTapConfirmFilters()
 }

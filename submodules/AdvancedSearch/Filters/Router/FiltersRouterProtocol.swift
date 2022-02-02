@@ -9,4 +9,5 @@ import Foundation
 
 protocol FiltersRouterProtocol: AnyObject {
   func presentAllCountries(preSelectedCountryCodes: [String])
+  func dismissWithFilters(_ selectedFilters: [(String, String)])
 }

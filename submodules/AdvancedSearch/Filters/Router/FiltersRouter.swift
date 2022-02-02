@@ -36,6 +36,13 @@ final class FiltersRouter {
 // MARK: FiltersRouterProtocol
 
 extension FiltersRouter: FiltersRouterProtocol {
+
+  func dismissWithFilters(_ selectedFilters: [(String, String)]) {
+    print(selectedFilters)
+    (viewController?.navigationController as? AdvancedSearchNavigationController)?.advancedSearchOutputDelegate?.didChoose(selectedFilters)
+    viewController?.dismiss(animated: true, completion: nil)
+  }
+
   func presentAllCountries(preSelectedCountryCodes: [String]) {
     let controller = CountriesViewController(preSelectedCountryCodes: preSelectedCountryCodes, delegate: self)
     let navController = VinchyNavigationController(rootViewController: controller)

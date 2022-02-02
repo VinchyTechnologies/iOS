@@ -159,6 +159,6 @@ extension FiltersViewController: BottomButtonsViewDelegate {
   }
 
   func didTapTrailingButton(_ button: UIButton) {
-
+    interactor?.didTapConfirmFilters()
   }
 }
