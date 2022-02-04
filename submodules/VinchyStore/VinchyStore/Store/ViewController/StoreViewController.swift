@@ -155,8 +155,11 @@ final class StoreViewController: CollectionViewController {
               didTapLike: { [weak self] _ in
                 self?.interactor?.didTapLikeButton()
               },
-              didTapShare: { [weak self] button in
-                self?.interactor?.didTapShare(button: button)
+              didTapSubscribe: { [weak self] _ in
+                self?.interactor?.didTapSubscribe()
+              },
+              didTapMore: { [weak self] button in
+                self?.interactor?.didTapMore(button: button)
               }),
             style: .init())
             .willDisplay { [weak self] context in
@@ -282,6 +285,18 @@ final class StoreViewController: CollectionViewController {
 // MARK: StoreViewControllerProtocol
 
 extension StoreViewController: StoreViewControllerProtocol {
+
+  func showMoreOptions(shareText: String?, cancelTitle: String?, sourceView: UIView) {
+    let alert = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+    alert.addAction(UIAlertAction(title: shareText, style: .default, handler: { [weak self] _ in
+      self?.interactor?.didTapShare(sourceView: sourceView)
+    }))
+    alert.addAction(UIAlertAction(title: cancelTitle, style: .cancel, handler: nil))
+    alert.view.tintColor = .accent
+    alert.popoverPresentationController?.sourceView = sourceView
+    alert.popoverPresentationController?.permittedArrowDirections = .up
+    present(alert, animated: true, completion: nil)
+  }
 
   func setLikedStatus(isLiked: Bool) {
     viewModel.isLiked = isLiked

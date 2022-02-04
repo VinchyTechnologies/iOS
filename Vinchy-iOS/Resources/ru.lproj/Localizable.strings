@@ -244,3 +244,7 @@
 "Widget.CanAddNoMoreThanTwo" = "Добавить в виджет\nне более 2";
 "Widget.UsesWidget" = "В виджите";
 "Widget.Remove" = "Удалить из виджета";
+
+// MARK: - Store
+"Store.Subscribe" = "подписаться";
+"Store.Subscribed" = "подписаны";

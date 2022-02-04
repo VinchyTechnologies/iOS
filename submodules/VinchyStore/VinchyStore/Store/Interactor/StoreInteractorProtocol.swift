@@ -6,7 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit.UIButton
+import UIKit
 import VinchyUI
 
 protocol StoreInteractorProtocol: WineViewContextMenuTappable, AdvancedSearchOutputDelegate {
@@ -19,5 +19,7 @@ protocol StoreInteractorProtocol: WineViewContextMenuTappable, AdvancedSearchOut
   func didTapSearchButton()
   func didTapHorizontalWineViewButton(wineID: Int64)
   func didTapLikeButton()
-  func didTapShare(button: UIButton)
+  func didTapShare(sourceView: UIView)
+  func didTapSubscribe()
+  func didTapMore(button: UIButton)
 }

@@ -6,6 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import UIKit.UIView
 import VinchyUI
 
 protocol StorePresenterProtocol: ShowNetworkAlertPresentable {
@@ -16,4 +17,5 @@ protocol StorePresenterProtocol: ShowNetworkAlertPresentable {
   func showInitiallyLoadingError(error: Error)
   func setLoadingFilters(data: StoreInteractorData)
   func setLikedStatus(isLiked: Bool)
+  func showMoreOptions(sourceView: UIView)
 }
