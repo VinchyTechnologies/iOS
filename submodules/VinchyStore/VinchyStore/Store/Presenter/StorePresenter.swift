@@ -218,13 +218,18 @@ extension StorePresenter: StorePresenterProtocol {
         })
 
         var priceOption: String = ""
-        if let minPrice = data.selectedFilters.first(where: { $0.0 == "min_price" })?.1, let intValue = Int64(minPrice) {
-          priceOption += localized("AdvancesdSearch.Price.From").firstLetterUppercased() + " " + formatCurrencyAmount(intValue, currency: "RUB")
+        if data.selectedFilters.first(where: { $0.0 == "min_price" })?.1 == data.selectedFilters.first(where: { $0.0 == "max_price" })?.1 {
+          if let minPrice = data.selectedFilters.first(where: { $0.0 == "min_price" })?.1, let intValue = Int64(minPrice) {
+            priceOption = formatCurrencyAmount(intValue, currency: "RUB")
+          }
+        } else {
+          if let minPrice = data.selectedFilters.first(where: { $0.0 == "min_price" })?.1, let intValue = Int64(minPrice) {
+            priceOption += localized("AdvancesdSearch.Price.From").firstLetterUppercased() + " " + formatCurrencyAmount(intValue, currency: "RUB")
+          }
+          if let maxPrice = data.selectedFilters.first(where: { $0.0 == "max_price" })?.1, let intValue = Int64(maxPrice) {
+            priceOption += " " + localized("AdvancesdSearch.Price.To").firstLetterUppercased() + " " + formatCurrencyAmount(intValue, currency: "RUB")
+          }
         }
-        if let maxPrice = data.selectedFilters.first(where: { $0.0 == "max_price" })?.1, let intValue = Int64(maxPrice) {
-          priceOption += " " + localized("AdvancesdSearch.Price.To").firstLetterUppercased() + " " + formatCurrencyAmount(intValue, currency: "RUB")
-        }
-
         if !priceOption.isNilOrEmpty {
           header.insert(priceOption, at: 0)
         }
@@ -261,11 +266,18 @@ extension StorePresenter: StorePresenterProtocol {
         })
 
         var priceOption: String = ""
-        if let minPrice = data.selectedFilters.first(where: { $0.0 == "min_price" })?.1, let intValue = Int64(minPrice) {
-          priceOption += localized("AdvancesdSearch.Price.From").firstLetterUppercased() + " " + formatCurrencyAmount(intValue, currency: "RUB")
-        }
-        if let maxPrice = data.selectedFilters.first(where: { $0.0 == "max_price" })?.1, let intValue = Int64(maxPrice) {
-          priceOption += " " + localized("AdvancesdSearch.Price.To").firstLetterUppercased() + " " + formatCurrencyAmount(intValue, currency: "RUB")
+
+        if data.selectedFilters.first(where: { $0.0 == "min_price" })?.1 == data.selectedFilters.first(where: { $0.0 == "max_price" })?.1 {
+          if let minPrice = data.selectedFilters.first(where: { $0.0 == "min_price" })?.1, let intValue = Int64(minPrice) {
+            priceOption = formatCurrencyAmount(intValue, currency: "RUB")
+          }
+        } else {
+          if let minPrice = data.selectedFilters.first(where: { $0.0 == "min_price" })?.1, let intValue = Int64(minPrice) {
+            priceOption += localized("AdvancesdSearch.Price.From").firstLetterUppercased() + " " + formatCurrencyAmount(intValue, currency: "RUB")
+          }
+          if let maxPrice = data.selectedFilters.first(where: { $0.0 == "max_price" })?.1, let intValue = Int64(maxPrice) {
+            priceOption += " " + localized("AdvancesdSearch.Price.To").firstLetterUppercased() + " " + formatCurrencyAmount(intValue, currency: "RUB")
+          }
         }
 
         if !priceOption.isNilOrEmpty {
