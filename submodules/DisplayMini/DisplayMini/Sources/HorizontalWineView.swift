@@ -91,7 +91,7 @@ public final class HorizontalWineView: UIView, EpoxyableView {
       let topAndBottomPadding = NSDirectionalEdgeInsets.insets.top + NSDirectionalEdgeInsets.insets.bottom
       result += topAndBottomPadding
 
-      var width = width - NSDirectionalEdgeInsets.insets.leading - NSDirectionalEdgeInsets.insets.trailing - .bottleWidth - .hSpacing - .bottleWidth
+      var width = width - NSDirectionalEdgeInsets.insets.leading - NSDirectionalEdgeInsets.insets.trailing - .bottleWidth - .hSpacing
 
       var buttonWidth: CGFloat = 0.0
       var oldPriceTextWidth: CGFloat = 0.0
