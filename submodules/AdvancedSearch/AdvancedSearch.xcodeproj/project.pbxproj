@@ -9,23 +9,7 @@
 /* Begin PBXBuildFile section */
 		2D78045B1B2C166C0F68AEE5 /* Pods_AdvancedSearch.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03656F895969D9294D55541A /* Pods_AdvancedSearch.framework */; };
 		8A07B9C5275CEFF700AF27B0 /* StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A07B9C4275CEFF700AF27B0 /* StringFormatting.framework */; };
-		8A51442B2757B66800DC45CD /* AdvancedSearch.docc in Sources */ = {isa = PBXBuildFile; fileRef = 8A51442A2757B66800DC45CD /* AdvancedSearch.docc */; };
-		8A51442C2757B66800DC45CD /* AdvancedSearch.h in Headers */ = {isa = PBXBuildFile; fileRef = 8A5144292757B66800DC45CD /* AdvancedSearch.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		8A51444D2757B6F500DC45CD /* AdvancedSearchViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5144342757B6F500DC45CD /* AdvancedSearchViewModel.swift */; };
-		8A51444F2757B6F500DC45CD /* AdvancedSearchAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5144382757B6F500DC45CD /* AdvancedSearchAssembly.swift */; };
-		8A5144502757B6F500DC45CD /* AdvancedSearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A51443A2757B6F500DC45CD /* AdvancedSearchPresenter.swift */; };
-		8A5144512757B6F500DC45CD /* AdvancedSearchPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A51443B2757B6F500DC45CD /* AdvancedSearchPresenterProtocol.swift */; };
 		8A5144522757B6F500DC45CD /* AdvancedSearchNavigationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A51443D2757B6F500DC45CD /* AdvancedSearchNavigationController.swift */; };
-		8A5144542757B6F500DC45CD /* AdvancedSearchViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5144402757B6F500DC45CD /* AdvancedSearchViewControllerProtocol.swift */; };
-		8A5144552757B6F500DC45CD /* AdvancedSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5144412757B6F500DC45CD /* AdvancedSearchViewController.swift */; };
-		8A5144562757B6F500DC45CD /* AdvancedSearchCaruselCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5144432757B6F500DC45CD /* AdvancedSearchCaruselCollectionCell.swift */; };
-		8A5144572757B6F500DC45CD /* SeparatorFooter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5144442757B6F500DC45CD /* SeparatorFooter.swift */; };
-		8A5144582757B6F500DC45CD /* MoreBounceDecoratorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5144452757B6F500DC45CD /* MoreBounceDecoratorView.swift */; };
-		8A5144592757B6F500DC45CD /* AdvancedHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5144462757B6F500DC45CD /* AdvancedHeader.swift */; };
-		8A51445A2757B6F600DC45CD /* AdvancedSearchInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5144482757B6F500DC45CD /* AdvancedSearchInteractorProtocol.swift */; };
-		8A51445B2757B6F600DC45CD /* AdvancedSearchInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A5144492757B6F500DC45CD /* AdvancedSearchInteractor.swift */; };
-		8A51445C2757B6F600DC45CD /* AdvancedSearchRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A51444B2757B6F500DC45CD /* AdvancedSearchRouter.swift */; };
-		8A51445D2757B6F600DC45CD /* AdvancedSearchRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A51444C2757B6F500DC45CD /* AdvancedSearchRouterProtocol.swift */; };
 		8A51456F2757C29D00DC45CD /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A51456E2757C29D00DC45CD /* Core.framework */; };
 		8A5145772757C2D300DC45CD /* VinchyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5145762757C2D300DC45CD /* VinchyCore.framework */; };
 		8A5145822757C90800DC45CD /* VinchyUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A5145812757C90800DC45CD /* VinchyUI.framework */; };
@@ -49,23 +33,7 @@
 		1A08B6F302A21E7327CE736D /* Pods-AdvancedSearch.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-AdvancedSearch.debug.xcconfig"; path = "Target Support Files/Pods-AdvancedSearch/Pods-AdvancedSearch.debug.xcconfig"; sourceTree = "<group>"; };
 		8A07B9C4275CEFF700AF27B0 /* StringFormatting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StringFormatting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5144262757B66800DC45CD /* AdvancedSearch.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = AdvancedSearch.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A5144292757B66800DC45CD /* AdvancedSearch.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdvancedSearch.h; sourceTree = "<group>"; };
-		8A51442A2757B66800DC45CD /* AdvancedSearch.docc */ = {isa = PBXFileReference; lastKnownFileType = folder.documentationcatalog; path = AdvancedSearch.docc; sourceTree = "<group>"; };
-		8A5144342757B6F500DC45CD /* AdvancedSearchViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSearchViewModel.swift; sourceTree = "<group>"; };
-		8A5144382757B6F500DC45CD /* AdvancedSearchAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSearchAssembly.swift; sourceTree = "<group>"; };
-		8A51443A2757B6F500DC45CD /* AdvancedSearchPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSearchPresenter.swift; sourceTree = "<group>"; };
-		8A51443B2757B6F500DC45CD /* AdvancedSearchPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSearchPresenterProtocol.swift; sourceTree = "<group>"; };
 		8A51443D2757B6F500DC45CD /* AdvancedSearchNavigationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSearchNavigationController.swift; sourceTree = "<group>"; };
-		8A5144402757B6F500DC45CD /* AdvancedSearchViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSearchViewControllerProtocol.swift; sourceTree = "<group>"; };
-		8A5144412757B6F500DC45CD /* AdvancedSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSearchViewController.swift; sourceTree = "<group>"; };
-		8A5144432757B6F500DC45CD /* AdvancedSearchCaruselCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSearchCaruselCollectionCell.swift; sourceTree = "<group>"; };
-		8A5144442757B6F500DC45CD /* SeparatorFooter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SeparatorFooter.swift; sourceTree = "<group>"; };
-		8A5144452757B6F500DC45CD /* MoreBounceDecoratorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MoreBounceDecoratorView.swift; sourceTree = "<group>"; };
-		8A5144462757B6F500DC45CD /* AdvancedHeader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedHeader.swift; sourceTree = "<group>"; };
-		8A5144482757B6F500DC45CD /* AdvancedSearchInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSearchInteractorProtocol.swift; sourceTree = "<group>"; };
-		8A5144492757B6F500DC45CD /* AdvancedSearchInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSearchInteractor.swift; sourceTree = "<group>"; };
-		8A51444B2757B6F500DC45CD /* AdvancedSearchRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSearchRouter.swift; sourceTree = "<group>"; };
-		8A51444C2757B6F500DC45CD /* AdvancedSearchRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AdvancedSearchRouterProtocol.swift; sourceTree = "<group>"; };
 		8A51456E2757C29D00DC45CD /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5145722757C2BB00DC45CD /* Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5145762757C2D300DC45CD /* VinchyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -109,7 +77,6 @@
 			children = (
 				8A51443C2757B6F500DC45CD /* Output */,
 				8A65E75D27A967EF008556A4 /* Filters */,
-				8A5144282757B66800DC45CD /* AdvancedSearch */,
 				8A5144272757B66800DC45CD /* Products */,
 				8A51456D2757C29D00DC45CD /* Frameworks */,
 				BEAA561DCBDB78C38217F555 /* Pods */,
@@ -126,100 +93,12 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		8A5144282757B66800DC45CD /* AdvancedSearch */ = {
-			isa = PBXGroup;
-			children = (
-				8A5144322757B6F500DC45CD /* AdvancedSearch */,
-				8A5144292757B66800DC45CD /* AdvancedSearch.h */,
-				8A51442A2757B66800DC45CD /* AdvancedSearch.docc */,
-			);
-			path = AdvancedSearch;
-			sourceTree = "<group>";
-		};
-		8A5144322757B6F500DC45CD /* AdvancedSearch */ = {
-			isa = PBXGroup;
-			children = (
-				8A5144372757B6F500DC45CD /* Assembly */,
-				8A5144472757B6F500DC45CD /* Interactor */,
-				8A5144392757B6F500DC45CD /* Presenter */,
-				8A51444A2757B6F500DC45CD /* Router */,
-				8A51443F2757B6F500DC45CD /* ViewController */,
-				8A5144332757B6F500DC45CD /* ViewModel */,
-				8A5144422757B6F500DC45CD /* Views */,
-			);
-			path = AdvancedSearch;
-			sourceTree = "<group>";
-		};
-		8A5144332757B6F500DC45CD /* ViewModel */ = {
-			isa = PBXGroup;
-			children = (
-				8A5144342757B6F500DC45CD /* AdvancedSearchViewModel.swift */,
-			);
-			path = ViewModel;
-			sourceTree = "<group>";
-		};
-		8A5144372757B6F500DC45CD /* Assembly */ = {
-			isa = PBXGroup;
-			children = (
-				8A5144382757B6F500DC45CD /* AdvancedSearchAssembly.swift */,
-			);
-			path = Assembly;
-			sourceTree = "<group>";
-		};
-		8A5144392757B6F500DC45CD /* Presenter */ = {
-			isa = PBXGroup;
-			children = (
-				8A51443A2757B6F500DC45CD /* AdvancedSearchPresenter.swift */,
-				8A51443B2757B6F500DC45CD /* AdvancedSearchPresenterProtocol.swift */,
-			);
-			path = Presenter;
-			sourceTree = "<group>";
-		};
 		8A51443C2757B6F500DC45CD /* Output */ = {
 			isa = PBXGroup;
 			children = (
 				8A51443D2757B6F500DC45CD /* AdvancedSearchNavigationController.swift */,
 			);
 			path = Output;
-			sourceTree = "<group>";
-		};
-		8A51443F2757B6F500DC45CD /* ViewController */ = {
-			isa = PBXGroup;
-			children = (
-				8A5144402757B6F500DC45CD /* AdvancedSearchViewControllerProtocol.swift */,
-				8A5144412757B6F500DC45CD /* AdvancedSearchViewController.swift */,
-			);
-			path = ViewController;
-			sourceTree = "<group>";
-		};
-		8A5144422757B6F500DC45CD /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				8A5144432757B6F500DC45CD /* AdvancedSearchCaruselCollectionCell.swift */,
-				8A5144442757B6F500DC45CD /* SeparatorFooter.swift */,
-				8A5144452757B6F500DC45CD /* MoreBounceDecoratorView.swift */,
-				8A5144462757B6F500DC45CD /* AdvancedHeader.swift */,
-				8A65E75927A9295B008556A4 /* MinMaxPriceCell.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		8A5144472757B6F500DC45CD /* Interactor */ = {
-			isa = PBXGroup;
-			children = (
-				8A5144482757B6F500DC45CD /* AdvancedSearchInteractorProtocol.swift */,
-				8A5144492757B6F500DC45CD /* AdvancedSearchInteractor.swift */,
-			);
-			path = Interactor;
-			sourceTree = "<group>";
-		};
-		8A51444A2757B6F500DC45CD /* Router */ = {
-			isa = PBXGroup;
-			children = (
-				8A51444B2757B6F500DC45CD /* AdvancedSearchRouter.swift */,
-				8A51444C2757B6F500DC45CD /* AdvancedSearchRouterProtocol.swift */,
-			);
-			path = Router;
 			sourceTree = "<group>";
 		};
 		8A51456D2757C29D00DC45CD /* Frameworks */ = {
@@ -247,6 +126,7 @@
 				8A65E76D27A967EF008556A4 /* Router */,
 				8A65E76727A967EF008556A4 /* ViewController */,
 				8A65E75E27A967EF008556A4 /* ViewModel */,
+				8A75E28127AAE3820068DA56 /* Views */,
 			);
 			path = Filters;
 			sourceTree = "<group>";
@@ -311,6 +191,14 @@
 			path = Router;
 			sourceTree = "<group>";
 		};
+		8A75E28127AAE3820068DA56 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				8A65E75927A9295B008556A4 /* MinMaxPriceCell.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		BEAA561DCBDB78C38217F555 /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -328,7 +216,6 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A51442C2757B66800DC45CD /* AdvancedSearch.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -426,32 +313,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				8A51445B2757B6F600DC45CD /* AdvancedSearchInteractor.swift in Sources */,
-				8A5144592757B6F500DC45CD /* AdvancedHeader.swift in Sources */,
-				8A51445C2757B6F600DC45CD /* AdvancedSearchRouter.swift in Sources */,
-				8A5144572757B6F500DC45CD /* SeparatorFooter.swift in Sources */,
-				8A5144582757B6F500DC45CD /* MoreBounceDecoratorView.swift in Sources */,
 				8A5144522757B6F500DC45CD /* AdvancedSearchNavigationController.swift in Sources */,
-				8A51444D2757B6F500DC45CD /* AdvancedSearchViewModel.swift in Sources */,
-				8A5144562757B6F500DC45CD /* AdvancedSearchCaruselCollectionCell.swift in Sources */,
 				8A65E77327A967EF008556A4 /* FiltersPresenterProtocol.swift in Sources */,
-				8A5144552757B6F500DC45CD /* AdvancedSearchViewController.swift in Sources */,
 				8A65E77927A967EF008556A4 /* FiltersRouter.swift in Sources */,
 				8A65E77827A967EF008556A4 /* FiltersInteractor.swift in Sources */,
-				8A5144512757B6F500DC45CD /* AdvancedSearchPresenterProtocol.swift in Sources */,
-				8A5144542757B6F500DC45CD /* AdvancedSearchViewControllerProtocol.swift in Sources */,
 				8A65E77427A967EF008556A4 /* FiltersPresenter.swift in Sources */,
-				8A51445A2757B6F600DC45CD /* AdvancedSearchInteractorProtocol.swift in Sources */,
-				8A51445D2757B6F600DC45CD /* AdvancedSearchRouterProtocol.swift in Sources */,
 				8A65E77527A967EF008556A4 /* FiltersViewControllerProtocol.swift in Sources */,
 				8A65E77A27A967EF008556A4 /* FiltersRouterProtocol.swift in Sources */,
-				8A5144502757B6F500DC45CD /* AdvancedSearchPresenter.swift in Sources */,
 				8A65E75A27A9295B008556A4 /* MinMaxPriceCell.swift in Sources */,
-				8A51442B2757B66800DC45CD /* AdvancedSearch.docc in Sources */,
 				8A65E77027A967EF008556A4 /* FiltersViewModel.swift in Sources */,
 				8A65E77227A967EF008556A4 /* FiltersAssembly.swift in Sources */,
 				8A65E77727A967EF008556A4 /* FiltersInteractorProtocol.swift in Sources */,
-				8A51444F2757B6F500DC45CD /* AdvancedSearchAssembly.swift in Sources */,
 				8A65E77627A967EF008556A4 /* FiltersViewController.swift in Sources */,
 				8A65E77127A967EF008556A4 /* FiltersInput.swift in Sources */,
 			);

@@ -19,6 +19,8 @@ final class FiltersViewController: CollectionViewController {
   init() {
     let layout = UICollectionViewFlowLayout()
     super.init(layout: layout)
+//    NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
+//    NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
   }
 
   // MARK: Internal
@@ -27,6 +29,23 @@ final class FiltersViewController: CollectionViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
+    if isModal {
+      let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
+      navigationItem.leftBarButtonItem = UIBarButtonItem(
+        image: UIImage(systemName: "chevron.down", withConfiguration: imageConfig),
+        style: .plain,
+        target: self,
+        action: #selector(didTapCloseBarButtonItem(_:)))
+    }
+
+    navigationItem.largeTitleDisplayMode = .never
+    collectionView.delaysContentTouches = false
+    collectionView.keyboardDismissMode = .onDrag
+
+    let tap = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboardTouchOutside))
+    tap.cancelsTouchesInView = false
+    view.addGestureRecognizer(tap)
+
     interactor?.viewDidLoad()
   }
 
@@ -104,6 +123,21 @@ final class FiltersViewController: CollectionViewController {
         }
         .flowLayoutItemSize(.init(width: width, height: height))
         .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 8, right: 24))
+
+      case .price(let content):
+        let width: CGFloat = collectionViewSize.width - 48
+        let height: CGFloat = 56
+        return SectionModel(dataID: UUID()) {
+          MinMaxPriceView.itemModel(
+            dataID: UUID(),
+            content: content,
+            behaviors: .init(didEndEditing: { [weak self] minPrice, maxPrice in
+              self?.interactor?.didEnterMinMaxPrice(minPrice: minPrice, maxPrice: maxPrice)
+            }),
+            style: .init())
+        }
+        .flowLayoutItemSize(.init(width: width, height: height))
+        .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 8, right: 24))
       }
     }
   }
@@ -125,6 +159,31 @@ final class FiltersViewController: CollectionViewController {
       []
     }
   }
+
+  @objc
+  private func dismissKeyboardTouchOutside() {
+    view.endEditing(true)
+  }
+
+  @objc
+  private func didTapCloseBarButtonItem(_ barButtonItem: UIBarButtonItem) {
+    dismiss(animated: true)
+  }
+
+//  @objc
+//  private func adjustForKeyboard(notification: Notification) {
+//    guard let keyboardValue = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue else { return }
+//
+//    let keyboardScreenEndFrame = keyboardValue.cgRectValue
+//    let keyboardViewEndFrame = view.convert(keyboardScreenEndFrame, from: UIApplication.shared.asKeyWindow)
+//
+//    if notification.name == UIResponder.keyboardWillHideNotification {
+//      collectionView.contentInset = .zero
+//    } else {
+//      collectionView.contentInset = .init(top: 0, left: 0, bottom: keyboardViewEndFrame.height, right: 0)
+//    }
+//  }
+
 }
 
 // MARK: FiltersViewControllerProtocol

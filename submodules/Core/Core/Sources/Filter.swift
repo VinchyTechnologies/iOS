@@ -28,7 +28,7 @@ public final class Filter: Decodable {
 // MARK: - FilterCategory
 
 public enum FilterCategory: String, Decodable {
-  case type, color, country, sugar, compatibility
+  case type, color, country, sugar, compatibility, min_price, max_price
 
   // MARK: Public
 
@@ -48,6 +48,12 @@ public enum FilterCategory: String, Decodable {
 
     case .compatibility:
       return "dish_list"
+
+    case .min_price:
+      return "min_price"
+
+    case .max_price:
+      return "max_price"
     }
   }
 }

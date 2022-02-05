@@ -89,6 +89,10 @@ extension FiltersPresenter: FiltersPresenterProtocol {
 
   func update(filters: [Filter], selectedFilters: [(String, String)], reloadingData: Bool) {
     var sections = [FiltersViewModel.Section]()
+    sections += [.title(content: "Цена, ₽")]
+    let minPrice = selectedFilters.first(where: { $0.0 == "min_price" })?.1
+    let maxPrice = selectedFilters.first(where: { $0.0 == "max_price" })?.1
+    sections += [.price(content: .init(minPrice: minPrice, maxPrice: maxPrice, minPlaceHolderText: "От", maxPlaceHolderText: "До", decimalDigits: 2))] // TODO: - decimalDigits
     filters.forEach { filter in
       if filter.category == .country {
         sections += mapCountryFilter(selectedFilters: selectedFilters, filter: filter)
@@ -96,12 +100,11 @@ extension FiltersPresenter: FiltersPresenterProtocol {
         sections += mapNormalFilter(selectedFilters: selectedFilters, filter: filter)
       }
     }
+
     var bottomBarViewModel: BottomButtonsView.Content?
-    if !selectedFilters.isEmpty {
-      bottomBarViewModel = .init(
-        leadingButtonText: localized("reset").firstLetterUppercased(),
-        trailingButtonText: localized("search").firstLetterUppercased())
-    }
+    bottomBarViewModel = .init(
+      leadingButtonText: localized("reset").firstLetterUppercased(),
+      trailingButtonText: localized("search").firstLetterUppercased())
 
     let viewModel = FiltersViewModel(sections: sections, navigationTitleText: localized("advanced_search"), bottomBarViewModel: bottomBarViewModel)
     viewController?.updateUI(viewModel: viewModel, reloadingData: reloadingData)

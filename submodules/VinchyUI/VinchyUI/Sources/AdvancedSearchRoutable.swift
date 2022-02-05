@@ -30,5 +30,5 @@ public struct AdvancedSearchInput {
 // MARK: - AdvancedSearchRoutable
 
 public protocol AdvancedSearchRoutable: AnyObject {
-  func presentAdvancedSearch(input: AdvancedSearchInput, delegate: AdvancedSearchOutputDelegate?)
+  func presentAdvancedSearch(preselectedFilters: [(String, String)], delegate: AdvancedSearchOutputDelegate?)
 }

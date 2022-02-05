@@ -13,6 +13,7 @@ struct FiltersViewModel {
     case title(content: Label.Content)
     case countryTitle(content: TitleAndMoreView.Content)
     case carousel(dataID: String, content: ServingTipsCollectionView.Content)
+    case price(content: MinMaxPriceView.Content)
   }
 
   let sections: [Section]

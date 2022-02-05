@@ -207,13 +207,28 @@ extension StorePresenter: StorePresenterProtocol {
       if data.selectedFilters.isEmpty {
         sections += [.assortiment(header: [localized("all").firstLetterUppercased()], content: assortmentsContent)]
       } else {
-        let header: [String] = data.selectedFilters.compactMap({
-          if $0.0 == "country_code" {
+        var header: [String] = data.selectedFilters.compactMap({
+          if $0.0 == "country" {
             return countryNameFromLocaleCode(countryCode: $0.1)
-          } else {
-            return localized($0.1.lowercased()).firstLetterUppercased()
           }
+          if $0.0 == "min_price" || $0.0 == "max_price" {
+            return nil
+          }
+          return localized($0.1.lowercased()).firstLetterUppercased()
         })
+
+        var priceOption: String = ""
+        if let minPrice = data.selectedFilters.first(where: { $0.0 == "min_price" })?.1, let intValue = Int64(minPrice) {
+          priceOption += "От " + formatCurrencyAmount(intValue, currency: "RUB")
+        }
+        if let maxPrice = data.selectedFilters.first(where: { $0.0 == "max_price" })?.1, let intValue = Int64(maxPrice) {
+          priceOption += " До " + formatCurrencyAmount(intValue, currency: "RUB")
+        }
+
+        if !priceOption.isNilOrEmpty {
+          header.insert(priceOption, at: 0)
+        }
+
         sections += [.assortiment(header: header, content: assortmentsContent)]
       }
 
@@ -233,13 +248,30 @@ extension StorePresenter: StorePresenterProtocol {
               buttonText: nil)),
         ]
 
-        let header: [String] = data.selectedFilters.compactMap({
-          if $0.0 == "country_code" {
+        var header: [String] = data.selectedFilters.compactMap({
+          if $0.0 == "country" {
             return countryNameFromLocaleCode(countryCode: $0.1)
-          } else {
-            return localized($0.1.lowercased()).firstLetterUppercased()
           }
+
+          if $0.0 == "min_price" || $0.0 == "max_price" {
+            return nil
+          }
+
+          return localized($0.1.lowercased()).firstLetterUppercased()
         })
+
+        var priceOption: String = ""
+        if let minPrice = data.selectedFilters.first(where: { $0.0 == "min_price" })?.1, let intValue = Int64(minPrice) {
+          priceOption += "От " + formatCurrencyAmount(intValue, currency: "RUB")
+        }
+        if let maxPrice = data.selectedFilters.first(where: { $0.0 == "max_price" })?.1, let intValue = Int64(maxPrice) {
+          priceOption += " До " + formatCurrencyAmount(intValue, currency: "RUB")
+        }
+
+        if !priceOption.isNilOrEmpty {
+          header.insert(priceOption, at: 0)
+        }
+
         sections += [.assortiment(header: header, content: assortmentsContent)]
       }
     }

@@ -15,4 +15,5 @@ protocol FiltersInteractorProtocol: AnyObject {
   func didTapSeeAllCounties()
   func didChoose(countryCodes: [String])
   func didTapConfirmFilters()
+  func didEnterMinMaxPrice(minPrice: Int?, maxPrice: Int?)
 }

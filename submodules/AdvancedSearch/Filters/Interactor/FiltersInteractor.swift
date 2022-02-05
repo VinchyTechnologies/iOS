@@ -39,6 +39,17 @@ final class FiltersInteractor {
 
 extension FiltersInteractor: FiltersInteractorProtocol {
 
+  func didEnterMinMaxPrice(minPrice: Int?, maxPrice: Int?) {
+    selectedFilters.removeAll(where: { $0.0 == "min_price" || $0.0 == "max_price" })
+    if let minPrice = minPrice {
+      selectedFilters.append(("min_price", String(minPrice)))
+    }
+    if let maxPrice = maxPrice {
+      selectedFilters.append(("max_price", String(maxPrice)))
+    }
+    presenter.update(filters: filters, selectedFilters: selectedFilters, reloadingData: false)
+  }
+
   func didTapConfirmFilters() {
     router.dismissWithFilters(selectedFilters)
   }

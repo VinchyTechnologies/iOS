@@ -87,7 +87,7 @@ extension StoreRouter: StoreRouterProtocol {
 
   func presentFilter(preselectedFilters: [(String, String)]) {
     coordinator.presentAdvancedSearch(
-      input: .init(mode: .asView(preselectedFilters: preselectedFilters)),
+      preselectedFilters: preselectedFilters,
       delegate: interactor)
   }
 

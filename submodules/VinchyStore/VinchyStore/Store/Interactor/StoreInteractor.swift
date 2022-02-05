@@ -144,7 +144,12 @@ final class StoreInteractor {
       Partners.shared.getPartnerWines(
         partnerId: 1,
         affilatedId: affilatedId,
-        filters: selectedFilters,
+        filters: selectedFilters.compactMap({
+          if let serverName = FilterCategory(rawValue: $0.0)?.serverName {
+            return (serverName, $0.1)
+          }
+          return nil
+        }),
         limit: C.limit,
         offset: offset) { [weak self] result in
           guard let self = self else { return }

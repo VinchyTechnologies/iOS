@@ -81,16 +81,18 @@ private func loadCurrencyFormatterEntries() -> [String: CurrencyFormatterEntry] 
 
 private let currencyFormatterEntries = loadCurrencyFormatterEntries()
 
-public func formatCurrencyAmount(_ amount: Int64, currency: String) -> String {
+public func formatCurrencyAmount(_ amount: Int64, currency: String, shouldAddSymbol: Bool = true) -> String {
   if let entry = currencyFormatterEntries[currency] ?? currencyFormatterEntries["USD"] {
     var result = ""
     if amount < 0 {
       result.append("-")
     }
-    if entry.symbolOnLeft {
-      result.append(entry.symbol)
-      if entry.spaceBetweenAmountAndSymbol {
-        result.append(" ")
+    if shouldAddSymbol {
+      if entry.symbolOnLeft {
+        result.append(entry.symbol)
+        if entry.spaceBetweenAmountAndSymbol {
+          result.append(" ")
+        }
       }
     }
     var integerPart = abs(amount)
@@ -109,11 +111,14 @@ public func formatCurrencyAmount(_ amount: Int64, currency: String) -> String {
         result.append(fractional[fractional.count - i - 1])
       }
     }
-    if !entry.symbolOnLeft {
-      if entry.spaceBetweenAmountAndSymbol {
-        result.append(" ")
+
+    if shouldAddSymbol {
+      if !entry.symbolOnLeft {
+        if entry.spaceBetweenAmountAndSymbol {
+          result.append(" ")
+        }
+        result.append(entry.symbol)
       }
-      result.append(entry.symbol)
     }
 
     return result
