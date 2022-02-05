@@ -6,7 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
+import UIKit // TODO: - move to Display
 
 public final class SeparatorCell: UICollectionViewCell, Reusable {
   override public init(frame: CGRect) {

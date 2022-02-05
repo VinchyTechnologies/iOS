@@ -41,7 +41,6 @@
 		8A9CABFE2763F01400A5B694 /* BottlesCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CABD72763F01300A5B694 /* BottlesCollectionView.swift */; };
 		8A9CABFF2763F01400A5B694 /* Haptic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CABD82763F01300A5B694 /* Haptic.swift */; };
 		8A9CAC002763F01400A5B694 /* StarsRatingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CABD92763F01300A5B694 /* StarsRatingView.swift */; };
-		8A9CAC012763F01400A5B694 /* ImageOptionCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CABDA2763F01300A5B694 /* ImageOptionCollectionCell.swift */; };
 		8A9CAC022763F01400A5B694 /* ErrorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CABDB2763F01300A5B694 /* ErrorView.swift */; };
 		8A9CAC032763F01400A5B694 /* Alertable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CABDC2763F01300A5B694 /* Alertable.swift */; };
 		8A9CAC042763F01400A5B694 /* HighlightCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A9CABDD2763F01300A5B694 /* HighlightCollectionCell.swift */; };
@@ -103,7 +102,6 @@
 		8A9CABD72763F01300A5B694 /* BottlesCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BottlesCollectionView.swift; sourceTree = "<group>"; };
 		8A9CABD82763F01300A5B694 /* Haptic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Haptic.swift; sourceTree = "<group>"; };
 		8A9CABD92763F01300A5B694 /* StarsRatingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StarsRatingView.swift; sourceTree = "<group>"; };
-		8A9CABDA2763F01300A5B694 /* ImageOptionCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImageOptionCollectionCell.swift; sourceTree = "<group>"; };
 		8A9CABDB2763F01300A5B694 /* ErrorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ErrorView.swift; sourceTree = "<group>"; };
 		8A9CABDC2763F01300A5B694 /* Alertable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Alertable.swift; sourceTree = "<group>"; };
 		8A9CABDD2763F01300A5B694 /* HighlightCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HighlightCollectionCell.swift; sourceTree = "<group>"; };
@@ -221,7 +219,6 @@
 				8A9CABD02763F01300A5B694 /* HorizontalWineView.swift */,
 				8A9CAC202763F8A700A5B694 /* IconView.swift */,
 				8A9CABC92763F01300A5B694 /* ImageLoader.swift */,
-				8A9CABDA2763F01300A5B694 /* ImageOptionCollectionCell.swift */,
 				8A65E77B27A97B09008556A4 /* ImageOptionView.swift */,
 				8A9CABE92763F01400A5B694 /* Label.swift */,
 				8A9CABDE2763F01300A5B694 /* Loadable.swift */,
@@ -434,7 +431,6 @@
 				8A9CAC0E2763F01400A5B694 /* VinchyNavigationController.swift in Sources */,
 				8A9CAC032763F01400A5B694 /* Alertable.swift in Sources */,
 				8A9CABF72763F01400A5B694 /* HorizontalWineView.swift in Sources */,
-				8A9CAC012763F01400A5B694 /* ImageOptionCollectionCell.swift in Sources */,
 				8A9CAC0B2763F01400A5B694 /* UIEdgeInsets.swift in Sources */,
 				8A9CABEA2763F01400A5B694 /* CountriesViewController.swift in Sources */,
 				8A9CABF22763F01400A5B694 /* DecoratorFlowLayout.swift in Sources */,
