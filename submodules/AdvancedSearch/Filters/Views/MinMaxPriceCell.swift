@@ -94,7 +94,7 @@ final class MinMaxPriceView: UIView, EpoxyableView {
     $0.clipsToBounds = true
     $0.tintColor = .accent
     $0.keyboardType = .decimalPad
-    $0.font = Font.medium(20)
+    $0.font = Font.with(size: 20, design: .round, traits: .bold) //Font.medium(20)
     $0.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     $0.delegate = self
     $0.adjustsFontSizeToFitWidth = true
@@ -107,7 +107,7 @@ final class MinMaxPriceView: UIView, EpoxyableView {
     $0.clipsToBounds = true
     $0.tintColor = .accent
     $0.keyboardType = .decimalPad
-    $0.font = Font.medium(20)
+    $0.font = Font.with(size: 20, design: .round, traits: .bold) //Font.medium(20)
     $0.addTarget(self, action: #selector(textFieldDidChange(_:)), for: .editingChanged)
     $0.delegate = self
     $0.adjustsFontSizeToFitWidth = true
@@ -244,6 +244,7 @@ extension MinMaxPriceView: UITextFieldDelegate {
 // MARK: - TextField
 
 fileprivate final class TextField: UITextField {
+
   let inset: CGFloat = 10
 
   // placeholder position

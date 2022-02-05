@@ -219,10 +219,10 @@ extension StorePresenter: StorePresenterProtocol {
 
         var priceOption: String = ""
         if let minPrice = data.selectedFilters.first(where: { $0.0 == "min_price" })?.1, let intValue = Int64(minPrice) {
-          priceOption += "От " + formatCurrencyAmount(intValue, currency: "RUB")
+          priceOption += localized("AdvancesdSearch.Price.From").firstLetterUppercased() + " " + formatCurrencyAmount(intValue, currency: "RUB")
         }
         if let maxPrice = data.selectedFilters.first(where: { $0.0 == "max_price" })?.1, let intValue = Int64(maxPrice) {
-          priceOption += " До " + formatCurrencyAmount(intValue, currency: "RUB")
+          priceOption += " " + localized("AdvancesdSearch.Price.To").firstLetterUppercased() + " " + formatCurrencyAmount(intValue, currency: "RUB")
         }
 
         if !priceOption.isNilOrEmpty {
@@ -262,10 +262,10 @@ extension StorePresenter: StorePresenterProtocol {
 
         var priceOption: String = ""
         if let minPrice = data.selectedFilters.first(where: { $0.0 == "min_price" })?.1, let intValue = Int64(minPrice) {
-          priceOption += "От " + formatCurrencyAmount(intValue, currency: "RUB")
+          priceOption += localized("AdvancesdSearch.Price.From").firstLetterUppercased() + " " + formatCurrencyAmount(intValue, currency: "RUB")
         }
         if let maxPrice = data.selectedFilters.first(where: { $0.0 == "max_price" })?.1, let intValue = Int64(maxPrice) {
-          priceOption += " До " + formatCurrencyAmount(intValue, currency: "RUB")
+          priceOption += " " + localized("AdvancesdSearch.Price.To").firstLetterUppercased() + " " + formatCurrencyAmount(intValue, currency: "RUB")
         }
 
         if !priceOption.isNilOrEmpty {

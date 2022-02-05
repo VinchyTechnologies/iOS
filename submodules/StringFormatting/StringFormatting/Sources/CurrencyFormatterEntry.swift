@@ -81,6 +81,13 @@ private func loadCurrencyFormatterEntries() -> [String: CurrencyFormatterEntry] 
 
 private let currencyFormatterEntries = loadCurrencyFormatterEntries()
 
+public func symbol(for currency: String) -> String? {
+  if let entry = currencyFormatterEntries[currency] {
+    return entry.symbol
+  }
+  return nil
+}
+
 public func formatCurrencyAmount(_ amount: Int64, currency: String, shouldAddSymbol: Bool = true) -> String {
   if let entry = currencyFormatterEntries[currency] ?? currencyFormatterEntries["USD"] {
     var result = ""

@@ -244,3 +244,8 @@
 "Widget.CanAddNoMoreThanTwo" = "Добавить в виджет\nне более 2";
 "Widget.UsesWidget" = "В виджите";
 "Widget.Remove" = "Удалить из виджета";
+
+// MARK: - Advancesd Search
+"AdvancesdSearch.Price" = "цена";
+"AdvancesdSearch.Price.From" = "от";
+"AdvancesdSearch.Price.To" = "до";

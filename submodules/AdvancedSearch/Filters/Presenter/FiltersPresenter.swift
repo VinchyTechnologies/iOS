@@ -89,10 +89,20 @@ extension FiltersPresenter: FiltersPresenterProtocol {
 
   func update(filters: [Filter], selectedFilters: [(String, String)], reloadingData: Bool) {
     var sections = [FiltersViewModel.Section]()
-    sections += [.title(content: "Цена, ₽")]
-    let minPrice = selectedFilters.first(where: { $0.0 == "min_price" })?.1
-    let maxPrice = selectedFilters.first(where: { $0.0 == "max_price" })?.1
-    sections += [.price(content: .init(minPrice: minPrice, maxPrice: maxPrice, minPlaceHolderText: "От", maxPlaceHolderText: "До", decimalDigits: 2))] // TODO: - decimalDigits
+    if let symbol = symbol(for: "RUB") {
+      sections += [.title(content: [localized("AdvancesdSearch.Price").firstLetterUppercased(), symbol].joined(separator: ", "))]
+      let minPrice = selectedFilters.first(where: { $0.0 == "min_price" })?.1
+      let maxPrice = selectedFilters.first(where: { $0.0 == "max_price" })?.1
+      sections += [
+        .price(content: .init(
+          minPrice: minPrice,
+          maxPrice: maxPrice,
+          minPlaceHolderText: localized("AdvancesdSearch.Price.From").firstLetterUppercased(),
+          maxPlaceHolderText: localized("AdvancesdSearch.Price.To").firstLetterUppercased(),
+          decimalDigits: 2)),
+      ] // TODO: - decimalDigits
+    }
+
     filters.forEach { filter in
       if filter.category == .country {
         sections += mapCountryFilter(selectedFilters: selectedFilters, filter: filter)
