@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - CurrencyFormatterEntry
 
-private final class CurrencyFormatterEntry {
+public final class CurrencyFormatterEntry {
 
   // MARK: Lifecycle
 
@@ -23,14 +23,14 @@ private final class CurrencyFormatterEntry {
     self.decimalDigits = decimalDigits
   }
 
-  // MARK: Internal
+  // MARK: Public
 
-  let symbol: String
-  let thousandsSeparator: String
-  let decimalSeparator: String
-  let symbolOnLeft: Bool
-  let spaceBetweenAmountAndSymbol: Bool
-  let decimalDigits: Int
+  public let symbol: String
+  public let thousandsSeparator: String
+  public let decimalSeparator: String
+  public let symbolOnLeft: Bool
+  public let spaceBetweenAmountAndSymbol: Bool
+  public let decimalDigits: Int
 }
 
 // MARK: - CurrencyData
@@ -86,6 +86,10 @@ public func symbol(for currency: String) -> String? {
     return entry.symbol
   }
   return nil
+}
+
+public func currencyEntry(for currency: String) -> CurrencyFormatterEntry? {
+  currencyFormatterEntries[currency]
 }
 
 public func formatCurrencyAmount(_ amount: Int64, currency: String, shouldAddSymbol: Bool = true) -> String {

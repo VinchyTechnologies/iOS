@@ -89,7 +89,9 @@ extension FiltersPresenter: FiltersPresenterProtocol {
 
   func update(filters: [Filter], selectedFilters: [(String, String)], reloadingData: Bool) {
     var sections = [FiltersViewModel.Section]()
-    if let symbol = symbol(for: "RUB") {
+    if let currencyEntry = currencyEntry(for: "RUB") {
+      let symbol = currencyEntry.symbol
+      let decimalDigits = currencyEntry.decimalDigits
       sections += [.title(content: [localized("AdvancesdSearch.Price").firstLetterUppercased(), symbol].joined(separator: ", "))]
       let minPrice = selectedFilters.first(where: { $0.0 == "min_price" })?.1
       let maxPrice = selectedFilters.first(where: { $0.0 == "max_price" })?.1
@@ -99,8 +101,8 @@ extension FiltersPresenter: FiltersPresenterProtocol {
           maxPrice: maxPrice,
           minPlaceHolderText: localized("AdvancesdSearch.Price.From").firstLetterUppercased(),
           maxPlaceHolderText: localized("AdvancesdSearch.Price.To").firstLetterUppercased(),
-          decimalDigits: 2)),
-      ] // TODO: - decimalDigits
+          decimalDigits: decimalDigits)),
+      ]
     }
 
     filters.forEach { filter in
