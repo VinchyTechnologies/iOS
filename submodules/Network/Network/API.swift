@@ -1,39 +1,21 @@
 //
 //  API.swift
-//  VinchyCore
+//  Network
 //
-//  Created by Aleksei Smirnov on 18.08.2020.
-//  Copyright © 2020 Aleksei Smirnov. All rights reserved.
+//  Created by Алексей Смирнов on 08.02.2022.
 //
 
-import Foundation
-
-public let domain = "vinchy.tech" // "wineappp.herokuapp.com"
-
-// MARK: - APIError
-
-public enum APIError: Error {
-  case invalidURL
-  case decodingError
-  case incorrectStatusCode(Int)
-  case updateTokensErrorShouldShowAuthScreen
-  case noInternetConnection
-  case unknown
-}
-
-// MARK: - API
-
-final class API {
+public final class API {
 
   // MARK: Lifecycle
 
   private init() {}
 
-  // MARK: Internal
+  // MARK: Public
 
-  static let shared = API()
+  public static let shared = API()
 
-  func request<T: Decodable>(endpoint: EndpointProtocol, completion: @escaping (Result<T, APIError>) -> Void) {
+  public func request<T: Decodable>(endpoint: EndpointProtocol, completion: @escaping (Result<T, APIError>) -> Void) {
     var urlComponents = URLComponents()
     urlComponents.scheme = endpoint.scheme.rawValue
     urlComponents.host = endpoint.host
@@ -122,27 +104,4 @@ final class API {
       }
     }.resume()
   }
-}
-
-extension Dictionary {
-  func percentEncoded() -> Data? {
-    map { key, value in
-      let escapedKey = "\(key)".addingPercentEncoding(withAllowedCharacters: .urlQueryValueAllowed) ?? ""
-      let escapedValue = "\(value)".addingPercentEncoding(withAllowedCharacters: .urlQueryValueAllowed) ?? ""
-      return escapedKey + "=" + escapedValue
-    }
-    .joined(separator: "&")
-    .data(using: .utf8)
-  }
-}
-
-extension CharacterSet {
-  static let urlQueryValueAllowed: CharacterSet = {
-    let generalDelimitersToEncode = ":#[]@" // does not include "?" or "/" due to RFC 3986 - Section 3.4
-    let subDelimitersToEncode = "!$&'()*+,;="
-
-    var allowed = CharacterSet.urlQueryAllowed
-    allowed.remove(charactersIn: "\(generalDelimitersToEncode)\(subDelimitersToEncode)")
-    return allowed
-  }()
 }

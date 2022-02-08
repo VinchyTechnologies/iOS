@@ -9,6 +9,7 @@
 import Core
 import Database
 import FirebaseDynamicLinks
+import Network
 import VinchyCore
 import VinchyUI
 import WineDetail

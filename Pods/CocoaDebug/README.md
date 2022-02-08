@@ -27,7 +27,7 @@
 
 - [x] Long press the black bubble to clean all network logs.
 
-- [x] Detect *FPS*.
+- [x] Detect *UI Blocking*.
 
 - [x] List crash errors.
 
@@ -62,7 +62,7 @@ github  "CocoaDebug/CocoaDebug"
 
 ### *Framework*
 
-*[CocoaDebug.framework](https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/CocoaDebug.framework.zip) (Version 1.6.9)*
+*[CocoaDebug.framework](https://raw.githubusercontent.com/CocoaDebug/CocoaDebug/master/CocoaDebug.framework.zip) (Version 1.7.1)*
 
 > WARNING: Never ship a product which has been linked with the CocoaDebug framework. The [Integration Guide](https://github.com/CocoaDebug/CocoaDebug/wiki/Integration-Guide) outline a way to use build configurations to isolate linking the framework to Debug builds.
 
@@ -71,9 +71,9 @@ github  "CocoaDebug/CocoaDebug"
 ## Usage
 
 - Don't need to do anything. CocoaDebug will start automatically.
-- To capture logs from xcode :
+- To capture logs from Xcode with codes: (You can also set this in *CocoaDebug->App->Monitor->Applogs* without any codes.)
 ```swift
-CocoaDebugSettings.shared.enableLogMonitoring = true
+CocoaDebugSettings.shared.enableLogMonitoring = true //The default value is false
 ```
 - Check [AppDelegate.m](https://github.com/CocoaDebug/CocoaDebug/blob/master/Example_Objc/Example_Objc/AppDelegate.m) OR [AppDelegate.swift](https://github.com/CocoaDebug/CocoaDebug/blob/master/Example_Swift/Example_Swift/AppDelegate.swift) for more advanced usage.
 
@@ -92,8 +92,6 @@ When you initialize CocoaDebug, you can customize the following parameter values
 - `onlyPrefixLogs` - Set the prefix Logs which are only been captured, CocoaDebug capture all Logs when the value is nil. Default value is **nil**.
 
 - `additionalViewController` - Add an additional UIViewController as child controller of CocoaDebug's main UITabBarController. Default value is **nil**.
-
-- `logMaxCount` - The maximum count of logs which CocoaDebug display. Default value is **1000**.
 
 - `emailToRecipients` - Set the initial recipients to include in the email’s “To” field when share via email. Default value is **nil**.
 

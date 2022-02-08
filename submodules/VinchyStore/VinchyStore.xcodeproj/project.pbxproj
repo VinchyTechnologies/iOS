@@ -30,6 +30,7 @@
 		8A9C7F5327613F9300A5B694 /* DisplayMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A9C7F5227613F9300A5B694 /* DisplayMini.framework */; };
 		8ABEF4032779FC270046C43E /* ServicesButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABEF4022779FC270046C43E /* ServicesButtonView.swift */; };
 		8AEC94CC275AA22700C80F1E /* VinchyUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8AEC94CB275AA22700C80F1E /* VinchyUI.framework */; };
+		CA8622CF27B2AA340066682A /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA8622CE27B2AA340066682A /* Network.framework */; };
 		D502406AFE81097E856372FA /* Pods_VinchyStore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 74F4725EF20796D3941585EF /* Pods_VinchyStore.framework */; };
 /* End PBXBuildFile section */
 
@@ -65,6 +66,7 @@
 		8ABEF4022779FC270046C43E /* ServicesButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ServicesButtonView.swift; sourceTree = "<group>"; };
 		8AEC94CB275AA22700C80F1E /* VinchyUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9096DFFB618EF42EBD5962D7 /* Pods-VinchyStore.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyStore.debug.xcconfig"; path = "Target Support Files/Pods-VinchyStore/Pods-VinchyStore.debug.xcconfig"; sourceTree = "<group>"; };
+		CA8622CE27B2AA340066682A /* Network.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Network.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -74,6 +76,7 @@
 			files = (
 				8A0A4496279C5AA1001A8CA1 /* Widget.framework in Frameworks */,
 				8A5145C72757E3C000DC45CD /* StringFormatting.framework in Frameworks */,
+				CA8622CF27B2AA340066682A /* Network.framework in Frameworks */,
 				8A5145DB2757E4D300DC45CD /* Database.framework in Frameworks */,
 				8A5145CB2757E44B00DC45CD /* VinchyCore.framework in Frameworks */,
 				8A9C7F5327613F9300A5B694 /* DisplayMini.framework in Frameworks */,
@@ -214,6 +217,7 @@
 		E94AC55A1CC12A813A7EEF98 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CA8622CE27B2AA340066682A /* Network.framework */,
 				8A0A4495279C5AA1001A8CA1 /* Widget.framework */,
 				8A9C7F5227613F9300A5B694 /* DisplayMini.framework */,
 				8A07B9E3275D1BB500AF27B0 /* AdUI.framework */,

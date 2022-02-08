@@ -7,6 +7,7 @@
 //
 
 import Core
+import Network
 
 private let reviewDomain = "reviews.vinchy.tech"
 

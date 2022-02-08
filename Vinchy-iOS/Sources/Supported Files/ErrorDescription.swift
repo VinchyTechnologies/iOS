@@ -7,6 +7,7 @@
 //
 
 import Display
+import Network
 import StringFormatting
 import VinchyCore
 

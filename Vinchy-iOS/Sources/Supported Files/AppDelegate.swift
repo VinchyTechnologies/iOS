@@ -25,7 +25,10 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     -> Bool
   {
     // FirebaseConfiguration.shared.setLoggerLevel(.min)
+
+//    if Architecture.isRosettaEmulated {
     FirebaseApp.configure()
+//    }
 
     let defaultValue = ["isAdAvailable": true as NSObject, "force_update_versions": [String]() as NSObject]
     remoteConfig.setDefaults(defaultValue)
@@ -78,3 +81,42 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     }
   }
 }
+
+// MARK: - Architecture
+
+//@objc(PSTArchitecture) class Architecture: NSObject {
+//  /// Check if process runs under Rosetta 2.
+//  ///
+//  /// Use to disable tests that use WebKit when running on Apple Silicon
+//  /// FB8920323: Crash in WebKit memory allocator on Apple Silicon when  iOS below 14
+//  /// Crash is in JavaScriptCore: bmalloc::HeapConstants::HeapConstants(std::__1::lock_guard<bmalloc::Mutex> const&)
+//  @objc class var isRosettaEmulated: Bool {
+//    // Issue is specific to Simulator, not real devices
+//    #if targetEnvironment(simulator)
+//    return processIsTranslated() == EMULATED_EXECUTION
+//    #else
+//    return false
+//    #endif
+//  }
+//}
+//
+//let NATIVE_EXECUTION = Int32(0)
+//let EMULATED_EXECUTION = Int32(1)
+//let UNKNOWN_EXECUTION = -Int32(1)
+//
+///// Test if the process runs natively or under Rosetta
+///// https://developer.apple.com/forums/thread/652667?answerId=618217022&page=1#622923022
+//private func processIsTranslated() -> Int32 {
+//  let key = "sysctl.proc_translated"
+//  var ret = Int32(0)
+//  var size: Int = 0
+//  sysctlbyname(key, nil, &size, nil, 0)
+//  let result = sysctlbyname(key, &ret, &size, nil, 0)
+//  if result == -1 {
+//    if errno == ENOENT {
+//      return 0
+//    }
+//    return -1
+//  }
+//  return ret
+//}
