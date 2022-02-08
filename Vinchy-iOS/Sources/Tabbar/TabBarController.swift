@@ -67,9 +67,14 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
       NSAttributedString.Key.font: titleFontAll,
     ]
 
+    UITabBarItem.appearance().setTitleTextAttributes(attributesNormal, for: .normal)
+    UITabBarItem.appearance().setTitleTextAttributes(attributesSelected, for: .selected)
+
     let appearance = UITabBarAppearance()
     appearance.configureWithOpaqueBackground()
     appearance.backgroundColor = .mainBackground
+//    appearance.shadowImage = nil
+//    appearance.shadowColor = .mainBackground
     let tabBarItemAppearance = UITabBarItemAppearance()
     tabBarItemAppearance.selected.titleTextAttributes = attributesSelected
     tabBarItemAppearance.normal.titleTextAttributes = attributesNormal
