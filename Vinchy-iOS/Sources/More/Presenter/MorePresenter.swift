@@ -71,9 +71,14 @@ final class MorePresenter {
       detailText: localized("email_us").firstLetterUppercased())
     sections.append(.email([emailViewModel]))
 
+    var partnerIcon = UIImage(systemName: "briefcase.fill")
+    if #available(iOS 14.0, *) {
+      partnerIcon = UIImage(systemName: "case.fill")
+    }
+
     let partnerViewModel = ContactCellViewModel(
       titleText: localized("looking_for_partners").firstLetterUppercased(),
-      icon: UIImage(systemName: "case.fill"),
+      icon: partnerIcon,
       detailText: localized("become_a_part_of_a_wine_startup").firstLetterUppercased())
     sections.append(.partner([partnerViewModel]))
 
