@@ -34,6 +34,7 @@ public struct ContextMenuItemViewModel {
 public protocol WineBottleViewDelegate: AnyObject {
   func didTapShareContextMenu(wineID: Int64, sourceView: UIView)
   func didTapWriteNoteContextMenu(wineID: Int64)
+  func didTapPriceButton(_ button: UIButton, wineID: Int64)
 }
 
 // MARK: - Constants
@@ -283,8 +284,17 @@ public final class WineBottleView: UIView, EpoxyableView, UIGestureRecognizerDel
     $0.heightAnchor.constraint(equalToConstant: 30).isActive = true
     $0.titleLabel?.font = Font.with(size: 16, design: .round, traits: .bold)
     $0.contentEdgeInsets = .init(top: 0, left: 12, bottom: 0, right: 12)
+    $0.addTarget(self, action: #selector(didTapPriceButton(_:)), for: .touchUpInside)
     return $0
   }(Button())
+
+  @objc
+  private func didTapPriceButton(_ button: UIButton) {
+    guard let wineID = wineID else {
+      return
+    }
+    delegate?.didTapPriceButton(button, wineID: wineID)
+  }
 
   @objc
   private func handleLongPress(gestureRecognizer: UILongPressGestureRecognizer) {

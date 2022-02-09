@@ -11,7 +11,8 @@ import VinchyUI
 
 protocol StoreInteractorProtocol: WineViewContextMenuTappable, AdvancedSearchOutputDelegate {
   func viewDidLoad()
-  func didSelectWine(wineID: Int64)
+  func didSelectHorizontalWine(wineID: Int64)
+  func didSelectRecommendedWine(wineID: Int64)
   func willDisplayLoadingView()
   func didTapReloadButton()
   func didTapFilterButton()
@@ -20,4 +21,5 @@ protocol StoreInteractorProtocol: WineViewContextMenuTappable, AdvancedSearchOut
   func didTapHorizontalWineViewButton(wineID: Int64)
   func didTapLikeButton()
   func didTapShare(button: UIButton)
+  func didTapRecommendedWineButton(wineID: Int64)
 }

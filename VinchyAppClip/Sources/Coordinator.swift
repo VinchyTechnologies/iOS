@@ -48,8 +48,8 @@ final class Coordinator: WineDetailRoutable, ActivityRoutable, WriteNoteRoutable
       animated: true)
   }
 
-  func presentWineDetailViewController(wineID: Int64) {
-    let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID, isAppClip: true), coordinator: Coordinator.shared, adGenerator: nil)
+  func presentWineDetailViewController(wineID: Int64, mode: WineDetailMode) {
+    let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID, mode: mode, isAppClip: true), coordinator: Coordinator.shared, adGenerator: nil)
     let navigationController = VinchyNavigationController(rootViewController: controller)
     navigationController.modalPresentationStyle = .overFullScreen
     UIApplication.topViewController()?.present(
@@ -67,11 +67,11 @@ final class Coordinator: WineDetailRoutable, ActivityRoutable, WriteNoteRoutable
     UIApplication.topViewController()?.present(controller, animated: true)
   }
 
-  func pushToWineDetailViewController(wineID: Int64) {
+  func pushToWineDetailViewController(wineID: Int64, mode: WineDetailMode) {
     if UIDevice.current.userInterfaceIdiom == .pad {
-      presentWineDetailViewController(wineID: wineID)
+      presentWineDetailViewController(wineID: wineID, mode: mode)
     } else {
-      let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID, isAppClip: true), coordinator: Coordinator.shared, adGenerator: nil)
+      let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID, mode: mode, isAppClip: true), coordinator: Coordinator.shared, adGenerator: nil)
       controller.hidesBottomBarWhenPushed = true
       UIApplication.topViewController()?.navigationController?.pushViewController(
         controller,

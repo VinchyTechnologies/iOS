@@ -192,9 +192,9 @@ final class StoreViewController: CollectionViewController {
                 behaviors: .init(didTap: { [weak self] _, wineID in
                   self?.interactor?.didTapHorizontalWineViewButton(wineID: wineID)
                 }),
-                style: .init(kind: .common))
+                style: .init(id: UUID(), kind: .common))
                 .didSelect { [weak self] _ in
-                  self?.interactor?.didSelectWine(wineID: content.wineID)
+                  self?.interactor?.didSelectHorizontalWine(wineID: content.wineID)
                 }
                 .flowLayoutItemSize(.init(width: collectionViewSize.width, height: content.height(width: collectionViewSize.width)))
 
@@ -411,12 +411,17 @@ extension StoreViewController: Loadable {
 // MARK: BottlesCollectionViewDelegate
 
 extension StoreViewController: BottlesCollectionViewDelegate {
+
+  func didTapPriceButton(_ button: UIButton, wineID: Int64) {
+    interactor?.didTapRecommendedWineButton(wineID: wineID)
+  }
+
   func didTapWriteNoteContextMenu(wineID: Int64) {
     interactor?.didTapWriteNoteContextMenu(wineID: wineID)
   }
 
   func didTap(wineID: Int64) {
-    interactor?.didSelectWine(wineID: wineID)
+    interactor?.didSelectRecommendedWine(wineID: wineID)
   }
 
   func didTapShareContextMenu(wineID: Int64, sourceView: UIView) {

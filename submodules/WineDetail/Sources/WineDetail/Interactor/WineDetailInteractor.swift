@@ -131,14 +131,31 @@ final class WineDetailInteractor {
       self.dispatchWorkItemHud.cancel()
 
       if let wine = self.wine {
+
         Task {
+          var price: Int64 = wine.price ?? 0
+          var currency = UserDefaultsConfig.currency
+          var isAccuratePrice = false
+
+          switch self.input.mode {
+          case .normal:
+            break
+
+          case .partner(_, price: let aPrice, _):
+            price = aPrice.amount
+            currency = aPrice.currencyCode
+            isAccuratePrice = true
+          }
+
           await self.presenter.update(
             wine: wine,
             reviews: self.reviews,
             isLiked: self.isFavourite(wine: wine),
             isDisliked: self.isDisliked(wine: wine),
             rating: self.rating,
-            currency: UserDefaultsConfig.currency,
+            price: price,
+            currency: currency,
+            isAccuratePrice: isAccuratePrice,
             stores: self.stores,
             isGeneralInfoCollapsed: self.isGeneralInfoCollapsed)
         }
@@ -263,7 +280,7 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
   }
 
   func didSelectWine(wineID: Int64) {
-    router.pushToWineDetailViewController(wineID: wineID)
+    router.pushToWineDetailViewController(wineID: wineID, mode: .normal)
   }
 
   func didTapSeeAllStores() {
@@ -347,8 +364,26 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
   }
 
   func didTapPriceButton() {
-    if !(stores?.isEmpty == true) {
-      presenter.scrollToWhereToBuySections()
+
+    switch input.mode {
+    case .normal:
+      if !(stores?.isEmpty == true) {
+        presenter.scrollToWhereToBuySections()
+      }
+
+    case .partner(_, _, buyAction: let buyAction):
+      switch buyAction {
+      case .openURL(let url):
+        if let url = url {
+          router.presentSafari(url: url)
+        }
+
+      case .cart:
+        break
+
+      case .none:
+        break
+      }
     }
   }
 
@@ -426,6 +461,6 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
   }
 
   func didTapSimilarWine(wineID: Int64) {
-    router.pushToWineDetailViewController(wineID: wineID)
+    router.pushToWineDetailViewController(wineID: wineID, mode: .normal)
   }
 }

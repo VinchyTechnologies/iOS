@@ -42,10 +42,12 @@ public final class HorizontalWineView: UIView, EpoxyableView {
       case price
     }
 
-    public init(kind: Kind) {
+    public init(id: UUID, kind: Kind) {
+      self.id = id
       self.kind = kind
     }
 
+    let id: UUID
     let kind: Kind
   }
 

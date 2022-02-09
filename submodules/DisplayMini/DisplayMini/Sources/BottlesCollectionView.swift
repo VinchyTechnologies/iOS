@@ -16,6 +16,7 @@ public protocol BottlesCollectionViewDelegate: AnyObject {
   func didTapShareContextMenu(wineID: Int64, sourceView: UIView)
   func didTapWriteNoteContextMenu(wineID: Int64)
   func didTap(wineID: Int64)
+  func didTapPriceButton(_ button: UIButton, wineID: Int64)
 }
 
 // MARK: - BottlesCollectionView
@@ -105,6 +106,11 @@ public final class BottlesCollectionView: CollectionView, EpoxyableView {
 // MARK: WineBottleViewDelegate
 
 extension BottlesCollectionView: WineBottleViewDelegate {
+
+  public func didTapPriceButton(_ button: UIButton, wineID: Int64) {
+    bottlesCollectionViewDelegate?.didTapPriceButton(button, wineID: wineID)
+  }
+
   public func didTapWriteNoteContextMenu(wineID: Int64) {
     bottlesCollectionViewDelegate?.didTapWriteNoteContextMenu(wineID: wineID)
   }

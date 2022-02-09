@@ -46,14 +46,18 @@ final class WineDetailViewModelFactory {
     return [.rate(itemID: .rate, content: rateViewModel)]
   }
 
-  func buildToolSection(wine: Wine, currency: String, isLiked: Bool, isAppClip: Bool) async -> [WineDetailViewModel.Section] {
+  func buildToolSection(price: Int64, currency: String, isAccuratePrice: Bool, isLiked: Bool, isAppClip: Bool) async -> [WineDetailViewModel.Section] {
     if !isAppClip {
+      var priceText = ""
+      if !isAccuratePrice {
+        priceText += "~"
+      }
+      priceText += formatCurrencyAmount(price, currency: currency)
       return [
         .tool(
           itemID: .tool,
           content: .init(
-            price: formatCurrencyAmount(
-              wine.price ?? 0, currency: currency),
+            price: priceText,
             isLiked: isLiked,
             isAppClip: isAppClip)),
       ]

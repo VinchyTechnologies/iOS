@@ -58,7 +58,9 @@ final class WineDetailPresenter {
     isLiked: Bool,
     isDisliked: Bool,
     rating: Rating?,
+    price: Int64,
     currency: String,
+    isAccuratePrice: Bool,
     stores: [PartnerInfo]?,
     isGeneralInfoCollapsed: Bool) async
     -> [WineDetailViewModel.Section]
@@ -69,8 +71,9 @@ final class WineDetailPresenter {
     sections += await viewModelFactory.buildTitle(wine: wine)
     sections += await viewModelFactory.buildStarRateControl(rating: rating)
     sections += await viewModelFactory.buildToolSection(
-      wine: wine,
+      price: price,
       currency: currency,
+      isAccuratePrice: isAccuratePrice,
       isLiked: isLiked,
       isAppClip: input.isAppClip)
 
@@ -111,23 +114,29 @@ final class WineDetailPresenter {
 
       /// where to buy
 
-      if let stores = stores, !stores.isEmpty {
-        sections += [
-          .ratingAndReview(
-            itemID: .whereToBuyTitle,
-            content: TitleAndMoreView.Content(
-              titleText: localized("where_to_buy").firstLetterUppercased(),
-              moreText: localized("see_all").firstLetterUppercased(),
-              shouldShowMoreText: stores.count >= 5)),
-        ]
+      switch input.mode {
+      case .normal:
+        if let stores = stores, !stores.isEmpty {
+          sections += [
+            .ratingAndReview(
+              itemID: .whereToBuyTitle,
+              content: TitleAndMoreView.Content(
+                titleText: localized("where_to_buy").firstLetterUppercased(),
+                moreText: localized("see_all").firstLetterUppercased(),
+                shouldShowMoreText: stores.count >= 5)),
+          ]
 
-        let storeViewModels: [WhereToBuyCellViewModel] = stores.compactMap { partner in
-          .init(affilatedId: partner.affiliatedStoreId, imageURL: partner.logoURL, titleText: partner.title, subtitleText: nil)
+          let storeViewModels: [WhereToBuyCellViewModel] = stores.compactMap { partner in
+            .init(affilatedId: partner.affiliatedStoreId, imageURL: partner.logoURL, titleText: partner.title, subtitleText: nil)
+          }
+
+          sections += [
+            .whereToBuy(itemID: .whereToBuy, content: storeViewModels),
+          ]
         }
 
-        sections += [
-          .whereToBuy(itemID: .whereToBuy, content: storeViewModels),
-        ]
+      case .partner:
+        break
       }
     }
 
@@ -263,7 +272,9 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
     isLiked: Bool,
     isDisliked: Bool,
     rating: Rating?,
+    price: Int64,
     currency: String,
+    isAccuratePrice: Bool,
     stores: [PartnerInfo]?,
     isGeneralInfoCollapsed: Bool) async
   {
@@ -274,7 +285,9 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
       isLiked: isLiked,
       isDisliked: isDisliked,
       rating: rating,
+      price: price,
       currency: currency,
+      isAccuratePrice: isAccuratePrice,
       stores: stores,
       isGeneralInfoCollapsed: isGeneralInfoCollapsed)
 

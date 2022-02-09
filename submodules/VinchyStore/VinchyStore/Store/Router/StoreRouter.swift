@@ -77,12 +77,18 @@ extension StoreRouter: StoreRouterProtocol {
     coordinator.presentWriteViewController(wine: wine)
   }
 
-  func pushToWineDetailViewController(wineID: Int64) {
-    coordinator.pushToWineDetailViewController(wineID: wineID)
+  func pushToWineDetailViewController(
+    wineID: Int64,
+    mode: WineDetailMode)
+  {
+    coordinator.pushToWineDetailViewController(wineID: wineID, mode: mode)
   }
 
-  func presentWineDetailViewController(wineID: Int64) {
-    coordinator.presentWineDetailViewController(wineID: wineID)
+  func presentWineDetailViewController(
+    wineID: Int64,
+    mode: WineDetailMode)
+  {
+    coordinator.presentWineDetailViewController(wineID: wineID, mode: mode)
   }
 
   func presentFilter(preselectedFilters: [(String, String)], isPriceFilterAvailable: Bool) {

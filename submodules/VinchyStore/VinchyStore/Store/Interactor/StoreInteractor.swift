@@ -248,10 +248,16 @@ final class StoreInteractor {
 // MARK: StoreInteractorProtocol
 
 extension StoreInteractor: StoreInteractorProtocol {
+
   var contextMenuRouter: ActivityRoutable & WriteNoteRoutable {
     router
   }
 
+  func didTapRecommendedWineButton(wineID: Int64) {
+    if let wineURL = personalRecommendedWines?.first(where: { $0.id == wineID })?.url?.toURL {
+      router.presentSafari(url: wineURL)
+    }
+  }
   func didTapShare(button: UIButton) {
     guard let partnerInfo = partnerInfo else {
       return
@@ -374,8 +380,26 @@ extension StoreInteractor: StoreInteractorProtocol {
     loadInitData()
   }
 
-  func didSelectWine(wineID: Int64) {
-    router.pushToWineDetailViewController(wineID: wineID)
+  func didSelectHorizontalWine(wineID: Int64) {
+    guard let partnerInfo = partnerInfo else {
+      return
+    }
+    var mode: WineDetailMode = .normal
+    if let wine = assortimentWines.first(where: { $0.id == wineID }), let price = wine.price {
+      mode = .partner(affilatedId: partnerInfo.affiliatedStoreId, price: price, buyAction: .openURL(url: wine.url?.toURL))
+    }
+    router.pushToWineDetailViewController(wineID: wineID, mode: mode)
+  }
+
+  func didSelectRecommendedWine(wineID: Int64) {
+    guard let partnerInfo = partnerInfo else {
+      return
+    }
+    var mode: WineDetailMode = .normal
+    if let wine = personalRecommendedWines?.first(where: { $0.id == wineID }), let price = wine.price {
+      mode = .partner(affilatedId: partnerInfo.affiliatedStoreId, price: price, buyAction: .openURL(url: wine.url?.toURL))
+    }
+    router.pushToWineDetailViewController(wineID: wineID, mode: mode)
   }
 }
 
@@ -383,7 +407,14 @@ extension StoreInteractor: StoreInteractorProtocol {
 
 extension StoreInteractor: ResultsSearchDelegate {
   func didTapBottleCell(wineID: Int64) {
-    router.pushToWineDetailViewController(wineID: wineID)
+    guard let partnerInfo = partnerInfo else {
+      return
+    }
+    var mode: WineDetailMode = .normal
+//    if let wine = assortimentWines.first(where: { $0.id == wineID }), let price = wine.price {
+//      mode = .partner(affilatedId: partnerInfo.affiliatedStoreId, price: price, buyAction: .openURL(url: wine.url?.toURL))
+//    }
+    router.pushToWineDetailViewController(wineID: wineID, mode: mode)
   }
 
   func didTapSearchButton(searchText: String?) { }

@@ -566,6 +566,11 @@ extension WineDetailViewController: StarRatingControlCollectionCellDelegate {
 // MARK: BottlesCollectionViewDelegate
 
 extension WineDetailViewController: BottlesCollectionViewDelegate {
+
+  func didTapPriceButton(_ button: UIButton, wineID: Int64) {
+
+  }
+
   func didTapWriteNoteContextMenu(wineID: Int64) {
     interactor?.didTapWriteNoteContextMenu(wineID: wineID)
   }

@@ -6,7 +6,26 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import VinchyCore
+
+// MARK: - WineDetailRoutable
+
 public protocol WineDetailRoutable: AnyObject {
-  func pushToWineDetailViewController(wineID: Int64)
-  func presentWineDetailViewController(wineID: Int64)
+  func pushToWineDetailViewController(wineID: Int64, mode: WineDetailMode)
+  func presentWineDetailViewController(wineID: Int64, mode: WineDetailMode)
+}
+
+
+// MARK: - WineDetailMode
+
+public enum WineDetailMode {
+
+  public enum BuyAction {
+    case openURL(url: URL?)
+    case cart
+    case none
+  }
+
+  case normal
+  case partner(affilatedId: Int, price: Price, buyAction: BuyAction)
 }

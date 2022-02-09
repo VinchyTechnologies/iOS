@@ -199,6 +199,6 @@ extension ShowcaseInteractor: ShowcaseInteractorProtocol {
   }
 
   func didSelectWine(wineID: Int64) {
-    router.pushToWineDetailViewController(wineID: wineID)
+    router.pushToWineDetailViewController(wineID: wineID, mode: .normal)
   }
 }

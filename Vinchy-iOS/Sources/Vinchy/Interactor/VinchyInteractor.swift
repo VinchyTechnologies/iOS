@@ -253,7 +253,7 @@ extension VinchyInteractor: VinchyInteractorProtocol {
 
 extension VinchyInteractor {
   func didTapBottleCell(wineID: Int64) {
-    router.pushToWineDetailViewController(wineID: wineID)
+    router.pushToWineDetailViewController(wineID: wineID, mode: .normal)
   }
 
   func didTapCompilationCell(collectionID: Int) {

@@ -286,6 +286,6 @@ extension RatesInteractor: RatesInteractorProtocol {
   }
 
   func didSelectReview(wineID: Int64) {
-    router.pushToWineDetailViewController(wineID: wineID)
+    router.pushToWineDetailViewController(wineID: wineID, mode: .normal)
   }
 }

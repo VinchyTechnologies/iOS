@@ -44,6 +44,11 @@ final class WineDetailRouter {
 // MARK: WineDetailRouterProtocol
 
 extension WineDetailRouter: WineDetailRouterProtocol {
+
+  func presentSafari(url: URL) {
+    coordinator.presentSafari(url: url)
+  }
+
   func pushToShowcaseViewController(input: ShowcaseInput) {
     coordinator.pushToShowcaseViewController(input: input)
   }
@@ -68,12 +73,12 @@ extension WineDetailRouter: WineDetailRouterProtocol {
     coordinator.pushToStoresViewController(wineID: wineID)
   }
 
-  func pushToWineDetailViewController(wineID: Int64) {
-    coordinator.pushToWineDetailViewController(wineID: wineID)
+  func pushToWineDetailViewController(wineID: Int64, mode: WineDetailMode) {
+    coordinator.pushToWineDetailViewController(wineID: wineID, mode: mode)
   }
 
-  func presentWineDetailViewController(wineID: Int64) {
-    coordinator.presentWineDetailViewController(wineID: wineID)
+  func presentWineDetailViewController(wineID: Int64, mode: WineDetailMode) {
+    coordinator.presentWineDetailViewController(wineID: wineID, mode: mode)
   }
 
   func pushToReviewsViewController(wineID: Int64) {

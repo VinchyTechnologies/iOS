@@ -113,7 +113,7 @@ final class ToolView: UIView, EpoxyableView {
   func setContent(_ content: Content, animated: Bool) {
     self.content = content
     let title = NSAttributedString(
-      string: "~" + (content.price ?? "0.00"),
+      string: content.price ?? "0.00",
       font: Font.with(size: 20, design: .round, traits: .bold),
       textColor: .white,
       paragraphAlignment: .center)

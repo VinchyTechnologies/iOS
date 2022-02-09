@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import VinchyUI
 
 // MARK: - AreYouInStoreInteractor
 
@@ -37,7 +38,11 @@ final class AreYouInStoreInteractor {
 extension AreYouInStoreInteractor: AreYouInStoreInteractorProtocol {
 
   func didTapBottle(wineID: Int64) {
-    router.presentWineDetailViewController(wineID: wineID)
+    var mode: WineDetailMode = .normal
+    if let wine = input.partner.recommendedWines.first(where: { $0.id == wineID }), let price = wine.price {
+      mode = .partner(affilatedId: input.partner.partner.affiliatedStoreId, price: price, buyAction: .openURL(url: wine.url?.toURL))
+    }
+    router.presentWineDetailViewController(wineID: wineID, mode: mode)
   }
 
   func didTapStoreButton() {
