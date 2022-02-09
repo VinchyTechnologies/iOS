@@ -7,6 +7,7 @@
 //
 
 import AdvancedSearch
+import Core
 import Database
 import FirebaseDynamicLinks
 import FittedSheets
@@ -176,7 +177,7 @@ extension AuthorizationRoutable {
 
 extension WineViewContextMenuTappable {
   public func didTapWriteNoteContextMenu(wineID: Int64) {
-    Wines.shared.getDetailWine(wineID: wineID) { [weak self] result in
+    Wines.shared.getDetailWine(wineID: wineID, currencyCode: UserDefaultsConfig.currency) { [weak self] result in
       guard let self = self else { return }
       switch result {
       case .success(let response):
@@ -194,7 +195,7 @@ extension WineViewContextMenuTappable {
   }
 
   public func didTapShareContextMenu(wineID: Int64, sourceView: UIView) {
-    Wines.shared.getDetailWine(wineID: wineID) { [weak self] result in
+    Wines.shared.getDetailWine(wineID: wineID, currencyCode: UserDefaultsConfig.currency) { [weak self] result in
       guard let self = self else { return }
       switch result {
       case .success(let response):

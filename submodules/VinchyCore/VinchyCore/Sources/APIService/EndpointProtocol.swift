@@ -6,7 +6,6 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import Core
 import Network
 
 // MARK: - Scheme
@@ -32,7 +31,6 @@ extension EndpointProtocol {
     [
       "Authorization": "VFAXGm53nG7zBtEuF5DVAhK9YKuHBJ9xTjuCeFyHDxbP4s6gj6",
       "accept-language": Locale.current.languageCode ?? "en",
-      "x-currency": UserDefaultsConfig.currency,
     ]
   }
 

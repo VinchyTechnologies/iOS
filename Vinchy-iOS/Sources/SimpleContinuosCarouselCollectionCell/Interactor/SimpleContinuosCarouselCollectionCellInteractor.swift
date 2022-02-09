@@ -124,7 +124,7 @@ extension SimpleContinuosCarouselCollectionCellInteractor: SimpleContinuosCarous
   func didTapShareContextMenu(wineID: Int64) {
     dispatchGroup.enter()
     var error: Error?
-    Wines.shared.getDetailWine(wineID: wineID) { [weak self]
+    Wines.shared.getDetailWine(wineID: wineID, currencyCode: UserDefaultsConfig.currency) { [weak self]
       result in
       guard let self = self else { return }
       switch result {
@@ -186,7 +186,7 @@ extension SimpleContinuosCarouselCollectionCellInteractor: SimpleContinuosCarous
   func didTapWriteNoteContextMenu(wineID: Int64) {
     dispatchGroup.enter()
     var error: Error?
-    Wines.shared.getDetailWine(wineID: wineID) { [weak self]
+    Wines.shared.getDetailWine(wineID: wineID, currencyCode: UserDefaultsConfig.currency) { [weak self]
       result in
       guard let self = self else { return }
       switch result {

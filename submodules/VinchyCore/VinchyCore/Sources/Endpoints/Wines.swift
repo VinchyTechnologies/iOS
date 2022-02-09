@@ -5,13 +5,14 @@
 //  Created by Aleksei Smirnov on 18.08.2020.
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
+
 import Network
 
 // MARK: - WinesEndpoint
 
 private enum WinesEndpoint: EndpointProtocol {
-  case random(count: Int)
-  case detail(wineID: Int64)
+//  case random(count: Int)
+  case detail(wineID: Int64, currencyCode: String)
   case filter(param: [(String, String)])
   case search(title: String, offset: Int, limit: Int)
   case reviewdWines(accountId: Int, offset: Int, limit: Int)
@@ -24,11 +25,11 @@ private enum WinesEndpoint: EndpointProtocol {
 
   var path: String {
     switch self {
-    case .detail(let wineID):
+    case .detail(let wineID, _):
       return "/wines/" + String(wineID)
 
-    case .random:
-      return "/random_wines"
+//    case .random:
+//      return "/random_wines"
 
     case .filter:
       return "/wines"
@@ -43,7 +44,7 @@ private enum WinesEndpoint: EndpointProtocol {
 
   var method: HTTPMethod {
     switch self {
-    case .detail, .random, .filter, .search, .reviewdWines:
+    case .detail, /*.random,*/ .filter, .search, .reviewdWines:
       return .get
     }
   }
@@ -53,8 +54,8 @@ private enum WinesEndpoint: EndpointProtocol {
     case .detail:
       return nil
 
-    case .random(let count):
-      return [("count", String(count))]
+//    case .random(let count):
+//      return [("count", String(count))]
 
     case .filter(let params):
       return params
@@ -74,6 +75,23 @@ private enum WinesEndpoint: EndpointProtocol {
       ]
     }
   }
+
+  var headers: HTTPHeaders? {
+    switch self {
+    case .detail(_, let currencyCode):
+      return [
+        "Authorization": "VFAXGm53nG7zBtEuF5DVAhK9YKuHBJ9xTjuCeFyHDxbP4s6gj6",
+        "accept-language": Locale.current.languageCode ?? "en",
+        "x-currency": currencyCode,
+      ]
+
+    case .filter, .search, .reviewdWines:
+      return [
+        "Authorization": "VFAXGm53nG7zBtEuF5DVAhK9YKuHBJ9xTjuCeFyHDxbP4s6gj6",
+        "accept-language": Locale.current.languageCode ?? "en",
+      ]
+    }
+  }
 }
 
 // MARK: - Wines
@@ -88,13 +106,13 @@ public final class Wines {
 
   public static let shared = Wines()
 
-  public func getDetailWine(wineID: Int64, completion: @escaping (Result<Wine, APIError>) -> Void) {
-    api.request(endpoint: WinesEndpoint.detail(wineID: wineID), completion: completion)
+  public func getDetailWine(wineID: Int64, currencyCode: String, completion: @escaping (Result<Wine, APIError>) -> Void) {
+    api.request(endpoint: WinesEndpoint.detail(wineID: wineID, currencyCode: currencyCode), completion: completion)
   }
 
-  public func getRandomWines(count: Int, completion: @escaping (Result<[Wine], APIError>) -> Void) {
-    api.request(endpoint: WinesEndpoint.random(count: count), completion: completion)
-  }
+//  public func getRandomWines(count: Int, completion: @escaping (Result<[Wine], APIError>) -> Void) {
+//    api.request(endpoint: WinesEndpoint.random(count: count), completion: completion)
+//  }
 
   public func getFilteredWines(params: [(String, String)], completion: @escaping (Result<[ShortWine], APIError>) -> Void) {
     api.request(endpoint: WinesEndpoint.filter(param: params), completion: completion)

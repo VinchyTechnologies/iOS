@@ -150,7 +150,7 @@ final class StoreInteractor {
             return (serverName, $0.1)
           }
           return nil
-        }),
+        }), currencyCode: "RUB",
         limit: C.limit,
         offset: offset) { [weak self] result in
           guard let self = self else { return }
@@ -286,7 +286,7 @@ extension StoreInteractor: StoreInteractorProtocol {
   }
 
   func didTapShareContextMenu(wineID: Int64, sourceView: UIView) {
-    Wines.shared.getDetailWine(wineID: wineID) { [weak self] result in
+    Wines.shared.getDetailWine(wineID: wineID, currencyCode: UserDefaultsConfig.currency) { [weak self] result in
       guard let self = self else { return }
       switch result {
       case .success(let response):
@@ -304,7 +304,7 @@ extension StoreInteractor: StoreInteractorProtocol {
   }
 
   func didTapWriteNoteContextMenu(wineID: Int64) {
-    Wines.shared.getDetailWine(wineID: wineID) { [weak self] result in
+    Wines.shared.getDetailWine(wineID: wineID, currencyCode: UserDefaultsConfig.currency) { [weak self] result in
       guard let self = self else { return }
       switch result {
       case .success(let response):
