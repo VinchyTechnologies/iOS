@@ -10,6 +10,7 @@ import Combine
 import Core
 import Database
 import FirebaseDynamicLinks
+import Network
 import VinchyCore
 
 // MARK: - C

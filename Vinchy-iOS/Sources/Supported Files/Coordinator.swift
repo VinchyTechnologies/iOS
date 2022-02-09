@@ -10,6 +10,7 @@ import AdvancedSearch
 import Database
 import FirebaseDynamicLinks
 import FittedSheets
+import Network
 import UIKit
 import VinchyAuthorization
 import VinchyCore

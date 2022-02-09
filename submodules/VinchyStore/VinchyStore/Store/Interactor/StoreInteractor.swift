@@ -9,6 +9,7 @@
 import Core
 import CoreLocation
 import Database
+import Network
 import Spotlight
 import UIKit
 import VinchyCore

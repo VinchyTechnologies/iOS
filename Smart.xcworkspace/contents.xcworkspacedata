@@ -36,6 +36,9 @@
          location = "group:submodules/LocationUI/LocationUI.xcodeproj">
       </FileRef>
       <FileRef
+         location = "group:submodules/Network/Network.xcodeproj">
+      </FileRef>
+      <FileRef
          location = "group:submodules/NotificationsDebug/NotificationsDebug.xcodeproj">
       </FileRef>
       <FileRef

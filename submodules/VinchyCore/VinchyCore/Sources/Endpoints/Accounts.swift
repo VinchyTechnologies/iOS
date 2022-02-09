@@ -7,6 +7,7 @@
 //
 
 import Core
+import Network
 import UIKit.UIDevice
 
 private let authDomain = "auth.vinchy.tech"

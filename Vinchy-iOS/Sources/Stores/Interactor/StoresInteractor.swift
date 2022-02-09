@@ -8,6 +8,7 @@
 
 import Core
 import Database
+import Network
 import VinchyCore
 import Widget
 

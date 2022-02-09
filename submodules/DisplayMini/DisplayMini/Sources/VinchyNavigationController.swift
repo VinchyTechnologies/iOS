@@ -22,6 +22,7 @@ open class VinchyNavigationController: UINavigationController {
     let backImage = UIImage(systemName: "chevron.left", withConfiguration: imageConfig)
 
     let navBarAppearance = UINavigationBarAppearance()
+    navBarAppearance.shadowColor = .clear
     navBarAppearance.titleTextAttributes = [
       NSAttributedString.Key.font: Font.bold(20),
       NSAttributedString.Key.foregroundColor: UIColor.dark,

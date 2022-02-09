@@ -10,6 +10,7 @@ import Core
 import CoreLocation
 import DisplayMini
 import MapKit
+import Network
 import StringFormatting
 import UIKit
 import VinchyCore
