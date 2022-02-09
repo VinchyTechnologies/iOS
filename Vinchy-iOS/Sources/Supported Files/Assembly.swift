@@ -22,14 +22,6 @@ final class Assembly {
     return controller
   }
 
-  static func buildFiltersModule() -> UIViewController {
-    let controller = AdvancedSearchAssembly.assemblyModule(
-      input: .init(mode: .normal),
-      coordinator: Coordinator.shared)
-    controller.hidesBottomBarWhenPushed = true
-    return controller
-  }
-
   static func buildMainModule() -> VinchyNavigationController {
     let controller = VinchyAssembly.assemblyModule()
     let navController = VinchyNavigationController(rootViewController: controller)

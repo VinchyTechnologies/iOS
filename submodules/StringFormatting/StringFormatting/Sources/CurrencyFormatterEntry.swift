@@ -10,7 +10,7 @@ import Foundation
 
 // MARK: - CurrencyFormatterEntry
 
-private final class CurrencyFormatterEntry {
+public final class CurrencyFormatterEntry {
 
   // MARK: Lifecycle
 
@@ -23,14 +23,14 @@ private final class CurrencyFormatterEntry {
     self.decimalDigits = decimalDigits
   }
 
-  // MARK: Internal
+  // MARK: Public
 
-  let symbol: String
-  let thousandsSeparator: String
-  let decimalSeparator: String
-  let symbolOnLeft: Bool
-  let spaceBetweenAmountAndSymbol: Bool
-  let decimalDigits: Int
+  public let symbol: String
+  public let thousandsSeparator: String
+  public let decimalSeparator: String
+  public let symbolOnLeft: Bool
+  public let spaceBetweenAmountAndSymbol: Bool
+  public let decimalDigits: Int
 }
 
 // MARK: - CurrencyData
@@ -81,16 +81,29 @@ private func loadCurrencyFormatterEntries() -> [String: CurrencyFormatterEntry] 
 
 private let currencyFormatterEntries = loadCurrencyFormatterEntries()
 
-public func formatCurrencyAmount(_ amount: Int64, currency: String) -> String {
+public func symbol(for currency: String) -> String? {
+  if let entry = currencyFormatterEntries[currency] {
+    return entry.symbol
+  }
+  return nil
+}
+
+public func currencyEntry(for currency: String) -> CurrencyFormatterEntry? {
+  currencyFormatterEntries[currency]
+}
+
+public func formatCurrencyAmount(_ amount: Int64, currency: String, shouldAddSymbol: Bool = true) -> String {
   if let entry = currencyFormatterEntries[currency] ?? currencyFormatterEntries["USD"] {
     var result = ""
     if amount < 0 {
       result.append("-")
     }
-    if entry.symbolOnLeft {
-      result.append(entry.symbol)
-      if entry.spaceBetweenAmountAndSymbol {
-        result.append(" ")
+    if shouldAddSymbol {
+      if entry.symbolOnLeft {
+        result.append(entry.symbol)
+        if entry.spaceBetweenAmountAndSymbol {
+          result.append(" ")
+        }
       }
     }
     var integerPart = abs(amount)
@@ -109,11 +122,14 @@ public func formatCurrencyAmount(_ amount: Int64, currency: String) -> String {
         result.append(fractional[fractional.count - i - 1])
       }
     }
-    if !entry.symbolOnLeft {
-      if entry.spaceBetweenAmountAndSymbol {
-        result.append(" ")
+
+    if shouldAddSymbol {
+      if !entry.symbolOnLeft {
+        if entry.spaceBetweenAmountAndSymbol {
+          result.append(" ")
+        }
+        result.append(entry.symbol)
       }
-      result.append(entry.symbol)
     }
 
     return result

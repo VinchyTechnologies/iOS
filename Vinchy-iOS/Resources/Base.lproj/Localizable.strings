@@ -244,3 +244,8 @@
 "Widget.CanAddNoMoreThanTwo" = "Add to Widget\nmax. 2";
 "Widget.UsesWidget" = "Uses Widget";
 "Widget.Remove" = "Remove from Widget";
+
+// MARK: - Advancesd Search
+"AdvancesdSearch.Price" = "price";
+"AdvancesdSearch.Price.From" = "from";
+"AdvancesdSearch.Price.To" = "to";

@@ -54,7 +54,6 @@ public final class BottomPriceBarView: UIView, EpoxyableView {
     }
   }
 
-
   public let button = Button()
 
   public override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {

@@ -301,7 +301,7 @@ final class WineDetailViewController: CollectionViewController {
           ServingTipsCollectionView.itemModel(
             dataID: itemID,
             content: content,
-            style: .init())
+            style: .init(id: UUID()))
         }
         .flowLayoutItemSize(.init(width: collectionViewSize.width, height: 100))
         .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 8, right: 0))
@@ -540,14 +540,6 @@ extension WineDetailViewController: WineDetailViewControllerProtocol {
       bottomBarInstaller.install()
     }
     collectionView.setSections(sections, animated: true)
-  }
-}
-
-// MARK: TitleAndMoreViewDelegate
-
-extension WineDetailViewController: TitleAndMoreViewDelegate {
-  func didTapSeeAllReview() {
-    interactor?.didTapSeeAllReviews()
   }
 }
 

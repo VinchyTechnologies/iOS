@@ -6,6 +6,7 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
+import AdvancedSearch
 import Core
 import DisplayMini
 import FittedSheets
@@ -81,8 +82,10 @@ extension VinchyRouter: VinchyRouterProtocol {
   }
 
   func pushToAdvancedFilterViewController() {
+    let controller = FiltersAssembly.assemblyModule(input: .init(preselectedFilters: [], isPriceFilterAvailable: false))
+    controller.hidesBottomBarWhenPushed = true
     viewController?.navigationController?.pushViewController(
-      Assembly.buildFiltersModule(), animated: true)
+      controller, animated: true)
   }
 
   func pushToDetailCollection(searchText: String) {
