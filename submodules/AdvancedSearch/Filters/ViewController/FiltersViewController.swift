@@ -195,7 +195,7 @@ extension FiltersViewController: FiltersViewControllerProtocol {
     if reloadingData {
       setSections(sections, animated: false)
     } else {
-      collectionView.reloadData()
+//      collectionView.reloadData()
     }
     bottomBarInstaller.install()
     bottomBarInstaller.setBars(bars, animated: true)
