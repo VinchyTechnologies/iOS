@@ -87,9 +87,9 @@ final class FiltersPresenter {
 
 extension FiltersPresenter: FiltersPresenterProtocol {
 
-  func update(filters: [Filter], selectedFilters: [(String, String)], reloadingData: Bool) {
+  func update(filters: [Filter], selectedFilters: [(String, String)], shouldAddPriceFilter: Bool, reloadingData: Bool) {
     var sections = [FiltersViewModel.Section]()
-    if let currencyEntry = currencyEntry(for: "RUB") {
+    if let currencyEntry = currencyEntry(for: "RUB"), shouldAddPriceFilter {
       let symbol = currencyEntry.symbol
       let decimalDigits = currencyEntry.decimalDigits
       sections += [.title(content: [localized("AdvancesdSearch.Price").firstLetterUppercased(), symbol].joined(separator: ", "))]

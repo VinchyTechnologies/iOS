@@ -352,7 +352,10 @@ extension StoreInteractor: StoreInteractorProtocol {
   }
 
   func didTapFilterButton() {
-    router.presentFilter(preselectedFilters: selectedFilters)
+    let isPriceFilterAvailable = assortimentWines.contains(where: { $0.price != nil })
+    router.presentFilter(
+      preselectedFilters: selectedFilters,
+      isPriceFilterAvailable: isPriceFilterAvailable)
   }
 
   func didTapReloadButton() {

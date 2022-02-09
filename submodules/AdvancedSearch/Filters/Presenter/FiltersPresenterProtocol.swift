@@ -8,5 +8,5 @@
 import Core
 
 protocol FiltersPresenterProtocol: AnyObject {
-  func update(filters: [Filter], selectedFilters: [(String, String)], reloadingData: Bool)
+  func update(filters: [Filter], selectedFilters: [(String, String)], shouldAddPriceFilter: Bool, reloadingData: Bool)
 }

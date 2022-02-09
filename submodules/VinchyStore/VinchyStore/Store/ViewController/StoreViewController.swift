@@ -65,12 +65,6 @@ final class StoreViewController: CollectionViewController {
     collectionView.delaysContentTouches = false
     collectionView.scrollDelegate = self
 
-    let filterBarButtonItem = UIBarButtonItem(
-      image: UIImage(named: "edit")?.withRenderingMode(.alwaysOriginal).withTintColor(.dark),
-      style: .plain,
-      target: self,
-      action: #selector(didTapFilterButton(_:)))
-
     let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .medium, scale: .default)
     let searchBarButtonItem = UIBarButtonItem(
       image: UIImage(systemName: "magnifyingglass", withConfiguration: imageConfig),
@@ -78,7 +72,7 @@ final class StoreViewController: CollectionViewController {
       target: self,
       action: #selector(didTapSearchButton(_:)))
     navigationItem.rightBarButtonItems = [filterBarButtonItem, searchBarButtonItem]
-
+    filterBarButtonItem.isEnabled = false
     interactor?.viewDidLoad()
   }
 
@@ -91,6 +85,12 @@ final class StoreViewController: CollectionViewController {
   }
 
   // MARK: Private
+
+  private lazy var filterBarButtonItem = UIBarButtonItem(
+    image: UIImage(named: "edit")?.withRenderingMode(.alwaysOriginal).withTintColor(.dark),
+    style: .plain,
+    target: self,
+    action: #selector(didTapFilterButton(_:)))
 
   private let adGenerator: AdFabricProtocol?
   private lazy var collectionViewSize: CGSize = view.frame.size
@@ -288,6 +288,7 @@ extension StoreViewController: StoreViewControllerProtocol {
   }
 
   func updateUI(errorViewModel: ErrorViewModel) {
+    filterBarButtonItem.isEnabled = true
     let errorView = ErrorView(frame: view.frame)
     errorView.decorate(model: errorViewModel)
     errorView.delegate = self
@@ -296,6 +297,7 @@ extension StoreViewController: StoreViewControllerProtocol {
 
   func updateUI(viewModel: StoreViewModel) {
     hideErrorView()
+    filterBarButtonItem.isEnabled = true
 
     self.viewModel = viewModel
 

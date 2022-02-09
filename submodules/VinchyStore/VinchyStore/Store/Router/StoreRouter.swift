@@ -85,9 +85,10 @@ extension StoreRouter: StoreRouterProtocol {
     coordinator.presentWineDetailViewController(wineID: wineID)
   }
 
-  func presentFilter(preselectedFilters: [(String, String)]) {
+  func presentFilter(preselectedFilters: [(String, String)], isPriceFilterAvailable: Bool) {
     coordinator.presentAdvancedSearch(
       preselectedFilters: preselectedFilters,
+      isPriceFilterAvailable: isPriceFilterAvailable,
       delegate: interactor)
   }
 

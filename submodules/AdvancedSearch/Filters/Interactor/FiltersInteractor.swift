@@ -47,7 +47,7 @@ extension FiltersInteractor: FiltersInteractorProtocol {
     if let maxPrice = maxPrice {
       selectedFilters.append(("max_price", String(maxPrice)))
     }
-    presenter.update(filters: filters, selectedFilters: selectedFilters, reloadingData: false)
+    presenter.update(filters: filters, selectedFilters: selectedFilters, shouldAddPriceFilter: input.isPriceFilterAvailable, reloadingData: false)
   }
 
   func didTapConfirmFilters() {
@@ -59,7 +59,7 @@ extension FiltersInteractor: FiltersInteractorProtocol {
     countryCodes.forEach { code in
       selectedFilters.append(("country", code))
     }
-    presenter.update(filters: filters, selectedFilters: selectedFilters, reloadingData: true)
+    presenter.update(filters: filters, selectedFilters: selectedFilters, shouldAddPriceFilter: input.isPriceFilterAvailable, reloadingData: true)
   }
 
   func didTapSeeAllCounties() {
@@ -71,7 +71,7 @@ extension FiltersInteractor: FiltersInteractorProtocol {
 
   func didTapResetAllFilters() {
     selectedFilters.removeAll()
-    presenter.update(filters: filters, selectedFilters: selectedFilters, reloadingData: true)
+    presenter.update(filters: filters, selectedFilters: selectedFilters, shouldAddPriceFilter: input.isPriceFilterAvailable, reloadingData: true)
   }
 
   func isSelected(item: ImageOptionView.Content) -> Bool {
@@ -79,7 +79,7 @@ extension FiltersInteractor: FiltersInteractorProtocol {
   }
 
   func viewDidLoad() {
-    presenter.update(filters: filters, selectedFilters: selectedFilters, reloadingData: true)
+    presenter.update(filters: filters, selectedFilters: selectedFilters, shouldAddPriceFilter: input.isPriceFilterAvailable, reloadingData: true)
   }
 
   func didSelect(item: ImageOptionView.Content) {
@@ -93,6 +93,6 @@ extension FiltersInteractor: FiltersInteractorProtocol {
       selectedFilters.append((category, title))
     }
 
-    presenter.update(filters: filters, selectedFilters: selectedFilters, reloadingData: false)
+    presenter.update(filters: filters, selectedFilters: selectedFilters, shouldAddPriceFilter: input.isPriceFilterAvailable, reloadingData: false)
   }
 }
