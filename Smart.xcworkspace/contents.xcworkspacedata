@@ -51,6 +51,9 @@
          location = "group:submodules/VinchyAuthorization/VinchyAuthorization.xcodeproj">
       </FileRef>
       <FileRef
+         location = "group:submodules/VinchyCart/VinchyCart.xcodeproj">
+      </FileRef>
+      <FileRef
          location = "group:submodules/VinchyCore/VinchyCore.xcodeproj">
       </FileRef>
       <FileRef

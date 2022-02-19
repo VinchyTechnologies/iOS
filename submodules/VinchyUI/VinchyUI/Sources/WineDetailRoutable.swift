@@ -15,14 +15,13 @@ public protocol WineDetailRoutable: AnyObject {
   func presentWineDetailViewController(wineID: Int64, mode: WineDetailMode)
 }
 
-
 // MARK: - WineDetailMode
 
 public enum WineDetailMode {
 
   public enum BuyAction {
     case openURL(url: URL?)
-    case cart
+    case cart(affilatedId: Int, price: Price)
     case none
   }
 

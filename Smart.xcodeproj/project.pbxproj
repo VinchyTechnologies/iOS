@@ -433,6 +433,8 @@
 		CACA7EA1254C57CC0099E622 /* WriteNoteInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA7E95254C57CC0099E622 /* WriteNoteInteractor.swift */; };
 		CACA7EA2254C57CC0099E622 /* WriteNoteRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA7E97254C57CC0099E622 /* WriteNoteRouterProtocol.swift */; };
 		CACA7EA3254C57CC0099E622 /* WriteNoteRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA7E98254C57CC0099E622 /* WriteNoteRouter.swift */; };
+		CACB3C7227BBDB2400AD999D /* VinchyCart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACB3C7127BBDB2400AD999D /* VinchyCart.framework */; };
+		CACB3C7327BBDB2400AD999D /* VinchyCart.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CACB3C7127BBDB2400AD999D /* VinchyCart.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CACC1DC224C5F2980082BD01 /* filters.json in Resources */ = {isa = PBXBuildFile; fileRef = CACC1DC124C5F2980082BD01 /* filters.json */; };
 		CAEBD788251A6D6200210F3B /* AgreementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEBD787251A6D6200210F3B /* AgreementsViewController.swift */; };
 		CAEBD7F3251A7F5000210F3B /* SwitcherWithText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEBD7F2251A7F5000210F3B /* SwitcherWithText.swift */; };
@@ -554,6 +556,7 @@
 				8A7BCD722757B25000B56313 /* ThirdParty.framework in Embed Frameworks */,
 				8A51456C2757C08C00DC45CD /* AdvancedSearch.framework in Embed Frameworks */,
 				8A5145872757C9A000DC45CD /* VinchyUI.framework in Embed Frameworks */,
+				CACB3C7327BBDB2400AD999D /* VinchyCart.framework in Embed Frameworks */,
 				8A63CCBB26754630003B1D4D /* LocationUI.framework in Embed Frameworks */,
 				8A63CCBF26754635003B1D4D /* VinchyAuthorization.framework in Embed Frameworks */,
 				8A0A448C279AA905001A8CA1 /* Widget.framework in Embed Frameworks */,
@@ -967,6 +970,7 @@
 		CACA7E95254C57CC0099E622 /* WriteNoteInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteNoteInteractor.swift; sourceTree = "<group>"; };
 		CACA7E97254C57CC0099E622 /* WriteNoteRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteNoteRouterProtocol.swift; sourceTree = "<group>"; };
 		CACA7E98254C57CC0099E622 /* WriteNoteRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteNoteRouter.swift; sourceTree = "<group>"; };
+		CACB3C7127BBDB2400AD999D /* VinchyCart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyCart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CACC1DC124C5F2980082BD01 /* filters.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = filters.json; sourceTree = "<group>"; };
 		CAEBD787251A6D6200210F3B /* AgreementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementsViewController.swift; sourceTree = "<group>"; };
 		CAEBD7F2251A7F5000210F3B /* SwitcherWithText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitcherWithText.swift; sourceTree = "<group>"; };
@@ -1069,6 +1073,7 @@
 				8AEC83BA2758E7BE00C80F1E /* WineDetail.framework in Frameworks */,
 				8A9C7F0827613A3300A5B694 /* DisplayMini.framework in Frameworks */,
 				8A299EF3274FB7B400355602 /* Spotlight.framework in Frameworks */,
+				CACB3C7227BBDB2400AD999D /* VinchyCart.framework in Frameworks */,
 				8A63CCBA26754630003B1D4D /* LocationUI.framework in Frameworks */,
 				8A5145E12757EC9000DC45CD /* VinchyStore.framework in Frameworks */,
 				8A63CCBC26754633003B1D4D /* StringFormatting.framework in Frameworks */,
@@ -1472,6 +1477,7 @@
 		46483F371463D95E22014241 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CACB3C7127BBDB2400AD999D /* VinchyCart.framework */,
 				CA8622CB27B2A9AF0066682A /* Network.framework */,
 				CA8622C827B2A9A20066682A /* Network.framework */,
 				8A0A44AC279C7BE4001A8CA1 /* Widget.framework */,
@@ -1763,13 +1769,6 @@
 			children = (
 				8AE788F7268638CD0056A84B /* OnboardingBottomView.swift */,
 				8A0795B926943E85000ACA2B /* OnboardingFeatureView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		8A0A44702799C9CB001A8CA1 /* Views */ = {
-			isa = PBXGroup;
-			children = (
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -2384,7 +2383,6 @@
 				8AA9909F26D91FE000C32358 /* Router */,
 				8AA9909926D91FE000C32358 /* ViewController */,
 				8AA9909026D91FE000C32358 /* ViewModel */,
-				8A0A44702799C9CB001A8CA1 /* Views */,
 			);
 			path = Stores;
 			sourceTree = "<group>";
@@ -4211,7 +4209,7 @@
 				CODE_SIGN_ENTITLEMENTS = WidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widget/Info.plist;
@@ -4242,7 +4240,7 @@
 				CODE_SIGN_ENTITLEMENTS = WidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widget/Info.plist;
@@ -4274,7 +4272,7 @@
 				CODE_SIGN_ENTITLEMENTS = VinchyAppClip/VinchyAppClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				ENABLE_BITCODE = YES;
 				GCC_OPTIMIZATION_LEVEL = s;
@@ -4314,7 +4312,7 @@
 				CODE_SIGN_ENTITLEMENTS = VinchyAppClip/VinchyAppClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				ENABLE_BITCODE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -4473,7 +4471,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Vinchy-iOS/Resources/Vinchy.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Vinchy-iOS/Resources/Info.plist";
@@ -4506,7 +4504,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Vinchy-iOS/Resources/VinchyRelease.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Vinchy-iOS/Resources/Info.plist";

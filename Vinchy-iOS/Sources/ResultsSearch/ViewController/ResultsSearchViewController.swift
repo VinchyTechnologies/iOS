@@ -184,6 +184,7 @@ final class ResultsSearchViewController: UIViewController {
 
   private var viewModel: ResultsSearchViewModel? {
     didSet {
+      collectionView.contentOffset = .zero
       collectionView.reloadData()
     }
   }

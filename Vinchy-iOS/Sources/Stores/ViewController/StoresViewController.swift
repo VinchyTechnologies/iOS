@@ -232,8 +232,12 @@ final class StoresViewController: CollectionViewController {
   }
 
   private func setPencilButton() {
-    if interactor?.isAllContentInWidget() == false {
-      navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "pencil", withConfiguration: C.imageConfig), style: .plain, target: self, action: #selector(editWidget))
+    if #available(iOS 14, *) {
+      if interactor?.isAllContentInWidget() == false {
+        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "pencil", withConfiguration: C.imageConfig), style: .plain, target: self, action: #selector(editWidget))
+      } else {
+        navigationItem.rightBarButtonItem = nil
+      }
     } else {
       navigationItem.rightBarButtonItem = nil
     }

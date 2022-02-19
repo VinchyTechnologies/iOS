@@ -1,0 +1,6 @@
+framework module Pods_VinchyCart {
+  umbrella header "Pods-VinchyCart-umbrella.h"
+
+  export *
+  module * { export * }
+}

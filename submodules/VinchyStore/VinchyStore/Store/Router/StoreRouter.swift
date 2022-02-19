@@ -47,6 +47,10 @@ final class StoreRouter {
 
 extension StoreRouter: StoreRouterProtocol {
 
+  func presentCartViewController() {
+    coordinator.presentCartViewController()
+  }
+
   func didTapShareStore(type: StoreShareType) {
     coordinator.didTapShareStore(type: type)
   }

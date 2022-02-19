@@ -63,6 +63,8 @@
 		8ABEF40927809E430046C43E /* LogoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABEF40827809E430046C43E /* LogoRow.swift */; };
 		8ABEF40B2780A73F0046C43E /* StoreMapRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABEF40A2780A73F0046C43E /* StoreMapRow.swift */; };
 		8AD51DA927650BB60009499A /* OverlayPresentationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD51DA827650BB50009499A /* OverlayPresentationCenter.swift */; };
+		CACB3C7527BBE99900AD999D /* Stepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB3C7427BBE99900AD999D /* Stepper.swift */; };
+		CACB3C7727BBFB1C00AD999D /* StepperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB3C7627BBFB1C00AD999D /* StepperView.swift */; };
 		D12A71C9391FF45EA6009B81 /* Pods_DisplayMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ADEFB7AAE5EE1069C5D2954 /* Pods_DisplayMini.framework */; };
 /* End PBXBuildFile section */
 
@@ -124,6 +126,8 @@
 		8ABEF40827809E430046C43E /* LogoRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoRow.swift; sourceTree = "<group>"; };
 		8ABEF40A2780A73F0046C43E /* StoreMapRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreMapRow.swift; sourceTree = "<group>"; };
 		8AD51DA827650BB50009499A /* OverlayPresentationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayPresentationCenter.swift; sourceTree = "<group>"; };
+		CACB3C7427BBE99900AD999D /* Stepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stepper.swift; sourceTree = "<group>"; };
+		CACB3C7627BBFB1C00AD999D /* StepperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperView.swift; sourceTree = "<group>"; };
 		E2D2D16B52FD4AEDE8820451 /* Pods-DisplayMini.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DisplayMini.debug.xcconfig"; path = "Target Support Files/Pods-DisplayMini/Pods-DisplayMini.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -236,6 +240,7 @@
 				8A65E77D27A97B09008556A4 /* ShortInfoView.swift */,
 				8A65E75727A828D2008556A4 /* StarRatingControlView.swift */,
 				8A9CABD92763F01300A5B694 /* StarsRatingView.swift */,
+				CACB3C7427BBE99900AD999D /* Stepper.swift */,
 				8ABEF40A2780A73F0046C43E /* StoreMapRow.swift */,
 				8A9CABE52763F01400A5B694 /* TextCollectionCell.swift */,
 				8A75E27F27AAB9710068DA56 /* TitleAndMoreView.swift */,
@@ -249,6 +254,7 @@
 				8A65E77E27A97B09008556A4 /* WhereToBuyView.swift */,
 				8A9CABC52763F01300A5B694 /* WineBottleView.swift */,
 				8A9CABD22763F01300A5B694 /* WineCollectionViewCell.swift */,
+				CACB3C7627BBFB1C00AD999D /* StepperView.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -396,6 +402,7 @@
 				8A9CAC102763F01400A5B694 /* Label.swift in Sources */,
 				8A9CAC062763F01400A5B694 /* ReviewCell.swift in Sources */,
 				8A9CAC092763F01400A5B694 /* UIColor.swift in Sources */,
+				CACB3C7527BBE99900AD999D /* Stepper.swift in Sources */,
 				8A453148278D72C300781EEC /* Translate.swift in Sources */,
 				8A9CABF92763F01400A5B694 /* WineCollectionViewCell.swift in Sources */,
 				8A9CAC0F2763F01400A5B694 /* ContextMenu.swift in Sources */,
@@ -426,6 +433,7 @@
 				8A9CABEC2763F01400A5B694 /* WineBottleView.swift in Sources */,
 				8A9CABFE2763F01400A5B694 /* BottlesCollectionView.swift in Sources */,
 				8A65E75827A828D2008556A4 /* StarRatingControlView.swift in Sources */,
+				CACB3C7727BBFB1C00AD999D /* StepperView.swift in Sources */,
 				8A9CABFD2763F01400A5B694 /* LoadingIndicatorCell.swift in Sources */,
 				8A9CABEB2763F01400A5B694 /* CountryTableViewCell.swift in Sources */,
 				8A9CAC0E2763F01400A5B694 /* VinchyNavigationController.swift in Sources */,

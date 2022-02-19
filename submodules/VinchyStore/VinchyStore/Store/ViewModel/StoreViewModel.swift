@@ -66,11 +66,13 @@ struct StoreViewModel {
     sections: [],
     navigationTitleText: nil,
     shouldResetContentOffset: false,
-    isLiked: false)
+    isLiked: false,
+    bottomPriceBarViewModel: nil)
 
   let sections: [Section]
   let navigationTitleText: String?
   let shouldResetContentOffset: Bool
   var isLiked: Bool
+  let bottomPriceBarViewModel: BottomPriceBarView.Content?
 
 }

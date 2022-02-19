@@ -17,6 +17,7 @@ public final class HorizontalWineView: UIView, EpoxyableView {
   // MARK: Lifecycle
 
   public init(style: Style) {
+    self.style = style
     super.init(frame: .zero)
     translatesAutoresizingMaskIntoConstraints = false
     directionalLayoutMargins = .insets
@@ -88,7 +89,7 @@ public final class HorizontalWineView: UIView, EpoxyableView {
     public let badgeText: String?
     public let rating: Double?
 
-    public func height(width: CGFloat) -> CGFloat {
+    public func height(width: CGFloat, style: Style) -> CGFloat {
       var result: CGFloat = .zero
       let topAndBottomPadding = NSDirectionalEdgeInsets.insets.top + NSDirectionalEdgeInsets.insets.bottom
       result += topAndBottomPadding
@@ -98,11 +99,11 @@ public final class HorizontalWineView: UIView, EpoxyableView {
       var buttonWidth: CGFloat = 0.0
       var oldPriceTextWidth: CGFloat = 0.0
       var buttonsSpacing: CGFloat = 0
-      if let buttonText = buttonText {
+      if let buttonText = buttonText, style.kind == .price {
         buttonWidth += 24 + buttonText.width(usingFont: Font.with(size: 16, design: .round, traits: .bold))
         buttonsSpacing = .hSpacing
       }
-      if let oldPriceText = oldPriceText {
+      if let oldPriceText = oldPriceText, style.kind == .price {
         oldPriceTextWidth += oldPriceText.width(usingFont: Font.with(size: 14, design: .round, traits: .bold))
         buttonsSpacing = .hSpacing
       }
@@ -180,12 +181,14 @@ public final class HorizontalWineView: UIView, EpoxyableView {
         }
       }
 
-      VGroupItem.init(dataID: DataID.priceVGroup, style: .init(alignment: .trailing, spacing: .vSpacing)) {
-        if let oldPriceText = content.oldPriceText {
-          oldPriceView(text: oldPriceText)
-        }
-        if let buttonText = content.buttonText {
-          priceButton(text: buttonText)
+      if style.kind == .price {
+        VGroupItem.init(dataID: DataID.priceVGroup, style: .init(alignment: .trailing, spacing: .vSpacing)) {
+          if let oldPriceText = content.oldPriceText {
+            oldPriceView(text: oldPriceText)
+          }
+          if let buttonText = content.buttonText {
+            priceButton(text: buttonText)
+          }
         }
       }
     }
@@ -196,6 +199,9 @@ public final class HorizontalWineView: UIView, EpoxyableView {
   private enum DataID {
     case bottle, vGroup, title, subtitle, price, vSpacer, priceVGroup, oldPrice, badge, rating
   }
+
+
+  private let style: Style
 
   private var wineID: Int64?
 

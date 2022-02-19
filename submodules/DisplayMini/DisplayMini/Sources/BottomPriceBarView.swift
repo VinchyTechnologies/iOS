@@ -16,6 +16,7 @@ public final class BottomPriceBarView: UIView, EpoxyableView {
   // MARK: Lifecycle
 
   public init(style: Style) {
+    self.style = style
     super.init(frame: .zero)
     backgroundColor = .clear
     translatesAutoresizingMaskIntoConstraints = false
@@ -33,9 +34,15 @@ public final class BottomPriceBarView: UIView, EpoxyableView {
   // MARK: Public
 
   public struct Style: Hashable {
-    public init() {
+    public enum Kind {
+      case text, buttonOnly
+    }
+    let kind: Kind
+    public init(kind: Kind = .text) {
+      self.kind = kind
     }
   }
+
   public struct Behaviors {
     var didSelect: ((UIButton) -> Void)?
 
@@ -74,16 +81,22 @@ public final class BottomPriceBarView: UIView, EpoxyableView {
     blurEffectView.constrainToSuperview()
 
     hGroup.setItems {
-      if let subtitle = content.leadingText {
-        Label.groupItem(
-          dataID: DataID.leadingTitle,
-          content: subtitle,
-          style: Label.Style(font: Font.bold(18), showLabelBackground: false, numberOfLines: 2, textColor: .dark))
-      }
+      switch style.kind {
+      case .text:
+        if let subtitle = content.leadingText {
+          Label.groupItem(
+            dataID: DataID.leadingTitle,
+            content: subtitle,
+            style: Label.Style(font: Font.bold(18), showLabelBackground: false, numberOfLines: 2, textColor: .dark))
+        }
 
-      if let trailingButtonText = content.trailingButtonText {
-        SpacerItem(dataID: DataID.spacer)
-        priceButton(text: trailingButtonText)
+        if let trailingButtonText = content.trailingButtonText {
+          SpacerItem(dataID: DataID.spacer)
+          priceButton(text: trailingButtonText)
+        }
+
+      case .buttonOnly:
+        priceButton(text: content.trailingButtonText)
       }
     }
   }
@@ -96,7 +109,14 @@ public final class BottomPriceBarView: UIView, EpoxyableView {
     case spacer
   }
 
-  private lazy var blurEffectView = UIVisualEffectView()
+  private let style: Style
+
+  private lazy var blurEffectView: UIVisualEffectView = {
+    $0.clipsToBounds = true
+    $0.layer.cornerRadius = 20
+    $0.layer.maskedCorners = [.layerMinXMinYCorner, .layerMaxXMinYCorner]
+    return $0
+  }(UIVisualEffectView())
 
   private let hGroup = HGroup(
     style: .init(

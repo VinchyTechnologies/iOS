@@ -248,9 +248,13 @@ final class StoreInteractor {
 // MARK: StoreInteractorProtocol
 
 extension StoreInteractor: StoreInteractorProtocol {
-
   var contextMenuRouter: ActivityRoutable & WriteNoteRoutable {
     router
+  }
+
+
+  func didTapConfirmOrderButton() {
+    router.presentCartViewController()
   }
 
   func didTapRecommendedWineButton(wineID: Int64) {

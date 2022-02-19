@@ -85,7 +85,7 @@ extension StorePresenter: StorePresenterProtocol {
 
     sections += [.loading(itemID: .loadingItem, shouldCallWillDisplay: false)]
 
-    let viewModel = StoreViewModel(sections: sections, navigationTitleText: data.partnerInfo.title, shouldResetContentOffset: true, isLiked: data.isLiked)
+    let viewModel = StoreViewModel(sections: sections, navigationTitleText: data.partnerInfo.title, shouldResetContentOffset: true, isLiked: data.isLiked, bottomPriceBarViewModel: nil)
     viewController?.updateUI(viewModel: viewModel)
   }
 
@@ -288,7 +288,7 @@ extension StorePresenter: StorePresenterProtocol {
       }
     }
 
-    let viewModel = StoreViewModel(sections: sections, navigationTitleText: data.partnerInfo.title, shouldResetContentOffset: false, isLiked: data.isLiked)
+    let viewModel = StoreViewModel(sections: sections, navigationTitleText: data.partnerInfo.title, shouldResetContentOffset: false, isLiked: data.isLiked, bottomPriceBarViewModel: /*.init(leadingText: "Оформить заказ", trailingButtonText: "$1.222")*/ nil)
     viewController?.updateUI(viewModel: viewModel)
   }
 }

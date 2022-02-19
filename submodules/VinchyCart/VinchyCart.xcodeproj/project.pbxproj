@@ -1,0 +1,533 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		CA873A5227B69FA100F47033 /* VinchyCart.h in Headers */ = {isa = PBXBuildFile; fileRef = CA873A5127B69FA100F47033 /* VinchyCart.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA873A7227B6A25300F47033 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA873A6127B6A25300F47033 /* CartViewModel.swift */; };
+		CA873A7327B6A25300F47033 /* CartInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA873A6327B6A25300F47033 /* CartInput.swift */; };
+		CA873A7427B6A25300F47033 /* CartAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA873A6527B6A25300F47033 /* CartAssembly.swift */; };
+		CA873A7527B6A25300F47033 /* CartPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA873A6727B6A25300F47033 /* CartPresenterProtocol.swift */; };
+		CA873A7627B6A25300F47033 /* CartPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA873A6827B6A25300F47033 /* CartPresenter.swift */; };
+		CA873A7727B6A25300F47033 /* CartViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA873A6A27B6A25300F47033 /* CartViewController.swift */; };
+		CA873A7827B6A25300F47033 /* CartViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA873A6B27B6A25300F47033 /* CartViewControllerProtocol.swift */; };
+		CA873A7927B6A25300F47033 /* CartInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA873A6D27B6A25300F47033 /* CartInteractor.swift */; };
+		CA873A7A27B6A25300F47033 /* CartInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA873A6E27B6A25300F47033 /* CartInteractorProtocol.swift */; };
+		CA873A7B27B6A25300F47033 /* CartRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA873A7027B6A25300F47033 /* CartRouter.swift */; };
+		CA873A7C27B6A25300F47033 /* CartRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA873A7127B6A25300F47033 /* CartRouterProtocol.swift */; };
+		CA873A7E27B6DED600F47033 /* DisplayMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA873A7D27B6DED600F47033 /* DisplayMini.framework */; };
+		CACB3C7A27BC1AD300AD999D /* CartItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB3C7927BC1AD300AD999D /* CartItemView.swift */; };
+		EE79594920EEA117F45921AC /* Pods_VinchyCart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7BF9F2F765321ED99B95E8D1 /* Pods_VinchyCart.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		72C5D0D44EEB6213EED58066 /* Pods-VinchyCart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyCart.release.xcconfig"; path = "Target Support Files/Pods-VinchyCart/Pods-VinchyCart.release.xcconfig"; sourceTree = "<group>"; };
+		7BF9F2F765321ED99B95E8D1 /* Pods_VinchyCart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinchyCart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA873A4E27B69FA100F47033 /* VinchyCart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VinchyCart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA873A5127B69FA100F47033 /* VinchyCart.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VinchyCart.h; sourceTree = "<group>"; };
+		CA873A6127B6A25300F47033 /* CartViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
+		CA873A6327B6A25300F47033 /* CartInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartInput.swift; sourceTree = "<group>"; };
+		CA873A6527B6A25300F47033 /* CartAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartAssembly.swift; sourceTree = "<group>"; };
+		CA873A6727B6A25300F47033 /* CartPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartPresenterProtocol.swift; sourceTree = "<group>"; };
+		CA873A6827B6A25300F47033 /* CartPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartPresenter.swift; sourceTree = "<group>"; };
+		CA873A6A27B6A25300F47033 /* CartViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewController.swift; sourceTree = "<group>"; };
+		CA873A6B27B6A25300F47033 /* CartViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewControllerProtocol.swift; sourceTree = "<group>"; };
+		CA873A6D27B6A25300F47033 /* CartInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartInteractor.swift; sourceTree = "<group>"; };
+		CA873A6E27B6A25300F47033 /* CartInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartInteractorProtocol.swift; sourceTree = "<group>"; };
+		CA873A7027B6A25300F47033 /* CartRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartRouter.swift; sourceTree = "<group>"; };
+		CA873A7127B6A25300F47033 /* CartRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartRouterProtocol.swift; sourceTree = "<group>"; };
+		CA873A7D27B6DED600F47033 /* DisplayMini.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = DisplayMini.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CACB3C7927BC1AD300AD999D /* CartItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartItemView.swift; sourceTree = "<group>"; };
+		F3C8BAFC49E56699C7CE761B /* Pods-VinchyCart.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyCart.debug.xcconfig"; path = "Target Support Files/Pods-VinchyCart/Pods-VinchyCart.debug.xcconfig"; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		CA873A4B27B69FA100F47033 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA873A7E27B6DED600F47033 /* DisplayMini.framework in Frameworks */,
+				EE79594920EEA117F45921AC /* Pods_VinchyCart.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		19B45CB958B8A997BACBEB5F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				CA873A7D27B6DED600F47033 /* DisplayMini.framework */,
+				7BF9F2F765321ED99B95E8D1 /* Pods_VinchyCart.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A6963D0BB2CF6D9BF99C7F82 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				F3C8BAFC49E56699C7CE761B /* Pods-VinchyCart.debug.xcconfig */,
+				72C5D0D44EEB6213EED58066 /* Pods-VinchyCart.release.xcconfig */,
+			);
+			name = Pods;
+			path = ../../Pods;
+			sourceTree = "<group>";
+		};
+		CA873A4427B69FA100F47033 = {
+			isa = PBXGroup;
+			children = (
+				CA873A5027B69FA100F47033 /* VinchyCart */,
+				CA873A4F27B69FA100F47033 /* Products */,
+				A6963D0BB2CF6D9BF99C7F82 /* Pods */,
+				19B45CB958B8A997BACBEB5F /* Frameworks */,
+			);
+			indentWidth = 2;
+			sourceTree = "<group>";
+			tabWidth = 2;
+		};
+		CA873A4F27B69FA100F47033 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				CA873A4E27B69FA100F47033 /* VinchyCart.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		CA873A5027B69FA100F47033 /* VinchyCart */ = {
+			isa = PBXGroup;
+			children = (
+				CA873A5827B69FFC00F47033 /* Sources */,
+				CA873A5127B69FA100F47033 /* VinchyCart.h */,
+			);
+			path = VinchyCart;
+			sourceTree = "<group>";
+		};
+		CA873A5827B69FFC00F47033 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				CA873A5F27B6A25300F47033 /* Cart */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		CA873A5F27B6A25300F47033 /* Cart */ = {
+			isa = PBXGroup;
+			children = (
+				CA873A6427B6A25300F47033 /* Assembly */,
+				CA873A6227B6A25300F47033 /* Input */,
+				CA873A6C27B6A25300F47033 /* Interactor */,
+				CA873A6627B6A25300F47033 /* Presenter */,
+				CA873A6F27B6A25300F47033 /* Router */,
+				CA873A6927B6A25300F47033 /* ViewController */,
+				CA873A6027B6A25300F47033 /* ViewModel */,
+				CACB3C7827BC1AC500AD999D /* Views */,
+			);
+			path = Cart;
+			sourceTree = "<group>";
+		};
+		CA873A6027B6A25300F47033 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CA873A6127B6A25300F47033 /* CartViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CA873A6227B6A25300F47033 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				CA873A6327B6A25300F47033 /* CartInput.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		CA873A6427B6A25300F47033 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				CA873A6527B6A25300F47033 /* CartAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		CA873A6627B6A25300F47033 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CA873A6727B6A25300F47033 /* CartPresenterProtocol.swift */,
+				CA873A6827B6A25300F47033 /* CartPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CA873A6927B6A25300F47033 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CA873A6A27B6A25300F47033 /* CartViewController.swift */,
+				CA873A6B27B6A25300F47033 /* CartViewControllerProtocol.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CA873A6C27B6A25300F47033 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				CA873A6D27B6A25300F47033 /* CartInteractor.swift */,
+				CA873A6E27B6A25300F47033 /* CartInteractorProtocol.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		CA873A6F27B6A25300F47033 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				CA873A7027B6A25300F47033 /* CartRouter.swift */,
+				CA873A7127B6A25300F47033 /* CartRouterProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		CACB3C7827BC1AC500AD999D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CACB3C7927BC1AD300AD999D /* CartItemView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		CA873A4927B69FA100F47033 /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA873A5227B69FA100F47033 /* VinchyCart.h in Headers */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		CA873A4D27B69FA100F47033 /* VinchyCart */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = CA873A5527B69FA100F47033 /* Build configuration list for PBXNativeTarget "VinchyCart" */;
+			buildPhases = (
+				E1E516C3E5F4B895CEBC6087 /* [CP] Check Pods Manifest.lock */,
+				CA873A4927B69FA100F47033 /* Headers */,
+				CA873A4A27B69FA100F47033 /* Sources */,
+				CA873A4B27B69FA100F47033 /* Frameworks */,
+				CA873A4C27B69FA100F47033 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = VinchyCart;
+			productName = VinchyCart;
+			productReference = CA873A4E27B69FA100F47033 /* VinchyCart.framework */;
+			productType = "com.apple.product-type.framework";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		CA873A4527B69FA100F47033 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastUpgradeCheck = 1320;
+				TargetAttributes = {
+					CA873A4D27B69FA100F47033 = {
+						CreatedOnToolsVersion = 13.2.1;
+						LastSwiftMigration = 1320;
+					};
+				};
+			};
+			buildConfigurationList = CA873A4827B69FA100F47033 /* Build configuration list for PBXProject "VinchyCart" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = CA873A4427B69FA100F47033;
+			productRefGroup = CA873A4F27B69FA100F47033 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				CA873A4D27B69FA100F47033 /* VinchyCart */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		CA873A4C27B69FA100F47033 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		E1E516C3E5F4B895CEBC6087 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-VinchyCart-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		CA873A4A27B69FA100F47033 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				CA873A7B27B6A25300F47033 /* CartRouter.swift in Sources */,
+				CA873A7A27B6A25300F47033 /* CartInteractorProtocol.swift in Sources */,
+				CA873A7327B6A25300F47033 /* CartInput.swift in Sources */,
+				CA873A7627B6A25300F47033 /* CartPresenter.swift in Sources */,
+				CA873A7227B6A25300F47033 /* CartViewModel.swift in Sources */,
+				CA873A7527B6A25300F47033 /* CartPresenterProtocol.swift in Sources */,
+				CA873A7C27B6A25300F47033 /* CartRouterProtocol.swift in Sources */,
+				CA873A7927B6A25300F47033 /* CartInteractor.swift in Sources */,
+				CA873A7727B6A25300F47033 /* CartViewController.swift in Sources */,
+				CACB3C7A27BC1AD300AD999D /* CartItemView.swift in Sources */,
+				CA873A7827B6A25300F47033 /* CartViewControllerProtocol.swift in Sources */,
+				CA873A7427B6A25300F47033 /* CartAssembly.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		CA873A5327B69FA100F47033 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Debug;
+		};
+		CA873A5427B69FA100F47033 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				CURRENT_PROJECT_VERSION = 1;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.2;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SDKROOT = iphoneos;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				VALIDATE_PRODUCT = YES;
+				VERSIONING_SYSTEM = "apple-generic";
+				VERSION_INFO_PREFIX = "";
+			};
+			name = Release;
+		};
+		CA873A5627B69FA100F47033 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = F3C8BAFC49E56699C7CE761B /* Pods-VinchyCart.debug.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = YKG5C7DUKF;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy.VinchyCart;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		CA873A5727B69FA100F47033 /* Release */ = {
+			isa = XCBuildConfiguration;
+			baseConfigurationReference = 72C5D0D44EEB6213EED58066 /* Pods-VinchyCart.release.xcconfig */;
+			buildSettings = {
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEFINES_MODULE = YES;
+				DEVELOPMENT_TEAM = YKG5C7DUKF;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = tech.vinchy.VinchyCart;
+				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
+				SKIP_INSTALL = YES;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		CA873A4827B69FA100F47033 /* Build configuration list for PBXProject "VinchyCart" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA873A5327B69FA100F47033 /* Debug */,
+				CA873A5427B69FA100F47033 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		CA873A5527B69FA100F47033 /* Build configuration list for PBXNativeTarget "VinchyCart" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				CA873A5627B69FA100F47033 /* Debug */,
+				CA873A5727B69FA100F47033 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = CA873A4527B69FA100F47033 /* Project object */;
+}

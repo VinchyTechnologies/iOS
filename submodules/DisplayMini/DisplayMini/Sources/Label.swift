@@ -131,7 +131,7 @@ extension Label.Style {
   {
     switch textStyle {
     case .lagerTitle:
-      return .init(font: Font.heavy(20), showLabelBackground: true, backgroundColor: backgroundColor)
+      return .init(font: Font.heavy(20), showLabelBackground: true, backgroundColor: backgroundColor, textAligment: textAligment)
 
     case .miniBold:
       return .init(

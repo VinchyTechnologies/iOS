@@ -74,6 +74,11 @@ target 'AdvancedSearch' do
   epoxy
 end
 
+target 'VinchyCart' do
+  project 'submodules/VinchyCart/VinchyCart'
+  epoxy
+end
+
 target 'VinchyAuthorization' do
   project 'submodules/VinchyAuthorization/VinchyAuthorization'
 #  pod 'FittedSheets'

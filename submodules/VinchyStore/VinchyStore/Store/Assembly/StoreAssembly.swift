@@ -11,7 +11,7 @@ import VinchyUI
 
 public final class StoreAssembly {
 
-  public typealias Coordinator = WineDetailRoutable & ActivityRoutable & WriteNoteRoutable & AdvancedSearchRoutable & ResultsSearchRoutable & WineShareRoutable & SafariRoutable & StoreShareRoutable
+  public typealias Coordinator = WineDetailRoutable & ActivityRoutable & WriteNoteRoutable & AdvancedSearchRoutable & ResultsSearchRoutable & WineShareRoutable & SafariRoutable & StoreShareRoutable & CartRoutable
 
   public static func assemblyModule(input: StoreInput, coordinator: Coordinator, adFabricProtocol: AdFabricProtocol?) -> UIViewController {
     let viewController = StoreViewController(adGenerator: adFabricProtocol)

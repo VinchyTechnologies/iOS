@@ -9,19 +9,27 @@
 import AdvancedSearch
 import Core
 import Database
+import DisplayMini
 import FirebaseDynamicLinks
 import FittedSheets
 import Network
 import UIKit
 import VinchyAuthorization
+import VinchyCart
 import VinchyCore
 import VinchyUI
 
 // MARK: - Coordinator
 
-final class Coordinator: ShowcaseRoutable, WineDetailRoutable, WriteNoteRoutable, ActivityRoutable, AdvancedSearchRoutable, ReviewDetailRoutable, ReviewsRoutable, WriteReviewRoutable, StoresRoutable, StoreRoutable, ResultsSearchRoutable, AuthorizationRoutable, WineShareRoutable, StatusAlertable, SafariRoutable, StoreShareRoutable, CollectionShareRoutable {
+final class Coordinator: ShowcaseRoutable, WineDetailRoutable, WriteNoteRoutable, ActivityRoutable, AdvancedSearchRoutable, ReviewDetailRoutable, ReviewsRoutable, WriteReviewRoutable, StoresRoutable, StoreRoutable, ResultsSearchRoutable, AuthorizationRoutable, WineShareRoutable, StatusAlertable, SafariRoutable, StoreShareRoutable, CollectionShareRoutable, CartRoutable {
 
   static let shared = Coordinator()
+
+  func presentCartViewController() {
+    let controller = CartAssembly.assemblyModule(input: .init())
+    let navigationController = VinchyNavigationController(rootViewController: controller)
+    UIApplication.topViewController()?.present(navigationController, animated: true, completion: nil)
+  }
 
   func didTapShareCollection(type: CollectionShareType) {
     switch type {

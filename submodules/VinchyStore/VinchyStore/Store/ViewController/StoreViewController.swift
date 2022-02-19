@@ -9,6 +9,7 @@
 import Core
 import Database
 import DisplayMini
+import EpoxyBars
 import EpoxyCollectionView
 import EpoxyCore
 import EpoxyLayoutGroups
@@ -73,6 +74,7 @@ final class StoreViewController: CollectionViewController {
       action: #selector(didTapSearchButton(_:)))
     navigationItem.rightBarButtonItems = [filterBarButtonItem, searchBarButtonItem]
     filterBarButtonItem.isEnabled = false
+    bottomBarInstaller.install()
     interactor?.viewDidLoad()
   }
 
@@ -98,6 +100,10 @@ final class StoreViewController: CollectionViewController {
   private var supplementaryView: UIView?
   private var heightBeforeSupplementaryHeader: CGFloat?
   private var viewModel: StoreViewModel = .empty
+
+  private lazy var bottomBarInstaller = BottomBarInstaller(
+    viewController: self,
+    bars: bars)
 
   @SectionModelBuilder
   private var sections: [SectionModel] {
@@ -186,17 +192,18 @@ final class StoreViewController: CollectionViewController {
           items: rows.compactMap({ assortmentContent in
             switch assortmentContent {
             case .horizontalWine(let content):
+              let style = HorizontalWineView.Style(id: UUID(), kind: content.buttonText.isNilOrEmpty ? .common : .price)
               return HorizontalWineView.itemModel(
                 dataID: UUID(),
                 content: content,
                 behaviors: .init(didTap: { [weak self] _, wineID in
                   self?.interactor?.didTapHorizontalWineViewButton(wineID: wineID)
                 }),
-                style: .init(id: UUID(), kind: .common))
+                style: style)
                 .didSelect { [weak self] _ in
                   self?.interactor?.didSelectHorizontalWine(wineID: content.wineID)
                 }
-                .flowLayoutItemSize(.init(width: collectionViewSize.width, height: content.height(width: collectionViewSize.width)))
+                .flowLayoutItemSize(.init(width: collectionViewSize.width, height: content.height(width: collectionViewSize.width, style: style)))
 
             case .contentCoulBeNotRight(let content):
               let width: CGFloat = collectionViewSize.width - 48
@@ -248,6 +255,23 @@ final class StoreViewController: CollectionViewController {
         .flowLayoutItemSize(.init(width: collectionViewSize.width, height: LoadingView.height))
         .flowLayoutSectionInset(.init(top: 16, left: 0, bottom: 16, right: 0))
       }
+    }
+  }
+
+  @BarModelBuilder
+  private var bars: [BarModeling] {
+    if let bottomPriceBarViewModel = viewModel.bottomPriceBarViewModel {
+      [
+        BottomPriceBarView.barModel(
+          dataID: nil,
+          content: bottomPriceBarViewModel,
+          behaviors: .init(didSelect: { [weak self] _ in
+            self?.interactor?.didTapConfirmOrderButton()
+          }),
+          style: .init()),
+      ]
+    } else {
+      []
     }
   }
 
@@ -350,6 +374,7 @@ extension StoreViewController: StoreViewControllerProtocol {
     } else {
       setSections(sections, animated: false)
     }
+    bottomBarInstaller.setBars(bars, animated: true)
   }
 }
 
