@@ -16,6 +16,7 @@ struct MoreViewControllerModel {
     case email([ContactCellViewModel])
     case partner([ContactCellViewModel])
     case rate([RateAppCellViewModel])
+    case orders([DocCellViewModel])
     case social([StandartImageViewModel])
     case currency([InfoCurrencyCellViewModel])
     case aboutApp([DocCellViewModel])

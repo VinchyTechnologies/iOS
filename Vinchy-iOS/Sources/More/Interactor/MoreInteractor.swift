@@ -52,6 +52,11 @@ final class MoreInteractor {
 // MARK: MoreInteractorProtocol
 
 extension MoreInteractor: MoreInteractorProtocol {
+
+  func didTapOrders() {
+    router.pushToOrders()
+  }
+
   func didTapMyStores() {
     router.pushToMyStores()
   }

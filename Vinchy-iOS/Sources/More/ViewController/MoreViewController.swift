@@ -115,7 +115,7 @@ extension MoreViewController: UICollectionViewDataSource {
     case .social(let model):
       return model.count
 
-    case .doc(let model), .aboutApp(let model), .myStores(let model):
+    case .doc(let model), .aboutApp(let model), .myStores(let model), .orders(let model):
       return model.count
 
     case .separator:
@@ -167,7 +167,7 @@ extension MoreViewController: UICollectionViewDataSource {
       cell.delegate = self
       return cell
 
-    case .doc(let model), .aboutApp(let model), .myStores(let model):
+    case .doc(let model), .aboutApp(let model), .myStores(let model), .orders(let model):
       let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DocCell.reuseId, for: indexPath) as! DocCell // swiftlint:disable:this force_cast
       cell.decorate(model: model[indexPath.row])
       return cell
@@ -221,7 +221,7 @@ extension MoreViewController: UICollectionViewDelegateFlowLayout {
       let width = collectionView.frame.width
       return CGSize(width: width, height: SocialMediaCell.height())
 
-    case .doc, .aboutApp, .myStores:
+    case .doc, .aboutApp, .myStores, .orders:
       let width = collectionView.frame.width
       return CGSize(width: width, height: DocCell.height())
 
@@ -249,7 +249,7 @@ extension MoreViewController: UICollectionViewDelegateFlowLayout {
     case .separator:
       return .init(top: 0, left: 0, bottom: 10, right: 0)
 
-    case .profile, .phone, .email, .partner, .rate, .currency, .social, .doc, .aboutApp, .none, .logout, .myStores:
+    case .profile, .phone, .email, .partner, .rate, .currency, .social, .doc, .aboutApp, .none, .logout, .myStores, .orders:
       return .zero
     }
   }
@@ -282,6 +282,9 @@ extension MoreViewController: UICollectionViewDelegateFlowLayout {
 
     case .rate:
       interactor?.didTapRateApp()
+
+    case .orders:
+      interactor?.didTapOrders()
 
     case .currency:
       interactor?.didTapCurrency()

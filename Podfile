@@ -59,6 +59,11 @@ target 'VinchyStore' do
   epoxy
 end
 
+target 'VinchyOrder' do
+  project 'submodules/VinchyOrder/VinchyOrder'
+  epoxy
+end
+
 target 'VinchyUI' do
   project 'submodules/VinchyUI/VinchyUI'
   epoxy

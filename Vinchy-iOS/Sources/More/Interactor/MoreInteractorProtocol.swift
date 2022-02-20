@@ -25,4 +25,5 @@ protocol MoreInteractorProtocol: AnyObject, OpenURLProtocol {
   func didTapLogout()
   func didTapLogoutOnAlert()
   func didTapMyStores()
+  func didTapOrders()
 }

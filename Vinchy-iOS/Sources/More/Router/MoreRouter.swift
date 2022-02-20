@@ -11,6 +11,7 @@ import Core
 import DisplayMini
 import StringFormatting
 import UIKit
+import VinchyOrder
 
 // MARK: - MoreRouter
 
@@ -32,6 +33,12 @@ final class MoreRouter: OpenURLProtocol {
 // MARK: MoreRouterProtocol
 
 extension MoreRouter: MoreRouterProtocol {
+
+  func pushToOrders() {
+    let controller = OrdersAssembly.assemblyModule(input: .init())
+    controller.hidesBottomBarWhenPushed = true
+    viewController?.navigationController?.pushViewController(controller, animated: true)
+  }
 
   func pushToMyStores() {
     let controller = StoresAssembly.assemblyModule(input: .init(mode: .saved(isEditingWidget: false)))

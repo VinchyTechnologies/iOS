@@ -435,6 +435,8 @@
 		CACA7EA3254C57CC0099E622 /* WriteNoteRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA7E98254C57CC0099E622 /* WriteNoteRouter.swift */; };
 		CACB3C7227BBDB2400AD999D /* VinchyCart.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACB3C7127BBDB2400AD999D /* VinchyCart.framework */; };
 		CACB3C7327BBDB2400AD999D /* VinchyCart.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CACB3C7127BBDB2400AD999D /* VinchyCart.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CACB3DC527C2988B00AD999D /* VinchyOrder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACB3DC427C2988B00AD999D /* VinchyOrder.framework */; };
+		CACB3DC627C2988B00AD999D /* VinchyOrder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CACB3DC427C2988B00AD999D /* VinchyOrder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CACC1DC224C5F2980082BD01 /* filters.json in Resources */ = {isa = PBXBuildFile; fileRef = CACC1DC124C5F2980082BD01 /* filters.json */; };
 		CAEBD788251A6D6200210F3B /* AgreementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEBD787251A6D6200210F3B /* AgreementsViewController.swift */; };
 		CAEBD7F3251A7F5000210F3B /* SwitcherWithText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEBD7F2251A7F5000210F3B /* SwitcherWithText.swift */; };
@@ -564,6 +566,7 @@
 				8A9C7F0927613A3300A5B694 /* DisplayMini.framework in Embed Frameworks */,
 				CA8622CD27B2A9AF0066682A /* Network.framework in Embed Frameworks */,
 				8A62EF0C2795C09D005445B4 /* Pager.framework in Embed Frameworks */,
+				CACB3DC627C2988B00AD999D /* VinchyOrder.framework in Embed Frameworks */,
 				8A63CCB52675462A003B1D4D /* Core.framework in Embed Frameworks */,
 				8A6D10B827943FAB009FF7E7 /* NotificationsDebug.framework in Embed Frameworks */,
 				8A299EF4274FB7B400355602 /* Spotlight.framework in Embed Frameworks */,
@@ -971,6 +974,7 @@
 		CACA7E97254C57CC0099E622 /* WriteNoteRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteNoteRouterProtocol.swift; sourceTree = "<group>"; };
 		CACA7E98254C57CC0099E622 /* WriteNoteRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteNoteRouter.swift; sourceTree = "<group>"; };
 		CACB3C7127BBDB2400AD999D /* VinchyCart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyCart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CACB3DC427C2988B00AD999D /* VinchyOrder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyOrder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CACC1DC124C5F2980082BD01 /* filters.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = filters.json; sourceTree = "<group>"; };
 		CAEBD787251A6D6200210F3B /* AgreementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementsViewController.swift; sourceTree = "<group>"; };
 		CAEBD7F2251A7F5000210F3B /* SwitcherWithText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitcherWithText.swift; sourceTree = "<group>"; };
@@ -1059,6 +1063,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8A51456B2757C08C00DC45CD /* AdvancedSearch.framework in Frameworks */,
+				CACB3DC527C2988B00AD999D /* VinchyOrder.framework in Frameworks */,
 				8A5145862757C9A000DC45CD /* VinchyUI.framework in Frameworks */,
 				CA51BBEF254094B000208F71 /* AppTrackingTransparency.framework in Frameworks */,
 				8A63CCB62675462C003B1D4D /* Database.framework in Frameworks */,
@@ -1477,6 +1482,7 @@
 		46483F371463D95E22014241 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CACB3DC427C2988B00AD999D /* VinchyOrder.framework */,
 				CACB3C7127BBDB2400AD999D /* VinchyCart.framework */,
 				CA8622CB27B2A9AF0066682A /* Network.framework */,
 				CA8622C827B2A9A20066682A /* Network.framework */,

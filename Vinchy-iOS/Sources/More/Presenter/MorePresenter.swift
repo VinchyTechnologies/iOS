@@ -87,6 +87,11 @@ final class MorePresenter {
       emojiLabel: "👍")
     sections.append(.rate([rateViewModel]))
 
+//    if false {
+//      let myOrdersViewModel = DocCellViewModel(titleText: "My Orders", icon: UIImage(systemName: "archivebox.fill"))
+//      sections.append(.orders([myOrdersViewModel]))
+//    }
+
 //    sections.append(.social([.init(titleText: localized("we_are_in_social_networks").firstLetterUppercased())]))
 
     let mySoresViewModel = DocCellViewModel(titleText: localized("saved_stores").firstLetterUppercased(), icon: UIImage(named: "shop"))

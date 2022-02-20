@@ -213,6 +213,7 @@ final class ShowcaseViewController: UIViewController, Loadable {
       return (isDecelerating || isDragging) && shouldCallScrollViewDidScroll
     }
   }
+
   private func updateShadowSupplementaryHeaderView(offset: CGFloat) {
     let value: CGFloat = offset
     let alpha = min(1, max(0, value / 10))
@@ -227,12 +228,6 @@ final class ShowcaseViewController: UIViewController, Loadable {
   @objc
   private func didTapShare(_ button: UIButton) {
     interactor?.didTapShare(sourceView: button)
-  }
-
-  private func hideErrorView() {
-    DispatchQueue.main.async {
-      self.collectionView.backgroundView = nil
-    }
   }
 }
 
