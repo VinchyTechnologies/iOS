@@ -33,4 +33,9 @@ final class OrdersRouter {
 
 // MARK: OrdersRouterProtocol
 
-extension OrdersRouter: OrdersRouterProtocol {}
+extension OrdersRouter: OrdersRouterProtocol {
+  func pushToOrderDetailViewController(orderID: Int) {
+    let controller = OrderDetailAssembly.assemblyModule(input: .init())
+    viewController?.navigationController?.pushViewController(controller, animated: true)
+  }
+}

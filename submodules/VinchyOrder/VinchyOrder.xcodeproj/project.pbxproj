@@ -8,6 +8,19 @@
 
 /* Begin PBXBuildFile section */
 		85297DCDC70B65C928CE8622 /* Pods_VinchyOrder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C91E9770CF1DCD3F3B126FD /* Pods_VinchyOrder.framework */; };
+		CAB25B8A27C3953A00426785 /* OrderItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB25B8927C3953A00426785 /* OrderItemView.swift */; };
+		CAC3EB6D27C36EC80058ABA2 /* OrderDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3EB5C27C36EC80058ABA2 /* OrderDetailViewModel.swift */; };
+		CAC3EB6E27C36EC80058ABA2 /* OrderDetailInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3EB5E27C36EC80058ABA2 /* OrderDetailInput.swift */; };
+		CAC3EB6F27C36EC80058ABA2 /* OrderDetailAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3EB6027C36EC80058ABA2 /* OrderDetailAssembly.swift */; };
+		CAC3EB7027C36EC80058ABA2 /* OrderDetailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3EB6227C36EC80058ABA2 /* OrderDetailPresenter.swift */; };
+		CAC3EB7127C36EC80058ABA2 /* OrderDetailPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3EB6327C36EC80058ABA2 /* OrderDetailPresenterProtocol.swift */; };
+		CAC3EB7227C36EC80058ABA2 /* OrderDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3EB6527C36EC80058ABA2 /* OrderDetailViewController.swift */; };
+		CAC3EB7327C36EC80058ABA2 /* OrderDetailViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3EB6627C36EC80058ABA2 /* OrderDetailViewControllerProtocol.swift */; };
+		CAC3EB7427C36EC80058ABA2 /* OrderDetailInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3EB6827C36EC80058ABA2 /* OrderDetailInteractorProtocol.swift */; };
+		CAC3EB7527C36EC80058ABA2 /* OrderDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3EB6927C36EC80058ABA2 /* OrderDetailInteractor.swift */; };
+		CAC3EB7627C36EC80058ABA2 /* OrderDetailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3EB6B27C36EC80058ABA2 /* OrderDetailRouter.swift */; };
+		CAC3EB7727C36EC80058ABA2 /* OrderDetailRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3EB6C27C36EC80058ABA2 /* OrderDetailRouterProtocol.swift */; };
+		CAC3EB7A27C374AF0058ABA2 /* OrderDateStatusView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3EB7927C374AF0058ABA2 /* OrderDateStatusView.swift */; };
 		CACB3D8827C27FCC00AD999D /* VinchyOrder.h in Headers */ = {isa = PBXBuildFile; fileRef = CACB3D8727C27FCC00AD999D /* VinchyOrder.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CACB3DA327C2801F00AD999D /* OrdersViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB3D9227C2801F00AD999D /* OrdersViewModel.swift */; };
 		CACB3DA427C2801F00AD999D /* OrdersInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB3D9427C2801F00AD999D /* OrdersInput.swift */; };
@@ -31,6 +44,19 @@
 		5C91E9770CF1DCD3F3B126FD /* Pods_VinchyOrder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinchyOrder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6439EDE2AD9D2E45F9D45401 /* Pods-VinchyOrder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyOrder.release.xcconfig"; path = "Target Support Files/Pods-VinchyOrder/Pods-VinchyOrder.release.xcconfig"; sourceTree = "<group>"; };
 		952EB8CCCC9139A09121F821 /* Pods-VinchyOrder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyOrder.debug.xcconfig"; path = "Target Support Files/Pods-VinchyOrder/Pods-VinchyOrder.debug.xcconfig"; sourceTree = "<group>"; };
+		CAB25B8927C3953A00426785 /* OrderItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItemView.swift; sourceTree = "<group>"; };
+		CAC3EB5C27C36EC80058ABA2 /* OrderDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailViewModel.swift; sourceTree = "<group>"; };
+		CAC3EB5E27C36EC80058ABA2 /* OrderDetailInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailInput.swift; sourceTree = "<group>"; };
+		CAC3EB6027C36EC80058ABA2 /* OrderDetailAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailAssembly.swift; sourceTree = "<group>"; };
+		CAC3EB6227C36EC80058ABA2 /* OrderDetailPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailPresenter.swift; sourceTree = "<group>"; };
+		CAC3EB6327C36EC80058ABA2 /* OrderDetailPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailPresenterProtocol.swift; sourceTree = "<group>"; };
+		CAC3EB6527C36EC80058ABA2 /* OrderDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailViewController.swift; sourceTree = "<group>"; };
+		CAC3EB6627C36EC80058ABA2 /* OrderDetailViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailViewControllerProtocol.swift; sourceTree = "<group>"; };
+		CAC3EB6827C36EC80058ABA2 /* OrderDetailInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailInteractorProtocol.swift; sourceTree = "<group>"; };
+		CAC3EB6927C36EC80058ABA2 /* OrderDetailInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailInteractor.swift; sourceTree = "<group>"; };
+		CAC3EB6B27C36EC80058ABA2 /* OrderDetailRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailRouter.swift; sourceTree = "<group>"; };
+		CAC3EB6C27C36EC80058ABA2 /* OrderDetailRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailRouterProtocol.swift; sourceTree = "<group>"; };
+		CAC3EB7927C374AF0058ABA2 /* OrderDateStatusView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderDateStatusView.swift; sourceTree = "<group>"; };
 		CACB3D8427C27FCC00AD999D /* VinchyOrder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VinchyOrder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CACB3D8727C27FCC00AD999D /* VinchyOrder.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VinchyOrder.h; sourceTree = "<group>"; };
 		CACB3D9227C2801F00AD999D /* OrdersViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrdersViewModel.swift; sourceTree = "<group>"; };
@@ -67,6 +93,97 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		CAB25B8827C3952500426785 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CAB25B8927C3953A00426785 /* OrderItemView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CAC3EB5A27C36EC80058ABA2 /* OrderDetail */ = {
+			isa = PBXGroup;
+			children = (
+				CAB25B8827C3952500426785 /* Views */,
+				CAC3EB5F27C36EC80058ABA2 /* Assembly */,
+				CAC3EB5D27C36EC80058ABA2 /* Input */,
+				CAC3EB6727C36EC80058ABA2 /* Interactor */,
+				CAC3EB6127C36EC80058ABA2 /* Presenter */,
+				CAC3EB6A27C36EC80058ABA2 /* Router */,
+				CAC3EB6427C36EC80058ABA2 /* ViewController */,
+				CAC3EB5B27C36EC80058ABA2 /* ViewModel */,
+			);
+			path = OrderDetail;
+			sourceTree = "<group>";
+		};
+		CAC3EB5B27C36EC80058ABA2 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CAC3EB5C27C36EC80058ABA2 /* OrderDetailViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CAC3EB5D27C36EC80058ABA2 /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				CAC3EB5E27C36EC80058ABA2 /* OrderDetailInput.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		CAC3EB5F27C36EC80058ABA2 /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				CAC3EB6027C36EC80058ABA2 /* OrderDetailAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		CAC3EB6127C36EC80058ABA2 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CAC3EB6227C36EC80058ABA2 /* OrderDetailPresenter.swift */,
+				CAC3EB6327C36EC80058ABA2 /* OrderDetailPresenterProtocol.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CAC3EB6427C36EC80058ABA2 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CAC3EB6527C36EC80058ABA2 /* OrderDetailViewController.swift */,
+				CAC3EB6627C36EC80058ABA2 /* OrderDetailViewControllerProtocol.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CAC3EB6727C36EC80058ABA2 /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				CAC3EB6827C36EC80058ABA2 /* OrderDetailInteractorProtocol.swift */,
+				CAC3EB6927C36EC80058ABA2 /* OrderDetailInteractor.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		CAC3EB6A27C36EC80058ABA2 /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				CAC3EB6B27C36EC80058ABA2 /* OrderDetailRouter.swift */,
+				CAC3EB6C27C36EC80058ABA2 /* OrderDetailRouterProtocol.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		CAC3EB7827C3748E0058ABA2 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CAC3EB7927C374AF0058ABA2 /* OrderDateStatusView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		CACB3D7A27C27FCC00AD999D = {
 			isa = PBXGroup;
 			children = (
@@ -90,6 +207,8 @@
 		CACB3D8627C27FCC00AD999D /* VinchyOrder */ = {
 			isa = PBXGroup;
 			children = (
+				CAC3EB7827C3748E0058ABA2 /* Views */,
+				CAC3EB5A27C36EC80058ABA2 /* OrderDetail */,
 				CACB3D9027C2801F00AD999D /* Orders */,
 				CACB3D8727C27FCC00AD999D /* VinchyOrder.h */,
 			);
@@ -307,18 +426,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAC3EB7227C36EC80058ABA2 /* OrderDetailViewController.swift in Sources */,
+				CAC3EB6E27C36EC80058ABA2 /* OrderDetailInput.swift in Sources */,
+				CAC3EB7627C36EC80058ABA2 /* OrderDetailRouter.swift in Sources */,
+				CAC3EB7427C36EC80058ABA2 /* OrderDetailInteractorProtocol.swift in Sources */,
 				CACB3DA327C2801F00AD999D /* OrdersViewModel.swift in Sources */,
+				CAC3EB7A27C374AF0058ABA2 /* OrderDateStatusView.swift in Sources */,
 				CACB3DAD27C2801F00AD999D /* OrdersRouterProtocol.swift in Sources */,
+				CAB25B8A27C3953A00426785 /* OrderItemView.swift in Sources */,
+				CAC3EB7527C36EC80058ABA2 /* OrderDetailInteractor.swift in Sources */,
 				CACB3DA427C2801F00AD999D /* OrdersInput.swift in Sources */,
 				CACB3DA727C2801F00AD999D /* OrdersPresenterProtocol.swift in Sources */,
 				CACB3DAA27C2801F00AD999D /* OrdersInteractor.swift in Sources */,
 				CACB3DA927C2801F00AD999D /* OrdersViewController.swift in Sources */,
+				CAC3EB6D27C36EC80058ABA2 /* OrderDetailViewModel.swift in Sources */,
 				CACB3DAB27C2801F00AD999D /* OrdersInteractorProtocol.swift in Sources */,
+				CAC3EB7327C36EC80058ABA2 /* OrderDetailViewControllerProtocol.swift in Sources */,
+				CAC3EB6F27C36EC80058ABA2 /* OrderDetailAssembly.swift in Sources */,
 				CACB3DA527C2801F00AD999D /* OrdersAssembly.swift in Sources */,
 				CACB3DA627C2801F00AD999D /* OrdersPresenter.swift in Sources */,
+				CAC3EB7727C36EC80058ABA2 /* OrderDetailRouterProtocol.swift in Sources */,
+				CAC3EB7027C36EC80058ABA2 /* OrderDetailPresenter.swift in Sources */,
 				CACB3DC327C293EF00AD999D /* OrderView.swift in Sources */,
 				CACB3DA827C2801F00AD999D /* OrdersViewControllerProtocol.swift in Sources */,
 				CACB3DAC27C2801F00AD999D /* OrdersRouter.swift in Sources */,
+				CAC3EB7127C36EC80058ABA2 /* OrderDetailPresenterProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

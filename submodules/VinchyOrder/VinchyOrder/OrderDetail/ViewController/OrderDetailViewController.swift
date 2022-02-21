@@ -1,18 +1,20 @@
 //
-//  CartViewController.swift
-//  VinchyCart
+//  OrderDetailViewController.swift
+//  VinchyOrder
 //
-//  Created by Алексей Смирнов on 11.02.2022.
+//  Created by Алексей Смирнов on 21.02.2022.
 //
+
+import UIKit
 
 import DisplayMini
 import EpoxyBars
 import EpoxyCollectionView
 import UIKit
 
-// MARK: - CartViewController
+// MARK: - OrderDetailViewController
 
-final class CartViewController: CollectionViewController {
+final class OrderDetailViewController: CollectionViewController {
 
   // MARK: Lifecycle
 
@@ -23,7 +25,7 @@ final class CartViewController: CollectionViewController {
 
   // MARK: Internal
 
-  var interactor: CartInteractorProtocol?
+  var interactor: OrderDetailInteractorProtocol?
 
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -39,10 +41,10 @@ final class CartViewController: CollectionViewController {
 
     navigationItem.largeTitleDisplayMode = .never
 
-    navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "trash.fill", withConfiguration: imageConfig)?.withTintColor(.systemRed, renderingMode: .alwaysOriginal), style: .plain, target: self, action: nil)
     bottomBarInstaller.install()
     interactor?.viewDidLoad()
   }
+
   override func makeCollectionView() -> CollectionView {
     let collectionView = super.makeCollectionView()
     collectionView.backgroundColor = .mainBackground
@@ -64,7 +66,7 @@ final class CartViewController: CollectionViewController {
 
   private lazy var collectionViewSize: CGSize = view.frame.size
 
-  private var viewModel: CartViewModel = .empty
+  private var viewModel: OrderDetailViewModel = .empty
 
   private lazy var bottomBarInstaller = BottomBarInstaller(
     viewController: self,
@@ -74,6 +76,17 @@ final class CartViewController: CollectionViewController {
   private var sections: [SectionModel] {
     viewModel.sections.compactMap { section in
       switch section {
+      case .orderNumber(let content):
+        let width = collectionViewSize.width - 48
+        return SectionModel(dataID: UUID()) {
+          OrderDateStatusView.itemModel(
+            dataID: UUID(),
+            content: content,
+            style: .init())
+        }
+        .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 8, right: 24))
+        .flowLayoutItemSize(.init(width: width, height: content.height(width: width)))
+
       case .logo(let content):
         let width = collectionViewSize.width - 48
         return SectionModel(dataID: UUID()) {
@@ -113,15 +126,12 @@ final class CartViewController: CollectionViewController {
         .flowLayoutItemSize(.init(width: width, height: height))
         .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 8, right: 24))
 
-      case .cartItem(let content):
+      case .orderItem(let content):
         return SectionModel(dataID: UUID()) {
-          CartItemView.itemModel(
+          OrderItemView.itemModel(
             dataID: UUID(),
             content: content,
             style: .init(id: UUID()))
-            .didSelect { [weak self] _ in
-//            self?.interactor?.didSelectHorizontalWine(wineID: content.wineID)
-            }
             .flowLayoutItemSize(.init(width: collectionViewSize.width, height: content.height(width: collectionViewSize.width, style: .init(id: UUID()))))
         }
       }
@@ -151,11 +161,11 @@ final class CartViewController: CollectionViewController {
   }
 }
 
-// MARK: CartViewControllerProtocol
+// MARK: OrderDetailViewControllerProtocol
 
-extension CartViewController: CartViewControllerProtocol {
+extension OrderDetailViewController: OrderDetailViewControllerProtocol {
 
-  func updateUI(viewModel: CartViewModel) {
+  func updateUI(viewModel: OrderDetailViewModel) {
     self.viewModel = viewModel
     navigationItem.title = viewModel.navigationTitleText
     setSections(sections, animated: true)

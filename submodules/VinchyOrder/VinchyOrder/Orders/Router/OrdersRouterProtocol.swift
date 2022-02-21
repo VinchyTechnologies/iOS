@@ -7,4 +7,6 @@
 
 import Foundation
 
-protocol OrdersRouterProtocol: AnyObject {}
+protocol OrdersRouterProtocol: AnyObject {
+  func pushToOrderDetailViewController(orderID: Int)
+}

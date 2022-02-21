@@ -41,9 +41,9 @@ extension OrdersPresenter: OrdersPresenterProtocol {
     let viewModel = OrdersViewModel(
       state: .normal(sections: [
         .content(dataID: .content, items: [
-          .order(content: .init(dateText: "29.08.2021", orderNumberText: "Заказ #1", priceText: "25000p", statusText: "Выдан", statusColor: .systemGreen)),
-          .order(content: .init(dateText: "29.08.2021", orderNumberText: "Заказ #2", priceText: "115000p", statusText: "В работе", statusColor: .systemOrange)),
-          .order(content: .init(dateText: "29.08.2021", orderNumberText: "Заказ #3", priceText: "800р", statusText: "Отменен", statusColor: .systemRed)),
+          .order(content: .init(orderID: 1, dateText: "29.08.2021", orderNumberText: "Заказ #1", priceText: "25000p", statusText: "Выдан", statusColor: .systemGreen)),
+          .order(content: .init(orderID: 2, dateText: "29.08.2021", orderNumberText: "Заказ #2", priceText: "115000p", statusText: "В работе", statusColor: .systemOrange)),
+          .order(content: .init(orderID: 3, dateText: "29.08.2021", orderNumberText: "Заказ #3", priceText: "800р", statusText: "Отменен", statusColor: .systemRed)),
         ]),
       ]),
       navigationTitle: "Orders")

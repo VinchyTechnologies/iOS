@@ -74,6 +74,9 @@ final class OrdersViewController: CollectionViewController {
                 let height: CGFloat = 64
                 return OrderView.itemModel(dataID: UUID(), content: content, style: .init())
                   .flowLayoutItemSize(.init(width: width, height: height))
+                  .didSelect { [weak self] _ in
+                    self?.interactor?.didSelectOrder(orderID: content.orderID)
+                  }
 
               case .loading:
                 return LoadingView.itemModel(dataID: UUID())

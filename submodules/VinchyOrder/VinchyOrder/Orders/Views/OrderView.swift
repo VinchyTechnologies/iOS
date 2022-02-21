@@ -6,9 +6,12 @@
 //
 
 import DisplayMini
+import EpoxyCollectionView
 import EpoxyCore
 import EpoxyLayoutGroups
 import UIKit
+
+// MARK: - OrderView
 
 final class OrderView: UIView, EpoxyableView {
 
@@ -24,6 +27,7 @@ final class OrderView: UIView, EpoxyableView {
     vGroup.constrainToMarginsWithHighPriorityBottom()
     vGroup.heightAnchor.constraint(equalToConstant: 64).isActive = true
   }
+
   required init?(coder: NSCoder) {
     fatalError("init(coder:) has not been implemented")
   }
@@ -35,6 +39,7 @@ final class OrderView: UIView, EpoxyableView {
   }
 
   struct Content: Equatable {
+    let orderID: Int
     let dateText: String?
     let orderNumberText: String?
     let priceText: String?
@@ -70,4 +75,20 @@ final class OrderView: UIView, EpoxyableView {
   private let vGroup = VGroup(
     style: .init(alignment: .fill, spacing: 4),
     items: [])
+}
+
+// MARK: HighlightableView
+
+extension OrderView: HighlightableView {
+  public func didHighlight(_ isHighlighted: Bool) {
+    UIView.animate(
+      withDuration: 0.15,
+      delay: 0,
+      options: [.beginFromCurrentState, .allowUserInteraction])
+    {
+      self.transform = isHighlighted
+        ? CGAffineTransform(scaleX: 0.95, y: 0.95)
+        : .identity
+    }
+  }
 }

@@ -145,6 +145,6 @@ extension OrdersInteractor: OrdersInteractorProtocol {
   }
 
   func didSelectOrder(orderID: Int) {
-//    router.pushToWineDetailViewController(wineID: wineID, mode: .normal)
+    router.pushToOrderDetailViewController(orderID: orderID)
   }
 }
