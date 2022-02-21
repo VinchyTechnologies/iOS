@@ -43,6 +43,7 @@ final class CartViewController: CollectionViewController {
     bottomBarInstaller.install()
     interactor?.viewDidLoad()
   }
+  
   override func makeCollectionView() -> CollectionView {
     let collectionView = super.makeCollectionView()
     collectionView.backgroundColor = .mainBackground
@@ -120,7 +121,7 @@ final class CartViewController: CollectionViewController {
             content: content,
             style: .init(id: UUID()))
             .didSelect { [weak self] _ in
-//            self?.interactor?.didSelectHorizontalWine(wineID: content.wineID)
+              self?.interactor?.didSelectHorizontalWine(wineID: content.wineID)
             }
             .flowLayoutItemSize(.init(width: collectionViewSize.width, height: content.height(width: collectionViewSize.width, style: .init(id: UUID()))))
         }
@@ -136,7 +137,7 @@ final class CartViewController: CollectionViewController {
           dataID: nil,
           content: bottomPriceBarViewModel,
           behaviors: .init(didSelect: { [weak self] _ in
-            //            self?.interactor?.didTapConfirmOrderButton()
+            self?.interactor?.didTapConfirmOrderButton()
           }),
           style: .init(kind: .buttonOnly)),
       ]

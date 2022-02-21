@@ -9,4 +9,6 @@ import Foundation
 
 protocol CartInteractorProtocol: AnyObject {
   func viewDidLoad()
+  func didSelectHorizontalWine(wineID: Int64)
+  func didTapConfirmOrderButton()
 }
