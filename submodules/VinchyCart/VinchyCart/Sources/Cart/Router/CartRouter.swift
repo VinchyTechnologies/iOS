@@ -39,6 +39,11 @@ final class CartRouter {
 // MARK: CartRouterProtocol
 
 extension CartRouter: CartRouterProtocol {
+
+  func dismiss() {
+    viewController?.dismiss(animated: true, completion: nil)
+  }
+
   func presentWineDetail(wineID: Int64, affilatedId: Int, price: Price) {
     coordinator.presentWineDetailViewController(wineID: wineID, mode: .partner(affilatedId: affilatedId, price: price, buyAction: .cart(affilatedId: affilatedId, price: price)), shouldShowSimilarWine: false)
   }

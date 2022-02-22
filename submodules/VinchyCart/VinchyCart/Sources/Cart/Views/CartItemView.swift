@@ -30,9 +30,9 @@ public final class CartItemView: UIView, EpoxyableView {
   // MARK: Public
 
   public struct Behaviors {
-    public let didTap: (UIButton, Int64) -> Void
-    public init(didTap: @escaping ((UIButton, Int64) -> Void)) {
-      self.didTap = didTap
+    public let didTapPlusOrMinus: (Int64, Int) -> Void
+    public init(didTapPlusOrMinus: @escaping ((Int64, Int) -> Void)) {
+      self.didTapPlusOrMinus = didTapPlusOrMinus
     }
   }
 
@@ -99,7 +99,7 @@ public final class CartItemView: UIView, EpoxyableView {
   }
 
   public func setBehaviors(_ behaviors: Behaviors?) {
-    didTap = behaviors?.didTap
+    didTapPlusOrMinus = behaviors?.didTapPlusOrMinus
   }
 
   public func setContent(_ content: Content, animated: Bool) {
@@ -142,11 +142,16 @@ public final class CartItemView: UIView, EpoxyableView {
               content: content.priceText ?? "",
               style: .style(with: .miniBold))
             SpacerItem(dataID: DataID.spacerStepper, style: .init(minWidth: 10))
-            StepperView.groupItem(dataID: DataID.stepperView, content: 1, behaviors: nil, style: .init())
+            StepperView.groupItem(
+              dataID: DataID.stepperView,
+              content: 1,
+              behaviors: .init(didTapPlusOrMinus: { [weak self] value in
+                self?.didTapPlusOrMinusStepper(value: value)
+              }),
+              style: .init())
           }
         }
       }
-
     }
   }
 
@@ -159,7 +164,7 @@ public final class CartItemView: UIView, EpoxyableView {
   private let style: Style
   private var wineID: Int64?
 
-  private var didTap: ((UIButton, Int64) -> Void)?
+  private var didTapPlusOrMinus: ((Int64, Int) -> Void)?
 
   private let vGroup = VGroup(
     style: .init(
@@ -168,12 +173,11 @@ public final class CartItemView: UIView, EpoxyableView {
     items: [])
 
   @objc
-  private func didTapButton(_ button: UIButton) {
+  private func didTapPlusOrMinusStepper(value: Int) {
     guard let wineID = wineID else {
       return
     }
-
-    didTap?(button, wineID)
+    didTapPlusOrMinus?(wineID, value)
   }
 }
 

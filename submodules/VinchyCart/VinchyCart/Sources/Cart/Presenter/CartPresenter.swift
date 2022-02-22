@@ -42,7 +42,7 @@ extension CartPresenter: CartPresenterProtocol {
 
     sections.append(.address(.init(titleText: "Красная площадь, 7А", isMapButtonHidden: true)))
 
-    sections.append(.cartItem(.init(wineID: 100, imageURL: "https://bucket.vinchy.tech/wines/2910.png".toURL, titleText: "Dom Perignon Dom Perignon Dom Perignon Dom Perignon", subtitleText: "France", priceText: "123P", value: 1)))
+    sections.append(.cartItem(.init(wineID: 1, imageURL: "https://bucket.vinchy.tech/wines/2910.png".toURL, titleText: "Dom Perignon Dom Perignon Dom Perignon Dom Perignon", subtitleText: "France", priceText: "123P", value: 1)))
     sections.append(.title(content: "Итого 1505 Р"))
 
     let viewModel = CartViewModel(sections: sections, navigationTitleText: "Корзина", bottomBarViewModel: .init(leadingText: nil, trailingButtonText: "Оформить заказ"), shouldShowTrashButton: true)

@@ -61,9 +61,7 @@ final class CartViewController: CollectionViewController {
   // MARK: Private
 
   private let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
-
   private lazy var collectionViewSize: CGSize = view.frame.size
-
   private var viewModel: CartViewModel = .empty
 
   private lazy var bottomBarInstaller = BottomBarInstaller(
@@ -118,10 +116,24 @@ final class CartViewController: CollectionViewController {
           CartItemView.itemModel(
             dataID: UUID(),
             content: content,
+            behaviors: .init(didTapPlusOrMinus: { [weak self] wineID, value in
+              self?.interactor?.didTapStepper(productID: wineID, type: .wine, value: value)
+            }),
             style: .init(id: UUID()))
             .didSelect { [weak self] _ in
               self?.interactor?.didSelectHorizontalWine(wineID: content.wineID)
             }
+            .willDisplay({ [weak self] context in
+              let value = self?.interactor?.getCountOfProduct(productID: content.wineID, type: .wine) ?? 0
+              let con = CartItemView.Content(
+                wineID: content.wineID,
+                imageURL: content.imageURL,
+                titleText: content.titleText,
+                subtitleText: content.subtitleText,
+                priceText: content.priceText,
+                value: value)
+              context.view.setContent(con, animated: false)
+            })
             .flowLayoutItemSize(.init(width: collectionViewSize.width, height: content.height(width: collectionViewSize.width, style: .init(id: UUID()))))
         }
 
@@ -160,6 +172,11 @@ final class CartViewController: CollectionViewController {
   private func didTapCloseBarButtonItem(_ barButtonItem: UIBarButtonItem) {
     dismiss(animated: true)
   }
+
+  @objc
+  private func didTapTrashButton(_ barButtonItem: UIBarButtonItem) {
+    interactor?.didTapTrashButton()
+  }
 }
 
 // MARK: CartViewControllerProtocol
@@ -170,7 +187,7 @@ extension CartViewController: CartViewControllerProtocol {
     self.viewModel = viewModel
     navigationItem.title = viewModel.navigationTitleText
     if viewModel.shouldShowTrashButton {
-      navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "trash.fill", withConfiguration: imageConfig)?.withTintColor(.systemRed, renderingMode: .alwaysOriginal), style: .plain, target: self, action: nil)
+      navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "trash.fill", withConfiguration: imageConfig)?.withTintColor(.systemRed, renderingMode: .alwaysOriginal), style: .plain, target: self, action: #selector(didTapTrashButton(_:)))
     } else {
       navigationItem.rightBarButtonItem = nil
     }

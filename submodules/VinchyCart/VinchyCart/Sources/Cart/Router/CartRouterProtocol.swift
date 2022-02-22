@@ -9,4 +9,5 @@ import VinchyCore
 
 protocol CartRouterProtocol: AnyObject {
   func presentWineDetail(wineID: Int64, affilatedId: Int, price: Price)
+  func dismiss()
 }

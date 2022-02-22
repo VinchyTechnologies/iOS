@@ -10,6 +10,7 @@
 		CA55574327C551C90077E4D3 /* VinchyUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA55574227C551C90077E4D3 /* VinchyUI.framework */; };
 		CA55574727C556B60077E4D3 /* VinchyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA55574627C556B60077E4D3 /* VinchyCore.framework */; };
 		CA55574B27C556C00077E4D3 /* StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA55574A27C556C00077E4D3 /* StringFormatting.framework */; };
+		CA55574F27C5649B0077E4D3 /* Core.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA55574E27C5649B0077E4D3 /* Core.framework */; };
 		CA873A5227B69FA100F47033 /* VinchyCart.h in Headers */ = {isa = PBXBuildFile; fileRef = CA873A5127B69FA100F47033 /* VinchyCart.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CA873A7227B6A25300F47033 /* CartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA873A6127B6A25300F47033 /* CartViewModel.swift */; };
 		CA873A7327B6A25300F47033 /* CartInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA873A6327B6A25300F47033 /* CartInput.swift */; };
@@ -33,6 +34,7 @@
 		CA55574227C551C90077E4D3 /* VinchyUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA55574627C556B60077E4D3 /* VinchyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA55574A27C556C00077E4D3 /* StringFormatting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StringFormatting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA55574E27C5649B0077E4D3 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA873A4E27B69FA100F47033 /* VinchyCart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = VinchyCart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA873A5127B69FA100F47033 /* VinchyCart.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = VinchyCart.h; sourceTree = "<group>"; };
 		CA873A6127B6A25300F47033 /* CartViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CartViewModel.swift; sourceTree = "<group>"; };
@@ -57,6 +59,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA873A7E27B6DED600F47033 /* DisplayMini.framework in Frameworks */,
+				CA55574F27C5649B0077E4D3 /* Core.framework in Frameworks */,
 				CA55574B27C556C00077E4D3 /* StringFormatting.framework in Frameworks */,
 				EE79594920EEA117F45921AC /* Pods_VinchyCart.framework in Frameworks */,
 				CA55574727C556B60077E4D3 /* VinchyCore.framework in Frameworks */,
@@ -70,6 +73,7 @@
 		19B45CB958B8A997BACBEB5F /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CA55574E27C5649B0077E4D3 /* Core.framework */,
 				CA55574A27C556C00077E4D3 /* StringFormatting.framework */,
 				CA55574627C556B60077E4D3 /* VinchyCore.framework */,
 				CA55574227C551C90077E4D3 /* VinchyUI.framework */,

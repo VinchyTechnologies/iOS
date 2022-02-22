@@ -33,7 +33,6 @@ final class VinchyInteractor {
   // MARK: Private
 
   private let dispatchGroup = DispatchGroup()
-  private let throttler = Throttler()
 
   private let router: VinchyRouterProtocol
   private let presenter: VinchyPresenterProtocol

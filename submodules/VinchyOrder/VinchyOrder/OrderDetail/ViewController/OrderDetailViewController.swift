@@ -145,7 +145,7 @@ final class OrderDetailViewController: CollectionViewController {
         BottomPriceBarView.barModel(
           dataID: nil,
           content: bottomPriceBarViewModel,
-          behaviors: .init(didSelect: { [weak self] _ in
+          behaviors: .init(didSelect: { /*[weak self]*/ _ in
             //            self?.interactor?.didTapConfirmOrderButton()
           }),
           style: .init(kind: .buttonOnly)),
