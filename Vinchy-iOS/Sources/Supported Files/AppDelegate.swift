@@ -27,7 +27,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     // FirebaseConfiguration.shared.setLoggerLevel(.min)
 
 //    if Architecture.isRosettaEmulated {
-//    FirebaseApp.configure()
+    FirebaseApp.configure()
 //    }
 
     let defaultValue = ["isAdAvailable": true as NSObject, "force_update_versions": [String]() as NSObject]

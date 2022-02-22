@@ -321,7 +321,6 @@ final class WineDetailViewController: CollectionViewController {
         .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 16, right: 24))
 
       case .ad:
-        return nil
         if input.isAppClip {
           return nil
         } else {
