@@ -162,7 +162,7 @@ extension LoveViewController: UICollectionViewDelegateFlowLayout {
     didSelectItemAt indexPath: IndexPath)
   {
     guard let wineID = wines[safe: indexPath.row]?.wineID else { return }
-    let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID, mode: .normal, isAppClip: false), coordinator: Coordinator.shared, adGenerator: AdFabric.shared)
+    let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID, mode: .normal, isAppClip: false, shouldShowSimilarWine: true), coordinator: Coordinator.shared, adGenerator: AdFabric.shared)
     controller.hidesBottomBarWhenPushed = true
     navigationController?.pushViewController(controller, animated: true)
   }

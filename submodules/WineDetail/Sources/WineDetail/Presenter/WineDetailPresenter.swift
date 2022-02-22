@@ -140,9 +140,11 @@ final class WineDetailPresenter {
       }
     }
 
-    sections += await viewModelFactory.buildSimilarWines(
-      wine: wine,
-      contextMenuViewModels: contextMenuViewModels)
+    if input.shouldShowSimilarWine {
+      sections += await viewModelFactory.buildSimilarWines(
+        wine: wine,
+        contextMenuViewModels: contextMenuViewModels)
+    }
 
     return sections
   }

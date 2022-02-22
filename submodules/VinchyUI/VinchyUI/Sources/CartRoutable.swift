@@ -9,5 +9,5 @@
 import Foundation
 
 public protocol CartRoutable: AnyObject {
-  func presentCartViewController()
+  func presentCartViewController(affilatedId: Int)
 }

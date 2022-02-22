@@ -295,7 +295,7 @@ extension TabBarController: TabBarDeeplinkable {
   }
 
   func openWineDetail(wineID: Int64) -> AnyPublisher<TabBarDeeplinkable, Never> {
-    let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID, mode: .normal, isAppClip: false), coordinator: Coordinator.shared, adGenerator: AdFabric.shared)
+    let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID, mode: .normal, isAppClip: false, shouldShowSimilarWine: true), coordinator: Coordinator.shared, adGenerator: AdFabric.shared)
     let navigationController = VinchyNavigationController(rootViewController: controller)
     navigationController.modalPresentationStyle = .overFullScreen
     UIApplication.topViewController(base: self)?.present(

@@ -26,6 +26,15 @@ final class CartPresenter {
 // MARK: CartPresenterProtocol
 
 extension CartPresenter: CartPresenterProtocol {
+
+  func updateWithSuccess(orderId: Int) {
+    let sections: [CartViewModel.Section] = [
+      .success(.init(titleText: "Заказ #" + String(orderId), subtitleText: "Спасибо за заказ!", buttonText: "Мои заказы")),
+    ]
+    let viewModel = CartViewModel(sections: sections, navigationTitleText: "Корзина", bottomBarViewModel: nil, shouldShowTrashButton: false)
+    viewController?.updateUI(viewModel: viewModel)
+  }
+
   func update() {
     var sections: [CartViewModel.Section] = []
 
@@ -36,7 +45,7 @@ extension CartPresenter: CartPresenterProtocol {
     sections.append(.cartItem(.init(wineID: 100, imageURL: "https://bucket.vinchy.tech/wines/2910.png".toURL, titleText: "Dom Perignon Dom Perignon Dom Perignon Dom Perignon", subtitleText: "France", priceText: "123P", value: 1)))
     sections.append(.title(content: "Итого 1505 Р"))
 
-    let viewModel = CartViewModel(sections: sections, navigationTitleText: "Корзина", bottomBarViewModel: .init(leadingText: nil, trailingButtonText: "Оформить заказ"))
+    let viewModel = CartViewModel(sections: sections, navigationTitleText: "Корзина", bottomBarViewModel: .init(leadingText: nil, trailingButtonText: "Оформить заказ"), shouldShowTrashButton: true)
     viewController?.updateUI(viewModel: viewModel)
   }
 }

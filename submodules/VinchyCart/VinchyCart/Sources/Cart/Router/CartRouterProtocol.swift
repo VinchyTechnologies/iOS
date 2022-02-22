@@ -5,6 +5,8 @@
 //  Created by Алексей Смирнов on 11.02.2022.
 //
 
-import Foundation
+import VinchyCore
 
-protocol CartRouterProtocol: AnyObject {}
+protocol CartRouterProtocol: AnyObject {
+  func presentWineDetail(wineID: Int64, affilatedId: Int, price: Price)
+}

@@ -25,8 +25,8 @@ final class Coordinator: ShowcaseRoutable, WineDetailRoutable, WriteNoteRoutable
 
   static let shared = Coordinator()
 
-  func presentCartViewController() {
-    let controller = CartAssembly.assemblyModule(input: .init())
+  func presentCartViewController(affilatedId: Int) {
+    let controller = CartAssembly.assemblyModule(input: .init(affilatedId: affilatedId), coordinator: Coordinator.shared)
     let navigationController = VinchyNavigationController(rootViewController: controller)
     UIApplication.topViewController()?.present(navigationController, animated: true, completion: nil)
   }

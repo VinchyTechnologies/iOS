@@ -11,8 +11,8 @@ import VinchyCore
 // MARK: - WineDetailRoutable
 
 public protocol WineDetailRoutable: AnyObject {
-  func pushToWineDetailViewController(wineID: Int64, mode: WineDetailMode)
-  func presentWineDetailViewController(wineID: Int64, mode: WineDetailMode)
+  func pushToWineDetailViewController(wineID: Int64, mode: WineDetailMode, shouldShowSimilarWine: Bool)
+  func presentWineDetailViewController(wineID: Int64, mode: WineDetailMode, shouldShowSimilarWine: Bool)
 }
 
 // MARK: - WineDetailMode

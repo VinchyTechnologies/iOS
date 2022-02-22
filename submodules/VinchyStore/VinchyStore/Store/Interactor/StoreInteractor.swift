@@ -253,7 +253,8 @@ extension StoreInteractor: StoreInteractorProtocol {
   }
 
   func didTapConfirmOrderButton() {
-    router.presentCartViewController()
+    guard let affilatedId = partnerInfo?.affiliatedStoreId else { return }
+    router.presentCartViewController(affilatedId: affilatedId)
   }
 
   func didTapRecommendedWineButton(wineID: Int64) {
@@ -391,7 +392,7 @@ extension StoreInteractor: StoreInteractorProtocol {
     if let wine = assortimentWines.first(where: { $0.id == wineID }), let price = wine.price {
       mode = .partner(affilatedId: partnerInfo.affiliatedStoreId, price: price, buyAction: .openURL(url: wine.url?.toURL))
     }
-    router.pushToWineDetailViewController(wineID: wineID, mode: mode)
+    router.pushToWineDetailViewController(wineID: wineID, mode: mode, shouldShowSimilarWine: false)
   }
 
   func didSelectRecommendedWine(wineID: Int64) {
@@ -402,7 +403,7 @@ extension StoreInteractor: StoreInteractorProtocol {
     if let wine = personalRecommendedWines?.first(where: { $0.id == wineID }), let price = wine.price {
       mode = .partner(affilatedId: partnerInfo.affiliatedStoreId, price: price, buyAction: .openURL(url: wine.url?.toURL))
     }
-    router.pushToWineDetailViewController(wineID: wineID, mode: mode)
+    router.pushToWineDetailViewController(wineID: wineID, mode: mode, shouldShowSimilarWine: false)
   }
 }
 
@@ -417,7 +418,7 @@ extension StoreInteractor: ResultsSearchDelegate {
 //    if let wine = assortimentWines.first(where: { $0.id == wineID }), let price = wine.price {
 //      mode = .partner(affilatedId: partnerInfo.affiliatedStoreId, price: price, buyAction: .openURL(url: wine.url?.toURL))
 //    }
-    router.pushToWineDetailViewController(wineID: wineID, mode: mode)
+    router.pushToWineDetailViewController(wineID: wineID, mode: mode, shouldShowSimilarWine: false)
   }
 
   func didTapSearchButton(searchText: String?) { }

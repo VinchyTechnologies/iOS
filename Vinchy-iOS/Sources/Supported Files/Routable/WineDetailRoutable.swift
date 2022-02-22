@@ -12,11 +12,11 @@ import VinchyUI
 import WineDetail
 
 extension WineDetailRoutable {
-  func pushToWineDetailViewController(wineID: Int64, mode: WineDetailMode) {
+  func pushToWineDetailViewController(wineID: Int64, mode: WineDetailMode, shouldShowSimilarWine: Bool) {
     if UIDevice.current.userInterfaceIdiom == .pad && UIApplication.topViewController() is SearchViewController {
-      presentWineDetailViewController(wineID: wineID, mode: mode)
+      presentWineDetailViewController(wineID: wineID, mode: mode, shouldShowSimilarWine: shouldShowSimilarWine)
     } else {
-      let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID, mode: mode, isAppClip: false), coordinator: Coordinator.shared, adGenerator: AdFabric.shared)
+      let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID, mode: mode, isAppClip: false, shouldShowSimilarWine: shouldShowSimilarWine), coordinator: Coordinator.shared, adGenerator: AdFabric.shared)
       controller.hidesBottomBarWhenPushed = true
       if UIApplication.topViewController() is SearchViewController {
         UIApplication.topViewController()?.presentingViewController?.navigationController?.pushViewController(
@@ -30,8 +30,8 @@ extension WineDetailRoutable {
     }
   }
 
-  func presentWineDetailViewController(wineID: Int64, mode: WineDetailMode) {
-    let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID, mode: mode, isAppClip: false), coordinator: Coordinator.shared, adGenerator: AdFabric.shared)
+  func presentWineDetailViewController(wineID: Int64, mode: WineDetailMode, shouldShowSimilarWine: Bool) {
+    let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID, mode: mode, isAppClip: false, shouldShowSimilarWine: shouldShowSimilarWine), coordinator: Coordinator.shared, adGenerator: AdFabric.shared)
     let navigationController = VinchyNavigationController(rootViewController: controller)
     navigationController.modalPresentationStyle = .overFullScreen
     UIApplication.topViewController()?.present(

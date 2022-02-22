@@ -19,6 +19,7 @@ final class CartViewController: CollectionViewController {
   init() {
     let layout = UICollectionViewFlowLayout()
     super.init(layout: layout)
+    navigationItem.largeTitleDisplayMode = .never
   }
 
   // MARK: Internal
@@ -27,7 +28,6 @@ final class CartViewController: CollectionViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
 
     if isModal {
       navigationItem.leftBarButtonItem = UIBarButtonItem(
@@ -37,9 +37,6 @@ final class CartViewController: CollectionViewController {
         action: #selector(didTapCloseBarButtonItem(_:)))
     }
 
-    navigationItem.largeTitleDisplayMode = .never
-
-    navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "trash.fill", withConfiguration: imageConfig)?.withTintColor(.systemRed, renderingMode: .alwaysOriginal), style: .plain, target: self, action: nil)
     bottomBarInstaller.install()
     interactor?.viewDidLoad()
   }
@@ -62,6 +59,8 @@ final class CartViewController: CollectionViewController {
   }
 
   // MARK: Private
+
+  private let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
 
   private lazy var collectionViewSize: CGSize = view.frame.size
 
@@ -125,6 +124,17 @@ final class CartViewController: CollectionViewController {
             }
             .flowLayoutItemSize(.init(width: collectionViewSize.width, height: content.height(width: collectionViewSize.width, style: .init(id: UUID()))))
         }
+
+      case .success(let content):
+        let height = self.collectionView.layoutFrame.height
+        return SectionModel(dataID: UUID()) {
+          EpoxyErrorView.itemModel(
+            dataID: UUID(),
+            content: content,
+            style: .init())
+        }
+        .flowLayoutItemSize(.init(width: collectionViewSize.width, height: height))
+        .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 0, right: 0))
       }
     }
   }
@@ -159,6 +169,11 @@ extension CartViewController: CartViewControllerProtocol {
   func updateUI(viewModel: CartViewModel) {
     self.viewModel = viewModel
     navigationItem.title = viewModel.navigationTitleText
+    if viewModel.shouldShowTrashButton {
+      navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "trash.fill", withConfiguration: imageConfig)?.withTintColor(.systemRed, renderingMode: .alwaysOriginal), style: .plain, target: self, action: nil)
+    } else {
+      navigationItem.rightBarButtonItem = nil
+    }
     setSections(sections, animated: true)
     bottomBarInstaller.setBars(bars, animated: true)
   }

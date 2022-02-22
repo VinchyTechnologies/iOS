@@ -280,7 +280,7 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
   }
 
   func didSelectWine(wineID: Int64) {
-    router.pushToWineDetailViewController(wineID: wineID, mode: .normal)
+    router.pushToWineDetailViewController(wineID: wineID, mode: .normal, shouldShowSimilarWine: true)
   }
 
   func didTapSeeAllStores() {
@@ -461,6 +461,6 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
   }
 
   func didTapSimilarWine(wineID: Int64) {
-    router.pushToWineDetailViewController(wineID: wineID, mode: .normal)
+    router.pushToWineDetailViewController(wineID: wineID, mode: .normal, shouldShowSimilarWine: true)
   }
 }

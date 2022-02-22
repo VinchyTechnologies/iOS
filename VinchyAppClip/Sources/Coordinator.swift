@@ -18,7 +18,7 @@ final class Coordinator: WineDetailRoutable, ActivityRoutable, WriteNoteRoutable
 
   static let shared = Coordinator()
 
-  func presentCartViewController() {
+  func presentCartViewController(affilatedId: Int) {
   }
 
   func presentAuthorizationViewController() { }
@@ -51,8 +51,8 @@ final class Coordinator: WineDetailRoutable, ActivityRoutable, WriteNoteRoutable
       animated: true)
   }
 
-  func presentWineDetailViewController(wineID: Int64, mode: WineDetailMode) {
-    let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID, mode: mode, isAppClip: true), coordinator: Coordinator.shared, adGenerator: nil)
+  func presentWineDetailViewController(wineID: Int64, mode: WineDetailMode, shouldShowSimilarWine: Bool) {
+    let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID, mode: mode, isAppClip: true, shouldShowSimilarWine: false), coordinator: Coordinator.shared, adGenerator: nil)
     let navigationController = VinchyNavigationController(rootViewController: controller)
     navigationController.modalPresentationStyle = .overFullScreen
     UIApplication.topViewController()?.present(
@@ -70,11 +70,11 @@ final class Coordinator: WineDetailRoutable, ActivityRoutable, WriteNoteRoutable
     UIApplication.topViewController()?.present(controller, animated: true)
   }
 
-  func pushToWineDetailViewController(wineID: Int64, mode: WineDetailMode) {
+  func pushToWineDetailViewController(wineID: Int64, mode: WineDetailMode, shouldShowSimilarWine: Bool) {
     if UIDevice.current.userInterfaceIdiom == .pad {
-      presentWineDetailViewController(wineID: wineID, mode: mode)
+      presentWineDetailViewController(wineID: wineID, mode: mode, shouldShowSimilarWine: shouldShowSimilarWine)
     } else {
-      let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID, mode: mode, isAppClip: true), coordinator: Coordinator.shared, adGenerator: nil)
+      let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID, mode: mode, isAppClip: true, shouldShowSimilarWine: shouldShowSimilarWine), coordinator: Coordinator.shared, adGenerator: nil)
       controller.hidesBottomBarWhenPushed = true
       UIApplication.topViewController()?.navigationController?.pushViewController(
         controller,

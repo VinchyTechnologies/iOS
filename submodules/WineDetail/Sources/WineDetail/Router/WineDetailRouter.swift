@@ -73,12 +73,12 @@ extension WineDetailRouter: WineDetailRouterProtocol {
     coordinator.pushToStoresViewController(wineID: wineID)
   }
 
-  func pushToWineDetailViewController(wineID: Int64, mode: WineDetailMode) {
-    coordinator.pushToWineDetailViewController(wineID: wineID, mode: mode)
+  func pushToWineDetailViewController(wineID: Int64, mode: WineDetailMode, shouldShowSimilarWine: Bool) {
+    coordinator.pushToWineDetailViewController(wineID: wineID, mode: mode, shouldShowSimilarWine: shouldShowSimilarWine)
   }
 
-  func presentWineDetailViewController(wineID: Int64, mode: WineDetailMode) {
-    coordinator.presentWineDetailViewController(wineID: wineID, mode: mode)
+  func presentWineDetailViewController(wineID: Int64, mode: WineDetailMode, shouldShowSimilarWine: Bool) {
+    coordinator.presentWineDetailViewController(wineID: wineID, mode: mode, shouldShowSimilarWine: shouldShowSimilarWine)
   }
 
   func pushToReviewsViewController(wineID: Int64) {

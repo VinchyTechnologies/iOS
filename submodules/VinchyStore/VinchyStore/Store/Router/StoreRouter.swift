@@ -47,8 +47,8 @@ final class StoreRouter {
 
 extension StoreRouter: StoreRouterProtocol {
 
-  func presentCartViewController() {
-    coordinator.presentCartViewController()
+  func presentCartViewController(affilatedId: Int) {
+    coordinator.presentCartViewController(affilatedId: affilatedId)
   }
 
   func didTapShareStore(type: StoreShareType) {
@@ -83,16 +83,18 @@ extension StoreRouter: StoreRouterProtocol {
 
   func pushToWineDetailViewController(
     wineID: Int64,
-    mode: WineDetailMode)
+    mode: WineDetailMode,
+    shouldShowSimilarWine: Bool)
   {
-    coordinator.pushToWineDetailViewController(wineID: wineID, mode: mode)
+    coordinator.pushToWineDetailViewController(wineID: wineID, mode: mode, shouldShowSimilarWine: shouldShowSimilarWine)
   }
 
   func presentWineDetailViewController(
     wineID: Int64,
-    mode: WineDetailMode)
+    mode: WineDetailMode,
+    shouldShowSimilarWine: Bool)
   {
-    coordinator.presentWineDetailViewController(wineID: wineID, mode: mode)
+    coordinator.presentWineDetailViewController(wineID: wineID, mode: mode, shouldShowSimilarWine: shouldShowSimilarWine)
   }
 
   func presentFilter(preselectedFilters: [(String, String)], isPriceFilterAvailable: Bool) {

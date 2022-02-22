@@ -109,7 +109,7 @@ extension MapDetailStoreInteractor: MapDetailStoreInteractorProtocol {
     if let wine = recommendedWines.first(where: { $0.id == wineID }), let price = wine.price {
       mode = .partner(affilatedId: input.affilatedId, price: price, buyAction: .openURL(url: wine.url?.toURL))
     }
-    router.presentWineDetailViewController(wineID: wineID, mode: mode)
+    router.presentWineDetailViewController(wineID: wineID, mode: mode, shouldShowSimilarWine: false)
   }
 
   func didTapRouteButton(_ button: UIButton) {

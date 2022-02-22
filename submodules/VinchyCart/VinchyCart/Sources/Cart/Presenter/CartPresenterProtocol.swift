@@ -9,4 +9,5 @@ import Foundation
 
 protocol CartPresenterProtocol: AnyObject {
   func update()
+  func updateWithSuccess(orderId: Int)
 }

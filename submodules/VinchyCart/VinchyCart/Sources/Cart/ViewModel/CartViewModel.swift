@@ -14,11 +14,13 @@ struct CartViewModel {
     case cartItem(CartItemView.Content)
     case logo(LogoRow.Content)
     case address(StoreMapRow.Content)
+    case success(EpoxyErrorView.Content)
   }
 
   let sections: [Section]
   let navigationTitleText: String?
   let bottomBarViewModel: BottomPriceBarView.Content?
+  let shouldShowTrashButton: Bool
 
-  static let empty: Self = .init(sections: [], navigationTitleText: nil, bottomBarViewModel: nil)
+  static let empty: Self = .init(sections: [], navigationTitleText: nil, bottomBarViewModel: nil, shouldShowTrashButton: false)
 }

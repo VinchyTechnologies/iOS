@@ -42,7 +42,7 @@ extension AreYouInStoreInteractor: AreYouInStoreInteractorProtocol {
     if let wine = input.partner.recommendedWines.first(where: { $0.id == wineID }), let price = wine.price {
       mode = .partner(affilatedId: input.partner.partner.affiliatedStoreId, price: price, buyAction: .openURL(url: wine.url?.toURL))
     }
-    router.presentWineDetailViewController(wineID: wineID, mode: mode)
+    router.presentWineDetailViewController(wineID: wineID, mode: mode, shouldShowSimilarWine: false)
   }
 
   func didTapStoreButton() {

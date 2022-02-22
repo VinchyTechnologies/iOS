@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import VinchyCore
 
 // MARK: - CartRouter
 
@@ -15,10 +16,12 @@ final class CartRouter {
 
   init(
     input: CartInput,
-    viewController: UIViewController)
+    viewController: UIViewController,
+    coordinator: CartAssembly.Coordinator)
   {
     self.input = input
     self.viewController = viewController
+    self.coordinator = coordinator
   }
 
   // MARK: Internal
@@ -28,9 +31,15 @@ final class CartRouter {
 
   // MARK: Private
 
+  private let coordinator: CartAssembly.Coordinator
+
   private let input: CartInput
 }
 
 // MARK: CartRouterProtocol
 
-extension CartRouter: CartRouterProtocol {}
+extension CartRouter: CartRouterProtocol {
+  func presentWineDetail(wineID: Int64, affilatedId: Int, price: Price) {
+    coordinator.presentWineDetailViewController(wineID: wineID, mode: .partner(affilatedId: affilatedId, price: price, buyAction: .cart(affilatedId: affilatedId, price: price)), shouldShowSimilarWine: false)
+  }
+}

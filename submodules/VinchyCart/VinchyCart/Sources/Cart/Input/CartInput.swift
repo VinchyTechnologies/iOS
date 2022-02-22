@@ -8,7 +8,7 @@
 import Foundation
 
 public struct CartInput {
-  public init() {
+  public init(affilatedId: Int) {
 
   }
 }
