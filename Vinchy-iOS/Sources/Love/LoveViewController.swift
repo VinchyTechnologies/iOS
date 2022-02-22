@@ -10,6 +10,7 @@ import Database
 import DisplayMini
 import StringFormatting
 import UIKit
+import WineDetail
 
 // MARK: - LoveViewControllerState
 
@@ -161,7 +162,9 @@ extension LoveViewController: UICollectionViewDelegateFlowLayout {
     didSelectItemAt indexPath: IndexPath)
   {
     guard let wineID = wines[safe: indexPath.row]?.wineID else { return }
-    navigationController?.pushViewController(Assembly.buildDetailModule(wineID: wineID), animated: true)
+    let controller = WineDetailAssembly.assemblyModule(input: .init(wineID: wineID, mode: .normal, isAppClip: false), coordinator: Coordinator.shared, adGenerator: AdFabric.shared)
+    controller.hidesBottomBarWhenPushed = true
+    navigationController?.pushViewController(controller, animated: true)
   }
 
   func collectionView(

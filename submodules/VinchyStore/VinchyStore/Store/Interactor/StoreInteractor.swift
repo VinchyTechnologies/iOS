@@ -252,7 +252,6 @@ extension StoreInteractor: StoreInteractorProtocol {
     router
   }
 
-
   func didTapConfirmOrderButton() {
     router.presentCartViewController()
   }

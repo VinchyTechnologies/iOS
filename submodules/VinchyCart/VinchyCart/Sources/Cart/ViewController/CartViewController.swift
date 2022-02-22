@@ -43,7 +43,7 @@ final class CartViewController: CollectionViewController {
     bottomBarInstaller.install()
     interactor?.viewDidLoad()
   }
-  
+
   override func makeCollectionView() -> CollectionView {
     let collectionView = super.makeCollectionView()
     collectionView.backgroundColor = .mainBackground

@@ -92,7 +92,7 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
 
     let imageConfig = UIImage.SymbolConfiguration(pointSize: 22, weight: .medium, scale: .default)
 
-    let main = Assembly.buildMainModule()
+    let main = buildMainModule()
     main.tabBarItem = UITabBarItem(
       title: localized("explore").firstLetterUppercased(),
       image: UIImage(systemName: "square.grid.2x2", withConfiguration: imageConfig)?.withTintColor(.blueGray, renderingMode: .alwaysOriginal),
@@ -127,7 +127,7 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
      somelier.tabBarItem = UITabBarItem(title: nil, image: UIImage(systemName: "rectangle.stack"), selectedImage: nil)
      */
 
-    let map = Assembly.buildMapViewController()
+    let map = buildMapViewController()
     map.tabBarItem = UITabBarItem(
       title: localized("map").firstLetterUppercased(),
       image: UIImage(systemName: "map", withConfiguration: imageConfig)?.withTintColor(.blueGray, renderingMode: .alwaysOriginal),
@@ -220,6 +220,18 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
         navViewController.popToRootViewController(animated: false)
       }
     }
+  }
+
+  private func buildMainModule() -> VinchyNavigationController {
+    let controller = VinchyAssembly.assemblyModule()
+    let navController = VinchyNavigationController(rootViewController: controller)
+    return navController
+  }
+
+  private func buildMapViewController() -> UIViewController {
+    let controller = MapAssembly.assemblyModule()
+    controller.hidesBottomBarWhenPushed = true
+    return controller
   }
 }
 

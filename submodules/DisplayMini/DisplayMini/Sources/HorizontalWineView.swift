@@ -200,7 +200,6 @@ public final class HorizontalWineView: UIView, EpoxyableView {
     case bottle, vGroup, title, subtitle, price, vSpacer, priceVGroup, oldPrice, badge, rating
   }
 
-
   private let style: Style
 
   private var wineID: Int64?

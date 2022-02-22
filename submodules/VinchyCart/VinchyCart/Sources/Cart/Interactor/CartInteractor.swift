@@ -30,9 +30,9 @@ final class CartInteractor {
 // MARK: CartInteractorProtocol
 
 extension CartInteractor: CartInteractorProtocol {
-  
+
   func didTapConfirmOrderButton() {
-    
+
   }
 
   func didSelectHorizontalWine(wineID: Int64) {

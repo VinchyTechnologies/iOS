@@ -12,7 +12,6 @@ public protocol AdvancedSearchOutputDelegate: AnyObject {
   func didChoose(_ filters: [(String, String)])
 }
 
-
 // MARK: - AdvancedSearchRoutable
 
 public protocol AdvancedSearchRoutable: AnyObject {

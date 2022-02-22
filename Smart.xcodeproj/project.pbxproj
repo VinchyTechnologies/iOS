@@ -393,7 +393,6 @@
 		CA472ACC245EDE30009149FF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CA472ACA245EDE30009149FF /* LaunchScreen.storyboard */; };
 		CA472AD7245EDE30009149FF /* SmartTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA472AD6245EDE30009149FF /* SmartTests.swift */; };
 		CA472AE2245EDE30009149FF /* SmartUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA472AE1245EDE30009149FF /* SmartUITests.swift */; };
-		CA472B54245EDEDB009149FF /* Assembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA472B40245EDEDB009149FF /* Assembly.swift */; };
 		CA472B59245EDEDB009149FF /* ShowcaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA472B49245EDEDB009149FF /* ShowcaseViewController.swift */; };
 		CA472B69245EDEF9009149FF /* ShowcaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA472B62245EDEF9009149FF /* ShowcaseViewModel.swift */; };
 		CA4857742517BE8E00EDA4CE /* VinchyInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA4857732517BE8E00EDA4CE /* VinchyInteractor.swift */; };
@@ -926,7 +925,6 @@
 		CA472ADD245EDE30009149FF /* SmartUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SmartUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA472AE1245EDE30009149FF /* SmartUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SmartUITests.swift; sourceTree = "<group>"; };
 		CA472AE3245EDE30009149FF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CA472B40245EDEDB009149FF /* Assembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Assembly.swift; sourceTree = "<group>"; };
 		CA472B49245EDEDB009149FF /* ShowcaseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowcaseViewController.swift; sourceTree = "<group>"; };
 		CA472B62245EDEF9009149FF /* ShowcaseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowcaseViewModel.swift; sourceTree = "<group>"; };
 		CA4857732517BE8E00EDA4CE /* VinchyInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VinchyInteractor.swift; sourceTree = "<group>"; };
@@ -2874,7 +2872,6 @@
 				8A63E3362770F24200D8362C /* Routable */,
 				CA8CD67525096EC100FDB7AF /* Smart-Bridging-Header.h */,
 				CA472ABF245EDE2F009149FF /* AppDelegate.swift */,
-				CA472B40245EDEDB009149FF /* Assembly.swift */,
 				CAA060D1252BC05C002C15B5 /* DeveloperFeatureToggles.swift */,
 				CA8198BF253CB0490056A1C6 /* ErrorDescription.swift */,
 				CA472AC1245EDE2F009149FF /* SceneDelegate.swift */,
@@ -3795,7 +3792,6 @@
 				8A27EA9227365B86005A13C6 /* RatesViewControllerProtocol.swift in Sources */,
 				8A3C0F532732D08E00947085 /* SavedPresenter.swift in Sources */,
 				74E55FB626AADB350086C159 /* DidnotFindTheWineCollectionCell.swift in Sources */,
-				CA472B54245EDEDB009149FF /* Assembly.swift in Sources */,
 				CAF514232461C52400667ED0 /* MoreInteractor.swift in Sources */,
 				CE404B0F2589D4C200917544 /* MoreRouterProtocol.swift in Sources */,
 				74E55FB126AACE2C0086C159 /* ResultsSearchRouter.swift in Sources */,
