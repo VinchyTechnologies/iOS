@@ -50,7 +50,7 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
     var isSharable = false
 
     switch input.mode {
-    case .advancedSearch, .normal:
+    case .advancedSearch:
       isSharable = false
 
     case .remote:
@@ -89,7 +89,7 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
         items.append(.loading)
       }
 
-    case .normal, .remote:
+    case .remote:
       var groupedWines = wines.grouped(map: { $0.winery?.countryCode ?? localized("unknown_country_code") })
       groupedWines.sort { arr1, arr2 -> Bool in
         if
@@ -125,7 +125,7 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
     case .advancedSearch:
       title = input.title ?? localized("search_results").firstLetterUppercased()
 
-    case .normal, .remote:
+    case .remote:
       break
     }
 

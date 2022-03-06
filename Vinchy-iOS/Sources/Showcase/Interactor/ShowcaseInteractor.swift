@@ -69,9 +69,6 @@ final class ShowcaseInteractor {
 
   private func loadData(offset: Int) {
     switch input.mode {
-    case .normal(let data):
-      stateMachine.invokeSuccess(with: (data as? [ShortWine]) ?? [])
-
     case .advancedSearch(var params):
       if offset == .zero {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -148,7 +145,7 @@ final class ShowcaseInteractor {
     }
 
     switch input.mode {
-    case .normal, .remote:
+    case .remote:
       needLoadMore = false
 
     case .advancedSearch:
@@ -185,7 +182,7 @@ extension ShowcaseInteractor: ShowcaseInteractorProtocol {
     case .remote(let collectionID):
       router.didTapShareCollection(type: .fullInfo(collectionID: collectionID, titleText: title, logoURL: logoURL, sourceView: sourceView))
 
-    case .normal, .advancedSearch:
+    case .advancedSearch:
       return
     }
   }

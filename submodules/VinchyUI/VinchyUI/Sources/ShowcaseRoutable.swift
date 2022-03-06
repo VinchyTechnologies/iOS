@@ -22,7 +22,6 @@ public struct ShowcaseInput {
 // MARK: - ShowcaseMode
 
 public enum ShowcaseMode {
-  case normal(wines: [Any]) // TODO: - Not Any, protocol
   case advancedSearch(params: [(String, String)])
   case remote(collectionID: Int)
 }
