@@ -8,4 +8,6 @@
 
 import VinchyUI
 
-protocol ShowcaseRouterProtocol: WineDetailRoutable, CollectionShareRoutable {}
+protocol ShowcaseRouterProtocol: WineDetailRoutable, CollectionShareRoutable {
+  func popToRootQuestions()
+}

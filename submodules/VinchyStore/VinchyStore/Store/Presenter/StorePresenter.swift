@@ -137,6 +137,10 @@ extension StorePresenter: StorePresenterProtocol {
       ]
     }
 
+    if !input.isAppClip /* TODO: - */{
+      sections += [.button(content: .init(buttonText: "Подобрать вино"))]
+    }
+
     if !data.recommendedWines.isEmpty, data.selectedFilters.isEmpty {
       sections += [.title(localized("vinchy_recommends").firstLetterUppercased())]
 

@@ -25,7 +25,6 @@
 		8AEC83842758DEFB00C80F1E /* ReviewsCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83672758DEFB00C80F1E /* ReviewsCollectionView.swift */; };
 		8AEC83882758DEFB00C80F1E /* ReviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC836B2758DEFB00C80F1E /* ReviewView.swift */; };
 		8AEC83892758DEFB00C80F1E /* GalleryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC836C2758DEFB00C80F1E /* GalleryView.swift */; };
-		8AEC838C2758DEFB00C80F1E /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC836F2758DEFB00C80F1E /* ButtonView.swift */; };
 		8AEC838D2758DEFB00C80F1E /* WineDetailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83712758DEFB00C80F1E /* WineDetailInteractor.swift */; };
 		8AEC838E2758DEFB00C80F1E /* WineDetailInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83722758DEFB00C80F1E /* WineDetailInteractorProtocol.swift */; };
 		8AEC838F2758DEFB00C80F1E /* WineDetailRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AEC83742758DEFB00C80F1E /* WineDetailRouterProtocol.swift */; };
@@ -57,7 +56,6 @@
 		8AEC83672758DEFB00C80F1E /* ReviewsCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewsCollectionView.swift; sourceTree = "<group>"; };
 		8AEC836B2758DEFB00C80F1E /* ReviewView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReviewView.swift; sourceTree = "<group>"; };
 		8AEC836C2758DEFB00C80F1E /* GalleryView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GalleryView.swift; sourceTree = "<group>"; };
-		8AEC836F2758DEFB00C80F1E /* ButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		8AEC83712758DEFB00C80F1E /* WineDetailInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineDetailInteractor.swift; sourceTree = "<group>"; };
 		8AEC83722758DEFB00C80F1E /* WineDetailInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineDetailInteractorProtocol.swift; sourceTree = "<group>"; };
 		8AEC83742758DEFB00C80F1E /* WineDetailRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WineDetailRouterProtocol.swift; sourceTree = "<group>"; };
@@ -183,7 +181,6 @@
 				8AEC83672758DEFB00C80F1E /* ReviewsCollectionView.swift */,
 				8AEC836B2758DEFB00C80F1E /* ReviewView.swift */,
 				8AEC836C2758DEFB00C80F1E /* GalleryView.swift */,
-				8AEC836F2758DEFB00C80F1E /* ButtonView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -337,7 +334,6 @@
 			files = (
 				8AEC83882758DEFB00C80F1E /* ReviewView.swift in Sources */,
 				8AEC83812758DEFB00C80F1E /* ToolView.swift in Sources */,
-				8AEC838C2758DEFB00C80F1E /* ButtonView.swift in Sources */,
 				8A8B7F1E278C606C0070353E /* WineDetailViewModelFactory.swift in Sources */,
 				8AEC837A2758DEFB00C80F1E /* WineDetailPresenter.swift in Sources */,
 				8AEC83842758DEFB00C80F1E /* ReviewsCollectionView.swift in Sources */,

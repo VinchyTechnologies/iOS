@@ -11,7 +11,7 @@ import VinchyUI
 
 final class ShowcaseAssembly {
   static func assemblyModule(input: VinchyUI.ShowcaseInput) -> UIViewController {
-    let viewController = ShowcaseViewController()
+    let viewController = ShowcaseViewController(input: input)
     let router = ShowcaseRouter(viewController: viewController, coordinator: Coordinator.shared)
     let presenter = ShowcasePresenter(input: input, viewController: viewController)
     let interactor = ShowcaseInteractor(input: input, router: router, presenter: presenter)

@@ -63,6 +63,7 @@
 		8ABEF40927809E430046C43E /* LogoRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABEF40827809E430046C43E /* LogoRow.swift */; };
 		8ABEF40B2780A73F0046C43E /* StoreMapRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABEF40A2780A73F0046C43E /* StoreMapRow.swift */; };
 		8AD51DA927650BB60009499A /* OverlayPresentationCenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD51DA827650BB50009499A /* OverlayPresentationCenter.swift */; };
+		CA6AE14127DCF869004FBB05 /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AE14027DCF869004FBB05 /* ButtonView.swift */; };
 		CACB3C7527BBE99900AD999D /* Stepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB3C7427BBE99900AD999D /* Stepper.swift */; };
 		CACB3C7727BBFB1C00AD999D /* StepperView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB3C7627BBFB1C00AD999D /* StepperView.swift */; };
 		D12A71C9391FF45EA6009B81 /* Pods_DisplayMini.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6ADEFB7AAE5EE1069C5D2954 /* Pods_DisplayMini.framework */; };
@@ -126,6 +127,7 @@
 		8ABEF40827809E430046C43E /* LogoRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogoRow.swift; sourceTree = "<group>"; };
 		8ABEF40A2780A73F0046C43E /* StoreMapRow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoreMapRow.swift; sourceTree = "<group>"; };
 		8AD51DA827650BB50009499A /* OverlayPresentationCenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayPresentationCenter.swift; sourceTree = "<group>"; };
+		CA6AE14027DCF869004FBB05 /* ButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		CACB3C7427BBE99900AD999D /* Stepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stepper.swift; sourceTree = "<group>"; };
 		CACB3C7627BBFB1C00AD999D /* StepperView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StepperView.swift; sourceTree = "<group>"; };
 		E2D2D16B52FD4AEDE8820451 /* Pods-DisplayMini.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-DisplayMini.debug.xcconfig"; path = "Target Support Files/Pods-DisplayMini/Pods-DisplayMini.debug.xcconfig"; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				8A9CABC82763F01300A5B694 /* BottomButtonsView.swift */,
 				8A9CABD42763F01300A5B694 /* BottomPriceBarView.swift */,
 				8A9CABCF2763F01300A5B694 /* Button.swift */,
+				CA6AE14027DCF869004FBB05 /* ButtonView.swift */,
 				8A9CABD12763F01300A5B694 /* ContactUsRoutable.swift */,
 				8A9CABE82763F01400A5B694 /* ContextMenu.swift */,
 				8A9CABC22763F01300A5B694 /* Countries */,
@@ -241,6 +244,7 @@
 				8A65E75727A828D2008556A4 /* StarRatingControlView.swift */,
 				8A9CABD92763F01300A5B694 /* StarsRatingView.swift */,
 				CACB3C7427BBE99900AD999D /* Stepper.swift */,
+				CACB3C7627BBFB1C00AD999D /* StepperView.swift */,
 				8ABEF40A2780A73F0046C43E /* StoreMapRow.swift */,
 				8A9CABE52763F01400A5B694 /* TextCollectionCell.swift */,
 				8A75E27F27AAB9710068DA56 /* TitleAndMoreView.swift */,
@@ -254,7 +258,6 @@
 				8A65E77E27A97B09008556A4 /* WhereToBuyView.swift */,
 				8A9CABC52763F01300A5B694 /* WineBottleView.swift */,
 				8A9CABD22763F01300A5B694 /* WineCollectionViewCell.swift */,
-				CACB3C7627BBFB1C00AD999D /* StepperView.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -410,6 +413,7 @@
 				8A9CABF42763F01400A5B694 /* Font.swift in Sources */,
 				8A9CABFB2763F01400A5B694 /* BottomPriceBarView.swift in Sources */,
 				8A9CABFF2763F01400A5B694 /* Haptic.swift in Sources */,
+				CA6AE14127DCF869004FBB05 /* ButtonView.swift in Sources */,
 				8A9CAC042763F01400A5B694 /* HighlightCollectionCell.swift in Sources */,
 				8A9CABF82763F01400A5B694 /* ContactUsRoutable.swift in Sources */,
 				8A9CAC172763F64B00A5B694 /* DeliveryTutorialView.swift in Sources */,

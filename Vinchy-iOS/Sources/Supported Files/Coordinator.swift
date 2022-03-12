@@ -13,6 +13,7 @@ import DisplayMini
 import FirebaseDynamicLinks
 import FittedSheets
 import Network
+import Questions
 import UIKit
 import VinchyAuthorization
 import VinchyCart
@@ -21,9 +22,14 @@ import VinchyUI
 
 // MARK: - Coordinator
 
-final class Coordinator: ShowcaseRoutable, WineDetailRoutable, WriteNoteRoutable, ActivityRoutable, AdvancedSearchRoutable, ReviewDetailRoutable, ReviewsRoutable, WriteReviewRoutable, StoresRoutable, StoreRoutable, ResultsSearchRoutable, AuthorizationRoutable, WineShareRoutable, StatusAlertable, SafariRoutable, StoreShareRoutable, CollectionShareRoutable, CartRoutable {
+final class Coordinator: ShowcaseRoutable, WineDetailRoutable, WriteNoteRoutable, ActivityRoutable, AdvancedSearchRoutable, ReviewDetailRoutable, ReviewsRoutable, WriteReviewRoutable, StoresRoutable, StoreRoutable, ResultsSearchRoutable, AuthorizationRoutable, WineShareRoutable, StatusAlertable, SafariRoutable, StoreShareRoutable, CollectionShareRoutable, CartRoutable, QuestionsRoutable {
 
   static let shared = Coordinator()
+
+  func presentQuestiosViewController(affilatedId: Int, questionsFlow: QuestionsFlow) {
+    let controller = QuestionsNavigationController(input: questionsFlow, affilatedId: affilatedId, coordinator: Coordinator.shared)
+    UIApplication.topViewController()?.present(controller, animated: true, completion: nil)
+  }
 
   func presentCartViewController(affilatedId: Int) {
     let controller = CartAssembly.assemblyModule(input: .init(affilatedId: affilatedId), coordinator: Coordinator.shared)

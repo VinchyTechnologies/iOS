@@ -47,6 +47,10 @@ final class StoreRouter {
 
 extension StoreRouter: StoreRouterProtocol {
 
+  func presentQuestiosViewController(affilatedId: Int, questionsFlow: QuestionsFlow) {
+    coordinator.presentQuestiosViewController(affilatedId: affilatedId, questionsFlow: questionsFlow)
+  }
+
   func presentCartViewController(affilatedId: Int) {
     coordinator.presentCartViewController(affilatedId: affilatedId)
   }

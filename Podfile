@@ -74,6 +74,11 @@ target 'WineDetail' do
   epoxy
 end
 
+target 'Questions' do
+  project 'submodules/Questions/Questions'
+  epoxy
+end
+
 target 'AdvancedSearch' do
   project 'submodules/AdvancedSearch/AdvancedSearch'
   epoxy

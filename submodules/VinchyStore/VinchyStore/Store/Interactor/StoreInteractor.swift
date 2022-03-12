@@ -82,6 +82,7 @@ final class StoreInteractor {
   private var assortimentWines: [ShortWine] = []
   private var personalRecommendedWines: [ShortWine]?
   private var selectedFilters: [(String, String)] = []
+  private var questionsFlow: QuestionsFlow?
   private lazy var inCartCartItems: [CartItem] = cartRepository.findAll().compactMap { item in
     if let productId = item.productId, let count = item.quantity {
       return CartItem(productID: productId, type: .wine, count: count)
@@ -123,6 +124,7 @@ final class StoreInteractor {
           switch result {
           case .success(let response):
             self.partnerInfo = response
+            self.loadQuestionsIfNeeded()
             SpotlightService.shared.addStore(affilatedId: affilatedId, title: response.title, subtitle: response.address)
 
           case .failure(let error):
@@ -294,15 +296,41 @@ final class StoreInteractor {
       }))
     }
   }
+
+  private func loadQuestionsIfNeeded() {
+    guard let affilatedId = partnerInfo?.affiliatedStoreId else {
+      return
+    }
+    let questionsFlow = QuestionsFlow(id: 1, questions: [
+      .init(id: 3, questionText: "Тип", options: [.init(id: 3, text: "Игристое"), .init(id: 4, text: "Тихое")], isMultipleSelectionAllowed: false),
+      .init(id: 1, questionText: "На какую сумму Вы расчитываете?", options: [.init(id: 1, text: "от 10 до 20$")], isMultipleSelectionAllowed: false),
+      .init(id: 2, questionText: "С чем будете есть?", options: [.init(id: 2, text: "Рыба")], isMultipleSelectionAllowed: true),
+    ])
+
+    router.presentQuestiosViewController(affilatedId: affilatedId, questionsFlow: questionsFlow)
+  }
 }
 
 // MARK: StoreInteractorProtocol
 
 extension StoreInteractor: StoreInteractorProtocol {
+
   var contextMenuRouter: ActivityRoutable & WriteNoteRoutable {
     router
   }
 
+  func didTapQuestionsButton() {
+    guard let questionsFlow = questionsFlow else {
+      loadQuestionsIfNeeded()
+      return
+    }
+
+    guard let affilatedId = partnerInfo?.affiliatedStoreId else {
+      return
+    }
+
+    router.presentQuestiosViewController(affilatedId: affilatedId, questionsFlow: questionsFlow)
+  }
   func didTapConfirmOrderButton() {
     guard let affilatedId = partnerInfo?.affiliatedStoreId else { return }
     router.presentCartViewController(affilatedId: affilatedId)

@@ -6,19 +6,18 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
-import DisplayMini
 import EpoxyCore
 import UIKit
 
 // MARK: - ButtonCollectionCellDelegate
 
-protocol ButtonCollectionCellDelegate: AnyObject {
-  func didTapReviewButton(_ button: UIButton)
+public protocol ButtonCollectionCellDelegate: AnyObject {
+  func didTapButtonViewButton(_ button: UIButton)
 }
 
 // MARK: - ButtonCollectionCellViewModel
 
-struct ButtonCollectionCellViewModel: ViewModelProtocol, Equatable {
+public struct ButtonCollectionCellViewModel: ViewModelProtocol, Equatable {
   fileprivate let buttonText: String?
 
   public init(buttonText: String?) {
@@ -28,11 +27,11 @@ struct ButtonCollectionCellViewModel: ViewModelProtocol, Equatable {
 
 // MARK: - ButtonView
 
-final class ButtonView: UIView, EpoxyableView {
+public final class ButtonView: UIView, EpoxyableView {
 
   // MARK: Lifecycle
 
-  init(style: Style) {
+  public init(style: Style) {
     self.style = style
     super.init(frame: .zero)
     translatesAutoresizingMaskIntoConstraints = false
@@ -47,24 +46,27 @@ final class ButtonView: UIView, EpoxyableView {
     fatalError("init(coder:) has not been implemented")
   }
 
-  // MARK: Internal
+  // MARK: Public
 
-  struct Style: Hashable {
+  public struct Style: Hashable {
+    public init() {
+
+    }
   }
 
-  typealias Content = ButtonCollectionCellViewModel
+  public typealias Content = ButtonCollectionCellViewModel
 
-  static var height: CGFloat {
+  public static var height: CGFloat {
     48
   }
 
-  weak var delegate: ButtonCollectionCellDelegate?
+  public weak var delegate: ButtonCollectionCellDelegate?
 
-  func setContent(_ content: Content, animated: Bool) {
+  public func setContent(_ content: Content, animated: Bool) {
     button.setTitle(content.buttonText, for: [])
   }
 
-  override func layoutSubviews() {
+  public override func layoutSubviews() {
     super.layoutSubviews()
     button.layer.cornerRadius = bounds.height / 2
     button.clipsToBounds = true
@@ -77,6 +79,6 @@ final class ButtonView: UIView, EpoxyableView {
 
   @objc
   private func didTap(_ button: UIButton) {
-    delegate?.didTapReviewButton(button)
+    delegate?.didTapButtonViewButton(button)
   }
 }

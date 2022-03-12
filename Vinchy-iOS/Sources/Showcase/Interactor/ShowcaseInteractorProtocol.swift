@@ -13,4 +13,5 @@ protocol ShowcaseInteractorProtocol {
   func willDisplayLoadingView()
   func didSelectWine(wineID: Int64)
   func didTapShare(sourceView: UIView)
+  func didTapRepeatQuestionsButton()
 }

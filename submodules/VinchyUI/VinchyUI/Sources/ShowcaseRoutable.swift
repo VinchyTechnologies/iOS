@@ -24,6 +24,7 @@ public struct ShowcaseInput {
 public enum ShowcaseMode {
   case advancedSearch(params: [(String, String)])
   case remote(collectionID: Int)
+  case questions(optionsIds: [Int], affilatedId: Int)
 }
 
 // MARK: - ShowcaseRoutable

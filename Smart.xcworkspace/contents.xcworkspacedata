@@ -42,6 +42,9 @@
          location = "group:submodules/NotificationsDebug/NotificationsDebug.xcodeproj">
       </FileRef>
       <FileRef
+         location = "group:submodules/Questions/Questions.xcodeproj">
+      </FileRef>
+      <FileRef
          location = "group:submodules/Spotlight/Spotlight.xcodeproj">
       </FileRef>
       <FileRef

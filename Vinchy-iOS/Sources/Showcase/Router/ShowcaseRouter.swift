@@ -6,10 +6,13 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import Questions
 import UIKit
 import VinchyUI
 
-final class ShowcaseRouter: ShowcaseRouterProtocol {
+// MARK: - ShowcaseRouter
+
+final class ShowcaseRouter {
 
   // MARK: Lifecycle
 
@@ -31,4 +34,13 @@ final class ShowcaseRouter: ShowcaseRouterProtocol {
 
   private let coordinator: WineDetailRoutable & CollectionShareRoutable
 
+}
+
+// MARK: ShowcaseRouterProtocol
+
+extension ShowcaseRouter: ShowcaseRouterProtocol {
+  func popToRootQuestions() {
+    (viewController?.navigationController as? QuestionsNavigationController)?.resetDataSource()
+    viewController?.navigationController?.popToRootViewController(animated: true)
+  }
 }

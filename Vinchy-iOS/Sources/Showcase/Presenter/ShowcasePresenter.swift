@@ -50,7 +50,7 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
     var isSharable = false
 
     switch input.mode {
-    case .advancedSearch:
+    case .advancedSearch, .questions:
       isSharable = false
 
     case .remote:
@@ -58,7 +58,7 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
     }
 
     switch input.mode {
-    case .advancedSearch:
+    case .advancedSearch, .questions:
       let wines = wines.compactMap { wine -> WineCollectionViewCellViewModel? in
         WineCollectionViewCellViewModel(
           wineID: wine.id,
@@ -125,6 +125,9 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
     case .advancedSearch:
       title = input.title ?? localized("search_results").firstLetterUppercased()
 
+    case .questions:
+      title = "Мы рекомендуем"
+
     case .remote:
       break
     }
@@ -139,7 +142,16 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
       }
     }), initiallySelectedIndex: 0)
 
-    let viewModel = ShowcaseViewModel(state: .normal(header: tabViewModel, sections: [.content(dataID: .content, items: items)]), navigationTitle: title, isSharable: isSharable)
+    var bottomBarViewModel: BottomPriceBarView.Content?
+    switch input.mode {
+    case .advancedSearch, .remote:
+      bottomBarViewModel = nil
+
+    case .questions:
+      bottomBarViewModel = .init(leadingText: nil, trailingButtonText: "Пройти заново")
+    }
+
+    let viewModel = ShowcaseViewModel(state: .normal(header: tabViewModel, sections: [.content(dataID: .content, items: items)]), navigationTitle: title, isSharable: isSharable, bottomBarViewModel: bottomBarViewModel)
     viewController?.updateUI(viewModel: viewModel)
   }
 
@@ -150,7 +162,15 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
   }
 
   func showNothingFoundErrorView() {
-    viewController?.updateUI(viewModel: .init(state: .error(sections: [.common(content: .init(titleText: localized("nothing_found").firstLetterUppercased(), subtitleText: nil, buttonText: nil))]), navigationTitle: nil, isSharable: false))
+    var bottomBarViewModel: BottomPriceBarView.Content?
+    switch input.mode {
+    case .advancedSearch, .remote:
+      bottomBarViewModel = nil
+
+    case .questions:
+      bottomBarViewModel = .init(leadingText: nil, trailingButtonText: "Пройти заново")
+    }
+    viewController?.updateUI(viewModel: .init(state: .error(sections: [.common(content: .init(titleText: localized("nothing_found").firstLetterUppercased(), subtitleText: nil, buttonText: nil))]), navigationTitle: nil, isSharable: false, bottomBarViewModel: bottomBarViewModel))
   }
 
   func showInitiallyLoadingError(error: Error) {
@@ -165,6 +185,7 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
                 buttonText: localized("reload").firstLetterUppercased())),
           ]),
         navigationTitle: nil,
-        isSharable: false))
+        isSharable: false,
+        bottomBarViewModel: nil))
   }
 }

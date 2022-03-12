@@ -69,6 +69,33 @@ final class ShowcaseInteractor {
 
   private func loadData(offset: Int) {
     switch input.mode {
+    case .questions(let optionsIds, let affilatedId): // TODO: - request
+      if offset == .zero {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+          self.dispatchWorkItemHud.perform()
+        }
+      }
+
+      let params: [(String, String)] = [("offset", String(offset)), ("limit", String(C.limit))]
+      Wines.shared.getFilteredWines(params: params) { [weak self] result in
+        guard let self = self else { return }
+
+        if offset == .zero {
+          self.dispatchWorkItemHud.cancel()
+          DispatchQueue.main.async {
+            self.presenter.stopLoading()
+          }
+        }
+
+        switch result {
+        case .success(let data):
+          self.stateMachine.invokeSuccess(with: data)
+
+        case .failure(let error):
+          self.stateMachine.fail(with: error)
+        }
+      }
+
     case .advancedSearch(var params):
       if offset == .zero {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -148,7 +175,7 @@ final class ShowcaseInteractor {
     case .remote:
       needLoadMore = false
 
-    case .advancedSearch:
+    case .advancedSearch, .questions:
       break
     }
 
@@ -177,12 +204,16 @@ final class ShowcaseInteractor {
 
 extension ShowcaseInteractor: ShowcaseInteractorProtocol {
 
+  func didTapRepeatQuestionsButton() {
+    router.popToRootQuestions()
+  }
+
   func didTapShare(sourceView: UIView) {
     switch input.mode {
     case .remote(let collectionID):
       router.didTapShareCollection(type: .fullInfo(collectionID: collectionID, titleText: title, logoURL: logoURL, sourceView: sourceView))
 
-    case .advancedSearch:
+    case .advancedSearch, .questions:
       return
     }
   }

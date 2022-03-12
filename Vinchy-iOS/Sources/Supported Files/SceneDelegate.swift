@@ -19,6 +19,7 @@ import AdSupport
 import Core
 #endif
 import GoogleMobileAds
+import Questions
 
 // MARK: - SceneDelegate
 

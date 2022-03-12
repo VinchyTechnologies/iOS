@@ -470,7 +470,7 @@ extension WineDetailViewController: UIScrollViewDelegate {
 // MARK: ButtonCollectionCellDelegate
 
 extension WineDetailViewController: ButtonCollectionCellDelegate {
-  func didTapReviewButton(_: UIButton) {
+  func didTapButtonViewButton(_: UIButton) {
     interactor?.didTapWriteReviewButton()
   }
 }

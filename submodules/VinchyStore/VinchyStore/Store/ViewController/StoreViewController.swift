@@ -150,6 +150,21 @@ final class StoreViewController: CollectionViewController {
         .flowLayoutItemSize(.init(width: width, height: height))
         .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 16, right: 24))
 
+      case .button(let content):
+        let width: CGFloat = collectionViewSize.width - 48
+        return SectionModel(dataID: UUID()) {
+          ButtonView.itemModel(
+            dataID: UUID(),
+            content: content,
+            style: .init())
+            .setBehaviors { [weak self] context in
+              context.view.delegate = self
+            }
+        }
+        .flowLayoutItemSize(.init(width: width, height: ButtonView.height))
+        .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 16, right: 24))
+
+
       case .services(let content):
         let width: CGFloat = collectionViewSize.width - 48
         let height: CGFloat = content.height(for: width)
@@ -347,6 +362,10 @@ extension StoreViewController: StoreViewControllerProtocol {
           let height: CGFloat = content.height(for: width)
           resultHeight += height + 16
 
+        case .button(let content):
+          let height: CGFloat = ButtonView.height
+          resultHeight += height
+
         case .wines:
           resultHeight += 250 + 16
 
@@ -404,7 +423,7 @@ extension StoreViewController: SeparatorFlowLayoutDelegate {
     -> Bool
   {
     switch viewModel.sections[indexPath.section] {
-    case .logo, .title, .wines, .address, .services, .loading:
+    case .logo, .title, .wines, .address, .services, .loading, .button:
       return false
 
     case .assortiment:
@@ -478,5 +497,13 @@ extension StoreViewController: CollectionViewPrefetchingDelegate {
         ImageLoader.shared.cancelPrefetch([url])
       }
     }
+  }
+}
+
+// MARK: ButtonCollectionCellDelegate
+
+extension StoreViewController: ButtonCollectionCellDelegate {
+  func didTapButtonViewButton(_ button: UIButton) {
+    interactor?.didTapQuestionsButton()
   }
 }
