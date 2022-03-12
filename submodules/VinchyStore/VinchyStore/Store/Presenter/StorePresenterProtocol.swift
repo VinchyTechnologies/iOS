@@ -6,10 +6,12 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import Database
+import UIKit
 import VinchyUI
 
 protocol StorePresenterProtocol: ShowNetworkAlertPresentable {
-  func update(data: StoreInteractorData, needLoadMore: Bool)
+  func update(data: StoreInteractorData, needLoadMore: Bool, isBottomButtonLoading: Bool, totalPrice: Int64?, cartItems: [CartItem], recommendedWinesContentOffsetX: CGFloat)
   func startLoading()
   func stopLoading()
   func showErrorAlert(error: Error)

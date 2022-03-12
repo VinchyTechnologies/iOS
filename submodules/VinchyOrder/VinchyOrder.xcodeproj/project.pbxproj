@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		85297DCDC70B65C928CE8622 /* Pods_VinchyOrder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5C91E9770CF1DCD3F3B126FD /* Pods_VinchyOrder.framework */; };
+		CA100BC727D8D70300B066C4 /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA100BC627D8D70300B066C4 /* Database.framework */; };
 		CAB25B8A27C3953A00426785 /* OrderItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB25B8927C3953A00426785 /* OrderItemView.swift */; };
 		CAC3EB6D27C36EC80058ABA2 /* OrderDetailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3EB5C27C36EC80058ABA2 /* OrderDetailViewModel.swift */; };
 		CAC3EB6E27C36EC80058ABA2 /* OrderDetailInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAC3EB5E27C36EC80058ABA2 /* OrderDetailInput.swift */; };
@@ -44,6 +45,7 @@
 		5C91E9770CF1DCD3F3B126FD /* Pods_VinchyOrder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinchyOrder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6439EDE2AD9D2E45F9D45401 /* Pods-VinchyOrder.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyOrder.release.xcconfig"; path = "Target Support Files/Pods-VinchyOrder/Pods-VinchyOrder.release.xcconfig"; sourceTree = "<group>"; };
 		952EB8CCCC9139A09121F821 /* Pods-VinchyOrder.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyOrder.debug.xcconfig"; path = "Target Support Files/Pods-VinchyOrder/Pods-VinchyOrder.debug.xcconfig"; sourceTree = "<group>"; };
+		CA100BC627D8D70300B066C4 /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAB25B8927C3953A00426785 /* OrderItemView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OrderItemView.swift; sourceTree = "<group>"; };
 		CAC3EB5C27C36EC80058ABA2 /* OrderDetailViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailViewModel.swift; sourceTree = "<group>"; };
 		CAC3EB5E27C36EC80058ABA2 /* OrderDetailInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailInput.swift; sourceTree = "<group>"; };
@@ -85,6 +87,7 @@
 				CACB3DBE27C2853D00AD999D /* StringFormatting.framework in Frameworks */,
 				CACB3DB227C282F200AD999D /* VinchyCore.framework in Frameworks */,
 				CACB3DBA27C2852500AD999D /* DisplayMini.framework in Frameworks */,
+				CA100BC727D8D70300B066C4 /* Database.framework in Frameworks */,
 				CACB3DB627C2833500AD999D /* Core.framework in Frameworks */,
 				85297DCDC70B65C928CE8622 /* Pods_VinchyOrder.framework in Frameworks */,
 			);
@@ -293,6 +296,7 @@
 		CACB3DB027C282F200AD999D /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CA100BC627D8D70300B066C4 /* Database.framework */,
 				CACB3DBD27C2853D00AD999D /* StringFormatting.framework */,
 				CACB3DB927C2852500AD999D /* DisplayMini.framework */,
 				CACB3DB527C2833500AD999D /* Core.framework */,

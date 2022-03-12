@@ -203,9 +203,10 @@ extension VinchyPresenter: VinchyPresenterProtocol {
       result.forEach { nearestPartner, subtitleText in
         sections.append(.storeTitle(content: .init(affilatedId: nearestPartner.partner.affiliatedStoreId, titleText: nearestPartner.partner.title, logoURL: nearestPartner.partner.logoURL, subtitleText: subtitleText, moreText: localized("more").firstLetterUppercased())))
 
-        sections.append(.bottles(content: nearestPartner.recommendedWines.compactMap({
+        let wines: [WineBottleView.Content] = nearestPartner.recommendedWines.compactMap({
           .init(wineID: $0.id, imageURL: $0.mainImageUrl?.toURL, titleText: $0.title, subtitleText: $0.winery?.title, rating: $0.rating, buttonText: nil, flag: emojiFlagForISOCountryCode($0.winery?.countryCode ?? ""), contextMenuViewModels: self?.contextMenuViewModels ?? [])
-        })))
+        })
+        sections.append(.bottles(content: .init(wines: wines, contentOffsetX: 0)))
       }
 
       for (index, compilation) in compilations.enumerated() {
@@ -253,9 +254,11 @@ extension VinchyPresenter: VinchyPresenterProtocol {
               sections.append(.title(content: title))
             }
 
-            sections.append(.bottles(content: firstCollectionList.wineList.compactMap({ wine in
+            let wines: [WineBottleView.Content] = firstCollectionList.wineList.compactMap({ wine in
               .init(wineID: wine.id, imageURL: wine.mainImageUrl?.toURL, titleText: wine.title, subtitleText: wine.winery?.title, rating: wine.rating, buttonText: "", flag: emojiFlagForISOCountryCode(wine.winery?.countryCode ?? ""), contextMenuViewModels: self?.contextMenuViewModels ?? [])
-            })))
+            })
+
+            sections.append(.bottles(content: .init(wines: wines, contentOffsetX: 0)))
           }
 
         default:

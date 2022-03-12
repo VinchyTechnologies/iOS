@@ -56,6 +56,10 @@ final class StoreInteractor {
     configureStateMachine()
   }
 
+  // MARK: Internal
+
+  var recommendedWinesContentOffsetX: CGFloat = 0
+
   // MARK: Private
 
   private let dispatchGroup = DispatchGroup()
@@ -78,6 +82,16 @@ final class StoreInteractor {
   private var assortimentWines: [ShortWine] = []
   private var personalRecommendedWines: [ShortWine]?
   private var selectedFilters: [(String, String)] = []
+  private lazy var inCartCartItems: [CartItem] = cartRepository.findAll().compactMap { item in
+    if let productId = item.productId, let count = item.quantity {
+      return CartItem(productID: productId, type: .wine, count: count)
+    }
+    return nil
+  }
+  private var needLoadMore: Bool = false
+  private let throttler = Throttler()
+
+  private var totalPrice: Int64 = 0
 
   private func configureStateMachine() {
     stateMachine.observe { [weak self] oldState, newState, _ in
@@ -209,7 +223,7 @@ final class StoreInteractor {
   }
 
   private func handleLoadedData(_ data: StoreInteractorData, oldState: PagingState<StoreInteractorData>) {
-    var needLoadMore: Bool
+//    var needLoadMore: Bool
     switch oldState {
     case .error, .loaded, .initial:
       needLoadMore = false
@@ -240,7 +254,44 @@ final class StoreInteractor {
       guard let data = data else {
         return
       }
-      presenter.update(data: data, needLoadMore: needLoadMore)
+      presenter.update(data: data, needLoadMore: needLoadMore, isBottomButtonLoading: false, totalPrice: totalPrice, cartItems: inCartCartItems, recommendedWinesContentOffsetX: recommendedWinesContentOffsetX)
+    }
+  }
+
+  private func didTapPriceButton(wineID: Int64) {
+
+    // show alert incorrect store, cant add to cart
+
+    if inCartCartItems.contains(where: { $0.productID == wineID && $0.type == .wine }) {
+      inCartCartItems.removeAll(where: { $0.productID == wineID && $0.type == .wine })
+    } else {
+      inCartCartItems.append(.init(productID: wineID, type: .wine, count: 1))
+    }
+
+    guard let data = data else {
+      return
+    }
+
+    DispatchQueue.global(qos: .utility).async {
+      self.save()
+    }
+
+    presenter.update(data: data, needLoadMore: needLoadMore, isBottomButtonLoading: false, totalPrice: totalPrice, cartItems: inCartCartItems, recommendedWinesContentOffsetX: recommendedWinesContentOffsetX)
+  }
+
+  private func save() {
+    throttler.cancel()
+    throttler.throttle(delay: .seconds(1)) { [weak self] in
+      guard let self = self, let affilatedId = self.partnerInfo?.affiliatedStoreId else { return }
+      cartRepository.removeAll()
+      cartRepository.append(self.inCartCartItems.enumerated().compactMap({ index, item in
+        .init(
+          id: index,
+          affilatedId: affilatedId,
+          productId: item.productID,
+          kind: .wine,
+          quantity: item.count)
+      }))
     }
   }
 }
@@ -258,10 +309,12 @@ extension StoreInteractor: StoreInteractorProtocol {
   }
 
   func didTapRecommendedWineButton(wineID: Int64) {
-    if let wineURL = personalRecommendedWines?.first(where: { $0.id == wineID })?.url?.toURL {
-      router.presentSafari(url: wineURL)
-    }
+//    if let wineURL = personalRecommendedWines?.first(where: { $0.id == wineID })?.url?.toURL {
+//      router.presentSafari(url: wineURL)
+//    }
+    didTapPriceButton(wineID: wineID)
   }
+
   func didTapShare(button: UIButton) {
     guard let partnerInfo = partnerInfo else {
       return
@@ -289,10 +342,13 @@ extension StoreInteractor: StoreInteractorProtocol {
 //      presenter.showStatusAlertDidLikedSuccessfully()
     }
   }
+
   func didTapHorizontalWineViewButton(wineID: Int64) {
-    if let wineURL = assortimentWines.first(where: { $0.id == wineID })?.url?.toURL {
-      router.presentSafari(url: wineURL)
-    }
+//    if let wineURL = assortimentWines.first(where: { $0.id == wineID })?.url?.toURL {
+//      router.presentSafari(url: wineURL)
+//    }
+    didTapPriceButton(wineID: wineID)
+
   }
 
   func didTapShareContextMenu(wineID: Int64, sourceView: UIView) {

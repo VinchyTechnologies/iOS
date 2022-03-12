@@ -5,7 +5,7 @@
 //  Created by Алексей Смирнов on 11.02.2022.
 //
 
-import Foundation
+import Database
 
 protocol CartInteractorProtocol: AnyObject {
   func viewDidLoad()

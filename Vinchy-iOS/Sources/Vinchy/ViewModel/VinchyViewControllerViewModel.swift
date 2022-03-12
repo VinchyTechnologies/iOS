@@ -20,7 +20,7 @@ struct VinchyViewControllerViewModel {
     case title(content: Label.Content)
     case stories(content: [StoryView.Content])
     case commonSubtitle(content: [MainSubtitleView.Content], style: BigCollectionView.Style)
-    case bottles(content: [WineBottleView.Content])
+    case bottles(content: BottlesCollectionView.Content)
     case shareUs(content: ShareUsView.Content)
     case storeTitle(content: StoreTitleView.Content)
     case nearestStoreTitle(content: Label.Content)

@@ -22,6 +22,12 @@ public final class BottomPriceBarView: UIView, EpoxyableView {
     translatesAutoresizingMaskIntoConstraints = false
     directionalLayoutMargins = .init(top: 12, leading: 24, bottom: 0, trailing: 24)
 
+    addSubview(blurEffectView)
+    let blurEffect = UIBlurEffect(style: traitCollection.userInterfaceStyle == .dark ? .dark : .light)
+    blurEffectView.effect = blurEffect
+    blurEffectView.translatesAutoresizingMaskIntoConstraints = false
+    blurEffectView.constrainToSuperview()
+
     hGroup.install(in: self)
     hGroup.constrainToMarginsWithHighPriorityBottom()
     hGroup.heightAnchor.constraint(equalToConstant: 56).isActive = true
@@ -54,10 +60,12 @@ public final class BottomPriceBarView: UIView, EpoxyableView {
   public struct Content: Equatable {
     public let leadingText: String?
     public let trailingButtonText: String?
+    public let isLoading: Bool
 
-    public init(leadingText: String?, trailingButtonText: String?) {
+    public init(leadingText: String?, trailingButtonText: String?, isLoading: Bool = false) {
       self.leadingText = leadingText
       self.trailingButtonText = trailingButtonText
+      self.isLoading = isLoading
     }
   }
 
@@ -74,12 +82,6 @@ public final class BottomPriceBarView: UIView, EpoxyableView {
   }
 
   public func setContent(_ content: Content, animated: Bool) {
-    addSubview(blurEffectView)
-    let blurEffect = UIBlurEffect(style: traitCollection.userInterfaceStyle == .dark ? .dark : .light)
-    blurEffectView.effect = blurEffect
-    blurEffectView.translatesAutoresizingMaskIntoConstraints = false
-    blurEffectView.constrainToSuperview()
-
     hGroup.setItems {
       switch style.kind {
       case .text:
@@ -92,11 +94,11 @@ public final class BottomPriceBarView: UIView, EpoxyableView {
 
         if let trailingButtonText = content.trailingButtonText {
           SpacerItem(dataID: DataID.spacer)
-          priceButton(text: trailingButtonText)
+          priceButton(text: trailingButtonText, isLoading: content.isLoading)
         }
 
       case .buttonOnly:
-        priceButton(text: content.trailingButtonText)
+        priceButton(text: content.trailingButtonText, isLoading: content.isLoading)
       }
     }
   }
@@ -129,19 +131,20 @@ public final class BottomPriceBarView: UIView, EpoxyableView {
 
   private var didSelect: ((UIButton) -> Void)?
 
-  private func priceButton(text: String?) -> GroupItemModeling {
+  private func priceButton(text: String?, isLoading: Bool) -> GroupItemModeling {
     GroupItem<Button>(
       dataID: DataID.trailingButton,
-      content: "",
+      content: text,
       make: { [weak self] in
         guard let self = self else { return Button() }
         // this is required by LayoutGroups to ensure AutoLayout works as expected
         self.button.translatesAutoresizingMaskIntoConstraints = false
         self.button.heightAnchor.constraint(equalToConstant: 48).isActive = true
+        self.button.widthAnchor.constraint(greaterThanOrEqualToConstant: 80).isActive = true
         return self.button
       },
-      setContent: { context, _ in
-        let text = (text ?? "0.00")
+      setContent: { context, content in
+        let text = (content ?? "0.00")
         context.constrainable.setTitle(text, for: [])
         context.constrainable.titleLabel?.font = Font.with(size: 20, design: .round, traits: .bold)
         context.constrainable.setTitleColor(.white, for: [])

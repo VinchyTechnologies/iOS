@@ -17,20 +17,25 @@ public protocol BottlesCollectionViewDelegate: AnyObject {
   func didTapWriteNoteContextMenu(wineID: Int64)
   func didTap(wineID: Int64)
   func didTapPriceButton(_ button: UIButton, wineID: Int64)
+  func bottlesScrollViewDidScroll(_ scrollView: UIScrollView)
 }
 
 // MARK: - BottlesCollectionView
 
-public final class BottlesCollectionView: CollectionView, EpoxyableView {
+public final class BottlesCollectionView: UIView, EpoxyableView {
 
   // MARK: Lifecycle
 
   public init(style: Style) {
     self.style = style
-    super.init(layout: UICollectionViewCompositionalLayout.epoxy)
-    delaysContentTouches = false
-    prefetchDelegate = self
-    alwaysBounceVertical = false
+    super.init(frame: .zero)
+    addSubview(collectionView)
+    collectionView.translatesAutoresizingMaskIntoConstraints = false
+    collectionView.constrainToSuperview()
+  }
+
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
   }
 
   // MARK: Public
@@ -50,14 +55,36 @@ public final class BottlesCollectionView: CollectionView, EpoxyableView {
     }
   }
 
-  public typealias Content = [WineBottleView.Content]
+  public struct Content: Equatable {
+    public let wines: [WineBottleView.Content]
+    public let contentOffsetX: CGFloat
+
+    public init(wines: [WineBottleView.Content], contentOffsetX: CGFloat = 0) {
+      self.wines = wines
+      self.contentOffsetX = contentOffsetX
+    }
+  }
+
 
   public weak var bottlesCollectionViewDelegate: BottlesCollectionViewDelegate?
 
-  public func setContent(_ content: Content, animated: Bool) {
+  public lazy var collectionView: CollectionView = {
+    $0.delaysContentTouches = false
+    $0.prefetchDelegate = self
+    $0.alwaysBounceVertical = false
+    $0.scrollDelegate = self
+    $0.alwaysBounceVertical = false
+    $0.alwaysBounceHorizontal = true
+    $0.showsVerticalScrollIndicator = false
+    $0.showsHorizontalScrollIndicator = false
+    return $0
+  }(CollectionView(layout: layout))
 
+
+  public func setContent(_ content: Content, animated: Bool) {
+    self.content = content
     let sectionModel = SectionModel(dataID: SectionID.bottlesCollectionViewSectionBottles) {
-      content.enumerated().map { index, wineCollectionViewCellViewModel in
+      content.wines.enumerated().map { index, wineCollectionViewCellViewModel in
         WineBottleView.itemModel(
           dataID: index,
           content: wineCollectionViewCellViewModel,
@@ -70,9 +97,11 @@ public final class BottlesCollectionView: CollectionView, EpoxyableView {
           }
       }
     }
-    .compositionalLayoutSection(layoutSection)
+    .flowLayoutSectionInset(insets)
 
-    setSections([sectionModel], animated: true)
+    collectionView.setSections([sectionModel], animated: false)
+    collectionView.layoutIfNeeded() // very important
+    collectionView.contentOffset.x = content.contentOffsetX
   }
 
   // MARK: Private
@@ -81,25 +110,29 @@ public final class BottlesCollectionView: CollectionView, EpoxyableView {
     case bottlesCollectionViewSectionBottles
   }
 
+
+  private var content: Content?
+
+  private let layout: UICollectionViewFlowLayout = {
+    $0.minimumInteritemSpacing = 8
+    $0.itemSize = .init(width: 150, height: 250)
+    $0.scrollDirection = .horizontal
+    return $0
+  }(UICollectionViewFlowLayout())
+
   private let style: Style
 
   private var didTap: ((_ wineID: Int64) -> Void)?
 
-  private var layoutSection: NSCollectionLayoutSection? {
-    let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .absolute(150), heightDimension: .absolute(250)))
-    let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(150), heightDimension: .absolute(250)), subitems: [item])
-    let section = NSCollectionLayoutSection(group: group)
-    section.interGroupSpacing = 8
-    section.orthogonalScrollingBehavior = .continuous
 
+  private var insets: UIEdgeInsets {
     switch style.offset {
     case .normal:
-      section.contentInsets = .init(top: 0, leading: 24, bottom: 0, trailing: 24)
+      return .init(top: 0, left: 24, bottom: 0, right: 24)
 
     case .small:
-      section.contentInsets = .init(top: 0, leading: 16, bottom: 0, trailing: 16)
+      return .init(top: 0, left: 16, bottom: 0, right: 16)
     }
-    return section
   }
 }
 
@@ -140,5 +173,13 @@ extension BottlesCollectionView: CollectionViewPrefetchingDelegate {
         ImageLoader.shared.cancelPrefetch([url])
       }
     }
+  }
+}
+
+// MARK: UIScrollViewDelegate
+
+extension BottlesCollectionView: UIScrollViewDelegate {
+  public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+    bottlesCollectionViewDelegate?.bottlesScrollViewDidScroll(scrollView)
   }
 }

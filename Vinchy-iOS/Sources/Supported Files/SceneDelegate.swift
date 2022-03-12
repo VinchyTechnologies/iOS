@@ -109,10 +109,10 @@ extension SceneDelegate: UIWindowSceneDelegate {
     DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) { // + 1.0 very important
       if #available(iOS 14, *) {
         ATTrackingManager.requestTrackingAuthorization(completionHandler: { _ in
-          GADMobileAds.sharedInstance().start(completionHandler: nil)
+//          GADMobileAds.sharedInstance().start(completionHandler: nil)
         })
       } else {
-        GADMobileAds.sharedInstance().start(completionHandler: nil)
+//        GADMobileAds.sharedInstance().start(completionHandler: nil)
       }
     }
   }

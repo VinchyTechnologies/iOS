@@ -217,7 +217,7 @@ final class WineDetailViewModelFactory {
         .title(itemID: .similarWinesTitle, localized("similar_wines").firstLetterUppercased()),
       ]
 
-      sections += [.similarWines(itemID: .similarWines, content: wineList)]
+      sections += [.similarWines(itemID: .similarWines, content: .init(wines: wineList))]
       return sections
     }
 

@@ -6,6 +6,8 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import CoreGraphics
+import Database
 import DisplayMini
 import StringFormatting
 
@@ -112,7 +114,7 @@ extension StorePresenter: StorePresenterProtocol {
     viewController?.stopLoadingAnimation()
   }
 
-  func update(data: StoreInteractorData, needLoadMore: Bool) {
+  func update(data: StoreInteractorData, needLoadMore: Bool, isBottomButtonLoading: Bool, totalPrice: Int64?, cartItems: [CartItem], recommendedWinesContentOffsetX: CGFloat) {
 
     var sections: [StoreViewModel.Section] = []
 
@@ -140,6 +142,9 @@ extension StorePresenter: StorePresenterProtocol {
 
       let winesContent: [WineBottleView.Content] = data.recommendedWines.compactMap { wine in
         let buttonText: String? = {
+          if cartItems.contains(where: { $0.productID == wine.id }) {
+            return "✔︎"
+          }
           if let amount = wine.price?.amount, let currency = wine.price?.currencyCode {
             return formatCurrencyAmount(amount, currency: currency)
           }
@@ -156,13 +161,16 @@ extension StorePresenter: StorePresenterProtocol {
           contextMenuViewModels: contextMenuViewModels)
       }
 
-      sections += [.wines(winesContent)]
+      sections += [.wines(.init(wines: winesContent, contentOffsetX: recommendedWinesContentOffsetX))]
     }
 
     if !data.assortimentWines.isEmpty {
 
       let winesContent: [HorizontalWineView.Content] = data.assortimentWines.map({ wine in
         let buttonText: String? = {
+          if cartItems.contains(where: { $0.productID == wine.id }) {
+            return "✔︎"
+          }
           if let amount = wine.price?.amount, let currency = wine.price?.currencyCode {
             return formatCurrencyAmount(amount, currency: currency)
           }
@@ -199,7 +207,7 @@ extension StorePresenter: StorePresenterProtocol {
 
       winesContent.enumerated().forEach { index, wineContent in
         if index % 10 == 0 && index != 0 {
-          assortmentsContent.append(.ad(itemID: .ad))
+//          assortmentsContent.append(.ad(itemID: .ad))
         }
         assortmentsContent.append(.horizontalWine(wineContent))
       }
@@ -288,7 +296,19 @@ extension StorePresenter: StorePresenterProtocol {
       }
     }
 
-    let viewModel = StoreViewModel(sections: sections, navigationTitleText: data.partnerInfo.title, shouldResetContentOffset: false, isLiked: data.isLiked, bottomPriceBarViewModel: .init(leadingText: "Оформить заказ", trailingButtonText: "$1.222"))
+    let bottomPriceBarViewModel: BottomPriceBarView.Content? = {
+      guard let totalPrice = totalPrice, totalPrice > 0 else {
+        return nil
+      }
+      return .init(leadingText: "Оформить заказ", trailingButtonText: String(totalPrice), isLoading: isBottomButtonLoading)
+    }()
+
+    let viewModel = StoreViewModel(
+      sections: sections,
+      navigationTitleText: data.partnerInfo.title,
+      shouldResetContentOffset: false,
+      isLiked: data.isLiked,
+      bottomPriceBarViewModel: bottomPriceBarViewModel)
     viewController?.updateUI(viewModel: viewModel)
   }
 }

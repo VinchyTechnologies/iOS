@@ -10,6 +10,7 @@ import UIKit.UIButton
 import VinchyUI
 
 protocol StoreInteractorProtocol: WineViewContextMenuTappable, AdvancedSearchOutputDelegate {
+  var recommendedWinesContentOffsetX: CGFloat { get set }
   func viewDidLoad()
   func didSelectHorizontalWine(wineID: Int64)
   func didSelectRecommendedWine(wineID: Int64)

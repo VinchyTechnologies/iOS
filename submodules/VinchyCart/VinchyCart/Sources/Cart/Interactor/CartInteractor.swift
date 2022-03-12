@@ -6,30 +6,8 @@
 //
 
 import Core
+import Database
 import VinchyCore
-
-// MARK: - CartItem
-
-class CartItem: Decodable {
-
-  // MARK: Lifecycle
-
-  init(productID: Int64, type: Kind, count: Int) {
-    self.productID = productID
-    self.type = type
-    self.count = count
-  }
-
-  // MARK: Internal
-
-  enum Kind: Decodable {
-    case wine
-  }
-
-  let productID: Int64
-  let type: Kind
-  var count: Int
-}
 
 // MARK: - CartInteractor
 
@@ -49,7 +27,12 @@ final class CartInteractor {
 
   // MARK: Private
 
-  private var cartItems: [CartItem] = [.init(productID: 1, type: .wine, count: 12)]
+  private lazy var cartItems: [CartItem] = cartRepository.findAll().compactMap { item in
+    if let productId = item.productId, let count = item.quantity {
+      return .init(productID: productId, type: .wine, count: count)
+    }
+    return nil
+  }
 
   private let input: CartInput
   private let router: CartRouterProtocol
@@ -63,6 +46,7 @@ extension CartInteractor: CartInteractorProtocol {
 
   func didTapTrashButton() {
     cartItems.removeAll()
+    cartRepository.removeAll()
     router.dismiss()
   }
 
@@ -74,12 +58,24 @@ extension CartInteractor: CartInteractorProtocol {
   }
 
   func didTapStepper(productID: Int64, type: CartItem.Kind, value: Int) {
-    // make request
     throttler.cancel()
     throttler.throttle(delay: .seconds(1)) { [weak self] in
-      if let product = self?.cartItems.first(where: { $0.productID == productID }) {
+      guard let self = self else { return }
+      let cartItems = cartRepository.findAll()
+      if
+        let product = self.cartItems.first(where: { $0.productID == productID }),
+        let cartItemToRemove = cartItems.first(where: { $0.productId == productID })
+      {
         product.count = value
+        cartRepository.remove(cartItemToRemove)
+        if value > 0 {
+          let cartItemToInsert: VCartItem = .init(id: cartItemToRemove.id, affilatedId: cartItemToRemove.affilatedId, productId: cartItemToRemove.productId, kind: cartItemToRemove.kind, quantity: value)
+          cartRepository.insert(cartItemToInsert)
+        }
       }
+
+      // make request
+      self.presenter.update()
     }
   }
 
@@ -93,6 +89,9 @@ extension CartInteractor: CartInteractorProtocol {
   }
 
   func viewDidLoad() {
+    cartItems.forEach { Item in
+      print(Item.productID, Item.count)
+    }
     presenter.update()
   }
 }

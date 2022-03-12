@@ -437,6 +437,10 @@ extension StoreViewController: Loadable {
 
 extension StoreViewController: BottlesCollectionViewDelegate {
 
+  func bottlesScrollViewDidScroll(_ scrollView: UIScrollView) {
+    interactor?.recommendedWinesContentOffsetX = scrollView.contentOffset.x
+  }
+
   func didTapPriceButton(_ button: UIButton, wineID: Int64) {
     interactor?.didTapRecommendedWineButton(wineID: wineID)
   }

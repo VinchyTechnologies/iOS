@@ -349,6 +349,9 @@ extension VinchyViewController: ShareUsCollectionCellDelegate {
 // MARK: BottlesCollectionViewDelegate
 
 extension VinchyViewController: BottlesCollectionViewDelegate {
+  func bottlesScrollViewDidScroll(_ scrollView: UIScrollView) {
+
+  }
 
   func didTapPriceButton(_ button: UIButton, wineID: Int64) {
     interactor?.didTapBottleCell(wineID: wineID)

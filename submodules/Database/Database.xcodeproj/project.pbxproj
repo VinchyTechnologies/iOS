@@ -21,6 +21,7 @@
 		8ABEF407277F5D0A0046C43E /* StoresRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8ABEF406277F5D0A0046C43E /* StoresRepository.swift */; };
 		8AD49F15267516BB0094E157 /* WinesRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD49F14267516BB0094E157 /* WinesRepository.swift */; };
 		CA1821F624C0F48600280DD4 /* Database.h in Headers */ = {isa = PBXBuildFile; fileRef = CA1821F424C0F48600280DD4 /* Database.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		CA3EEA6A27D7A23A004FF14F /* CartRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3EEA6927D7A23A004FF14F /* CartRepository.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -40,6 +41,7 @@
 		CA1821F124C0F48600280DD4 /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA1821F424C0F48600280DD4 /* Database.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
 		CA1821F524C0F48600280DD4 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CA3EEA6927D7A23A004FF14F /* CartRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartRepository.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -114,6 +116,7 @@
 				8AD49F14267516BB0094E157 /* WinesRepository.swift */,
 				740EC95E269DA5C30000718B /* SearchedWinesRepository.swift */,
 				8ABEF406277F5D0A0046C43E /* StoresRepository.swift */,
+				CA3EEA6927D7A23A004FF14F /* CartRepository.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -202,6 +205,7 @@
 				8A2F32E52673B7D7002DE6C1 /* CollectionRepository.swift in Sources */,
 				8A2F32E42673B7D7002DE6C1 /* AnyStorage.swift in Sources */,
 				8A2F32E12673B7D7002DE6C1 /* FileStorage.swift in Sources */,
+				CA3EEA6A27D7A23A004FF14F /* CartRepository.swift in Sources */,
 				8A2F32DF2673B7D7002DE6C1 /* InMemoryRepository.swift in Sources */,
 				8A2F32DE2673B7D7002DE6C1 /* SingleRepository.swift in Sources */,
 				740EC95F269DA5C30000718B /* SearchedWinesRepository.swift in Sources */,

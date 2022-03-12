@@ -120,9 +120,9 @@ final class CartViewController: CollectionViewController {
               self?.interactor?.didTapStepper(productID: wineID, type: .wine, value: value)
             }),
             style: .init(id: UUID()))
-            .didSelect { [weak self] _ in
-              self?.interactor?.didSelectHorizontalWine(wineID: content.wineID)
-            }
+//            .didSelect { [weak self] _ in
+//              self?.interactor?.didSelectHorizontalWine(wineID: content.wineID)
+//            }
             .willDisplay({ [weak self] context in
               let value = self?.interactor?.getCountOfProduct(productID: content.wineID, type: .wine) ?? 0
               let con = CartItemView.Content(
