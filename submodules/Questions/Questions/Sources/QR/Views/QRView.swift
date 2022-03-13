@@ -6,7 +6,6 @@
 //
 
 import EpoxyCore
-import WineDetail
 
 final class QRView: UIView, EpoxyableView {
 
@@ -36,7 +35,6 @@ final class QRView: UIView, EpoxyableView {
     let text: String
   }
 
-
   func setContent(_ content: Content, animated: Bool) {
     imageView.image = generateQRCode(from: content.text)
   }
@@ -44,7 +42,6 @@ final class QRView: UIView, EpoxyableView {
   // MARK: Private
 
   private let imageView = UIImageView()
-
 
   private func generateQRCode(from string: String) -> UIImage? {
     let data = string.data(using: String.Encoding.ascii)
