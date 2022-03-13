@@ -12,7 +12,7 @@ import Network
 private enum PartnersEndpoint: EndpointProtocol {
   case map(latitude: Double, longitude: Double, radius: Int)
   case storeInfo(partnerId: Int, affilatedId: Int)
-  case wines(partnerId: Int, affilatedId: Int, filters: [(String, String)], currencyCode: String, limit: Int, offset: Int)
+  case wines(partnerId: Int, affilatedId: Int, filters: [(String, String)], currencyCode: String?, limit: Int, offset: Int)
   case partnersByWine(wineID: Int64, latitude: Double, longitude: Double, limit: Int, offset: Int)
   case nearest(numberOfPartners: Int, latitude: Double, longitude: Double, radius: Int, accountID: Int)
 
@@ -96,11 +96,14 @@ private enum PartnersEndpoint: EndpointProtocol {
       ]
 
     case .wines(_, _, _, let currencyCode, _, _):
-      return [
+      var dict = [
         "Authorization": "VFAXGm53nG7zBtEuF5DVAhK9YKuHBJ9xTjuCeFyHDxbP4s6gj6",
         "accept-language": Locale.current.languageCode ?? "en",
-        "x-currency": currencyCode,
       ]
+      if let currencyCode = currencyCode {
+        dict["x-currency"] = currencyCode
+      }
+      return dict
     }
   }
 }
@@ -161,7 +164,7 @@ public final class Partners {
       completion: completion)
   }
 
-  public func getPartnerWines(partnerId: Int, affilatedId: Int, filters: [(String, String)], currencyCode: String, limit: Int, offset: Int, completion: @escaping (Result<[ShortWine], APIError>) -> Void) {
+  public func getPartnerWines(partnerId: Int, affilatedId: Int, filters: [(String, String)], currencyCode: String?, limit: Int, offset: Int, completion: @escaping (Result<[ShortWine], APIError>) -> Void) {
     api.request(
       endpoint: PartnersEndpoint.wines(
         partnerId: partnerId,

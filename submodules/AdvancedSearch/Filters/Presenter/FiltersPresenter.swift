@@ -16,7 +16,8 @@ final class FiltersPresenter {
 
   // MARK: Lifecycle
 
-  init(viewController: FiltersViewControllerProtocol) {
+  init(input: FiltersInput, viewController: FiltersViewControllerProtocol) {
+    self.input = input
     self.viewController = viewController
   }
 
@@ -25,6 +26,8 @@ final class FiltersPresenter {
   weak var viewController: FiltersViewControllerProtocol?
 
   // MARK: Private
+
+  private let input: FiltersInput
 
   private func mapNormalFilter(selectedFilters: [(String, String)], filter: Filter, shouldAddHeader: Bool = true) -> [FiltersViewModel.Section] {
     var sections = [FiltersViewModel.Section]()
@@ -89,7 +92,7 @@ extension FiltersPresenter: FiltersPresenterProtocol {
 
   func update(filters: [Filter], selectedFilters: [(String, String)], shouldAddPriceFilter: Bool, reloadingData: Bool) {
     var sections = [FiltersViewModel.Section]()
-    if let currencyEntry = currencyEntry(for: "RUB"), shouldAddPriceFilter {
+    if let currencyCode = input.currencyCode, let currencyEntry = currencyEntry(for: currencyCode), shouldAddPriceFilter {
       let symbol = currencyEntry.symbol
       let decimalDigits = currencyEntry.decimalDigits
       sections += [.title(content: [localized("AdvancesdSearch.Price").firstLetterUppercased(), symbol].joined(separator: ", "))]
@@ -101,7 +104,7 @@ extension FiltersPresenter: FiltersPresenterProtocol {
           maxPrice: maxPrice,
           minPlaceHolderText: localized("AdvancesdSearch.Price.From").firstLetterUppercased(),
           maxPlaceHolderText: localized("AdvancesdSearch.Price.To").firstLetterUppercased(),
-          decimalDigits: decimalDigits)),
+          decimalDigits: decimalDigits, currencyCode: currencyCode)),
       ]
     }
 

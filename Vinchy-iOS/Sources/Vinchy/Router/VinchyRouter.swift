@@ -82,10 +82,10 @@ extension VinchyRouter: VinchyRouterProtocol {
   }
 
   func pushToAdvancedFilterViewController() {
-    let controller = FiltersAssembly.assemblyModule(input: .init(preselectedFilters: [], isPriceFilterAvailable: false))
-    controller.hidesBottomBarWhenPushed = true
-    viewController?.navigationController?.pushViewController(
-      controller, animated: true)
+//    let controller = FiltersAssembly.assemblyModule(input: .init(preselectedFilters: [], isPriceFilterAvailable: false, currencyCode: nil, affiliedId: 0))
+//    controller.hidesBottomBarWhenPushed = true
+//    viewController?.navigationController?.pushViewController(
+//      controller, animated: true)
   }
 
   func pushToDetailCollection(searchText: String) {

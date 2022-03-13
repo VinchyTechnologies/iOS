@@ -5,6 +5,7 @@
 //  Created by Aleksei Smirnov on 18.08.2020.
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
+
 import Network
 
 // MARK: - CollectionEndpoint

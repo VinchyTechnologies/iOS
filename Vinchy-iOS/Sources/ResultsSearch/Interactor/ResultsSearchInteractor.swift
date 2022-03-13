@@ -111,8 +111,8 @@ extension ResultsSearchInteractor: ResultsSearchInteractorProtocol {
           }
         }
 
-      case .storeDetail(let affilatedId):
-        Partners.shared.getPartnerWines(partnerId: 1, affilatedId: affilatedId, filters: [("title", searchText)], currencyCode: "RUB", limit: 10, offset: 0) { [weak self] result in
+      case .storeDetail(let affilatedId, let currencyCode):
+        Partners.shared.getPartnerWines(partnerId: 1, affilatedId: affilatedId, filters: [("title", searchText)], currencyCode: currencyCode, limit: 10, offset: 0) { [weak self] result in
           switch result {
           case .success(let wines):
             self?.presenter.update(didFindWines: wines)

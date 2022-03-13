@@ -21,7 +21,7 @@ private enum CompilationsEndpoint: EndpointProtocol {
   var path: String {
     switch self {
     case .all:
-      return "/compilations"
+      return "/v2/compilations"
     }
   }
 

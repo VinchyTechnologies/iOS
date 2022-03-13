@@ -51,13 +51,15 @@ final class MinMaxPriceView: UIView, EpoxyableView {
     let minPlaceHolderText: String
     let maxPlaceHolderText: String
     let decimalDigits: Int
+    let currencyCode: String
 
-    init(minPrice: String?, maxPrice: String?, minPlaceHolderText: String, maxPlaceHolderText: String, decimalDigits: Int) {
+    init(minPrice: String?, maxPrice: String?, minPlaceHolderText: String, maxPlaceHolderText: String, decimalDigits: Int, currencyCode: String) {
       self.minPrice = minPrice
       self.maxPrice = maxPrice
       self.minPlaceHolderText = minPlaceHolderText
       self.maxPlaceHolderText = maxPlaceHolderText
       self.decimalDigits = decimalDigits
+      self.currencyCode = currencyCode
     }
   }
   struct Style: Hashable {
@@ -75,11 +77,11 @@ final class MinMaxPriceView: UIView, EpoxyableView {
     minTextField.placeholder = content.minPlaceHolderText
     maxTextField.placeholder = content.maxPlaceHolderText
     if let minPrice = content.minPrice, let minIntValue = Int64(minPrice) {
-      minTextField.text = formatCurrencyAmount(minIntValue, currency: "RUB", shouldAddSymbol: false)
+      minTextField.text = formatCurrencyAmount(minIntValue, currency: content.currencyCode, shouldAddSymbol: false)
       textFieldDidChange(minTextField)
     }
     if let maxPrice = content.maxPrice, let maxIntValue = Int64(maxPrice) {
-      maxTextField.text = formatCurrencyAmount(maxIntValue, currency: "RUB", shouldAddSymbol: false)
+      maxTextField.text = formatCurrencyAmount(maxIntValue, currency: content.currencyCode, shouldAddSymbol: false)
       textFieldDidChange(maxTextField)
     }
   }

@@ -117,24 +117,6 @@ final class StoreInteractor {
     var generalError: StoreInteractorError?
     switch input.mode {
     case .normal(let affilatedId):
-      if partnerInfo == nil {
-        dispatchGroup.enter()
-        Partners.shared.getPartnerStoreInfo(partnerId: 1, affilatedId: affilatedId) { [weak self] result in
-          guard let self = self else { return }
-          switch result {
-          case .success(let response):
-            self.partnerInfo = response
-            self.loadQuestionsIfNeeded()
-            SpotlightService.shared.addStore(affilatedId: affilatedId, title: response.title, subtitle: response.address)
-
-          case .failure(let error):
-            generalError = .initialLoading(error)
-            print(error.localizedDescription)
-          }
-          self.dispatchGroup.leave()
-        }
-      }
-
       if personalRecommendedWines == nil {
         dispatchGroup.enter()
         Recommendations.shared.getPersonalRecommendedWines(
@@ -166,7 +148,7 @@ final class StoreInteractor {
             return (serverName, $0.1)
           }
           return nil
-        }), currencyCode: "RUB",
+        }), currencyCode: partnerInfo?.preferredCurrencyCode,
         limit: C.limit,
         offset: offset) { [weak self] result in
           guard let self = self else { return }
@@ -216,7 +198,27 @@ final class StoreInteractor {
   private func loadInitData() {
     assortimentWines = []
     data?.assortimentWines = []
-    stateMachine.load(offset: .zero)
+    switch input.mode {
+    case .normal(let affilatedId):
+      if partnerInfo == nil {
+        Partners.shared.getPartnerStoreInfo(partnerId: 1, affilatedId: affilatedId) { [weak self] result in
+          guard let self = self else { return }
+          switch result {
+          case .success(let response):
+            self.partnerInfo = response
+            SpotlightService.shared.addStore(affilatedId: affilatedId, title: response.title, subtitle: response.address)
+            self.stateMachine.load(offset: .zero)
+            self.loadQuestionsIfNeeded()
+
+          case .failure(let error):
+            self.stateMachine.fail(with: error)
+          }
+        }
+      }
+
+    case .hasPersonalRecommendations:
+      break
+    }
   }
 
   private func loadMoreData() {
@@ -337,10 +339,10 @@ extension StoreInteractor: StoreInteractorProtocol {
   }
 
   func didTapRecommendedWineButton(wineID: Int64) {
-//    if let wineURL = personalRecommendedWines?.first(where: { $0.id == wineID })?.url?.toURL {
-//      router.presentSafari(url: wineURL)
-//    }
-    didTapPriceButton(wineID: wineID)
+    if let wineURL = personalRecommendedWines?.first(where: { $0.id == wineID })?.url?.toURL {
+      router.presentSafari(url: wineURL)
+    }
+//    didTapPriceButton(wineID: wineID)
   }
 
   func didTapShare(button: UIButton) {
@@ -372,10 +374,10 @@ extension StoreInteractor: StoreInteractorProtocol {
   }
 
   func didTapHorizontalWineViewButton(wineID: Int64) {
-//    if let wineURL = assortimentWines.first(where: { $0.id == wineID })?.url?.toURL {
-//      router.presentSafari(url: wineURL)
-//    }
-    didTapPriceButton(wineID: wineID)
+    if let wineURL = assortimentWines.first(where: { $0.id == wineID })?.url?.toURL {
+      router.presentSafari(url: wineURL)
+    }
+//    didTapPriceButton(wineID: wineID)
 
   }
 
@@ -418,10 +420,10 @@ extension StoreInteractor: StoreInteractorProtocol {
   func didTapSearchButton() {
     switch input.mode {
     case .normal(let affilatedId):
-      router.pushToResultsSearchController(affilatedId: affilatedId, resultsSearchDelegate: self)
+      router.pushToResultsSearchController(affilatedId: affilatedId, currencyCode: partnerInfo?.preferredCurrencyCode, resultsSearchDelegate: self)
 
     case .hasPersonalRecommendations(let affilatedId, _):
-      router.pushToResultsSearchController(affilatedId: affilatedId, resultsSearchDelegate: self)
+      router.pushToResultsSearchController(affilatedId: affilatedId, currencyCode: partnerInfo?.preferredCurrencyCode, resultsSearchDelegate: self)
     }
   }
 
@@ -446,10 +448,15 @@ extension StoreInteractor: StoreInteractorProtocol {
   }
 
   func didTapFilterButton() {
-    let isPriceFilterAvailable = assortimentWines.contains(where: { $0.price != nil })
+    guard let affiliedId = partnerInfo?.affiliatedStoreId else {
+      return
+    }
+    let isPriceFilterAvailable = partnerInfo?.preferredCurrencyCode != nil
     router.presentFilter(
       preselectedFilters: selectedFilters,
-      isPriceFilterAvailable: isPriceFilterAvailable)
+      isPriceFilterAvailable: isPriceFilterAvailable,
+      currencyCode: partnerInfo?.preferredCurrencyCode,
+      affiliedId: affiliedId)
   }
 
   func didTapReloadButton() {

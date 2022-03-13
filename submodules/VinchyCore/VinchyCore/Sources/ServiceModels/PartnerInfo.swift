@@ -22,7 +22,8 @@ public struct PartnerInfo: Decodable, Equatable {
     phoneNumber: String?,
     scheduleOfWork: String?,
     address: String?,
-    logoURL: String?)
+    logoURL: String?,
+    preferredCurrencyCode: String?)
   {
     self.affiliatedStoreId = affiliatedStoreId
     self.title = title
@@ -34,6 +35,7 @@ public struct PartnerInfo: Decodable, Equatable {
     self.scheduleOfWork = scheduleOfWork
     self.address = address
     self.logoURL = logoURL
+    self.preferredCurrencyCode = preferredCurrencyCode
   }
 
   // MARK: Public
@@ -48,6 +50,7 @@ public struct PartnerInfo: Decodable, Equatable {
   public let scheduleOfWork: String?
   public let address: String?
   public let logoURL: String?
+  public let preferredCurrencyCode: String?
 
   public static func == (lhs: PartnerInfo, rhs: PartnerInfo) -> Bool {
     lhs.affiliatedStoreId == rhs.affiliatedStoreId
@@ -66,6 +69,7 @@ public struct PartnerInfo: Decodable, Equatable {
     case scheduleOfWork = "schedule_of_work"
     case address
     case logoURL = "logo_url"
+    case preferredCurrencyCode = "preferred_currency_code"
   }
 }
 
