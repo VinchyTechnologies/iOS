@@ -138,7 +138,7 @@ extension StorePresenter: StorePresenterProtocol {
     }
 
     if !input.isAppClip /* TODO: - */{
-      sections += [.button(content: .init(buttonText: "Подобрать вино"))]
+      sections += [.button(content: .init(buttonText: localized("Questions.Recommendwine").firstLetterUppercased()))]
     }
 
     if !data.recommendedWines.isEmpty, data.selectedFilters.isEmpty {

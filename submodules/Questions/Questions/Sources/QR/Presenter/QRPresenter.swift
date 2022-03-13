@@ -36,8 +36,8 @@ extension QRPresenter: QRPresenterProtocol {
     var sections: [QRViewModel.Section] = []
     sections += [.logo(content: .init(title: partnerInfo.title, logoURL: partnerInfo.logoURL))]
     sections += [.address(content: .init(titleText: partnerInfo.address, isMapButtonHidden: true))]
-    sections += [.title(content: "Покажите код при оплате")]
-    sections += [.subtitle(content: "Чтобы получить скидку предьявите этот код продавцу/официанту")]
+    sections += [.title(content: localized("QR.Title").firstLetterUppercased())]
+    sections += [.subtitle(content: localized("QR.Subtitle").firstLetterUppercased())]
     sections += [.qr(content: .init(text: String(wineID)))]
     sections += [.title(content: String(wineID))]
     viewController?.updateUI(viewModel: .init(sections: sections))

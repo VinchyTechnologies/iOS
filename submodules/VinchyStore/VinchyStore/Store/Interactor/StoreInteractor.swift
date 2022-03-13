@@ -304,9 +304,23 @@ final class StoreInteractor {
       return
     }
     let questionsFlow = QuestionsFlow(id: 1, questions: [
-      .init(id: 3, questionText: "Тип", options: [.init(id: 3, text: "Игристое"), .init(id: 4, text: "Тихое")], isMultipleSelectionAllowed: false),
-      .init(id: 1, questionText: "На какую сумму Вы расчитываете?", options: [.init(id: 1, text: "от 10 до 20$")], isMultipleSelectionAllowed: false),
-      .init(id: 2, questionText: "С чем будете есть?", options: [.init(id: 2, text: "Рыба")], isMultipleSelectionAllowed: true),
+      .init(id: 3, questionText: "What type of wine would you like to drink?", options: [
+        .init(id: 3, text: "Sparking"),
+        .init(id: 4, text: "Still"),
+      ], isMultipleSelectionAllowed: false),
+
+      .init(id: 2, questionText: "What are you going to drink wine with?", options: [
+        .init(id: 2, text: "Meat"),
+        .init(id: 7, text: "Fish"),
+        .init(id: 8, text: "Dessert"),
+        .init(id: 9, text: "Cheese"),
+      ], isMultipleSelectionAllowed: true),
+
+      .init(id: 1, questionText: "How much would you like to spend", options: [
+        .init(id: 6, text: "Up to 10€"),
+        .init(id: 5, text: "From 10€ до 20€"),
+        .init(id: 1, text: "More than 20€"),
+      ], isMultipleSelectionAllowed: false),
     ])
 
     router.presentQuestiosViewController(affilatedId: affilatedId, questionsFlow: questionsFlow)

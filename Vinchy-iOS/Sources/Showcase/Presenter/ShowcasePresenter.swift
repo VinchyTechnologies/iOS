@@ -120,7 +120,7 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
       title = input.title ?? localized("search_results").firstLetterUppercased()
 
     case .questions:
-      title = "Мы рекомендуем"
+      title = localized("vinchy_recommends").firstLetterUppercased()
 
     case .remote:
       break
@@ -142,7 +142,7 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
       bottomBarViewModel = nil
 
     case .questions:
-      bottomBarViewModel = .init(leadingText: nil, trailingButtonText: "Пройти заново")
+      bottomBarViewModel = .init(leadingText: nil, trailingButtonText: localized("Questions.Again").firstLetterUppercased())
     }
 
     let viewModel = ShowcaseViewModel(state: .normal(header: tabViewModel, sections: [.content(dataID: .content, items: items)]), navigationTitle: title, isSharable: isSharable, bottomBarViewModel: bottomBarViewModel)
@@ -162,7 +162,7 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
       bottomBarViewModel = nil
 
     case .questions:
-      bottomBarViewModel = .init(leadingText: nil, trailingButtonText: "Пройти заново")
+      bottomBarViewModel = .init(leadingText: nil, trailingButtonText: localized("Questions.Again").firstLetterUppercased())
     }
     viewController?.updateUI(viewModel: .init(state: .error(sections: [.common(content: .init(titleText: localized("nothing_found").firstLetterUppercased(), subtitleText: nil, buttonText: nil))]), navigationTitle: nil, isSharable: false, bottomBarViewModel: bottomBarViewModel))
   }

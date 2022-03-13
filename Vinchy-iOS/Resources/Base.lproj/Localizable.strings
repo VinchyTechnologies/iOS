@@ -249,3 +249,14 @@
 "AdvancesdSearch.Price" = "price";
 "AdvancesdSearch.Price.From" = "from";
 "AdvancesdSearch.Price.To" = "to";
+
+// Questions
+"Questions.Recommendwine" = "advise wines";
+"Questions.OnlyOne" = "only one option can be selected";
+"Questions.Multiple" = "multiple options can be selected";
+"Questions.Again" = "try again";
+"Questions.Final" = "get recommendations";
+
+// QR
+"QR.Title" = "show the code when paying";
+"QR.Subtitle" = "to receive a discount, show this code to the seller / waiter";

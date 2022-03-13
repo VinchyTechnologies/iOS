@@ -6,6 +6,7 @@
 //
 
 import DisplayMini
+import StringFormatting
 
 // MARK: - OptionsPresenter
 
@@ -35,9 +36,9 @@ extension OptionsPresenter: OptionsPresenterProtocol {
     let items: [OptionsViewModel.Item] = input.question.options.compactMap { option in
       .common(content: .init(id: option.id, titleText: option.text, isSelected: selectedIds.contains(option.id)))
     }
-    let subtitleText = input.question.isMultipleSelectionAllowed ? "Можно выбрать несколько вариантов" : "Можно выбрать только один вариант"
+    let subtitleText = input.question.isMultipleSelectionAllowed ? localized("Questions.Multiple").firstLetterUppercased() : localized("Questions.OnlyOne").firstLetterUppercased()
     let bottomBarViewModel: BottomPriceBarView.Content? = {
-      let text = input.number == input.totalNumbers ? "Завершить" : "Далее"
+      let text = input.number == input.totalNumbers ? localized("Questions.Final").firstLetterUppercased() : localized("onboarding_next").firstLetterUppercased()
 
       if selectedIds.isEmpty {
         return .init(leadingText: nil, trailingButtonText: text)
