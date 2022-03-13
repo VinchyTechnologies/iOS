@@ -22,9 +22,15 @@ import VinchyUI
 
 // MARK: - Coordinator
 
-final class Coordinator: ShowcaseRoutable, WineDetailRoutable, WriteNoteRoutable, ActivityRoutable, AdvancedSearchRoutable, ReviewDetailRoutable, ReviewsRoutable, WriteReviewRoutable, StoresRoutable, StoreRoutable, ResultsSearchRoutable, AuthorizationRoutable, WineShareRoutable, StatusAlertable, SafariRoutable, StoreShareRoutable, CollectionShareRoutable, CartRoutable, QuestionsRoutable {
-
+final class Coordinator: ShowcaseRoutable, WineDetailRoutable, WriteNoteRoutable, ActivityRoutable, AdvancedSearchRoutable, ReviewDetailRoutable, ReviewsRoutable, WriteReviewRoutable, StoresRoutable, StoreRoutable, ResultsSearchRoutable, AuthorizationRoutable, WineShareRoutable, StatusAlertable, SafariRoutable, StoreShareRoutable, CollectionShareRoutable, CartRoutable, QuestionsRoutable, QRRoutable {
   static let shared = Coordinator()
+
+
+  func presentQRViewController(affilatedId: Int, wineID: Int64) {
+    let controller = QRAssembly.assemblyModule(input: .init(affilietedId: affilatedId, wineID: wineID))
+    let navigationController = VinchyNavigationController(rootViewController: controller)
+    UIApplication.topViewController()?.present(navigationController, animated: true, completion: nil)
+  }
 
   func presentQuestiosViewController(affilatedId: Int, questionsFlow: QuestionsFlow) {
     let controller = QuestionsNavigationController(input: questionsFlow, affilatedId: affilatedId, coordinator: Coordinator.shared)

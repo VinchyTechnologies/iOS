@@ -59,27 +59,21 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
 
     switch input.mode {
     case .advancedSearch, .questions:
-      let wines = wines.compactMap { wine -> WineCollectionViewCellViewModel? in
-        WineCollectionViewCellViewModel(
-          wineID: wine.id,
-          imageURL: wine.mainImageUrl?.toURL,
-          titleText: wine.title,
-          subtitleText: countryNameFromLocaleCode(countryCode: wine.winery?.countryCode),
-          rating: wine.rating,
-          contextMenuViewModels: [])
-      }
-
       items += [.title(itemID: UUID(), content: localized("all").firstLetterUppercased())]
 
-      let winesContent = wines.compactMap({
-        WineBottleView.Content(
-          wineID: $0.wineID,
-          imageURL: $0.imageURL,
-          titleText: $0.titleText,
-          subtitleText: $0.subtitleText,
+      let winesContent: [WineBottleView.Content] = wines.compactMap({
+        var buttonText: String?
+        if let amount = $0.price?.amount, let currencyCode = $0.price?.currencyCode {
+          buttonText = formatCurrencyAmount(amount, currency: currencyCode)
+        }
+        return WineBottleView.Content(
+          wineID: $0.id,
+          imageURL: $0.mainImageUrl?.toURL,
+          titleText: $0.title,
+          subtitleText: $0.winery?.region,
           rating: $0.rating,
-          buttonText: nil,
-          flag: nil,
+          buttonText: buttonText,
+          flag: emojiFlagForISOCountryCode($0.winery?.countryCode ?? ""),
           contextMenuViewModels: [])
       })
 

@@ -205,13 +205,25 @@ final class ShowcaseViewController: UIViewController, Loadable {
                 }()
 
                 let itemWidth = Int((UIScreen.main.bounds.width - C.horizontalInset * CGFloat(rowCount + 1)) / CGFloat(rowCount))
-                let itemHeight = Int(Double(itemWidth) * 1.5)
+                let itemHeight = 250
+                var kind: WineBottleView.Style.Kind = .normal
+                switch input.mode {
+                case .advancedSearch, .remote:
+                  break
+
+                case .questions:
+                  kind = .price
+                }
                 return WineBottleView.itemModel(
                   dataID: itemID,
                   content: content,
-                  style: .init(kind: .normal))
+                  style: .init(kind: kind))
                   .didSelect({ [weak self] _ in
                     self?.interactor?.didSelectWine(wineID: content.wineID)
+                  })
+                  .setBehaviors({ [weak self] context in
+                    guard let self = self else { return }
+                    context.view.delegate = self
                   })
                   .flowLayoutItemSize(.init(width: itemWidth, height: itemHeight))
 
@@ -404,5 +416,21 @@ extension ShowcaseViewController: UIScrollViewDelegate {
 
   func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
     isGoingScrollToTopViaTappingStatusBar = false
+  }
+}
+
+// MARK: WineBottleViewDelegate
+
+extension ShowcaseViewController: WineBottleViewDelegate {
+  func didTapShareContextMenu(wineID: Int64, sourceView: UIView) {
+
+  }
+
+  func didTapWriteNoteContextMenu(wineID: Int64) {
+
+  }
+
+  func didTapPriceButton(_ button: UIButton, wineID: Int64) {
+    interactor?.didTapPriceButton(wineID: wineID)
   }
 }

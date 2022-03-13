@@ -381,6 +381,10 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
       case .cart:
         break
 
+      case .qr(let affilietedId):
+        guard let wineID = wine?.id else { return }
+        router.presentQRViewController(affilatedId: affilietedId, wineID: wineID)
+
       case .none:
         break
       }

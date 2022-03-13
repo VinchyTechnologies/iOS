@@ -164,7 +164,6 @@ final class StoreViewController: CollectionViewController {
         .flowLayoutItemSize(.init(width: width, height: ButtonView.height))
         .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 16, right: 24))
 
-
       case .services(let content):
         let width: CGFloat = collectionViewSize.width - 48
         let height: CGFloat = content.height(for: width)

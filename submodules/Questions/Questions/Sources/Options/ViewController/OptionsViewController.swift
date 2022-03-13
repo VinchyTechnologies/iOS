@@ -151,7 +151,6 @@ final class OptionsViewController: UIViewController {
     .flowLayoutHeaderReferenceSize(.init(width: collectionViewSize.width, height: viewModel.header.height(for: collectionViewSize.width)))
   }
 
-
   @objc
   private func closeSelf() {
     // TODO: - router dismiss

@@ -14,9 +14,13 @@ import VinchyCore
 import VinchyUI
 import WineDetail
 
-final class Coordinator: WineDetailRoutable, ActivityRoutable, WriteNoteRoutable, AdvancedSearchRoutable, ResultsSearchRoutable, ReviewDetailRoutable, ReviewsRoutable, StoreRoutable, StoresRoutable, WriteReviewRoutable, ShowcaseRoutable, AuthorizationRoutable, WineShareRoutable, StatusAlertable, SafariRoutable, StoreShareRoutable, CartRoutable, QuestionsRoutable {
+final class Coordinator: WineDetailRoutable, ActivityRoutable, WriteNoteRoutable, AdvancedSearchRoutable, ResultsSearchRoutable, ReviewDetailRoutable, ReviewsRoutable, StoreRoutable, StoresRoutable, WriteReviewRoutable, ShowcaseRoutable, AuthorizationRoutable, WineShareRoutable, StatusAlertable, SafariRoutable, StoreShareRoutable, CartRoutable, QuestionsRoutable, QRRoutable {
 
   static let shared = Coordinator()
+
+  func presentQRViewController(affilatedId: Int, wineID: Int64) {
+
+  }
 
   func presentQuestiosViewController(affilatedId: Int, questionsFlow: QuestionsFlow) {
 

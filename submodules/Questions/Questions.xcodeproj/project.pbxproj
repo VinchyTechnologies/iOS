@@ -24,8 +24,36 @@
 		CA6AE13627DCACD7004FBB05 /* OptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AE13527DCACD7004FBB05 /* OptionView.swift */; };
 		CA6AE13927DCBB8E004FBB05 /* OptionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA6AE13827DCBB8E004FBB05 /* OptionHeader.swift */; };
 		CA6AE13B27DCC675004FBB05 /* VinchyUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA6AE13A27DCC675004FBB05 /* VinchyUI.framework */; };
+		CAA28D5627DDEE44009CD7DD /* QRViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA28D4527DDEE44009CD7DD /* QRViewModel.swift */; };
+		CAA28D5727DDEE44009CD7DD /* QRInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA28D4727DDEE44009CD7DD /* QRInput.swift */; };
+		CAA28D5827DDEE44009CD7DD /* QRAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA28D4927DDEE44009CD7DD /* QRAssembly.swift */; };
+		CAA28D5927DDEE44009CD7DD /* QRPresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA28D4B27DDEE44009CD7DD /* QRPresenterProtocol.swift */; };
+		CAA28D5A27DDEE44009CD7DD /* QRPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA28D4C27DDEE44009CD7DD /* QRPresenter.swift */; };
+		CAA28D5B27DDEE44009CD7DD /* QRViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA28D4E27DDEE44009CD7DD /* QRViewControllerProtocol.swift */; };
+		CAA28D5C27DDEE44009CD7DD /* QRViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA28D4F27DDEE44009CD7DD /* QRViewController.swift */; };
+		CAA28D5D27DDEE44009CD7DD /* QRInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA28D5127DDEE44009CD7DD /* QRInteractor.swift */; };
+		CAA28D5E27DDEE44009CD7DD /* QRInteractorProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA28D5227DDEE44009CD7DD /* QRInteractorProtocol.swift */; };
+		CAA28D5F27DDEE44009CD7DD /* QRRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA28D5427DDEE44009CD7DD /* QRRouterProtocol.swift */; };
+		CAA28D6027DDEE44009CD7DD /* QRRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA28D5527DDEE44009CD7DD /* QRRouter.swift */; };
+		CAA28D6327DE037A009CD7DD /* QRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA28D6227DE037A009CD7DD /* QRView.swift */; };
+		CAA28D6527DE0A8B009CD7DD /* StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAA28D6427DE0A8B009CD7DD /* StringFormatting.framework */; };
+		CAA28D6627DE0A8B009CD7DD /* StringFormatting.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CAA28D6427DE0A8B009CD7DD /* StringFormatting.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CC2C0D3289C33EFAC1D69B50 /* Pods_Questions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3570DBD1E016D8B9E34FD76 /* Pods_Questions.framework */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		CAA28D6727DE0A8B009CD7DD /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				CAA28D6627DE0A8B009CD7DD /* StringFormatting.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		2CA8BEB30F2FBF9A95FE36F7 /* Pods-Questions.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Questions.release.xcconfig"; path = "Target Support Files/Pods-Questions/Pods-Questions.release.xcconfig"; sourceTree = "<group>"; };
@@ -49,6 +77,19 @@
 		CA6AE13527DCACD7004FBB05 /* OptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionView.swift; sourceTree = "<group>"; };
 		CA6AE13827DCBB8E004FBB05 /* OptionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionHeader.swift; sourceTree = "<group>"; };
 		CA6AE13A27DCC675004FBB05 /* VinchyUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAA28D4527DDEE44009CD7DD /* QRViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRViewModel.swift; sourceTree = "<group>"; };
+		CAA28D4727DDEE44009CD7DD /* QRInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRInput.swift; sourceTree = "<group>"; };
+		CAA28D4927DDEE44009CD7DD /* QRAssembly.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRAssembly.swift; sourceTree = "<group>"; };
+		CAA28D4B27DDEE44009CD7DD /* QRPresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRPresenterProtocol.swift; sourceTree = "<group>"; };
+		CAA28D4C27DDEE44009CD7DD /* QRPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRPresenter.swift; sourceTree = "<group>"; };
+		CAA28D4E27DDEE44009CD7DD /* QRViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRViewControllerProtocol.swift; sourceTree = "<group>"; };
+		CAA28D4F27DDEE44009CD7DD /* QRViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRViewController.swift; sourceTree = "<group>"; };
+		CAA28D5127DDEE44009CD7DD /* QRInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRInteractor.swift; sourceTree = "<group>"; };
+		CAA28D5227DDEE44009CD7DD /* QRInteractorProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRInteractorProtocol.swift; sourceTree = "<group>"; };
+		CAA28D5427DDEE44009CD7DD /* QRRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRRouterProtocol.swift; sourceTree = "<group>"; };
+		CAA28D5527DDEE44009CD7DD /* QRRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRRouter.swift; sourceTree = "<group>"; };
+		CAA28D6227DE037A009CD7DD /* QRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRView.swift; sourceTree = "<group>"; };
+		CAA28D6427DE0A8B009CD7DD /* StringFormatting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StringFormatting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +97,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CAA28D6527DE0A8B009CD7DD /* StringFormatting.framework in Frameworks */,
 				CA6AE12F27DC6DF3004FBB05 /* DisplayMini.framework in Frameworks */,
 				CC2C0D3289C33EFAC1D69B50 /* Pods_Questions.framework in Frameworks */,
 				CA6AE13B27DCC675004FBB05 /* VinchyUI.framework in Frameworks */,
@@ -172,6 +214,7 @@
 		CA6AE12A27DC6DAD004FBB05 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				CAA28D4327DDEE44009CD7DD /* QR */,
 				CA6AE10C27DC6DA8004FBB05 /* Options */,
 				CA6AE12B27DC6DE0004FBB05 /* QuestionsNavigationController.swift */,
 			);
@@ -181,6 +224,7 @@
 		CA6AE12D27DC6DF3004FBB05 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CAA28D6427DE0A8B009CD7DD /* StringFormatting.framework */,
 				CA6AE13A27DCC675004FBB05 /* VinchyUI.framework */,
 				CA6AE12E27DC6DF3004FBB05 /* DisplayMini.framework */,
 				B3570DBD1E016D8B9E34FD76 /* Pods_Questions.framework */,
@@ -193,6 +237,89 @@
 			children = (
 				CA6AE13527DCACD7004FBB05 /* OptionView.swift */,
 				CA6AE13827DCBB8E004FBB05 /* OptionHeader.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		CAA28D4327DDEE44009CD7DD /* QR */ = {
+			isa = PBXGroup;
+			children = (
+				CAA28D6127DE036D009CD7DD /* Views */,
+				CAA28D4827DDEE44009CD7DD /* Assembly */,
+				CAA28D4627DDEE44009CD7DD /* Input */,
+				CAA28D5027DDEE44009CD7DD /* Interactor */,
+				CAA28D4A27DDEE44009CD7DD /* Presenter */,
+				CAA28D5327DDEE44009CD7DD /* Router */,
+				CAA28D4D27DDEE44009CD7DD /* ViewController */,
+				CAA28D4427DDEE44009CD7DD /* ViewModel */,
+			);
+			path = QR;
+			sourceTree = "<group>";
+		};
+		CAA28D4427DDEE44009CD7DD /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				CAA28D4527DDEE44009CD7DD /* QRViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		CAA28D4627DDEE44009CD7DD /* Input */ = {
+			isa = PBXGroup;
+			children = (
+				CAA28D4727DDEE44009CD7DD /* QRInput.swift */,
+			);
+			path = Input;
+			sourceTree = "<group>";
+		};
+		CAA28D4827DDEE44009CD7DD /* Assembly */ = {
+			isa = PBXGroup;
+			children = (
+				CAA28D4927DDEE44009CD7DD /* QRAssembly.swift */,
+			);
+			path = Assembly;
+			sourceTree = "<group>";
+		};
+		CAA28D4A27DDEE44009CD7DD /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				CAA28D4B27DDEE44009CD7DD /* QRPresenterProtocol.swift */,
+				CAA28D4C27DDEE44009CD7DD /* QRPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		CAA28D4D27DDEE44009CD7DD /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				CAA28D4E27DDEE44009CD7DD /* QRViewControllerProtocol.swift */,
+				CAA28D4F27DDEE44009CD7DD /* QRViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		CAA28D5027DDEE44009CD7DD /* Interactor */ = {
+			isa = PBXGroup;
+			children = (
+				CAA28D5127DDEE44009CD7DD /* QRInteractor.swift */,
+				CAA28D5227DDEE44009CD7DD /* QRInteractorProtocol.swift */,
+			);
+			path = Interactor;
+			sourceTree = "<group>";
+		};
+		CAA28D5327DDEE44009CD7DD /* Router */ = {
+			isa = PBXGroup;
+			children = (
+				CAA28D5427DDEE44009CD7DD /* QRRouterProtocol.swift */,
+				CAA28D5527DDEE44009CD7DD /* QRRouter.swift */,
+			);
+			path = Router;
+			sourceTree = "<group>";
+		};
+		CAA28D6127DE036D009CD7DD /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				CAA28D6227DE037A009CD7DD /* QRView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -230,6 +357,7 @@
 				CA6AE0FC27DC6D0D004FBB05 /* Sources */,
 				CA6AE0FD27DC6D0D004FBB05 /* Frameworks */,
 				CA6AE0FE27DC6D0D004FBB05 /* Resources */,
+				CAA28D6727DE0A8B009CD7DD /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -314,19 +442,31 @@
 			buildActionMask = 2147483647;
 			files = (
 				CA6AE12527DC6DA8004FBB05 /* OptionsViewControllerProtocol.swift in Sources */,
+				CAA28D6327DE037A009CD7DD /* QRView.swift in Sources */,
+				CAA28D5A27DDEE44009CD7DD /* QRPresenter.swift in Sources */,
 				CA6AE12127DC6DA8004FBB05 /* OptionsAssembly.swift in Sources */,
+				CAA28D5827DDEE44009CD7DD /* QRAssembly.swift in Sources */,
+				CAA28D5927DDEE44009CD7DD /* QRPresenterProtocol.swift in Sources */,
 				CA6AE11F27DC6DA8004FBB05 /* OptionsViewModel.swift in Sources */,
 				CA6AE12927DC6DA8004FBB05 /* OptionsRouter.swift in Sources */,
 				CA6AE12727DC6DA8004FBB05 /* OptionsInteractor.swift in Sources */,
+				CAA28D5627DDEE44009CD7DD /* QRViewModel.swift in Sources */,
+				CAA28D5E27DDEE44009CD7DD /* QRInteractorProtocol.swift in Sources */,
 				CA6AE13927DCBB8E004FBB05 /* OptionHeader.swift in Sources */,
 				CA6AE12C27DC6DE0004FBB05 /* QuestionsNavigationController.swift in Sources */,
+				CAA28D5D27DDEE44009CD7DD /* QRInteractor.swift in Sources */,
 				CA6AE12627DC6DA8004FBB05 /* OptionsInteractorProtocol.swift in Sources */,
 				CA6AE12827DC6DA8004FBB05 /* OptionsRouterProtocol.swift in Sources */,
+				CAA28D6027DDEE44009CD7DD /* QRRouter.swift in Sources */,
+				CAA28D5B27DDEE44009CD7DD /* QRViewControllerProtocol.swift in Sources */,
 				CA6AE13627DCACD7004FBB05 /* OptionView.swift in Sources */,
+				CAA28D5727DDEE44009CD7DD /* QRInput.swift in Sources */,
 				CA6AE12327DC6DA8004FBB05 /* OptionsPresenter.swift in Sources */,
+				CAA28D5C27DDEE44009CD7DD /* QRViewController.swift in Sources */,
 				CA6AE12427DC6DA8004FBB05 /* OptionsViewController.swift in Sources */,
 				CA6AE12027DC6DA8004FBB05 /* OptionsInput.swift in Sources */,
 				CA6AE12227DC6DA8004FBB05 /* OptionsPresenterProtocol.swift in Sources */,
+				CAA28D5F27DDEE44009CD7DD /* QRRouterProtocol.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
