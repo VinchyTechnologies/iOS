@@ -251,7 +251,7 @@
 "AdvancesdSearch.Price.To" = "to";
 
 // Questions
-"Questions.Recommendwine" = "advise wines";
+"Questions.Recommendwine" = "ask the sommelier";
 "Questions.OnlyOne" = "only one option can be selected";
 "Questions.Multiple" = "multiple options can be selected";
 "Questions.Again" = "try again";
