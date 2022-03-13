@@ -154,8 +154,8 @@ final class Coordinator: ShowcaseRoutable, WineDetailRoutable, WriteNoteRoutable
     }
   }
 
-  func presentAdvancedSearch(preselectedFilters: [(String, String)], isPriceFilterAvailable: Bool, currencyCode: String?, delegate: AdvancedSearchOutputDelegate?) {
-    let controller = FiltersAssembly.assemblyModule(input: .init(preselectedFilters: preselectedFilters, isPriceFilterAvailable: isPriceFilterAvailable, currencyCode: currencyCode))
+  func presentAdvancedSearch(preselectedFilters: [(String, String)], isPriceFilterAvailable: Bool, currencyCode: String?, affiliedId: Int, delegate: AdvancedSearchOutputDelegate?) {
+    let controller = FiltersAssembly.assemblyModule(input: .init(preselectedFilters: preselectedFilters, isPriceFilterAvailable: isPriceFilterAvailable, currencyCode: currencyCode, affiliedId: affiliedId))
     let navController = AdvancedSearchNavigationController(rootViewController: controller)
     navController.advancedSearchOutputDelegate = delegate
     UIApplication.topViewController()?.present(navController, animated: true, completion: nil)

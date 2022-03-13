@@ -311,10 +311,10 @@ extension StoreInteractor: StoreInteractorProtocol {
   }
 
   func didTapRecommendedWineButton(wineID: Int64) {
-//    if let wineURL = personalRecommendedWines?.first(where: { $0.id == wineID })?.url?.toURL {
-//      router.presentSafari(url: wineURL)
-//    }
-    didTapPriceButton(wineID: wineID)
+    if let wineURL = personalRecommendedWines?.first(where: { $0.id == wineID })?.url?.toURL {
+      router.presentSafari(url: wineURL)
+    }
+//    didTapPriceButton(wineID: wineID)
   }
 
   func didTapShare(button: UIButton) {
@@ -346,10 +346,10 @@ extension StoreInteractor: StoreInteractorProtocol {
   }
 
   func didTapHorizontalWineViewButton(wineID: Int64) {
-//    if let wineURL = assortimentWines.first(where: { $0.id == wineID })?.url?.toURL {
-//      router.presentSafari(url: wineURL)
-//    }
-    didTapPriceButton(wineID: wineID)
+    if let wineURL = assortimentWines.first(where: { $0.id == wineID })?.url?.toURL {
+      router.presentSafari(url: wineURL)
+    }
+//    didTapPriceButton(wineID: wineID)
 
   }
 
@@ -420,11 +420,15 @@ extension StoreInteractor: StoreInteractorProtocol {
   }
 
   func didTapFilterButton() {
-    let isPriceFilterAvailable = assortimentWines.contains(where: { $0.price != nil }) && partnerInfo?.preferredCurrencyCode != nil
+    guard let affiliedId = partnerInfo?.affiliatedStoreId else {
+      return
+    }
+    let isPriceFilterAvailable = partnerInfo?.preferredCurrencyCode != nil
     router.presentFilter(
       preselectedFilters: selectedFilters,
       isPriceFilterAvailable: isPriceFilterAvailable,
-      currencyCode: partnerInfo?.preferredCurrencyCode)
+      currencyCode: partnerInfo?.preferredCurrencyCode,
+      affiliedId: affiliedId)
   }
 
   func didTapReloadButton() {

@@ -27,7 +27,6 @@ final class FiltersPresenter {
 
   // MARK: Private
 
-
   private let input: FiltersInput
 
   private func mapNormalFilter(selectedFilters: [(String, String)], filter: Filter, shouldAddHeader: Bool = true) -> [FiltersViewModel.Section] {

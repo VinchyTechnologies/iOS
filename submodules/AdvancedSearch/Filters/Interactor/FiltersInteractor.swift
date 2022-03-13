@@ -7,6 +7,7 @@
 
 import Core
 import DisplayMini
+import VinchyCore
 
 // MARK: - FiltersInteractor
 
@@ -79,7 +80,16 @@ extension FiltersInteractor: FiltersInteractorProtocol {
   }
 
   func viewDidLoad() {
-    presenter.update(filters: filters, selectedFilters: selectedFilters, shouldAddPriceFilter: input.isPriceFilterAvailable, reloadingData: true)
+    Filters.shared.getFilters(affilatedId: input.affiliedId) { [weak self] result in
+      guard let self = self else { return }
+      switch result {
+      case .success(let response):
+        self.presenter.update(filters: self.filters, selectedFilters: self.selectedFilters, shouldAddPriceFilter: self.input.isPriceFilterAvailable && response.isPriceAvailable, reloadingData: true)
+
+      case .failure:
+        self.presenter.update(filters: self.filters, selectedFilters: self.selectedFilters, shouldAddPriceFilter: false, reloadingData: true)
+      }
+    }
   }
 
   func didSelect(item: ImageOptionView.Content) {
