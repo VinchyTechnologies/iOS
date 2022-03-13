@@ -12,6 +12,6 @@ import UIKit.UIButton
 import VinchyUI
 
 protocol StoreRouterProtocol: WineDetailRoutable, ActivityRoutable, WriteNoteRoutable, OpenURLProtocol, ResultsSearchRoutable, WineShareRoutable, SafariRoutable, StoreShareRoutable, CartRoutable {
-  func presentFilter(preselectedFilters: [(String, String)], isPriceFilterAvailable: Bool)
+  func presentFilter(preselectedFilters: [(String, String)], isPriceFilterAvailable: Bool, currencyCode: String?)
   func showRoutesActionSheet(storeTitleText: String?, coordinate: CLLocationCoordinate2D, button: UIButton)
 }

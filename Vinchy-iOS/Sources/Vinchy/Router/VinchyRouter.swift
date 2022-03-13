@@ -82,7 +82,7 @@ extension VinchyRouter: VinchyRouterProtocol {
   }
 
   func pushToAdvancedFilterViewController() {
-    let controller = FiltersAssembly.assemblyModule(input: .init(preselectedFilters: [], isPriceFilterAvailable: false))
+    let controller = FiltersAssembly.assemblyModule(input: .init(preselectedFilters: [], isPriceFilterAvailable: false, currencyCode: nil))
     controller.hidesBottomBarWhenPushed = true
     viewController?.navigationController?.pushViewController(
       controller, animated: true)

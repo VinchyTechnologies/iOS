@@ -10,9 +10,11 @@ import Foundation
 public struct FiltersInput {
   public let preselectedFilters: [(String, String)]
   public let isPriceFilterAvailable: Bool
+  public let currencyCode: String?
 
-  public init(preselectedFilters: [(String, String)], isPriceFilterAvailable: Bool) {
+  public init(preselectedFilters: [(String, String)], isPriceFilterAvailable: Bool, currencyCode: String?) {
     self.preselectedFilters = preselectedFilters
     self.isPriceFilterAvailable = isPriceFilterAvailable
+    self.currencyCode = currencyCode
   }
 }

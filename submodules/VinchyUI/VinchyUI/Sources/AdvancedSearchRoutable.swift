@@ -15,5 +15,5 @@ public protocol AdvancedSearchOutputDelegate: AnyObject {
 // MARK: - AdvancedSearchRoutable
 
 public protocol AdvancedSearchRoutable: AnyObject {
-  func presentAdvancedSearch(preselectedFilters: [(String, String)], isPriceFilterAvailable: Bool, delegate: AdvancedSearchOutputDelegate?)
+  func presentAdvancedSearch(preselectedFilters: [(String, String)], isPriceFilterAvailable: Bool, currencyCode: String?, delegate: AdvancedSearchOutputDelegate?)
 }

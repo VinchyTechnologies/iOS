@@ -11,9 +11,9 @@ import UIKit
 import VinchyUI
 
 extension ResultsSearchRoutable {
-  func pushToResultsSearchController(affilatedId: Int, resultsSearchDelegate: ResultsSearchDelegate?) {
+  func pushToResultsSearchController(affilatedId: Int, currencyCode: String?, resultsSearchDelegate: ResultsSearchDelegate?) {
     let controller = ResultsSearchAssembly.assemblyModule(
-      input: .init(mode: .storeDetail(affilatedId: affilatedId)), resultsSearchDelegate: resultsSearchDelegate)
+      input: .init(mode: .storeDetail(affilatedId: affilatedId, currencyCode: currencyCode)), resultsSearchDelegate: resultsSearchDelegate)
     let navController = VinchyNavigationController(rootViewController: controller)
     navController.modalPresentationStyle = .overCurrentContext
     UIApplication.topViewController()?.present(navController, animated: true, completion: nil)

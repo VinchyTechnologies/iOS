@@ -156,7 +156,7 @@ final class StoresInteractor {
         guard let affilatedId = vstore.affilatedId else {
           return nil
         }
-        return PartnerInfo(affiliatedStoreId: affilatedId, title: vstore.title ?? "", latitude: nil, longitude: nil, affiliatedStoreType: nil, url: nil, phoneNumber: nil, scheduleOfWork: nil, address: vstore.subtitle, logoURL: vstore.logoURL)
+        return PartnerInfo(affiliatedStoreId: affilatedId, title: vstore.title ?? "", latitude: nil, longitude: nil, affiliatedStoreType: nil, url: nil, phoneNumber: nil, scheduleOfWork: nil, address: vstore.subtitle, logoURL: vstore.logoURL, preferredCurrencyCode: nil)
       }
 
       if partnersInfo.isEmpty {

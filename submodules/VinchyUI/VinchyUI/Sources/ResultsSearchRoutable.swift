@@ -9,7 +9,7 @@
 // MARK: - ResultsSearchRoutable
 
 public protocol ResultsSearchRoutable: AnyObject {
-  func pushToResultsSearchController(affilatedId: Int, resultsSearchDelegate: ResultsSearchDelegate?)
+  func pushToResultsSearchController(affilatedId: Int, currencyCode: String?, resultsSearchDelegate: ResultsSearchDelegate?)
 }
 
 // MARK: - ResultsSearchDelegate

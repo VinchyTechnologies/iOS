@@ -9,7 +9,7 @@
 struct ResultsSearchInput {
   enum Mode {
     case normal
-    case storeDetail(affilatedId: Int)
+    case storeDetail(affilatedId: Int, currencyCode: String?)
   }
 
   init(mode: Mode) {

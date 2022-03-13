@@ -63,9 +63,10 @@ extension StoreRouter: StoreRouterProtocol {
     coordinator.didTapShare(type: type)
   }
 
-  func pushToResultsSearchController(affilatedId: Int, resultsSearchDelegate: ResultsSearchDelegate?) {
+  func pushToResultsSearchController(affilatedId: Int, currencyCode: String?, resultsSearchDelegate: ResultsSearchDelegate?) {
     coordinator.pushToResultsSearchController(
       affilatedId: affilatedId,
+      currencyCode: currencyCode,
       resultsSearchDelegate: resultsSearchDelegate)
   }
 
@@ -97,10 +98,11 @@ extension StoreRouter: StoreRouterProtocol {
     coordinator.presentWineDetailViewController(wineID: wineID, mode: mode, shouldShowSimilarWine: shouldShowSimilarWine)
   }
 
-  func presentFilter(preselectedFilters: [(String, String)], isPriceFilterAvailable: Bool) {
+  func presentFilter(preselectedFilters: [(String, String)], isPriceFilterAvailable: Bool, currencyCode: String?) {
     coordinator.presentAdvancedSearch(
       preselectedFilters: preselectedFilters,
       isPriceFilterAvailable: isPriceFilterAvailable,
+      currencyCode: currencyCode,
       delegate: interactor)
   }
 
