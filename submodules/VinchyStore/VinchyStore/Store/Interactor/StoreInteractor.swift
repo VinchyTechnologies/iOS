@@ -457,7 +457,9 @@ extension StoreInteractor: StoreInteractorProtocol {
     presenter.setLoadingFilters(data: .init(partnerInfo: partnerInfo, recommendedWines: personalRecommendedWines ?? [], assortimentWines: [], isLiked: isLiked(affilatedId: partnerInfo.affiliatedStoreId)))
     selectedFilters = filters
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.95) {
-      self.loadInitData()
+      self.assortimentWines = []
+      self.data?.assortimentWines = []
+      self.loadData(offset: .zero)
     }
   }
 

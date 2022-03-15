@@ -153,10 +153,8 @@ final class OptionsViewController: UIViewController {
 
   @objc
   private func closeSelf() {
-    // TODO: - router dismiss
     interactor?.didTapClose()
   }
-
 }
 
 // MARK: OptionsViewControllerProtocol
