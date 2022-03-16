@@ -37,6 +37,7 @@
 		CAA28D6027DDEE44009CD7DD /* QRRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA28D5527DDEE44009CD7DD /* QRRouter.swift */; };
 		CAA28D6327DE037A009CD7DD /* QRView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA28D6227DE037A009CD7DD /* QRView.swift */; };
 		CAA28D6527DE0A8B009CD7DD /* StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAA28D6427DE0A8B009CD7DD /* StringFormatting.framework */; };
+		CAA28D6F27E1DA62009CD7DD /* VinchyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CAA28D6E27E1DA62009CD7DD /* VinchyCore.framework */; };
 		CC2C0D3289C33EFAC1D69B50 /* Pods_Questions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = B3570DBD1E016D8B9E34FD76 /* Pods_Questions.framework */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		CAA28D5527DDEE44009CD7DD /* QRRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRRouter.swift; sourceTree = "<group>"; };
 		CAA28D6227DE037A009CD7DD /* QRView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRView.swift; sourceTree = "<group>"; };
 		CAA28D6427DE0A8B009CD7DD /* StringFormatting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StringFormatting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CAA28D6E27E1DA62009CD7DD /* VinchyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,6 +85,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CAA28D6527DE0A8B009CD7DD /* StringFormatting.framework in Frameworks */,
+				CAA28D6F27E1DA62009CD7DD /* VinchyCore.framework in Frameworks */,
 				CA6AE12F27DC6DF3004FBB05 /* DisplayMini.framework in Frameworks */,
 				CC2C0D3289C33EFAC1D69B50 /* Pods_Questions.framework in Frameworks */,
 				CA6AE13B27DCC675004FBB05 /* VinchyUI.framework in Frameworks */,
@@ -209,6 +212,7 @@
 		CA6AE12D27DC6DF3004FBB05 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CAA28D6E27E1DA62009CD7DD /* VinchyCore.framework */,
 				CAA28D6427DE0A8B009CD7DD /* StringFormatting.framework */,
 				CA6AE13A27DCC675004FBB05 /* VinchyUI.framework */,
 				CA6AE12E27DC6DF3004FBB05 /* DisplayMini.framework */,

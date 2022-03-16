@@ -10,7 +10,7 @@ import VinchyUI
 
 public final class OptionsAssembly {
 
-  public typealias Coordinator = ShowcaseRoutable
+  public typealias Coordinator = ShowcaseRoutable & AdvancedSearchRoutable
 
   public static func assemblyModule(input: OptionsInput, coordinator: Coordinator) -> UIViewController {
     let viewController = OptionsViewController()

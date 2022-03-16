@@ -42,11 +42,11 @@ extension OptionsInteractor: OptionsInteractorProtocol {
 
   func didTapNextButton() {
     // save to navigation Controller ???
-    if input.number == input.totalNumbers {
-      router.pushToShowcaseViewController(input: .init(title: nil, mode: .questions(optionsIds: selectedIds, affilatedId: input.affilatedId)), selectedIds: selectedIds)
-    } else {
-      router.pushToNextQuestion(selectedIds: selectedIds)
-    }
+//    if input.number == input.totalNumbers {
+//      router.pushToShowcaseViewController(input: .init(title: nil, mode: .questions(optionsIds: selectedIds, affilatedId: input.affilatedId)), selectedIds: selectedIds)
+//    } else {
+    router.pushToNextQuestion(selectedIds: selectedIds)
+//    }
   }
 
   func didSelectOption(id: Int) {

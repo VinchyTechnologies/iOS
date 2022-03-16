@@ -18,11 +18,11 @@ final class Coordinator: WineDetailRoutable, ActivityRoutable, WriteNoteRoutable
 
   static let shared = Coordinator()
 
-  func presentQRViewController(affilatedId: Int, wineID: Int64) {
+  func presentQuestiosViewController(affilatedId: Int, questions: [Question], questionsNavigationControllerDelegate: QuestionsNavigationControllerDelegate?) {
 
   }
 
-  func presentQuestiosViewController(affilatedId: Int, questionsFlow: QuestionsFlow) {
+  func presentQRViewController(affilatedId: Int, wineID: Int64) {
 
   }
 

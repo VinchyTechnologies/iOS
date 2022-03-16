@@ -7,14 +7,11 @@
 
 import DisplayMini
 import UIKit
+import VinchyCore
 import VinchyUI
 
 // MARK: - QuestionsNavigationControllerDelegate
 
-//public protocol QuestionsNavigationControllerDelegate: AnyObject {
-//  func didFinishQuestionsFlow(id: Int)
-//  func didClose(step: Int, flowId: Int)
-//}
 
 // MARK: - QuestionsNavigationController
 
@@ -22,12 +19,21 @@ public final class QuestionsNavigationController: VinchyNavigationController {
 
   // MARK: Lifecycle
 
-  public init(input: QuestionsFlow, affilatedId: Int, coordinator: OptionsAssembly.Coordinator) {
-    self.input = input
-    super.init(rootViewController: OptionsAssembly.assemblyModule(input: .init(question: input.questions[0], number: 1, totalNumbers: input.questions.count, affilatedId: affilatedId), coordinator: coordinator))
+  public init(questions: [Question], affilatedId: Int, coordinator: OptionsAssembly.Coordinator) {
+    self.questions = questions
+
+    guard let question = questions.first(where: { $0.isFirstQuestion }) else {
+      super.init(rootViewController: UIViewController())
+      return
+    }
+
+    let rootViewController = OptionsAssembly.assemblyModule(input: .init(question: question, affilatedId: affilatedId), coordinator: coordinator)
+    super.init(rootViewController: rootViewController)
   }
 
   // MARK: Public
+
+  public weak var questionsNavigationControllerDelegate: QuestionsNavigationControllerDelegate?
 
   public func resetDataSource() {
     dataSource.removeAll()
@@ -37,5 +43,5 @@ public final class QuestionsNavigationController: VinchyNavigationController {
 
   var dataSource: [Int: [Int]] = [:]
 
-  let input: QuestionsFlow
+  let questions: [Question]
 }

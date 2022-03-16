@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import VinchyCore
 import VinchyUI
 
 // MARK: - OptionsRouter
@@ -17,7 +18,7 @@ final class OptionsRouter {
   init(
     input: OptionsInput,
     viewController: UIViewController,
-    coordinator: ShowcaseRoutable)
+    coordinator: ShowcaseRoutable & AdvancedSearchRoutable)
   {
     self.input = input
     self.viewController = viewController
@@ -53,13 +54,32 @@ extension OptionsRouter: OptionsRouterProtocol {
   }
 
   func pushToNextQuestion(selectedIds: [Int]) {
-    guard let navigationController = (viewController?.navigationController as? QuestionsNavigationController), let question = navigationController.input.questions[safe: input.number] else {
+
+    guard let navigationController = (viewController?.navigationController as? QuestionsNavigationController) else {
       return
     }
 
+    var allOptions: [Question.Option] = []
+    navigationController.questions.forEach { question in
+      allOptions += question.options
+    }
+
+    let option = allOptions.first(where: { $0.id == selectedIds.first /* check not first only ??? */ })
+
     navigationController.dataSource[input.question.id] = selectedIds
 
-    let controller = OptionsAssembly.assemblyModule(input: .init(question: question, number: input.number + 1, totalNumbers: input.totalNumbers, affilatedId: input.affilatedId), coordinator: coordinator)
-    viewController?.navigationController?.pushViewController(controller, animated: true)
+    if option?.shouldOpenFilter == true {
+      viewController?.dismiss(animated: true, completion: {
+        navigationController.questionsNavigationControllerDelegate?.didRequestShowFilters()
+      })
+      return
+    }
+
+    if let nextQuestion = navigationController.questions.first(where: { $0.id == option?.nextQuestionId }) {
+      let controller = OptionsAssembly.assemblyModule(input: .init(question: nextQuestion, affilatedId: input.affilatedId), coordinator: coordinator)
+      viewController?.navigationController?.pushViewController(controller, animated: true)
+    } else {
+      pushToShowcaseViewController(input: .init(title: nil, mode: .questions(optionsIds: selectedIds, affilatedId: input.affilatedId)), selectedIds: selectedIds)
+    }
   }
 }

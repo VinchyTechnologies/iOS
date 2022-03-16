@@ -20,6 +20,7 @@ import Core
 #endif
 import GoogleMobileAds
 import Questions
+import VinchyUI
 
 // MARK: - SceneDelegate
 
@@ -91,8 +92,35 @@ extension SceneDelegate: UIWindowSceneDelegate {
     root.startApp()
 
     //    let mode = StoresInput(wineID: 891)
-    //    window.rootViewController = NavigationController(rootViewController: StoresAssembly.assemblyModule(input: mode))
-    //    window.makeKeyAndVisible()
+
+//    let questions = [
+//      QuestionsFlow.Question.init(id: 1, questionText: "Вы разбираетесь в вине?", options: [
+//        .init(id: 1, text: "Я профи", shouldOpenFilters: true, nextQuestionId: nil),
+//        .init(id: 2, text: "Я новичок", shouldOpenFilters: false, nextQuestionId: 2),
+//        .init(id: 3, text: "Что угодно на ваш вкус", shouldOpenFilters: false, nextQuestionId: nil),
+//      ], isMultipleSelectionAllowed: false, isFirstQuestion: true),
+//
+//      QuestionsFlow.Question.init(id: 2, questionText: "По какому поводу пьем?", options: [
+//        .init(id: 4, text: "Ужин", shouldOpenFilters: false, nextQuestionId: 4),
+//        .init(id: 5, text: "В Подарок", shouldOpenFilters: false, nextQuestionId: 3),
+//        .init(id: 6, text: "Торжественное мероприятие", shouldOpenFilters: false, nextQuestionId: 3),
+//      ], isMultipleSelectionAllowed: false, isFirstQuestion: false),
+//
+//      QuestionsFlow.Question.init(id: 3, questionText: "В каком ценовом сегменте ищите вино?", options: [
+//        .init(id: 7, text: "Средний ценовой сегмент", shouldOpenFilters: false, nextQuestionId: nil),
+//        .init(id: 8, text: "Дорогие", shouldOpenFilters: false, nextQuestionId: nil),
+//        .init(id: 9, text: "Премиум", shouldOpenFilters: false, nextQuestionId: nil),
+//      ], isMultipleSelectionAllowed: false, isFirstQuestion: false),
+//
+//      QuestionsFlow.Question.init(id: 4, questionText: "С чем будете пить?", options: [
+//        .init(id: 7, text: "Мясо", shouldOpenFilters: false, nextQuestionId: 3),
+//        .init(id: 8, text: "Рыба", shouldOpenFilters: false, nextQuestionId: 3),
+//        .init(id: 9, text: "Пицца", shouldOpenFilters: false, nextQuestionId: 3),
+//      ], isMultipleSelectionAllowed: true, isFirstQuestion: false),
+//    ]
+
+//    window.rootViewController = QuestionsNavigationController(input: .init(questions: questions), affilatedId: 366, coordinator: Coordinator.shared)
+//    window.makeKeyAndVisible()
 
     if let userActivity = connectionOptions.userActivities.first {
       self.scene(scene, continue: userActivity)

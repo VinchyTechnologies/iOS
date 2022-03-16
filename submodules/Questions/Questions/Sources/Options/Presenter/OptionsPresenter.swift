@@ -32,13 +32,13 @@ final class OptionsPresenter {
 
 extension OptionsPresenter: OptionsPresenterProtocol {
   func update(selectedIds: [Int]) {
-    let navigationTitle = String(input.number) + "/" + String(input.totalNumbers)
+    let navigationTitle: String? = nil
     let items: [OptionsViewModel.Item] = input.question.options.compactMap { option in
       .common(content: .init(id: option.id, titleText: option.text, isSelected: selectedIds.contains(option.id)))
     }
     let subtitleText = input.question.isMultipleSelectionAllowed ? localized("Questions.Multiple").firstLetterUppercased() : localized("Questions.OnlyOne").firstLetterUppercased()
     let bottomBarViewModel: BottomPriceBarView.Content? = {
-      let text = input.number == input.totalNumbers ? localized("Questions.Final").firstLetterUppercased() : localized("onboarding_next").firstLetterUppercased()
+      let text = /*input.number == input.totalNumbers ? localized("Questions.Final").firstLetterUppercased() :*/ localized("onboarding_next").firstLetterUppercased()
 
       if selectedIds.isEmpty {
         return .init(leadingText: nil, trailingButtonText: text)
@@ -47,6 +47,6 @@ extension OptionsPresenter: OptionsPresenterProtocol {
       }
     }()
 
-    viewController?.updateUI(viewModel: .init(navigationTitle: navigationTitle, header: .init(titleText: input.question.questionText, subtitleText: subtitleText), items: items, bottomBarViewModel: bottomBarViewModel, isNextButtonEnabled: !selectedIds.isEmpty))
+    viewController?.updateUI(viewModel: .init(navigationTitle: navigationTitle, header: .init(titleText: input.question.text, subtitleText: subtitleText), items: items, bottomBarViewModel: bottomBarViewModel, isNextButtonEnabled: !selectedIds.isEmpty))
   }
 }
