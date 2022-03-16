@@ -127,3 +127,11 @@ extension OptionView: HighlightableView {
     }
   }
 }
+
+// MARK: SelectableView
+
+extension OptionView: SelectableView {
+  func didSelect() {
+    HapticEffectHelper.vibrate(withEffect: .selection)
+  }
+}

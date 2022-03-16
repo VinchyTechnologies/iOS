@@ -66,12 +66,7 @@ final class OptionsViewController: UIViewController {
   private var supplementaryView: UIView?
 
   private lazy var collectionView: CollectionView = {
-    let collectionView = CollectionView(
-      layout: layout,
-      configuration: .init(
-        usesBatchUpdatesForAllReloads: false,
-        usesCellPrefetching: true,
-        usesAccurateScrollToItem: true))
+    let collectionView = CollectionView(layout: layout)
     collectionView.backgroundColor = .clear
     collectionView.delaysContentTouches = false
     collectionView.contentInset = .init(top: 0, left: 0, bottom: 10, right: 0)
