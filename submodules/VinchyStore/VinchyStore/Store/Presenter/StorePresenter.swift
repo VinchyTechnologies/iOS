@@ -235,11 +235,15 @@ extension StorePresenter: StorePresenterProtocol {
             priceOption = formatCurrencyAmount(intValue, currency: currencyCode)
           }
         } else {
-          if let minPrice = data.selectedFilters.first(where: { $0.0 == "min_price" })?.1, let intValue = Int64(minPrice), let currencyCode = data.partnerInfo.preferredCurrencyCode {
+          let minPrice = data.selectedFilters.first(where: { $0.0 == "min_price" })?.1
+          if let minPrice = minPrice, let intValue = Int64(minPrice), let currencyCode = data.partnerInfo.preferredCurrencyCode {
             priceOption += localized("AdvancesdSearch.Price.From").firstLetterUppercased() + " " + formatCurrencyAmount(intValue, currency: currencyCode)
           }
           if let maxPrice = data.selectedFilters.first(where: { $0.0 == "max_price" })?.1, let intValue = Int64(maxPrice), let currencyCode = data.partnerInfo.preferredCurrencyCode {
-            priceOption += " " + localized("AdvancesdSearch.Price.To").firstLetterUppercased() + " " + formatCurrencyAmount(intValue, currency: currencyCode)
+            if minPrice != nil {
+              priceOption += " "
+            }
+            priceOption += localized("AdvancesdSearch.Price.To").firstLetterUppercased() + " " + formatCurrencyAmount(intValue, currency: currencyCode)
           }
         }
         if !priceOption.isNilOrEmpty {

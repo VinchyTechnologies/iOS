@@ -248,7 +248,7 @@
 // MARK: - Advancesd Search
 "AdvancesdSearch.Price" = "price";
 "AdvancesdSearch.Price.From" = "from";
-"AdvancesdSearch.Price.To" = "to";
+"AdvancesdSearch.Price.To" = "up to";
 
 // Questions
 "Questions.Recommendwine" = "ask the sommelier";
