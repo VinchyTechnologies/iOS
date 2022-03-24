@@ -82,7 +82,7 @@ final class StoreInteractor {
   private var assortimentWines: [ShortWine] = []
   private var personalRecommendedWines: [ShortWine]?
   private var selectedFilters: [(String, String)] = []
-  private var questions: [Question] = []
+  private var questions: [Question]?
   private lazy var inCartCartItems: [CartItem] = cartRepository.findAll().compactMap { item in
     if let productId = item.productId, let count = item.quantity {
       return CartItem(productID: productId, type: .wine, count: count)
@@ -93,6 +93,14 @@ final class StoreInteractor {
   private let throttler = Throttler()
 
   private var totalPrice: Int64 = 0
+
+
+  private var isQuestionsVisible: Bool {
+    guard let questions = questions else {
+      return false
+    }
+    return !questions.isEmpty
+  }
 
   private func configureStateMachine() {
     stateMachine.observe { [weak self] oldState, newState, _ in
@@ -117,6 +125,22 @@ final class StoreInteractor {
     var generalError: StoreInteractorError?
     switch input.mode {
     case .normal(let affilatedId):
+      if questions == nil {
+        dispatchGroup.enter()
+        Questions.shared.getQuestions(affilatedId: affilatedId) { [weak self] result in
+          guard let self = self else { return }
+          switch result {
+          case .success(let response):
+            self.questions = response
+            self.didTapQuestionsButton()
+
+          case .failure:
+            self.questions = []
+          }
+          self.dispatchGroup.leave()
+        }
+      }
+
       if personalRecommendedWines == nil {
         dispatchGroup.enter()
         Recommendations.shared.getPersonalRecommendedWines(
@@ -208,7 +232,6 @@ final class StoreInteractor {
             self.partnerInfo = response
             SpotlightService.shared.addStore(affilatedId: affilatedId, title: response.title, subtitle: response.address)
             self.stateMachine.load(offset: .zero)
-            self.loadQuestionsIfNeeded()
 
           case .failure(let error):
             self.stateMachine.fail(with: error)
@@ -258,7 +281,7 @@ final class StoreInteractor {
       guard let data = data else {
         return
       }
-      presenter.update(data: data, needLoadMore: needLoadMore, isBottomButtonLoading: false, totalPrice: totalPrice, cartItems: inCartCartItems, recommendedWinesContentOffsetX: recommendedWinesContentOffsetX)
+      presenter.update(data: data, needLoadMore: needLoadMore, isBottomButtonLoading: false, totalPrice: totalPrice, cartItems: inCartCartItems, isQuestionsVisible: isQuestionsVisible, recommendedWinesContentOffsetX: recommendedWinesContentOffsetX)
     }
   }
 
@@ -280,7 +303,7 @@ final class StoreInteractor {
       self.save()
     }
 
-    presenter.update(data: data, needLoadMore: needLoadMore, isBottomButtonLoading: false, totalPrice: totalPrice, cartItems: inCartCartItems, recommendedWinesContentOffsetX: recommendedWinesContentOffsetX)
+    presenter.update(data: data, needLoadMore: needLoadMore, isBottomButtonLoading: false, totalPrice: totalPrice, cartItems: inCartCartItems, isQuestionsVisible: isQuestionsVisible, recommendedWinesContentOffsetX: recommendedWinesContentOffsetX)
   }
 
   private func save() {
@@ -298,144 +321,6 @@ final class StoreInteractor {
       }))
     }
   }
-
-  private func loadQuestionsIfNeeded() {
-    guard let affilatedId = partnerInfo?.affiliatedStoreId else {
-      return
-    }
-
-    let json = """
-    [{
-      "id":1,
-      "text":"Вы разбираетесь в вине?",
-      "options":[{
-          "id":1,
-          "text":"Я профи",
-          "should_open_filters":true,
-          "next_question_id":null
-        },
-        {
-          "id":2,
-          "text":"Я новичок",
-          "should_open_filters":false,
-          "next_question_id":2
-        },
-        {
-          "id":3,
-          "text":"Что угодно на ваш вкус",
-          "should_open_filters":false,
-          "next_question_id":null
-        }],
-        "is_multiple_selection_allowed":false,
-        "is_first_question": true
-     },
-        {
-          "id":2,
-          "text":"По какому поводу пьем?",
-          "options":[{
-              "id":4,
-              "text":"Ужин",
-              "should_open_filters":false,
-              "next_question_id":4
-            },
-            {
-              "id":5,
-              "text":"В Подарок",
-              "should_open_filters":false,
-              "next_question_id":3
-            },
-            {
-              "id":6,
-              "text":"Торжественное мероприятие",
-              "should_open_filters":false,
-              "next_question_id":3
-            }],
-            "is_multiple_selection_allowed":false,
-            "is_first_question": false
-         },
-            {
-              "id":3,
-              "text":"В каком ценовом сегменте ищите вино?",
-              "options":[{
-                  "id":7,
-                  "text":"Средний ценовой сегмент",
-                  "should_open_filters":false,
-                  "next_question_id":null
-                },
-                {
-                  "id":8,
-                  "text":"Дорогие",
-                  "should_open_filters":false,
-                  "next_question_id":null
-                },
-                {
-                  "id":9,
-                  "text":"Премиум",
-                  "should_open_filters":false,
-                  "next_question_id":null
-                }],
-                "is_multiple_selection_allowed":false,
-                "is_first_question": false
-             },
-                {
-                  "id":4,
-                  "text":"С чем будете пить?",
-                  "options":[{
-                      "id":10,
-                      "text":"Мясо",
-                      "should_open_filters":false,
-                      "next_question_id":3
-                    },
-                    {
-                      "id":11,
-                      "text":"Рыба",
-                      "should_open_filters":false,
-                      "next_question_id":3
-                    },
-                    {
-                      "id":12,
-                      "text":"Пицца",
-                      "should_open_filters":false,
-                      "next_question_id":3
-                    }],
-                    "is_multiple_selection_allowed":true,
-                    "is_first_question": false
-                 }
-    ]
-    """
-    let jsonData = Data(json.utf8)
-    let decoder = JSONDecoder()
-    let questions = try! decoder.decode([Question].self, from: jsonData) // swiftlint:disable:this force_try
-    self.questions = questions
-
-//    let questions = [
-//      QuestionsFlow.Question.init(id: 1, questionText: "Вы разбираетесь в вине?", options: [
-//        .init(id: 1, text: "Я профи", shouldOpenFilters: true, nextQuestionId: nil),
-//        .init(id: 2, text: "Я новичок", shouldOpenFilters: false, nextQuestionId: 2),
-//        .init(id: 3, text: "Что угодно на ваш вкус", shouldOpenFilters: false, nextQuestionId: nil),
-//      ], isMultipleSelectionAllowed: false, isFirstQuestion: true),
-//
-//      QuestionsFlow.Question.init(id: 2, questionText: "По какому поводу пьем?", options: [
-//        .init(id: 4, text: "Ужин", shouldOpenFilters: false, nextQuestionId: 4),
-//        .init(id: 5, text: "В Подарок", shouldOpenFilters: false, nextQuestionId: 3),
-//        .init(id: 6, text: "Торжественное мероприятие", shouldOpenFilters: false, nextQuestionId: 3),
-//      ], isMultipleSelectionAllowed: false, isFirstQuestion: false),
-//
-//      QuestionsFlow.Question.init(id: 3, questionText: "В каком ценовом сегменте ищите вино?", options: [
-//        .init(id: 7, text: "Средний ценовой сегмент", shouldOpenFilters: false, nextQuestionId: nil),
-//        .init(id: 8, text: "Дорогие", shouldOpenFilters: false, nextQuestionId: nil),
-//        .init(id: 9, text: "Премиум", shouldOpenFilters: false, nextQuestionId: nil),
-//      ], isMultipleSelectionAllowed: false, isFirstQuestion: false),
-//
-//      QuestionsFlow.Question.init(id: 4, questionText: "С чем будете пить?", options: [
-//        .init(id: 10, text: "Мясо", shouldOpenFilters: false, nextQuestionId: 3),
-//        .init(id: 11, text: "Рыба", shouldOpenFilters: false, nextQuestionId: 3),
-//        .init(id: 12, text: "Пицца", shouldOpenFilters: false, nextQuestionId: 3),
-//      ], isMultipleSelectionAllowed: true, isFirstQuestion: false),
-//    ]
-
-    router.presentQuestiosViewController(affilatedId: affilatedId, questions: questions, questionsNavigationControllerDelegate: self)
-  }
 }
 
 // MARK: StoreInteractorProtocol
@@ -447,12 +332,7 @@ extension StoreInteractor: StoreInteractorProtocol {
   }
 
   func didTapQuestionsButton() {
-    guard !questions.isEmpty else {
-      loadQuestionsIfNeeded()
-      return
-    }
-
-    guard let affilatedId = partnerInfo?.affiliatedStoreId else {
+    guard let affilatedId = partnerInfo?.affiliatedStoreId, let questions = questions, isQuestionsVisible else {
       return
     }
 

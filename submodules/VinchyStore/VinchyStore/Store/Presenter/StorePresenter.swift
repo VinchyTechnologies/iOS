@@ -114,7 +114,7 @@ extension StorePresenter: StorePresenterProtocol {
     viewController?.stopLoadingAnimation()
   }
 
-  func update(data: StoreInteractorData, needLoadMore: Bool, isBottomButtonLoading: Bool, totalPrice: Int64?, cartItems: [CartItem], recommendedWinesContentOffsetX: CGFloat) {
+  func update(data: StoreInteractorData, needLoadMore: Bool, isBottomButtonLoading: Bool, totalPrice: Int64?, cartItems: [CartItem], isQuestionsVisible: Bool, recommendedWinesContentOffsetX: CGFloat) {
 
     var sections: [StoreViewModel.Section] = []
 
@@ -137,7 +137,7 @@ extension StorePresenter: StorePresenterProtocol {
       ]
     }
 
-    if !input.isAppClip /* TODO: - */{
+    if !input.isAppClip && isQuestionsVisible {
       sections += [.button(content: .init(buttonText: localized("Questions.Recommendwine").firstLetterUppercased()))]
     }
 

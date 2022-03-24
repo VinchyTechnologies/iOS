@@ -11,7 +11,7 @@ import UIKit
 import VinchyUI
 
 protocol StorePresenterProtocol: ShowNetworkAlertPresentable {
-  func update(data: StoreInteractorData, needLoadMore: Bool, isBottomButtonLoading: Bool, totalPrice: Int64?, cartItems: [CartItem], recommendedWinesContentOffsetX: CGFloat)
+  func update(data: StoreInteractorData, needLoadMore: Bool, isBottomButtonLoading: Bool, totalPrice: Int64?, cartItems: [CartItem], isQuestionsVisible: Bool, recommendedWinesContentOffsetX: CGFloat)
   func startLoading()
   func stopLoading()
   func showErrorAlert(error: Error)

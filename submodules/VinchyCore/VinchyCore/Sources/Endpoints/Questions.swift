@@ -36,7 +36,7 @@ private enum QuestionsEndpoint: EndpointProtocol {
   var parameters: Parameters? {
     switch self {
     case .questions(let affilatedId):
-      return [("affiliated_id", String(affilatedId))]
+      return [("affilied_id", String(affilatedId))]
     }
   }
 }
