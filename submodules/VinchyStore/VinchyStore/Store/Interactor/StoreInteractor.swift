@@ -332,11 +332,11 @@ extension StoreInteractor: StoreInteractorProtocol {
   }
 
   func didTapQuestionsButton() {
-    guard let affilatedId = partnerInfo?.affiliatedStoreId, let questions = questions, isQuestionsVisible else {
+    guard let affilatedId = partnerInfo?.affiliatedStoreId, let questions = questions, isQuestionsVisible, let currencyCode = partnerInfo?.preferredCurrencyCode else {
       return
     }
 
-    router.presentQuestiosViewController(affilatedId: affilatedId, questions: questions, questionsNavigationControllerDelegate: self)
+    router.presentQuestiosViewController(affilatedId: affilatedId, questions: questions, currencyCode: currencyCode, questionsNavigationControllerDelegate: self)
   }
   func didTapConfirmOrderButton() {
     guard let affilatedId = partnerInfo?.affiliatedStoreId else { return }

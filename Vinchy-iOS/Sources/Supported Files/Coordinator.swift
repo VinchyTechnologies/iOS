@@ -31,8 +31,8 @@ final class Coordinator: ShowcaseRoutable, WineDetailRoutable, WriteNoteRoutable
     UIApplication.topViewController()?.present(navigationController, animated: true, completion: nil)
   }
 
-  func presentQuestiosViewController(affilatedId: Int, questions: [Question], questionsNavigationControllerDelegate: QuestionsNavigationControllerDelegate?) {
-    let controller = QuestionsNavigationController(questions: questions, affilatedId: affilatedId, coordinator: Coordinator.shared)
+  func presentQuestiosViewController(affilatedId: Int, questions: [Question], currencyCode: String, questionsNavigationControllerDelegate: QuestionsNavigationControllerDelegate?) {
+    let controller = QuestionsNavigationController(questions: questions, affilatedId: affilatedId, currencyCode: currencyCode, coordinator: Coordinator.shared)
     controller.questionsNavigationControllerDelegate = questionsNavigationControllerDelegate
     UIApplication.topViewController()?.present(controller, animated: true, completion: nil)
   }

@@ -169,13 +169,16 @@
 				44834D0F25C6F33400CD187F /* AccountID.swift */,
 				443601D825CEF23E00ABA7F1 /* AccountInfo.swift */,
 				8AD7A1DD263889E7007D4273 /* AffiliatedStore.swift */,
+				CAA28D3F27DDC899009CD7DD /* AvailableFilters.swift */,
 				CA7B824B24EC73B500991F24 /* Collection.swift */,
 				CA7B824F24EC73FE00991F24 /* Compilation.swift */,
 				CA7B825324EC744900991F24 /* DishCompatibility.swift */,
 				748491E126EE185C006A8851 /* NearestPartner.swift */,
+				CACB3DAE27C282AC00AD999D /* Order.swift */,
 				8A313C102645B72C009F2165 /* PartnerInfo.swift */,
 				8AD7A1DA2638894A007D4273 /* PartnerOnMap.swift */,
 				8A51EA162775DED7007B0B38 /* Price.swift */,
+				CAA28D6C27E1D8D1009CD7DD /* Question.swift */,
 				8ACE3AEF27205D930035BE47 /* Rating.swift */,
 				4495628F25E2F8AB005E79DA /* Review.swift */,
 				8A7D7924273ED7E7005F075A /* ReviewedWine.swift */,
@@ -184,9 +187,6 @@
 				4410AE2F25E5479400A84FF9 /* UpdateTokensResponse.swift */,
 				CA7B824824EC738500991F24 /* Wine.swift */,
 				CA7A87EF250287BB00AAD10F /* Winery.swift */,
-				CACB3DAE27C282AC00AD999D /* Order.swift */,
-				CAA28D3F27DDC899009CD7DD /* AvailableFilters.swift */,
-				CAA28D6C27E1D8D1009CD7DD /* Question.swift */,
 			);
 			path = ServiceModels;
 			sourceTree = "<group>";

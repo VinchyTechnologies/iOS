@@ -6,7 +6,6 @@
 //  Copyright © 2022 Aleksei Smirnov. All rights reserved.
 //
 
-
 public struct Question: Decodable {
 
   // MARK: Public
@@ -16,12 +15,14 @@ public struct Question: Decodable {
     public let text: String
     public let shouldOpenFilter: Bool
     public let nextQuestionId: Int?
+    public let filterId: Int?
 
     private enum CodingKeys: String, CodingKey {
       case id
       case text
       case shouldOpenFilter = "should_open_filters"
       case nextQuestionId = "next_question_id"
+      case filterId = "filter_id"
     }
   }
 

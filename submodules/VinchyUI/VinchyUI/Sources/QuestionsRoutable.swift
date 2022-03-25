@@ -66,5 +66,5 @@ public protocol QuestionsNavigationControllerDelegate: AnyObject {
 // MARK: - QuestionsRoutable
 
 public protocol QuestionsRoutable: AnyObject {
-  func presentQuestiosViewController(affilatedId: Int, questions: [Question], questionsNavigationControllerDelegate: QuestionsNavigationControllerDelegate?)
+  func presentQuestiosViewController(affilatedId: Int, questions: [Question], currencyCode: String, questionsNavigationControllerDelegate: QuestionsNavigationControllerDelegate?)
 }

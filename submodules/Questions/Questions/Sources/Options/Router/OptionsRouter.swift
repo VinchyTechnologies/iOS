@@ -76,10 +76,19 @@ extension OptionsRouter: OptionsRouterProtocol {
     }
 
     if let nextQuestion = navigationController.questions.first(where: { $0.id == option?.nextQuestionId }) {
-      let controller = OptionsAssembly.assemblyModule(input: .init(question: nextQuestion, affilatedId: input.affilatedId), coordinator: coordinator)
+      let controller = OptionsAssembly.assemblyModule(input: .init(question: nextQuestion, affilatedId: input.affilatedId, currencyCode: input.currencyCode), coordinator: coordinator)
       viewController?.navigationController?.pushViewController(controller, animated: true)
     } else {
-      pushToShowcaseViewController(input: .init(title: nil, mode: .questions(optionsIds: selectedIds, affilatedId: input.affilatedId)), selectedIds: selectedIds)
+      var filterIds: [Int] = []
+      selectedIds.forEach { id in
+        if let filterId = allOptions.first(where: { $0.id == id })?.filterId {
+          filterIds.append(filterId)
+        }
+      }
+      let params: [(String, String)] = filterIds.compactMap { id in
+        ("filter_id", String(id))
+      }
+      pushToShowcaseViewController(input: .init(title: nil, mode: .questions(params: params, affilatedId: input.affilatedId, currencyCode: input.currencyCode)), selectedIds: selectedIds)
     }
   }
 }

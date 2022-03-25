@@ -10,16 +10,13 @@ import UIKit
 import VinchyCore
 import VinchyUI
 
-// MARK: - QuestionsNavigationControllerDelegate
-
-
 // MARK: - QuestionsNavigationController
 
 public final class QuestionsNavigationController: VinchyNavigationController {
 
   // MARK: Lifecycle
 
-  public init(questions: [Question], affilatedId: Int, coordinator: OptionsAssembly.Coordinator) {
+  public init(questions: [Question], affilatedId: Int, currencyCode: String, coordinator: OptionsAssembly.Coordinator) {
     self.questions = questions
 
     guard let question = questions.first(where: { $0.isFirstQuestion }) else {
@@ -27,7 +24,7 @@ public final class QuestionsNavigationController: VinchyNavigationController {
       return
     }
 
-    let rootViewController = OptionsAssembly.assemblyModule(input: .init(question: question, affilatedId: affilatedId), coordinator: coordinator)
+    let rootViewController = OptionsAssembly.assemblyModule(input: .init(question: question, affilatedId: affilatedId, currencyCode: currencyCode), coordinator: coordinator)
     super.init(rootViewController: rootViewController)
   }
 

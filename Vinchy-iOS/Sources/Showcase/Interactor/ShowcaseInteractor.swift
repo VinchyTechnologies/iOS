@@ -69,15 +69,14 @@ final class ShowcaseInteractor {
 
   private func loadData(offset: Int) {
     switch input.mode {
-    case .questions(let optionsIds, let affilatedId): // TODO: - request
+    case .questions(let params, let affilatedId, let currencyCode):
       if offset == .zero {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
           self.dispatchWorkItemHud.perform()
         }
       }
 
-      let params: [(String, String)] = [("color", "red")]
-      Partners.shared.getPartnerWines(partnerId: 1, affilatedId: affilatedId, filters: params, currencyCode: "RUB", limit: 40, offset: offset, completion: { [weak self] result in
+      Partners.shared.getPartnerWines(partnerId: 1, affilatedId: affilatedId, filters: params, currencyCode: currencyCode, limit: 40, offset: offset, completion: { [weak self] result in
         guard let self = self else { return }
 
         if offset == .zero {
@@ -208,7 +207,7 @@ extension ShowcaseInteractor: ShowcaseInteractorProtocol {
     case .advancedSearch, .remote:
       break
 
-    case .questions(_, let affilatedId):
+    case .questions(_, let affilatedId, _):
       router.presentQRViewController(affilatedId: affilatedId, wineID: wineID)
     }
   }
@@ -240,7 +239,7 @@ extension ShowcaseInteractor: ShowcaseInteractorProtocol {
     case .advancedSearch, .remote:
       router.pushToWineDetailViewController(wineID: wineID, mode: .normal, shouldShowSimilarWine: true)
 
-    case .questions(_, let affilatedId):
+    case .questions(_, let affilatedId, _):
       guard let wine = wines.first(where: { $0.id == wineID }), let price = wine.price else {
         return
       }

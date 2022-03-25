@@ -10,4 +10,5 @@ import VinchyCore
 public struct OptionsInput {
   let question: Question
   let affilatedId: Int
+  let currencyCode: String
 }
