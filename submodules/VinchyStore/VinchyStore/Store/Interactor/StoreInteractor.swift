@@ -94,7 +94,6 @@ final class StoreInteractor {
 
   private var totalPrice: Int64 = 0
 
-
   private var isQuestionsVisible: Bool {
     guard let questions = questions else {
       return false

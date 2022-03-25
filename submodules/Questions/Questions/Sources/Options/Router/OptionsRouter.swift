@@ -80,7 +80,13 @@ extension OptionsRouter: OptionsRouterProtocol {
       viewController?.navigationController?.pushViewController(controller, animated: true)
     } else {
       var filterIds: [Int] = []
-      selectedIds.forEach { id in
+
+      var allIds: [Int] = []
+      navigationController.dataSource.values.forEach { arr in
+        allIds += arr
+      }
+
+      allIds.forEach { id in
         if let filterId = allOptions.first(where: { $0.id == id })?.filterId {
           filterIds.append(filterId)
         }
