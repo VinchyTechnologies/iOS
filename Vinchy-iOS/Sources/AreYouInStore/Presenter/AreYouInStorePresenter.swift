@@ -48,12 +48,14 @@ extension AreYouInStorePresenter: AreYouInStorePresenterProtocol {
     let range = ((localized("AreYouInStore.SeemsYouAreIn") + storeTitle) as NSString).range(of: storeTitle)
     fullStoreText.addAttribute(.foregroundColor, value: UIColor.accent, range: range)
 
-    let viewModel = AreYouInStoreViewModel(
-      sections: [
-        .title([
-          .init(titleText: fullStoreText),
-        ]),
+    var sections: [AreYouInStoreViewModel.Section] = [
+      .title([
+        .init(titleText: fullStoreText),
+      ]),
+    ]
 
+    if !recommendedWines.isEmpty {
+      sections += [
         .title([
           .init(titleText: NSAttributedString(string: localized("AreYouInStore.RecommendToBuy"), font: Font.heavy(20), textColor: .dark)),
         ]),
@@ -61,7 +63,11 @@ extension AreYouInStorePresenter: AreYouInStorePresenterProtocol {
         .recommendedWines([
           .init(type: .bottles, collections: [.init(wineList: recommendedWines)]),
         ]),
-      ],
+      ]
+    }
+
+    let viewModel = AreYouInStoreViewModel(
+      sections: sections,
       bottomButtonsViewModel: bottomButtonsViewModel)
     viewController?.updateUI(viewModel: viewModel)
   }

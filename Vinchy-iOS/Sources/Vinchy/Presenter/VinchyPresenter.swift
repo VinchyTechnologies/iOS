@@ -206,7 +206,10 @@ extension VinchyPresenter: VinchyPresenterProtocol {
         let wines: [WineBottleView.Content] = nearestPartner.recommendedWines.compactMap({
           .init(wineID: $0.id, imageURL: $0.mainImageUrl?.toURL, titleText: $0.title, subtitleText: $0.winery?.title, rating: $0.rating, buttonText: nil, flag: emojiFlagForISOCountryCode($0.winery?.countryCode ?? ""), contextMenuViewModels: self?.contextMenuViewModels ?? [])
         })
-        sections.append(.bottles(content: .init(wines: wines, contentOffsetX: 0)))
+
+        if !wines.isEmpty {
+          sections.append(.bottles(content: .init(wines: wines, contentOffsetX: 0)))
+        }
       }
 
       for (index, compilation) in compilations.enumerated() {
