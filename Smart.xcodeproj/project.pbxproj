@@ -376,7 +376,7 @@
 		8AF966C62678F194001891B2 /* EditProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF966BA2678F194001891B2 /* EditProfileInteractor.swift */; };
 		8AF966C72678F194001891B2 /* EditProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF966BC2678F194001891B2 /* EditProfileRouter.swift */; };
 		8AF966C82678F194001891B2 /* EditProfileRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF966BD2678F194001891B2 /* EditProfileRouterProtocol.swift */; };
-		8AF966CB267908F6001891B2 /* CommonEditCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF966CA267908F6001891B2 /* CommonEditCollectionViewCell.swift */; };
+		8AF966CB267908F6001891B2 /* CommonEditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AF966CA267908F6001891B2 /* CommonEditView.swift */; };
 		CA070C1625250AEC00C3D9EC /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA070C1325250AE900C3D9EC /* OnboardViewController.swift */; };
 		CA070C2425250C1800C3D9EC /* OnboardingModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA070C2325250C1800C3D9EC /* OnboardingModuleFactory.swift */; };
 		CA276D55256AC6720061BEBE /* FakeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA276D54256AC6720061BEBE /* FakeCell.swift */; };
@@ -897,7 +897,7 @@
 		8AF966BA2678F194001891B2 /* EditProfileInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileInteractor.swift; sourceTree = "<group>"; };
 		8AF966BC2678F194001891B2 /* EditProfileRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileRouter.swift; sourceTree = "<group>"; };
 		8AF966BD2678F194001891B2 /* EditProfileRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditProfileRouterProtocol.swift; sourceTree = "<group>"; };
-		8AF966CA267908F6001891B2 /* CommonEditCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonEditCollectionViewCell.swift; sourceTree = "<group>"; };
+		8AF966CA267908F6001891B2 /* CommonEditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonEditView.swift; sourceTree = "<group>"; };
 		CA015C3524C582B2008DF01D /* EmailService.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = EmailService.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA070C1325250AE900C3D9EC /* OnboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardViewController.swift; sourceTree = "<group>"; };
 		CA070C2325250C1800C3D9EC /* OnboardingModuleFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingModuleFactory.swift; sourceTree = "<group>"; };
@@ -2649,7 +2649,7 @@
 		8AF966C9267908D3001891B2 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				8AF966CA267908F6001891B2 /* CommonEditCollectionViewCell.swift */,
+				8AF966CA267908F6001891B2 /* CommonEditView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -3936,7 +3936,7 @@
 				8A079306269239C1000ACA2B /* DocumentsViewControllerProtocol.swift in Sources */,
 				8AE95A3D27554198007F01CE /* ResultsSearchInput.swift in Sources */,
 				8A313C1626468678009F2165 /* WorkingHoursCollectionCell.swift in Sources */,
-				8AF966CB267908F6001891B2 /* CommonEditCollectionViewCell.swift in Sources */,
+				8AF966CB267908F6001891B2 /* CommonEditView.swift in Sources */,
 				CA4857832517C67700EDA4CE /* VinchyInteractorProtocol.swift in Sources */,
 				8AD49F17267521040094E157 /* ReviewsPresenter.swift in Sources */,
 				CA472AC0245EDE2F009149FF /* AppDelegate.swift in Sources */,

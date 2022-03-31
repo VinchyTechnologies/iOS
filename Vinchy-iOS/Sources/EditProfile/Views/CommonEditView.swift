@@ -7,6 +7,7 @@
 //
 
 import DisplayMini
+import EpoxyCore
 import UIKit
 
 // MARK: - CommonEditCollectionViewCellDelegate
@@ -17,7 +18,7 @@ protocol CommonEditCollectionViewCellDelegate: AnyObject {
 
 // MARK: - CommonEditCollectionViewCellViewModel
 
-struct CommonEditCollectionViewCellViewModel: ViewModelProtocol {
+struct CommonEditCollectionViewCellViewModel: Equatable {
   let recognizableIdentificator: String?
   fileprivate let text: String?
   fileprivate let placeholder: String?
@@ -31,34 +32,54 @@ struct CommonEditCollectionViewCellViewModel: ViewModelProtocol {
   }
 }
 
-// MARK: - CommonEditCollectionViewCell
+// MARK: - CommonEditView
 
-final class CommonEditCollectionViewCell: UICollectionViewCell, Reusable {
+final class CommonEditView: UIView, EpoxyableView {
 
   // MARK: Lifecycle
 
-  override init(frame: CGRect) {
-    super.init(frame: frame)
-
-    contentView.addSubview(textField)
+  init(style: Style) {
+    super.init(frame: .zero)
+    translatesAutoresizingMaskIntoConstraints = false
+    directionalLayoutMargins = .zero
+    addSubview(textField)
     textField.translatesAutoresizingMaskIntoConstraints = false
     NSLayoutConstraint.activate([
-      textField.topAnchor.constraint(equalTo: contentView.topAnchor),
-      textField.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-      textField.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-      textField.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+      textField.topAnchor.constraint(equalTo: topAnchor),
+      textField.leadingAnchor.constraint(equalTo: leadingAnchor),
+      textField.bottomAnchor.constraint(equalTo: bottomAnchor),
+      textField.trailingAnchor.constraint(equalTo: trailingAnchor),
     ])
   }
 
-  @available(*, unavailable)
-  required init?(coder _: NSCoder) { fatalError() }
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
 
   // MARK: Internal
 
+  struct Style: Hashable {
+
+  }
+
+  typealias Content = CommonEditCollectionViewCellViewModel
+
   weak var delegate: CommonEditCollectionViewCellDelegate?
 
-  static func height(for _: ViewModel?) -> CGFloat {
+  static func height(for _: Content?) -> CGFloat {
     44
+  }
+
+  func setContent(_ content: Content, animated: Bool) {
+    recognizableIdentificator = content.recognizableIdentificator
+    textField.text = content.text
+    if let placeholder = content.placeholder {
+      textField.attributedPlaceholder = NSAttributedString(
+        string: placeholder,
+        font: Font.heavy(18),
+        textColor: .blueGray)
+    }
+    textField.isUserInteractionEnabled = content.isEditable
   }
 
   // MARK: Private
@@ -77,23 +98,5 @@ final class CommonEditCollectionViewCell: UICollectionViewCell, Reusable {
     delegate?.didChangedText(
       textField,
       recognizableIdentificator: recognizableIdentificator)
-  }
-}
-
-// MARK: Decoratable
-
-extension CommonEditCollectionViewCell: Decoratable {
-  typealias ViewModel = CommonEditCollectionViewCellViewModel
-
-  func decorate(model: ViewModel) {
-    recognizableIdentificator = model.recognizableIdentificator
-    textField.text = model.text
-    if let placeholder = model.placeholder {
-      textField.attributedPlaceholder = NSAttributedString(
-        string: placeholder,
-        font: Font.heavy(18),
-        textColor: .blueGray)
-    }
-    textField.isUserInteractionEnabled = model.isEditable
   }
 }
