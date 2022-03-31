@@ -57,6 +57,8 @@ final class LoveViewController: UIViewController {
     collectionView.backgroundColor = .mainBackground
     collectionView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 10, right: 0)
     collectionView.delaysContentTouches = false
+    collectionView.alwaysBounceVertical = true
+    collectionView.alwaysBounceHorizontal = false
   }
 
   override func viewWillAppear(_ animated: Bool) {

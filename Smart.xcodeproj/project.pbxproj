@@ -2123,6 +2123,7 @@
 		8A62EF192795D83C005445B4 /* Widget */ = {
 			isa = PBXGroup;
 			children = (
+				8A0A4471279AA098001A8CA1 /* WidgetExtension.entitlements */,
 				8A0A44A7279C795C001A8CA1 /* Widget.intentdefinition */,
 				8A62EF1D2795D83E005445B4 /* Assets.xcassets */,
 				8A62EF1F2795D83E005445B4 /* Info.plist */,
@@ -2781,7 +2782,6 @@
 		CA472AB3245EDE2F009149FF = {
 			isa = PBXGroup;
 			children = (
-				8A0A4471279AA098001A8CA1 /* WidgetExtension.entitlements */,
 				CA472ABE245EDE2F009149FF /* Vinchy-iOS */,
 				CA472AD5245EDE30009149FF /* SmartTests */,
 				CA472AE0245EDE30009149FF /* SmartUITests */,
@@ -4214,7 +4214,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CODE_SIGN_ENTITLEMENTS = WidgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Widget/WidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 7;
@@ -4245,7 +4245,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CODE_SIGN_ENTITLEMENTS = WidgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Widget/WidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 7;
