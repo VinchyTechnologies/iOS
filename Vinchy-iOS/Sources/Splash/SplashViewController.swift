@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Spotlight
+import Core
 
 // MARK: - SplashService
 
@@ -70,6 +72,12 @@ final class SplashViewController: UIViewController {
       imageView.widthAnchor.constraint(equalToConstant: 350),
       imageView.heightAnchor.constraint(equalToConstant: 350),
     ])
+    
+    if UserDefaultsConfig.deviceId == "" {
+      UserDefaultsConfig.deviceId = UIDevice.current.identifierForVendor?.uuidString ?? ""
+    }
+
+    SpotlightService.shared.configure()
   }
 
   override func viewDidAppear(_ animated: Bool) {

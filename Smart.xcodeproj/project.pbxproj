@@ -2833,7 +2833,6 @@
 		CA472B2D245EDEC7009149FF /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				CAB728CF27F6CF6900CAC535 /* Splash */,
 				CAF5140E2461C51300667ED0 /* About */,
 				8A10F26D27063398003463B0 /* AddressSearch */,
 				CA07097E2523146200C3D9EC /* Agreement */,
@@ -2859,6 +2858,7 @@
 				8A916105268E27EB00240B18 /* Search */,
 				CA0A352324785A0900C400F5 /* Showcase */,
 				748586EA26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCell */,
+				CAB728CF27F6CF6900CAC535 /* Splash */,
 				8AA9908F26D91FE000C32358 /* Stores */,
 				CA472B3F245EDEDB009149FF /* Supported Files */,
 				449F81B925DD02A600585364 /* Tabbar */,

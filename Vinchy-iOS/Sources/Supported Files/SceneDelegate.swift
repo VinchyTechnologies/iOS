@@ -89,7 +89,6 @@ extension SceneDelegate: UIWindowSceneDelegate {
 
     let window = UIWindow(windowScene: windowScence)
     self.window = window
-//    root.startApp()
 
     let splash = SplashViewController(splashService: splashService)
     splash.onEndAnimation = { [weak self] in
