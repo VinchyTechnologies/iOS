@@ -26,19 +26,21 @@ final class RootBuilderImpl: RootBuilder {
 
   // MARK: Lifecycle
 
-  init(tabBarBuilder: TabBarBuilder) {
+  init(tabBarBuilder: TabBarBuilder, splashService: SplashService) {
     self.tabBarBuilder = tabBarBuilder
+    self.splashService = splashService
   }
 
   // MARK: Internal
 
   func build(input: RootBuilderInput) -> RootInteractor & RootDeeplinkable {
     let router = RootRouterImpl(window: input.window, tabBarBuilder: tabBarBuilder)
-    let interactor = RootInteractorImpl(router: router)
+    let interactor = RootInteractorImpl(router: router, splashService: splashService)
     return interactor
   }
 
   // MARK: Private
 
   private let tabBarBuilder: TabBarBuilder
+  private let splashService: SplashService
 }
