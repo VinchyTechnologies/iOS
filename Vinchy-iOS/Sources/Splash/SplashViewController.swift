@@ -10,8 +10,6 @@ import UIKit
 
 // MARK: - SplashService
 
-
-
 final class SplashService {
 
   // MARK: Lifecycle
@@ -26,12 +24,9 @@ final class SplashService {
     case normal, unsupportedVersion
   }
 
-
   static let shared = SplashService()
 
-
   private(set) var state: SplashState = .normal
-
 
   func update(state: SplashState) {
     self.state = state
@@ -79,15 +74,14 @@ final class SplashViewController: UIViewController {
 
   override func viewDidAppear(_ animated: Bool) {
     super.viewDidAppear(animated)
-    
+
     let defaultValue = ["force_update_versions": [String]() as NSObject]
     remoteConfig.setDefaults(defaultValue)
 
-    remoteConfig.fetch() { [weak self] _, error in
+    remoteConfig.fetch { [weak self] _, error in
       if error == nil {
         remoteConfig.activate(completion: nil)
-        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
-          let versions = remoteConfig.configValue(forKey: "force_update_versions").jsonValue as! [String] // swiftlint:disable:this force_cast
+        if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String, let versions = remoteConfig.configValue(forKey: "force_update_versions").jsonValue as? [String] {
           if versions.contains(version) {
             self?.splashService.update(state: .unsupportedVersion)
             self?.onEndAnimation?()

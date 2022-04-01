@@ -17,8 +17,6 @@ import UIKit
 @main
 final class AppDelegate: UIResponder, UIApplicationDelegate {
 
-  // MARK: Internal
-
   func application(
     _: UIApplication,
     didFinishLaunchingWithOptions _: [UIApplication.LaunchOptionsKey: Any]?)
@@ -27,10 +25,10 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
     // FirebaseConfiguration.shared.setLoggerLevel(.min)
 
 //    if Architecture.isRosettaEmulated {
-//    FirebaseApp.configure()
+    FirebaseApp.configure()
 //    }
 
-    
+
     //        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "7d99d4164fe23a45e4802010db93f214" ];
 
     //        GADMobileAds.sharedInstance().start(completionHandler: nil)
