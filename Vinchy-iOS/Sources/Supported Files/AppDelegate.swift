@@ -30,18 +30,7 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 //    FirebaseApp.configure()
 //    }
 
-    let defaultValue = ["isAdAvailable": true as NSObject, "force_update_versions": [String]() as NSObject]
-    remoteConfig.setDefaults(defaultValue)
-
-    remoteConfig.fetch(withExpirationDuration: 0) { _, error in
-      if error == nil {
-        remoteConfig.activate(completion: nil)
-        isAdAvailable = remoteConfig.configValue(forKey: "isAdAvailable").boolValue
-
-        self.showForceUpdateScreen(versions: remoteConfig.configValue(forKey: "force_update_versions").jsonValue as! [String]) // swiftlint:disable:this force_cast
-      }
-    }
-
+    
     //        GADMobileAds.sharedInstance().requestConfiguration.testDeviceIdentifiers = [ "7d99d4164fe23a45e4802010db93f214" ];
 
     //        GADMobileAds.sharedInstance().start(completionHandler: nil)
@@ -73,13 +62,13 @@ final class AppDelegate: UIResponder, UIApplicationDelegate {
 
   // MARK: Private
 
-  private func showForceUpdateScreen(versions: [String]) {
-    if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
-      if versions.contains(version) {
-        UIApplication.shared.asKeyWindow?.rootViewController = UIHostingController(rootView: ForceUpdateView())
-      }
-    }
-  }
+//  private func showForceUpdateScreen(versions: [String]) {
+//    if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+//      if versions.contains(version) {
+//        UIApplication.shared.asKeyWindow?.rootViewController = UIHostingController(rootView: ForceUpdateView())
+//      }
+//    }
+//  }
 }
 
 // MARK: - Architecture

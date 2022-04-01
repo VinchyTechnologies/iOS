@@ -32,9 +32,11 @@ final class SceneDelegate: UIResponder {
 
   private var savedShortCutItem: UIApplicationShortcutItem?
   private lazy var root: (RootInteractor & RootDeeplinkable) = {
-    RootBuilderImpl(tabBarBuilder: TabBarBuilderImpl())
+    RootBuilderImpl(tabBarBuilder: TabBarBuilderImpl(), splashService: splashService)
       .build(input: RootBuilderInput(window: window!)) // swiftlint:disable:this force_unwrapping
   }()
+
+  private lazy var splashService = SplashService.shared
 
   private lazy var deeplinkRouter: DeeplinkRouter = {
     DeeplinkRouterImpl(root: root)
@@ -87,7 +89,14 @@ extension SceneDelegate: UIWindowSceneDelegate {
 
     let window = UIWindow(windowScene: windowScence)
     self.window = window
-    root.startApp()
+//    root.startApp()
+
+    let splash = SplashViewController(splashService: splashService)
+    splash.onEndAnimation = { [weak self] in
+      self?.root.startApp()
+    }
+    window.rootViewController = splash
+    window.makeKeyAndVisible()
 
     //    let mode = StoresInput(wineID: 891)
     //    window.rootViewController = NavigationController(rootViewController: StoresAssembly.assemblyModule(input: mode))

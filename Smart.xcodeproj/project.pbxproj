@@ -422,6 +422,7 @@
 		CA8622CC27B2A9AF0066682A /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA8622CB27B2A9AF0066682A /* Network.framework */; };
 		CA8622CD27B2A9AF0066682A /* Network.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA8622CB27B2A9AF0066682A /* Network.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CAA060D2252BC05C002C15B5 /* DeveloperFeatureToggles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA060D1252BC05C002C15B5 /* DeveloperFeatureToggles.swift */; };
+		CAB728D127F6CF8000CAC535 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB728D027F6CF8000CAC535 /* SplashViewController.swift */; };
 		CACA7E99254C57CC0099E622 /* WriteNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA7E88254C57CC0099E622 /* WriteNoteViewModel.swift */; };
 		CACA7E9A254C57CC0099E622 /* WriteNoteInput.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA7E8A254C57CC0099E622 /* WriteNoteInput.swift */; };
 		CACA7E9B254C57CC0099E622 /* WriteNoteAssembly.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA7E8C254C57CC0099E622 /* WriteNoteAssembly.swift */; };
@@ -960,6 +961,7 @@
 		CA8622CB27B2A9AF0066682A /* Network.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Network.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA8CD67525096EC100FDB7AF /* Smart-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Smart-Bridging-Header.h"; sourceTree = "<group>"; };
 		CAA060D1252BC05C002C15B5 /* DeveloperFeatureToggles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeveloperFeatureToggles.swift; sourceTree = "<group>"; };
+		CAB728D027F6CF8000CAC535 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		CABDBA8624C2FAB800AD96D6 /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CACA7E88254C57CC0099E622 /* WriteNoteViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteNoteViewModel.swift; sourceTree = "<group>"; };
 		CACA7E8A254C57CC0099E622 /* WriteNoteInput.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WriteNoteInput.swift; sourceTree = "<group>"; };
@@ -2831,6 +2833,7 @@
 		CA472B2D245EDEC7009149FF /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				CAB728CF27F6CF6900CAC535 /* Splash */,
 				CAF5140E2461C51300667ED0 /* About */,
 				8A10F26D27063398003463B0 /* AddressSearch */,
 				CA07097E2523146200C3D9EC /* Agreement */,
@@ -2990,6 +2993,14 @@
 				8A4749AE2728271E0091B493 /* StoryView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		CAB728CF27F6CF6900CAC535 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				CAB728D027F6CF8000CAC535 /* SplashViewController.swift */,
+			);
+			path = Splash;
 			sourceTree = "<group>";
 		};
 		CACA7E87254C57CC0099E622 /* ViewModel */ = {
@@ -3840,6 +3851,7 @@
 				CAF514222461C52400667ED0 /* MoreViewController.swift in Sources */,
 				449F81CA25DD04B400585364 /* DeeplinkStep.swift in Sources */,
 				CA7B835B24EED6E600991F24 /* StoryCollectionCell.swift in Sources */,
+				CAB728D127F6CF8000CAC535 /* SplashViewController.swift in Sources */,
 				4437AA5B25E3A7CE00F6E838 /* WriteReviewViewModel.swift in Sources */,
 				8A3C0F5D2732D38500947085 /* ControllerCell.swift in Sources */,
 				4437AA5D25E3A7CE00F6E838 /* WriteReviewAssembly.swift in Sources */,

@@ -27,8 +27,9 @@ final class RootInteractorImpl: RootInteractor, AgreementsViewControllerOutput, 
 
   // MARK: Lifecycle
 
-  init(router: RootRouter) {
+  init(router: RootRouter, splashService: SplashService) {
     self.router = router
+    self.splashService = splashService
   }
 
   // MARK: Internal
@@ -43,22 +44,34 @@ final class RootInteractorImpl: RootInteractor, AgreementsViewControllerOutput, 
   }
 
   func startApp() {
-    if !(UserDefaultsConfig.isAdult && UserDefaultsConfig.isAgreedToTermsAndConditions) {
-      startDoc()
-    } else if !onboardingRepository.isLastVersionOnboardingSeen(), isOnboardingAvailable {
-      startOnboardingFlow()
-    } else {
-      startTabBar()
+    switch splashService.state {
+    case .normal:
+      if !(UserDefaultsConfig.isAdult && UserDefaultsConfig.isAgreedToTermsAndConditions) {
+        startDoc()
+      } else if !onboardingRepository.isLastVersionOnboardingSeen(), isOnboardingAvailable {
+        startOnboardingFlow()
+      } else {
+        startTabBar()
+      }
+
+    case .unsupportedVersion:
+      startUnavailableVersionFlow()
     }
   }
 
   // MARK: Private
+
+  private let splashService: SplashService
 
   private let router: RootRouter
   private var tabBarDeeplinkable: TabBarDeeplinkable?
 
   private let onboardingRepository = OnboardingRepository(cache: OnboardingCacheImplementation())
   private let publisher = CurrentValueSubject<TabBarDeeplinkable?, Never>(nil)
+
+  private func startUnavailableVersionFlow() {
+    router.routeToUnavailableVersionFlow()
+  }
 
   private func startTabBar() {
     publisher.send(router.routeToTabBar())
