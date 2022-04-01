@@ -7,16 +7,20 @@
 //
 
 import DisplayMini
+import EpoxyCollectionView
 import UIKit
 
 // MARK: - EditProfileViewController
 
-final class EditProfileViewController: UIViewController {
+final class EditProfileViewController: CollectionViewController {
 
   // MARK: Lifecycle
 
   init() {
-    super.init(nibName: nil, bundle: nil)
+    let layout = UICollectionViewFlowLayout()
+    layout.scrollDirection = .vertical
+    layout.minimumLineSpacing = 0
+    super.init(layout: layout)
     NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
     NotificationCenter.default.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
   }
@@ -43,23 +47,26 @@ final class EditProfileViewController: UIViewController {
     interactor?.viewDidLoad()
   }
 
+  override func makeCollectionView() -> CollectionView {
+    let collectionView = super.makeCollectionView()
+    collectionView.keyboardDismissMode = .onDrag
+    collectionView.backgroundColor = .mainBackground
+    return collectionView
+  }
+
+  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    super.viewWillTransition(to: size, with: coordinator)
+    if UIApplication.shared.applicationState != .background {
+      coordinator.animate(alongsideTransition: { _ in
+        self.collectionViewSize = size
+        self.setSections(self.sections, animated: false)
+      })
+    }
+  }
+
   // MARK: Private
 
-  private let layout: UICollectionViewFlowLayout = {
-    $0.scrollDirection = .vertical
-    return $0
-  }(UICollectionViewFlowLayout())
-
-  private lazy var collectionView: UICollectionView = {
-    $0.backgroundColor = .mainBackground
-    $0.register(
-      CommonEditCollectionViewCell.self,
-      TextCollectionCell.self)
-    $0.keyboardDismissMode = .onDrag
-    $0.dataSource = self
-    $0.delegate = self
-    return $0
-  }(UICollectionView(frame: .zero, collectionViewLayout: layout))
+  private lazy var collectionViewSize: CGSize = view.frame.size
 
   private lazy var saveButton: Button = {
     $0.disable()
@@ -67,12 +74,41 @@ final class EditProfileViewController: UIViewController {
     return $0
   }(Button())
 
-  private var viewModel: EditProfileViewModel? {
-    didSet {
-      navigationItem.title = viewModel?.navigationTitle
-      saveButton.setTitle(viewModel?.saveButtonText, for: .normal)
+  private var viewModel: EditProfileViewModel = .empty
 
-      collectionView.reloadData()
+  @SectionModelBuilder
+  private var sections: [SectionModel] {
+    viewModel.sections.compactMap { section in
+      switch section {
+      case .commonEditCell(let rows):
+        return SectionModel.init(dataID: UUID()) {
+          return rows.compactMap { row in
+            switch row {
+            case .title(let content):
+              let width: CGFloat = collectionViewSize.width - 48
+              let style = Label.Style.style(with: .miniBold)
+              let height: CGFloat = Label.height(
+                for: content,
+                width: width,
+                style: style)
+              return Label.itemModel(
+                dataID: UUID(),
+                content: content,
+                style: style)
+                .flowLayoutItemSize(.init(width: width, height: height))
+
+            case .textField(let content):
+              let width = collectionViewSize.width - 48
+              return CommonEditView.itemModel(dataID: UUID(), content: content, style: .init())
+                .setBehaviors({ [weak self] context in
+                  context.view.delegate = self
+                })
+                .flowLayoutItemSize(.init(width: width, height: CommonEditView.height(for: content)))
+            }
+          }
+        }
+        .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 0, right: 24))
+      }
     }
   }
 
@@ -111,104 +147,9 @@ extension EditProfileViewController: EditProfileViewControllerProtocol {
 
   func updateUI(viewModel: EditProfileViewModel) {
     self.viewModel = viewModel
-  }
-}
-
-// MARK: UICollectionViewDataSource
-
-extension EditProfileViewController: UICollectionViewDataSource {
-  func numberOfSections(in _: UICollectionView) -> Int {
-    viewModel?.sections.count ?? 0
-  }
-
-  func collectionView(
-    _: UICollectionView,
-    numberOfItemsInSection section: Int)
-    -> Int
-  {
-    switch viewModel?.sections[safe: section] {
-    case .commonEditCell(let models):
-      return models.count
-
-    case .none:
-      return 0
-    }
-  }
-
-  func collectionView(
-    _ collectionView: UICollectionView,
-    cellForItemAt indexPath: IndexPath)
-    -> UICollectionViewCell
-  {
-    switch viewModel?.sections[safe: indexPath.section] {
-    case .commonEditCell(let models):
-      let model = models[safe: indexPath.row]
-      switch model {
-      case .title(let text):
-        // swiftlint:disable:next force_cast
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseId, for: indexPath) as! TextCollectionCell
-        cell.decorate(model: .init(titleText: text))
-        return cell
-
-      case .textField(let text):
-        // swiftlint:disable:next force_cast
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: CommonEditCollectionViewCell.reuseId, for: indexPath) as! CommonEditCollectionViewCell
-        cell.decorate(model: text)
-        cell.delegate = self
-        return cell
-
-      case .none:
-        return .init()
-      }
-
-    case .none:
-      return .init()
-    }
-  }
-}
-
-// MARK: UICollectionViewDelegateFlowLayout
-
-extension EditProfileViewController: UICollectionViewDelegateFlowLayout {
-  func collectionView(_ collectionView: UICollectionView, layout _: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-    let width = collectionView.frame.width - 32
-    switch viewModel?.sections[safe: indexPath.section] {
-    case .commonEditCell(let models):
-      let model = models[safe: indexPath.row]
-      switch model {
-      case .title(let text):
-        let height = TextCollectionCell.height(viewModel: TextCollectionCell.ViewModel(titleText: text), width: width)
-        return .init(width: width, height: height)
-
-      case .textField:
-        let height = CommonEditCollectionViewCell.height(for: nil)
-        return .init(width: width, height: height)
-
-      case .none:
-        return .zero
-      }
-
-    case .none:
-      return .zero
-    }
-  }
-
-  func collectionView(
-    _: UICollectionView,
-    layout _: UICollectionViewLayout,
-    minimumLineSpacingForSectionAt _: Int)
-    -> CGFloat
-  {
-    0
-  }
-
-  func collectionView(
-    _: UICollectionView,
-    layout _: UICollectionViewLayout,
-    insetForSectionAt _: Int)
-    -> UIEdgeInsets
-  {
-    UIEdgeInsets(top: 0, left: 16, bottom: 16, right: 16)
+    navigationItem.title = viewModel.navigationTitle
+    saveButton.setTitle(viewModel.saveButtonText, for: .normal)
+    collectionView.setSections(sections, animated: true)
   }
 }
 

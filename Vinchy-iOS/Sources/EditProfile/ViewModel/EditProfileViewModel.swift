@@ -6,6 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import DisplayMini
 import UIKit
 
 // MARK: - EditProfileTextFieldType
@@ -19,8 +20,8 @@ enum EditProfileTextFieldType: String {
 
 struct EditProfileViewModel {
   enum CommonEditCellRow {
-    case title(text: NSAttributedString)
-    case textField(model: CommonEditCollectionViewCellViewModel)
+    case title(content: Label.Content)
+    case textField(content: CommonEditView.Content)
   }
 
   enum Section {
@@ -30,4 +31,6 @@ struct EditProfileViewModel {
   let sections: [Section]
   let navigationTitle: String?
   let saveButtonText: String?
+
+  static let empty: Self = .init(sections: [], navigationTitle: nil, saveButtonText: nil)
 }
