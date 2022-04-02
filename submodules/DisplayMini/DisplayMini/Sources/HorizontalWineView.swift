@@ -161,7 +161,7 @@ public final class HorizontalWineView: UIView, EpoxyableView {
           Label.groupItem(
             dataID: DataID.subtitle,
             content: subtitleText,
-            style: .style(with: .subtitle))
+            style: .style(with: .subtitle, backgroundColor: .clear))
 //            .lineBreakMode(.byCharWrapping)
 //            .contentCompressionResistancePriority(.required, for: .horizontal)
         }
@@ -170,7 +170,7 @@ public final class HorizontalWineView: UIView, EpoxyableView {
           Label.groupItem(
             dataID: DataID.title,
             content: titleText,
-            style: .style(with: .lagerTitle))
+            style: .style(with: .lagerTitle, backgroundColor: .clear))
 //            .lineBreakMode(.byCharWrapping)
 //            .contentCompressionResistancePriority(.required, for: .horizontal)
         }
@@ -268,7 +268,7 @@ public final class HorizontalWineView: UIView, EpoxyableView {
   private func oldPriceView(text: String?) -> GroupItemModeling {
     GroupItem<UILabel>(
       dataID: DataID.oldPrice,
-      content: "",
+      content: text,
       make: {
         let label = UILabel()
         // this is required by LayoutGroups to ensure AutoLayout works as expected
@@ -276,8 +276,8 @@ public final class HorizontalWineView: UIView, EpoxyableView {
 //        button.heightAnchor.constraint(equalToConstant: .buttonHeight).isActive = true
         return label
       },
-      setContent: { context, _ in
-        let attributeString = NSMutableAttributedString(string: text ?? "")
+      setContent: { context, content in
+        let attributeString = NSMutableAttributedString(string: content ?? "")
         attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: NSUnderlineStyle.single.rawValue, range: NSRange(location: 0, length: attributeString.length))
         context.constrainable.font = Font.with(size: 14, design: .round, traits: .bold)
         context.constrainable.attributedText = attributeString

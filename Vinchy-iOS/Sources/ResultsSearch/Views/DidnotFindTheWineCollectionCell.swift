@@ -7,21 +7,10 @@
 //
 
 import DisplayMini
+import EpoxyCore
 import StringFormatting
 import UIKit
-
-// MARK: - DidnotFindTheWineCollectionCellViewModel
-
-public struct DidnotFindTheWineCollectionCellViewModel: ViewModelProtocol {
-
-  fileprivate let titleText: String
-  fileprivate let writeUsButtonText: String?
-
-  public init(titleText: String, writeUsButtonText: String?) {
-    self.titleText = titleText
-    self.writeUsButtonText = writeUsButtonText
-  }
-}
+import WineDetail
 
 // MARK: - DidnotFindTheWineCollectionCellProtocol
 
@@ -29,14 +18,17 @@ protocol DidnotFindTheWineCollectionCellProtocol: AnyObject {
   func didTapWriteUsButton(_ button: UIButton)
 }
 
-// MARK: - DidnotFindTheWineCollectionCell
+// MARK: - DidnotFindTheWineView
 
-final class DidnotFindTheWineCollectionCell: UICollectionViewCell, Reusable {
+final class DidnotFindTheWineView: UIView, EpoxyableView {
 
   // MARK: Lifecycle
 
-  override init(frame: CGRect) {
-    super.init(frame: frame)
+  init(style: Style) {
+    super.init(frame: .zero)
+    directionalLayoutMargins = .zero
+    translatesAutoresizingMaskIntoConstraints = false
+
     titleLabel.translatesAutoresizingMaskIntoConstraints = false
     titleLabel.font = Font.bold(16)
     titleLabel.adjustsFontSizeToFitWidth = true
@@ -51,27 +43,48 @@ final class DidnotFindTheWineCollectionCell: UICollectionViewCell, Reusable {
     writeUsButton.titleLabel?.font = Font.bold(14)
     writeUsButton.addTarget(self, action: #selector(didTapWriteUsButton(_:)), for: .touchUpInside)
 
-    contentView.addSubview(writeUsButton)
+    addSubview(writeUsButton)
     NSLayoutConstraint.activate([
-      writeUsButton.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 10),
-      writeUsButton.trailingAnchor.constraint(equalTo: contentView.trailingAnchor),
+      writeUsButton.topAnchor.constraint(equalTo: topAnchor, constant: 10),
+      writeUsButton.trailingAnchor.constraint(equalTo: trailingAnchor),
       writeUsButton.heightAnchor.constraint(equalToConstant: 44),
-      writeUsButton.bottomAnchor.constraint(lessThanOrEqualTo: contentView.bottomAnchor, constant: -10),
+      writeUsButton.bottomAnchor.constraint(lessThanOrEqualTo: bottomAnchor, constant: -10),
     ])
 
-    contentView.addSubview(titleLabel)
+    addSubview(titleLabel)
     NSLayoutConstraint.activate([
-      titleLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-      titleLabel.centerYAnchor.constraint(equalTo: contentView.centerYAnchor),
+      titleLabel.leadingAnchor.constraint(equalTo: leadingAnchor),
+      titleLabel.centerYAnchor.constraint(equalTo: centerYAnchor),
       titleLabel.trailingAnchor.constraint(lessThanOrEqualTo: writeUsButton.leadingAnchor, constant: -10),
     ])
   }
-  @available(*, unavailable)
-  required init?(coder _: NSCoder) { fatalError() }
+
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
 
   // MARK: Internal
 
+  struct Style: Hashable {
+
+  }
+
+  struct Content: Equatable {
+    fileprivate let titleText: String
+    fileprivate let writeUsButtonText: String?
+
+    public init(titleText: String, writeUsButtonText: String?) {
+      self.titleText = titleText
+      self.writeUsButtonText = writeUsButtonText
+    }
+  }
+
   weak var delegate: DidnotFindTheWineCollectionCellProtocol?
+
+  func setContent(_ content: Content, animated: Bool) {
+    titleLabel.text = content.titleText
+    writeUsButton.setTitle(content.writeUsButtonText, for: .normal)
+  }
 
   // MARK: Private
 
@@ -81,17 +94,5 @@ final class DidnotFindTheWineCollectionCell: UICollectionViewCell, Reusable {
   @objc
   private func didTapWriteUsButton(_ button: UIButton) {
     delegate?.didTapWriteUsButton(button)
-  }
-}
-
-// MARK: Decoratable
-
-extension DidnotFindTheWineCollectionCell: Decoratable {
-
-  typealias ViewModel = DidnotFindTheWineCollectionCellViewModel
-
-  internal func decorate(model: ViewModel) {
-    titleLabel.text = model.titleText
-    writeUsButton.setTitle(model.writeUsButtonText, for: .normal)
   }
 }

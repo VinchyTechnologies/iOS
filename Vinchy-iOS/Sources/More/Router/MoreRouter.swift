@@ -27,6 +27,7 @@ final class MoreRouter: OpenURLProtocol {
 
   weak var viewController: UIViewController?
   weak var interactor: MoreInteractorProtocol?
+  var emailService = EmailService()
 
 }
 

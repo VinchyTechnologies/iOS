@@ -65,7 +65,6 @@ public final class BottlesCollectionView: UIView, EpoxyableView {
     }
   }
 
-
   public weak var bottlesCollectionViewDelegate: BottlesCollectionViewDelegate?
 
   public lazy var collectionView: CollectionView = {
@@ -79,7 +78,6 @@ public final class BottlesCollectionView: UIView, EpoxyableView {
     $0.showsHorizontalScrollIndicator = false
     return $0
   }(CollectionView(layout: layout))
-
 
   public func setContent(_ content: Content, animated: Bool) {
     self.content = content
@@ -110,7 +108,6 @@ public final class BottlesCollectionView: UIView, EpoxyableView {
     case bottlesCollectionViewSectionBottles
   }
 
-
   private var content: Content?
 
   private let layout: UICollectionViewFlowLayout = {
@@ -123,7 +120,6 @@ public final class BottlesCollectionView: UIView, EpoxyableView {
   private let style: Style
 
   private var didTap: ((_ wineID: Int64) -> Void)?
-
 
   private var insets: UIEdgeInsets {
     switch style.offset {

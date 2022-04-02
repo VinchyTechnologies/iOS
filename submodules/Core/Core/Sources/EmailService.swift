@@ -37,13 +37,14 @@ public final class EmailService: NSObject, EmailServiceProtocol {
       mail.setMessageBody(HTMLText, isHTML: true)
     }
     mail.mailComposeDelegate = self
+    mail.delegate = self
     return mail
   }
 }
 
-// MARK: MFMailComposeViewControllerDelegate
+// MARK: MFMailComposeViewControllerDelegate, UINavigationControllerDelegate
 
-extension EmailService: MFMailComposeViewControllerDelegate {
+extension EmailService: MFMailComposeViewControllerDelegate, UINavigationControllerDelegate {
   public func mailComposeController(
     _ controller: MFMailComposeViewController,
     didFinishWith _: MFMailComposeResult,

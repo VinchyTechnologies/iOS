@@ -40,6 +40,7 @@ final class ResultsSearchInteractor {
   private let throttler = Throttler()
 
   private var recentlySearchedWines: [VSearchedWine] = []
+  private var wines: [ShortWine] = []
 
   private func fetchSearchedWines() {
     recentlySearchedWines = searchedWinesRepository.findAll()
@@ -51,6 +52,33 @@ final class ResultsSearchInteractor {
 
 extension ResultsSearchInteractor: ResultsSearchInteractorProtocol {
 
+  func didSelectHorizontalWine(wineID: Int64) {
+    let count = searchedWinesRepository.findAll().count
+    let maxId = searchedWinesRepository.findAll().map { $0.id }.max() ?? 0
+    let id = maxId + 1
+
+    if let sameWine = searchedWinesRepository.findAll().first(where: { $0.wineID == wineID }) {
+      searchedWinesRepository.remove(sameWine)
+    } else if count >= C.searchedLimit {
+      if let firstWine = searchedWinesRepository.findAll().first {
+        searchedWinesRepository.remove(firstWine)
+      }
+    }
+
+    if let wine = wines.first(where: { $0.id == wineID }) {
+      searchedWinesRepository.append(VSearchedWine(id: id, wineID: wineID, title: wine.title, createdAt: Date()))
+    }
+  }
+
+  func didTapHistoryWine(wineID: Int64) {
+    if let wine = searchedWinesRepository.findAll().first(where: { $0.wineID == wineID }) {
+      searchedWinesRepository.remove(wine)
+      let maxId = searchedWinesRepository.findAll().map { $0.id }.max() ?? 0
+      let id = maxId + 1
+      searchedWinesRepository.append(VSearchedWine(id: id, wineID: wineID, title: wine.title, createdAt: Date()))
+    }
+  }
+
   func viewWillAppear() {
     switch input.mode {
     case .normal:
@@ -59,23 +87,6 @@ extension ResultsSearchInteractor: ResultsSearchInteractorProtocol {
     case .storeDetail:
       break
     }
-  }
-
-  func didSelectResultCell(wineID: Int64, title: String) {
-    let count = searchedWinesRepository.findAll().count
-    let maxId = searchedWinesRepository.findAll().map { $0.id }.max() ?? 0
-    let id = maxId + 1
-
-    if let sameWine = searchedWinesRepository.findAll().first(where: { $0.wineID == wineID }) {
-      searchedWinesRepository.remove(sameWine)
-
-    } else if count >= C.searchedLimit {
-      if let firstWine = searchedWinesRepository.findAll().first {
-        searchedWinesRepository.remove(firstWine)
-      }
-    }
-
-    searchedWinesRepository.append(VSearchedWine(id: id, wineID: wineID, title: title, createdAt: Date()))
   }
 
   func didEnterSearchText(_ searchText: String?) {
@@ -104,9 +115,11 @@ extension ResultsSearchInteractor: ResultsSearchInteractorProtocol {
         Wines.shared.getWineBy(title: searchText, offset: 0, limit: 40) { [weak self] result in
           switch result {
           case .success(let wines):
+            self?.wines = wines
             self?.presenter.update(didFindWines: wines)
 
           case .failure:
+            self?.wines = []
             self?.presenter.update(didFindWines: [])
           }
         }
@@ -115,9 +128,11 @@ extension ResultsSearchInteractor: ResultsSearchInteractorProtocol {
         Partners.shared.getPartnerWines(partnerId: 1, affilatedId: affilatedId, filters: [("title", searchText)], currencyCode: currencyCode, limit: 10, offset: 0) { [weak self] result in
           switch result {
           case .success(let wines):
+            self?.wines = wines
             self?.presenter.update(didFindWines: wines)
 
           case .failure:
+            self?.wines = []
             self?.presenter.update(didFindWines: [])
           }
         }

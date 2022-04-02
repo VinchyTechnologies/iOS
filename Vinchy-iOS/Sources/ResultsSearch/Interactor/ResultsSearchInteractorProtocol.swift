@@ -10,6 +10,8 @@ import Foundation
 
 protocol ResultsSearchInteractorProtocol: AnyObject {
   func viewWillAppear()
-  func didSelectResultCell(wineID: Int64, title: String)
+  func didTapHistoryWine(wineID: Int64)
+  func didSelectHorizontalWine(wineID: Int64)
+//  func didSelectResultCell(wineID: Int64, title: String)
   func didEnterSearchText(_ searchText: String?)
 }

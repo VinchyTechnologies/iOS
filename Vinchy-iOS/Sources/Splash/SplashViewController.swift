@@ -6,9 +6,9 @@
 //  Copyright © 2022 Aleksei Smirnov. All rights reserved.
 //
 
-import UIKit
-import Spotlight
 import Core
+import Spotlight
+import UIKit
 
 // MARK: - SplashService
 
@@ -72,7 +72,7 @@ final class SplashViewController: UIViewController {
       imageView.widthAnchor.constraint(equalToConstant: 350),
       imageView.heightAnchor.constraint(equalToConstant: 350),
     ])
-    
+
     if UserDefaultsConfig.deviceId == "" {
       UserDefaultsConfig.deviceId = UIDevice.current.identifierForVendor?.uuidString ?? ""
     }

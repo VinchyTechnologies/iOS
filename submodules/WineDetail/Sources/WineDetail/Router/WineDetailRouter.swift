@@ -36,6 +36,8 @@ final class WineDetailRouter {
   weak var interactor: WineDetailInteractorProtocol?
   var coordinator: WineDetailAssembly.Coordinator
 
+  var emailService = EmailService()
+
   // MARK: Private
 
   private let input: WineDetailInput

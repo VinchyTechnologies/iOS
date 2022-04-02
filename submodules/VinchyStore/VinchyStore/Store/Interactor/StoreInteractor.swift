@@ -474,14 +474,7 @@ extension StoreInteractor: StoreInteractorProtocol {
 
 extension StoreInteractor: ResultsSearchDelegate {
   func didTapBottleCell(wineID: Int64) {
-    guard let partnerInfo = partnerInfo else {
-      return
-    }
-    var mode: WineDetailMode = .normal
-//    if let wine = assortimentWines.first(where: { $0.id == wineID }), let price = wine.price {
-//      mode = .partner(affilatedId: partnerInfo.affiliatedStoreId, price: price, buyAction: .openURL(url: wine.url?.toURL))
-//    }
-    router.pushToWineDetailViewController(wineID: wineID, mode: mode, shouldShowSimilarWine: false)
+    didSelectHorizontalWine(wineID: wineID)
   }
 
   func didTapSearchButton(searchText: String?) { }

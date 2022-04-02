@@ -14,6 +14,7 @@ import UIKit.UIView
 
 public protocol ContactUsRoutable: OpenURLProtocol {
   var viewController: UIViewController? { get }
+  var emailService: EmailService { get set }
   func presentContactActionSheet(to: String, subject: String, body: String, includingThirdPartyApps: Bool, sourceView: UIView)
 }
 
@@ -26,7 +27,7 @@ extension ContactUsRoutable {
       return
     }
 
-    let emailService = EmailService()
+//    let emailService = EmailService()
 
     let alert = UIAlertController(title: to, message: nil, preferredStyle: .actionSheet)
 
