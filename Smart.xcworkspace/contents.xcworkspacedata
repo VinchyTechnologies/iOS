@@ -51,6 +51,9 @@
          location = "group:submodules/StringFormatting/StringFormatting.xcodeproj">
       </FileRef>
       <FileRef
+         location = "group:submodules/VinchyAnalytics/VinchyAnalytics.xcodeproj">
+      </FileRef>
+      <FileRef
          location = "group:submodules/VinchyAuthorization/VinchyAuthorization.xcodeproj">
       </FileRef>
       <FileRef

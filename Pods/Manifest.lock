@@ -7,6 +7,11 @@ PODS:
   - EpoxyCore (0.7.0)
   - EpoxyLayoutGroups (0.7.0):
     - EpoxyCore (= 0.7.0)
+  - Firebase/Analytics (8.11.0):
+    - Firebase/Core
+  - Firebase/Core (8.11.0):
+    - Firebase/CoreOnly
+    - FirebaseAnalytics (~> 8.11.0)
   - Firebase/CoreOnly (8.11.0):
     - FirebaseCore (= 8.11.0)
   - Firebase/DynamicLinks (8.11.0):
@@ -17,6 +22,24 @@ PODS:
     - FirebaseRemoteConfig (~> 8.11.0)
   - FirebaseABTesting (8.11.0):
     - FirebaseCore (~> 8.0)
+  - FirebaseAnalytics (8.11.0):
+    - FirebaseAnalytics/AdIdSupport (= 8.11.0)
+    - FirebaseCore (~> 8.0)
+    - FirebaseInstallations (~> 8.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
+    - GoogleUtilities/MethodSwizzler (~> 7.7)
+    - GoogleUtilities/Network (~> 7.7)
+    - "GoogleUtilities/NSData+zlib (~> 7.7)"
+    - nanopb (~> 2.30908.0)
+  - FirebaseAnalytics/AdIdSupport (8.11.0):
+    - FirebaseCore (~> 8.0)
+    - FirebaseInstallations (~> 8.0)
+    - GoogleAppMeasurement (= 8.11.0)
+    - GoogleUtilities/AppDelegateSwizzler (~> 7.7)
+    - GoogleUtilities/MethodSwizzler (~> 7.7)
+    - GoogleUtilities/Network (~> 7.7)
+    - "GoogleUtilities/NSData+zlib (~> 7.7)"
+    - nanopb (~> 2.30908.0)
   - FirebaseCore (8.11.0):
     - FirebaseCoreDiagnostics (~> 8.0)
     - GoogleUtilities/Environment (~> 7.7)
@@ -116,6 +139,7 @@ DEPENDENCIES:
   - EpoxyCollectionView
   - EpoxyCore
   - EpoxyLayoutGroups
+  - Firebase/Analytics
   - Firebase/DynamicLinks
   - Firebase/RemoteConfig
   - FittedSheets
@@ -133,6 +157,7 @@ SPEC REPOS:
     - EpoxyLayoutGroups
     - Firebase
     - FirebaseABTesting
+    - FirebaseAnalytics
     - FirebaseCore
     - FirebaseCoreDiagnostics
     - FirebaseDynamicLinks
@@ -157,6 +182,7 @@ SPEC CHECKSUMS:
   EpoxyLayoutGroups: 8adbddfd610fd03161253236b3826fb1aa332a11
   Firebase: 44dd9724c84df18b486639e874f31436eaa9a20c
   FirebaseABTesting: aac00a5472250a45f1462675792030e44df025c7
+  FirebaseAnalytics: 4e4b13031034e6561ed3bd1d47b6fdabbd6487c6
   FirebaseCore: 2f4f85b453cc8fea4bb2b37e370007d2bcafe3f0
   FirebaseCoreDiagnostics: 64d9709d804a6c25bd77841371c1fcfd909d5601
   FirebaseDynamicLinks: f506c83eb7eba0f9861f84cd6b65c38b3bd5ff6f
@@ -173,6 +199,6 @@ SPEC CHECKSUMS:
   SPAlert: 1a8afa1c6ac86a82ab5b2cfdf7f9a51e68cb6c0c
   SwiftLint: 6bc52a21f0fd44cab9aa2dc8e534fb9f5e3ec507
 
-PODFILE CHECKSUM: b93c13440c6a4e5a798bb088bd170e7e25330932
+PODFILE CHECKSUM: b0d8d9313dd3624e65fae9ed04435aef9adc86f7
 
 COCOAPODS: 1.11.2

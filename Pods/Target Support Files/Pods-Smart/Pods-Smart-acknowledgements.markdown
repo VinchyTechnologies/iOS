@@ -1229,6 +1229,10 @@ This application makes use of the following third party libraries:
    limitations under the License.
 
 
+## FirebaseAnalytics
+
+Copyright 2021 Google
+
 ## FirebaseCore
 
 

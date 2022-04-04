@@ -303,7 +303,6 @@
 		8AD49F17267521040094E157 /* ReviewsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB2D25E177220076ED6D /* ReviewsPresenter.swift */; };
 		8AD49F182675210A0094E157 /* ReviewsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB3525E177220076ED6D /* ReviewsRouter.swift */; };
 		8AD49F192675210D0094E157 /* ReviewsRouterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44EFDB3625E177220076ED6D /* ReviewsRouterProtocol.swift */; };
-		8AD49F2C26752B4B0094E157 /* AnalyticsTrackable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD49F2B26752B4B0094E157 /* AnalyticsTrackable.swift */; };
 		8AD51DAB27650C620009499A /* ShowcasePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD51DAA27650C620009499A /* ShowcasePresenter.swift */; };
 		8AD51DAD27650C670009499A /* ShowcasePresenterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD51DAC27650C670009499A /* ShowcasePresenterProtocol.swift */; };
 		8AD51DAF27650D010009499A /* CurrencyViewControllerProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AD51DAE27650D010009499A /* CurrencyViewControllerProtocol.swift */; };
@@ -847,7 +846,6 @@
 		8AA9909E26D91FE000C32358 /* StoresInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoresInteractor.swift; sourceTree = "<group>"; };
 		8AA990A026D91FE000C32358 /* StoresRouterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoresRouterProtocol.swift; sourceTree = "<group>"; };
 		8AA990A126D91FE000C32358 /* StoresRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoresRouter.swift; sourceTree = "<group>"; };
-		8AD49F2B26752B4B0094E157 /* AnalyticsTrackable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AnalyticsTrackable.swift; sourceTree = "<group>"; };
 		8AD51DAA27650C620009499A /* ShowcasePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowcasePresenter.swift; sourceTree = "<group>"; };
 		8AD51DAC27650C670009499A /* ShowcasePresenterProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ShowcasePresenterProtocol.swift; sourceTree = "<group>"; };
 		8AD51DAE27650D010009499A /* CurrencyViewControllerProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CurrencyViewControllerProtocol.swift; sourceTree = "<group>"; };
@@ -2880,7 +2878,6 @@
 				CAA060D1252BC05C002C15B5 /* DeveloperFeatureToggles.swift */,
 				CA8198BF253CB0490056A1C6 /* ErrorDescription.swift */,
 				CA472AC1245EDE2F009149FF /* SceneDelegate.swift */,
-				8AD49F2B26752B4B0094E157 /* AnalyticsTrackable.swift */,
 				8A07930B26924DAF000ACA2B /* Document.swift */,
 				8A5145682757BEB000DC45CD /* Coordinator.swift */,
 				8A2BA4F3275D370A006D6AF4 /* AdFabric.swift */,
@@ -3857,7 +3854,6 @@
 				8A3C0F5D2732D38500947085 /* ControllerCell.swift in Sources */,
 				4437AA5D25E3A7CE00F6E838 /* WriteReviewAssembly.swift in Sources */,
 				8A313C0626447042009F2165 /* MapDetailStoreInteractor.swift in Sources */,
-				8AD49F2C26752B4B0094E157 /* AnalyticsTrackable.swift in Sources */,
 				4437AA6325E3A7CE00F6E838 /* WriteReviewInteractor.swift in Sources */,
 				8A313C0826447042009F2165 /* MapDetailStoreRouter.swift in Sources */,
 				8A916026268CE66C00240B18 /* AreYouInStorePresenterProtocol.swift in Sources */,

@@ -16,6 +16,10 @@ def commonPods
   epoxy
 end
 
+def analytics
+  pod 'Firebase/Analytics'
+end
+
 target 'Smart' do
   project 'Smart'
   pod 'GoogleUtilities'
@@ -26,6 +30,7 @@ target 'Smart' do
   pod 'SPAlert', '~> 2.1.4'
   pod 'FittedSheets'
   commonPods
+  analytics
 
   target 'SmartTests' do
     inherit! :search_paths
@@ -88,6 +93,12 @@ target 'VinchyCart' do
   project 'submodules/VinchyCart/VinchyCart'
   epoxy
 end
+
+target 'VinchyAnalytics' do
+  project 'submodules/VinchyAnalytics/VinchyAnalytics'
+  analytics
+end
+
 
 target 'VinchyAuthorization' do
   project 'submodules/VinchyAuthorization/VinchyAuthorization'
