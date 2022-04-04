@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		CA100BCB27D8DC6200B066C4 /* Database.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA100BCA27D8DC6200B066C4 /* Database.framework */; };
+		CA29AC2327F5B591002367BF /* CartService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA29AC2227F5B591002367BF /* CartService.swift */; };
 		CA55574327C551C90077E4D3 /* VinchyUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA55574227C551C90077E4D3 /* VinchyUI.framework */; };
 		CA55574727C556B60077E4D3 /* VinchyCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA55574627C556B60077E4D3 /* VinchyCore.framework */; };
 		CA55574B27C556C00077E4D3 /* StringFormatting.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA55574A27C556C00077E4D3 /* StringFormatting.framework */; };
@@ -33,6 +34,7 @@
 		72C5D0D44EEB6213EED58066 /* Pods-VinchyCart.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VinchyCart.release.xcconfig"; path = "Target Support Files/Pods-VinchyCart/Pods-VinchyCart.release.xcconfig"; sourceTree = "<group>"; };
 		7BF9F2F765321ED99B95E8D1 /* Pods_VinchyCart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VinchyCart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA100BCA27D8DC6200B066C4 /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA29AC2227F5B591002367BF /* CartService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartService.swift; sourceTree = "<group>"; };
 		CA55574227C551C90077E4D3 /* VinchyUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA55574627C556B60077E4D3 /* VinchyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA55574A27C556C00077E4D3 /* StringFormatting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StringFormatting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -97,6 +99,14 @@
 			path = ../../Pods;
 			sourceTree = "<group>";
 		};
+		CA29AC2127F5B57C002367BF /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				CA29AC2227F5B591002367BF /* CartService.swift */,
+			);
+			path = Services;
+			sourceTree = "<group>";
+		};
 		CA873A4427B69FA100F47033 = {
 			isa = PBXGroup;
 			children = (
@@ -137,6 +147,7 @@
 		CA873A5F27B6A25300F47033 /* Cart */ = {
 			isa = PBXGroup;
 			children = (
+				CA29AC2127F5B57C002367BF /* Services */,
 				CA873A6427B6A25300F47033 /* Assembly */,
 				CA873A6227B6A25300F47033 /* Input */,
 				CA873A6C27B6A25300F47033 /* Interactor */,
@@ -327,6 +338,7 @@
 				CA873A7A27B6A25300F47033 /* CartInteractorProtocol.swift in Sources */,
 				CA873A7327B6A25300F47033 /* CartInput.swift in Sources */,
 				CA873A7627B6A25300F47033 /* CartPresenter.swift in Sources */,
+				CA29AC2327F5B591002367BF /* CartService.swift in Sources */,
 				CA873A7227B6A25300F47033 /* CartViewModel.swift in Sources */,
 				CA873A7527B6A25300F47033 /* CartPresenterProtocol.swift in Sources */,
 				CA873A7C27B6A25300F47033 /* CartRouterProtocol.swift in Sources */,

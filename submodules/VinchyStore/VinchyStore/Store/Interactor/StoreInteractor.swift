@@ -82,6 +82,7 @@ final class StoreInteractor {
   private var assortimentWines: [ShortWine] = []
   private var personalRecommendedWines: [ShortWine]?
   private var selectedFilters: [(String, String)] = []
+  private var questions: [Question]?
   private lazy var inCartCartItems: [CartItem] = cartRepository.findAll().compactMap { item in
     if let productId = item.productId, let count = item.quantity {
       return CartItem(productID: productId, type: .wine, count: count)
@@ -92,6 +93,13 @@ final class StoreInteractor {
   private let throttler = Throttler()
 
   private var totalPrice: Int64 = 0
+
+  private var isQuestionsVisible: Bool {
+    guard let questions = questions else {
+      return false
+    }
+    return !questions.isEmpty
+  }
 
   private func configureStateMachine() {
     stateMachine.observe { [weak self] oldState, newState, _ in
@@ -116,6 +124,22 @@ final class StoreInteractor {
     var generalError: StoreInteractorError?
     switch input.mode {
     case .normal(let affilatedId):
+      if questions == nil {
+        dispatchGroup.enter()
+        Questions.shared.getQuestions(affilatedId: affilatedId) { [weak self] result in
+          guard let self = self else { return }
+          switch result {
+          case .success(let response):
+            self.questions = response
+            self.didTapQuestionsButton()
+
+          case .failure:
+            self.questions = []
+          }
+          self.dispatchGroup.leave()
+        }
+      }
+
       if personalRecommendedWines == nil {
         dispatchGroup.enter()
         Recommendations.shared.getPersonalRecommendedWines(
@@ -256,7 +280,7 @@ final class StoreInteractor {
       guard let data = data else {
         return
       }
-      presenter.update(data: data, needLoadMore: needLoadMore, isBottomButtonLoading: false, totalPrice: totalPrice, cartItems: inCartCartItems, recommendedWinesContentOffsetX: recommendedWinesContentOffsetX)
+      presenter.update(data: data, needLoadMore: needLoadMore, isBottomButtonLoading: false, totalPrice: totalPrice, cartItems: inCartCartItems, isQuestionsVisible: isQuestionsVisible, recommendedWinesContentOffsetX: recommendedWinesContentOffsetX)
     }
   }
 
@@ -278,7 +302,7 @@ final class StoreInteractor {
       self.save()
     }
 
-    presenter.update(data: data, needLoadMore: needLoadMore, isBottomButtonLoading: false, totalPrice: totalPrice, cartItems: inCartCartItems, recommendedWinesContentOffsetX: recommendedWinesContentOffsetX)
+    presenter.update(data: data, needLoadMore: needLoadMore, isBottomButtonLoading: false, totalPrice: totalPrice, cartItems: inCartCartItems, isQuestionsVisible: isQuestionsVisible, recommendedWinesContentOffsetX: recommendedWinesContentOffsetX)
   }
 
   private func save() {
@@ -301,10 +325,18 @@ final class StoreInteractor {
 // MARK: StoreInteractorProtocol
 
 extension StoreInteractor: StoreInteractorProtocol {
+
   var contextMenuRouter: ActivityRoutable & WriteNoteRoutable {
     router
   }
 
+  func didTapQuestionsButton() {
+    guard let affilatedId = partnerInfo?.affiliatedStoreId, let questions = questions, isQuestionsVisible, let currencyCode = partnerInfo?.preferredCurrencyCode else {
+      return
+    }
+
+    router.presentQuestiosViewController(affilatedId: affilatedId, questions: questions, currencyCode: currencyCode, questionsNavigationControllerDelegate: self)
+  }
   func didTapConfirmOrderButton() {
     guard let affilatedId = partnerInfo?.affiliatedStoreId else { return }
     router.presentCartViewController(affilatedId: affilatedId)
@@ -415,7 +447,9 @@ extension StoreInteractor: StoreInteractorProtocol {
     presenter.setLoadingFilters(data: .init(partnerInfo: partnerInfo, recommendedWines: personalRecommendedWines ?? [], assortimentWines: [], isLiked: isLiked(affilatedId: partnerInfo.affiliatedStoreId)))
     selectedFilters = filters
     DispatchQueue.main.asyncAfter(deadline: .now() + 0.95) {
-      self.loadInitData()
+      self.assortimentWines = []
+      self.data?.assortimentWines = []
+      self.loadData(offset: .zero)
     }
   }
 
@@ -478,4 +512,12 @@ extension StoreInteractor: ResultsSearchDelegate {
   }
 
   func didTapSearchButton(searchText: String?) { }
+}
+
+// MARK: QuestionsNavigationControllerDelegate
+
+extension StoreInteractor: QuestionsNavigationControllerDelegate {
+  func didRequestShowFilters() {
+    didTapFilterButton()
+  }
 }

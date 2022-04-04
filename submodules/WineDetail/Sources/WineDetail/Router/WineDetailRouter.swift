@@ -47,6 +47,10 @@ final class WineDetailRouter {
 
 extension WineDetailRouter: WineDetailRouterProtocol {
 
+  func presentQRViewController(affilatedId: Int, wineID: Int64) {
+    coordinator.presentQRViewController(affilatedId: affilatedId, wineID: wineID)
+  }
+
   func presentSafari(url: URL) {
     coordinator.presentSafari(url: url)
   }

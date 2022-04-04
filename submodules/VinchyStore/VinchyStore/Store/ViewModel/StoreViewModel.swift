@@ -11,7 +11,7 @@ import DisplayMini
 struct StoreViewModel {
 
   enum SectionID {
-    case logo, title, wines, winesSection, staticSelectedFilters, separator, assortiment, address, loading, services
+    case logo, title, wines, winesSection, staticSelectedFilters, separator, assortiment, address, loading, services, button
   }
 
   enum ItemID: String {
@@ -29,6 +29,7 @@ struct StoreViewModel {
     case logo(itemID: ItemID = .logoItem, LogoRow.Content)
     case title(itemID: ItemID = .titleItem, Label.Content)
     case address(itemID: ItemID = .addressItem, StoreMapRow.Content)
+    case button(content: ButtonView.Content)
     case services(ServicesButtonView.Content)
     case wines(itemID: ItemID = .winesItem, BottlesCollectionView.Content)
     case assortiment(headerDataID: ItemID = .headerAssortimentItem, header: FiltersCollectionView.Content, content: [AssortimentContent])
@@ -40,6 +41,9 @@ struct StoreViewModel {
       switch self {
       case .logo:
         return .logo
+
+      case .button:
+        return .button
 
       case .title:
         return .title

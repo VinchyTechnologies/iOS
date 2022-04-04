@@ -69,6 +69,32 @@ final class ShowcaseInteractor {
 
   private func loadData(offset: Int) {
     switch input.mode {
+    case .questions(let params, let affilatedId, let currencyCode):
+      if offset == .zero {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+          self.dispatchWorkItemHud.perform()
+        }
+      }
+
+      Partners.shared.getPartnerWines(partnerId: 1, affilatedId: affilatedId, filters: params, currencyCode: currencyCode, limit: 40, offset: offset, completion: { [weak self] result in
+        guard let self = self else { return }
+
+        if offset == .zero {
+          self.dispatchWorkItemHud.cancel()
+          DispatchQueue.main.async {
+            self.presenter.stopLoading()
+          }
+        }
+
+        switch result {
+        case .success(let data):
+          self.stateMachine.invokeSuccess(with: data)
+
+        case .failure(let error):
+          self.stateMachine.fail(with: error)
+        }
+      })
+
     case .advancedSearch(var params):
       if offset == .zero {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
@@ -148,7 +174,7 @@ final class ShowcaseInteractor {
     case .remote:
       needLoadMore = false
 
-    case .advancedSearch:
+    case .advancedSearch, .questions:
       break
     }
 
@@ -176,13 +202,26 @@ final class ShowcaseInteractor {
 // MARK: ShowcaseInteractorProtocol
 
 extension ShowcaseInteractor: ShowcaseInteractorProtocol {
+  func didTapPriceButton(wineID: Int64) {
+    switch input.mode {
+    case .advancedSearch, .remote:
+      break
+
+    case .questions(_, let affilatedId, _):
+      router.presentQRViewController(affilatedId: affilatedId, wineID: wineID)
+    }
+  }
+
+  func didTapRepeatQuestionsButton() {
+    router.popToRootQuestions()
+  }
 
   func didTapShare(sourceView: UIView) {
     switch input.mode {
     case .remote(let collectionID):
       router.didTapShareCollection(type: .fullInfo(collectionID: collectionID, titleText: title, logoURL: logoURL, sourceView: sourceView))
 
-    case .advancedSearch:
+    case .advancedSearch, .questions:
       return
     }
   }
@@ -196,6 +235,15 @@ extension ShowcaseInteractor: ShowcaseInteractorProtocol {
   }
 
   func didSelectWine(wineID: Int64) {
-    router.pushToWineDetailViewController(wineID: wineID, mode: .normal, shouldShowSimilarWine: true)
+    switch input.mode {
+    case .advancedSearch, .remote:
+      router.pushToWineDetailViewController(wineID: wineID, mode: .normal, shouldShowSimilarWine: true)
+
+    case .questions(_, let affilatedId, _):
+      guard let wine = wines.first(where: { $0.id == wineID }), let price = wine.price else {
+        return
+      }
+      router.pushToWineDetailViewController(wineID: wineID, mode: .partner(affilatedId: affilatedId, price: price, buyAction: .qr(affilietedId: affilatedId)), shouldShowSimilarWine: true)
+    }
   }
 }

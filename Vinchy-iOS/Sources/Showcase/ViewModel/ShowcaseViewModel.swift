@@ -37,9 +37,11 @@ struct ShowcaseViewModel {
   static let empty: Self = .init(
     state: .normal(header: .init(items: [], initiallySelectedIndex: 0), sections: []),
     navigationTitle: nil,
-    isSharable: false)
+    isSharable: false,
+    bottomBarViewModel: nil)
 
   let state: State
   let navigationTitle: String?
   let isSharable: Bool
+  let bottomBarViewModel: BottomPriceBarView.Content?
 }

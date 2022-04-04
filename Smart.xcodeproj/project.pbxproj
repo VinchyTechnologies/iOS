@@ -410,6 +410,8 @@
 		CA51BBED254094A100208F71 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA51BBEC254094A100208F71 /* AdSupport.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		CA51BBEF254094B000208F71 /* AppTrackingTransparency.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA51BBEE254094B000208F71 /* AppTrackingTransparency.framework */; settings = {ATTRIBUTES = (Weak, ); }; };
 		CA63A12B249A23C100144320 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA63A129249A23C100144320 /* Localizable.strings */; };
+		CA6AE13327DCA48C004FBB05 /* Questions.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA6AE13227DCA48C004FBB05 /* Questions.framework */; };
+		CA6AE13427DCA48C004FBB05 /* Questions.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA6AE13227DCA48C004FBB05 /* Questions.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA7A87FA2506B9D600AAD10F /* ShareUsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7A87F92506B9D600AAD10F /* ShareUsView.swift */; };
 		CA7B835824EED1B100991F24 /* VinchyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B835724EED1B100991F24 /* VinchyViewController.swift */; };
 		CA7B835B24EED6E600991F24 /* StoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B835A24EED6E600991F24 /* StoryCollectionCell.swift */; };
@@ -562,6 +564,7 @@
 				8A0A448C279AA905001A8CA1 /* Widget.framework in Embed Frameworks */,
 				8A5145E22757EC9000DC45CD /* VinchyStore.framework in Embed Frameworks */,
 				8A9C7F0927613A3300A5B694 /* DisplayMini.framework in Embed Frameworks */,
+				CA6AE13427DCA48C004FBB05 /* Questions.framework in Embed Frameworks */,
 				CA8622CD27B2A9AF0066682A /* Network.framework in Embed Frameworks */,
 				8A62EF0C2795C09D005445B4 /* Pager.framework in Embed Frameworks */,
 				CACB3DC627C2988B00AD999D /* VinchyOrder.framework in Embed Frameworks */,
@@ -946,6 +949,7 @@
 		CA63A12A249A23C100144320 /* Base */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = Base; path = Base.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA63A12C249A244300144320 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
 		CA63A12D249A249300144320 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		CA6AE13227DCA48C004FBB05 /* Questions.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Questions.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA78E28325751D97000ECDA8 /* Vinchy.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Vinchy.entitlements; sourceTree = "<group>"; };
 		CA7A87F92506B9D600AAD10F /* ShareUsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareUsView.swift; sourceTree = "<group>"; };
 		CA7B825C24EC750300991F24 /* VinchyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1077,6 +1081,7 @@
 				8A299EF3274FB7B400355602 /* Spotlight.framework in Frameworks */,
 				CACB3C7227BBDB2400AD999D /* VinchyCart.framework in Frameworks */,
 				8A63CCBA26754630003B1D4D /* LocationUI.framework in Frameworks */,
+				CA6AE13327DCA48C004FBB05 /* Questions.framework in Frameworks */,
 				8A5145E12757EC9000DC45CD /* VinchyStore.framework in Frameworks */,
 				8A63CCBC26754633003B1D4D /* StringFormatting.framework in Frameworks */,
 				8A7BCD712757B25000B56313 /* ThirdParty.framework in Frameworks */,
@@ -1479,6 +1484,7 @@
 		46483F371463D95E22014241 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CA6AE13227DCA48C004FBB05 /* Questions.framework */,
 				CACB3DC427C2988B00AD999D /* VinchyOrder.framework */,
 				CACB3C7127BBDB2400AD999D /* VinchyCart.framework */,
 				CA8622CB27B2A9AF0066682A /* Network.framework */,
@@ -2115,6 +2121,7 @@
 		8A62EF192795D83C005445B4 /* Widget */ = {
 			isa = PBXGroup;
 			children = (
+				8A0A4471279AA098001A8CA1 /* WidgetExtension.entitlements */,
 				8A0A44A7279C795C001A8CA1 /* Widget.intentdefinition */,
 				8A62EF1D2795D83E005445B4 /* Assets.xcassets */,
 				8A62EF1F2795D83E005445B4 /* Info.plist */,
@@ -2773,7 +2780,6 @@
 		CA472AB3245EDE2F009149FF = {
 			isa = PBXGroup;
 			children = (
-				8A0A4471279AA098001A8CA1 /* WidgetExtension.entitlements */,
 				CA472ABE245EDE2F009149FF /* Vinchy-iOS */,
 				CA472AD5245EDE30009149FF /* SmartTests */,
 				CA472AE0245EDE30009149FF /* SmartUITests */,
@@ -4214,10 +4220,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CODE_SIGN_ENTITLEMENTS = WidgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Widget/WidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widget/Info.plist;
@@ -4245,10 +4251,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				ASSETCATALOG_COMPILER_WIDGET_BACKGROUND_COLOR_NAME = WidgetBackground;
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
-				CODE_SIGN_ENTITLEMENTS = WidgetExtension.entitlements;
+				CODE_SIGN_ENTITLEMENTS = Widget/WidgetExtension.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Widget/Info.plist;
@@ -4280,7 +4286,7 @@
 				CODE_SIGN_ENTITLEMENTS = VinchyAppClip/VinchyAppClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				ENABLE_BITCODE = YES;
 				GCC_OPTIMIZATION_LEVEL = s;
@@ -4320,7 +4326,7 @@
 				CODE_SIGN_ENTITLEMENTS = VinchyAppClip/VinchyAppClip.entitlements;
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				ENABLE_BITCODE = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -4479,7 +4485,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Vinchy-iOS/Resources/Vinchy.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Vinchy-iOS/Resources/Info.plist";
@@ -4512,7 +4518,7 @@
 				CODE_SIGN_ENTITLEMENTS = "Vinchy-iOS/Resources/VinchyRelease.entitlements";
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 4;
+				CURRENT_PROJECT_VERSION = 8;
 				DEVELOPMENT_TEAM = YKG5C7DUKF;
 				ENABLE_BITCODE = YES;
 				INFOPLIST_FILE = "$(SRCROOT)/Vinchy-iOS/Resources/Info.plist";

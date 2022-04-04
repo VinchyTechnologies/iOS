@@ -22,6 +22,7 @@ public enum WineDetailMode {
   public enum BuyAction {
     case openURL(url: URL?)
     case cart(affilatedId: Int, price: Price)
+    case qr(affilietedId: Int)
     case none
   }
 

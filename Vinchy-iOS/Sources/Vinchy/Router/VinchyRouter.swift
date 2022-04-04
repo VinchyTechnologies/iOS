@@ -52,20 +52,25 @@ extension VinchyRouter: VinchyRouterProtocol {
 
     let recommendedWines = nearestPartner.recommendedWines
 
-    let viewModel = AreYouInStoreViewModel(
-      sections: [
-        .title([
-          .init(titleText: NSAttributedString(string: localized("AreYouInStore.SeemsYouAreIn") + nearestPartner.partner.title.quoted, font: Font.bold(24), textColor: .dark, paragraphAlignment: .center)),
-        ]),
+    var sections: [AreYouInStoreViewModel.Section] = [
+      .title([
+        .init(titleText: NSAttributedString(string: localized("AreYouInStore.SeemsYouAreIn") + nearestPartner.partner.title.quoted, font: Font.bold(24), textColor: .dark, paragraphAlignment: .center)),
+      ]),
+    ]
 
+    if !recommendedWines.isEmpty {
+      sections += [
         .title([
           .init(titleText: NSAttributedString(string: localized("AreYouInStore.RecommendToBuy"), font: Font.regular(16), textColor: .dark)),
         ]),
-
         .recommendedWines([
           .init(type: .bottles, collections: [.init(wineList: recommendedWines)]),
         ]),
-      ],
+      ]
+    }
+
+    let viewModel = AreYouInStoreViewModel(
+      sections: sections,
       bottomButtonsViewModel: bottomButtonsViewModel)
 
     let height = AreYouInStoreViewController.height(viewModel: viewModel) // TODO: - input

@@ -41,6 +41,8 @@
 		CA8622C527B2A9910066682A /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA8622C427B2A9910066682A /* Network.framework */; };
 		CAA28D3E27DDC884009CD7DD /* Filters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA28D3D27DDC884009CD7DD /* Filters.swift */; };
 		CAA28D4027DDC899009CD7DD /* AvailableFilters.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA28D3F27DDC899009CD7DD /* AvailableFilters.swift */; };
+		CAA28D6B27E1D87D009CD7DD /* Questions.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA28D6A27E1D87D009CD7DD /* Questions.swift */; };
+		CAA28D6D27E1D8D1009CD7DD /* Question.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA28D6C27E1D8D1009CD7DD /* Question.swift */; };
 		CACB3DAF27C282AC00AD999D /* Order.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACB3DAE27C282AC00AD999D /* Order.swift */; };
 /* End PBXBuildFile section */
 
@@ -82,6 +84,8 @@
 		CA8622C427B2A9910066682A /* Network.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Network.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CAA28D3D27DDC884009CD7DD /* Filters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Filters.swift; sourceTree = "<group>"; };
 		CAA28D3F27DDC899009CD7DD /* AvailableFilters.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvailableFilters.swift; sourceTree = "<group>"; };
+		CAA28D6A27E1D87D009CD7DD /* Questions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Questions.swift; sourceTree = "<group>"; };
+		CAA28D6C27E1D8D1009CD7DD /* Question.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Question.swift; sourceTree = "<group>"; };
 		CACB3DAE27C282AC00AD999D /* Order.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Order.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -165,13 +169,16 @@
 				44834D0F25C6F33400CD187F /* AccountID.swift */,
 				443601D825CEF23E00ABA7F1 /* AccountInfo.swift */,
 				8AD7A1DD263889E7007D4273 /* AffiliatedStore.swift */,
+				CAA28D3F27DDC899009CD7DD /* AvailableFilters.swift */,
 				CA7B824B24EC73B500991F24 /* Collection.swift */,
 				CA7B824F24EC73FE00991F24 /* Compilation.swift */,
 				CA7B825324EC744900991F24 /* DishCompatibility.swift */,
 				748491E126EE185C006A8851 /* NearestPartner.swift */,
+				CACB3DAE27C282AC00AD999D /* Order.swift */,
 				8A313C102645B72C009F2165 /* PartnerInfo.swift */,
 				8AD7A1DA2638894A007D4273 /* PartnerOnMap.swift */,
 				8A51EA162775DED7007B0B38 /* Price.swift */,
+				CAA28D6C27E1D8D1009CD7DD /* Question.swift */,
 				8ACE3AEF27205D930035BE47 /* Rating.swift */,
 				4495628F25E2F8AB005E79DA /* Review.swift */,
 				8A7D7924273ED7E7005F075A /* ReviewedWine.swift */,
@@ -180,8 +187,6 @@
 				4410AE2F25E5479400A84FF9 /* UpdateTokensResponse.swift */,
 				CA7B824824EC738500991F24 /* Wine.swift */,
 				CA7A87EF250287BB00AAD10F /* Winery.swift */,
-				CACB3DAE27C282AC00AD999D /* Order.swift */,
-				CAA28D3F27DDC899009CD7DD /* AvailableFilters.swift */,
 			);
 			path = ServiceModels;
 			sourceTree = "<group>";
@@ -205,6 +210,7 @@
 				4495629225E2F9EF005E79DA /* Reviews.swift */,
 				CA7B825A24EC74B200991F24 /* Wines.swift */,
 				CAA28D3D27DDC884009CD7DD /* Filters.swift */,
+				CAA28D6A27E1D87D009CD7DD /* Questions.swift */,
 			);
 			path = Endpoints;
 			sourceTree = "<group>";
@@ -298,6 +304,7 @@
 				CA7B825424EC744900991F24 /* DishCompatibility.swift in Sources */,
 				4410AE3025E5479400A84FF9 /* UpdateTokensResponse.swift in Sources */,
 				CA7B825024EC73FE00991F24 /* Compilation.swift in Sources */,
+				CAA28D6D27E1D8D1009CD7DD /* Question.swift in Sources */,
 				8AA7BA7B275CE50000BF68E8 /* AuthService.swift in Sources */,
 				CA7B825924EC749600991F24 /* CompilationsEndpoint.swift in Sources */,
 				8AD7A1DB2638894A007D4273 /* PartnerOnMap.swift in Sources */,
@@ -310,6 +317,7 @@
 				4495629025E2F8AB005E79DA /* Review.swift in Sources */,
 				748491E226EE185C006A8851 /* NearestPartner.swift in Sources */,
 				CAA28D4027DDC899009CD7DD /* AvailableFilters.swift in Sources */,
+				CAA28D6B27E1D87D009CD7DD /* Questions.swift in Sources */,
 				CA7B824924EC738500991F24 /* Wine.swift in Sources */,
 				CAA28D3E27DDC884009CD7DD /* Filters.swift in Sources */,
 				8A51EA172775DED7007B0B38 /* Price.swift in Sources */,

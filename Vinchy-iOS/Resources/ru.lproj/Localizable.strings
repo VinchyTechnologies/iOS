@@ -249,3 +249,14 @@
 "AdvancesdSearch.Price" = "цена";
 "AdvancesdSearch.Price.From" = "от";
 "AdvancesdSearch.Price.To" = "до";
+
+// Questions
+"Questions.Recommendwine" = "подобрать вино";
+"Questions.OnlyOne" = "можно выбрать только один вариант";
+"Questions.Multiple" = "можно выбрать несколько вариантов";
+"Questions.Again" = "пройти тест заново";
+"Questions.Final" = "показать вина";
+
+// QR
+"QR.Title" = "покажите код при оплате";
+"QR.Subtitle" = "чтобы получить скидку покажите код продавцу/официанту";

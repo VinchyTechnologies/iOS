@@ -216,7 +216,7 @@ open class ContextMenu: NSObject {
     }
   }
 
-  func addCloseButton(){
+  func addCloseButton() {
 
     if !customView.subviews.contains(closeButton) {
       customView.addSubview(closeButton)

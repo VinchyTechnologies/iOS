@@ -9,6 +9,7 @@
 import Database
 import Display
 import DisplayMini
+import EpoxyBars
 import EpoxyCollectionView
 import EpoxyCore
 import StringFormatting
@@ -28,6 +29,17 @@ private enum C {
 
 final class ShowcaseViewController: UIViewController, Loadable {
 
+  // MARK: Lifecycle
+
+  public init(input: ShowcaseInput) {
+    self.input = input
+    super.init(nibName: nil, bundle: nil)
+  }
+
+  required init?(coder: NSCoder) {
+    fatalError("init(coder:) has not been implemented")
+  }
+
   // MARK: Internal
 
   var interactor: ShowcaseInteractorProtocol?
@@ -39,9 +51,8 @@ final class ShowcaseViewController: UIViewController, Loadable {
 
     view.backgroundColor = .mainBackground
     navigationItem.largeTitleDisplayMode = .never
-
+    let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
     if isModal {
-      let imageConfig = UIImage.SymbolConfiguration(pointSize: 20, weight: .bold, scale: .default)
       navigationItem.leftBarButtonItem = UIBarButtonItem(
         image: UIImage(systemName: "xmark", withConfiguration: imageConfig),
         style: .plain,
@@ -58,6 +69,21 @@ final class ShowcaseViewController: UIViewController, Loadable {
       collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
     ])
 
+    bottomBarInstaller.install()
+
+    switch input.mode {
+
+    case .advancedSearch, .remote:
+      break
+
+    case .questions:
+      navigationItem.rightBarButtonItem = UIBarButtonItem(
+        image: UIImage(systemName: "xmark", withConfiguration: imageConfig),
+        style: .plain,
+        target: self,
+        action: #selector(didTapCloseBarButtonItem(_:)))
+    }
+
     interactor?.viewDidLoad()
   }
 
@@ -72,6 +98,8 @@ final class ShowcaseViewController: UIViewController, Loadable {
   }
 
   // MARK: Private
+
+  private let input: ShowcaseInput
 
   private var shouldCallScrollViewDidScroll = true
   private var isGoingScrollToTopViaTappingStatusBar = false
@@ -115,6 +143,10 @@ final class ShowcaseViewController: UIViewController, Loadable {
   }()
 
   private var viewModel: ShowcaseViewModel = .empty
+
+  private lazy var bottomBarInstaller = BottomBarInstaller(
+    viewController: self,
+    bars: bars)
 
   @SectionModelBuilder
   private var sections: [SectionModel] {
@@ -173,13 +205,25 @@ final class ShowcaseViewController: UIViewController, Loadable {
                 }()
 
                 let itemWidth = Int((UIScreen.main.bounds.width - C.horizontalInset * CGFloat(rowCount + 1)) / CGFloat(rowCount))
-                let itemHeight = Int(Double(itemWidth) * 1.5)
+                let itemHeight = 250
+                var kind: WineBottleView.Style.Kind = .normal
+                switch input.mode {
+                case .advancedSearch, .remote:
+                  break
+
+                case .questions:
+                  kind = .price
+                }
                 return WineBottleView.itemModel(
                   dataID: itemID,
                   content: content,
-                  style: .init(kind: .normal))
+                  style: .init(kind: kind))
                   .didSelect({ [weak self] _ in
                     self?.interactor?.didSelectWine(wineID: content.wineID)
+                  })
+                  .setBehaviors({ [weak self] context in
+                    guard let self = self else { return }
+                    context.view.delegate = self
                   })
                   .flowLayoutItemSize(.init(width: itemWidth, height: itemHeight))
 
@@ -206,6 +250,23 @@ final class ShowcaseViewController: UIViewController, Loadable {
     }
   }
 
+  @BarModelBuilder
+  private var bars: [BarModeling] {
+    if let bottomPriceBarViewModel = viewModel.bottomBarViewModel {
+      [
+        BottomPriceBarView.barModel(
+          dataID: nil,
+          content: bottomPriceBarViewModel,
+          behaviors: .init(didSelect: { [weak self] _ in
+            self?.interactor?.didTapRepeatQuestionsButton()
+          }),
+          style: .init(kind: .buttonOnly)),
+      ]
+    } else {
+      []
+    }
+  }
+
   private func shouldScroll(isDecelerating: Bool, isDragging: Bool) -> Bool {
     if isGoingScrollToTopViaTappingStatusBar {
       return true
@@ -213,7 +274,6 @@ final class ShowcaseViewController: UIViewController, Loadable {
       return (isDecelerating || isDragging) && shouldCallScrollViewDidScroll
     }
   }
-
   private func updateShadowSupplementaryHeaderView(offset: CGFloat) {
     let value: CGFloat = offset
     let alpha = min(1, max(0, value / 10))
@@ -255,6 +315,7 @@ extension ShowcaseViewController: ShowcaseViewControllerProtocol {
       collectionView.isScrollEnabled = false
     }
     collectionView.setSections(sections, animated: true)
+    bottomBarInstaller.setBars(bars, animated: true)
   }
 }
 
@@ -355,5 +416,21 @@ extension ShowcaseViewController: UIScrollViewDelegate {
 
   func scrollViewDidScrollToTop(_ scrollView: UIScrollView) {
     isGoingScrollToTopViaTappingStatusBar = false
+  }
+}
+
+// MARK: WineBottleViewDelegate
+
+extension ShowcaseViewController: WineBottleViewDelegate {
+  func didTapShareContextMenu(wineID: Int64, sourceView: UIView) {
+
+  }
+
+  func didTapWriteNoteContextMenu(wineID: Int64) {
+
+  }
+
+  func didTapPriceButton(_ button: UIButton, wineID: Int64) {
+    interactor?.didTapPriceButton(wineID: wineID)
   }
 }

@@ -41,6 +41,7 @@ public let availableCurrencyCodes = Set([
   "TRY",
   "USD",
   "ZAR",
+  "EUR",
 ])
 
 var defaultCurrency: String = {
@@ -50,6 +51,6 @@ var defaultCurrency: String = {
   {
     return localeCurrencyCode
   } else {
-    return "USD"
+    return "EUR"
   }
 }()

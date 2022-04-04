@@ -13,6 +13,7 @@ import DisplayMini
 import FirebaseDynamicLinks
 import FittedSheets
 import Network
+import Questions
 import UIKit
 import VinchyAuthorization
 import VinchyCart
@@ -21,9 +22,20 @@ import VinchyUI
 
 // MARK: - Coordinator
 
-final class Coordinator: ShowcaseRoutable, WineDetailRoutable, WriteNoteRoutable, ActivityRoutable, AdvancedSearchRoutable, ReviewDetailRoutable, ReviewsRoutable, WriteReviewRoutable, StoresRoutable, StoreRoutable, ResultsSearchRoutable, AuthorizationRoutable, WineShareRoutable, StatusAlertable, SafariRoutable, StoreShareRoutable, CollectionShareRoutable, CartRoutable {
-
+final class Coordinator: ShowcaseRoutable, WineDetailRoutable, WriteNoteRoutable, ActivityRoutable, AdvancedSearchRoutable, ReviewDetailRoutable, ReviewsRoutable, WriteReviewRoutable, StoresRoutable, StoreRoutable, ResultsSearchRoutable, AuthorizationRoutable, WineShareRoutable, StatusAlertable, SafariRoutable, StoreShareRoutable, CollectionShareRoutable, CartRoutable, QuestionsRoutable, QRRoutable {
   static let shared = Coordinator()
+
+  func presentQRViewController(affilatedId: Int, wineID: Int64) {
+    let controller = QRAssembly.assemblyModule(input: .init(affilietedId: affilatedId, wineID: wineID))
+    let navigationController = VinchyNavigationController(rootViewController: controller)
+    UIApplication.topViewController()?.present(navigationController, animated: true, completion: nil)
+  }
+
+  func presentQuestiosViewController(affilatedId: Int, questions: [Question], currencyCode: String, questionsNavigationControllerDelegate: QuestionsNavigationControllerDelegate?) {
+    let controller = QuestionsNavigationController(questions: questions, affilatedId: affilatedId, currencyCode: currencyCode, coordinator: Coordinator.shared)
+    controller.questionsNavigationControllerDelegate = questionsNavigationControllerDelegate
+    UIApplication.topViewController()?.present(controller, animated: true, completion: nil)
+  }
 
   func presentCartViewController(affilatedId: Int) {
     let controller = CartAssembly.assemblyModule(input: .init(affilatedId: affilatedId), coordinator: Coordinator.shared)
