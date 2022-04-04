@@ -112,11 +112,13 @@ public final class HorizontalWineView: UIView, EpoxyableView {
 
       if let subtitleText = subtitleText {
         result += subtitleText.height(forWidth: width, font: Font.medium(18), numberOfLines: 0)
+        result += .vSpacing
       }
 
       if let badgeText = badgeText {
         result += badgeText.height(forWidth: width, font: Font.with(size: 12, design: .round, traits: .bold)) + 3 + 3
         result += .spacerHeight
+        result += .vSpacing
       }
 
       if let titleText = titleText {
@@ -159,7 +161,7 @@ public final class HorizontalWineView: UIView, EpoxyableView {
           Label.groupItem(
             dataID: DataID.subtitle,
             content: subtitleText,
-            style: .style(with: .subtitle))
+            style: .style(with: .subtitle, backgroundColor: .clear))
 //            .lineBreakMode(.byCharWrapping)
 //            .contentCompressionResistancePriority(.required, for: .horizontal)
         }
@@ -168,7 +170,7 @@ public final class HorizontalWineView: UIView, EpoxyableView {
           Label.groupItem(
             dataID: DataID.title,
             content: titleText,
-            style: .style(with: .lagerTitle))
+            style: .style(with: .lagerTitle, backgroundColor: .clear))
 //            .lineBreakMode(.byCharWrapping)
 //            .contentCompressionResistancePriority(.required, for: .horizontal)
         }
@@ -218,16 +220,16 @@ public final class HorizontalWineView: UIView, EpoxyableView {
   private func badge(text: String?) -> GroupItemModeling {
     GroupItem<Button>(
       dataID: DataID.price,
-      content: "",
+      content: text,
       make: {
         let button = Button()
         // this is required by LayoutGroups to ensure AutoLayout works as expected
         button.translatesAutoresizingMaskIntoConstraints = false
         return button
       },
-      setContent: { context, _ in
+      setContent: { context, content in
         context.constrainable.backgroundColor = .systemPurple
-        context.constrainable.setTitle(text, for: [])
+        context.constrainable.setTitle(content, for: [])
         context.constrainable.titleLabel?.font = Font.with(size: 12, design: .round, traits: .bold)
         context.constrainable.setTitleColor(.white, for: [])
         context.constrainable.contentEdgeInsets = .init(top: 3, left: 6, bottom: 3, right: 6)
@@ -242,7 +244,7 @@ public final class HorizontalWineView: UIView, EpoxyableView {
   private func priceButton(text: String?) -> GroupItemModeling {
     GroupItem<Button>(
       dataID: DataID.price,
-      content: "",
+      content: text,
       make: {
         let button = Button()
         // this is required by LayoutGroups to ensure AutoLayout works as expected
@@ -250,8 +252,8 @@ public final class HorizontalWineView: UIView, EpoxyableView {
         button.heightAnchor.constraint(equalToConstant: .buttonHeight).isActive = true
         return button
       },
-      setContent: { context, _ in
-        context.constrainable.setTitle(text, for: [])
+      setContent: { context, content in
+        context.constrainable.setTitle(content, for: [])
         context.constrainable.titleLabel?.font = Font.with(size: 16, design: .round, traits: .bold)
         context.constrainable.setTitleColor(.white, for: [])
         context.constrainable.contentEdgeInsets = .init(top: 0, left: 12, bottom: 0, right: 12)
@@ -266,7 +268,7 @@ public final class HorizontalWineView: UIView, EpoxyableView {
   private func oldPriceView(text: String?) -> GroupItemModeling {
     GroupItem<UILabel>(
       dataID: DataID.oldPrice,
-      content: "",
+      content: text,
       make: {
         let label = UILabel()
         // this is required by LayoutGroups to ensure AutoLayout works as expected
@@ -274,8 +276,8 @@ public final class HorizontalWineView: UIView, EpoxyableView {
 //        button.heightAnchor.constraint(equalToConstant: .buttonHeight).isActive = true
         return label
       },
-      setContent: { context, _ in
-        let attributeString = NSMutableAttributedString(string: text ?? "")
+      setContent: { context, content in
+        let attributeString = NSMutableAttributedString(string: content ?? "")
         attributeString.addAttribute(NSAttributedString.Key.strikethroughStyle, value: NSUnderlineStyle.single.rawValue, range: NSRange(location: 0, length: attributeString.length))
         context.constrainable.font = Font.with(size: 14, design: .round, traits: .bold)
         context.constrainable.attributedText = attributeString

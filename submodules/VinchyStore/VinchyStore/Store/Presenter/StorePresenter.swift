@@ -181,6 +181,13 @@ extension StorePresenter: StorePresenterProtocol {
           return nil
         }()
 
+        let oldPriceText: String? = {
+          if let amount = wine.oldPrice?.amount, let currency = wine.oldPrice?.currencyCode {
+            return formatCurrencyAmount(amount, currency: currency)
+          }
+          return nil
+        }()
+
         let subtitleText: String? = {
           var result = ""
           let flag = emojiFlagForISOCountryCode(wine.winery?.countryCode ?? "")
@@ -200,8 +207,8 @@ extension StorePresenter: StorePresenterProtocol {
           titleText: wine.title,
           subtitleText: subtitleText,
           buttonText: buttonText,
-          oldPriceText: nil,
-          badgeText: nil,
+          oldPriceText: oldPriceText,
+          badgeText: wine.discountText,
           rating: wine.rating)
       })
 

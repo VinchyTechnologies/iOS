@@ -44,7 +44,13 @@ final class ResultsSearchViewController: UIViewController {
     switch input.mode {
     case .normal:
       view.addSubview(collectionView)
-      collectionView.fill()
+      collectionView.translatesAutoresizingMaskIntoConstraints = false
+      NSLayoutConstraint.activate([
+        collectionView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor),
+        collectionView.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor),
+        collectionView.bottomAnchor.constraint(equalTo: view.bottomAnchor),
+        collectionView.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor),
+      ])
       collectionView.backgroundColor = .mainBackground
 
     case .storeDetail:
@@ -79,6 +85,16 @@ final class ResultsSearchViewController: UIViewController {
     navigationController?.setNavigationBarHidden(false, animated: true)
   }
 
+  override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+    super.viewWillTransition(to: size, with: coordinator)
+    if UIApplication.shared.applicationState != .background {
+      coordinator.animate(alongsideTransition: { _ in
+        self.collectionViewSize = size
+        self.collectionView.setSections(self.sections, animated: false)
+      })
+    }
+  }
+
   override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
     super.traitCollectionDidChange(previousTraitCollection)
     let blurEffect = UIBlurEffect(style: traitCollection.userInterfaceStyle == .dark ? .dark : .light)
@@ -86,6 +102,8 @@ final class ResultsSearchViewController: UIViewController {
   }
 
   // MARK: Private
+
+  private lazy var collectionViewSize: CGSize = view.frame.size
 
   private lazy var blurEffectView = UIVisualEffectView()
 
@@ -95,74 +113,83 @@ final class ResultsSearchViewController: UIViewController {
 
   private let input: ResultsSearchInput
 
-  // swiftformat:disable:next redundantType
-  private lazy var layout: UICollectionViewCompositionalLayout = UICollectionViewCompositionalLayout { [weak self] sectionNumber, _ -> NSCollectionLayoutSection? in
+  private let layout = UICollectionViewFlowLayout()
 
-    guard let self = self else { return nil }
-
-    switch self.viewModel?.state {
-    case .history(let sections):
-      switch sections[sectionNumber] {
-      case .recentlySearched:
-        let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(250)))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(150), heightDimension: .absolute(250)), subitems: [item])
-        group.contentInsets = .init(top: 0, leading: 5, bottom: 0, trailing: 5)
-        let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 15, leading: 11, bottom: 0, trailing: 11)
-        section.orthogonalScrollingBehavior = .continuous
-        return section
-
-      case .titleRecentlySearched(let model):
-        let width = CGFloat(self.collectionView.frame.width - CGFloat(2 * 16))
-        let height = CGFloat(TextCollectionCell.height(viewModel: model[sectionNumber], width: width))
-        let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(width), heightDimension: .absolute(height)), subitems: [item])
-        group.contentInsets = .init(top: 0, leading: 8, bottom: 0, trailing: 0)
-        let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 15, leading: 8, bottom: 0, trailing: 0)
-        return section
-      }
-
-    case .results(let sections):
-      switch sections[sectionNumber] {
-      case .didNotFindTheWine:
-        let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .absolute(65)), subitems: [item])
-        group.contentInsets = .init(top: 0, leading: 8, bottom: 0, trailing: 0)
-        let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 0, leading: 16, bottom: 0, trailing: 16)
-        return section
-
-      case .searchResults:
-        let width = CGFloat(self.collectionView.frame.width - CGFloat(2 * 16))
-        let item = NSCollectionLayoutItem(layoutSize: .init(widthDimension: .fractionalWidth(1), heightDimension: .fractionalHeight(1)))
-        let group = NSCollectionLayoutGroup.horizontal(layoutSize: .init(widthDimension: .absolute(width), heightDimension: .absolute(130)), subitems: [item])
-        group.contentInsets = .init(top: 0, leading: 8, bottom: 0, trailing: 0)
-        let section = NSCollectionLayoutSection(group: group)
-        section.contentInsets = .init(top: 0, leading: 8, bottom: 0, trailing: 0)
-        return section
-      }
-
-    case .none:
-      return nil
-    }
-  }
-
-  private lazy var collectionView: UICollectionView = {
-    let collectionView = WineDetailCollectionView(frame: .zero, collectionViewLayout: layout)
-    collectionView.dataSource = self
-    collectionView.delegate = self
+  private lazy var collectionView: CollectionView = {
+    let collectionView = CollectionView(layout: layout)
     collectionView.delaysContentTouches = false
     collectionView.keyboardDismissMode = .onDrag
-
-    collectionView.register(
-      WineCollectionCell.self,
-      DidnotFindTheWineCollectionCell.self,
-      WineCollectionViewCell.self,
-      TextCollectionCell.self)
-
     return collectionView
   }()
+
+  private var viewModel: ResultsSearchViewModel = .empty
+
+  @SectionModelBuilder
+  private var sections: [SectionModel] {
+    viewModel.sections.compactMap { section in
+      switch section {
+      case .title(let content):
+        let width: CGFloat = collectionViewSize.width - 48
+        let style = Label.Style.style(with: .lagerTitle)
+        let height: CGFloat = Label.height(
+          for: content,
+          width: width,
+          style: style)
+        return SectionModel(dataID: UUID()) {
+          Label.itemModel(
+            dataID: UUID(),
+            content: content,
+            style: style)
+        }
+        .flowLayoutItemSize(.init(width: width, height: height))
+        .flowLayoutSectionInset(.init(top: 8, left: 24, bottom: 8, right: 24))
+
+      case .recentlySearched(let content):
+        return SectionModel(dataID: UUID()) {
+          BottlesCollectionView.itemModel(
+            dataID: UUID(),
+            content: content,
+            style: .init())
+            .setBehaviors({ [weak self] context in
+              context.view.bottlesCollectionViewDelegate = self
+            })
+        }
+        .flowLayoutItemSize(.init(width: collectionViewSize.width, height: 250))
+        .flowLayoutSectionInset(.init(top: 0, left: 0, bottom: 16, right: 0))
+
+      case .horizontalWine(let content):
+        let style = HorizontalWineView.Style(id: UUID(), kind: content.buttonText.isNilOrEmpty ? .common : .price)
+        return SectionModel(dataID: UUID()) {
+          HorizontalWineView.itemModel(
+            dataID: UUID(),
+            content: content,
+            behaviors: .init(didTap: { [weak self] _, wineID in
+              self?.interactor?.didSelectHorizontalWine(wineID: wineID)
+              self?.resultsSearchDelegate?.didTapBottleCell(wineID: wineID)
+            }),
+            style: style)
+            .didSelect { [weak self] _ in
+              self?.interactor?.didSelectHorizontalWine(wineID: content.wineID)
+              self?.resultsSearchDelegate?.didTapBottleCell(wineID: content.wineID)
+            }
+        }
+        .flowLayoutItemSize(.init(width: collectionViewSize.width, height: content.height(width: collectionViewSize.width, style: style)))
+
+      case .didnotFindWine(let content):
+        return SectionModel(dataID: UUID()) {
+          DidnotFindTheWineView.itemModel(
+            dataID: UUID(),
+            content: content,
+            style: .init())
+            .setBehaviors({ [weak self] context in
+              context.view.delegate = self?.didnotFindTheWineCollectionCellDelegate
+            })
+        }
+        .flowLayoutItemSize(.init(width: collectionViewSize.width - 48, height: 65))
+        .flowLayoutSectionInset(.init(top: 0, left: 24, bottom: 0, right: 24))
+      }
+    }
+  }
 
   @BarModelBuilder
   private var bars: [BarModeling] {
@@ -181,13 +208,6 @@ final class ResultsSearchViewController: UIViewController {
         },
     ]
   }
-
-  private var viewModel: ResultsSearchViewModel? {
-    didSet {
-      collectionView.contentOffset = .zero
-      collectionView.reloadData()
-    }
-  }
 }
 
 // MARK: ResultsSearchViewControllerProtocol
@@ -195,119 +215,31 @@ final class ResultsSearchViewController: UIViewController {
 extension ResultsSearchViewController: ResultsSearchViewControllerProtocol {
   func updateUI(viewModel: ResultsSearchViewModel) {
     self.viewModel = viewModel
+    collectionView.contentOffset = .zero
+    collectionView.setSections(sections, animated: false)
   }
 }
 
-// MARK: UICollectionViewDataSource, UICollectionViewDelegate
+// MARK: BottlesCollectionViewDelegate
 
-extension ResultsSearchViewController: UICollectionViewDataSource, UICollectionViewDelegate {
-  func numberOfSections(in collectionView: UICollectionView) -> Int {
-    switch viewModel?.state {
-    case .history(let sections):
-      return sections.count
-
-    case .results(let sections):
-      return sections.count
-
-    case .none:
-      return 0
-    }
+extension ResultsSearchViewController: BottlesCollectionViewDelegate {
+  func didTapShareContextMenu(wineID: Int64, sourceView: UIView) {
   }
 
-  func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-    switch viewModel?.state {
-    case .history(let sections):
-      switch sections[section] {
-      case .titleRecentlySearched:
-        return 1
-
-      case .recentlySearched(let model):
-        return model.count
-      }
-
-    case .results(let sections):
-      switch sections[section] {
-      case .didNotFindTheWine:
-        return 1
-
-      case .searchResults(let model):
-        return model.count
-      }
-
-    case .none:
-      return 0
-    }
+  func didTapWriteNoteContextMenu(wineID: Int64) {
   }
 
-  func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-
-    switch viewModel?.state {
-    case .history(let sections):
-      switch sections[indexPath.section] {
-      case .recentlySearched(let model):
-        // swiftlint:disable:next force_cast
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionViewCell.reuseId, for: indexPath) as! WineCollectionViewCell
-        cell.decorate(model: model[indexPath.row])
-        return cell
-
-      case .titleRecentlySearched(let model):
-        // swiftlint:disable:next force_cast
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: TextCollectionCell.reuseId, for: indexPath) as! TextCollectionCell
-        cell.decorate(model: model[indexPath.row])
-        return cell
-      }
-
-    case .results(let sections):
-      switch sections[indexPath.section] {
-      case .didNotFindTheWine(let model):
-        // swiftlint:disable:next force_cast
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: DidnotFindTheWineCollectionCell.reuseId, for: indexPath) as! DidnotFindTheWineCollectionCell
-        cell.delegate = didnotFindTheWineCollectionCellDelegate
-        cell.decorate(model: model[indexPath.row])
-        return cell
-
-      case .searchResults(let model):
-        // swiftlint:disable:next force_cast
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WineCollectionCell.reuseId, for: indexPath) as! WineCollectionCell
-        cell.decorate(model: model[indexPath.row])
-        return cell
-      }
-
-    case .none:
-      return .init()
-    }
+  func didTap(wineID: Int64) {
+    interactor?.didTapHistoryWine(wineID: wineID)
+    resultsSearchDelegate?.didTapBottleCell(wineID: wineID)
   }
 
-  func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-    switch viewModel?.state {
-    case .results(let sections):
-      switch sections[safe: indexPath.section] {
-      case .searchResults(let model):
-        let wineID = model[indexPath.row].wineID
-        interactor?.didSelectResultCell(wineID: wineID, title: model[indexPath.row].titleText)
-        resultsSearchDelegate?.didTapBottleCell(wineID: wineID)
+  func didTapPriceButton(_ button: UIButton, wineID: Int64) {
+    interactor?.didTapHistoryWine(wineID: wineID)
+    resultsSearchDelegate?.didTapBottleCell(wineID: wineID)
+  }
 
-      case .didNotFindTheWine, .none:
-        return
-      }
-
-    case .history(let sections):
-      switch sections[safe: indexPath.section] {
-      case .recentlySearched(let model):
-        let wineID = model[indexPath.row].wineID
-        guard let titleText = model[indexPath.row].titleText else {
-          return
-        }
-        interactor?.didSelectResultCell(wineID: wineID, title: titleText)
-        resultsSearchDelegate?.didTapBottleCell(wineID: wineID)
-
-      case .none, .titleRecentlySearched:
-        return
-      }
-
-    case .none:
-      return
-    }
+  func bottlesScrollViewDidScroll(_ scrollView: UIScrollView) {
   }
 }
 
@@ -330,32 +262,5 @@ extension ResultsSearchViewController: UISearchBarDelegate {
   func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
     searchBar.resignFirstResponder()
     resultsSearchDelegate?.didTapSearchButton(searchText: searchBar.text)
-  }
-}
-
-// MARK: - WineDetailCollectionView
-
-// NOT USE !!!!!!!!!
-// Only flow layout good !!!!
-
-// https://www.coder.work/article/7493934 bug iOS 14.3
-final class WineDetailCollectionView: UICollectionView {
-  override func layoutSubviews() {
-    super.layoutSubviews()
-
-//    guard #available(iOS 14.3, *) else { return }
-
-    subviews.forEach { subview in
-      guard
-        let scrollView = subview as? UIScrollView,
-        let minY = scrollView.subviews.map(\.frame.origin.y).min(),
-        minY > scrollView.frame.minY
-      else {
-        return
-      }
-
-      scrollView.contentInset.top = -minY
-      scrollView.frame.origin.y = minY
-    }
   }
 }

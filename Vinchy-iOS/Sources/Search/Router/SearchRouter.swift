@@ -26,6 +26,7 @@ final class SearchRouter {
 
   weak var viewController: UIViewController?
   weak var interactor: SearchInteractorProtocol?
+  var emailService = EmailService()
 
 }
 

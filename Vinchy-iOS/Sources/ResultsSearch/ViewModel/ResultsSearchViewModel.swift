@@ -9,20 +9,15 @@
 import DisplayMini
 
 struct ResultsSearchViewModel {
-  enum State {
-    case results(sections: [ResultsSection])
-    case history(sections: [HistorySection])
+
+  enum Section {
+    case title(content: Label.Content)
+    case recentlySearched(content: BottlesCollectionView.Content)
+    case horizontalWine(content: HorizontalWineView.Content)
+    case didnotFindWine(content: DidnotFindTheWineView.Content)
   }
 
-  enum ResultsSection {
-    case searchResults([WineCollectionCellViewModel])
-    case didNotFindTheWine([DidnotFindTheWineCollectionCellViewModel])
-  }
+  static let empty: Self = .init(sections: [])
 
-  enum HistorySection {
-    case titleRecentlySearched([TextCollectionCellViewModel])
-    case recentlySearched([WineCollectionViewCellViewModel])
-  }
-
-  let state: State
+  let sections: [Section]
 }

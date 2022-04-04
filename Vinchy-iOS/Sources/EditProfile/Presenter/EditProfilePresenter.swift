@@ -23,9 +23,6 @@ final class EditProfilePresenter {
 
   weak var viewController: EditProfileViewControllerProtocol?
 
-  // MARK: Private
-
-  private typealias ViewModel = EditProfileViewModel
 }
 
 // MARK: EditProfilePresenterProtocol
@@ -41,15 +38,15 @@ extension EditProfilePresenter: EditProfilePresenterProtocol {
 
     sections += [
       .commonEditCell([
-        .title(text: NSAttributedString(string: localized("username").firstLetterUppercased(), font: Font.medium(16), textColor: .dark)),
-        .textField(model: .init(recognizableIdentificator: EditProfileTextFieldType.name.rawValue, text: userName, placeholder: localized("add").firstLetterUppercased(), isEditable: true)),
+        .title(content: localized("username").firstLetterUppercased()),
+        .textField(content: .init(recognizableIdentificator: EditProfileTextFieldType.name.rawValue, text: userName, placeholder: localized("add").firstLetterUppercased(), isEditable: true)),
       ]),
     ]
 
     sections += [
       .commonEditCell([
-        .title(text: NSAttributedString(string: "Email", font: Font.medium(16), textColor: .dark)),
-        .textField(model: .init(recognizableIdentificator: EditProfileTextFieldType.email.rawValue, text: email, placeholder: nil, isEditable: false)),
+        .title(content: "Email"),
+        .textField(content: .init(recognizableIdentificator: EditProfileTextFieldType.email.rawValue, text: email, placeholder: nil, isEditable: false)),
       ]),
     ]
 

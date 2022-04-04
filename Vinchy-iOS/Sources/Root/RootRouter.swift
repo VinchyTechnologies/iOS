@@ -6,6 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import SwiftUI
 import UIKit
 
 // MARK: - RootRouter
@@ -14,6 +15,7 @@ protocol RootRouter {
   func routeToTabBar() -> TabBarDeeplinkable
   func routeToAgreement(delegate: AgreementsViewControllerOutput)
   func routeToOnboarding(delegate: OnboardingViewControllerOutput?)
+  func routeToUnavailableVersionFlow()
 }
 
 // MARK: - RootRouterImpl
@@ -38,6 +40,11 @@ final class RootRouterImpl: RootRouter {
     let tabBar = tabBarBuilder.build()
     window.rootViewController = tabBar
     return tabBar
+  }
+
+  func routeToUnavailableVersionFlow() {
+    let viewController = UIHostingController(rootView: ForceUpdateView())
+    window.rootViewController = viewController
   }
 
   func routeToAgreement(delegate: AgreementsViewControllerOutput) {
