@@ -7,6 +7,8 @@
 
 import FirebaseAnalytics
 
+// MARK: - Tracker
+
 public enum Tracker: CaseIterable, AnalyticsTrackable {
   case firebase
 

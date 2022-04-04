@@ -96,6 +96,7 @@ end
 
 target 'VinchyAnalytics' do
   project 'submodules/VinchyAnalytics/VinchyAnalytics'
+  pod 'GoogleUtilities'
   analytics
 end
 
