@@ -322,13 +322,13 @@ final class WineDetailViewController: CollectionViewController {
 
       case .ad:
         return nil
-        if input.isAppClip {
-          return nil
-        } else {
-          return SectionModel(dataID: section.dataID) {
-            adGenerator?.generateGoogleAd(width: collectionViewSize.width, rootcontroller: self) as? ItemModeling
-          }
-        }
+//        if input.isAppClip {
+//          return nil
+//        } else {
+//          return SectionModel(dataID: section.dataID) {
+//            adGenerator?.generateGoogleAd(width: collectionViewSize.width, rootcontroller: self) as? ItemModeling
+//          }
+//        }
 
       case .similarWines(let itemID, let content):
         return SectionModel(dataID: section.dataID) {

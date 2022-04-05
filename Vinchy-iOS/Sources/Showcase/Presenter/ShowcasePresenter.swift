@@ -101,8 +101,7 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
             countryCode: arrayShortWines.first?.winery?.countryCode) ?? ""),
         ]
         let winesContent = arrayShortWines.compactMap { wine -> WineBottleView.Content in
-          print("====", wine.winery?.title)
-          return WineBottleView.Content(
+          WineBottleView.Content(
             wineID: wine.id,
             imageURL: wine.mainImageUrl?.toURL,
             titleText: wine.title,

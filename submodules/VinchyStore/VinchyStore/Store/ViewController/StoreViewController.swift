@@ -361,7 +361,7 @@ extension StoreViewController: StoreViewControllerProtocol {
           let height: CGFloat = content.height(for: width)
           resultHeight += height + 16
 
-        case .button(let content):
+        case .button:
           let height: CGFloat = ButtonView.height
           resultHeight += height
 
