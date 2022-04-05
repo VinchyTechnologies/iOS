@@ -70,7 +70,7 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
           wineID: $0.id,
           imageURL: $0.mainImageUrl?.toURL,
           titleText: $0.title,
-          subtitleText: $0.winery?.region,
+          subtitleText: $0.winery?.title,
           rating: $0.rating,
           buttonText: buttonText,
           flag: emojiFlagForISOCountryCode($0.winery?.countryCode ?? ""),
@@ -101,7 +101,8 @@ extension ShowcasePresenter: ShowcasePresenterProtocol {
             countryCode: arrayShortWines.first?.winery?.countryCode) ?? ""),
         ]
         let winesContent = arrayShortWines.compactMap { wine -> WineBottleView.Content in
-          WineBottleView.Content(
+          print("====", wine.winery?.title)
+          return WineBottleView.Content(
             wineID: wine.id,
             imageURL: wine.mainImageUrl?.toURL,
             titleText: wine.title,
