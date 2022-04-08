@@ -40,7 +40,7 @@ final class Coordinator: WineDetailRoutable, ActivityRoutable, WriteNoteRoutable
 
   func pushToResultsSearchController(affilatedId: Int, currencyCode: String?, resultsSearchDelegate: ResultsSearchDelegate?) {
     let controller = ResultsSearchAssembly.assemblyModule(
-      input: .init(mode: .storeDetail(affilatedId: affilatedId, currencyCode: currencyCode)), resultsSearchDelegate: resultsSearchDelegate)
+      input: .init(mode: .storeDetail(affilatedId: affilatedId, currencyCode: currencyCode), shouldHideNavigationController: true), resultsSearchDelegate: resultsSearchDelegate)
     let navController = VinchyNavigationController(rootViewController: controller)
     navController.modalPresentationStyle = .overCurrentContext
     UIApplication.topViewController()?.present(navController, animated: true, completion: nil)

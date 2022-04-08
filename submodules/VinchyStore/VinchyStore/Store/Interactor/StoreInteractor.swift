@@ -337,6 +337,7 @@ extension StoreInteractor: StoreInteractorProtocol {
 
     router.presentQuestiosViewController(affilatedId: affilatedId, questions: questions, currencyCode: currencyCode, questionsNavigationControllerDelegate: self)
   }
+
   func didTapConfirmOrderButton() {
     guard let affilatedId = partnerInfo?.affiliatedStoreId else { return }
     router.presentCartViewController(affilatedId: affilatedId)

@@ -12,9 +12,11 @@ struct ResultsSearchInput {
     case storeDetail(affilatedId: Int, currencyCode: String?)
   }
 
-  init(mode: Mode) {
+  init(mode: Mode, shouldHideNavigationController: Bool) {
     self.mode = mode
+    self.shouldHideNavigationController = shouldHideNavigationController
   }
 
   let mode: Mode
+  let shouldHideNavigationController: Bool
 }

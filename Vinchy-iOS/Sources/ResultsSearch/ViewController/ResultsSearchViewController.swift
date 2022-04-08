@@ -75,7 +75,17 @@ final class ResultsSearchViewController: UIViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
+    if input.shouldHideNavigationController {
+      navigationController?.setNavigationBarHidden(true, animated: false)
+    }
     interactor?.viewWillAppear()
+  }
+
+  override func viewWillDisappear(_ animated: Bool) {
+    super.viewWillDisappear(animated)
+    if input.shouldHideNavigationController {
+      navigationController?.setNavigationBarHidden(false, animated: true)
+    }
   }
 
   override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
