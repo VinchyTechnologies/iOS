@@ -39,7 +39,6 @@ final class ResultsSearchViewController: UIViewController {
 
   override func viewDidLoad() {
     super.viewDidLoad()
-    edgesForExtendedLayout = [] // this fixes offset on iPad
 
     switch input.mode {
     case .normal:
@@ -76,13 +75,7 @@ final class ResultsSearchViewController: UIViewController {
 
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    navigationController?.setNavigationBarHidden(true, animated: true)
     interactor?.viewWillAppear()
-  }
-
-  override func viewWillDisappear(_ animated: Bool) {
-    super.viewWillDisappear(animated)
-    navigationController?.setNavigationBarHidden(false, animated: true)
   }
 
   override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {

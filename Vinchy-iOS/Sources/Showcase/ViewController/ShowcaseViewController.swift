@@ -205,7 +205,8 @@ final class ShowcaseViewController: UIViewController, Loadable {
                 }()
 
                 let itemWidth = Int((UIScreen.main.bounds.width - C.horizontalInset * CGFloat(rowCount + 1)) / CGFloat(rowCount))
-                let itemHeight = 250
+//                let itemHeight = 250
+                let itemHeight = Int(Double(itemWidth) * 1.5)
                 var kind: WineBottleView.Style.Kind = .normal
                 switch input.mode {
                 case .advancedSearch, .remote:
