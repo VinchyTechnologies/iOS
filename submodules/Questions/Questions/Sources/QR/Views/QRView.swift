@@ -15,6 +15,7 @@ final class QRView: UIView, EpoxyableView {
     super.init(frame: .zero)
 
     addSubview(imageView)
+    imageView.contentMode = .scaleAspectFit
     imageView.layer.cornerRadius = 4
     imageView.clipsToBounds = true
     imageView.translatesAutoresizingMaskIntoConstraints = false

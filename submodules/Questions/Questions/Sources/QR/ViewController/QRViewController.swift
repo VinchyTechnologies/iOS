@@ -120,7 +120,7 @@ final class QRViewController: CollectionViewController {
         .flowLayoutItemSize(.init(width: width, height: height))
 
       case .qr(let content):
-        let width: CGFloat = 200
+        let width: CGFloat = collectionViewSize.width - 48 * 2
         let height: CGFloat = 200
         return SectionModel(dataID: UUID()) {
           QRView.itemModel(
