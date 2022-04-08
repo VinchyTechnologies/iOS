@@ -34,6 +34,9 @@ final class Coordinator: ShowcaseRoutable, WineDetailRoutable, WriteNoteRoutable
   func presentQuestiosViewController(affilatedId: Int, questions: [Question], currencyCode: String, questionsNavigationControllerDelegate: QuestionsNavigationControllerDelegate?) {
     let controller = QuestionsNavigationController(questions: questions, affilatedId: affilatedId, currencyCode: currencyCode, coordinator: Coordinator.shared)
     controller.questionsNavigationControllerDelegate = questionsNavigationControllerDelegate
+    if UIDevice.current.userInterfaceIdiom == .pad {
+      controller.modalPresentationStyle = .fullScreen
+    }
     UIApplication.topViewController()?.present(controller, animated: true, completion: nil)
   }
 
