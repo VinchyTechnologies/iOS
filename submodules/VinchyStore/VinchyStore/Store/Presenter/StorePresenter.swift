@@ -201,10 +201,17 @@ extension StorePresenter: StorePresenterProtocol {
           return result.isEmpty ? nil : result
         }()
 
+        let title: String? = {
+          if let volume = wine.volume, volume != 0.75 {
+            return wine.title + " (" + volume.volume + ")"
+          }
+          return wine.title
+        }()
+
         return HorizontalWineView.Content.init(
           wineID: wine.id,
           imageURL: wine.mainImageUrl?.toURL,
-          titleText: wine.title,
+          titleText: title,
           subtitleText: subtitleText,
           buttonText: buttonText,
           oldPriceText: oldPriceText,

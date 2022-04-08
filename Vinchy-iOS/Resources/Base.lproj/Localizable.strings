@@ -128,6 +128,7 @@
 "saved_stores" = "my stores";
 "save_changes" = "save changes?";
 "no_saved_stores_description" = "You have not added any store to your favorites";
+"volume" = "volume";
 
 // MARK: - Sugar
 "sugar" = "sugar";

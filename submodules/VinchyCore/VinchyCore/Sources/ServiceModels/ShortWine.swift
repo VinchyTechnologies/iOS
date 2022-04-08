@@ -21,6 +21,7 @@ public struct ShortWine: Decodable, Equatable {
     let price = try? container.decodeIfPresent(Price.self, forKey: .price)
     let oldPrice = try? container.decodeIfPresent(Price.self, forKey: .oldPrice)
     let discountText = try? container.decodeIfPresent(String.self, forKey: .discountText)
+    let volume = try? container.decodeIfPresent(Float.self, forKey: .volume)
 
     self.id = id
     mainImageUrl = mainImageURL
@@ -31,6 +32,7 @@ public struct ShortWine: Decodable, Equatable {
     self.price = price
     self.oldPrice = oldPrice
     self.discountText = discountText
+    self.volume = volume
   }
 
   // MARK: Public
@@ -76,6 +78,8 @@ public struct ShortWine: Decodable, Equatable {
 
   public let discountText: String?
 
+  public let volume: Float?
+
   // MARK: Private
 
   private enum CodingKeys: String, CodingKey {
@@ -88,5 +92,6 @@ public struct ShortWine: Decodable, Equatable {
     case price
     case oldPrice = "old_price"
     case discountText = "discount_text"
+    case volume
   }
 }

@@ -128,6 +128,7 @@
 "saved_stores" = "Избранные магазины";
 "save_changes" = "сохранить изменения?";
 "no_saved_stores_description" = "Вы не добавили в избранное ни одного магазина";
+"volume" = "объём";
 
 // MARK: - Sugar
 "sugar" = "сахар";

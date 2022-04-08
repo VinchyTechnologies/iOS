@@ -105,6 +105,10 @@ final class WineDetailViewModelFactory {
             count: UInt(grapes.count)).firstLetterUppercased()))
     }
 
+    if let volume = wine.volume {
+      shortDescriptions.append(.init(titleText: volume.volume, subtitleText: localized("volume").firstLetterUppercased()))
+    }
+
     if !shortDescriptions.isEmpty {
       if let prefix = prefix {
         return (sections: [.list(itemID: .list, content: Array(shortDescriptions.prefix(prefix)))], count: shortDescriptions.count)

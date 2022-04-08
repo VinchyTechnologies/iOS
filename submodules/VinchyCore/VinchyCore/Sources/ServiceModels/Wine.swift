@@ -46,6 +46,7 @@ public struct Wine: Decodable {
     let sugar = try? container.decodeIfPresent(Sugar.self, forKey: .sugar)
     let similarWines = try? container.decodeIfPresent([ShortWine].self, forKey: .similarWines)
     let rating = try? container.decodeIfPresent(Double.self, forKey: .rating)
+    let volume = try? container.decodeIfPresent(Float.self, forKey: .volume)
 
     self.id = id
     self.color = color
@@ -66,6 +67,7 @@ public struct Wine: Decodable {
     self.sugar = sugar
     self.similarWines = similarWines
     self.rating = rating
+    self.volume = volume
   }
 
   /// For test only
@@ -116,6 +118,7 @@ public struct Wine: Decodable {
   public let sugar: Sugar?
   public let similarWines: [ShortWine]?
   public let rating: Double?
+  public let volume: Float?
 
   // MARK: Private
 
@@ -140,6 +143,7 @@ public struct Wine: Decodable {
     case similarWines = "similar_wines"
     case reviews
     case rating
+    case volume
   }
 }
 
