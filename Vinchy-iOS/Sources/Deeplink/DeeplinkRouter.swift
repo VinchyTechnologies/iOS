@@ -187,6 +187,18 @@ final class DeeplinkRouterImpl {
     }
 
     guard !url.pathComponents.isEmpty else { return nil }
+
+    if
+      var components = URLComponents(string: url.absoluteString.removingPercentEncoding ?? ""),
+      let id = components.queryItems?.first(where: { $0.name == "id" })?.value,
+      let affilatedId = Int(id)
+    {
+      components.queryItems = nil
+      if let word = URL(string: components.string ?? "")?.lastPathComponent, word == "stores" {
+        return .openStore(flow: OpenStoreFlow(input: .init(affilatedId: affilatedId)))
+      }
+    }
+
     if
       let word = url.pathComponents[safe: url.pathComponents.count - 2]
     {
@@ -197,12 +209,12 @@ final class DeeplinkRouterImpl {
         else { return nil }
         return .openWineDetail(flow: OpenWineDetailFlow(input: .init(wineID: wineID)))
 
-      } else if word == "store" {
-        guard
-          let id = url.pathComponents.last,
-          let affilatedId = Int(id)
-        else { return nil }
-        return .openStore(flow: OpenStoreFlow(input: .init(affilatedId: affilatedId)))
+//      } else if word == "store" {
+//        guard
+//          let id = url.pathComponents.last,
+//          let affilatedId = Int(id)
+//        else { return nil }
+//        return .openStore(flow: OpenStoreFlow(input: .init(affilatedId: affilatedId)))
 
       } else if word == "list" {
         guard

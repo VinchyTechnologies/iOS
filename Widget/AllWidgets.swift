@@ -173,7 +173,7 @@ struct StoresView: View {
         .background(Color(.mainBackground))
 
       } else {
-        if let store1 = data.stores.first, let url1 = URL(string: "https://vinchy.tech/store/\(store1.id)") {
+        if let store1 = data.stores.first, let url1 = URL(string: "https://vinchy.tech/stores?id=\(store1.id)") {
           Link(destination: url1) {
             row(for: store1)
               .padding(.top, 8)
@@ -183,7 +183,7 @@ struct StoresView: View {
         Divider()
           .frame(height: 1)
           .padding(.init(top: 0, leading: imageHeight + 16, bottom: 0, trailing: 0))
-        if let store2 = data.stores.last, data.stores.count == 2, let url2 = URL(string: "https://vinchy.tech/store/\(store2.id)") {
+        if let store2 = data.stores.last, data.stores.count == 2, let url2 = URL(string: "https://vinchy.tech/stores?id=\(store2.id)") {
           Link(destination: url2) {
             row(for: store2)
               .padding(.top, 8)

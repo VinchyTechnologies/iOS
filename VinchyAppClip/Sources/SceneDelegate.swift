@@ -29,19 +29,21 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       return
     }
 
-    guard
-      let word = url.pathComponents[safe: url.pathComponents.count - 2],
-      word == "store",
-      let id = url.pathComponents.last,
+    if
+      var components = URLComponents(string: url.absoluteString.removingPercentEncoding ?? ""),
+      let id = components.queryItems?.first(where: { $0.name == "id" })?.value,
       let affilatedId = Int(id)
-    else { return }
-
-    let window = UIWindow(windowScene: windowScence)
-    self.window = window
-    window.rootViewController = VinchyNavigationController(
-      rootViewController: StoreAssembly.assemblyModule(
-        input: .init(mode: .normal(affilatedId: affilatedId), isAppClip: true),
-        coordinator: Coordinator.shared, adFabricProtocol: nil))
-    window.makeKeyAndVisible()
+    {
+      components.queryItems = nil
+      if let word = URL(string: components.string ?? "")?.lastPathComponent, word == "stores" {
+        let window = UIWindow(windowScene: windowScence)
+        self.window = window
+        window.rootViewController = VinchyNavigationController(
+          rootViewController: StoreAssembly.assemblyModule(
+            input: .init(mode: .normal(affilatedId: affilatedId), isAppClip: true),
+            coordinator: Coordinator.shared, adFabricProtocol: nil))
+        window.makeKeyAndVisible()
+      }
+    }
   }
 }

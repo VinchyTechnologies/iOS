@@ -93,7 +93,7 @@ final class Coordinator: ShowcaseRoutable, WineDetailRoutable, WriteNoteRoutable
       var components = URLComponents()
       components.scheme = Scheme.https.rawValue
       components.host = domain
-      components.path = "/store/" + String(affilatedId)
+      components.path = "/stores?id=" + String(affilatedId)
 
       guard let linkParameter = components.url else {
         return
