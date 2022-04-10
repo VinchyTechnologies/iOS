@@ -44,6 +44,14 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             coordinator: Coordinator.shared, adFabricProtocol: nil))
         window.makeKeyAndVisible()
       }
+    } else {
+      let window = UIWindow(windowScene: windowScence)
+      self.window = window
+      window.rootViewController = VinchyNavigationController(
+        rootViewController: StoreAssembly.assemblyModule(
+          input: .init(mode: .normal(affilatedId: 1529), isAppClip: true),
+          coordinator: Coordinator.shared, adFabricProtocol: nil))
+      window.makeKeyAndVisible()
     }
   }
 }
