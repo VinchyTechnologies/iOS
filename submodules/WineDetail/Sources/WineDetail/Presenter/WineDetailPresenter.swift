@@ -292,6 +292,17 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
       isAccuratePrice: isAccuratePrice,
       stores: stores,
       isGeneralInfoCollapsed: isGeneralInfoCollapsed)
+    
+    let trailingButtonText: String? = {
+      switch input.mode {
+      case .normal:
+        return "~" + formatCurrencyAmount(
+          wine.price ?? 0, currency: currency)
+      case .partner(_, price: let price, _):
+        return formatCurrencyAmount(
+          price.amount, currency: price.currencyCode)
+      }
+    }()
 
     let viewModel = WineDetailViewModel(
       navigationTitle: wine.title,
@@ -299,8 +310,7 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
       isGeneralInfoCollapsed: isGeneralInfoCollapsed,
       bottomPriceBarViewModel: .init(
         leadingText: localized("price").firstLetterUppercased(),
-        trailingButtonText: "~" + formatCurrencyAmount(
-          wine.price ?? 0, currency: currency)),
+        trailingButtonText: trailingButtonText),
       isLiked: isLiked)
 
     DispatchQueue.main.async {

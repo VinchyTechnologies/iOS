@@ -392,6 +392,9 @@ final class WineDetailViewController: CollectionViewController {
       BottomPriceBarView.barModel(
         dataID: nil,
         content: viewModel.bottomPriceBarViewModel,
+        behaviors: .init(didSelect: { [weak self] _ in
+          self?.interactor?.didTapPriceButton()
+        }),
         style: .init()),
     ]
   }

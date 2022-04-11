@@ -364,7 +364,7 @@ extension WineDetailInteractor: WineDetailInteractorProtocol {
   }
 
   func didTapPriceButton() {
-
+    // N3: App Clip
     switch input.mode {
     case .normal:
       if !(stores?.isEmpty == true) {

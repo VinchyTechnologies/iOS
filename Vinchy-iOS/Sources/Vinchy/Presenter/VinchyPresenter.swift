@@ -103,6 +103,7 @@ final class VinchyPresenter {
             group.leave()
           }
         } else {
+          group.enter()
           distanceArray.append((partner, nil))
           group.leave()
         }
