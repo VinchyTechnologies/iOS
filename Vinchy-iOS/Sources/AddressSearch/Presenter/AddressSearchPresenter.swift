@@ -32,11 +32,11 @@ final class AddressSearchPresenter {
 // MARK: AddressSearchPresenterProtocol
 
 extension AddressSearchPresenter: AddressSearchPresenterProtocol {
-  
+
   var alertLocationServiceSettingsRestrictedTitle: String? {
     localized("restricted_geo_title")
   }
-  
+
   var alertLocationServiceSettingsRestrictedSubtitle: String? {
     localized("restricted_geo_subtitle")
   }
