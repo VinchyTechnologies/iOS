@@ -129,6 +129,8 @@
 "save_changes" = "сохранить изменения?";
 "no_saved_stores_description" = "Вы не добавили в избранное ни одного магазина";
 "volume" = "объём";
+"restricted_geo_title" = "Гео сервис не отвечает";
+"restricted_geo_subtitle" = "Введите адрес в ручную";
 
 // MARK: - Sugar
 "sugar" = "сахар";

@@ -36,6 +36,14 @@ final class AddressSearchRouter {
 // MARK: AddressSearchRouterProtocol
 
 extension AddressSearchRouter: AddressSearchRouterProtocol {
+
+  func showAlertRestrictedGeo(titleText: String?, subtitleText: String?) {
+    let alert = UIAlertController(title: titleText, message: subtitleText, preferredStyle: .alert)
+    alert.view.tintColor = .accent
+    alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+    viewController?.present(alert, animated: true, completion: nil)
+  }
+
   func dismiss() {
     viewController?.navigationController?.dismiss(animated: true, completion: nil)
     (viewController?.navigationController?.viewControllers.first as? AddressSearchViewController)?.delegate?.didChooseAddress()

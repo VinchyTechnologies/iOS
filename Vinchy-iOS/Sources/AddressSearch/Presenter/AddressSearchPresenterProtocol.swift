@@ -15,5 +15,8 @@ protocol AddressSearchPresenterProtocol: AnyObject {
   var alertLocationServiceSettingsLeadingButtonText: String? { get }
   var alertLocationServiceSettingsTrailingButtonText: String? { get }
 
+  var alertLocationServiceSettingsRestrictedTitle: String? { get }
+  var alertLocationServiceSettingsRestrictedSubtitle: String? { get }
+
   func update(response: [CLPlacemark]?)
 }
