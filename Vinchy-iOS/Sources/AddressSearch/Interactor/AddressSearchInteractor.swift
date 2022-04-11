@@ -47,7 +47,7 @@ extension AddressSearchInteractor: AddressSearchInteractorProtocol {
   func didSelectCurrentGeo() {
 
     switch CLLocationManager.authorizationStatus() {
-    case .notDetermined, .restricted:
+    case .notDetermined, .restricted: // TODO: - show alert restricted
       return
 
     case .denied:

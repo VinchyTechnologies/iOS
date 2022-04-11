@@ -121,6 +121,8 @@ final class VinchyPresenter {
 
         completion(distanceArray)
       }
+    } else {
+      completion([])
     }
   }
 }

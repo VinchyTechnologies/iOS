@@ -292,7 +292,7 @@ extension WineDetailPresenter: WineDetailPresenterProtocol {
       isAccuratePrice: isAccuratePrice,
       stores: stores,
       isGeneralInfoCollapsed: isGeneralInfoCollapsed)
-    
+
     let trailingButtonText: String? = {
       switch input.mode {
       case .normal:
