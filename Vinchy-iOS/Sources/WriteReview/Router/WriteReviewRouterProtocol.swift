@@ -8,7 +8,6 @@
 
 import Display
 import VinchyUI
-import WineDetail // TODO: - remove
 
 protocol WriteReviewRouterProtocol: DismissRoutable, AuthorizationRoutable {
   func dismissAfterUpdate(statusAlertViewModel: StatusAlertViewModel)

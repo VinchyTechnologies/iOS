@@ -8,7 +8,6 @@
 
 import Display
 import VinchyUI
-import WineDetail // TODO: - remove
 
 protocol MoreViewControllerProtocol: CantOpenURLAlertable, CantOpenEmailAlertable, AuthorizationOutputDelegate {
   func updateUI(viewModel: MoreViewControllerModel)

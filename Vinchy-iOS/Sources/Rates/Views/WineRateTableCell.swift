@@ -12,7 +12,6 @@ import DisplayMini
 import EpoxyCore
 import EpoxyLayoutGroups
 import UIKit
-import WineDetail // TODO: - remove
 
 // MARK: - WineRateTableCellDelegate
 
