@@ -324,7 +324,7 @@ extension ShowcaseViewController: ShowcaseViewControllerProtocol {
 
 extension ShowcaseViewController: EpoxyErrorViewDelegate {
   func didTapErrorButton(_: UIButton) {
-    interactor?.viewDidLoad() // TODO: - not viewdidload
+    interactor?.didTapErrorButton()
   }
 }
 

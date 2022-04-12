@@ -15,4 +15,5 @@ protocol ShowcaseInteractorProtocol {
   func didTapShare(sourceView: UIView)
   func didTapRepeatQuestionsButton()
   func didTapPriceButton(wineID: Int64)
+  func didTapErrorButton()
 }
