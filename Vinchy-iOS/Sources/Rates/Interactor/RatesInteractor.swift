@@ -40,7 +40,6 @@ final class RatesInteractor {
   // MARK: Internal
 
   var needLoadMore: Bool = true
-  var numberDeletedReview = 0
 
   // MARK: Private
 

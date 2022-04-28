@@ -202,11 +202,11 @@ final class ShowcaseInteractor {
 // MARK: ShowcaseInteractorProtocol
 
 extension ShowcaseInteractor: ShowcaseInteractorProtocol {
-  
+
   func didTapErrorButton() {
     loadInitData()
   }
-  
+
   func didTapPriceButton(wineID: Int64) {
     switch input.mode {
     case .advancedSearch, .remote:

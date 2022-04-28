@@ -67,9 +67,6 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
       NSAttributedString.Key.font: titleFontAll,
     ]
 
-    UITabBarItem.appearance().setTitleTextAttributes(attributesNormal, for: .normal)
-    UITabBarItem.appearance().setTitleTextAttributes(attributesSelected, for: .selected)
-
     let appearance = UITabBarAppearance()
     appearance.configureWithOpaqueBackground()
     appearance.backgroundColor = .mainBackground
@@ -78,6 +75,10 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
     let tabBarItemAppearance = UITabBarItemAppearance()
     tabBarItemAppearance.selected.titleTextAttributes = attributesSelected
     tabBarItemAppearance.normal.titleTextAttributes = attributesNormal
+    if UIDevice.current.userInterfaceIdiom == .pad {
+      tabBarItemAppearance.normal.titlePositionAdjustment = .init(horizontal: 0, vertical: -2) // magic number
+      tabBarItemAppearance.selected.titlePositionAdjustment = .init(horizontal: 0, vertical: -2) // magic number
+    }
     appearance.stackedLayoutAppearance = tabBarItemAppearance
     appearance.compactInlineLayoutAppearance = tabBarItemAppearance
     appearance.inlineLayoutAppearance = tabBarItemAppearance
@@ -136,6 +137,7 @@ final class TabBarController: UITabBarController, UITabBarControllerDelegate {
   }
 
   override func viewWillLayoutSubviews() {
+    super.viewWillLayoutSubviews()
     if let items = tabBar.items {
       items.forEach { item in
         let viewTabBar = item.value(forKey: "view") as? UIView
@@ -313,15 +315,4 @@ extension Int {
   fileprivate static let map = 2
   fileprivate static let notes = 3
   fileprivate static let profile = 4
-}
-
-extension UITabBar {
-  // Workaround for iOS 11's new UITabBar behavior where on iPad, the UITabBar inside
-  // the Master view controller shows the UITabBarItem icon next to the text
-  override open var traitCollection: UITraitCollection {
-    if UIDevice.current.userInterfaceIdiom == .pad {
-      return UITraitCollection(horizontalSizeClass: .compact)
-    }
-    return super.traitCollection
-  }
 }
