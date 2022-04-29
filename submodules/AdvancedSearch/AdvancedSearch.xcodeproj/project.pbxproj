@@ -37,7 +37,6 @@
 		8A51456E2757C29D00DC45CD /* Core.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Core.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5145722757C2BB00DC45CD /* Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5145762757C2D300DC45CD /* VinchyCore.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyCore.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		8A51457A2757C33000DC45CD /* CommonUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = CommonUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A5145812757C90800DC45CD /* VinchyUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		8A65E75927A9295B008556A4 /* MinMaxPriceCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MinMaxPriceCell.swift; sourceTree = "<group>"; };
 		8A65E75F27A967EF008556A4 /* FiltersViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FiltersViewModel.swift; sourceTree = "<group>"; };
@@ -106,7 +105,6 @@
 				8AD51DA0276402EF0009499A /* DisplayMini.framework */,
 				8A07B9C4275CEFF700AF27B0 /* StringFormatting.framework */,
 				8A5145812757C90800DC45CD /* VinchyUI.framework */,
-				8A51457A2757C33000DC45CD /* CommonUI.framework */,
 				8A5145762757C2D300DC45CD /* VinchyCore.framework */,
 				8A5145722757C2BB00DC45CD /* Display.framework */,
 				8A51456E2757C29D00DC45CD /* Core.framework */,
