@@ -14,7 +14,6 @@ import Spotlight
 import UIKit
 import VinchyCore
 import VinchyUI
-import Widget
 
 // MARK: - StoreInteractorData
 
@@ -48,11 +47,13 @@ final class StoreInteractor {
   init(
     input: StoreInput,
     router: StoreRouterProtocol,
-    presenter: StorePresenterProtocol)
+    presenter: StorePresenterProtocol,
+    storeAdapter: StoreRepositoryAdapterProtocol?)
   {
     self.input = input
     self.router = router
     self.presenter = presenter
+    self.storeAdapter = storeAdapter
     configureStateMachine()
   }
 
@@ -62,9 +63,9 @@ final class StoreInteractor {
 
   // MARK: Private
 
-  private let dispatchGroup = DispatchGroup()
+  private let storeAdapter: StoreRepositoryAdapterProtocol?
 
-  private let dataBase = storesRepository
+  private let dispatchGroup = DispatchGroup()
 
   private lazy var dispatchWorkItemHud = DispatchWorkItem { [weak self] in
     guard let self = self else { return }
@@ -212,10 +213,10 @@ final class StoreInteractor {
   }
 
   private func isLiked(affilatedId: Int?) -> Bool {
-    guard let affilatedId = affilatedId else {
+    guard let affilatedId = affilatedId, let storeAdapter = storeAdapter else {
       return false
     }
-    return dataBase.findAll().first(where: { $0.affilatedId == affilatedId }) != nil
+    return storeAdapter.isLiked(affilietedId: affilatedId)
   }
 
   private func loadInitData() {
@@ -361,21 +362,14 @@ extension StoreInteractor: StoreInteractorProtocol {
     guard let partnerInfo = partnerInfo else {
       return
     }
-    if let dbStore = dataBase.findAll().first(where: { $0.affilatedId == partnerInfo.affiliatedStoreId }) {
-      dataBase.remove(dbStore)
-      var stores = WidgetStorage.shared.getWidgetStores()
-      if stores.contains(where: { $0.id == partnerInfo.affiliatedStoreId }) {
-        stores.removeAll(where: { $0.id == partnerInfo.affiliatedStoreId })
-        WidgetStorage.shared.save(stores: stores)
-      }
-      presenter.setLikedStatus(isLiked: false)
-    } else {
-      let maxId = dataBase.findAll().map { $0.id }.max() ?? 0
-      let id = maxId + 1
-      dataBase.append(VStore(id: id, affilatedId: partnerInfo.affiliatedStoreId, title: partnerInfo.title, subtitle: partnerInfo.address, logoURL: partnerInfo.logoURL))
-      presenter.setLikedStatus(isLiked: true)
-//      presenter.showStatusAlertDidLikedSuccessfully()
-    }
+    storeAdapter?.saveOrDeleteStoreFromFavourite(
+      affilietedId: partnerInfo.affiliatedStoreId,
+      title: partnerInfo.title,
+      address: partnerInfo.address,
+      logoURL: partnerInfo.logoURL,
+      completion: { [weak self] isLiked in
+        self?.presenter.setLikedStatus(isLiked: isLiked)
+      })
   }
 
   func didTapHorizontalWineViewButton(wineID: Int64) {

@@ -20,11 +20,13 @@ final class StoresRouter {
   init(
     input: StoresInput,
     adFabricProtocol: AdFabricProtocol?,
+    repository: StoreRepositoryAdapterProtocol?,
     viewController: UIViewController)
   {
     self.input = input
     self.viewController = viewController
     self.adFabricProtocol = adFabricProtocol
+    self.repository = repository
   }
 
   // MARK: Internal
@@ -34,7 +36,8 @@ final class StoresRouter {
 
   // MARK: Private
 
-  private var adFabricProtocol: AdFabricProtocol?
+  private let adFabricProtocol: AdFabricProtocol?
+  private let repository: StoreRepositoryAdapterProtocol?
 
   private let input: StoresInput
 }
@@ -43,7 +46,11 @@ final class StoresRouter {
 
 extension StoresRouter: StoresRouterProtocol {
   func presentStore(affilatedId: Int) {
-    let controller = StoreAssembly.assemblyModule(input: .init(mode: .normal(affilatedId: affilatedId), isAppClip: false), coordinator: Coordinator.shared, adFabricProtocol: adFabricProtocol)
+    let controller = StoreAssembly.assemblyModule(
+      input: .init(mode: .normal(affilatedId: affilatedId), isAppClip: false),
+      coordinator: Coordinator.shared,
+      adFabricProtocol: adFabricProtocol,
+      repository: repository)
     viewController?.navigationController?.pushViewController(controller, animated: true)
   }
 }

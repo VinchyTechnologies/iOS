@@ -36,6 +36,7 @@
 		CA7B827424ED0B0400991F24 /* VinchyUI.h in Headers */ = {isa = PBXBuildFile; fileRef = CA7B827224ED0B0400991F24 /* VinchyUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		CA873A4327B6923F00F47033 /* CartRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA873A4227B6923F00F47033 /* CartRoutable.swift */; };
 		CAA28D6927DE1281009CD7DD /* QRRoutable.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA28D6827DE1281009CD7DD /* QRRoutable.swift */; };
+		CAD55CC5281B2C1300C3E33F /* StoreRepositoryAdapterProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD55CC4281B2C1300C3E33F /* StoreRepositoryAdapterProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -73,6 +74,7 @@
 		CA7B827324ED0B0400991F24 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CA873A4227B6923F00F47033 /* CartRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CartRoutable.swift; sourceTree = "<group>"; };
 		CAA28D6827DE1281009CD7DD /* QRRoutable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRRoutable.swift; sourceTree = "<group>"; };
+		CAD55CC4281B2C1300C3E33F /* StoreRepositoryAdapterProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRepositoryAdapterProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -127,6 +129,7 @@
 				CA873A4227B6923F00F47033 /* CartRoutable.swift */,
 				CA6AE13E27DCE376004FBB05 /* QuestionsRoutable.swift */,
 				CAA28D6827DE1281009CD7DD /* QRRoutable.swift */,
+				CAD55CC4281B2C1300C3E33F /* StoreRepositoryAdapterProtocol.swift */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -295,6 +298,7 @@
 				CA6AE13F27DCE376004FBB05 /* QuestionsRoutable.swift in Sources */,
 				8AEC83C22758F09500C80F1E /* StoresRoutable.swift in Sources */,
 				8A5145F9275801D000DC45CD /* ShowNetworkAlertPresentable.swift in Sources */,
+				CAD55CC5281B2C1300C3E33F /* StoreRepositoryAdapterProtocol.swift in Sources */,
 				8AEC83982758E1C500C80F1E /* WriteReviewRoutable.swift in Sources */,
 				CA873A4327B6923F00F47033 /* CartRoutable.swift in Sources */,
 				8A5145FB275807C200DC45CD /* AdvancedSearchRoutable.swift in Sources */,

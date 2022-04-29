@@ -14,7 +14,8 @@ import UIKit
 
 // MARK: - AppDelegate
 
-@main
+//@main
+@objc(AppDelegate)
 final class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(

@@ -31,7 +31,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       window.rootViewController = VinchyNavigationController(
         rootViewController: StoreAssembly.assemblyModule(
           input: .init(mode: .normal(affilatedId: 1529), isAppClip: true),
-          coordinator: Coordinator.shared, adFabricProtocol: nil))
+          coordinator: Coordinator.shared, adFabricProtocol: nil, repository: nil))
       window.makeKeyAndVisible()
       return
     }
@@ -48,7 +48,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         window.rootViewController = VinchyNavigationController(
           rootViewController: StoreAssembly.assemblyModule(
             input: .init(mode: .normal(affilatedId: affilatedId), isAppClip: true),
-            coordinator: Coordinator.shared, adFabricProtocol: nil))
+            coordinator: Coordinator.shared, adFabricProtocol: nil, repository: nil))
         window.makeKeyAndVisible()
       }
     } else {
@@ -57,7 +57,7 @@ final class SceneDelegate: UIResponder, UIWindowSceneDelegate {
       window.rootViewController = VinchyNavigationController(
         rootViewController: StoreAssembly.assemblyModule(
           input: .init(mode: .normal(affilatedId: 1529), isAppClip: true),
-          coordinator: Coordinator.shared, adFabricProtocol: nil))
+          coordinator: Coordinator.shared, adFabricProtocol: nil, repository: nil))
       window.makeKeyAndVisible()
     }
   }
