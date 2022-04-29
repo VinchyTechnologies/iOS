@@ -266,7 +266,7 @@ extension TabBarController: TabBarDeeplinkable {
   }
 
   func openStoreDetail(affilatedId: Int) -> AnyPublisher<TabBarDeeplinkable, Never> {
-    let controller = StoreAssembly.assemblyModule(input: .init(mode: .normal(affilatedId: affilatedId), isAppClip: false), coordinator: Coordinator.shared, adFabricProtocol: AdFabric.shared)
+    let controller = StoreAssembly.assemblyModule(input: .init(mode: .normal(affilatedId: affilatedId), isAppClip: false), coordinator: Coordinator.shared, adFabricProtocol: AdFabric.shared, repository: StoreRepository.shared)
     let navigationController = VinchyNavigationController(rootViewController: controller)
     navigationController.modalPresentationStyle = .overFullScreen
     UIApplication.topViewController(base: self)?.present(

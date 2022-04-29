@@ -11,7 +11,7 @@ import UIKit
 final class StoresAssembly {
   static func assemblyModule(input: StoresInput) -> UIViewController {
     let viewController = StoresViewController(input: input)
-    let router = StoresRouter(input: input, adFabricProtocol: AdFabric.shared, viewController: viewController)
+    let router = StoresRouter(input: input, adFabricProtocol: AdFabric.shared, repository: StoreRepository.shared, viewController: viewController)
     let presenter = StoresPresenter(input: input, viewController: viewController)
     let interactor = StoresInteractor(input: input, router: router, presenter: presenter)
 

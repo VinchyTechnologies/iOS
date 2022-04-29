@@ -113,8 +113,6 @@
 		8A0A44A0279C627E001A8CA1 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 8A0A44A2279C627E001A8CA1 /* Localizable.strings */; };
 		8A0A44A4279C795C001A8CA1 /* Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 8A0A44A7279C795C001A8CA1 /* Widget.intentdefinition */; };
 		8A0A44A5279C795C001A8CA1 /* Widget.intentdefinition in Sources */ = {isa = PBXBuildFile; fileRef = 8A0A44A7279C795C001A8CA1 /* Widget.intentdefinition */; };
-		8A0A44AD279C7BE4001A8CA1 /* Widget.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0A44AC279C7BE4001A8CA1 /* Widget.framework */; };
-		8A0A44AE279C7BE4001A8CA1 /* Widget.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 8A0A44AC279C7BE4001A8CA1 /* Widget.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		8A0D9CB726871D9D0076A7EC /* NewAgreementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0D9CB626871D9D0076A7EC /* NewAgreementViewController.swift */; };
 		8A0D9CB926872CF60076A7EC /* NewAgreementsBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A0D9CB826872CF60076A7EC /* NewAgreementsBottomView.swift */; };
 		8A1034592648596100F7CA81 /* AssortmentCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8A1034582648596100F7CA81 /* AssortmentCollectionCell.swift */; };
@@ -437,6 +435,9 @@
 		CACB3DC527C2988B00AD999D /* VinchyOrder.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CACB3DC427C2988B00AD999D /* VinchyOrder.framework */; };
 		CACB3DC627C2988B00AD999D /* VinchyOrder.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CACB3DC427C2988B00AD999D /* VinchyOrder.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CACC1DC224C5F2980082BD01 /* filters.json in Resources */ = {isa = PBXBuildFile; fileRef = CACC1DC124C5F2980082BD01 /* filters.json */; };
+		CAD55BC2281AE1BE00C3E33F /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = CAD55BC1281AE1BE00C3E33F /* main.m */; };
+		CAD55BC4281AE2FF00C3E33F /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD55BC3281AE2FF00C3E33F /* Application.swift */; };
+		CAD55CC8281B2D0A00C3E33F /* StoreRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAD55CC7281B2D0A00C3E33F /* StoreRepository.swift */; };
 		CAEBD788251A6D6200210F3B /* AgreementsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEBD787251A6D6200210F3B /* AgreementsViewController.swift */; };
 		CAEBD7F3251A7F5000210F3B /* SwitcherWithText.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAEBD7F2251A7F5000210F3B /* SwitcherWithText.swift */; };
 		CAF514102461C51400667ED0 /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAF5140F2461C51300667ED0 /* AboutViewController.swift */; };
@@ -521,7 +522,6 @@
 				8A417741275CBF0E003E1934 /* Spotlight.framework in Embed Frameworks */,
 				8A62EF0F2795C0AA005445B4 /* Pager.framework in Embed Frameworks */,
 				8A889A58275CC8390096A74A /* Database.framework in Embed Frameworks */,
-				8A0A44AE279C7BE4001A8CA1 /* Widget.framework in Embed Frameworks */,
 				8A41774B275CBF16003E1934 /* WineDetail.framework in Embed Frameworks */,
 				8A9C7F0C27613A3F00A5B694 /* DisplayMini.framework in Embed Frameworks */,
 				CA8622CA27B2A9A20066682A /* Network.framework in Embed Frameworks */,
@@ -975,6 +975,9 @@
 		CACB3C7127BBDB2400AD999D /* VinchyCart.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyCart.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CACB3DC427C2988B00AD999D /* VinchyOrder.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = VinchyOrder.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CACC1DC124C5F2980082BD01 /* filters.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = filters.json; sourceTree = "<group>"; };
+		CAD55BC1281AE1BE00C3E33F /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		CAD55BC3281AE2FF00C3E33F /* Application.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Application.swift; sourceTree = "<group>"; };
+		CAD55CC7281B2D0A00C3E33F /* StoreRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StoreRepository.swift; sourceTree = "<group>"; };
 		CAEBD787251A6D6200210F3B /* AgreementsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AgreementsViewController.swift; sourceTree = "<group>"; };
 		CAEBD7F2251A7F5000210F3B /* SwitcherWithText.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SwitcherWithText.swift; sourceTree = "<group>"; };
 		CAF24ACC24C323C90057547F /* StringFormatting.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = StringFormatting.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -1053,7 +1056,6 @@
 				8A62EF0E2795C0AA005445B4 /* Pager.framework in Frameworks */,
 				CA8622C927B2A9A20066682A /* Network.framework in Frameworks */,
 				FABB13923370D0A65D1B9E5E /* Pods_VinchyAppClip.framework in Frameworks */,
-				8A0A44AD279C7BE4001A8CA1 /* Widget.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -2732,20 +2734,20 @@
 		CA0A3527247860EB00C400F5 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
-				CA78E28325751D97000ECDA8 /* Vinchy.entitlements */,
-				CA81989A253B897B0056A1C6 /* VinchyRelease.entitlements */,
 				CA472AC8245EDE30009149FF /* Assets.xcassets */,
-				CA4EA6BA24BE3ACD00E6F0C4 /* currencies.json */,
+				CA3C97E8257245F40036F7D9 /* Countries.strings */,
 				CA3CEFAF251288F000AAA692 /* country_codes.json */,
+				CA4EA6BA24BE3ACD00E6F0C4 /* currencies.json */,
 				CACC1DC124C5F2980082BD01 /* filters.json */,
 				CA4D4FE32548A93500A6FD0B /* GoogleService-Info.plist */,
 				CA472ACD245EDE30009149FF /* Info.plist */,
 				CA445F6D24BFA3C20023A09F /* InfoPlist.strings */,
 				CA472ACA245EDE30009149FF /* LaunchScreen.storyboard */,
 				CA63A129249A23C100144320 /* Localizable.strings */,
-				CA4AED9A24CE204900035922 /* TopSecret.plist */,
-				CA3C97E8257245F40036F7D9 /* Countries.strings */,
 				8A07983D269750A0000ACA2B /* PluralLocalizable.stringsdict */,
+				CA4AED9A24CE204900035922 /* TopSecret.plist */,
+				CA78E28325751D97000ECDA8 /* Vinchy.entitlements */,
+				CA81989A253B897B0056A1C6 /* VinchyRelease.entitlements */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -2872,17 +2874,20 @@
 		CA472B3F245EDEDB009149FF /* Supported Files */ = {
 			isa = PBXGroup;
 			children = (
-				8A63E3362770F24200D8362C /* Routable */,
-				CA8CD67525096EC100FDB7AF /* Smart-Bridging-Header.h */,
-				CA472ABF245EDE2F009149FF /* AppDelegate.swift */,
-				CAA060D1252BC05C002C15B5 /* DeveloperFeatureToggles.swift */,
-				CA8198BF253CB0490056A1C6 /* ErrorDescription.swift */,
-				CA472AC1245EDE2F009149FF /* SceneDelegate.swift */,
-				8A07930B26924DAF000ACA2B /* Document.swift */,
-				8A5145682757BEB000DC45CD /* Coordinator.swift */,
 				8A2BA4F3275D370A006D6AF4 /* AdFabric.swift */,
 				8A2BA4F7275D41E8006D6AF4 /* AdItemView.swift */,
+				CA472ABF245EDE2F009149FF /* AppDelegate.swift */,
+				CAD55BC3281AE2FF00C3E33F /* Application.swift */,
+				8A5145682757BEB000DC45CD /* Coordinator.swift */,
+				CAA060D1252BC05C002C15B5 /* DeveloperFeatureToggles.swift */,
+				8A07930B26924DAF000ACA2B /* Document.swift */,
+				CA8198BF253CB0490056A1C6 /* ErrorDescription.swift */,
+				CAD55BC1281AE1BE00C3E33F /* main.m */,
+				8A63E3362770F24200D8362C /* Routable */,
+				CA472AC1245EDE2F009149FF /* SceneDelegate.swift */,
+				CA8CD67525096EC100FDB7AF /* Smart-Bridging-Header.h */,
 				8A9C7EAF275FDE1900A5B694 /* StatusAlertable.swift */,
+				CAD55CC7281B2D0A00C3E33F /* StoreRepository.swift */,
 			);
 			path = "Supported Files";
 			sourceTree = "<group>";
@@ -3818,6 +3823,7 @@
 				8A3C0F502732D08E00947085 /* SavedViewModel.swift in Sources */,
 				748586FD26C7CB2300F5CBEA /* SimpleContinuosCarouselCollectionCellViewModel.swift in Sources */,
 				8AF966C62678F194001891B2 /* EditProfileInteractor.swift in Sources */,
+				CAD55CC8281B2D0A00C3E33F /* StoreRepository.swift in Sources */,
 				CAF514212461C52400667ED0 /* MorePresenter.swift in Sources */,
 				4495625125E2E15A005E79DA /* ReviewDetailRoutable.swift in Sources */,
 				8AD7A455263B2A98007D4273 /* ClusterAnnotationView.swift in Sources */,
@@ -3911,6 +3917,7 @@
 				8A079302269239C1000ACA2B /* DocumentsAssembly.swift in Sources */,
 				4437AA6125E3A7CE00F6E838 /* WriteReviewViewControllerProtocol.swift in Sources */,
 				44465EC025F39400005B3F06 /* MapRepository.swift in Sources */,
+				CAD55BC2281AE1BE00C3E33F /* main.m in Sources */,
 				44EFDB7125E263E00076ED6D /* ReviewDetailAssembly.swift in Sources */,
 				8A10F28427063398003463B0 /* AddressSearchPresenter.swift in Sources */,
 				8AD51DAF27650D010009499A /* CurrencyViewControllerProtocol.swift in Sources */,
@@ -4074,6 +4081,7 @@
 				8A079300269239C0000ACA2B /* DocumentsViewModel.swift in Sources */,
 				8A3C0F582732D08E00947085 /* SavedInteractor.swift in Sources */,
 				8A91611D268E27EB00240B18 /* SearchViewController.swift in Sources */,
+				CAD55BC4281AE2FF00C3E33F /* Application.swift in Sources */,
 				CE7346382589B75E00028574 /* MoreViewProtocol.swift in Sources */,
 				8A313BFF26447042009F2165 /* MapDetailStoreViewModel.swift in Sources */,
 				8AF966C52678F194001891B2 /* EditProfileInteractorProtocol.swift in Sources */,

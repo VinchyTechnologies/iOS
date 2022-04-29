@@ -13,11 +13,11 @@ public final class StoreAssembly {
 
   public typealias Coordinator = WineDetailRoutable & ActivityRoutable & WriteNoteRoutable & AdvancedSearchRoutable & ResultsSearchRoutable & WineShareRoutable & SafariRoutable & StoreShareRoutable & CartRoutable & QuestionsRoutable
 
-  public static func assemblyModule(input: StoreInput, coordinator: Coordinator, adFabricProtocol: AdFabricProtocol?) -> UIViewController {
+  public static func assemblyModule(input: StoreInput, coordinator: Coordinator, adFabricProtocol: AdFabricProtocol?, repository: StoreRepositoryAdapterProtocol?) -> UIViewController {
     let viewController = StoreViewController(adGenerator: adFabricProtocol)
     let router = StoreRouter(input: input, viewController: viewController, coordinator: coordinator)
     let presenter = StorePresenter(input: input, viewController: viewController)
-    let interactor = StoreInteractor(input: input, router: router, presenter: presenter)
+    let interactor = StoreInteractor(input: input, router: router, presenter: presenter, storeAdapter: repository)
 
     viewController.interactor = interactor
     router.interactor = interactor
