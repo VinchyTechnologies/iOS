@@ -5,7 +5,7 @@
 //  Created by Алексей Смирнов on 27.04.2021.
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
-import Network
+import APINetwork
 
 // MARK: - PartnersEndpoint
 

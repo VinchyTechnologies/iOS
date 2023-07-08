@@ -95,6 +95,11 @@ extension SceneDelegate: UIWindowSceneDelegate {
     let splash = SplashViewController(splashService: splashService)
     splash.onEndAnimation = { [weak self] in
       self?.root.startApp()
+      if let userActivity = connectionOptions.userActivities.first {
+        self?.scene(scene, continue: userActivity)
+      } else {
+        self?.scene(scene, openURLContexts: connectionOptions.urlContexts)
+      }
     }
     window.rootViewController = splash
     window.makeKeyAndVisible()
@@ -129,12 +134,6 @@ extension SceneDelegate: UIWindowSceneDelegate {
 
 //    window.rootViewController = QuestionsNavigationController(input: .init(questions: questions), affilatedId: 366, coordinator: Coordinator.shared)
 //    window.makeKeyAndVisible()
-
-    if let userActivity = connectionOptions.userActivities.first {
-      self.scene(scene, continue: userActivity)
-    } else {
-      self.scene(scene, openURLContexts: connectionOptions.urlContexts)
-    }
 
 //    if let shortcutItem = connectionOptions.shortcutItem {
 //      // Save it off for later when we become active.

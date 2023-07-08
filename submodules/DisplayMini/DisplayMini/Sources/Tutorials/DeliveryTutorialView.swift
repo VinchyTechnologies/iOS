@@ -27,7 +27,7 @@ public final class DeliveryTutorialView: UIView, TutorialContentViewProtocol {
 
   // MARK: Public
 
-  public var anchorPoint = CGPoint(x: 1, y: 0) {
+  public var anchorpoint = CGPoint(x: 1, y: 0) {
     didSet {
       setNeedsLayout()
     }
@@ -52,7 +52,7 @@ public final class DeliveryTutorialView: UIView, TutorialContentViewProtocol {
 
   override public func layoutSubviews() {
     super.layoutSubviews()
-    layer.anchorPoint = anchorPoint
+    layer.anchorPoint = anchorpoint
   }
 
   override public func awakeFromNib() {

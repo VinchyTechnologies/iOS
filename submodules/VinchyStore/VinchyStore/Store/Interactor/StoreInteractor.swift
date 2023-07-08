@@ -6,10 +6,10 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import APINetwork
 import Core
 import CoreLocation
 import Database
-import Network
 import Spotlight
 import UIKit
 import VinchyCore

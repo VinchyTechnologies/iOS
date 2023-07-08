@@ -6,7 +6,7 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
-import Network
+import APINetwork
 
 // MARK: - RecommendationsEndpoint
 

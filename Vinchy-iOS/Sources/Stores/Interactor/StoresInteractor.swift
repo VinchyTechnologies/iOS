@@ -6,9 +6,9 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import APINetwork
 import Core
 import Database
-import Network
 import VinchyCore
 import Widget
 

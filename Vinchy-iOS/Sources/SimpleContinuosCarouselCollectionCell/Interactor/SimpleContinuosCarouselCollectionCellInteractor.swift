@@ -6,10 +6,10 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import APINetwork
 import Core
 import Database
 import FirebaseDynamicLinks
-import Network
 import VinchyCore
 import VinchyUI
 import WineDetail

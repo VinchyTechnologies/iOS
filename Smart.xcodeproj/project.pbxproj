@@ -375,6 +375,10 @@
 		CA070C1625250AEC00C3D9EC /* OnboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA070C1325250AE900C3D9EC /* OnboardViewController.swift */; };
 		CA070C2425250C1800C3D9EC /* OnboardingModuleFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA070C2325250C1800C3D9EC /* OnboardingModuleFactory.swift */; };
 		CA276D55256AC6720061BEBE /* FakeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA276D54256AC6720061BEBE /* FakeCell.swift */; };
+		CA27C5452A59B68600FD4BA0 /* APINetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA27C5442A59B68600FD4BA0 /* APINetwork.framework */; };
+		CA27C5462A59B68600FD4BA0 /* APINetwork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA27C5442A59B68600FD4BA0 /* APINetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CA27C5502A59B8A100FD4BA0 /* APINetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA27C54F2A59B8A100FD4BA0 /* APINetwork.framework */; };
+		CA27C5512A59B8A100FD4BA0 /* APINetwork.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA27C54F2A59B8A100FD4BA0 /* APINetwork.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CA3837CC246FCF3C00AD5FCC /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA3837CB246FCF3C00AD5FCC /* TabBarController.swift */; };
 		CA3C97E6257245F40036F7D9 /* Countries.strings in Resources */ = {isa = PBXBuildFile; fileRef = CA3C97E8257245F40036F7D9 /* Countries.strings */; };
 		CA3CEFB0251288F000AAA692 /* country_codes.json in Resources */ = {isa = PBXBuildFile; fileRef = CA3CEFAF251288F000AAA692 /* country_codes.json */; };
@@ -414,10 +418,6 @@
 		CA7B835B24EED6E600991F24 /* StoryCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B835A24EED6E600991F24 /* StoryCollectionCell.swift */; };
 		CA7B836024EF109200991F24 /* MainSubtitleCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA7B835F24EF109200991F24 /* MainSubtitleCollectionCell.swift */; };
 		CA8198C0253CB0490056A1C6 /* ErrorDescription.swift in Sources */ = {isa = PBXBuildFile; fileRef = CA8198BF253CB0490056A1C6 /* ErrorDescription.swift */; };
-		CA8622C927B2A9A20066682A /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA8622C827B2A9A20066682A /* Network.framework */; };
-		CA8622CA27B2A9A20066682A /* Network.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA8622C827B2A9A20066682A /* Network.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CA8622CC27B2A9AF0066682A /* Network.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = CA8622CB27B2A9AF0066682A /* Network.framework */; };
-		CA8622CD27B2A9AF0066682A /* Network.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = CA8622CB27B2A9AF0066682A /* Network.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		CAA060D2252BC05C002C15B5 /* DeveloperFeatureToggles.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAA060D1252BC05C002C15B5 /* DeveloperFeatureToggles.swift */; };
 		CAB728D127F6CF8000CAC535 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CAB728D027F6CF8000CAC535 /* SplashViewController.swift */; };
 		CACA7E99254C57CC0099E622 /* WriteNoteViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CACA7E88254C57CC0099E622 /* WriteNoteViewModel.swift */; };
@@ -518,13 +518,13 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				CA27C5512A59B8A100FD4BA0 /* APINetwork.framework in Embed Frameworks */,
 				8A417736275CBF03003E1934 /* AdvancedSearch.framework in Embed Frameworks */,
 				8A417741275CBF0E003E1934 /* Spotlight.framework in Embed Frameworks */,
 				8A62EF0F2795C0AA005445B4 /* Pager.framework in Embed Frameworks */,
 				8A889A58275CC8390096A74A /* Database.framework in Embed Frameworks */,
 				8A41774B275CBF16003E1934 /* WineDetail.framework in Embed Frameworks */,
 				8A9C7F0C27613A3F00A5B694 /* DisplayMini.framework in Embed Frameworks */,
-				CA8622CA27B2A9A20066682A /* Network.framework in Embed Frameworks */,
 				8A417747275CBF13003E1934 /* VinchyStore.framework in Embed Frameworks */,
 				8A417749275CBF15003E1934 /* VinchyUI.framework in Embed Frameworks */,
 				8AA7BA79275CDE1B00BF68E8 /* VinchyCore.framework in Embed Frameworks */,
@@ -551,6 +551,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				CA27C5462A59B68600FD4BA0 /* APINetwork.framework in Embed Frameworks */,
 				8A63CCBD26754633003B1D4D /* StringFormatting.framework in Embed Frameworks */,
 				8A63CCB72675462C003B1D4D /* Database.framework in Embed Frameworks */,
 				8A63CCC126754638003B1D4D /* VinchyCore.framework in Embed Frameworks */,
@@ -564,7 +565,6 @@
 				8A5145E22757EC9000DC45CD /* VinchyStore.framework in Embed Frameworks */,
 				8A9C7F0927613A3300A5B694 /* DisplayMini.framework in Embed Frameworks */,
 				CA6AE13427DCA48C004FBB05 /* Questions.framework in Embed Frameworks */,
-				CA8622CD27B2A9AF0066682A /* Network.framework in Embed Frameworks */,
 				8A62EF0C2795C09D005445B4 /* Pager.framework in Embed Frameworks */,
 				CACB3DC627C2988B00AD999D /* VinchyOrder.framework in Embed Frameworks */,
 				8A63CCB52675462A003B1D4D /* Core.framework in Embed Frameworks */,
@@ -903,6 +903,8 @@
 		CA1821A324C0E83900280DD4 /* Display.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Display.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA1821FE24C0F6F000280DD4 /* Database.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = Database.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA276D54256AC6720061BEBE /* FakeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FakeCell.swift; sourceTree = "<group>"; };
+		CA27C5442A59B68600FD4BA0 /* APINetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = APINetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		CA27C54F2A59B8A100FD4BA0 /* APINetwork.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; path = APINetwork.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		CA3837CB246FCF3C00AD5FCC /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		CA3C97E7257245F40036F7D9 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Countries.strings; sourceTree = "<group>"; };
 		CA3C97EB257245FB0036F7D9 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Countries.strings; sourceTree = "<group>"; };
@@ -1049,12 +1051,12 @@
 				8A41774A275CBF16003E1934 /* WineDetail.framework in Frameworks */,
 				8A417748275CBF15003E1934 /* VinchyUI.framework in Frameworks */,
 				8A417735275CBF03003E1934 /* AdvancedSearch.framework in Frameworks */,
+				CA27C5502A59B8A100FD4BA0 /* APINetwork.framework in Frameworks */,
 				8A417746275CBF13003E1934 /* VinchyStore.framework in Frameworks */,
 				8A41773A275CBF08003E1934 /* Core.framework in Frameworks */,
 				8A889A57275CC8390096A74A /* Database.framework in Frameworks */,
 				8A9C7F0B27613A3F00A5B694 /* DisplayMini.framework in Frameworks */,
 				8A62EF0E2795C0AA005445B4 /* Pager.framework in Frameworks */,
-				CA8622C927B2A9A20066682A /* Network.framework in Frameworks */,
 				FABB13923370D0A65D1B9E5E /* Pods_VinchyAppClip.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1075,7 +1077,7 @@
 				8A63CCB82675462E003B1D4D /* Display.framework in Frameworks */,
 				8A63CCB42675462A003B1D4D /* Core.framework in Frameworks */,
 				8A63CCC026754638003B1D4D /* VinchyCore.framework in Frameworks */,
-				CA8622CC27B2A9AF0066682A /* Network.framework in Frameworks */,
+				CA27C5452A59B68600FD4BA0 /* APINetwork.framework in Frameworks */,
 				8AEC83BA2758E7BE00C80F1E /* WineDetail.framework in Frameworks */,
 				8A9C7F0827613A3300A5B694 /* DisplayMini.framework in Frameworks */,
 				8A299EF3274FB7B400355602 /* Spotlight.framework in Frameworks */,
@@ -1484,6 +1486,8 @@
 		46483F371463D95E22014241 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				CA27C54F2A59B8A100FD4BA0 /* APINetwork.framework */,
+				CA27C5442A59B68600FD4BA0 /* APINetwork.framework */,
 				CA6AE13227DCA48C004FBB05 /* Questions.framework */,
 				CACB3DC427C2988B00AD999D /* VinchyOrder.framework */,
 				CACB3C7127BBDB2400AD999D /* VinchyCart.framework */,

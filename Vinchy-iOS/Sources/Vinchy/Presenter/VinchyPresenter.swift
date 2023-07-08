@@ -6,11 +6,11 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
+import APINetwork
 import Core
 import CoreLocation
 import DisplayMini
 import MapKit
-import Network
 import StringFormatting
 import UIKit
 import VinchyCore

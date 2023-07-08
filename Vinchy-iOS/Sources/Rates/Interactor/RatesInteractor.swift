@@ -6,11 +6,11 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import APINetwork
 import Combine
 import Core
 import Database
 import FirebaseDynamicLinks
-import Network
 import VinchyCore
 
 // MARK: - C

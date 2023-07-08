@@ -148,7 +148,7 @@ extension TutorialViewController {
     let view = DeliveryTutorialView.loadNib()
     let size = DeliveryTutorialView.size(viewModel: viewModel, width: width)
     view.frame = CGRect(origin: point, size: size)
-    view.anchorPoint = anchorPoint.point
+    view.anchorpoint = anchorPoint.point
     view.reload(viewModel: viewModel)
     return view
   }

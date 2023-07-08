@@ -6,8 +6,8 @@
 //  Copyright © 2020 Aleksei Smirnov. All rights reserved.
 //
 
+import APINetwork
 import Display
-import Network
 import StringFormatting
 import VinchyCore
 

@@ -6,10 +6,10 @@
 //  Copyright © 2021 Aleksei Smirnov. All rights reserved.
 //
 
+import APINetwork
 import AuthenticationServices
 import Combine
 import Core
-import Network
 
 // MARK: - User
 

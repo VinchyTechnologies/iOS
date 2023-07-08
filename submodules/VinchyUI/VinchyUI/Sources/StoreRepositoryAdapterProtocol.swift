@@ -7,9 +7,9 @@
 //
 
 public protocol StoreRepositoryAdapterProtocol: AnyObject {
-  
+
   func isLiked(affilietedId: Int) -> Bool
-  
+
   func saveOrDeleteStoreFromFavourite(
     affilietedId: Int,
     title: String?,
